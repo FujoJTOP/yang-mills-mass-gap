@@ -1,0 +1,34 @@
+module arrtest
+choose runtime
+
+const N: u32 = 1024;
+
+fn main() {
+    let a: [u64; 1024] = [0; 1024];
+    let i: u32 = 0;
+    while i < N {
+        a[i] = (i as u64) * 3;
+        i = i + 1;
+    }
+    let s: u64 = 0;
+    i = 0;
+    while i < N {
+        s = s + a[i];
+        i = i + 1;
+    }
+    let buf: ptr = alloc(24);
+    let n: u32 = 0;
+    let x: u64 = s;
+    if x == 0 { store8(buf, 0, 48 as u8); n = 1; }
+    while x > 0 { store8(buf, n, (48 + (x % 10)) as u8); x = x / 10; n = n + 1; }
+    let j: u32 = 0;
+    while j < n / 2 {
+        let lo: u8 = load8(buf, j) as u8;
+        let hi: u8 = load8(buf, n - 1 - j) as u8;
+        store8(buf, j, hi);
+        store8(buf, n - 1 - j, lo);
+        j = j + 1;
+    }
+    syscall4(1, 1, buf as u64, n as u64);
+    print("\n");
+}

@@ -1,0 +1,75 @@
+module ptest
+choose runtime
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/f64fmt.lomt"
+use "stdlib/mem.lomt"
+
+const L: u32 = 4
+
+fn write_dec(fd: u64, v: u64) {
+    let buf: ptr = alloc(24)
+    let n: u32 = 0
+    let x: u64 = v
+    if x == 0 { store8(buf, 0, 48 as u8); n = 1; }
+    while x > 0 { store8(buf, n, (48 + (x % 10)) as u8); x = x / 10; n = n + 1; }
+    let i: u32 = 0
+    while i < n / 2 { let lo: u8 = load8(buf, i) as u8; let hi: u8 = load8(buf, n-1-i) as u8; store8(buf, i, hi); store8(buf, n-1-i, lo); i = i + 1; }
+    syscall4(1, fd, buf as u64, n as u64)
+}
+
+fn site(x0: u32, x1: u32, x2: u32, x3: u32) -> u32 { return ((x0*L + x1)*L + x2)*L + x3 }
+fn plus(s: u32, mu: u32) -> u32 {
+    let x0: u32 = s / (L*L*L); let x1: u32 = (s/(L*L))%L; let x2: u32 = (s/L)%L; let x3: u32 = s%L
+    if mu == 0 { x0 = (x0+1)%L; }
+    if mu == 1 { x1 = (x1+1)%L; }
+    if mu == 2 { x2 = (x2+1)%L; }
+    if mu == 3 { x3 = (x3+1)%L; }
+    return site(x0,x1,x2,x3)
+}
+fn minus(s: u32, mu: u32) -> u32 {
+    let x0: u32 = s / (L*L*L); let x1: u32 = (s/(L*L))%L; let x2: u32 = (s/L)%L; let x3: u32 = s%L
+    if mu == 0 { x0 = (x0+L-1)%L; }
+    if mu == 1 { x1 = (x1+L-1)%L; }
+    if mu == 2 { x2 = (x2+L-1)%L; }
+    if mu == 3 { x3 = (x3+L-1)%L; }
+    return site(x0,x1,x2,x3)
+}
+fn plaq(links: ptr, N: u32, s: u32, mu: u32, nu: u32) -> i32 {
+    let s_mu: u32 = plus(s, mu); let s_nu: u32 = plus(s, nu)
+    let b1: u32 = load8(links, mu*N+s); let b2: u32 = load8(links, nu*N+s_mu)
+    let b3: u32 = load8(links, mu*N+s_nu); let b4: u32 = load8(links, nu*N+s)
+    let par: u32 = (b1+b2+b3+b4)%2
+    if par == 0 { return 1; }
+    return -1
+}
+fn delta_sum(links: ptr, N: u32, s: u32, mu: u32) -> i32 {
+    let res: i32 = 0
+    let nu: u32 = 0
+    while nu < 4 {
+        if nu != mu {
+            res = res + plaq(links, N, s, mu, nu)
+            let sm: u32 = minus(s, nu)
+            res = res + plaq(links, N, sm, mu, nu)
+        }
+        nu = nu + 1
+    }
+    return res
+}
+
+fn main() {
+    let N: u32 = L*L*L*L
+    let links: ptr = alloc(4*N)
+    let i: u32 = 0
+    while i < 4*N { store8(links, i, 0 as u8); i = i + 1; }
+    print("ordered ds(0,0)="); write_dec(1, delta_sum(links,N,0,0) as u64); print("\n")
+    store8(links, 0*N+0, 1 as u8)
+    print("one-flip ds(0,0)="); write_dec(1, delta_sum(links,N,0,0) as u64); print("\n")
+    // pointer arithmetic test
+    let a: ptr = alloc(64)
+    store8(a, 0, 7 as u8)
+    let b: ptr = (a as u64 + 16) as ptr
+    store8(b, 0, 9 as u8)
+    print("ptr a="); write_dec(1, load8(a,0) as u64); print(" b="); write_dec(1, load8(b,0) as u64); print("\n")
+}

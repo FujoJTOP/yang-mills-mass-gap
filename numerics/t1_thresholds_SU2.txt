@@ -1,0 +1,11 @@
+SU(2) pure YM: t = ln(mu/Lambda) at coupling thresholds
+==========================================================
+    criterion       g^2  t(1-loop)  t(2-loop)  t(3-loop)
+----------------------------------------------------------
+         g2=1   1.00000    10.7668     8.6171     8.6410
+       g2=4pi  12.56637     0.8568    -0.3786    -0.1822
+lambda=g2*N=1   0.50000    21.5337    19.0998    19.1120
+
+Convention: beta = -b0 g^3/(16pi^2) - b1 g^5/(16pi^2)^2 - b2 g^7/(16pi^2)^3; b0=11N/3, b1=34N^2/3, b2=2857N^3/54.
+t = ln(mu/Lambda) is the RG-invariant logarithm; it is the SAME for every initial condition (Lambda is fixed by the theory).
+The spread across loop orders (esp. at g^2=4pi) is a truncation diagnostic.

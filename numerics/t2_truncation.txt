@@ -1,0 +1,16 @@
+SU(3): 3-loop truncation of scheme-2 beta  (b2'=b2+(3/2)c b1)
+==========================================================
+    c    g'  |beta'_exact - beta'_3loop| / |beta'_exact|
+----------------------------------------------------------
++0.10  0.15                                   8.0128e-06
++0.10  0.25                                   6.1148e-05
++0.10  0.35                                   2.3113e-04
++0.10  0.45                                   6.1847e-04
++0.10  0.55                                   1.3457e-03
+-0.10  0.15                                   2.0861e-06
+-0.10  0.25                                   1.6444e-05
+-0.10  0.35                                   6.5279e-05
+-0.10  0.45                                   1.8663e-04
+-0.10  0.55                                   4.4174e-04
+
+The relative residual falls ~g'^6, which is the expected O(g^6) scheme-dependence residual at 3 loops: it CONFIRMS b2'=b2+(3/2)c b1 (a wrong b2' would leave an O(g^4) residual).

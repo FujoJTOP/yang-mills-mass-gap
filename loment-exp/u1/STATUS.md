@@ -1,0 +1,1 @@
+STATUS: exp underflow bug already patched locally (exp(-0.5)=0.606531 verified); cos exact to 6dp; RNG uniform. Fixed plaqA/plaqB coordinate swap in the mu=1 branch, which had made the Metropolis sample the wrong action. Plaquette now tracks the exact I1/I0 (0.23-0.27 vs 0.2425 at beta=0.5). Corrected error formula. Full beta scan running.

@@ -1,0 +1,4 @@
+L,beta,op,eta,eta_err,lam,lam_err,tau_hb,m_eff,ratio,n_cfg,kernel,cert,notes
+4,2.200,link,5.7398,0.2308,nan,nan,0.52,nan,nan,30,link_CM,cert,"eta=typical-config row sum of BAR-TV; witness lb 1.18 (mean 1.02); rigorous log-density ub sum=17.87; WITNESS=witness_L4_b2.2.npz"
+4,3.000,link,8.3848,0.3602,nan,nan,0.50,nan,nan,30,link_CM,cert,"eta=typical-config row sum of BAR-TV; witness lb 1.75 (mean 1.53); rigorous log-density ub sum=17.99; WITNESS=witness_L4_b3.0.npz"
+4,6.000,link,17.1925,0.1021,nan,nan,1.61,nan,nan,30,link_CM,cert,"eta=typical-config row sum of BAR-TV; witness lb 1.82 (mean 1.37); rigorous log-density ub sum=18.00; WITNESS=witness_L4_b6.0.npz"

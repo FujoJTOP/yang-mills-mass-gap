@@ -1,0 +1,21 @@
+module exptest2
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/mem.lomt"
+use "stdlib/f64fmt.lomt"
+
+fn main() {
+    let out: ptr = alloc(64);
+    let sc: ptr = alloc(f64fmt_scratch_bytes());
+    let x: u64 = 0x3FE0000000000000;
+    let n: u32 = f64fmt_fixed(out, 0, mathf_exp(x), 6, sc);
+    print("exp(+0.5)="); syscall4(1, 1, out as u64, n as u64); print("\n");
+    n = f64fmt_fixed(out, 0, mathf_exp(f64_neg(x)), 6, sc);
+    print("exp(-0.5)="); syscall4(1, 1, out as u64, n as u64); print("\n");
+    n = f64fmt_fixed(out, 0, f64_neg(x), 6, sc);
+    print("neg(+0.5)="); syscall4(1, 1, out as u64, n as u64); print("\n");
+    n = f64fmt_fixed(out, 0, mathf_exp(0x3FF0000000000000), 6, sc);
+    print("exp(1.0)="); syscall4(1, 1, out as u64, n as u64); print("\n");
+}

@@ -1,0 +1,21 @@
+    model lam=[0. 0. 0.] acc=1.00
+  it0 lam=[0.5598 0.0102 0.0125] r=[48.605   4.0056 15.6726] cond=19.3 32s
+    model lam=[0.5598 0.0102 0.0125] acc=0.85
+  it1 lam=[ 0.5254 -0.0044  0.0007] r=[ -2.7954 -10.2706 -15.4775] cond=19.9 26s
+    model lam=[ 0.5254 -0.0044  0.0007] acc=0.88
+  it2 lam=[ 0.5414 -0.0031  0.0025] r=[2.2272 2.6536 4.5195] cond=15.0 25s
+    model lam=[ 0.5414 -0.0031  0.0025] acc=0.86
+  it3 lam=[ 0.5384 -0.0032  0.0082] r=[-0.1448  0.3323  6.0694] cond=15.0 22s
+    model lam=[ 0.5384 -0.0032  0.0082] acc=0.87
+  it4 lam=[ 0.5595 -0.0028  0.002 ] r=[ 1.182   0.1379 -6.1756] cond=17.8 21s
+    model lam=[ 0.5595 -0.0028  0.002 ] acc=0.85
+  it5 lam=[5.286e-01 3.000e-04 5.400e-03] r=[-1.6735  0.9493  2.8338] cond=18.2 21s
+    model lam=[5.286e-01 3.000e-04 5.400e-03] acc=0.87
+  it6 lam=[ 5.426e-01 -5.000e-04  5.800e-03] r=[ 1.6507 -0.4918  1.4711] cond=18.4 21s
+Traceback (most recent call last):
+  File "D:\Dev\math\research\probe-imc\run_char.py", line 51, in <module>
+    fitval(f, ['P', 'C6', 'C8'], 7, 900, 3000, f'L8_b{b}_PC6C8')
+  File "D:\Dev\math\research\probe-imc\run_char.py", line 35, in fitval
+    pred = validate.sample_predictions(d, np.array(fit['lam']), fit['ops'],
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: module 'validate' has no attribute 'sample_predictions'

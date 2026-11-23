@@ -1,0 +1,13 @@
+q=1 crossing and q at the candidate boundaries (SU(3), gamma_m=0.4 assumed)
+====================================================================================================
+mu*/Lam  t*=ln(mu*/Lam)  t_cross(num)  mu*/Lam(num)  |m-mu|@cross  q@(g^2=1)  q@(g^2=1.8)  q@(mu=4Lam)  q@(mu=8Lam)  q monotone?
+----------------------------------------------------------------------------------------------------
+    1.0          0.0000        0.0000        1.0000      2.53e-13  8.437e-04        0.051        0.144        0.054          yes
+    2.0          0.6931        0.6931        2.0000      1.92e-06  2.227e-03        0.136        0.379        0.144          yes
+    4.0          1.3863        1.3863        4.0000      1.97e-06  5.876e-03        0.358        1.000        0.379          yes
+    8.0          2.0794        2.0794        8.0000      6.31e-06  1.551e-02        0.945        2.639        1.000          yes
+
+Rows: anchor mu*=c*Lambda sets the crossing (m_gap/Lambda = c is the one free O(1) number).  t_cross(num) is found by RK4 integration + bisection and matches ln(c); |m-mu|@cross confirms mu*=m(mu*) at the crossing.
+The column q@(g^2=1) is the value of q at the FORMAL weak boundary t=5.06 (g^2=1).  It is tiny (1e-4 .. 1e-2) for every anchor: the g^2=1 line lies deep in the q<<1 region and CANNOT be the handoff boundary.
+The column q@(g^2=1.8) is q at the PHYSICAL handoff scale g^2~1.8 (task 4).  For the literature anchor mu*=(4..8)Lam there q is O(0.4..1): the physical handoff lives where q~1, i.e. at mu~Delta~m_gap, consistent with the dimensional-transmutation picture.  This is why q, not g^2, is the right control quantity.
+Caveat: with gamma_m constant the power law m~mu^{-gamma} is only the weak-side behaviour; in the deep IR m freezes at m_gap, which makes q grow even faster, so the q>1 strong side is unaffected.  These numbers are schematic, not a proof.

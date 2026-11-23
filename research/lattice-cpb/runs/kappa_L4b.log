@@ -1,0 +1,19 @@
+== L4_b1.700_s11.npz  L=4 beta=1.7  8 snapshots
+   snap   0: kappa=-1.94105 res=8.7e-03 cg=1.0e-08  linkH min=-0.8590 neg=0.707
+   snap   5: kappa=-1.93329 res=1.0e-03 cg=1.0e-08  linkH min=-0.7355 neg=0.703
+   snap  11: kappa=-1.93596 res=1.8e-04 cg=1.0e-08  linkH min=-0.8712 neg=0.703
+   snap  16: kappa=-1.92755 res=9.4e-03 cg=1.0e-08  linkH min=-0.7430 neg=0.695
+   snap  22: kappa=-1.93308 res=1.9e-04 cg=9.9e-09  linkH min=-0.8065 neg=0.666
+   snap  27: kappa=-1.88281 res=2.9e-03 cg=9.9e-09  linkH min=-0.7359 neg=0.701
+   snap  33: kappa=-1.88398 res=3.9e-03 cg=1.0e-08  linkH min=-0.7709 neg=0.644
+   snap  39: kappa=-1.89627 res=2.1e-03 cg=1.0e-08  linkH min=-0.7597 neg=0.699
+== L4_b2.200_s21.npz  L=4 beta=2.2  8 snapshots
+   snap   0: kappa=-2.41853 res=2.8e-04 cg=1.0e-08  linkH min=-0.8946 neg=0.545
+   snap   5: kappa=-2.39835 res=2.9e-03 cg=1.0e-08  linkH min=-0.9276 neg=0.571
+   snap  11: kappa=-2.40681 res=2.2e-03 cg=1.0e-08  linkH min=-0.9133 neg=0.493
+   snap  16: kappa=-2.40421 res=3.9e-04 cg=1.0e-08  linkH min=-0.9482 neg=0.606
+   snap  22: kappa=-2.41481 res=1.4e-03 cg=1.0e-08  linkH min=-0.9236 neg=0.597
+   snap  27: kappa=-2.39515 res=2.2e-03 cg=1.0e-08  linkH min=-0.9841 neg=0.552
+   snap  33: kappa=-2.41406 res=5.5e-04 cg=1.0e-08  linkH min=-0.9341 neg=0.507
+   snap  39: kappa=-2.55650 res=5.4e-05 cg=1.0e-08  linkH min=-0.9838 neg=0.538
+saved D:\Dev\math\research\lattice-cpb\kappa_results_L4.npz

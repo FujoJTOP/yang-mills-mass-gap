@@ -1,0 +1,1 @@
+first 1.3 s, then 14.9 ms/sweep, acc 0.85

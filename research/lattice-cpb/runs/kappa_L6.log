@@ -1,0 +1,36 @@
+== L6_b1.700_s12.npz  L=6 beta=1.7  6 snapshots
+   snap   0: kappa=-1.93101 res=1.0e-04 cg=1.0e-08  linkH min=-0.7784 neg=0.684
+   snap   7: kappa=-1.93776 res=6.9e-04 cg=1.0e-08  linkH min=-0.8360 neg=0.677
+   snap  15: kappa=-1.92373 res=6.1e-04 cg=1.0e-08  linkH min=-0.7825 neg=0.686
+   snap  23: kappa=-1.96403 res=2.2e-04 cg=1.0e-08  linkH min=-0.8236 neg=0.688
+   snap  31: kappa=-1.95646 res=1.7e-05 cg=1.0e-08  linkH min=-0.9151 neg=0.679
+   snap  39: kappa=-1.93604 res=3.7e-04 cg=1.0e-08  linkH min=-0.8788 neg=0.688
+== L6_b2.200_s22.npz  L=6 beta=2.2  6 snapshots
+   snap   0: kappa=-2.48260 res=1.4e-05 cg=1.0e-08  linkH min=-1.1258 neg=0.589
+   snap   7: kappa=-2.47244 res=1.4e-05 cg=8.6e-09  linkH min=-1.0995 neg=0.563
+   snap  15: kappa=-2.40260 res=3.2e-03 cg=1.0e-08  linkH min=-0.9678 neg=0.554
+   snap  23: kappa=-2.50072 res=1.1e-04 cg=9.6e-09  linkH min=-1.1218 neg=0.574
+   snap  31: kappa=-2.45751 res=4.4e-06 cg=9.9e-09  linkH min=-0.9815 neg=0.578
+   snap  39: kappa=-2.42072 res=3.5e-03 cg=9.9e-09  linkH min=-0.9857 neg=0.576
+== L6_b2.200_s24.npz  L=6 beta=2.2  6 snapshots
+   snap   0: kappa=-2.44428 res=2.9e-03 cg=9.8e-09  linkH min=-0.9317 neg=0.566
+   snap   7: kappa=-2.55589 res=6.7e-07 cg=9.9e-09  linkH min=-1.2147 neg=0.579
+   snap  15: kappa=-2.46865 res=1.8e-03 cg=9.8e-09  linkH min=-0.9847 neg=0.560
+   snap  23: kappa=-2.41823 res=1.8e-03 cg=9.9e-09  linkH min=-1.0621 neg=0.559
+   snap  31: kappa=-2.51033 res=6.2e-05 cg=1.0e-08  linkH min=-1.1092 neg=0.574
+   snap  39: kappa=-2.49514 res=4.0e-04 cg=8.8e-09  linkH min=-0.9985 neg=0.578
+== L6_b5.700_s31.npz  L=6 beta=5.7  6 snapshots
+   snap   0: kappa=-3.83071 res=1.6e-04 cg=1.0e-08  linkH min=-0.4153 neg=0.001
+   snap   5: kappa=-3.60220 res=3.4e-04 cg=1.0e-08  linkH min=-0.3086 neg=0.000
+   snap  11: kappa=-4.20478 res=2.0e-06 cg=1.0e-08  linkH min=-0.6039 neg=0.001
+   snap  17: kappa=-4.12458 res=1.9e-07 cg=9.9e-09  linkH min=-0.6833 neg=0.001
+   snap  23: kappa=-4.11120 res=2.2e-04 cg=1.0e-08  linkH min=-1.2931 neg=0.001
+   snap  29: kappa=-4.05186 res=3.6e-06 cg=1.0e-08  linkH min=-0.1146 neg=0.001
+== L6_b6.000_s32.npz  L=6 beta=6.0  6 snapshots
+   snap   0: kappa=-3.38129 res=3.1e-05 cg=1.0e-08  linkH min=+0.1394 neg=0.000
+   snap   5: kappa=-3.50676 res=2.2e-06 cg=9.9e-09  linkH min=+0.1083 neg=0.000
+   snap  11: kappa=-3.24967 res=5.7e-05 cg=1.0e-08  linkH min=+0.5085 neg=0.000
+   snap  17: kappa=-3.55814 res=3.1e-07 cg=1.0e-08  linkH min=+0.1080 neg=0.000
+   snap  23: kappa=-3.68828 res=1.2e-06 cg=1.0e-08  linkH min=-0.1649 neg=0.000
+   snap  29: kappa=-3.61652 res=4.2e-07 cg=1.0e-08  linkH min=+0.1138 neg=0.000
+saved kappa_results.npz

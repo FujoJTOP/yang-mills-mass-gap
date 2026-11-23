@@ -1,0 +1,7 @@
+  cfg 6/30: row-sum eta mean 17.220 max 17.969
+  cfg 12/30: row-sum eta mean 16.883 max 17.969
+  cfg 18/30: row-sum eta mean 16.861 max 17.969
+  cfg 24/30: row-sum eta mean 16.812 max 17.969
+  cfg 30/30: row-sum eta mean 16.869 max 17.969
+beta=6.0: eta_row mean 16.869 max 17.969 | rigorous ub mean 18.00 max 18.00
+saved runs/eta_L4_b6.0.npz

@@ -1,0 +1,3 @@
+width 0.35 Metropolis P 0.5962 acc 0.31  5 ms/sweep
+width 0.20 Metropolis P 0.5970 acc 0.53  5 ms/sweep
+heatbath P 0.5975

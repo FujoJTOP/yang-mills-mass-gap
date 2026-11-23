@@ -1,0 +1,45 @@
+module rngtest
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/rand.lomt"
+use "stdlib/mem.lomt"
+use "stdlib/f64fmt.lomt"
+
+fn put_f64(out: ptr, sc: ptr, x: u64) {
+    let n: u32 = f64fmt_fixed(out, 0, x, 6, sc);
+    syscall4(1, 1, out as u64, n as u64);
+}
+
+fn put_bool(b: bool) {
+    if b { print("true"); } else { print("false"); }
+}
+
+fn main() {
+    let out: ptr = alloc(64);
+    let sc: ptr = alloc(f64fmt_scratch_bytes());
+    let sp: ptr = alloc(8);
+    mem_store64(sp, 0, rand_seed(1234));
+    let sum: u64 = 0x0000000000000000;
+    let below: u32 = 0;
+    let n: u32 = 0;
+    let one: u64 = 0x3FF0000000000000;
+    let half: u64 = 0x3FE0000000000000;
+    let zero: u64 = 0x0000000000000000;
+    while n < 100000 {
+        let s: u64 = mem_load64(sp, 0);
+        let r: u64 = rand_next(s);
+        mem_store64(sp, 0, r);
+        let bits: u64 = 0x3FF0000000000000 | (r >> 12);
+        let u: u64 = f64_sub(bits, one);
+        sum = f64_add(sum, u);
+        if f64_lt(u, half) { below = below + 1; }
+        n = n + 1;
+    }
+    print("mean="); put_f64(out, sc, f64_div(sum, f64conv_from_u64(100000))); print("\n");
+    print("frac<0.5="); put_f64(out, sc, f64_div(f64conv_from_u64(below as u64), f64conv_from_u64(100000))); print("\n");
+    print("le(0.5,0)="); put_bool(f64_le(half, zero)); print("\n");
+    print("lt(0.5,0)="); put_bool(f64_lt(half, zero)); print("\n");
+    print("gt(0.5,0)="); put_bool(f64_gt(half, zero)); print("\n");
+}

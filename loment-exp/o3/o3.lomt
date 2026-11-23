@@ -1,0 +1,447 @@
+module o3
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/rand.lomt"
+use "stdlib/mem.lomt"
+
+// ---------------- compile-time parameters ----------------
+const L: u32 = 8;
+const THERM: u32 = 200;
+const MEAS: u32 = 200;
+const MEAS_EVERY: u32 = 10;
+const NBETA: u32 = 1;
+
+const NA: u32 = 64;      // angle table
+const NAX: u32 = 32;     // axis table
+const NEXP: u32 = 2048;  // exp(-x) table on [0,16]
+
+const F64_0: u64 = 0x0000000000000000;
+const F64_1: u64 = 0x3FF0000000000000;
+const F64_2: u64 = 0x4000000000000000;
+const F64_MHALF: u64 = 0xBFE0000000000000;
+const F64_SMALL: u64 = 0x3F847AE147AE147B; // 0.01
+const F64_XMAX: u64 = 0x4030000000000000;  // 16.0
+
+// ---------------- output helpers ----------------
+
+fn wstr(fd: u64, s: str) {
+    syscall4(1, fd, str_ptr(s) as u64, str_len(s) as u64);
+}
+
+fn wdec(buf: ptr, v: u64) {
+    let n: u32 = 0;
+    let x: u64 = v;
+    if x == 0 {
+        store8(buf, 0, 48 as u8);
+        n = 1;
+    }
+    while x > 0 {
+        store8(buf, n, (48 + (x % 10)) as u8);
+        x = x / 10;
+        n = n + 1;
+    }
+    let i: u32 = 0;
+    while i < n / 2 {
+        let lo: u8 = load8(buf, i) as u8;
+        let hi: u8 = load8(buf, n - 1 - i) as u8;
+        store8(buf, i, hi);
+        store8(buf, n - 1 - i, lo);
+        i = i + 1;
+    }
+    syscall4(1, 1, buf as u64, n as u64);
+}
+
+// fixed 6 decimals
+fn w6(buf: ptr, x: u64) {
+    let y: u64 = x;
+    if f64_lt(x, F64_0) {
+        wstr(1, "-");
+        y = f64_neg(x);
+    }
+    let scale: u64 = f64conv_from_u64(1000000);
+    let z: u64 = f64conv_to_u64(f64_mul(y, scale));
+    wdec(buf, z / 1000000);
+    wstr(1, ".");
+    let fp: u64 = z % 1000000;
+    let d: u64 = 100000;
+    while d > 0 {
+        wdec(buf, (fp / d) % 10);
+        d = d / 10;
+    }
+}
+
+// ---------------- f64 helpers ----------------
+
+fn u01(r: u64) -> u64 {
+    let b: u64 = 0x3FF0000000000000 | (r >> 12);
+    return f64_sub(b, F64_1);
+}
+
+fn upm1(r: u64) -> u64 {
+    return f64_sub(f64_mul(u01(r), F64_2), F64_1);
+}
+
+fn dot3(p: ptr, i: u32, j: u32) -> u64 {
+    let s: u64 = F64_0;
+    let c: u32 = 0;
+    while c < 3 {
+        s = f64_add(s, f64_mul(mem_load64(p, (i * 3 + c) * 8), mem_load64(p, (j * 3 + c) * 8)));
+        c = c + 1;
+    }
+    return s;
+}
+
+fn sum4(p: ptr, a: u32, b: u32, c: u32, d: u32, comp: u32) -> u64 {
+    let s1: u64 = f64_add(mem_load64(p, (a * 3 + comp) * 8), mem_load64(p, (b * 3 + comp) * 8));
+    let s2: u64 = f64_add(mem_load64(p, (c * 3 + comp) * 8), mem_load64(p, (d * 3 + comp) * 8));
+    return f64_add(s1, s2);
+}
+
+// exp(-x), x >= 0, linear interpolation
+fn exp_lookup(et: ptr, x: u64) -> u64 {
+    if f64_ge(x, F64_XMAX) {
+        return F64_0;
+    }
+    let inv: u64 = f64_div(f64conv_from_u64(NEXP as u64), F64_XMAX);
+    let t: u64 = f64_mul(x, inv);
+    let k: u32 = f64conv_to_u32(t);
+    let frac: u64 = f64_sub(t, f64conv_from_u64(k as u64));
+    let a: u64 = mem_load64(et, k * 8);
+    let b: u64 = mem_load64(et, (k + 1) * 8);
+    return f64_add(a, f64_mul(frac, f64_sub(b, a)));
+}
+
+// ---------------- sweep ----------------
+
+fn sweep(lat: ptr, ct: ptr, st: ptr, ax: ptr, et: ptr, beta: u64, state0: u64, accp: ptr) -> u64 {
+    let state: u64 = state0;
+    let acc: u64 = 0;
+    let y: u32 = 0;
+    while y < L {
+        let x: u32 = 0;
+        while x < L {
+            let xp: u32 = (x + 1) % L;
+            let xm: u32 = (x + L - 1) % L;
+            let yp: u32 = (y + 1) % L;
+            let ym: u32 = (y + L - 1) % L;
+            let ip: u32 = y * L + xp;
+            let im: u32 = y * L + xm;
+            let jp: u32 = yp * L + x;
+            let jm: u32 = ym * L + x;
+            let i: u32 = y * L + x;
+            let s0: u64 = mem_load64(lat, (i * 3 + 0) * 8);
+            let s1: u64 = mem_load64(lat, (i * 3 + 1) * 8);
+            let s2: u64 = mem_load64(lat, (i * 3 + 2) * 8);
+            let n0: u64 = sum4(lat, ip, im, jp, jm, 0);
+            let n1: u64 = sum4(lat, ip, im, jp, jm, 1);
+            let n2: u64 = sum4(lat, ip, im, jp, jm, 2);
+
+            state = rand_next(state);
+            let ai: u32 = (state % (NAX as u64)) as u32;
+            state = rand_next(state);
+            let ti: u32 = (state % (NA as u64)) as u32;
+            let ux: u64 = mem_load64(ax, (ai * 3 + 0) * 8);
+            let uy: u64 = mem_load64(ax, (ai * 3 + 1) * 8);
+            let uz: u64 = mem_load64(ax, (ai * 3 + 2) * 8);
+            let c: u64 = mem_load64(ct, ti * 8);
+            let sn: u64 = mem_load64(st, ti * 8);
+            let us: u64 = f64_add(f64_add(f64_mul(ux, s0), f64_mul(uy, s1)), f64_mul(uz, s2));
+            let q0: u64 = f64_sub(f64_mul(uy, s2), f64_mul(uz, s1));
+            let q1: u64 = f64_sub(f64_mul(uz, s0), f64_mul(ux, s2));
+            let q2: u64 = f64_sub(f64_mul(ux, s1), f64_mul(uy, s0));
+            let omc: u64 = f64_sub(F64_1, c);
+            let t0: u64 = f64_add(f64_add(f64_mul(s0, c), f64_mul(q0, sn)), f64_mul(f64_mul(ux, us), omc));
+            let t1: u64 = f64_add(f64_add(f64_mul(s1, c), f64_mul(q1, sn)), f64_mul(f64_mul(uy, us), omc));
+            let t2: u64 = f64_add(f64_add(f64_mul(s2, c), f64_mul(q2, sn)), f64_mul(f64_mul(uz, us), omc));
+            let d0: u64 = f64_sub(t0, s0);
+            let d1: u64 = f64_sub(t1, s1);
+            let d2: u64 = f64_sub(t2, s2);
+            let dd: u64 = f64_add(f64_add(f64_mul(d0, n0), f64_mul(d1, n1)), f64_mul(d2, n2));
+            let take: u32 = 0;
+            if f64_ge(dd, F64_0) {
+                take = 1;
+            } else {
+                state = rand_next(state);
+                let ur: u64 = u01(state);
+                let xarg: u64 = f64_neg(f64_mul(beta, dd));
+                let p: u64 = exp_lookup(et, xarg);
+                if f64_lt(ur, p) {
+                    take = 1;
+                }
+            }
+            if take == 1 {
+                mem_store64(lat, (i * 3 + 0) * 8, t0);
+                mem_store64(lat, (i * 3 + 1) * 8, t1);
+                mem_store64(lat, (i * 3 + 2) * 8, t2);
+                acc = acc + 1;
+            }
+            x = x + 1;
+        }
+        y = y + 1;
+    }
+    mem_store64(accp, 0, acc);
+    return state;
+}
+
+// ---------------- main ----------------
+
+fn main() {
+    let lat: ptr = alloc(3 * L * L * 8);
+    let ct: ptr = alloc(NA * 8);
+    let st: ptr = alloc(NA * 8);
+    let ax: ptr = alloc(NAX * 3 * 8);
+    let et: ptr = alloc((NEXP + 1) * 8);
+    let corr: ptr = alloc((L / 2 + 1) * 8);
+    let buf: ptr = alloc(32);
+    let cnt: ptr = alloc(8);
+
+    let state: u64 = rand_seed(2000);
+
+    // angle table: theta = -1 + 2k/NA
+    let invNA: u64 = f64_div(F64_1, f64conv_from_u64(NA as u64));
+    let k: u32 = 0;
+    while k < NA {
+        let t: u64 = f64_add(f64_mul(f64conv_from_u64(k as u64), invNA), F64_MHALF);
+        mem_store64(ct, k * 8, mathf_cos(t));
+        mem_store64(st, k * 8, mathf_sin(t));
+        k = k + 1;
+    }
+
+    // axis table
+    k = 0;
+    while k < NAX {
+        let ok: u32 = 0;
+        let a0: u64 = F64_0;
+        let a1: u64 = F64_0;
+        let a2: u64 = F64_0;
+        let n2: u64 = F64_0;
+        while ok == 0 {
+            state = rand_next(state);
+            a0 = upm1(state);
+            state = rand_next(state);
+            a1 = upm1(state);
+            state = rand_next(state);
+            a2 = upm1(state);
+            n2 = f64_add(f64_add(f64_mul(a0, a0), f64_mul(a1, a1)), f64_mul(a2, a2));
+            if f64_gt(n2, F64_SMALL) {
+                ok = 1;
+            }
+        }
+        let nrm: u64 = mathf_sqrt(n2);
+        mem_store64(ax, (k * 3 + 0) * 8, f64_div(a0, nrm));
+        mem_store64(ax, (k * 3 + 1) * 8, f64_div(a1, nrm));
+        mem_store64(ax, (k * 3 + 2) * 8, f64_div(a2, nrm));
+        k = k + 1;
+    }
+
+    // exp(-x) table on [0,16]
+    k = 0;
+    while k <= NEXP {
+        let xv: u64 = f64_div(f64_mul(f64conv_from_u64(k as u64), F64_XMAX), f64conv_from_u64(NEXP as u64));
+        mem_store64(et, k * 8, mathf_exp(f64_neg(xv)));
+        k = k + 1;
+    }
+
+    wstr(1, "beta,r,C_raw,C_conn\n");
+
+    let b: u32 = 0;
+    while b < NBETA {
+        let beta: u64 = f64_div(F64_1, f64conv_from_u64(10));
+        state = rand_next(state);
+        let seed_state: u64 = rand_seed((2000 + b) as u32);
+        let s: u64 = seed_state;
+
+        // initialize random unit spins
+        let i: u32 = 0;
+        while i < L * L {
+            let ok: u32 = 0;
+            let c0: u64 = F64_0;
+            let c1: u64 = F64_0;
+            let c2: u64 = F64_0;
+            let n2: u64 = F64_0;
+            while ok == 0 {
+                s = rand_next(s);
+                c0 = upm1(s);
+                s = rand_next(s);
+                c1 = upm1(s);
+                s = rand_next(s);
+                c2 = upm1(s);
+                n2 = f64_add(f64_add(f64_mul(c0, c0), f64_mul(c1, c1)), f64_mul(c2, c2));
+                if f64_gt(n2, F64_SMALL) {
+                    ok = 1;
+                }
+            }
+            let nrm: u64 = mathf_sqrt(n2);
+            mem_store64(lat, (i * 3 + 0) * 8, f64_div(c0, nrm));
+            mem_store64(lat, (i * 3 + 1) * 8, f64_div(c1, nrm));
+            mem_store64(lat, (i * 3 + 2) * 8, f64_div(c2, nrm));
+            i = i + 1;
+        }
+
+        wstr(2, "beta start\n");
+
+        let sw: u32 = 0;
+        while sw < THERM {
+            s = sweep(lat, ct, st, ax, et, beta, s, cnt);
+            if sw % 100 == 0 {
+                wstr(2, ".");
+            }
+            sw = sw + 1;
+        }
+
+        // reset accumulators
+        let r: u32 = 0;
+        while r <= L / 2 {
+            mem_store64(corr, r * 8, F64_0);
+            r = r + 1;
+        }
+        let mabs: u64 = F64_0;
+        let m2: u64 = F64_0;
+        let atot: u64 = 0;
+        let nm: u32 = 0;
+
+        sw = 0;
+        while sw < MEAS {
+            s = sweep(lat, ct, st, ax, et, beta, s, cnt);
+            if sw % 100 == 0 {
+                wstr(2, "+");
+            }
+            atot = atot + mem_load64(cnt, 0);
+            if sw % MEAS_EVERY == 0 {
+                // magnetization
+                let sx: u64 = F64_0;
+                let sy: u64 = F64_0;
+                let sz: u64 = F64_0;
+                i = 0;
+                while i < L * L {
+                    sx = f64_add(sx, mem_load64(lat, (i * 3 + 0) * 8));
+                    sy = f64_add(sy, mem_load64(lat, (i * 3 + 1) * 8));
+                    sz = f64_add(sz, mem_load64(lat, (i * 3 + 2) * 8));
+                    i = i + 1;
+                }
+                let invn: u64 = f64_div(F64_1, f64conv_from_u64((L * L) as u64));
+                let mx: u64 = f64_mul(sx, invn);
+                let my: u64 = f64_mul(sy, invn);
+                let mz: u64 = f64_mul(sz, invn);
+                let m2v: u64 = f64_add(f64_add(f64_mul(mx, mx), f64_mul(my, my)), f64_mul(mz, mz));
+                m2 = f64_add(m2, m2v);
+                mabs = f64_add(mabs, mathf_sqrt(m2v));
+
+                // correlations
+                r = 0;
+                while r <= L / 2 {
+                    let acc: u64 = F64_0;
+                    let yy: u32 = 0;
+                    while yy < L {
+                        let xx: u32 = 0;
+                        while xx < L {
+                            let ii: u32 = yy * L + xx;
+                            let jx: u32 = yy * L + ((xx + r) % L);
+                            let jy: u32 = ((yy + r) % L) * L + xx;
+                            acc = f64_add(acc, f64_add(dot3(lat, ii, jx), dot3(lat, ii, jy)));
+                            xx = xx + 1;
+                        }
+                        yy = yy + 1;
+                    }
+                    let cv: u64 = f64_div(acc, f64conv_from_u64((3 * L * L) as u64));
+                    mem_store64(corr, r * 8, f64_add(mem_load64(corr, r * 8), cv));
+                    r = r + 1;
+                }
+                nm = nm + 1;
+            }
+            sw = sw + 1;
+        }
+
+        // averages
+        let invm: u64 = f64_div(F64_1, f64conv_from_u64(nm as u64));
+        let plateau: u64 = f64_mul(mem_load64(corr, (L / 2) * 8), invm);
+        let mean_abs: u64 = f64_mul(mabs, invm);
+        let mean_m2: u64 = f64_mul(m2, invm);
+        let chi: u64 = f64_mul(f64conv_from_u64((L * L) as u64), f64_sub(mean_m2, f64_mul(mean_abs, mean_abs)));
+        let accept: u64 = f64_div(f64conv_from_u64(atot), f64conv_from_u64((MEAS * L * L) as u64));
+
+        // second moment and fit
+        let num: u64 = F64_0;
+        let den: u64 = F64_0;
+        r = 0;
+        while r <= L / 2 {
+            let cv: u64 = f64_sub(f64_mul(mem_load64(corr, r * 8), invm), plateau);
+            let rr: u64 = f64conv_from_u64((r * r) as u64);
+            num = f64_add(num, f64_mul(rr, cv));
+            den = f64_add(den, cv);
+            r = r + 1;
+        }
+        let xi2: u64 = mathf_sqrt(f64_div(num, den));
+
+        // exponential fit of log C_conn(r), r=1..min(8,L/2-1)
+        let rfit: u32 = L / 2 - 1;
+        if rfit > 8 {
+            rfit = 8;
+        }
+        let fsx: u64 = F64_0;
+        let fsy: u64 = F64_0;
+        let fsxx: u64 = F64_0;
+        let fsxy: u64 = F64_0;
+        let npts: u64 = 0;
+        r = 1;
+        while r <= rfit {
+            let cv: u64 = f64_sub(f64_mul(mem_load64(corr, r * 8), invm), plateau);
+            if f64_gt(cv, F64_0) {
+                let lv: u64 = mathf_log(cv);
+                let rf: u64 = f64conv_from_u64(r as u64);
+                fsx = f64_add(fsx, rf);
+                fsy = f64_add(fsy, lv);
+                fsxx = f64_add(fsxx, f64_mul(rf, rf));
+                fsxy = f64_add(fsxy, f64_mul(rf, lv));
+                npts = npts + 1;
+            }
+            r = r + 1;
+        }
+        let xiexp: u64 = 0xBFE0000000000000;
+        if f64_gt(f64conv_from_u64(npts), F64_1) {
+            let nf: u64 = f64conv_from_u64(npts);
+            let denom: u64 = f64_sub(f64_mul(nf, fsxx), f64_mul(fsx, fsx));
+            if f64_gt(denom, F64_0) {
+                let slope: u64 = f64_div(f64_sub(f64_mul(nf, fsxy), f64_mul(fsx, fsy)), denom);
+                if f64_lt(slope, F64_0) {
+                    xiexp = f64_div(f64_neg(F64_1), slope);
+                }
+            }
+        }
+
+        // output rows
+        r = 0;
+        while r <= L / 2 {
+            let craw: u64 = f64_mul(mem_load64(corr, r * 8), invm);
+            let cconn: u64 = f64_sub(craw, plateau);
+            w6(buf, beta);
+            wstr(1, ",");
+            wdec(buf, r as u64);
+            wstr(1, ",");
+            w6(buf, craw);
+            wstr(1, ",");
+            w6(buf, cconn);
+            wstr(1, "\n");
+            r = r + 1;
+        }
+
+        wstr(1, "# summary ");
+        w6(buf, beta);
+        wstr(1, ",");
+        w6(buf, accept);
+        wstr(1, ",");
+        w6(buf, mean_abs);
+        wstr(1, ",");
+        w6(buf, chi);
+        wstr(1, ",");
+        w6(buf, xi2);
+        wstr(1, ",");
+        w6(buf, xiexp);
+        wstr(1, "\n");
+
+        b = b + 1;
+    }
+}

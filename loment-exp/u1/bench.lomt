@@ -1,0 +1,334 @@
+module u1
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/rand.lomt"
+use "stdlib/mem.lomt"
+use "stdlib/f64fmt.lomt"
+
+const L: u32 = 24;
+const NN: u32 = 576;
+const NV: u32 = 1152;
+const THERM: u32 = 5;
+const MEAS: u32 = 8;
+const STRIDE: u32 = 8;
+const NLOOP: u32 = 16;
+
+const ONE: u64 = 0x3FF0000000000000;
+const ZERO: u64 = 0x0000000000000000;
+const PI: u64 = 0x400921FB54442D18;
+const TWO_PI: u64 = 0x401921FB54442D18;
+const NEG_PI: u64 = 0xC00921FB54442D18;
+const DELTA: u64 = 0x3FE0000000000000;
+
+fn up(x: u32) -> u32 {
+    if x + 1 >= L { return 0; }
+    return x + 1;
+}
+
+fn dn(x: u32) -> u32 {
+    if x == 0 { return L - 1; }
+    return x - 1;
+}
+
+fn lget(p: ptr, mu: u32, x0: u32, x1: u32) -> u64 {
+    return mem_load64(p, (mu * NN + x0 * L + x1) * 8);
+}
+
+fn lset(p: ptr, mu: u32, x0: u32, x1: u32, v: u64) {
+    mem_store64(p, (mu * NN + x0 * L + x1) * 8, v);
+}
+
+fn wrap(x: u64) -> u64 {
+    if f64_gt(x, PI) { return f64_sub(x, TWO_PI); }
+    if f64_lt(x, NEG_PI) { return f64_add(x, TWO_PI); }
+    return x;
+}
+
+fn uniform01(sp: ptr) -> u64 {
+    let s: u64 = mem_load64(sp, 0);
+    let r: u64 = rand_next(s);
+    mem_store64(sp, 0, r);
+    let bits: u64 = 0x3FF0000000000000 | (r >> 12);
+    return f64_sub(bits, ONE);
+}
+
+fn plaqA(mu: u32, x0: u32, x1: u32, p: ptr) -> u64 {
+    if mu == 0 {
+        let a: u64 = lget(p, 1, up(x0), x1);
+        let b: u64 = lget(p, 0, x0, up(x1));
+        let c: u64 = lget(p, 1, x0, x1);
+        return f64_sub(f64_sub(a, b), c);
+    }
+    let a: u64 = lget(p, 0, up(x0), x1);
+    let b: u64 = lget(p, 1, x0, up(x1));
+    let c: u64 = lget(p, 0, x0, x1);
+    return f64_sub(f64_sub(a, b), c);
+}
+
+fn plaqB(mu: u32, x0: u32, x1: u32, p: ptr) -> u64 {
+    if mu == 0 {
+        let a: u64 = lget(p, 0, dn(x0), x1);
+        let b: u64 = lget(p, 1, up(dn(x0)), dn(x1));
+        let c: u64 = lget(p, 1, dn(x0), dn(x1));
+        return f64_sub(f64_add(a, b), c);
+    }
+    let a: u64 = lget(p, 1, dn(x0), x1);
+    let b: u64 = lget(p, 0, up(dn(x0)), x1);
+    let c: u64 = lget(p, 0, dn(x0), x1);
+    return f64_sub(f64_add(a, b), c);
+}
+
+fn accept(dS: u64, sp: ptr) -> bool {
+    if f64_le(dS, ZERO) {
+        return true;
+    }
+    let r: u64 = uniform01(sp);
+    let pacc: u64 = mathf_exp(f64_neg(dS));
+    return f64_lt(r, pacc);
+}
+
+fn update(p: ptr, sp: ptr, qp: ptr, mu: u32, x0: u32, x1: u32, beta: u64) -> bool {
+    let old: u64 = lget(p, mu, x0, x1);
+    let u: u64 = uniform01(sp);
+    let d: u64 = f64_mul(DELTA, f64_sub(f64_add(u, u), ONE));
+    let nw: u64 = wrap(f64_add(old, d));
+    let A: u64 = plaqA(mu, x0, x1, p);
+    let B: u64 = plaqB(mu, x0, x1, p);
+    let t1: u64 = f64_sub(mathf_cos_scr(f64_add(old, A), qp), mathf_cos_scr(f64_add(nw, A), qp));
+    let t2: u64 = f64_sub(mathf_cos_scr(f64_sub(B, old), qp), mathf_cos_scr(f64_sub(B, nw), qp));
+    let dS: u64 = f64_mul(beta, f64_add(t1, t2));
+    if accept(dS, sp) {
+        lset(p, mu, x0, x1, nw);
+        return true;
+    }
+    return false;
+}
+
+fn sweep(p: ptr, sp: ptr, qp: ptr, beta: u64) -> u32 {
+    let acc: u32 = 0;
+    let mu: u32 = 0;
+    while mu < 2 {
+        let x0: u32 = 0;
+        while x0 < L {
+            let x1: u32 = 0;
+            while x1 < L {
+                if update(p, sp, qp, mu, x0, x1, beta) {
+                    acc = acc + 1;
+                }
+                x1 = x1 + 1;
+            }
+            x0 = x0 + 1;
+        }
+        mu = mu + 1;
+    }
+    return acc;
+}
+
+fn plaquette(p: ptr, qp: ptr) -> u64 {
+    let s: u64 = ZERO;
+    let x0: u32 = 0;
+    while x0 < L {
+        let x1: u32 = 0;
+        while x1 < L {
+            let t: u64 = lget(p, 0, x0, x1);
+            t = f64_add(t, lget(p, 1, up(x0), x1));
+            t = f64_sub(t, lget(p, 0, x0, up(x1)));
+            t = f64_sub(t, lget(p, 1, x0, x1));
+            s = f64_add(s, mathf_cos_scr(t, qp));
+            x1 = x1 + 1;
+        }
+        x0 = x0 + 1;
+    }
+    return s;
+}
+
+fn wilson_sum(p: ptr, qp: ptr, R: u32, T: u32) -> u64 {
+    let acc: u64 = ZERO;
+    let x0: u32 = 0;
+    while x0 < L {
+        let x1: u32 = 0;
+        while x1 < L {
+            let s: u64 = ZERO;
+            let i: u32 = 0;
+            while i < R {
+                s = f64_add(s, lget(p, 0, (x0 + i) % L, x1));
+                i = i + 1;
+            }
+            i = 0;
+            while i < T {
+                s = f64_add(s, lget(p, 1, (x0 + R) % L, (x1 + i) % L));
+                i = i + 1;
+            }
+            i = 0;
+            while i < R {
+                s = f64_sub(s, lget(p, 0, (x0 + R - 1 - i) % L, (x1 + T) % L));
+                i = i + 1;
+            }
+            i = 0;
+            while i < T {
+                s = f64_sub(s, lget(p, 1, x0, (x1 + T - 1 - i) % L));
+                i = i + 1;
+            }
+            acc = f64_add(acc, mathf_cos_scr(s, qp));
+            x1 = x1 + 1;
+        }
+        x0 = x0 + 1;
+    }
+    return acc;
+}
+
+fn put_dec(buf: ptr, v: u64) {
+    let n: u32 = 0;
+    let x: u64 = v;
+    if x == 0 {
+        store8(buf, 0, 48 as u8);
+        n = 1;
+    }
+    while x > 0 {
+        store8(buf, n, (48 + (x % 10)) as u8);
+        x = x / 10;
+        n = n + 1;
+    }
+    let i: u32 = 0;
+    while i < n / 2 {
+        let lo: u8 = load8(buf, i) as u8;
+        let hi: u8 = load8(buf, n - 1 - i) as u8;
+        store8(buf, i, hi);
+        store8(buf, n - 1 - i, lo);
+        i = i + 1;
+    }
+    syscall4(1, 1, buf as u64, n as u64);
+}
+
+fn put_f64(out: ptr, sc: ptr, x: u64) {
+    let n: u32 = f64fmt_fixed(out, 0, x, 6, sc);
+    syscall4(1, 1, out as u64, n as u64);
+}
+
+fn main() {
+    let betas: [u64; 4] = [0x3FE0000000000000, 0x3FF0000000000000, 0x4000000000000000, 0x4010000000000000];
+    let links: ptr = alloc(NV * 8);
+    let rng: ptr = alloc(8);
+    let qp: ptr = alloc(8);
+    let numbuf: ptr = alloc(32);
+    let out: ptr = alloc(64);
+    let sc: ptr = alloc(f64fmt_scratch_bytes());
+    let accW: ptr = alloc(128);
+    let accW2: ptr = alloc(128);
+    let accP: ptr = alloc(8);
+    let accP2: ptr = alloc(8);
+    let accCnt: ptr = alloc(8);
+    let totCnt: ptr = alloc(8);
+
+    let bi: u32 = 0;
+    while bi < 4 {
+        let beta: u64 = betas[bi];
+        let k: u32 = 0;
+        while k < NV * 8 {
+            store8(links, k, 0 as u8);
+            k = k + 1;
+        }
+        mem_store64(rng, 0, rand_seed(1000 + bi * 17 + 7));
+        mem_store64(accP, 0, ZERO);
+        mem_store64(accP2, 0, ZERO);
+        mem_store64(accCnt, 0, 0);
+        mem_store64(totCnt, 0, 0);
+        let li: u32 = 0;
+        while li < NLOOP {
+            mem_store64(accW, li * 8, ZERO);
+            mem_store64(accW2, li * 8, ZERO);
+            li = li + 1;
+        }
+
+        print("# beta=");
+        put_f64(out, sc, beta);
+        print("\n");
+
+        let s: u32 = 0;
+        while s < THERM {
+            let a: u32 = sweep(links, rng, qp, beta);
+            s = s + 1;
+        }
+
+        let rounds: u32 = MEAS / STRIDE;
+        let r: u32 = 0;
+        while r < rounds {
+            let s2: u32 = 0;
+            while s2 < STRIDE {
+                let a2: u32 = sweep(links, rng, qp, beta);
+                mem_store64(totCnt, 0, mem_load64(totCnt, 0) + (2 * NN) as u64);
+                mem_store64(accCnt, 0, mem_load64(accCnt, 0) + a2 as u64);
+                s2 = s2 + 1;
+            }
+            let pv: u64 = plaquette(links, qp);
+            mem_store64(accP, 0, f64_add(mem_load64(accP, 0), pv));
+            mem_store64(accP2, 0, f64_add(mem_load64(accP2, 0), f64_mul(pv, pv)));
+            let R: u32 = 1;
+            while R <= 4 {
+                let T: u32 = 1;
+                while T <= 4 {
+                    let lidx: u32 = (R - 1) * 4 + (T - 1);
+                    let wv: u64 = wilson_sum(links, qp, R, T);
+                    mem_store64(accW, lidx * 8, f64_add(mem_load64(accW, lidx * 8), wv));
+                    mem_store64(accW2, lidx * 8, f64_add(mem_load64(accW2, lidx * 8), f64_mul(wv, wv)));
+                    T = T + 1;
+                }
+                R = R + 1;
+            }
+            r = r + 1;
+        }
+
+        let nr: u64 = f64conv_from_u64(rounds as u64);
+        let nn: u64 = f64conv_from_u64(NN as u64);
+        let den: u64 = f64_mul(nr, nn);
+        let pmean: u64 = f64_div(mem_load64(accP, 0), den);
+        let pvar: u64 = f64_sub(f64_div(mem_load64(accP2, 0), den), f64_mul(pmean, pmean));
+        let perr: u64 = ZERO;
+        if f64_gt(pvar, ZERO) {
+            perr = mathf_sqrt(f64_div(pvar, nr));
+        }
+        print("# plaquette=");
+        put_f64(out, sc, pmean);
+        print(" err=");
+        put_f64(out, sc, perr);
+        print(" acc=");
+        let tc: u64 = mem_load64(totCnt, 0);
+        let ac: u64 = mem_load64(accCnt, 0);
+        if tc > 0 {
+            put_f64(out, sc, f64_div(f64conv_from_u64(ac), f64conv_from_u64(tc)));
+        } else {
+            print("0");
+        }
+        print("\n");
+
+        let R2: u32 = 1;
+        while R2 <= 4 {
+            let T2: u32 = 1;
+            while T2 <= 4 {
+                let li2: u32 = (R2 - 1) * 4 + (T2 - 1);
+                let wmean: u64 = f64_div(mem_load64(accW, li2 * 8), den);
+                let wvar: u64 = f64_sub(f64_div(mem_load64(accW2, li2 * 8), den), f64_mul(wmean, wmean));
+                let werr: u64 = ZERO;
+                if f64_gt(wvar, ZERO) {
+                    werr = mathf_sqrt(f64_div(wvar, nr));
+                }
+                put_f64(out, sc, beta);
+                print(",");
+                put_dec(numbuf, R2 as u64);
+                print(",");
+                put_dec(numbuf, T2 as u64);
+                print(",");
+                put_f64(out, sc, wmean);
+                print(",");
+                put_f64(out, sc, werr);
+                print("\n");
+                T2 = T2 + 1;
+            }
+            R2 = R2 + 1;
+        }
+        bi = bi + 1;
+    }
+}

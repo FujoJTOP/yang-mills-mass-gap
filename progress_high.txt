@@ -1,0 +1,2 @@
+/usr/bin/bash: line 1: ./o3_high.exe: No such file or directory
+EXIT_HIGH=127

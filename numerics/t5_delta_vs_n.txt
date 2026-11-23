@@ -1,0 +1,20 @@
+Delta(n)=4logZ(n)-logZ(2n) for massive Gaussian + quartic, m=0.1 (xi=1/m=10)
+========================================================================
+  n  Delta(lam=0)  Delta(lam=0.001)  Delta(lam=0.005)  ln Delta(lam=0)
+------------------------------------------------------------------------
+  2   7.38105e+00       6.20036e+00       1.47761e+00          1.99892
+  4   5.13704e+00       4.82731e+00       3.58840e+00          1.63648
+  6   3.91564e+00       3.76472e+00       3.16102e+00          1.36498
+  8   3.09726e+00       3.00121e+00       2.61702e+00          1.13052
+ 12   2.03089e+00       1.97457e+00       1.74929e+00          0.70847
+ 16   1.36858e+00       1.32803e+00       1.16585e+00          0.31377
+ 24   6.38873e-01       6.14497e-01       5.16996e-01         -0.44805
+ 32   3.01257e-01       2.86514e-01       2.27540e-01         -1.19979
+ 48   6.70267e-02       6.21641e-02       4.27138e-02         -2.70266
+ 64   1.48104e-02       1.33732e-02       7.62458e-03         -4.21243
+ 96   7.06248e-04       6.02427e-04       1.87144e-04         -7.25554
+128   3.27229e-05       2.62542e-05       3.79099e-07        -10.32743
+
+logZ0 = -1/2 sum_p log(lambda_p+m^2); quartic via the O(lambda) term -(lambda/8)L^2 G0(L)^2.
+Delta(n) is strictly DECREASING; it crosses 1 at n* ~ 1.9/m (see summary). For lambda>0 the O(lambda) correction is NEGATIVE, pushing n* slightly up; for genuinely small lambda (0.001-0.005) the curve stays positive and monotone.
+HONESTY: at lambda=0.01 the O(lambda) shift already drives Delta<0 at n=2 and large n -- i.e. the linear-in-lambda truncation has broken down (O(lambda^2) matters), so 0.01 is NOT a valid 'small' quartic here.  The quartic column is a schematic perturbation, not a precision result.

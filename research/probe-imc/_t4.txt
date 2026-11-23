@@ -1,0 +1,2 @@
+import 1.0
+model_run(L4,200sw) 16.7 s, acc 0.85, 100 recs -> 66.9 ms/sweep

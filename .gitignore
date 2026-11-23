@@ -1,0 +1,29 @@
+# ---- Vendored third-party (11G: OSforGFF, FujoOS, YM-audit, Loment) ----
+vendor/
+
+# ---- Raw simulation data: numpy run outputs (~855M) — not source ----
+*.npz
+
+# ---- Build artifacts / compiled binaries ----
+*.exe
+*.olean
+*.ilean
+*.so
+*.dll
+.lake/
+.lake-packages/
+__pycache__/
+*.pyc
+node_modules/
+
+# ---- Local agent/tool state (local settings; not source) ----
+.claude/
+.tools/
+
+# ---- OS junk ----
+.DS_Store
+Thumbs.db
+
+# ---- Numba / compilation caches ----
+*.nbc
+nbcache/

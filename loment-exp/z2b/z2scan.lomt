@@ -1,0 +1,388 @@
+module z2scan
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/rand.lomt"
+use "stdlib/mem.lomt"
+use "stdlib/numfmt.lomt"
+
+const L: u32 = 4;
+const N: u32 = 256;
+const NLINK: u32 = 1024;
+const NCONF: u32 = 11;
+const TOTAL: u32 = 2000;
+const THERM: u32 = 800;
+
+fn emit_str(s: str) {
+    syscall4(1, 1, str_ptr(s) as u64, str_len(s) as u64);
+}
+
+fn emit_u64(buf: ptr, v: u64) {
+    let n: u32 = numfmt_dec_into(buf, v);
+    syscall4(1, 1, buf as u64, n as u64);
+}
+
+fn emit_i64(buf: ptr, v: i64) {
+    if v < 0 {
+        print("-");
+        let nv: i64 = 0 - v;
+        emit_u64(buf, nv as u64);
+    } else {
+        emit_u64(buf, v as u64);
+    }
+}
+
+fn mem_add_i64(p: ptr, off: u32, v: i64) {
+    let old: i64 = mem_load64(p, off) as i64;
+    mem_store64(p, off, (old + v) as u64);
+}
+
+fn mem_add_u64(p: ptr, off: u32, v: u64) {
+    mem_store64(p, off, mem_load64(p, off) + v);
+}
+
+fn stride(mu: u32) -> u32 {
+    if mu == 0 { return L * L * L; }
+    if mu == 1 { return L * L; }
+    if mu == 2 { return L; }
+    return 1;
+}
+
+fn index_of(mu: u32, x: u32) -> u32 {
+    return mu * N + x;
+}
+
+fn plus(x: u32, mu: u32) -> u32 {
+    let st: u32 = stride(mu);
+    let c: u32 = (x / st) % L;
+    if c == L - 1 { return x - (L - 1) * st; }
+    return x + st;
+}
+
+fn minus(x: u32, mu: u32) -> u32 {
+    let st: u32 = stride(mu);
+    let c: u32 = (x / st) % L;
+    if c == 0 { return x + (L - 1) * st; }
+    return x - st;
+}
+
+fn sig_ab(a: u32, b: u32, x: u32, links: ptr, base: u32) -> i32 {
+    let s: u32 = 0;
+    s = s + load8(links, base + index_of(a, x));
+    s = s + load8(links, base + index_of(b, plus(x, a)));
+    s = s + load8(links, base + index_of(a, plus(x, b)));
+    s = s + load8(links, base + index_of(b, x));
+    if s % 2 == 0 { return 1; }
+    return 0 - 1;
+}
+
+fn energy(links: ptr, base: u32) -> i64 {
+    let e: i64 = 0;
+    let x: u32 = 0;
+    while x < N {
+        let a: u32 = 0;
+        while a < 4 {
+            let b: u32 = a + 1;
+            while b < 4 {
+                e = e - (sig_ab(a, b, x, links, base) as i64);
+                b = b + 1;
+            }
+            a = a + 1;
+        }
+        x = x + 1;
+    }
+    return e;
+}
+
+fn init_links(links: ptr, base: u32, rng: ptr) {
+    let i: u32 = 0;
+    while i < NLINK {
+        let s: u64 = mem_load64(rng, 0);
+        let r: u64 = rand_next(s);
+        mem_store64(rng, 0, r);
+        store8(links, base + i, (r & 1) as u8);
+        i = i + 1;
+    }
+}
+
+fn u01(rng: ptr) -> u64 {
+    let s: u64 = mem_load64(rng, 0);
+    let r: u64 = rand_next(s);
+    mem_store64(rng, 0, r);
+    let bits: u64 = 0x3FF0000000000000 | (r >> 12);
+    return f64_sub(bits, 0x3FF0000000000000);
+}
+
+fn sweep(links: ptr, base: u32, p2: u64, p4: u64, rng: ptr,
+         accs: ptr, ab: u32, ens: ptr, eb: u32) {
+    let mu: u32 = 0;
+    while mu < 4 {
+        let x: u32 = 0;
+        while x < N {
+            let sum: i32 = 0;
+            let nu: u32 = 0;
+            while nu < 4 {
+                if nu != mu {
+                    if mu < nu {
+                        sum = sum + sig_ab(mu, nu, x, links, base);
+                        sum = sum + sig_ab(mu, nu, minus(x, nu), links, base);
+                    } else {
+                        sum = sum + sig_ab(nu, mu, x, links, base);
+                        sum = sum + sig_ab(nu, mu, minus(x, nu), links, base);
+                    }
+                }
+                nu = nu + 1;
+            }
+            let accept: bool = false;
+            if sum <= 0 {
+                accept = true;
+            } else {
+                let u: u64 = u01(rng);
+                if sum == 2 {
+                    if f64_lt(u, p2) { accept = true; }
+                } else {
+                    if f64_lt(u, p4) { accept = true; }
+                }
+            }
+            if accept {
+                let li: u32 = base + index_of(mu, x);
+                let old: u32 = load8(links, li);
+                let nv: u8 = 0;
+                if old == 0 { nv = 1; } else { nv = 0; }
+                store8(links, li, nv);
+                mem_store64(accs, ab, mem_load64(accs, ab) + 1);
+                let two_sum: i64 = (sum as i64) * 2;
+                mem_add_i64(ens, eb, two_sum);
+            }
+            x = x + 1;
+        }
+        mu = mu + 1;
+    }
+}
+
+fn wilson_sum(r: u32, t: u32, links: ptr, base: u32) -> i64 {
+    let total: i64 = 0;
+    let x: u32 = 0;
+    while x < N {
+        let b: u32 = 0;
+        let cur: u32 = x;
+        let i: u32 = 0;
+        while i < r {
+            b = b ^ load8(links, base + index_of(0, cur));
+            cur = plus(cur, 0);
+            i = i + 1;
+        }
+        i = 0;
+        while i < t {
+            b = b ^ load8(links, base + index_of(1, cur));
+            cur = plus(cur, 1);
+            i = i + 1;
+        }
+        i = 0;
+        while i < r {
+            cur = minus(cur, 0);
+            b = b ^ load8(links, base + index_of(0, cur));
+            i = i + 1;
+        }
+        i = 0;
+        while i < t {
+            cur = minus(cur, 1);
+            b = b ^ load8(links, base + index_of(1, cur));
+            i = i + 1;
+        }
+        if b == 0 { total = total + 1; } else { total = total - 1; }
+        x = x + 1;
+    }
+    return total;
+}
+
+fn measure(slot: u32, b: u32, base: u32, ens: ptr, psum: ptr, psum2: ptr, pcount: ptr,
+           wsum: ptr, wsum2: ptr, wcount: ptr, links: ptr) {
+    let e: i64 = mem_load64(ens, slot * 8) as i64;
+    let plaq: i64 = 0 - e;
+    mem_add_i64(psum, b * 8, plaq);
+    mem_add_u64(psum2, b * 8, (plaq * plaq) as u64);
+    mem_add_u64(pcount, b * 8, 1);
+    let r: u32 = 1;
+    while r <= 3 {
+        let t: u32 = 1;
+        while t <= 3 {
+            let w: i64 = wilson_sum(r, t, links, base);
+            let ci: u32 = b * 9 + (r - 1) * 3 + (t - 1);
+            mem_add_i64(wsum, ci * 8, w);
+            mem_add_u64(wsum2, ci * 8, (w * w) as u64);
+            mem_add_u64(wcount, ci * 8, 1);
+            t = t + 1;
+        }
+        r = r + 1;
+    }
+}
+
+fn print_results(buf: ptr, psum: ptr, psum2: ptr, pcount: ptr,
+                 wsum: ptr, wsum2: ptr, wcount: ptr, bacc: ptr) {
+    let c: u32 = 0;
+    while c < NCONF {
+        emit_str("P,");
+        emit_u64(buf, c as u64);
+        emit_str(",");
+        emit_i64(buf, mem_load64(psum, c * 8) as i64);
+        emit_str(",");
+        emit_u64(buf, mem_load64(psum2, c * 8));
+        emit_str(",");
+        emit_u64(buf, mem_load64(pcount, c * 8));
+        emit_str("\n");
+        c = c + 1;
+    }
+    c = 0;
+    while c < NCONF {
+        let r: u32 = 1;
+        while r <= 3 {
+            let t: u32 = 1;
+            while t <= 3 {
+                let ci: u32 = c * 9 + (r - 1) * 3 + (t - 1);
+                emit_str("W,");
+                emit_u64(buf, c as u64);
+                emit_str(",");
+                emit_u64(buf, r as u64);
+                emit_str(",");
+                emit_u64(buf, t as u64);
+                emit_str(",");
+                emit_i64(buf, mem_load64(wsum, ci * 8) as i64);
+                emit_str(",");
+                emit_u64(buf, mem_load64(wsum2, ci * 8));
+                emit_str(",");
+                emit_u64(buf, mem_load64(wcount, ci * 8));
+                emit_str("\n");
+                t = t + 1;
+            }
+            r = r + 1;
+        }
+        c = c + 1;
+    }
+    c = 0;
+    while c < NCONF {
+        emit_str("A,");
+        emit_u64(buf, c as u64);
+        emit_str(",");
+        emit_u64(buf, mem_load64(bacc, c * 8));
+        emit_str("\n");
+        c = c + 1;
+    }
+}
+
+fn beta_bits(c: u32) -> u64 {
+    if c == 0 { return 0x3FB999999999999A; }
+    if c == 1 { return 0x3FC999999999999A; }
+    if c == 2 { return 0x3FD3333333333333; }
+    if c == 3 { return 0x3FD999999999999A; }
+    if c == 4 { return 0x3FE0000000000000; }
+    if c == 5 { return 0x3FE3333333333333; }
+    if c == 6 { return 0x3FE6666666666666; }
+    if c == 7 { return 0x3FE999999999999A; }
+    if c == 8 { return 0x3FECCCCCCCCCCCCD; }
+    if c == 9 { return 0x3FF0000000000000; }
+    return 0x3FF199999999999A;
+}
+
+fn main() {
+    let buf: ptr = alloc(32);
+
+    let em1: u64 = mathf_exp(0xBFF0000000000000);
+    let scaled: u64 = f64conv_to_u64(f64_mul(em1, 0x412E848000000000));
+    emit_str("SELFTEST\n");
+    emit_u64(buf, scaled);
+    emit_str("\n");
+
+    let links: ptr = alloc(NCONF * NLINK);
+    let betas: ptr = alloc(NCONF * 8);
+    let ens: ptr = alloc(NCONF * 8);
+    let accs: ptr = alloc(NCONF * 8);
+    let bacc: ptr = alloc(NCONF * 8);
+    let bidx: ptr = alloc(NCONF * 8);
+    let psum: ptr = alloc(NCONF * 8);
+    let psum2: ptr = alloc(NCONF * 8);
+    let pcount: ptr = alloc(NCONF * 8);
+    let wsum: ptr = alloc(NCONF * 9 * 8);
+    let wsum2: ptr = alloc(NCONF * 9 * 8);
+    let wcount: ptr = alloc(NCONF * 9 * 8);
+    let rng: ptr = alloc(8);
+    mem_store64(rng, 0, rand_seed(20261122));
+
+    let c: u32 = 0;
+    while c < NCONF {
+        mem_store64(betas, c * 8, beta_bits(c));
+        mem_store64(accs, c * 8, 0);
+        mem_store64(bacc, c * 8, 0);
+        mem_store64(bidx, c * 8, c as u64);
+        mem_store64(psum, c * 8, 0);
+        mem_store64(psum2, c * 8, 0);
+        mem_store64(pcount, c * 8, 0);
+        c = c + 1;
+    }
+    c = 0;
+    while c < NCONF * 9 {
+        mem_store64(wsum, c * 8, 0);
+        mem_store64(wsum2, c * 8, 0);
+        mem_store64(wcount, c * 8, 0);
+        c = c + 1;
+    }
+
+    c = 0;
+    while c < NCONF {
+        init_links(links, c * NLINK, rng);
+        mem_store64(ens, c * 8, energy(links, c * NLINK) as u64);
+        c = c + 1;
+    }
+
+    let sw: u32 = 0;
+    while sw < TOTAL {
+        c = 0;
+        while c < NCONF {
+            let beta: u64 = mem_load64(betas, c * 8);
+            let p2: u64 = mathf_exp(f64_neg(f64_mul(beta, 0x4010000000000000)));
+            let p4: u64 = mathf_exp(f64_neg(f64_mul(beta, 0x4020000000000000)));
+            let b: u32 = mem_load64(bidx, c * 8) as u32;
+            sweep(links, c * NLINK, p2, p4, rng, bacc, b * 8, ens, c * 8);
+            c = c + 1;
+        }
+        let i: u32 = 0;
+        while i + 1 < NCONF {
+            let bi: u64 = mem_load64(betas, i * 8);
+            let bj: u64 = mem_load64(betas, (i + 1) * 8);
+            let ei: u64 = f64conv_from_i64(mem_load64(ens, i * 8) as i64);
+            let ej: u64 = f64conv_from_i64(mem_load64(ens, (i + 1) * 8) as i64);
+            let arg: u64 = f64_mul(f64_sub(bi, bj), f64_sub(ei, ej));
+            let ok: bool = false;
+            if f64_ge(arg, 0) {
+                ok = true;
+            } else {
+                if f64_lt(u01(rng), mathf_exp(arg)) { ok = true; }
+            }
+            if ok {
+                mem_store64(betas, i * 8, bj);
+                mem_store64(betas, (i + 1) * 8, bi);
+                let qi: u64 = mem_load64(bidx, i * 8);
+                let qj: u64 = mem_load64(bidx, (i + 1) * 8);
+                mem_store64(bidx, i * 8, qj);
+                mem_store64(bidx, (i + 1) * 8, qi);
+            }
+            i = i + 1;
+        }
+        if sw >= THERM {
+            if (sw - THERM) % 4 == 0 {
+                c = 0;
+                while c < NCONF {
+                    let b: u32 = mem_load64(bidx, c * 8) as u32;
+                    measure(c, b, c * NLINK, ens, psum, psum2, pcount,
+                            wsum, wsum2, wcount, links);
+                    c = c + 1;
+                }
+            }
+        }
+        sw = sw + 1;
+    }
+
+    print_results(buf, psum, psum2, pcount, wsum, wsum2, wcount, bacc);
+}

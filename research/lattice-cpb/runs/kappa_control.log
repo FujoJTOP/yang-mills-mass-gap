@@ -1,0 +1,5 @@
+beta=8.0: P=0.71598 kappa=-2.20836 res=8.6e-03 linkH mean=+5.218 fracneg=0.000
+beta=10.0: P=0.78386 kappa=-1.99922 res=2.8e-03 linkH mean=+7.343 fracneg=0.000
+beta=20.0: P=0.89783 kappa=-1.72945 res=1.5e-03 linkH mean=+17.482 fracneg=0.000
+beta=40.0: P=0.94883 kappa=-1.73984 res=1.2e-02 linkH mean=+37.472 fracneg=0.000
+saved kappa_results_control.npz

@@ -1,0 +1,18 @@
+module exptest
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/numfmt.lomt"
+
+fn main() {
+    let buf: ptr = alloc(32);
+    let neg1: u64 = 0xBFF0000000000000;
+    let em1: u64 = mathf_exp(neg1);
+    let mil: u64 = 0x412E848000000000;
+    let scaled: u64 = f64conv_to_u64(f64_mul(em1, mil));
+    let n: u32 = numfmt_dec_into(buf, scaled);
+    syscall4(1, 1, buf as u64, n as u64);
+    print("\n");
+}

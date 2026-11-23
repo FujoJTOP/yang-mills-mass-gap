@@ -1,0 +1,332 @@
+module z2
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/f64fmt.lomt"
+use "stdlib/mem.lomt"
+use "stdlib/rand.lomt"
+
+const L: u32 = 4;
+const NB: u32 = 11;
+const THERM: u32 = 800;
+const MEAS: u32 = 1200;
+const MEAS_EVERY: u32 = 4;
+const SWAP_EVERY: u32 = 2;
+
+const ONE: u64 = 0x3FF0000000000000;
+const TWO: u64 = 0x4000000000000000;
+const ZERO: u64 = 0x0000000000000000;
+
+fn write_int(fd: u64, v: u64, out: ptr, sc: ptr) {
+    let n: u32 = f64fmt_fixed(out, 0, f64conv_from_u64(v), 0, sc);
+    syscall4(1, fd, out as u64, n as u64);
+}
+
+fn write_f64(fd: u64, x: u64, after: u32, out: ptr, sc: ptr) {
+    let n: u32 = f64fmt_fixed(out, 0, x, after, sc);
+    syscall4(1, fd, out as u64, n as u64);
+}
+
+fn ptr_at(base: ptr, off: u32) -> ptr {
+    return (base as u64 + off as u64) as ptr;
+}
+
+fn beta_of(r: u32) -> u64 {
+    if r == 0 { return f64conv_from_u64(0); }
+    if r == 1 { return f64_div(f64conv_from_u64(1), f64conv_from_u64(10)); }
+    if r == 2 { return f64_div(f64conv_from_u64(2), f64conv_from_u64(10)); }
+    if r == 3 { return f64_div(f64conv_from_u64(3), f64conv_from_u64(10)); }
+    if r == 4 { return f64_div(f64conv_from_u64(4), f64conv_from_u64(10)); }
+    if r == 5 { return f64_div(f64conv_from_u64(5), f64conv_from_u64(10)); }
+    if r == 6 { return f64_div(f64conv_from_u64(6), f64conv_from_u64(10)); }
+    if r == 7 { return f64_div(f64conv_from_u64(7), f64conv_from_u64(10)); }
+    if r == 8 { return f64_div(f64conv_from_u64(7613), f64conv_from_u64(10000)); }
+    if r == 9 { return f64_div(f64conv_from_u64(8), f64conv_from_u64(10)); }
+    return f64_div(f64conv_from_u64(9), f64conv_from_u64(10));
+}
+
+fn site(x0: u32, x1: u32, x2: u32, x3: u32) -> u32 {
+    return ((x0 * L + x1) * L + x2) * L + x3;
+}
+
+fn plus(s: u32, mu: u32) -> u32 {
+    let x0: u32 = s / (L * L * L);
+    let x1: u32 = (s / (L * L)) % L;
+    let x2: u32 = (s / L) % L;
+    let x3: u32 = s % L;
+    if mu == 0 { x0 = (x0 + 1) % L; }
+    if mu == 1 { x1 = (x1 + 1) % L; }
+    if mu == 2 { x2 = (x2 + 1) % L; }
+    if mu == 3 { x3 = (x3 + 1) % L; }
+    return site(x0, x1, x2, x3);
+}
+
+fn minus(s: u32, mu: u32) -> u32 {
+    let x0: u32 = s / (L * L * L);
+    let x1: u32 = (s / (L * L)) % L;
+    let x2: u32 = (s / L) % L;
+    let x3: u32 = s % L;
+    if mu == 0 { x0 = (x0 + L - 1) % L; }
+    if mu == 1 { x1 = (x1 + L - 1) % L; }
+    if mu == 2 { x2 = (x2 + L - 1) % L; }
+    if mu == 3 { x3 = (x3 + L - 1) % L; }
+    return site(x0, x1, x2, x3);
+}
+
+fn plaq(links: ptr, N: u32, s: u32, mu: u32, nu: u32) -> i32 {
+    let s_mu: u32 = plus(s, mu);
+    let s_nu: u32 = plus(s, nu);
+    let b1: u32 = load8(links, mu * N + s);
+    let b2: u32 = load8(links, nu * N + s_mu);
+    let b3: u32 = load8(links, mu * N + s_nu);
+    let b4: u32 = load8(links, nu * N + s);
+    let par: u32 = (b1 + b2 + b3 + b4) % 2;
+    if par == 0 { return 1; }
+    return -1;
+}
+
+fn delta_sum(links: ptr, N: u32, s: u32, mu: u32) -> i32 {
+    let res: i32 = 0;
+    let nu: u32 = 0;
+    while nu < 4 {
+        if nu != mu {
+            res = res + plaq(links, N, s, mu, nu);
+            let sm: u32 = minus(s, nu);
+            res = res + plaq(links, N, sm, mu, nu);
+        }
+        nu = nu + 1;
+    }
+    return res;
+}
+
+fn uniform01(st: ptr) -> u64 {
+    let s: u64 = mem_load64(st, 0);
+    let r: u64 = rand_next(s);
+    mem_store64(st, 0, r);
+    let bits: u64 = 0x3FF0000000000000 | (r >> 12);
+    return f64_sub(bits, ONE);
+}
+
+fn do_sweep(links: ptr, N: u32, beta: u64, st: ptr) -> u32 {
+    let accepted: u32 = 0;
+    let mu: u32 = 0;
+    while mu < 4 {
+        let s: u32 = 0;
+        while s < N {
+            let off: u32 = mu * N + s;
+            let cur: u32 = load8(links, off);
+            let ds: i32 = delta_sum(links, N, s, mu);
+            let acc: bool = false;
+            if ds <= 0 {
+                acc = true;
+            }
+            if ds > 0 {
+                let dsf: u64 = f64_mul(f64_mul(TWO, beta), f64conv_from_i64(ds as i64));
+                let p: u64 = mathf_exp(f64_neg(dsf));
+                let u: u64 = uniform01(st);
+                if f64_lt(u, p) { acc = true; }
+            }
+            if acc {
+                if cur == 0 { store8(links, off, 1 as u8); }
+                if cur == 1 { store8(links, off, 0 as u8); }
+                accepted = accepted + 1;
+            }
+            s = s + 1;
+        }
+        mu = mu + 1;
+    }
+    return accepted;
+}
+
+fn loop_sign(links: ptr, N: u32, s: u32, R: u32, T: u32) -> i32 {
+    let par: u32 = 0;
+    let x: u32 = s;
+    let i: u32 = 0;
+    while i < R {
+        par = par + load8(links, 0 * N + x);
+        x = plus(x, 0);
+        i = i + 1;
+    }
+    i = 0;
+    while i < T {
+        par = par + load8(links, 1 * N + x);
+        x = plus(x, 1);
+        i = i + 1;
+    }
+    i = 0;
+    while i < R {
+        x = minus(x, 0);
+        par = par + load8(links, 0 * N + x);
+        i = i + 1;
+    }
+    i = 0;
+    while i < T {
+        x = minus(x, 1);
+        par = par + load8(links, 1 * N + x);
+        i = i + 1;
+    }
+    if par % 2 == 0 { return 1; }
+    return -1;
+}
+
+fn measure_plaq(links: ptr, N: u32) -> u64 {
+    let sum: i64 = 0;
+    let s: u32 = 0;
+    while s < N {
+        let mu: u32 = 0;
+        while mu < 4 {
+            let nu: u32 = mu + 1;
+            while nu < 4 {
+                sum = sum + (plaq(links, N, s, mu, nu) as i64);
+                nu = nu + 1;
+            }
+            mu = mu + 1;
+        }
+        s = s + 1;
+    }
+    return f64_div(f64conv_from_i64(sum), f64conv_from_u64((N as u64) * 6));
+}
+
+fn measure_wilson(links: ptr, N: u32, R: u32, T: u32) -> u64 {
+    let sum: i64 = 0;
+    let s: u32 = 0;
+    while s < N {
+        sum = sum + (loop_sign(links, N, s, R, T) as i64);
+        s = s + 1;
+    }
+    return f64_div(f64conv_from_i64(sum), f64conv_from_u64(N as u64));
+}
+
+fn plaquette_sum(links: ptr, N: u32) -> i64 {
+    let sum: i64 = 0;
+    let s: u32 = 0;
+    while s < N {
+        let mu: u32 = 0;
+        while mu < 4 {
+            let nu: u32 = mu + 1;
+            while nu < 4 {
+                sum = sum + (plaq(links, N, s, mu, nu) as i64);
+                nu = nu + 1;
+            }
+            mu = mu + 1;
+        }
+        s = s + 1;
+    }
+    return sum;
+}
+
+fn swap_links(p1: ptr, p2: ptr, n: u32) {
+    let k: u32 = 0;
+    while k < n {
+        let a: u32 = load8(p1, k);
+        let b: u32 = load8(p2, k);
+        store8(p1, k, b as u8);
+        store8(p2, k, a as u8);
+        k = k + 1;
+    }
+}
+
+fn init_hot(links: ptr, N: u32, st: ptr, seed: u32) {
+    mem_store64(st, 0, rand_seed(seed));
+    let s: u32 = 0;
+    while s < 4 * N {
+        let r: u64 = mem_load64(st, 0);
+        let rr: u64 = rand_next(r);
+        mem_store64(st, 0, rr);
+        store8(links, s, (rr & 1) as u8);
+        s = s + 1;
+    }
+}
+
+fn main() {
+    let N: u32 = L * L * L * L;
+    let repn: u32 = 4 * N;
+    let links: ptr = alloc(NB * repn);
+    let sts: ptr = alloc(NB * 8);
+    let out: ptr = alloc(128);
+    let scn: u32 = f64fmt_scratch_bytes();
+    let sc: ptr = alloc(scn);
+
+    let r: u32 = 0;
+    while r < NB {
+        init_hot(ptr_at(links, r * repn), N, ptr_at(sts, r * 8), 4000 + r);
+        r = r + 1;
+    }
+
+    print("# 4D Z2 LGT parallel tempering, L=");
+    write_int(1, L as u64, out, sc);
+    print(", NB=");
+    write_int(1, NB as u64, out, sc);
+    print(", therm=");
+    write_int(1, THERM as u64, out, sc);
+    print(", meas=");
+    write_int(1, MEAS as u64, out, sc);
+    print(", every=");
+    write_int(1, MEAS_EVERY as u64, out, sc);
+    print("\n");
+    print("# columns: sweep,r,beta,plaq,W11,W12,W13,W21,W22,W23,W31,W32,W33\n");
+    print("# exp(-1)=");
+    write_f64(1, mathf_exp(f64_neg(ONE)), 6, out, sc);
+    print("\n");
+
+    let total: u32 = THERM + MEAS;
+    let sw: u32 = 0;
+    while sw < total {
+        r = 0;
+        while r < NB {
+            let a: u32 = do_sweep(ptr_at(links, r * repn), N, beta_of(r), ptr_at(sts, r * 8));
+            r = r + 1;
+        }
+        if sw % SWAP_EVERY == 0 {
+            let parity: u32 = sw % 2;
+            r = parity;
+            while r + 1 < NB {
+                let p1: ptr = ptr_at(links, r * repn);
+                let p2: ptr = ptr_at(links, (r + 1) * repn);
+                let P1: i64 = plaquette_sum(p1, N);
+                let P2: i64 = plaquette_sum(p2, N);
+                let d: u64 = f64_mul(f64_sub(beta_of(r), beta_of(r + 1)), f64conv_from_i64(P2 - P1));
+                let acc: bool = false;
+                if f64_ge(d, ZERO) {
+                    acc = true;
+                }
+                if f64_lt(d, ZERO) {
+                    let prob: u64 = f64_div(ONE, mathf_exp(f64_neg(d)));
+                    let u: u64 = uniform01(ptr_at(sts, r * 8));
+                    if f64_lt(u, prob) { acc = true; }
+                }
+                if acc {
+                    swap_links(p1, p2, repn);
+                }
+                r = r + 2;
+            }
+        }
+        if sw >= THERM && (sw - THERM) % MEAS_EVERY == 0 {
+            r = 0;
+            while r < NB {
+                let p: ptr = ptr_at(links, r * repn);
+                print("S,");
+                write_int(1, (sw - THERM) as u64, out, sc);
+                print(",");
+                write_f64(1, beta_of(r), 6, out, sc);
+                print(",");
+                write_f64(1, measure_plaq(p, N), 6, out, sc);
+                let R: u32 = 1;
+                while R <= 3 {
+                    let T: u32 = 1;
+                    while T <= 3 {
+                        print(",");
+                        write_f64(1, measure_wilson(p, N, R, T), 6, out, sc);
+                        T = T + 1;
+                    }
+                    R = R + 1;
+                }
+                print("\n");
+                r = r + 1;
+            }
+        }
+        sw = sw + 1;
+    }
+}

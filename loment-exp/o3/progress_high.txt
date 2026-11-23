@@ -1,0 +1,6 @@
+beta start
+....+++++++++++++++beta start
+....+++++++++++++++beta start
+....+++++++++++++++beta start
+....+++++++++++++++beta start
+....+++++++++++++++EXIT_HIGH=0

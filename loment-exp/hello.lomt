@@ -1,0 +1,6 @@
+module hello
+
+fn main() {
+    print("hello from Loment
+");
+}

@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc 3.14" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>CPB preprint</title>
+  <style>
+
+span.smallcaps{font-variant: small-caps;}
+em, em em em, em em em em em {
+font-style: italic;
+}
+em em, em em em em {
+font-style: normal;
+}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+
+ul.task-list[class]{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+font-size: inherit;
+width: 0.8em;
+margin: 0 0.8em 0.2em -1.6em;
+vertical-align: middle;
+}
+@media print {
+html {
+color-scheme: light only;
+}
+html, body, pre, code {
+background-color: transparent;
+}
+body, a, a:visited, blockquote {
+color: black;
+}
+pre, code {
+padding: 0;
+}
+p, h2, h3 {
+orphans: 3;
+widows: 3;
+}
+h2, h3, h4 {
+page-break-after: avoid;
+}
+} </style>
+  <style type="text/css">@page { size: A4; margin: 2.2cm 2.0cm; }
+body {
+font-family: Georgia, "Times New Roman", "Noto Serif", serif;
+font-size: 10.5pt;
+line-height: 1.45;
+color: #111;
+max-width: 100%;
+}
+h1 { font-size: 17pt; line-height: 1.25; margin: 0 0 0.3em 0; }
+h2 { font-size: 13.5pt; margin-top: 1.6em; page-break-after: avoid; }
+h3 { font-size: 11.5pt; margin-top: 1.2em; page-break-after: avoid; }
+p { margin: 0.55em 0; text-align: justify; }
+code {
+font-family: Consolas, "Courier New", monospace;
+font-size: 9pt;
+background: #f4f4f4;
+padding: 0 2px;
+}
+pre {
+font-family: Consolas, "Courier New", monospace;
+font-size: 8.8pt;
+line-height: 1.35;
+background: #f6f6f6;
+border: 1px solid #e2e2e2;
+padding: 7px 9px;
+white-space: pre-wrap;
+page-break-inside: avoid;
+}
+blockquote {
+margin: 0.8em 0;
+padding-left: 12px;
+border-left: 3px solid #bbb;
+color: #222;
+}
+table {
+border-collapse: collapse;
+margin: 0.8em 0;
+font-size: 9.5pt;
+page-break-inside: avoid;
+}
+th, td { border: 1px solid #999; padding: 3px 7px; vertical-align: top; }
+th { background: #eee; }
+hr { border: none; border-top: 1px solid #ddd; margin: 1.4em 0; }
+ol, ul { margin: 0.5em 0 0.5em 1.4em; }
+li { margin: 0.2em 0; }
+</style>
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">CPB preprint</h1>
+</header>
+<h1 id="crossover-preservation-and-the-weakstrong-handoff-for-four-dimensional-pure-yangmills-a-reduction-and-a-map-of-obstructions">Crossover
+Preservation and the Weak–Strong Handoff for Four-Dimensional Pure
+Yang–Mills: A Reduction and a Map of Obstructions</h1>
+<p><strong>Yuxuan Jiang</strong></p>
+<p><em>Preprint · 22 November 2026 · prepared for Zenodo</em></p>
+<hr />
+<h2 id="abstract">Abstract</h2>
+<p>We reduce the existence and mass-gap problem for four-dimensional
+pure Yang–Mills to a <strong>weak–strong handoff inequality</strong>
+<code>q₀ ≥ q₁</code>, formulate the two-sided <em>crossover
+preservation</em> statements <code>CPB-W</code> and <code>CPB-S</code>
+that would discharge it, and prove the handoff algebra in a
+<strong>machine-checked</strong> form. We then report, with proofs and
+falsification tests, that every mechanism currently available for
+<code>CPB-W</code>/<code>CPB-S</code> fails at the crossover
+<code>q ≈ 1</code>: Bianchi/sign cancellation is absent
+(<code>κ_c = 1</code> provable in the strong-coupling representation; no
+additive defect charge in 4D non-abelian gauge theory),
+Gaussian-weighted class preservation is blocked by a cluster constant
+(<code>C_cum ≥ 2</code> against a required <code>≤ 1.6</code>), and the
+numerical proxies that appeared to suggest otherwise are Gaussian tails
+of a blocked field that is itself Gaussian.</p>
+<p>The outcome is not a proof of the mass gap. It is a precise statement
+of the obstruction: at <code>q ≈ 1</code> the single-block activity must
+be small, either because the defect action is large or because signs
+cancel, and no known structure supplies either. We also record the
+surrounding <strong>conditional theorem</strong>: ten named inputs, nine
+glue lemmas, nine machine-checked blocks, and four explicit external
+declarations.</p>
+<p><strong>Keywords:</strong> Yang–Mills, mass gap, lattice gauge
+theory, renormalization group, crossover, Bianchi identity, Lean 4,
+numerical falsification.</p>
+<hr />
+<h2 id="introduction">1. Introduction</h2>
+<p>The existence and mass gap of four-dimensional pure Yang–Mills is one
+of the Clay Millennium Problems. A recent construction (submitted in
+2026 and assessed by an independent committee) yields a
+<strong>subsequential infinite-volume limit</strong> and OS
+reconstruction, but asserts neither a mass gap, nor uniqueness, nor
+confinement. The starting point of this paper is to isolate the
+<strong>connective part</strong> between existence and the gap — the
+<em>handoff</em> — and to write it as an inequality whose inputs can be
+checked one by one.</p>
+<p>This paper <strong>does not</strong> prove the mass gap. It does
+three things:</p>
+<ol type="1">
+<li><strong>Reduction.</strong> The mass gap is reduced to an explicit,
+dimensionally consistent handoff inequality (Section 2), whose algebraic
+core is proved and machine-checked.</li>
+<li><strong>Precise two-sided statements.</strong> The two
+crossover-preservation statements <code>CPB-W</code> (weak side) and
+<code>CPB-S</code> (strong side) are written in falsifiable form
+(Section 3), with a proof skeleton and its load-bearing lemma (Section
+4).</li>
+<li><strong>Map of obstructions.</strong> Every known mechanism is shown
+or judged to fail at the crossover (Sections 5–6), and the remaining
+paths are listed (Section 7).</li>
+</ol>
+<p>Section 8 records the surrounding <strong>conditional
+theorem</strong> and its machine-verification status, so that the reader
+can judge the step “if the inputs hold, then the statement holds”.</p>
+<hr />
+<h2 id="the-handoff-inequality">2. The handoff inequality</h2>
+<h3 id="setting-and-constants">2.1 Setting and constants</h3>
+<p>Fix a compact, connected, simply connected simple Lie group
+<code>G</code>; let <code>h^∨</code> be its dual Coxeter number,
+<code>dim f</code> the dimension of the defining representation, and
+<code>λ_G := h^∨ g²</code> the RG-invariant coupling. In the physical
+normalization <code>T(f) = 1/2</code>,</p>
+<pre><code>b₀ = 11 h^∨ / (48π²) ,      B := 2b₀ = 11 h^∨ / (24π²) ,
+1/g²(μ) = B ln(μ/Λ) + O(g²) ,      C_RG := 24π²/11 .</code></pre>
+<p><strong>Notational discipline</strong> (enforced throughout): the
+measure weight carries <code>γ := β/N_c = 2/g²</code> with
+<code>N_c := dim f</code>; the running coupling uses
+<code>λ_G = h^∨ g²</code>. The two coincide only for <code>SU(N)</code>,
+where <code>h^∨ = dim f = N</code>. Mixing them changes <code>q₀</code>
+by a factor <code>e^{3.59} ≈ 36</code> at <code>g² = 1</code>.</p>
+<h3 id="theorem-1-equivalent-forms-of-the-handoff">2.2 Theorem 1
+(equivalent forms of the handoff)</h3>
+<p>Let <code>q(μ) := m/μ</code> (with <code>m</code> the physical mass
+gap, RG-invariant), let <code>μ_up</code> be defined by
+<code>g²(μ_up) = g*²</code>, and set <code>q₀ := q(μ_up)</code>; let
+<code>q₁</code> be the strong-side threshold. Then the following are
+equivalent:</p>
+<pre><code>(i)   q₁ ≤ q₀ ;
+(ii)  ln(m/Λ) ≥ t_up(λ*) + ln q₁ ;
+(iii) M := ln(m/Λ) − t_up(λ*) − ln q₁ ≥ 0 ;
+(iv)  t_λ ≤ t_S   (the two domains meet in the (t, ln q) plane).</code></pre>
+<p>Here <code>t_up(λ*) = 24π²/(11λ*)</code> at one loop.
+<strong>Geometric reading:</strong> the weak side covers
+<code>t ≥ t_λ</code>, the strong side covers <code>t ≤ t_S</code>; full
+coverage holds iff <code>t_λ ≤ t_S</code>. This is pure real analysis
+and has been formalized in Lean 4 (<code>handoff_iff_margin</code>,
+<code>required_lambda</code>; axioms <code>propext</code>,
+<code>Classical.choice</code>, <code>Quot.sound</code>).</p>
+<h3 id="theorem-2-reach-explicit-mass-lower-bound">2.3 Theorem 2 (reach
+⇒ explicit mass lower bound)</h3>
+<p>Suppose weak-side class preservation holds for <code>λ ≤ λ_c</code>
+(reach <code>W</code>) and the strong-side signed gas holds for
+<code>q ≥ q_c</code> (reach <code>S</code>). Then the handoff holds if
+and only if</p>
+<pre><code>m/Λ ≥ q_c · exp(t_up(λ_c)) .</code></pre>
+<p><strong>This is the central reduction.</strong> The mass gap is split
+into two independently attackable quantities: the <em>reach of two
+methods</em>, and the <em>physical mass</em> <code>m/Λ</code>. Section 3
+states the two reach hypotheses; Sections 4–6 explain why they are hard
+to obtain at <code>q ≈ 1</code>.</p>
+<h3 id="two-loop-closed-form-and-numbers">2.4 Two-loop closed form and
+numbers</h3>
+<p>The exact solution of the truncated two-loop flow is</p>
+<pre><code>t_up^{2L}(λ) = C_RG/λ − (51/121) ln(1 + 121 C_RG/(51 λ)) .</code></pre>
+<p>For <code>SU(3)</code> at <code>λ = 6</code> (<code>g² = 2</code>):
+<code>t_up^{2L} = 2.639</code>; with <code>m/Λ = 8</code> this gives
+<code>q₀ = 0.571</code>; <code>q₀ = 1</code> at <code>λ ≈ 7.28</code>
+(<code>g² ≈ 2.43</code>). One loop gives <code>3.589</code>
+(<code>q₀ = 0.221</code>); three-loop/numerical values give about
+<code>2.36/2.0</code> (scheme-dependent and <strong>not</strong> used as
+rigorous input).</p>
+<p><strong>Consequence: <code>CPB-W</code> must supply at least a
+two-loop rigorous bound.</strong> With one-loop control only,
+<code>q₁</code> cannot exceed <code>0.22</code> and the handoff cannot
+close.</p>
+<hr />
+<h2 id="two-sided-crossover-preservation">3. Two-sided crossover
+preservation</h2>
+<h3 id="cpb-w-weak-side">3.1 <code>CPB-W</code> (weak side)</h3>
+<p><strong>Conjecture.</strong> There exist <code>λ_c ≈ 7.3</code>
+(two-loop; <code>≈ 12</code> in the conservative one-loop version) and a
+weak-side class <code>C_W(ε₀)</code> — a massive Gaussian reference of
+mass <code>m</code> plus a bounded interaction, with relative error
+<code>ε₀ ≤ 1/2</code> — such that the effective action stays in
+<code>C_W</code> for all <code>λ ≤ λ_c</code>, and <code>C_W</code> is
+invariant under one blocking step; and such that a rigorous two-loop
+bound <code>RB2</code> on <code>t_up(λ_c)</code> holds.</p>
+<p>The precise content of <code>RB2</code> is</p>
+<pre><code>|β(λ) − β_{≤2}(λ)| ≤ C₃ λ⁴ ,      0 &lt; λ ≤ 7.3 ,</code></pre>
+<p>with <code>C₃</code> explicit and uniform in the UV cutoff and the
+volume, or the one-sided sign <code>β ≤ −Aλ² − Bλ³</code>.</p>
+<p><strong>Status: open.</strong> Its quantitative core <code>NPB</code>
+is a non-perturbative beta-function bound; rigorous RG of Balaban type
+stops at <code>λ ~ 1</code> (Section 4.3).</p>
+<h3 id="cpb-s-strong-side">3.2 <code>CPB-S</code> (strong side)</h3>
+<p>Write the effective action as <code>S_k = S_k^G + V_k</code> (massive
+Gaussian plus interaction) and define the <strong>crossover
+activity</strong></p>
+<pre><code>z_k(q) := sup_x Σ_{C∋x} |w_q(C)| · e^{+κ q |C|} ,     κ = 1/2 ,</code></pre>
+<p>where <code>w_q(C)</code> is the signed weight of a connected cluster
+<code>C</code> and <code>q = m a_k</code> is the dimensionless mass in
+block units. <strong>Conjecture.</strong> There are absolute constants
+<code>q_c ∈ [1, 3/2]</code> and <code>z_c = 1/2</code> such that
+<code>q_k ≥ q_c</code> implies <code>z_k(q_k) ≤ z_c</code>, and the
+class is preserved under one blocking step.</p>
+<p><strong>Key structure:</strong> <code>q_{k+1} = 2 q_k</code> is exact
+kinematics, and <code>z</code> is non-increasing in <code>q</code>
+(provided <code>c₀ &gt; κ</code>); hence the worst point is the smallest
+<code>q</code> in the window, namely <code>q_c</code>. Therefore
+<code>CPB-S</code> <strong>only needs to be proved once, at
+<code>q_c</code></strong>.</p>
+<h3 id="why-the-standard-routes-fail-at-the-crossover">3.3 Why the
+standard routes fail at the crossover</h3>
+<ul>
+<li><strong>Balaban.</strong> The small-field expansion is around the
+trivial connection, with the coupling as expansion parameter; by
+construction it stops at <code>λ ~ 1</code>. At <code>λ ~ 6</code> the
+large-field region is not suppressed by <code>β</code>.</li>
+<li><strong>Strong-coupling expansion.</strong> Its radius is governed
+by <code>β/(2 dim f)</code>; <code>q₁ ~ 1</code> needs
+<code>β ~ 2.2</code>, far beyond the thresholds of rigorous cluster
+expansions.</li>
+<li><strong>Bakry–Émery.</strong> The Wilson Hessian contains
+<code>−[F,F]</code>-type negative directions; only a mass term can
+control them, and the mass is unknown.</li>
+</ul>
+<hr />
+<h2 id="proof-skeleton-and-the-load-bearing-wall">4. Proof skeleton and
+the load-bearing wall</h2>
+<h3 id="the-ten-lemma-skeleton">4.1 The ten-lemma skeleton</h3>
+<p>The class-preservation part of <code>CPB-W</code> decomposes as
+follows (<code>[B]</code> = Balaban/standard, <code>[new]</code>,
+<code>[open]</code>):</p>
+<pre><code>1  Blocking and covariance splitting      [B]        G = B^T G&#39; B + G_⊥
+2  Gaussian conditional expectation/Wick  standard
+3  Cumulant expansion                     [B]+[new]  remainder O(ε³L^{3/2}), needs εL^{1/2} ≤ 1/2
+4  Fluctuation sum (one-loop log)         [new]      L(q) ≤ C₃ ln(1/q) + C₄
+5  Lipschitz contraction                  [B]+[new]  sup does not contract; C¹/Lip does
+6  Large-field Lipschitz/C² bound         [B] small g² only; q~1 [open]   ← the wall
+7  Gauge independence / equivariant blocks [B]+[new]
+8  Volume/UV uniformity                   [B] partial
+9  One-step class preservation            [new]      conditional in U(1)
+10 Iteration + RB2/NPB                    [open]</code></pre>
+<h3 id="lemma-6-the-large-field-bound-fails-at-q-1">4.2 Lemma 6: the
+large-field bound fails at <code>q ≈ 1</code></h3>
+<p>Controlling <code>V</code> in the <code>C²</code> norm (sup + Lip +
+Hessian) on the ball <code>‖A‖ ≤ R</code>, non-degeneracy requires</p>
+<pre><code>S&#39;&#39; ≥ (c₀ m² − Cε)·Id &gt; 0 ,     ε &lt; c₀ m² / C .</code></pre>
+<p>The non-abelian commutator gives <code>‖V&#39;&#39;‖ ≲ R³/g² + R²/g</code>;
+at <code>q ≈ 1</code>, <code>g² ≈ 2</code>, and typical field amplitude
+<code>R ~ g/q ≈ 1.4</code>, this is <code>≈ 2.8</code>,
+<strong>exceeding the admissible <code>c₀ m²/C</code></strong>.
+Balaban’s large-field estimates are of the same class but are proved
+only for small <code>g</code> (UV); no <code>q ~ 1</code> version
+exists.</p>
+<p><strong>This is the core of <code>CPB-W</code>’s class preservation;
+it is not <code>RB2/NPB</code>.</strong></p>
+<h3 id="the-gaussian-weighted-class-and-the-cluster-constant">4.3 The
+Gaussian-weighted class and the cluster constant</h3>
+<p>A natural remedy is the local <code>L²</code> class</p>
+<pre><code>C_W^G(ε) = { S = S^G + V : sup_x ∫ |V_x|² dμ_G ≤ ε² } ,</code></pre>
+<p>with <code>μ_G</code> the massive Gaussian of covariance
+<code>g²(−Δ+q²)^{-1}</code>. It moves the expansion parameter from
+<code>ε ≈ 2</code> (a definite failure) to</p>
+<pre><code>εL^{1/2} = 0.24 + C_cum·R₃ ,      R₃ = 0.16–0.46 ,</code></pre>
+<p>which passes only if <code>εL^{1/2} ≤ 1/2</code>,
+i.e. <code>C_cum ≲ 0.6–1.6</code>. The standard Kotecký–Preiss bound at
+<code>g² ~ 2</code> gives <strong><code>C_cum ≥ 2</code></strong>:</p>
+<pre><code>C_cum = 1 :  0.40–0.70  (passes only at the low end)
+C_cum = 2 :  0.56–1.16  (fails)
+C_cum = 3 :  0.72–1.62  (fails)</code></pre>
+<p><strong>Hence Gaussian weighting does not bypass Lemma 6; it moves
+the wall to <code>C_cum</code>, and the standard constant is already
+out.</strong></p>
+<hr />
+<h2 id="the-bianchi-mechanism-and-its-failure">5. The Bianchi mechanism
+and its failure</h2>
+<p>A recurrent hope is that the Bianchi identity <code>dF = 0</code>
+produces sign cancellations that suppress the activity. We settle this
+point by point.</p>
+<h3 id="bl-1-df-0-is-a-topological-statement">5.1 BL-1:
+<code>dF = 0</code> is a topological statement</h3>
+<p><code>dF = 0</code> is exactly the flux 2-cocycle condition (the
+product of plaquettes around every cube is the identity). Only in the
+abelian case with quantized flux does it imply that defect 2-chains are
+closed. It constrains flux conservation; it does <strong>not</strong>
+constrain the sign or the size of single-block weights.</p>
+<h3 id="bl-3-a-closed-2-chain-can-be-codimension-one">5.2 BL-3: a closed
+2-chain can be codimension one</h3>
+<p>The slice <code>x₄ = 0</code> is a closed 2-chain, but it is a
+<strong>codimension-one slab</strong>, whose per-block cost is
+independent of <code>q</code>. Hence “defects are closed 2-surfaces”
+does <strong>not</strong> imply an area-type action
+<code>σ(q) ~ q²</code>.</p>
+<h3 id="bl-4-the-improvement-is-in-entropy-not-in-action-density">5.3
+BL-4: the improvement is in entropy, not in action density</h3>
+<p><code>dF = 0</code> acts on the <strong>counting rate</strong> of
+connected 2-chains, <code>γ_all → γ_cyc</code>, a
+<strong><code>q</code>-independent pure number</strong>; it does not act
+on <code>|w_q(C)|</code>. In the additive form
+<code>|w| ≤ exp(−c₀q|C| − c₁q²|C|)</code>, one can prove
+<strong><code>c₁ = 0</code></strong>.</p>
+<h3 id="bl-5-quadratic-scaling-is-empty-at-q-1">5.4 BL-5: quadratic
+scaling is empty at <code>q ≈ 1</code></h3>
+<p>At <code>q = 1</code>, any <code>q^α</code> with
+<code>α &gt; 1</code> equals <code>q</code>. <strong>Any “quadratic
+scaling” improvement has exactly zero gain at the point where it is
+needed.</strong> The threshold is the absolute efficiency
+<code>σ(1)</code> at <code>q = 1</code>, not the scaling.</p>
+<h3 id="bl-6-κ_c-1-in-the-strong-coupling-regime">5.5 BL-6:
+<code>κ_c = 1</code> in the strong-coupling regime</h3>
+<p>The only mechanism that could serve both sides is <strong>signed
+cancellation at fixed boundary</strong>,</p>
+<pre><code>|Σ_{∂C=∂C₀} w_q(C)| ≤ e^{−c₀q|C₀|} · κ_c^{|C₀|} ,      κ_c &lt; 1 ,</code></pre>
+<p>where <code>κ_c</code> is the per-block cancellation factor
+(<code>κ_c = e^{−δ}</code>). <code>CPB-W</code> needs
+<code>κ_c ≤ 0.80</code>; <code>CPB-S</code> needs more.</p>
+<p><strong>Verdict (BL-6, a judgment rather than a theorem): the default
+is <code>κ_c ≈ 1</code>, and no known mechanism gives
+<code>κ_c &lt; 1</code>.</strong> Three converging lines of
+evidence:</p>
+<ol type="1">
+<li><strong>In the strong-coupling surface/character representation,
+<code>κ_c = 1</code> is provable exactly:</strong> the
+<code>SU(2)</code> coefficients <code>2I_{2r+1}(β)/β &gt; 0</code> are
+all positive, so all surface-sum terms are non-negative and the signed
+sum equals the absolute sum.</li>
+<li><strong>Weights factorize locally</strong>, so signs do not
+alternate with area; <code>κ_c &lt; 1</code> would require a per-block
+<code>e^{iπ · additive charge}</code>.</li>
+<li><strong><code>dF = 0</code> supplies no additive defect
+charge:</strong> 2D <code>O(N)</code> uses exact constraints plus a
+topological index, 4D <code>U(1)</code> uses duality/Poisson, and
+<strong>4D non-abelian pure Yang–Mills has neither</strong> (the
+instanton density is not a defect charge; <code>θ</code> only produces a
+global phase).</li>
+</ol>
+<p><code>U(1)</code> provides a clean counterexample:
+<code>F = dA</code> makes <code>dF = 0</code> automatic, yet there is no
+non-trivial signed cancellation. <strong>Thus <code>dF = 0</code> and
+<code>κ_c &lt; 1</code> are logically independent.</strong></p>
+<blockquote>
+<p><strong>This is a negative result about routes, not a disproof of
+<code>CPB-W</code>/<code>CPB-S</code>.</strong> What is ruled out is the
+route that proves them via Bianchi / signed cancellation.</p>
+</blockquote>
+<hr />
+<h2 id="numerical-tests">6. Numerical tests</h2>
+<h3 id="apparatus-and-validation">6.1 Apparatus and validation</h3>
+<p><code>SU(3)</code> Wilson action, Cabibbo–Marinari heat bath (exact
+<code>SU(2)</code> subgroup sampler), cross-validated against
+Metropolis, strong-coupling series, and the known <code>β = 6</code>
+plaquette. Lattices <code>L = 4, 6, 8, 10</code>; primary grid
+<code>β = 2.6, 2.8, 3.0, 3.3</code> (<code>g² = 1.8–2.3</code>), 8000
+measurements each.</p>
+<h3 id="r₄-and-κ_eff">6.2 <code>R₄</code> and <code>κ_eff</code></h3>
+<p><code>R₄</code> (the connected four-point ratio of the blocked
+plaquette) satisfies <code>|R₄| ≲ 0.13</code> for all <code>β</code>,
+<code>L</code>, <code>b</code> (<code>≲ 0.01</code> for
+<code>b ≥ 2</code>); no droplet structure is seen.</p>
+<p><code>κ_eff</code> (lowest eigenvalue of the projected Hessian) is
+negative throughout <code>β = 1.7 … 6</code>, <strong>and remains
+<code>−1.74</code> at the weak-coupling control
+<code>β = 40</code></strong>. Its scaling
+<code>|κ_eff| ≈ (0.85–1.6)·β(1−⟨P⟩)</code> identifies it as a
+Savvidy/Nielsen–Olesen negative mode of the <strong>microscopic</strong>
+Wilson action — present for any non-convex action, including continuum
+Yang–Mills. <strong>It is therefore not a discriminator for
+<code>CPB-W</code></strong>; it is reported but not used.</p>
+<h3 id="all-character-coefficients-are-positive">6.3 All character
+coefficients are positive</h3>
+<p>Character coefficients of the plaquette distribution,
+<code>c_R = ⟨χ_R(U_p)⟩</code>:</p>
+<table style="width:99%;">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+</colgroup>
+<thead>
+<tr>
+<th><code>β</code></th>
+<th><code>c₃</code></th>
+<th><code>c₆</code></th>
+<th><code>c₈</code></th>
+<th><code>c₁₀</code></th>
+<th><code>r₁</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2.6</td>
+<td>+0.52107(19)</td>
+<td>+0.13495(18)</td>
+<td>+0.23809(26)</td>
+<td>+0.02323(16)</td>
+<td>1.0000</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td>+0.61476(19)</td>
+<td>+0.18739(20)</td>
+<td>+0.32620(27)</td>
+<td>+0.03800(17)</td>
+<td>1.0000</td>
+</tr>
+<tr>
+<td>3.3</td>
+<td>+0.68861(19)</td>
+<td>+0.23549(20)</td>
+<td>+0.40444(29)</td>
+<td>+0.05317(18)</td>
+<td>1.0000</td>
+</tr>
+</tbody>
+</table>
+<p><code>L = 6</code> and <code>L = 8</code> agree. <strong>No
+<code>c_R &lt; 0</code> occurs</strong>, and the single-block
+signed/absolute ratio is <code>r₁ = 1.0000</code>: there is no sign
+cancellation at the <code>c₁</code> level. This is consistent with
+BL-6’s <code>κ_c ≈ 1</code> (a <strong>confirmation</strong>, not a
+failure), but <code>r₁</code> is a <code>c₁</code> proxy, not a
+measurement of <code>κ_c</code>.</p>
+<h3 id="defect-fractions-are-gaussian-tails">6.4 Defect fractions are
+Gaussian tails</h3>
+<p>A seemingly powerful proxy estimates the defect action as
+<code>c₀ = −ln(fraction)</code> from threshold defect fractions.
+<strong>This proxy is falsified</strong>: the blocked field is itself
+<strong>Gaussian</strong>, so every threshold fraction is merely a
+Gaussian tail.</p>
+<pre><code>β=2.6, b=2, L=8:  μ=0.17355, σ=0.02805
+Gaussian-tail prediction:  f(⟨P⟩/2)=0.00099 ,  f(0.75⟨P⟩)=0.0610
+Measured:                  f(⟨P⟩/2)=0.00089 ,  f(0.75⟨P⟩)=0.0602</code></pre>
+<p>The variances at <code>L = 6</code> and <code>L = 8</code> agree to
+<code>&lt;1%</code> (<code>0.000781</code> vs <code>0.000787</code>), so
+this is not a finite-volume effect. Changing the threshold or the
+coupling moves <code>c₀</code> between <code>2.4</code> and
+<code>10.1</code>: <strong>it is a function of the threshold and the
+distribution width, not an independent action.</strong></p>
+<h3 id="ξa-7-feasibility-and-the-evidencecertificate-distinction">6.5
+<code>ξ/a ≈ 7</code>: feasibility, and the evidence/certificate
+distinction</h3>
+<p>The σ certificate requires <code>q₁^σ ≤ 0.143</code>,
+i.e. <code>ξ/a ≈ 7</code>. Measured: <code>ξ/a(β=6) = 0.93(8)</code>; at
+<code>β ≤ 3.3</code>, <code>ξ/a ≲ 0.3</code> (the correlator dies within
+one lattice spacing). Reaching <code>ξ/a = 7</code> needs
+<code>L ≈ 28–34</code>.</p>
+<p><strong>Numerics do not constitute the certificate.</strong>
+<code>q₁^σ ≤ 0.143</code> is a rigorous inequality (a theorem or an
+input); neither a point value nor a confidence interval can prove it.
+Numerics can only supply feasibility/consistency
+<strong>evidence</strong>, and if used as evidence the correct
+statistical object is a <strong>2σ lower bound</strong>: at 5% precision
+one must measure <code>ξ/a ≈ 8.5</code> (since
+<code>8.5 − 2×0.425 = 7.65 &gt; 7</code>), and one needs
+<code>L/ξ ≥ 4</code>. At <code>ξ ≈ 7</code>, <code>L = 12</code> gives
+<code>L/ξ = 1.7</code>, so an <code>L = 12</code> scan determines
+<code>ξ/a</code> only up to <code>≈ 3–4</code> and <strong>cannot
+support <code>ξ/a ≥ 7</code></strong>.</p>
+<p><strong>Cost.</strong> With pure NumPy, cost scales as
+<code>L⁴</code>: at <code>L = 32</code>, about
+<code>38 s/measurement</code> (about <code>105 h</code> for
+<code>10⁴</code> measurements). A C/OpenMP kernel (16 cores, ≥50×) plus
+an anisotropic volume reduces a <code>32⁴</code> run at 5% precision to
+about <strong>74 h</strong> with a GEVP variational operator (3 days on
+16 independent chains). This is a feasibility limit, not numerical
+noise.</p>
+<hr />
+<h2 id="remaining-paths">7. Remaining paths</h2>
+<p>Given the verdicts above, <code>CPB-W</code>/<code>CPB-S</code> have
+no known route under existing mechanisms. The remaining candidates
+are:</p>
+<ol type="1">
+<li><strong>Inverse Monte Carlo (IMC).</strong> Fit the couplings of the
+blocked effective action to obtain <code>w_q(C)</code>, hence
+<code>c₀</code> and <code>κ_c</code> directly. This is the <strong>only
+remaining numerical handle</strong>, and it is a project of its
+own.</li>
+<li><strong>A new additive sign/index structure.</strong> The object
+that <code>κ_c &lt; 1</code> requires. 2D <code>O(N)</code> and 4D
+<code>U(1)</code> each have their own version; whether 4D non-abelian
+admits one is unknown.</li>
+<li><strong>A different handoff architecture.</strong> A different
+weak/strong matching point, a different RG scheme, or abandoning the
+handoff for an all-coupling construction.</li>
+<li><strong>A different certificate.</strong> The string tension
+<code>σ</code> instead of the mass <code>m</code>, or an observable with
+a cleaner signal; whether the <code>ξ/a ≈ 7</code> threshold can be
+avoided is unknown.</li>
+</ol>
+<hr />
+<h2 id="the-conditional-theorem-and-machine-verification">8. The
+conditional theorem and machine verification</h2>
+<p>The reduction above is embedded in a larger <strong>conditional
+theorem</strong>: ten named inputs <code>IN-0 … IN-9</code> (the
+certified inputs of the 2026 construction, the UV limit,
+<code>O(4)</code>, <code>CPB-W</code>, <code>CPB-S</code>, the overlap,
+IR uniqueness, non-triviality, group uniformity, and spectral-resolution
+convergence) imply the Clay statement.</p>
+<p>Its “nine-to-one” part consists of nine glue lemmas
+<code>GL1–GL9</code>, of which:</p>
+<pre><code>Unconditional ✅ (6 blocks): GL1 (audit) · GL2a · GL4 · GL6 · GL5-KIN · GL8-A
+✅-implication (6 blocks)  : GL3 · GL2b′ · GL5-DYN · GL8-S · GL9 · GL7
+No formal content          : GL5-DYN (IN-2 ⟹ OS2 is bookkeeping)
+Audit (not a theorem)      : GL1 (cross-document compliance)</code></pre>
+<p><strong>Machine-verification status:</strong> 9 of the 11 blocks are
+formalized in Lean 4, with no <code>sorry</code>, and the axiom
+footprint is frozen to
+<code>[propext, Classical.choice, Quot.sound]</code>. Four items are
+<strong>explicit declarations rather than machine proofs</strong>, all
+pushed into the <strong>type level</strong>:</p>
+<ol type="1">
+<li>Minlos (the <code>hMinlos</code> hypothesis of GL3; absent from
+Mathlib);</li>
+<li>Borel measurability of the truncation (an explicit hypothesis in
+GL4; Mathlib lacks <code>comp_stronglyMeasurable</code>);</li>
+<li>the identification of the variational gap with the spectral gap (a
+declarative scope in GL2b′);</li>
+<li>Reed–Simon VIII.24b (GL2b′; absent from Mathlib).</li>
+</ol>
+<p><strong>These four are external assumptions, not proofs.</strong>
+They appear in theorem signatures or file headers precisely so that a
+reader can see them, rather than having them hidden in prose.</p>
+<hr />
+<h2 id="conclusion">9. Conclusion</h2>
+<p>We have reduced the mass-gap problem for four-dimensional pure
+Yang–Mills to a handoff inequality, and then shown that every known
+mechanism capable of suppressing the single-block activity at
+<code>q ≈ 1</code> fails at exactly the point where it is needed.</p>
+<ul>
+<li>Bianchi is topological, acting on entropy rather than weights;
+quadratic scaling is empty at <code>q = 1</code>; and
+<code>κ_c = 1</code> is provable in the strong-coupling regime.</li>
+<li>Gaussian weighting moves the wall to the cluster constant
+<code>C_cum</code>, where the standard bound is already out.</li>
+<li>Numerically, <code>κ_c</code> is not directly measurable, the σ
+defect-fraction proxy is a Gaussian tail, and <code>ξ/a ≈ 7</code> is a
+feasibility boundary.</li>
+</ul>
+<p><strong>This is not a failure report but a map:</strong> it records
+which routes have been walked, why each is closed, and under what
+conditions it would reopen (a measured <code>κ_c &lt; 1</code> at
+<code>q ≈ 1</code>, or a new additive sign/index structure).</p>
+<hr />
+<h2 id="appendix-a.-constants-and-symbols">Appendix A. Constants and
+symbols</h2>
+<table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Meaning</th>
+<th>Do not confuse with</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>λ_G</code></td>
+<td><code>h^∨ g²</code> (RT invariant)</td>
+<td>not <code>dim f · g²</code></td>
+</tr>
+<tr>
+<td><code>b₀</code></td>
+<td><code>11h^∨/(48π²)</code></td>
+<td>not <code>11 dim f/(48π²)</code> (they coincide only for
+<code>SU(N)</code>)</td>
+</tr>
+<tr>
+<td><code>B</code></td>
+<td><code>2b₀ = 11h^∨/(24π²)</code></td>
+<td>not <code>b₀</code></td>
+</tr>
+<tr>
+<td><code>γ</code></td>
+<td><code>β/N_c = 2/g²</code> (measure weight)</td>
+<td>a different variable from <code>λ_G</code></td>
+</tr>
+<tr>
+<td><code>κ</code></td>
+<td><code>1/2</code> (Kotecký–Preiss factor)</td>
+<td>not <code>κ_c</code></td>
+</tr>
+<tr>
+<td><code>κ_c</code></td>
+<td>signed-cancellation factor <code>&lt;1</code></td>
+<td>not <code>κ</code></td>
+</tr>
+<tr>
+<td><code>σ(q)</code></td>
+<td>defect action density</td>
+<td>not the string tension <code>σ</code></td>
+</tr>
+</tbody>
+</table>
+<h2 id="appendix-b.-reproduction">Appendix B. Reproduction</h2>
+<pre><code>bash lean/check-handoff.sh            # handoff algebra, axioms frozen
+bash lean/check-conditional.sh        # conditional-theorem skeleton
+bash research/glue-a-limits/check-glue-a.sh
+bash research/glue-b-blocking/check.sh
+bash research/glue-c-gauge-group/check-glue-c.sh
+bash research/glue-d-dual-handoff/check-gl7.sh
+bash research/os2-rotation/check-symdim4.sh
+python research/os2-rotation/check-d14.py</code></pre>
+<p>Numerics: <code>research/lattice-cpb/</code> (heat bath, analysis,
+<code>t_up.csv</code>, <code>block_summary.txt</code>).</p>
+<h2 id="references">References</h2>
+<ol type="1">
+<li>K. Wilson, <em>Confinement of quarks</em>, Phys. Rev. D 10
+(1974).</li>
+<li>K. Osterwalder, E. Seiler, <em>Gauge field theories on a
+lattice</em>, Ann. Phys. 110 (1978).</li>
+<li>T. Balaban, <em>Renormalization group approach to lattice gauge
+field theories</em>, Comm. Math. Phys. 102 (1985), 109 (1986), 122
+(1989). <em>(volume numbers to be verified)</em></li>
+<li>R. Kotecký, D. Preiss, <em>Cluster expansion for abstract polymer
+models</em>, Comm. Math. Phys. 103 (1986).</li>
+<li>S. Cao, M. Park, S. Sheffield, <em>Random surfaces and lattice
+Yang–Mills</em> (2024). <em>(to be verified)</em></li>
+<li>A. Chandra, I. Chevyrev, M. Hairer, H. Shen, <em>Stochastic
+quantisation of Yang–Mills–Higgs in 3D</em>, Invent. Math. 237
+(2024).</li>
+<li>The 2026 four-dimensional pure Yang–Mills construction (technical
+report, assessed by an independent committee; unpublished).</li>
+<li>The hexagonmath reconstruction <code>hexagon:2611.00492v1</code> (a
+site identifier, <strong>not</strong> an arXiv number; an AI-assisted
+preprint).</li>
+<li>Constructive results for 2D <code>O(N)</code>. <em>(exact source to
+be verified)</em></li>
+</ol>
+<hr />
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>This work was carried out with substantial AI assistance.
+<strong>Deepseek v4.1 flash participated deeply in the research
+process</strong>, including literature synthesis, derivation checks, and
+numerical analysis; AI assistants were also used for drafting and code
+generation. All mathematical claims, and any errors, remain the
+responsibility of the author.</p>
+<hr />
+<blockquote>
+<p><strong>Disclaimer.</strong> This paper does not claim a proof of
+Yang–Mills existence or of the mass gap. Every “open” input is labelled
+as such in the text; every negative result is accompanied by a
+falsification test. Where a judgment (rather than a theorem) is
+asserted, it is marked as a judgment. Readers who find an error should
+use the reproducible commands and numerical data referenced above.</p>
+</blockquote>
+</body>
+</html>

@@ -1,0 +1,37 @@
+module fmt
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mem.lomt"
+use "stdlib/f64fmt.lomt"
+
+fn put_dec(buf: ptr, v: u64) {
+    let n: u32 = 0;
+    let x: u64 = v;
+    if x == 0 { store8(buf, 0, 48 as u8); n = 1; }
+    while x > 0 { store8(buf, n, (48 + (x % 10)) as u8); x = x / 10; n = n + 1; }
+    let i: u32 = 0;
+    while i < n / 2 {
+        let lo: u8 = load8(buf, i) as u8;
+        let hi: u8 = load8(buf, n - 1 - i) as u8;
+        store8(buf, i, hi);
+        store8(buf, n - 1 - i, lo);
+        i = i + 1;
+    }
+    syscall4(1, 1, buf as u64, n as u64);
+}
+
+fn main() {
+    let numbuf: ptr = alloc(32);
+    print("scratch=");
+    put_dec(numbuf, f64fmt_scratch_bytes() as u64);
+    print("\n");
+    let out: ptr = alloc(64);
+    let sc: ptr = alloc(f64fmt_scratch_bytes());
+    let one: u64 = 0x3FF0000000000000;
+    let n: u32 = f64fmt_fixed(out, 0, one, 4, sc);
+    print("fixed=");
+    syscall4(1, 1, out as u64, n as u64);
+    print("\n");
+}

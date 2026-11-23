@@ -1,0 +1,66 @@
+module exptest
+choose runtime
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/mem.lomt"
+
+const NEXP: u32 = 2048;
+const F64_0: u64 = 0x0000000000000000;
+const F64_1: u64 = 0x3FF0000000000000;
+const F64_XMAX: u64 = 0x4030000000000000;
+
+fn wdec(buf: ptr, v: u64) {
+    let n: u32 = 0;
+    let x: u64 = v;
+    if x == 0 { store8(buf, 0, 48 as u8); n = 1; }
+    while x > 0 { store8(buf, n, (48 + (x % 10)) as u8); x = x / 10; n = n + 1; }
+    let i: u32 = 0;
+    while i < n / 2 {
+        let lo: u8 = load8(buf, i) as u8;
+        let hi: u8 = load8(buf, n - 1 - i) as u8;
+        store8(buf, i, hi); store8(buf, n - 1 - i, lo); i = i + 1;
+    }
+    syscall4(1, 1, buf as u64, n as u64);
+}
+fn w6(buf: ptr, x: u64) {
+    let y: u64 = x;
+    if f64_lt(x, F64_0) { print("-"); y = f64_neg(x); }
+    let scale: u64 = f64conv_from_u64(1000000);
+    let z: u64 = f64conv_to_u64(f64_mul(y, scale));
+    wdec(buf, z / 1000000); print(".");
+    let fp: u64 = z % 1000000;
+    let d: u64 = 100000;
+    while d > 0 { wdec(buf, (fp / d) % 10); d = d / 10; }
+}
+fn exp_lookup(et: ptr, x: u64) -> u64 {
+    if f64_ge(x, F64_XMAX) { return F64_0; }
+    let inv: u64 = f64_div(f64conv_from_u64(NEXP as u64), F64_XMAX);
+    let t: u64 = f64_mul(x, inv);
+    let k: u32 = f64conv_to_u32(t);
+    let frac: u64 = f64_sub(t, f64conv_from_u64(k as u64));
+    let a: u64 = mem_load64(et, k * 8);
+    let b: u64 = mem_load64(et, (k + 1) * 8);
+    return f64_add(a, f64_mul(frac, f64_sub(b, a)));
+}
+fn main() {
+    let et: ptr = alloc((NEXP + 1) * 8);
+    let buf: ptr = alloc(32);
+    let k: u32 = 0;
+    while k <= NEXP {
+        let xv: u64 = f64_div(f64_mul(f64conv_from_u64(k as u64), F64_XMAX), f64conv_from_u64(NEXP as u64));
+        mem_store64(et, k * 8, mathf_exp(f64_neg(xv)));
+        k = k + 1;
+    }
+    print("et0="); w6(buf, mem_load64(et, 0)); print("\n");
+    print("et12="); w6(buf, mem_load64(et, 12*8)); print("\n");
+    print("et13="); w6(buf, mem_load64(et, 13*8)); print("\n");
+    print("expm01="); w6(buf, mathf_exp(f64_neg(f64conv_from_u64(1)))); print("\n");
+    let x01: u64 = f64_div(F64_1, f64conv_from_u64(10));
+    print("lookup01="); w6(buf, exp_lookup(et, x01)); print("\n");
+    print("lookup05="); w6(buf, exp_lookup(et, f64_div(F64_1, f64conv_from_u64(2)))); print("\n");
+    print("lookup1="); w6(buf, exp_lookup(et, F64_1)); print("\n");
+    print("lookup8="); w6(buf, exp_lookup(et, f64conv_from_u64(8))); print("\n");
+    print("t01="); w6(buf, f64_mul(x01, f64conv_from_u64(NEXP as u64))); print("\n");
+    print("k01="); wdec(buf, f64conv_to_u32(f64_mul(x01, f64conv_from_u64(NEXP as u64))) as u64); print("\n");
+}

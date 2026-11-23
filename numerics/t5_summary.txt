@@ -1,0 +1,10 @@
+Delta(n) toy: exponential fit, O(1) crossing, and comparison to xi=1/m
+==================================================================================================
+m=Delta  xi=1/m  C (fit)  slope (fit)  -slope/m  n*(Delta=1)  n*/(1/m)  n*(lam=0.001)  monotone?
+--------------------------------------------------------------------------------------------------
+   0.20     5.0    6.514      -0.1911     0.955         9.69      1.94           9.66        yes
+   0.10    10.0    6.606      -0.0962     0.962        19.29      1.93          18.95        yes
+   0.05    20.0    6.578      -0.0481     0.962        38.55      1.93          35.26        yes
+
+Fit ln Delta = ln C + slope*n over 0.03<Delta<5.  Empirically slope = -m (to a few %) and C ~ 6.5-6.6: Delta(n) ~ C exp(-m n).  So the log-Delta slope directly equals the mass gap, and Delta crosses O(1) at n* ~ 1.9/m, i.e. same order as the correlation length 1/Delta=1/m (factor ~1.9).  This is the cleanest confirmation of the template's design intent: Delta(n) is monotone and gap-sensitive.
+Caveat: free massive toy only; no interacting/gauge-theory claim is made.

@@ -1,0 +1,37 @@
+module costest
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/mem.lomt"
+
+fn put_dec(buf: ptr, v: u64) {
+    let n: u32 = 0;
+    let x: u64 = v;
+    if x == 0 { store8(buf, 0, 48 as u8); n = 1; }
+    while x > 0 { store8(buf, n, (48 + (x % 10)) as u8); x = x / 10; n = n + 1; }
+    let i: u32 = 0;
+    while i < n / 2 {
+        let lo: u8 = load8(buf, i) as u8;
+        let hi: u8 = load8(buf, n - 1 - i) as u8;
+        store8(buf, i, hi);
+        store8(buf, n - 1 - i, lo);
+        i = i + 1;
+    }
+    syscall4(1, 1, buf as u64, n as u64);
+}
+
+fn main() {
+    let numbuf: ptr = alloc(32);
+    let step: u64 = 0x3F847AE147AE147B;
+    let i: u32 = 0;
+    while i < 2600 {
+        let x0: u64 = f64_sub(f64conv_from_u64(i as u64), f64conv_from_u64(1300));
+        let x: u64 = f64_mul(x0, step);
+        if i % 100 == 0 { put_dec(numbuf, i as u64); print(" "); }
+        let c: u64 = mathf_cos(x);
+        i = i + 1;
+    }
+    print("cos-ok\n");
+}

@@ -1,0 +1,466 @@
+module u1
+
+choose runtime
+
+use "stdlib/f64.lomt"
+use "stdlib/f64conv.lomt"
+use "stdlib/mathf.lomt"
+use "stdlib/rand.lomt"
+use "stdlib/mem.lomt"
+
+// ---- 2D U(1) lattice gauge theory, L x L periodic ----
+
+const L: u32 = 24;
+const N2: u32 = 1152;
+const TAB_N: u32 = 256;
+
+const ZERO: u64 = 0x0000000000000000;
+const ONE: u64 = 0x3FF0000000000000;
+const TWO: u64 = 0x4000000000000000;
+const HALF: u64 = 0x3FE0000000000000;
+const FOUR: u64 = 0x4010000000000000;
+const TEN: u64 = 0x4024000000000000;
+const PI: u64 = 0x400921FB54442D18;
+const PI2: u64 = 0x3FF921FB54442D18;
+const TWO_PI: u64 = 0x401921FB54442D18;
+const MILLION: u64 = 0x412E848000000000;
+
+fn write_dec(fd: u64, v: u64) {
+    let buf: ptr = alloc(24);
+    let n: u32 = 0;
+    let x: u64 = v;
+    if x == 0 {
+        store8(buf, 0, 48 as u8);
+        n = 1;
+    }
+    while x > 0 {
+        store8(buf, n, (48 + (x % 10)) as u8);
+        x = x / 10;
+        n = n + 1;
+    }
+    let i: u32 = 0;
+    while i < n / 2 {
+        let lo: u8 = load8(buf, i) as u8;
+        let hi: u8 = load8(buf, n - 1 - i) as u8;
+        store8(buf, i, hi);
+        store8(buf, n - 1 - i, lo);
+        i = i + 1;
+    }
+    syscall4(1, fd, buf as u64, n as u64);
+}
+
+fn print_f64_6(x: u64) {
+    let neg: bool = false;
+    let y: u64 = x;
+    if f64_lt(x, ZERO) {
+        neg = true;
+        y = f64_neg(x);
+    }
+    let scaled: u64 = f64conv_to_u64(f64_add(f64_mul(y, MILLION), HALF));
+    if neg {
+        print("-");
+    }
+    write_dec(1, scaled / 1000000);
+    print(".");
+    let frac: u64 = scaled % 1000000;
+    let div: u64 = 100000;
+    while div > 0 {
+        write_dec(1, (frac / div) % 10);
+        div = div / 10;
+    }
+}
+
+// ---- allocation-free Taylor cosine on |x| <= pi/2 (used only to build the table) ----
+
+fn cos_poly(y: u64) -> u64 {
+    let y2: u64 = f64_mul(y, y);
+    let sum: u64 = ONE;
+    let term: u64 = ONE;
+    let k: u32 = 1;
+    while k <= 6 {
+        let d: u64 = f64conv_from_u64((((2 * k - 1) * (2 * k)) as u64));
+        term = f64_div(f64_mul(term, f64_neg(y2)), d);
+        sum = f64_add(sum, term);
+        k = k + 1;
+    }
+    return sum;
+}
+
+// ---- table lookups ----
+
+fn init_cos(ctab: ptr) {
+    let i: u32 = 0;
+    while i <= TAB_N {
+        let x: u64 = f64_div(f64_mul(PI2, f64conv_from_u64(i as u64)), f64conv_from_u64(TAB_N as u64));
+        mem_store64(ctab, 8 * i, cos_poly(x));
+        i = i + 1;
+    }
+    mem_store64(ctab, 8 * (TAB_N + 1), f64_div(f64conv_from_u64(TAB_N as u64), PI2));
+}
+
+fn init_exp(etab: ptr) {
+    let i: u32 = 0;
+    while i <= TAB_N {
+        let x: u64 = f64_div(f64_mul(TEN, f64conv_from_u64(i as u64)), f64conv_from_u64(TAB_N as u64));
+        mem_store64(etab, 8 * i, mathf_exp(f64_neg(x)));
+        i = i + 1;
+    }
+    mem_store64(etab, 8 * (TAB_N + 1), f64_div(f64conv_from_u64(TAB_N as u64), TEN));
+}
+
+fn cos_t(ctab: ptr, x: u64) -> u64 {
+    let y: u64 = x;
+    while f64_gt(y, PI) {
+        y = f64_sub(y, TWO_PI);
+    }
+    while f64_lt(y, f64_neg(PI)) {
+        y = f64_add(y, TWO_PI);
+    }
+    let neg: bool = false;
+    if f64_lt(y, ZERO) {
+        y = f64_neg(y);
+    }
+    if f64_gt(y, PI2) {
+        y = f64_sub(PI, y);
+        neg = true;
+    }
+    let scale: u64 = mem_load64(ctab, 8 * (TAB_N + 1));
+    let t: u64 = f64_mul(y, scale);
+    let idx: u32 = f64conv_to_u32(t);
+    if idx >= TAB_N {
+        idx = TAB_N - 1;
+    }
+    let frac: u64 = f64_sub(t, f64conv_from_u64(idx as u64));
+    let a: u64 = mem_load64(ctab, 8 * idx);
+    let b: u64 = mem_load64(ctab, 8 * (idx + 1));
+    let v: u64 = f64_add(a, f64_mul(frac, f64_sub(b, a)));
+    if neg {
+        return f64_neg(v);
+    }
+    return v;
+}
+
+fn expneg_t(etab: ptr, x: u64) -> u64 {
+    if f64_gt(x, TEN) {
+        return ZERO;
+    }
+    let scale: u64 = mem_load64(etab, 8 * (TAB_N + 1));
+    let t: u64 = f64_mul(x, scale);
+    let idx: u32 = f64conv_to_u32(t);
+    if idx >= TAB_N {
+        idx = TAB_N - 1;
+    }
+    let frac: u64 = f64_sub(t, f64conv_from_u64(idx as u64));
+    let a: u64 = mem_load64(etab, 8 * idx);
+    let b: u64 = mem_load64(etab, 8 * (idx + 1));
+    return f64_add(a, f64_mul(frac, f64_sub(b, a)));
+}
+
+// ---- deterministic RNG state in a heap cell ----
+
+fn rng_u64(p: ptr) -> u64 {
+    let s: u64 = mem_load64(p, 0);
+    let r: u64 = rand_next(s);
+    mem_store64(p, 0, r);
+    return r;
+}
+
+fn rng_f64(p: ptr) -> u64 {
+    let r: u64 = rng_u64(p);
+    let bits: u64 = 0x3FF0000000000000 | (r >> 12);
+    return f64_sub(bits, ONE);
+}
+
+// ---- lattice access ----
+
+fn get(lat: ptr, mu: u32, a: u32, b: u32) -> u64 {
+    let aa: u32 = a % L;
+    let bb: u32 = b % L;
+    return mem_load64(lat, 8 * (mu * L * L + aa * L + bb));
+}
+
+fn plaq_angle(lat: ptr, mu: u32, nu: u32, a: u32, b: u32) -> u64 {
+    let mua: u32 = 0;
+    let mub: u32 = 0;
+    if mu == 0 {
+        mua = 1;
+    }
+    if mu == 1 {
+        mub = 1;
+    }
+    let nua: u32 = 0;
+    let nub: u32 = 0;
+    if nu == 0 {
+        nua = 1;
+    }
+    if nu == 1 {
+        nub = 1;
+    }
+    let t1: u64 = get(lat, mu, a, b);
+    let t2: u64 = get(lat, nu, a + mua, b + mub);
+    let t3: u64 = get(lat, mu, a + nua, b + nub);
+    let t4: u64 = get(lat, nu, a, b);
+    return f64_sub(f64_add(t1, t2), f64_add(t3, t4));
+}
+
+// ---- one Metropolis sweep ----
+
+fn sweep(lat: ptr, beta: u64, delta: u64, rng: ptr, ctab: ptr, etab: ptr) -> u64 {
+    let acc: u64 = 0;
+    let a: u32 = 0;
+    while a < L {
+        let b: u32 = 0;
+        while b < L {
+            let mu: u32 = 0;
+            while mu < 2 {
+                let off: u32 = 8 * (mu * L * L + a * L + b);
+                let theta: u64 = mem_load64(lat, off);
+                let u: u64 = rng_f64(rng);
+                let d: u64 = f64_mul(delta, f64_sub(f64_mul(TWO, u), ONE));
+                let prop: u64 = f64_add(theta, d);
+                let nu: u32 = 1 - mu;
+
+                let P1: u64 = plaq_angle(lat, mu, nu, a, b);
+                let nua: u32 = 0;
+                let nub: u32 = 0;
+                if nu == 0 {
+                    nua = 1;
+                }
+                if nu == 1 {
+                    nub = 1;
+                }
+                let p2a: u32 = (a + L - nua) % L;
+                let p2b: u32 = (b + L - nub) % L;
+                let P2: u64 = plaq_angle(lat, mu, nu, p2a, p2b);
+
+                let c1: u64 = cos_t(ctab, P1);
+                let c2: u64 = cos_t(ctab, P2);
+                let c1p: u64 = cos_t(ctab, f64_add(P1, d));
+                let c2p: u64 = cos_t(ctab, f64_sub(P2, d));
+                let dS: u64 = f64_mul(beta, f64_add(f64_sub(c1, c1p), f64_sub(c2, c2p)));
+
+                let accept: bool = false;
+                if f64_le(dS, ZERO) {
+                    accept = true;
+                }
+                if !accept {
+                    let r: u64 = rng_f64(rng);
+                    let p: u64 = expneg_t(etab, dS);
+                    if f64_lt(r, p) {
+                        accept = true;
+                    }
+                }
+                if accept {
+                    mem_store64(lat, off, prop);
+                    acc = acc + 1;
+                }
+                mu = mu + 1;
+            }
+            b = b + 1;
+        }
+        a = a + 1;
+    }
+    return acc;
+}
+
+// ---- observables ----
+
+fn plaquette_sum(lat: ptr, ctab: ptr) -> u64 {
+    let s: u64 = ZERO;
+    let a: u32 = 0;
+    while a < L {
+        let b: u32 = 0;
+        while b < L {
+            s = f64_add(s, cos_t(ctab, plaq_angle(lat, 0, 1, a, b)));
+            b = b + 1;
+        }
+        a = a + 1;
+    }
+    return s;
+}
+
+fn wilson_cos(lat: ptr, R: u32, T: u32, a: u32, b: u32, ctab: ptr) -> u64 {
+    let total: u64 = ZERO;
+    let i: u32 = 0;
+    while i < T {
+        total = f64_add(total, get(lat, 1, a, b + i));
+        i = i + 1;
+    }
+    i = 0;
+    while i < R {
+        total = f64_add(total, get(lat, 0, a + i, b + T));
+        i = i + 1;
+    }
+    i = 0;
+    while i < T {
+        total = f64_sub(total, get(lat, 1, a + R, b + i));
+        i = i + 1;
+    }
+    i = 0;
+    while i < R {
+        total = f64_sub(total, get(lat, 0, a + i, b));
+        i = i + 1;
+    }
+    return cos_t(ctab, total);
+}
+
+fn loop_sum(lat: ptr, R: u32, T: u32, ctab: ptr) -> u64 {
+    let s: u64 = ZERO;
+    let a: u32 = 0;
+    while a < L {
+        let b: u32 = 0;
+        while b < L {
+            s = f64_add(s, wilson_cos(lat, R, T, a, b, ctab));
+            b = b + 1;
+        }
+        a = a + 1;
+    }
+    return s;
+}
+
+// ---- initialization ----
+
+fn init_lat(lat: ptr, rng: ptr) {
+    let i: u32 = 0;
+    while i < N2 {
+        let u: u64 = rng_f64(rng);
+        let th: u64 = f64_sub(f64_mul(TWO_PI, u), PI);
+        mem_store64(lat, 8 * i, th);
+        i = i + 1;
+    }
+}
+
+fn main() {
+    let lat: ptr = alloc(8 * N2);
+    let ctab: ptr = alloc(8 * (TAB_N + 2));
+    let etab: ptr = alloc(8 * (TAB_N + 2));
+    let sumW: ptr = alloc(128);
+    let sumW2: ptr = alloc(128);
+
+    init_cos(ctab);
+    init_exp(etab);
+
+    print("# N2 "); write_dec(1, N2 as u64); print("\n");
+    print("# L "); write_dec(1, L as u64); print("\n");
+    print("# ct0 "); print_f64_6(cos_t(ctab, ZERO)); print("\n");
+    print("# ct1 "); print_f64_6(cos_t(ctab, ONE)); print("\n");
+    print("# ctpi "); print_f64_6(cos_t(ctab, PI)); print("\n");
+    print("# ex1 "); print_f64_6(expneg_t(etab, ONE)); print("\n");
+
+    print("beta,R,T,W,err\n");
+    print("# begin\n");
+
+    let bi: u32 = 0;
+    while bi < 4 {
+        let beta: u64 = HALF;
+        if bi == 1 {
+            beta = ONE;
+        }
+        if bi == 2 {
+            beta = TWO;
+        }
+        if bi == 3 {
+            beta = FOUR;
+        }
+
+        let rng: ptr = alloc(8);
+        mem_store64(rng, 0, rand_seed(1000 + bi * 100));
+        init_lat(lat, rng);
+        print("# beta\n");
+
+        let s: u32 = 0;
+        while s < 200 {
+            let dummy: u64 = sweep(lat, beta, HALF, rng, ctab, etab);
+            s = s + 1;
+        }
+        print("# therm\n");
+
+        let j: u32 = 0;
+        while j < 16 {
+            mem_store64(sumW, 8 * j, ZERO);
+            mem_store64(sumW2, 8 * j, ZERO);
+            j = j + 1;
+        }
+
+        let psum: u64 = ZERO;
+        let psum2: u64 = ZERO;
+        let nmeas: u32 = 0;
+        let acc_total: u64 = 0;
+
+        let meas: u32 = 0;
+        while meas < 400 {
+            acc_total = acc_total + sweep(lat, beta, HALF, rng, ctab, etab);
+            if (meas % 4) == 0 {
+                let ps: u64 = plaquette_sum(lat, ctab);
+                let pp: u64 = f64_div(ps, f64conv_from_u64((L * L) as u64));
+                psum = f64_add(psum, pp);
+                psum2 = f64_add(psum2, f64_mul(pp, pp));
+
+                let R: u32 = 1;
+                while R <= 4 {
+                    let T: u32 = 1;
+                    while T <= 4 {
+                        let ws: u64 = loop_sum(lat, R, T, ctab);
+                        let w: u64 = f64_div(ws, f64conv_from_u64((L * L) as u64));
+                        let idx: u32 = (R - 1) * 4 + (T - 1);
+                        let old: u64 = mem_load64(sumW, 8 * idx);
+                        let old2: u64 = mem_load64(sumW2, 8 * idx);
+                        mem_store64(sumW, 8 * idx, f64_add(old, w));
+                        mem_store64(sumW2, 8 * idx, f64_add(old2, f64_mul(w, w)));
+                        T = T + 1;
+                    }
+                    R = R + 1;
+                }
+                nmeas = nmeas + 1;
+            }
+            meas = meas + 1;
+        }
+
+        print("# measured\n");
+        print("# accraw "); write_dec(1, acc_total); print("\n");
+        print("# nmeas "); write_dec(1, nmeas as u64); print("\n");
+        let ps0: u64 = plaquette_sum(lat, ctab);
+        print("# ps0 "); print_f64_6(f64_div(ps0, f64conv_from_u64((L * L) as u64))); print("\n");
+        let nf: u64 = f64conv_from_u64(nmeas as u64);
+        let pm: u64 = f64_div(psum, nf);
+        let pv: u64 = f64_sub(f64_div(psum2, nf), f64_mul(pm, pm));
+        let pe: u64 = mathf_sqrt(f64_div(pv, nf));
+        print_f64_6(beta);
+        print(",0,0,");
+        print_f64_6(pm);
+        print(",");
+        print_f64_6(pe);
+        print("\n");
+
+        let R2: u32 = 1;
+        while R2 <= 4 {
+            let T2: u32 = 1;
+            while T2 <= 4 {
+                let idx2: u32 = (R2 - 1) * 4 + (T2 - 1);
+                let sw: u64 = mem_load64(sumW, 8 * idx2);
+                let sw2: u64 = mem_load64(sumW2, 8 * idx2);
+                let m: u64 = f64_div(sw, nf);
+                let v: u64 = f64_sub(f64_div(sw2, nf), f64_mul(m, m));
+                let e: u64 = mathf_sqrt(f64_div(v, nf));
+                print_f64_6(beta);
+                print(",");
+                write_dec(1, R2 as u64);
+                print(",");
+                write_dec(1, T2 as u64);
+                print(",");
+                print_f64_6(m);
+                print(",");
+                print_f64_6(e);
+                print("\n");
+                T2 = T2 + 1;
+            }
+            R2 = R2 + 1;
+        }
+
+        print("# acc ");
+        print_f64_6(f64_div(f64conv_from_u64(acc_total), f64conv_from_u64((600 * N2) as u64)));
+        print("\n");
+
+        bi = bi + 1;
+    }
+}

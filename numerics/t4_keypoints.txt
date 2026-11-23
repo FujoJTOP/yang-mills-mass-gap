@@ -1,0 +1,13 @@
+Two candidate handoff loci on the beta axis + MS-bar g^2(mu=Delta)
+====================================================================================================
+                    locus   beta  g^2 bare  a^-1/Lam_MS  mu [GeV] (ill.)  aD(D=4)  aD(D=8)                    notes
+----------------------------------------------------------------------------------------------------
+g^2(a^-1)=1 (formal weak)   6.00     1.000    5.387e+00           34.514    0.743    1.485                         
+       aD=1 (Delta=4 Lam)  5.735    1.0462    4.000e+00                     1.000    1.000                         
+       aD=1 (Delta=8 Lam)  6.351    0.9448    8.000e+00                     1.000    1.000                         
+      g^2(mu=4 Lam) MSbar                                          0.880                    g2_2l=2.218 g2_3l=2.278
+      g^2(mu=8 Lam) MSbar                                          1.760                    g2_2l=1.790 g2_3l=1.821
+
+(W) g^2=1 is at beta=6 exactly (trivial).  (S) a*Delta=1 (q~1, strong side) is at beta=5.7 (Delta=4Lam) .. 6.3 (Delta=8Lam).  So on the beta axis the two windows COINCIDE near beta~6 -- an apparent overlap.  This is the lattice statement that the strong-weak crossover / scaling region is beta~5.7-6.0.
+BUT at beta~6 the lattice spacing is a~0.1-0.15 fm (UV), 2-loop scaling is violated at O(30-50%), and Delta/Lam is a literature input -- so this is a plausibility indication, not a proof of q0>=q1.
+MS-bar g^2(mu=Delta): at the PHYSICAL handoff scale mu=Delta=(4..8)Lam the coupling is g^2~1.8-2.2 (2/3-loop), NOT 1.  Meanwhile g^2=1 sits at mu=158*Lam ~ 35 GeV (with the illustrative Lam_MS=0.22 GeV).  Hence the 'g^2=1' threshold is NOT invariant: it is ~20-40x above the physical handoff scale.
