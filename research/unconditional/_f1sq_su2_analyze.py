@@ -79,16 +79,50 @@ def block_boot_indices(N, nboot, block, rng):
         yield idx
 
 
-def eff_mass(C1d, T):
-    out = []
-    for t in range(1, T - 1):
-        a, b, c = C1d[t - 1], C1d[t], C1d[t + 1]
-        if min(a, b, c) > 0:
-            r = (a + c) / (2.0 * b)
-            out.append(float(np.arccosh(r)) if r >= 1.0 else np.nan)
+def m_eff_dict(C1d, T):
+    """cosh effective mass at t=1..T//2 (keys t)."""
+    me = {}
+    for t in range(1, T // 2 + 1):
+        if t + 1 <= T - 1:
+            a, b, c = C1d[t - 1], C1d[t], C1d[t + 1]
+            if min(a, b, c) > 0:
+                r = (a + c) / (2.0 * b)
+                me[t] = float(np.arccosh(r)) if r >= 1.0 else np.nan
+            else:
+                me[t] = np.nan
+    return me
+
+
+def analyse_C(Cmat, T, levels):
+    """Deterministic estimator: m_G from the cleanest smeared m_eff window,
+       then each level's residue amplitude A_s fitted with m fixed to m_G."""
+    out = {'A': {}, 'me': {}, 'c1c0': {}}
+    for a, s in enumerate(levels):
+        out['me'][s] = m_eff_dict(Cmat[a, a], T)
+        out['c1c0'][s] = (Cmat[a, a][1] / Cmat[a, a][0]
+                          if Cmat[a, a][0] != 0 else np.nan)
+    # global mass: highest smearing with finite m_eff at t>=2
+    mG = np.nan
+    for s in sorted(levels, reverse=True):
+        vals = [out['me'][s][t] for t in sorted(out['me'][s])
+                if t >= 2 and np.isfinite(out['me'][s][t])]
+        if vals:
+            mG = float(np.mean(vals)); break
+    if not np.isfinite(mG):
+        for s in levels:
+            vals = [v for v in out['me'][s].values() if np.isfinite(v)]
+            if vals:
+                mG = float(np.mean(vals)); break
+    out['mG'] = mG
+    tmin = 2 if T >= 8 else 1
+    ts = np.arange(tmin, T // 2 + 1)
+    for a, s in enumerate(levels):
+        if np.isfinite(mG) and len(ts) > 0 and mG > 0:
+            w = np.exp(-mG * ts) + np.exp(-mG * (T - ts))
+            out['A'][s] = float((w @ Cmat[a, a][ts]) / (w @ w))
         else:
-            out.append(np.nan)
-    return np.array(out)
+            out['A'][s] = np.nan
+    return out
 
 
 def gevp_mass(Cmat, T, t0=1, tmin=2, use=None):
@@ -129,50 +163,48 @@ def analyse(path, nboot=500, verbose=True):
 
     allidx = np.arange(N)
     C = connected(allidx, mu, P, T)
+    cen = analyse_C(C, T, levels)
 
-    tmin = 1
-    tmax = T // 2
-
-    # central per-level fits + bootstrap errors
+    # bootstrap (block) the full estimator
+    Ab = {s: [] for s in levels}
+    mGb = []; c1b = {s: [] for s in levels}
+    for idx in block_boot_indices(N, nboot, block, rng):
+        Cb = connected(idx, mu, P, T)
+        eb = analyse_C(Cb, T, levels)
+        mGb.append(eb['mG'])
+        for s in levels:
+            Ab[s].append(eb['A'][s]); c1b[s].append(eb['c1c0'][s])
+    mG_se = float(np.nanstd(mGb))
     res = {}
-    for a, s in enumerate(levels):
-        A0, m0 = fit_residue(C[a, a], T, tmin, tmax)
-        me = eff_mass(C[a, a], T)
-        # spectral-ratio fraction C(1)/C(0)
-        c1c0 = C[a, a][1] / C[a, a][0] if C[a, a][0] != 0 else np.nan
-        Ab = []; mb = []; c1b = []
-        for idx in block_boot_indices(N, nboot, block, rng):
-            Cb = connected(idx, mu, P, T)
-            A_, m_ = fit_residue(Cb[a, a], T, tmin, tmax)
-            Ab.append(A_); mb.append(m_)
-            c1b.append(Cb[a, a][1] / Cb[a, a][0] if Cb[a, a][0] != 0 else np.nan)
-        Ab = np.array(Ab); mb = np.array(mb); c1b = np.array(c1b)
-        res[s] = dict(A=A0, A_se=float(np.nanstd(Ab)), m=m0, m_se=float(np.nanstd(mb)),
-                      me=me, c1c0=c1c0, c1c0_se=float(np.nanstd(c1b)),
-                      Acv=float(np.nanstd(Ab) / max(abs(A0), 1e-300)) if A0 else np.inf)
+    for s in levels:
+        a = np.array(Ab[s]); c = np.array(c1b[s])
+        res[s] = dict(A=cen['A'][s], A_se=float(np.nanstd(a)),
+                      me=cen['me'][s], c1c0=cen['c1c0'][s],
+                      c1c0_se=float(np.nanstd(c)),
+                      sn=(cen['A'][s] / np.nanstd(a) if np.nanstd(a) > 0 else np.nan))
 
     # GEVP mass over smeared levels only (level>=2); unsmeared is contact noise
     guse = [a for a, s in enumerate(levels) if s >= 2]
-    if len(guse) >= 2:
-        gv = gevp_mass(C, T, use=guse)
-    else:
-        gv = np.array([])
+    gv = gevp_mass(C, T, use=guse) if len(guse) >= 2 else np.array([])
 
     if verbose:
         print(f'# {path}')
         print(f'# SU(2) L={L} beta={beta} N={N} T={T} block={block} '
-              f'(tau_plaq={tau:.1f}) tfit={tmin}..{tmax}')
-        print(f'  {"n":>3s} {"A=f1^2":>12s} {"+-se":>10s} {"S/N":>7s} {"m":>7s} {"+-":>6s} '
-              f'{"m_eff(1..)":>22s} {"C1/C0":>9s} {"+-":>7s}')
+              f'(tau_plaq={tau:.1f})  m_G={cen["mG"]:.3f}+-{mG_se:.3f}')
+        print(f'  {"n":>3s} {"A=f1^2":>12s} {"+-se":>10s} {"S/N":>6s} '
+              f'{"m_eff(t=1,2,3..)":>20s} {"C1/C0":>9s} {"+-":>7s}')
         for s in levels:
             r = res[s]
-            me_s = ' '.join('%.2f' % x if np.isfinite(x) else '  - ' for x in r['me'][:4])
-            sn = r['A'] / r['A_se'] if r['A_se'] > 0 else np.nan
-            print(f'  {s:3d} {r["A"]:+12.5g} {r["A_se"]:10.3g} {sn:+7.1f} {r["m"]:7.3f} '
-                  f'{r["m_se"]:6.3f} {me_s:>22s} {r["c1c0"]:+9.4f} {r["c1c0_se"]:7.4f}')
-        print(f'  GEVP m_eff (t=2..T/2): ' +
-              ' '.join('%.3f' % x if np.isfinite(x) else '-' for x in gv))
-    return dict(levels=levels, L=L, beta=beta, N=N, T=T, block=block, res=res, gevp=gv)
+            me_s = ','.join('%.2f' % r['me'][t] if t in r['me'] and np.isfinite(r['me'][t])
+                            else '-' for t in range(1, T // 2 + 1))
+            sn = r['sn']
+            print(f'  {s:3d} {r["A"]:+12.5g} {r["A_se"]:10.3g} '
+                  f'{sn:+6.1f} {me_s:>20s} {r["c1c0"]:+9.4f} {r["c1c0_se"]:7.4f}')
+        if gv.size:
+            print('  GEVP m(t=2..T/2): ' +
+                  ' '.join('%.3f' % x if np.isfinite(x) else '-' for x in gv))
+    return dict(levels=levels, L=L, beta=beta, N=N, T=T, block=block,
+                res=res, mG=cen['mG'], mG_se=mG_se, gevp=gv)
 
 
 if __name__ == '__main__':
