@@ -1,0 +1,39 @@
+# MS-MONOTONE-INVARIANT — can an RG-invariant positive floor the residue `f₁²` across the crossover?
+
+> 2026-11-23 · Attack of **(MS)** `⇔ inf supp ν>0` (the support-edge / mass-gap statement, C-BBS-SUFFICIENCY) via an **RG-invariant positive**: the gluon condensate `⟨O_S⟩`, `O_S≡¼trF²`; the topological susceptibility `χ_t`; or the trace-anomaly coefficient. Target: `f₁² ≥ c·⟨O_S⟩^{1/2}` (or `≥c·χ_t`, `≥c·a`). **判词 (verdict): NO-GO, 2/5.** The invariant is a **marginal aggregate**, never the edge atom: every named positive is a *moment/total* of a positive spectral measure, and the moment lemma makes totals **upper** bounds on the edge. The "same marginal operator" fact is exactly a **multiplicative covariance** `Z_O²` (INVENT-TRANSPORT): it transports a *known* residue, `0↦0`, and cannot floor an unknown one. The published form of this target — the Chanowitz–Ellis trace-anomaly / SVZ scalar-glueball sum rule — is **aggregate + renormalon-ambiguous + assumes single-resonance saturation**, i.e. it *is* the missing step. **No `5/5`.**
+
+## 1 · Steelman — the intuition is sharp
+The unique protected bridge into `0⁺⁺` is `T^μ_μ=(β/2g)O_S` (INEQ-T4). Its per-state decay constant `F_T≡⟨0|θ|G⟩` is **RG-invariant**, and the identity gives `f₁=F_T/(β/2g)`, so `f₁²=F_T²/(β/2g)²` (INEQ-R7); the condensate `⟨O_S⟩` is positive, RG-invariant, and the *same* operator. The steelman is airtight in premise: residue, condensate, anomaly are one operator's data. Even the target's dimension wounds it — `[f₁²]=6`, `[⟨O_S⟩^{1/2}]=2` force `[c]=4`, i.e. `c∝m_G²`: the bound smuggles in the gap scale; and the dimensionally clean `f₁²≥c'⟨O_S⟩^{3/2}` is still an aggregate and dies below.
+
+## 2 · Wall 1 — aggregate ≠ edge, and G2B soft-scaling makes the light atom invisible
+`f₁²=ν({m₁²})` is the *off-diagonal* KL atom; `⟨O_S⟩`, `χ`, `χ_t`, and the anomaly coefficient are **moments/totals**. The moment lemma (GAP-G2-edge) is decisive: positive moments bound the edge from **above**, and a single delta *saturates* each aggregate — so a fixed positive aggregate is consistent with an arbitrarily small edge atom. G2B supplies the YM-specific reason and the task's caveat is correct: the dilaton soft-scaling is `f₁²∝f_G²m⁴`, so the light atom's contribution to *every* moment is `∝m^{4+2k}→0`. Taking `ε=m₁²`, `f₁²=cε²`, and the susceptibility-type aggregate `M_{−1}=∫s^{−1}dν`:
+
+| `ε` | `f₁²=cε²` | atom share `f₁²/ε` | `M_{−1}` total | `χ_t`-bound `χ_t/f₁²` on `m²` |
+|---|---|---|---|---|
+| `1e-2` | `1.0e-4` | `1.0e-2` | `1.010` | `1.0e3` |
+| `1e-6` | `1.0e-12` | `1.0e-6` | `1.000001` | `1.0e11` |
+| `1e-10` | `1.0e-20` | `1.0e-10` | `1.000000` | `1.0e19` |
+
+The aggregate stays pinned at `1.0>0` (heavy continuum dominates) while `f₁²→0`. **A positive invariant aggregate does not floor the residue.** The counterexample `ν=wδ_ε+(1−w)δ_S`, `w/ε≤1/λ`, is exactly this, and it is a legitimate OS theory (Jaffe: `ν≥0`).
+
+## 3 · Wall 2 — diagonal ≠ off-diagonal, and `χ_t` runs the wrong way
+`f₁²` is vacuum↔state (off-diagonal); the anomaly protects **diagonal** bilinears — the forward charge `⟨G|θ|G⟩` and the cubic `g_GGG` — and `f₁²` **cancels identically** at the pole (`f₁²⟨G|θ|G⟩=(β/2g)f₁²g_GGG`, INEQ-T4): an identity, zero inequality. `χ_t` is worse than neutral: (i) it is `P`-odd (`q=trF F̃`), a *different* channel from the `P`-even `0⁺⁺` residue; (ii) it gives `χ_t=Σf_n²m_n²≥f₁²m₁² ⇒ m₁²≤χ_t/f₁²` — an **upper** bound on `m₁²` that *blows up* as `f₁²→0` (EDGE-f1sq §1, GAP-IN11 §1); (iii) `χ_t>0` is lattice-empirical, not a 4D continuum theorem, and certifies only that *some* atom exists, never that it is the lightest.
+
+## 4 · The trace-anomaly coefficient — free-field-false or aggregate
+The conformal `a`/`c` charges are nonzero for a **free** gauge multiplet, while the free field has `f₁²=0`; so `f₁²≥c·a` is **false on the free field** — it fails the acid test in the wrong direction (a tool that predicts a residue the free field does not have). The `β²` log coefficient of `⟨θθ⟩` instead vanishes as `g→0`, so an inequality against it is acid-vacuous, and it is a UV/high moment (`x→0` OPE), turned into an **upper** bound by the moment lemma. Either way: no floor.
+
+## 5 · The exact missing step — one-state dominance = isolation = the gap
+The one exact RG-invariant relation is the per-state **equality** `f₁²=F_T²/(β/2g)²`. RG-invariance buys *constancy* of `F_T` on its protected state, not nonvanishing at the **edge**: with no no-level-crossing theorem an excitation may dive below the protected state, so a nonzero `F_T` need not be the edge residue (INEQ-R7). Extracting the *lightest* residue from any invariant is verbatim **one-state dominance / spectral saturation** = `I2` isolation = `H*`, the open species one rung above the gap (G2-ASSEMBLE-100 §2, RESIDUE-CONDITIONAL). The Chanowitz–Ellis sum rule assumes exactly this saturation; it does not prove it.
+
+## 5-point verdict (target `f₁² ≥ c·(RG-invariant)>0`)
+1. **Nonperturbative — PASS.** Anomaly/condensate/`χ_t` are model-independent.
+2. **Controls SIGN / lower-bounds the atom — FAIL.** Aggregates give upper bounds (moment lemma); `χ_t` upper on `m₁²`; Ward homogeneous; `a`-charge free-field-false.
+3. **Non-circular — FAIL.** Any edge floor from the invariant `⟺` one-state dominance / `I2` `=H*`.
+4. **Non-SUSY + fails free field honestly — PASS (vacuous).** The NP gluon condensate and `χ_t` vanish at `g=0`, so `f₁²≥c·0` is silent there — clean but content-free; the `a`-charge variant is *refuted* by the free field (nonzero `a`, `f₁²=0`).
+5. **Uniform `inf supp>0` (MS) over `[1/48,2.5]`, `a→0` — FAIL.** No uniform floor; the atom can shrink while the aggregate stays fixed.
+
+**2/5 — NOT `5/5`.**
+
+**Sharpest line.** The residue, the condensate, and the anomaly are one operator, and RG-invariance is exact — but invariance is a **covariance** (`f₁²(μ)=Z_O²(μ,μ₀)f₁²(μ₀)`), and a covariance is a homomorphism `0↦0`: it carries a *known* residue across scales, it never lifts an *unknown* one off zero. Every named invariant is a **total**, and a total (`∫φ dν`) is Schur-concave: it is *smallest* on concentrated measures, so it can never force an atom. Flooring `f₁²` needs the **reverse** inequality, a *total bounded above by the atom* (Schur-convex coercivity, EDGE-f1sq §1) — which no anomaly, condensate, susceptibility, or central charge supplies. The light atom is `χ`- and condensate-invisible by soft-scaling `∝m⁴`; the "same marginal operator" is the same unprotected order parameter in aggregate clothing. **The invariant gives the aggregate; the residue floor is `H*`, the gap.**
+
+*Refs.* INEQ-R7 (exact `f₁=F_T/(β/2g)`, per-state, constancy≠edge); INEQ-T4 (Ward homogeneous in `f₁²`; protects `g_GGG`, not the off-diagonal residue); DILATON-FLOOR (`f_G`=residue in dilaton dress, 2/5); G2B-NEARZERO-EXCLUSION (soft-scaling `f₁²∝m⁴`, light states `χ`-invisible); CONTINUUM-VARIANCE-DEFECT (anomaly = RG-*covariant* aggregate; "constancy, not edge"); INVENT-TRANSPORT-INEQ (`Z_O²` square, `0→0`, transports a known residue); INEQ-R10 (§"sign lemma": positive weight ⇒ upper; Chanowitz–Ellis family = aggregate + assumed saturation); EDGE-f1sq-attack (§1 Schur-convex coercivity absent; `χ_t≥f₁²m²`); GAP-IN11 §1 (`m₁²≤χ_t/f₁²`, upper; `χ_t>0` lattice-empirical); GAP-G2-edge (moment lemma; residue–level-gap); G2-ASSEMBLE-100 §2 (`H*=I2=H1`); RESIDUE-CONDITIONAL (`f₁²≥r₀` = the sharp single-number gap); C-BBS-SUFFICIENCY ((MS)=`inf supp>0`). External: Källén 1952 / Lehmann 1954; Jaffe, *Phys. Rev.* **158** (1967) 1454; Chanowitz–Ellis, *Phys. Rev. D* **7** (1973) 2490; Shifman–Vainshtein–Zakharov, *Nucl. Phys. B* **147** (1979) 385; Caron-Huot–Pokraka–Zahraee, *JHEP* **01** (2024) 195, arXiv:2309.04472; Gaiotto–Kapustin–Seiberg–Willett, arXiv:1412.5148; Komargodski–Schwimmer, *JHEP* **07** (2011) 018.
