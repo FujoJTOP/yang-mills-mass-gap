@@ -35,8 +35,8 @@ f₁² ≥ c₁(β)·u(β)^p·(1 − O(u)) > 0,    u(β)→0.
 ```
 骨架：`tr F²` 是有限 A1g plaquette 和 ⇒ 连通 Ursell 聚合物；收敛 = **Kotecký–Preiss** `u·K<1`（`K≤CN`）；
 `P2` 代价分层给 I2、基本特征系数之积为正给 I1；`f₁²` 是**模方**，Weingarten 符号管面积律求和、触不到 `m₁`。
-**这是 SZZ 给不了的一半（SZZ 只给隙的相关系数上界；P3 给残数下界）。** 模一个标准 graded-strip KP 引理。
-`PROOF-P3.md`、`PROOF-P1P2.md`。
+**这是 SZZ 给不了的一半（SZZ 只给隙的相关系数上界；P3 给残数下界）。** graded-strip KP 引理已在 `PROOF-P3-UNCONDITIONAL.md` 中完整写出并闭合（`K≤CN` 显式、`a₀>0`、余项 `≤Cu|w₁|` 且对 `V,L` 一致）。
+`PROOF-P3.md`、`PROOF-P1P2.md`、`PROOF-P3-UNCONDITIONAL.md`。
 
 ### 2.2 无溶解结构定理
 `0⁺⁺` 胶球**字面并进 `(gg)` 连续谱谱上不可能**：`m₁<2m₁=√s_th`（裕度=自身质量）、`0⁺⁺` vs `0⁺⁺*` 是
