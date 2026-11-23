@@ -95,7 +95,7 @@ f₁² ≥ c₁(β)·u(β)^p·(1 − O(u)) > 0,    u(β)→0.
 | **错半边**（UV/纤维 ⊥ 隙） | L3、H2 全局、梯度流、Dirichlet 比较、测度集中、热核、验证数值、步进标度、有效弦、S³ |
 | **改名=隙** | H1、NEO(ESI)、I2(E₂)、Hamiltonian 束缚能、L3（单圈精确） |
 | **上界方向** | Bogoliubov、Hylleraas、FSS、有限尺寸 |
-| **只到强耦合端** | 严谨大 N、SZZ、随机面/CPS（`λ<1/24`，差 75×）、中心涡旋 |
+| **只到强耦合端** | 严谨大 N、SZZ、随机面/CPS（`λ<1/24`；旧记 `75×` 系单位混淆，见 EMERGENT-4D）、中心涡旋 |
 | **指标=0** | 刚性 no-go（NCG/localization/BPS/Witten） |
 
 元结论：**不是"没找到"，是 ~60 次独立正攻各证同一个不可约性**——接近定理级的穷尽证据。
@@ -113,6 +113,8 @@ f₁² ≥ c₁(β)·u(β)^p·(1 − O(u)) > 0,    u(β)→0.
 6. **Savvidy 符号**（非阿贝尔）。
 
 **这些不是 6 个问题，是同一个：路径上 `m_{0⁺⁺}` 的 volume-uniform 下界 = 质量间隙本身。**
+
+**本战役终局收敛（见 `docs/PROOF-SKELETON.md`）**：这 6 个进一步化为**一格**——(场强 × 动量) 平面上的**"典型场 × 高动量"格**，需一条 `Var_μ(⟨v,∇S⟩|0)≤W_geo`。其余全格已闭：低场（`Φ″⪰N/12`+BL）、高场锥（WSTC 测量饥饿）、AF-UV（`g→0`）。**这一格 = 一个"方差上界"物种**，与 G1 的 L3（UV 侧的单侧力方差上界）**同物种、异尺度**。
 
 ---
 
@@ -137,14 +139,15 @@ f₁² ≥ c₁(β)·u(β)^p·(1 − O(u)) > 0,    u(β)→0.
 
 - **不是 Clay 证明。YM 仍是猜想。** 距定理 0%（公开问题）。
 - **真战利品**：5 件真定理（P3、无溶解、`W_geo≥0`、规范不变 PF、Lemma SC）+ 5 个过酸测新工具 + 3 条新 no-go + ~60 路免疫图 + 残留对象清单。
-- **坐标**：最后一步 = 路径上 `m_{0⁺⁺}` 的 volume-uniform 下界（或三构造的连续极限），**需要一台把强耦合的隙/残数连续搬过 Savvidy 交叉点、并取 `a→0` 的非微扰机器——这台机器尚不存在**（= 非微扰 4D 动力学，`TOOL-not-iii` 判词：非微扰纯规范 4D CFT 分类）。当代最前沿（CPS/CNS 2025）也只到 `λ<1/24`，差 75×。
+- **坐标**：最后一步 = 路径上 `m_{0⁺⁺}` 的 volume-uniform 下界（或三构造的连续极限），**需要一台把强耦合的隙/残数连续搬过 Savvidy 交叉点、并取 `a→0` 的非微扰机器——这台机器尚不存在**（= 非微扰 4D 动力学，`TOOL-not-iii` 判词：非微扰纯规范 4D CFT 分类）。当代最前沿（CPS/CNS 2025）也只到 `λ<1/24`（旧记 `75×` 系单位混淆，见 EMERGENT-4D）。
 - **但**：`G″` 符号在可测处为正、`W_geo≥0` 是定理、`D/S≈2%`、行列式看得见原子——**墙没倒，但墙现在是透明的、上了标尺的。**
+- **本战役终局（`docs/PROOF-SKELETON.md`）**：Clay 拆为 **G1(存在)+G2(隙)+通道**；G1≈70%（微扰核已闭、L3 开放）、G2 区域覆盖≈90% 但**符号=0%**（唯一开格=典型场×高动量）、通道=100%（无溶解真定理）。**全项目收敛到一个物种——"方差的上界"**，在 **UV(L3)** 与 **IR(H1)** 各现一次；其**符号载体是近正交**（`corr(a,∇S)≈0`，CS 对此符号盲），非量级（`VarG≈2` 硬在阈值之上）。A/B/C 三腿全部**走到终局**：A=无路（八路→H1/错向）、B=区域完/符号空、C=闭集闭/开格→命名物种。
 
 ---
 
 ## 10. 文件索引
 
-- 总册/前沿：`docs/YANG-MILLS-MASTER.md`（本册）、`docs/yang-mills-frontier.md`、`docs/new-tools-registry.md`、`docs/conditional-theorem.md`、`docs/gap-ledger.md`、`docs/IN-AUDIT.md`
+- 总册/前沿：`docs/YANG-MILLS-MASTER.md`（本册）、`docs/PROOF-SKELETON.md`（**G1+G2 逐节点状态 + 诚实完成度 %**）、`docs/yang-mills-frontier.md`、`docs/new-tools-registry.md`、`docs/conditional-theorem.md`、`docs/gap-ledger.md`、`docs/IN-AUDIT.md`
 - 已证定理：`PROOF-P3.md`、`PROOF-P1P2.md`、`PROOF-ISOLATION.md`、`PROOF-NO-DISSOLUTION-KINEMATIC.md`、`PROOF-JACOBIAN-SAVES.md`、`PROOF-GAUSS-INVARIANT-PF.md`、`PROOF-COARSE-POINCARE.md`
 - 新工具：`INVENT-TRANSPORT-INEQ.md`、`INVENT-VARIANCE-INEQ.md`、`INVENT-NEW-IDENTITY.md`、`INVENT-GAUGE-INVARIANT-MASS.md`、`INVENT-NEW-MONOTONE.md`
 - 新 no-go：`INVENT-CONVEXIFICATION.md`、`INVENT-SECOND-CONE.md`、`INVENT-NEW-INDEX.md`、`SCHUR-CONVEX.md`、`GOLDS-POS-MASS.md`
