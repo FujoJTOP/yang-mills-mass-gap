@@ -7,3 +7,7 @@
     150/400  (269s, ETA 449s)  RSS=70 peak=90MB
     200/400  (359s, ETA 359s)  RSS=70 peak=90MB
     250/400  (450s, ETA 270s)  RSS=70 peak=91MB
+    300/400  (538s, ETA 179s)  RSS=70 peak=91MB
+    350/400  (626s, ETA 89s)  RSS=70 peak=91MB
+    400/400  (714s, ETA 0s)  RSS=70 peak=91MB
+  DONE saved k0_su3_b5.7_L8_n2.npz  total 714s  peak RSS=91MB
