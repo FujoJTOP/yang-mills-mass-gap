@@ -1,0 +1,26 @@
+# FORGE5-SL-REFINED — refining the STOCHASTIC-LOCALIZATION backward cost by the exact cone structure
+
+> **2026-11-23 · FORGE5, direct attack on constraint #5 (the `e^{cN_□}` backward cost of HARDFORGE-SL-FULL Step 4).** I construct the requested per-scale/per-mode refinement **(BT′)**, charging each shell only for its *Savvidy-concave* modes at their *actual depth*. It **improves the exponential rate but does not remove it** — on the single IR `k→0` mode it collapses to H1. **Verdict: not 5/5; fails #5 at the IR mode**, for two independent reasons. (i) SL's tilt `T` is a *fixed* operator (at best `U′`-dependent, never `x`-dependent), so the cone/non-cone partition — **per-configuration** — cannot be exploited; the `sup` still sees the worst case, `σ_b=2.8` with `O(1)` concave fraction at **every** shell. (ii) At β=2.5 negatives are **UV/fiber-localized (90–97%, W6-BE)** — the *opposite* of the AF premise; even were the cone UV-suppressed, AF is logarithmic (`g_b³∼1/log³`), so `Σ_b g_b³N_b=Θ(N_□)`, not `O(1)`.
+
+## The refinement as proposed — (BT′)
+Per shell `b`, split modes into cone `C_b` (`Hess S_W<0`) and complement; `N_b^{cone}` the concave count, `σ_b:=−λ_min(Hess S|_{C_b})≥0` the depth. Tilt only the cone: `t_b=σ_b+ε` on `C_b`, `t_b=ε` off it (there `Hess S_W⪰0` and `Φ″⪰0` give `W_geo≥0`, PROOF-JACOBIAN-SAVES). Then
+> **(BT′)  `osc_refined = ½ Σ_b (σ_b+ε)N_b^{cone} + ½ε Σ_b N_b`**, target `osc_refined=O(1)`, giving `Var_μ(a_v) ≤ e^{osc_refined}/(G″_∞+t_∞)`.
+The task's scalings (count `∝∫|F|³`, depth `∝g_b|B_b|`) give per-shell charge `osc_b∼g_b∫_{shell}|F|³`, tapering in the UV; `W_geo≥0` removes the non-cone charge. The hope is `Σ_b osc_b<∞`.
+
+## Why the `sup` defeats the fixed tilt
+`T=Σ_b t_bΠ_b` is **x-independent** (SL needs a fixed `Z_t=√tX+g`; only `U′`-dependence is allowed). But `C_b={Hess S_W(x)<0}` **moves with `x`**: a direction non-concave at `x` is concave at `x′`. A fixed `t_b=ε` off the cone leaves `Hess S+T` indefinite somewhere, breaking Brascamp–Lieb. So the tilt must cover the **worst configuration of every shell**, where `σ_b=2.8`, concave fraction `O(1)` (22–49%): `osc_refined=½·2.8·Θ(N_□)=Θ(N_□)` — rate `c` drops, not to `O(1)`. The premise also fails at β=2.5: negatives are **high-momentum** (90–97% in the fluctuation block), the UV shells with the **most** modes; and AF resums the *coupling combinatorics* but **not the Savvidy sign** (CONTINUUM-3D-TO-4D). Even steelmanned, `Σ_b g_b³N_b` vs mode density `∼k³dk` gives `Σ^{Λ}∼Λ⁴/log³=Θ(N_□)`.
+
+## The single IR mode — where (BT′) is exactly H1
+Make the bulk free. The `k→0` mode `a_0=⟨v,Π_∞x⟩`, `v_e=1/√V`, has range `√V` (a sum of `V` bounded coordinates over `√V`), so `osc_∞=½ t_∞(range)²=½ t_∞π²V=Θ(V)`, `t_∞=σ_∞+ε`, `σ_∞≈0.3` (bare `PᵀHP` min, PROOF-COARSE-POINCARE). **One mode** costs `e^{cV}`; per-scale refinement is powerless — a single mode, not a shell-sum. The only escape replaces range by variance, but the return ratio is `Var_μ(a_0)/Var_{μ_T}(a_0)=1+t_∞/m_eff²` (FORGE5-SL-BACKWARD), and certifying it `O(1)` **is** certifying `m_eff²≳t_∞` — the gap. So the honest (BT′) **is H1 at the IR `k→0` mode**.
+
+## Five-point verdict (honest)
+1. **Nonperturbative — PASS.** Exact cone geometry + Prékopa + BL; no `g`/`1/N` expansion.
+2. **Sign control — PASS on the tilted cone.** `Hess S+T⪰ε` is value-free; refinement only shrinks the cost.
+3. **Non-circular — PASS for bulk, FAIL at closure.** Bulk (BT′) uses bare `σ_b`, `∫|F|³`, not the gap; the IR-mode ratio `1+t_∞/m_eff²` *is* the gap — circular (≡ Road ii).
+4. **Non-SUSY + acid test — PASS.** Free field: empty cone (`σ_b≡0`), `t_b=ε→0`, `osc→0`, `λ→0`; YM's nonempty (UV-occupied) cone is the discriminator.
+5. **Uniform `m_eff²(k→0)≥λ` — FAIL.** Exact failure: `osc_∞=Θ(V)` on the lone `k→0` mode (range `√V`) ⇒ `e^{cV}`; bulk refinement independently defeated by the UV-localized cone. **Reaches only H1 at the IR mode.**
+
+## Sharpest line
+The cone is a property of each **configuration**, but SL's tilt is a **fixed operator**; the `sup` evaluates `osc` at the worst configuration — every shell concave at depth 2.8 and, at β=2.5, concavity *living in the UV shells with the most modes*. Per-scale refinement lowers `c`, but `Σ_b σ_bN_b^{cone}=Θ(N_□)` survives because **count × depth is volume-extensive** (`∫|F|³`), and AF is logarithmic against a polynomial mode count. Untouched is the `k→0` mode, whose `√V` range makes the return `e^{cV}` from one mode and whose ratio `1+t_∞/m_eff²` **is** `m_eff²`. **(BT′) is a genuine rate improvement, sign-preserving and acid-test-clean, but not 5/5: it leaves H1 on the single IR mode — it cannot beat `e^{N_□}` because the reweight's support is the whole torus and the gap lives at the one mode whose torus-range is volume-large.**
+
+*Refs.* HARDFORGE-SL-FULL (§Step 4, (BT)); PROOF-STOCHASTIC-LOCALIZATION (`Hess+tI`, energy `=G″`); FORGE5-SL-BACKWARD (ratio `1+t*/m_eff²`, `k→0` range `√V`); PROOF-COARSE-POINCARE (`PᵀHP` min −0.3, H1); PROOF-SAVVIDY-EXACT-SIGN (count `∝∫|F|²`, depth `∝g|B|`, weight `∝∫|F|³`); W6-BE-at-2.5 (22–49% neg, 90–97% UV/fiber); PROOF-JACOBIAN-SAVES (`Φ″⪰0`, `W_geo≥0`); CONTINUUM-3D-TO-4D (AF resums combinatorics, not the Savvidy sign); Holley–Stroock, Ann. Probab. **15** (1987) 1541; Brascamp–Lieb, JFA **22** (1976) 366.

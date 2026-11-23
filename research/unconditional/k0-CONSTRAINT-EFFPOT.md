@@ -1,0 +1,23 @@
+# k0-CONSTRAINT-EFFPOT — the constraint effective potential for a₀: the cleanest one-field face of the gap, a theorem at β=0, one variance short at 2.5
+
+> **2026-11-23 · Verdict (判词).** The constraint effective potential `V_eff(α)=−log p(α)` of the volume-averaged zero mode `a₀=⟨v,x⟩`, `v_e=1/√V` (‖v‖=1, range √V), is an **exact, faithful reformulation** whose curvature at its symmetric minimum is *literally* the coarse Hessian `G″(0)=m_eff²(k→0)` — no approximation. It is the **only** direction in this corpus that is a **rigorous theorem in a genuine regime**: the Haar/Jacobian part `Φ` is convex, Prékopa forces `V_eff` convex, and at β=0 the curvature has an explicit positive lower bound `≥N/12` at `k→0`, uniformly in `L` (measured 0.248 SU2). It **passes #1 and #4** cleanly. It **does not meet all five**: at β=2.5 the exact curvature `G″=Δ_dyn+W_geo+X` has a Savvidy-negative part whose control needs an upper bound on `Var(G|0)` — this is H1 — so it **fails #2 (at 2.5), #3 (at closing), #5**. It is the sharpest *rename*, and the sharpest statement of *why the β=0 gap survives but 2.5 does not*.
+
+## (1) The object — curvature = the gap, exactly
+`p(α)=∫dX δ(⟨v,X⟩−α)e^{−S}` (with Haar `J`). Differentiating twice, `V_eff″(α)=E_μ[H_vv|a=α]−Var_μ(∂_nS|a=α)=G″(α)[v]`. At the reflection-symmetric mode `α*=0`, `V_eff″(0)=G″(0)` (PROOF-JACOBIAN-SAVES §1; PROOF-COARSE-POINCARE). Hence `V_eff″(0)≥λ ⟺ Var_μ(a₀)≤1/λ ⟺ m_eff²(k→0)≥λ` — the gap, in one scalar function of one variable. The virtue is real: no hidden geometry, a 1-D convexity statement, and a clean acid test.
+
+## (2) Where it is a theorem — β=0 / weak UV
+`S=S_W+Φ`, `Φ=−log J` convex (`g″≥1/6⇒Φ″⪰N/12`). Prékopa ⇒ the pushed marginal of `e^{−Φ}dX` is log-concave ⇒ `V_eff` convex, `W_geo:=E[Φ″]−Var(Φ′)≥0` on **every mode including `k→0`**, uniform in `L`. At β=0 this is the whole curvature: `V_eff″(0)=W_geo`, measured 0.248 (SU2) vs `E[Φ″]−Var(Φ′)=0.246`. This is a nonperturbative, non-circular **lower bound** `V_eff″≥N/12` at `k→0` — a genuine gap at strong coupling, consistent with P3.
+
+## (3) The wall — β=2.5
+Exact split `V_eff″(0)=Δ_dyn+W_geo+X`, `Δ_dyn=E[H]−Var(G)` (Savvidy, ≈0 equipartition), `W_geo≥0` (proved), `X=−2Cov(G,Φ′)`. Measured `W_full=W_geo+X≈+0.22–0.51>−Δ_dyn`, but a **proof** needs `W_full>−Δ_dyn`, i.e. an **upper bound on `Var(G|0)`** — the conditioned force variance — which is exactly H1 (PROOF-JACOBIAN-SAVES (◆)). The constrained integral is not closeable one-loop: the Savvidy negative direction sits **on** the `k→0` slice, so `H_ff` is indefinite and the Gaussian/Schur `V_eff` is **undefined** (PROOF-BORN-OPPENHEIMER; COARSE-POINCARE (a)(iii)). The rate-function escape is closed too: LSI/strong-convexity `≥λ` of the marginal is Fenchel-equivalent to `Var(a₀)≤1/λ`.
+
+## Five-point verdict (honest)
+1. **Nonperturbative — PASS.** Exact identity + Prékopa + `Φ″⪰N/12`; no expansion.
+2. **Sign control — PARTIAL; FAILS at 2.5.** `W_geo≥0` is a genuine value-free lower bound on every mode. The **total** curvature sign at the physical coupling needs `W_full>−Δ_dyn`, uncontrolled.
+3. **Non-circular — PASS for `W_geo`; FAIL at closing.** Certifying `V_eff″(0)≥λ` at 2.5 = bounding `Var(G|0)` = H1. A RENAME, not a closure.
+4. **Non-SUSY + free field — PASS (cleanest in corpus).** Free massless: zero mode flat ⇒ `p∝`Lebesgue ⇒ `V_eff″=0`, `f₁²=0`; the Haar term (absent for free) is the discriminator. YM β=0 SU2: 0.248; free: 0. Exact acid test.
+5. **Uniform `m_eff²(k→0)≥λ` — FAIL.** Only `V_eff″≥N/12` at β=0/weak UV; at 2.5 only `≥0`−uncontrolled; continuum transport additionally `(CP)`.
+
+**Sharpest line.** The constraint effective potential is the right object and the right language — `V_eff″(0)=G″` is an identity, Prékopa makes the Haar half a value-free lower bound on **every** mode, and at β=0 the gap is a theorem with constant `N/12`. At β=2.5 it is one estimate from closing, and that estimate is `Var(G|0)≤…`: the same Savvidy-indefinite-fiber variance the SL, martingale, SCBL and transport routes all land on. **A rigorous strong-coupling gap expressible as one-field convexity; not the β=2.5 gap — a rename that fails #2(2.5), #3(closing), #5.**
+
+*Refs.* PROOF-JACOBIAN-SAVES (`V_eff` convex, `G″=Δ_dyn+W_geo+X`, (◆), β=0 closure 0.248/0.246); INVENT-VARIANCE-INEQ (`G″=S−D`); PROOF-COARSE-POINCARE (H1, `H_ff` indefinite); PROOF-BORN-OPPENHEIMER (Schur undefined); HARDFORGE-SL-FULL; FORGE5-SL-MARTINGALE; FORGE5-CONE-VARIANCE (`E[H]=E[f²]`); PROOF-P3-UNCONDITIONAL (β<1/48); Prékopa 1971; Brascamp–Lieb 1976; Savvidy 1977; Shen–Zhu–Zhu, CMP 400 (2023); Bakry–Émery/HWI.
