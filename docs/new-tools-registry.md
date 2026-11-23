@@ -57,6 +57,12 @@
 ### B3. 刚性 no-go（指标不可能）
 任何**离散整数**、且在保对称变形下**局部常数**的指标，沿连通 β 族（`β=∞` 达自由高斯）**必为常数** ⇒ 等于自由值 ⇒ **YM 全为 0**。**隙必须是 β-非解析跳变，不是任何离散不变量。** 统一解释 NCG/localization/BPS/Witten 旋量为何全在自由点返 0。（唯一过酸测的 Gribov-FP 指标靠数规范副本。）`INVENT-NEW-INDEX.md`。
 
+### B4. Feshbach/Schur + 图角 no-go（消去负块只会帮幸存者）
+块分解 `H=[[A,B],[Bᵀ,C]]`，`C≺0`（LLL 负块）⇒ `Σ_P=A−BC⁻¹Bᵀ=A+B|C|⁻¹Bᵀ⪰A`：修正**只加不减**（Haynsworth `inertia(H)=inertia(C)+inertia(Σ)`，验证 `λ_min(Σ−A)=−6·10⁻¹⁶`）。故"小角度保 `Σ` 正"是符号错误：`Σ>0⇔A=PᵀHP>0`，`A` 即隙。图角唯一通过重叠 `ε=sin²θ` 进入，需 `ε<½`（`θ<45°`）才有 `A>0`：**冻结常背景上 `θ=0` 但 vacuous（`F≡0` 同 0、`g`-依赖）**，**物理 `k=0` 上 `ε=O(1)`（实测 `PᵀHP` min `−0.3`）、无动量分离**。整条路 `⇔ ε<½ ⇔ H1`。`FORGE-FESHBACH-ANGLE.md`。
+
+### B5. Krein 空间 / Pontryagin no-go（计数≠底，UV≠IR；分叉死结）
+Savvidy Hessian `−D²+2adF_B` 是**不定**算子，Krein 空间谱论（Pontryagin Π_κ、Langer definitizable、谱函数）确是其精确语言，且能把 UV 塔锥空严格证成形（`λ_j>k_⋆` 壳 `κ=0`、`Tr H_−≲∫|F|³`）——**真收获（UV 半定理）**。但一切 Krein 不变量是**计数/符号**（负指标 `r_−`、符号差）或 **UV 尺度**（J-正底 `=Θ(g|B)`，Landau 能级），而隙是 `k→0` 底部的 **min**、经量纲透射的 **IR** 尺度。两路互斥封死：`J=sign H`（使地板物理）⇒ `κ=dim H_+=∞` 且循环（需正谱）；先验 BRST/Gupta–Bleuler 度规 ⇒ `κ=O(1)` 但自由场**逐字相同**（酸测空洞）。signed 负指标是整数 ⇒ B3 刚性 ⇒ 恒等自由值 `0`。**definitizing 劈裂恰在 `k=0`（Savvidy 带底、粗模与最负模重合）失去一致裕度——Krein 临界点正是间隙要印数的那一点。** 余下缺失不等式 `inf spec(H|_物理侧)≥κ_{IR}>0`（`(L,a)`-一致）= `(H)` = H1。`FORGE-KREIN-SPECTRAL.md`。
+
 ---
 
 ## C. 战役中证出的结构定理（真结论，非 no-go）
