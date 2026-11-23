@@ -1,0 +1,18 @@
+# COMPUTE-GPP-SU3 — coarse-mode curvature G″ at k=2π/L on SU(3), β=5.7
+
+**Verdict.** On SU(3) at β=5.7 (the crossover), the softest nonzero mode k=2π/L (=π/2 on L=4, π/3 on L=6) has **G″>0 on both volumes, in 6/6 transverse plane-wave modes each.** The positive sign is carried by **W, the Haar-Jacobian term**, not by the action bracket: the flat action curvature and force variance cancel to equipartition, `E[H]−Var(∇S)≈0` (|·|≤0.06), while `W=+0.28` (L=4) / `+0.31` (L=6). Within W the **provably-nonnegative geometric part** `W_geo=E[Φ″]−Var(Φ′)≈+0.32` dominates; the cross term `X=−2Cov(∇S,Φ′)` is small (−0.04 / −0.01). This is the SU(3) k=2π/L complement of the SU(2) k→0 result and is **consistent with — not a proof of — G″(0)>0 via the proven W_geo≥0** (PROOF-JACOBIAN-SAVES: Φ convex ⇒ Prékopa ⇒ W_geo≥0 for every mode, all k).
+
+**Table** (β=5.7; transverse plane modes at n=1 → |k|=2π/L; G″ = curvature of −log P(a); err = conservative block-bootstrap SE over 6 modes, autocorrelation τ≈2.4 stored configs; β,L in lattice units, N = configs):
+
+| β | L | k=2π/L | N | E[H] | Var(∇S) | E[H]−Var | E[Φ″] | W_geo | X | W | **G″±err** | br+W |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 5.7 | 4 | 1.571 | 2000 | 2.029 | 2.010 | +0.019 | 0.458 | +0.318 | −0.038 | +0.281 | **+0.425±0.084** | +0.300 |
+| 5.7 | 6 | 1.047 | 500 | 1.992 | 2.050 | −0.058 | 0.458 | +0.319 | −0.009 | +0.310 | **+0.329±0.149** | +0.251 |
+
+`1/Var(a)=0.40` (L4) / `0.38` (L6) agrees with G″ at the 5–15% level (Gaussian proxy). The exact identity `G″=(E[H]−Var)+W` closes to −0.13 / −0.08 — the known SU(3) log-amplitude/chart-cut systematic, stable across kernel bandwidth 0.15–0.45; the **sign and W-dominance are unaffected**.
+
+**W-dominance, explicit.** Dropping W (the naive Savvidy bracket `E[H]−Var`) gives `+0.02` (L4) / `−0.06` (L6) — sign-ambiguous, exactly the regime PROOF-COARSE-POINCARE flags as "sign undetermined". Adding W recovers the decisively positive G″; W contributes 66% (L4) and 94% (L6) of G″. Inside W, `E[Φ″]=0.458` is **identical on both volumes** and `Var(Φ′)=0.14`, so `W_geo≈+0.32` is volume- and mode-independent; the only unproven part is the small cross term |X|≤0.04. Diagnostics explain why W is load-bearing: `corr(a,∇S)≈0` (the action force is nearly independent of the collective amplitude, so conditioning barely lowers Var(∇S)), whereas `corr(a,Φ′)≈+0.85` (the Jacobian derivative tracks a strongly). Hence the a=0 kernel conditioning is essential for W; an unconditioned estimate is meaningless.
+
+**Physical decomposition.** `E[H]≈Var(∇S)≈2.0` is per-mode equipartition: the bare Wilson-action curvature is 99% cancelled by the force variance, so the action margin is ≈0. The transverse inverse propagator is positive because the **flat Haar measure, not the Wilson action, supplies the curvature**. W_geo≥0 is the Prékopa/Φ-convex theorem (exact at β=0 and in the UV, A1); here it is *measured*, and it is the large, stable piece.
+
+**Sharpest line.** At the softest accessible nonzero momentum k=2π/L, the SU(3) coarse-mode curvature is **positive and W-dominated**: the Jacobian term (whose leading geometric part is a proven ≥0 quantity) supplies +0.3 while the Savvidy action bracket supplies ≈0. But L=4,6 reach only k=π/2,π/3, and the two volumes differ, so the L=4→6 drop (0.43→0.33) mixes a k-decrease with a volume change — consistent with, not proof of, a positive k→0 limit. This is a **sign probe, not H1**: uniform positivity `G″≥λ` in the k→0, L→∞ limit — equivalently a uniform upper bound on `Var(∇S|0)` — is still the open coarse-Poincaré gap. Scripts: `research/unconditional/w7/` (`rerun_core.py`, `rerun_run.py`, `kzero_analyze.py`, `compute_su3_k2pil.py`, `final_su3_k2pil.py`).
