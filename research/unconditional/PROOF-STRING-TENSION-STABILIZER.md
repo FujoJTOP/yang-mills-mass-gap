@@ -1,0 +1,24 @@
+# PROOF-STRING-TENSION-STABILIZER — does √σ>0 on [1/48,2.47] pin m_{0⁺⁺}>0, or does the glueball dissolve at β_c≈2.47?
+
+> 2026-11-23 · Attempted stabilization of the `0⁺⁺` glueball by the string tension across `[1/48,2.47]` (`β=2N_c/g²` convention; SU(3) crossover `β≈2.47` at `λ≈7.3`, CROSSOVER). **Verdict: the logic is correct and its premise is exactly the wall.** *If* `√σ_phys>0` throughout the scaling trajectory, then `m_{0⁺⁺}≈(3.5–4)√σ_phys>0`, so a massless `0⁺⁺` requires `σ_phys→0` — deconfinement. But (i) rigorous `σ>0` is proven **only** at `β<1/48` (SZZ) / `β<12/17≈0.706` (Borgs–Seiler), in *lattice units at fixed `a`*, nowhere near 2.47; (ii) what is proven is `σ_lat(β)>0`, not the continuum `σ_phys>0` the argument needs — the `a→0` transport is the same RG wall as the mass gap; (iii) the bridging ratio `m_{0⁺⁺}/√σ=const` is a *measured* transmutation regularity, not the area law (area law ⇏ gap, Prop 6). The stabilizer is a true *physical identity* — glueball stability ≡ confinement, one `Λ` — but not an unconditional theorem. Physically the glueball does **not** dissolve: `β≈2.47` is a smooth crossover and `m_{0⁺⁺}/√σ` is measured constant across it.
+
+## (a) How far RP + OS/SZZ reaches — and what it proves.
+Rigorous `σ>0` is strong-coupling only: SZZ `|β|<1/48` (CMP **400**, arXiv:2204.12737; radius arXiv:2304.13917), volume-uniform, with a gap; Osterwalder–Seiler 1978; CPS23 random surfaces (arXiv:2307.06790); a finite-`a` strong-coupling area law+gap `0<β<β*(N)` (IJGMP 2026). Widest explicit published range: Borgs–Seiler `β<12/17≈0.706` (CMP **91** (1983) 329). CNS25 (arXiv:2505.16585/2509.04688) extends the regime but to 't Hooft large-`N`, **not** the finite-`N` crossover. The radius stops **~3.5× (Borgs–Seiler) to ~10²× (`1/48`) short of 2.47** — and this is `σ_lat>0` at fixed `a`, *not* the continuum `σ_phys=σ_lat/a²→const>0` the stabilizer needs; that requires the `a→0`/`β→∞` transport — confinement REPORT §6–7 `L7/G1`, the identical RG wall.
+
+## (b) Monopole condensation — mechanism, not theorem.
+Rigorous only in 3D compact `U(1)` (Polyakov 1977; Göpfert–Mack 1982: plasma ⇒ area law + gap). 4D non-abelian: the abelian projection is Gribov-ambiguous (Singer), no gauge-invariant condensate (Elitzur), 4D `U(1)` has a Coulomb phase (Guth; Fröhlich–Spencer), Seiberg–Witten is soft-broken `N=2` only. Even granting it, `√σ` is the **1-form/spin-1** mass, structurally not the `0⁺⁺` scalar (ABELIAN-PROJECTION). No rigorous 4D statement.
+
+## (c) Lattice scaling — evidence is real, points the other way.
+Morningstar–Peardon SU(3): `m_{0⁺⁺}=1710` MeV, `√σ≈420–440` MeV ⇒ ratio `≈3.9–4` (quoted `3.5–4`), constant across the scaling window (SU(2), large-`N` similar). At `T=0`, `β≈2.47` is a **smooth crossover**, not a deconfinement transition — no dissolution point. But this is finite-`V`, fixed-`a`, quenched *evidence* that presupposes the continuum limit to define the constant ratio.
+
+## Monotonicity in β — none rigorous.
+SU(N) has no FKG (PROOF-RANDOM-CLUSTER; PROOF-TRANSPORT-MONOTONE: no FKG ⇒ no `σ(β)` provably monotone). Physically `σ_lat` falls with `β` toward `σ_lat~σ_phys a²→0` — but that is continuum scaling, *not* confinement loss: `σ_lat→0` with `a→0` at fixed `σ_phys>0`. Conflating `σ_lat→0` with `σ_phys→0` (perimeter law) is the central error.
+
+## Exactly where σ>0 is proven vs open.
+- **`σ_lat>0` proven:** `0<β<1/48` (SZZ); `β<12/17≈0.706` Borgs–Seiler (widest explicit); expanded large-`N`/’t Hooft (CNS25). Fixed-`a` lattice units.
+- **`σ_lat>0` open:** `0.706≲β≤2.47` and beyond — the whole crossover approach.
+- **`σ_phys>0` (continuum):** open everywhere (`a→0` transport).
+
+**Sharpest line.** The stabilizer is a correct identity dressed as a proof: `m_{0⁺⁺}` and `√σ` are two faces of one `Λ`, so the glueball is stable **iff** confinement holds — but "`σ>0` reaches 2.47" *is* the confinement problem, and its continuum form `σ_phys>0` is the same RG wall as the mass gap. The rigorous result stops at `β<1/48` / `0.706`, ~3.5×–10²× short, so `[1/48,2.47]` is exactly where the proof is silent. Physically the glueball does not dissolve; rigorously that statement is confinement, not a corollary of the area law.
+
+*Refs.* Shen–Zhu–Zhu, CMP **400** (2023) 805, arXiv:2204.12737, radius arXiv:2304.13917; Osterwalder–Seiler, Ann. Phys. **110** (1978) 440; Cao–Park–Sheffield, arXiv:2307.06790; Cao–Nissim–Sheffield, arXiv:2505.16585, 2509.04688; Borgs–Seiler, CMP **91** (1983) 329; Polyakov, NPB **120** (1977) 429; Göpfert–Mack, CMP **82** (1982) 545; Guth, PRD **21** (1980) 2291; Fröhlich–Spencer, CMP **83** (1982) 411; Singer, CMP **60** (1978) 7; Elitzur, PRD **12** (1975) 3978; Seiberg–Witten, NPB **426** (1994) 19; Morningstar–Peardon, PRD **60** (1999) 034509. Internal: confinement REPORT/PROOF (§6–7 `L7`, Prop 6); ABELIAN-PROJECTION; PROOF-RANDOM-CLUSTER; PROOF-TRANSPORT-MONOTONE; GAP-G2-magnetic; CROSSOVER; MINIMAL (§1); W2-positive-scheme; PROOF-P3.

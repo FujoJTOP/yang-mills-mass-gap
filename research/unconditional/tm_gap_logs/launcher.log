@@ -1,0 +1,13 @@
+START L=4 beta=2.2 nconf=20000 seed=11 Mon Nov 23 15:41:53     2026
+START L=4 beta=2.5 nconf=20000 seed=12 Mon Nov 23 15:41:53     2026
+START L=4 beta=2.8 nconf=20000 seed=13 Mon Nov 23 15:41:53     2026
+START L=6 beta=2.2 nconf=6000 seed=21 Mon Nov 23 15:41:53     2026
+START L=6 beta=2.5 nconf=6000 seed=22 Mon Nov 23 15:41:53     2026
+START L=6 beta=2.8 nconf=6000 seed=23 Mon Nov 23 15:41:53     2026
+DONE  L=4 beta=2.8 Mon Nov 23 15:52:03     2026 rc=0
+DONE  L=4 beta=2.2 Mon Nov 23 15:52:13     2026 rc=0
+DONE  L=4 beta=2.5 Mon Nov 23 15:52:25     2026 rc=0
+DONE  L=6 beta=2.5 Mon Nov 23 15:53:22     2026 rc=0
+DONE  L=6 beta=2.2 Mon Nov 23 15:53:29     2026 rc=0
+DONE  L=6 beta=2.8 Mon Nov 23 15:54:49     2026 rc=0
+ALL DONE Mon Nov 23 15:54:49     2026

@@ -1,0 +1,21 @@
+# OUT-transplant — can a PROVEN theorem from another field stand in for the residue bound `f₁²≥r₀`?
+
+> 2026-11-23 · 判词：**没有任何已证的外部定理可移植；原因不是"没找遍"，而是结构性的**——每条谱隙定理都以"算子已给定"为前提，而这里算子（YM 转移算子）恰是未知；且任何框架无关的假设都被自由场满足，而自由场处 `f₁²=0`。
+
+**Target, stated for a foreign theorem.** The gap reduces (RESIDUE-CONDITIONAL) to `f₁²≥r₀>0`, the weight of the lightest atom of the KL measure `ν` of a transverse gauge-invariant interpolator. Since `ν≥0` (reflection positivity), every protected/moment/positivity functional gives `atom ≤ total`, i.e. an **upper** bound on `f₁²` (SCHUR-CONVEX). A foreign theorem must therefore deliver the one object no YM structure carries: a **lower bound on a single atom weight of a positive measure**, from non-moment, non-aggregate data.
+
+**Four genuine candidates, each judged.**
+
+1. **Operator theory / ergodic theory — transfer-operator spectral gap.** Ruelle (1989/90), Baladi–Tsujii (2007), Liverani (2004): for a uniformly hyperbolic (Axiom-A) map, the Perron–Frobenius operator on an anisotropic Banach space is nuclear, eigenvalue 1 is isolated, correlations decay as `ρᵗ`, `ρ<1`. A proven *lower* bound on a gap, in the identical KL/transfer language — the most seductive fit. **Dictionary fails:** (i) it presupposes the transfer operator *in closed form*; YM's `T=e^{−aH}` is the unknown (G1). (ii) Its hypothesis is uniform hyperbolicity + compactness — false at β≈2.5, where the critical points are Savvidy saddles and the flow bubbles (H1-T6). (iii) It bounds *classical* correlation decay, not the KL atom of the 0⁺⁺ interpolator — the "one object, many vocabularies" conflation (CONVERGENCE-redteam c). Where YM's operator *is* controlled (β<1/48) the gap is already SZZ's theorem.
+
+2. **Probability — concentration / log-Sobolev (Talagrand, Brascamp–Lieb, Bakry–Émery).** Gives `Var ≤ …` gap bounds — purely *aggregate*; wrong cone (atom, not variance); the convexity hypothesis dies at Savvidy (W6: `min(Ric+Hess S)≈−2.3`). Cheeger/expander bounds are conductance aggregates of the same kind. Re-tread of P4/T1/T4.
+
+3. **Number theory — automorphic gaps & rigidity.** Selberg's proven `λ₁≥3/16`, Deligne's Ramanujan bound, Mostow–Margulis rigidity. Genuinely gap-producing, genuinely elsewhere — but for arithmetic locally-symmetric Laplacians. A dictionary would need YM's transfer operator to be a Hecke operator on an arithmetic quotient; there is no arithmetic lattice, no Hecke structure in the SU(N) measure, and YM is critical/non-rigid (anti-Mostow). No candidate dictionary exists; *building* one is a new arithmetic structure on the gauge measure, not a transplant.
+
+4. **Algebraic geometry / group theory — Hard Lefschetz, Hodge/index, Property (T).** All *protected/topological* (cohomology, moments) ⇒ upper bounds ⇒ the exact wrong cone (SCHUR-CONVEX; H1-T7). Property (T) gives only the *UV/kinetic* gap on SU(N), killed by the `k→0` delocalized mode (GAP-G2-mass c); combinatorics (KKL, influence) is aggregate likewise.
+
+**Why no transplant — the genericity obstruction (sharpest line).** Every proven spectral-gap theorem has the form "∀ operator `L` satisfying hypothesis `H`: `spec(L)∩(0,g)=∅`." Forcing `f₁²>0` requires **(D1)** presenting YM's `T` in closed form = G1 (existence), and **(D2)** showing the mass is *this* operator's gap with `H` holding at β=2.5 = G2, where `H` fails at Savvidy. And `H` is framework-invariant: the free massless field satisfies every OS/positivity axiom with `f₁²=0`. So either `H` admits the free field — it cannot output a bound false there; or `H` excludes it — `H` is some nonperturbative YM fact, i.e. G1/G2 in disguise. **The dictionary is not between two known objects: its left side is the unknown.** Constructing it *is* the gap.
+
+**Honest scope.** This rules out the proven-theorem *class*, not `∀possible` (CONVERGENCE-redteam d). The only escape is a theorem whose hypothesis is (a) true of strong-coupling YM and (b) false of the free field — already YM-specific, hence no longer "from elsewhere."
+
+*Refs.* RESIDUE-CONDITIONAL, SCHUR-CONVEX, LEVER-nonconvex-edge, GAP-G2-edge, GAP-G2-mass, H1-T1/T4/T6/T7, CONVERGENCE-redteam; Ruelle (1990); Baladi–Tsujii (2007); Liverani (2004); Bakry–Émery (1985); Talagrand (1996); Brascamp–Lieb (1976); Selberg (1965); Deligne (1974); Mostow (1968); Margulis (1975); Kahn–Kalai–Linial (1988); SZZ arXiv:2204.12737.

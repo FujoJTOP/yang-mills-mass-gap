@@ -1,0 +1,17 @@
+# INEQ-R5-donsker-varadhan — is the residue a Donsker–Varadhan rate (a sup ⇒ lower bound), or only aggregate pressure?
+
+> 2026-11-23 · Direct probe of the DV/Legendre framing of `f₁²`. **Verdict (pinned, nothing constructed): the premise is right, the object is in the wrong semicontinuity class.** The DV formula genuinely is a *sup over functions*, hence lower-semicontinuous — the correct class to lower-bound a *lsc* quantity. But the residue `f₁²=ν({m₁²})` is an *atom*: upper-semicontinuous and **not** lsc. A metric-space theorem (lsc ⟺ sup of continuous minorants) then says `f₁²` is **not** any DV sup; and every sup-class lower barrier to it is forced `≤0` by the smearing (free-field) adversary. The DV rate computes only aggregate data — pressure / relative entropy / the transfer operator's principal eigenvalue — never the individual atom. Same wall, probabilistic vocabulary. No fabrication.
+
+**1. DV is a real sup — that part is honest.** For the path measure `μ`, Donsker–Varadhan gives `H(Q|μ)=sup_{F∈C_b}{E_Q[F]−log E_μ[e^F]}` (equivalently `sup_F{∫F dν−log∫e^F dμ}`). A sup of continuous functionals is **lsc** and is a "good rate function." So "sup = the lower-bound class" is correct as a statement about semicontinuity. The problem is the *target*.
+
+**2. The target is an atom — wrong class.** `f₁²=ν({m₁²})` is the mass of a point. Portmanteau: for closed `F`, `limsup ν_n(F)≤ν(F)`, so `ν↦ν({m₁²})` is **upper**-semicontinuous; it is not lsc (`ν_n` = edge-free bumps `⇒δ_{m₁²}` sends `0→1`). On a metric space `f` is lsc **iff** it is the sup of its continuous minorants; hence `f₁²` is not a sup of continuous functionals — *a fortiori* not a DV rate. DV and the atom are dual cones.
+
+**3. Forcing lemma (uniform over the whole sup class).** Let `Ψ` be lsc with `Ψ(ν)≤f₁²(ν)`. Replace any edge atom of `ν*` by a `1/n`-wide bump: `ν_n⇐ν*` weakly, `ν_n({m₁²})=0`, so `Ψ(ν_n)≤0`; lsc gives `Ψ(ν*)≤liminf Ψ(ν_n)≤0`. Since `ν*` is arbitrary, **`Ψ≤0`** — no sup-representable barrier is positive, i.e. `r₀≤0`. This is the coefficient-level twin of EDGE-f1sq's Schur-convex obstruction and the free-field `g=0` adversary (`ν` a.c., `f₁²=0`).
+
+**4. The LDP inequality runs the wrong way.** A large-deviation principle bounds closed-set probabilities from **above** (`limsup ν_n({m₁²})≤…`) — an *upper* bound on the atom. Its lower half needs **open** sets; a point is not open, and the smeared neighbourhood mass is large even when the atom is `0`. The rate sees neighbourhood (aggregate) mass, never the atom.
+
+**5. What DV does give.** The principal eigenvalue (the level `Δ`, via the Donsker–Varadhan/Collatz–Wielandt spectral-radius sup) and the pressure/free energy — partition-function, spectral-radius, *aggregate* objects. The residue is the off-diagonal **overlap** `f₁²=|⟨Ω|φ|1⟩|²`, strictly finer than `Δ` and invisible to a spectral-radius sup; and even `Δ` needs Courant–Fischer (upper-bound) machinery for a gap lower bound (LEVER §1).
+
+**Sharpest line.** `f₁²` is usc, every DV rate is lsc: disjoint classes. The formula is a lower-bound machine for entropy; the edge asks it to lower-bound a *point mass* — the one functional the Legendre/sup cone cannot supply. Positing a positive sup-barrier is verbatim `H*(r₀)`.
+
+*Refs.* EDGE-f1sq-attack, INEQ-T2-variational-residue (portmanteau/usc), SCHUR-CONVEX (free-field no-go), LEVER §1, RESIDUE-CONDITIONAL; Donsker–Varadhan, *Comm. Pure Appl. Math.* 28 (1975) 1; Dupuis–Ellis (1997); Bryc, LDP/Legendre duality; portmanteau theorem.

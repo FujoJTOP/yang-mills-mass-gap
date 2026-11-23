@@ -1,0 +1,7 @@
+START-hi4 L=4 beta=2.2 nconf=8000 seed=41 Mon Nov 23 16:11:15     2026
+START-hi4 L=4 beta=2.5 nconf=8000 seed=42 Mon Nov 23 16:11:15     2026
+START-hi4 L=4 beta=2.8 nconf=8000 seed=43 Mon Nov 23 16:11:15     2026
+DONE-hi4 L=4 beta=2.2 Mon Nov 23 16:17:05     2026 rc=0
+DONE-hi4 L=4 beta=2.5 Mon Nov 23 16:17:05     2026 rc=0
+DONE-hi4 L=4 beta=2.8 Mon Nov 23 16:17:06     2026 rc=0
+ALL-HI4 DONE Mon Nov 23 16:17:06     2026

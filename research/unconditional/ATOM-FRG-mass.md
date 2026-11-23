@@ -1,0 +1,17 @@
+# ATOM-FRG-mass — m²(k→0) from FRG/DSE: what is controlled, what is decisive, where the theorem stops
+
+**Verdict. FRG and DSE compute the same object and agree with the lattice on an IR plateau (m_IR ≈ 0.5–0.7 GeV); this is robust *evidence*, not a theorem. The sharpest TRUE statement is conditional: `pole residue c>0 ⇒ m²(0)>0`. The decisive input is the *three-gluon vertex*; nothing fixes its pole, and no truncation is provably controlled.**
+
+**Object.** Both schemes solve for `D_T = 1/(k²Z(k²)+m²(k²))`. A local `m²A²` is forbidden by gauge/BRST invariance (W6), so the mass is *nonlocal*: asymptotic freedom forces `m²(k²)→0` as `k²→∞`, and the atom is the IR saturation `m²(0)=m²>0` (Schwinger mechanism). FRG (Wetterich) and DSE are exact identities but infinite towers (2-pt ⟵ 3-pt ⟵ 4-pt); closing them is an Ansatz.
+
+**Sharpest TRUE statement (conditional).** If the transverse three-gluon vertex acquires an IR massless pole with residue `c>0`, the system has the *decoupling* solution `D_T(0)=1/m²>0` with `m²(0) ∝ ∫ dy y² C(y) Δ²(y)`, where `C(r²)` is the vertex-pole (Bethe–Salpeter) amplitude — exactly the PT–BFM prediction (ABP 2008; Aguilar–Ferreira–Papavassiliou 2022 derive the Ward identity for it and find `C` nonvanishing at ~3.1σ). This is a clean implication; `c` is the order parameter and no symmetry protects it.
+
+**Which truncation is controlled.** None rigorously — no small parameter bounds the neglected n-points. Least uncontrolled: the coupled FRG *vertex expansion* with full momentum-dependence of the primitives (Cyrol et al. 2016, parameter-free) and the DSE with an STI-respecting PT–BFM vertex (ABP 2008). Both build in the correct UV and match lattice; "convergence" is empirical, not proven.
+
+**Decisive term: the three-gluon vertex.** The gluon mass is the *output*, not an input. The ghost dressing is a *diagnostic* (finite ⇒ decoupling, scaling ⇒ massless). What feeds the transverse self-energy and picks the IR branch is the three-gluon vertex: it carries the massless pole in the DSE, and its IR suppression/negativity (Huber–von Smekal 2013) decides decoupling vs scaling. The ghost-gluon vertex is Taylor-protected at vanishing ghost momentum; the three-gluon vertex is not — precisely the unprotected order parameter of GAP-G2-mass (a).
+
+**FRG proof vs standard Ansatz.** Rigorous needs: (i) an Ansatz-free vertex system, or a proven IR bound on truncated n-points uniform in k; (ii) a *derivation* — not an assumption — of the `c>0` pole, i.e. a bifurcation theorem for the full nonlinear equation, not its truncation; (iii) uniform control of the k→0 flow with UV boundary at k=Λ, since `m²(0) ~ Λ² e^{-c'/g²}` is exponentially boundary-sensitive (transmutation).
+
+**The precise gap.** FRG + DSE + lattice converge on the same plateau: strong evidence, zero theorem. The gap = a gauge-covariant nonperturbative RG with controlled closure surviving a→0 (BREAK-IN-1's wall) **and** a proof the vertex pole is dynamically generated. The "FRG theorem" of `m²(0)>0` is the Yang–Mills mass gap in DSE clothing.
+
+**Refs.** Cornwall PRD 26 (1982) 1453; Aguilar–Binosi–Papavassiliou PRD 78 (2008) 025010; Aguilar–Ferreira–Papavassiliou PRD 105 (2022) 014030 (arXiv:2109.12712); Cyrol–Fister–Mitter–Pawlowski–Strodthoff PRD 94 (2016) 054005 (arXiv:1605.01856); Huber Phys. Rept. 879 (2020) 1 (arXiv:1808.05227); Huber–von Smekal JHEP 04 (2013) 149; Cucchieri–Mendes PRL 100 (2008) 241601; Bogolubsky et al. PLB 676 (2009) 69; Maas Phys. Rept. 524 (2013) 203.

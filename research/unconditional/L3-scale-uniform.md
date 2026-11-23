@@ -1,0 +1,19 @@
+# L3 — scale-uniformity across the J~log(1/a) tower: proof attempt
+
+**Verdict (判词).** L3 does **not** close end-to-end. The three cited ingredients assemble a genuine reduction that **removes the IR obstruction**, leaving exactly **one** open inequality: the *one-loop box / invariant-region bootstrap*, i.e. **uniform per-shell marginal log-concavity `G″_j ≥ δ_W/2` across the deep-UV tower** (`PROVE-Gpp (★)`, `GAP-G1 §3`). The scale-sum combinatorics (`BREAK-IN-1`) and the `Z_a`↔scheme-C match (`L2`) are proven; the supporting **band-decay lemma is only sketched** (no `L3-band-decay` file; "worth proving," `VERIFY-FINAL §2`). The fixed-volume existence theorem cannot be restated unconditional.
+
+## Target
+L3 = `sup_a Z_a^{-1}‖H_a‖_D < ∞` on the common core `D` (A2 §L3), equivalently (SPEC-RES′) via Trotter–Kato from (i) `Z_a`↔scheme-C match [L2, proven], (ii) block-local Poincaré `Λ_UV>0` [`PROVE-H2`, proven], (iii) `Λ_UV` uniform across the `J~⌊log(1/aΛ)⌋`-shell tower [open].
+
+## Proof chain (what assembles)
+Split at the **a-independent** crossover `μ*:=CΛ`, `g²(μ*)=g*²`.
+1. **Fixed head + crossover** (`μ<μ*`): a fixed finite lattice system at `g≥g*`; `E′` fixed, so `‖Ĥ_a|_head‖_D ≤ C_head(L)<∞` by smoothness of the action on compact `G^{E′}`. This is where fixed volume pays: the box-scale marginal is known **negative** (`G″(0)≈−0.165`, VAR-FINAL), but a bounded negative Hessian is a bounded self-adjoint operator — the *moment/norm* reading of L3 needs only finiteness, which compactness supplies. No positivity is demanded at `k→0`.
+2. **Deep UV** (`μ≥μ*`, `J−j*~log(1/a)` shells, `g_j≤g*`): retargeted identity `G″_j=E[H_j]−Var_j+W_j` with (a) cone empty — `|F_j|=O(g_j)` ⇒ cone radius `~g_j<Λ_{j+1}` ⇒ `H_j⪰0` on the typical region (`GAP-G1 §1(i)`); (b) one-loop equipartition `E[H_j]−Var_j=0` there; (c) Lemma-B `W_j≥δ_W` geometric, scale- and β-independent (`SU2 ≥½g, SU3 ≥¾g`); (d) Savvidy tail `≤Ce^{−c/g_j²}≤Ce^{−c/g*²}=:ε`, uniform ∀j. ⇒ `G″_j≥δ_W−ε>0` **uniformly across the deep-UV tower**. Per-shell residual `Σ_j g_j⁴=(2β₀)⁻⁴ζ(4)<∞` with dim>4 contracting `e^{−cΔ}` (the marginal log-log is absorbed into `g_j²`, no log wall, `BREAK-IN-1 S1`); Trotter–Kato on the shell split ⇒ `sup_a Z_a^{-1}‖H_a^{tail}‖_D ≤ C_UV(δ_W,g*,β₀)<∞`. Then `sup_a ≤ C_head(L)+C_UV <∞` — *granting step 2*.
+
+## The pinned gap
+Step 2's "`E[H_j]−Var_j=0` on the typical region" is one-loop-**exact**, not exact for the interacting measure. The correction is **(★)** `E_μ[PᵀH_jP−H_free|a=0] ≥ −g_free+β²N_□/λ_f+O(δ_W)`, equivalently `Var(Pᵀ∇S) ≤ E[H]−δ_W+o(1)` uniformly per shell — the invariant-region bootstrap `√(2g_j|F_j|)<Λ_{j+1}` preserved under one flow step plus an a-priori moment bound (`GAP-G1 §3(a)–(c)`). It is *plausible at weak coupling* but **unproven**; it is the project's standing one-sidedness (`Var≥0` subtracts, `G″≤E[H]`; `EDGE-f₁²`). Its supporting estimate is the **band-decay lemma** `V_s:=sup Var(score) ≤ C_UV(β,b,N)` — sketched in `SCORE-HYPOTHESIS`, not established. Note the corpus tension: A1 §4 *asserts* uniform-in-scale positivity, but its δ rests on this same one-loop box (`PROVE-Gpp-positive §4`), so the "proven" status is single-block, not rigorous across the tower.
+
+## Honest verdict
+L3 is **not proven**. It reduces to **(★) + the band-decay lemma**, with `L2`, `PROVE-H2`, and the scale-sum genuinely closed. Fixed volume **does** remove the IR/zero-mode positivity demand, so both residues are **strictly UV, weak-coupling, ⊥ gap** — L3 is *not* the mass gap. G1 therefore stays **conditional on L3 = (★) ∧ (ii)**; it is not restatable unconditional. Pin fought: one-loop exactness of `G″_j` at `O(g_j)` fields, uniformly in `j`.
+
+*Refs.* A2-scheme-match §L3; G1-EXISTENCE-THEOREM; A1-twosided-UV; PROVE-Gpp-positive §4; GAP-G1-largefield §1,§3; BREAK-IN-1; PROVE-H2-uvgap; SCORE-HYPOTHESIS; VERIFY-FINAL §2; W7-RERUN.

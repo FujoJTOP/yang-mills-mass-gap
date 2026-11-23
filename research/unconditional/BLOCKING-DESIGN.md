@@ -1,0 +1,19 @@
+# BLOCKING-DESIGN — can a blocking kill the H3(b) score term?
+
+**Verdict.** No *admissible* blocking does. Score ≡ 0 exists only as (i) a measure-dependent Rosenblatt reparametrization — circular and cost-relocating — or (ii) a *fixed* blocking in one of the two regimes that carry **no continuum scaling gap** (free/Gaussian, strong-coupling product). In the crossover window every fixed, local, gauge-covariant low-pass has score ≠ 0, and the residual is exactly the mixed coarse–fiber Hessian. H3(b) is not repairable by design; the score *is* the IR/block-coupling content (H2-globalization). CONDITIONAL-LATTICE-GAP stays conditional on H1.
+
+**Identity.** `∂_{U′}log μ(ξ|U′)=0` for all ξ ⟺ `ξ ⊥ U′` ⟺ mutual information `I(U′;ξ)=0`. Data-processing caps how far this can be pushed below the intrinsic coupling.
+
+**Free case — exact, and empty.** Linearised Wilson μ is Gaussian, covariance `C` diagonal in momentum. A sharp spectral low-pass has `[P,C]=0` ⇒ cross-block `C_{U′ξ}=0` ⇒ conditional mean 0, covariance fixed ⇒ `ξ⊥U′`, score ≡ 0, Jensen tight. This is *why* PROVE-H3 (a),(c) are structural — they live in the Gaussian geometry — but `C` is massless ⇒ no gap. (Its toy `½a²+½b²+ga²b²` already has score ∝`ga²b²`≠0 at `g≠0`.)
+
+**Strong coupling — exact, and irrelevant.** β→0: `μ=⊗Haar`; decimation splits links into disjoint sets ⇒ independence ⇒ score 0; coarse marginal is product Haar = trivial SC confinement, not the crossover.
+
+**Crossover — fails, forced by the Markov property.** Hammersley–Clifford: a local Gibbs measure makes the fiber conditionally dependent on its boundary U′; score ≡ 0 would be anti-Markov. Cross-boundary plaquettes (`≈2β` per shared face) give `C_{U′ξ}≠0` at O(β). No fixed local covariant P removes it.
+
+**Rosenblatt — exists, but vacuous/circular.** For any joint μ, `ξ′=F_{ξ|U′}(ξ)` (conditional CDF) renders `ξ′⊥U′` with `ν=P_*μ` unchanged — a factorizing reparametrization always exists. But it is **measure-dependent** (needs μ, whose gap is the question — circular), **nonlocal, non-covariant** (`F_{ξ|U′}` is frame-defined), and **does not preserve the metric**: the two-scale split needs `|∇F|²=|∇_∥F|²+|∇_⊥F|²` and a fiber Poincaré `Λ_UV` in the *link* metric. The PIT Jacobian moves into `∇_⊥`; since `Var_{μ_Λ}(F)` is P-invariant and `1/m=1/λ+1/Λ_UV` is unchanged, the entropic score reappears as a coarse-SLC deficit (λ) or fiber-metric distortion (Λ_UV). The gap relocates into `S_eff` — no free lunch — and the construction presupposes the answer.
+
+**Stueckelberg / covariant split.** Write `U=σ(U′)·Ũ` (σ a covariant section, parallel transport of the coarse frame). Its U′-dependence splits into the orbit direction `g′(U′)` — a diffeo of Ũ annihilating gauge-invariant F under Haar (a total derivative: this half of the score is covariantly removable) — plus dependence on the **gauge-invariant coarse DOF**, which is `∂_{U′_inv}` and *is* the physical mixed curvature. Covariant blockings kill only the pure-gauge half.
+
+**Auxiliary-field blocking.** HS-ify the coupling: Φ conjugate to `a(U′)b(ξ)`; `(U′,Φ)` and `(ξ,Φ)` stay coupled through Φ. Integrating out returns the original; the auxiliary diagonalizes only the `(Φ|·)` layer. Extended blocking relocates the score into the `(U′,Φ)` marginal = the coarse effective action — same cost as Rosenblatt.
+
+**Cost / answer.** You can always *move* entropic curvature among `(λ, Λ_UV, score)` — `Var_μ` and the true `1/m` are invariant — but not *delete* it without either assuming μ or leaving the scaling window. In the crossover the score equals the mixed Hessian = block-coupling = exactly what H2-globalization pins open. Honest repair is therefore not a score-killing P but a **quantitative** absorption `λ>2 sup Var(score)` — i.e. proving the score variance small — which is again H1/H2 content.

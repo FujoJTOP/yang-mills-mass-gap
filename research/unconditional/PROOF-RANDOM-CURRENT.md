@@ -1,0 +1,24 @@
+# PROOF-RANDOM-CURRENT — Aizenman's switching lemma as a 4D SU(N) mass-gap route
+
+> 2026-11-23 · **Verdict: the random-current/switching method cannot prove a mass gap at β≈2.5, and for SU(N) no random-current representation exists.** A switching-lemma representation exists only in the abelian/finite cases — Z₂ gauge exactly (Wegner duality) and U(1)/Z_N as a *signed* surface/Coulomb gas — where it governs the **already-banked strong-coupling regime** (β<1/48, SZZ), never the crossover. For SU(N) the high-temperature "currents" are **irreps on plaquettes joined by signed SU(N) recoupling (6j/15j) intertwiners**: a spin-foam expansion, not a random-current model. The exact obstruction is the **sign-indefinite non-abelian recoupling** (loss of the positive abelian-flow / FKG structure); the infinite local state space aggravates but is not the root, and non-planarity is irrelevant. No fabrication: the precise missing lemma is named in §5.
+
+## 1. What the method needs
+For Ising, a current $n:E\to\mathbb Z_{\ge0}$ has odd-edge boundary $\{x,y\}$, edge weights factor, and $\langle\sigma_x\sigma_y\rangle$ is a current sum. Two structural pillars make it run: (i) currents live in an **abelian group** ($\mathbb Z_2$ bits self-inverse, $\mathbb Z$ flows add), so *switching* — re-pairing incident currents at a vertex — is weight-preserving; (ii) weights are **sign-definite**, so FKG turns "clusters intersect" into decorrelation, $|U_4|\le 2\,P[\text{intersect}]\,\langle\cdot\rangle$ (ADC). Both are properties of $\mathbb Z_2/\mathbb Z$.
+
+## 2. Gauge currents exist only abelian
+**Z₂ gauge is an Ising model.** Wegner: $d$-dim Z₂ 1-form gauge ↔ $(d{-}1)$-dim Ising, so **4D Z₂ 1-form gauge ↔ 3D Ising** (the 2-form/gerbe variant, not standard LGT, duals 4D Ising). Its random surfaces are Ising currents on dual faces — positive, but abelian and one bit.
+**U(1)/Z_N**: character expansion gives integer charges on plaquettes (a $\partial$-closed 2-chain / random-surface model); coefficients are Bessel $I_n(\beta)>0$, but the effective surface model is a **signed 4D Coulomb/dipole gas** — the sign problem returns exactly where a gap must live.
+**SU(N)**: the same expansion is **spin foam** — labels $R_p\in\mathrm{Irr}(SU(N))$ on plaquettes, invariant intertwiners on links. Each link amplitude is a contraction of 6j/15j recoupling coefficients that are **real, bounded ($|6j|\le1$) but sign-indefinite** (Ponzano–Regge $\propto\cos(S+\pi/4)$; signatures $(-1)^{\sum j}$).
+
+## 3. No SU(N) switching lemma
+A switch preserves the local weight only under re-pairing incident currents — available because $\mathbb Z_2/\mathbb Z$ is abelian and the divergence constraint is linear. For SU(N) the local object is an intertwiner in a tensor product of $\ge 4$ irreps with **multiplicities $>1$** (N≥3); irreps carry no group law, so no weight-preserving recoppling exists. The failure is structural and is a **sign** failure.
+
+## 4. Positivity, the ordered-phase mechanism, the regime wall
+RCR lives at small activity; the proven radius is β<1/48 (SZZ; W2). At β≈2.5 activity is O(0.1–0.4) and the only description is signed. ADC's 4D theorem concerns **critical** Ising/φ⁴: it proves the scaling limit is **Gaussian, free, massless** — a triviality, the opposite of a gap. Gaps in spin models come from the **ordered phase** (magnetization $M>0$, IR bound $+\,M^2$); gauge theory has **no local order parameter** (Elitzur), and its confining phase is the symmetric one — that mechanism is absent.
+
+## 5. Sharpest line — the exact missing lemma
+SU(N) would need a switching identity for the spin foam that is (a) weight-preserving under local recoppling of plaquette labels and (b) sign-definite. (a) fails — irreps are multiplicity-degenerate intertwiners, not abelian flows; (b) fails — 6j/15j take both signs. The obstruction is the **non-abelian sign structure**, not non-planarity (the lemma is dimension-agnostic and holds on non-planar lattices when abelian) and not primarily the infinite state space (U(1)'s effective surface model is already signed). Where the method works it is abelian and strong-coupling, i.e. already banked; where the target lives (SU(N), β≈2.5) no positive current/surface exists.
+
+**Restricted-regime gap (precise).** For 4D Z₂ 1-form gauge (↔ 3D Ising) the RCR certifies exponential clustering in its confining/strong-coupling phase (dual to 3D Ising at $\beta>\beta_c$) — abelian, strong-coupling, reached already by SZZ-type expansions. For SU(N) no such statement exists; the β≈2.5 gap is untouched.
+
+*Refs.* Aizenman–Duminil-Copin, Ann. Math. 194 (2021) 163 (arXiv:1912.07973); Wegner, J. Math. Phys. 12 (1971) 2259; Johnston, PRD 90 (2014) 107701; Osterwalder–Seiler, Ann. Phys. 110 (1978) 440; Cao–Park–Sheffield arXiv:2307.06790; Elitzur, PRD 12 (1975) 3978. Internal: W2-positive-scheme, T3-construction, P2-BBS-to-gauge, GAP-G2-mass.

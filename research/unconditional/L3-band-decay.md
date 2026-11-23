@@ -1,0 +1,22 @@
+# L3-band-decay — the score-covariance decay lemma: range is UV, the rate is still the wall
+
+**Verdict.** The lemma does **not** close from the assembled inputs. The band-limited fiber fixes the *range* `O(a)`, the `O(1)` boundary support makes `s_B` a local observable, and the free / strong-coupling / block-local cases hold — but the *interacting, cross-block* decay at `β≈2.5` is exactly the off-diagonal clustering of the global fiber Gibbs measure at fixed `U′`, and every tool for it (Dobrushin, Zegarlinski localization, Neumann-vs-free-gap, LSI⇒clustering) dies on the same Savvidy-indefinite Hessian that kills BE (W6) and H2-globalization. The lemma is UV — the `k→0` mode lives in `U′` and is annihilated by `∇_⊥` (PROVE-H3(c)) — so it is **⊥ gap in content**; but it is not proved. L3's decay face stays **open**, reduced to one pinned estimate.
+
+## What is proved
+1. **Support (kinematic — correct).** `s_B=∂_{U′_B}(−S_W+log J)`; `U′_B` is a factor-2 block average with a local kernel, so `∂_{U′_B}` at fixed `ξ` touches only the `O(1)` plaquettes of the coarse link's block, and the mixed Hessian `∂²_{U′ξ}S_W` has the same `O(1)` support (PROVE-Gpp §1). Hence `s_B` is supported on `O(1)` fine links in a width-`O(a)` neighbourhood `N(B)`.
+2. **Reference range.** Linearised, the fiber is the high-pass band `|k|≥π/2a`, free gap `2/a²`, `b`-uniform (H2-b §1), with resolvent decay `≤C e^{−r√2/a}`. In the pure Gaussian block the score vanishes identically (`[P,C]=0`, BLOCKING-DESIGN), so the lemma is trivial there; the band limit's real role is to give the *reference* resolvent this `O(a)` range, which an interacting proof must inherit.
+3. **Block-local / strong coupling.** PROVE-H2's Holley–Stroock supplies a block Poincaré gap `e^{−2βN_p}/C_G` bounding the `B=B′` diagonal; at `β<1/48` full exponential clustering holds (Dobrushin/polymer, W2).
+4. **Signed row-sum vanishes.** `Σ_{B′}s_{B′}≡0` (uniform shift = block gauge orbit), so the signed sum of `Cov(s_B,s_{B′})` is identically `0`; only the **absolute** sum `Σ_{B′}|Cov|` (equivalently `sup_p|K_eff(p)|`, the Hessian kernel's `L¹` norm) carries content. A worst-case `|Cov|≤sup Var` only reproduces the volume factor.
+
+## What fails — the pinned estimate
+The remaining object is the cross-block connected decay of `μ(·|U′)` at `β≈2.5`: `|Cov_{μ(·|U′)}(s_B,s_{B′})| ≤ C e^{−κ\,dist(B,B′)/a}`, `κ>0` uniform.
+- **Band limit gives the range, not the rate.** The fiber `e^{−βH_fib}dHaar` is a bounded-oscillation perturbation of product Haar; upgrading free→interacting resolvent decay is a Neumann/contraction requiring the interaction Hessian below the free gap. At `β=2.5` the fiber Hessian reaches `−1.1β≈−2.75 > 2/a²` (W6-BE, H2-b §3, BREAK-IN-1): the contraction factor `e^{−c}` flips to `e^{+|c|}` — the identical break in BREAK-IN-1's large-field step.
+- **Localization is the same wall.** Zegarlinski one-site-to-global needs `C(β)=sup_iΣ_{j∼i}a_{ij}<1`, but `a_{ij}=2β(#shared) ⇒ C≫1`; Dobrushin needs `β·deg<1`, false (H2-globalization §B, IDEA-finite-size).
+- **LSI⇒clustering needs BE, killed at `β=2.5`** (H1-T1). **RP is a sign, not a rate** (P4 §1): it writes `Cov=∫e^{−t\,d}dν(t)`, `ν≥0`, but bounds no mass away from `0` — the rate is again the spectral gap.
+
+No method in the file yields `κ>0` at the crossover. The obstruction is one **sign** — positivity of the local Dirichlet form — the same one-sidedness as W6 / H2-globalization / BREAK-IN-1.
+
+## Status and exact reduction
+The lemma is **true and explicit** for free (score≡0) and strong coupling; **strictly weaker than H2-globalization** (2-point clustering of one local pair, not the full Poincaré constant); **open** at `β=2.5` for the shared sign reason. Even if proved it must give not finiteness but `Σ_{B′≠B}|Cov| < δ_W` (Lemma B's Haar-curvature margin, PROVE-Gpp §2) so the Gershgorin bound `Hess_eff ⪰ δ_W − Σ|Cov| > 0` bites — the localized form of SCORE-HYPOTHESIS's `λ>2V_s`, and the genuine quantitative ask. L3's decay face is **not closed**; the pin: off-diagonal clustering of `μ(·|U′)` at rate `π/2a` for bounded-oscillation fiber Gibbs measures with an indefinite Hessian — a positivity the fiber lacks. No fabricated proof.
+
+*Refs.* REPAIR-2SCALE, VERIFY-FINAL(2), SCORE-HYPOTHESIS(a), PROVE-H3(c), PROVE-Gpp §1–2, PROVE-H2, H2-b-uniform, H2-globalization §B, H1-T1, W6-BE, BREAK-IN-1, BLOCKING-DESIGN, P4 §1, IDEA-finite-size, W2-positive-scheme.

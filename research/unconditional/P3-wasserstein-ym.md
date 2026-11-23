@@ -1,0 +1,13 @@
+# P3 — Wasserstein–Otto / Bakry–Émery CD(m,∞) for 4D YM
+
+**Verdict: open, and the per-link negativity is not the obstruction it appears to be.** CD(m,∞) is a valid sufficient framework, realized at strong coupling (SZZ). At β≈2.5 the 49% per-link negatives do *not* survive blocking (collective modes strictly positive), so Savvidy negativity is UV-localized and plausibly irrelevant; what stays undecided is the entropic (Γ₂) correction. W3's "RG W₂-contraction ⇔ CD(m,∞)" is not a theorem: CD governs a diffusion semigroup, not the RG map.
+
+**1. Inequality.** On M=G^E (gauge-fixed) or the quotient M=G^E/G_site, μ=Z⁻¹e^{−S_W}dVol. CD(m,∞) is the pointwise Bakry–Émery bound
+  Ric_M(v,v)+Hess S_W(v,v) ≥ m|v|², ∀v∈TM,   (★)
+⇔ entropy m-convex along W₂-geodesics [Otto, Comm. PDE 26 (2001); Sturm, Acta Math. 196 (2006); Lott–Villani, Ann. Math. 169 (2009)] ⇔ Ent_μ(f²)≤(2/m)∫|∇f|²dμ and W₂(P_tμ,P_tν)≤e^{−mt}W₂(μ,ν) [von Renesse–Sturm, CPAM 58 (2005); Bakry–Émery, LNM 1123 (1985)]. S_W is gauge-invariant ⇒ its orbit Hessian is exactly 0, and CD descends to the quotient by the isometric gauge action [Sturm 2006]. Pure-gauge directions are zero, never negative.
+
+**2. β≈2.5.** Per-link 8×8 Hessians: 49% have min<0, E[neg]/E[pos]≈0.94 [04-savvidy]. That operator is single-link, unprojected, and excludes Ric — not (★). The correct object is the collective Hessian of the blocked action; probing it, *every* collective plane-wave mode is strictly positive at β=2.5,2.6,3.0 (H<0 fraction 0.000) [11-slc-blocked/REPORT]. So the Savvidy negatives are UV/high-momentum and integrated out by blocking: not pure gauge, but plausibly *irrelevant*. The decisive quantity is the marginal curvature G″=E[PᵀHP|A′]−Var(Pᵀ∇S|A′). Its only proxy is G″_soft≈−0.165 [VAR-FINAL]; the residual is an *upper* bound, so that is merely a lower bound on G″_true and does *not* prove failure. The k→0 transverse mode is unprobed.
+
+**3. Substitute.** CD is sufficient, not necessary. A weighted-BE/Harris condition (Ric+Hess≥−C plus Lyapunov drift + minorization [Meyn–Tweedie; Hairer–Mattingly; Cattiaux–Guillin–Wu, Ann. Probab. 42 (2014)]) yields geometric ergodicity with volume-dependent constants — not a volume-uniform gap. A volume-uniform LSI at β=2.5 would already prove the β=2.5 lattice gap (SZZ mechanism), so this route reformulates the target rather than easing it.
+
+**4. Sharpest statement.** Open, with an exact obstruction: (★) along the k→0 transverse (marginal) blocked mode, where the positive Laplacian vanishes and only an induced mass can supply m>0 — i.e. the gap itself. Marginality does not force m→0; the negative Savvidy curvature ∝ g²(μ)~1/log and weakens toward the IR. Strong-coupling realization: Shen–Zhu–Zhu, CMP 400 (2023) 805, arXiv:2204.12737.

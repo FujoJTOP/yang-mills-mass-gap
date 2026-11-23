@@ -1,0 +1,17 @@
+# H1-T6-geometric-flow — RG-as-geometric-flow (YM / form-flow / Ricci-on-moduli) vs. the H1 gap
+
+> 2026-11-23 · Fresh-framework probe on H1. **Verdict: a different *object* (deterministic ODE on field space), not a different *attack*. A gradient flow's rate is minus its Hessian — the identical second variation Bakry–Émery sees through `Γ₂=Ric+Hess S`. So: no convergence to a gapped phase with a proven positive rate (the trivial vacuum's Hessian is `−Δ`, spectrum `[0,∞)` — gapless); no rigorous "flow drives a relevant deformation to a massive vacuum" theorem in 4D; and no lower bound on `f₁²`. The Savvidy wall returns as flow *instability*. Honest negative, no fabrication.**
+
+**(1) The object difference evaporates at the rate.** `∂_tA=−D_A^*F_A` is the `L²` gradient flow of the YM energy on `A/G`; linearized at a critical point it is `−Hess S`, converging exponentially at the lowest positive eigenvalue of `−Hess S` — exactly what `Γ₂=Ric+Hess S` measures (W6). "ODE vs semigroup" is real rephrasing (the flow sign-flips and exponentiates the same operator) but imports **no new estimate**: `Hess S<0` is `Γ₂<0` (no LSI) to BE and *unstable* to the flow. Same number, same wall.
+
+**(2) No gapped phase.** The vacuum `A=0` has `Hess S=−Δ`, spectrum `[0,∞)`, rate `(2π/L)²→0`: **gapless by construction**. At `β=2.5` the critical points are Savvidy saddles (unstable, `Hess S≤−1.1β`, W6) and instantons (zero modes; hyperkähler moduli ⇒ Ricci-flat ⇒ a Ricci-flow on moduli is *stationary*, noncompact ⇒ flat directions, rate 0). 4D is critical and **bubbles** (Struwe, Råde, Feehan; Niemi) — no single limit point. Confinement is no classical critical point of `∫|F|²` at all.
+
+**(3) The analogy fails on sign.** Eells–Sampson (nonpositive target curvature) and Hamilton (positive Ricci) converge *because* a curvature has fixed sign. The 4D YM Hessian has both signs (ASD `+`, Savvidy `−`); no such hypothesis can be met — the sign that would drive a rate is absent.
+
+**(4) No 4D RG-flow ⇒ massive-vacuum theorem.** The one rigorous "RG as gradient flow" is the **a-theorem** (Komargodski–Schwimmer, arXiv:1107.3987): `a_UV>a_IR` monotonically — *mass-blind* (the free massless field flows too), **no rate**, and it **assumes the QFT exists** (G1). A gapped vacuum is `a_IR=0`; proving it is confinement+gap, and separating it from an interacting IR CFT is the G4 vacuum. Functional RG reaches a "massive vacuum" only in truncations — marginal, unproven in 4D.
+
+**(5) Lower-bounding `f₁²`? No.** A flow moves configurations/theory-space points, never the KL density `ν`; it creates no edge atom `≥r₀·δ` and no **Schur-convex coercivity** `total≤C·f₁²` (EDGE-f₁², LEVER). Its measure-touching cousins already stopped here: stochastic flow = fictitious-time gap (T1), FRG uncontrolled. Deterministic flow is strictly further from the measure.
+
+**Sharpest line.** Geometric flow is the differential twin of W6: what BE reports as negative curvature, the flow shows as repulsion from the gapped region — vivid, simulable, still no lower bound. Same second variation, same Savvidy point, no new positivity; `f₁²≥r₀` (RESIDUE-CONDITIONAL) untouched.
+
+*Refs.* W6-BE-at-2.5, H1-T1-stochastic-quant, RESIDUE-CONDITIONAL, EDGE-f₁²-attack, LEVER-nonconvex-edge; Eells–Sampson (1964); Hamilton, JDG 17 (1982); Struwe, Råde, Feehan (YM flow); Savvidy (1977), Nielsen–Olesen (1978); Komargodski–Schwimmer arXiv:1107.3987; Zamolodchikov c-theorem (1986).

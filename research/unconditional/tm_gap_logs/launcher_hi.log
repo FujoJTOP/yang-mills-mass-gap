@@ -1,0 +1,7 @@
+START-hi L=6 beta=2.2 nconf=3500 seed=31 Mon Nov 23 16:00:41     2026
+START-hi L=6 beta=2.5 nconf=3500 seed=32 Mon Nov 23 16:00:41     2026
+START-hi L=6 beta=2.8 nconf=3500 seed=33 Mon Nov 23 16:00:41     2026
+DONE-hi L=6 beta=2.5 Mon Nov 23 16:10:32     2026 rc=0
+DONE-hi L=6 beta=2.2 Mon Nov 23 16:10:33     2026 rc=0
+DONE-hi L=6 beta=2.8 Mon Nov 23 16:10:55     2026 rc=0
+ALL-HI DONE Mon Nov 23 16:10:55     2026
