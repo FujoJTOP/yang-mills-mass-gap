@@ -1,0 +1,27 @@
+# OTHER-H1-POINCARE — the direct coarse-Dirichlet attack on H1: an exact form, a provable curvature only on the Haar half, and a classification showing both direct routes terminate at the gap
+
+> **2026-11-23 · Verdict (判词).** The coarse Poincaré `Var_ν(φ)≤(1/λ)∫|∇φ|²dν` for block-averaged `φ` is attacked **directly**, without the fiber. The coarse Dirichlet form is **exact**: `ℰ_ν(φ):=∫|∇φ|²dν=∫|∇_∥(φ∘P)|²dμ=ℰ_μ(φ∘P)` because `φ∘P` is fiber-constant. On flat coarse space, Poincaré(λ) is **equivalent** (Bakry–Émery, sharp) to `Hess(−log ν)=Hess V_eff⪰λ`, and the exact identity `Hess V_eff=G″=E_μ[PᵀHP|U′]−Var_μ(⟨Pᵀ∇S,v⟩|U′)` (k0-CONSTRAINT-EFFPOT) makes the target `G″⪰λ` on coarse `v`. There are **exactly two** ways to build such a coarse form: **(A)** push the full LSI through `P` (`Var_ν(φ)=Var_μ(φ∘P)≤(1/λ_μ)ℰ_μ(φ∘P)`), which needs the full 2.5 gap — **circular**; or **(B)** Bakry–Émery on `ν`, which needs `Hess V_eff⪰λ` — **H1 itself**. The provable curvature is only the Haar half: `Φ` convex ⇒ Prékopa ⇒ `W_geo=E[Φ″]−Var(Φ′)≥0` on **every mode incl k→0, every L**, plus the pointwise floor `E[Φ″]≥N/12`. The action half is indefinite **on the target slice**: blocking is a low-pass filter and the Savvidy instability is at k→0, so `PᵀHP` is *most* negative exactly on `ran P` (min ≈−0.3), and `Var≥0` subtracts. **Passes #1, #4; fails #2(2.5), #3(closing), #5.**
+
+## The exact form and the classification of direct attacks
+`ℰ_ν` is a genuine Dirichlet form and `H1` is *literally* Poincaré for `ν`. Two, and only two, constructions exist. **(A) Full-LSI pushforward:** `Var_ν(φ)=Var_μ(φ∘P)` (since `Var_{μ(·|U′)}(φ∘P)=0`) `≤(1/λ_μ)ℰ_μ(φ∘P)` if μ satisfies LSI(λ_μ). Exact — but at β=2.5 LSI(λ_μ) *is* the gap (proved only β<1/48, Lemma SC). **(B) Bakry–Émery on ν:** `Hess V_eff⪰λg` ⇒ Poincaré(λ); sharp on flat space, no loss. But `Hess V_eff=G″`. **Every reweighted coarse form reduces to a metric comparison** — closed by PROOF-SAVVIDY-WGEO-DOMINATION (no gauge-invariant norm makes the positive part dominate, `c<1` false; the only such β is <0.15). So the direct space is **exhausted**: (A) is circular, (B) is H1, and reweighting is a no-go. This is the coarse-side mirror of PROOF-IR-H1 ("the machinery *is* the wrong half"): the direct machinery *is* H1.
+
+## The accounting on the k→0 slice
+`G″=Δ_dyn+W_geo+X`, `Δ_dyn=E[H]−Var(G)`, `X=−2Cov(G,Φ′)`. Provable: `W_geo≥0` (Prékopa; HWI-free, value-free) and `E[Φ″]≥N/12` (0.167 SU2 / 0.25 SU3). Indefinite: `E[PᵀHP][v,v]` min **−0.3** on the block-uniform mode, and `Δ_dyn≤E[H|0]` inherits it (`Var` only subtracts, since `Prékopa` log-concavity of the marginal **fails** at 2.5 — `S_W` nonconvex). `X`'s sign is uncontrolled. Numerically `G″=+0.51` (SU3, W7 Part B) — but that is carried by the *conditioned* mean `E[H|0]=+0.22` (not the bare −0.3) and `W_full≈+0.54`: a **measure** fact, i.e. precisely control of `Var(G|0)`. The direct route lands on the Savvidy cone *by construction*: `P` keeps the k→0 negative mode at full strength, so the coarse Hessian is the worst slice, and `Φ″⪰N/12`'s gauge-invariant floor is `|F|`-free while its extra convexity sits at the log-cut (`F≈0`), anti-correlated with the `∝|F|` Savvidy driver.
+
+## Exact failure
+```
+∃λ>0: ∀U′,∀ coarse v⊥orbit,  E_μ[PᵀHP|U′][v,v]−Var_μ(⟨Pᵀ∇S,v⟩|U′) ≥ λ‖v‖²,  uniform (L,a);
+⟺ Hess V_eff⪰λ ⟺ m_eff²(k→0)≥λ ⟺ Var_ν(φ)≤(1/λ)ℰ_ν(φ).
+```
+Proved half: `E[Φ″]≥N/12`, `W_geo≥0`. Missing half: `Var_μ(⟨Pᵀ∇S,v⟩|U′) ≤ E_μ[PᵀHP][v,v]+W+X−λ` — an **upper bound on the conditioned coarse force variance** `Var(G|0)`: the same (◆) of PROOF-JACOBIAN-SAVES.
+
+## Five-point verdict (honest)
+1. **Nonperturbative — PASS.** Exact pushforward form + exact curvature identity + Prékopa/Brascamp–Lieb; no loop expansion.
+2. **Sign-controlling — PARTIAL; FAIL at 2.5.** `W_geo≥0` is the corpus's strongest value-free, every-mode (k→0), every-L lower bound — but only the Haar half. `Δ_dyn≤E[H|0]` is negative on the cone (bare −0.3); `X` sign uncontrolled.
+3. **Non-circular — FAIL at closing.** Route A needs the 2.5 gap; Route B is H1; reweighting is the verified no-go. A faithful RENAME.
+4. **Non-SUSY + fails free field — PASS (cleanest).** Free massless: zero mode flat ⇒ `V_eff″=G″=0`, gap 0; the Haar term (absent for Lebesgue) is the discriminator; YM β=0 gives 0.248. Exact acid test.
+5. **Uniform LOWER bound `m_eff²(k→0)≥λ` — FAIL at 2.5.** Only `≥0` (uncontrolled); genuine `≥N/12` at β=0, `λ=C_blk^{-2}λ_μ` at β<1/48.
+
+**Sharpest line.** The direct coarse form is exact but its curvature is `Hess V_eff=G″`; blocking is a low-pass filter and the Savvidy instability lives at k→0, so the coarse subspace *is* the worst slice (`PᵀHP` min −0.3), `W_geo` supplies only the `|F|`-free floor `N/12`, and the measured +0.51 is carried by the conditioning `E[H|0]=+0.22` — i.e. by `Var(G|0)`, which is H1. The direct method does not cross the wall; it goes straight at it, and the exact missing step is one conditioned-variance bound.
+
+*Refs.* k0-CONSTRAINT-EFFPOT (`V_eff″=G″`, β=0 0.248/0.246); PROOF-COARSE-POINCARE (`ℰ_ν=ℰ_μ∘P`, Lemma SC, `H_ff` indefinite); PROOF-IR-H1 (orthogonal split, tool=wrong half); PROOF-JACOBIAN-SAVES (`G″=Δ_dyn+W_geo+X`, (◆)); PROOF-SAVVIDY-WGEO-DOMINATION (no GI norm, `c<1` false); INVENT-VARIANCE-INEQ (SCBL `G″=S−D`, `D/S≈2%`); MARGINAL (`PᵀHP` min −0.3); W7-Gpp0 (+0.51); Ledoux (LSI pushforward); Bakry–Émery; Prékopa 1971; Brascamp–Lieb 1976; Shen–Zhu–Zhu, CMP 400 (2023).
