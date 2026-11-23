@@ -2,3 +2,7 @@
   k = [np.float64(0.7854), np.float64(1.5708)]  (2pi/L=0.78540)
   therm 350 sweeps in 33s; plaq=0.5544; RSS=70MB peak=76MB
     1/400  (2s, ETA 798s)  RSS=71 peak=88MB
+    50/400  (90s, ETA 627s)  RSS=70 peak=90MB
+    100/400  (179s, ETA 536s)  RSS=70 peak=90MB
+    150/400  (269s, ETA 449s)  RSS=70 peak=90MB
+    200/400  (359s, ETA 359s)  RSS=70 peak=90MB
