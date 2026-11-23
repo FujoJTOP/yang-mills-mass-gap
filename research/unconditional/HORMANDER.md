@@ -1,0 +1,35 @@
+# HÖRMANDER — subellipticity is *regularity* (a `1/r`-derivative gain at `k→∞`), not *mass* (the sign of the lower-order curvature at `k→0`); the gauge frame is a global frame, so the bracket condition holds trivially — exactly as the free Laplacian satisfies it, and the free field is gapless. **Wrong object; acid-test anti-correlated.**
+
+> 2026-11-23 · NEW SPECIES. Set the (weighted) gauge generator `L = Δ_A − ∇S_W·∇ = Σ_a X_a² + X_0` on `A=∏_{links}SU(N)`. Hörmander: if `{X_a}` is bracket-generating, `L` is hypoelliptic and one gets the **subelliptic estimate** `‖u‖²_{H^{1/r}} ≲ Σ_a‖X_a u‖² + ‖u‖²`. Could (Sub)P close the coarse-mode gap? **判词 (verdict). No — not marginally: the species targets the principal symbol, the gap lives in the lower-order curvature.** The `X_a` are a *global frame* (left-invariant fields) ⇒ they already span ⇒ **elliptic, step 1** — the *same* principal part `ΣX_a²` as the gapless free field. Subellipticity is a `k→∞` derivative gain; the gap is the `k→0` spectral bottom. The only `ρ>0` comes from compact resolvent and *is* the Poincaré constant = H1, non-uniform. **#1 PASS; #2,#3,#4,#5 FAIL — #4 catastrophically (inverted).**
+
+**§1 The bracket condition: satisfied, but elliptically — the failure.** On `A` the left-invariant fields `X_a` are an orthonormal frame of the Cartan–Killing metric; a *frame spans at every point*, so the generated Lie algebra is the whole tangent space with **zero brackets** — Hörmander at step `r=1` (elliptic, maximal hypoellipticity). On `A/G` (principal `SU(N)`-bundle, fiber = gauge orbit, vertical = gauge generator: Singer) the generators span *along* orbits (orbit = group), again elliptic; a genuinely subelliptic transverse Carnot structure `r>1` would need the physical directions on `A/G`, but `A/G` is singular (Gribov; no global section) and the transverse operator there is the **indefinite** Savvidy `−D²+2adF_B` (W4: 7.1% negative), **not** the nonnegative `ΣX_a²`. So "is the bracket condition satisfied?" has the worst answer: *yes, maximally — the principal part equals the free field's.*
+
+**§2 Acid test — decisive and inverted.** Subelliptic estimates depend only on the **principal part** `ΣX_a²`. Free: `X_a=∂_a`, coordinate frame ⇒ elliptic, `r=1`; YM: left-invariant frame ⇒ elliptic, `r=1`. **Same symbol.** So subellipticity sees *no difference* — and the free field, with maximal hypoellipticity, is **gapless** (`−Δ` on `ℝ⁴`: `[0,∞)`; on `T⁴_L`: gap `(2π/L)²→0`). A gap implied by subellipticity would be *strongest on the gapless free field*, *weaker on YM* (`r>1`). Not merely free-field-blind (vacuous) — **anti-correlated**.
+
+**§3 Regularity vs. spectral bottom — the `+‖u‖²` is the mass.** Subellipticity keeps `+‖u‖²`; Poincaré *is* its removal on `1^⊥`, `Var_μ(u) ≤ (1/λ)Σ‖X_a u‖²`. At the soft mode `k→0`: `Σ‖X_a u‖²~k²‖u‖²`, `‖u‖²_{1/r}~k^{2/r}‖u‖²` ⇒ estimate reads `k^{2/r}≲k²+1`; as `k→0` this **degenerates to `0≲1`** — the surviving content is carried entirely by the `+‖u‖²` term, so it constrains nothing at the bottom where the gap lives. Subellipticity is `k→∞`; the gap is `k→0`.
+
+**§4 The only numeric `ρ` is the gap (H1), non-uniform.** Compactness (Hörmander + (Sub)P) yields *some* `ρ>0`, but it is a functional of the **marginal** `ν`, not the brackets (B3 two-coordinate: brackets are `∇_⊥`/fiber; the constant is `∇_∥`/coarse — PROOF-IR-H1). Concretely `ρ~(2π/L)²→0` on `T⁴_L` (free value), `0` on `ℝ⁴`: the compactness is exactly what fails in the thermodynamic+continuum limit.
+
+**§5 Sign blindness (the wall).** `ΣX_a²` has symbol `Σξ(X_a)²≥0` — sign-blind by construction. The gap is positivity of an **indefinite** `G″=E[H]−Var+W_geo`, principal Savvidy term negative on transverse magnetic modes. A nonnegative sum-of-squares cannot lower-bound an indefinite curvature's sign — same wall as C8/F2.
+
+## Five-point (honest)
+1. **Nonperturbative — PASS.** Brackets and estimate exact; no loop expansion.
+2. **Sign-controlling LOWER bound — FAIL.** Bounds `‖u‖_{H^{1/r}}` by the nonnegative form `Σ‖X_a u‖²`; sign-blind to the indefinite `2adF_B`; delivers regularity, never a sign of `G″`.
+3. **Non-circular — FAIL.** Sole numeric output (`ρ>0` via compact resolvent) = Poincaré constant = H1; brackets (`∇_⊥`) cannot bound the marginal (`∇_∥`).
+4. **Non-SUSY + fails free field — FAIL, max.** Free field elliptic (step 1) *and* gapless; principal parts coincide; implied gap *largest* on the free field. Inverted, not vacuous.
+5. **Uniform `m_eff²(k→0)≥λ` — FAIL.** `1/r` is a derivative count, not a mass; `ρ→0` as `L→∞`; no soft-mode margin.
+
+## Exact failing estimate
+```
+Free X_a=∂_a (elliptic, r=1): −Δ, spectrum [0,∞)  — gapless.
+YM   X_a=left-invariant frame (elliptic, r=1): SAME principal part ΣX_a².
+Hörmander: ‖u‖²_{H^{1/r}} ≲ Σ_a‖X_a u‖² + ‖u‖².      (regularity, keeps +‖u‖²)
+Gap/Poincaré: Var_μ(u) ≤ (1/λ) Σ_a‖X_a u‖²,  u⊥1.    (drops +‖u‖²) ← the mass IS the dropped term
+Soft k→0: k^{2/r} ≲ k²+1 ⇒ 0≲1 (the +‖u‖² carries it); silent at the bottom.
+Only ρ>0 route: compact resolvent ⇒ ρ = Poincaré const = H1; T⁴_L: ρ~(2π/L)²→0; ℝ⁴: ρ=0.
+Sign: ΣX_a² ≥ 0 (blind); gap = sign of G″=Hess S_eff, Savvidy −D²+2adF_B indefinite (λ_min=−g|B|).
+```
+
+**Sharpest line.** Hörmander/subellipticity is a **regularity** species — a `1/r`-derivative gain governed by the *principal symbol* `ΣX_a²`. The gauge frame is a global frame, so the bracket condition holds **elliptically** — the same principal part as the free Laplacian, which is maximally hypoelliptic *and gapless*; the acid test does not merely mark the tool vacuous, it exposes it as **anti-correlated** (any gap it implied would be strongest where there is none). The gap is not a principal-symbol datum but the **sign of the indefinite lower-order Savvidy curvature** `2adF_B`, which a nonnegative sum-of-squares is blind to; the subelliptic `+‖u‖²`, never removable, **is** the missing mass. The only `ρ>0` obtainable is the compact-resolvent Poincaré constant `=H1`, vanishing as `L→∞`. **Two no-gos to bank: (a) the bracket condition holds elliptically (≡ free field's, gapless); (b) subellipticity is `k→∞` regularity, the gap is `k→0` spectral bottom — opposite ends of the spectrum.**
+
+*Refs.* Hörmander, *Acta Math.* **119** (1967) 147; Fefferman–Phong, *Invent. Math.* **42** (1977) 199 (subelliptic eigenvalue problems, (Sub)P); Rothschild–Stein, *Acta Math.* **137** (1976) 247; Stein, *Harmonic Analysis* (1993); Gribov, NPB **139** (1978) 1; Singer, *CPAM* **31** (1978) 7 (no global section); Savvidy, PLB **71** (1977) 133; Nielsen–Olesen, NPB **144** (1978) 376. Internal: PROOF-IR-H1 (`∇_⊥≠∇_∥`, H1=gap); PROOF-COARSE-POINCARE (`G″` exact, Savvidy-indefinite); B3-ISOPERIMETRIC (two-coordinate obstruction, marginal≠conditionals); C8-SPECIES-NOGO (sign/no-go, lower-order `2adF_B`); F2-KREIN-RUTMAN-QUANT; MINISUPERSPACE (sign-setter-dropped precedent); E4-RMT-EDGE (sign-blind moments); W4 (7.1% negative); k0-CONSTRAINT-EFFPOT (`G″=Hess S_eff`); Shen–Zhu–Zhu, CMP **400** (2023) 805, arXiv:2204.12737.

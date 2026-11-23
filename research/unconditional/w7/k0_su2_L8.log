@@ -1,2 +1,10 @@
-# K0-CONTINUUM su2 L=8 beta=2.4 N=400 gap=4 therm=350 seed=909 nmax=2 modes=12
+# K0-CONTINUUM su2 L=8 beta=2.4 N=400 gap=5 therm=600 seed=910 nmax=2 modes=12
   k = [np.float64(0.7854), np.float64(1.5708)]  (2pi/L=0.78540)
+  therm 600 sweeps in 26s; plaq=0.6312; RSS=62MB peak=64MB
+    1/400  (1s, ETA 381s)  RSS=61 peak=69MB
+    50/400  (46s, ETA 322s)  RSS=61 peak=70MB
+    100/400  (92s, ETA 277s)  RSS=61 peak=70MB
+    [chk 100] plaq=0.6305
+    150/400  (138s, ETA 229s)  RSS=61 peak=70MB
+    200/400  (183s, ETA 183s)  RSS=61 peak=70MB
+    [chk 200] plaq=0.6327

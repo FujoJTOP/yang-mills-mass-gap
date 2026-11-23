@@ -1,0 +1,25 @@
+# RESURGENCE — the strong-coupling `f₁²` series is *convergent* and the continuum series is *ambiguous*: resurgence localises the wall to a Borel singularity whose Stokes sign is the one free parameter, giving a Savvidy-scale magnitude and no lower bound
+
+> **判词 (verdict).** **No.** Resurgence cannot Borel-resume past `β<1/48` to a controlled finite-coupling `m_eff²≥λ`. The proposal misapplies Borel–Écalle to the wrong series in each direction. Below `β₁` the strong-coupling `f₁²=c₁ u^p(1−O(u))` is **convergent** (radius `β₁=min(1/48,c/N)`, PROOF-P3-UNCONDITIONAL); its Borel transform is entire, has no singularity, and sums to itself — resurgence has zero content and reproduces only P3, never extends it. Across the crossover the only *asymptotic* series is the continuum/weak-coupling `g`-series, whose IR renormalons `u=+2n/β₀` sit on the positive Borel axis and factorise into `C_n∝γ_n⟨Tr F²⟩`. There the two lateral sums differ by a trans-series amount whose **Stokes constant `σ` is undetermined on ℝ⁴**; the gap would be `m_eff²∝σ e^{−S_sav}`, a Savvidy-scale *magnitude carrying a free sign*. The target `E[G′]−Var(G)=G″(k→0)≥λ` needs `σ≥σ₀>0`, which no resurgence datum supplies. Score **2/5**; the species is the documented dead route (`07-resurgence`) re-expressed.
+
+## §1 Two series, one misapplication
+Below `β₁`: convergent, `∂B=∅`, Borel transform = identity. Resurgence adds nothing beyond what P3 already proves (`f₁²≥r₀(β)`), and cannot be the mechanism that crosses `β₁` because there is no asymptotic structure to resum. Across the crossover the asymptotic series is in `g`, not `u`; its Borel singularities are IR renormalons on the **positive** real axis (`z=−2n/β₁`, `β₁<0`), so ordinary Borel–Laplace fails and only lateral sums exist. Resurgence is genuine only *here* — and here it supplies an ambiguity, not a bound. The two desirable properties — *genuine asymptotic content* and *a one-sided lower bound* — never hold together.
+
+## §2 The singularity is the Savvidy negative mode; its coefficient is σ
+The IR-renormalon pole is not a technicality: its imaginary part is exactly the one-loop Savvidy/Nielsen–Olesen instability, `Im V_eff∝(gB)²` from the negative mode — the same physical Hessian `−D²+2adF_B` indefiniteness that is the project's wall (CONTINUUM-ASYMPTOTIC-BEYOND §2). Resurgence **localises** the wall to a single number, the Stokes constant `σ`, at exponential order `e^{−S_sav}` (`S_sav=8π²/g²`, BPST/Savvidy). It fixes the scale, never the sign: `σ∈ℝ` is a trans-series *parameter*, not an output. So `m_eff²(k→0)∝σ e^{−S_sav}` — magnitude controlled, sign free — is the opposite of a lower bound.
+
+## §3 Free-field acid test — passed, and that is the proof of impotence
+Free massless: `f₁²=0`, `G″=0`, `ν=δ₀`, no condensate. The Borel transform is entire, the sum returns `0` — no spurious gap (criterion 4 met). But this is *the same fact as failure*: Borel summation is a ring homomorphism fixing `0↦0`; the median sum is `g`-continuous and vanishes at `g=0`. It cannot manufacture `f₁²≥r₀` from a `g`-trivial start. The acid test passes *trivially* and is simultaneously the proof it cannot produce positivity.
+
+## §4 Five-point scorecard
+1. **Nonperturbative — PASS.** Trans-series genuinely nonperturbative (saddles; ambiguous lateral sums).
+2. **Sign-controlling `m_eff²(k→0)≥λ` — FAIL.** Sign = `σ`, free on ℝ⁴ (no bion/monopole sector; Maiezza–Vasquez 2405.01639); ambiguity imaginary, magnitude `(Λ/μ)^{2n}`.
+3. **Non-circular — FAIL.** Fixing `σ` needs the condensate / spectral-edge atom = H1; resumming the exact handle `Z_O` (running-coupling ratio) reimports an ambiguity at `O(Λ²)` — precisely the turning order — so it is circular.
+4. **Non-SUSY + fails free field — PASS (vacuous).** Pure YM; free field returns 0, via the same `0↦0` that voids it.
+5. **Uniform `≥λ` — FAIL.** The ambiguity `~(Λ/μ)^{2n}` is largest at the IR edge / `k→0` Savvidy crossover, exactly where the bound bites; no uniform `λ`, `σ` unbounded.
+
+**Not 5/5.** Score **2/5** (1,4 PASS; 2,3,5 FAIL).
+
+**Sharpest line.** The Borel ambiguity is not a residual error to resum away — it **is** the nonperturbative datum (the gluon condensate `⟨Tr F²⟩`, the atom, `Λ`). Resurgence converts "*the series diverges*" into "*the series is fixed only up to exactly the physics it omits*," and the Savvidy action sets the exponential scale but not the Stokes sign. Hence `m_eff²≥λ` is unreachable without fixing `σ`, which is H1 — the gap in a trans-series coordinate.
+
+*Refs.* PROOF-P3-UNCONDITIONAL (convergent radius `β₁`); CONTINUUM-ASYMPTOTIC-BEYOND §1–4 (renormalon = condensate; `0↦0`); cpb-attack/07-resurgence (DEAD); W2-transmuted-gap (ii); G1-UNIFORM-ZA §3–4; CONTINUUM-FREDHOLM; C8-SPECIES-NOGO (Stein identity); RESIDUE-CONDITIONAL; GAP-G2-edge. External: 't Hooft 1977; Beneke, *Phys. Rept.* **317** (1999) 1; Maiezza–Vasquez, *PLB* (2024) 2405.01639; Dunne–Ünsal 1210.2423; Argyres–Ünsal 1206.1890; Costin, *Asymptotics and Borel Summability* (2009); Aniceto–Başar–Schiappa, *Phys. Rept.* **809** (2019); Savvidy, *PLB* **71** (1977) 133; Nielsen–Olesen, *NPB* **144** (1978) 376.

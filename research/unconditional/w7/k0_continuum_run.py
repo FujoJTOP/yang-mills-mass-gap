@@ -176,7 +176,8 @@ def main(group, L, beta, N, gap, therm, seed, nmax, out):
                     v = __import__('su3').su2_heatbath(kappa, M, 0, 1, rng)
                     Uf[mu, ids] = v @ A
         getU = lambda: lat_U[0]
-        plaq_fn = lambda: W.action2(lat_U[0], beta) / (beta * 6.0 * L ** 4)
+        # action2 = beta*(6L^4 - sum 1/2 Re tr U_p); true plaquette = 1 - that ratio
+        plaq_fn = lambda: 1.0 - W.action2(lat_U[0], beta) / (beta * 6.0 * L ** 4)
 
     t0 = time.time()
     for _ in range(therm):
@@ -203,6 +204,7 @@ def main(group, L, beta, N, gap, therm, seed, nmax, out):
         if (i + 1) % 100 == 0:                      # checkpoint (scalars only)
             np.savez(out, **acc, names=np.array(names), kvals=kvals,
                      L=L, beta=beta, group=group, N_done=i + 1)
+            print(f"    [chk {i+1}] plaq={plaq_fn():.4f}", flush=True)
 
     np.savez(out, **acc, names=np.array(names), kvals=kvals,
              L=L, beta=beta, group=group, N_done=N)

@@ -23,32 +23,35 @@ import rerun_core as RC                      # noqa: E402
 from kzero_analyze import _kde_point         # noqa: E402
 
 
-def stats(a, h, g, p1, p2, bw=0.30):
-    """One sample's statistics (no bootstrap)."""
+def stats(a, h, g, p1, p2, bw=0.30, kdebw=0.20):
+    """One sample's statistics (no bootstrap).
+    bw = conditioning-kernel bandwidth (a=0 moments); kdebw = Gpp KDE bandwidth."""
     k = RC.kernel_cond(a, {'H': h, 'G': g, 'P1': p1, 'P2': p2}, bw=bw)
     EH = k['E_H']; VG = k['V_own']['G']
     EP2 = k['E_P2']; VP1 = k['V_own']['P1']; cov = k['C_G_P1']
-    return dict(Gpp=_kde_point(a), bracket=EH - VG,
-                Wgeo=EP2 - VP1, X=-2.0 * cov,
-                W=(EP2 - VP1) - 2.0 * cov,
-                tot=(EH - VG) + (EP2 - VP1) - 2.0 * cov,
+    bracket = EH - VG
+    Wgeo = EP2 - VP1
+    X = -2.0 * cov
+    return dict(Gpp=_kde_point(a, bw_method=kdebw), bracket=bracket,
+                Wgeo=Wgeo, X=X, W=Wgeo + X, brX=bracket + X,
+                tot=bracket + Wgeo + X,
                 EH=EH, VG=VG, EP2=EP2, VP1=VP1, cov=cov,
                 inv=1.0 / np.var(a))
 
 
-def delete_block_jack(a, h, g, p1, p2, nblk=20, bw=0.30):
+def delete_block_jack(a, h, g, p1, p2, nblk=20, bw=0.30, kdebw=0.20):
     """Return (full_stat, se, mean_leave) for every key via delete-block
     jackknife over nblk contiguous blocks."""
     N = a.shape[0]
     nblk = int(min(nblk, max(4, N // 8)))
     edges = np.linspace(0, N, nblk + 1).astype(int)
-    full = stats(a, h, g, p1, p2, bw)
+    full = stats(a, h, g, p1, p2, bw, kdebw)
     keys = list(full.keys())
     leave = {k: [] for k in keys}
     for b in range(nblk):
         keep = np.ones(N, bool)
         keep[edges[b]:edges[b + 1]] = False
-        s = stats(a[keep], h[keep], g[keep], p1[keep], p2[keep], bw)
+        s = stats(a[keep], h[keep], g[keep], p1[keep], p2[keep], bw, kdebw)
         for k in keys:
             leave[k].append(s[k])
     se = {}; ml = {}
@@ -59,14 +62,14 @@ def delete_block_jack(a, h, g, p1, p2, nblk=20, bw=0.30):
     return full, se, ml, nblk
 
 
-def pooled_jack(A, H, G, P1, P2, nblk=20, bw=0.30):
+def pooled_jack(A, H, G, P1, P2, nblk=20, bw=0.30, kdebw=0.20):
     """Pooled over modes (equal weight) with delete-block jackknife."""
     N, Nm = A.shape
     nblk = int(min(nblk, max(4, N // 8)))
     edges = np.linspace(0, N, nblk + 1).astype(int)
 
     def pool(sl):
-        rows = [stats(A[sl, j], H[sl, j], G[sl, j], P1[sl, j], P2[sl, j], bw)
+        rows = [stats(A[sl, j], H[sl, j], G[sl, j], P1[sl, j], P2[sl, j], bw, kdebw)
                 for j in range(Nm)]
         return {k: float(np.mean([r[k] for r in rows])) for k in rows[0]}
 
@@ -97,7 +100,7 @@ def fmt(name, full, se):
             f"1/Var={full['inv']:.3f}")
 
 
-def main(path, nblk=20, bw=0.30, outdir=None):
+def main(path, nblk=20, bw=0.30, kdebw=0.20, outdir=None):
     d = np.load(path)
     A, H, G, P1, P2 = d['a'], d['H'], d['G'], d['P1'], d['P2']
     N, Nm = A.shape
@@ -105,15 +108,16 @@ def main(path, nblk=20, bw=0.30, outdir=None):
     L = int(d['L']); beta = float(d['beta']); group = str(d['group'])
     kvals = np.asarray(d['kvals'], float) if 'kvals' in d else np.full(Nm, 2*np.pi/L)
     print(f"# {path}\n# {group} L={L} beta={beta} N={N} modes={Nm} "
-          f"nblk={nblk} bw={bw}", flush=True)
+          f"nblk={nblk} bw={bw} kdebw={kdebw}", flush=True)
 
     results = {'meta': dict(group=group, L=L, beta=beta, N=N, Nm=Nm,
-                            nblk=nblk, bw=bw), 'per_mode': [], 'per_k': [], 'pooled': None}
+                            nblk=nblk, bw=bw, kdebw=kdebw),
+               'per_mode': [], 'per_k': [], 'pooled': None}
 
     print("\n== per-mode (delete-block jackknife SE) ==", flush=True)
     for j in range(Nm):
         full, se, ml, nb = delete_block_jack(A[:, j], H[:, j], G[:, j], P1[:, j],
-                                             P2[:, j], nblk=nblk, bw=bw)
+                                             P2[:, j], nblk=nblk, bw=bw, kdebw=kdebw)
         print(fmt(f"{names[j]} k={kvals[j]:.3f}", full, se), flush=True)
         results['per_mode'].append(dict(name=names[j], k=float(kvals[j]),
                                         full=full, se=se))
@@ -123,21 +127,27 @@ def main(path, nblk=20, bw=0.30, outdir=None):
     for kv in uk:
         js = [j for j in range(Nm) if abs(kvals[j] - kv) < 1e-6]
         full, se, ml, nb = pooled_jack(A[:, js], H[:, js], G[:, js],
-                                       P1[:, js], P2[:, js], nblk=nblk, bw=bw)
+                                       P1[:, js], P2[:, js], nblk=nblk, bw=bw,
+                                       kdebw=kdebw)
         print(fmt(f"k={kv:.4f} ({len(js)} modes)", full, se), flush=True)
         results['per_k'].append(dict(k=float(kv), nmodes=len(js), full=full, se=se))
 
     print("\n== overall pooled (all modes) ==", flush=True)
-    full, se, ml, nb = pooled_jack(A, H, G, P1, P2, nblk=nblk, bw=bw)
+    full, se, ml, nb = pooled_jack(A, H, G, P1, P2, nblk=nblk, bw=bw, kdebw=kdebw)
     print(fmt("ALL", full, se), flush=True)
     # sign / dominance summary
     frac = full['W'] / full['Gpp'] if full['Gpp'] != 0 else float('nan')
+    lb = full['brX'] - 1.645 * se['brX']         # keep only the PROVEN Wgeo>=0
     print(f"\n  SIGN: Gpp={full['Gpp']:+.4f}+-{se['Gpp']:.4f}  "
           f"({full['Gpp']/se['Gpp']:+.1f} sigma) ; "
           f"W carries {100*frac:.0f}% of Gpp ; "
           f"Wgeo={full['Wgeo']:+.3f}+-{se['Wgeo']:.3f} ; "
           f"closure br+W-Gpp={full['tot']-full['Gpp']:+.3f}", flush=True)
-    results['pooled'] = dict(full=full, se=se, W_frac_of_Gpp=float(frac))
+    print(f"  RIGOROUS-style interval (Wgeo>=0 only + brX statistics): "
+          f"brX={full['brX']:+.3f}+-{se['brX']:.3f}  ->  95% one-sided LB = {lb:+.3f}",
+          flush=True)
+    results['pooled'] = dict(full=full, se=se, W_frac_of_Gpp=float(frac),
+                             Wgeo_only_95LB=float(lb))
 
     if outdir is None:
         outdir = HERE
@@ -155,6 +165,7 @@ if __name__ == '__main__':
     ap.add_argument('file')
     ap.add_argument('--nblk', type=int, default=20)
     ap.add_argument('--bw', type=float, default=0.30)
+    ap.add_argument('--kdebw', type=float, default=0.20)
     ap.add_argument('--outdir', default=None)
     a = ap.parse_args()
-    main(a.file, nblk=a.nblk, bw=a.bw, outdir=a.outdir)
+    main(a.file, nblk=a.nblk, bw=a.bw, kdebw=a.kdebw, outdir=a.outdir)
