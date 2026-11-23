@@ -8,3 +8,10 @@
     150/400  (138s, ETA 229s)  RSS=61 peak=70MB
     200/400  (183s, ETA 183s)  RSS=61 peak=70MB
     [chk 200] plaq=0.6327
+    250/400  (228s, ETA 137s)  RSS=61 peak=70MB
+    300/400  (273s, ETA 91s)  RSS=61 peak=70MB
+    [chk 300] plaq=0.6300
+    350/400  (318s, ETA 45s)  RSS=62 peak=70MB
+    400/400  (364s, ETA 0s)  RSS=62 peak=70MB
+    [chk 400] plaq=0.6344
+  DONE saved k0_su2_b2.4_L8_n2.npz  total 364s  peak RSS=70MB
