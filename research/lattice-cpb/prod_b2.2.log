@@ -1,0 +1,4 @@
+[beta=2.2 L=8] therm 500 sweeps in 34.0s (68.0 ms/sweep)
+  [60/600] plaq=0.37996 (meas 1.06s/cfg)
+  [120/600] plaq=0.37827 (meas 1.22s/cfg)
+  [180/600] plaq=0.37960 (meas 1.30s/cfg)

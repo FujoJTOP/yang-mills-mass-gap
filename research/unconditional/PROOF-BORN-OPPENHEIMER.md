@@ -1,0 +1,23 @@
+# PROOF-BORN-OPPENHEIMER — adiabatic (fast/slow) separation: integrating out the fiber gives `S_eff`, and its stiffness is `G″`, not the fast gap
+
+> **Verdict.** BO is **rigorous where it is trivial and ill-defined where it would help**, so it does **not** close the gap. **(1) Yes, the fast modes integrate out exactly:** the fiber free energy `V_eff(U′)=−log(dν/dU′)=S_eff` is the marginal, and on the compact group it is `C^∞` and **bounded** — so it **cannot be confining** (`V_eff` has no large-field growth), and the slow-mode gap reduces **exactly** to curvature at the minimum, `V_eff″=G″` (W7). **(2)** That stiffness is the *slow* static Hessian, **not** the fast gap `Λ_UV`. The only *computable* evaluation — one-loop / Schur (Gaussian) elimination — is **undefined** at β=2.5 because the fiber Hessian `H_ff` is Savvidy-indefinite (`½Tr log H_ff` complex). **(3)** Hence BO neither escapes nor simplifies: the exact `V_eff` routes back to `G″(0)>0` = **H1**, and `Λ_UV` enters only adiabatic/memory corrections, never the static curvature — the Mori–Zwanzig non-separation, reproduced. Net: a **RENAME with one genuine gain** — compactness *rules out* the confining-potential mechanism outright, forcing the residual onto `G″(0)` at `k→0`.
+
+## (1) Integrating out fast modes — yes, exactly
+`P:G^E→G^{E′}` is a surjective submersion of compact manifolds; `μ∝e^{−S_W} dHaar` has full support (`e^{−S_W}>0` everywhere), so `ν=P_*μ` has full support and a smooth strictly positive density: `V_eff=−log(dν/dU′)` exists and **is** the fiber free energy `−log∫e^{−S_W(U′,ξ)}J dξ`. Compactness ⇒ `dν/dU′≥c>0`, so `V_eff∈[V_min,V_max]` is **bounded**. Along any collective direction `v`, the exact constrained free-energy identity gives `V_eff″(0)=E[vᵀHv|a=0]−Var(vᵀ∇S|a=0)=G″(0)` (W7). BO's "effective potential" is `S_eff`; its curvature **is** H1's `G″`.
+
+## (2) Confining or Savvidy-indefinite — neither horn is available to BO
+**Confining (grows at large φ) — impossible.** The coarse field lives on compact `G^{E′}`; `V_eff` is bounded. The flat-space BO picture `V_eff~φ²` has no carrier, so the *only* gap source is curvature at the minimum.
+**Savvidy-indefinite — that is the bare/one-loop object.** `H_ff` (fiber Hessian of `S_W`) is indefinite (W6-BE: 90–97% of negatives in the fiber), so the one-loop BO/Schur potential `½Tr log H_ff` is complex/undefined — exactly PROOF-COARSE-POINCARE (a)(iii). The *physical* `V_eff″=G″` is instead **measured positive** (W7: +0.27 SU(2) β=2.5, +0.49 SU(3) β=5.7) at finite `k`; the negative `−0.165` is the superseded mixed-object.
+
+## (3) Escape or repeat — repeat; adiabatic corrections never touch stiffness
+The rigorous BO content (Combes–Seiler; Klein–Martinez–Seiler) is an effective slow operator `−Δ_∥+V_eff` **plus non-adiabatic corrections controlled by the fast gap**. Here `Λ_UV` (proved block-local, `≈e^{−2βN_p}/C_G`) is a **fast relaxation rate**; it sets the memory-kernel / adiabatic-error scale, *not* `Hess V_eff`. The slow stiffness is the static Hessian of the fiber free energy — a separate object (Mori–Zwanzig; PROOF-IR-H1 §4). A gapped fast mode does not gap the slow mode; a small adiabatic error does not make `G″>0`.
+
+## Exact residual
+```
+∃λ>0: ∀U′, ∀ coarse v:   Hess S_eff(U′)[v] = G″(U′)[v] ≥ λ‖v‖²,  uniform in (L,a).
+```
+This **is H1 verbatim**. BO eliminates one would-be mechanism (large-field confinement — kinematically impossible) and leaves the other (`G″(0)≥λ` at `k→0`), which needs the induced mass (GAP-G2-mass) — the gap itself.
+
+**Sharpest line.** Adiabatic separation finds the slow potential `V_eff=S_eff` *bounded* (compactness forbids confinement) with stiffness the static `G″`, not the fast gap; the one controlled way to compute it — Gaussian/Schur elimination — is undefined because `H_ff` is Savvidy-indefinite. BO relocates H1 by zero distance, the Mori–Zwanzig finding in adiabatic clothes; its sole contribution is to *remove* the confining-potential mechanism, pinning the residual to `G″(0)(k→0)>0` — the gap.
+
+*Refs.* W7-Gpp0 (`V_eff″=G″`; +0.27/+0.49); PROOF-COARSE-POINCARE (a)(iii) (Schur undefined, `H_ff` indefinite); W6-BE-at-2.5 (fiber negatives; full `H` min −2.81); PROOF-IR-H1 §4 (fast gap ≠ slow stiffness); REPAIR-2SCALE; CONDITIONAL-LATTICE-GAP (H1); PROVE-Gpp-positive §5 (`G″≈1/Var`); W6-induced-mass (background-field curvature ≡0; mass nonlocal); GAP-G2-mass (edge/localization); W4-blocked-positivity (blocked min +0.81β); Combes–Seiler, Commun. Math. Phys. **46** (1976) 1; Klein–Martinez–Seiler, Ann. Inst. H. Poincaré **49** (1985); Mori–Zwanzig; Savvidy, Phys. Lett. **B71** (1977) 133; Nielsen–Olesen, Nucl. Phys. **B144** (1978) 376. (Distinct from Ünsal–Yaffe "adiabatic continuity" on ℝ³×S¹, R2-R4-limit — not BO.)

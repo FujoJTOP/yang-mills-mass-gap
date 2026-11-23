@@ -1,0 +1,11 @@
+# FRESH SU(3) L=4 beta=5.7 N=5000 seed=303 therm=600 gap=4 k=2pi/L=1.5708
+  sampled 5000 cfgs in 223s; mean plaquette(200)=0.5601
+    measured 250/5000 (24s)
+    measured 500/5000 (52s)
+    measured 750/5000 (87s)
+    measured 1000/5000 (122s)
+    measured 1250/5000 (157s)
+    measured 1500/5000 (200s)
+    measured 1750/5000 (240s)
+    measured 2000/5000 (290s)
+    measured 2250/5000 (335s)

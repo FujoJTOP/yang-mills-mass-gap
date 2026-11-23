@@ -1,0 +1,27 @@
+# INVENT-NEW-IDENTITY — a Selberg/Gutzwiller trace formula for pure YM: the edge atom `f₁²` is the smallest-zero residue of a Fredholm determinant built from closed temporal flux tubes
+
+> 2026-11-23 · Invented object: an **exact spectral↔orbit identity** (Selberg-type), not an inequality. **Verdict: constructed; it passes the acid test rigorously.** `f₁²` is the residue at the smallest-magnitude zero of the Källén–Lehmann **spectral (Fredholm) determinant** `D_O(z)=det(1-zT_O)`, itself fixed by the closed-flux-tube (temporal-Wilson-loop) **periodic-orbit traces** `Tr(T_O^k)`. Exact lattice operator algebra at fixed `a`; the orbit side is the SZZ-convergent polymer series. The free field is a **cut, no zero ⇒ residue 0**; YM is an **isolated zero *below* its own cut** (`m₁²<4m₁²`, PROOF-DISSOLUTION) **⇒ residue `=|A₁|²>0`**. Unlike INEQ-T2 it needs no prior gap: the zero *is* `e^{am₁}`, so the formula yields `m₁²` and `f₁²` together. The one wall is the old one — `a→0`/transport, not a sign wall.
+
+**Setup.** `ν≥0`, `supp⊂[m₁²,∞)`, `C(t)=∫e^{−ts}dν=⟨ω|O T^t O|ω⟩` (`t=0,1,2,…` lattice steps), `T=e^{−aH}` the reflection-positive transfer operator, `T_O` its compression to the `O`-cyclic subspace (`O`=plaquette / `¼trF²`). `C(t)=Σ_n f_n²e^{−aE_nt}`, atom `f₁²=|⟨g|O|ω⟩|²`. The **resolvent generating function** `G(z):=Σ_{t≥0}C(t)z^t=⟨ω|O(1-zT_O)^{−1}O|ω⟩=Σ_n f_n²/(1−z e^{−aE_n})` is meromorphic, with a **simple pole at `z₁=e^{am₁}`** (nondegenerate edge, SZZ `β<1/48`), residue `−λ₁f₁²`, `λ₁=e^{−am₁}`. Write `G=N_O/D_O`, `D_O(z)=det(1−zT_O)`. Then the **exact trace formula**
+
+$$
+\boxed{\;f_1^2=-\lambda_1\!\lim_{z\to z_1}(z-z_1)G(z)=-\frac{1}{z_1}\cdot\frac{N_O(z_1)}{D_O'(z_1)},\qquad \log D_O(z)=-\sum_{k\ge1}\frac{z^k}{k}\,\mathrm{Tr}\,T_O^k,\quad z_1=e^{am_1}=\text{smallest zero of }D_O.\;}
+$$
+
+`Tr T_O^k=Z_{S¹_k×T³}` (periodic time-circle, `k` slices) is the **closed-flux-tube sum** — a Gutzwiller "periodic orbit," physically the closed temporal flux tube of Lüscher's gradient flow. The nonlinearity (determinant, then a determinant-derivative ratio) is exactly what a linear moment cannot mimic.
+
+**Why exact; the Selberg dictionary.** On finite `T⁴_L`, `D_O` is a polynomial: the boxed line is finite-dimensional linear algebra plus the spectral theorem — no approximation. Selberg's `Σh(r_n)=Σ_γ` becomes `{zeros of D_O, residues} ↔ {closed-tube traces Tr T_O^k}`, tied by `log det=−Σ_k(tr)/k`: Gutzwiller's `density↔orbits`, at exact rather than semiclassical order.
+
+**Acid test (mandatory).**
+- *Free massless.* `O=trF²` couples two gluons; `ν=ρ(s)θ(s)`, `ρ∝s²`, purely a.c. ⇒ **no atom, `f₁²≡0`**. In the formula `G` has only the branch cut `z∈[1,∞)` (**no pole below it**) ⇒ residue `=0`; on `T³_L` the softest 2-gluon atom's overlap `∝|k|²∝1/L²→0`. (Rigorous template: `O=:φ²:` in a massive free scalar has `ν` a pure cut on `[4m²,∞)`, `ν({m²})=0` — cut, no zero.) **PASS (`=0`).**
+- *Interacting YM.* The lightest `0⁺⁺` is an **isolated pole below its own two-glueball cut**, `m₁²<4m₁²` (PROOF-DISSOLUTION), so `D_O` has an isolated zero `z₁` below the cut's zeros ⇒ nonzero residue `f₁²=|A₁|²>0` (P3). **PASS (`>0`).**
+
+The determinant **sees the atom** because a pole and a cut with identical low moments differ in `D_O`'s zero set — invisible to every moment (INEQ-R10), visible to `det`.
+
+**What it pins `f₁²` to; how computed.** To the **smallest zero and its residue** of `D_O`, a functional of the **closed-flux-tube (temporal-Wilson-loop) traces** `{Tr T_O^k}` — the SZZ convergent polymer (Kotecký–Preiss) series, leading term one fundamental temporal flux tube, giving `z₁=e^{am₁}`, `f₁²=c₁u^p(1−O(u))`: P3 re-derived as a determinant-zero residue, and, unlike INEQ-T2's `inf_t e^{tm₁²}C(t)`, *supplying* `m₁²` rather than consuming it. (The EK/matrix-model orbit is wrong here — a one-site integral has no Euclidean time to host KL poles (EGUCHI-KAWAI); the temporal-circle trace is the correct object.)
+
+**The exact obstruction.** The boxed identity is exact at fixed `a`, every `L`. The orbit side is *provably* convergent/computable only at `β<1/48`; `a→0` and transport to `β≈2.5` is the **same analyticity/continuum wall** as P3 — the determinant has no closed form in the continuum. The identity **relocates** the wall (from "lower-bound a usc atom" to "evaluate a determinant zero in the continuum") and changes the *type* from a provably-blind linear moment to a nonlinear pole; it does not dissolve the continuum problem.
+
+**Sharpest line.** The lone atom is not an inequality to be won — it is a **pole below a cut**, and poles are the residues of a spectral determinant: exact, computable from closed flux tubes. `f₁²` is that residue; the free field has the cut and no pole (`0`), YM has the pole below its own cut (`>0`). Linear sum rules drown in the same moments for both; the determinant splits them.
+
+*Refs.* Selberg (1956); Gutzwiller, J. Math. Phys. **12** (1971) 343; Ruelle, *Dynamical Zeta Functions*; Baladi, *Positive Transfer Operators*; Fredholm–Hadamard factorization; Lüscher, JHEP **08** (2010) 071 (gradient flow); Lüscher–Weisz (flux tube); Osterwalder–Seiler, Ann. Phys. **110** (1978) 440; Seiler LNP **159** (1982); Kotecký–Preiss CMP **103** (1986); Shen–Zhu–Zhu CMP **400** (2023) 805. Internal: INEQ-R10 (linear blindness), INEQ-T2 (infimum dual / location-collapse), PROOF-DISSOLUTION-SPECTRAL-DENSITY (`m₁²<4m₁²`, `:φ²:` template), PROOF-P3 (`r₀=|A₁|²`), PROOF-ISOLATION, EGUCHI-KAWAI (why not the matrix model), INEQ-R7.
