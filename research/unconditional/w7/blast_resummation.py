@@ -56,54 +56,62 @@ print("      error at the physical t_c is WORSE.  No resummation beats this.")
 
 print()
 print("=" * 74)
-print("3.  Toy check: Borel-Pade of an asymptotically-singular series")
+print("3.  Toy check: Borel-Pade, Borel-summable vs not")
 print("=" * 74)
 # model Borel transform B(t)=(1-t/t_c)^{-alpha}, alpha=0.5 (<1 => PV-summable).
-# series coefficient of u^n (after the Borel map) : a_n = (alpha)_n t_c^{-n}.
-tc, alpha = 0.7, 0.5
-def coef(n):
-    return float(gamma(n + alpha) / gamma(alpha) / tc ** n)
-Norder = 18
-a = np.array([coef(n) for n in range(Norder + 1)])
-
-# exact Borel sum (upper lateral): int_0^inf e^{-t/u}(1-t/tc)^{-alpha} dt, Im(t)=eps>0
-def borel_exact(u, eps=1e-3, S=None):
+# series coefficient of u^n: a_n = (alpha)_n t_c^{-n}; B~(t)=sum a_n t^n/n!.
+alpha = 0.5
+def build(tc, Norder=18, M=8):
+    a = np.array([float(gamma(n + alpha) / gamma(alpha) / tc ** n) for n in range(Norder + 1)])
+    bn = np.array([a[n] / math.factorial(n) for n in range(Norder + 1)])
+    p, q = pade(bn, M)
+    return p, q
+def borel_exact(u, tc, eps, S=None):
     S = S or 60 * u
     s = np.linspace(0, S, 400000)
     t = s + 1j * eps
-    integ = np.exp(-t / u) * (1 - t / tc) ** (-alpha)
-    return np.trapezoid(integ.real, s)  # end values negligible (exponential decay)
-
-truth = borel_exact(u25)
-
-# Borel-Pade: B~(t) = sum a_n t^n/n! ; Pade [M/M]; integrate along Im=eps.
-bn = np.array([a[n] / math.factorial(n) for n in range(Norder + 1)])
-M = 8
-p, q = pade(bn, M)
-def borel_pade(u, eps=2e-3, S=None):
+    return float(np.trapezoid((np.exp(-t / u) * (1 - t / tc) ** (-alpha)).real, s))
+def borel_pade(u, tc, p, q, eps, S=None):
     S = S or 60 * u
     s = np.linspace(0, S, 400000)
     t = s + 1j * eps
-    val = np.exp(-t / u) * (p(t) / q(t))
-    return np.trapezoid(val.real, s)
+    return float(np.trapezoid((np.exp(-t / u) * (p(t) / q(t))).real, s))
 
-bp = borel_pade(u25)
-print(f"   t_c={tc}, alpha={alpha}, order {Norder} -> Pade [8/8]")
-print(f"   exact upper Borel sum at u(2.5): {truth:.4f}")
-print(f"   Borel-Pade [8/8]               : {bp:.4f}")
-print(f"   |relative error|              : {abs(bp-truth)/abs(truth):.2%}")
-print(f"   minimal-term floor e^(-t_c/u)  : {np.exp(-tc/u25):.3f}")
-print("   -> the Borel-Pade error sits at/near the minimal-term floor; it does NOT")
-print("      go to zero with order.  Same conclusion for any resummation.")
+for label, tc in (("Borel-summable   t_c=0.7 > u", 0.7),
+                  ("NOT summable     t_c=0.4 < u", 0.4)):
+    p, q = build(tc)
+    up = borel_exact(u25, tc, +2e-3)
+    lo = borel_exact(u25, tc, -2e-3)
+    bp = borel_pade(u25, tc, p, q, +2e-3)
+    print(f"   {label}:")
+    print(f"      upper lateral sum = {up:.4f}   lower = {lo:.4f}   "
+          f"lateral difference = {abs(up-lo):.4f}")
+    print(f"      Borel-Pade [8/8] (upper) = {bp:.4f}   |BP-upper|/|upper| = "
+          f"{abs(bp-up)/abs(up):.2%}")
+    print(f"      e^(-t_c/u) = {np.exp(-tc/u25):.3f}")
+print("   -> KEY subtlety: the REAL parts of the lateral sums coincide (Borel-Pade")
+print("      reproduces the principal value PV to <0.1% even for t_c<u).  So Borel-")
+print("      Pade is numerically 'accurate' -- but PV is NOT the physical value:")
+print("      the IR renormalon makes the physical answer  PV + sigma*exp(-t_c/u)")
+print("      with sigma a FREE transseries coefficient (ROOF-RESURGENCE: no saddle).")
+print("      So the physical chi is PV + sigma*e^(-t_c/u), sigma undetermined -> an")
+print("      intrinsic O(e^(-t_c/u)) = O(20-45%) ambiguity that NO prescription")
+print("      (Borel-Pade, conformal, median) removes.  That is the obstruction.")
 
 print()
 print("=" * 74)
 print("VERDICT")
 print("=" * 74)
-print("   The strong-coupling series is asymptotic with an IR-renormalon-type")
-print("   Borel singularity at the physical (crossover/mass-gap) scale t_c ~ O(1).")
-print("   At beta=2.5 (u=0.507) the optimal truncation is O(1) terms and the")
-print("   intrinsic ambiguity is ~exp(-t_c/u) = O(10-60%).  Aggressive resummation")
-print("   (Borel-Pade / conformal) gives a finite DIAGNOSTIC but no rigorous error")
-print("   bound, and cannot certify  chi <= 1/lambda  (an inequality needs the")
-print("   estimate error < its margin, which is not met).  No certificate.")
+print("   The strong-coupling series is asymptotic with an IR-renormalon Borel")
+print("   singularity at the physical (crossover/mass-gap) scale t_c ~ O(1).")
+print("   At beta=2.5 (u=0.507):")
+print("     * plain truncation is useless (optimal n*=0, O(1) error);")
+print("     * Borel-Pade is accurate ONLY IF the series is Borel-summable")
+print("       (singularity beyond u(2.5), integrable) -- but that continuity is")
+print("       UNKNOWN, and it carries a genuine transseries ambiguity sigma*e^{-2s}")
+print("       (ROOF-RESURGENCE: no saddle), so even a converged value is one of a")
+print("       family, and there is NO rigorous error bound (asymptotic series).")
+print("   Hence: aggressive resummation gives a numerical DIAGNOSTIC [V-num]/[C],")
+print("   NOT a certificate.  It cannot rigorously establish chi <= 1/lambda at")
+print("   beta=2.5, because the estimate's error/ambiguity is not controlled below")
+print("   the required margin.  No certificate; Clay 0%.")
