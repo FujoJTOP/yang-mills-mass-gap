@@ -1,0 +1,55 @@
+{
+  "part2_free_gaussian": [
+    [
+      1.0,
+      0.17048905926922275,
+      0.7830746672126656,
+      0.726188436210908
+    ],
+    [
+      0.5,
+      0.21273005713480456,
+      1.2662081864469368,
+      1.0545698149908236
+    ],
+    [
+      0.2,
+      0.26952305590891357,
+      1.3404437649722813,
+      1.324166998570015
+    ],
+    [
+      0.05,
+      1.0008540204157368,
+      2.018002491999594,
+      0.6655446166352336
+    ]
+  ],
+  "part3_tree_chi3": {
+    "gapless_IR_slope": -5.999999999601242
+  },
+  "part4_kl_moments": {
+    "gapped_M0": 2.0408163265306127,
+    "gapless_M0": 1.0,
+    "gapless_M1_eps": [
+      0.01,
+      0.0001,
+      1e-06
+    ],
+    "gapless_M1_vals": [
+      94.96720299852532,
+      10137.81425301648,
+      15052256.101978542
+    ]
+  },
+  "part5_phi4": {
+    "note": "nonzero connected 3pt appears for gapped non-Gaussian skewed; zero for free and for symmetric"
+  },
+  "verdict": {
+    "free_gapless_N3": 0.0,
+    "nonlinear_parity": "N^(3) propto interaction strength g; -> 0 as g->0 while spectrum stays gapless",
+    "linear": "faithful (analytic@0 <=> gap) but == Kallen-Lehmann spectrum => reformulation/circular",
+    "anomaly_moment": "blind (M_0 finite & positive for gapped AND gapless witness) => non-discriminating if anomaly-pinned",
+    "overall": "(a) REFORMULATION, with the nonlinear horn additionally broken by Gaussianity (free-vacuous, in the mislabeling direction); partially (b) if anomaly-derived. NOT (c)."
+  }
+}
