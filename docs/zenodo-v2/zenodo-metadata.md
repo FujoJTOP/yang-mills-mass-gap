@@ -48,6 +48,16 @@ Yang–Mills theory; mass gap; Clay Millennium Problem; lattice gauge theory; co
 
 见 `description.html`(整段 HTML 粘贴)。
 
+## Files(本记录包含)
+
+| 文件 | 说明 |
+|---|---|
+| `YANG-MILLS-CONDITIONAL-REDUCTION-V2.pdf` | 正文,81 页 |
+| `ym-v2-lean.zip` | Lean 4 形式化源码补充包(40 个 `.lean`、构建脚本、`lakefile.lean`、toolchain pin、`MANIFEST.sha256`;不含 Mathlib/OSforGFF) |
+
+Zenodo 的 Files 区上传这两个文件。Lean 包的构建入口与依赖说明见包内 `README.md`
+和 `scripts/build-core.sh`;论文 Appendix A 的两个模块只依赖 Mathlib。
+
 ## Related identifiers
 
 | Relation | Identifier | Scheme |
@@ -81,6 +91,9 @@ errata (free-vector a/c corrected to 31/18). Clay = 0%; no QED.
 - **格点诊断**:P3 逼近律、单侧隔离界、Re-slope、有限尺寸律;均标注为"读"而非"证"。
 - **附录**:Lean、数值协议、后审计、验证表、测量台账、波次索引、勘误。
 - **勘误**:自由矢量 `a/c = 31/18`(此前 `31/36` 为归一化滑档);结论不变。
+- **附带 Lean 源码包** `ym-v2-lean.zip`:论文 Appendix A 的 `Reduction.lean` 与
+  `H1Sharpening.lean`,以及 `Conditional.lean` 和 glue/handoff 开发;toolchain pin
+  `v4.33.0-rc1`,Mathlib commit `79d0395a…`;不含第三方 `OSforGFF` 与 Mathlib 源码。
 
 ## 一句话摘要(用于社交媒体/邮件,可选)
 

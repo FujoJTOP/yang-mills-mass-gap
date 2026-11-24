@@ -8,27 +8,47 @@
 | 项 | 路径 | 说明 |
 |---|---|---|
 | PDF | `docs/YANG-MILLS-CONDITIONAL-REDUCTION-V2.pdf` | 81 页,1.45 MB |
-| 校验 | `docs/zenodo-v2/SHA256SUMS.txt` | 可核对是否传错文件 |
+| **Lean 源码包** | `docs/zenodo-v2/ym-v2-lean.zip` | 40 个 `.lean` + 构建脚本 + lakefile/pin + 校验表;104 KB;不含 Mathlib 与 `OSforGFF` |
+| 校验 | `docs/zenodo-v2/SHA256SUMS.txt` | PDF 与 zip 的 sha256 |
 | 描述 | `docs/zenodo-v2/description.html` | 粘贴到 Zenodo 的 Description 字段 |
 | 元数据 | `docs/zenodo-v2/zenodo-metadata.md`(人读)/ `zenodo.json`(机读) | 逐项填入 |
 
-**不要上传**:`docs/paper-v2/` 的源码、`main.aux/log/toc`、任何 `out*.txt`。Zenodo 记录只需要 PDF;
-源码留在 GitHub 仓库即可。
+**上传**:PDF 与 `ym-v2-lean.zip` 两个文件。
+
+**不要上传**:`docs/paper-v2/` 的 LaTeX 源码与 `main.aux/log/toc`、任何 `out*.txt`、
+`ym-v2-lean/` 解包目录、`vendor/OSforGFF/`(含 `.lake` 构建产物,11 GB)与 Mathlib 源码。
+Lean 只交 zip:里面是自有的 40 个 `.lean` 文件、`lakefile.lean`、`lean-toolchain`、
+`scripts/` 与 `MANIFEST.sha256`;构建时由 Lake 按 pin 拉取 Mathlib。
+
+## Lean 包说明(给上传者)
+
+- `ym-v2-lean.zip` 解包后根目录是 `ym-v2-lean/`,内有 `README.md`,写明了 toolchain pin
+  (`leanprover/lean4:v4.33.0-rc1`)与 Mathlib commit
+  (`79d0395a1825a6264ad5d269e35e60537518955e`)。
+- 论文 Appendix A 的两个模块是自足的(只依赖 Mathlib):
+  `YMStatement/Reduction.lean`、`YMStatement/H1Sharpening.lean`。
+- `YMStatement/Conditional.lean` 也自足(依赖同包内的 `HandoffMargin`、`GL9Decay`)。
+- 唯一不自足的是 `YMStatement/Basic.lean`,它 `import OSforGFF`(第三方,Apache-2.0,
+  **不在包内**);包内 README 与 lakefile 已把它排除在默认构建根之外。
+- 包内 `scripts/build-core.sh` 是构建入口;`scripts/original/` 保留原机上的绝对路径脚本,
+  仅供溯源,不用于复现。
 
 ## 1. 前置检查(30 秒)
 
 - PDF 页数 = **81**(`pdfinfo` 或打开文件看最后一页)。
 - PDF 里没有 `??`(未解析引用)。
 - 文件哈希与 `SHA256SUMS.txt` 一致:
-  `c793ff0d3c87bcd8e6da65a3f6e562aabe156769c91d836bf01c297adb223826`
+  PDF `c793ff0d3c87bcd8e6da65a3f6e562aabe156769c91d836bf01c297adb223826`;
+  zip `c991fadc00f80a31bf951944257624c31312ea54b30bdacaf7815dfd8e3825aa`。
 - 标题页写明 "Second Edition — The Wall in Two Coordinates"、"version 2"、"supersedes the 31-page v1"。
+- zip 解包后 `ym-v2-lean/README.md` 存在,且 `MANIFEST.sha256` 行数与文件数一致(45 行)。
 
 ## 2. 在 Zenodo 上发布新版本
 
 1. 登录 Zenodo,打开 v1 记录:**https://doi.org/10.5281/zenodo.24486316**
 2. 在记录页面点 **New version**(不要点 New upload)。
-3. 在 Files 区:把 v1 的 PDF 替换为 `docs/YANG-MILLS-CONDITIONAL-REDUCTION-V2.pdf`
-   (或保留旧文件并新增,二选一;推荐**替换**,记录里只留当前版本)。
+3. 在 Files 区:把 v1 的 PDF 替换为 `docs/YANG-MILLS-CONDITIONAL-REDUCTION-V2.pdf`,
+   并新增 `docs/zenodo-v2/ym-v2-lean.zip`(Lean 源码补充包)。记录里只留当前版本的 PDF 与新 zip。
 4. **Version** 填 `2.0`;**Publication date** 填 `2026-11-24`。
 5. **Title** 用:
    `A Conditional Reduction of the 4D Pure Yang–Mills Mass Gap — Second Edition: The Wall in Two Coordinates`

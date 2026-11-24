@@ -50,6 +50,13 @@ free-field-failing, cutoff-uniform upper bound on a conditioned variance &mdash;
 nonperturbative sign theorem for &beta;<sub>N<sub>f</sub>=0</sub>. That object does not exist in
 the present toolbox, and naming it precisely is the paper&rsquo;s real result.</p>
 
+<p><b>Supplementary material.</b> The record includes the Lean 4 sources as
+<tt>ym-v2-lean.zip</tt>: the six <tt>YMStatement</tt> modules, the glue/handoff development, build
+scripts, and the pinned toolchain (<tt>leanprover/lean4:v4.33.0-rc1</tt>) with the Mathlib commit.
+Mathlib and the third-party <tt>OSforGFF</tt> package are not redistributed; the package fetches
+Mathlib by pin, and the two modules behind the paper&rsquo;s Lean claims (<tt>Reduction</tt>,
+<tt>H1Sharpening</tt>) build against Mathlib alone.</p>
+
 <p><b>Provenance.</b> Every substantive claim carries a label (theorem / conditional theorem /
 no-go / exact missing step / numerical evidence) and names the file containing its proof. The Lean
 formalization uses a pinned toolchain; the references were checked against publisher, arXiv and
