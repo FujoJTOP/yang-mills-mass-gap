@@ -32,14 +32,20 @@ $w\delta_m$, one has $\Pi(z)=w/(m-z)$, hence on the boundary $z=x+i\varepsilon$,
 \;\longrightarrow\; w\,\delta_m(x)\quad(\varepsilon\downarrow0),
 \label{eq:atomjump}
 \end{equation}
-so the atom weight is the boundary jump:
+so the atom weight is the boundary jump. The window must be taken independently of the
+regularization and the limits must be ordered:
 \begin{equation}
-f_1^2=\nu(\{m\})=\lim_{\varepsilon\downarrow0}\int_{m-\varepsilon}^{m+\varepsilon}
-\frac{1}{\pi}\operatorname{Im}\Pi(x+i\varepsilon)\,dx .
+f_1^2=\nu(\{m\})=\lim_{d\downarrow0}\ \lim_{\varepsilon\downarrow0}
+\int_{m-d}^{m+d}\frac{1}{\pi}\operatorname{Im}\Pi(x+i\varepsilon)\,dx .
 \label{eq:atomweight}
 \end{equation}
 The limit is essential: for every fixed $\varepsilon>0$, the expression on the right is an
 integral of a bounded kernel, i.e.\ a finite datum. The atom appears only in the limit.
+The order matters: setting the window equal to the regulator, $d=\varepsilon$, couples the two
+limits and returns $f_1^2/2$, because the Poisson kernel integrates to
+$(1/\pi)[\arctan(1)-\arctan(-1)]=1/2$ over $[m-\varepsilon,m+\varepsilon]$. The correct statement
+is $d\downarrow0$ \emph{after} $\varepsilon\downarrow0$; for every fixed $d>0$ the inner limit is
+the full atom weight.
 
 \subsection{Four lemmas}
 
