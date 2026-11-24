@@ -150,7 +150,7 @@ The resolution is **not** a convention ambiguity that could rescue O(10). It is 
 
 **Caveat on "liquid" vs "gas" (honest).** Schäfer–Shuryak deliberately call it an *instanton liquid*, not a gas, because **interactions are O(1) and non-negligible** — but "liquid" here is a statement about *correlation strength*, **not** about packing fraction. The packing fraction is 𝔡 ≈ 0.01. A dilute-but-interacting system (like a dilute electrolyte) is fully consistent with 𝔡 ≪ 1.
 
-**What Kotecký–Preiss actually requires `[R]` (Kotecký–Preiss, Commun. Math. Phys. 103 (1986) 19).** KP convergence is the summability `Σ_p |z_p| e^{a|p|} < ∞` over polymers `p`, with activity `z_p` and geometric size `|p|` (range), for some `a > 0`. **It is a statement about the activity and the interaction range, not about `n ρ⁴`.** For the instanton gas:
+**What Kotecký–Preiss actually requires `[R]` (Kotecký–Preiss, Commun. Math. Phys. 103 (1986) 491–498).** KP convergence is the summability `Σ_p |z_p| e^{a|p|} < ∞` over polymers `p`, with activity `z_p` and geometric size `|p|` (range), for some `a > 0`. **It is a statement about the activity and the interaction range, not about `n ρ⁴`.** For the instanton gas:
 - the *activity* `z ~ e^{−S}` at the peak is `e^{−11} = 1.7×10⁻⁵` — genuinely small;
 - but the *range* `|p| ~ ρ ~ 1/Λ ≈ 0.4–1 fm` is large and the mutual overlap at separation `~ρ` is O(1), so `e^{a|p|}` can grow faster than `z` decays for any `a` one actually needs;
 - therefore **`𝔡 ≪ 1` is consistent with diluteness but does NOT by itself prove KP.** The KP obstruction at the physical scale — if there is one — lives in the **continuum range/activity control** at `ρ ~ 1/Λ`, which is the confinement problem itself, **not** in an O(10) density.
