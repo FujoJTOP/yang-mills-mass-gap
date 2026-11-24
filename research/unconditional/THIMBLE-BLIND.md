@@ -1,0 +1,111 @@
+# THIMBLE-BLIND — independent blind red-team on the "Picard–Lefschetz thimble / resurgence" species for `f₁²`
+
+> 2026-11-23 · **判词：SPECIES DEAD. All four kill targets land; survival score 2/5 (defensible range 1–2/5 — the rigor kill shaves condition #1 to "partial").** The proposed tool claims a **non-positivity lever**: analytically continue the path integral, localize onto Lefschetz thimbles of the complexified Savvidy saddles, and use the thimble phase `e^{i Im S_σ}` — a structure that is *not* a real positive weight — to **lower-bound** the atom `f₁²=|⟨0|tr F²|G⟩|²`. It dies on the project's sharpest banked line: **`f₁²` is a modulus-square, a phase is a phase, and the square annihilates it.** The thimble phases are *relative phases between saddles that sum to a real, reflection-positive correlator* (Cauchy invariance: the thimble contour reproduces the identical physical measure); they are a *representation* of the same integral, never a *convexification*, and the only sign-robust consequence of a phase sum is an **upper** bound (triangle/Cauchy–Schwarz coherence), while any **lower** bound needs the phases *aligned* — i.e. the Stokes data, i.e. the gluon condensate `⟨Tr F²⟩`, i.e. the gap's own scale `Λ`. Kills: **PHASE-ANNIHILATION ✓, STOKES/BOREL-CIRCULARITY ✓, FREE-FIELD-VACUITY ✓, RIGOR ✓.** This reconfirms, from first principles, the two prior banked adjudications of the same object — `PROOF-THIMBLE.md` ("no — and the premise is misidentified") and `RESURGENCE.md` ("no … score 2/5") — and `H1-T7-localization.md` §3, which names "Lefschetz-thimble localization of the real path integral … the same wall."
+
+---
+
+## §0 · The tool, stated precisely (kill the real thing, not a strawman)
+
+The proposal: real-β Wilson measure needs no deformation, so the intended object is the **blocked / Savvidy-effective** action (which *is* signed — negative Hessian `H=−D²+2ad F`, `λ_min=−g|B|`, `PROOF-SAVVIDY-EXACT-SIGN` §1). Complexify on `SL(N,ℂ)^{|E|}`, deform the contour to the **Lefschetz thimbles** `J_σ` of the complexified saddles `φ_σ` (Savvidy-type backgrounds at `e^{−S_sav}`, `S_sav=8π²/g²`), and write
+
+  `Z = Σ_σ Z_σ`,  `Z_σ = e^{−i\,Im S(φ_σ)} ∫_{J_σ} e^{−Re S} e^{iω_σ} dμ_σ`,  `ω_σ = arg det J_σ`.
+
+The *novelty claim* — what distinguishes this 7th species from the six dead ones — is that the **phase** `e^{−i Im S(φ_σ)}` (and the residual Jacobian phase `e^{iω_σ}`) is a *non-positivity* structure, and non-positivity is what the whole campaign has been missing (the master obstruction `SCHUR-CONVEX.md`: all positivity gives the **wrong cone**). So the hope is: phases → interference → a **lower** bound on the residue `f₁²` that positivity cannot give.
+
+To be a *tool* it must do all of (the project's five hard conditions): **(1)** be nonperturbative *and rigorous*; **(2)** deliver a sign-controlling **lower** bound `f₁²≥r₀>0` (equivalently `m_eff²(k→0)≥λ`); **(3)** be non-circular (not assume the gap / `⟨TrF²⟩>0`); **(4)** fail on the free field (`f₁²=0`); **(5)** be `(L,a)`-uniform and reach `β≈2.5`. §1–§4 show it passes only the *trivial* half of (4), and that half is the proof of its impotence. The five kills below are exactly the four named kill targets plus the phase-control-as-circularity corollary.
+
+---
+
+## §1 · KILL 1 (PHASE-ANNIHILATION) — the phase is a phase; the atom is a modulus-square; the surviving object is positivity again
+
+### (a) The atom is a modulus-square (banked, fatal, elementary).
+`f₁² = ν({m₁²}) = |⟨Ω|O|G⟩|²`, `O=tr F²` (`docs/yang-mills-frontier.md` §2). The project already proved that "no sign can undo it": `PROOF-P3-UNCONDITIONAL.md` §3, verbatim — *"The residue `f₁²=|⟨Ω|O|G⟩|²=a₀(1−O(u))` is a modulus-square, so no sign can undo it."* And `docs/yang-mills-frontier.md` line 68 — *"f₁² 是模方，符号交替翻不动平方交叠"* (f₁² is a modulus-square; sign alternation cannot move the squared overlap). A thimble phase `e^{i Im S_σ}` is carried by the **amplitude** `A₁=⟨0|trF²|G⟩`; the observable is `|A₁|²`. Any `U(1)` phase — from the saddle action, from a center twist, from a summed signed surface — is `|A₁|²`-**invariant**. This is the *identical* death that killed the 6th species (`SIGNED-FOURIER-BLIND.md` §1(a): "the sign lives *before* the square and the square destroys it"). **A phase cannot lower-bound a modulus-square.**
+
+### (b) The phases are not free — they sum to the real positive correlator (Cauchy invariance).
+The thimble decomposition is an *identity* for a holomorphic integrand on a valid cobordism: `⟨O⟩_thimble = ⟨O⟩_real` for every gauge-invariant `O` (`PROOF-THIMBLE.md`, "Cauchy invariance — same theory, same gap"). The physical `C(t)=⟨O(t)O(0)⟩` is **real and reflection-positive** (`ν≥0`, Osterwalder–Seiler). Therefore the relative phases `e^{−i(Im S_σ−Im S_{σ'})}` are *constrained* by the requirement that the sum reproduce a real positive quantity — they are not tunable degrees of freedom. The thimble phase structure is "a (phase-tainted) **representation** of the same integral, never a **convexification** of it" (`PROOF-THIMBLE.md`, sharpest line). Using it to prove something about `f₁²` proves only something already true in the real positive measure — and the real positive measure is the *dead* RP family, whose only consequence is `f₁²≥0`.
+
+### (c) The strongest form — triangle/cone control — needs exactly the unproven phase datum.
+The best a phase buys is the reverse triangle / cone estimate. Write `C(t)=Σ_σ w_σ(t)e^{iθ_σ}`, `w_σ=e^{−Re S_σ}>0`. Cauchy–Schwarz gives only `|C|² ≤ (Σ_σ w_σ)²` — an **upper** bound (coherence maximal), the wrong direction (`SCHUR-CONVEX.md`: atom ≤ total). A **lower** bound `Re C = Σ_σ w_σ cos θ_σ ≥ cos(θ_max)·Σ_σ w_σ` requires all `θ_σ` within a cone `|θ_σ−θ_{σ*}|<φ_max<π/2`. That cone condition is *verbatim* clause **(T1) phase triviality** of `PROOF-THIMBLE.md`'s missing lemma, which "fails generically (residual phase `ω_σ` unbounded; FP determinant sign flips at the Gribov horizon; Morse–Bott non-isolation)." And even granting (T1), the bound is in terms of `Σ_σ w_σ` — which still needs the decay rate `(T2)` **= H1** (`PROOF-THIMBLE.md`: "(T2) is IDEA's H1 — unproven"). So the phase-control route is `Thimble–SLC = H1` relabelled, plus two extra obstructions. **KILL 1 lands: the phase is annihilated by the modulus-square; what remains is positivity (upper bound), and the only lower bound needs the phase datum = the gap.**
+
+---
+
+## §2 · KILL 2 (STOKES / BOREL CIRCULARITY) — the Stokes constant *is* the gluon condensate; any "lower bound" collapses to "the condensate is >0"
+
+The thimble sum is a **trans-series**: `f₁² = [perturbative in g] + Σ_k σ_k e^{−S_k/g²}(…)`. The nonperturbative terms carry the physics. The *only* place the series is asymptotic is the continuum/weak-coupling `g`-series (below `β₁` the strong-coupling series is **convergent**, so resurgence has zero content there — `RESURGENCE.md` §1). Across the crossover the Borel singularities are **IR renormalons** at `u=+2n/β₀` on the positive Borel axis, factorising as
+
+  `B(u) ∼ (1−u/(2n/β₀))^{−1−γ_n}·C_n`,  `C_n ∝ γ_n·⟨O_{4n}⟩`,  `n=1 ⟹ C_1 ∝ ⟨Tr F²⟩`  (`CONTINUUM-ASYMPTOTIC-BEYOND.md` §1).
+
+The two lateral sums differ by `ΔS = 2πi Σ_n C_n e^{−2n/(β₀g²)}`, a trans-series amount whose **Stokes constant `σ` is *free* on ℝ⁴** — "no monopole/bion sector fixes it" (Maiezza–Vasquez, arXiv:2405.01639; `CONTINUUM-ASYMPTOTIC-BEYOND.md` §2; `RESURGENCE.md` §2). Hence:
+
+- The thimble/resurgent vacuum energy is `∝ σ e^{−S_sav}` — *magnitude* fixed by `S_sav` ("the scale"), *sign* carried by `σ` ("never the sign", `RESURGENCE.md` §2). A magnitude-controlled, sign-free ambiguity is the **opposite** of a one-sided lower bound.
+- Any claimed bound `f₁² ≳ σ·e^{−S_sav} > 0` **is** the assertion `σ>0`, i.e. `C_1>0`, i.e. `⟨Tr F²⟩>0`. But `⟨Tr F²⟩` is the **gluon condensate**, the same object as `Λ^{4}`, the Savvidy scale, and (via `f₁²=Z_O²f₁²`) the residue itself. So the "lower bound" collapses to **"the condensate is >0"** — a restatement of the nonperturbative datum that *is* the gap. **Circular in the gap's own scale.**
+
+This is not a missing estimate; it is the structure. `CONTINUUM-ASYMPTOTIC-BEYOND.md` sharpest line: *"The renormalon ambiguity is not a residual error to be resummed away; it **is** the nonperturbative piece — numerically the gluon condensate, physically the residue/Savvidy/`Λ` datum."* And `RESURGENCE.md`: the wall "localises to a single number, the Stokes constant `σ`" — fixing it "needs the condensate / spectral-edge atom = H1". **KILL 2 lands.**
+
+*Additionally,* the exact one-loop handle `Z_O=(β/2g)(μ₀)/(β/2g)(μ)` (trace anomaly, `INVENT-TRANSPORT`) needs **no** Borel sum — it *multiplies* a base value that is the spectral-edge atom (`CONTINUUM-ASYMPTOTIC-BEYOND.md` §3). Resumming it reimports the `u=2/β₀` ambiguity at `O(Λ²)` — the exact order the problem turns on. The multiplicative transport is a covariance; it never produces the positive base point.
+
+---
+
+## §3 · KILL 3 (FREE-FIELD LEAK / VACUITY) — the Savvidy thimble machinery *requires* the instability, which is absent at `g=0`; so it returns `0` (impotent) or leaks `>0` (false)
+
+The thimble mechanism is built on the **Savvidy negative modes** — the instability itself. On a constant abelian background the transverse Hessian is exactly `H=−D²+2ad F` with bottom `λ_min=−g|B|`, negative-mode count `N_neg/V=c_N(gB)²/8π²` (`PROOF-SAVVIDY-EXACT-SIGN.md` §1). **At `g=0` there is no instability**: `λ_min=−g|B|→0`, the Savvidy saddle is the trivial `A=0` (`F=0`) global minimum with a positive Hessian, and `S_sav=8π²/g²→∞` so `e^{−S_sav}→0`. The celebrated "non-positivity structure" (interference between Savvidy thimbles) is therefore **absent** on the free field. Two horns:
+
+- **Horn (a) — honest continuum.** The Savvidy-thimble contribution `→0` as `g→0`; the tool returns `f₁²=0`. The acid test passes. **But this pass is the proof of impotence**: Borel/saddle summation is a ring homomorphism fixing `0↦0` — "the median sum is a `g`-continuous function vanishing at `g=0` … it cannot manufacture `f₁²≥r₀>0` from a `g`-trivial start" (`CONTINUUM-ASYMPTOTIC-BEYOND.md` §2; `RESURGENCE.md` §3: "The Borel transform is entire, the sum returns `0` … this is *the same fact as failure*"). A tool that *must* return `0` at `g=0` by homomorphism cannot certify `>0` at the physical coupling without the nonperturbative input — i.e. `σ` — i.e. §2.
+- **Horn (b) — finite regulator.** The acid test `f₁²(free)=0` holds only in the `L→∞, a→0` limit; at any finite regulator the free lattice field has a positive lowest mode and nonzero residue (`REDTEAM-FORGE.md`, cross-cutting flaw). A thimble sum is a finite-`L`, finite-`β` object; evaluated at finite regulator it returns `>0` on the *free* field ⇒ **leak**. To make it vanish requires the very limit that is the theorem ⇒ circular (goal-driven).
+
+The free (perturbative) thimble around the trivial saddle is a Gaussian integral giving `f₁²=0` exactly; the Savvidy thimbles that could carry a phase are gated by `e^{−8π²/g²}`. Either the mechanism is the Gaussian (`=0`) or it is the Savvidy exponent (∝ condensate, §2). **KILL 3 lands: vacuous at `g=0` (returns 0, cannot lift), leaky at finite regulator, and in no case a `>0` lower bound that is not already the condensate.**
+
+---
+
+## §4 · KILL 4 (RIGOR) — resurgence is a *program*, not a theorem for 4D YM; the trans-series↔physical-`f₁²` equivalence is unproven, so the "bound" is formal (fails condition #1, *nonperturbative-rigorous*)
+
+The thimble/resurgent apparatus is **not proven to compute the physical 4D pure-YM `f₁²`**:
+
+- The thimble decomposition is **unproven to equal the physical measure** at the relevant coupling — `PROOF-THIMBLE.md`: *"the thimble decomposition is unproven to equal the physical measure (T5)."* The equivalence "trans-series = genuine nonperturbative function" is a *conjecture* for 4D YM, rigorous only in special solvable models.
+- The renormalon–OPE relation `t₀=−a_IR/β₀` that would tie the ambiguity to the condensate is **"proved only in 2D large-N; in 4D it is an assumption"** (`CONTINUUM-ASYMPTOTIC-BEYOND.md` §3).
+- `σ` is undetermined on ℝ⁴ (no semiclassical bion sector; Maiezza–Vasquez 2405.01639), so even the *statement* "the trans-series sums to `f₁²`" is incomplete without an unstated input.
+
+So the "thimble lower bound" is a **formal** object: it is exact only in models where the trans-series is provably the function, and 4D pure YM is not such a model. The project's condition (1) is *nonperturbative **and** rigorous*; a formal trans-series fails the *rigorous* half. This is precisely the task's kill 4: **the equivalence being unproven ⇒ the bound is formal ⇒ condition (1) not genuinely met.**
+
+**Two structural obstructions that make this unfixable, not merely un-done.** (i) **Morse–Bott / Gribov.** `S_W` is gauge-invariant, so its gradient vanishes along complexified gauge orbits: critical points are **critical manifolds**, not isolated saddles (`PROOF-THIMBLE.md`). "A single thimble" needs a gauge slice; distinct slice↔orbit intersections are **Gribov copies**, and the Faddeev–Popov determinant's sign flips across the Gribov horizon — a residual *real* sign, *before* complexification. (ii) **The residual Jacobian phase `ω_σ=arg det J_σ` is itself a leftover sign problem** (`PROOF-THIMBLE.md`: positivity of `e^{−Re S}` "does *not* make the integrand positive"); it must be bounded independently, and that bound is exactly the undefined phase control of §1(c). These are the "two extra obstructions" of `Thimble–SLC`. **KILL 4 lands.**
+
+*Cross-check with the banked localization no-go.* `H1-T7-localization.md` §3 names this route explicitly: *"The genuine non-SUSY cousin — Lefschetz-thimble localization of the real path integral — is **asymptotic**, and at the crossover the relevant saddles are exactly Savvidy's negative-Hessian directions (`W6-BE-at-2.5`, `β≈2.47`): **the same wall**."* And §4: every localization output is `g`-continuous and survives `g→0`, where `f₁²=0`, so "by SCHUR-CONVEX no such datum can imply `f₁²≥r₀`." The thimble route is the localization route in complex-deformation clothes; `PROOF-MORSE-FLOER` (`REDTEAM-FORGE.md`) records the same: *"Hess at vacuum =−Δ=free Maxwell for all g; Savvidy negatives lie *off* the critical locus. Coupling-free topology vs coupling-dependent gap."*
+
+---
+
+## §5 · Cross-cut — why "thimble positivity" was never going to be enough even if everything were rigorous
+
+Even in the best case the thimble contour reproduces the **identical positive-RP correlators** (Cauchy invariance). The physical gap is a theorem only for `β<β₀` (Shen–Zhu–Zhu, arXiv:2304.13917) and open at `β≈2.5`. A contour deformation **cannot add convergence the physical theory lacks** (`PROOF-THIMBLE.md`). And "positivity on a thimble ≠ a gap": a positive measure still needs log-concavity/clustering, and `−Re S` restricted to a thimble is *exactly as Savvidy-indefinite as the dynamics* — `Hess_{J}(−Re S)≥λ` uniformly is `Thimble–SLC (T2)`, which **is** `H1` (`W6-BE-at-2.5`: full fine Hessian min `−1.12β`, 21.7% negative at SU(2) β=2.5; `G″≈−0.165<0` at `k→0`; W4 gauge-projected transverse `7.1%` negative). The thimble can only *enlarge* the indefinite set it restricts to, never shrink it.
+
+---
+
+## §6 · Scorecard (the five hard conditions) — survival 2/5
+
+| # | Constraint | Verdict | Exact failure |
+|---|---|---|---|
+| 1 | Nonperturbative **and rigorous** | **PARTIAL (½)** | Thimbles/trans-series are a genuine nonperturbative apparatus (one honest point), **but** the 4D equivalence to physical `f₁²` is unproven (kill 4); under the strict reading it FAILS outright. |
+| 2 | Sign-controlling **lower** bound `f₁²≥r₀` | **FAIL** | Phase is annihilated by `|A₁|²` (§1a); the only rigorous phase consequence is an **upper** bound (§1c); a lower bound needs (T1)+(T2)=H1 (§1c). |
+| 3 | Non-circular | **FAIL** | The bound `∝σ e^{−S_sav}` **is** `σ>0` **is** `⟨Tr F²⟩>0` = the condensate = `Λ` = the gap's scale (§2). |
+| 4 | Non-SUSY + fails free field | **PASS–but-VACUOUS** | Returns `0` at `g=0` via `0↦0` (no Savvidy instability), which is *the proof of impotence* (§3); finite regulator leaks `>0` (§3b). Counts at most ½. |
+| 5 | Uniform `(L,a)` `≥λ`, reach `β≈2.5` | **FAIL** | `σ` unbounded on ℝ⁴; thimble decomposition ≠ physical measure at 2.5; ambiguity largest at the IR edge / `k→0` where the bound bites (§2, §5). |
+
+**Survival score: 2/5** (nonperturbative apparatus; free-field passes only vacuously). Under the strict reading — kill 4 failing condition #1 outright, and condition #4 not counting because its "pass" is the proof of impotence — the honest score is **1/5**. Either way: **DEAD (≤2/5)**. This matches the prior same-object adjudication `RESURGENCE.md` ("Score **2/5** … the documented dead route re-expressed") and `SIGNED-FOURIER-BLIND.md` (all four kills landed; 1/5). The thimble "phase" does **not** upgrade the species above resurgence: §1 shows the phase is not a new lever.
+
+---
+
+## §7 · What, if anything, survives (honest residue of the attack)
+
+- **Nothing new.** The only true statements inside the proposal are already banked: (i) `f₁²>0` at `β<β₁` via the **convergent** strong-coupling residue (`PROOF-P3-UNCONDITIONAL`, I1 — but that is KP/P3, not thimbles, and it is *convergent*, so resurgence adds zero content there, `RESURGENCE.md` §1); (ii) the **negative** structural facts: thimble positivity ≠ gap, the residual phase is unbounded, Morse–Bott/Gribov defeats single-thimble dominance (all in `PROOF-THIMBLE.md`). It is another witness to the wall, not a tool.
+- **The exact stuck object the attack clarifies** is `PROOF-THIMBLE.md`'s *Thimble–SLC* lemma, which is `H1` verbatim plus two obstructions: **(T1)** phase triviality (`Im S` common to all non-negligible thimbles; `ω_{σ*}≡0` including a constant-sign FP determinant) **and (T2)** `Hess_{J_{σ*}}(−Re S)≥λ Id` uniformly. `PROOF-THIMBLE.md`: *"The lemma is the gap hypothesis relabelled, plus two extra obstructions; it reduces nothing."* Constructing it is `H1` = the Clay gap.
+
+---
+
+## §8 · Sharpest line
+
+**The proposed 7th species dies on the same elementary algebra that killed the 6th: `f₁²=|A₁|²` is a modulus-square and a thimble phase is a phase — `e^{i Im S_σ}` sits in the amplitude, `|·|²` deletes it, and the sum of thimble phases is constrained (Cauchy invariance) to reproduce the *real positive RP correlator*, so it is a representation of the same integral, never a convexification.** What looks like a "non-positivity lever" is either (i) the phase, killed by the square, whose only rigorous consequence is an **upper** bound (coherence); or (ii) the asymptotics across the crossover, where the nonperturbative term is `σ e^{−S_sav}` with `σ` (= `⟨Tr F²⟩`, the gluon condensate, the gap's own scale) **free on ℝ⁴** — so the "lower bound" collapses to "the condensate is >0", circular; or (iii) the free-field `0↦0`, which is the acid test passing *because the tool is impotent*. The thimble/resurgent apparatus is genuine, but it is a **program, not a theorem**, for 4D pure YM; the formal bound it would give is `Thimble–SLC = H1` relabelled, plus the unbounded residual phase and Morse–Bott/Gribov. There is no non-positivity home the six prior species lacked — the phase is annihilated, the asymptotics are circular in the condensate, and the rigor is a conjecture.
+
+**Exact stuck step.** `H*`: a volume- and `(L,a)`-uniform **lower** bound `f₁²≥r₀(β)>0` at `β≈2.5` that (a) does not pass through a positivity/Bochner inequality (else vacuous on the free two-photon cut, `SCHUR-CONVEX.md`), (b) does not consume the condensate `⟨Tr F²⟩` / the second level `E₂` / `m_g>0` (else circular), (c) vanishes at `g=0` (else leaks on the free field), and (d) is nonperturbatively *rigorous* in 4D. The thimble phase supplies none of these: the square erases it (a), the Stokes constant *is* the condensate (b), and `0↦0` voids it (c). Producing it is the Schur-convex coercivity `total ≤ C·atom` (`SCHUR-CONVEX.md`) — the edge theorem, the Clay gap. Species DEAD; the wall is unchanged and now has one more precisely-registered face.
+
+---
+
+*Refs.* Internal (read/cited as ground, not invented): `PROOF-THIMBLE.md` (Cauchy invariance = same theory same gap; residual phase `ω_σ`; Morse–Bott/Gribov; `Thimble–SLC (T1)(T2)=H1`); `RESURGENCE.md` (two-series misapplication; `σ`=condensate; `0↦0`; score 2/5); `CONTINUUM-ASYMPTOTIC-BEYOND.md` §1–3 (IR renormalon `u=+2n/β₀`, `C_n∝γ_n⟨O_{4n}⟩`, `n=1`=⟨TrF²⟩; `σ` free on ℝ⁴; renormalon–OPE only 2D large-N; `Z_O` covariance); `PROOF-P3-UNCONDITIONAL.md` §3 ("modulus-square, no sign can undo it"; `a₀>0`); `docs/yang-mills-frontier.md` §2, line 68 (f₁² modulus-square; Weingarten sign in area-law sum); `docs/PROOF-SKELETON.md` §3 (the one species = a variance upper bound, UV=L3/IR=H1); `SCHUR-CONVEX.md` (master free-field obstruction; atom ≤ total, wrong cone; free field on the boundary `ϑ=0`); `SIGNED-FOURIER-BLIND.md` §1 (identical phase-annihilation death of the 6th species); `PROOF-SAVVIDY-EXACT-SIGN.md` §1 (`H=−D²+2ad F`, `λ_min=−g|B|`, `N_neg∝(gB)²V`; `Tr H=4Tr(−D²)≥0`; `e^{−S}` suppression is H1); `W6-BE-at-2.5.md` (min `−1.12β`, 21.7–42% negative; `G″≈−0.165<0` at `k→0`); `W4-blocked-positivity.md` (gauge-projected transverse `7.1%` negative at SU(2) crossover); `H1-T7-localization.md` §3–4 (thimble localization is asymptotic, saddles = Savvidy negatives = the same wall; localization output `g`-continuous ⇒ `f₁²=0` at `g=0`); `REDTEAM-FORGE.md` (cross-cutting finite-regulator free-field leak; PROOF-MORSE-FLOER: coupling-free topology vs coupling-dependent gap). External (pre-vetted in-repo): Witten, arXiv:1001.2933; Cristoforetti et al., arXiv:1205.3996, 1303.7204 (thimble residual phase); Savvidy, PLB 71 (1977) 133; Nielsen–Olesen, NPB 144 (1978) 376; 't Hooft 1977; Beneke, Phys. Rept. 317 (1999) 1; Maiezza–Vasquez, PLB (2024), arXiv:2405.01639 (no bion sector ⇒ `σ` free on ℝ⁴); Dunne–Ünsal 1210.2423; Costin, *Asymptotics and Borel Summability* (2009); Aniceto–Başar–Schiappa, Phys. Rept. 809 (2019); Shen–Zhu–Zhu, CMP 400 (2023) 805, arXiv:2204.12737; Osterwalder–Seiler, Ann. Phys. 110 (1978) 440; Gribov, NPB 139 (1978) 1.
