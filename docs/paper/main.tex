@@ -1,0 +1,186 @@
+% =====================================================================
+%  A Conditional Reduction of the 4D Pure Yang–Mills Mass Gap
+%  Build:  xelatex/pdflatex main.tex  (run twice)
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm,top=2.2cm,bottom=2.4cm,headsep=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{microtype}
+\usepackage[table]{xcolor}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,decorations.pathreplacing,patterns}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+% ---------- colours ----------
+\definecolor{cT}{HTML}{1D7A3A}
+\definecolor{cC}{HTML}{1F5FA8}
+\definecolor{cM}{HTML}{B45F06}
+\definecolor{cN}{HTML}{A61B1B}
+\definecolor{cE}{HTML}{6A3D9A}
+
+% ---------- label chips ----------
+\newcommand{\labb}[2]{\fcolorbox{#1!35}{#1!8}{\textcolor{#1}{\textbf{\scriptsize #2}}}}
+\newcommand{\LT}{\labb{cT}{T}}
+\newcommand{\LC}{\labb{cC}{C}}
+\newcommand{\LM}{\labb{cM}{M}}
+\newcommand{\LN}{\labb{cN}{N}}
+\newcommand{\LE}{\labb{cE}{E}}
+
+% ---------- claims ----------
+\newcounter{claim}
+\newcommand{\claimhead}[2]{%
+  \refstepcounter{claim}%
+  \textbf{#1~\theclaim}#2\hspace{0.35em}\ignorespaces}
+\newtcolorbox{claimbox}[1]{enhanced, breakable=false,
+  colback=#1!6, colframe=#1!75, boxrule=0pt, leftrule=2.6pt,
+  arc=2pt, left=7pt, right=6pt, top=5pt, bottom=5pt,
+  before skip=8pt, after skip=8pt, fontupper=\small,
+  parbox=false}
+\newenvironment{proofx}{\par\noindent\emph{Proof.}\ }{\hfill$\square$\par\medskip}
+\newcommand{\src}[1]{\par\vspace{1pt}{\footnotesize\color{black!55}\textbf{Source.} #1}\par\vspace{4pt}}
+\newtcolorbox{qbox}{enhanced, colback=black!3, colframe=black!35, boxrule=0pt,
+  leftrule=2pt, arc=0pt, left=12pt, right=10pt, top=5pt, bottom=5pt,
+  before skip=8pt, after skip=8pt, fontupper=\small, parbox=false}
+
+% ---------- helpers ----------
+\newcommand{\code}[1]{\texttt{\footnotesize #1}}
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=1pt,topsep=3pt}
+\allowdisplaybreaks
+
+% ---------- section style ----------
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.55em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.65em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.45em}
+
+% ---------- header ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\color{black!55}A conditional reduction of the 4D pure Yang--Mills mass gap}
+\fancyhead[R]{\footnotesize\color{black!55}\thepage}
+\setlength{\headheight}{13pt}
+
+\hypersetup{pdftitle={A Conditional Reduction of the 4D Pure Yang-Mills Mass Gap},
+            pdfauthor={Yang-Mills campaign dossier}}
+
+\begin{document}
+
+% =====================================================================
+%  TITLE
+% =====================================================================
+\begin{center}
+  \vspace*{0.6cm}
+  {\LARGE\bfseries A Conditional Reduction of the\\[2pt] 4D Pure Yang--Mills Mass Gap\par}
+  \vspace{0.45em}
+  {\large\itshape and a record of what was actually proven\par}
+  \vspace{1.0em}
+  \rule{0.5\textwidth}{0.6pt}\par
+  \vspace{0.7em}
+  {\small\color{black!60} Yang--Mills campaign \textperiodcentered{} Lean 4 formalization $+$ lattice numerics\par}
+  \vspace{0.15em}
+  {\small\color{black!60} 23 November 2026\par}
+\end{center}
+
+\vspace{0.2em}
+
+\begin{tcolorbox}[enhanced, colback=black!3.5, colframe=black!30, boxrule=0.5pt,
+  arc=3pt, left=10pt, right=10pt, top=8pt, bottom=8pt, fontupper=\small, parbox=false]
+\textbf{Status of this document.} This is a \emph{conditional reduction and an audit}, not a
+proof of the Clay problem. The Clay mass gap for 4D pure $\mathrm{SU}(N)$ Yang--Mills remains
+open. The only defensible headline is: \emph{the problem has been rewritten onto one precisely
+named, acid-tested object, and every honest route to it terminates there.}
+
+\smallskip
+\textbf{Label legend used throughout.} Each substantive claim carries one of:
+\LT{} \emph{theorem} --- proved (any imported standard result is named);
+\LC{} \emph{conditional theorem} --- a proved implication from explicitly named hypotheses;
+\LN{} \emph{no-go} --- a theorem that a whole class of approaches cannot work;
+\LM{} \emph{exact missing step} --- a precisely stated open inequality, with no slack hidden;
+\LE{} \emph{numerical evidence} --- measured, not proved.
+
+\smallskip
+\textbf{Provenance rule.} Every theorem below names the file that contains its proof. No claim
+is asserted without a source. Citations in the reference list appear verbatim in the corpus;
+where the corpus itself flags a bibliographic uncertainty, this is reproduced rather than
+silently repaired.
+\end{tcolorbox}
+
+% ---------- abstract ----------
+\begin{tcolorbox}[enhanced, colback=white, colframe=white, boxrule=0pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt, parbox=false]
+\begin{center}{\large\bfseries Abstract}\end{center}
+\small
+We report the outcome of a sustained campaign --- Lean 4 formalization plus lattice numerics ---
+aimed at the 4D pure $\mathrm{SU}(N)$ Yang--Mills mass gap. \textbf{We do not prove the mass
+gap.} We prove, instead, a reduction and a ledger.
+
+The reduction has three parts. \emph{(i) A rewriting of the problem.} The gap is equivalent to
+the statement that the Källén--Lehmann spectral measure $\nu$ of the gauge-invariant
+field-strength operator $\operatorname{tr}F^2$ has its lightest atom $m_1^2$ at positive mass
+with positive weight $f_1^2 = \nu(\{m_1^2\}) = |\langle 0|\operatorname{tr}F^2|G\rangle|^2$, and
+that this atom is isolated. \emph{(ii) An exact spectral squeeze.} For any such $\nu$ with
+susceptibility $\chi = \operatorname{Var}(a) = \int s^{-1}\,d\nu$, one has
+$f_1^2/\chi \le \inf\operatorname{supp}\nu \le M_0/\chi$. It follows that a lower bound on the
+mass requires \emph{both} a residue floor $f_1^2 \ge r_0$ and a susceptibility ceiling
+$\chi \le 1/\lambda$; the often-quoted condition H1 ($\chi \le 1/\lambda$) is \emph{necessary
+but not sufficient}, because it is blind to a thin atom. The correct sufficient condition is the
+pair $(f_1^2 \ge r_0) \wedge (\chi \le 1/\lambda)$, which gives $m_1^2 \ge r_0\lambda$.
+\emph{(iii) A convergence.} Every route we could construct --- and we constructed on the order
+of ninety --- ends at \emph{one species}: a nonperturbative, non-circular, sign-controlling
+\emph{upper bound on a conditioned variance}, appearing once in the ultraviolet (the L3 node of
+existence theory) and once in the infrared (H1). The same inequality, drawn at two scales, is
+the remaining gap between the campaign and Clay.
+
+The ledger has a positive half and a negative half. On the positive side we record the genuine
+theorems: an unconditional strong-coupling \emph{residue} theorem ($f_1^2 \ge r_0(\beta)>0$ for
+$\beta<1/48$, volume- and $L$-uniform --- a statement about the atom weight I1, \emph{not} its
+isolation I2); a kinematic \emph{no-dissolution} theorem for the lightest $0^{++}$; the
+\emph{non-negativity of the Haar geometric curvature} $W_{\mathrm{geo}}\ge 0$ by Prékopa; a
+\emph{gauge-invariant Perron--Frobenius} theorem on the physical Hilbert space; the
+\emph{strong-coupling coarse Poincaré} lemma (Lemma SC); the abstract \emph{Feshbach--Bogoliubov
+two-block lemma}; and the \emph{exact variance decomposition} $G''=S-D$. Six new tools pass the
+free-field acid test (they must fail on the massless free field, where $f_1^2=0$ and $G''=0$).
+On the negative side we record the no-gos: the Schur-convex master obstruction, Goldstone
+uniqueness at zero mass only, the periodic, nested-cone, rigidity, Feshbach-angle and Krein
+obstructions.
+
+Numerically, the residue is seen directly where it is resolvable: $f_1^2>0$ at $\beta=2.2$ at
+seventeen sigma on $\mathrm{SU}(2)$ ($L=6$); at $\beta=1.0$ it dissolves into the cutoff, exactly
+as the analytic strong-coupling picture predicts, not as a failure. A $k\to 0$ curvature probe
+on $L=8$ finds the coarse-mode $G''$ positive, $W_{\mathrm{geo}}$-carried, and volume-stable ---
+but it is measured on a \emph{gauge-dependent gluon mode}, not the $0^{++}$ object, and its
+rigorous-style one-sided interval still includes zero.
+
+The verdict is sober: \textbf{Clay is 0\% --- open.} The wall did not fall. It became transparent,
+ruled, and instrumented. The tool that would cross it --- a nonperturbative machine transporting
+the strong-coupling gap and residue across the Savvidy crossing and taking $a\to 0$ --- \emph{does
+not exist}, and naming it precisely is the campaign's real result.
+\end{tcolorbox}
+
+\newpage
+\tableofcontents
+\newpage
+
+\input{figures.tex}
+\input{body1.tex}
+\input{body2.tex}
+\input{body3.tex}
+\input{body4.tex}
+
+\end{document}
