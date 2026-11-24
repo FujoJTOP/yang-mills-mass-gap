@@ -1,0 +1,60 @@
+============================================================================
+BASE-DUALITY witness  --  is there a dual small parameter at beta~2.5 ?
+============================================================================
+
+[t Hooft 1978, rigorous]  The electric (Wilson) and magnetic ('t Hooft) loop
+operators satisfy the CENTER ALGEBRA
+     W(C) B(C') = B(C') W(C) * exp(2 pi i /N * link(C,C')) .
+This is the rigorous content of electric-magnetic duality for pure SU(N):
+it fixes the non-local ORDER PARAMETER TYPE (loops/surfaces, not local
+observables) and the relevant global structure (the center Z_N).  [T] -- but it
+is an ALGEBRA, not a small parameter.
+
+[character / dual coordinate]  e^{beta Re tr U} = sum_r d_r a_r(beta) chi_r(U).
+The dual (random-surface) expansion weights a surface by prod a_{r}(beta).
+Controlled  <=>  a_{r!=0}/a_0 << 1.
+
+  beta    a1/a0    a2/a0    a3/a0   regime
+----------------------------------------------------
+ 0.020   0.0200   0.0002   0.0000   strong-coupling (gap PROVEN, OS/SZZ)
+ 0.125   0.1240   0.0077   0.0003   dual expansion marginal
+ 0.500   0.4464   0.1072   0.0175   dual expansion marginal
+ 1.000   0.6978   0.3022   0.0933   dual expansion marginal
+ 1.500   0.8100   0.4600   0.1966   crossover / weak: NO small parameter
+ 2.000   0.8635   0.5682   0.2953   crossover / weak: NO small parameter
+ 2.500   0.8934   0.6426   0.3793   crossover / weak: NO small parameter
+ 3.000   0.9124   0.6959   0.4484   crossover / weak: NO small parameter
+ 5.000   0.9486   0.8103   0.6245   crossover / weak: NO small parameter
+
+READ:
+  * beta < 1/48  (the PROVEN strong-coupling corner): a_r/a_0 is small; the
+    dual surface expansion converges.  This IS a duality with a small parameter
+    -- but it is the regime where the gap is already a theorem (OS'78, SZZ'23),
+    so the duality is a BACKWARD certificate there, not a key.
+  * beta = 2.5 (the crossover): a1/a0 ~ 0.89, a2/a0 ~ 0.68.  The dual series is
+    NOT controlled -- the surface weights are O(1).  The character expansion is
+    degenerate EXACTLY where the problem lives.
+
+============================================================================
+center-vortex dilution diagnostic  (order parameter = 't Hooft / vortex)
+============================================================================
+  beta  core~1/sqrt(beta)   dilute (core<<1)?
+  0.50              1.414   NO -- vortices overlap, dilute-gas uncontrolled
+  1.00              1.000   NO -- vortices overlap, dilute-gas uncontrolled
+  2.00              0.707   NO -- vortices overlap, dilute-gas uncontrolled
+  2.50              0.632   NO -- vortices overlap, dilute-gas uncontrolled
+  3.00              0.577   NO -- vortices overlap, dilute-gas uncontrolled
+
+So at beta=2.5 the vortices are fat (core ~ 0.63 lattice spacings): no dilute
+gas, no controlled semiclassical/vortex dual picture.  The non-local order
+parameter is the RIGHT TYPE (T: 't Hooft algebra), but its area/perimeter law
+at the crossover is verbatim the confinement statement = H1 -- the difficulty
+does NOT transfer to a controlled dual side; it stays put.
+
+Deformed / small-circle escape [Unsal-Yaffe]:  on R^3 x S^1 with a center-
+symmetric deformation the theory becomes weakly coupled (a genuine small
+parameter, monopole-instantons/bions, calculable gap).  But that is a DEFORMED
+theory at small circle; turning off the deformation and growing the circle
+(decompactification) is the transport/decompactification wall = the same H1.
+
+DONE (no QED; Clay 0%).
