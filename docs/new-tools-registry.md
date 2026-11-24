@@ -63,6 +63,9 @@
 ### B5. Krein 空间 / Pontryagin no-go（计数≠底，UV≠IR；分叉死结）
 Savvidy Hessian `−D²+2adF_B` 是**不定**算子，Krein 空间谱论（Pontryagin Π_κ、Langer definitizable、谱函数）确是其精确语言，且能把 UV 塔锥空严格证成形（`λ_j>k_⋆` 壳 `κ=0`、`Tr H_−≲∫|F|³`）——**真收获（UV 半定理）**。但一切 Krein 不变量是**计数/符号**（负指标 `r_−`、符号差）或 **UV 尺度**（J-正底 `=Θ(g|B)`，Landau 能级），而隙是 `k→0` 底部的 **min**、经量纲透射的 **IR** 尺度。两路互斥封死：`J=sign H`（使地板物理）⇒ `κ=dim H_+=∞` 且循环（需正谱）；先验 BRST/Gupta–Bleuler 度规 ⇒ `κ=O(1)` 但自由场**逐字相同**（酸测空洞）。signed 负指标是整数 ⇒ B3 刚性 ⇒ 恒等自由值 `0`。**definitizing 劈裂恰在 `k=0`（Savvidy 带底、粗模与最负模重合）失去一致裕度——Krein 临界点正是间隙要印数的那一点。** 余下缺失不等式 `inf spec(H|_物理侧)≥κ_{IR}>0`（`(L,a)`-一致）= `(H)` = H1。`FORGE-KREIN-SPECTRAL.md`。
 
+### B6. 全单调 / 解析延拓 no-go（原子是整函数，floor 只在 `t→∞` 速率里）
+`C(t)=∫e^{−st}dν(s)` 全单调（Bernstein–Widder）**⟺ `ν≥0`**，与 KL/RP 正性同一件事，**无超出正性的刚性**。故（B1 型线性数据）任何有限 `t` 标量都是 `m₁²` 的**递减上界**：`r(t):=−(1/t)log(C(t)/M₀)` 满足 `m₁²≤r(t)≤M₁/M₀` 且 `r↓m₁²`（`log C` 凸，Cauchy–Schwarz）。**方向反。** 解析孪生**结构性瞎**：边原子贡献 `f₁²e^{−m₁²t}` 是**整函数**（无奇点），而收敛半平面 `Re t>0` 由 UV 延伸（`supp` 到 `+∞`）固定，**与 `m₁²` 无关** ⇒ 半径/延拓/奇异点看不见 IR floor；`t=0` 导数增长=矩比（又上界）且连续统 UV 发散；转移变量 Padé 才把原子看成极点，代价 `M≳2/(am₁)→∞`（`PADE-ROUCHE-DEEP`，relocate 到 `W3`）。Wiener–Ikehara 的"主项"= 领头指数 `m₁²/f₁²`，其正则性假设需**先减去答案**⇒循环。**唯一能印 floor 的是 `t→∞` 速率 = 一致指数簇聚 = 隙（循环）；缺失步仍是搬运（H\*）。** `TOOL-COMPLETELY-MONOTONE.md`。
+
 ---
 
 ## C. 战役中证出的结构定理（真结论，非 no-go）
