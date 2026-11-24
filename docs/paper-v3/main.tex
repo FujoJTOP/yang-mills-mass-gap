@@ -147,11 +147,16 @@ $G''=-\rho_v''/\rho_v\ge0$, and in the scan it is strict (minimum $0.20$--$0.24>
 averaged curvature is the Fisher information, $E[G'']=I(\rho_v)\ge1/\operatorname{Var}(a)$, positive
 across the boundary at $\beta=2.5$. An exact one-step renormalization-group descent transports the
 ultraviolet floor to $\beta=2.5$ on the box-gap-protected modes, breaking only on the Savvidy soft
-mode. At small volume the soft-mode margin is positive (minimum $+0.32>N/12$), decaying
-$\approx1/L$. In the strip model the decay is a transient: the constant-mode curvature saturates
-at $c>0$ ($c=0.248$ at $\theta=0$, $0.41$ at $\theta=\pi$), and the $\beta=0$ Haar floor
-$0.2688$ is exact. In $d\ge2$ the constant-mode susceptibility can diverge, so the 4D uniform
-floor remains $H1$; this is the sharpening of the head. What remains is the \emph{uniform} positive margin,
+mode. At small volume the soft-mode margin is positive (minimum $+0.32>N/12$), initially decaying
+$\approx1/L$. On the periodic torus — the physical decompactification case — the constant-holonomy
+slice is exactly flat in every center sector ($S_W\equiv0$), so its marginal is pure Haar with
+$G''=1/(2\,\mathrm{Cin}(2\pi))=0.20511530$, $L$-independent \LT; the $k=0$ mode saturates at
+$c=0.22196\pm0.00011$ ($q=0.849$) with a gapped transfer matrix $\Delta=0.6444$, and the exact
+curvature is $-\rho''/\rho$, not $1/\operatorname{Var}$ (the free-$U(1)$ acid test gives $0$ versus the
+spurious $3/\pi^2$). The fixed-strip values ($c=0.248$ at $\theta=0$, $0.41$ at $\theta=\pi$) are
+explicit-boundary effects. In $d\ge2$ the $k\to0$ susceptibility can still diverge, so the 4D uniform
+floor remains $H1$; a curvature floor is moreover not an atom (at $\beta=0$, $G''=0.2688$ while
+$f_1^2=0$). What remains is the \emph{uniform} positive margin,
 which is exactly $H1$; the spectral class is a no-go at the head. Thus the ultraviolet face is not a new route: it is a proved room, a locked door, and a
 door back to the same wall.
 
@@ -628,32 +633,77 @@ ultraviolet face.
 \label{sec:decompact}
 
 The small-volume floor decays $\approx1/L$; the question is whether this is the asymptote (then the
-uniform floor is $H1$) or a transient. Six computations answer it.
+uniform floor is $H1$) or a transient. The decisive case is the \emph{periodic} torus, which is the
+physical one: no twist, no fixed boundary. Six computations answer it.
 
-\textbf{Exact strip.} The constant-mode transfer matrix on the $1\times L$ strip is computed
-exactly for $L=1,\dots,16$. Every fit gives a positive intercept:
-$c+A/L^2$ gives $c=0.248$ ($\theta=0$) and $c=0.410$ ($\theta=\pi$); $c+Aq^L$ gives $0.272$ and
-$0.416$. The $\theta=0$ value brackets the Haar floor $0.269$. The $\approx1/L$ seen at $L=2$--$4$
-is the transient through the dimer bump.
+\textbf{Exact periodic anchor.} On the periodic torus the global constant-holonomy configuration has
+every plaquette equal to the identity --- for a constant link in one direction $P=U\,I\,U^\dagger I=I$,
+and for all links equal $P=U\,U\,U^\dagger U^\dagger=I$ --- so $S_W\equiv0$ exactly, for every $L$,
+$\beta$ and $U$ (verified to $10^{-16}$). Its marginal is therefore pure Haar, and
+\[
+  G''_{\mathrm{anch}}(0)=\frac{-\rho_{\mathrm{Haar}}''(0)}{\rho_{\mathrm{Haar}}(0)}
+  =\frac{1}{2\,\mathrm{Cin}(2\pi)}=0.20511530\quad(\mathrm{SU}(2)),
+\]
+$L$-independent \LT. The exact curvature is $-\rho''/\rho$, \emph{not} $1/\operatorname{Var}$: the
+acid test on the free massless $U(1)$ field gives $-\rho''/\rho=0$ while
+$1/\operatorname{Var}(\theta)=3/\pi^2=0.304$ would be a spurious floor. Thus
+$1/\operatorname{Var}(\xi_3)=9/(4\pi^2-6)=0.26883$ is the Gaussian/CLT value, not an identity.
 
-\textbf{Transfer matrix.} The bulk gap is $\Delta=3.18$ ($\theta=\pi$) and $0.64$ ($\theta=0$) at
-$\beta=2.5$, $L$-independent, with finite correlation length; the total curvature falls
-$1.59\to0.32$ for $L=2$--$10$ and fits $c+A/L^2$ with $c=+0.22\pm0.03$.
+\textbf{Periodic $k=0$ mode.} The physical soft mode is the zero-momentum Fourier mode, not the
+global holonomy. On the periodic chain every plaquette is a pure difference, so the uniform shift is
+an exact flat direction of $S_W$; only the Haar measure pins it. The exact partition function
+$Z(k)=\operatorname{Tr}[M_k^L]$ gives, at $\beta=2.5$,
+\[
+  G''(0)=0.2077,\ 0.2097,\ 0.2115,\ 0.2130,\ 0.2144,\ 0.2155,\ 0.2165
+  \quad (L=2,\dots,8),
+\]
+positive and saturating. The exponential fit is $c+Aq^L$ with $c=0.22196\pm0.00011$ and $q=0.849$;
+the power fits give $c=0.2126\pm0.0018$ ($L=2$--$8$) and $0.2142\pm0.0016$ ($L=4$--$8$). The
+amplitude variance plateaus ($\operatorname{Var}(a)=4.39\to4.45$) and $G''\operatorname{Var}\to0.963$,
+so the invariant statement $G''\to1/\chi>0$ holds with $\chi\approx4.45$. Two independent quadratures
+agree to four digits, and the $\beta=0$ solver reproduces the exact convolution values
+$0.2396,0.2542,0.2591,0.2616$ to five digits.
+
+\textbf{Periodic transfer matrix.} The periodic bulk kernel has top eigenvalues
+$228.17,119.79,63.82,33.40$, i.e.\ $\Delta=-\log(\lambda_1/\lambda_0)=0.6444$ and $\xi=1.55$,
+$L$-independent, exactly the $\theta=0$ fixed-strip kernel. The periodic Wilson part is
+$G''(2.5)-G''(0)=-0.0319,\dots,-0.0451$, a bounded negative constant (fit $c=-0.0461\pm0.0003$,
+$p=2.05$); it does not overcome the Haar floor.
+
+\textbf{Boundary classes.} Saturation is not universal across boundary conditions, but the periodic
+class is the physical one. On the fixed strip, $\theta=\pi$ gives $c=0.41$ and $\theta=0$ gives
+$c=0.248$ under a $1/L^2$ fit but a negative intercept under a $1/L$ fit; at fixed $b=0$ the variance
+grows. Those are explicit-boundary effects: the end plaquettes carry an $O(1/L)$ restoring force. The
+periodic chain has no ends and saturates. The apparent growth seen in one moment-formula solver is a
+numerical artefact: at $\beta=0$ the exact identity is $\operatorname{Var}(a)=3.7198$ for \emph{every}
+$L$, which that solver violates from $L=4$.
+
+\textbf{Center sector.} The constant temporal mode is the Polyakov holonomy. The $Z(N)$ center acts on
+temporal links, the Wilson action is center-invariant, and every gauge-invariant local operator
+(including $\operatorname{tr}F^2$) has $N$-ality zero and is center-blind. On the constant-holonomy
+slice every center sector is flat ($S_W\equiv0$), so every sector's marginal is pure Haar and
+$G''=0.2051$; the full $3$D $L=1$ periodic measure is exactly $\theta$-independent
+($\int\rho\,da=26.0980322$ for all $\theta$, spread $2.7\times10^{-8}$), and the flat-chart
+$\theta$-spread at $L=1$ is a chart artifact ($J(2\pi)=0$ at the $-I$ edge). Center symmetry is
+unbroken at finite $L$ ($\langle\operatorname{tr}P\rangle=0$; the kernels are gapped,
+$\Delta=0.644,3.176,1.096$). The physical periodic floor is therefore the Haar-carried value
+$\approx0.222$, bracketed by the exact $0.2051$ and the CLT $0.2688$; it is not a center-sector floor
+and not the explicitly center-broken $0.48$ of the 't~Hooft-flux boundary ($S_W=2\beta$ per twist
+plaquette).
 
 \textbf{Haar/Wilson split.} The exact split gives a Haar part that is a deterministic $L$-fold
 convolution with limit $1/\operatorname{Var}(\xi_3)=0.26883>0$ \LT, and a Wilson part that is
-positive $O(1)$ on strips; the total flattens at $\approx0.46$.
-
-\textbf{Mechanism.} The constant mode is a zero mode of the Wilson difference operator, so its
-one-loop Wilson part vanishes; the floor is Haar pinning. The invariant statement is
-$G''\cdot\operatorname{Var}_\rho(a)\to1$ and $\operatorname{Var}_\rho(a)\to\chi_\infty\in(0,\infty)$,
-hence $G''\to1/\chi_\infty>0$; the value is not universal (group, action, twist, $\beta$).
+positive $O(1)$ on fixed strips and bounded negative on the periodic chain; in both cases the total
+is bounded away from zero.
 
 \textbf{The 4D caveat.} In $d\ge2$ the constant-mode susceptibility can diverge
-(Kosterlitz--Thouless/Goldstone), so $c=0$ is possible; saturation is also twist-specific (at
-$b=0$ the variance grows and $G''$ decays). The periodic 4D case is not settled. Thus the strip
-result kills the decay route in 1D but does not give the 4D uniform floor, which remains $H1$.
-And a positive curvature floor is not an atom: at $\beta=0$, $G''=0.2688$ while $f_1^2=0$.
+(Kosterlitz--Thouless/Goldstone), so $c=0$ remains possible in 4D; the periodic strip result removes
+the decompactification objection in the tractable model but does not give the 4D uniform floor, which
+remains $H1$. A positive curvature floor is moreover not an atom: at $\beta=0$, $G''=0.2688$ while
+$f_1^2=0$. The floor supplies at most a susceptibility ceiling
+$\chi_{k=0}\le1/c_0$, conditionally; even a proven $H1$ does not force the bottom of the
+K\"all\'en--Lehmann support (the thin-atom proposition, machine-checked as
+\code{H1\_does\_not\_imply\_atom}).
 
 \subsection{The pincer, honestly}
 
@@ -678,8 +728,10 @@ $\beta\approx2.5$; there is no whole intermediate regime inside the tower, and t
   \LT{}, positive across the boundary at $\beta=2.5$.
 \item The one-step descent transports the ultraviolet floor to $\beta\approx2.5$ on
   box-gap-protected modes \LT{}; it breaks on the Savvidy soft mode.
-\item In the strip, the constant-mode curvature saturates ($c>0$: $0.248$ at $\theta=0$, $0.41$
-  at $\theta=\pi$); the $\beta=0$ Haar floor $0.2688$ is exact; in $d\ge2$ the susceptibility can
+\item On the periodic torus the global constant-holonomy slice has $S_W\equiv0$ and exact curvature
+  $1/(2\,\mathrm{Cin}(2\pi))=0.2051$ \LT; the periodic $k=0$ mode saturates
+  ($c=0.22196\pm0.00011$, $q=0.849$) with a gapped transfer matrix ($\Delta=0.6444$); the exact
+  curvature is $-\rho''/\rho$, not $1/\operatorname{Var}$. In $d\ge2$ the susceptibility can
   diverge, so the 4D floor remains $H1$.
 \item The spectral class is a no-go at the head \LN{}; the remaining uniform margin is $H1$ \LM.
 \end{enumerate}
@@ -741,8 +793,13 @@ identities are in \code{research/v3/V3-COUNTEREXAMPLE-SCOPE.md},
 \code{research/v3/RECONCILIATION-STAR.md}, and \code{research/v3/G1-BLOCK-IDENTITY.md}; the good-set
 theorem is in \code{research/v3/V2-TRUE-BOUND.md}; the projection and normalization are in
 \code{research/v3/G3-PROJECTION-TERM.md} and \code{research/v3/V1-UV-NORMALIZATION.md}; the pincer
-is in \code{research/v3/V4-PINCER.md}. The witnesses are in \code{research/v3/w7/} and run under
-\texttt{py -3.12} with numpy.
+is in \code{research/v3/V4-PINCER.md}; the head, soft-mode and decompactification waves are in
+\code{research/v3/H*-*.md}, \code{SM*-*.md}, \code{D*-*.md}; and the periodic constant-mode wave is in
+\code{research/v3/P1-PERIODIC-HOLONOMY.md} through \code{P6-PERIODIC-TO-H1.md}, summarized in
+\code{P-WAVE-SYNTHESIS.md}. The exact anchor $1/(2\,\mathrm{Cin}(2\pi))=0.20511530$ independently
+reproduces the $\beta=0$ intercept $A$ of the one-plaquette counterexample (Appendix~\ref{app:numerics}),
+a cross-check between two unrelated computations. The witnesses are in \code{research/v3/w7/} and run
+under \texttt{py -3.12} with numpy.
 
 \clearpage
 \appendix
