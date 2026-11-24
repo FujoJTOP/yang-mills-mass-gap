@@ -1,5 +1,7 @@
 % =====================================================================
 \section{The exact spectral squeeze, and why H1 is necessary but not sufficient}
+
+\figladder
 \label{sec:squeeze}
 % =====================================================================
 
@@ -280,14 +282,15 @@ integral functionals entirely (Chapter~\ref{ch:tools}, the Hardy escape).
 The curvature $G''=V_{\mathrm{eff}}''$ and the inverse susceptibility $1/\chi$ coincide only for
 a Gaussian marginal. The exact one-directional statement is:
 \begin{equation}
-\text{the marginal of } a \text{ is Gaussian}
+\text{the marginal of } \xi \text{ is Gaussian}
 \qquad\Longrightarrow\qquad
 G''\cdot\operatorname{Var}(\xi)=1 ,
 \label{eq:ward}
 \end{equation}
-where $a=\xi/\operatorname{Var}(\xi)$. The converse is not available as an identity: for a
-non-Gaussian marginal the product can be above or below one. Ward's identity $E[a\,f]=1$ (with
-$f=\langle v,\nabla S\rangle$) is exact for every measure and every $\beta$; it says that $a$ and
+where $\xi$ is the coarse mode, so that $G''=\operatorname{Var}(\xi)^{-1}$ in the Gaussian case.
+The converse is not available as an identity: for a
+non-Gaussian marginal the product can be above or below one. Ward's identity $E[\xi\,f]=1$ (with
+$f=\langle v,\nabla S\rangle$) is exact for every measure and every $\beta$; it says that $\xi$ and
 $f$ have unit correlation, not that the conditional variance is $G''$. Measured at $\beta=2.5$,
 the two differ by $2$--$5\%$ ($G''\approx0.281$ versus $1/\operatorname{Var}\approx0.272$;
 \code{FORGE5-SL-IR-SINGLE.md}, quoted in \code{docs/new-tools-registry.md}). So even the

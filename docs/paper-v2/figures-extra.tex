@@ -1,0 +1,420 @@
+% =====================================================================
+%  Additional explanatory figures for v2 (vector only, TikZ)
+%  Styles fbox / arr / alab are defined in figures-old.tex.
+% =====================================================================
+
+% ---------------------------------------------------------------------
+% X1 — the three halves feeding Clay
+% ---------------------------------------------------------------------
+\newcommand{\figthreehalves}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[fbox, fill=cC!8, draw=cC!55, text width=4.3cm, minimum height=2.7cm] (g1) at (2.7,3.5)
+    {\textbf{G1 --- existence}\\[2pt]
+     \scriptsize 4D continuum, OS0--OS4;\\
+     fixed volume assembled\\
+     modulo the uniform $Z_a$\\[2pt]
+     \LT{} mod.\ L3 \quad \LM{} L3 (UV)};
+  \node[fbox, fill=cM!8, draw=cM!60, text width=4.3cm, minimum height=2.7cm] (g2) at (8.0,3.5)
+    {\textbf{G2 --- the gap}\\[2pt]
+     \scriptsize $f_1^2>0$ with isolation;\\
+     equivalently $G''(0)\ge\lambda$\\
+     as $k\to0$, $(L,a)$-uniform\\[2pt]
+     \LT{} region $\sim$90\% \quad \LM{} sign 0\%};
+  \node[fbox, fill=cT!8, draw=cT!55, text width=4.3cm, minimum height=2.7cm] (ch) at (13.3,3.5)
+    {\textbf{The channel}\\[2pt]
+     \scriptsize lightest state in $0^{++}$;\\
+     no-dissolution theorem;\\
+     ordering input \code{IN-11}\\[2pt]
+     \LC{} conditional};
+  \node[fbox, fill=cN!7, draw=cN!55, text width=7.4cm] (clay) at (8.0,0.55)
+    {\textbf{Clay: existence $\wedge$ uniform gap}
+     \quad\textbf{0\% --- open}};
+
+  \draw[arr] (g1.south) -- (clay.north west);
+  \draw[arr] (g2.south) -- (clay.north);
+  \draw[arr] (ch.south) -- (clay.north east);
+\end{tikzpicture}
+\caption{The three objects the campaign separates. G1 is a construction problem, G2 is a lower
+bound on the Hamiltonian, and the channel is the identification of the lightest state with the
+$0^{++}$ glueball. They feed one conclusion but are neither equivalent nor ordered: a gap does
+not give existence, existence does not give a gap, and a gap in some channel does not identify
+the channel. Only the middle object is undecided on both its region and its sign.}
+\label{fig:threehalves}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X2 — the research loop
+% ---------------------------------------------------------------------
+\newcommand{\figloop}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[fbox, fill=cC!8, draw=cC!55, text width=3.6cm] (forge) at (8,5.6)
+    {\textbf{1. Forge}\\ a new tool or identity};
+  \node[fbox, fill=cE!8, draw=cE!55, text width=3.6cm] (acid) at (12.0,2.9)
+    {\textbf{2. Acid test}\\ must fail on the free field};
+  \node[fbox, fill=cT!8, draw=cT!55, text width=3.6cm] (audit) at (8,0.2)
+    {\textbf{3. Audit}\\ against the source files};
+  \node[fbox, fill=cM!8, draw=cM!60, text width=3.6cm] (bank) at (4.0,2.9)
+    {\textbf{4. Bank or record}\\ theorem, or exact no-go};
+
+  \draw[arr] (forge) -- node[alab, above right=-1pt] {\scriptsize test} (acid);
+  \draw[arr] (acid) -- node[alab, below right=-1pt] {\scriptsize if it survives} (audit);
+  \draw[arr] (audit) -- node[alab, below left=-1pt] {\scriptsize verdict} (bank);
+  \draw[arr] (bank) -- node[alab, above left=-1pt] {\scriptsize next round} (forge);
+  \node[font=\scriptsize, text=black!60, align=center, text width=5.4cm] at (8,2.9)
+    {one round\\[2pt] a tool that passes\\ the free field is vacuous};
+\end{tikzpicture}
+\caption{The working loop imposed by the project charter. Every proposed tool must first fail on
+the massless free field (where $f_1^2=0$ and $G''=0$); a tool that ``proves'' a gap there is
+vacuous and is discarded. Only then is it run against the campaign's source files, and only then
+is it banked as a theorem or recorded as a no-go with the exact point of failure.}
+\label{fig:loop}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X3 — the five labels
+% ---------------------------------------------------------------------
+\newcommand{\figlabelmap}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \foreach \x/\col/\chip/\name/\txt in {%
+    1.8/cT/\LT/{Theorem}/{proved; imported results are named},
+    5.0/cC/\LC/{Conditional}/{proved implication from named hypotheses},
+    8.2/cN/\LN/{No-go}/{a whole class cannot work},
+    11.4/cM/\LM/{Missing step}/{one open inequality, no slack hidden},
+    14.6/cE/\LE/{Evidence}/{measured, not proved}}{%
+    \node[fbox, fill=\col!6, draw=\col!45, text width=2.9cm, minimum height=2.5cm]
+      at (\x,1.6) {\chip\\[2pt]\textbf{\name}\\[2pt]\txt};}
+\end{tikzpicture}
+\caption{The five labels used throughout. They are not decoration: each claim carries exactly
+one, and the label decides what the claim may be used for. In particular an \LE{} number is never
+substituted into a \LT{} statement, and a \LM{} is stated as an inequality with zero slack rather
+than as ``work in progress''.}
+\label{fig:labelmap}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X4 — the spectrum ladder
+% ---------------------------------------------------------------------
+\newcommand{\figladder}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \draw[arr] (1.0,1.2) -- (15.2,1.2) node[alab, right] {$E$};
+  \fill[gray!18] (12.0,1.2) rectangle (15.0,4.2);
+  \draw[dashed, black!55] (12.0,1.2) -- (12.0,4.2);
+  % levels
+  \draw[very thick, black!70] (2.6,1.2) -- (2.6,3.0);
+  \node[above] at (2.6,3.0) {$\Omega$ (vacuum)};
+  \draw[very thick, cN!85] (6.0,1.2) -- (6.0,3.8);
+  \node[above, text=cN!85] at (6.0,3.8) {$0^{++}$ at $m_1$};
+  \node[left, text=cN!85] at (5.9,2.6) {height $f_1^2=\nu(\{m_1^2\})$};
+  \draw[very thick, black!45] (9.0,1.2) -- (9.0,3.0);
+  \node[above, text=black!55] at (9.0,3.0) {$0^{++*}$ at $\approx1.5\,m_1$};
+  \node[text=black!60] at (13.5,3.95) {two-glueball};
+  \node[text=black!60] at (13.5,3.65) {continuum};
+  % brackets
+  \draw[decorate, decoration={brace, amplitude=4pt}, cM!85]
+    (6.15,2.2) -- node[above=4pt, text=cM!85] {$I_2$ margin $\delta\approx0.5\,m_1$} (8.85,2.2);
+  \draw[decorate, decoration={brace, amplitude=4pt, mirror}, black!55]
+    (6.15,0.95) -- node[below=4pt] {two-body threshold $2m_1$} (11.85,0.95);
+\end{tikzpicture}
+\caption{The spectral ladder of the $0^{++}$ channel. The atom weight $f_1^2$ (label I1) is the
+height of the first level; the isolation (I2) is its distance to the \emph{excited} scalar, not
+to the two-glueball continuum. This distinction is the reason the strong-coupling residue theorem
+does not by itself give a gap, and why the operative threshold in the no-dissolution theorem is
+$1.5\,m_g$ rather than $2m_g$.}
+\label{fig:ladder}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X5 — the G1 pipeline
+% ---------------------------------------------------------------------
+\newcommand{\figpipeline}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \foreach \x/\col/\nm/\txt in {%
+    1.6/cT/{L1}/{definition of the measure},
+    4.2/cT/{L2}/{single-block bound},
+    6.8/cM/{L3}/{uniform $Z_a$},
+    9.4/cT/{GL3}/{compactness},
+    12.0/cT/{GL4}/{reflection positivity},
+    14.5/cT/{OS0--4}/{reconstruction}}{%
+    \node[fbox, fill=\col!7, draw=\col!50, text width=2.25cm, minimum height=1.7cm]
+      at (\x,1.8) {\textbf{\nm}\\[1pt]\txt};}
+  \foreach \a/\b in {1.6/4.2,4.2/6.8,6.8/9.4,9.4/12.0,12.0/14.5}{%
+    \draw[arr] (\a+1.15,1.8) -- (\b-1.15,1.8);}
+  \node[font=\scriptsize, text=cM!85, align=center, text width=5.4cm] at (6.8,-0.15)
+    {the only open UV node: $\sup_a Z_a^{-1}\lVert H_a\rVert_D<\infty$\\ (a single-sided force-variance bound)};
+\end{tikzpicture}
+\caption{The existence pipeline G1. Every arrow except the third is closed by a theorem or by the
+statement of the measure; L3 is the single open ultraviolet node. It is deliberately drawn next
+to G2's H1 in the text, because L3 and H1 are the same species of inequality at two different
+scales.}
+\label{fig:pipeline}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X6 — isometric lattice with a plaquette and a flux tube
+% ---------------------------------------------------------------------
+\newcommand{\figlattice}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize,
+  X/.style={draw=black!45, line width=0.5pt},
+  Xhot/.style={draw=cM!90, line width=2.2pt}]
+  % isometric basis
+  \def\ex{0.62} \def\ey{0.36}
+  \def\fz{0.72}
+  % vertices (i,j,k) in 0..3
+  \foreach \i in {0,1,2,3}{%
+    \foreach \j in {0,1,2,3}{%
+      \foreach \k in {0,1,2,3}{%
+        \pgfmathsetmacro{\px}{\i*\ex - \j*\ex}
+        \pgfmathsetmacro{\py}{\i*\ey + \j*\ey + \k*\fz}
+        \fill[black!70] (\px,\py) circle (1.1pt);
+      }}}
+  % links along x, y, z (only within 0..2)
+  \foreach \i in {0,1,2}{%
+    \foreach \j in {0,1,2}{%
+      \foreach \k in {0,1,2}{%
+        \pgfmathsetmacro{\ax}{\i*\ex-\j*\ex} \pgfmathsetmacro{\ay}{\i*\ey+\j*\ey+\k*\fz}
+        \pgfmathsetmacro{\bx}{\ax+\ex} \pgfmathsetmacro{\by}{\ay+\ey}
+        \draw[X] (\ax,\ay) -- (\bx,\by);
+        \pgfmathsetmacro{\cx}{\ax-\ex} \pgfmathsetmacro{\cy}{\ay+\ey}
+        \draw[X] (\ax,\ay) -- (\cx,\cy);
+        \pgfmathsetmacro{\dx}{\ax} \pgfmathsetmacro{\dy}{\ay+\fz}
+        \draw[X] (\ax,\ay) -- (\dx,\dy);
+      }}}
+  % highlighted plaquette on the top layer (i=0..1, j=0..1, k=3)
+  \pgfmathsetmacro{\pax}{0} \pgfmathsetmacro{\pay}{0+0+3*\fz}
+  \pgfmathsetmacro{\pbx}{\ex} \pgfmathsetmacro{\pby}{\ey+3*\fz}
+  \pgfmathsetmacro{\pcx}{0} \pgfmathsetmacro{\pcy}{2*\ey+3*\fz}
+  \pgfmathsetmacro{\pdx}{-\ex} \pgfmathsetmacro{\pdy}{\ey+3*\fz}
+  \draw[Xhot] (\pax,\pay) -- (\pbx,\pby) -- (\pcx,\pcy) -- (\pdx,\pdy) -- cycle;
+  % flux tube through the centre
+  \draw[cN!80, line width=4pt, opacity=0.75] (-0.15,0.9) -- (-0.15,3.55);
+  \node[text=cN!80, anchor=east] at (-0.45,2.1) {flux tube};
+  \draw[cN!60, ->, thin] (-0.4,2.15) -- (-0.18,2.25);
+  \node[text=cM!90] at (1.55,3.55) {plaquette $U_p$};
+  \draw[cM!70, ->, thin] (1.15,3.45) -- (0.55,3.0);
+\end{tikzpicture}
+\caption{A $3^3$ periodic lattice in isometric view: site variables, link variables, one
+plaquette $U_p$ (the object whose trace enters the Wilson action and the operator
+$\operatorname{tr}F^2$), and a flux tube. The figure fixes the objects used throughout: the
+strong-coupling residue theorem counts polymers of such plaquettes, and the no-dissolution
+argument is about what a tube of this kind can and cannot do.}
+\label{fig:lattice}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X7 — the variance ledger
+% ---------------------------------------------------------------------
+\newcommand{\figbalance}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \draw[arr] (0.8,0.4) -- (0.8,4.6) node[alab, above] {value};
+  \draw[dashed, black!45] (0.8,1.1) -- (14.6,1.1);
+  % waterfall: E[H] up, Var down, W up, net
+  \fill[cT!55] (1.7,1.1) rectangle (3.3,3.3);
+  \node[above] at (2.5,3.3) {$E[H]$};
+  \fill[cN!45] (4.4,1.3) rectangle (6.0,3.3);
+  \node[below] at (5.2,1.3) {$-\operatorname{Var}$};
+  \fill[cC!55] (7.1,1.1) rectangle (8.7,1.45);
+  \node[above] at (7.9,1.45) {$+W_{\mathrm{full}}$};
+  \fill[black!70] (9.8,1.1) rectangle (11.4,1.55);
+  \node[above] at (10.6,1.55) {$G''=S-D$};
+  \draw[dotted, black!60] (3.3,3.3) -- (4.4,3.3);
+  \draw[dotted, black!60] (6.0,1.3) -- (7.1,1.3);
+  \draw[dotted, black!60] (8.7,1.45) -- (9.8,1.45);
+  \node[align=left, text width=3.4cm] at (13.2,2.6)
+    {$G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$\\[2pt]
+     $=\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X$};
+  \node[text=black!55] at (5.2,0.55) {schematic heights};
+\end{tikzpicture}
+\caption{The variance ledger behind the gap. The unconditioned curvature $E[H]$ is large and
+positive; the variance of the force subtracts from it; the geometric/cross remainder
+$W_{\mathrm{full}}=W_{\mathrm{geo}}+X$ is what is left of the conditioning correction. The sign
+of $G''$ is therefore not a statement about the size of $E[H]$ --- that is positive for trivial
+reasons --- but about the subtractive variance term, which is exactly the object no known tool
+bounds from above at $\beta\approx2.5$. Heights are schematic.}
+\label{fig:balance}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X8 — stable and unstable directions at the Savvidy point
+% ---------------------------------------------------------------------
+\newcommand{\figsaddle}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \draw[arr] (0.9,2.0) -- (7.2,2.0) node[alab, right] {$t$};
+  \draw[arr] (0.9,0.4) -- (0.9,3.6) node[alab, above] {$V$};
+  \draw[cN!85, thick, domain=-2.2:2.2, samples=60] plot ({3.6+1.25*\x},{2.0-0.28*\x*\x});
+  \node[text=cN!85, align=left, text width=3.0cm] at (6.0,3.0)
+    {negative mode:\\ $\lambda^2<0$ (unstable)};
+  \draw[cT!70, thick, domain=-2.2:2.2, samples=60] plot ({11.0+1.25*\x},{2.0+0.28*\x*\x});
+  \node[text=cT!70, align=left, text width=3.0cm] at (12.5,0.7)
+    {positive modes:\\ stable};
+  \node[text=black!60, align=center, text width=4.2cm] at (3.0,0.55)
+    {transverse magnetic mode};
+  \node[text=black!60, align=center, text width=4.2cm] at (12.6,3.5)
+    {would-be convex directions};
+\end{tikzpicture}
+\caption{The Savvidy phenomenon in one dimension. Around a constant chromomagnetic background the
+effective potential is concave along the transverse magnetic mode and convex along the others.
+The concavity is physical, not a gauge artifact: it survives the gauge quotient, and it is the
+reason every convexity-based tool (Pr\'ekopa, Brascamp--Lieb, log-concavity) stops at the
+background. The campaign's $W_{\mathrm{geo}}\ge0$ theorem controls the Haar part, not this term.}
+\label{fig:saddle}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X9 — the theorem dependency graph
+% ---------------------------------------------------------------------
+\newcommand{\figproofdag}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \foreach \x/\col/\nm/\lab in {%
+    1.7/cM/{H1}/\LM,
+    4.9/cC/{CP}/\LC,
+    8.1/cT/{$W_{\mathrm{geo}}\!\ge0$}/\LT,
+    11.3/cT/{P3}/\LT,
+    14.5/cC/{no-diss.}/\LC}{%
+    \node[fbox, fill=\col!7, draw=\col!50, text width=2.7cm] at (\x,4.2)
+      {\textbf{\nm}\\[1pt]\lab};}
+  \node[fbox, fill=cT!10, draw=cT!60, text width=9.6cm] (red) at (8.0,1.9)
+    {\textbf{conditional reduction (Lean 4)}\\[2pt]
+     \code{clay\_gap\_conditional} : H1 $\wedge$ CP $\wedge$ $W_{\mathrm{geo}}\!\ge0$ $\wedge$ P3
+     $\wedge$ no-diss. $\Longrightarrow$ $\Delta>0$\\[2pt]
+     zero \code{sorryAx}; the five inputs are explicit hypotheses};
+  \node[fbox, fill=cN!8, draw=cN!55, text width=9.6cm] (clay) at (8.0,0.25)
+    {\textbf{Clay} \quad 0\% --- open: the five inputs are unproved};
+  \draw[arr] (8.1,3.55) -- (red.north);
+  \draw[arr] (11.3,3.55) -- (red.north east);
+  \draw[arr] (4.9,3.55) -- (red.north west);
+  \draw[arr] (1.7,3.55) -- (red.north west);
+  \draw[arr] (14.5,3.55) -- (red.north east);
+  \draw[arr] (red.south) -- (clay.north);
+\end{tikzpicture}
+\caption{What the Lean development does and does not certify. The reduction is machine-checked:
+if the five analytic facts hold, then the gap follows, and the proof uses only the standard
+axioms. The five facts are hypotheses, not theorems in Lean; three of them are theorems in the
+paper (P3, $W_{\mathrm{geo}}\ge0$, no-dissolution), while H1 and (CP) are open. The diagram is
+the precise sense in which ``the logic is verified, the inputs are not''.}
+\label{fig:proofdag}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X10 — moments versus determinant
+% ---------------------------------------------------------------------
+\newcommand{\figfredholm}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  % panel A: the measure
+  \draw[arr] (0.9,0.7) -- (6.9,0.7) node[alab, right] {$s$};
+  \fill[black!75] (2.4,0.7) rectangle (2.55,2.5);
+  \node[above] at (2.47,2.5) {$f_1^2$};
+  \fill[gray!25] (3.2,0.7) -- (3.2,1.55) -- (4.2,1.25) -- (5.4,1.0) -- (6.6,0.85) -- (6.6,0.7) -- cycle;
+  \node[text=black!60] at (5.0,1.55) {cut};
+  \node[text=black!60, align=center, text width=5.2cm] at (3.8,3.65)
+    {moments $\int s^k\,d\nu$ see atom and cut alike};
+  % panel B: the complex z-plane
+  \begin{scope}[shift={(9.4,0)}]
+    \draw[arr] (0.2,1.6) -- (5.8,1.6) node[alab, right] {$\Re z$};
+    \draw[arr] (3.0,0.35) -- (3.0,2.9) node[alab, above] {$\Im z$};
+    \draw[black!45, thick] (3.0,1.6) circle (1.0);
+    \node[text=black!55] at (4.55,2.75) {$|z|=1$ (cut)};
+    \draw[cN!85, very thick] (4.35,1.6) -- (4.75,1.6);
+    \draw[cN!85, very thick] (4.55,1.4) -- (4.55,1.8);
+    \node[text=cN!85, below] at (4.55,1.35) {$z_1=e^{am_1}$};
+    \node[text=black!60, align=center, text width=5.4cm] at (2.9,3.75)
+      {the determinant has a zero at $z_1$ and none elsewhere inside the cut};
+  \end{scope}
+  \node[text=black!60, align=center, text width=15cm] at (7.7,-0.05)
+    {same lower moments, different zero sets: the Fredholm determinant is linear-blind but sees the atom};
+\end{tikzpicture}
+\caption{Why the Fredholm determinant is the only tool of the six that ``sees'' the atom. Every
+moment of the measure --- including all the moments the squeeze uses --- is blind to whether the
+bottom of the spectrum is an atom or the edge of a cut. The determinant $\det(1-zT_O)$ is not:
+a pole of the resolvent produces a zero at $z_1=e^{am_1}$, a cut produces none. The price is
+that the zero has to be followed to $a\to0$.}
+\label{fig:fredholm}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X11 — the verdict card
+% ---------------------------------------------------------------------
+\newcommand{\figverdictcard}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \node[fbox, fill=cN!8, draw=cN!60, text width=15.2cm, minimum height=0.9cm] at (7.8,3.9)
+    {\textbf{Clay: 0\% --- open.} \ The wall is located and instrumented, not crossed.};
+  \foreach \x/\col/\big/\small in {%
+    1.9/cT/{100\%}/{G1 assembled\\ modulo $\{L3,G2\}$},
+    5.7/cC/{100\%}/{channel pinned\\ (conditional)},
+    9.5/cM/{90\% / 0\%}/{G2 region / G2 sign},
+    13.3/cM/{6 / 7}/{tools passing\\ acid test / no-gos}}{%
+    \node[fbox, fill=\col!7, draw=\col!50, text width=3.3cm, minimum height=2.0cm]
+      at (\x,1.9) {\textbf{\big}\\[2pt]\small};}
+  \node[text=black!55, align=center, text width=15cm] at (7.8,0.35)
+    {the missing object: one single-sided, cutoff-uniform upper bound on a conditioned variance};
+\end{tikzpicture}
+\caption{The verdict in five numbers. None of them is a percentage of Clay; each is local to its
+own object. The two zeros matter more than the three high numbers: G2's sign and the missing
+tool are the same absence, and the other numbers only say that everything around it is
+assembled.}
+\label{fig:verdictcard}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% X12 — the Lean dependency tree
+% ---------------------------------------------------------------------
+\newcommand{\figlean}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \node[fbox, fill=cT!10, draw=cT!60, text width=6.8cm] (root) at (8.0,5.5)
+    {\code{mass\_gap\_of\_spectral} \quad proved};
+  \foreach \x/\nm/\lab/\st in {%
+    1.7/{H1\_holds}/{H1}/\LM,
+    4.85/{CP\_holds}/{CP}/\LC,
+    8.0/{W\_geo\_nonneg\_fact}/{W$_{\mathrm{geo}}\!\ge0$}/\LT,
+    11.15/{P3\_strong\_coupling}/{P3}/\LT,
+    14.3/{no\_dissolution\_kinematic}/{no-diss.}/\LC}{%
+    \node[fbox, fill=cM!8, draw=cM!55, text width=2.8cm, minimum height=1.35cm] at (\x,3.4)
+      {\textbf{\lab}\\[1pt]{\tiny\texttt{\nm}}\\[1pt]\textcolor{cM!85}{\st}};
+    \draw[arr] (\x,4.1) -- (root.south);}
+  \node[fill=black!4, rounded corners=2pt, draw=black!25, text width=11.0cm,
+        font=\scriptsize, align=center] (ax) at (8.0,1.35)
+    {axioms of \code{clay\_gap\_conditional}:
+     \code{[propext, Classical.choice, Quot.sound]} --- no \code{sorryAx}};
+\end{tikzpicture}
+\caption{The Lean dependency tree. The root lemma is proved; the five leaves are \code{sorry}
+hypotheses with the exact analytic statements of the paper. What the machine certifies is the
+assembling of the leaves into the gap, not the leaves themselves. This is the formal counterpart
+of the label system: a \LT{} inside Lean is a proved lemma, and a \LM{} is a \code{sorry} whose
+statement has been fixed.}
+\label{fig:lean}
+\end{figure}
+}
