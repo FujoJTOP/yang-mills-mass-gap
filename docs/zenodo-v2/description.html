@@ -1,0 +1,57 @@
+<p><b>Status.</b> This is a <i>conditional reduction and an audit</i>, not a proof of the Clay
+problem. The mass gap for 4D pure SU(N) Yang&ndash;Mills remains open. <b>Clay = 0%.</b> No step
+of this paper is labelled QED.</p>
+
+<p><b>What the paper does.</b> (i) It rewrites the gap as the statement that the
+K&auml;ll&eacute;n&ndash;Lehmann spectral measure &nu; of tr F<sup>2</sup> has a positive,
+isolated atom f<sub>1</sub><sup>2</sup> at the bottom of its support. (ii) It proves the exact
+squeeze f<sub>1</sub><sup>2</sup>/&chi; &le; inf supp &nu; &le; M<sub>0</sub>/&chi;, which shows
+that a mass lower bound needs <i>both</i> a residue floor and a susceptibility ceiling; the
+condition H1 (&chi; &le; 1/&lambda;) is necessary but not sufficient, because it is blind to a
+thin atom. The countermodel is machine-checked in Lean&nbsp;4 (module <tt>H1Sharpening</tt>, zero
+<samp>sorry</samp>): H1 plus the squeeze gives only m &ge; &lambda;f, and H1 alone does not imply
+f &gt; 0. (iii) It states a conditional theorem whose gluing lemmas are machine-verified, and it
+records the no-gos and the exact missing steps.</p>
+
+<p><b>New in the second edition.</b> Part III draws the same obstruction in <b>two independent
+coordinates</b>. (a) <i>Measure / weak-*</i>: the atom is exactly the weak-* discontinuity of the
+boundary density; every finite datum is weak-* continuous and atomless measures are weak-*
+dense, so any functional that <i>forces</i> the atom is weak-* discontinuous &mdash; hence either
+a reading or an infinite-data limit (H1). (b) <i>&beta;/RG/conformal</i>: the gap is equivalent to
+pure Yang&ndash;Mills (N<sub>f</sub>=0) lying outside the conformal window. The conformal window is
+real (SU(3) with 9 &le; N<sub>f</sub> &le; 16 is asymptotically free and gapless-conformal), so
+asymptotic freedom alone does not imply a gap; no exact identity forbids an infrared fixed point;
+and eight routes through the modern &beta;/CFT toolbox fail, each for a sharp reason. The
+Dyson&ndash;Schwinger scaling solution is the gauge-fixed cousin of the worry, not a massless
+particle.</p>
+
+<p><b>Ledger.</b> Positively: a strong-coupling residue theorem (f<sub>1</sub><sup>2</sup> &gt; 0
+for &beta; &lt; 1/48, volume- and L-uniform; I1, not I2); a kinematic no-dissolution theorem;
+W<sub>geo</sub> &ge; 0 by Pr&eacute;kopa; gauge-invariant Perron&ndash;Frobenius and its edge
+no-go; the coarse Poincar&eacute; lemma; the Feshbach&ndash;Bogoliubov two-block lemma; the exact
+variance decomposition G&Prime; = S &minus; D; the residue&ndash;level-gap lemma; and a
+machine-checked conditional theorem. Negatively: the Schur-convex master obstruction, Goldstone
+uniqueness, the periodic, nested-cone, rigidity, Feshbach-angle and Krein no-gos; the elimination
+of the order-parameter, topological-index and Markov-functional paradigms; and a structural no-go
+for complex-function-theory <i>forcing</i> tools (the Hardy L<sup>2</sup> functional detects atom
+<i>presence</i> but not its weight).</p>
+
+<p><b>Numerics.</b> The residue is seen where it is resolvable (f<sub>1</sub><sup>2</sup> &gt; 0
+at &beta; = 2.2 on SU(2), seventeen sigma); it dissolves into the cutoff at &beta; = 1.0, as the
+strong-coupling picture predicts. A k &rarr; 0 curvature probe is positive and volume-stable but
+is measured on a gauge-dependent gluon mode, not the 0<sup>++</sup> object; its one-sided interval
+still includes zero. The diagnostics (P3 approach law, one-sided isolation bound, Re-slope,
+finite-size law) are genuine and continuum-robust in the ideal, but each is a <i>read</i> gated by
+L &rarr; &infin;.</p>
+
+<p><b>Verdict.</b> The wall did not fall; it became transparent, ruled, instrumented, and drawn
+twice. What is missing is one object: a nonperturbative, non-circular, sign-controlling,
+free-field-failing, cutoff-uniform upper bound on a conditioned variance &mdash; equivalently a
+nonperturbative sign theorem for &beta;<sub>N<sub>f</sub>=0</sub>. That object does not exist in
+the present toolbox, and naming it precisely is the paper&rsquo;s real result.</p>
+
+<p><b>Provenance.</b> Every substantive claim carries a label (theorem / conditional theorem /
+no-go / exact missing step / numerical evidence) and names the file containing its proof. The Lean
+formalization uses a pinned toolchain; the references were checked against publisher, arXiv and
+zbMATH records; one numerical erratum (the free-vector a/c ratio, corrected to 31/18) is recorded.
+81 pages, 16 chapters, 7 appendices.</p>
