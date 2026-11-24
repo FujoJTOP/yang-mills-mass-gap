@@ -141,9 +141,14 @@ $G''=0.741$.
 negativity. The ultraviolet statement is renormalized: $Z_j^{-1}G''\ge c_L=4\pi^2/L^2$, and the
 bare margin runs as $\log(1/a_j)$, not as a constant.
 
-\emph{The head.} Beyond the small-field set the Hessian modulus is non-positive (bulk Savvidy); the
-true $G''$ is measured positive at $\beta=2.5$ ($+0.13$), but proving it is exactly the infrared
-wall $H1$. Thus the ultraviolet face is not a new route: it is a proved room, a locked door, and a
+\emph{The head.} Beyond the small-field set the Hessian modulus is non-positive (bulk Savvidy). At
+the coarse minimiser the sign is unconditional: an interior maximum of the marginal satisfies
+$G''=-\rho_v''/\rho_v\ge0$, and in the scan it is strict (minimum $0.20$--$0.24>N/12$). The
+averaged curvature is the Fisher information, $E[G'']=I(\rho_v)\ge1/\operatorname{Var}(a)$, positive
+across the boundary at $\beta=2.5$. An exact one-step renormalization-group descent transports the
+ultraviolet floor to $\beta=2.5$ on the box-gap-protected modes, breaking only on the Savvidy soft
+mode. What remains is the \emph{uniform} positive margin, which is exactly $H1$; the spectral class
+is a no-go at the head. Thus the ultraviolet face is not a new route: it is a proved room, a locked door, and a
 door back to the same wall.
 
 The verdict is unchanged: \textbf{Clay is $0\%$}. What changes is that the ultraviolet face is now
@@ -212,8 +217,16 @@ cannot be the right object.
   covariant directions give an explicit sign-indefinite remainder.
 \item \LT{}/\LC{} \textbf{Ultraviolet normalization.} A constant bare margin is false; the correct
   statement is $Z_j^{-1}G''\ge c_L=4\pi^2/L^2$ with a margin running as $\log(1/a_j)$.
-\item \LM{} \textbf{The head.} Beyond the small-field set, the Hessian modulus is non-positive and
-  the true curvature is measured positive at $\beta=2.5$; proving it is $H1$.
+\item \LT{} \textbf{Local sign theorem.} At the coarse minimiser, $G''(a_0^*)\ge0$ unconditionally
+  (interior maximum of the marginal), and strictly positive in the scan; the uniform margin is
+  $H1$.
+\item \LT{}/\LM{} \textbf{Averaging and descent.} The averaged curvature is the Fisher information
+  $E[G'']=I(\rho_v)\ge1/\operatorname{Var}(a)$; an exact one-step descent transports the
+  ultraviolet floor to $\beta=2.5$ on box-gap-protected modes, breaking on the Savvidy soft mode.
+\item \LN{} \textbf{Spectral no-go.} Perron--Frobenius, Bakry--\'Emery/LSI, Cheeger and block
+  transfer are blocked at the head by the typical-point-versus-essential-infimum obstruction.
+\item \LM{} \textbf{The head.} The remaining question is the uniform positive margin, which is
+  exactly $H1$.
 \end{enumerate}
 
 \subsection{Honesty}
@@ -436,25 +449,143 @@ test ($Q_c=4\pi^2/L^2>0$); the infrared zero mode fails it ($Q(0)=0$).
 \label{sec:head}
 % =====================================================================
 
-\subsection{The head}
+\subsection{The defect and its Fisher identity}
+\label{sec:defect}
 
-Beyond the small-field set, at $\beta\approx2.5$ and typical field, the bulk Savvidy modulus is
-non-positive ($\rho\le0$). The true curvature is nevertheless measured positive,
-$G''\approx+0.13$ at $\beta=2.5$, carried by the measure (the defect $D$). Proving that this
-positivity is uniform is exactly the infrared wall $H1$:
+Beyond the small-field set the Hessian modulus is non-positive (bulk Savvidy), and the positivity,
+when it holds, is carried by the measure. The exact split of the defect is
 \begin{equation}
-E[\Sigma|a_0]\ \ge\ \delta_W ,
-\label{eq:H1head}
+D=D_+(\le0)+D_{\mathrm{Sav}},\qquad
+D_{\mathrm{Sav}}=\frac{E|\langle\varphi_-|c\rangle|^2}{g|B|}\ \ge\ 0 ,
+\label{eq:dsplit}
 \end{equation}
-the same inequality that the campaign has identified as the gap in the measure coordinate.
+so $D<S-\delta$ is equivalent to
+$D_{\mathrm{Sav}}<S-\delta+|D_+|$. The measured ratio $D/S\approx0.83$--$1.10$ forces
+$D_{\mathrm{Sav}}\gtrsim S$: the rank-one term saturates the stiffness, and the margin is a thin
+$O(1)$ residue. Pointwise the inequality fails (five of twelve modes have $G''<0$).
+
+Averaged over the coarse field, however, there is an exact identity:
+\begin{equation}
+E_{a\sim\rho_v}\bigl[G''\bigr]=I(\rho_v)=E\bigl[(\partial_a\log\rho_v)^2\bigr]\ \ge\ \frac{1}{\operatorname{Var}(a)},
+\label{eq:fisher}
+\end{equation}
+the Fisher information of the marginal, by integration by parts (Cram\'er--Rao for the second
+inequality). It is exact for every boundary and every $\beta$; it vanishes on the free field. At
+$\beta=2.5$ the measured value is $I\approx+0.049$ at $L=8$, decreasing from $+0.28$ at $L=4$.
+
+\subsection{The averaged boundary}
+\label{sec:avg}
+
+Averaging over the boundary holonomy at $\beta=2.5$, the true curvature is positive across the whole
+range: the minimum is $+0.136$, and the average is $+0.37$ (Haar) to $+0.59$ (Wilson-tilted). The
+barrier becomes negative only for $\beta>4.307$, and its negative set has equilibrium measure
+$\le1.6\times10^{-4}$ at $\beta=5$, zero at $\beta=2.5$. The acid test passes.
+
+The averaged margin is not uniform: a uniform lower bound for $E[G'']$ is exactly
+$1/\operatorname{Var}(a)$, the coarse gap, i.e.\ $H1$.
+
+\subsection{The local sign theorem at the coarse minimiser}
+\label{sec:local}
+
+The corrected local form evaluates $G''$ at the coarse minimiser $a_0^*=\arg\max\rho_v$.
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(local sign)} \emph{For the Haar measure on any block, the marginal
+$\rho_v(a)$ vanishes at the chart edge, so its maximiser $a_0^*$ is interior; at an interior
+maximum,}
+\begin{equation}
+G''(a_0^*)=-\frac{\rho_v''(a_0^*)}{\rho_v(a_0^*)}\ \ge\ 0 ,
+\label{eq:localsign}
+\end{equation}
+\emph{with equality only for a quartic-flat top, which is the $\delta\to0$ boundary of $H1$.}
+\end{claimbox}
+
+\begin{proofx}
+The Haar density vanishes at $|a|=2\pi$, so the maximiser is interior. At an interior maximum,
+$\rho_v'=0$ and $\rho_v''\le0$; the logarithmic second derivative is $-\rho_v''/\rho_v\ge0$.
+\end{proofx}
+
+Numerically the sign is strict. In the $1\times2$ coupled block at $\beta=2.5$, with a tunable
+boundary and linear ($D_3/A_3/V_3/\mathrm{Diff}_3$) modes and $X$ included,
+$G''(a_0^*)=+1.02,+0.35,+0.69,+0.34$; the minimum over the whole scan is $0.20$--$0.24$ (at
+$\beta=0$), above $N/12=0.167$; block sizes $L=1,2,3$ give $0.70,1.01,0.63$; the negative shoulders
+(exact $1\times1$: $-0.077$; coupled bulk $\approx-0.33$) lie on the flanks, never at $a_0^*$.
+
+Thus the local sign is unconditional \LT{} (weakly) and strict \LE{}; what remains is the
+\emph{uniform} positive margin over shells and boundaries, which is $H1$ \LM.
+
+\subsection{The renormalization-group descent}
+\label{sec:descent}
+
+The exact backbone of the block curvature is
+\begin{equation}
+G''_j=\bigl(PA_j^{-1}P^{\mathsf T}\bigr)^{-1}=E[\Sigma]-D ,
+\label{eq:backbone}
+\end{equation}
+verified to $10^{-14}$. The one-step lemma is: if the coupling parameter $\eta_j<1$, then
+\begin{equation}
+G''_j\ \succeq\ (1+\eta_j)^{-1}G''_{j+1},
+\qquad\text{additively}\quad G''_j\ge G''_{j+1}-L_j,
+\label{eq:onestep}
+\end{equation}
+with $L_j=D_j^++(\star_{\mathrm{dec}})$. The cumulative loss is the summable two-loop series
+$\sum_jg_j^4\approx0.09$ for $j\ge8$, against the margin $c_L=0.152$; at the head each shell costs
+$O(c_L)$ at $g=O(1)$.
+
+Consequently the ultraviolet good-set theorem propagates to $\beta\approx2.5$ as a \emph{curvature}
+floor on the box-gap-protected modes. It does not give $H1$: the transported floor is the box gap
+$4\pi^2/L^2\to0$ as $L\to\infty$, and the descent breaks ($\eta_j\ge1$, fibre gap $\gamma_j\to0$,
+$D_j>0$) on the Savvidy soft mode at $\beta\approx2.4$--$2.5$---the $k\to0$ mode that is the gap.
+$L3$ is therefore reduced to $H1$ \emph{on one mode}.
+
+\subsection{The spectral no-go}
+\label{sec:spectral}
+
+The coarse curvature is the curvature of the transfer-matrix ground state (Riccati identity),
+\begin{equation}
+G''(a)=V_{\mathrm{eff}}''(a)=-2\,\partial_a^2\log\psi_0(a),
+\label{eq:riccati}
+\end{equation}
+which is an exact relation, not a bound. The one constructive spectral inequality reads the
+\emph{essential infimum}:
+\begin{equation}
+\lambda_1(\nu)\ \ge\ \operatorname{ess\,inf}_a G''(a).
+\label{eq:essinf}
+\end{equation}
+At the head, $G''(a_0^*)>0$ at the typical point, but $\operatorname{ess\,inf}G''<0$ on the Savvidy
+tail (the double well). Typical-point positivity does not lift to a global spectral constant. The
+fast fibre gap ($\sim\Lambda_{\mathrm{UV}}$) is positive and uniform but provably silent on $G''$;
+Cheeger reduces to a tautology; the strong-coupling LSI is off-tower. Hence the whole class
+\{Perron--Frobenius/Krein--Rutman/Bushell, Bakry--\'Emery/LSI, Cheeger, block transfer\} is blocked
+at the head \LN{} by the typical-point-versus-essential-infimum obstruction. What would be needed is
+a Savvidy-corrected uniform log-concavity on the typical bulk (=$H1$), a second Karlin cone (absent
+on the orderless quotient), or the Feshbach inequality $\Sigma\ge\mu$ (TCI).
+
+\subsection{The numerics}
+\label{sec:headnum}
+
+At $\beta=2.5$ the stored data measure the gauge-dependent flat-chart gluon (the global
+$k=2\pi/L$ mode, no gauge fixing or orbit control): $G''(a_0^*)=+0.268\pm0.007$ ($\mathrm{SU}(2)$,
+$L=4$, $48/48$ modes), $+0.327\pm0.016$ ($L=6$), $+0.51\pm0.08$ ($\mathrm{SU}(3)$ soft block). The
+full-decomposition points at $\beta=2.4$ and $5.7$ give $W_{\mathrm{geo}}=+0.254,+0.318$, but
+keeping only the proven $W_{\mathrm{geo}}\ge0$ the one-sided bound is $-0.042/-0.095$: zero is not
+excluded. At $\beta=2.5$ itself no $\Phi$-derivative columns are stored, so no rigorous-style bound
+is formable.
+
+The minimal decisive run is: Landau gauge with Gribov-copy averaging, the block-scale softest
+blocked mode, the full $S_W+\Phi$ decomposition, at $\beta=2.5$ on $L=8,12,16$ with
+$N\approx2000$--$4000$ configurations, one job at a time ($\approx1$--$2$ CPU-hours for
+$\mathrm{SU}(2)$ in C/OpenMP). It yields a controlled statistical bound, not a certificate; the
+uniform floor remains $H1$.
 
 \subsection{The pincer, honestly}
 
 The strong-coupling jaw (Dobrushin at $\beta<1/72$, SZZ at $\beta<1/48$) is a theorem but grips
-zero tower shells: the thresholds are crossed before the tower starts. The ultraviolet jaw covers
-all but $O(1)$ shells, but conditionally and only on the small-field set. The head is the remaining
-$O(1)$ shells at $\beta\approx2.5$, and it is $H1$. There is no whole intermediate regime inside the
-tower; the head is the gap.
+zero tower shells: the thresholds are crossed before the tower starts. The ultraviolet jaw now
+includes the renormalization-group descent: a one-step lemma with summable loss transports the
+good-set floor to $\beta\approx2.5$ on box-gap-protected modes. It breaks on the Savvidy soft mode,
+so $L3$ is reduced to $H1$ \emph{on one mode}. The head is the remaining $O(1)$ shells at
+$\beta\approx2.5$; there is no whole intermediate regime inside the tower, and the head is the gap.
 
 \subsection{What this paper establishes}
 
@@ -465,7 +596,12 @@ tower; the head is the gap.
   \LT{}/\LC.
 \item The projection class is linear/divergence-free \LT; the ultraviolet statement is
   renormalized with a log-running margin \LT{}/\LC.
-\item The head is $H1$ \LM. The ultraviolet face is therefore not a new route to the gap.
+\item At the coarse minimiser, $G''(a_0^*)\ge0$ unconditionally \LT{}, strict in the scan.
+\item The averaged curvature is the Fisher information, $E[G'']=I(\rho_v)\ge1/\operatorname{Var}(a)$
+  \LT{}, positive across the boundary at $\beta=2.5$.
+\item The one-step descent transports the ultraviolet floor to $\beta\approx2.5$ on
+  box-gap-protected modes \LT{}; it breaks on the Savvidy soft mode.
+\item The spectral class is a no-go at the head \LN{}; the remaining uniform margin is $H1$ \LM.
 \end{enumerate}
 
 \begin{qbox}
@@ -651,6 +787,12 @@ Good-set theorem $G''\ge\rho>0$, linear $N$ & \LT{}/\LC & \code{V2-TRUE-BOUND.md
 Projection class linear/divergence-free & \LT & \code{G3-PROJECTION-TERM.md};
   \code{G2-TWO-PLAQUETTE.md}\\
 UV normalization $Z_j^{-1}G''\ge c_L$, log margin & \LT{}/\LC & \code{V1-UV-NORMALIZATION.md}\\
+Defect split and Fisher identity & \LT & \code{H2-DEFECT-BOUND.md}\\
+Averaged boundary positive at $\beta=2.5$ & \LE & \code{H3-AVERAGED-HEAD.md}\\
+Local sign at the coarse minimiser & \LT{}/\LE & \code{H4-HEAD-COUNTEREXAMPLE.md}\\
+One-step RG descent & \LT & \code{H1-RG-DESCENT.md}\\
+Spectral no-go at the head & \LN & \code{H6-HEAD-SPECTRAL.md}\\
+Head numerics and one-sided bounds & \LE/\LM & \code{H5-HEAD-NUMERICS.md}\\
 Head is $H1$ & \LM & \code{V4-PINCER.md}; \code{STAR2-CLASSIFICATION.md}\\
 \bottomrule
 \end{longtable}
