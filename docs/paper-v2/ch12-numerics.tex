@@ -1,0 +1,251 @@
+% =====================================================================
+\clearpage
+\part{Numerics, the missing machine, and the verdict}
+% =====================================================================
+\section{Numerics and diagnostics}
+\label{ch:numerics}
+% =====================================================================
+
+\subsection{What the numerics can and cannot show}
+
+The finite-volume corollary of Chapter~\ref{ch:weakstar} sets the frame. At finite $L$, the
+transfer matrix is compact and the spectrum is discrete, so $f_1^2>0$ is trivially true. A
+finite-lattice measurement of the residue is a statement about a finite-dimensional operator, not
+about the continuum theory. The Clay content is the $a\to0$, $L\to\infty$ survival and isolation
+of the atom. So the numerics in this chapter are read as follows:
+\begin{itemize}
+\item a positive residue at a fixed coupling is \LE{} evidence that the atom is present at that
+  coupling, not evidence for the continuum gap;
+\item the dissolution of the signal at strong coupling is \emph{consistent} with the analytic
+  picture (the state is at or beyond the cutoff), not evidence against P3;
+\item a one-sided interval that includes zero is the honest summary of a probe whose object is
+  not exactly the gauge-invariant $0^{++}$;
+\item a diagnostic that separates atom from cut on synthetic data is a method, not a proof.
+\end{itemize}
+Every number below carries one of these readings.
+
+\subsection{The $\mathrm{SU}(2)$ residue where it is resolvable}
+
+At $\beta=2.2$ on $\mathrm{SU}(2)$, $L=6$, $N=4000$ configurations, the connected zero-momentum
+$\operatorname{tr}F^2$ correlator gives
+\[
+f_{1,\mathrm{bare}}^2=7.14\pm0.42\quad(\text{seventeen sigma}),\qquad
+m_G=1.51\pm0.15\,a ,
+\]
+with every smearing level strongly positive. This is \LE. It is the clearest direct sighting of
+the residue in the campaign. At $\beta=1.0$ the signal is $0.2\sigma$ and the residue is not
+extractable. The reason is not a failure of the residue but a property of the strong-coupling
+lattice: $m\cdot a\gtrsim3$, so on $T=6$ the state sits at or beyond the cutoff. P3 is an
+analytic statement in the regime where $m\cdot a$ diverges, so the state is provably present but
+numerically sub-lattice-spacing. Strong-coupling provability and numerical positivity live at
+opposite ends of the coupling; the two observations are consistent.
+
+\subsection{The $k\to0$ curvature probe, read honestly}
+
+On a single $L=8$ volume, the $\mathrm{SU}(3)$ $\beta=5.7$ softest nonzero mode
+$k=2\pi/L=\pi/4$ gives
+\[
+G''=+0.307\pm0.055\quad(\text{6/6 transverse plane-wave modes}),\qquad
+W_{\mathrm{geo}}=+0.319\pm0.005 ,
+\]
+with the action bracket at equipartition ($+0.037\pm0.099$). $\mathrm{SU}(2)$ at $\beta=2.4$
+reproduces the sign ($+0.192\pm0.058$, $W_{\mathrm{geo}}=+0.252$). The measured points are
+positive and volume-stable, and $W_{\mathrm{geo}}$ is pinned at $+0.32$.
+
+\textbf{The caveat that must not be dropped.} This is a $k\to0$ sign probe on a
+\emph{gauge-dependent gluon mode} in a flat chart, not the gauge-invariant $0^{++}$ residue.
+Keeping only the proven $W_{\mathrm{geo}}\ge0$ and treating the rest statistically gives $95\%$
+one-sided lower bounds of $-0.098$ ($\mathrm{SU}(3)$) and $-0.035$ ($\mathrm{SU}(2)$):
+\textbf{zero is not excluded.} Closing it is one variance inequality, $(\blacklozenge)=$ H1, not
+a better dataset. The gauge-invariant object is
+$m_{\mathrm{GI}}=\inf\operatorname{supp}\rho_s$ of $s=(\beta/2g)\operatorname{tr}F^2$.
+
+\subsection{The volume confound is removed}
+
+At fixed $k=\pi/2$, $L=4$ and $L=8$ agree ($+0.425\pm0.084$ versus $+0.396\pm0.063$); at fixed
+$L=8$, $G''(\pi/4)=+0.307<G''(\pi/2)=+0.396$ but does not collapse. The earlier $L=4\to6$ drop
+mixed a $k$ decrease with a volume change; it is now separated. $W_{\mathrm{geo}}$ is pinned at
+$+0.32$ across $L=4,6,8$ and both $k$. This is a genuine control: the sign of the probe is not a
+volume artifact.
+
+\figprobe
+
+\subsection{The right-object audit}
+
+A post-audit measured the true gauge-invariant $0^{++}$ object --- the $k=0$ mode of
+$q(x)=1-\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle\approx\operatorname{tr}F^2$
+--- rather than the gauge-dependent gluon ($\mathrm{SU}(2)$, $L=8$, $N=200$). Two findings, both
+negative for the variance route:
+\begin{enumerate}
+\item The composite zero-momentum variance scales as $\operatorname{Var}(\bar q)\propto V^{-1.0}$
+  ($L=4,6,8$). So the variance form of H1, $\operatorname{Var}\le1/\lambda$, is vacuously
+  satisfied by any local composite at large $V$ and carries no gap content; its apparent
+  $G''>0$ is the wrong scaling (a susceptibility $1/\operatorname{Var}\propto V$, not an inverse
+  propagator).
+\item The gauge-dependent gluon mode, which does have the right variance behaviour, fails the
+  free-field acid test at every $\beta$ measured ($G''/\text{free}=0.18$--$0.63$; one-sided lower
+  bound $<0$ at every $\beta$).
+\end{enumerate}
+Consequently the $D/S\approx2\%$ quoted in earlier drafts is a compactness/Haar number measured
+on that gauge-dependent mode --- not gap evidence --- and is not robust under a susceptibility
+normalisation ($-0.45$ to $+0.60$ at strong coupling; the $2\%$ is a weak-coupling value). The
+physical datum is the glueball two-point mass, which is \emph{not} resolved at $L=8$ (fit
+$m_0\gtrsim\pi$, $\xi\lesssim a$). The audit sharpens, and does not close, the gap; it is
+consistent with $G''_a=a^2m^2$ and with H1 being necessary, not sufficient.
+
+\subsection{The Savvidy lattice cell}
+
+Chapter~\ref{sec:savvidy} gives the structural reading; here are the numbers. The defect ratio
+$D/S$ is bounded ($\le1.1$) but $O(1)$: $0.94\le D/S\le1.00$. Five of twelve modes have $G''<0$.
+The $k\to0$ mode is absent on the available volumes. The earlier reported $G''\approx+0.28$ is a
+small-volume artifact of the free dispersion $4\sin^2(\pi/L)$. The lattice does not contradict
+the theorem-set, and it does not confirm a positive margin. It shows that the margin is thin.
+
+\subsection{The diagnostics}
+
+The campaign's strongest methodological output on the numerical side is a set of diagnostics for
+the atom that are genuine and continuum-robust \emph{in the ideal}, and gated by $L\to\infty$ in
+practice. They are worth stating precisely because they define what a decisive lattice
+computation would look like.
+
+\subsubsection{The P3 approach law}
+
+Define
+\begin{equation}
+T(\tau)=-\frac{d}{d\tau}\log\bigl|m(\tau)-\hat e_1(\tau)\bigr| ,
+\label{eq:approachlaw}
+\end{equation}
+where $m(\tau)$ is a two-exponential fit to the correlator at Euclidean time $\tau$ and
+$\hat e_1$ its leading effective mass. For an isolated atom, $T(\tau)\to\Delta$ (the isolation
+gap); for a pure continuum, $T(\tau)\to1/\tau$. The statement is \LT{} within the stated model
+(Watson's lemma: an atom below a threshold gives an exponential rate, a pure continuum gives a
+power law). It is robust to a background continuum and to the choice of operator
+(\code{WI-P3-CONTINUUM.md}, \code{WI-P3-RIGOR.md}). \textbf{But}: on a single finite volume every
+discrete spectrum is a sum of exponentials, so a single $L$ cannot decide; the discriminating
+content is the $L\to\infty$ scaling of the approach, which is isolation $=$ H1.
+
+\subsubsection{The one-sided isolation bound}
+
+The quantitative version is a one-sided bound
+$\Delta\ge\kappa(\tau)\to\Delta$, sharper than the qualitative approach law
+(\code{WI-P3-QUANT.md}). It is \LT{} given the data, but it needs the mass $e_1$ as an input and
+is window-limited: a thin $\Delta$ is under-certified. It reads, it does not force.
+
+\subsubsection{The Re-slope statistic}
+
+For exact complex-$\tau$ zeros of the correlator's analytic continuation, the statistic
+\begin{equation}
+R=\frac{d\operatorname{Re}\tau}{d\ln c_1}=\frac{1}{E_1}
+\label{eq:reslope}
+\end{equation}
+is robust to a background continuum: an atom on a gapped or threshold continuum exposes five to
+six atom-slope rungs, a pure cut none (\code{WI-MODIFIED-FUNCTIONAL.md}, \code{WI-RESLOPE-LATTICE.md}).
+It is the campaign's clearest methodological gain on the analytic line. \textbf{But} exact
+complex-$\tau$ zeros are A3 (a reading), and on finite real-$\tau$ data the statistic is blind at
+$O(h)$ and collapses to the P3 plateau (\code{WI-RESLOPE-FINITE.md}). So it is a read, gated by
+A3 and by more data than is currently available.
+
+\subsubsection{The finite-size law}
+
+The scaling
+\begin{equation}
+\Delta(L)=m_1+\frac{c}{m_1L^2}
+\qquad\text{for an atom, versus}\qquad
+\Delta(L)\sim\frac{(2\pi/L)^2}{m}\to0\quad\text{for a cut}
+\label{eq:fss}
+\end{equation}
+gives a uniform criterion: $\Delta(L,a)\ge\delta$ for all $L$ iff $m_1>0$, which is the gap
+(\code{WI-P3-UNIFORM.md}). It is the cleanest statement of what a definitive lattice computation
+must demonstrate, and it is also the cleanest statement of why a single volume is insufficient.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.2cm}
+  >{\raggedright\arraybackslash}p{4.1cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Diagnostic} & \textbf{What it measures} & \textbf{Status / limiting step}\\
+\midrule
+P3 approach law $T(\tau)$ & atom: $T\to\Delta$; cut: $T\to1/\tau$ & \LT{} in the model;
+  robust to continuum and operator; single $L$ cannot decide; $L\to\infty=\,$H1\\
+Isolation bound $\Delta\ge\kappa(\tau)$ & a one-sided quantitative gap & \LT{} given data;
+  needs the edge; window-limited\\
+Re-slope $R=1/E_1$ & atom-slope rungs along $\operatorname{Im}\tau$ & \LT{} with exact
+  complex-$\tau$ zeros; A3 in practice; blind on real-$\tau$ data\\
+Finite-size law $\Delta(L)=m_1+c/(m_1L^2)$ & the $L\to\infty$ limit & \LT{} criterion;
+  uniformity is $m_1>0=$ the gap\\
+Two-exponential fit & $f_1^2$, $m_1$ at fixed $L$ & \LE; finite-volume fact; not the
+  continuum atom\\
+\bottomrule
+\end{tabularx}
+\caption{The diagnostics and their exact logical status.}
+\label{tab:diag}
+\end{table}
+
+\figdiag
+
+\subsection{Statistical methods}
+
+The numbers in this chapter are only as good as their error analysis, and the error analysis is
+part of the honest reading. The protocol is standard, but it is worth stating because the
+difference between a detection and a bound is exactly the difference between two statistical
+statements.
+
+\textbf{Autocorrelation and binning.} Configurations generated by a local update are correlated.
+The integrated autocorrelation time $\tau_{\mathrm{int}}$ of the observable is estimated from the
+normalized autocorrelation function (summed until it first crosses zero, with the standard
+window), and configurations are grouped into bins of length $\gg\tau_{\mathrm{int}}$ before any
+average is formed. A residual correlation shows up as a bin-size dependence of the error; the
+protocol requires the error to be stable under doubling the bin size.
+
+\textbf{Jackknife.} All errors quoted are jackknife errors over bins. For a ratio or a fit
+parameter (such as the residue from a two-exponential fit), the jackknife is performed at the
+level of the fit, not by propagating errors through the fit.
+
+\textbf{Detection versus bound.} A detection is a statement that a central value is many
+standard deviations from zero: $f_{1,\mathrm{bare}}^2=7.14\pm0.42$ is a $17\sigma$ detection at
+that coupling and volume. A bound is a statement that a one-sided confidence interval excludes
+zero: the $k\to0$ probe gives a $95\%$ one-sided lower bound of $-0.098$ (SU(3)), which does
+\emph{not} exclude zero. The two statements answer different questions, and the paper never
+converts one into the other. In particular, a detection on a gauge-dependent mode is not a bound
+on the gauge-invariant object.
+
+\textbf{Systematics.} The dominant systematic of the $k\to0$ probe is the object choice (gluon
+mode versus composite); the dominant systematic of the residue measurement is the fit range and
+the smearing family. Where a systematic cannot be quantified, the paper reports the spread across
+choices rather than a single number, and the number is labelled \LE{} with the caveat.
+
+\textbf{Finite-volume discreteness.} On a finite lattice the spectrum is discrete, so every
+correlator is a finite sum of exponentials and a two-exponential fit will always ``work'' over
+some range. This is why the diagnostics of \S\ref{ch:numerics} insist on a volume-scaling law
+rather than a single-volume fit: the question is not whether an exponential fits, but whether its
+rate survives $L\to\infty$.
+
+\subsection{What a decisive numerical test would need}
+
+The diagnostics make the requirements explicit. A decisive lattice computation would need:
+\begin{enumerate}
+\item several volumes at fixed coupling, large enough that the $1/L^2$ law is visible and the
+  lowest momentum is in the scaling regime (the present $L=8$ is not);
+\item a gauge-invariant $0^{++}$ operator whose two-point function is measured with a smearing
+  family, so that the residue and the mass are operator-independent;
+\item a continuum extrapolation at fixed physical volume, with at least three lattice spacings;
+\item a one-sided statistical statement (a confidence bound) that excludes zero for
+  $\Delta(L,a)$ uniformly, not merely a central value;
+\item a systematic-error budget for the continuum extrapolation and for the scale setting.
+\end{enumerate}
+The campaign's throughput analysis (Appendix~\ref{app:protocols}) indicates that $\mathrm{SU}(3)$
+$L=16$--$24$ at three couplings is feasible in C/OpenMP on 16 cores over days, and faster on a
+GPU; the bottleneck is not the algorithm but the statistical precision needed for a one-sided
+bound at the percent level. The existing $\mathrm{SU}(2)$ and $\mathrm{SU}(3)$ data are
+consistent with the picture but do not meet these requirements.
+
+\subsection{Summary of the numerical status}
+
+The numerics do three things, and no more. They \emph{see} the residue where it is resolvable
+($17\sigma$ at $\beta=2.2$ on $\mathrm{SU}(2)$). They \emph{locate} the sign of the $k\to0$
+curvature on a gauge-dependent mode (positive, volume-stable, but with a one-sided interval that
+includes zero). They \emph{calibrate} the diagnostics (P3, Re-slope, FSS) on synthetic data. They
+do not prove the gap, and they are not offered as evidence for it. Their value is that they turn
+each open step into a falsifiable numerical question, which is the most a finite-volume
+computation can do for a continuum problem.

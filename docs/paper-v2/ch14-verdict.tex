@@ -1,0 +1,178 @@
+% =====================================================================
+\section{Honest verdict}
+\label{sec:verdict}
+% =====================================================================
+
+\subsection{The headline}
+
+\textbf{Clay is 0\% --- open.} This is not a proof of the Yang--Mills mass gap, and no step of
+this paper should be read as one. The Clay problem is a Millennium Prize problem and remains
+unsolved.
+
+What is true:
+
+\begin{itemize}
+\item \textbf{G2's region coverage is $\sim$90\%}, closed by genuine theorems (G2.1--G2.4);
+  \textbf{its sign is 0\%}, the open cell being exactly H1.
+\item \textbf{G1 is 100\% assembled modulo $\{L3,G2\}$}, with the one genuinely open UV node L3 at
+  $\sim$40\%, and a coarse aggregate of $\sim$70\%.
+\item \textbf{The channel half is 100\%} (conditionally): the no-dissolution theorem pins the
+  lightest $0^{++}$ below its continuum.
+\item \textbf{The reduction is exact and honest:} the mass is squeezed as
+  $f_1^2/\chi\le\inf\operatorname{supp}\nu\le M_0/\chi$; the correct sufficient condition is
+  $(f_1^2\ge r_0)\wedge(\chi\le1/\lambda)$; H1 alone is necessary but not sufficient, and this is
+  machine-checked.
+\item \textbf{The wall is drawn in two independent coordinates}, with two disjoint technique
+  pools, neither of which crosses it.
+\end{itemize}
+
+\subsection{What was actually banked}
+
+Positive ledger (all traced to files):
+
+\begin{enumerate}
+\item \textbf{P3 strong-coupling residue theorem} (\code{PROOF-P3-UNCONDITIONAL.md}):
+  $f_1^2\ge r_0(\beta)>0$ for $\beta<1/48$, volume- and $L$-uniform. Label \LT{} modulo standard
+  OS/KP imports. \textbf{I1 only; not I2.}
+\item \textbf{No-dissolution kinematic theorem} (\code{PROOF-NO-DISSOLUTION-KINEMATIC.md}): the
+  lightest $0^{++}$ is pinned below every continuum by its own mass. Label \LC{} on the gap $+$
+  ordering.
+\item \textbf{$W_{\mathrm{geo}}\ge0$} (\code{PROOF-JACOBIAN-SAVES.md}): the Haar geometric
+  curvature is non-negative on every mode including $k\to0$, every $L$. Label \LT.
+\item \textbf{Gauge-invariant Perron--Frobenius} (\code{PROOF-GAUSS-INVARIANT-PF.md}):
+  finite-volume vacuum and gap, no Gribov/FP sign. Label \LT{} finite volume; edge obstruction
+  \LN.
+\item \textbf{Lemma SC} (\code{PROOF-COARSE-POINCARE.md}): strong-coupling coarse Poincar\'e,
+  $(L,a)$-uniform. Label \LT, regime-limited.
+\item \textbf{Feshbach--Bogoliubov two-block lemma} (\code{FORGE-BLIND.md}): explicit gap with no
+  positive-Hessian hypothesis. Label \LT{} abstract.
+\item \textbf{Exact variance decomposition $G''=S-D$} (\code{INVENT-VARIANCE-INEQ.md}):
+  $\beta=0$ positivity; a measured $D/S\approx2\%$ at $\beta=2.5$ on the gauge-dependent gluon
+  mode (object caveat in Appendix~\ref{app:postaudit}). Label \LT{} identity $+$ \LM{} at 2.5.
+\item \textbf{Residue--level-gap lemma} (\code{GAP-G2-edge}): a self-certifying sufficient
+  certificate. Label \LT.
+\item \textbf{Conditional theorem} (\code{docs/conditional-theorem.md}): \code{IN-0} \ldots{}
+  \code{IN-11} $\Rightarrow$ Clay, 9/9 gluing lemmas closed, partial Lean verification. Label
+  \LC.
+\item \textbf{Machine-checked H1 sharpening} (\code{lean/YMStatement/H1Sharpening.lean}): the
+  certificate gives $m\ge\lambda f$, and H1 alone does not imply $f>0$. Label \LT{} (logic).
+\item \textbf{Savvidy cleanup} (\code{SAVVIDY-*}): the false obstruction is removed; the
+  surviving margin is H1. Label \LT{} for the removal, \LM{} for the margin.
+\item \textbf{Strong-coupling bridge} $m_{0^{++}}\ge4\sqrt\sigma$ for
+  $\beta<8.9\times10^{-3}$, and the conditional roof $\gamma\ge(1/2\pi)(1/\chi)$.
+\item \textbf{Two-coordinate classification}: the weak-$*$ theorem and the $(G1)$ classification,
+  with eight falsification routes and eight $(G1)$ routes.
+\end{enumerate}
+
+Negative ledger (the no-gos): Schur-convex, Goldstone, periodic, nested-cone, rigidity,
+Feshbach-angle, Krein, the wrong-half/direction/regime umbrella, the order-parameter no-go (B2),
+the Markov no-go (BE), the analytic-transfer no-go (essential singularity), and the eight
+impossible bases. Plus the campaign-specific no-gos: periodic (no log-convexification), nested
+(cone swallows the free field), rigidity (index $=0$; the gap is a $\beta$-nonanalytic jump).
+
+Tools: six first-wave constructions pass the free-field acid test, three of them genuinely touch
+the atom; the tool wave adds eight complex-function-theory tools, seven blind or read-only and one
+(Hardy) a presence detector; all leave the wall on the far side of the continuum limit or of the
+location-plus-limit problem.
+
+\subsection{The wall, located and instrumented, drawn twice}
+
+The honest image is not ``we failed.'' It is that a shapeless wall was cut into a named object
+with a coordinate, a ruler, and an escape hatch. The wall is the \textbf{Savvidy concavity}
+($\operatorname{Hess}-D^2+2\operatorname{ad}F_B$ indefinite; the negative transverse-magnetic
+mode survives the gauge quotient, measured $7.1\%$ negative after $Q_\perp$). The key is a
+\textbf{cutoff-consistent $G''(0)>0$ / coarse-mode gap lower bound} across $[1/48,2.5]$,
+equivalently $f_1^2>0$ transport, equivalently the gluon condensate
+$\langle\tfrac14\operatorname{tr}F^2\rangle$ --- \textbf{the same object under several names.}
+The residual is the one species: a one-sided variance upper bound at UV (L3) and IR (H1).
+
+The wall did not fall. It became \textbf{transparent}: we can see the atom through the
+determinant, measure the sign through $W_{\mathrm{geo}}$, and locate the failing cell exactly. It
+became \textbf{ruled}: roughly a hundred and fifty routes, each with its precise death. It became
+\textbf{measured}: $f_1^2>0$ at $17\sigma$ where resolvable, $D/S$ near critical on the Savvidy
+cell, $W_{\mathrm{geo}}$ constant to $0.5\%$, and a rigorous-style bound that is close to zero but
+not past it. And in this edition it became \textbf{drawn twice}: the same invariant appears in the
+measure/weak-$*$ coordinate and in the $\beta$/RG/conformal coordinate, with disjoint toolboxes
+and independent diagnoses.
+
+\subsection{What would change the verdict}
+
+Only one thing: \textbf{the construction of the missing species} (or a proof that it cannot
+exist). Concretely, any one of:
+
+\begin{itemize}
+\item a nonperturbative proof of
+  $\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le E[H|0]+W_{\mathrm{full}}-\delta$,
+  $(L,a)$-uniform (H1);
+\item a derivation of the deterministic negative-association inequality
+  $\operatorname{Cov}(G,\Phi'|0)\le0$ for the frustrated $\mathrm{SU}(N)$ measure;
+\item a proof of the tachyonic-compensation inequality (TCI) pointwise and uniformly, hence
+  convexity-at-the-vacuum of the nonperturbative effective potential plus absence of the Savvidy
+  imaginary part;
+\item a nonperturbative transport of the strong-coupling gap/residue across $[1/48,2.5]$ with
+  $a\to0$;
+\item a proof of the isolation I2 with a residue floor $f_1^2\ge r_0$, uniformly;
+\item a nonperturbative sign theorem for $\beta_{N_f=0}$ (no strong-coupling zero).
+\end{itemize}
+
+Each is a different name for the same missing machine. Until one exists, the Clay verdict is 0\%,
+and it is honest to say so.
+
+\subsection{The sharpest line}
+
+\begin{qbox}
+The wall did not fall; it became transparent, ruled, instrumented, and drawn twice. After roughly
+a hundred and fifty independent frontal attacks, every honest route ends at the same sentence ---
+an upper bound on a conditioned variance, or equivalently the absence of a strong-coupling
+infrared fixed point --- written once in the ultraviolet and once in the infrared, once in the
+language of measures and once in the language of the renormalization group, and the whole
+distance between this campaign and Clay is that one sentence. We proved the strong-coupling
+residue is positive, the lightest $0^{++}$ cannot dissolve, the Haar curvature is non-negative,
+and the gauge-invariant vacuum is Perron--Frobenius; we proved a conditional theorem whose gluing
+lemmas are machine-checked; we proved that the certificate alone does not manufacture the atom;
+and we proved that positivity, convexity, spectral theory, Perron--Frobenius, the renormalization
+group, the conformal bootstrap, and holography cannot supply the bound, because at the free point
+they all return zero or because they test the wrong thing. What remains is not a missing constant
+or a sharper estimate; it is a species that does not yet exist in mathematics: a single-sided,
+nonperturbative, non-circular, free-field-failing, cutoff-uniform upper bound on a variance.
+Build that, and the ultraviolet existence and the infrared gap close together. Until then, the
+honest word is not ``proved'' --- it is ``located.''
+\end{qbox}
+
+% =====================================================================
+\section{AI contribution statement}
+\label{sec:ai}
+% =====================================================================
+
+The research reported here was carried out in an AI-assisted campaign. The first edition's AI
+contributions were completed by \textbf{DeepSeek-V4.1}, developed by DeepSeek
+(\begin{CJK}{UTF8}{gbsn}深度求索\end{CJK}); the second edition and the waves it reports were
+carried out with \textbf{Claude}, developed by Anthropic. The systems were used for:
+
+\begin{itemize}
+\item the literature audit and reference collection (the entries of the reference list were
+  checked against publisher, arXiv and zbMATH records; the erratum of Appendix~\ref{app:errata}
+  is an example of the audit catching a numerical slip in the internal corpus);
+\item the generation and triage of proof routes: on the order of a hundred and fifty candidate
+  approaches across more than twenty waves, each classified as a theorem, a conditional theorem,
+  a no-go, or an exact missing step, with the free-field acid test applied to every proposed tool;
+\item the lattice numerical experiments (the $\mathrm{SU}(2)$ and $\mathrm{SU}(3)$ correlators,
+  the $k\to0$ curvature probe, the right-object audit, the Savvidy cell) and their statistical
+  analysis;
+\item the Lean~4 formalization of the reduction and of the H1 sharpening, with the machine-checked
+  theorem that H1 does not imply an atom;
+\item the structural arguments of Part~III: the weak-$*$ classification, the falsification wave,
+  the $(\star)$ audit, the $(G1)$ wave, and the two-coordinate synthesis;
+\item the drafting, structuring and typesetting of this manuscript, its tables and figures.
+\end{itemize}
+
+The limits are part of the record. No open item is closed by the AI: Clay remains open, and no
+step of this paper is labelled QED. Every assertion is tied to a named file, and the label
+system \LT/\LC/\LN/\LM/\LE{} together with the provenance rule is the audit trail separating
+proved statements from conditional ones, no-gos, exact missing steps and numerical evidence.
+Numerical values are measurements, not proofs: the one-sided interval of the $k\to0$ probe still
+includes zero (\S\ref{ch:numerics}). The human author set the charter that governs the work ---
+in particular the free-field acid test and the honesty rules --- directed the campaign, and
+remains responsible for the content. AI-generated material can contain errors; claims should be
+checked against the cited files, and uncertainties flagged in the corpus are reproduced rather
+than silently repaired.

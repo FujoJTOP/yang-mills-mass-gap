@@ -1,0 +1,127 @@
+% =====================================================================
+\section{How to read this audit: labels, provenance, and negative results}
+\label{ch:method}
+% =====================================================================
+
+This chapter states the conventions of the paper. It is placed early because a reader who
+misreads the labels will misread the conclusions: the paper's central claim is not a theorem but
+a \emph{classification}, and a classification is only as good as the discipline that produced it.
+
+\subsection{The label system}
+
+Every substantive claim carries one of five labels. The labels are not decoration; each licenses a
+specific kind of use.
+
+\begin{itemize}
+\item \LT{} \textbf{theorem}. The statement is proved, with every imported standard result
+  named. A \LT{} statement may be used as a premise. Example: the spectral squeeze
+  $f_1^2/\chi\le\inf\operatorname{supp}\nu\le M_0/\chi$.
+\item \LC{} \textbf{conditional theorem}. The statement is a proved implication from explicitly
+  named hypotheses. It may be used only together with those hypotheses. Example: the
+  no-dissolution theorem, conditional on the gap and the ordering input.
+\item \LN{} \textbf{no-go}. The statement is a theorem that a \emph{class} of approaches cannot
+  succeed. It may be used to close a branch, never to conclude that no approach can succeed.
+  Example: the rigidity no-go for discrete indices.
+\item \LM{} \textbf{exact missing step}. The statement is a precisely formulated open
+  inequality or identity, with no slack hidden. It may be used to specify the target, never as a
+  premise. Example: H1, the negative-association inequality, TCI.
+\item \LE{} \textbf{numerical evidence}. The statement is a measurement, with a configuration
+  and a statistical method. It may be used as evidence and as a calibration, never as a proof.
+  Example: $f_1^2>0$ at $17\sigma$ on $\mathrm{SU}(2)$.
+\end{itemize}
+
+A structural statement that is a theorem about the \emph{logic} or the \emph{topology} of the
+problem, rather than about Yang--Mills, is labelled \LT{} with an explicit scope. The weak-$*$
+argument of Chapter~\ref{ch:weakstar} is the main example: its lemmas are theorems about
+measures, and the paper says so; the identification of the campaign's tools with the class of
+continuous functionals is evidence from the falsification wave, not a universal theorem.
+
+\subsection{The provenance rule}
+
+Every theorem in this paper names a file in the repository that contains its proof. The rule has
+three consequences.
+\begin{enumerate}
+\item \textbf{No orphan claims.} A claim without a file is not allowed. If a claim is a
+  conjecture, it is labelled as such and the label is the provenance.
+\item \textbf{Corrections are recorded, not hidden.} When the corpus is found to be wrong, the
+  paper corrects it and records the correction in Appendix~\ref{app:errata}. The central-charge
+  normalization is the clearest example: the earlier corpus value $31/36$ was a normalization
+  slip, the correct value is $31/18$, and the correction is in both the paper and the corpus
+  file.
+\item \textbf{Uncertainties are reproduced.} Where the corpus flags a bibliographic or
+  analytical uncertainty, the paper reproduces the flag rather than silently repairing it. The
+  reader can then judge.
+\end{enumerate}
+
+\subsection{The acid test}
+
+The acid test is the campaign's quality control. Every purported new tool must fail on the
+free massless field, where $f_1^2=0$ and $G''=0$. The test has three adversary classes
+(Chapter~\ref{ch:tools}): the free massless field; the gapped composite
+$\mathord{:}\varphi^2\mathord{:}$, which has a gap but no atom in the channel; and the free
+gapped scalar. A tool that ``proves'' a gap for any of them is vacuous.
+
+The logic of the test is worth spelling out. The gap problem is not ``prove that something is
+positive.'' It is ``prove that a specific positivity is absent in the free case and present in
+the interacting case.'' A tool that cannot distinguish the two cases carries no information about
+the gap, even if it produces a positive number on Yang--Mills. The acid test is the operational
+form of that distinction. It is also why the campaign's positive results are so few: most natural
+functionals are positive on the free field as well, and are therefore blind.
+
+\subsection{What a no-go is, and what it is not}
+
+A no-go is a theorem about a class. The paper's no-gos are of two kinds.
+\begin{itemize}
+\item \textbf{Class no-gos.} The Schur-convex master obstruction, the nested-cone no-go, the
+  Krein no-go, the rigidity no-go, and the analytic-transfer no-go are statements that a
+  \emph{type} of argument cannot work. They are the most valuable negative results because they
+  close families, not individual attempts.
+\item \textbf{Method no-gos.} The wrong-half, wrong-direction, and wrong-regime umbrella is a
+  statement about failure modes that recur across families. It is a diagnostic tool: when a new
+  route appears, the first question is which of the three modes it exhibits.
+\end{itemize}
+A no-go is \emph{not} a statement that the gap is unprovable. The paper never makes that
+statement. The no-gos are constraints on the shape of a proof, and the shape they leave open is
+the one specified in Chapter~\ref{sec:missing}.
+
+\subsection{Why negative results are banked}
+
+An undiagnosed failure is a failure that will be retried. The immune map
+(Chapter~\ref{ch:immune}) exists because the campaign's early waves repeatedly rediscovered the
+same dead ends in new costumes. Recording the exact point at which each route dies has three
+benefits: it saves future effort; it reveals the structural invariant (the species); and it turns
+a list of failures into evidence about the problem's shape. The map is not a proof of
+exhaustiveness, and the paper does not claim it is. It is a record of what was tried, with the
+reason each attempt failed, in enough detail that a reader can check the reason.
+
+\subsection{The evidence standard for the two coordinates}
+
+The two-coordinate picture (Part~III) makes a stronger evidentiary claim than any single failed
+wave. The standard it must meet is \emph{independence}: the two coordinates must use disjoint
+arguments, so that the failure of one is not a restatement of the failure of the other. The paper
+states the disjointness precisely in Chapter~\ref{sec:disjoint}: the weak-$*$ theorem is about
+functionals on measures and says nothing about beta functions; the conformal-window argument is
+about matter content and says nothing about atoms; the technique pools are almost disjoint; and
+the acid tests are different. If a reader accepts the disjointness, the two failures are
+independent evidence. If not, the second coordinate is merely a translation, and the paper's
+claim reduces to the first coordinate. The paper flags this explicitly rather than assuming it.
+
+\subsection{How to read the percentages}
+
+The node board's percentages are \textbf{node-local}: progress toward each node's own goal.
+They are not a percentage of Clay, and they do not add. G2's region coverage is $\sim90\%$
+because four of the five cells of the field-momentum plane are closed by theorems; its sign is
+$0\%$ because the remaining cell is the gap. The coarse ``G1 $\approx70\%$'' is a summary of
+``perturbative kernel closed, L3 open.'' The paper reports the node-local numbers and the coarse
+numbers separately and does not average them. Clay is $0\%$ because the species is unbuilt, and
+no combination of node-local percentages changes that.
+
+\subsection{What would count as a proof}
+
+The paper's specification of a proof is Chapter~\ref{sec:missing}: five conditions on a single
+object, stated verbatim. In the measure coordinate the object is a weak-$*$ discontinuous,
+acid-clean, $(L,a)$-uniform functional that is provably positive on the Yang--Mills measure; in
+the $\beta$ coordinate it is a nonperturbative sign theorem for $\beta_{N_f=0}$ or a transport of
+the strong-coupling gap across the crossover. These are not two different proofs; they are two
+descriptions of the same missing machine. A proof of either would be a proof of the gap. No such
+proof exists in the paper.

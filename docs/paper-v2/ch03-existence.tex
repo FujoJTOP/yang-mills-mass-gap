@@ -1,0 +1,198 @@
+% =====================================================================
+\section{G1 --- existence, and the node board}
+\label{ch:existence}
+% =====================================================================
+
+\subsection{What G1 asks}
+
+G1 asks for a 4D continuum $\mathrm{SU}(N)$ gauge theory satisfying OS0--OS4. It is useful to
+separate the statement into five nodes, because only one of them is open, and because that one is
+the same species as the gap. The decomposition below is the corpus's
+(\code{docs/PROOF-SKELETON.md} \S2, \code{research/unconditional/G1-ASSEMBLE-100.md}), with the
+labels of this paper.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xc>{\raggedright\arraybackslash}p{3.2cm}@{}}
+\toprule
+\textbf{Node} & \textbf{Object} & \textbf{Local \%} & \textbf{Label}\\
+\midrule
+G1.0 & Fixed-volume assembly: L1 definition, L2 theorem, single-block $G''\ge\delta_W$,
+  GL3 compactness, GL4 reflection-positivity propagation & $\sim95\%$ (all but L3) & \LT{} mod.\ L3\\
+G1.1 & Perturbative/combinatorial kernel: BRST dimension-4 classes reduce to
+  $\{\operatorname{Tr}F^2,\operatorname{Tr}F\tilde F\}$; asymptotic freedom absorbs the marginal
+  log; $\sum_j g_j^4=\zeta(4)/(16\beta_0^4)<\infty$ & 100\% & \LT{} closed\\
+G1.2 & \textbf{Uniform $Z_a$ $=$ L3}: $\sup_a Z_a^{-1}\|H_a\|_D<\infty$ $=$ L2 $+$ block
+  Poincar\'e $+$ $\Lambda_{\mathrm{UV}}$ tower uniform & $\sim40\%$ & \LM{} open\\
+G1.3 & $a\to0$ continuum via OS reconstruction, given L3 & $\sim70\%$ & \LC{} on L3\\
+G1.4 & $L\to\infty$, OS2 (continuous O(4)), unique vacuum OS4 (clustering) & 0\% &
+  \LM{} open, entangled with G2\\
+\bottomrule
+\end{tabularx}
+\caption{G1 node board: existence. Percentages are node-local, not a percentage of Clay.}
+\label{tab:g1}
+\end{table}
+
+\subsection{G1.1 --- the perturbative kernel is closed}
+
+The perturbative kernel is worth stating in detail because it is a genuine closure and because it
+shows what does \emph{not} go wrong. On the lattice, a dimension-four BRST-invariant local
+operator can be built from the field strength in only two ways at the level of the classical
+action: $\operatorname{Tr}F^2$ and $\operatorname{Tr}F\tilde F$. Any other candidate is either
+BRST-exact (hence vanishes on physical states), a total derivative (hence a boundary term), or of
+dimension $>4$ (hence irrelevant). The marginal logarithm associated with $\operatorname{Tr}F^2$
+is absorbed by asymptotic freedom: the beta function is negative, so the marginal coupling flows
+to zero in the ultraviolet and the log is not an obstruction to a uniform bound. The
+combinatorial sum over perturbative orders is controlled by $\sum_j g_j^4<\infty$, a convergent
+series at the Gaussian fixed point. This is the content of G1.1, and it is complete.
+
+The closure matters for a negative reason: it rules out the hope that the ultraviolet obstruction
+is a marginal-operator problem. The obstruction is not in the operator classification. It is in
+the \emph{uniformity} of a force-variance bound (L3).
+
+\subsection{G1.2 --- L3, the one open UV node}
+\label{sec:l3}
+
+L3 is the statement
+\begin{equation}
+\sup_a\ Z_a^{-1}\,\|H_a\|_{\mathcal D}\ <\ \infty ,
+\label{eq:l3}
+\end{equation}
+where $H_a$ is the force Hessian of the lattice action and $\|\cdot\|_{\mathcal D}$ is the
+Dirichlet-form norm on the space of gauge-field fluctuations, $Z_a$ the field-strength
+renormalization constant. Equivalently, it is a cutoff-uniform bound on the force variance in
+the ultraviolet tower. Three routes have been built towards it
+(\code{G1-L3-TOWER-POINCARE.md}, \code{G1-L3-UV-FORCE-BOUND.md}, \code{G1-L3-VIA-FLOW.md}):
+a tower Poincar\'e inequality, a direct UV force bound, and a gradient-flow route. None closes
+it; each reduces it to the same single-sided variance bound, which is the UV face of the one
+species (Chapter~\ref{ch:immune}).
+
+\textbf{Why L3 is not the gap.} L3 is purely ultraviolet. Proving it would make fixed-volume
+existence unconditional (G1.0, G1.3) but would not give a lower bound on the physical mass. The
+two are orthogonal: L3 controls the short-distance fluctuations, the gap controls the long-
+distance spectrum. The reason they are nevertheless ``one species'' is structural
+(\S\ref{sec:uv-face}): both are one-sided upper bounds on a conditioned variance, written at
+different scales. Building one tool that proves the inequality at both scales would close both
+faces simultaneously --- a conjecture, not a theorem.
+
+\textbf{Honest percentage.} The corpus assigns L3 $\sim40\%$. That number means: the statement is
+reduced to a single variance inequality, the supporting analytic framework (block decomposition,
+Poincar\'e on the UV tower, compactness) is in place, and what is missing is the inequality
+itself. It is not 40\% of a proof; it is the fraction of the surrounding architecture that is
+built around a missing strut.
+
+\subsection{G1.3 --- from L3 to the continuum}
+
+Given L3, the continuum limit is assembled as follows. The fixed-volume measure $\mu_a$ is
+defined by the Wilson action and the Haar measure; L2 gives a uniform bound on the action
+density; L3 gives the uniform renormalization constant; block Poincar\'e gives tightness of the
+family $\{\mu_a\}$; and OS reconstruction then produces a measure $\mu$ on $\mathbb{R}^4$
+satisfying the growth/analyticity axiom OS0, the invariance axiom OS1, and reflection
+positivity.\footnote{The numbering follows the corpus, in which reflection positivity is OS3 and
+the continuous O(4) action is OS2; in the conventional Osterwalder--Schrader list reflection
+positivity is OS2. The labels are used only to track which axioms are proved, and the ambiguity
+is recorded here so that the reader is not misled.} The one axiom that is not purely ultraviolet
+is OS2 (continuity of the O(4) action and the existence of the infinite-volume limit), which is
+entangled with G1.4.
+
+The corpus's label is \LC{} on L3, at $\sim70\%$: the assembly is complete modulo the missing
+inequality. This is the precise sense in which ``G1 is 100\% assembled modulo $\{L3,G2\}$'':
+every input row is either a theorem, a reduction to L3, a reduction to the gap, or the same
+species; there is no genuinely independent third open item. The master document records a
+coarser figure of ``G1 $\approx70\%$'' (\code{docs/YANG-MILLS-MASTER.md} \S9); that number is a
+summary of ``perturbative kernel closed, L3 open,'' not a separate claim. We report both and do
+not average them.
+
+\subsection{G1.4 --- infinite volume, OS2, and the downstream role of OS4}
+\label{sec:g14}
+
+The infinite-volume limit requires two things: OS2, the existence of a continuous O(4) action
+and the infinite-volume limit of the Schwinger functions, and OS4, the uniqueness of the vacuum
+(clustering). OS4 is \emph{downstream of the gap}: a uniform gap gives exponential clustering
+for free, so a proof of G2 would supply OS4 (with an explicit rate). OS2 is partly independent:
+it requires tightness and a uniform regularity estimate, which the campaign has in the
+strong-coupling regime and not at the physical coupling. The corpus's assessment
+(\code{G1-OS2-INFVOL.md}, \code{G1-UNIQUENESS-VACUUM.md}) is that OS2 is not a separate wall
+but a corollary of the same uniformity that L3 and H1 need. This is why the node board lists
+G1.4 at 0\% but does not count it as an independent open item: it is entangled with G2 by
+construction, not by accident.
+
+\subsection{The UV face of the one species}
+\label{sec:uv-face}
+
+The one-species identification is worth stating at this point in the paper, because it is the
+bridge between Parts I and II. In the exact identity
+\begin{equation}
+G''(0)\;=\;E\bigl[H_{vv}\mid0\bigr]-\operatorname{Var}\bigl(\langle v,\nabla S\rangle\mid0\bigr)
++W_{\mathrm{full}},
+\label{eq:species-identity}
+\end{equation}
+the variance enters with a minus sign. The gap is $G''(0)\ge\lambda$, so \emph{any} upper bound
+on the conditioned variance improves the lower bound on $G''$. The same shape appears in the
+ultraviolet: L3 is an upper bound on the force variance of the UV tower. The two faces differ in
+scale, not in form. A tool that upper-bounds a conditioned variance at one scale upper-bounds it
+at the other, and the campaign states that building such a tool would close L3 and H1
+simultaneously, hence Clay. This is the ``one species, two scales'' reduction. The unification is
+the conjecture; the dictionaries --- the exact Ward identity $E[a\,f]=1$, the residue--level-gap
+lemma, and the identity above --- are theorems.
+
+\figscales
+
+\subsection{The dimensional correction}
+\label{sec:dim}
+
+One correction must be recorded because it is easy to get wrong and it changes what
+``$G''\ge\lambda$'' means (\code{docs/PROOF-SKELETON.md}, G1-CONTINUUM-SCALING). For the
+dimensionless Wilson action, the Hessian satisfies
+\begin{equation}
+G''_a=a^2\,m_{\mathrm{phys}}^2,\qquad
+m_{\mathrm{lat}}=\sqrt{G''_a}=a\,m_{\mathrm{phys}},\qquad
+\Delta=\lim m_{\mathrm{lat}}/a .
+\label{eq:dim}
+\end{equation}
+Therefore a claim of the form ``at fixed $a$, $G''_a\ge\lambda$ with $\lambda$ a positive
+\emph{constant}'' is dimensionally wrong for the gap: it would give
+$m_{\mathrm{phys}}=\lim\sqrt{\lambda}/a=+\infty$, the free-box UV scale, a lattice artifact rather
+than a particle. The correct target is a \textbf{ratio} $G''_a/a^2\ge\Delta_0^2$ at the
+asymptotically-free scaling rate, i.e.\ $\lambda_a\sim a^2\Delta_0^2$, with $\lambda_a$
+transported multiplicatively by $Z_O^2$. The transport itself is free (it is a square); what is
+not free is the non-zero seed it multiplies. This distinction pervades the honest reading of the
+numerics in Chapter~\ref{ch:numerics} and of the verdict in Chapter~\ref{sec:verdict}.
+
+\textbf{A second dimension trap.} The unconditioned expected Hessian
+$E[\operatorname{Hess}V]=E[\nabla V\otimes\nabla V]\succeq0$ is provably positive semidefinite for
+every measure (Stein/IBP). So the gap cannot come from the \emph{expected} curvature; it comes
+from the \emph{conditioning correction} --- the difference between the conditioned and
+unconditioned fibre Hessians. The sharpest form of H1 (Appendix~\ref{app:sharp}) is stated
+directly in this conditioned language, and the numerical audit of
+Appendix~\ref{app:postaudit} shows that the unconditioned budget $E[f^2]\approx2$ is
+ultraviolet/equipartition-pinned and cannot stand in for the scaling $\lambda_a\sim a^2\Delta_0^2$.
+
+\subsection{The node board, in one table}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}ll>{\raggedright\arraybackslash}p{4.5cm}
+  >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Half} & \textbf{Object} & \textbf{Local completion} & \textbf{Status}\\
+\midrule
+G1 & 4D continuum existence & 100\% assembly modulo $\{L3,G2\}$ & \LT{}+\LC, one UV node open\\
+G1.2 & UV uniform $Z_a$ $=$ L3 & $\sim40\%$ & \LM\\
+G2 & Gap: region coverage & $\sim90\%$ & theorems G2.1--4\\
+G2.5--6 & Gap: sign / proof & \textbf{0\%} & \LM{} $=$ H1, the species\\
+Channel & $0^{++}$ identification $+$ no dissolution & 100\% & \LC\\
+\textbf{Clay} & existence $\wedge$ gap & \textbf{0\%} & \textbf{open}\\
+\bottomrule
+\end{tabularx}
+\caption{The node board in one table (see also Figure~\ref{fig:bars}).}
+\label{tab:nodes}
+\end{table}
+
+The percentages are \textbf{node-local} --- progress toward each node's own goal --- and are
+emphatically \textbf{not} a percentage proof of Clay. Clay is 0\% because the species is
+unbuilt. The next chapter turns to G2, where the region coverage is high and the sign is zero.
+
+\figbars

@@ -1,0 +1,322 @@
+% =====================================================================
+\section{The exact spectral squeeze, and why H1 is necessary but not sufficient}
+\label{sec:squeeze}
+% =====================================================================
+
+\subsection{Setup and notation}
+
+Let $\nu\ge0$ be the K\"all\'en--Lehmann measure of $\operatorname{tr}F^2$, with
+$\operatorname{supp}\nu\subset[m_1^2,\infty)$, atom weight $f_1^2=\nu(\{m_1^2\})$, and moments
+$M_k=\int s^k\,d\nu(s)$. In practice $M_0=\int d\nu$ is the total spectral weight of the
+operator in the channel, and $M_1$ is the first moment (the ``average mass squared'' weighted by
+residue). Let $\xi$ be the zero-momentum coarse mode
+($\xi=\langle v,\log U\rangle$ for the relevant mode; $\operatorname{Var}(\xi)$ is the
+zero-momentum connected propagator). The \textbf{susceptibility} is
+\begin{equation}
+\chi \;:=\; \operatorname{Var}(\xi) \;=\; \int s^{-1}\,d\nu(s)
+\qquad(\text{the zero-momentum connected two-point function}).
+\label{eq:chi}
+\end{equation}
+This is the inverse of the effective curvature only in the Gaussian case; in general it is a
+residue-weighted \emph{harmonic} mean of the masses, dominated by the lightest residue. It is
+not the lightest mass. The equality of the two expressions in \eqref{eq:chi} is the
+zero-momentum Ward statement, up to the normalization of $O$; the squeeze below uses only ratios
+and is normalization-free.
+
+We record three elementary facts about $\chi$ that will be used repeatedly, and that explain why
+it is the ``wrong'' functional for a lower bound on the mass.
+
+\begin{enumerate}
+\item \textbf{Scale.} $\chi$ has the dimension of an inverse mass squared. It is large when
+  there is light spectral weight (a small $s$ with non-negligible residue) and small when the
+  weight sits high.
+\item \textbf{Harmonic mean.} If $\nu$ is a probability measure on masses, then
+  $\chi=\mathbb{E}_\nu[s^{-1}]$, the harmonic mean of $s$. The harmonic mean is dominated by the
+  \emph{smallest} values, but it is dominated by their \emph{residues}, not by their location:
+  a tiny residue at tiny mass contributes $w/\varepsilon$, which can be made arbitrarily small by
+  taking $w\to0$ at fixed $\varepsilon$, or kept fixed by taking $w\sim\varepsilon$.
+\item \textbf{No lower edge.} $\chi$ is continuous under weak-$*$ convergence of measures against
+  bounded continuous test functions on $(0,\infty)$; it does not see the location of the bottom
+  of the support except through its residue-weighted contribution. The bottom atom can be pushed
+  to zero while $\chi$ stays bounded (the thin-atom proposition below).
+\end{enumerate}
+
+\subsection{The squeeze \LT}
+\label{sec:squeeze-thm}
+
+For any such $\nu$:
+\begin{equation}
+\frac{f_1^2}{\chi}\ \le\ \inf\operatorname{supp}\nu\ \le\ \frac{M_0}{\chi}.
+\label{eq:squeeze}
+\end{equation}
+\begin{proofx}
+\textbf{Lower inequality.} $\chi m_1^2=f_1^2+m_1^2\int_{s>m_1^2}s^{-1}d\nu(s)\ge f_1^2$, since
+$m_1^2s^{-1}\ge1$ on the support above $m_1^2$. Hence $m_1^2\ge f_1^2/\chi$.
+
+\textbf{Upper inequality.} On $\operatorname{supp}\nu$, $s\ge m_1^2$, so $s^{-1}\le m_1^{-2}$,
+hence $\chi=\int s^{-1}d\nu\le M_0/m_1^2$, i.e.\ $m_1^2\le M_0/\chi$.
+\end{proofx}
+
+Both inequalities are elementary and exact. They are the entire content of the ``squeeze'' and
+they contain no dynamical input. Three remarks are worth making precise.
+
+\textbf{(a) Equality cases.} The lower inequality is an equality iff $\nu$ has no mass above
+$m_1^2$, i.e.\ $\nu=f_1^2\delta_{m_1^2}$ (a single atom; then $\chi=f_1^2/m_1^2$). The upper
+inequality is an equality iff all mass sits at $m_1^2$ (the same degenerate case). For any
+non-degenerate measure the two inequalities are strict; in particular, for a measure with an atom
+at $m_1^2$ and a continuum above, both are strict and the true bottom lies strictly between the
+two bounds.
+
+\textbf{(b) The bounds are sharp over all measures.} Fix $M_0=1$. For every $\eta>0$ there is a
+measure with $f_1^2/\chi\le\eta$ (thin atom at tiny mass, the thin-atom proposition below) and a
+measure with $M_0/\chi\ge1/\eta$ (mass concentrated just above zero with small residue, so
+$\chi$ is large). Hence no improvement of either constant is possible without extra structure.
+
+\textbf{(c) What the squeeze does \emph{not} say.} It does not say that $\chi$ bounds the mass
+from below, and it does not say that a large $\chi$ implies a light state. It says that the mass
+is squeezed between the residue-to-susceptibility ratio and the total-weight-to-susceptibility
+ratio. Both ratios involve $\chi$ in the denominator, so an \emph{upper} bound on $\chi$ is an
+\emph{lower} bound on $m_1^2$ only if the numerator is also controlled from below. This is the
+entire reason the campaign's missing input is a pair, not a single inequality.
+
+\subsection{H1 is necessary, not sufficient}
+\label{sec:h1-notsuff}
+
+The condition H1 is
+\begin{equation}
+\mathrm{H1}:\qquad \operatorname{Var}_\mu(\xi_{k\to0})=\chi\ \le\ 1/\lambda,
+\qquad\text{uniform in }(L,a).
+\label{eq:h1}
+\end{equation}
+
+\textbf{Necessity \LT.} If the theory has a gap $m_1\ge\sqrt\lambda$ (with the normalization
+$M_0$ fixed), then $\chi=\int s^{-1}d\nu\le M_0/\lambda$, so $\chi\le M_0/\lambda$. This is a
+theorem: $\text{gap}\Rightarrow\chi\le M_0/\lambda$ (up to the normalization constant). The
+corpus records it as $\chi=\int s^{-1}d\nu\le M_0/\lambda$ (\code{REDUCTION-AUDIT.md}).
+
+\textbf{Non-sufficiency \LT.} Take (Figure~\ref{fig:measure}, right panel)
+\begin{equation}
+\nu=w\,\delta_\varepsilon+(1-w)\,\delta_{s_2},\qquad w/\varepsilon\le1/\lambda .
+\label{eq:thinatom}
+\end{equation}
+Then $\chi=w/\varepsilon+(1-w)/s_2<\infty$, so H1 holds, while
+$\inf\operatorname{supp}\nu=\varepsilon\to0$. \textbf{H1 holds and the gap fails.} The measure has
+a thin atom at $\varepsilon$, invisible to the susceptibility because the susceptibility is a
+harmonic mean: a tiny residue at tiny mass contributes $w/\varepsilon$, which can be kept below
+$1/\lambda$ by taking $w$ small. The susceptibility sees the \emph{residue-weighted} mass, not the
+lightest mass.
+
+\begin{claimbox}{cT}
+\claimhead{Proposition}{(thin atom)} \emph{Fix any $\lambda>0$ and any $M_0>0$. There is a
+probability measure $\nu$ on $[0,\infty)$ with}
+\[
+M_0(\nu)=M_0,\qquad \chi(\nu)=\int s^{-1}d\nu\le\frac1\lambda,\qquad
+\inf\operatorname{supp}\nu=\varepsilon
+\]
+\emph{for every $\varepsilon\in(0,\varepsilon_0)$ with $\varepsilon_0=\varepsilon_0(\lambda,
+M_0)>0$. In particular, for every $\eta>0$ there is a measure satisfying H1 with
+$\inf\operatorname{supp}\nu<\eta$ and $f_1^2=\nu(\{\inf\operatorname{supp}\nu\})=w$ arbitrarily
+small.}
+\begin{proofx}
+Normalize $M_0=1$ (scale $s\mapsto M_0 s$, which rescales $\chi$ by $1/M_0$). Take
+$\nu_\varepsilon=w\delta_\varepsilon+(1-w)\delta_{s_2}$ with $w=\varepsilon/(2\lambda)$ and
+$s_2=2\lambda(1-w)$. Then $\chi=w/\varepsilon+(1-w)/s_2=1/(2\lambda)+1/(2\lambda)=1/\lambda$,
+$M_0=1$, and $\inf\operatorname{supp}\nu=\varepsilon$. The atom weight is $w=\varepsilon/(2\lambda)\to0$.
+\end{proofx}
+\end{claimbox}
+\label{prop:thinatom}
+
+This counterexample is not a pathology; it is the exact obstruction the campaign met
+everywhere. It is why the audit's verdict is that the chain written as $\iff$ is unsound: read
+against the corpus's own definitions, it is \textbf{(iv) false $\to$ (iii) conjecture $\to$
+(ii) definition}, plus one genuine one-directional theorem. The final $\iff$ (H1 $\iff$ gap)
+holds in one direction only.
+
+\figmeasure
+
+\textbf{The structural reading.} H1 is an \emph{upper} condition on a second-moment functional.
+The atom is the \emph{bottom} of the support. An upper bound on a moment can never force a
+bottom: this is the ``upper-bound machine, lower-bound target'' mismatch that recurs in every
+wave (Chapter~\ref{ch:immune}, family 14). The thin-atom measure is the exact witness, and it
+satisfies every positivity and moment condition that a free-field-blind argument could use.
+
+\subsection{Machine-checked: H1 does not imply an atom}
+\label{sec:leanblind}
+
+The logical content of \S\ref{sec:h1-notsuff} is now machine-checked, independent of any
+analytic model. The module \code{lean/YMStatement/H1Sharpening.lean} (Lean~4, toolchain pinned;
+zero \code{sorry}; axioms only \code{[propext, Classical.choice, Quot.sound]}) proves the
+following three statements about real numbers.
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(Lean \code{lemmaG\_twoSided})} \emph{If $0<m$, $0<\chi$, $f\le\chi m$ and
+$\chi m\le M$, then $f/m\le\chi$ and $\chi\le M/m$.}
+\end{claimbox}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(Lean \code{cert\_necessity})} \emph{If $0<f$, $0<\chi$, $0<\lambda$,
+$\chi\le1/\lambda$, $f\le\chi m$ and $0<m$, then $\lambda f\le m$.}
+\end{claimbox}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(Lean \code{H1\_does\_not\_imply\_atom})} \emph{There is no way to derive
+$0<f$ from the hypotheses}
+\[
+0<\lambda,\quad 0<\chi,\quad \chi\le1/\lambda,\quad 0<m,\quad f\le\chi m,\quad \chi m\le M .
+\]
+\emph{The tuple $(f,m,M,\chi,\lambda)=(0,1,1,1,1)$ is a countermodel
+(\code{H1\_blind\_to\_thin\_atom}).}
+\end{claimbox}
+\label{thm:leanblind}
+
+\textbf{What this certifies, and what it does not.} The theorems are order-algebraic: they
+encode the squeeze as the hypotheses $f\le\chi m$, $\chi m\le M$ and the ceiling as
+$\chi\le1/\lambda$. Together they say: \emph{the ceiling plus the squeeze gives the conditional
+floor $m\ge\lambda f$, and the only missing ingredient is $f>0$.} In other words,
+\[
+\mathrm{H1}\ \wedge\ (f_1^2>0)\ \Longrightarrow\ m_1^2\ \ge\ \lambda f_1^2\ >\ 0,
+\]
+and the second conjunct cannot be manufactured from the first. The formal statement is about the
+\emph{logic} of the reduction, not about Yang--Mills; the analytic input $f\le\chi m$ is itself
+the squeeze, which is a theorem for the K\"all\'en--Lehmann measure (and is supplied as a
+hypothesis in the formalization). The value of the machine check is that the ``H1 is blind to a
+thin atom'' claim is no longer an informal remark: it is a compiled countermodel. This is the
+first place where the campaign's honesty line is machine-load-bearing.
+
+\textbf{The corresponding sufficiency check.} The module also proves \code{cert\_sufficiency}:
+if $0<M$, $0<\chi$, $0<\lambda$, $\chi m\le M$ and $\lambda M\le m$, then $\chi\le1/\lambda$.
+That is, a gap floor at the level of $M$ implies the certificate. Together the two directions say
+that the certificate is \emph{equivalent} to a gap floor only when the atom weight is fixed and
+positive; without the atom it is strictly weaker. The Lean statements are reproduced in full in
+Appendix~\ref{app:lean}.
+
+\subsection{The correct sufficient condition}
+
+The repair is the pair:
+\begin{equation}
+(f_1^2\ge r_0)\ \wedge\ (\chi\le1/\lambda)
+\qquad\Longrightarrow\qquad
+m_1^2\ \ge\ f_1^2/\chi\ \ge\ r_0\lambda\ >\ 0 .
+\label{eq:sufficient}
+\end{equation}
+This is immediate from the squeeze and it is the campaign's central logical content: \textbf{a
+lower bound on the mass needs both a residue floor and a susceptibility ceiling.} The residue
+floor is the hard half; the susceptibility ceiling is H1. The campaign's honest statement of the
+missing input is therefore not H1 alone but
+\begin{equation}
+H^*:\qquad f_1^2\ge r_0>0\ \ \text{with isolation } I_2,
+\qquad(\text{and }\chi\le1/\lambda\text{ as the matching ceiling}),
+\label{eq:hstar}
+\end{equation}
+where $I_2$ is $\Lambda_{\star}:=\inf\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})$,
+$\Lambda_{\star}-m_1^2\ge\delta>0$. The residue--level-gap lemma (Chapter~\ref{sec:theorems})
+turns I1 into I2 and back under a self-certifying condition, so $H^*=\text{H1}$ \emph{as a
+structural identification}; but the identification is the conjecture, and the residue datum is
+strictly stronger than the bare gap.
+
+\textbf{Optimality of the pair.} Neither half alone suffices, and the pair is not improvable in
+the following sense. If $f_1^2\ge r_0$ but $\chi$ is unbounded, then $m_1^2$ can be arbitrarily
+small: the squeeze only gives $m_1^2\ge f_1^2/\chi$, and $\chi\to\infty$ kills the bound. If
+$\chi\le1/\lambda$ but $f_1^2$ is not controlled, the thin-atom construction gives
+$m_1^2\to0$. So the pair is exactly the minimal sufficient datum of ``residue times inverse
+susceptibility'' type. Any stronger result must use more than the two moments, which is precisely
+what the weak-$*$ coordinate (Chapter~\ref{ch:weakstar}) says is impossible for finitely
+computable functionals.
+
+\subsection{Why H1 is blind: the convex-order obstruction}
+\label{sec:schur}
+
+H1 is an \textbf{upper-only} condition. Every functional of $\nu$ built from its moments or from
+positivity is a Schur-concave functional of the measure, hence gives an \textbf{upper} bound on
+the atom weight, never a lower bound. We make this precise in two steps.
+
+\textbf{Step 1: the free field is a feasible atomless point.} The massless free field is a
+legitimate OS theory with $\nu$ supported on $[0,\infty)$ and $f_1^2=\nu(\{0\})=0$. It satisfies
+H1 for every $\lambda>0$ (its $\chi$ is the free inverse propagator). Hence the feasibility set of
+measures satisfying H1 (with fixed $M_0$) contains an atomless element. Any inequality of the form
+$f_1^2\ge\Phi(\text{moments})$ with $\Phi$ a function of finitely many moments must hold at that
+element, forcing $\Phi\le0$ on the feasible set. \textbf{Every such bound is one-sided.}
+
+\textbf{Step 2: finite data cannot distinguish.} Let $K\in\mathbb{N}$ and let $\nu$ be any
+measure with finite moments up to $K$. Two constructions are relevant.
+\begin{itemize}
+\item \emph{Exact-moment atomless replacement.} The first $K+1$ moments of $\nu$ determine a
+  positive measure with at most $K+1$ support points (Gaussian quadrature); that measure has
+  atoms, but they sit at points determined by the moments and need not include the bottom of
+  $\operatorname{supp}\nu$.
+\item \emph{Smoothed replacement.} Replacing each quadrature atom $\delta_{x_j}$ by the uniform
+  measure on $[x_j-h,x_j+h]$ keeps positivity, keeps the total mass, and moves every moment
+  $M_k$, $k\le K$, by $O(h)$. The smoothed measure is atomless, hence has $f_1^2=0$ at its
+  bottom, while matching the original data to $O(h)$.
+\end{itemize}
+Taking $h\to0$ gives: \textbf{for every finite list of moments and every $\eta>0$ there is an
+atomless measure whose moments differ from the original by at most $\eta$.} This is the precise
+sense in which ``finite data is blind to the atom''; it is the measure-theoretic core of the
+weak-$*$ statement of Chapter~\ref{ch:weakstar}, and it is why no moment, positivity, or
+convex-order argument can lower-bound $f_1^2$.
+
+\textbf{Convex order.} The phrase ``Schur-concave'' can be made precise. For probability
+measures on $\mathbb R$ with a common mean, $\nu\preceq_{\mathrm{cx}}\mu$ means
+$\int\varphi\,d\nu\le\int\varphi\,d\mu$ for every convex $\varphi$ (equivalently, equal means
+plus the stop-loss inequalities). The Dirac mass $\delta_m$ is the \emph{smallest} element in
+convex order at mean $m$, since $\varphi(m)\le\int\varphi\,d\nu$ for convex $\varphi$; every
+mean-preserving spread is larger. The variance is a convex-order functional. So an upper bound on
+the variance --- which is what H1 is --- is a convex-order condition, and convex order is blind to
+where the mass sits: a two-point measure with a thin atom at the bottom and a heavy atom above
+can have the same mean and a smaller variance than a concentrated measure at the mean. No
+convex-order inequality can force a bottom atom. This is the theorem-level content of
+``Schur-concave'', and it is why the search for a forcing tool had to leave the convex-order
+class entirely.
+
+\textbf{Consequence for the campaign.} The master obstruction is not a failure of imagination; it
+is a structural theorem about the class of arguments. Positivity, reflection positivity, spectral
+positivity, analyticity, and every convex-order inequality give \textbf{upper bounds and the
+vacuum}, never the edge. This is why the paper repeatedly says ``positivity is blind to the
+edge,'' and it is why the search for a forcing tool had to leave the class of bounded-kernel
+integral functionals entirely (Chapter~\ref{ch:tools}, the Hardy escape).
+
+\subsection{$G''$ versus $1/\chi$}
+
+The curvature $G''=V_{\mathrm{eff}}''$ and the inverse susceptibility $1/\chi$ coincide only for
+a Gaussian marginal. The exact one-directional statement is:
+\begin{equation}
+\text{the marginal of } a \text{ is Gaussian}
+\qquad\Longrightarrow\qquad
+G''\cdot\operatorname{Var}(\xi)=1 ,
+\label{eq:ward}
+\end{equation}
+where $a=\xi/\operatorname{Var}(\xi)$. The converse is not available as an identity: for a
+non-Gaussian marginal the product can be above or below one. Ward's identity $E[a\,f]=1$ (with
+$f=\langle v,\nabla S\rangle$) is exact for every measure and every $\beta$; it says that $a$ and
+$f$ have unit correlation, not that the conditional variance is $G''$. Measured at $\beta=2.5$,
+the two differ by $2$--$5\%$ ($G''\approx0.281$ versus $1/\operatorname{Var}\approx0.272$;
+\code{FORGE5-SL-IR-SINGLE.md}, quoted in \code{docs/new-tools-registry.md}). So even the
+``curvature face'' is not literally the susceptibility; it is a second-moment object that equals
+the susceptibility only in the Gaussian limit. The unification $G''=1/\chi=\text{H1}$ is therefore
+a \emph{conjecture with a measured $2$--$5\%$ gap}, not an identity. The exact identity that does
+hold is the variance decomposition of Chapter~\ref{sec:theorems}.
+
+\subsection{The verdict on the reduction}
+
+The honest logical skeleton (\code{REDUCTION-AUDIT.md} \S``What actually survives'',
+Figure~\ref{fig:diamond}) is:
+
+\begin{itemize}
+\item \LT{} isolated atom at $\inf\operatorname{supp}\nu$ of a channel $\Rightarrow$ exponential
+  clustering in that channel;
+\item \LT{} $\text{gap}\Rightarrow\chi\le M_0/\lambda$;
+\item \LT{} $G''\ge\lambda\Rightarrow\operatorname{Var}(\xi)\le1/\lambda$ (Brascamp--Lieb, one way);
+\item \LC{} the unification $H^*=\text{H1}$ (``one object'') --- a structural identification,
+  not a theorem, and now \emph{doubted}: H1 is the inverse susceptibility $1/\chi$ (an upper bound
+  on $m_1^2$, from $f_1^2/\chi\le m_1^2\le M_0/\chi$), equal to the pole only for elementary
+  single-atom fields; the free massive composite $\mathord{:}\varphi^2\mathord{:}$ has
+  $G''=1/\chi\ne m_1^2$;
+\item \textbf{(iv) false} $\text{gap}\iff\text{atom}$, and $\text{H1}\iff\text{gap}$.
+\end{itemize}
+
+Written as $\iff$, the chain is unsound. Its true shape is a \textbf{diamond of implications
+converging on the necessary condition $\chi\le1/\lambda$}, with the sufficient condition being
+the strictly stronger $H^*=\text{I1}\wedge\text{I2}$. Proving H1 alone does not yield the gap
+(the tiny-residue counterexample, now machine-checked); proving $H^*$ does, but $H^*$ is not H1.
+This is the first place where the campaign's honesty line is load-bearing, and we state it
+plainly: \textbf{the reduction relocates the residue content; it does not remove it.}

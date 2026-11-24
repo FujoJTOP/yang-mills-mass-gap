@@ -1,0 +1,255 @@
+% =====================================================================
+\section{G2 --- the gap, the region coverage, and the anatomy of the Savvidy cell}
+\label{ch:gap}
+% =====================================================================
+
+\subsection{What G2 asks}
+
+G2 asks for $f_1^2>0$ with isolation, equivalently $G''(0)\ge\lambda$ at $k\to0$, uniform in
+$(L,a)$. The decomposition follows the corpus's assembly
+(\code{research/unconditional/G2-ASSEMBLE-100.md}), with the labels of this paper.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xc>{\raggedright\arraybackslash}p{3.2cm}@{}}
+\toprule
+\textbf{Node} & \textbf{Object} & \textbf{Local \%} & \textbf{Label}\\
+\midrule
+G2.0 & Identity layer: $G''(k\to0)=E[H|0]-\operatorname{Var}(\nabla S|0)=V_{\mathrm{eff}}''=m_{\mathrm{eff}}^2(k\to0)$;
+  exact Ward $E[a\,f]=1$; Stein/IBP $E[H]=E[f^2]$ and $E[\operatorname{Hess}V]=E[\nabla V\otimes\nabla V]\succeq0$ for every measure; $E[-D^2]=E[f^2]$ only for the free field; $G''\operatorname{Var}(\xi)=1$ iff the marginal is Gaussian; the sign sits in the \emph{conditioned} fibre Hessian & 100\% & \LT{} identities\\
+G2.1 & Haar geometric term $W_{\mathrm{geo}}=E[\Phi'']-\operatorname{Var}(\Phi')\ge0$
+  (Pr\'ekopa), every mode including $k\to0$, every $L$ & 100\% & \LT\\
+G2.2 & Shallow-field band $\{2g\|F\|\le N/12\}$ closed by $\Phi''\succeq N/12$
+  $+$ Brascamp--Lieb & 100\% & \LT\\
+G2.3 & High-field cone (WSTC): cone variance mass
+  $\le(c\beta\kappa_{\max})^2e^{-c\beta(\kappa^2-\kappa_{\rm typ}^2)N_\square}\to0$,
+  $L$-uniform & 100\% & \LT\\
+G2.4 & AF-UV deep cone: instability $\le\mu^2e^{-c\mu^4/g^4}\to0$ & 100\% & \LT\\
+\textbf{G2.5} & \textbf{Open cell $=$ typical field $\times$ high momentum}:
+  the ceiling $\operatorname{Var}(\xi_{k\to0})\le1/\lambda$ (curvature form
+  $\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le E_\mu[H_{vv}|0]+W_{\mathrm{full}}-\delta$) &
+  \textbf{0\%} & \textbf{\LM{} $=$ H1}\\
+\textbf{G2.6} & \textbf{Named species}: negative association / anti-FKG
+  $\operatorname{Cov}(G,\Phi'|0)\le0$ & \textbf{0\%} &
+  \textbf{\LM{} proven absent from nine classes}\\
+\bottomrule
+\end{tabularx}
+\caption{G2 node board: the gap.}
+\label{tab:g2}
+\end{table}
+
+The region coverage of the $(\text{field}\times\text{momentum})$ plane is about \textbf{90\%},
+closed by the theorems G2.1--G2.4 (Figure~\ref{fig:plane}). The remaining one cell --- typical
+field, high momentum --- is a region where all four handles fail \emph{simultaneously}: the WSTC
+exponent vanishes when the field is typical, the AF-UV suppression has not begun at
+$g\approx1.5$, and the $N/12$ floor is roughly ten times too small. That cell is
+\textbf{exactly} $\operatorname{Var}(\xi_{k\to0})\le1/\lambda$, with zero slack. The sign --- the
+actual proof --- is \textbf{0\%}.
+
+The G2 assembly is complete in the following precise sense: of 26 input rows, every row is
+either (a) a theorem or (b) a reduction to the single species; \textbf{there is no row (c)}, a
+genuinely independent open item. The curvature face H1 ($G''\ge\lambda$, the \emph{inverse
+zero-momentum susceptibility} $1/\chi$) and the spectral-edge face $H^*$ ($f_1^2\ge r_0$ with
+isolation I2) are \emph{not} one object: by the squeeze $f_1^2/\chi\le m_1^2\le M_0/\chi$, H1 is a
+susceptibility that \emph{upper}-bounds $m_1^2$ and is necessary but strictly weaker. The
+identification $H^*=\text{H1}$ is not merely unproved but is \emph{contradicted} for composite
+operators --- the free massive $\mathord{:}\varphi^2\mathord{:}$ has a gap ($m_1=2m$) yet
+$G''=1/\chi\ne m_1^2$ --- and every gauge-invariant Yang--Mills operator is composite. The gap is
+$H^*$; the rigorous content is the residue--level-gap lemma and the exact Ward identity $E[a\,f]=1$.
+
+\figplane
+
+\subsection{The open cell, stated exactly}
+\label{sec:opencell}
+
+It is useful to write the open cell three times, because the three forms are used in different
+chapters and the reader should see that they are one inequality:
+\begin{align}
+\text{(variance form)}\qquad & \operatorname{Var}_\mu\bigl(\xi_{k\to0}\bigr)\ \le\ 1/\lambda ;
+\label{eq:opencell-var}\\
+\text{(curvature form)}\qquad &
+  \operatorname{Var}_\mu\bigl(\langle v,\nabla S\rangle\mid0\bigr)
+  \ \le\ E_\mu[H_{vv}\mid0]+W_{\mathrm{full}}-\delta ;
+\label{eq:opencell-curv}\\
+\text{(defect form)}\qquad & D\ \le\ S-\lambda\quad\text{together with}\quad S\ \ge\ \lambda ,
+\label{eq:opencell-defect}
+\end{align}
+where $S$ and $D$ are the exact variance-decomposition terms of Chapter~\ref{sec:theorems}. The
+first is H1; the second is its invariant (conditioned) form; the third is the form in which the
+Savvidy cell is discussed below. The bare defect form $D\le(1-\epsilon)S$ is \emph{insufficient}:
+it allows $S$ to be arbitrarily small, and the gap needs the absolute floor $S\ge\lambda$.
+
+\textbf{Why the cell is where all handles fail.} The four closed cells are closed by four
+different mechanisms: low field by the uniform Haar curvature $\Phi''\succeq N/12$ plus
+Brascamp--Lieb; high field and low momentum by measure starvation (the WSTC exponent grows with
+the field excess); high field and high momentum by asymptotic freedom (the instability is
+$e^{-c\mu^4/g^4}$); and the AF-UV deep cone by the same exponent. In the remaining cell ---
+typical field, coherence length near $k\to0$ but momentum high enough that the field is not
+exponentially suppressed --- every exponent vanishes at once. This is not a gap in the
+argument; it is the exact intersection of the four mechanisms' domains of validity, and it is
+nonempty precisely at the physical coupling.
+
+\subsection{The negative-association species}
+\label{sec:negspecies}
+
+The variance-free face (the only one that could pierce H1) is a deterministic
+\textbf{negative-association / anti-FKG} inequality
+\begin{equation}
+\operatorname{Cov}_\mu\bigl(G,\Phi'\mid0\bigr)\ \le\ 0
+\label{eq:neqassoc}
+\end{equation}
+for the continuous, frustrated (cos-sum Wilson action), non-attractive $\mathrm{SU}(N)$
+Haar $\times$ Wilson measure. The campaign proves this object is \textbf{absent from every known
+dependence class} (\code{C5-NEG-ASSOC.md}, \code{C6-DEPENDENCE-CLASS.md}): negative association
+(NA), negative regression/NOD, strong Rayleigh, log-submodular, determinantal (DPP), total
+positivity (TP$_2$; Chebyshev--Fr\'echet), FKG/Griffiths, Brascamp--Lieb, and Simon--Lieb all
+fail, each for a specific structural reason. The reasons are worth listing, because they are the
+campaign's clearest catalogue of why ``known positive dependence'' does not apply:
+
+\begin{itemize}
+\item \textbf{No order on the quotient.} Negative association and FKG both need a lattice order;
+  the gauge quotient $\mathcal{A}/\mathcal{G}$ carries no order, so the definitions do not even
+  parse (this is the nested-cone no-go of Chapter~\ref{sec:nogos}).
+\item \textbf{No real-stable polynomial.} Strong Rayleigh and determinantal structures require a
+  real-stable generating polynomial or a DPP kernel; the $\mathrm{SU}(N)$ Weingarten weights are
+  signed, so the polynomial is not real-stable.
+\item \textbf{No common scalar.} Log-submodularity needs a common scalar order; the matrix-valued
+  field has no such order.
+\item \textbf{FKG wrong-signed.} The Wilson action is ferromagnetic in the plaquette variable but
+  the observable is a cos-sum of traces; the monotone coupling is not the one that would give
+  positive association of $G$ and $\Phi'$.
+\item \textbf{Brascamp--Lieb needs a convex potential}, which is false at Savvidy
+  (Chapter~\ref{sec:savvidy}); and Simon--Lieb is sign-blind on the variance, which is exactly
+  H1; the Stein--Hellfer--Sj\"ostrand constant is $1/\lambda$, again H1.
+\end{itemize}
+
+The measured $\operatorname{Cov}\approx-0.11$ at $\beta=2.5$ is the chart-local log-cut shadow of
+\emph{proven} $\Phi$-convexity, not a law: the per-mode $X\in[-0.09,+0.16]$ changes sign, and
+$\beta=5.7$ flips it. So the species is not merely unproven; its sign is not stable mode by mode,
+which is consistent with its being a genuine dynamical statement rather than a kinematic
+identity.
+
+\subsection{Anatomy of the Savvidy cell}
+\label{sec:savvidy}
+
+The Savvidy cell is the one region where the classical one-loop effective potential has an
+indefinite Hessian, and for two decades it was treated in the campaign's own notes as the
+``true physical obstruction.'' This edition records the wave that dismantled that reading. The
+outcome is a genuine theorem-set that \emph{removes a false obstruction}, and a precise
+statement of what survives. We state the removal first, then the residue.
+
+\subsubsection{The false obstruction, and why it is false}
+
+In a constant background $F_B$, the one-loop effective action has a negative mode: the Hessian
+$-D^2+2\operatorname{ad}F_B$ has a negative eigenvalue in the transverse-magnetic sector. The
+naive reading is that the Savvidy vacuum is unstable, that the effective action is concave, and
+that any variance or curvature bound on the coarse mode must fail. The wave
+(\code{SAVVIDY-DTERM.md}, \code{SAVVIDY-NEGMODE-EXACT.md}, \code{SAVVIDY-VAR-PHI2.md}) shows
+that this reading is wrong in three separate senses.
+
+\textbf{(i) The negative mode is a barrier-top artifact.} The one-loop potential is a double
+well with the true vacuum at $\varphi=\pm v$; the negative mode sits at the barrier top
+$\varphi=0$, not at the vacuum. At the true vacuum the curvature is positive, $V''=2c>0$, and
+the fluctuation spectrum is stable. The indefinite Hessian is a property of a saddle, not of the
+measure. This is a \LT{} statement about the effective potential, and it is the reason the
+periodic no-go (Chapter~\ref{sec:nogos}) does not apply to the true vacuum.
+
+\textbf{(ii) The softening is bounded and $c$-independent.} The fluctuation of the order
+parameter is
+\begin{equation}
+\operatorname{Var}(\varphi^2)\;=\;\frac{2}{\lambda_4}+\frac{2}{(gB)^2}+\cdots
+\;\longrightarrow\;\frac{2}{\lambda_4},
+\label{eq:varphi2}
+\end{equation}
+bounded and independent of the vacuum parameter $c$. The softened curvature is
+$\Gamma''(0)=\kappa-g^2\operatorname{Var}(\varphi^2)$, and the softening term $g^2
+\operatorname{Var}(\varphi^2)$ is $O(1)$ and $g$-independent: it does not diverge as $g\to0$,
+and it does not grow with the background. The earlier fear that the negative mode produces a
+divergence was a misreading of the one-loop determinant.
+
+\textbf{(iii) The sign is protected at two loops.} The variance is a positive quadratic form
+times $g^2$; it renormalizes multiplicatively; the two-loop correction moves the constant by
+$\lesssim1\%$ and never crosses zero (\code{SAVVIDY-2LOOP.md}). So the softening cannot change
+sign under the renormalization group within the perturbative regime.
+
+\subsubsection{The exact $D$-split}
+
+The variance decomposition $G''=S-D$ of Chapter~\ref{sec:theorems} has, in the Savvidy cell, an
+exact split (\code{SAVVIDY-DTERM.md}):
+\begin{equation}
+D\;=\;D_+(\le0)\;+\;\frac{\mathbb E\bigl[|\langle\varphi_-|c\rangle|^2\bigr]}{g|B|},
+\label{eq:dsplit}
+\end{equation}
+where $\varphi_-$ is the rank-one negative mode and $D_+\le0$ is the positive-semidefinite part.
+The inequality $D<S$ --- the open cell --- is therefore equivalent to the rank-one term being
+smaller than the bare stiffness $S_{\mathrm{bare}}$. In the deep infrared the rank-one term
+decays and $D/S\to0$; at the crossover it is $O(1)$. This is the sharpest form of the Savvidy
+statement in the campaign: \emph{the obstruction is rank-one}, and the question is whether that
+one direction can be dominated uniformly.
+
+\subsubsection{Uniformity, and the tension with the full flow}
+
+Two results pull in opposite directions, and the paper records both rather than choosing.
+\begin{itemize}
+\item \emph{One-octave uniformity} (\code{SAVVIDY-UNIFORM-SOFTENING.md}): the soft modes have
+  $|p|\sim\sqrt{gB}$, a single octave; there is no logarithmic divergence across octaves; hence
+  the softening is $(L,a)$-uniform. On this reading the Savvidy cell contributes one marginal
+  $O(1)$ inequality at the crossover.
+\item \emph{Multi-cell accumulation} (\code{SAVVIDY-MULTICELL-RG.md}): integrating the softening
+  over the full flow accumulates a $\ln\ln$ growth near the Landau pole, which overshoots for
+  $O(1)$ bare stiffness. On this reading the cell is \emph{infrared-marginal}, and the question
+  is decided nonperturbatively at $k_{\mathrm{IR}}\sim\Lambda$, which is H1.
+\end{itemize}
+The reconciliation is that the per-octave softening is genuinely bounded (a theorem), while the
+full-flow accumulation is infrared-dominated (also a theorem). So the Savvidy cell is not ``one
+easy $O(1)$ inequality''; it is a nonperturbative infrared statement wearing the costume of a
+one-loop computation. This is a genuine sharpening of the RG missing step, not a closure.
+
+\subsubsection{The lattice cell}
+
+The lattice measurement (\code{SAVVIDY-LATTICE-CELL.md}) gives the numbers that make the
+near-criticality concrete. The defect ratio $D/S$ is bounded ($\le1.1$) but $O(1)$:
+$0.94\le D/S\le1.00$. Five of twelve modes have $G''<0$. The $k\to0$ mode is absent on the
+available volumes. The earlier reported $G''\approx+0.28$ is a small-volume artifact of the
+free dispersion $4\sin^2(\pi/L)$: on a small torus the lowest momentum is not small enough to
+be a continuum probe. So the lattice does not contradict the theorem-set, and it does not
+confirm a positive margin either. It shows the margin is thin.
+
+\figsavcell
+
+\subsubsection{What is removed and what remains}
+
+\begin{itemize}
+\item \textbf{Removed (theorems):} the claim that the Savvidy negative mode causes a divergence
+  or destroys the $\chi$ floor. The negative mode is a barrier-top artifact; the true vacuum is
+  stable; the softening is bounded by $2/\lambda_4$, $c$-independent, sign-protected at two
+  loops, and one-octave uniform; and the deep-infrared $D/S\to0$.
+\item \textbf{Not removed (still H1):} the surviving sub-criticality is infrared-marginal in the
+  full RG flow and empirically near-critical. Establishing a positive uniform margin is exactly
+  the open cell, written in the Savvidy coordinate.
+\end{itemize}
+
+This is the campaign's cleanest example of a \emph{false} obstruction being removed while the
+true wall stays put. It is also a warning about the paper's own earlier drafts: the
+``$D/S\approx2\%$'' figure belongs to a gauge-dependent gluon mode and a weak-coupling regime, not
+to the gauge-invariant $0^{++}$ object at the physical coupling (Appendix~\ref{app:postaudit}).
+
+\subsection{The gauge quotient and the $7.1\%$ residue}
+
+The negativity that survives the gauge quotient is measurable. After projecting out the gauge
+directions ($Q_\perp$), the numerical experiment W4 finds $7.1\%$ negative directions in the
+fluctuation spectrum at the physical coupling. This is the number the paper quotes when it says
+the wall is real rather than a gauge artifact: the transverse-magnetic negative mode survives
+the quotient. It is the same mode that the periodic no-go identifies as the price of winding on
+the compact group, and the same mode whose squared overlap with the $k\to0$ coarse mode vanishes
+as $(k/\sqrt{gB})^2$ --- which is why the coarse-mode softening is bounded even though the
+negative mode exists.
+
+\subsection{Summary}
+
+Region coverage $\sim90\%$, by genuine theorems. The sign is 0\%, by one inequality, in one cell.
+The Savvidy cell is where that cell is sharpest, and the wave summarized above shows both what
+the cell is \emph{not} (a divergence, a gauge artifact, an easy one-loop inequality) and what it
+\emph{is} (a rank-one, near-critical, infrared-marginal sub-criticality). The next chapter
+collects the proven theorems that close the other 90\%.

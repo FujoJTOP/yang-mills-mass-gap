@@ -1,0 +1,285 @@
+% =====================================================================
+\section{The tools and their free-field acid tests}
+\label{ch:tools}
+% =====================================================================
+
+\subsection{The acid test}
+
+The project charter imposes a \textbf{free-field acid test} on every purported new tool: it must
+fail on the free massless field, where $f_1^2=0$ and $G''=0$. A tool that ``proves'' a gap for
+the free field is vacuous and must be discarded. The test is applied in three adversary classes,
+in increasing order of severity:
+\begin{enumerate}
+\item \textbf{Free massless field}: $\nu$ supported on $[0,\infty)$ with no atom at zero,
+  $f_1^2=0$, $G''=0$. The tool must return $0$ or a non-positive value.
+\item \textbf{Composite $\mathord{:}\varphi^2\mathord{:}$}: a gapped theory whose $0^{++}$
+  operator is composite; $f_1^2=0$ for the continuum $\mathord{:}\varphi^2\mathord{:}$ channel at
+  the bottom (the state is a two-particle threshold), and $G''=1/\chi\ne m_1^2$. The tool must
+  also return $0$ here; a tool that confuses ``gapped'' with ``atom'' fails this class.
+\item \textbf{Free gapped field}: a massive free scalar, which has a gap but no $0^{++}$ atom in
+  the chosen channel. The tool must not mistake the gap for an atom.
+\end{enumerate}
+A tool passes if it is correct on all three classes and discriminatingly positive on
+Yang--Mills. ``Discriminatingly'' means: not merely positive on YM, but negative or zero exactly
+where it should be, so that the positivity carries information.
+
+\subsection{The six first-wave tools}
+\label{sec:sixtools}
+
+\subsubsection{Multiplicative residue transport}
+
+\textbf{Formula.}
+$f_1^2(\mu)=Z_O(\mu,\mu_0)^2\,f_1^2(\mu_0)$, with
+$Z_O=(\beta/2g)(\mu_0)/(\beta/2g)(\mu)>0$ and anomalous dimension
+$\gamma_O=-d\log(\beta/2g)/d\log\mu=2b_0g^2+\cdots$
+
+\textbf{Basis.} $O_S=\tfrac14\operatorname{tr}F^2$ renormalizes multiplicatively: the identity
+mixes diagonally, $F\tilde F$ is $P$-odd, and BRST-exact derivatives vanish on physical states.
+
+\textbf{Acid test.} Passes: $0\to0$ (multiplicative); the free $\mathord{:}\varphi^2\mathord{:}$
+has $f_1^2=0$ by $\mathbb{Z}_2$ parity ($a\equiv0$); the constant $Z_O^2>0$ because it is a
+square, and is $O(1)$ in $V$.
+
+\textbf{Residual.} Conditional on $(\mathrm{CP})$: a single $T=0$ confining phase, a $0^{++}$
+edge that is Kato-preserved, and uniform isolation. The theorem
+$f_1^2(2.5)\ge Z_O^2r_0(\beta_{\mathrm{eff}})$ is \LC{} on $(\mathrm{CP})$. It transports the
+\emph{sign and positivity} of the residue; it transports neither the size nor the isolation.
+
+\subsubsection{Exact variance decomposition (Savvidy-corrected Brascamp--Lieb)}
+
+\textbf{Formula and acid test.} Stated in Chapter~\ref{sec:feshbach}. The decomposition $G''=S-D$
+passes the acid test in the strong sense: the free Gaussian has $D=0$, the $k\to0$ mode has
+$\operatorname{Var}(\xi)=\infty\Rightarrow S=0$, and $G''=0-0=0$; no false positivity is
+manufactured.
+
+\textbf{Residual.} A uniform bound on the fiber defect $D$ at $\beta=2.5$. A measured
+$D/S\approx2\%$ was reported \emph{on the gauge-dependent gluon mode}, not the $0^{++}$
+(caveat in Appendix~\ref{app:postaudit}). This is H1 in curvature language.
+
+\subsubsection{The Fredholm determinant identity}
+
+\textbf{Formula.}
+\begin{equation}
+f_1^2=-\lambda_1\operatorname*{Res}_{z=z_1}\mathcal{G}(z)
+=-\frac{1}{z_1}\frac{N_O(z_1)}{\mathcal{D}_O'(z_1)},
+\label{eq:fredholm}
+\end{equation}
+with $\mathcal{D}_O(z)=\det(1-zT_O)$,
+$\log \mathcal{D}_O=-\sum_k z^k\operatorname{Tr}(T_O^k)/k$, $z_1=e^{am_1}$ the smallest-modulus
+zero (so $\lambda_1=e^{-am_1}=1/z_1$ is the leading transfer-matrix eigenvalue), and ``periodic
+orbits'' $\operatorname{Tr}T_O^k=Z_{S^1_k\times T^3}$ (closed-time flux tubes).
+
+\textbf{Acid test (strict).} The free field has a pure cut and no pole, so its residue is $0$;
+YM has an isolated zero below its own two-glueball cut ($m_1^2<4m_1^2$), so $f_1^2>0$.
+
+\textbf{What it buys.} The pole and the cut have identical lower moments; only the zero set
+differs. So the determinant is \textbf{linear-blind} but \textbf{sees the atom}, and it supplies
+$m_1^2$ (the zero location), which no moment does.
+
+\textbf{Residual.} Evaluating the zero at $a\to0$ is the marginal BPHZ wall; the continuum
+determinant's renormalization \emph{is} the marginal gauge BPHZ, and the zero coalesces into the
+K\"all\'en--Lehmann pole (\code{CONTINUUM-FREDHOLM.md}).
+
+\subsubsection{Gauge-invariant IR mass}
+
+\textbf{Formula.}
+\begin{equation}
+m_{\mathrm{GI}}:=\inf\operatorname{supp}\rho_s
+=\lim_{|x|\to\infty}-\partial_{|x|}\log|G_s(x)|=E_1^{(s)}-E_0 ,
+\label{eq:mgi}
+\end{equation}
+on the physical Hilbert space
+$\mathcal{H}_{\mathrm{phys}}=L^2(\mathcal{A}/\mathcal{G},\bar\mu)$, with
+$s=(\beta/2g)\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\in \mathcal{H}_{\mathrm{phys}}$ and
+$\rho_s\ge0$ by reflection positivity.
+
+\textbf{What it removes.} The claim that the gauge potential $A\notin \mathcal{H}_{\mathrm{phys}}$
+and that $\rho_A$ has indefinite sign are both artifacts of using $A$; with $F^2$ the spectral
+density is non-negative. \textbf{Gauge invariance was never the wall.}
+
+\textbf{Acid test (definitional).} Free Maxwell has $m_{\mathrm{GI}}=0$ (a threshold two-photon
+cut from zero); YM has $m_{\mathrm{GI}}=m_{0^{++}}$.
+
+\textbf{Residual.} The edge atom $f_1^2>0$; the definition removes a pseudo-obstruction but does
+not manufacture the atom.
+
+\subsubsection{Gauge W-entropy}
+
+\textbf{Formula.}
+\begin{equation}
+F_W[\mu_t]=\int_{\mathcal{A}}\bigl(S_W(A)+|\nabla_Af_t(A)|_G^2\bigr)e^{-f_t(A)}\,d\mathrm{vol}_G ,
+\label{eq:wentropy}
+\end{equation}
+along the conjugate flow $\partial_tA=-\nabla_AS_W$,
+$\partial_tf=-\Delta_Af+|\nabla_Af|^2-S_W$. Gap preservation is monotone iff
+$\Gamma_2=\operatorname{Ric}_{\mathcal{A}}+\operatorname{Hess}_{\mathcal{A}}S_W\ge\rho_{\mathrm{Ric}}$.
+
+\textbf{Acid test (mirror).} Free field: $\Gamma_2\ge0$, monotone, but it certifies only the free
+lattice gap (non-empty). YM at $\beta=2.5$: $\Gamma_2\approx-2.0<0$ --- correct on the gapless
+side, \textbf{blocking} on the gapped side.
+
+\textbf{Verdict.} Perelman's $W$ requires ``geometry $=$ flow'' to be the same object; in
+flat-space YM they split. What must be crossed is not a new functional but the missing
+non-perturbative flow itself.
+
+\subsubsection{Feshbach / Krein}
+
+The Feshbach--Bogoliubov certificate is Chapter~\ref{sec:feshbach}: an unconditional abstract
+two-block lemma whose only debt is TCI. The \textbf{Krein-space} analysis is the precise language
+for the indefinite Savvidy Hessian $-D^2+2\operatorname{ad}F_B$: Pontryagin spaces, Langer
+definitizable operators, spectral functions. It rigorously proves the UV tower cone-empty
+statement (shells $\lambda_j>k_\star$ have $\kappa=0$, $\operatorname{Tr}H_-\lesssim\int|F|^3$)
+--- a genuine \textbf{UV half-theorem}. But every Krein invariant is a \textbf{count/sign}
+(negative index $r_-$, signature) or a \textbf{UV scale} (the $J$-positive floor
+$=\Theta(g|B)$, Landau levels), whereas the gap is the \textbf{min} at the bottom of $k\to0$, an
+\textbf{IR} scale. The two are mutually exclusive: choosing $J=\operatorname{sign}H$ makes the
+floor physical but gives $\kappa=\dim H_+=\infty$ and is circular (needs a positive spectrum);
+choosing an a priori BRST/Gupta--Bleuler metric gives $\kappa=O(1)$ but is literally identical on
+the free field (acid-vacuous). A signed negative index is an integer, hence rigid (B3), hence
+equal to its free value $0$. The definitizing split loses uniform margin exactly at $k=0$ (the
+Savvidy band bottom, where the coarse mode and the most negative mode coincide) --- the Krein
+critical point is precisely the point at which the gap must be read. The residual is
+$\inf\operatorname{spec}(H|_{\text{physical side}})\ge\kappa_{\mathrm{IR}}>0$, $(L,a)$-uniform,
+which is H1.
+
+\subsection{The tool wave: a structural classification}
+
+After the first six tools left their residuals at H1, a dedicated wave built eight
+complex-function-theory tools aimed at the identified \emph{forcing blind spot}: a non-integral,
+forcing, continuum-robust lower bound on the atom. Seven of the eight fail, and the failure is
+structural rather than a tool-choice artifact. The classification is exact
+(\code{TOOL-SYNTHESIS.md}):
+
+\begin{enumerate}
+\item \textbf{Values / moments / Taylor coefficients / point evaluations of $\Pi$} are finite
+  measurable \textbf{integrals} with bounded kernels. The OPE-RHO no-go applies verbatim: they
+  are blind to a thin atom and at best give \textbf{upper} bounds ($\Delta_{\max}$, Christoffel,
+  Nevanlinna--Pick range).
+\item \textbf{Zeros / poles / residues of $\Pi$} (Pad\'e, Wiener--Hopf, argument principle) are
+  the atom's only non-integral content; they are reachable only by analytic continuation, i.e.\
+  \textbf{A3: read, not force}.
+\item \textbf{Positivity} (Carath\'eodory--Fej\'er, Christoffel) \textbf{upper-bounds} an usc
+  object; it cannot force a lower bound.
+\item \textbf{Geometry / potential / conformal / capacity} are \textbf{support-only}; a point mass
+  has zero capacity, so a point atom is invisible to every geometric invariant.
+\item \textbf{Convex duality} is \textbf{exact} (zero gap) with the atomless measure feasible, so
+  it inherits the blindness: the dual optimum is $0$.
+\end{enumerate}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.7cm}
+  >{\raggedright\arraybackslash}p{1.5cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Tool (file)} & \textbf{Verdict} & \textbf{Mechanism}\\
+\midrule
+Dual / LP (\code{TOOL-DUAL}) & \LN & strong duality gap $=0$; the atomless measure is feasible
+  (mass at $M/\chi$), dual optimum $0$ $\Rightarrow$ no dual trick; the blind spot is
+  convex-structural\\
+Potential (\code{TOOL-POTENTIAL}) & \LN & capacity / equilibrium measure are support-only; a
+  point mass has zero capacity; reading the log-coefficient is A3\\
+Conformal / extremal (\code{TOOL-CONFORMAL}) & \LN & every conformal invariant is support-only;
+  the resolvent level-set radius $\approx f_1^2/R$ is A3\\
+Carath\'eodory (\code{TOOL-CARATHEODORY}) & \LN & Taylor coefficients are integrals
+  $\int d\nu/(s+z_0)^{k+1}$; positivity is an upper bound only (atom usc)\\
+Nevanlinna--Pick (\code{TOOL-NEVANLINNA}) & \LN & point evaluations are integrals (OPE-RHO);
+  the LP range $[0,f_{\max}]$ includes $0$; values $\to$ integral class, zeros $\to$ A3\\
+Toeplitz / Szeg\H{o} (\code{TOOL-TOEPLITZ}) & \LN & Christoffel is an upper bound
+  ($\lambda_n\downarrow f_1^2$); no finite-moment lower bound exists ($\Delta_{\min}=0$)\\
+Hardy / Nehari, $L^2$ singular kernel (\code{TOOL-HARDY}) & \textbf{partial} & quadratic
+  singular-kernel functional escapes OPE-RHO; detects presence; weight needs location (gap)
+  $+\ \varepsilon\to0$ (A3); $L\to\infty$ survival $=$ H1\\
+Zero-counting (\code{TOOL-ZEROCOUNT}) & \LN & count is not a faithful level counter; positivity
+  admits $s_2=s_1$; cannot exclude isolation $0$; reads $s_1$, not the gap\\
+\bottomrule
+\end{tabularx}
+\caption{The eight complex-function-theory tools. Seven are blind or read-only; one (Hardy)
+detects atom presence but not its weight.}
+\label{tab:toolwave}
+\end{table}
+
+\textbf{Why the classification is a theorem, not a survey.} Each row is a statement about a
+\emph{class} of functionals: bounded-kernel integrals are weak-$*$ continuous and hence blind
+(Chapter~\ref{ch:weakstar}); zero locations are A3; support functionals cannot see a point; the
+dual optimum is zero because the atomless measure is feasible. The wave thus proves that
+\emph{no complex-function-theory inequality forces the atom}, which is a structural no-go of
+method, not a list of failures.
+
+\subsection{The one genuine escape: the Hardy presence detector}
+\label{sec:hardy}
+
+The Hardy functional is
+\begin{equation}
+N(\varepsilon)=\int_{\varepsilon<|x-m_1^2|<\delta}\bigl|G(x+i0)\bigr|^2\,dx ,
+\label{eq:hardy}
+\end{equation}
+where $G$ is the boundary density (the resolvent/ Stieltjes transform of $\nu$ near the real
+axis). It is \textbf{quadratic} in $\nu$ with a \textbf{singular (unbounded) kernel}, so it is
+\emph{not} a bounded-kernel integral and OPE-RHO does not apply. The properties are
+(\code{TOOL-HARDY.md}, \code{FALSIFY-HARDY-UPGRADE.md}, \code{FALSIFY-HIGHER-SINGULAR.md}):
+
+\begin{itemize}
+\item \textbf{Diverges iff atom}, finite iff atomless: as $\varepsilon\to0$,
+  $\varepsilon N(\varepsilon)\to2f_1^4$. This is acid-clean: on the free massless field
+  ($f_1^2=0$) it is finite; on the gapped-atomless $\mathord{:}\varphi^2\mathord{:}$ it is
+  finite; on YM it diverges.
+\item \textbf{Continuum-robust}: the recovery coefficient is stable under a background continuum
+  (measured $0.49984$, $0.49984$, $0.49987$ for continuum mass $0$, $0.25$, $1.0$), in contrast
+  to the raw complex-zero functional, which is destroyed by $0.01\%$ continuum.
+\item \textbf{Distinguishes an atom from an equal-mass smooth bump}: the latter is finite at the
+  same location, so the divergence is genuinely atom-specific.
+\end{itemize}
+
+\textbf{What it does not do.} The quantitative weight requires (i) the pole \textbf{location}
+$m_1^2$, whose determination is the gap itself; (ii) the limit $\varepsilon\to0$, which is A3
+(a reading across the real axis); and (iii) the $L\to\infty$ survival of the isolated pole, which
+is isolation I2 $=$ H1. The singular-kernel route cannot decouple ``location $+$ $\varepsilon\to0$''
+from the atom: they are the same datum. Pushing to higher singularity
+($\int|G^{(k)}|^2$, $\int|G|^p$) only changes the divergence power $\varepsilon^{-(p-1)}$, not
+the need for the location and the limit.
+
+\textbf{Why this is still valuable.} It is the first tool in the campaign that genuinely escapes
+the bounded-kernel integral no-go \emph{for presence}. It converts ``does the atom exist?'' from
+a blind question to a computable one, at the price of not computing the weight. In the
+two-coordinate language of Part~III, it is a weak-$*$-discontinuous functional that is
+nevertheless computable from a finite window --- the one exception that sharpens the rule.
+
+\subsection{Scorecard}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.0cm}
+  >{\raggedright\arraybackslash}p{2.9cm}c
+  >{\raggedright\arraybackslash}p{2.6cm}
+  >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Tool} & \textbf{Formula / object} & \textbf{Acid test} & \textbf{Touches the atom?} &
+\textbf{Exact residual}\\
+\midrule
+Multiplicative transport & $f_1^2(\mu)=Z_O^2f_1^2(\mu_0)$ & pass ($0\to0$, square) &
+  sign/size transport & $(\mathrm{CP})$\\
+Variance decomposition & $G''=S-D$ & pass (free $0-0$) & curvature sign &
+  uniform $D$ at 2.5 $=$ H1\\
+Fredholm determinant & $f_1^2=-\lambda_1\operatorname{Res}G$ & strict pass &
+  \textbf{yes} (zero set) & $a\to0$ zero\\
+Gauge-invariant IR mass & $m_{\mathrm{GI}}=\inf\operatorname{supp}\rho_s$ &
+  pass (Maxwell 0) & removes artifact & edge atom\\
+Gauge W-entropy & $F_W$, $\Gamma_2\ge\rho_{\mathrm{Ric}}$ & mirror pass & no (gap side blocks) &
+  missing flow\\
+Feshbach/Krein & two-block lemma, $\Pi_\kappa$ & pass (free returns 0) &
+  reduction to TCI & TCI $=$ H1\\
+Hardy presence & $N(\varepsilon)=\int|G|^2$ & strict pass & presence only &
+  location (gap) $+$ $\varepsilon\to0$ (A3)\\
+Seven CF tools & values / zeros / support / dual & various & no & integral class or A3\\
+\bottomrule
+\end{tabularx}
+\caption{Scorecard for the six first-wave tools and the tool wave.}
+\label{tab:tools}
+\end{table}
+
+Four of the tools --- transport, variance decomposition, determinant, Hardy --- genuinely
+``touch'' the atom; all four leave the wall on the far side of ``continuum plus transport to
+2.5,'' which is the analyticity/BPHZ wall, or of the location-plus-limit problem, which is A3.
+The pattern is the same in every column, and Chapter~\ref{ch:weakstar} explains why it must be.

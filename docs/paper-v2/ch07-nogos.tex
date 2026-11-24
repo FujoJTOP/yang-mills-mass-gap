@@ -1,0 +1,273 @@
+% =====================================================================
+\section{No-gos: what each class cannot do}
+\label{sec:nogos}
+% =====================================================================
+
+A no-go is a theorem that a \emph{class} of approaches cannot succeed, not a statement that no
+approach can. The campaign proved several, and they are as valuable as the theorems because they
+close branches. This chapter states each with the precise reason it fails. Where a no-go is a
+theorem about a class, it is labelled \LN; where the underlying statement is a genuine theorem
+about the theory (for example, that zero-temperature pure Yang--Mills is a single phase), the
+underlying statement is labelled \LT{} and the no-go is its corollary.
+
+\subsection{The Schur-convex master obstruction}
+\label{sec:schur-master}
+
+\textbf{Statement.} Any $g$-continuous, protected functional of the measure that vanishes at
+$g=0$ (the free field) cannot produce a positive atom at $g>0$ by positivity or analyticity
+alone. The free field satisfies all OS axioms and has $f_1^2=0$; any positivity-only argument
+forcing $f_1^2>0$ would force it there too.
+
+\textbf{Precise form.} Let $\mathcal F$ be the class of functionals $\Phi(\nu)$ that are (i)
+continuous in the weak-$*$ topology restricted to finitely many moments, (ii) non-negative on
+every OS measure, and (iii) vanish at the free-field measure $\nu_0$ (supported on $[0,\infty)$
+with $f_1^2=0$). Then for every $\nu$ in the feasibility set and every $\varepsilon>0$ there is
+$\nu'$ in the feasibility set with $f_1^2(\nu')=0$ and $|\Phi(\nu)-\Phi(\nu')|<\varepsilon$.
+Hence no $\Phi\in\mathcal F$ can imply $f_1^2>0$. The proof is the smoothed-replacement
+construction of Chapter~\ref{sec:schur}: the atomless bump matches the finite data.
+
+\textbf{Consequence.} Positivity, reflection positivity, spectral positivity, and analyticity
+give \textbf{upper bounds and the vacuum}, never the edge. This is the single most important
+no-go; it is why the campaign always says ``positivity is blind to the edge.'' It is also the
+one no-go that is not specific to Yang--Mills: it holds for every OS theory, which is exactly
+why it cannot carry YM-specific information.
+
+\subsection{Goldstone uniqueness}
+
+The only positivity-plus-analyticity theorem that forces an atom is Goldstone's theorem, and it
+lives at \textbf{zero mass} (broken continuous symmetry). The atom $f_1^2$ is the ``positive-mass
+cousin'' of a Goldstone mode, and the positive-mass cousin does not exist at the level of a
+general theorem. The one protected positive-mass atom is BPS, but it is in the \textbf{wrong
+channel} (central charge/flux; $Z=0$ on $\operatorname{tr}F^2$). So no symmetry theorem supplies
+a positive-mass atom in the scalar channel.
+
+\subsection{The periodic no-go (no convexification)}
+\label{sec:periodic}
+
+\textbf{Statement.} The log-density of $\mu$ is periodic on the compact group; a periodic
+concave function is constant, so there is no log-concave substitute equal to $\mu$. The Savvidy
+negativity is the cost of periodic winding at $|x|>\pi/2$. Thermal smoothing gives only
+semi-concavity, and the Pr\'ekopa lift is blocked by the indefinite $G''/H_{ff}$.
+
+\textbf{Consequence.} Convexification of the effective action is impossible; the wall is real,
+not a gauge artifact. The measured $7.1\%$ negative directions after the gauge quotient (W4)
+are the quantitative form of the statement. Note carefully what this no-go does \emph{not} say:
+it does not say the true vacuum is unstable (the Savvidy negative mode is a barrier-top artifact,
+Chapter~\ref{sec:savvidy}); it says that no globally log-concave proxy exists on the compact
+group. The two statements are compatible, and distinguishing them was one of the Savvidy wave's
+contributions.
+
+\subsection{The nested-cone no-go}
+
+\textbf{Statement.} Every sign-changing / Karlin cone $K_0\subset K_1\subset\cdots$ contains the
+positive cone, so on each layer it swallows the strictly positive free field and is vacuous. A
+cone that passes must cut \emph{below} positivity (where the symbol is indefinite), and there it
+presupposes the very atom it is meant to prove (circular).
+
+\textbf{Consequence.} The ``second cone'' route to the edge is closed. Plaquette products do not
+tensorize to a sign-regular cone. This is the structural reason the gauge-invariant
+Perron--Frobenius theorem reaches the vacuum but not the glueball
+(Chapter~\ref{sec:theorems}): the quotient has no order, so a Karlin flag cannot be built.
+
+\subsection{The rigidity no-go (no index)}
+\label{sec:rigidity}
+
+\textbf{Statement.} Any index that is a discrete integer and locally constant under
+symmetry-preserving deformations is constant along the connected $\beta$ family (which reaches
+the free Gaussian at $\beta=\infty$), hence equals its free value, hence is $0$ for YM. The gap
+must be a \textbf{$\beta$-non-analytic jump, not any discrete invariant.}
+
+\begin{claimbox}{cN}
+\claimhead{Proposition}{(rigidity)} \emph{Let $I(\beta)\in\mathbb Z$ be locally constant on
+$(0,\infty)$ and defined by a homotopy invariant of the gauge-field configuration space. Then
+$I(\beta)=I(\infty)=0$ for every $\beta$ along the Wilson family.}
+\begin{proofx}
+The Wilson family $\beta\mapsto\mu_\beta$ is continuous in $\beta$ and connects every finite
+$\beta$ to the Gaussian limit $\beta\to\infty$ (in the sense of the transfer operator's
+spectrum). A homotopy invariant is unchanged by continuous deformation; in the Gaussian limit the
+only index available is the trivial one. Hence $I$ is constant and equals its free value. The
+only acid-passing index in the corpus --- the Gribov--Faddeev--Popov count --- counts gauge
+copies, not physical states, and is not an invariant of $\mu_\beta$.
+\end{proofx}
+\end{claimbox}
+
+\textbf{Consequence.} Noncommutative geometry, localization, BPS, and Witten-spinor indices all
+return $0$ at the free point; none can carry the gap. The statement is robust: it applies to any
+discrete invariant, not to a particular construction. This is why the campaign says the gap is
+``not topological''; the reason is not a failure of a construction but the constancy of indices.
+
+\subsection{The Feshbach / Schur angle no-go}
+
+\textbf{Statement.} Block-decompose $H=\begin{psmallmatrix}A&B\\B^{\mathsf T}&C\end{psmallmatrix}$
+with $C\prec0$. Then $\Sigma=A-BC^{-1}B^{\mathsf T}=A+B|C|^{-1}B^{\mathsf T}\succeq A$:
+eliminating a negative block \textbf{only adds} to the survivor (Haynsworth inertia; numerically
+verified $\lambda_{\min}(\Sigma-A)=-6\times10^{-16}$). So ``a small angle preserves $\Sigma>0$''
+is a sign error: $\Sigma>0\iff A=P^{\mathsf T}HP>0$, and $A$ \emph{is} the gap. The only way an
+angle enters is through the overlap $\varepsilon=\sin^2\theta$, requiring
+$\varepsilon<\tfrac12$ ($\theta<45^\circ$); on a frozen constant background $\theta=0$ but the
+statement is vacuous ($F\equiv0$, $g$-dependent), and on the physical $k=0$ mode
+$\varepsilon=O(1)$ (measured $P^{\mathsf T}HP$ minimum $-0.3$) with no momentum separation. The
+whole route is $\iff\varepsilon<\tfrac12\iff$ H1.
+
+\subsection{The Krein / Pontryagin no-go}
+
+\textbf{Statement.} Krein counting/sign invariants live at the UV scale or count signs; the gap
+is the IR \textbf{min}. The two are mutually exclusive, as detailed in Chapter~\ref{ch:tools}.
+The residual is H1. The no-go is a statement about the \emph{type} of invariant: a count is
+rigid, the gap is a threshold; a UV scale cannot see an IR scale.
+
+\subsection{The order-parameter no-go (single-phase theorem)}
+\label{sec:b2}
+
+This is the deepest no-go of the roof wave, and its underlying statement is a genuine theorem.
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(B2: single phase)} \emph{Zero-temperature four-dimensional pure
+Yang--Mills is a single phase: the $\beta$ dependence is a smooth crossover, not a phase
+transition. Consequently there is no order parameter and no defect-condensation criterion in
+any channel that could certify the $0^{++}$ gap.}
+\end{claimbox}
+
+The proof is the corpus's (\code{PROOF-NO-MELT-PHASE.md}, \code{ROOF-TRANSFER.md}): the
+$T=0$ system has no local order parameter; the finite-temperature deconfinement transition at
+$\beta_c(N_t)$ is a property of the thermal circle, not of the zero-temperature vacuum; and the
+crossover observed on the lattice is smooth in $\beta$. The corollary is the no-go: an
+order-parameter criterion needs a transition to condense, and a single phase has none. The 3D
+$Z_2$ specimen models \emph{confinement} (a transition), not the single-phase $0^{++}$ gap. This
+eliminates the entire order-parameter / defect-condensation paradigm for the roof, independently
+of the channel-mismatch arguments.
+
+\subsection{The topological and Markov eliminations}
+
+\textbf{Topology.} Dead by rigidity (\S\ref{sec:rigidity}): any index is constant on the
+connected $\beta$ family and counts the atom side, certifying $\text{gap}=0$ rather than
+$\text{gap}>0$. The statement is stronger than a failure of a particular construction: it is a
+theorem about all discrete invariants.
+
+\textbf{Markov-semigroup / gradient-flow functionals.} Dead by Theorem BE
+(\code{BASE-FIELDMEASURE.md}): a functional constructed from the semigroup of the transfer
+operator is homogeneous in the Hessian (so it is $\kappa$ relabelled), zero at equilibrium, or
+sign-indefinite. In all three cases it cannot produce a lower bound on $G''$ that is positive at
+the free point and negative in the gapless direction. The reason is structural: the semigroup is
+the same object whose gap is being measured, so a functional of it either presupposes the gap or
+cancels at equilibrium.
+
+\subsection{The analytic-transfer no-go (essential singularity)}
+\label{sec:esssing}
+
+The gap is
+\begin{equation}
+m\ \sim\ \Lambda\ \sim\ \mu\,e^{-1/(2\beta_0g^2)} ,
+\label{eq:esssing}
+\end{equation}
+an essential singularity in the coupling. Every derivative of $e^{-1/g^2}$ vanishes at $g=0$, so
+the perturbative gap is identically zero at every order, and analytic continuation in $g^2$ gives
+$0$, never the physical value at $g^2=O(1)$. This is a sharper obstruction than the weak-$*$ one
+in the following sense: it rules out the \emph{entire analytic-transfer class at once} ---
+perturbation theory, Borel resummation, $1/N$, small-torus expansion, and any ``solve exactly
+then continue'' scheme. It says: \emph{no procedure analytic in the coupling can manufacture the
+nonperturbative scale.} The statement is a theorem about analyticity (the class of functions with
+an essential singularity at the origin), not a statement that the gap is uncomputable.
+
+The essential singularity is also the reason the resume/transseries route is blocked at the
+level of the condensate: the $u=2$ renormalon ambiguity of the $a^{-4}$ coefficient is the same
+size as the coefficient, so the condensate's own ambiguity straddles zero
+(\code{ROOF-CONDENSATE-FLOOR.md}). Any floor that passes through the condensate inherits the
+ambiguity.
+
+\subsection{The consistency, universality, SUSY and entanglement no-gos}
+
+A wave of ``impossible bases'' tested whether a radically different starting point could bypass
+the wall. All eight failed, each for a sharp reason. The table records the outcomes; the
+underlying statements are theorems about the relevant structures.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.5cm}
+  >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Base (file)} & \textbf{Why it fails}\\
+\midrule
+Analytic continuation (\code{IMPOSSIBLE-ANALYTIC}) & \LT{} the gap is an essential singularity
+  $e^{-1/(2\beta_0g^2)}$; every analytic-in-$g^2$ method is blind by construction\\
+Contradiction (\code{IMPOSSIBLE-CONTRADICTION}) & \LT{} no contradiction obtained; the sharpest
+  route needs ``gapless $\Rightarrow$ CFT'' (folklore, not a theorem); it isolates $(\star)$\\
+Global consistency (\code{IMPOSSIBLE-CONSISTENCY}) & \LT{} free massless YM satisfies all
+  consistency axioms (unitary, Herglotz, crossing, $a_{UV}>a_{IR}$); no 0-form 't Hooft anomaly
+  at $\theta=0$; blind\\
+Universality (\code{IMPOSSIBLE-UNIVERSALITY}) & \LT{} zero-$T$ crossover is non-universal
+  (smooth, no exponents); the one real match (finite-$T$ Ising) is 1-form/center, off-target\\
+SUSY + decoupling (\code{IMPOSSIBLE-SUSY-DECOUPLE}) & \LT{} holomorphy computes the condensate
+  ($\langle\lambda\lambda\rangle=N\Lambda^3$), not the $0^{++}$ mass; exactness is a symmetry
+  pure YM lacks\\
+New-space index (\code{IMPOSSIBLE-INDEX}) & \LT{} every index is a homotopy invariant, hence
+  maximally continuous; the atom is the maximally discontinuous point\\
+Invertibility by degree (\code{IMPOSSIBLE-INVERTIBILITY}) & \LT{} the degree is trivial
+  $0/+1$ and unprotected (drops to $0$ at any level crossing $=$ rigidity)\\
+Entanglement gap (\code{IMPOSSIBLE-ENTANGLEMENT}) & \LT{} the entanglement gap is the edge/1-form
+  spectrum, Schur-orthogonal to $0^{++}$; $\rho_A=\operatorname{Tr}_{A^c}\mu$ is a functional
+  of $\mu$\\
+\bottomrule
+\end{tabularx}
+\caption{The eight ``impossible bases'' and why each fails.}
+\label{tab:impossible}
+\end{table}
+
+The common lesson is the same as in every other wave: the failure is not a lack of cleverness in
+the base, but a structural fact about what the base can see. The analytic bases are blind to the
+essential singularity; the algebraic bases are rigid; the consistency bases are satisfied by the
+free field; the entanglement base is in the wrong channel.
+
+\subsection{The wrong-half, wrong-direction, wrong-regime umbrella}
+
+Three structural failure modes recur across families and are worth naming as no-gos of method:
+
+\begin{itemize}
+\item \textbf{Wrong half (UV $\perp$ gap).} L3, H2-global, gradient flow, Dirichlet comparison,
+  concentration (Herbst), heat kernel, validated numerics, step scaling, effective string,
+  $S^3$ --- these control the UV, a fast rate, or a finite box, but never the IR spectral edge.
+\item \textbf{Wrong direction (upper bounds).} Bogoliubov, Hylleraas, finite-size scaling,
+  Temple/Weinstein, GEVP --- variational methods give \textbf{upper} bounds on eigenvalues; a
+  lower bound needs a threshold oracle, and the oracle is circular.
+\item \textbf{Wrong regime (strong coupling only).} Rigorous large-$N$ (Chatterjee), SZZ, random
+  surfaces/CPS, center vortices --- these stop at $\beta<\beta_0$ or
+  $\lambda_{\mathrm{tH}}<1/24$ and cannot reach $\beta\approx2.5$.
+\end{itemize}
+
+\subsection{Summary of no-gos}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.8cm}
+  >{\raggedright\arraybackslash}p{4.2cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{No-go} & \textbf{Class it kills} & \textbf{Precise reason}\\
+\midrule
+Schur-convex & positivity/analyticity-only & free field has $f_1^2=0$; only upper bounds\\
+Goldstone & positivity-forced atoms & the only such theorem is at zero mass; BPS wrong channel\\
+Periodic & convexification & periodic concave $=$ constant; Savvidy is real\\
+Nested cone & second-cone construction & every cone contains the positive cone $\to$ swallows
+  free field\\
+Rigidity & index/topological & discrete locally-constant index $=$ free value $=0$\\
+Feshbach angle & block-elimination & $\Sigma\succeq A$; $\Sigma>0\iff A>0=$ gap\\
+Krein & UV spectral invariants & count/sign $\ne$ IR min; split fails at $k=0$\\
+Order parameter (B2) & order-parameter/defect & zero-$T$ pure YM is a single phase; nothing to
+  condense\\
+Markov (BE) & semigroup/flow functionals & homogeneous, zero at equilibrium, or sign-indefinite\\
+Analytic transfer & perturbation/Borel/$1/N$ & essential singularity $e^{-1/(2\beta_0g^2)}$\\
+Consistency/SUSY/entanglement & global/algebraic bases & satisfied by the free field, rigid, or
+  wrong channel\\
+Wrong-half/direction/regime & method families & control the wrong scale, sign, or coupling
+  region\\
+\bottomrule
+\end{tabularx}
+\caption{Summary of no-gos.}
+\label{tab:nogos}
+\end{table}
+
+The no-go list is the campaign's negative ledger. It is deliberately long, because a failed
+route that is not diagnosed is a route that will be retried. Each row names the class, the reason,
+and the file where the reason is proved. The positive ledger is Chapter~\ref{sec:theorems}; the
+map that connects them is the subject of the next chapter.

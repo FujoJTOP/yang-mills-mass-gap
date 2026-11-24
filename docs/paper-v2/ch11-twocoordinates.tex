@@ -1,0 +1,172 @@
+% =====================================================================
+\section{The wall in two coordinates: what the two pictures jointly prove}
+\label{ch:twocoord}
+% =====================================================================
+
+\subsection{The picture}
+
+The campaign now has two independent descriptions of the same obstruction. We state the picture
+once, plainly, and then say exactly what it does and does not prove.
+
+\textbf{Coordinate 1 (measure / weak-$*$).} The gap is the positive isolated atom $f_1^2>0$ of
+the K\"all\'en--Lehmann measure of $\operatorname{tr}F^2$ at the bottom of its support. The atom
+is exactly the weak-$*$ discontinuity of the boundary density (Chapter~\ref{ch:weakstar}). Every
+finitely computable datum is weak-$*$ continuous, and atomless measures are weak-$*$ dense, so no
+forcing functional can be continuous. A proof in this coordinate must be a weak-$*$
+discontinuous, acid-clean, $(L,a)$-uniform functional that is provably positive on the
+Yang--Mills measure. The sharpest known candidate is the negative-association inequality
+$\operatorname{Cov}(G,\Phi'|0)\le0$.
+
+\textbf{Coordinate 2 ($\beta$ / RG / conformal).} The gap is the statement that pure
+Yang--Mills ($N_f=0$) lies outside the conformal window, i.e.\ that $\beta_{N_f=0}$ has no
+strong-coupling zero (Chapter~\ref{ch:betarg}). The conformal window is real, so
+asymptotic freedom alone does not imply a gap; no exact identity forbids an infrared fixed point;
+and every modern $\beta$/CFT technique either tests the wrong thing (CFT existence rather than RG
+flow) or is phase-blind (central charges) or is compatible with a gapless endpoint (holographic
+NEC, DSE scaling). A proof in this coordinate must be a nonperturbative sign theorem for
+$\beta_{N_f=0}$ or a transport of the strong-coupling gap across the crossover.
+
+\textbf{The invariant.} In both coordinates the missing object is the same: the failure of the
+infrared theory to be a gapless CFT, equivalently the positive isolation of the $0^{++}$ atom,
+equivalently $H1$. The paper's structural claim --- a labelled conjecture, not a theorem --- is
+that $H1$ and $(G1)$ are the same wall drawn in two coordinates.
+
+\subsection{Why the coordinates are genuinely disjoint}
+\label{sec:disjoint}
+
+Disjointness is not rhetoric; it can be stated precisely, and it is the reason the two failures
+are independent evidence.
+
+\textbf{The measure argument does not apply to the $\beta$ coordinate.} The weak-$*$ theorem is
+about functionals on the space of measures. A beta function is not a measure, and the statement
+``$\beta_{N_f=0}$ has no zero'' is not a statement about weak-$*$ continuity. One could try to
+encode $\beta$ as a functional of the measure, but that encoding is precisely the dynamical
+dictionary whose proof is the gap. So the weak-$*$ obstruction is silent in the $\beta$
+coordinate.
+
+\textbf{The window argument does not apply to the measure coordinate.} The existence of the
+conformal window is a statement about the massless-fermion content of a gauge theory. It says
+nothing about the atom of a given measure. The measure coordinate's obstruction would persist
+even if the window were empty; the $\beta$ coordinate's obstruction would persist even if the
+measure were atomless by fiat. So the window argument is silent in the measure coordinate.
+
+\textbf{The technique pools are disjoint.} The measure coordinate uses spectral theory, moment
+problems, complex analysis, optimal transport, dependence inequalities, and numerical
+eigenvalue methods. The $\beta$ coordinate uses the conformal bootstrap, the $a$-theorem,
+central charges, large-$N$, holography, Dyson--Schwinger equations, and lattice step-scaling.
+The intersection is small (both use lattice simulations, but for different observables), and the
+key arguments are of different types: one is an analytic statement about measures, the other a
+dynamical statement about flows.
+
+\textbf{The acid tests are different.} In the measure coordinate the acid test is ``does the
+functional vanish on the free massless field?'' In the $\beta$ coordinate the acid test is ``does
+the argument accidentally also prove a gap for $N_f=12$?'' The first is a statement about
+measures; the second is a statement about matter content. A tool that passes one has no reason to
+pass the other, and indeed no tool in the campaign passes both.
+
+This is the precise sense in which the two-coordinate picture is more than a restatement: it is
+two independent falsification programmes, each of which failed, in different languages, for
+different reasons.
+
+\subsection{A third obstruction: the essential singularity}
+
+There is a third obstruction that is neither the weak-$*$ discontinuity nor the dynamical
+$\beta$-function problem, although it is related to both: the gap is an essential singularity in
+the coupling,
+\begin{equation}
+m\sim\Lambda\sim\mu\,e^{-1/(2\beta_0g^2)} .
+\label{eq:ess3}
+\end{equation}
+Every derivative vanishes at $g=0$; every analytic-in-$g^2$ method returns zero; Borel
+resummation inherits the renormalon ambiguity of the condensate. This is a theorem about the
+class of analytic transfers (Chapter~\ref{sec:esssing}). It is not a third coordinate of the same
+invariant in the sense of measure-versus-flow; it is a third \emph{no-go class}, cutting across
+both coordinates. The campaign records it separately because it explains why the ``solve exactly
+then continue'' family fails identically, and because it is the cleanest statement of why the
+perturbative expansion cannot manufacture the nonperturbative scale.
+
+The three obstructions are:
+\begin{enumerate}
+\item \textbf{weak-$*$ discontinuity} (measure coordinate): finite data cannot see the atom;
+\item \textbf{essential singularity} (analytic-transfer class): analytic continuation cannot
+  manufacture the scale;
+\item \textbf{dynamical $\beta$ sign} ($\beta$ coordinate): no exact identity fixes the sign of
+  the strong-coupling beta function.
+\end{enumerate}
+They are not independent in the logical sense --- a proof of the gap would resolve all three ---
+but they are independent in the evidentiary sense: each blocks a different technique pool, and
+the failure of each is established by different arguments.
+
+\subsection{Independence of the evidence}
+
+The strongest statement the campaign can make is the following, and it is deliberately modest.
+\begin{itemize}
+\item In the measure coordinate, the obstruction is proved as a theorem about continuous
+  functionals (Chapter~\ref{ch:weakstar}, Theorem 4), and the classification of the campaign's
+  tools into blind/read/support-only classes is established route by route.
+\item In the $\beta$ coordinate, the non-existence of a kinematic proof is proved by the reality
+  of the conformal window, and the insufficiency of each modern technique is established by a
+  precise argument (Chapter~\ref{ch:betarg}).
+\item The two arguments do not use each other. Neither is a corollary of the other. Neither can
+  be repaired by importing the other's methods, because the methods do not apply (the
+  disjointness of \S\ref{sec:disjoint}).
+\end{itemize}
+So the wall has been hit twice, by two disjoint toolboxes, with two independent diagnoses. This
+is the campaign's strongest evidence that the wall is a property of the problem rather than of a
+particular language. It is still not a proof: two failed attacks are not a no-go theorem for all
+attacks. But it is far stronger than one failed attack repeated in many costumes, and it explains
+why the immune map is so uniform.
+
+\subsection{What a proof needs, stated once}
+
+Combining the two coordinates and the three obstructions, a proof of the gap must supply an
+object with the following properties. In measure language:
+\begin{enumerate}
+\item[(P1)] it is a functional of the field measure, not merely of spectral data (else it is in
+  the weak-$*$ continuous class and blind);
+\item[(P2)] it is acid-clean: zero on the free massless field and on the atomless gapped
+  composite;
+\item[(P3)] it is \emph{inhomogeneous} in the coarse mass --- a genuine source, not a
+  coefficient --- so that the gapless solution is not a fixed point of the associated
+  self-consistency relation;
+\item[(P4)] it is nonperturbative and non-circular: valid at $g^2=O(1)$, without assuming the
+  gap, threshold, or isolation it is meant to prove;
+\item[(P5)] it is $(L,a)$-uniform and survives the continuum limit.
+\end{enumerate}
+In $\beta$ language, the same object is a nonperturbative proof that $\beta_{N_f=0}$ has no zero
+for $g>0$, or equivalently a transport of the strong-coupling gap across the Savvidy crossing
+with a controlled continuum limit. The five conditions are the same five conditions of
+Chapter~\ref{sec:missing}; the two languages are two ways of writing the same specification.
+
+\subsection{Does two coordinates make it easier?}
+
+No. It makes it sharper. The honest answer has three parts.
+\begin{itemize}
+\item \textbf{Not easier.} Neither coordinate supplies a new estimate. The measure coordinate
+  proves that a large class of tools cannot work; the $\beta$ coordinate proves that a large
+  class of techniques cannot decide the question. Neither produces the missing object.
+\item \textbf{Sharper.} The two coordinates specify the target in two independent languages, and
+  an object satisfying the specification in one language must satisfy it in the other. This is a
+  strong consistency condition: a candidate tool can be tested in both coordinates before it is
+  believed. The campaign used this as a filter (for example, a candidate that looked like a
+  $\beta$-function argument but was secretly a moment inequality failed the measure acid test
+  immediately).
+\item \textbf{More honest.} The two-coordinate picture explains why the campaign's many failures
+  were not failures of effort. They were failures of type: the tools were in the wrong class. The
+  picture does not turn a failure into a success; it turns a confusing failure into a diagnosed
+  one.
+\end{itemize}
+
+\subsection{The one-bit statement}
+
+The slot wave's sentence deserves the last word of this chapter, because it is the campaign's
+best summary of the situation. The exact relation that would close the gap is coextensive with
+the whole quantum field theory: in the measure coordinate it is the full K\"all\'en--Lehmann
+measure, in the $\beta$ coordinate it is the full nonperturbative beta function, and in the
+analytic coordinate it is the full transseries. The equation is infinite-dimensional in every
+coordinate. But its irreducible core is one scalar sign condition: \emph{is there a sign-definite,
+$Q$-independent source at the zero?} As a system, the problem is the theory; as a decision, it is
+one bit; and the one bit is the mass gap.
+
+This is the campaign's final structural statement. It is not a proof. It is the precise
+description of what a proof would have to be.

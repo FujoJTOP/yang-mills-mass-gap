@@ -1,0 +1,160 @@
+% =====================================================================
+\section{What the missing tool must satisfy}
+\label{sec:missing}
+% =====================================================================
+
+The campaign's sharpest deliverable is a specification of the object it could not build. The
+species must be \textbf{one} tool satisfying \textbf{five} conditions, stated verbatim from
+\code{docs/PROOF-SKELETON.md} \S3 and \code{docs/new-tools-registry.md}:
+
+\begin{enumerate}
+\item \textbf{Nonperturbative.} It must be valid outside every convergent expansion, at
+  $\beta\approx2.5$, where the relevant $g\approx1.5$ and no small parameter exists. (A
+  perturbative resummation is excluded by the Savvidy negative mode and the IR renormalon/Borel
+  ambiguity of the $a^{-4}$ coefficient.)
+\item \textbf{Sign-controlling lower bound.} It must produce a \emph{lower} bound
+  $m_{\mathrm{eff}}^2(k\to0)\ge\lambda>0$ (equivalently $G''\ge\lambda$, $f_1^2\ge r_0$), not
+  another upper bound. This is the rarest direction: almost every physical tool gives upper
+  bounds or sign constraints.
+\item \textbf{Non-circular.} It must not assume the gap, the threshold, or the isolation it is
+  meant to prove. (Temple/Weinstein, the BS threshold, the second-level $E_2$, and the
+  cutoff-independent Poincar\'e floor all fail here by presupposing the answer.)
+\item \textbf{Non-SUSY and fails the free field.} It must not rely on supersymmetry (the physical
+  theory is pure YM) and it must \textbf{fail} on the free massless field, where $f_1^2=0$,
+  $G''=0$. This is the acid test: a tool that ``proves'' a gap for the free field is vacuous.
+\item \textbf{Uniform lower bound.} It must be uniform in $(L,a)$ --- volume- and
+  cutoff-uniform --- and survive the continuum limit. A fixed-$a$ or fixed-$L$ statement does not
+  give Clay.
+\end{enumerate}
+
+\subsection{The equivalent forms of the object}
+
+These five conditions define the same object in several vocabularies
+(\code{docs/YANG-MILLS-MASTER.md} \S6):
+
+\begin{enumerate}
+\item \textbf{H1:} coarse Poincar\'e $\operatorname{Var}_\nu(\varphi)\le(1/\lambda)\int|\nabla
+  \varphi|^2$, uniform $\lambda>0$.
+\item \textbf{(CP):} a single $T=0$ confining phase (no bulk transition) $+$ a $0^{++}$ edge that
+  is Kato-preserved $+$ uniform isolation.
+\item \textbf{Edge atom $f_1^2>0$:} $\nu(\{m_1^2\})>0$ (usc, non-diagonal, needs $E_2$).
+\item \textbf{$G''(0)>0$ at $k\to0$:} the coarse curvature, $=S-D$; the reported $D/S\approx2\%$
+  is on the gauge-dependent gluon mode, not the $0^{++}$ (Appendix~\ref{app:postaudit}).
+\item \textbf{Determinant zero in the continuum:} $\det(1-zT_O)$ at $a\to0$.
+\item \textbf{Savvidy sign} (non-abelian): the indefinite Hessian's sign resolved.
+\end{enumerate}
+
+These are not six problems; they are one --- the volume-uniform lower bound on $m_{0^{++}}$ along
+the path, which is the mass gap itself. The final convergence reduces them to \textbf{one cell}:
+the ``typical field $\times$ high momentum'' cell of the $(\text{field}\times\text{momentum})$
+plane, requiring the ceiling $\operatorname{Var}(\xi_{k\to0})\le1/\lambda$ (curvature form
+$\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le E_\mu[H_{vv}|0]+W_{\mathrm{full}}-\delta$;
+Appendix~\ref{app:sharp}). Every other cell is closed: low field by $\Phi''\succeq N/12+$ BL, the
+high-field cone by WSTC (measure starvation), the AF-UV cone by $g\to0$. \textbf{That cell is a
+variance-upper-bound species, the same species as G1's L3, at a different scale.}
+
+\subsection{The sharpest form, with no slack}
+
+The single open inequality, stated with no slack, is: there is $\Delta_0>0$ such that, uniformly
+in $(L,a)$ and for every coarse transverse $v$ at $k\to0$,
+\begin{equation}
+\operatorname{Var}_\mu\!\big(\langle v,\nabla V\rangle\,\big|\,\xi=0\big)
+\;\le\;
+E_\mu\!\big[H_{vv}\,\big|\,\xi=0\big]\;-\;a^{2}\Delta_0^{2},
+\qquad V=S_W+\Phi .
+\label{eq:sharpest}
+\end{equation}
+This is the (M) form with $W_{\mathrm{full}}=W_{\mathrm{geo}}+X$ and
+$\delta:=a^{2}\Delta_0^{2}+W_{\mathrm{full}}$; the two displays are the same inequality.
+Equivalently $D\le S-\lambda$ \emph{together with} $S\ge\lambda$ (the bare defect form
+$D\le(1-\epsilon)S$ is insufficient), equivalently the dimensionless ratio
+$G''_a/a^{2}\ge\Delta_0^{2}$.
+
+Two dimension traps are recorded. The unconditioned budget $E[f^{2}]\approx2$ is
+ultraviolet/equipartition-pinned and \emph{not} proportional to $a^{2}$, so it cannot stand in for
+$\lambda$; and the sign lives entirely in the \emph{conditioned} fibre Hessian
+$K=\Pi_0\operatorname{Hess}V\,\Pi_0$, whose negative edge ($\det K=0$, the transverse massless
+mode) is the wall. The unconditioned expected Hessian is provably PSD,
+$E[\operatorname{Hess}V]=E[\nabla V\otimes\nabla V]\succeq0$; the gap is therefore the
+\emph{conditioning correction} --- $W_{\mathrm{geo}}+X$ together with the change in slice variance
+--- i.e.\ the step from the expected curvature to the conditioned one.
+
+\subsection{The machine that does not exist}
+
+To close Clay one must build \textbf{a nonperturbative machine that transports the strong-coupling
+gap and residue continuously across the Savvidy crossing and takes $a\to0$}. The campaign states
+the verdict plainly (\code{docs/yang-mills-frontier.md} \S7, \code{YANG-MILLS-MASTER.md} \S9):
+
+\begin{qbox}
+The last step is to give a volume-uniform lower bound on $m_{0^{++}}$ across $[1/48,2.5]$. Every
+tried tool stops at the strong-coupling end (SZZ, large-$N$) or on the wrong half (UV). What is
+needed is a machine that carries the strong-coupling gap across the Savvidy/sign crossover
+continuously to the physical point --- \textbf{this machine does not exist.} It is equivalent to
+nonperturbative 4D dynamics, the classification of nonperturbative pure-gauge 4D CFTs
+(\code{TOOL-not-iii.md}).
+\end{qbox}
+
+\subsection{Why the existing rigorous tools stop}
+
+It is worth saying precisely why the modern rigorous toolbox does not reach the crossover, since
+the statement is often met with disbelief.
+
+\begin{itemize}
+\item \textbf{Balaban-type renormalization group} controls the ultraviolet and reaches
+  $\lambda\sim1$. It is a small-field, multiscale expansion; the crossover is at
+  $\lambda_{\mathrm{tH}}\in[1,7.3]$, where the expansion parameter is $O(1)$ and no small field
+  is available.
+\item \textbf{Strong-coupling expansions} (SZZ, random surfaces, center vortices) require
+  $\lambda$ large. They reach $\beta<1/48$ or $\lambda_{\mathrm{tH}}<1/24$; the physical coupling
+  is far outside.
+\item \textbf{Constructive QFT with fermions} (Magnen--Rivasseau--S\'en\'eor and successors)
+  constructs the theory with an infrared cutoff; the mass gap is not uniform in the cutoff.
+\item \textbf{Rigorous large-$N$} (Chatterjee) is a strong-coupling statement about the lattice
+  measure; it does not reach the physical coupling.
+\item \textbf{Stochastic quantization / regularity structures} (Hairer and collaborators) are
+  small-parameter theories; 4D Yang--Mills is not subcritical in the required sense, and the
+  large-field (Savvidy-indefinite) estimate is the missing ingredient.
+\item \textbf{Validated numerics} control finite-volume, finite-cutoff operators; they give upper
+  bounds on the continuum gap, not lower bounds.
+\end{itemize}
+The strongest contemporary rigorous frontier (CPS/CNS 2025) reaches only
+$\lambda_{\mathrm{tH}}<1/24$ (the older ``$75\times$'' figure was a unit confusion; see
+\code{PROOF-EMERGENT-4D.md}), nowhere near $\beta\approx2.5$.
+
+\subsection{What building it would close}
+
+A single one-sided variance upper bound, nonperturbative, coupling-free, $(L,a)$-uniform, failing
+at $f_1^2=0$, would close \textbf{both} G1's L3 (UV) and G2's H1 (IR) simultaneously. That is the
+precise sense in which ``one species, two scales'' is the whole gap between the campaign and
+Clay. In the $\beta$ coordinate, the same object is a nonperturbative sign theorem for
+$\beta_{N_f=0}$ or a transport across the Savvidy crossing; in the measure coordinate it is the
+negative-association inequality or an equivalent discontinuous functional. The three descriptions
+are the same machine.
+
+\subsection{The three named open inequalities}
+
+For the reader who wants the shortest possible statement of what is missing, here are the three
+inequalities, each named, each with no slack, each equivalent to the gap in its coordinate.
+
+\begin{enumerate}
+\item[\textbf{(H1)}] $\displaystyle
+  \operatorname{Var}_\mu\bigl(\langle v,\nabla S\rangle\mid0\bigr)
+  \le E_\mu[H_{vv}\mid0]+W_{\mathrm{full}}-\delta$, uniformly in $(L,a)$, every coarse $v$ at
+  $k\to0$.
+\item[\textbf{(NA)}] $\displaystyle \operatorname{Cov}_\mu\bigl(G,\Phi'\mid0\bigr)\le0$ for the
+  frustrated $\mathrm{SU}(N)$ Haar $\times$ Wilson measure --- the only variance-free face.
+\item[\textbf{(TCI)}] $\displaystyle
+  \langle\varphi,Q\varphi\rangle+\langle\varphi,\mathbb{K}\varphi\rangle-cF\ge\mu>0$ for all
+  unit $\varphi\in\mathcal{H}_-$, pointwise and nonperturbatively --- the tachyonic-compensation
+  inequality, equivalently convexity of the gauge-invariant effective potential at its minimum.
+\end{enumerate}
+Each is a lower bound on a curvature or an upper bound on a variance; each fails on the free
+field; each is nonperturbative; each is $(L,a)$-uniform in its statement. Proving any one of them
+would close the gap. None is proved.
+
+\subsection{Honest bottom line}
+
+The specification is complete. The object is named, its five conditions are stated, its
+equivalent forms are displayed, and its failure modes are diagnosed. What is missing is the
+object itself. This is the campaign's real result: not a proof, but a precise description of the
+shape of the hole. The next chapter gives the verdict.

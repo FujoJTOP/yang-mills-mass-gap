@@ -1,0 +1,271 @@
+% =====================================================================
+%  A Conditional Reduction of the 4D Pure Yang–Mills Mass Gap
+%  SECOND EDITION (v2) — the wall in two coordinates
+%  Build:  pdflatex main.tex  (run twice; CJKutf8/pdflatex is fine)
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm,top=2.2cm,bottom=2.4cm,headsep=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{microtype}
+\usepackage[table]{xcolor}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,decorations.pathreplacing,patterns}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{CJKutf8}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+% ---------- colours ----------
+\definecolor{cT}{HTML}{1D7A3A}
+\definecolor{cC}{HTML}{1F5FA8}
+\definecolor{cM}{HTML}{B45F06}
+\definecolor{cN}{HTML}{A61B1B}
+\definecolor{cE}{HTML}{6A3D9A}
+
+% ---------- label chips ----------
+\newcommand{\labb}[2]{\fcolorbox{#1!35}{#1!8}{\textcolor{#1}{\textbf{\scriptsize #2}}}}
+\newcommand{\LT}{\labb{cT}{T}}
+\newcommand{\LC}{\labb{cC}{C}}
+\newcommand{\LM}{\labb{cM}{M}}
+\newcommand{\LN}{\labb{cN}{N}}
+\newcommand{\LE}{\labb{cE}{E}}
+
+% ---------- claims ----------
+\newcounter{claim}
+\newcommand{\claimhead}[2]{%
+  \refstepcounter{claim}%
+  \textbf{#1~\theclaim}#2\hspace{0.35em}\ignorespaces}
+\newtcolorbox{claimbox}[1]{enhanced, breakable=false,
+  colback=#1!6, colframe=#1!75, boxrule=0pt, leftrule=2.6pt,
+  arc=2pt, left=7pt, right=6pt, top=5pt, bottom=5pt,
+  before skip=8pt, after skip=8pt, fontupper=\small,
+  parbox=false}
+\newenvironment{proofx}{\par\noindent\emph{Proof.}\ }{\hfill$\square$\par\medskip}
+\newcommand{\src}[1]{\par\vspace{1pt}{\footnotesize\color{black!55}\textbf{Source.} #1}\par\vspace{4pt}}
+\newtcolorbox{qbox}{enhanced, colback=black!3, colframe=black!35, boxrule=0pt,
+  leftrule=2pt, arc=0pt, left=12pt, right=10pt, top=5pt, bottom=5pt,
+  before skip=8pt, after skip=8pt, fontupper=\small, parbox=false}
+\newtcolorbox{v2box}{enhanced, breakable, colback=cT!4, colframe=cT!55, boxrule=0pt,
+  leftrule=2.6pt, arc=2pt, left=9pt, right=9pt, top=6pt, bottom=6pt,
+  before skip=10pt, after skip=10pt, fontupper=\small, parbox=false}
+
+% ---------- helpers ----------
+\newcommand{\code}[1]{\texttt{\footnotesize #1}}
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=1pt,topsep=3pt}
+\allowdisplaybreaks
+\setlength{\emergencystretch}{2em}
+
+% ---------- section style ----------
+\titleformat{\part}[display]{\centering\Large\bfseries}{Part \thepart}{0.6em}{\Large}
+\titlespacing*{\part}{0pt}{0pt}{1.2em}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.55em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.65em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.45em}
+
+% ---------- header ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\color{black!55}A conditional reduction of the 4D pure Yang--Mills mass gap (v2)}
+\fancyhead[R]{\footnotesize\color{black!55}\thepage}
+\setlength{\headheight}{13pt}
+
+\hypersetup{pdftitle={A Conditional Reduction of the 4D Pure Yang-Mills Mass Gap (v2)},
+            pdfauthor={Yuxuan Jiang}}
+
+\begin{document}
+
+% =====================================================================
+%  TITLE
+% =====================================================================
+\begin{center}
+  \vspace*{0.2cm}
+  {\LARGE\bfseries A Conditional Reduction of the\\[2pt] 4D Pure Yang--Mills Mass Gap\par}
+  \vspace{0.3em}
+  {\large\bfseries Second Edition --- \emph{The Wall in Two Coordinates}\par}
+  \vspace{0.3em}
+  {\large\itshape and a record of what was actually proven\par}
+  \vspace{0.8em}
+  \rule{0.56\textwidth}{0.6pt}\par
+  \vspace{0.55em}
+  {\large Yuxuan Jiang\par}
+  \vspace{0.55em}
+  {\small\color{black!60} Yang--Mills campaign \textperiodcentered{} Lean 4 formalization $+$ lattice numerics\par}
+  \vspace{0.15em}
+  {\small\color{black!60} 24 November 2026 \textperiodcentered{} version 2 \textperiodcentered{}
+   supersedes the 31-page v1\par}
+  \vspace{0.15em}
+  {\small\color{black!60} v1 preprint DOI:
+   \href{https://doi.org/10.5281/zenodo.24486316}{10.5281/zenodo.24486316}\par}
+\end{center}
+
+\vspace{0.2em}
+
+\begin{tcolorbox}[enhanced, colback=black!3.5, colframe=black!30, boxrule=0.5pt,
+  arc=3pt, left=10pt, right=10pt, top=6pt, bottom=6pt, fontupper=\footnotesize, parbox=false]
+\textbf{Status of this document.} This is a \emph{conditional reduction and an audit}, not a
+proof of the Clay problem. The Clay mass gap for 4D pure $\mathrm{SU}(N)$ Yang--Mills remains
+open. The only defensible headline is: \emph{the problem has been rewritten onto one precisely
+named, acid-tested object, and every honest route to it terminates there.}
+
+\smallskip
+\textbf{Label legend used throughout.} Each substantive claim carries one of:
+\LT{} \emph{theorem} --- proved (any imported standard result is named);
+\LC{} \emph{conditional theorem} --- a proved implication from explicitly named hypotheses;
+\LN{} \emph{no-go} --- a theorem that a whole class of approaches cannot work;
+\LM{} \emph{exact missing step} --- a precisely stated open inequality, with no slack hidden;
+\LE{} \emph{numerical evidence} --- measured, not proved.
+A label $[\mathrm{T}]$ attached to a \emph{structural} statement (e.g.\ the weak-$*$ argument of
+Part~III) is always scoped in the text: it certifies the stated lemma, never Clay.
+
+\smallskip
+\textbf{Provenance rule.} Every theorem below names the file that contains its proof. No claim
+is asserted without a source. Citations in the reference list have been checked against the
+publisher, arXiv and zbMATH records; where a number in the internal corpus was found to be wrong
+it is corrected here and recorded in Appendix~\ref{app:errata}. Uncertainties flagged in the
+corpus are reproduced rather than silently repaired.
+\end{tcolorbox}
+
+% ---------- abstract ----------
+\begin{tcolorbox}[enhanced, breakable, colback=white, colframe=white, boxrule=0pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt, parbox=false]
+\begin{center}{\large\bfseries Abstract}\end{center}
+\footnotesize
+\setlength{\parskip}{0pt}
+We report the outcome of a sustained campaign --- Lean 4 formalization plus lattice numerics ---
+aimed at the 4D pure $\mathrm{SU}(N)$ Yang--Mills mass gap. \textbf{We do not prove the mass
+gap.} We prove, instead, a reduction, a ledger, and a map of the wall drawn in two independent
+coordinates.
+
+\emph{The reduction.} (i) The gap is equivalent to the statement that the K\"all\'en--Lehmann
+spectral measure $\nu$ of $\operatorname{tr}F^2$ has its lightest atom $m_1^2$ at positive mass
+with positive weight $f_1^2=\nu(\{m_1^2\})=|\langle0|\operatorname{tr}F^2|G\rangle|^2$, and that
+this atom is isolated. (ii) An exact spectral squeeze
+$f_1^2/\chi\le\inf\operatorname{supp}\nu\le M_0/\chi$ shows that a lower bound on the mass needs
+\emph{both} a residue floor $f_1^2\ge r_0$ and a susceptibility ceiling $\chi\le1/\lambda$; the
+condition H1 ($\chi\le1/\lambda$) is necessary but not sufficient, because it is blind to a thin
+atom. This is now a \emph{machine-checked} statement: the module \code{H1Sharpening} proves
+formally that no positivity-only route from H1 yields a positive atom. (iii) On the order of a
+hundred and fifty routes, built in more than twenty waves, converge on \emph{one species}: a
+nonperturbative, non-circular, sign-controlling upper bound on a conditioned variance, appearing
+once in the ultraviolet (the L3 node) and once in the infrared (H1).
+
+\emph{The wall in two coordinates.} This edition's new structural content is that the same wall
+has been reached from a second, independent coordinate, with a disjoint technique pool.
+(a) \emph{Measure / weak-$*$}: the atom is exactly the weak-$*$ discontinuity of the boundary
+density; every finite datum (moments, Taylor coefficients, point evaluations, bounded-kernel
+integrals, Wilson-loop images) is weak-$*$ continuous, and atomless measures are weak-$*$ dense,
+so any functional that \emph{forces} the atom is weak-$*$ discontinuous --- hence either a
+reading (A3) or an infinite-data limit (H1). Eight falsification routes confirm this. (b)
+\emph{$\beta$/RG/conformal}: the gap is equivalent to pure Yang--Mills ($N_f=0$) lying outside
+the conformal window, i.e.\ to the absence of a strong-coupling infrared fixed point. The
+statement ``a gapless interacting 4D asymptotically-free Wilsonian IR attractor is conformal''
+is true --- Polchinski in $d=2$; Dymarsky--Komargodski--Schwimmer--Theisen in $d=4$, conditional
+on unitarity --- but it reduces the problem to the same dynamical fact. The conformal window is
+\emph{real} ($\mathrm{SU}(3)$ with $9\le N_f\le16$ is genuinely single-coupling and
+gapless-conformal), so ``asymptotically free $\Rightarrow$ gapped'' is false in general; pure
+Yang--Mills is gapped because $N_f=0$ lies far below the window, a dynamical statement. Eight
+routes through the modern $\beta$/CFT toolset (single-coupling, nonperturbative $\beta$ sign,
+central charges, large-$N$, conformal bootstrap, window boundary, holographic NEC, Dyson--Schwinger
+scaling) all fail, each for a sharp, distinct reason; the Dyson--Schwinger scaling solution is the
+gauge-fixed cousin of the worry --- a confinement signal, not a massless particle.
+
+\emph{The ledger.} Positively: an unconditional strong-coupling \emph{residue} theorem
+($f_1^2\ge r_0(\beta)>0$ on $T^3_L\times\mathbb R$ for $\beta<1/48$, $L$-uniform; I1, not I2);
+a kinematic \emph{no-dissolution} theorem; $W_{\mathrm{geo}}\ge0$ by Pr\'ekopa; the
+gauge-invariant Perron--Frobenius theorem and its edge no-go; the strong-coupling coarse
+Poincar\'e lemma; the abstract Feshbach--Bogoliubov two-block lemma; the exact variance
+decomposition $G''=S-D$; the residue--level-gap lemma; and a machine-checked conditional theorem.
+Negatively: the Schur-convex master obstruction, Goldstone uniqueness, the periodic, nested-cone,
+rigidity, Feshbach-angle and Krein no-gos; and, from this edition's waves, the elimination of the
+order-parameter, topological-index and Markov-functional paradigms for the roof, the closure of
+the flux-tube $\kappa$ line, and the structural no-go for complex-function-theory \emph{forcing}
+tools.
+
+\emph{The tools.} Six constructions pass the free-field acid test (they must fail on the massless
+free field, where $f_1^2=0$ and $G''=0$), and nine more were built in the tool wave: seven are
+provably blind or read-only; the Hardy $L^2$/singular-kernel functional escapes the OPE-RHO
+integral no-go for atom \emph{presence} but not for its weight. The Savvidy ``false obstruction''
+is removed by genuine theorems --- the negative mode is a barrier-top artifact, the softening is
+bounded by $2/\lambda_4$, $c$-independent, sign-protected at two loops, and $(L,a)$-uniform by
+one-octave support --- but the surviving margin is empirically near-critical ($D/S\approx0.94$--
+$1.00$) and infrared-marginal at the Landau pole, which is H1.
+
+Numerically, the residue is seen where it is resolvable ($f_1^2>0$ at $\beta=2.2$ on
+$\mathrm{SU}(2)$, $L=6$, at seventeen sigma); it dissolves into the cutoff at $\beta=1.0$, as the
+strong-coupling picture predicts. A $k\to0$ curvature probe on $L=8$ is positive and
+volume-stable but is measured on a gauge-dependent gluon mode, not the $0^{++}$ object, and its
+rigorous-style one-sided interval still includes zero. The post-audit ``right-object''
+measurement shows the composite variance scaling as $V^{-1}$, so the variance form of H1 is
+vacuously true at large volume and carries no gap content --- sharpening, not closing, the gap.
+The best available diagnostics (the P3 approach law $T(\tau)$, the one-sided isolation bound
+$\Delta\ge\kappa(\tau)$, the Re-slope statistic, the finite-size law $\Delta(L)=m_1+c/(m_1L^2)$)
+are genuine and continuum-robust in the ideal, but each is a \emph{read} gated by $L\to\infty$.
+
+The verdict is sober: \textbf{Clay is 0\% --- open.} The wall did not fall. It became transparent,
+ruled, instrumented, and twice drawn. The tool that would cross it --- a nonperturbative machine
+transporting the strong-coupling gap and residue across the Savvidy crossing and taking $a\to0$
+--- \emph{does not exist}, and naming it precisely is the campaign's real result.
+\end{tcolorbox}
+
+% ---------- what is new in v2 ----------
+\begin{v2box}
+\textbf{What is new in this second edition.} (1) \emph{Part~III}: the wall in a second,
+independent coordinate --- the weak-$*$/measure coordinate and the $\beta$/RG/conformal
+coordinate --- with the eight-route falsification wave and the eight-route $(G1)$ wave, neither
+of which appears in v1. (2) The machine-checked sharpening of H1 (module
+\code{H1Sharpening}), including the formal statement that H1 does not imply an atom. (3) A
+dedicated chapter on the Savvidy cell (Part~I, Chapter~\ref{ch:gap}), where a false obstruction
+is removed and the surviving margin is located. (4) The tool wave and its structural
+classification (Chapter~\ref{ch:tools}), including the Hardy presence detector. (5) The
+diagnostics chapter (Chapter~\ref{ch:numerics}), with the lattice protocols stated so that each
+open step has a falsification test. (6) Expanded proofs throughout, a full verification map
+(Appendix~\ref{app:verif}), the errata record (Appendix~\ref{app:errata}), and corrected
+central-charge normalizations. The verdict is unchanged: \textbf{Clay is 0\%.}
+\end{v2box}
+
+\newpage
+\begin{multicols}{2}
+{\small\tableofcontents}
+\end{multicols}
+\newpage
+
+% =====================================================================
+\input{figures-old.tex}
+\input{figures-new.tex}
+
+\input{ch01-intro.tex}
+\input{ch01b-method.tex}
+\input{ch02-squeeze.tex}
+\input{ch03-existence.tex}
+\input{ch04-gap.tex}
+\input{ch05-theorems.tex}
+\input{ch06-tools.tex}
+\input{ch07-nogos.tex}
+\input{ch08-immune.tex}
+\input{ch09-weakstar.tex}
+\input{ch10-betarg.tex}
+\input{ch11-twocoordinates.tex}
+\input{ch11b-related.tex}
+\input{ch12-numerics.tex}
+\input{ch13-machine.tex}
+\input{ch14-verdict.tex}
+\input{refs.tex}
+\input{app.tex}
+
+\end{document}

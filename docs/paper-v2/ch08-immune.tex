@@ -1,0 +1,371 @@
+% =====================================================================
+\section{The one-species reduction and the immune map}
+\label{ch:immune}
+% =====================================================================
+
+\subsection{The species}
+
+Every honest route terminates at the same inequality. Written in its most general form (the
+$(\blacklozenge)$ of \code{PROOF-JACOBIAN-SAVES.md}), the missing input is a
+\textbf{single-sided upper bound on a conditioned variance}:
+\begin{equation}
+(\mathrm{M})\qquad
+\operatorname{Var}_\mu\bigl(\langle v,\nabla S\rangle\mid0\bigr)
+\ \le\ E_\mu[H_{vv}\mid0]+W_{\mathrm{full}}-\delta ,
+\qquad\text{uniform in }(L,U'),
+\label{eq:species}
+\end{equation}
+where $W_{\mathrm{full}}:=W_{\mathrm{geo}}+X$ is the full two-point remainder of
+Chapter~\ref{sec:wgeo} ($X=-2\operatorname{Cov}(G,\Phi')$); the display is then $G''\ge\delta$ in
+curvature form. Equivalently $\operatorname{Var}(\xi_{k\to0})\le1/\lambda$ (H1), equivalently
+$m_{\mathrm{eff}}^2(k\to0)\ge\lambda$, equivalently $G''(0)\ge\lambda$. The
+\textbf{variance-free face} (the only one that could pierce H1) is a deterministic
+\textbf{negative-association / anti-FKG} inequality
+\begin{equation}
+\operatorname{Cov}_\mu\bigl(G,\Phi'\mid0\bigr)\ \le\ 0
+\label{eq:neqassoc2}
+\end{equation}
+for the continuous, frustrated (cos-sum Wilson action), non-attractive $\mathrm{SU}(N)$ Haar
+$\times$ Wilson measure. Chapter~\ref{sec:negspecies} records that this object is absent from
+every known dependence class.
+
+\subsection{Two scales, one shape}
+
+The species appears twice (Figure~\ref{fig:scales}):
+
+\begin{itemize}
+\item \textbf{UV face (L3).} $\sup_aZ_a^{-1}\|H_a\|_D<\infty$: a single-sided force-variance
+  bound on the $\Lambda_{\mathrm{UV}}$ tower. This is G1's open node.
+\item \textbf{IR face (H1).} $\operatorname{Var}_\mu(\xi_{k\to0})\le1/\lambda$, $(L,a)$-uniform.
+  This is G2's open cell.
+\end{itemize}
+
+The shapes coincide because $\operatorname{Var}\ge0$ can only supply a lower edge, while in
+$G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$ the variance subtracts. A tool that upper-bounds
+a conditioned variance at one scale upper-bounds it at the other; the campaign states that
+building it would close L3 and H1 \textbf{simultaneously}, hence Clay. This is the ``one species,
+two scales'' reduction. The unification is the conjecture; the dictionaries (the exact Ward
+identity $E[a\,f]=1$, residue--level-gap, the identity
+$G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$) are theorems.
+
+\subsection{Why the species is not a repackaging}
+
+The project charter explicitly forbids repackaging an old inequality. The species is not: it is
+neither a positivity statement (those give upper bounds on atoms, \S\ref{sec:schur-master}), nor
+an FKG-type positive association (wrong sign), nor an LSI/BL (needs a convex potential, false at
+Savvidy), nor a moment/Carath\'eodory bound (Schur-concave, gives atom upper bounds), nor a
+sign-blind variance identity (Simon--Lieb). It is a \textbf{deterministic negative-association
+inequality for a continuous, frustrated, non-attractive measure} --- by the campaign's own audit,
+a dependence theorem that is \textbf{unknown to exist}. This is the ``sixth species'' the charter
+calls for: the first five paradigms (positivity, convexity, spectral theory, Perron--Frobenius,
+RG) are exhausted, and the sixth is still unbuilt.
+
+The slot wave made this precise by attacking the fixed-point equation form of the species from
+eight directions (\code{SLOT-SYNTHESIS.md}). All eight routes --- Birman--Schwinger,
+Dyson--Schwinger, Riccati/ERG, $G''=S-D$, Ward/Stein, Perron--Frobenius, bootstrap, quadratic
+minorant --- found that the gapless solution is \emph{always} a fixed point ($F(0)=0$), that every
+exact or scheme-clean identity is a \emph{read} rather than a force, and that the discriminating
+piece is always on the scheme/measure-dependent side. Strip the coordinates and the missing
+object is a \textbf{sign-definite, $Q$-independent source at the zero} --- equivalently
+spontaneous scale breaking, i.e.\ dimensional transmutation, i.e.\ H1. The equation is infinite
+in every coordinate (vertex tower, Makeenko--Migdal hierarchy, Fredholm determinant, field-mode
+data), but its irreducible core is one sign, and that sign is the gap.
+
+\subsection{The immune map}
+
+The campaign's archive holds reports across the families \code{ABC*}, \code{C-*},
+\code{D-BBS-*}, \code{LOC-*}, \code{MS-*}, \code{LOWER-*}, \code{FORGE-*} (and
+\code{FORGE5-*}), \code{K0-*}, \code{BS-*}, \code{TRANSMUTE-*}, and the later waves
+\code{BASE-*}, \code{INVENT-*}, \code{ROOF-*}, \code{SLOT-*}, \code{CONSTRUCT-*},
+\code{KAPPA-*}, \code{WI-*}, \code{SAVVIDY-*}, \code{TOOL-*}, \code{FALSIFY-*},
+\code{IMPOSSIBLE-*}, \code{STAR-*}, \code{G1-*}, \code{BLAST-*}, \code{CERT-*},
+\code{ROUTE-NEW-*}. Several contain multi-route audits, so the distinct-route count is on the
+order of \textbf{one hundred and fifty}. \textbf{Every one terminates at the same named species.}
+Table~\ref{tab:immune} gives each root family and the precise place it dies.
+
+\footnotesize
+\begin{longtable}{@{}c>{\raggedright\arraybackslash}p{4.15cm}
+  >{\raggedright\arraybackslash}p{3.35cm}>{\raggedright\arraybackslash}p{6.0cm}@{}}
+\caption{The immune map: thirty-three root families and where each dies.}
+\label{tab:immune}\\
+\toprule
+\textbf{\#} & \textbf{Root family (representative files)} & \textbf{What it tries} &
+\textbf{Where it dies}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{\#} & \textbf{Root family} & \textbf{What it tries} & \textbf{Where it dies}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & Free-field-blind positivity / analyticity (\code{INEQ-T1..T5}, \code{INEQ-R1..R10},
+  P\'olya, Nevanlinna, Bogoliubov) & force an atom from positivity &
+  $g=0$ free field has $f_1^2=0$; Schur-convex master obstruction; upper bounds only\\
+2 & Cross-channel (BPS/SUSY, 1-form anomaly, noninvertible symmetry, dual Meissner) &
+  protection from a symmetry & wrong channel: line/flux/charged sector, or spin-1; local
+  $\operatorname{tr}F^2$ is blind; BPS has $Z=0$\\
+3 & Non-abelian sign (random flow, random cluster/FK, FKG, spectral independence,
+  Picard--Lefschetz thimbles) & positive/signed cluster calculus & no lattice order on the
+  quotient; $\mathrm{SU}(N)$ Weingarten face weights signed; FKG wrong-signed\\
+4 & Wrong half, UV (L3, H2-global, gradient flow, Dirichlet comparison, concentration, heat
+  kernel, validated numerics, step scaling, effective string, $S^3$) &
+  control the ultraviolet or a fast rate & orthogonal to the IR spectral edge; finite box $=$
+  upper bound; wrong kernel\\
+5 & Rename $=$ gap (H1, NEO/ESI, I2, Hamiltonian binding energy, one-loop L3) &
+  identify with a solvable object & the object is the gap restated, in another vocabulary\\
+6 & Upper-bound direction (Bogoliubov, Hylleraas, FSS, Temple/Weinstein, GEVP) &
+  a variational bound & variational methods give upper bounds; threshold oracle circular\\
+7 & Strong-coupling-only (rigorous large-$N$ / Chatterjee, SZZ, random surface/CPS
+  $\lambda_{\mathrm{tH}}<1/24$, center vortex) & extend a proven regime &
+  cannot reach $\beta\approx2.5$; method radius is the obstruction\\
+8 & Index $=0$ (NCG, localization, BPS, Witten spinor) & a topological invariant &
+  rigidity no-go: discrete locally-constant index $=$ free value zero\\
+9 & Exact reduction / duality (\code{ABC} A-leg: large-$N$ master field, Makeenko--Migdal, 2D
+  Migdal, integrable, $N=\infty\to3$, Eguchi--Kawai, holography, stochastic quantization) &
+  solve an equivalent model & wrong channel, wrong direction ($S_N\ge S_\infty$ reversed), or
+  wrong regime; all eight $\to$ H1 or misdirection\\
+10 & Constructive coercivity (\code{ABC} B-leg) & partition all of config space &
+  region-complete but sign-null: open cell has all four handles null; $G''$ $=$ conditioning
+  defect of equipartition; CS $|X|\le0.40>W_{\mathrm{geo}}\approx0.32$, short by
+  $O(0.1)=\lambda$\\
+11 & New inequality / capacity (\code{ABC} C-leg, \code{C-BBS-*}) & a convex floor &
+  WSTC/STC close the cones; open cell needs negative association, proven absent; capacity floor
+  is the Poincar\'e constant of the 1D marginal $=1/\chi=G''=$ H1, necessary not sufficient\\
+12 & Fixed-cell localization (\code{LOC-*}) & a cell-local conductance floor &
+  $w\sim\xi$ circularity; free massless satisfies every premise; single-cell control does not
+  tensorize to $L\to\infty$\\
+13 & Transport / monotone (\code{MS-*}) & carry the strong-coupling gap across Savvidy &
+  every transport is one-sided (upper bounds) or local (a $\beta$-disk); the missing inequality
+  is $(\mathrm{SGL})$ $m^4\ge\kappa\langle\tfrac14\operatorname{tr}F^2\rangle$; residue
+  positivity $\ne$ gap positivity\\
+14 & Lower-bound machines (\code{LOWER-AMPLITUDE-MECHANISMS}: GKS, FKG, Simon--Lieb,
+  reverse-BL, Carath\'eodory, RP-cone, Ginibre, Gaussian correlation) &
+  lower-bound the amplitude & ``lower-bound machine, upper-bound target'': a lower bound on
+  correlation $=$ lighter mode $=$ \textbf{anti-gap}; the only correct lower bound (residue
+  weight) is Schur-concave-forbidden\\
+15 & Feshbach / Krein / squeeze / Dirac-eta / spectral flow (\code{FORGE-*}) &
+  eliminate the negative block & two-block lemma reduces to TCI $=$ H1; Krein count $\ne$ IR
+  min; spectral-flow/eta index rigid; squeeze negative block only helps the survivor\\
+16 & $k=0$ effective curvature (\code{K0-*}) & strict positivity of the coarse curvature &
+  bare Savvidy negative is a \textbf{saddle}, not the vacuum; finite-$V$ strict positivity is
+  trivial; the constant mode carries toron flat directions; uniform strictness $=$ gap\\
+17 & Bethe--Salpeter two-gluon binding (\code{BS-*}) & solve the bound-state equation &
+  kernel sign-indefinite (Savvidy); Temple needs the threshold oracle (circular); RP sign-blind;
+  area law is the wrong sector\\
+18 & String-tension $\to$ glueball transmutation (\code{TRANSMUTE-*}) &
+  $\sigma>0\Rightarrow m_{0^{++}}\ge c\sqrt\sigma$ & sector (charged 1-form asymptotic vs
+  neutral 0-form short-distance) and scale mismatch; the available inequality points the wrong
+  way\\
+19 & Long-line construction (\code{CONSTRUCT-*}: constructive QFT, dual lattice, master field,
+  Pad\'e, large-$N$ bootstrap, worldsheet CFT, wavefunctional, holographic flux tube) &
+  build the theory or the gap & every construction is either strong-coupling, dual-transformed
+  into the wrong channel, or one-datum phenomenological\\
+20 & Flux-tube $\kappa$ (\code{KAPPA-*}: NG determinant, 2D exact, holographic, large-$N$, EFT,
+  lattice, breathing, overdetermined) & derive or measure the rigidity $\kappa$ &
+  \LT{} NG determinant has the wrong sign ($-1/(6\pi)$); non-universal; not measurable at
+  current precision; rigid-string model falsified at the excited level; $\kappa=$ H1\\
+21 & WI / IR atom signature (\code{WI-*}) & an analytic functional of $\Pi$ that certifies the
+  atom & detects single-exponential dominance, not atom $+$ continuum; the robust version is the
+  standard mass plateau; uniformity $=$ H1\\
+22 & Savvidy cell (\code{SAVVIDY-*}) & a positive margin in the indefinite cell &
+  false obstruction removed (barrier-top artifact, bounded $c$-independent softening, two-loop
+  protection, one-octave uniformity), but the surviving margin is near-critical and
+  IR-marginal $=$ H1\\
+23 & Fixed-point equations (\code{SLOT-*}: BS, DSE, Riccati/ERG, S--D, Ward/Stein, PF,
+  bootstrap, quadratic minorant) & a sign-definite relation excluding the gapless fixed point &
+  $F(0)=0$ in every coordinate; every exact identity is a read; the missing object is a
+  $Q$-independent source at the zero $=$ H1\\
+24 & Roof (\code{ROOF-*}: confinement$\to$gap, 0-form dual, transfer, specimen, uniform $\chi$,
+  condensate floor, transport scalar, Peierls) & span from the base to the gap &
+  kinematic orthogonality; 0-form 't Hooft impossible; B2 single phase $\Rightarrow$ no order
+  parameter; condensate renormalon-ambiguous; the strut is H1\\
+25 & Base (\code{BASE-*}: duality, field measure, index, infinite volume, minimal model,
+  nonlocal bound, order parameter, phase) & a foundation object that forces the gap &
+  every base is a known type (order parameter, index, Markov functional) and each type is
+  eliminated by a theorem\\
+26 & Impossible bases (\code{IMPOSSIBLE-*}) & a radically different starting point &
+  analytic continuation blind to the essential singularity; consistency satisfied by the free
+  field; indices rigid; entanglement wrong channel\\
+27 & Star / RG attractor (\code{STAR-*}) & a gapless 4D AF IR attractor must be conformal &
+  \LT{} it is, but it reduces the problem to ``$N_f=0$ outside the conformal window,'' a
+  dynamical $\beta$-function fact\\
+28 & Conformal window / $(G1)$ (\code{G1-*}) & prove $N_f=0$ is outside the window &
+  the window is real (Banks--Zaks); no exact identity forbids an IR fixed point; the
+  nonperturbative statement is $(G1)$ itself\\
+29 & Complex-function-theory tools (\code{TOOL-*}) & force the atom weight from $\Pi$ &
+  values/moments are integrals (OPE-RHO blind); zeros/poles are A3; geometry is support-only;
+  duality has zero gap; only Hardy detects presence, not weight\\
+30 & Falsification of ONLY-EXIT (\code{FALSIFY-*}) & a forcing functional that is neither
+  YM-structure nor infinite data & the atom is the weak-$*$ discontinuity; finite data is
+  weak-$*$ continuous; atomless measures are dense; all eight fail\\
+31 & Blast H1 (\code{BLAST-*}) & break H1 directly & every route collapses H1 to one marginal
+  inequality, the $a\to0$ map, the IR endpoint, or the renormalon ambiguity; the atom half is
+  untouched\\
+32 & Certificate attempts (\code{CERT-*}, \code{ROUTE-NEW-*}) & assemble a certificate from the
+  tools & the $\chi$-half constant is the $u=2$-ambiguous condensate; the atom half is A3
+  isolation; modern RG and holography do not reach the crossover\\
+33 & Diagnostics (\code{WI-P3-*}, \code{WI-RESLOPE-*}) & read the atom from lattice data &
+  the P3 approach law, $\kappa(\tau)$, Re-slope and FSS law are genuine and continuum-robust,
+  but each is a read gated by $L\to\infty$ $=$ H1\\
+\end{longtable}
+\normalsize
+
+\subsection{The waves, in one table}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.2cm}c
+  >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Wave} & \textbf{Routes} & \textbf{Collective verdict}\\
+\midrule
+First campaign & $\sim92$ & all species; six tools; seven no-gos; immune map\\
+\code{SAVVIDY} & 8 & false obstruction removed; margin near-critical $=$ H1\\
+\code{WI}/\code{P3} & 13 & robust diagnostics; all are reads gated by $L\to\infty$\\
+\code{CONSTRUCT}/\code{KAPPA} & 16 & $\kappa$ line closed; rigid string falsified; Savvidy floor
+  survives\\
+\code{SLOT} & 8 & gapless solution is a fixed point in every coordinate; missing object is a
+  source at the zero\\
+\code{BASE}/\code{ROOF} & 16 & order-parameter, index, Markov paradigms eliminated; strut $=$ H1\\
+\code{INVENT} & 8 & new objects; all reduce to the species\\
+\code{IMPOSSIBLE} & 8 & radical bases; all return to H1; two new coordinates\\
+\code{STAR} & 8 & $(\star)$ true but reduces to $(G1)$; window real\\
+\code{G1} & 8 & all fail; $(G1)$ is the $\beta$ coordinate of H1\\
+\code{TOOL} & 8 & seven blind/read-only; Hardy presence only\\
+\code{FALSIFY} & 8 & only exit is H1; weak-$*$ discontinuity\\
+\code{BLAST} & 8 & H1 cannot be blasted\\
+\code{CERT} & 8 & certificate $=$ H1 ($\chi$) plus A3 (atom)\\
+\bottomrule
+\end{tabularx}
+\caption{The waves and their collective verdicts.}
+\label{tab:waves}
+\end{table}
+
+\subsection{The waves in detail}
+
+Table~\ref{tab:waves} compresses each wave to a line. This subsection gives each wave a
+paragraph, because the collective verdicts hide the specific mechanisms that make the map
+convincing.
+
+\textbf{\code{SAVVIDY} (8 routes).} The wave asked whether the negative mode of the one-loop
+effective potential destroys the susceptibility floor. It does not: the negative mode is a
+barrier-top artifact, the true vacuum at $\varphi=\pm v$ is stable, the softening is bounded by
+$2/\lambda_4$ and $c$-independent, the sign is protected at two loops, and the one-octave support
+makes it $(L,a)$-uniform. What survives is a near-critical, infrared-marginal sub-criticality
+($D/S\approx0.94$--$1.00$), which is H1. The wave's value is the removal of a false obstruction;
+its limit is that the removal does not produce a positive margin.
+
+\textbf{\code{WI}/\code{P3} (13 routes).} The wave asked whether an analytic functional of the
+boundary density can certify the atom. The raw complex-zero functional is dead for the physical
+atom-plus-continuum: a one-percent continuum weight moves its nearest zero, and the embedded
+analysis gives $\varepsilon_*=0$. The robust replacement, the Re-slope along imaginary-$\tau$
+rungs, survives a background continuum but is exactly the Stieltjes pole, i.e.\ A3. The P3
+approach law and the plateau analysis are rigorous readings whose uniformity is the
+$L\to\infty$ isolation, i.e.\ H1. The wave's value is the diagnostic set; its limit is that the
+diagnostics read rather than force.
+
+\textbf{\code{CONSTRUCT}/\code{KAPPA} (16 routes).} The construction wave tried to build the
+theory or the gap directly; the $\kappa$ wave tried to derive or measure the flux-tube rigidity.
+The $\kappa$ line is closed: the Nambu--Goto determinant has the wrong sign
+($\kappa_{NG}=-1/(6\pi)$), the 2D result is non-universal, holography gives $\kappa=0$, large-$N$
+fixes only the scaling, five EFT routes leave $\kappa$ free, and the lattice is ten to fifty
+times short of the needed precision. The rigid-string model is falsified at the excited level
+($\kappa_{\rm light}/\kappa_{\rm exc}=1.733$; the predicted mass ratio $1.168$ versus the lattice
+$1.538$). And $\kappa=(m/\sqrt\sigma)^2/(8\pi^2)$ is the gap rescaled. The one real positive of
+the wave is the Savvidy-cell sharpening: the negative mode does not kill the floor.
+
+\textbf{\code{SLOT} (8 routes).} The wave attacked the fixed-point equation form of the species
+from eight directions. Every route found that the gapless solution is a fixed point
+($F(0)=0$), that every exact or scheme-clean identity is a read, and that the discriminating
+piece is scheme/measure-dependent. The missing object is a sign-definite, $Q$-independent source
+at the zero --- spontaneous scale breaking, i.e.\ H1. The wave's value is the six-feature ``face''
+of the slot: zero is always a fixed point; exact identities hold at the zero; the discriminating
+piece is always H1; the missing object is a source; the source is dimensional transmutation; the
+would-be escape (a $k\to0$ $0^{++}$ tachyon) is absent at $\beta=2.5$.
+
+\textbf{\code{BASE}/\code{ROOF} (16 routes).} The base wave tried to find a foundation object
+that forces the gap; the roof wave tried to span from the base to the gap. The roof's type is now
+proved: the order-parameter paradigm is dead (zero-temperature pure YM is a single phase, so
+there is nothing to condense), the topological paradigm is dead (indices are rigid), and the
+Markov-semigroup paradigm is dead (homogeneous, zero at equilibrium, or sign-indefinite). The
+gluon-condensate floor is renormalon-ambiguous. What survives is the strong-coupling bridge
+$m\ge4\sqrt\sigma$ and the conditional roof $\gamma\ge(1/2\pi)(1/\chi)$; the missing strut has
+three names and is H1.
+
+\textbf{\code{INVENT} (8 routes).} The invention wave built new objects: a curvature functional,
+a lee--yang type object, a modular object, a percolation object, a tail-dependence functional, a
+flux functional, a housekeeping identity, and a new monotone. Every one is either acid-failing,
+or reduces to the species, or is a read. The wave's value is negative: the space of ``new
+objects'' in the known categories is exhausted, which is why the sixth species must be genuinely
+new.
+
+\textbf{\code{IMPOSSIBLE} (8 bases).} The wave built radical bases: analytic continuation,
+contradiction, global consistency, universality, exact SUSY plus decoupling, a new-space index,
+invertibility by degree, and entanglement. All eight fail, each for a sharp structural reason
+(Table~\ref{tab:impossible}). The wave's real yield is two artifacts: the essential-singularity
+characterization of the gap, and the $(\star)$ reformulation. Both are sharper statements of the
+wall; neither crosses it.
+
+\textbf{\code{STAR} (8 routes).} The wave audited $(\star)$, the statement that a gapless
+interacting 4D asymptotically-free Wilsonian IR attractor is conformal. $(\star)$ survives the
+acid test (no counterexample) and is true modulo the $d=4$ scale-implies-conformal step. But it
+does not prove the gap: it reduces the problem to ``pure YM is outside the conformal window,''
+which is $(G1)$, a dynamical fact. The decisive reason a kinematic proof is impossible is the
+reality of the conformal window: $\mathrm{SU}(3)$ with $N_f=12$ is asymptotically free and
+gapless-conformal.
+
+\textbf{\code{G1} (8 routes).} The wave attacked $(G1)$ through the modern $\beta$/CFT toolbox:
+single-coupling, nonperturbative $\beta$ sign, central charges, large-$N$, conformal bootstrap,
+window boundary, holographic NEC, and the Dyson--Schwinger scaling solution. All fail, each
+sharply (Chapter~\ref{ch:betarg}). The DSE scaling solution is the gauge-fixed cousin: it looks
+conformal in unphysical propagators while the physical theory confines.
+
+\textbf{\code{TOOL} (8 routes).} The wave built eight complex-function-theory tools to fill the
+forcing blind spot. Seven are blind or read-only; the Hardy $L^2$ singular-kernel functional
+escapes the integral no-go for presence but not for the weight. The wave's value is the
+structural classification (values are integrals; zeros are A3; positivity is an upper bound;
+geometry is support-only; duality has zero gap), which is a no-go of method.
+
+\textbf{\code{FALSIFY} (8 routes).} The wave tried to falsify the ONLY-EXIT claim by building a
+forcing functional that is neither a YM-structure constraint nor an infinite-data limit. All
+eight fail. The unifying reason is the weak-$*$ discontinuity of the boundary density
+(Chapter~\ref{ch:weakstar}). The wave's value is the sharpening: there is one exit, not two.
+
+\textbf{\code{BLAST} (8 routes).} The wave attacked H1 directly: an operator inequality, a
+nonlinear field-level tool, an exclusion of the atomless bump, a certified lattice bound, a
+transfer/variational argument, a Savvidy closure, a string-tension bridge, and a resummation
+diagnostic. Every route collapses H1 to the same irreducible form in a different coordinate ---
+one marginal $O(1)$ inequality, the $a\to0$ map, the IR endpoint, or the renormalon ambiguity ---
+and none touches the atom half. The wave's value is the confirmation that H1 cannot be blasted
+from within its own coordinate.
+
+\textbf{\code{CERT} (8 routes).} The wave tried to assemble a certificate from the tools. It
+found that the $\chi$-half is one marginal inequality whose constant is the $u=2$-ambiguous
+condensate, and the atom half is A3 isolation; the certificate is H1 plus A3, not a new object.
+The two ``new routes'' (modern rigorous RG and holography) do not reach the crossover. The wave's
+value is the definitive statement: the certificate is the wall, not a tool-gap.
+
+\subsection{Meta-conclusion}
+
+This is not ``we failed to find a route.'' It is roughly a hundred and fifty independent frontal
+attacks, each of which proved the same irreducibility from a different direction. That is near
+theorem-grade \emph{exhaustiveness evidence} --- not a theorem, and not a proof, but a structural
+fact about where the difficulty lives (Figure~\ref{fig:funnel}). The waves of this edition add a
+second dimension to the evidence: the same wall appears in a coordinate with a disjoint
+technique pool (Part~III), and the route that closes the classical-positivity pool (the weak-$*$
+argument) is provably inapplicable to the $\beta$ pool, and vice versa. Two independent
+exhaustions of two independent toolboxes is the strongest form of evidence the campaign can
+offer without a proof.
+
+\figfunnel
+
+\subsection{The equation is infinite; the core is one sign}
+
+The slot wave's sharpest sentence is worth preserving verbatim in spirit: \emph{the exact
+relation is coextensive with the whole quantum field theory --- infinite-dimensional in every
+coordinate --- but its irreducible core is a single scalar sign condition at $\kappa=0$: is there
+a sign-definite, $Q$-independent source at the zero?} As a system, the problem is the theory; as
+a decision, it is one inhomogeneity. This is the resolution of ``how big is it'': big in
+description, one bit in content, and the one bit is the mass gap.

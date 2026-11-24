@@ -1,0 +1,289 @@
+% =====================================================================
+%  Figures (TikZ). Each macro emits a complete figure environment.
+% =====================================================================
+\tikzset{
+  fbox/.style={draw=black!45, rounded corners=2.5pt, fill=black!4, align=center,
+               inner sep=5pt, font=\footnotesize},
+  arr/.style={-{Stealth[length=5pt,width=4pt]}, draw=black!65, thick},
+  alab/.style={font=\scriptsize, text=black!70, inner sep=2pt, fill=white},
+}
+
+% ---------------------------------------------------------------------
+% Fig 1 — the logical diamond
+% ---------------------------------------------------------------------
+\newcommand{\figreduction}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[fbox, fill=cC!10, draw=cC!55, text width=5.0cm] (clay) at (0,7.2)
+    {\textbf{Clay: existence $\wedge$ gap}\\ uniform $\Delta>0$, $a\to0$, $L\to\infty$};
+  \node[fbox, fill=black!3, text width=4.6cm, minimum height=1.4cm] (h1) at (-5.4,4.0)
+    {\textbf{H1}: $\chi\le 1/\lambda$\\ (coarse variance ceiling)};
+  \node[fbox, fill=cT!9, draw=cT!55, text width=4.8cm, minimum height=1.4cm] (hs) at (5.4,4.0)
+    {\textbf{$H^*$}: $f_1^2\ge r_0>0$\\ $+$ isolation $I_2$ (residue floor)};
+  \node[fbox, fill=cT!12, draw=cT!70, text width=6.2cm] (bot) at (0,0.85)
+    {$m_1^2\;\ge\; f_1^2/\chi\;\ge\; r_0\lambda\;>\;0$};
+
+  \draw[arr] (clay.south) -- (h1.north)
+      node[alab, pos=0.5, sloped, above] {gap $\Rightarrow\chi\le M_0/\lambda$ \ \LT};
+  \draw[arr] (hs.south) -- (bot.north east)
+      node[alab, pos=0.5, sloped, below] {$f_1^2\ge r_0,\ \chi\le1/\lambda\Rightarrow$ gap \ \LT};
+  \draw[arr, dashed, draw=cN!80] (h1.south) -- (bot.north west)
+      node[alab, pos=0.5, sloped, below] {not sufficient: thin atom \ \LE};
+  \draw[{Stealth[length=5pt,width=4pt]}-{Stealth[length=5pt,width=4pt]},
+        draw=cC!70, thick, dashed]
+      (h1.east) -- node[alab, above]
+      {$H^*{=}\text{H1}$ doubted \ \LC} (hs.west);
+\end{tikzpicture}
+\caption{The logical geography of the reduction. The gap implies the susceptibility ceiling
+H1 (necessary, \LT), while a residue floor together with that ceiling implies $m_1^2>0$
+(sufficient, \LT). H1 alone is not sufficient, because a measure with a thin atom at
+$\varepsilon\to0$ satisfies it while remaining gapless. The two faces are \emph{not} the same
+object: H1 is the inverse susceptibility $1/\chi$ (an upper bound on $m_1^2$), and the
+identification $H^*=\text{H1}$ is a conjecture (\LC) now doubted --- the free massive composite
+$\mathord{:}\varphi^2\mathord{:}$ has $G''=1/\chi\ne m_1^2$ --- while the implications are theorems. The free massless field shows why: it satisfies H1 yet has
+$f_1^2=0$, so no positivity-only route leads from the ceiling to the floor.}
+\label{fig:diamond}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig 2 — Källén–Lehmann measure and the thin-atom counterexample
+% ---------------------------------------------------------------------
+\newcommand{\figmeasure}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  % ---- panel A ----
+  \begin{scope}[shift={(0,0)}]
+    \draw[arr] (0,0) -- (6.6,0) node[alab, right] {$s$};
+    \draw[arr] (0,0) -- (0,3.5) node[alab, above] {$d\nu$};
+    \fill[gray!22] (2.75,0) -- (2.75,1.55) -- (3.3,1.15) -- (4.0,0.85)
+                   -- (5.0,0.62) -- (6.4,0.48) -- (6.4,0) -- cycle;
+    \draw[black!55, thin] (2.75,0) -- (2.75,1.55) -- (3.3,1.15) -- (4.0,0.85)
+                   -- (5.0,0.62) -- (6.4,0.48);
+    \fill[black!80] (2.35,0) rectangle (2.47,2.75);
+    \node[font=\scriptsize, above] at (2.41,2.75) {$f_1^2$};
+    \node[font=\scriptsize, below] at (2.41,0) {$m_1^2$};
+    \node[font=\scriptsize, text=black!60] at (4.9,1.25) {continuum};
+    \draw[->, black!40, thin] (4.75,1.12) -- (4.55,0.78);
+    \node[font=\scriptsize, text=black!55, align=center] at (3.3,-0.75)
+      {susceptibility $\chi=\int s^{-1}d\nu$\\ weighs residues, not the edge};
+  \end{scope}
+  % ---- panel B ----
+  \begin{scope}[shift={(8.6,0)}]
+    \draw[arr] (0,0) -- (6.6,0) node[alab, right] {$s$};
+    \draw[arr] (0,0) -- (0,3.5) node[alab, above] {$d\nu$};
+    \fill[black!75] (0.95,0) rectangle (1.03,0.42);
+    \fill[black!75] (4.55,0) rectangle (4.67,2.60);
+    \node[font=\scriptsize, above] at (0.99,0.42) {$w$};
+    \node[font=\scriptsize, below] at (0.99,0) {$\varepsilon$};
+    \node[font=\scriptsize, above] at (4.61,2.60) {$1-w$};
+    \node[font=\scriptsize, below] at (4.61,0) {$S$};
+    \node[font=\scriptsize, text=cN!85, align=center, text width=5.4cm] at (3.3,-0.95)
+      {H1 holds: $w/\varepsilon\le 1/\lambda$. \ Yet $\inf\operatorname{supp}\nu=\varepsilon\to0$:
+       no gap.};
+  \end{scope}
+\end{tikzpicture}
+\caption{Left: a Källén--Lehmann measure with an isolated atom of weight $f_1^2$ at $m_1^2$ and
+a continuum above it; the susceptibility $\chi=\int s^{-1}d\nu$ is a residue-weighted harmonic
+mean, dominated by the lightest residue, not by the lightest mass. Right: the thin-atom
+counterexample $\nu=w\delta_\varepsilon+(1-w)\delta_{s_2}$ with $w/\varepsilon\le1/\lambda$.
+The ceiling H1 is satisfied while $\inf\operatorname{supp}\nu\to0$, which is why H1 is
+necessary but not sufficient.}
+\label{fig:measure}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig 3 — the (field × momentum) plane
+% ---------------------------------------------------------------------
+\newcommand{\figplane}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  % cells (5.2 x 2.5)
+  \node[fbox, fill=cT!8, draw=cT!45, text width=4.9cm, minimum height=2.3cm] (tl)
+    at (3.0,3.0) {\textbf{typical field, high momentum}\\[2pt]
+      \textbf{OPEN CELL} \ \LM\\[1pt]
+      $\operatorname{Var}(\xi_{k\to0})\le1/\lambda$\\
+      \textcolor{cN!85}{\textbf{sign 0\% $=$ H1}}};
+  \node[fbox, fill=cT!8, draw=cT!45, text width=4.9cm, minimum height=2.3cm] (tr)
+    at (8.6,3.0) {\textbf{high field, high momentum}\\[2pt]
+      AF--UV deep cone: instability\\ $\le\mu^2 e^{-c\mu^4/g^4}\to0$ \ \LT};
+  \node[fbox, fill=cT!8, draw=cT!45, text width=4.9cm, minimum height=2.3cm] (bl)
+    at (3.0,0.2) {\textbf{typical field, low momentum}\\[2pt]
+      shallow band: $\Phi''\succeq N/12$\\ $+$ Brascamp--Lieb \ \LT};
+  \node[fbox, fill=cT!8, draw=cT!45, text width=4.9cm, minimum height=2.3cm] (br)
+    at (8.6,0.2) {\textbf{high field, low momentum}\\[2pt]
+      WSTC: cone variance mass\\ $\le(c\beta\kappa_{\max})^2e^{-c\beta(\kappa^2-\kappa_{\rm typ}^2)N_\square}$ \ \LT};
+
+  \draw[arr] (-0.2,-1.0) -- (11.8,-1.0) node[alab, right] {field strength};
+  \draw[arr] (-0.2,-1.0) -- (-0.2,4.5) node[alab, above] {momentum};
+  \node[font=\scriptsize, text=black!55] at (0.4,-0.55) {typical};
+  \node[font=\scriptsize, text=black!55] at (6.0,-0.55) {high};
+  \node[font=\scriptsize, text=black!55, rotate=90] at (0.35,0.2) {low};
+  \node[font=\scriptsize, text=black!55, rotate=90] at (0.35,3.0) {high};
+\end{tikzpicture}
+\caption{The $(\text{field}\times\text{momentum})$ plane. Region coverage is about
+$90\%$, closed by the theorems G2.1--G2.4. The one open cell --- typical field with high
+momentum --- is the region where all four handles fail simultaneously: the WSTC exponent
+vanishes when the field is typical, the AF--UV suppression has not begun at $g\approx1.5$,
+and the $N/12$ floor is roughly ten times too small. That cell is exactly
+$\operatorname{Var}(\xi_{k\to0})\le 1/\lambda$, with zero slack.}
+\label{fig:plane}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig 4 — node-board status bars
+% ---------------------------------------------------------------------
+\newcommand{\figbars}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \foreach \k/\nm/\pct/\cl in {%
+    0/{G1.0 fixed-volume assembly}/95/cT,
+    1/{G1.1 perturbative kernel}/100/cT,
+    2/{G1.2 uniform $Z_a$ (node L3)}/40/cM,
+    3/{G1.3 $a\to0$ given L3}/70/cC,
+    4/{G1.4 $L\to\infty$: OS2, OS4}/0/cM,
+    5/{G2.1--G2.4 region theorems}/100/cT,
+    6/{G2.5 open cell $=$ H1}/0/cM,
+    7/{G2.6 negative association}/0/cM,
+    8/{channel: $0^{++}$ no dissolution}/100/cC,
+    9/{\textbf{Clay}}/0/cN}{
+    \pgfmathsetmacro{\yy}{-0.66*\k}
+    \node[anchor=east] at (6.3,\yy) {\nm};
+    \fill[black!8] (6.5,\yy-0.16) rectangle (15.2,\yy+0.16);
+    \pgfmathsetmacro{\ww}{8.7*\pct/100}
+    \ifnum\pct>0
+      \fill[\cl!70] (6.5,\yy-0.16) rectangle ({6.5+\ww},\yy+0.16);
+    \fi
+    \node[anchor=west, text=black!65] at (15.35,\yy) {\pct\%};
+  }
+  \draw[black!25] (6.5,-0.4) -- (6.5,-6.1);
+\end{tikzpicture}
+\caption{Node board. Percentages are \emph{node-local} --- progress toward each node's own
+goal --- and are emphatically not a percentage proof of Clay. Clay is $0\%$ because the
+species is unbuilt.}
+\label{fig:bars}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig 5 — immune map funnel
+% ---------------------------------------------------------------------
+\newcommand{\figfunnel}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \foreach \k/\nm in {%
+    0/{positivity / analyticity-only},
+    1/{cross-channel protection},
+    2/{non-abelian sign calculus},
+    3/{wrong half: UV control},
+    4/{rename $=$ gap},
+    5/{upper-bound direction},
+    6/{strong-coupling only},
+    7/{index $=0$},
+    8/{exact reduction / duality},
+    9/{constructive coercivity},
+    10/{new inequality / capacity},
+    11/{fixed-cell localization},
+    12/{transport / monotone},
+    13/{lower-bound machines},
+    14/{Feshbach / Krein},
+    15/{$k=0$ effective curvature},
+    16/{Bethe--Salpeter two-gluon},
+    17/{string tension $\to$ glueball}}{
+    \pgfmathsetmacro{\yy}{-0.43*\k}
+    \node[anchor=east, font=\scriptsize, text=black!75] at (6.15,\yy) {\nm};
+    \draw[black!28, very thin] (6.28,\yy) -- (9.25,-3.55);
+  }
+  \node[fbox, text width=5.9cm, fill=cM!7, draw=cM!65] at (12.45,-3.55)
+    {\textbf{ONE SPECIES}\\[2pt]
+     $\operatorname{Var}_\mu(\langle v,\nabla S\rangle\mid0)\;\le\;E_\mu[H_{vv}\mid0]+W_{\mathrm{full}}-\delta$\\[2pt]
+     \scriptsize uniform in $(L,U')$: this is H1 in the infrared and L3 in the ultraviolet};
+\end{tikzpicture}
+\caption{The immune map. Eighteen root families, spanning roughly ninety distinct routes, all
+terminate at the same inequality. This is near theorem-grade \emph{exhaustiveness evidence} ---
+not a theorem and not a proof, but a structural fact about where the difficulty lives.}
+\label{fig:funnel}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig 6 — one species, two scales
+% ---------------------------------------------------------------------
+\newcommand{\figscales}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[fbox, text width=13.6cm, fill=cM!7, draw=cM!60] (species) at (7.0,4.6)
+    {\textbf{One inequality: a single-sided upper bound on a conditioned variance}\\[2pt]
+     \small nonperturbative \quad$\cdot$\quad non-circular \quad$\cdot$\quad free-field-failing
+     \quad$\cdot$\quad $(L,a)$-uniform};
+  \node[fbox, text width=5.3cm, fill=cC!8, draw=cC!50] (ir) at (3.6,1.4)
+    {\textbf{Infrared face: H1}\\ $\operatorname{Var}(\xi_{k\to0})\le 1/\lambda$\\ G2's open cell \ \LM};
+  \node[fbox, text width=5.3cm, fill=cC!8, draw=cC!50] (uv) at (10.4,1.4)
+    {\textbf{Ultraviolet face: L3}\\ $\sup_a Z_a^{-1}\lVert H_a\rVert_D<\infty$\\ G1's open node \ \LM};
+  \draw[arr] (species.south) -- (ir.north);
+  \draw[arr] (species.south) -- (uv.north);
+  \draw[{Stealth[length=5pt]}-{Stealth[length=5pt]}, draw=cC!60, thick, dashed]
+    (ir.east) -- (uv.west);
+  \node[font=\scriptsize, text=black!65] at (7.0,2.55) {same shape};
+\end{tikzpicture}
+\caption{The one-species reduction. The same inequality appears at two scales: as the UV
+force-variance bound L3 and as the IR conditioned-variance bound H1. The shapes coincide because
+$\operatorname{Var}\ge0$ can only supply a lower edge, while in
+$G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$ the variance subtracts. The unification is a conjecture; the
+dictionaries (Ward, residue--level-gap, $G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$) are theorems, and
+building the inequality would close L3 and H1 simultaneously.}
+\label{fig:scales}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig 7 — numerics: curvature probe with error bars
+% ---------------------------------------------------------------------
+\newcommand{\figprobe}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  % axes: y from -0.1 to 0.55
+  \draw[arr] (0.8,-0.1*5.4-0.4) -- (0.8,0.58*5.4) ; % y axis
+  \draw[arr] (0.8,-0.1*5.4-0.4) -- (9.4,-0.1*5.4-0.4) node[alab, right] {};
+  \pgfmathsetmacro{\yzero}{0*5.4-0.0}
+  \draw[dashed, black!50] (0.8,{0.0}) -- (9.2,{0.0});
+  \node[anchor=east, text=black!60] at (0.7,0.0) {$0$};
+  \node[anchor=east, text=black!60] at (0.7,{0.5*5.4}) {$0.5$};
+  \node[anchor=east, text=black!55, rotate=90] at (0.15,{0.27*5.4}) {$G''$};
+  % data
+  \foreach \x/\val/\err/\nm in {2/0.425/0.084/{$L=4$, $k=\pi/2$},
+                                4/0.307/0.055/{$L=8$, $k=\pi/4$},
+                                6/0.396/0.063/{$L=8$, $k=\pi/2$},
+                                8/0.319/0.005/{$W_{\rm geo}$}}{
+    \pgfmathsetmacro{\ym}{(\val-\err)*5.4}
+    \pgfmathsetmacro{\yp}{(\val+\err)*5.4}
+    \pgfmathsetmacro{\yc}{\val*5.4}
+    \draw[thick, cC!80] (\x,\ym) -- (\x,\yp);
+    \draw[thick, cC!80] (\x-0.09,\ym) -- (\x+0.09,\ym);
+    \draw[thick, cC!80] (\x-0.09,\yp) -- (\x+0.09,\yp);
+    \fill[cC!85] (\x,\yc) circle (1.6pt);
+    \node[rotate=30, anchor=north east, text=black!70, inner sep=1.5pt]
+      at ({\x+0.12},-1.05) {\nm};
+    \node[above=3pt, text=black!70] at (\x,{\yp+0.02}) {$\val$};
+  }
+\end{tikzpicture}
+\caption{The $k\to0$ curvature probe on a single $L=8$ volume ($\mathrm{SU}(3)$, $\beta=5.7$),
+with an $\mathrm{SU}(3)$ $L=4$ check; all plotted points are $\mathrm{SU}(3)$, while
+$\mathrm{SU}(2)$ ($\beta=2.4$) reproduces the sign without being plotted. The measured points are positive and volume-stable,
+and $W_{\mathrm{geo}}$ is pinned at $+0.32$. This is a $k\to0$ sign probe on a
+gauge-dependent gluon mode in a flat chart, \emph{not} the gauge-invariant $0^{++}$ residue;
+keeping only the proven $W_{\mathrm{geo}}\ge0$ and treating the rest statistically gives
+$95\%$ one-sided lower bounds of $-0.098$ ($\mathrm{SU}(3)$) and $-0.035$ ($\mathrm{SU}(2)$),
+so zero is not excluded. Label \LE.}
+\label{fig:probe}
+\end{figure}
+}

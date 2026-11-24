@@ -1,0 +1,245 @@
+% =====================================================================
+\clearpage
+\part{The reduction}
+% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+% =====================================================================
+
+\subsection{The Clay statement, exactly}
+
+The Clay problem, as posed by Jaffe and Witten, is:
+
+\begin{qbox}
+Prove that for any compact simple gauge group $G$, a non-trivial quantum Yang--Mills theory
+exists on $\mathbb{R}^4$ and has a mass gap $\Delta>0$. Existence includes establishing
+axiomatic properties at least as strong as those cited in Streater--Wightman (1964) and
+Osterwalder--Schrader (1973, 1975). [Jaffe--Witten, \emph{Quantum Yang--Mills Theory}, Clay
+Mathematics Institute]
+\end{qbox}
+
+Three features of this statement are habitually under-weighted and drive everything that follows.
+
+\textbf{(1) Uniformity.} It demands a uniform gap: not merely that each finite lattice volume has
+a positive spectral gap (trivially true by compactness), but that the gap survives $L\to\infty$
+and $a\to0$ with a volume- and cutoff-uniform lower bound, and that the resulting theory clusters
+exponentially at a rate $m>0$ in every channel carrying the lightest state.
+
+\textbf{(2) Gauge invariance.} It demands that the gap be a feature of the gauge-invariant,
+physical theory --- not of a gauge-fixed chart, and not of a perturbative expansion around a
+chosen background. This sounds like a technicality; it is not. Several of the campaign's
+apparent ``positive signals'' turned out to live on gauge-dependent modes, and one of the
+no-gos below is precisely that gauge invariance reaches the vacuum but not the first excited
+scalar.
+
+\textbf{(3) Existence plus gap are logically separate.} A construction of the measure with the
+Osterwalder--Schrader axioms (existence) is a different task from the lower bound on the
+Hamiltonian (gap). They interact --- a uniform gap gives clustering, and clustering is one of the
+axioms --- but neither implies the other. The campaign treats them as two halves, G1 and G2, and
+is explicit that progress on one does not constitute progress on the other.
+
+The campaign's operational form of the Clay conclusion, assembled and partially machine-verified
+in \code{docs/conditional-theorem.md}, is:
+\begin{align*}
+&\exists\,\mu\ \text{on}\ \mathbb{R}^4,\ \text{gauge-invariant, satisfying OS0--OS4};\\
+&\text{non-Gaussian},\quad g_{\mathrm{ren}}/\Lambda>0;\\
+&\Delta/\Lambda\ \ge\ \min(\delta_W,\delta_S)>0;\\
+&|S(f\,\tau_a g)-S(f)\,S(g)|\ \le\ C\,e^{-m\|a\|},\qquad
+  m\ge c\,\Delta>0,\ \ \text{all gauge-invariant local } f,g;\\
+&\text{unique vacuum};\quad \text{area law } \sigma=c_\sigma\Lambda^2>0;\quad
+  \text{all constants group-uniform in } (h^{\vee},\dim G,\dim\mathfrak{g}).
+\end{align*}
+
+The transfer-matrix form of the same statement is the one used throughout this paper. For the
+lattice transfer matrix $T_a=e^{-H_a}$ on the gauge-invariant Hilbert space $\mathcal{H}_a$, with
+vacuum $\Omega$,
+\begin{equation}
+\exists\,\delta>0:\qquad
+\inf\operatorname{spec}\!\bigl(H_a\big|_{\Omega^\perp}\bigr)\ \ge\ \delta\Lambda
+\qquad\text{for all sufficiently small } a .
+\label{eq:clay-transfer}
+\end{equation}
+The operator $T_a$ is a positive, positivity-improving operator on $\mathcal{H}_a$ at every
+$\beta>0$ (the transfer-matrix theorem of \S\ref{thm:pf}); the Clay content is that its first eigenvalue gap does not
+collapse as $a\to0$ and $L\to\infty$.
+
+\subsection{The lock-core rewriting}
+
+The campaign works with a sharper, channel-specific rewriting of the gap which, while not
+literally equivalent to the Clay statement, is the correct object to attack. Let $\nu$ be the
+K\"all\'en--Lehmann spectral measure of the gauge-invariant local operator
+$O=\operatorname{tr}F^2$ (more precisely $O_S=\tfrac14\operatorname{tr}F_{\mu\nu}F^{\mu\nu}$,
+the scalar density; the normalization is immaterial). Reflection positivity gives $\nu\ge0$
+and $\operatorname{supp}\nu\subset[m_1^2,\infty)$, where $m_1$ is the lightest mass in the
+$0^{++}$ channel. The \textbf{atom} is
+\begin{equation}
+f_1^2 \;:=\; \nu(\{m_1^2\}) \;=\; \bigl|\langle 0|\operatorname{tr}F^2|\mathbb{G}\rangle\bigr|^2 ,
+\label{eq:atom}
+\end{equation}
+the squared overlap of the vacuum with the lightest $0^{++}$ glueball $\mathbb{G}$. The
+\textbf{lock core} is: $f_1^2>0$ and the atom is isolated ($\Delta>0$ above it). The campaign
+summarises this as
+\begin{equation}
+\text{Clay}\iff\neg(\mathrm{iii}),\qquad
+(\mathrm{iii})=\text{``the YM measure is a gapless interacting 4D CFT''.}
+\label{eq:lockcore}
+\end{equation}
+
+This rewriting is useful because it names the exact analytic object (an atom weight in a positive
+measure at the bottom of a channel) and the exact analytic properties it has:
+\begin{itemize}
+\item $f_1^2$ is \textbf{non-diagonal}: it is an off-diagonal matrix element squared, so no
+  diagonal (spectral-density) argument can see it directly;
+\item $f_1^2$ is \textbf{upper-semicontinuous} in the coupling: $\nu(\{x\})$ is usc, so
+  continuity can only make an atom \emph{fall}, never rise;
+\item certifying \textbf{isolation} requires a second scale $E_2$ (the next state), which is why
+  every bottom-functional tool is blind;
+\item the \textbf{susceptibility} $\chi=\int s^{-1}d\nu$ is a residue-weighted harmonic mean,
+  dominated by the lightest residue rather than the lightest mass; this is the technical heart of
+  Chapter~\ref{sec:squeeze}.
+\end{itemize}
+
+\textbf{Honesty checkpoint.} ``Clay $\iff$ atom'' is \emph{not} a theorem of equivalence. The
+campaign's own adversarial audit (\code{research/unconditional/REDUCTION-AUDIT.md}) establishes
+that the correct logical shape is a \textbf{diamond}, not a chain
+(Figure~\ref{fig:diamond}): a gapped theory need not have an atom at all (the massive free scalar
+with $O={:}\varphi^2{:}$ has a gap and $f_1^2=0$), so $\text{gap}\Rightarrow\text{atom}$ is false;
+the true direction is \emph{isolated atom at $\inf\operatorname{supp}\nu$ $\Rightarrow$
+exponential clustering in that channel}, conditional on that channel carrying the lightest
+state. This paper therefore treats ``the atom $f_1^2>0$'' as the \textbf{target object}, not as a
+synonym for Clay. The gap between the two is itself a named missing step --- the ordering input
+that the lightest state lies in $0^{++}$ (the corpus's \code{IN-11}, a physical input, not
+derivable from symmetry).
+
+This edition adds a machine-checked sharpening of the same point. The module
+\code{lean/YMStatement/H1Sharpening.lean} proves, with zero \code{sorry} and only the standard
+axioms, that the susceptibility ceiling H1 together with the squeeze hypothesis $f_1^2\le\chi m$
+and $m>0$ does \emph{not} imply $f_1^2>0$: the tuple $(f,m,M,\chi,\lambda)=(0,1,1,1,1)$ is a
+model. The statement is not a numerical accident but a formal theorem
+(\code{H1\_does\_not\_imply\_atom}); see the countermodel in \S\ref{thm:leanblind} and
+Appendix~\ref{app:lean}.
+
+\figreduction
+
+\subsection{The two halves}
+
+The campaign splits Clay into two halves and a channel:
+
+\begin{itemize}
+\item \textbf{G1 (existence).} 4D continuum existence with OS axioms. The fixed-volume
+  construction is essentially complete; the one genuinely open UV input is a \textbf{uniform
+  renormalization constant} $Z_a$, equivalently a cutoff-uniform bound on the force Hessian (the
+  node called L3). L3 is purely ultraviolet and \emph{orthogonal} to the gap --- proving it would
+  make fixed-volume existence unconditional but would not help G2.
+\item \textbf{G2 (gap).} The proof or transport of $f_1^2>0$ (equivalently of the coarse curvature
+  $G''(0)>0$ at $k\to0$). This is where the problem lives.
+\item \textbf{The physical channel.} Identifying the lightest state as $0^{++}$ and showing it
+  does not dissolve (the no-dissolution theorem). This half is, conditionally, complete.
+\end{itemize}
+
+The single deepest structural finding of the campaign is that \textbf{G1's L3 and G2's H1 are one
+species} (Figure~\ref{fig:scales}): both are a one-sided \emph{upper bound on a variance}. L3 is
+the UV force-variance bound; H1 is the IR conditioned-variance bound
+$\operatorname{Var}(\xi_{k\to0})\le1/\lambda$ (curvature form
+$\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le E_\mu[H_{vv}|0]+W_{\mathrm{full}}-\delta$).
+The shapes are identical because $\operatorname{Var}\ge0$ can only supply a lower edge, while in
+the exact identity $G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$ (with
+$W_{\mathrm{full}}=W_{\mathrm{geo}}+X$ as in \S\ref{sec:wgeo}) the variance enters with a minus
+sign. The two faces differ only in scale (UV versus IR). This unification is stated in the corpus
+as a \textbf{structural identification and a conjecture}, not a theorem
+(\code{G2-ASSEMBLE-100.md} \S7: ``a structural identification \ldots{} one closure would likely
+close both faces --- but that is a conjecture, not a theorem''). This paper preserves that label.
+
+\figscales
+
+\subsection{The wall in two coordinates (new in this edition)}
+\label{sec:preview-twocoord}
+
+The first edition drew the wall in one coordinate: the measure/spectral coordinate, in which the
+obstruction is that the atom is a weak-$*$ discontinuity and every finitely computable datum is
+weak-$*$ continuous. This edition adds a second coordinate, developed independently and with a
+disjoint toolbox: the $\beta$-function / renormalization-group / conformal coordinate, in which
+the obstruction is that pure Yang--Mills being gapped is equivalent to $N_f=0$ lying outside the
+conformal window, and that statement is dynamical rather than kinematic.
+
+The two coordinates are the subject of Part~III. The short version is this. In the measure
+coordinate (Chapter~\ref{ch:weakstar}) the atom is exactly the failure of weak-$*$ continuity of
+the boundary density; eight falsification routes fail to build a functional that forces the atom
+while being neither a reading (A3) nor an infinite-data limit (H1). In the $\beta$ coordinate
+(Chapter~\ref{ch:betarg}) the gap is the absence of a strong-coupling infrared fixed point; the
+statement ``a gapless interacting 4D asymptotically-free Wilsonian IR attractor is conformal'' is
+true but reduces the problem to that dynamical fact, and eight routes through the modern
+$\beta$/CFT toolbox fail, each for a distinct reason. Chapter~\ref{ch:twocoord} assembles the
+two-coordinate picture and states what it does and does not prove.
+
+The value of the second coordinate is diagnostic. It shows that the wall is not an artifact of
+the spectral language: a completely different set of techniques --- conformal bootstrap, the
+$a$-theorem, central charges, large-$N$, holography, Dyson--Schwinger equations, lattice
+step-scaling --- hits the same invariant. It also shows, sharply, why each such technique is
+insufficient: the bootstrap tests CFT \emph{existence}, not RG \emph{flow}; the $a$-theorem is a
+ceiling; central charges are phase-blind; the holographic null-energy condition is compatible
+with a gapless infrared throat; and the Dyson--Schwinger scaling solution is gauge-fixed and
+unphysical. None of these is a defect of the technique. Each is a precise statement about what
+the gap is not.
+
+\figtwocoord
+
+\subsection{What this paper is, and is not}
+
+This paper is \textbf{not} a proof of Clay, and it contains no step labelled QED. It is:
+
+\begin{itemize}
+\item a precise statement of the reduction, with every hypothesis displayed;
+\item a complete inventory of what was actually proved, labelled by type;
+\item a statement of the no-gos, each with the precise reason its class fails;
+\item the immune map: on the order of a hundred and fifty routes, each with the exact point at
+  which it dies;
+\item the two-coordinate map of the wall, with the technique pool that fails in each coordinate
+  and the reason it fails;
+\item a specification of the missing tool: five conditions, verbatim;
+\item an honest verdict.
+\end{itemize}
+
+The reader who wants only the bottom line should read Chapter~\ref{sec:verdict}. The reader who
+wants to check the work should follow the file names in Chapter~\ref{sec:theorems} and
+Appendix~\ref{app:verif}.
+
+\subsection{Relation to the first edition, and to the literature}
+
+Version 1 of this paper (31 pages, DOI 10.5281/zenodo.24486316) reported the reduction, the
+ledger, the six tools, the no-gos, the immune map and the verdict. This edition preserves all of
+that, expands the proofs, and adds the results of the waves that followed: the falsification wave
+(ONLY-EXIT), the tool wave, the Savvidy cleanup, the $\kappa$-line closure, the diagnostics
+(P3 approach law, Re-slope, finite-size law), the star wave ($(\star)$), and the $(G1)$ wave. It
+also records one numerical erratum (the central-charge normalization, Appendix~\ref{app:errata}).
+
+The paper is deliberately not a survey of the mass-gap literature. The literature is enormous
+(constructive field theory, lattice gauge theory, holography, the conformal bootstrap), and the
+campaign's contribution is not a new review but a new \emph{audit}: a labelled inventory of what
+can and cannot be concluded, with a machine-checked core and a specification of the missing
+object. Where the paper touches standard results --- Balaban's renormalization-group programme,
+Magnen--Rivasseau--S\'en\'eor's infrared construction, Shen--Zhu--Zhu's strong-coupling gap,
+Osterwalder--Seiler's polymer expansion, Banks--Zaks' conformal window, Polchinski's and
+Dymarsky--Komargodski--Schwimmer--Theisen's scale-versus-conformal results,
+Komargodski--Schwimmer's $a$-theorem --- it cites them and says exactly what it imports.
+Where it relies on a numerical measurement, it labels the statement \LE{} and gives the
+statistical caveat. Where a statement is a conjecture, it is called a conjecture.
+
+\subsection{Roadmap}
+
+Chapter~\ref{sec:squeeze} proves the exact spectral squeeze and explains why H1 is necessary but
+not sufficient, including the machine-checked countermodel. Chapter~\ref{ch:existence} states G1
+and the node board. Chapter~\ref{ch:gap} states G2, the region coverage, and the anatomy of the
+Savvidy cell. Chapter~\ref{sec:theorems} states the proven theorems with their hypotheses.
+Chapter~\ref{ch:tools} presents the tools and each one's free-field acid test, including the tool
+wave and its structural classification. Chapter~\ref{sec:nogos} records the no-gos.
+Chapter~\ref{ch:immune} states the one-species reduction and the immune map.
+Chapter~\ref{ch:weakstar} develops the measure/weak-$*$ coordinate.
+Chapter~\ref{ch:betarg} develops the $\beta$/RG/conformal coordinate.
+Chapter~\ref{ch:twocoord} assembles the two-coordinate picture.
+Chapter~\ref{ch:numerics} reports the numerics and the diagnostics.
+Chapter~\ref{sec:missing} specifies what the missing tool must satisfy.
+Chapter~\ref{sec:verdict} gives the verdict and the AI contribution statement.
+Appendix~\ref{app:lean} records the Lean formalization, Appendix~\ref{app:protocols} the
+numerical protocols, Appendix~\ref{app:verif} the verification map, and
+Appendix~\ref{app:errata} the errata and the compendium of definitions.

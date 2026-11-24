@@ -1,0 +1,233 @@
+% =====================================================================
+%  New figures for v2 (styles fbox/arr/alab come from figures-old.tex)
+% =====================================================================
+
+% ---------------------------------------------------------------------
+% Fig v2-1 — the wall in two coordinates
+% ---------------------------------------------------------------------
+\newcommand{\figtwocoord}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm]
+  \node[fbox, fill=cC!9, draw=cC!60, text width=6.6cm, minimum height=3.4cm] (c1) at (2.6,3.4)
+    {\textbf{Coordinate 1: measure / weak-$*$}\\[3pt]
+     \scriptsize $\nu$ positive, $m_1^2=\inf\operatorname{supp}\nu$, $f_1^2=\nu(\{m_1^2\})$\\
+     atom $=$ \textbf{weak-$*$ discontinuity} of the boundary density\\
+     technique pool: spectral theory, moment problems,\\
+     complex analysis, optimal transport, dependence inequalities};
+  \node[fbox, fill=cM!9, draw=cM!60, text width=6.6cm, minimum height=3.4cm] (c2) at (11.0,3.4)
+    {\textbf{Coordinate 2: $\beta$ / RG / conformal}\\[3pt]
+     \scriptsize $\beta_{N_f=0}(g)$; window $9\le N_f\le16$ real;\\
+     gap $=$ ``$N_f=0$ outside the conformal window''\\
+     $=$ no strong-coupling IR fixed point\\
+     technique pool: conformal bootstrap, $a$-theorem,\\
+     large-$N$, holography, DSE, lattice step-scaling};
+  \node[fbox, fill=cN!8, draw=cN!65, text width=7.6cm, minimum height=1.6cm] (wall) at (6.8,0.35)
+    {\textbf{ONE INVARIANT}: $H1$ $=$ the $a\to0$, $L\to\infty$ isolation of the
+     $0^{++}$ atom\\[1pt]
+     \scriptsize an upper bound on a conditioned variance, written twice};
+  \draw[arr] (c1.south) -- (wall.north west)
+    node[alab, pos=0.55, sloped, above] {blind to the atom (weak-$*$)};
+  \draw[arr] (c2.south) -- (wall.north east)
+    node[alab, pos=0.55, sloped, above] {reduces to the dynamics ($\beta$)};
+  \node[font=\scriptsize, text=black!60, align=center] at (6.8,5.35)
+    {Two disjoint toolboxes; neither closes the wall.};
+\end{tikzpicture}
+\caption{The campaign's final structural image. The gap is reached from two independent,
+non-overlapping coordinates. In the measure coordinate the atom is a weak-$*$ discontinuity and
+every finite datum is weak-$*$ continuous, so no positive-measure argument can force it. In the
+$\beta$ coordinate the gap is the dynamical statement that pure Yang--Mills lies outside the
+conformal window; the window is real, so no kinematic argument can force it either. Both
+coordinates terminate at the same invariant.}
+\label{fig:twocoord}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig v2-2 — the weak-* dichotomy
+% ---------------------------------------------------------------------
+\newcommand{\figweakstar}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \node[fbox, fill=black!4, text width=5.2cm, minimum height=2.9cm] (data) at (2.7,4.3)
+    {\textbf{finite data}\\[2pt]
+     moments $M_k$ \ \textperiodcentered\ Taylor $c_n$\\
+     point evaluations $\Pi(z_j)$\\
+     bounded-kernel integrals $\int\varphi\,d\nu$\\
+     Wilson-loop $\nu$-images};
+  \node[fbox, fill=cT!8, draw=cT!55, text width=4.3cm, minimum height=1.5cm] (cont) at (2.7,1.35)
+    {\textbf{all weak-$*$ continuous}};
+  \node[fbox, fill=cN!8, draw=cN!60, text width=4.6cm, minimum height=1.5cm] (discont) at (9.7,1.35)
+    {\textbf{atom $f_1^2>0$}\\ $=$ weak-$*$ \textbf{discontinuity}};
+  \node[fbox, fill=black!4, text width=4.9cm, minimum height=1.5cm] (dense) at (9.7,4.3)
+    {\textbf{atomless measures are weak-$*$ dense}\\
+     a bump of width $h$ matches any finite data to $O(h)$};
+  \draw[arr] (data.south) -- (cont.north);
+  \draw[arr] (dense.south) -- (discont.north);
+  \draw[{Stealth[length=5pt]}-{Stealth[length=5pt]}, draw=cN!65, thick] (cont.east) -- (discont.west)
+    node[alab, above, pos=0.5] {cannot reach};
+  \node[fbox, fill=cM!7, draw=cM!60, text width=5.4cm, minimum height=1.7cm] (exit) at (6.2,-0.55)
+    {\textbf{any forcing functional is weak-$*$ discontinuous}\\[1pt]
+     $\Rightarrow$ either A3 (read across $\mathbb{R}$)\\
+     or $J\to\infty$ (all data) $=$ H1};
+  \draw[arr] (discont.south) -- (exit.north);
+\end{tikzpicture}
+\caption{The weak-$*$ dichotomy behind every failed tool. Finite data determine the measure only
+weak-$*$; the atom is precisely the failure of weak-$*$ continuity. Atomless measures are weak-$*$
+dense, so no finite sample can distinguish an atom from a thin bump. A functional that forces the
+atom must therefore be weak-$*$ discontinuous, and is not finitely computable: it either reads the
+boundary value (A3) or requires the full limit (H1).}
+\label{fig:weakstar}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig v2-3 — the SU(3) conformal window and where N_f = 0 sits
+% ---------------------------------------------------------------------
+\newcommand{\figwindow}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \draw[arr] (0,0) -- (13.4,0) node[alab, right] {$N_f$};
+  \foreach \x/\l in {0.8/0, 6.0/8, 7.6/10, 9.2/12, 10.8/14, 12.4/16}{
+    \draw (\x,0) -- (\x,-0.09) node[below, text=black!65] {\l};
+  }
+  % AF region
+  \fill[cC!12] (0.8,0.25) rectangle (12.9,2.4);
+  \node[text=cC!70] at (2.6,2.0) {asymptotically free};
+  % window 9..16
+  \fill[cT!18] (6.6,0.25) rectangle (12.4,2.4);
+  \node[text=cT!75, align=center] at (9.5,1.85) {\textbf{conformal window}\\ $9\le N_f\le16$ (2-loop)};
+  \node[text=cT!75, align=center] at (9.5,1.05) {$N_f^c\approx8.05\to11\to12$\\ (2, 4, 5 loops)};
+  % confining side
+  \fill[cM!10] (0.8,0.25) rectangle (6.0,2.4);
+  \node[text=cM!80, align=center] at (3.3,1.55) {confining};
+  % N_f=0 marker
+  \draw[cN!80, very thick] (0.8,0.25) -- (0.8,2.6);
+  \node[cN!85, above, align=center] at (1.55,2.55) {\textbf{$N_f=0$ (pure YM)}};
+  \draw[{Stealth[length=5pt]}-{Stealth[length=5pt]}, draw=cN!70, thick]
+    (0.95,0.55) -- (6.55,0.55) node[alab, below, pos=0.5] {distance $\approx9$--$12$ units of $N_f$};
+  \node[text=black!60] at (11.6,0.0) [above right] {$16.5$: AF ends};
+\end{tikzpicture}
+\caption{The Banks--Zaks conformal window for $\mathrm{SU}(3)$ with $N_f$ massless fundamentals.
+The window is real: those theories are asymptotically free, single-coupling, and gapless in the
+infrared. Pure Yang--Mills sits at $N_f=0$, a distance of nine to twelve units of $N_f$ below the
+perturbative boundary, while the loop-by-loop shift of that boundary is about $+3$. Hence the
+question is not marginal --- but ``$N_f=0$ is outside the window'' is rigorous only
+perturbatively; its nonperturbative form is exactly $(G1)$.}
+\label{fig:window}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig v2-4 — anatomy of the Savvidy cell
+% ---------------------------------------------------------------------
+\newcommand{\figsavcell}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  % potential
+  \draw[arr] (-0.2,0) -- (8.6,0) node[alab, right] {$\varphi$};
+  \draw[arr] (0,0) -- (0,3.6) node[alab, above] {$V_{\mathrm{eff}}$};
+  \draw[thick, cC!75, domain=0.4:8.0, samples=80]
+    plot (\x,{0.55*(\x-4.2)^2*0.45 - 0.9*exp(-0.9*(\x-4.2)^2) + 1.05});
+  \fill[cN!80] (4.2,0.62) circle (1.7pt);
+  \node[cN!85, above] at (4.2,0.72) {barrier top: negative mode};
+  \fill[cT!80] (2.35,1.55) circle (1.7pt);
+  \fill[cT!80] (6.05,1.55) circle (1.7pt);
+  \node[cT!80, above] at (2.35,1.62) {$\varphi=-v$};
+  \node[cT!80, above] at (6.05,1.62) {$\varphi=+v$};
+  \draw[cT!70, thick] (2.35,1.55) -- (2.35,0.0);
+  \draw[cT!70, thick] (6.05,1.55) -- (6.05,0.0);
+  \node[text=black!60, align=center] at (4.2,-0.55) {true vacuum at $\pm v$: $V''=2c>0$, stable};
+  % inset D/S
+  \begin{scope}[shift={(8.9,0.7)}]
+    \draw[arr] (0,0) -- (3.9,0) node[alab, right] {mode};
+    \draw[arr] (0,0) -- (0,2.6) node[alab, above] {$D/S$};
+    \draw[dashed, black!45] (0,2.25) -- (3.7,2.25);
+    \node[anchor=east, text=black!55] at (-0.05,2.25) {$1$};
+    \foreach \x/\v in {0.6/1.02, 1.3/0.97, 2.0/0.99, 2.7/0.94, 3.4/1.00}{
+      \fill[cM!85] (\x,{2.25*\v}) circle (1.3pt);
+    }
+    \node[text=black!60, align=center] at (1.95,-0.5) {near-critical:\\ $D/S\approx0.94$--$1.00$};
+  \end{scope}
+\end{tikzpicture}
+\caption{Anatomy of the Savvidy cell. The negative mode is the barrier-top artifact of the
+one-loop effective potential, not a property of the true vacuum at $\varphi=\pm v$, where the
+curvature is positive. The softening it produces is bounded, $c$-independent, sign-protected at
+two loops, and $(L,a)$-uniform by one-octave support. What survives is a near-critical margin:
+the measured defect ratio $D/S$ is $0.94$--$1.00$, sign-fluctuating mode by mode, with the
+$k\to0$ mode unmeasured. Establishing that the margin is positive uniformly is H1.}
+\label{fig:savcell}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig v2-5 — the two diagnostics: approach law and finite-size law
+% ---------------------------------------------------------------------
+\newcommand{\figdiag}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  % panel A: T(tau)
+  \begin{scope}
+    \draw[arr] (0,0) -- (6.4,0) node[alab, right] {$\tau$};
+    \draw[arr] (0,0) -- (0,3.3) node[alab, above] {$T(\tau)$};
+    \draw[thick, cT!80, domain=0.25:6.0, samples=60]
+      plot (\x,{1.55 - 0.9*exp(-\x/1.3)});
+    \draw[thick, cN!75, dashed, domain=0.25:6.0, samples=60]
+      plot (\x,{0.55/\x});
+    \node[cT!80, right] at (5.3,1.72) {atom: $T\to\Delta$};
+    \node[cN!80, anchor=west] at (4.35,0.30) {cut: $T\to1/\tau$};
+    \node[text=black!60, align=center] at (3.1,-0.6) {P3 approach law};
+  \end{scope}
+  % panel B: Delta(L)
+  \begin{scope}[shift={(8.2,0)}]
+    \draw[arr] (0,0) -- (6.2,0) node[alab, right] {$1/L^2$};
+    \draw[arr] (0,0) -- (0,3.3) node[alab, above] {$\Delta(L)$};
+    \draw[thick, cC!80, domain=0.35:5.7, samples=40]
+      plot (\x,{0.55 + 0.38*\x});
+    \draw[dashed, black!45] (0,0.55) -- (5.8,0.55);
+    \node[anchor=east, text=black!55] at (-0.05,0.55) {$m_1$};
+    \node[cC!80, anchor=west] at (1.05,2.62) {$\Delta(L)=m_1+\dfrac{c}{m_1L^2}$};
+    \node[text=black!60, align=center] at (3.1,-0.6) {finite-size scaling law};
+  \end{scope}
+\end{tikzpicture}
+\caption{The two genuine diagnostics of the $\mathrm{IR}$ atom. Left: the P3 approach law
+$T(\tau)=-d\log|m-\hat e_1|/d\tau$ tends to the gap $\Delta$ for an isolated atom and decays as
+$1/\tau$ for a pure cut; it is robust to a background continuum and to the choice of operator.
+Right: the finite-size law $\Delta(L)=m_1+c/(m_1L^2)$ for an atom versus $(2\pi/L)^2/m\to0$ for a
+cut. Both are reads, not certificates: a single finite volume cannot decide, because every
+discrete finite-volume spectrum looks exponential, and the discriminating content is the
+$L\to\infty$ survival of the isolation, which is H1.}
+\label{fig:diag}
+\end{figure}
+}
+
+% ---------------------------------------------------------------------
+% Fig v2-6 — the three coordinates of the strut (roof diagram)
+% ---------------------------------------------------------------------
+\newcommand{\figroof}{%
+\begin{figure}[t]
+\centering
+\begin{tikzpicture}[x=1cm,y=1cm,font=\scriptsize]
+  \draw[very thick, cT!70] (0.4,3.15) -- (13.4,3.15);
+  \node[text=cT!75, above] at (3.2,3.15) {strong coupling: $m_{0^{++}}\ge4\sqrt\sigma$, $\beta<1/48$};
+  \node[text=cT!75, above] at (10.6,3.15) {Balaban UV: $\beta\to\infty$};
+  \draw[very thick, cM!75] (6.5,0.0) -- (6.5,3.15) node[midway, right, text=cM!85, align=left]
+    {\textbf{the strut}\\ $\chi_{\mathrm{lat}}\lesssim a^2$\\[1pt] $\sigma_w(2.5)>c_0$\\[1pt] $R_{\mathrm{vac}}\nearrow$};
+  \draw[thick, cC!75] (0.4,0.0) -- (13.4,0.0);
+  \node[text=cC!75, below] at (3.4,0.0) {base: $1/\sqrt\chi=$ gluon condensate $=$ H1};
+  \node[text=black!60, align=center] at (6.5,-0.85)
+    {the roof is conditionally laid: $\gamma\ge\frac{1}{2\pi}(1/\chi)$};
+\end{tikzpicture}
+\caption{The roof, honestly. Two beams exist at the ends (strong coupling and the ultraviolet);
+the base stands; one strut is missing in the middle. The strut has three equivalent names,
+depending on the coordinate used to write the susceptibility certificate. It is \emph{not} an
+order parameter (zero-temperature pure Yang--Mills is a single phase, so there is nothing to
+condense), \emph{not} a topological index (any such index is constant along the connected
+coupling family), and \emph{not} a Markov-semigroup functional (homogeneous in the Hessian).}
+\label{fig:roof}
+\end{figure}
+}

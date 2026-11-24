@@ -34,8 +34,10 @@ docs/
   YANG-MILLS-MASTER.md            # the master ledger
   PROOF-SKELETON.md               # Clay = G1 + G2, node-by-node status
   new-tools-registry.md           # every tool / no-go / structural theorem
-  YANG-MILLS-CONDITIONAL-REDUCTION.pdf   # the paper (see below)
-  paper/                          # LaTeX source of the paper
+  YANG-MILLS-CONDITIONAL-REDUCTION.pdf   # the paper, v1 (see below)
+  YANG-MILLS-CONDITIONAL-REDUCTION-V2.pdf  # the paper, second edition (81 pp)
+  paper/                          # LaTeX source of v1
+  paper-v2/                       # LaTeX source of the second edition
 research/unconditional/           # ~450 reports (the corpus) + w7/ witness scripts
 lean/                             # Lean 4 formalization of the conditional reduction
 CLAUDE.md                         # the project charter (rules of engagement)
@@ -44,6 +46,8 @@ CLAUDE.md                         # the project charter (rules of engagement)
 ## The paper
 
 `docs/YANG-MILLS-CONDITIONAL-REDUCTION.pdf` — a **conditional-reduction** paper (deposited on Zenodo, DOI **10.5281/zenodo.24486316**; submitted). It is *not* a proof of Clay: it reduces the mass gap to H1 modulo explicit hypotheses and corrects the common conflation of the susceptibility `H1` with the spectral edge `H*`.
+
+`docs/YANG-MILLS-CONDITIONAL-REDUCTION-V2.pdf` — the **second edition** (81 pages; LaTeX source in `docs/paper-v2/`). Same verdict (Clay = 0%), expanded with Part III: the wall drawn in **two independent coordinates** — measure/weak-* (the atom is a weak-* discontinuity; finite data are continuous) and β/RG/conformal (pure YM outside the conformal window; the window is real) — plus the machine-checked H1 sharpening, the Savvidy cleanup, the tool wave, the lattice diagnostics, a verification map, and an errata record (including a corrected central-charge normalization, `a/c = 31/18`). **Still not a proof.**
 
 ## Honesty conventions (please respect them when reading)
 
@@ -76,4 +80,4 @@ Research notes shared as-is, for transparency and reproducibility. Not peer-revi
 
 **墙**:隙 = 在交叉点 `α_s~O(1)` 给 `0⁺⁺` 原子一个**非正性、非阿贝尔、无小参数的下界** = 禁闭。`H1` 只是逆磁化率(只上界 `m₁²`),`H*`(边原子 + 隔离)才是隙;原子是 usc、正性工具(lsc)印不出;交叉点无小参数。**缺的那个物**(非线性、非正性、对 IR 支撑敏感、gapped/gapless 取不同值的动力学泛函)尚不存在。
 
-**论文**:`docs/YANG-MILLS-CONDITIONAL-REDUCTION.pdf`(条件归约,Zenodo DOI 10.5281/zenodo.24486316;投稿中;**非 Clay 证明**)。
+**论文**:`docs/YANG-MILLS-CONDITIONAL-REDUCTION.pdf`(条件归约,Zenodo DOI 10.5281/zenodo.24486316;投稿中;**非 Clay 证明**)。第二版(81 页):`docs/YANG-MILLS-CONDITIONAL-REDUCTION-V2.pdf`,新增 Part III(墙的两个独立坐标:测度/弱-* 与 β/RG/共形)、H1 锐化的机器验证、Savvidy 清理、工具波、格点诊断、验证表与勘误。**仍非证明**,Clay = 0%。

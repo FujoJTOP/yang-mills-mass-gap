@@ -1,0 +1,262 @@
+% =====================================================================
+\section{Coordinate 2: the $\beta$ function, RG attractors, and the conformal window}
+\label{ch:betarg}
+% =====================================================================
+
+\subsection{The coordinate}
+
+The second coordinate is the renormalization group. Instead of asking for an atom in a measure,
+it asks about the endpoint of the flow of the coupling: does pure Yang--Mills flow, in the
+infrared, to a conformal field theory, or does it confine with a mass gap? The two questions are
+equivalent under the standard dictionary, and the equivalence is the reason the wall reappears
+here with a disjoint technique pool.
+
+The reason the second coordinate is interesting is not that it is easier. It is that the
+techniques available in it --- the conformal bootstrap, the $a$-theorem, central charges,
+large-$N$, holography, the Dyson--Schwinger equations, lattice step-scaling --- are almost
+disjoint from the spectral/measure techniques of Part~I. If a wall is hit by two disjoint
+toolboxes, the wall is a property of the problem, not of the tools.
+
+\subsection{$(G1)$: pure Yang--Mills outside the conformal window}
+
+Let $N_f$ denote the number of massless Dirac fermions in the fundamental representation of
+$\mathrm{SU}(N)$. The Banks--Zaks conformal window is the range of $N_f$ in which the
+two-loop beta function has an infrared-stable zero. For $\mathrm{SU}(3)$,
+\begin{equation}
+\beta_0(N_f)=11-\frac23N_f,\qquad
+\beta_1(N_f)=102-\frac{38}{3}N_f ,
+\label{eq:beta01}
+\end{equation}
+so asymptotic freedom holds for $N_f<16.5$, and a Banks--Zaks zero exists for
+$N_f>306/38\approx8.05$. The two-loop window is therefore $N_f\in\{9,\dots,16\}$; the four-loop
+analysis (\code{von Ritbergen--Vermaseren--Larin}) pushes the lower edge to $N_f^c\approx11$, and
+the five-loop analysis to about $12$. Pure Yang--Mills is $N_f=0$: maximally asymptotically free,
+with $\beta_0=11$ and $\beta_1=102$ both positive, and no zero at any perturbative order.
+
+The statement to be proved in this coordinate is
+\begin{equation}
+(G1):\qquad \beta_{N_f=0}(g)\ \text{has no zero for}\ g>0
+\qquad\Longleftrightarrow\qquad
+\text{pure YM is outside the conformal window.}
+\label{eq:g1}
+\end{equation}
+Equivalently: there is no infrared conformal field theory with the matter content of pure
+Yang--Mills. Equivalently: the infrared endpoint of the flow is confining, not conformal. The
+equivalence of $(G1)$ with the gap is the content of the next subsection.
+
+\figwindow
+
+\subsection{$(\star)$: the RG-attractor statement, and what it is worth}
+
+The sharpest reformulation the campaign found is the following RG-attractor statement:
+
+\begin{qbox}
+$(\star)$ \quad A gapless interacting four-dimensional asymptotically-free Wilsonian infrared
+attractor is conformal.
+\end{qbox}
+
+If $(\star)$ holds, then a gapless pure Yang--Mills would flow to a conformal infrared fixed
+point; but pure Yang--Mills has no such fixed point (no Banks--Zaks zero, no perturbative one, and
+$(G1)$ says no nonperturbative one either). Hence $(\star)\wedge(G1)\Rightarrow$ gap. The logical
+content is therefore: \emph{$(\star)$ converts the gap into $(G1)$}, and $(G1)$ is the dynamical
+statement that the campaign has not been able to prove.
+
+\textbf{Proof status of $(\star)$.} In two dimensions, Polchinski (1988) completed
+Zamolodchikov's argument: rigid scale invariance implies local conformal invariance under broad
+conditions. In four dimensions, the situation is conditional. Dymarsky, Komargodski, Schwimmer
+and Theisen (2013/2015) show that scale invariance plus unitarity implies that infinitely many
+matrix elements vanish in a suitable kinematic configuration, a nontrivial necessary condition
+for conformality, and argue that it is expected to be sufficient modulo possible exceptions. The
+$a$-theorem (Komargodski--Schwimmer 2011) excludes limit cycles in four-dimensional unitary
+theories, because the $a$-anomaly decreases monotonically along the flow and a cycle would force
+it to return. A massless dilaton branch is excluded by asymptotic freedom: the coupling grows in
+the infrared and never reaches zero, so the infrared theory is interacting, not a free dilaton
+theory. Putting these together, $(\star)$ is \textbf{true modulo the $d=4$ scale-implies-conformal
+step}, which is itself conditional in the literature. The paper labels $(\star)$ as \LC{} for
+that reason.
+
+\textbf{Acid test of $(\star)$.} The acid-test question for a statement is whether it has a
+counterexample in the class it claims to classify. Known candidates:
+\begin{itemize}
+\item \emph{Walking technicolor}: a slowly running coupling that almost reaches a fixed point.
+  In the strict infrared it either reaches the fixed point (conformal) or confines; the
+  ``walking'' regime is a crossover, not a gapless non-conformal endpoint. No counterexample.
+\item \emph{Limit cycles}: a periodic coupling. Excluded in $d=4$ unitary theories by the
+  monotonicity of $a$. No counterexample.
+\item \emph{Massless dilaton}: a Goldstone of spontaneously broken scale invariance. Excluded in
+  the asymptotically-free gapless case by the non-IR-free theorem (the coupling is $O(1)$ in the
+  infrared, not zero), so the dilaton cannot be the only light state. No counterexample.
+\end{itemize}
+So $(\star)$ survives the acid test: no gapless interacting 4D asymptotically-free non-conformal
+theory is known. This is why the campaign treats $(\star)$ as the sharpest \emph{reformulation}
+of the wall --- and why it is not a solution. It reduces the problem to the dynamical statement
+$(G1)$, which is exactly where the campaign started, in a different language.
+
+\subsection{The conformal window is real}
+
+The decisive fact that prevents a kinematic proof is that the conformal window is not empty. For
+$\mathrm{SU}(3)$ with $9\le N_f\le16$, the theory is asymptotically free, has a single gauge
+coupling, and is \emph{gapless and conformal in the infrared} (at least perturbatively, and on the
+lattice for $N_f=12$). So:
+\begin{itemize}
+\item \textbf{``Asymptotically free $\Rightarrow$ gapped'' is false in general.} The window is a
+counterexample. Any argument that would derive a gap from asymptotic freedom alone would also
+``prove'' a gap for $N_f=12$, which is wrong.
+\item \textbf{Pure Yang--Mills being gapped is a dynamical fact about $N_f=0$}, not a kinematic
+consequence of the beta function's exact properties. $N_f=0$ lies far below the window: the
+distance is nine to twelve units of $N_f$, while the loop-by-loop shift of the boundary is about
+$+3$. So it is not a marginal case, but it is a dynamical one.
+\item \textbf{No exact identity forbids an infrared fixed point.} At $\beta(g_*)=0$ the trace
+anomaly $(\beta/2g)\langle\operatorname{tr}G^2\rangle$ vanishes; the $a$-theorem allows
+$a_{IR}<a_{UV}$; unitarity allows a conformal infrared; the holographic null-energy condition is
+satisfied by an AdS throat; and the central-charge ratio is allowed (see below). The exclusion
+must come from a dynamical computation of $\beta$ at strong coupling.
+\end{itemize}
+
+\textbf{Central charges (corrected).} For the free gauge vector, in the standard normalization
+(per real scalar $a=1/90$, $c=1/30$), one has $a=62/90$ and $c=12/30$, hence
+\begin{equation}
+\frac{a}{c}=\frac{31}{18}\approx1.722 ,
+\label{eq:ac}
+\end{equation}
+which is exactly the upper edge of the conformal-collider band $1/3\le a/c\le31/18$
+(Hofman--Maldacena; Hofman--Li--Meltzer--Poland--Rej\'on-Barrera). The edge is inclusive, and
+equality is attained by the free vector, so the UV point is allowed. A hypothetical infrared CFT
+must have $a_{IR}\le a_{UV}$ and $a_{IR}/c_{IR}\in[1/3,31/18]$: a two-dimensional allowed
+region. The only CFT infrared that the bounds exclude is the trivial one $a_{IR}=a_{UV}$, i.e.\
+no flow at all, which is the asymptotic-freedom/non-infrared-free statement, not a
+central-charge bound. \emph{This corrects an earlier corpus value of $31/36$, which came from an
+inconsistent normalization; see Appendix~\ref{app:errata}. The conclusion is unchanged: the
+central charges do not exclude a CFT infrared.}
+
+\subsection{The eight $(G1)$ routes}
+
+The $(G1)$ wave built eight routes through the modern $\beta$/CFT toolbox. All fail, each for a
+sharp, distinct reason. The table is the coordinate's immune map.
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.9cm}
+  >{\raggedright\arraybackslash}p{3.5cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Route (file)} & \textbf{Modern technique} & \textbf{Why it fails}\\
+\midrule
+Single-coupling acid (\code{G1-ACID}) & does one coupling forbid a $\beta$ zero? & \LN{} no:
+  the Banks--Zaks zero is set by matter content, not coupling count; $\mathrm{SU}(3)$ with
+  $N_f=9$--$16$ is genuinely single-coupling AF gapless-conformal. The kinematic shortcut is
+  dead\\
+Nonperturbative $\beta$ sign (\code{G1-NONPERT-BETA}) & $a$-theorem, trace-anomaly $\beta$,
+  Schwinger--Dyson, step-scaling & \LN{} at $\beta(g_*)=0$ the trace anomaly vanishes, the
+  $a$-theorem is satisfied, unitarity is satisfied $\Rightarrow$ no exact identity forbids it;
+  the only exact sign theorem is NSVZ (SUSY), absent in pure YM\\
+Central charges $a,c$ (\code{G1-A-C-BOUNDS}) & unitarity band $1/3\le a/c\le31/18$ and the
+  $a$-theorem & \LN{} the free-vector value $31/18$ is the inclusive upper edge (allowed); the
+  $a$-theorem is a ceiling; anomaly data are phase-blind (they constrain \emph{which} CFT, not
+  \emph{being} one)\\
+Large-$N$ (\code{G1-LARGE-N}) & $1/N$ expansion and the master field & \LN{} $1/N$ controls
+  fluctuations, not the fixed-point question; the 't Hooft coupling is $O(1)$ at the confining
+  scale; the 4D master field is unconstructed\\
+Conformal bootstrap (\code{G1-CONFORMAL-BOOTSTRAP}) & crossing plus positivity on a pure-glue CFT
+  & \LM{} the minimal single-scalar bootstrap ($4$D Ising) excludes only free/generalized-free
+  for that minimal CFT; a pure-glue CFT has $\operatorname{tr}F^2$, $\operatorname{tr}F\tilde F$,
+  defects, so it does not extend; and structurally the bootstrap tests CFT \emph{existence}, not
+  the RG \emph{flow} $\Rightarrow$ necessary-not-sufficient\\
+Window boundary (\code{G1-WINDOW-BOUNDARY}) & 4/5-loop $\beta$ and lattice step-scaling &
+  \LT{}/\LC{} $N_f=0$ is far outside ($N_f^c\approx8$--$12$, distance $\sim4\times$ the
+  2$\to$4-loop shift), but rigorous only perturbatively; the nonperturbative statement is
+  $(G1)$ itself\\
+Holographic NEC (\code{G1-HOLO-NEC}) & bulk null-energy condition and the $c$-theorem & \LN{}
+  bulk NEC $\iff$ holographic $a$-theorem $\iff$ admits an infrared AdS throat (a gapless CFT
+  is NEC-compatible); forcing a wall needs a dilaton-potential modeling choice or ``no IR CFT''
+  $=(G1)$\\
+DSE conformal solution (\code{G1-DSE-CONFORMAL}) & Landau-gauge gluon and ghost DSE, scaling
+  ansatz & \LC{}/\LM{} a scaling solution exists ($\kappa\approx0.595$) but is
+  gauge-fixed/unphysical ($D_A(0)=0$ plus ghost divergence $=$ confinement signal, not a
+  massless particle); the physical $0^{++}$ mass is a gauge-invariant correlator the DSE never
+  computes; the lattice finds the decoupling solution\\
+\bottomrule
+\end{tabularx}
+\caption{The eight $(G1)$ routes through the modern $\beta$/CFT toolbox.}
+\label{tab:g1routes}
+\end{table}
+
+\subsection{What each technique can and cannot see}
+
+It is worth stating the limitation of each technique in one sentence, because the sentences are
+the coordinate's real yield: they say exactly what the gap is not.
+
+\begin{itemize}
+\item \textbf{Single coupling.} A single coupling can have a zero; whether it does is a matter of
+  the theory's matter content. The number of couplings is not the obstruction.
+\item \textbf{Nonperturbative $\beta$ sign.} There is no exact sign theorem for the beta function
+  of a non-supersymmetric gauge theory. The exact identities are compatible with a zero; only a
+  dynamical computation can exclude it. In supersymmetric theories, the NSVZ beta function gives
+  a sign; pure Yang--Mills has no such structure.
+\item \textbf{Central charges.} The anomaly coefficients are exact and phase-blind. They can say
+  which CFT a theory could be, not whether it flows to one.
+\item \textbf{Large-$N$.} The $1/N$ expansion organizes fluctuations around a saddle. It does not
+  decide whether the saddle is confining; the 't Hooft coupling is $O(1)$ precisely at the scale
+  where the question is decided.
+\item \textbf{Bootstrap.} The conformal bootstrap tests whether a CFT with given operator content
+  exists. The gap question is whether Yang--Mills \emph{flows} to such a CFT. Even a bootstrap
+  that excluded a pure-glue CFT would be necessary, not sufficient: it would exclude one
+  candidate endpoint, not prove that the flow ends in a gapped phase.
+\item \textbf{Window boundary.} Perturbative order-by-order analysis places $N_f=0$ far outside;
+  the rigorous nonperturbative statement is the problem.
+\item \textbf{Holography.} The null-energy condition is compatible with an infrared AdS throat;
+  a confining wall requires a modeling choice (a dilaton potential, a hard wall) whose
+  justification is the dynamical question.
+\item \textbf{Dyson--Schwinger.} The scaling solution is a statement about gauge-fixed
+  propagators. Its existence is not evidence for a physical massless particle; the ghost
+  divergence and $D_A(0)=0$ are confinement signals. The physical glueball mass is a
+  gauge-invariant correlator that the propagator DSE does not compute.
+\end{itemize}
+
+\subsection{What a proof in this coordinate would look like}
+
+A proof in the $\beta$ coordinate would be one of:
+\begin{enumerate}
+\item a nonperturbative sign theorem for $\beta_{N_f=0}$: a proof that the beta function has no
+  zero for $g>0$, using the specific structure of pure Yang--Mills (not merely asymptotic
+  freedom, since the window shows that is insufficient);
+\item a rigorous transport of the strong-coupling gap across the crossover, with a controlled
+  continuum limit --- the ``machine'' of Chapter~\ref{sec:missing}, expressed in RG language;
+\item a rigorous lattice step-scaling computation with a controlled continuum extrapolation and
+  a proof that the step-scaling function has no zero in the accessible range, together with an
+  argument that the inaccessible range cannot hide one.
+\end{enumerate}
+Each is of H1 strength. None is available. The first is the sharpest: it is a single sign, but
+the sign of a nonperturbative beta function at strong coupling, which is the gap in the RG
+coordinate.
+
+\subsection{The dictionary between the coordinates}
+
+The two coordinates are related by the following correspondences, each of which is either a
+theorem or a labelled conjecture:
+\begin{itemize}
+\item \emph{Atom $\leftrightarrow$ endpoint.} A positive isolated atom in the $0^{++}$ channel
+  $\leftrightarrow$ the flow ending in a gapped phase whose lightest state is the $0^{++}$.
+  \LC{} (the ordering input, \code{IN-11}).
+\item \emph{Susceptibility ceiling $\leftrightarrow$ no infrared fixed point.} H1
+  $\leftrightarrow$ $(G1)$. This is the structural identification of the paper; it is a
+  \emph{conjecture}, not a theorem, but every route in both coordinates lands on one side of it.
+\item \emph{Residue floor $\leftrightarrow$ confinement scale.} $f_1^2\ge r_0$ $\leftrightarrow$
+  $\Lambda_{\mathrm{QCD}}>0$ with a stable vacuum. \LT{} in strong coupling (P3 and the
+  strong-coupling bridge $m\ge4\sqrt\sigma$); \LM{} at the physical coupling.
+\item \emph{Isolation $\leftrightarrow$ mass gap.} $I_2$ $\leftrightarrow$ $\Delta>0$. \LT{}
+  one direction (isolated atom gives clustering); the converse is the gap.
+\end{itemize}
+The dictionary is the reason the two-coordinate picture is not a metaphor. The same object ---
+the failure of the infrared theory to be a gapless CFT --- is being measured in two different
+ways.
+
+\subsection{Honest bottom line}
+
+$(G1)$ is not closed. Eight modern techniques fail, each sharply. $(G1)$ is the wall in the
+$\beta$ coordinate, and it is a purely dynamical statement. The value of the coordinate is
+threefold: it proves that the wall is not an artifact of the spectral language; it proves that
+no kinematic shortcut exists (the window is real); and it identifies precisely what a proof
+would have to be (a nonperturbative sign theorem or a transport across the crossover). It does
+not bring the gap closer in the sense of a numerical estimate; it brings it closer in the sense
+of a specification.

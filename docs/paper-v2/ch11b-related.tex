@@ -1,0 +1,120 @@
+% =====================================================================
+\section{Relation to prior work}
+\label{ch:related}
+% =====================================================================
+
+This chapter positions the campaign relative to the main bodies of work on the Yang--Mills mass
+gap. It is not a survey; it is a map of what the paper imports, what it does not claim, and where
+its contribution sits. The corpus's own surveys (\code{SURVEY-ADJACENT-TOOLS.md},
+\code{SURVEY-CONSTRUCTIVE.md}, \code{SURVEY-RECENT-ARXIV.md}, \code{SURVEY-AI-FORMAL.md},
+\code{SURVEY-WILDCARD-DOMAINS.md}, \code{SURVEY-MASTER-SYNTHESIS.md},
+\code{docs/yang-mills-prior-work.md}) contain the detailed reading notes; this chapter states the
+conclusions.
+
+\subsection{Constructive field theory}
+
+The constructive programme asks for a measure on the space of gauge fields satisfying the
+Osterwalder--Schrader axioms. Its main achievements are ultraviolet: Balaban's renormalization
+group analysis of lattice gauge theory \cite{balaban}, and the infrared construction with a
+cutoff by Magnen--Rivasseau--S\'en\'eor \cite{mrs}. The modern probabilistic approach
+(Bauerschmidt--Brydges--Slade for $\varphi^4_3$ \cite{bbs}; Chatterjee's rigorous large-$N$ and
+survey \cite{chatterjee}) and the stochastic-quantization approach (regularity structures) are
+powerful but remain small-parameter theories in the relevant sense. None of them produces a
+uniform mass gap at the physical four-dimensional coupling; the obstruction is the same
+intermediate-coupling region that this paper identifies as $(G1)$/H1. The paper's G1 node board
+(Chapter~\ref{ch:existence}) is organized around exactly this split: the perturbative kernel is
+closed, the ultraviolet node L3 is open, and the infrared node is the gap.
+
+\subsection{Lattice gauge theory}
+
+The lattice is where the mass gap is measured. Wilson's formulation \cite{wilson} and Creutz's
+Monte Carlo study \cite{creutz} established the framework; the strong-coupling expansion and its
+rigorous polymer form (Osterwalder--Seiler \cite{osterwalder-seiler}, the source of P3's
+technology) give the only unconditional gap theorems, at $\beta<1/48$. Shen--Zhu--Zhu
+\cite{szz} extended the rigorous strong-coupling gap to a modern standard. On the numerical side,
+the glueball spectrum (Morningstar--Peardon \cite{morningstar}), the step-scaling method
+\cite{luscher-stepscaling}, the gradient flow \cite{luscher-flow}, and the effective string
+description of the flux tube \cite{luscher-weisz, polchinski-strominger} are the standard tools.
+This paper's numerics (Chapter~\ref{ch:numerics}) are small by comparison, and are presented as
+diagnostics rather than as a spectrum computation. The campaign's contribution on this side is
+the diagnostic set (P3 approach law, Re-slope, finite-size law) and the explicit statement of
+what a decisive computation would require.
+
+\subsection{Holography and AdS/QCD}
+
+The holographic approach constructs confining gauge theories from string backgrounds
+(Maldacena \cite{maldacena}; Gubser--Klebanov--Polyakov \cite{gkp}; Witten \cite{witten,
+witten-thermal}), with hard-wall and soft-wall models (Polchinski--Strassler \cite{polchinski-strassler};
+Sakai--Sugimoto \cite{sakai-sugimoto}) reproducing the qualitative glueball spectrum. The
+campaign's holographic wave (Chapter~\ref{ch:betarg}, the NEC route) found the precise limitation:
+the bulk null-energy condition is compatible with a gapless infrared AdS throat, and a confining
+wall requires a modeling choice whose justification is the dynamical question. Holography gives
+a dictionary and a picture, not a proof for the four-dimensional theory.
+
+\subsection{The conformal bootstrap and CFT data}
+
+The conformal bootstrap (El-Showk et al.\ \cite{elshowk}; the review of Poland--Rychkov--Vichi
+\cite{prv}) has transformed the study of CFTs by turning crossing symmetry and unitarity into
+numerical bounds. Its relation to the mass gap is the subject of Chapter~\ref{ch:betarg}: the
+bootstrap tests the \emph{existence} of a CFT with given operator content, whereas the gap is a
+statement about the \emph{flow}. The conformal-collider bounds on $a/c$
+\cite{hofman-maldacena, hofman-li} and the $a$-theorem \cite{komargodski-schwimmer} are exact constraints that are
+compatible with a gapless infrared; they constrain which CFT, not whether one is reached. The
+campaign's conclusion is that the bootstrap is necessary but not sufficient, and that a pure-glue
+bootstrap, if it existed, would exclude one candidate endpoint rather than prove the gap.
+
+\subsection{Resurgence and transseries}
+
+The resurgent transseries programme ('t Hooft's renormalons; the review of
+Aniceto--Başar--Schiappa \cite{abs}) is the natural language for the essential singularity
+$e^{-1/(2\beta_0g^2)}$. The campaign's analytic-transfer no-go (Chapter~\ref{sec:esssing}) is a
+statement in this language: the nonperturbative scale is invisible to every analytic-in-$g^2$
+procedure, and the condensate's $u=2$ renormalon ambiguity is the same size as the condensate.
+Resurgence supplies the correct bookkeeping; it does not supply the sign.
+
+\subsection{Large-$N$ and loop equations}
+
+The large-$N$ limit ('t Hooft \cite{thooft-planar}; Makeenko--Migdal \cite{makeenko-migdal};
+Eguchi--Kawai \cite{eguchi-kawai}) organizes the theory around a master field and loop equations.
+Chatterjee's rigorous results \cite{chatterjee} make part of this picture a theorem at strong
+coupling. The campaign's large-$N$ route (Chapter~\ref{ch:betarg}) found that $1/N$ controls
+fluctuations, not the fixed-point question: the 't Hooft coupling is $O(1)$ at the confining
+scale, and the four-dimensional master field is not constructed.
+
+\subsection{Spectral, geometric, and dependence methods}
+
+The campaign also drew on spectral theory (Kato \cite{kato}; Reed--Simon \cite{reed-simon}),
+Brascamp--Lieb and Pr\'ekopa \cite{bl,prekopa}, the theory of negative dependence
+(FKG \cite{fkg}; Borcea--Br\"and\'en--Liggett \cite{bbl}), optimal transport
+(von Renesse--Sturm \cite{vrs}), and the Perron--Frobenius/Krein--Rutman theory. These are the
+tools of Part~I. Their collective lesson is the Schur-convex master obstruction
+(Chapter~\ref{sec:schur-master}): the standard positivity and convexity toolkit is blind to the
+atom, because the free field is a feasible atomless point. The campaign's no-gos are statements
+about these classes, not about particular papers.
+
+\subsection{Formalization and AI-assisted mathematics}
+
+The Lean~4 formalization (Appendix~\ref{app:lean}) uses the pinned toolchain and Mathlib. The
+campaign's contribution is not a new formalization technology but a disciplined use of one: the
+reduction's logic is machine-checked, the H1 sharpening is machine-checked, and the analytic
+hypotheses are explicitly displayed as \code{sorry} rather than hidden. The AI contribution
+statement (Chapter~\ref{sec:verdict}) records what the AI systems did and did not do. The
+paper's position is that formalization is most valuable for the \emph{logical skeleton} --- the
+implication structure and the countermodels --- and least valuable for the analytic content, which
+remains a matter of proof and of labelled conjecture.
+
+\subsection{What this paper adds, and what it does not}
+
+\textbf{Adds.} (i) A labelled inventory of what can and cannot be concluded, with a
+machine-checked core. (ii) The two-coordinate picture: the wall in the measure/weak-$*$
+coordinate and in the $\beta$/RG/conformal coordinate, with disjoint technique pools and
+independent diagnoses. (iii) The weak-$*$ theorem and its consequences for the class of forcing
+functionals. (iv) The $(\star)$ audit and the $(G1)$ classification, including the reality of the
+conformal window and the insufficiency of each modern technique. (v) The Savvidy cleanup: a false
+obstruction removed by theorems, with the surviving margin precisely located. (vi) The diagnostic
+set for the atom. (vii) An errata record, including a corrected central-charge normalization.
+
+\textbf{Does not add.} (i) A proof of the gap. (ii) A new constructive field theory. (iii) A new
+lattice computation at the precision needed for a one-sided bound. (iv) A solution of $(G1)$ or of
+the negative-association inequality. The paper is an audit and a specification, not a
+breakthrough, and it says so on every page.

@@ -1,0 +1,567 @@
+% =====================================================================
+%  Appendices
+% =====================================================================
+\clearpage
+\appendix
+
+\section{The Lean formalization}
+\label{app:lean}
+
+The reduction and its sharpening are partially machine-checked in Lean~4. The toolchain is pinned
+to \code{leanprover/lean4:v4.33.0-rc1}; Mathlib is the frozen \code{badcache} tree in
+\code{vendor/OSforGFF/.lake/packages}. Two modules matter for this paper:
+\code{lean/YMStatement/Reduction.lean} and \code{lean/YMStatement/H1Sharpening.lean}. The
+companion check scripts are \code{lean/check-*.sh}, and the run record is
+\code{docs/LEAN-STATUS.md}.
+
+\subsection{The reduction module}
+
+\code{Reduction.lean} contains a conditional theorem whose statement is, in substance,
+\begin{quote}
+\code{clay\_gap\_conditional (T) (hH1) (hCP) (hWgeo) (hP3) (hno) : MassGap T}.
+\end{quote}
+The five analytic facts --- H1, (CP), $W_{\mathrm{geo}}\ge0$, P3, and no-dissolution --- are
+explicit hypotheses, and the theorem proves that they imply the gap statement. The module also
+contains the already-unconditional pieces of the squeeze:
+\code{susceptibility\_squeeze}, \code{m\_sq\_ge\_of\_squeeze}, \code{transported\_residue},
+\code{mass\_gap\_of\_spectral}. The five analytic facts remain \code{sorry} hypotheses, with
+their intended content named in \code{docs/LEAN-STATUS.md}. The theorem itself is checked with
+zero \code{sorryAx}, and its axiom list is exactly \code{[propext, Classical.choice,
+Quot.sound]}. \textbf{What is verified is the logic of the reduction, not its hypotheses, and not
+Clay.}
+
+\subsection{The H1 sharpening module}
+
+\code{H1Sharpening.lean} machine-checks the order-algebraic content of Chapter~\ref{sec:squeeze}.
+The five statements, verbatim up to notation, are:
+
+\begin{verbatim}
+theorem lemmaG_twoSided (hm : 0 < m) (hchi : 0 < chi) (hlo : f <= chi * m)
+    (hup : chi * m <= M) : f / m <= chi /\ chi <= M / m
+
+theorem cert_necessity (hf : 0 < f) (hchi : 0 < chi) (hlam : 0 < lam)
+    (hchile : chi <= 1 / lam) (hlo : f <= chi * m) (hm : 0 < m) :
+    lam * f <= m
+
+theorem cert_sufficiency (hM : 0 < M) (hchi : 0 < chi) (hlam : 0 < lam)
+    (hup : chi * m <= M) (hgap : lam * M <= m) : chi <= 1 / lam
+
+theorem H1_blind_to_thin_atom :
+    exists f m M chi lam : R,
+      0 < lam /\ 0 < chi /\ chi <= 1 / lam /\ 0 < m /\
+      f = 0 /\ f <= chi * m /\ chi * m <= M
+
+theorem H1_does_not_imply_atom :
+    not (forall f m M chi lam : R,
+      0 < lam -> 0 < chi -> chi <= 1 / lam -> 0 < m ->
+        f <= chi * m -> chi * m <= M -> 0 < f)
+\end{verbatim}
+
+All five are proved by ordered-field algebra (\code{linarith}, \code{norm\_num}, \code{ring}) with
+no \code{sorry}. The countermodel is $(f,m,M,\chi,\lambda)=(0,1,1,1,1)$.
+
+\textbf{Reading.} \code{cert\_necessity} says that the certificate plus the squeeze implies
+$m\ge\lambda f$: a gap floor \emph{given} a positive atom. \code{H1\_does\_not\_imply\_atom} says
+that the positivity of $f$ cannot be derived from the certificate and the squeeze. Together they
+formalize the sentence ``H1 is necessary but not sufficient / blind to a thin atom.'' The
+formalization is deliberately order-algebraic: it does not model the K\"all\'en--Lehmann measure,
+and it makes no claim about Yang--Mills. Its value is that the logical claim is no longer an
+informal remark.
+
+\subsection{What is and is not verified}
+
+\begin{itemize}
+\item \textbf{Verified:} the implication logic of the conditional theorem; the squeeze algebra;
+  the H1 sharpening and its countermodel; the axiom audit.
+\item \textbf{Not verified:} the five analytic hypotheses of the conditional theorem; the
+  existence of the measure; the gap; any numerical claim.
+\item \textbf{Reproducibility:} the toolchain pin and the Mathlib cache are recorded; the check
+  scripts are in \code{lean/}. No \code{.olean} artifact is retained for every module, so in
+  those cases the claim rests on the record in \code{docs/LEAN-STATUS.md}, and the paper says so.
+\end{itemize}
+
+\section{Numerical protocols}
+\label{app:protocols}
+
+This appendix states the protocols behind the numbers of Chapter~\ref{ch:numerics}. The purpose is
+reproducibility: each number is attached to a specification, and each specification names the
+systematic error that limits it.
+
+\subsection{The $\mathrm{SU}(2)$ residue measurement}
+
+Wilson action on a hypercubic lattice, $\beta=2.2$, $L=6$, $T=6$ (the transfer direction is
+taken long enough that the two-exponential fit is stable), $N=4000$ configurations separated by
+enough sweeps to make the integrated autocorrelation time of the correlator smaller than the
+separation. Operator: the zero-momentum connected correlator of $\operatorname{tr}F^2$, built
+from the plaquette; several smearing levels are used to check operator independence. Fit: two
+exponentials, with the residue of the leading one reported as $f_{1,\mathrm{bare}}^2$. Errors:
+jackknife over configurations. Result: $f_{1,\mathrm{bare}}^2=7.14\pm0.42$,
+$m_G=1.51\pm0.15\,a$. At $\beta=1.0$ the same protocol gives a $0.2\sigma$ signal; the
+interpretation (state at or beyond the cutoff) is in Chapter~\ref{ch:numerics}.
+
+\subsection{The $\mathrm{SU}(3)$ $k\to0$ curvature probe}
+
+$\mathrm{SU}(3)$, $\beta=5.7$, $L=8$; $\mathrm{SU}(2)$, $\beta=2.4$. Flat chart
+$X=\log U\in\mathfrak{su}(N)$. Transverse plane-wave modes at $k=2\pi/L$ (the softest nonzero
+momentum) and $k=\pi/2$ (for the volume control). The measured object is the curvature $G''$ of
+the effective action in the mode direction, with the gauge directions projected out
+($Q_\perp$). Report: $G''=+0.307\pm0.055$ in six of six transverse modes (SU(3)), with the
+$W_{\mathrm{geo}}$ part $+0.319\pm0.005$ and the action bracket $+0.037\pm0.099$. The
+one-sided $95\%$ lower bound keeps only the proven $W_{\mathrm{geo}}\ge0$ and treats the rest
+statistically: $-0.098$ (SU(3)), $-0.035$ (SU(2)). The caveat is structural: this is a
+gauge-dependent gluon mode, not the gauge-invariant $0^{++}$ residue.
+
+\subsection{The right-object audit}
+
+$\mathrm{SU}(2)$, $L=4,6,8$, $N=200$. Operator:
+$q(x)=1-\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle\approx\operatorname{tr}F^2$;
+the measured object is the $k=0$ mode $\bar q$ and its variance. Result:
+$\operatorname{Var}(\bar q)\propto V^{-1.0}$. Interpretation: the variance form of H1 is
+vacuously true for a local composite at large volume; it is a susceptibility, not an inverse
+propagator. The gauge-dependent gluon mode is also measured and fails the free-field acid test
+($G''/\text{free}=0.18$--$0.63$). The glueball two-point function is not resolved at $L=8$
+(fit $m_0\gtrsim\pi$).
+
+\subsection{The Savvidy cell}
+
+The lattice cell reports $D/S$ for twelve modes at the physical coupling: bounded by $1.1$,
+$O(1)$ in the range $0.94$--$1.00$, with five of twelve modes having $G''<0$. The $k\to0$ mode
+is absent on the available volumes. The free dispersion $4\sin^2(\pi/L)$ is used to identify
+the small-volume artifact in the earlier $G''\approx+0.28$.
+
+\subsection{Throughput and memory}
+
+The campaign's numerical throughput was measured. Pure numpy is infeasible for $\mathrm{SU}(3)$
+$L=16$--$24$; a compiled C/OpenMP implementation on 16 cores is feasible over hours to days, and
+a CUDA implementation on the available GPU is faster. \textbf{Memory rule: heavy lattice jobs run
+one at a time.} An earlier attempt to run five parallel $\mathrm{SU}(N)$ $L=8$ jobs exhausted the
+machine's memory; the campaign now serializes heavy jobs. This is a protocol rule, recorded here
+because it constrains what data can exist.
+
+\subsection{The proposed decisive computation}
+
+Chapter~\ref{ch:numerics} lists the requirements for a decisive lattice test. The protocol that
+meets them is: $\mathrm{SU}(3)$ at $\beta\in\{5.7,5.85,6.0\}$ (three spacings at fixed physical
+volume), $L=16$--$24$, a smearing family for the $0^{++}$ operator, the two-point function at
+zero momentum, and a one-sided confidence bound on $\Delta(L,a)$ uniform in $L$. The bottleneck
+is statistical: a percent-level one-sided bound requires $10^4$--$10^6$ configurations depending
+on the volume and the smearing. The campaign has not carried out this computation; the existing
+data do not meet the requirements, and the paper says so.
+
+\section{Post-audit: corrected identities, the sharpest form of H1, and the right-object audit}
+\label{app:postaudit}
+
+This appendix records developments obtained by auditing the campaign itself. None changes the
+verdict (Clay is $0\%$); each sharpens the statement of what is missing.
+
+\subsection{Two corrected identities}
+
+An audit found that two relations had been recorded as exact that are not. Both statements below
+supersede the corresponding entries of the G2 node table.
+\begin{itemize}
+\item \LT{} \emph{Stein/SD identity.} $E[-D^{2}]=E[f^{2}]$ is \textbf{false} in general; it holds
+  only for the free field. The exact identity is
+  $E[\operatorname{Hess}V]=E[\nabla V\otimes\nabla V]\succeq0$ for the \emph{full} Hessian; its
+  $vv$ component is $E[H]=E[f^{2}]$, valid for every measure and every $\beta$ by Stein/IBP.
+  What holds only at the $P$-symmetric vacuum is the \emph{equipartition} statement $E[f]=0$,
+  hence $E[f^{2}]=\operatorname{Var}(f)$.
+\item \LT{} \emph{Ward.} The exact Ward relation is $E[a\,f]=1$. The product form
+  $G''\operatorname{Var}(\xi)=1$ holds \emph{iff} the marginal is Gaussian (measured $2$--$5\%$),
+  and must not be used as an identity.
+\end{itemize}
+\src{\code{research/unconditional/H1-HESSIAN-DIRECT.md}, \code{H1-DIRECT-SPLIT.md}.}
+
+\subsection{The sharpest form of H1 and the exact missing estimate}
+\label{app:sharp}
+
+\LM{} The single open inequality, stated with no slack. There is $\Delta_0>0$ such that,
+uniformly in $(L,a)$ and for every coarse transverse $v$ at $k\to0$,
+\[
+  \operatorname{Var}_\mu\!\big(\langle v,\nabla V\rangle\,\big|\,\xi=0\big)
+  \;\le\;
+  E_\mu\!\big[H_{vv}\,\big|\,\xi=0\big]\;-\;a^{2}\Delta_0^{2},
+  \qquad V=S_W+\Phi .
+\]
+This is the (M) form of Chapter~\ref{ch:immune} with $W_{\mathrm{full}}=W_{\mathrm{geo}}+X$ and
+$\delta:=a^{2}\Delta_0^{2}+W_{\mathrm{full}}$; the two displays are the same inequality.
+Equivalently $D\le S-\lambda$ \emph{together with} $S\ge\lambda$ (the bare defect form
+$D\le(1-\epsilon)S$ is insufficient), equivalently the dimensionless ratio
+$G''_a/a^{2}\ge\Delta_0^{2}$. Two dimension traps are recorded: the unconditioned budget
+$E[f^{2}]\approx2$ is ultraviolet/equipartition-pinned and \emph{not} proportional to $a^{2}$, so
+it cannot stand in for $\lambda$; and the sign lives entirely in the \emph{conditioned} fibre
+Hessian $K=\Pi_0\operatorname{Hess}V\,\Pi_0$, whose negative edge ($\det K=0$, the transverse
+massless mode) is the wall. The unconditioned expected Hessian is provably PSD,
+$E[\operatorname{Hess}V]=E[\nabla V\otimes\nabla V]\succeq0$; the gap is therefore the
+\emph{conditioning correction} --- $W_{\mathrm{geo}}+X$ together with the change in slice
+variance --- i.e.\ the step from the expected curvature to the conditioned one.
+\src{\code{H1-DIRECT-SPLIT.md}, \code{H1-HESSIAN-DIRECT.md}, \code{H1-PROOF-ATTEMPT.md}.}
+
+\subsection{Why the attempted species terminate here: anti-localization}
+
+Across the species attempted in the audit --- positivity/entropy, spectral-gap (curvature
+$\Gamma_2$ / Cheeger / capacity / RCD), operator-algebraic (modular/AQFT), analytic (microlocal /
+thimble / resurgence), representation-ring / signed-Fourier, and optimal transport --- each reduces
+\emph{losslessly} to the single estimate above, because of one structural pattern (a synthesis of
+the audit, not a theorem about all cones):
+\begin{quote}\itshape
+\textbf{Anti-localization.} Every positivity, curvature, algebraic or analytic ``compensation''
+these tools supply is largest exactly where the gap is \emph{not} decided, and vanishes on the one
+sign-bearing cell --- typical field $\times$ $k\to0$.
+\end{quote}
+The wall thus has two coordinates. The positivity/squeeze faces are \emph{Schur-concave}: they
+bound the atom weight from above, the wrong direction for a mass \emph{lower} bound. The single
+exception, the thimble/interference route, is \emph{Schur-convex} --- the correct direction ---
+but pays with a relative interference phase whose control is the condensed Stokes constant
+$\sigma=\langle\operatorname{tr}F^{2}\rangle$, again H1.
+\src{\code{TRANSPORT-CORE.md} \S4; \code{THIMBLE-CORE.md}, \code{THIMBLE-BUILD.md};
+\code{SIGNED-FOURIER-*}, \code{CHEEGER-*}, \code{MODULAR-*}, \code{MICROLOCAL-*}.}
+
+\subsection{Numerical audit on the correct object}
+
+\LE{} A post-audit measured the true gauge-invariant $0^{++}$ object --- the $k=0$ mode of
+$q(x)=1-\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle\approx\operatorname{tr}F^2$
+--- rather than the gauge-dependent gluon ($\mathrm{SU}(2)$, $L=8$, $N=200$). Two findings, both
+negative for the variance route. (i) The composite zero-momentum variance scales as
+$\operatorname{Var}(\bar q)\propto V^{-1.0}$ ($L=4,6,8$), so the \emph{variance form} of H1,
+$\operatorname{Var}\le1/\lambda$, is vacuously satisfied by any local composite at large $V$ and
+carries no gap content; its apparent $G''>0$ is the wrong scaling (a susceptibility
+$1/\operatorname{Var}\propto V$, not an inverse propagator). (ii) The gauge-dependent gluon mode,
+which does have the right variance behaviour, fails the free-field acid test at every $\beta$
+measured ($G''/\text{free}=0.18$--$0.63$; one-sided lower bound $<0$ at every $\beta$).
+Consequently the $D/S\approx2\%$ quoted in the main text is a compactness/Haar number measured on
+that gauge-dependent mode --- not gap evidence --- and is not robust under a susceptibility
+normalisation ($-0.45$ to $+0.60$ at strong coupling; the $2\%$ is a weak-coupling value). The
+physical datum is the glueball two-point mass, which is \emph{not} resolved at $L=8$ (fit
+$m_0\gtrsim\pi$, $\xi\lesssim a$). The audit sharpens, and does not close, the gap; it is
+consistent with $G''_a=a^2m^2$ and with H1 being necessary, not sufficient.
+\src{\code{H1-NUMERIC-RIGHT.md}, \code{H1-DIRECT-SPLIT.md}, \code{OVERLAP-AUDIT.md}.}
+
+\subsection{Verdict}
+
+No claim in this appendix closes the gap. The reduction is machine-checked; the single missing
+estimate is stated with no slack; the species attempted are shown to reduce to it. \textbf{Clay
+remains $0\%$ (open).} The tool that would prove the missing estimate --- cutoff- and
+volume-uniform, non-circular, surviving the Savvidy crossover --- is precisely the object the
+campaign has localized, and it does not exist in the present toolbox.
+
+\section{Verification map}
+\label{app:verif}
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{4.2cm}
+  >{\raggedright\arraybackslash}p{1.8cm}
+  >{\raggedright\arraybackslash}p{8.6cm}@{}}
+\caption{Verification map: each claim, its label, and the file containing the proof.}
+\label{tab:verif}\\
+\toprule
+\textbf{Claim in this paper} & \textbf{Label} & \textbf{File containing the proof / source}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Claim in this paper} & \textbf{Label} & \textbf{File containing the proof / source}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+P3 residue theorem (I1) & \LT & \code{research/unconditional/PROOF-P3-UNCONDITIONAL.md},
+  \code{PROOF-P1P2.md}, \code{PROOF-P3.md}\\
+P3 gives I1 not I2 & correction & \code{PROOF-P3-UNCONDITIONAL.md} \S5;
+  \code{PROOF-P1P2.md} \S3\\
+No-dissolution theorem & \LC & \code{research/unconditional/PROOF-NO-DISSOLUTION-KINEMATIC.md},
+  \code{PROOF-DISSOLUTION-SPECTRAL-DENSITY.md}\\
+Operative threshold $\approx1.5\,m_g$ & \LT & \code{PROOF-ISOLATION.md} \S4;
+  \code{PROOF-EDGE-E2.md}\\
+$W_{\mathrm{geo}}\ge0$, $E[\Phi'']\ge N/12$ & \LT &
+  \code{research/unconditional/PROOF-JACOBIAN-SAVES.md}\\
+Gauge-invariant PF & \LT{} finite $V$ & \code{research/unconditional/PROOF-GAUSS-INVARIANT-PF.md}\\
+Lemma SC & \LT & \code{research/unconditional/PROOF-COARSE-POINCARE.md} \S(c)\\
+Feshbach--Bogoliubov lemma & \LT{} abstract & \code{research/unconditional/FORGE-BLIND.md} \S2;
+  \code{D-BBS-INTEGRATE-NEG.md} (Lemma NS)\\
+$G''=S-D$ & \LT{} identity & \code{INVENT-VARIANCE-INEQ.md}; \code{docs/new-tools-registry.md} A2\\
+Residue--level-gap lemma & \LT & \code{GAP-G2-edge}; \code{G2-ASSEMBLE-100.md} \S2\\
+Conditional theorem \code{IN-0}\ldots\code{IN-11} & \LC & \code{docs/conditional-theorem.md},
+  \code{lean/YMStatement/}\\
+Strong-coupling bridge $m\ge4\sqrt\sigma$ & \LC & \code{ROOF-CONFINEMENT-GAP.md}\\
+Conditional roof $\gamma\ge(1/2\pi)(1/\chi)$ & \LT{}/given & \code{ROOF-UNIFORM-CHI.md},
+  \code{PROOF-COARSE-POINCARE.md}\\
+Spectral squeeze, H1 necessary-not-sufficient & \LT &
+  \code{research/unconditional/REDUCTION-AUDIT.md}\\
+H1 does not imply atom & \LT{}(logic) & \code{lean/YMStatement/H1Sharpening.lean}\\
+Correct sufficient condition & \LT & \code{REDUCTION-AUDIT.md};
+  \code{LOWER-AMPLITUDE-MECHANISMS.md} \S1\\
+Node board / honest \% & \LT/\LC/\LM & \code{docs/PROOF-SKELETON.md};
+  \code{research/unconditional/G2-ASSEMBLE-100.md}, \code{G1-ASSEMBLE-100.md},
+  \code{ABC-FINAL-LEDGER.md}\\
+Six first-wave tools and acid tests & \LT/\LC & \code{docs/new-tools-registry.md};
+  \code{INVENT-TRANSPORT-INEQ.md}, \code{INVENT-VARIANCE-INEQ.md},
+  \code{INVENT-NEW-IDENTITY.md}, \code{INVENT-GAUGE-INVARIANT-MASS.md},
+  \code{INVENT-NEW-MONOTONE.md}\\
+Tool wave: seven blind, Hardy presence & \LN{}/partial & \code{TOOL-SYNTHESIS.md};
+  \code{TOOL-DUAL.md}, \code{TOOL-POTENTIAL.md}, \code{TOOL-CONFORMAL.md},
+  \code{TOOL-CARATHEODORY.md}, \code{TOOL-NEVANLINNA.md}, \code{TOOL-TOEPLITZ.md},
+  \code{TOOL-HARDY.md}, \code{TOOL-ZEROCOUNT.md}\\
+No-gos & \LN & \code{INVENT-CONVEXIFICATION.md}, \code{INVENT-SECOND-CONE.md},
+  \code{INVENT-NEW-INDEX.md}, \code{SCHUR-CONVEX.md}, \code{GOLDS-POS-MASS.md},
+  \code{FORGE-FESHBACH-ANGLE.md}, \code{FORGE-KREIN-SPECTRAL.md}\\
+Order-parameter no-go (B2) & \LT{} & \code{PROOF-NO-MELT-PHASE.md}, \code{ROOF-TRANSFER.md}\\
+Markov no-go (BE) & \LT{} & \code{BASE-FIELDMEASURE.md}\\
+One species (UV/IR), five conditions & \LM & \code{docs/PROOF-SKELETON.md} \S3;
+  \code{docs/YANG-MILLS-MASTER.md} \S6\\
+Immune map & \LN & \code{docs/YANG-MILLS-MASTER.md} \S5; \code{ABC-FINAL-LEDGER.md}; batch
+  reports \code{ABC*}, \code{C-*}, \code{D-BBS-*}, \code{LOC-*}, \code{MS-*}, \code{LOWER-*},
+  \code{FORGE-*}, \code{K0-*}, \code{BS-*}, \code{TRANSMUTE-*}, and the later waves\\
+Weak-$*$ lemmas and no continuous forcing functional & \LT & \code{FALSIFY-TOPOLOGICAL.md};
+  \code{ONLY-EXIT-SYNTHESIS.md} \S3\\
+Eight falsification routes & \LT/\LN & \code{FALSIFY-HARDY-UPGRADE.md},
+  \code{FALSIFY-HIGHER-SINGULAR.md}, \code{FALSIFY-ENTROPY.md}, \code{FALSIFY-OPE.md},
+  \code{FALSIFY-WARD-NONLINEAR.md}, \code{FALSIFY-TOPOLOGICAL.md}, \code{FALSIFY-FLOW.md},
+  \code{FALSIFY-FIELD.md}\\
+$(\star)$ true modulo $d=4$ scale$\Rightarrow$conformal & \LC & \code{STAR-POLCHINSKI.md},
+  \code{STAR-LITERATURE.md}, \code{STAR-NO-DILATON.md}, \code{STAR-NO-BZ.md}\\
+Conformal window real (Banks--Zaks) & \LT{}/pert. & \code{G1-WINDOW-BOUNDARY.md},
+  \code{STAR-NO-BZ.md}\\
+Central charges allow a CFT IR ($a/c=31/18$) & \LN & \code{G1-A-C-BOUNDS.md} (erratum recorded)\\
+Eight $(G1)$ routes fail & \LN & \code{G1-ACID.md}, \code{G1-NONPERT-BETA.md},
+  \code{G1-A-C-BOUNDS.md}, \code{G1-LARGE-N.md}, \code{G1-CONFORMAL-BOOTSTRAP.md},
+  \code{G1-WINDOW-BOUNDARY.md}, \code{G1-HOLO-NEC.md}, \code{G1-DSE-CONFORMAL.md}\\
+Savvidy false obstruction removed & \LT & \code{SAVVIDY-DTERM.md}, \code{SAVVIDY-NEGMODE-EXACT.md},
+  \code{SAVVIDY-VAR-PHI2.md}, \code{SAVVIDY-UNIFORM-SOFTENING.md}, \code{SAVVIDY-2LOOP.md}\\
+Savvidy surviving margin $=$ H1 & \LM & \code{SAVVIDY-MULTICELL-RG.md},
+  \code{SAVVIDY-LATTICE-CELL.md}\\
+$\kappa$ line closed & \LT/\LN & \code{KAPPA-NG-DETERMINANT.md}, \code{KAPPA-2D-EXACT.md},
+  \code{KAPPA-HOLO-COMPUTE.md}, \code{KAPPA-LARGEN.md}, \code{KAPPA-EFT-MATCH.md},
+  \code{KAPPA-LATTICE-MEASURE.md}, \code{KAPPA-BREATHING-MATCH.md}, \code{KAPPA-OVERDETERMINED.md}\\
+Diagnostics (P3, $\kappa(\tau)$, Re-slope, FSS) & \LT/\LE & \code{WI-P3-CONTINUUM.md},
+  \code{WI-P3-RIGOR.md}, \code{WI-P3-QUANT.md}, \code{WI-P3-UNIFORM.md},
+  \code{WI-MODIFIED-FUNCTIONAL.md}, \code{WI-RESLOPE-*}\\
+$f_1^2>0$ at $\beta=2.2$ ($17\sigma$) & \LE &
+  \code{research/unconditional/COMPUTE-F1SQ-SU2.md}\\
+$G''$ $k\to0$ probe (gauge-dependent mode) & \LE &
+  \code{research/unconditional/COMPUTE-GPP-K0-CONTINUUM.md}\\
+Right-object audit ($\operatorname{Var}\propto V^{-1}$) & \LE &
+  \code{research/unconditional/H1-NUMERIC-RIGHT.md}\\
+Dimensional correction $G''_a=a^2m_{\mathrm{phys}}^2$ & \LT & \code{docs/PROOF-SKELETON.md}
+  (G1-CONTINUUM-SCALING)\\
+``Machine that does not exist'' & verdict & \code{docs/yang-mills-frontier.md} \S7;
+  \code{YANG-MILLS-MASTER.md} \S9; \code{TOOL-not-iii.md}\\
+\end{longtable}
+\normalsize
+
+\section{The measurement ledger}
+\label{app:data}
+
+This appendix collects every number quoted in the paper, with its configuration and its label, so
+that a reader can check a value against a protocol and a protocol against a file. The labels are
+\LE{} for measurements, \LT{}/pert.\ for perturbative theorems, and \LC{} for
+truncation-dependent results.
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.7cm}
+  >{\raggedright\arraybackslash}p{4.6cm}
+  >{\raggedright\arraybackslash}p{4.3cm}c@{}}
+\caption{The measurement ledger.}
+\label{tab:ledger}\\
+\toprule
+\textbf{Quantity} & \textbf{Configuration} & \textbf{Value} & \textbf{Label}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Quantity} & \textbf{Configuration} & \textbf{Value} & \textbf{Label}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+$\mathrm{SU}(2)$ residue & $\beta=2.2$, $L=6$, $N=4000$ & $f_{1,\mathrm{bare}}^2=7.14\pm0.42$;
+  $m_G=1.51\pm0.15\,a$ & \LE\\
+$\mathrm{SU}(2)$ residue & $\beta=1.0$ & $0.2\sigma$ (not extractable) & \LE\\
+$\mathrm{SU}(3)$ curvature & $\beta=5.7$, $L=8$, $k=\pi/4$ & $G''=0.307\pm0.055$ (6/6 modes) &
+  \LE\\
+$W_{\mathrm{geo}}$ & same & $0.319\pm0.005$ & \LE\\
+action bracket & same & $0.037\pm0.099$ & \LE\\
+$\mathrm{SU}(2)$ curvature & $\beta=2.4$ & $G''=0.192\pm0.058$; $W_{\mathrm{geo}}=0.252$ & \LE\\
+one-sided $95\%$ lower bound & SU(3) / SU(2) & $-0.098$ / $-0.035$ & \LE\\
+volume control & $k=\pi/2$, $L=4$ & $G''=0.425\pm0.084$ & \LE\\
+volume control & $k=\pi/2$, $L=8$ & $G''=0.396\pm0.063$ & \LE\\
+$W_{\mathrm{geo}}$ stability & $L=4,6,8$, both $k$ & pinned at $+0.32$ & \LE\\
+right-object variance & SU(2), $L=4,6,8$, $N=200$ & $\operatorname{Var}(\bar q)\propto V^{-1.0}$ &
+  \LE\\
+gluon acid ratio & all measured $\beta$ & $G''/\text{free}=0.18$--$0.63$ & \LE\\
+$D/S$ robustness & strong coupling & $-0.45$ to $+0.60$ & \LE\\
+Savvidy $D/S$ & lattice cell, 12 modes & $0.94$--$1.00$; 5/12 modes $G''<0$ & \LE\\
+2-loop window & SU(3), fundamental $N_f$ & $N_f\in[9,16]$, $N_f^c=8.05$ & \LT{}/pert.\\
+4-loop boundary & SU(3) & $N_f^c\approx11$ & \LE\\
+5-loop boundary & SU(3) & $N_f^c\approx12$ & \LE\\
+DSE exponent & Landau gauge, scaling ansatz & $\kappa\approx0.595$ & \LC\\
+NG rigidity & 1-loop determinant & $\kappa_{NG}=-1/(6\pi)$ & \LT\\
+rigidity ratio & rigid-string model & $\kappa_{\rm light}/\kappa_{\rm exc}=1.733$; mass ratio
+  $1.168$ vs lattice $1.538$ & \LE\\
+\end{longtable}
+\normalsize
+
+\textbf{Reading the ledger.} The \LE{} rows are measurements on finite lattices, with the
+statistical method stated in Appendix~\ref{app:protocols}. They are not proofs, and the paper
+does not use them as such. The \LT{}/pert.\ rows are perturbative theorems (the two-loop window)
+or exact computations (the NG determinant). The \LC{} row is truncation-dependent. The
+Savvidy rows are the ones where the distinction between a theorem (the removal of the false
+obstruction) and a measurement (the surviving margin) matters most, and the main text keeps them
+separate.
+
+\section{Glossary of waves and files}
+\label{app:glossary}
+
+This glossary is for navigation. Each wave has a synthesis file (the source of the collective
+verdict in Chapter~\ref{ch:immune}) and a set of individual reports (the provenance of the
+individual claims). The file names are reproduced exactly so that a reader can follow any claim
+to its proof.
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{2.1cm}
+  >{\raggedright\arraybackslash}p{4.0cm}
+  >{\raggedright\arraybackslash}p{5.3cm}
+  >{\raggedright\arraybackslash}p{2.4cm}@{}}
+\caption{Wave index: synthesis file, representative reports, verdict.}
+\label{tab:glossary}\\
+\toprule
+\textbf{Wave} & \textbf{Synthesis / canonical} & \textbf{Representative reports} &
+\textbf{Verdict}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Wave} & \textbf{Synthesis / canonical} & \textbf{Representative reports} &
+\textbf{Verdict}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+first & \code{WAVE1-SUMMARY.md}, \code{WAVE2-SUMMARY.md}, \code{WAVE3-SUMMARY.md},
+  \code{WAVE5-SUMMARY.md}, \code{WAVE-R-SUMMARY.md} & \code{INEQ-T*}, \code{INEQ-R*},
+  \code{PROOF-*} & species\\
+\code{ABC}/\code{ABC2}/\code{ABC3} & \code{ABC-FINAL-LEDGER.md},
+  \code{ABC2-SYNTHESIS.md} & \code{ABC-*}, \code{ABC2-*}, \code{ABC3-*} & species\\
+\code{C-BBS}/\code{D-BBS} & \code{C-BBS-FORMULATE.md}, \code{D-BBS-INTEGRATE-NEG.md} &
+  \code{C-BBS-*}, \code{D-BBS-*} & species\\
+\code{LOC} & \code{LOC-LOCALIZE-PROVE.md} & \code{LOC-*} & species\\
+\code{MS} & \code{MS-ANALYTIC-NOZERO.md} & \code{MS-*} & species\\
+\code{LOWER} & \code{LOWER-AMPLITUDE-MECHANISMS.md} & eight mechanisms in one report &
+  anti-gap\\
+\code{FORGE}/\code{FORGE5} & \code{FORGE-BLIND.md}, \code{FORGE5-SL-IR-SINGLE.md} &
+  \code{FORGE-*}, \code{FORGE5-*} & TCI/H1\\
+\code{K0} & \code{K0-BLIND.md} & \code{K0-*}, \code{k0-*} & H1\\
+\code{BS} & \code{BS-BLIND.md} & \code{BS-*} & H1/I2\\
+\code{TRANSMUTE} & \code{TRANSMUTE-BLIND.md} & \code{TRANSMUTE-*} & wrong sector/scale\\
+\code{SAVVIDY} & \code{SAVVIDY-WI-SYNTHESIS.md} & \code{SAVVIDY-*} & false obstruction
+  removed; H1\\
+\code{WI} & \code{SAVVIDY-WI-SYNTHESIS.md}, \code{BLAST-WI-SYNTHESIS.md} & \code{WI-*} &
+  read/A3/H1\\
+\code{P3} & \code{PROOF-P3-UNCONDITIONAL.md} & \code{P3-*} & I1 theorem\\
+\code{CONSTRUCT} & \code{CONSTRUCT-SYNTHESIS.md} & \code{CONSTRUCT-*} & species\\
+\code{KAPPA} & \code{CONSTRUCT-SYNTHESIS.md} & \code{KAPPA-*} & line closed\\
+\code{SLOT} & \code{SLOT-SYNTHESIS.md} & \code{SLOT-*} & source at zero $=$ H1\\
+\code{BASE} & \code{BASE-SYNTHESIS.md} & \code{BASE-*} & species\\
+\code{ROOF} & \code{ROOF-SYNTHESIS.md} & \code{ROOF-*} & B2; strut $=$ H1\\
+\code{INVENT} & \code{INVENT-SYNTHESIS.md} & \code{INVENT-*} & species\\
+\code{IMPOSSIBLE} & \code{IMPOSSIBLE-SYNTHESIS.md} & \code{IMPOSSIBLE-*} & two coordinates\\
+\code{STAR} & \code{STAR-SYNTHESIS.md} & \code{STAR-*} & $(\star)$ true, reduces to $(G1)$\\
+\code{G1} & \code{G1-SYNTHESIS.md} & \code{G1-*} & $\beta$ coordinate; 8/8 fail\\
+\code{TOOL} & \code{TOOL-SYNTHESIS.md} & \code{TOOL-*} & seven blind; Hardy presence\\
+\code{FALSIFY} & \code{ONLY-EXIT-SYNTHESIS.md} & \code{FALSIFY-*} & weak-$*$; one exit\\
+\code{BLAST} & \code{BLAST-WI-SYNTHESIS.md} & \code{BLAST-*} & H1 cannot be blasted\\
+\code{CERT} & \code{CERT-SYNTHESIS.md} & \code{CERT-*}, \code{ROUTE-NEW-*} & cert $=$ H1 $+$
+  A3\\
+\end{longtable}
+\normalsize
+
+\textbf{How to use the glossary.} A claim in the paper that is not a theorem names either a
+chapter (for the argument) or a file (for the proof). The glossary maps the wave name to the
+synthesis file, and the synthesis file names the individual reports. For the theorems, the
+verification map of Appendix~\ref{app:verif} gives the exact file. For the numerical claims, the
+protocol appendix gives the configuration. No claim is left without one of these three routes.
+
+\section{Errata and compendium of definitions}
+\label{app:errata}
+
+\subsection{Erratum: the central-charge normalization}
+
+An earlier corpus file reported the free-vector ratio as $a/c=31/36$ and called it ``strictly
+interior'' to the unitary band. That number came from an inconsistent normalization: $a$ was
+divided by $4$ and $c$ by $2$. In the standard normalization (per real scalar $a=1/90$,
+$c=1/30$), the free vector has $a=62/90$ and $c=12/30=2/5$, so
+\[
+\frac ac=\frac{(62/90)}{(2/5)}=\frac{31}{18}\approx1.722 ,
+\]
+which is exactly the \emph{upper edge} of the conformal-collider band $1/3\le a/c\le31/18$
+(Hofman--Maldacena; Hofman--Li--Meltzer--Poland--Rej\'on-Barrera). The bound is inclusive and
+attained by the free vector. \textbf{The conclusion is unchanged}: the central charges do not
+exclude a CFT infrared, because the $a$-theorem is a ceiling and the allowed region
+$a_{IR}\in(0,a_{UV}]$, $a_{IR}/c_{IR}\in[1/3,31/18]$ is two-dimensional. The corpus file
+\code{G1-A-C-BOUNDS.md} and the synthesis \code{G1-SYNTHESIS.md} have been corrected and carry
+the erratum.
+
+\subsection{Corrections preserved from the first edition}
+
+The following corrections are preserved because they are easy to undo by accident.
+\begin{enumerate}
+\item \textbf{P3 does not give I2.} The strong-coupling cost grading grades polymer amplitudes,
+  not transfer-matrix eigenvalue spacing. P3 is a residue theorem (I1), not an isolation
+  theorem (I2). (\code{PROOF-P3-UNCONDITIONAL.md} \S5.)
+\item \textbf{The certificate is not the gap.} The certificate is a sufficient route
+  (cert $+$ IN-10 $+$ IN-11 $\Rightarrow$ gap), but cert $>0$ is strictly weaker than the gap and
+  the necessity gap $\Rightarrow$ cert is unproved. ``Stuck at the certificate'' does not imply
+  ``stuck at the gap.'' (\code{campaign-final.md} \S6.)
+\item \textbf{$D/S\approx2\%$ is a gauge-dependent number.} It is measured on the gluon mode at
+  weak coupling, not on the gauge-invariant $0^{++}$ at the physical coupling. The correct
+  object's variance is $V$-suppressed. (Appendix~\ref{app:postaudit}.)
+\item \textbf{The ``$75\times$'' strong-coupling figure was a unit confusion.} The CPS/CNS 2025
+  frontier is $\lambda_{\mathrm{tH}}<1/24$, not a factor $75$ from the physical coupling.
+  (\code{PROOF-EMERGENT-4D.md}.)
+\item \textbf{$G''\operatorname{Var}(\xi)=1$ only for a Gaussian marginal.} Measured $2$--$5\%$
+  at $\beta=2.5$; the exact Ward identity is $E[a\,f]=1$.\ (\S\ref{sec:squeeze}.)
+\item \textbf{The atom $=$ atomless-bump distinction is not visible to finite data.} Any
+  finite-moment match is blind to the atom; the two-coordinate picture records this as the
+  weak-$*$ theorem. (Chapter~\ref{ch:weakstar}.)
+\item \textbf{The two-coordinate identification is a conjecture.} The statement that $H1$ and
+  $(G1)$ are the same wall is labelled \LC{} (structural identification), not \LT.
+  (Chapter~\ref{ch:twocoord}.)
+\end{enumerate}
+
+\subsection{Compendium of symbols}
+
+\begin{description}[leftmargin=2.2em,style=nextline,itemsep=1pt]
+\item[$\nu$] the K\"all\'en--Lehmann spectral measure of $\operatorname{tr}F^2$; positive,
+  supported on $[m_1^2,\infty)$.
+\item[$m_1^2$] the bottom of $\operatorname{supp}\nu$; the lightest $0^{++}$ mass squared.
+\item[$f_1^2$] the atom weight $\nu(\{m_1^2\})=|\langle0|\operatorname{tr}F^2|\mathbb G\rangle|^2$.
+\item[$\chi$] the susceptibility $\int s^{-1}d\nu$; the zero-momentum connected two-point
+  function; a residue-weighted harmonic mean of the masses.
+\item[$M_k$] the $k$-th moment $\int s^k\,d\nu$.
+\item[$\Lambda_\star$] the isolation threshold $\inf\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})$.
+\item[I1] the atom statement $f_1^2>0$.
+\item[I2] the isolation statement $\Lambda_\star-m_1^2\ge\delta>0$.
+\item[H1] the ceiling $\chi\le1/\lambda$, uniform in $(L,a)$.
+\item[$H^*$] the pair (I1 $+$ I2), the correct sufficient condition.
+\item[$G''$] the coarse curvature $V_{\mathrm{eff}}''(k\to0)$.
+\item[$S,D$] the exact variance-decomposition terms, $G''=S-D$.
+\item[$K$] the conditioned fibre Hessian $\Pi_0\operatorname{Hess}V\,\Pi_0$.
+\item[$W_{\mathrm{geo}}$] the Haar geometric term $E[\Phi'']-\operatorname{Var}(\Phi')$.
+\item[$W_{\mathrm{full}}$] $W_{\mathrm{geo}}+X$, with $X=-2\operatorname{Cov}(G,\Phi')$.
+\item[L3] the UV node $\sup_aZ_a^{-1}\|H_a\|_{\mathcal D}<\infty$.
+\item[P3] the strong-coupling residue theorem.
+\item[TCI] the tachyonic-compensation inequality.
+\item[NA] the negative-association inequality $\operatorname{Cov}(G,\Phi'|0)\le0$.
+\item[A3] the read-not-force class: evaluating a pole or discontinuity by analytic
+  continuation.
+\item[$(\star)$] a gapless interacting 4D asymptotically-free Wilsonian IR attractor is
+  conformal.
+\item[$(G1)$] pure Yang--Mills ($N_f=0$) lies outside the conformal window; equivalently
+  $\beta_{N_f=0}$ has no strong-coupling zero.
+\item[CP] the single-$T=0$-phase, Kato-preserved-edge, uniform-isolation hypothesis.
+\end{description}
+
+\subsection{Reproducibility statement}
+
+Every theorem and measurement in this paper is tied to a file in the repository. The Lean
+toolchain is pinned and its cache recorded. The numerical protocols are specified in
+Appendix~\ref{app:protocols}, with the statistical method and the limiting systematic named.
+Where a corpus file was found to be wrong, the correction is recorded in
+\S\ref{app:errata} and in the file itself. Where a statement is a conjecture, it is labelled.
+The repository is public at \code{github.com/FujoJTOP/yang-mills-mass-gap}.
