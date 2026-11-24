@@ -1,0 +1,271 @@
+% =====================================================================
+\section{The ultraviolet face: the last inequality, classified}
+\label{ch:uvface}
+% =====================================================================
+
+This chapter reports the campaign's ultraviolet-face wave, which is the subject of the companion
+focused paper. It does not change the verdict of Chapter~\ref{sec:verdict}: \textbf{Clay remains
+open.} What it changes is the status of the node L3. The inequality that L3 had been reduced to,
+denoted $(\star)$, is now \emph{classified}: one door is locked by an exact counterexample, one room
+is proved on the small-field set, and the last door opens onto $H1$ itself. The chapter also records
+the soft-mode and decompactification waves, including the exact periodic constant-mode anchor.
+
+\subsection{The correct object}
+
+The campaign's earlier computations of the coarse curvature used the unconditioned combination
+\begin{equation}
+  G''_0=E_\mu[H]-\operatorname{Var}_\mu(G)+W_{\mathrm{geo}}=2W_{\mathrm{geo}},
+  \label{eq:v3shadow}
+\end{equation}
+which is a true identity for a \emph{different} object. The object in $(\star)$ is the
+\emph{coarse-field-conditioned marginal curvature}
+\begin{equation}
+  G''(v;a_0)=E_a\bigl[\partial_v^2V\bigr]-\operatorname{Var}_a\bigl(\partial_vV\bigr)
+  =\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X,
+  \qquad X=-2\operatorname{Cov}(G,\Phi'),
+  \label{eq:v3object}
+\end{equation}
+with $V=S_W+\Phi$, $\Phi=-\log J$ the Haar Jacobian, conditioned at the coarse field $a=a_0$. The
+conditioning sets $E[H|a_0]=0$ at the barrier and exposes the negative force variance; the cross term
+$X$ is not optional. The identity \eqref{eq:v3shadow} is correct, but it is not $(\star)$
+\LT{} (files \code{RECONCILIATION-STAR.md}, \code{V2-TRUE-BOUND.md}; the Stein derivation is
+reproduced in the companion paper's Appendix A).
+
+\subsection{The strong form is false \LN}
+
+In the exactly solvable $\mathrm{SU}(2)$ one-plaquette model with boundary holonomy
+$B=e^{i\theta\sigma_3/2}$, one free link, longitudinal mode $v=e_3$, at the barrier $a_0=0$ and
+$\theta=\pi$,
+\begin{equation}
+  G''(v;a_0)=A-B\beta^2,\qquad A=0.20511530,\quad B=0.01105929,\quad \beta_*=4.30661 .
+  \label{eq:v3counter}
+\end{equation}
+For $\beta>\beta_*$ the curvature is negative. The longitudinal mode lies in $\operatorname{im}P$ and
+the configuration has full support, so the counterexample is inside the definition of the true
+$(\star)$. Three independent computations (direct quadrature, force moments, rejection Monte Carlo)
+agree to $10^{-6}$. Hence the \textbf{uniform-in-$a_0$ form of $(\star)$ is false} \LN{} (file
+\code{V3-COUNTEREXAMPLE-SCOPE.md}).
+
+The intercept $A$ has an independent meaning: it is exactly the $\beta=0$ Haar curvature of the
+constant-holonomy marginal, $1/(2\,\mathrm{Cin}(2\pi))=0.20511530$, derived in
+\S\ref{ch:uvface-periodic} below. The two computations are unrelated and agree to all quoted digits.
+
+\subsection{The good-set theorem \LT/\LC}
+
+On the small-field set $\mathcal S_t$ the correct object is controlled exactly. Marginal strong
+convexity gives the implication
+\begin{equation}
+  \operatorname{Hess}V\succeq\rho I\quad\Longrightarrow\quad G''_{\mathrm{true}}(v;a_0)\ge\rho,
+  \label{eq:v3good}
+\end{equation}
+with $X$ included, where
+\begin{equation}
+  \rho=N/12+c_\Box-C_1\beta F_\partial-C_S\beta F_{\mathrm{bulk}} .
+  \label{eq:v3modulus}
+\end{equation}
+On $\mathcal S_t$ ($F_\partial\le t$, small block) this gives
+$G''_{\mathrm{true}}\ge c_\Box+N/12-C_1\beta F_\partial>0$, linearly in $N$ \LC{}+\LE. At
+$\beta=2.5$ the one-plaquette threshold is $\theta_c\approx0.81$, with $\rho_0=0.217$ and a true
+$G''(e_3)=0.741\ge0.217$. The Schur loss can exceed $N/12$; the corrected bound is the exact Schur
+complement $\Sigma\succeq\rho I$, with no loss (file \code{V2-TRUE-BOUND.md}).
+
+\subsection{Projection and ultraviolet normalization \LT/\LC}
+
+The free-field acid test selects the \textbf{linear (divergence-free)} projection class. For those
+directions the $X$-less identity $G''_0=2W_{\mathrm{geo}}$ is exact for any block; covariant
+directions give a sign-indefinite remainder and false positivity or false negativity, so they are
+excluded \LT{} (file \code{G3-PROJECTION-TERM.md}).
+
+A constant bare ultraviolet margin is false. The correct statement is renormalized:
+\begin{equation}
+  Z_j^{-1}G''_j\ \ge\ c_L=\frac{4\pi^2}{L^2},
+  \qquad
+  \delta_W=\Theta(\beta_j)\propto\log(1/a_j),
+  \label{eq:v3ren}
+\end{equation}
+so the margin runs logarithmically rather than staying constant \LT/\LC{} (file
+\code{V1-UV-NORMALIZATION.md}).
+
+\subsection{The head}
+
+Beyond $\mathcal S_t$ the Hessian modulus is non-positive (bulk Savvidy), and the true curvature is
+measure-carried. Five statements organize what is known.
+
+\textbf{Defect and Fisher.} Write $D=D_+(\le0)+D_{\mathrm{Sav}}$, with
+$D_{\mathrm{Sav}}=E|\langle\varphi_-|c\rangle|^2/(g|B|)\ge0$. The averaged curvature is the Fisher
+information,
+\begin{equation}
+  E_{a\sim\rho}\bigl[G''\bigr]=I(\rho)=E\bigl[(\partial\log\rho)^2\bigr]\ge\frac{1}{%
+  \operatorname{Var}(a)},
+  \label{eq:v3fisher}
+\end{equation}
+which is positive but equals $H1$ as a uniform statement \LT{} (file \code{H2-DEFECT-BOUND.md}).
+
+\textbf{Averaged boundary.} At $\beta=2.5$ the curvature is positive across the full holonomy range
+(minimum $+0.136$, mean $+0.37$ to $+0.59$); the negative set at $\beta=5$ has measure at most
+$1.6\times10^{-4}$, and is empty at $\beta=2.5$ in the scan \LE{} (file \code{H3-AVERAGED-HEAD.md}).
+
+\textbf{Local sign.} The Haar marginal vanishes on the chart edge, so the coarse minimiser $a_0^*$ is
+interior; at an interior maximum $G''(a_0^*)=-\rho_v''/\rho_v\ge0$ \LT, strict in the scan
+(minimum $0.20$--$0.24>N/12$) \LE{} (file \code{H4-HEAD-COUNTEREXAMPLE.md}).
+
+\textbf{RG descent.} The exact one-step identity $G''_j=(PA_j^{-1}P^{\mathsf T})^{-1}=E[\Sigma]-D$
+and the one-step lemma ($\eta_j<1$) give
+\begin{equation}
+  G''_j\succeq(1+\eta_j)^{-1}G''_{j+1},
+  \label{eq:v3descent}
+\end{equation}
+with summable additive loss. The accumulated loss is $\sum g_j^4\approx0.09$ against the margin
+$c_L=0.152$ for $j\ge8$. The descent transports the ultraviolet floor to $\beta\approx2.5$ on
+box-gap-protected modes; it breaks on the Savvidy soft mode, where $\eta_j\ge1$, $\gamma_j\to0$ and
+$D_j>0$ \LT{} (file \code{H1-RG-DESCENT.md}). Thus L3 is reduced to $H1$ \emph{on one mode}.
+
+\textbf{Spectral no-go.} The Riccati identity $G''=-2\partial^2\log\psi_0$ and
+$\lambda_1\ge\operatorname{ess\,inf}G''$ block the entire spectral class (Perron--Frobenius,
+Bakry--\'Emery/LSI, Cheeger, block transfer) at the head: the typical point is positive, but the
+essential infimum is negative on the Savvidy tails \LN{} (file \code{H6-HEAD-SPECTRAL.md}).
+
+\subsection{The soft mode}
+
+The one mode on which the descent breaks is the Savvidy soft mode. Six computations decide what can
+be said.
+
+\textbf{Small-volume positivity.} In every small-volume $\mathrm{SU}(2)$ model ($1\times1$,
+$1\times2$, $1\times3$, $1\times4$, $2\times2$ cross, 4D single site) the conditioned soft-mode
+curvature at $\beta=2.5$ is positive, with minimum $+0.32>N/12=0.167$. Its scaling is
+$\approx1/L$ ($1.01\to0.65\to0.42$ for $L=2,3,4$), not the box-gap $4\pi^2/L^2$; it increases with
+$\beta$ ($0.49\to0.83\to1.60$ for $\beta=1\to4$); and the $\beta=0$ Haar floor is $0.23$--$0.25$
+and $L$-independent. The full Hessian is indefinite already at small volume (the fraction of
+negative eigenvalues rises from $0.08$ to $1.00$ with $L$), so the positivity is
+\emph{measure-carried}, not a Hessian gap \LT/\LE{} (file \code{SM1-SOFT-EXACT.md}).
+
+\textbf{Constant mode.} The $k=0$ mode has an exact closed-form marginal; at $\beta=2.5$ its floor is
+$+0.36$ to $+0.69$ (Cartan and off-diagonal/Savvidy classes), twist-robust, with no $1/L^2$
+softening on $L=1,2,3$ \LT/\LE{} (file \code{SM4-CONSTANT-MODE.md}).
+
+\textbf{Anisotropic blocking.} An anisotropic/two-step blocking makes $\eta=0.28$ at $\beta=2.5$
+(versus $22$ isotropic) and gives a volume-uniform, $\beta$-dependent curvature floor $\approx0.40$.
+But the soft mode is a fixed point of the blocking, so no blocking lifts $G''_{\mathrm{soft}}$ above
+its bare value \LT{} (file \code{SM3-ANISOTROPIC-RG.md}).
+
+\textbf{Rank-one structure.} The exact margin identity is
+$G''=(S-D_{\mathrm{Sav}})+|D_+|=m_{\mathrm{soft}}+|D_+|$, with the overlap lemma
+$\langle\varphi_-|c\rangle=\langle H_{cf}\varphi_-|v\rangle$; the refined bound
+$D_{\mathrm{Sav}}\le g^2\operatorname{Var}(gB,\lambda_4)$ corrects the corpus ($2/\lambda_4$ is an
+asymptote, peak $2.21/\lambda_4$). The ceiling $m_{\mathrm{soft}}\le G''\approx3.5\%\,S$ shows that
+positivity is Brascamp--Lieb-carried, not rank-one-carried \LT{} (file \code{SM2-RANK-ONE.md}).
+
+\textbf{TCI.} TCI in its gap-bearing strong form is false at the barrier \LN; its typical and averaged
+weakenings stop at a curvature floor, the averaged one being the Fisher identity \LT{} (file
+\code{SM5-TCI-HEAD.md}).
+
+\textbf{The lattice.} The stored data are gauge-dependent plane waves; the sampled soft mode softens
+with volume ($+0.200\to+0.164\to+0.142$; at $L=8$ the exact-identity value is $+0.080\pm0.189$,
+zero-consistent). Positivity is not certified. The minimal decisive run (Landau gauge with
+Gribov-copy averaging, block-Hessian diagonalization at $\beta=2.5$, $L=8,12$) is specified \LE/\LM{}
+(file \code{SM6-SOFT-LATTICE.md}).
+
+\subsection{Decompactification and the periodic case}
+\label{ch:uvface-periodic}
+
+The small-volume floor decays $\approx1/L$; the question is whether this is the asymptote (then the
+uniform floor is $H1$) or a transient. The decisive case is the \emph{periodic} torus, which is the
+physical one: no twist, no fixed boundary.
+
+\textbf{Exact strip.} The constant-mode transfer matrix on the $1\times L$ strip is computed exactly
+for $L=1,\dots,16$. Every fit gives a positive intercept: $c+A/L^2$ gives $c=0.248$ ($\theta=0$) and
+$c=0.410$ ($\theta=\pi$); $c+Aq^L$ gives $0.272$ and $0.416$. The $\theta=0$ value brackets the Haar
+floor $0.269$. The bulk gap is $\Delta=3.18$ ($\theta=\pi$) and $0.64$ ($\theta=0$), $L$-independent
+\LT/\LE{} (files \code{D1-EXACT-L.md}, \code{D3-TRANSFER-CONSTANT.md}).
+
+\textbf{Haar/Wilson split.} The exact split gives a Haar part that is a deterministic $L$-fold
+convolution with limit $1/\operatorname{Var}(\xi_3)=0.26883>0$ \LT, and a Wilson part that is positive
+$O(1)$ on fixed strips; the total flattens at $\approx0.46$ (file \code{D4-HAAR-WILSON.md}).
+
+\textbf{The periodic anchor \LT.} On the periodic torus the global constant-holonomy configuration
+has every plaquette equal to the identity, so $S_W\equiv0$ for every $L,\beta,U$ and in every center
+sector. Its marginal is pure Haar, and
+\begin{equation}
+  G''_{\mathrm{anch}}(0)=\frac{-\rho_{\mathrm{Haar}}''(0)}{\rho_{\mathrm{Haar}}(0)}
+  =\frac{1}{2\,\mathrm{Cin}(2\pi)}=0.20511530\quad(\mathrm{SU}(2)),
+  \label{eq:v3anchor}
+\end{equation}
+$L$-independent. The exact curvature is $-\rho''/\rho$, not $1/\operatorname{Var}$: the free massless
+$U(1)$ field gives $-\rho''/\rho=0$ while $1/\operatorname{Var}(\theta)=3/\pi^2=0.304$ would be a
+spurious floor. Thus $1/\operatorname{Var}(\xi_3)=9/(4\pi^2-6)=0.26883$ is the Gaussian/CLT value,
+not an identity (file \code{P1-PERIODIC-HOLONOMY.md}; the derivation is in the companion paper's
+Appendix F).
+
+\textbf{The periodic $k=0$ mode \LT/\LE.} On the periodic chain every plaquette is a pure difference,
+so the uniform shift is an exact flat direction of $S_W$; only the Haar measure pins it. The exact
+partition function $Z(k)=\operatorname{Tr}[M_k^L]$ gives, at $\beta=2.5$,
+\begin{equation}
+  G''(0)=0.2077,\ 0.2097,\ 0.2115,\ 0.2130,\ 0.2144,\ 0.2155,\ 0.2165
+  \quad (L=2,\dots,8),
+  \label{eq:v3periodic}
+\end{equation}
+positive and saturating. The exponential fit is $c+Aq^L$ with $c=0.22196\pm0.00011$ and $q=0.849$;
+the power fits give $c=0.2126\pm0.0018$ ($L=2$--$8$) and $0.2142\pm0.0016$ ($L=4$--$8$). The
+amplitude variance plateaus ($\operatorname{Var}(a)=4.39\to4.45$) and $G''\operatorname{Var}\to0.963$,
+so the invariant statement $G''\to1/\chi>0$ holds with $\chi\approx4.45$. The periodic bulk kernel is
+gapped, $\Delta=-\log(\lambda_1/\lambda_0)=0.6444$, $\xi=1.55$, $L$-independent; the periodic Wilson
+part is a bounded negative $-0.0319,\dots,-0.0451$ (fit $c=-0.0461\pm0.0003$) and does not overcome
+the Haar floor (files \code{P2-PERIODIC-K0.md}, \code{P4-PERIODIC-TRANSFER.md}).
+
+\textbf{Boundary classes.} Saturation is not universal across boundary conditions, but the periodic
+class is the physical one. On the fixed strip, $\theta=\pi$ gives $c=0.41$ and $\theta=0$ gives
+$c=0.248$ under a $1/L^2$ fit but a negative intercept under a $1/L$ fit; at fixed $b=0$ the variance
+grows. Those are explicit-boundary effects: the end plaquettes carry an $O(1/L)$ restoring force. The
+periodic chain has no ends and saturates. The apparent growth seen in one moment-formula solver is a
+numerical artefact: at $\beta=0$ the exact identity is $\operatorname{Var}(a)=3.7198$ for \emph{every}
+$L$, which that solver violates from $L=4$ (file \code{P5-PERIODIC-DECISION.md}).
+
+\textbf{Center sector.} The constant temporal mode is the Polyakov holonomy. The $Z(N)$ center acts
+on temporal links, the Wilson action is center-invariant, and every gauge-invariant local operator
+(including $\operatorname{tr}F^2$) has $N$-ality zero and is center-blind. On the constant-holonomy
+slice every center sector is flat, so every sector's marginal is pure Haar and $G''=0.2051$; the full
+$3$D $L=1$ periodic measure is exactly $\theta$-independent
+($\int\rho\,da=26.0980322$ for all $\theta$, spread $2.7\times10^{-8}$), and the flat-chart
+$\theta$-spread at $L=1$ is a chart artifact ($J(2\pi)=0$ at the $-I$ edge). Center symmetry is
+unbroken at finite $L$ ($\langle\operatorname{tr}P\rangle=0$). The physical periodic floor is the
+Haar-carried value $\approx0.222$, not a center-sector floor and not the explicitly center-broken
+$0.48$ of the 't~Hooft-flux boundary (file \code{P3-POLYAKOV-CENTER.md}).
+
+\textbf{The 4D caveat.} In $d\ge2$ the constant-mode susceptibility can diverge
+(Kosterlitz--Thouless/Goldstone), so $c=0$ remains possible in 4D; the periodic strip result removes
+the decompactification objection in the tractable model but does not give the 4D uniform floor, which
+remains $H1$ \LM. A positive curvature floor is moreover not an atom: at $\beta=0$, $G''=0.2688$
+while $f_1^2=0$. The floor supplies at most a susceptibility ceiling $\chi_{k=0}\le1/c_0$,
+conditionally; even a proven $H1$ does not force the bottom of the K\"all\'en--Lehmann support (the
+thin-atom proposition, machine-checked as \code{H1\_does\_not\_imply\_atom}) (file
+\code{P6-PERIODIC-TO-H1.md}).
+
+\subsection{What the chapter adds to the ledger}
+
+\begin{enumerate}
+\item The strong form of $(\star)$ is false \LN, with an exact counterexample whose $\beta=0$
+  intercept independently reproduces the periodic Haar anchor.
+\item The correct object is the conditioned curvature \eqref{eq:v3object}; the shadow identity is
+  true but different \LT.
+\item On the small-field set the correct object has an explicit positive modulus, linear in $N$
+  \LT/\LC.
+\item The projection class is linear/divergence-free \LT; the ultraviolet statement is renormalized
+  with a log-running margin \LT/\LC.
+\item At the coarse minimiser $G''(a_0^*)\ge0$ unconditionally \LT, strict in the scan; the averaged
+  curvature is the Fisher information \LT; the averaged boundary is positive at $\beta=2.5$ \LE.
+\item The one-step descent transports the ultraviolet floor to $\beta\approx2.5$ on
+  box-gap-protected modes \LT{} and breaks on the Savvidy soft mode; the spectral class is a no-go at
+  the head \LN.
+\item In the periodic model the constant-mode curvature saturates at a positive $L$-independent floor
+  (exact anchor $0.2051$, $k=0$ value $0.222$, transfer gap $0.6444$); the center sector does not
+  change it; in $d\ge2$ the susceptibility can still diverge, so the 4D floor remains $H1$ \LM.
+\item A curvature floor is a susceptibility ceiling, never an atom \LT/\LN.
+\end{enumerate}
+
+\begin{qbox}
+The ultraviolet face of the wall is now classified: one room is proved (the small-field set), one
+door is locked (the uniform-in-$a_0$ form), and one door opens onto the same wall as before ($H1$).
+The periodic constant-mode wave adds a genuine positive anchor and removes the decompactification
+objection in the tractable model, but it does not prove the 4D floor and it does not produce the atom.
+\textbf{Clay is 0\%. No QED.}
+\end{qbox}

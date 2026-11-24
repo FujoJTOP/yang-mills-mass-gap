@@ -664,6 +664,20 @@ so the invariant statement $G''\to1/\chi>0$ holds with $\chi\approx4.45$. Two in
 agree to four digits, and the $\beta=0$ solver reproduces the exact convolution values
 $0.2396,0.2542,0.2591,0.2616$ to five digits.
 
+\begin{center}\small
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+$L$ & 4 & 5 & 6 & 7 & 8\\
+\midrule
+$G''(2.5)$ & 0.2115 & 0.2130 & 0.2144 & 0.2155 & 0.2165\\
+$G''(\beta=0)$ & 0.2542 & 0.2572 & 0.2591 & 0.2605 & 0.2616\\
+Wilson part & $-0.0428$ & $-0.0441$ & $-0.0447$ & $-0.0450$ & $-0.0451$\\
+$\operatorname{Var}(a)$ & 4.391 & 4.422 & 4.437 & 4.445 & 4.449\\
+$G''\operatorname{Var}$ & 0.929 & 0.942 & 0.951 & 0.958 & 0.963\\
+\bottomrule
+\end{tabular}
+\end{center}
+
 \textbf{Periodic transfer matrix.} The periodic bulk kernel has top eigenvalues
 $228.17,119.79,63.82,33.40$, i.e.\ $\Delta=-\log(\lambda_1/\lambda_0)=0.6444$ and $\xi=1.55$,
 $L$-independent, exactly the $\theta=0$ fixed-strip kernel. The periodic Wilson part is
@@ -677,6 +691,21 @@ grows. Those are explicit-boundary effects: the end plaquettes carry an $O(1/L)$
 periodic chain has no ends and saturates. The apparent growth seen in one moment-formula solver is a
 numerical artefact: at $\beta=0$ the exact identity is $\operatorname{Var}(a)=3.7198$ for \emph{every}
 $L$, which that solver violates from $L=4$.
+
+\begin{center}\small
+\begin{tabular}{@{}p{2.5cm}p{3.4cm}p{2.6cm}p{2.2cm}p{3.2cm}@{}}
+\toprule
+class & uniform-mode action & $\operatorname{Var}(a)$ & $G''$ & verdict\\
+\midrule
+fixed $\theta=\pi$ & end pinning, $O(1/L)$ & plateaus & $\to0.41$ & saturates; actionful
+'t~Hooft flux ($S_W=2\beta$)\\
+fixed $\theta=0$ / $b=0$ & end pinning & grows / ambiguous & $1/L$ fit gives $c<0$ & not protected\\
+\textbf{periodic} & $\boldsymbol{S_W\equiv0}$ & \textbf{plateaus} & $\boldsymbol{\to0.222}$ &
+\textbf{saturates; physical}\\
+free $U(1)$ & $\equiv0$, $J=1$ & grows $\asymp L$ & $\asymp1/L^2\to0$ & decays (acid test)\\
+\bottomrule
+\end{tabular}
+\end{center}
 
 \textbf{Center sector.} The constant temporal mode is the Polyakov holonomy. The $Z(N)$ center acts on
 temporal links, the Wilson action is center-invariant, and every gauge-invariant local operator
@@ -781,6 +810,10 @@ $\beta\approx2.5$.
 \item A genuine positive bound on the correct object on the small-field set, linear in $N$.
 \item The projection-class selection by the acid test.
 \item The ultraviolet normalization with a log-running margin.
+\item The periodic constant-mode classification: an exact Haar anchor
+  $1/(2\,\mathrm{Cin}(2\pi))=0.20511530$ \LT, a saturating periodic $k=0$ floor
+  ($c=0.22196\pm0.00011$) with a gapped transfer matrix ($\Delta=0.6444$), and the exact-curvature
+  correction $-\rho''/\rho$ versus $1/\operatorname{Var}$.
 \end{enumerate}
 
 % =====================================================================
@@ -902,6 +935,54 @@ curvature. After the field-strength renormalization $Z_j$, the correct statement
 with a margin running as $\log(1/a_j)$. The details are in
 \code{research/v3/V1-UV-NORMALIZATION.md}.
 
+\section{The periodic Haar anchor}
+\label{app:periodic}
+
+\textbf{The flat slice.} On a periodic lattice take a constant commuting link configuration:
+all links equal $U$, or one direction equal to $U$ and the rest the identity. Every plaquette is
+then the identity,
+\[
+  U\,I\,U^\dagger I=I,\qquad U\,U\,U^\dagger U^\dagger=I,
+\]
+so $S_W\equiv0$ for every $L,\beta,U$; multiplying one direction by a center element preserves
+commutativity and triviality, so the statement holds in every center sector. The marginal on the
+slice is therefore the Haar measure of a single modulus.
+
+\textbf{The SU(2) marginal.} Write $U=e^{i\xi\cdot\sigma/2}$, $\rho=|\xi|$. In this chart
+$dU=J(\rho)\,d^3\xi$ with $J(\rho)=\sin^2(\rho/2)/\rho^2$, $0\le\rho\le2\pi$. Integrating the two
+transverse components at fixed $z=\xi_3$ gives
+\[
+  \rho_1(z)=2\pi\int_{|z|}^{2\pi}\frac{\sin^2(\rho/2)}{\rho}\,d\rho
+          =\pi\bigl(\mathrm{Cin}(2\pi)-\mathrm{Cin}(|z|)\bigr),
+  \qquad
+  \mathrm{Cin}(x)=\int_0^x\frac{1-\cos t}{t}\,dt .
+\]
+At the origin $\rho_1(0)=\pi\,\mathrm{Cin}(2\pi)$. Near $z=0$,
+$(1-\cos t)/t=t/2+O(t^3)$, so $\mathrm{Cin}(|z|)=z^2/4+O(z^4)$ and
+$\rho_1(z)=\pi\,\mathrm{Cin}(2\pi)-\pi z^2/4+O(z^4)$. Hence $\rho_1''(0)=-\pi/2$ and
+\begin{equation}
+  G''_{\mathrm{anch}}(0)=-\frac{\rho_1''(0)}{\rho_1(0)}
+  =\frac{1}{2\,\mathrm{Cin}(2\pi)}=0.20511530 .
+  \label{eq:anchorproof}
+\end{equation}
+This is the exact curvature for every $L$. The Gaussian value is different:
+$\operatorname{Var}_{\mathrm{Haar}}(\xi_3)=(4\pi^2-6)/9=3.719824$, so
+$1/\operatorname{Var}=9/(4\pi^2-6)=0.268830$. The two differ because the Haar marginal is bounded
+and non-Gaussian; the identity $G''=1/\operatorname{Var}$ holds only in the Gaussian limit
+\LC.
+
+\textbf{The acid test.} For the free massless $U(1)$ field the Haar measure is Lebesgue
+($J=1$), the constant-mode marginal is uniform on the circle, and $-\rho''/\rho=0$ exactly. The
+candidate $1/\operatorname{Var}(\theta)=3/\pi^2=0.304$ would be a positive floor for a free field,
+so it fails the acid test. Therefore the exact object is $-\rho''/\rho$, and $1/\operatorname{Var}$
+is a Gaussian-limit statement.
+
+\textbf{The $k=0$ mode.} For $a=L^{-1/2}\sum_l z_l$ the $\beta=0$ marginal is the $L$-fold
+convolution $\rho_v(a)=\sqrt L\,(\rho_1^{*L})(\sqrt L\,a)$, and the local central limit theorem
+gives $G''\to1/\operatorname{Var}(\xi_3)=0.26883$. The exact finite-$L$ values rise from
+$0.20532$ at $L=1$ to $0.26883$; at $\beta=2.5$ the measured sequence is
+$0.2077,0.2097,0.2115,0.2130,0.2144,0.2155,0.2165$ for $L=2,\dots,8$.
+
 \section{Verification map}
 \label{app:verif}
 
@@ -942,6 +1023,14 @@ Exact Haar floor $0.26883$ & \LT & \code{D4-HAAR-WILSON.md}\\
 Invariant $G''\operatorname{Var}\to1$ & \LT{}/\LE & \code{D5-UNIVERSALITY.md}\\
 $G''=1/\chi$, $\chi<\infty$ in 1D & \LT & \code{D6-DECISION.md}\\
 Head is $H1$ & \LM & \code{V4-PINCER.md}; \code{STAR2-CLASSIFICATION.md}\\
+Periodic slice flat, pure Haar & \LT & \code{P1-PERIODIC-HOLONOMY.md}; App.~\ref{app:periodic}\\
+Exact anchor $1/(2\,\mathrm{Cin}(2\pi))$ & \LT & same\\
+Exact curvature is $-\rho''/\rho$, not $1/\operatorname{Var}$ & \LT{}/\LE & same\\
+Periodic $k=0$ saturation $c=0.22196$ & \LT{}/\LE & \code{P2-PERIODIC-K0.md}\\
+Center sector does not change the floor & \LT{}/\LE & \code{P3-POLYAKOV-CENTER.md}\\
+Periodic transfer gap $\Delta=0.6444$ & \LT{}/\LE & \code{P4-PERIODIC-TRANSFER.md}\\
+Boundary-class decision, P5 erratum & \LE & \code{P5-PERIODIC-DECISION.md}\\
+Floor is a susceptibility ceiling, not an atom & \LT{}/\LN & \code{P6-PERIODIC-TO-H1.md}\\
 \bottomrule
 \end{longtable}
 \normalsize
