@@ -1,0 +1,100 @@
+==========================================================================
+TRANSPORT-PHASE-CELL witness  (Battle-Federbush / Federbush-chunk audit)
+==========================================================================
+
+### TEST 1: free massless field -- phase-cell spectrum
+  smallest NONZERO eigenvalue of -Delta (periodic box L=1):
+   N=  16  lambda_min_nz=   38.973679   (2pi/L)^2=   39.478418   ratio=0.987215
+   N=  32  lambda_min_nz=   39.351746   (2pi/L)^2=   39.478418   ratio=0.996791
+   N=  64  lambda_min_nz=   39.446719   (2pi/L)^2=   39.478418   ratio=0.999197
+   N= 128  lambda_min_nz=   39.470491   (2pi/L)^2=   39.478418   ratio=0.999799
+   N= 256  lambda_min_nz=   39.476436   (2pi/L)^2=   39.478418   ratio=0.999950
+  contrast -- a NAIVE block-Dirichlet Laplacian on a cell of size ell would give
+   lambda_min ~ (pi/ell)^2 -> infinity as ell -> 0 : that WOULD be an artificial mass.
+   The true spectral block-spin operator keeps 4*pi^2 independent of the cell size.
+  full K (N=64): lowest 3 eig = [3.10954418e-12 3.94467191e+01 3.94467191e+01]
+  block-spin Schur-complement coarse K (N/2=32): lowest 3 eig = [-6.03574869e-13  7.87034915e+01  7.87034915e+01]
+   (lowest NONZERO ~ 1.99*(2pi/L)^2 : a wavefunction renormalisation,
+    still O(L^-2); it is NOT (pi/h_coarse)^2=10106)
+  coarse constant-mode mass^2 = <1|Keff|1> = 0.000e+00   (0 => no induced mass)
+  VERDICT T1: PASS in the exact free Gaussian theory (orthogonal change of basis; the coarse zero mode stays massless; no shift ~1/ell^2).
+
+### TEST 2: pure-gauge background decouples
+  pure gauge U(x,mu)=g(x)g(x+mu)^-1 : 1536 plaquettes, max deviation from identity = 1.55e-15
+  => F = 0 to machine precision; the field-strength coupling of ANY mode vanishes.
+  with ONE defect link: 6/1536 plaquettes carry nonzero F (localized at the defect).
+  VERDICT T2: PASS (exact). Pure-gauge background decouples; a chunk = the localized defect.
+
+### TEST 3a: (l/L)^2 kills the LINEAR coupling, not the QUADRATIC (mass) coupling
+   ell/Lbg      |<a,F>| (unit amplitude)   |<a,F>| (unit L2 norm)
+   0.10000      8.12313e-02              2.22795e-01
+   0.05000      1.17741e-02              4.56694e-02
+   0.02500      1.52726e-03              8.37768e-03
+   0.01250      1.92682e-04              1.49475e-03
+   0.00625      2.41410e-05              2.64848e-04
+   fitted log-log slope p = 2.867 (unit amplitude), 2.367 (unit L2 norm)
+   => the overlap is a POSITIVE power of ell/Lbg (exponent depends on mode normalisation
+      and multipole content; the paper's exact (ell/L)^2 bookkeeping was not accessible).
+   ROBUST POINT: in every normalisation the overlap -> O(1) as ell -> Lbg = L.
+   => the scale-separation suppression is gone exactly at the crossover.
+
+   quadratic (mass) operator 2*B*J3 (spin-1) eigenvalues = [-2.  0.  2.]
+   -> the transverse sector has a NEGATIVE eigenvalue -2B : the Savvidy unstable mode.
+   This operator is SCALE-FREE: it carries NO (ell/L) factor; it acts at every mode scale.
+   VERDICT T3a: the (ell/L)^2 suppression controls only the tadpole. The mass is generated
+   by the quadratic (Hessian) coupling, which is unsuppressed and indefinite. It cannot
+   replace the assumption Hess S >= 0 --- it is precisely the failure of that assumption.
+
+### TEST 3b: SU(2) chunk integral (1 x n strip, MC)
+   using S_eff'(theta)/theta ~ S_eff''(0) (mean estimator; S_eff even so S_eff'(0)=0):
+   strip n=2  beta= 0.02 :  S_eff''(0) ~ -0.0085+-0.0010 (theta=.2) , +0.0104+-0.0004 (theta=.4)  [nsamp=600]
+   strip n=2  beta= 2.50 :  S_eff''(0) ~ +0.5158+-0.0952 (theta=.2) , +0.9540+-0.0399 (theta=.4)  [nsamp=600]
+   strip n=3  beta= 0.02 :  S_eff''(0) ~ -0.0018+-0.0009 (theta=.2) , +0.0038+-0.0004 (theta=.4)  [nsamp=600]
+   strip n=3  beta= 2.50 :  S_eff''(0) ~ -0.2669+-0.0990 (theta=.2) , +0.3321+-0.0489 (theta=.4)  [nsamp=600]
+   strip n=4  beta= 0.02 :  S_eff''(0) ~ -0.0155+-0.0009 (theta=.2) , +0.0097+-0.0005 (theta=.4)  [nsamp=600]
+   strip n=4  beta= 2.50 :  S_eff''(0) ~ +0.5809+-0.0957 (theta=.2) , +0.5672+-0.0460 (theta=.4)  [nsamp=600]
+   interpretation (honest, MC-limited): the exact finite group integral is well defined
+   and its induced link curvature is O(1) at beta=2.5 (NO small parameter). For n=3 the
+   inferred S_eff'' changes SIGN between theta=0.2 and 0.4 (non-convex effective action).
+   So the chunk integral does NOT furnish a convex / sign-controlled lower bound; it is a
+   finite-volume link curvature (not the 0++ residue), and its Gaussian limit is the
+   indefinite Savvidy Hessian of Test 3a. The real chunk (many group elements + degree-1
+   map S^3->SU(2) + induced Jacobian) is NOT reducible to this toy in closed form.
+
+### TEST 4: high-representation channel + multi-scale activity
+  single-plaquette partition function Z_p(beta) = int (2/pi) sin^2 t e^{beta cos t}:
+   beta=0.0208: Z_p=1.000054   2 I1(beta)/beta=1.000054
+   beta=1.0000: Z_p=1.130318   2 I1(beta)/beta=1.130318
+   beta=2.5000: Z_p=2.013373   2 I1(beta)/beta=2.013373
+   beta=4.0000: Z_p=4.879733   2 I1(beta)/beta=4.879733
+
+  SU(2) character coefficients u_j = I_{2j+1}(beta)/I_1(beta):
+   beta=0.0208: u_0..4 = 1.000e+00, 1.808e-05, 9.811e-11, 2.535e-16, 3.820e-22
+     typical representation j* = 0;  first-order truncation error ~ u_1 = 0.000
+   beta=1.0000: u_0..4 = 1.000e+00, 3.923e-02, 4.803e-04, 2.830e-06, 9.764e-09
+     typical representation j* = 0;  first-order truncation error ~ u_1 = 0.039
+   beta=2.5000: u_0..4 = 1.000e+00, 1.885e-01, 1.305e-02, 4.561e-04, 9.527e-06
+     typical representation j* = 1;  first-order truncation error ~ u_1 = 0.188
+  => at beta=1/48 the representation series has a genuine small parameter (u_1~1e-5);
+     at beta=2.5, u_1 = O(1): the high-representation channel has NO small parameter.
+
+  one-loop SU(2) running coupling, dg/dln(mu) = -(11N/3) g^3/(16 pi^2):
+   mu/Lambda = 2^ 1 =        2.0 : g^2=  31.067   per-mode activity g^2/(16pi^2)=1.967e-01
+   mu/Lambda = 2^ 2 =        4.0 : g^2=  15.533   per-mode activity g^2/(16pi^2)=9.837e-02
+   mu/Lambda = 2^ 4 =       16.0 : g^2=   7.767   per-mode activity g^2/(16pi^2)=4.918e-02
+   mu/Lambda = 2^ 8 =      256.0 : g^2=   3.883   per-mode activity g^2/(16pi^2)=2.459e-02
+   mu/Lambda = 2^12 =     4096.0 : g^2=   2.589   per-mode activity g^2/(16pi^2)=1.639e-02
+   mu/Lambda = 2^16 =    65536.0 : g^2=   1.942   per-mode activity g^2/(16pi^2)=1.230e-02
+   mu/Lambda = 2^20 =  1048576.0 : g^2=   1.553   per-mode activity g^2/(16pi^2)=9.837e-03
+  => g^2 = O(10) already at mu ~ Lambda (the crossover); even g^2=0.5 requires mu/Lambda ~ 5.1e+18 (one loop).
+     The log-running makes the small-coupling regime unreachably far from the mass scale.
+     The naive per-shell forest activity sum_mu (L/ell)^4 * g^2(ell) diverges in the UV;
+     the phase-cell RG / tree-graph method is what resums the (L/ell)^4, leaving the
+     marginal g^2. At the mass-generating shell g^2 = O(1): no summable small parameter.
+  VERDICT T4: UV marginal sum needs the full tree-graph/RG cancellation (as in phi^3_4,
+     where a POWER small parameter exists); at the crossover the resummed activity is O(1).
+
+==========================================================================
+DONE.  Summary: T1 PASS; T2 PASS; T3 fails to substitute for Hess>=0 (Savvidy -2B);
+T4 has no small parameter at ell ~ L (crossover). The route reduces to the known wall.
+==========================================================================

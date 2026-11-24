@@ -66,6 +66,9 @@ Savvidy Hessian `−D²+2adF_B` 是**不定**算子，Krein 空间谱论（Pontr
 ### B6. 全单调 / 解析延拓 no-go（原子是整函数，floor 只在 `t→∞` 速率里）
 `C(t)=∫e^{−st}dν(s)` 全单调（Bernstein–Widder）**⟺ `ν≥0`**，与 KL/RP 正性同一件事，**无超出正性的刚性**。故（B1 型线性数据）任何有限 `t` 标量都是 `m₁²` 的**递减上界**：`r(t):=−(1/t)log(C(t)/M₀)` 满足 `m₁²≤r(t)≤M₁/M₀` 且 `r↓m₁²`（`log C` 凸，Cauchy–Schwarz）。**方向反。** 解析孪生**结构性瞎**：边原子贡献 `f₁²e^{−m₁²t}` 是**整函数**（无奇点），而收敛半平面 `Re t>0` 由 UV 延伸（`supp` 到 `+∞`）固定，**与 `m₁²` 无关** ⇒ 半径/延拓/奇异点看不见 IR floor；`t=0` 导数增长=矩比（又上界）且连续统 UV 发散；转移变量 Padé 才把原子看成极点，代价 `M≳2/(am₁)→∞`（`PADE-ROUCHE-DEEP`，relocate 到 `W3`）。Wiener–Ikehara 的"主项"= 领头指数 `m₁²/f₁²`，其正则性假设需**先减去答案**⇒循环。**唯一能印 floor 的是 `t→∞` 速率 = 一致指数簇聚 = 隙（循环）；缺失步仍是搬运（H\*）。** `TOOL-COMPLETELY-MONOTONE.md`。
 
+### B7. 梯度流 no-go（B6 实例：流能 = 完全单调）
+Lüscher 梯度流 `∂_tU=−D_νG_{νμ}` 保反射正性；流向能量 `E(t)=⟨tr G_{μν}G_{μν}⟩(t)` 是 Laplace 变换 `∫h(u)e^{−2tu}du`、`h≥0` ⇒ **完全单调 = B6 = `ν≥0`**，无超出正性的动力学内容。流时"有效质量" `m_flow²(t)=−½∂_t ln E(t)` 是 tilt 谱均值，`m₁² ≤ m_flow²(t)` 且 `↓ m₁²` —— **只上界（= susceptibility / H1）**，`t→∞` 才等式（循环）。**酸测败**：自由无质量 `t²E(t) ≡ 1/(64π²) > 0` ⇒ 任何由 `E, tE, t²E, t²∂_tE` 造的下界都被无隙场满足（vacuous）。`k→0` 粗曲率 `G″=1/χ` 是流不变量。缺失步 `H*(r₀)`。`TRANSPORT-GRADIENT-FLOW.md`。
+
 ---
 
 ## C. 战役中证出的结构定理（真结论，非 no-go）
@@ -90,6 +93,26 @@ Savvidy Hessian `−D²+2adF_B` 是**不定**算子，Krein 空间谱论（Pontr
 5. **行列式零点 in 连续统**：`D_O(z)=det(1−zT_O)` 的零点在 `a→0` 的求值。
 6. **Savvidy 符号**：非阿贝尔/Weingarten/`6j`/`H_ff` 不定——一个物的五个面。
 7. **一切路 = 隙**：H1、NEO、I2、束缚能、`(CP)`、边原子……皆与质量间隙同构。
+
+---
+
+## F. 待审历史独立路线（未充分审查，勿当已解 / 勿当已死）
+
+### F1. Battle–Federbush 相位单元 / Federbush chunk 展开（MZP 候选）
+**来源（已逐一核实，2026-11-24，宪章 §2）**：
+- Battle–Federbush, "A phase cell cluster expansion for Euclidean field theories", *Ann. Phys.* **142**(1) 95–139 (1982), DOI 10.1016/0003-4916(82)90230-5 —— **mass-zero** 簇展开、相位单元系数为节点、关联函数=有限耦合模式子集、`d=2,3` 有 vacuum-stability 替代、**`d=4` 明列为未来目标**。
+- Federbush, "Phase cell approach to YM: IV. The choice of variables", *CMP* **114** 317–343 (1988), DOI 10.1007/BF01225039 —— 三类变量：pure modes / averaging-correction / **chunks**（大场、处理 `π₃(G)` 拓扑障碍、点状规范奇点）。
+- Federbush, "V. Analysis of a chunk", *CMP* **127** 433–457 (1990), DOI 10.1007/BF02104497。
+- 近亲：Magnen–Rivasseau–Sénéor, "Construction of YM₄ with an IR cutoff", *CMP* **155**(2) 325–383 (1993), DOI 10.1007/BF02097397（纯 SU(2)、**固定红外截断**无 UV 截断、轴向规范大场正性）。
+- 背景：Douglas, "The Yang–Mills Millennium problem", *Nature Rev. Phys.* **8**(2) 86–97 (2026), DOI 10.1038/s42254-025-00909-2（明说"no clear path known"）。
+
+**结构（与已死物种的真实不同处）**：簇展开在**模空间**（相位单元系数）而非时空区域；**mass-zero**（不预插质量传播子喂进展开）；chunks 作大场**真积分变量**、不被 Bernoulli 坏块概率排除；小模对大场背景经 **`F` 而非 `A`** 耦合、纯规范背景解耦、带 `(ℓ/L)²` 因子。
+
+**为何是盲区**：免疫图有 Balaban、MRS，却漏了这条 —— 值得正式在册。
+
+**已知弱点（预判，子代理正在证/伪）**：`(ℓ/L)²` 是尺度分离工具 —— 在 UV→IR（`aΛ→0`，即我们的 G1-L3）有效；但质量在 `1/Λ` 处生成，那里软模 `ℓ~L~1/Λ`，`(ℓ/L)²→1`，**抑制恰在生成处消失**。故只有两条路：要么模空间森林靠**组合学**在 `ℓ/L→1` 硬控（=Federbush 当年 `d=4` 未证成处），要么仍需一个新动力学输入（=H1）。`(II) chunk-induced IR screening` 作者自认**未证、不预设符号**。
+
+**状态**：**[已审 · 2026-11-24] `[NG]`（G2 死）+ `[T]`（G1-UV 真定理）** —— 见 `research/unconditional/TRANSPORT-PHASE-CELL.md`（酸测 1–4 + 与 H1 逐项对齐，witness `w7/transport_phase_cell.py`）。判词：`(ℓ/L)²` 是尺度分离因子，在 `ℓ~L` **→O(1)**；质量由**尺度无关且不定**的 Savvidy 二次耦合给出；chunk 积分是**正测度（只给上界）**；森林活性在交叉点为边际 `g²=O(1)`。**(II) = H1/I2 的描述重写；MZP-1 = L3/H1 同一物种；无新动力学输入。** 原文本作者从未发表 d=4 YM 收敛证明（系列止于 VI，VII 未发表），4D 仅 φ³₄（Williamson 1987，超可重整）。**G1 真定理保留：VI 的 Thm 1–2（格点–连续对偶）、纯规范退耦（精确）。**
 
 ---
 

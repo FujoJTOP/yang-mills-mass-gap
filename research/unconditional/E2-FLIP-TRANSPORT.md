@@ -6,6 +6,8 @@
 
 ---
 
+> **⚠ 更正 (2026-11-24 · 宪章 §2)**：本笔记 §4.1 的"packing `nρ⁴ = O(10)` ⇒ 稠密 ⇒ diluteness fails"是**计算错误**，已由 `TRANSPORT-PACKING-AUDIT.md` 订正。真因两处复合错：(1) SU(3) 单圈前因子 `C₃ = 1.51×10⁻³`（非 `O(10⁻¹)`，差 66×）；(2) 把带量纲 `1/长度` 的单位尺寸密度 `D(ρ*)ρ*⁵` 当成无量纲 `nρ̄⁴`。**真堆积率 `𝔡 = nρ̄⁴ ≈ 0.01–0.06`（ILM / 格点 `χ_top` / 单圈全积分 三源一致）—— 物理瞬子真空是稀薄，不是稠密。** 故"dense ⟹ diluteness fails"的 no-go **前提不成立**；结论（物理尺度无严格簇展开）只能改从 **Kotecký–Preiss 的 activity×range / 连续统控制 = H1** 重新论证。`ρ* = 0.368/Λ`（质量在大 ρ / IR 生成）这条仍对。详见 `TRANSPORT-PACKING-AUDIT.md`、`TRANSPORT-FIVE-WAY-VERDICT.md`。
+
 ## Verdict up front
 
 > ### **PARTIAL.** The `e^{−S_inst}` transport machine is **explicitly built** and, in its **controlled class** (a *rigid saddle* with a fixed, isolated instanton action, or a *dilute* / small-`S¹` gas), it is a **proven lower bound** on the mass gap, direction-correct and acid-clean `[T-in-model / C]`. The **residue-transport** (the "move the seed across β") is an **exact, sign-preserving theorem** `[T]`. But the machine **provably stops** at the crossover: the very functional that is direction-correct, `e^{−S_inst}`, is carried in 4D by a saddle with a **size modulus** whose one-loop distribution is **controlled by no small parameter at the mass-generating scale** — the controlled (`S_inst≫1`, dilute) end is the **UV / wrong phase / wrong channel**, and the mass-generating end is **uncontrolled**. This is the *same* wall as `TRANSPORT-MACHINE`/`SMALLCIRCLE-ADIA`/`FORGE5-CONFINING-MONOPOLE`, reached this time through the condensate/tunnelling coordinate rather than the Hessian or the residue. **The uniform `(L,a)` statement is IRREDUCIBLE for the class {instanton gas, monopole gas, center-vortex condensation}.**
