@@ -1,0 +1,458 @@
+% =====================================================================
+\section{The six tools and their free-field acid tests}
+\label{sec:tools}
+% =====================================================================
+
+The project charter imposes a \textbf{free-field acid test} on every purported new tool: it must
+fail on the free massless field, where $f_1^2=0$ and $G''=0$. A tool that ``proves'' a gap for
+the free field is vacuous and must be discarded. Six constructions pass.
+
+\subsection{Multiplicative residue transport}
+
+\textbf{Formula.}
+$f_1^2(\mu)=Z_O(\mu,\mu_0)^2\,f_1^2(\mu_0)$, with
+$Z_O=(\beta/2g)(\mu_0)/(\beta/2g)(\mu)>0$ and anomalous dimension
+$\gamma_O=-d\log(\beta/2g)/d\log\mu=2b_0g^2+\cdots$
+
+\textbf{Basis.} $O_S=\tfrac14\operatorname{tr}F^2$ renormalizes multiplicatively: the identity
+mixes diagonally, $F\tilde F$ is $P$-odd, and BRST-exact derivatives vanish on physical states.
+
+\textbf{Acid test.} Passes: $0\to0$ (multiplicative); the free ${:}\varphi^2{:}$ has $f_1^2=0$ by
+$\mathbb{Z}_2$ parity ($a\equiv0$); the constant $Z_O^2>0$ because it is a square, and is $O(1)$
+in $V$.
+
+\textbf{Residual.} Conditional on $(\mathrm{CP})$: a single $T=0$ confining phase, a $0^{++}$
+edge that is Kato-preserved, and uniform isolation. The theorem
+$f_1^2(2.5)\ge Z_O^2r_0(\beta_{\mathrm{eff}})$ is \LC{} on $(\mathrm{CP})$. It transports the
+\emph{sign and positivity} of the residue; it transports neither the size nor the isolation.
+
+\subsection{Exact variance decomposition (Savvidy-corrected Brascamp--Lieb)}
+
+\textbf{Formula and acid test.} Stated in \S\ref{sec:feshbach}. The decomposition $G''=S-D$
+passes the acid test in the strong sense: the free Gaussian has $D=0$, the $k\to0$ mode has
+$\operatorname{Var}(a)=\infty\Rightarrow S=0$, and $G''=0-0=0$; no false positivity is
+manufactured.
+
+\textbf{Residual.} A uniform bound on the fiber defect $D$ at $\beta=2.5$; measured
+$D/S\approx2\%$. This is H1 in curvature language.
+
+\subsection{The Fredholm determinant identity}
+
+\textbf{Formula.}
+\begin{equation}
+f_1^2=-\lambda_1\operatorname*{Res}_{z=z_1}G(z)
+=-\frac{1}{z_1}\frac{N_O(z_1)}{D_O'(z_1)},
+\label{eq:fredholm}
+\end{equation}
+with $D_O(z)=\det(1-zT_O)$, $\log D_O=-\sum_k z^k\operatorname{Tr}(T_O^k)/k$,
+$z_1=e^{am_1}$ the smallest-modulus zero, and ``periodic orbits''
+$\operatorname{Tr}T_O^k=Z_{S^1_k\times T^3}$ (closed-time flux tubes).
+
+\textbf{Acid test (strict).} The free field has a pure cut and no pole, so its residue is $0$;
+YM has an isolated zero below its own two-glueball cut ($m_1^2<4m_1^2$), so $f_1^2>0$.
+
+\textbf{What it buys.} The pole and the cut have identical lower moments; only the zero set
+differs. So the determinant is \textbf{linear-blind} but \textbf{sees the atom}, and it supplies
+$m_1^2$ (the zero location), which no moment does.
+
+\textbf{Residual.} Evaluating the zero at $a\to0$ is the marginal BPHZ wall; the continuum
+determinant's renormalization \emph{is} the marginal gauge BPHZ, and the zero coalesces into the
+Källén--Lehmann pole (\code{CONTINUUM-FREDHOLM.md}).
+
+\subsection{Gauge-invariant IR mass}
+
+\textbf{Formula.}
+\begin{equation}
+m_{\mathrm{GI}}:=\inf\operatorname{supp}\rho_s
+=\lim_{|x|\to\infty}-\partial_{|x|}\log|G_s(x)|=E_1^{(s)}-E_0 ,
+\label{eq:mgi}
+\end{equation}
+on the physical Hilbert space
+$H_{\mathrm{phys}}=L^2(\mathcal{A}/\mathcal{G},\bar\mu)$, with
+$s=(\beta/2g)\operatorname{tr}F_{\mu\nu}F^{\mu\nu}\in H_{\mathrm{phys}}$ and $\rho_s\ge0$ by
+reflection positivity.
+
+\textbf{What it removes.} The claim that the gauge potential $A\notin H_{\mathrm{phys}}$ and
+that $\rho_A$ has indefinite sign are both artifacts of using $A$; with $F^2$ the spectral
+density is non-negative. \textbf{Gauge invariance was never the wall.}
+
+\textbf{Acid test (definitional).} Free Maxwell has $m_{\mathrm{GI}}=0$ (a threshold two-photon
+cut from zero); YM has $m_{\mathrm{GI}}=m_{0^{++}}$.
+
+\textbf{Residual.} The edge atom $f_1^2>0$; the definition removes a pseudo-obstruction but does
+not manufacture the atom.
+
+\subsection{Gauge W-entropy}
+
+\textbf{Formula.}
+\begin{equation}
+F_W[\mu_t]=\int_{\mathcal{A}}\bigl(S_W(A)+|\nabla_Af_t(A)|_G^2\bigr)e^{-f_t(A)}\,d\mathrm{vol}_G ,
+\label{eq:wentropy}
+\end{equation}
+along the conjugate flow $\partial_tA=-\nabla_AS_W$,
+$\partial_tf=-\Delta_Af+|\nabla_Af|^2-S_W$. Gap preservation is monotone iff
+$\Gamma_2=\operatorname{Ric}_{\mathcal{A}}+\operatorname{Hess}_{\mathcal{A}}S_W\ge\rho$.
+
+\textbf{Acid test (mirror).} Free field: $\Gamma_2\ge0$, monotone, but it certifies only the
+free lattice gap (non-empty). YM at $\beta=2.5$: $\Gamma_2\approx-2.0<0$ --- correct on the
+gapless side, \textbf{blocking} on the gapped side.
+
+\textbf{Verdict.} Perelman's $W$ requires ``geometry $=$ flow'' to be the same object; in
+flat-space YM they split. What must be crossed is not a new functional but the missing
+non-perturbative flow itself.
+
+\subsection{Feshbach / Krein}
+
+The Feshbach--Bogoliubov certificate is \S\ref{sec:feshbach}: an unconditional abstract two-block
+lemma whose only debt is TCI. The \textbf{Krein-space} analysis is the precise language for the
+indefinite Savvidy Hessian $-D^2+2\operatorname{ad}F_B$: Pontryagin spaces, Langer definitizable
+operators, spectral functions. It rigorously proves the UV tower cone-empty statement (shells
+$\lambda_j>k_\star$ have $\kappa=0$, $\operatorname{Tr}H_-\lesssim\int|F|^3$) --- a genuine
+\textbf{UV half-theorem}. But every Krein invariant is a \textbf{count/sign} (negative index
+$r_-$, signature) or a \textbf{UV scale} (the $J$-positive floor $=\Theta(g|B)$, Landau levels),
+whereas the gap is the \textbf{min} at the bottom of $k\to0$, an \textbf{IR} scale. The two are
+mutually exclusive: choosing $J=\operatorname{sign}H$ makes the floor physical but gives
+$\kappa=\dim H_+=\infty$ and is circular (needs a positive spectrum); choosing an a priori
+BRST/Gupta--Bleuler metric gives $\kappa=O(1)$ but is literally identical on the free field
+(acid-vacuous). A signed negative index is an integer, hence rigid (B3), hence equal to its free
+value $0$. The definitizing split loses uniform margin exactly at $k=0$ (the Savvidy band bottom,
+where the coarse mode and the most negative mode coincide) --- the Krein critical point is
+precisely the point at which the gap must be read. The residual is
+$\inf\operatorname{spec}(H|_{\text{physical side}})\ge\kappa_{\mathrm{IR}}>0$, $(L,a)$-uniform,
+which is H1.
+
+\subsection{Scorecard}
+
+\begin{table}[t]
+\centering
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.1cm}
+  >{\raggedright\arraybackslash}p{3.0cm}c
+  >{\raggedright\arraybackslash}p{2.9cm}
+  >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Tool} & \textbf{Formula / object} & \textbf{Acid test} & \textbf{Touches the atom?} &
+\textbf{Exact residual}\\
+\midrule
+Multiplicative transport & $f_1^2(\mu)=Z_O^2f_1^2(\mu_0)$ & pass ($0\to0$, square) &
+  sign/size transport & $(\mathrm{CP})$\\
+Variance decomposition & $G''=S-D$ & pass (free $0-0$) & curvature sign &
+  uniform $D$ at 2.5 $=$ H1\\
+Fredholm determinant & $f_1^2=-\lambda_1\operatorname{Res}G$ & strict pass &
+  \textbf{yes} (zero set) & $a\to0$ zero\\
+Gauge-invariant IR mass & $m_{\mathrm{GI}}=\inf\operatorname{supp}\rho_s$ &
+  pass (Maxwell 0) & removes artifact & edge atom\\
+Gauge W-entropy & $F_W$, $\Gamma_2\ge\rho$ & mirror pass & no (gap side blocks) &
+  missing flow\\
+Feshbach/Krein & two-block lemma, $\Pi_\kappa$ & pass (free returns 0) &
+  reduction to TCI & TCI $=$ H1\\
+\bottomrule
+\end{tabularx}
+\caption{Scorecard for the six tools.}
+\label{tab:tools}
+\end{table}
+
+Three of the six --- transport, variance decomposition, determinant --- genuinely ``touch'' the
+atom; all three leave the wall on the far side of ``continuum plus transport to 2.5,'' which is
+the analyticity/BPHZ wall.
+
+% =====================================================================
+\section{No-gos: what each class cannot do}
+\label{sec:nogos}
+% =====================================================================
+
+A no-go is a theorem that a \emph{class} of approaches cannot succeed, not a statement that no
+approach can. The campaign proved several, and they are as valuable as the theorems because they
+close branches.
+
+\subsection{Schur-convex master obstruction --- \LN}
+\label{sec:schur}
+
+\textbf{Statement.} Any $g$-continuous, protected functional of the measure that vanishes at
+$g=0$ (the free field) cannot produce a positive atom at $g>0$ by positivity or analyticity
+alone. The free field satisfies all OS axioms and has $f_1^2=0$; any positivity-only argument
+forcing $f_1^2>0$ would force it there too.
+
+\textbf{Consequence.} Positivity, reflection positivity, spectral positivity, and analyticity
+give \textbf{upper bounds and the vacuum}, never the edge. This is the single most important
+no-go; it is why the campaign always says ``positivity is blind to the edge.''
+
+\subsection{Goldstone uniqueness --- \LN}
+
+The only positivity-plus-analyticity theorem that forces an atom is Goldstone's theorem, and it
+lives at \textbf{zero mass} (broken continuous symmetry). The atom $f_1^2$ is the ``positive-mass
+cousin'' of a Goldstone mode, and the positive-mass cousin does not exist at the level of a
+general theorem. The one protected positive-mass atom is BPS, but it is in the \textbf{wrong
+channel} (central charge/flux; $Z=0$ on $\operatorname{tr}F^2$).
+
+\subsection{Periodic no-go (no convexification) --- \LN}
+
+\textbf{Statement.} The log-density of $\mu$ is periodic on the compact group; a periodic concave
+function is constant, so there is no log-concave substitute equal to $\mu$. The Savvidy negativity
+is the cost of periodic winding at $|x|>\pi/2$. Thermal smoothing gives only semi-concavity, and
+the Prékopa lift is blocked by the indefinite $G''/H_{ff}$.
+
+\textbf{Consequence.} Convexification of the effective action is impossible; the wall is real,
+not a gauge artifact. (W4 measured $7.1\%$ negative directions after the gauge quotient.)
+
+\subsection{Nested-cone no-go --- \LN}
+
+\textbf{Statement.} Every sign-changing / Karlin cone $K_0\subset K_1\subset\cdots$ contains the
+positive cone, so on each layer it swallows the strictly positive free field and is vacuous. A
+cone that passes must cut \emph{below} positivity (where the symbol is indefinite), and there it
+presupposes the very atom it is meant to prove (circular).
+
+\textbf{Consequence.} The ``second cone'' route to the edge is closed. Plaquette products do not
+tensorize to a sign-regular cone.
+
+\subsection{Rigidity no-go (no index) --- \LN}
+
+\textbf{Statement.} Any index that is a discrete integer and locally constant under
+symmetry-preserving deformations is constant along the connected $\beta$ family (which reaches
+the free Gaussian at $\beta=\infty$), hence equals its free value, hence is $0$ for YM. The gap
+must be a \textbf{$\beta$-non-analytic jump, not any discrete invariant.}
+
+\textbf{Consequence.} Noncommutative geometry, localization, BPS, and Witten-spinor indices all
+return $0$ at the free point; none can carry the gap. (The only acid-passing
+Gribov--Faddeev--Popov index counts gauge copies, not physics.)
+
+\subsection{Feshbach / Schur angle no-go --- \LN}
+
+\textbf{Statement.} Block-decompose $H=\begin{psmallmatrix}A&B\\B^{\mathsf T}&C\end{psmallmatrix}$
+with $C\prec0$. Then $\Sigma=A-BC^{-1}B^{\mathsf T}=A+B|C|^{-1}B^{\mathsf T}\succeq A$:
+eliminating a negative block \textbf{only adds} to the survivor (Haynsworth inertia; numerically
+verified $\lambda_{\min}(\Sigma-A)=-6\times10^{-16}$). So ``a small angle preserves $\Sigma>0$''
+is a sign error: $\Sigma>0\iff A=P^{\mathsf T}HP>0$, and $A$ \emph{is} the gap. The only way an
+angle enters is through the overlap $\varepsilon=\sin^2\theta$, requiring $\varepsilon<\tfrac12$
+($\theta<45^\circ$); on a frozen constant background $\theta=0$ but the statement is vacuous
+($F\equiv0$, $g$-dependent), and on the physical $k=0$ mode $\varepsilon=O(1)$ (measured
+$P^{\mathsf T}HP$ minimum $-0.3$) with no momentum separation. The whole route is
+$\iff\varepsilon<\tfrac12\iff$ H1.
+
+\subsection{Krein / Pontryagin no-go --- \LN}
+
+\textbf{Statement.} Krein counting/sign invariants live at the UV scale or count signs; the gap is
+the IR \textbf{min}. The two are mutually exclusive, as detailed in \S\ref{sec:tools}. The
+residual is H1.
+
+\subsection{Wrong-half, wrong-direction, wrong-regime --- \LN{} (umbrella)}
+
+Three structural failure modes recur across families and are worth naming as no-gos of method:
+
+\begin{itemize}
+\item \textbf{Wrong half (UV $\perp$ gap).} L3, H2-global, gradient flow, Dirichlet comparison,
+  concentration (Herbst), heat kernel, validated numerics, step scaling, effective string,
+  $S^3$ --- these control the UV, a fast rate, or a finite box, but never the IR spectral edge.
+\item \textbf{Wrong direction (upper bounds).} Bogoliubov, Hylleraas, finite-size scaling,
+  Temple/Weinstein, GEVP --- variational methods give \textbf{upper} bounds on eigenvalues; a
+  lower bound needs a threshold oracle, and the oracle is circular.
+\item \textbf{Wrong regime (strong coupling only).} Rigorous large-$N$ (Chatterjee), SZZ, random
+  surfaces/CPS, center vortices --- these stop at $\beta<\beta_0$ or $\lambda<1/24$ and cannot
+  reach $\beta\approx2.5$.
+\end{itemize}
+
+\subsection{Summary of no-gos}
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{2.9cm}
+  >{\raggedright\arraybackslash}p{4.4cm}>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{No-go} & \textbf{Class it kills} & \textbf{Precise reason}\\
+\midrule
+Schur-convex & positivity/analyticity-only & free field has $f_1^2=0$; only upper bounds\\
+Goldstone & positivity-forced atoms & the only such theorem is at zero mass; BPS wrong channel\\
+Periodic & convexification & periodic concave $=$ constant; Savvidy is real\\
+Nested cone & second-cone construction & every cone contains the positive cone $\to$ swallows
+  free field\\
+Rigidity & index/topological & discrete locally-constant index $=$ free value $=0$\\
+Feshbach angle & block-elimination & $\Sigma\succeq A$; $\Sigma>0\iff A>0=$ gap\\
+Krein & UV spectral invariants & count/sign $\ne$ IR min; split fails at $k=0$\\
+Wrong-half/direction/regime & method families & control the wrong scale, sign, or coupling
+  region\\
+\bottomrule
+\end{tabularx}
+\caption{Summary of no-gos.}
+\label{tab:nogos}
+\end{table}
+
+% =====================================================================
+\section{The one-species reduction and the immune map}
+\label{sec:species}
+% =====================================================================
+
+\subsection{The species}
+
+Every honest route terminates at the same inequality. Written in its most general form (the
+$(\blacklozenge)$ of \code{PROOF-JACOBIAN-SAVES.md}), the missing input is a \textbf{single-sided
+upper bound on a conditioned variance}:
+\begin{equation}
+(\mathrm{M})\qquad
+\operatorname{Var}_\mu\bigl(\langle v,\nabla S\rangle\mid0\bigr)
+\ \le\ E_\mu[H_{vv}\mid0]+W-\delta ,
+\qquad\text{uniform in }(L,U'),
+\label{eq:species}
+\end{equation}
+equivalently $\operatorname{Var}(a_{k\to0})\le1/\lambda$ (H1), equivalently
+$m_{\mathrm{eff}}^2(k\to0)\ge\lambda$, equivalently $G''(0)\ge\lambda$. The
+\textbf{variance-free face} (the only one that could pierce H1) is a deterministic
+\textbf{negative-association / anti-FKG} inequality
+\begin{equation}
+\operatorname{Cov}_\mu\bigl(G,\Phi'\mid0\bigr)\ \le\ 0
+\label{eq:neqassoc}
+\end{equation}
+for the continuous, frustrated (cos-sum Wilson action), non-attractive $\mathrm{SU}(N)$
+Haar $\times$ Wilson measure. The campaign proves this object is \textbf{absent from every known
+dependence class} (\code{C5-NEG-ASSOC.md}, \code{C6-DEPENDENCE-CLASS.md}): negative association
+(NA), negative regression/NOD, strong Rayleigh, log-submodular, determinantal (DPP), total
+positivity (TP$_2$), Chebyshev/Fréchet, FKG/Griffiths, Brascamp--Lieb, and Simon--Lieb all fail,
+each for a specific structural reason (no order on the quotient, no real-stable polynomial, no
+DPP kernel, no common scalar, FKG wrong-signed, BL needs $\operatorname{Hess}\succeq0$ $=$ the
+Savvidy wall, Simon--Lieb is sign-blind variance $=$ H1, Stein--Hellfer--Sjöstrand constant is
+$1/\lambda=$ H1). The measured $\operatorname{Cov}\approx-0.11$ at $\beta=2.5$ is the
+chart-local log-cut shadow of \emph{proven} $\Phi$-convexity, not a law: the per-mode
+$X\in[-0.09,+0.16]$ changes sign, and $\beta=5.7$ flips it.
+
+\subsection{Two scales, one shape}
+
+The species appears twice (Figure~\ref{fig:scales}):
+
+\begin{itemize}
+\item \textbf{UV face (L3).} $\sup_aZ_a^{-1}\|H_a\|_D<\infty$: a single-sided force-variance
+  bound on the $\Lambda_{\mathrm{UV}}$ tower. This is G1's open node.
+\item \textbf{IR face (H1).} $\operatorname{Var}_\mu(a_{k\to0})\le1/\lambda$, $(L,a)$-uniform.
+  This is G2's open cell.
+\end{itemize}
+
+The shapes coincide because $\operatorname{Var}\ge0$ can only supply a lower edge, while in
+$G''=E[H]-\operatorname{Var}+W$ the variance subtracts. A tool that upper-bounds a conditioned
+variance at one scale upper-bounds it at the other; the campaign states that building it would
+close L3 and H1 \textbf{simultaneously}, hence Clay. This is the ``one species, two scales''
+reduction. The unification is the conjecture; the dictionaries (Ward, residue--level-gap, the
+identity $G''=E[H]-\operatorname{Var}+W$) are theorems.
+
+\subsection{Why the species is not a repackaging}
+
+The project charter explicitly forbids repackaging an old inequality. The species is not: it is
+neither a positivity statement (those give upper bounds on atoms, \S\ref{sec:schur}), nor an
+FKG-type positive association (wrong sign), nor an LSI/BL (needs a convex potential, false at
+Savvidy), nor a moment/Carathéodory bound (Schur-concave, gives atom upper bounds), nor a
+sign-blind variance identity (Simon--Lieb). It is a \textbf{deterministic negative-association
+inequality for a continuous, frustrated, non-attractive measure} --- by the campaign's own audit,
+a dependence theorem that is \textbf{unknown to exist}. This is the ``sixth species'' the charter
+calls for: the first five paradigms (positivity, convexity, spectral theory,
+Perron--Frobenius, RG) are exhausted, and the sixth is still unbuilt.
+
+\subsection{The immune map}
+
+The campaign's archive holds 73 batch reports across the families \code{ABC*}, \code{C-*},
+\code{D-BBS-*}, \code{LOC-*}, \code{MS-*}, \code{LOWER-*}, \code{FORGE-*} (and
+\code{FORGE5-*}), \code{K0-*}, \code{BS-*}, \code{TRANSMUTE-*}; several contain multi-route
+audits (the \code{LOWER} report alone checks eight mechanisms), so the distinct-route count is
+$\approx92$. The earlier master immune map counted $\sim$60 (\code{YANG-MILLS-MASTER.md} \S5);
+the batch waves added the rest. \textbf{Every one terminates at the same named species.}
+Table~\ref{tab:immune} gives each root family and the precise place it dies.
+
+{\footnotesize
+\begin{longtable}{@{}c>{\raggedright\arraybackslash}p{4.35cm}
+  >{\raggedright\arraybackslash}p{3.55cm}>{\raggedright\arraybackslash}p{6.1cm}@{}}
+\caption{The immune map: eighteen root families and where each dies.}
+\label{tab:immune}\\
+\toprule
+\textbf{\#} & \textbf{Root family (representative files)} & \textbf{What it tries} &
+\textbf{Where it dies}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{\#} & \textbf{Root family} & \textbf{What it tries} & \textbf{Where it dies}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & Free-field-blind positivity / analyticity (\code{INEQ-T1..T5}, \code{INEQ-R1..R10}, Pólya,
+  Nevanlinna, Bogoliubov) & force an atom from positivity &
+  $g=0$ free field has $f_1^2=0$; Schur-convex master obstruction; upper bounds only\\
+2 & Cross-channel (BPS/SUSY, 1-form anomaly, noninvertible symmetry, dual Meissner) &
+  protection from a symmetry & wrong channel: line/flux/charged sector, or spin-1; local
+  $\operatorname{tr}F^2$ is blind; BPS has $Z=0$\\
+3 & Non-abelian sign (random flow, random cluster/FK, FKG, spectral independence,
+  Picard--Lefschetz thimbles) & positive/signed cluster calculus & no lattice order on the
+  quotient; $\mathrm{SU}(N)$ Weingarten face weights signed; FKG wrong-signed\\
+4 & Wrong half, UV (L3, H2-global, gradient flow, Dirichlet comparison, concentration, heat
+  kernel, validated numerics, step scaling, effective string, $S^3$) &
+  control the ultraviolet or a fast rate & orthogonal to the IR spectral edge; finite box $=$
+  upper bound; wrong kernel\\
+5 & Rename $=$ gap (H1, NEO/ESI, I2, Hamiltonian binding energy, one-loop L3) &
+  identify with a solvable object & the object is the gap restated, in another vocabulary\\
+6 & Upper-bound direction (Bogoliubov, Hylleraas, FSS, Temple/Weinstein, GEVP) &
+  a variational bound & variational methods give upper bounds; threshold oracle circular\\
+7 & Strong-coupling-only (rigorous large-$N$ / Chatterjee, SZZ, random surface/CPS
+  $\lambda<1/24$, center vortex) & extend a proven regime &
+  cannot reach $\beta\approx2.5$; method radius is the obstruction\\
+8 & Index $=0$ (NCG, localization, BPS, Witten spinor) & a topological invariant &
+  rigidity no-go: discrete locally-constant index $=$ free value zero\\
+9 & Exact reduction / duality (\code{ABC} A-leg: large-$N$ master field, Makeenko--Migdal, 2D
+  Migdal, integrable, $N=\infty\to3$, Eguchi--Kawai, holography, stochastic quantization) &
+  solve an equivalent model & wrong channel, wrong direction ($S_N\ge S_\infty$ reversed), or
+  wrong regime; all eight $\to$ H1 or misdirection\\
+10 & Constructive coercivity (\code{ABC} B-leg) & partition all of config space &
+  region-complete but sign-null: open cell has all four handles null; $G''$ $=$ conditioning
+  defect of equipartition; CS $|X|\le0.40>W_{\mathrm{geo}}\approx0.32$, short by
+  $O(0.1)=\lambda$\\
+11 & New inequality / capacity (\code{ABC} C-leg, \code{C-BBS-*}) & a convex floor &
+  WSTC/STC close the cones; open cell needs negative association, proven absent; capacity floor
+  is the Poincaré constant of the 1D marginal $=1/\chi=G''=$ H1, necessary not sufficient\\
+12 & Fixed-cell localization (\code{LOC-*}) & a cell-local conductance floor &
+  $w\sim\xi$ circularity; free massless satisfies every premise; single-cell control does not
+  tensorize to $L\to\infty$\\
+13 & Transport / monotone (\code{MS-*}) & carry the strong-coupling gap across Savvidy &
+  every transport is one-sided (upper bounds) or local (a $\beta$-disk); the missing inequality
+  is $(\mathrm{SGL})$ $m^4\ge\kappa\langle\tfrac14\operatorname{tr}F^2\rangle$; residue
+  positivity $\ne$ gap positivity\\
+14 & Lower-bound machines (\code{LOWER-AMPLITUDE-MECHANISMS}: GKS, FKG, Simon--Lieb,
+  reverse-BL, Carathéodory, RP-cone, Ginibre, Gaussian correlation) &
+  lower-bound the amplitude & ``lower-bound machine, upper-bound target'': a lower bound on
+  correlation $=$ lighter mode $=$ \textbf{anti-gap}; the only correct lower bound (residue
+  weight) is Schur-concave-forbidden\\
+15 & Feshbach / Krein / squeeze / Dirac-eta / spectral flow (\code{FORGE-*}) &
+  eliminate the negative block & two-block lemma reduces to TCI $=$ H1; Krein count $\ne$ IR
+  min; spectral-flow/eta index rigid; squeeze negative block only helps the survivor\\
+16 & $k=0$ effective curvature (\code{K0-*}) & strict positivity of the coarse curvature &
+  bare Savvidy negative is a \textbf{saddle}, not the vacuum; finite-$V$ strict positivity is
+  trivial; the constant mode carries toron flat directions; uniform strictness $=$ gap\\
+17 & Bethe--Salpeter two-gluon binding (\code{BS-*}) & solve the bound-state equation &
+  kernel sign-indefinite (Savvidy); Temple needs the threshold oracle (circular); RP sign-blind;
+  area law is the wrong sector\\
+18 & String-tension $\to$ glueball transmutation (\code{TRANSMUTE-*}) &
+  $\sigma>0\Rightarrow m_{0^{++}}\ge c\sqrt\sigma$ & sector (charged 1-form asymptotic vs
+  neutral 0-form short-distance) and scale mismatch; the available inequality points the wrong
+  way\\
+\end{longtable}
+}
+
+\textbf{Meta-conclusion.} This is not ``we failed to find a route.'' It is roughly ninety
+independent frontal attacks, each of which proved the same irreducibility from a different
+direction. That is near theorem-grade \emph{exhaustiveness evidence} --- not a theorem, and not a
+proof, but a structural fact about where the difficulty lives (Figure~\ref{fig:funnel}).
+
+\subsection{The newest six-route waves}
+
+The most recent waves mount several routes each (TRANSMUTE 3, BS 6, K0 6, FORGE 6, LOWER 6, MS 6),
+all landing on the species:
+
+\begin{itemize}
+\item \textbf{\code{TRANSMUTE}} (string tension $\to$ glueball): the 1-form-to-0-form bridge
+  fails; sector/scale mismatch plus wrong-direction inequality; no non-circular
+  $\sigma\Rightarrow m$ map.
+\item \textbf{\code{BS}} (two-gluon Bethe--Salpeter binding): the composite gives no new lever;
+  kernel sign-indefinite; every route ends at $m_g>0$ (H1) or an excited-glueball isolation (I2).
+\item \textbf{\code{K0}} ($k=0$ positive curvature $A>0$): object-identification correction ---
+  the bare Savvidy negativity is a saddle, not the vacuum --- and all routes return to H1.
+\item \textbf{\code{FORGE}} (forge the missing species): all six wall at $A(k=0)>0=$ H1; the
+  two-block lemma is the best reduction but its debt is TCI.
+\item \textbf{\code{LOWER}} (lower-bound the edge / one-sidedness): all six wall at
+  $(\mathrm{MS})$; the lower-bound direction is anti-gap.
+\item \textbf{\code{MS}} (transport across the crossover): all six reduce to $(\mathrm{SGL})$ or
+  an equivalent H1 statement.
+\end{itemize}

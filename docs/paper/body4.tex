@@ -1,0 +1,360 @@
+% =====================================================================
+\section{What the missing tool must satisfy}
+\label{sec:missing}
+% =====================================================================
+
+The campaign's sharpest deliverable is a specification of the object it could not build. The
+species must be \textbf{one} tool satisfying \textbf{five} conditions, stated verbatim from
+\code{docs/PROOF-SKELETON.md} \S3 and \code{docs/new-tools-registry.md}:
+
+\begin{enumerate}
+\item \textbf{Nonperturbative.} It must be valid outside every convergent expansion, at
+  $\beta\approx2.5$, where the relevant $g\approx1.5$ and no small parameter exists. (A
+  perturbative resummation is excluded by the Savvidy negative mode and the IR renormalon/Borel
+  ambiguity of the $a^{-4}$ coefficient.)
+\item \textbf{Sign-controlling lower bound.} It must produce a \emph{lower} bound
+  $m_{\mathrm{eff}}^2(k\to0)\ge\lambda>0$ (equivalently $G''\ge\lambda$, $f_1^2\ge r_0$), not
+  another upper bound. This is the rarest direction: almost every physical tool gives upper
+  bounds or sign constraints.
+\item \textbf{Non-circular.} It must not assume the gap, the threshold, or the isolation it is
+  meant to prove. (Temple/Weinstein, the BS threshold, the second-level $E_2$, and the
+  cutoff-independent Poincaré floor all fail here by presupposing the answer.)
+\item \textbf{Non-SUSY and fails the free field.} It must not rely on supersymmetry (the physical
+  theory is pure YM) and it must \textbf{fail} on the free massless field, where $f_1^2=0$,
+  $G''=0$. This is the acid test: a tool that ``proves'' a gap for the free field is vacuous.
+\item \textbf{Uniform lower bound.} It must be uniform in $(L,a)$ --- volume- and
+  cutoff-uniform --- and survive the continuum limit. A fixed-$a$ or fixed-$L$ statement does not
+  give Clay.
+\end{enumerate}
+
+\subsection{The equivalent forms of the object}
+
+These five conditions define the same object in several vocabularies
+(\code{docs/YANG-MILLS-MASTER.md} \S6):
+
+\begin{enumerate}
+\item \textbf{H1:} coarse Poincaré $\operatorname{Var}_\nu(\varphi)\le(1/\lambda)\int|\nabla
+  \varphi|^2$, uniform $\lambda>0$.
+\item \textbf{(CP):} a single $T=0$ confining phase (no bulk transition) $+$ a $0^{++}$ edge that
+  is Kato-preserved $+$ uniform isolation.
+\item \textbf{Edge atom $f_1^2>0$:} $\nu(\{m_1^2\})>0$ (usc, non-diagonal, needs $E_2$).
+\item \textbf{$G''(0)>0$ at $k\to0$:} the coarse curvature, $=S-D$, with $D/S\approx2\%$.
+\item \textbf{Determinant zero in the continuum:} $\det(1-zT_O)$ at $a\to0$.
+\item \textbf{Savvidy sign} (non-abelian): the indefinite Hessian's sign resolved.
+\end{enumerate}
+
+These are not six problems; they are one --- the volume-uniform lower bound on $m_{0^{++}}$ along
+the path, which is the mass gap itself. The campaign's final convergence
+(\code{docs/PROOF-SKELETON.md}) further reduces them to \textbf{one cell}: the ``typical field
+$\times$ high momentum'' cell of the $(\text{field}\times\text{momentum})$ plane, requiring
+$\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le W_{\mathrm{geo}}$. Every other cell is
+closed: low field by $\Phi''\succeq N/12+$ BL, the high-field cone by WSTC (measure starvation),
+the AF-UV cone by $g\to0$. \textbf{That cell is a variance-upper-bound species, the same species
+as G1's L3, at a different scale.}
+
+\subsection{The machine that does not exist}
+
+To close Clay one must build \textbf{a nonperturbative machine that transports the
+strong-coupling gap and residue continuously across the Savvidy crossing and takes $a\to0$}. The
+campaign states the verdict plainly (\code{docs/yang-mills-frontier.md} \S7,
+\code{YANG-MILLS-MASTER.md} \S9):
+
+\begin{qbox}
+The last step is to give a volume-uniform lower bound on $m_{0^{++}}$ across $[1/48,2.5]$. Every
+tried tool stops at the strong-coupling end (SZZ, large-$N$) or on the wrong half (UV). What is
+needed is a machine that carries the strong-coupling gap across the Savvidy/sign crossover
+continuously to the physical point --- \textbf{this machine does not exist.} It is equivalent to
+nonperturbative 4D dynamics, the classification of nonperturbative pure-gauge 4D CFTs
+(\code{TOOL-not-iii.md}).
+\end{qbox}
+
+The strongest contemporary rigorous frontier (CPS/CNS 2025) reaches only $\lambda<1/24$ (the older
+``$75\times$'' figure was a unit confusion; see \code{PROOF-EMERGENT-4D.md}), nowhere near
+$\beta\approx2.5$. The machine is the sixth species, and it is unbuilt.
+
+\subsection{What building it would close}
+
+A single one-sided variance upper bound, nonperturbative, coupling-free, $(L,a)$-uniform, failing
+at $f_1^2=0$, would close \textbf{both} G1's L3 (UV) and G2's H1 (IR) simultaneously. That is the
+precise sense in which ``one species, two scales'' is the whole gap between the campaign and
+Clay.
+
+% =====================================================================
+\section{Honest verdict}
+\label{sec:verdict}
+% =====================================================================
+
+\subsection{The headline}
+
+\textbf{Clay is 0\% --- open.} This is not a proof of the Yang--Mills mass gap, and no step of
+this paper should be read as one. The Clay problem is a Millennium Prize problem and remains
+unsolved.
+
+What is true:
+
+\begin{itemize}
+\item \textbf{G2's region coverage is $\sim$90\%}, closed by genuine theorems (G2.1--G2.4);
+  \textbf{its sign is 0\%}, the open cell being exactly H1.
+\item \textbf{G1 is 100\% assembled modulo $\{L3,G2\}$}, with the one genuinely open UV node L3 at
+  $\sim$40\%, and a coarse aggregate of $\sim$70\%.
+\item \textbf{The channel half is 100\%} (conditionally): the no-dissolution theorem pins the
+  lightest $0^{++}$ below its continuum.
+\item \textbf{The reduction is exact and honest:} the mass is squeezed as
+  $f_1^2/\chi\le\inf\operatorname{supp}\nu\le M_0/\chi$; the correct sufficient condition is
+  $(f_1^2\ge r_0)\wedge(\chi\le1/\lambda)$; H1 alone is necessary but not sufficient.
+\end{itemize}
+
+\subsection{What was actually banked}
+
+Positive ledger (all traced to files):
+
+\begin{enumerate}
+\item \textbf{P3 strong-coupling residue theorem} (\code{PROOF-P3-UNCONDITIONAL.md}):
+  $f_1^2\ge r_0(\beta)>0$ for $\beta<1/48$, volume- and $L$-uniform. Label \LT{} modulo standard
+  OS/KP imports. \textbf{I1 only; not I2.}
+\item \textbf{No-dissolution kinematic theorem} (\code{PROOF-NO-DISSOLUTION-KINEMATIC.md}): the
+  lightest $0^{++}$ is pinned below every continuum by its own mass. Label \LC{} on the gap $+$
+  ordering.
+\item \textbf{$W_{\mathrm{geo}}\ge0$} (\code{PROOF-JACOBIAN-SAVES.md}): the Haar geometric
+  curvature is non-negative on every mode including $k\to0$, every $L$. Label \LT.
+\item \textbf{Gauge-invariant Perron--Frobenius} (\code{PROOF-GAUSS-INVARIANT-PF.md}):
+  finite-volume vacuum and gap, no Gribov/FP sign. Label \LT{} finite volume; edge obstruction
+  \LN.
+\item \textbf{Lemma SC} (\code{PROOF-COARSE-POINCARE.md}): strong-coupling coarse Poincaré,
+  $(L,a)$-uniform. Label \LT, regime-limited.
+\item \textbf{Feshbach--Bogoliubov two-block lemma} (\code{FORGE-BLIND.md}): explicit gap with no
+  positive-Hessian hypothesis. Label \LT{} abstract.
+\item \textbf{Exact variance decomposition $G''=S-D$} (\code{INVENT-VARIANCE-INEQ.md}):
+  $\beta=0$ positivity; $D/S\approx2\%$ at $\beta=2.5$. Label \LT{} identity $+$ \LM{} at 2.5.
+\item \textbf{Residue--level-gap lemma} (\code{GAP-G2-edge}): a self-certifying sufficient
+  certificate. Label \LT.
+\item \textbf{Conditional theorem} (\code{docs/conditional-theorem.md}): \code{IN-0} \ldots{}
+  \code{IN-11} $\Rightarrow$ Clay, 9/9 gluing lemmas closed, partial Lean verification. Label
+  \LC.
+\end{enumerate}
+
+Negative ledger (the no-gos): Schur-convex, Goldstone, periodic, nested-cone, rigidity,
+Feshbach-angle, Krein, and the wrong-half/direction/regime umbrella. Plus three campaign-specific
+no-gos: \textbf{periodic} (no log-convexification), \textbf{nested} (cone swallows the free
+field), \textbf{rigidity} (index $=0$; the gap is a $\beta$-nonanalytic jump).
+
+Tools: six constructions pass the free-field acid test, three of them genuinely touch the atom,
+all three leave the wall on the far side of the continuum limit.
+
+\subsection{The numerics, read honestly}
+
+\begin{itemize}
+\item \textbf{$f_1^2>0$ is seen where it is resolvable.} At $\beta=2.2$ on $\mathrm{SU}(2)$,
+  $L=6$, $N=4000$, the connected zero-momentum $\operatorname{tr}F^2$ correlator gives
+  $f_{1,\mathrm{bare}}^2=7.14\pm0.42$ at seventeen sigma (bare level 0, $m_G=1.51\pm0.15\,a$);
+  every smearing level is strongly positive. This is \LE, not \LT. At $\beta=1.0$ the signal is
+  $0.2\sigma$ and the residue is not extractable --- because strong coupling is a coarse lattice
+  where $m\cdot a\gtrsim3$, so the state is at or beyond the cutoff on $T=6$. This is \textbf{not}
+  evidence against P3: P3 is an analytic statement in the $\beta\to0$ regime where $m\cdot a$
+  diverges, so the state is provably present but numerically sub-lattice-spacing. Strong-coupling
+  provability and numerical positivity live at opposite ends of the coupling.
+\item \textbf{The $k\to0$ curvature probe is positive but is not the $0^{++}$ object.} On a single
+  $L=8$ volume, the $\mathrm{SU}(3)$ $\beta=5.7$ softest nonzero mode $k=2\pi/L=\pi/4$ gives
+  $G''=+0.307\pm0.055$ in 6/6 transverse plane-wave modes, carried by
+  $W_{\mathrm{geo}}=+0.319\pm0.005$ (volume- and $k$-independent to 0.5\%), with the action
+  bracket at equipartition ($+0.037\pm0.099$). $\mathrm{SU}(2)$ $\beta=2.4$ reproduces it
+  ($+0.192\pm0.058$, $W_{\mathrm{geo}}=+0.252$). \textbf{But this is a $k\to0$ sign probe on a
+  gauge-dependent gluon mode in a flat chart, not the gauge-invariant $0^{++}$ residue.} Keeping
+  only the proven $W_{\mathrm{geo}}\ge0$ and treating the rest statistically gives 95\% one-sided
+  lower bounds of $-0.098$ ($\mathrm{SU}(3)$) and $-0.035$ ($\mathrm{SU}(2)$); \textbf{zero is not
+  excluded.} Closing it is one variance inequality, $(\blacklozenge)=$ H1 --- not a better
+  dataset. The gauge-invariant object is $m_{\mathrm{GI}}=\inf\operatorname{supp}\rho_s$ of
+  $s=(\beta/2g)\operatorname{tr}F^2$ (Figure~\ref{fig:probe}).
+\item \textbf{The volume confound is removed.} At fixed $k=\pi/2$, $L=4$ and $L=8$ agree
+  ($+0.425\pm0.084$ versus $+0.396\pm0.063$); at fixed $L=8$, $G''(\pi/4)=+0.307<G''(\pi/2)=+0.396$
+  but does not collapse. The earlier $L=4\to6$ drop mixed a $k$ decrease with a volume change; it
+  is now separated. $W_{\mathrm{geo}}$ is pinned at $+0.32$ across $L=4,6,8$ and both $k$.
+\end{itemize}
+
+\subsection{The wall, located and instrumented}
+
+The honest image is not ``we failed.'' It is that a shapeless wall was cut into a named object
+with a coordinate, a ruler, and an escape hatch. The wall is the \textbf{Savvidy concavity}
+($\operatorname{Hess}-D^2+2\operatorname{ad}F_B$ indefinite; the negative transverse-magnetic
+mode survives the gauge quotient, measured $7.1\%$ negative after $Q_\perp$). The key is a
+\textbf{cutoff-consistent $G''(0)>0$ / coarse-mode gap lower bound} across $[1/48,2.5]$,
+equivalently $f_1^2>0$ transport, equivalently the gluon condensate
+$\langle\tfrac14\operatorname{tr}F^2\rangle$ --- \textbf{the same object under several names.}
+The residual is the one species: a one-sided variance upper bound at UV (L3) and IR (H1).
+
+The wall did not fall. It became \textbf{transparent}: we can see the atom through the determinant,
+measure the sign through $W_{\mathrm{geo}}$, and locate the failing cell exactly. It became
+\textbf{ruled}: roughly ninety routes, each with its precise death. It became \textbf{measured}:
+$f_1^2>0$ at $17\sigma$ where resolvable, $D/S\approx2\%$, $W_{\mathrm{geo}}$ constant to
+$0.5\%$, and a rigorous-style bound that is close to zero but not past it.
+
+\subsection{What would change the verdict}
+
+Only one thing: \textbf{the construction of the missing species} (or a proof that it cannot
+exist). Concretely, any one of:
+
+\begin{itemize}
+\item a nonperturbative proof of
+  $\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le E[H|0]+W-\delta$, $(L,a)$-uniform (H1);
+\item a derivation of the deterministic negative-association inequality
+  $\operatorname{Cov}(G,\Phi'|0)\le0$ for the frustrated $\mathrm{SU}(N)$ measure;
+\item a proof of the tachyonic-compensation inequality (TCI) pointwise and uniformly, hence
+  convexity-at-the-vacuum of the nonperturbative effective potential plus absence of the Savvidy
+  imaginary part;
+\item a nonperturbative transport of the strong-coupling gap/residue across $[1/48,2.5]$ with
+  $a\to0$;
+\item a proof of the isolation I2 with a residue floor $f_1^2\ge r_0$, uniformly.
+\end{itemize}
+
+Each is a different name for the same missing machine. Until one exists, the Clay verdict is 0\%,
+and it is honest to say so.
+
+\subsection{Sharpest line}
+
+\begin{qbox}
+The wall did not fall; it became transparent, ruled, and instrumented. After roughly ninety
+independent frontal attacks, every honest route ends at the same sentence --- an upper bound on a
+conditioned variance --- written twice, once in the ultraviolet and once in the infrared, and the
+whole distance between this campaign and Clay is that one sentence. We proved the strong-coupling
+residue is positive, the lightest $0^{++}$ cannot dissolve, the Haar curvature is non-negative,
+and the gauge-invariant vacuum is Perron--Frobenius; we proved a conditional theorem whose gluing
+lemmas are machine-checked; and we proved that positivity, convexity, spectral theory,
+Perron--Frobenius, and the renormalization group --- the five exhausted paradigms --- cannot
+supply the bound, because at the free point they all return zero. What remains is not a missing
+constant or a sharper estimate; it is a species that does not yet exist in mathematics: a
+single-sided, nonperturbative, non-circular, free-field-failing, cutoff-uniform upper bound on a
+variance. Build that, and the ultraviolet existence and the infrared gap close together. Until
+then, the honest word is not ``proved'' --- it is ``located.''
+\end{qbox}
+
+% =====================================================================
+\section{References}
+\label{sec:refs}
+% =====================================================================
+
+Citations below reproduce the strings used in the corpus (author, venue, volume, year, page ---
+no expanded titles are added). Where the corpus flags a bibliographic uncertainty, that flag is
+preserved rather than repaired.
+
+{\small
+\begin{thebibliography}{99}
+\setlength{\itemsep}{0pt}
+
+\bibitem{JW} A.~Jaffe, E.~Witten, \emph{Quantum Yang--Mills Theory}, Clay Mathematics Institute.
+  (Problem statement quoted in \code{docs/yang-mills-prior-work.md} \S1.)
+\bibitem{SW} Streater--Wightman (1964), as cited in the Clay statement.
+\bibitem{OS1} Osterwalder--Schrader, Comm.\ Math.\ Phys.\ \textbf{31} (1973) 83.
+\bibitem{OS2} Osterwalder--Seiler, Ann.\ Phys.\ \textbf{110} (1978) 440.
+\bibitem{SZZ} Shen--Zhu--Zhu, Comm.\ Math.\ Phys.\ \textbf{400} (2023) 805, arXiv:2204.12737.
+\bibitem{KP} Kotecký--Preiss, Comm.\ Math.\ Phys.\ \textbf{103} (1986) 19.
+\bibitem{Seiler} Seiler, Lecture Notes in Physics \textbf{159} (1982).
+\bibitem{BGDF} Brydges--Giffen--Durhuus--Fröhlich, Nucl.\ Phys.\ B \textbf{275} (1986) 459.
+\bibitem{GJS} Glimm--Jaffe--Spencer, Ann.\ Math.\ \textbf{100} (1974) 585--632.
+\bibitem{FO} Feldman--Osterwalder, Ann.\ Physics \textbf{97} (1976) 80--135.
+\bibitem{Balaban} T.~Balaban, \emph{Renormalization group approach to lattice gauge field
+  theories} I--IV, Comm.\ Math.\ Phys.\ (1980s); volumes cited in the corpus as \textbf{109}
+  (1987) 249; \textbf{116} (1988) 1; \textbf{122} (1989) 175, 355 (the corpus also records 102
+  (1985), 109 (1986), 122 (1989) and marks the volume numbers ``to be verified'' in one file).
+\bibitem{MRS} Magnen--Rivasseau--Sénéor, Comm.\ Math.\ Phys.\ \textbf{155} (1993) 325--383 (one
+  corpus file records the page range 417--430; the range is unverified here).
+\bibitem{KL} Källén, \emph{Helv.\ Phys.\ Acta} \textbf{25} (1952) 417; Lehmann,
+  \emph{Nuovo Cim.} \textbf{11} (1954) 342.
+\bibitem{Prekopa} Prékopa (1971).
+\bibitem{BL} Brascamp--Lieb, J.\ Funct.\ Anal.\ \textbf{22} (1976) 366.
+\bibitem{Savvidy} Savvidy, Phys.\ Lett.\ B \textbf{71} (1977) 133.
+\bibitem{NO} Nielsen--Olesen, Nucl.\ Phys.\ B \textbf{144} (1978) 376.
+\bibitem{Leutwyler} Leutwyler, Nucl.\ Phys.\ B \textbf{179} (1981) 129.
+\bibitem{Luscher} Lüscher, Comm.\ Math.\ Phys.\ \textbf{54} (1977) 283.
+\bibitem{Singer} Singer, Comm.\ Math.\ Phys.\ \textbf{60} (1978) 7.
+\bibitem{Kato} Kato, \emph{Perturbation Theory for Linear Operators} (1976), VII \S3.
+\bibitem{RS} Reed--Simon IV, \S XIII.1.
+\bibitem{vNW} von Neumann--Wigner (1929).
+\bibitem{MP} Morningstar--Peardon, hep-lat/9901004.
+\bibitem{BBS} Bauerschmidt--Brydges--Slade, Lecture Notes in Mathematics \textbf{2242} (2019).
+\bibitem{Sinclair} Sinclair, Combin.\ Probab.\ Comput.\ \textbf{1} (1992) 351.
+\bibitem{JS} Jerrum--Sinclair, SIAM J.\ Comput.\ \textbf{18} (1989) 1149.
+\bibitem{Feller} Feller, Ann.\ of Math.\ \textbf{55} (1952) 468.
+\bibitem{Griffiths} Griffiths, J.\ Math.\ Phys.\ \textbf{8} (1967) 478.
+\bibitem{KS} Kelly--Sherman, J.\ Math.\ Phys.\ \textbf{9} (1968) 466.
+\bibitem{FKG} Fortuin--Kasteleyn--Ginibre, Physica \textbf{57} (1972) 536.
+\bibitem{Ginibre} Ginibre, Comm.\ Math.\ Phys.\ \textbf{16} (1970) 310.
+\bibitem{ES} Efron--Stein, Ann.\ Statist.\ \textbf{9} (1981) 586.
+\bibitem{Royen} Royen, Far East J.\ Theor.\ Stat.\ \textbf{48} (2014) 139.
+\bibitem{vRS} von Renesse--Sturm, Comm.\ Pure Appl.\ Math.\ \textbf{58} (2005) 923.
+\bibitem{GSV} Guo--Shamai--Verdú, IEEE Trans.\ Inform.\ Theory \textbf{51} (2005) 1261.
+\bibitem{BBL} Borcea--Brändén--Liggett, J.\ Amer.\ Math.\ Soc.\ \textbf{32} (2019) 205.
+\bibitem{Cornwall} Cornwall, Phys.\ Rev.\ D \textbf{26} (1982) 1453.
+\bibitem{Temple} Temple (1928); Temple--Weinstein / Temple--Kato as cited in the corpus.
+\bibitem{GM} Göpfert--Mack, Comm.\ Math.\ Phys.\ \textbf{81} (1981) 97.
+
+\end{thebibliography}
+}
+
+% =====================================================================
+\section*{Appendix: verification map}
+\addcontentsline{toc}{section}{Appendix: verification map}
+% =====================================================================
+
+{\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{4.4cm}
+  >{\raggedright\arraybackslash}p{1.4cm}
+  >{\raggedright\arraybackslash}p{9.1cm}@{}}
+\caption{Verification map: each claim, its label, and the file containing the proof.}
+\label{tab:verif}\\
+\toprule
+\textbf{Claim in this paper} & \textbf{Label} & \textbf{File containing the proof / source}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Claim in this paper} & \textbf{Label} & \textbf{File containing the proof / source}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+P3 residue theorem (I1) & \LT & \code{research/unconditional/PROOF-P3-UNCONDITIONAL.md},
+  \code{PROOF-P1P2.md}, \code{PROOF-P3.md}\\
+P3 gives I1 not I2 & correction & \code{PROOF-P3-UNCONDITIONAL.md} \S5;
+  \code{PROOF-P1P2.md} \S3\\
+No-dissolution theorem & \LC & \code{research/unconditional/PROOF-NO-DISSOLUTION-KINEMATIC.md},
+  \code{PROOF-DISSOLUTION-SPECTRAL-DENSITY.md}\\
+Operative threshold $\approx1.5\,m_g$ & \LT & \code{PROOF-ISOLATION.md} \S4;
+  \code{PROOF-EDGE-E2.md}\\
+$W_{\mathrm{geo}}\ge0$, $E[\Phi'']\ge N/12$ & \LT &
+  \code{research/unconditional/PROOF-JACOBIAN-SAVES.md}\\
+Gauge-invariant PF & \LT{} finite $V$ & \code{research/unconditional/PROOF-GAUSS-INVARIANT-PF.md}\\
+Lemma SC & \LT & \code{research/unconditional/PROOF-COARSE-POINCARE.md} \S(c)\\
+Feshbach--Bogoliubov lemma & \LT{} abstract & \code{research/unconditional/FORGE-BLIND.md} \S2;
+  \code{D-BBS-INTEGRATE-NEG.md} (Lemma NS)\\
+$G''=S-D$ & \LT{} identity & \code{INVENT-VARIANCE-INEQ.md}; \code{docs/new-tools-registry.md} A2\\
+Residue--level-gap lemma & \LT & \code{GAP-G2-edge}; \code{G2-ASSEMBLE-100.md} \S2\\
+Conditional theorem \code{IN-0}\ldots\code{IN-11} & \LC & \code{docs/conditional-theorem.md},
+  \code{lean/YMStatement/}\\
+Spectral squeeze, H1 necessary-not-sufficient & \LT &
+  \code{research/unconditional/REDUCTION-AUDIT.md}\\
+Correct sufficient condition & \LT & \code{REDUCTION-AUDIT.md};
+  \code{LOWER-AMPLITUDE-MECHANISMS.md} \S1\\
+Node board / honest \% & \LT/\LC/\LM & \code{docs/PROOF-SKELETON.md};
+  \code{research/unconditional/G2-ASSEMBLE-100.md}, \code{G1-ASSEMBLE-100.md},
+  \code{ABC-FINAL-LEDGER.md}\\
+Six tools and acid tests & \LT/\LC & \code{docs/new-tools-registry.md};
+  \code{INVENT-TRANSPORT-INEQ.md}, \code{INVENT-VARIANCE-INEQ.md},
+  \code{INVENT-NEW-IDENTITY.md}, \code{INVENT-GAUGE-INVARIANT-MASS.md},
+  \code{INVENT-NEW-MONOTONE.md}\\
+No-gos & \LN & \code{INVENT-CONVEXIFICATION.md}, \code{INVENT-SECOND-CONE.md},
+  \code{INVENT-NEW-INDEX.md}, \code{SCHUR-CONVEX.md}, \code{GOLDS-POS-MASS.md},
+  \code{FORGE-FESHBACH-ANGLE.md}, \code{FORGE-KREIN-SPECTRAL.md}\\
+One species (UV/IR), five conditions & \LM & \code{docs/PROOF-SKELETON.md} \S3;
+  \code{docs/YANG-MILLS-MASTER.md} \S6\\
+Immune map & \LN & \code{docs/YANG-MILLS-MASTER.md} \S5; \code{ABC-FINAL-LEDGER.md}; batch
+  reports \code{ABC*}, \code{C-*}, \code{D-BBS-*}, \code{LOC-*}, \code{MS-*}, \code{LOWER-*},
+  \code{FORGE-*}, \code{K0-*}, \code{BS-*}, \code{TRANSMUTE-*}\\
+$f_1^2>0$ at $\beta=2.2$ ($17\sigma$) & \LE &
+  \code{research/unconditional/COMPUTE-F1SQ-SU2.md}\\
+$G''$ $k\to0$ probe (gauge-dependent mode) & \LE &
+  \code{research/unconditional/COMPUTE-GPP-K0-CONTINUUM.md}\\
+Dimensional correction $G''_a=a^2m_{\mathrm{phys}}^2$ & \LT & \code{docs/PROOF-SKELETON.md}
+  (G1-CONTINUUM-SCALING)\\
+``Machine that does not exist'' & verdict & \code{docs/yang-mills-frontier.md} \S7;
+  \code{YANG-MILLS-MASTER.md} \S9; \code{TOOL-not-iii.md}\\
+\end{longtable}
+}
