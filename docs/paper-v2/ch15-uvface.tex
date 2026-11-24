@@ -240,6 +240,63 @@ conditionally; even a proven $H1$ does not force the bottom of the K\"all\'en--L
 thin-atom proposition, machine-checked as \code{H1\_does\_not\_imply\_atom}) (file
 \code{P6-PERIODIC-TO-H1.md}).
 
+\subsection{The $H1$ attack: seven routes and the carrier hazard}
+
+A dedicated wave attacked $H1$ directly. None of the seven routes proves it, but the wave classifies
+why, and it changes the campaign's target.
+
+\textbf{Four faces of one lemma.} The escape hatches of the standard method classes are the same
+inequality in four coordinates:
+\begin{equation}
+  \operatorname{Var}_\mu(a)\le\operatorname{Var}_{\mathrm{Haar}}(a)+C_0
+  \ \Longleftrightarrow\
+  D\le S-\lambda
+  \ \Longleftrightarrow\
+  K\succeq\gamma I
+  \ \Longleftrightarrow\
+  \rho(\text{gate})\ge c>0,
+  \label{eq:v3fourfaces}
+\end{equation}
+a finite-mass Gaussian domination (Q1), a connected four-point bound (Q2), a uniform fibre gap (Q3),
+and a single-well/gate-density bound (Q4). Under the stated normalizations these are $H1$; the
+equivalence is \LT{} in the Gaussian limit and \LC{} otherwise. This is a robust characterization, not
+a proof.
+
+\textbf{Directional failures.} Reflection positivity is vacuous at $k=0$: the free massless reference
+has $\hat C(0)=\infty$, the free photon is itself reflection-positive with $\chi=\infty$, compactness
+gives only $\Theta(L^4)$, and Dobrushin gives $\alpha(2.5)=180$. The Fisher identity is a
+\emph{variance floor}, $E[G'']=I(\rho)\ge1/\operatorname{Var}$, i.e.\
+$\operatorname{Var}\ge1/I$ --- the opposite direction to $H1$; Bernstein caps $G''\le\tau^2$, and a
+band-limited $\rho_\varepsilon=1+\varepsilon\cos(\tau a)$ has
+$G''=\varepsilon\tau^2/(1+\varepsilon)\to0$. The group Ricci curvature is positive
+($\mathrm{Ric}_{SU(N)}=(N/4)g$) but the Savvidy Hessian dominates
+($\mathrm{Ric}+\operatorname{Hess}S_W\approx-2.3$). The negative mode at the barrier is
+\emph{collective}, aligned with the coarse direction; the exact inertia lemma
+$n_-(H)=n_-(K)+n_-(\Sigma)$ shows that no fibre mode can be excised there. Random-matrix methods
+are blind: the Savvidy outlier is deterministic and the $3\%$ residue $G''/D$ is below their
+$\ge10\%$ relative error.
+
+\textbf{The 4D pilot.} At $\beta=2.5$, $\chi=\operatorname{Var}(a)=4.17\pm0.18$ ($L=4$) and
+$3.61\pm0.24$ ($L=6$), ratio $0.87$; a free massless field would rise by $(6/4)^2\approx2.25$.
+Growth is excluded and a plateau at the Haar value $\approx3.7$ is consistent. But the force-moment
+curvature is $G''(k=0)=+0.03\pm0.08$, while $1/\chi\approx0.24$, so $G''\chi\approx0.13$: the 4D
+marginal is strongly non-Gaussian. Hence $H1$ must be stated as the variance bound
+$\chi\le1/\lambda$, not as $G''\ge\lambda$, unless Gaussianity is proved. The pilot coordinate is
+gauge-invariant only infinitesimally ($\le4\%$ drift), so this is evidence, not a gauge-invariant
+measurement; the decisive run is specified (Landau+FP+Gribov, $L=8,12(16)$, $N\ge2000$).
+
+\textbf{The carrier hazard.} $H1$ is strictly weaker than the gap: the gap implies it, but the
+converse is false and machine-checked (thin atom: $\chi=1/\lambda$ with
+$\inf\operatorname{supp}\nu=\varepsilon\to0$). Worse, $H1$ has no canonical carrier. On the
+gauge-invariant composite $\operatorname{tr}F^2$, $\operatorname{Var}\propto1/V$, so $H1$ is
+\emph{vacuously} true; on the gluon $a=\langle v,\log U\rangle$ it holds but is gauge-dependent; the
+gauge-invariant non-self-averaging carrier that would make it non-vacuous is the structural object the
+campaign has not constructed. The irreducible target is therefore the atom on the $0^{++}$
+K\"all\'en--Lehmann measure, $f_1^2\ge r_0$ with isolation $I_2$, with $\chi\le1/\lambda$ as the
+necessary ceiling. The falsification battery is: free field (must fail), thin atom (must not certify),
+deep double well (no barrier-uniform $\lambda$), carrier/vacuity (must be non-vacuous), and dimension
+($G''_a=a^2m_{\mathrm{phys}}^2$).
+
 \subsection{What the chapter adds to the ledger}
 
 \begin{enumerate}
@@ -260,6 +317,10 @@ thin-atom proposition, machine-checked as \code{H1\_does\_not\_imply\_atom}) (fi
   (exact anchor $0.2051$, $k=0$ value $0.222$, transfer gap $0.6444$); the center sector does not
   change it; in $d\ge2$ the susceptibility can still diverge, so the 4D floor remains $H1$ \LM.
 \item A curvature floor is a susceptibility ceiling, never an atom \LT/\LN.
+\item Seven direct attacks on $H1$ reduce its escape hatches to four equivalent faces
+  \eqref{eq:v3fourfaces}; the standard methods fail for directional reasons; the 4D pilot plateaus but
+  is carrier-limited; and $H1$ is strictly weaker than the gap, with a carrier hazard that makes the
+  atom the irreducible target \LT/\LN/\LE/\LM.
 \end{enumerate}
 
 \begin{qbox}
