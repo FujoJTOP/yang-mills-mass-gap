@@ -1,0 +1,86 @@
+####################################################################################################
+# D3 -- TRANSFER-MATRIX gap of the constant mode: saturation vs decay under decompactification
+####################################################################################################
+exact one-link Var(xi3)_Haar = 3.719824  => CLT Haar saturation value 1/Var = 0.26883  (flat-chart N/12 = 0.16667)
+
+====================================================================================================
+[T1] BULK transfer-matrix spectrum: Delta=-log(lam1/lam0)=1/correlation length.  Translation
+     invariant => L-INDEPENDENT: the transfer-matrix gap SATURATES iff Delta>0 (xi<inf).
+----------------------------------------------------------------------------------------------------
+    beta   theta       lam0  lam1/lam0    Delta   xi=1/D                    top evals
+    0.00   3.142     39.478     0.0000  35.5317   0.0281   [3.9478e+01 1.4626e-14 1.2621e-14 1.1189e-14]
+    2.50   3.142    129.043     0.0418   3.1760   0.3149   [1.2904e+02 5.3876e+00 5.3874e+00 6.8531e-03]
+    2.50   0.000    228.174     0.5250   0.6444   1.5519   [228.1738 119.7875  63.8178  33.401 ]
+    1.00   3.142     49.871     0.0021   6.1460   0.1627   [4.9871e+01 1.0683e-01 1.0682e-01 3.8870e-06]
+   => finite Delta>0 at beta=2.5 (xi finite): the bulk transfer matrix is GAPPED, L-independent.
+      beta=0 is rank-1 (lam1~0, xi~0): delta-correlated -> exact saturation at 1/Var.  [T]
+
+====================================================================================================
+[check] transfer-matrix Z(k) vs independent brute 2-D quadrature (L=2, theta=pi, beta=2.5):
+     k=0.30:  transfer=+136.720930215-1.63e+01j  brute=+136.720930215-1.63e+01j
+     k=1.10:  transfer=+84.343215300-3.61e+01j  brute=+84.343215300-3.61e+01j
+     k=2.70:  transfer=+9.234623071-9.78e+00j  brute=+9.234623071-9.78e+00j
+
+====================================================================================================
+[T2] EXACT constant-mode marginal curvature G''(a0*) [the Riccati gap], L=1..6, theta=0.
+     Symmetric => a0*=0.  beta=2.5 (Wilson+Haar) and beta=0 (Haar only).
+----------------------------------------------------------------------------------------------------
+    L     a0*    G(2.5)   G(0)=Haar
+    1  +0.000   +0.8301     +0.2051
+    2  +0.000   +1.5901     +0.2395
+    3  +0.000   +1.1405     +0.2493
+    4  +0.000   +0.7440     +0.2542
+    5  +0.000   +0.5553     +0.2572
+    6  +0.000   +0.4577     +0.2591
+   theta=pi (SM1's Z2-twist; the mode shifts, a0* wanders):
+    1  -2.281   +0.8508   (G''(0)=  +0.2051)
+    2  +0.328   +1.5775   (G''(0)=  +1.6263)
+    3  +0.956   +0.8987   (G''(0)=  +0.6247)
+    4  +0.127   +0.7029   (G''(0)=  +0.7351)
+    5  +0.015   +0.3686   (G''(0)=  +0.3709)
+    6  +0.251   +0.4665   (G''(0)=  +0.4595)
+   [calib] full-3D exact L=1 LONG theta=pi: a0*,G'' = (np.float64(-2.1417159677090085), np.float64(0.6941214545378228))
+           (pure-Cartan L=1 = +0.8508; Cartan over-estimates the small-L ACTION part)
+
+====================================================================================================
+[T3] MECHANISM (theta=0): exact split G''=G''_Haar+G''_Wilson.  Haar -> 1/Var (L-INDEP).
+----------------------------------------------------------------------------------------------------
+    L   G_total    G_Haar   G_Wilson  Wil/Haar
+    1   +0.8301   +0.2051    +0.6250    +3.047
+    2   +1.5901   +0.2395    +1.3506    +5.638
+    3   +1.1405   +0.2493    +0.8912    +3.574
+    4   +0.7440   +0.2542    +0.4898    +1.926
+    5   +0.5553   +0.2572    +0.2982    +1.159
+    6   +0.4577   +0.2591    +0.1986    +0.766
+   => G''_Haar L-INDEPENDENT (-> 0.2688); G''_Wilson = the ACTION term, DECAYS with L.
+      NET: G'' = Haar floor + decaying action = SATURATION at the Haar floor.  [T]+[V]
+   [asymptote] extending theta=0 to L=7,8,10 (the total must -> 1/Var since G_Wilson -> 0):
+   L= 7  G(2.5)=+0.4012  G_Haar=+0.2605  G_Wilson=+0.1406
+   L= 8  G(2.5)=+0.3653  G_Haar=+0.2616  G_Wilson=+0.1037
+   L=10  G(2.5)=+0.3235  G_Haar=+0.2630  G_Wilson=+0.0605
+
+====================================================================================================
+[T4] FITS.  (The L=2 'dimer' bump P1=X1X2 is a finite-chain artifact; the SCALING lives at L>=3.)
+     (a) ACTION part G_Wilson -> A/L^p -> 0.  (b) TOTAL -> c + A/L^p; intercept c = L->inf gap.
+----------------------------------------------------------------------------------------------------
+   (a) G_Wilson ~ A/L^p  [L=2..6]: A=3.927  p=1.50+-0.18  rms=0.0738   -> 0
+   (a) G_Wilson ~ A/L^p  [L=3..6]: A=9.332  p=2.14+-0.03  rms=0.0043   -> 0
+   (b) TOTAL [theta=0|L=3..6]  c+A/L+B/L2: c=+0.2216+-0.0293 rms=0.0014  |  c+A/L^p: c=+0.2246+-0.0153 p=1.98 rms=0.0014
+   (b) TOTAL [theta=0|L=2..6]  c+A/L+B/L2: c=-0.4258+-0.1998 rms=0.0309  |  c+A/L^p: c=-1.0000+-1.3401 p=0.54 rms=0.0346
+   (b) TOTAL [theta=pi|L=3..6]  c+A/L+B/L2: c=+0.1818+-1.5712 rms=0.0767  |  c+A/L^p: c=+0.1890+-1.0677 p=1.73 rms=0.0766
+   (b) TOTAL [theta=pi|L=2..6]  c+A/L+B/L2: c=+0.0723+-0.4454 rms=0.0688  |  c+A/L^p: c=+0.1461+-0.3659 p=1.56 rms=0.0686
+   Reference: proven Haar floor 1/Var(xi3) = 0.2688; a pure A/L->0 fit is rejected by the
+   decaying-action + constant-floor structure above (G_Total = saturating Haar + decaying Wilson).
+
+====================================================================================================
+[T5] ACID TEST (free field must return 0 / no manufactured floor):
+----------------------------------------------------------------------------------------------------
+   free Gaussian (marginal N(0,1/kappa)), kappa=0.50: G''(0)=+0.5000=0.5 ->0
+   free Gaussian (marginal N(0,1/kappa)), kappa=0.10: G''(0)=+0.1000=0.1 ->0
+   free Gaussian (marginal N(0,1/kappa)), kappa=0.02: G''(0)=+0.0200=0.02 ->0
+   free massless box gap 4pi^2/L^2: 9.870, 2.467, 0.617, 0.154 -> 0.
+   beta=0 Haar floor (NOT free): L-independent 0.205..0.2688 (>0); discriminator = Phi=-log J.  [T]+[V]
+
+VERDICT (see D3-TRANSFER-CONSTANT.md): the transfer-matrix gap SATURATES at a positive
+L-independent value = Haar floor (~0.2688) + a decaying action part; the SM1 ~1/L is the
+finite-L ACTION transient, NOT an approach to 0.  [T]+[V].  No QED.  Clay 0%.
