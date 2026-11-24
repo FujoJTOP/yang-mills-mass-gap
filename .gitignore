@@ -27,3 +27,10 @@ Thumbs.db
 # ---- Numba / compilation caches ----
 *.nbc
 nbcache/
+
+# LaTeX build artifacts (paper-v2)
+docs/paper-v2/*.aux
+docs/paper-v2/*.log
+docs/paper-v2/*.toc
+docs/paper-v2/*.out
+docs/paper-v2/out*.txt

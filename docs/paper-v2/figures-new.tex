@@ -9,27 +9,27 @@
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-  \node[fbox, fill=cC!9, draw=cC!60, text width=6.6cm, minimum height=3.4cm] (c1) at (2.6,3.4)
-    {\textbf{Coordinate 1: measure / weak-$*$}\\[3pt]
-     \scriptsize $\nu$ positive, $m_1^2=\inf\operatorname{supp}\nu$, $f_1^2=\nu(\{m_1^2\})$\\
-     atom $=$ \textbf{weak-$*$ discontinuity} of the boundary density\\
-     technique pool: spectral theory, moment problems,\\
-     complex analysis, optimal transport, dependence inequalities};
-  \node[fbox, fill=cM!9, draw=cM!60, text width=6.6cm, minimum height=3.4cm] (c2) at (11.0,3.4)
-    {\textbf{Coordinate 2: $\beta$ / RG / conformal}\\[3pt]
-     \scriptsize $\beta_{N_f=0}(g)$; window $9\le N_f\le16$ real;\\
-     gap $=$ ``$N_f=0$ outside the conformal window''\\
-     $=$ no strong-coupling IR fixed point\\
-     technique pool: conformal bootstrap, $a$-theorem,\\
-     large-$N$, holography, DSE, lattice step-scaling};
-  \node[fbox, fill=cN!8, draw=cN!65, text width=7.6cm, minimum height=1.6cm] (wall) at (6.8,0.35)
-    {\textbf{ONE INVARIANT}: $H1$ $=$ the $a\to0$, $L\to\infty$ isolation of the
-     $0^{++}$ atom\\[1pt]
+  \node[fbox, fill=cC!9, draw=cC!60, text width=6.5cm,
+        minimum height=3.0cm, align=center] (c1) at (3.2,3.6)
+    {\textbf{Coordinate 1}\\[1pt]\textbf{measure / weak-$*$}\\[3pt]
+     \scriptsize $\nu\ge0$;\ \ $f_1^2=\nu(\{m_1^2\})$\\[1pt]
+     atom $=$ weak-$*$ discontinuity\\[1pt]
+     tools: spectral, moments,\\[1pt]
+     complex analysis, transport, dependence};
+  \node[fbox, fill=cM!9, draw=cM!60, text width=6.5cm,
+        minimum height=3.0cm, align=center] (c2) at (10.4,3.6)
+    {\textbf{Coordinate 2}\\[1pt]\textbf{$\beta$ / RG / conformal}\\[3pt]
+     \scriptsize $\beta_{N_f=0}(g)$;\ \ window $9\le N_f\le16$\\[1pt]
+     gap $=$ ``$N_f=0$ outside the window''\\[1pt]
+     tools: bootstrap, $a$-theorem,\\[1pt]
+     large-$N$, holography, DSE};
+  \node[fbox, fill=cN!8, draw=cN!65, text width=10.6cm,
+        minimum height=1.6cm, align=center] (wall) at (6.8,0.55)
+    {\textbf{ONE INVARIANT}\\[1pt]
+     $H1$: the $a\to0$, $L\to\infty$ isolation of the $0^{++}$ atom\\[1pt]
      \scriptsize an upper bound on a conditioned variance, written twice};
-  \draw[arr] (c1.south) -- (wall.north west)
-    node[alab, pos=0.55, sloped, above] {blind to the atom (weak-$*$)};
-  \draw[arr] (c2.south) -- (wall.north east)
-    node[alab, pos=0.55, sloped, above] {reduces to the dynamics ($\beta$)};
+  \draw[arr] (3.2,2.15) -- (4.5,1.40);
+  \draw[arr] (10.4,2.15) -- (9.1,1.40);
   \node[font=\scriptsize, text=black!60, align=center] at (6.8,5.35)
     {Two disjoint toolboxes; neither closes the wall.};
 \end{tikzpicture}
@@ -38,7 +38,8 @@ non-overlapping coordinates. In the measure coordinate the atom is a weak-$*$ di
 every finite datum is weak-$*$ continuous, so no positive-measure argument can force it. In the
 $\beta$ coordinate the gap is the dynamical statement that pure Yang--Mills lies outside the
 conformal window; the window is real, so no kinematic argument can force it either. Both
-coordinates terminate at the same invariant.}
+coordinates terminate at the same invariant. The left arrow denotes ``blind to the atom
+(weak-$*$)''; the right arrow denotes ``reduces to the dynamics ($\beta$).''}
 \label{fig:twocoord}
 \end{figure}
 }
