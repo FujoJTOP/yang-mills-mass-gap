@@ -1,0 +1,12 @@
+Case 1  UV-AdS -> IR-AdS  (gapless conformal IR):
+  A'(UV at r=+6) = 1.0000   A'(IR at r=-6) = 2.0000   (both > 0 => both AdS: True)
+  max A'' = dA'/dr = -4.571e-08   (<=0 => NEC satisfied: True)
+  c(UV) = 1.0000   c(IR) = 0.1250   (c decreases toward IR: True)
+
+Case 2  hard wall (gapped):
+  A' = 1/Luv = 1.0000 constant; space caps at r_wall (no IR throat)
+  max A'' = dA'/dr = +2.274e-13   (<=0 => NEC satisfied: True)
+
+Both cases satisfy NEC (A'' <= 0).
+=> The bulk NEC / c-theorem does NOT exclude an IR AdS throat (gapless CFT).
+   Forcing the wall needs an extra input (a dilaton potential / 'no IR CFT') = (G1) = H1.
