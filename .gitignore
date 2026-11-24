@@ -34,3 +34,9 @@ docs/paper-v2/*.log
 docs/paper-v2/*.toc
 docs/paper-v2/*.out
 docs/paper-v2/out*.txt
+
+# LaTeX build artifacts (paper-v3)
+docs/paper-v3/*.aux
+docs/paper-v3/*.log
+docs/paper-v3/*.toc
+docs/paper-v3/*.out

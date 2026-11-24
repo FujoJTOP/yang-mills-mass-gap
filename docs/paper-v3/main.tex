@@ -1,0 +1,675 @@
+% =====================================================================
+%  The UV Face of the Yang–Mills Mass Gap
+%  Focused v3 paper: counterexample, good-set theorem, reduction to H1
+%  Build: pdflatex main.tex (twice)
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm,top=2.2cm,bottom=2.4cm,headsep=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{microtype}
+\usepackage[table]{xcolor}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+\definecolor{cT}{HTML}{1D7A3A}
+\definecolor{cC}{HTML}{1F5FA8}
+\definecolor{cM}{HTML}{B45F06}
+\definecolor{cN}{HTML}{A61B1B}
+\definecolor{cE}{HTML}{6A3D9A}
+
+\newcommand{\labb}[2]{\fcolorbox{#1!35}{#1!8}{\textcolor{#1}{\textbf{\scriptsize #2}}}}
+\newcommand{\LT}{\labb{cT}{T}}
+\newcommand{\LC}{\labb{cC}{C}}
+\newcommand{\LM}{\labb{cM}{M}}
+\newcommand{\LN}{\labb{cN}{N}}
+\newcommand{\LE}{\labb{cE}{E}}
+
+\newcounter{claim}
+\newcommand{\claimhead}[2]{%
+  \refstepcounter{claim}%
+  \textbf{#1~\theclaim}#2\hspace{0.35em}\ignorespaces}
+\newtcolorbox{claimbox}[1]{enhanced, breakable=false,
+  colback=#1!6, colframe=#1!75, boxrule=0pt, leftrule=2.6pt,
+  arc=2pt, left=7pt, right=6pt, top=5pt, bottom=5pt,
+  before skip=8pt, after skip=8pt, fontupper=\small, parbox=false}
+\newenvironment{proofx}{\par\noindent\emph{Proof.}\ }{\hfill$\square$\par\medskip}
+\newcommand{\src}[1]{\par\vspace{1pt}{\footnotesize\color{black!55}\textbf{Source.} #1}\par\vspace{4pt}}
+\newtcolorbox{qbox}{enhanced, colback=black!3, colframe=black!35, boxrule=0pt,
+  leftrule=2pt, arc=0pt, left=12pt, right=10pt, top=5pt, bottom=5pt,
+  before skip=8pt, after skip=8pt, fontupper=\small, parbox=false}
+\newtcolorbox{statusbox}{enhanced, breakable, colback=black!3.5, colframe=black!30,
+  boxrule=0.5pt, arc=3pt, left=10pt, right=10pt, top=6pt, bottom=6pt,
+  fontupper=\footnotesize, parbox=false}
+
+\newcommand{\code}[1]{\texttt{\footnotesize\detokenize{#1}}}
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=1pt,topsep=3pt}
+\allowdisplaybreaks
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.55em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.65em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.45em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\color{black!55}The UV face of the Yang--Mills mass gap}
+\fancyhead[R]{\footnotesize\color{black!55}\thepage}
+\setlength{\headheight}{13pt}
+
+\hypersetup{pdftitle={The UV Face of the Yang-Mills Mass Gap},
+            pdfauthor={Yuxuan Jiang}}
+
+\begin{document}
+
+\begin{center}
+  \vspace*{0.2cm}
+  {\LARGE\bfseries The UV Face of the\\[2pt] Yang--Mills Mass Gap\par}
+  \vspace{0.35em}
+  {\large\itshape a rigorous counterexample, a good-set theorem,\\[1pt]
+   and the reduction to H1\par}
+  \vspace{0.8em}
+  \rule{0.52\textwidth}{0.6pt}\par
+  \vspace{0.55em}
+  {\large Yuxuan Jiang\par}
+  \vspace{0.45em}
+  {\small\color{black!60} Yang--Mills campaign \textperiodcentered{} focused v3 paper
+   \textperiodcentered{} 24 November 2026\par}
+\end{center}
+
+\vspace{0.2em}
+
+\begin{statusbox}
+\textbf{Status.} This is a \emph{focused paper}, not a proof of the Clay problem. It decides the
+last open inequality of the campaign's ultraviolet face, denoted $(\star)$: it proves that the
+strong form is \textbf{false}, proves a genuine lower bound on the \emph{correct} object on the
+small-field set, and shows that the remaining region is the infrared wall $H1$ itself. The mass gap
+for 4D pure $\mathrm{SU}(N)$ Yang--Mills remains open. \textbf{Clay $=0\%$}; no step is labelled QED.
+
+\smallskip
+\textbf{Labels.} \LT{} theorem; \LC{} conditional theorem; \LN{} no-go; \LM{} exact missing step;
+\LE{} numerical evidence.
+\end{statusbox}
+
+\begin{tcolorbox}[enhanced, breakable, colback=white, colframe=white, boxrule=0pt,
+  left=6pt, right=6pt, top=4pt, bottom=4pt, parbox=false]
+\begin{center}{\large\bfseries Abstract}\end{center}
+\footnotesize
+\setlength{\parskip}{0pt}
+The ultraviolet face of the Yang--Mills mass gap is the node called L3: a cutoff-uniform bound on
+the force Hessian. The campaign reduced it to a single inequality $(\star)$ on the conditioned
+coarse curvature. This paper decides $(\star)$.
+
+\emph{The correct object.} $(\star)$ is not about the bare Hessian or the unconditioned variance.
+It is the \textbf{coarse-field-conditioned marginal curvature}
+$G''(v;a_0)=E_a[\partial_v^2V]-\operatorname{Var}_a(\partial_vV)$, which includes the cross term
+$X=-2\operatorname{Cov}(G,\Phi')$ and must be conditioned at the coarse field $a_0$. Earlier
+computations of the combination $E[H]-\operatorname{Var}(G)+W_{\mathrm{geo}}=2W_{\mathrm{geo}}$ are
+true identities for a \emph{different} object; the difference is visible already at $\beta=0$,
+where $W_{\mathrm{geo}}=0$ while the true curvature is at least $N/12$.
+
+\emph{The counterexample.} In an exactly solvable $\mathrm{SU}(2)$ one-plaquette model with a fixed
+boundary holonomy, the longitudinal mode at the barrier gives
+$G''=0.20511530-0.01105929\,\beta^2$, which is negative for $\beta>4.30661$. The mode lies in the
+image of the projection and the configuration is in the support of the conditional measure, so the
+\textbf{uniform-in-$a_0$ form of $(\star)$ is false} \LN. Three independent methods agree to
+$10^{-6}$.
+
+\emph{The good-set theorem.} On the small-field set the correct object is controlled exactly:
+$\operatorname{Hess}V\succeq\rho I$ implies $G''\ge\rho$, with
+$\rho=N/12+c_\Box-C_1\beta F_\partial-C_S\beta F_{\mathrm{bulk}}>0$, linearly in $N$. At
+$\beta=2.5$ the one-plaquette threshold is $\theta_c\approx0.81$, with $\rho_0=0.217$ and a true
+$G''=0.741$.
+
+\emph{Projection and normalization.} The free-field acid test selects the \textbf{linear
+(divergence-free)} projection class; covariant directions produce false positivity or false
+negativity. The ultraviolet statement is renormalized: $Z_j^{-1}G''\ge c_L=4\pi^2/L^2$, and the
+bare margin runs as $\log(1/a_j)$, not as a constant.
+
+\emph{The head.} Beyond the small-field set the Hessian modulus is non-positive (bulk Savvidy); the
+true $G''$ is measured positive at $\beta=2.5$ ($+0.13$), but proving it is exactly the infrared
+wall $H1$. Thus the ultraviolet face is not a new route: it is a proved room, a locked door, and a
+door back to the same wall.
+
+The verdict is unchanged: \textbf{Clay is $0\%$}. What changes is that the ultraviolet face is now
+classified.
+\end{tcolorbox}
+
+\tableofcontents
+\newpage
+
+% =====================================================================
+\section{Introduction}
+\label{sec:intro}
+% =====================================================================
+
+\subsection{The node L3 and the inequality $(\star)$}
+
+The campaign's ultraviolet node L3 is the statement
+\begin{equation}
+\sup_a\ Z_a^{-1}\|H_a\|_{\mathcal D}\ <\ \infty ,
+\label{eq:L3}
+\end{equation}
+a cutoff-uniform bound on the force Hessian of the lattice gauge theory. It is orthogonal to the
+mass gap (it is ultraviolet; the gap is infrared), but it is the one open node of the existence half
+G1. In the campaign's block renormalization-group scheme it reduces to a per-shell inequality on the
+conditioned coarse curvature, written $(\star)$.
+
+The purpose of this paper is to decide $(\star)$. The answer has three parts: the strong form is
+false, a corrected form holds on the small-field set with an explicit positive modulus, and the
+remaining region is the infrared wall $H1$.
+
+\subsection{What was wrong with the first candidate}
+
+A first computation in a one-plaquette model produced the identity
+\begin{equation}
+G''_0:=E[H]-\operatorname{Var}(G)+W_{\mathrm{geo}}\;=\;2W_{\mathrm{geo}},
+\label{eq:twoW}
+\end{equation}
+and suggested that $(\star)$ reduces to $W_{\mathrm{geo}}\ge\delta_W>0$. The identity is true, but
+$G''_0$ is \emph{not} the curvature that $(\star)$ needs. The campaign's exact split is
+\begin{equation}
+G''(0)=E[H_{vv}+\Phi''|0]-\operatorname{Var}(G_v+\Phi'|0)
+=\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X,
+\label{eq:split}
+\end{equation}
+with $\Delta_{\mathrm{dyn}}=E[H]-\operatorname{Var}(G)$ and
+$X=-2\operatorname{Cov}(G,\Phi')$. The object $G''_0$ omits $X$ and the conditioning on the coarse
+field. The difference is not a technicality: at $\beta=0$ one has $W_{\mathrm{geo}}\approx0$ in the
+single-link model, while the true curvature is at least $N/12$; an identity predicting $G''=0$ there
+cannot be the right object.
+
+\subsection{The results}
+
+\begin{enumerate}
+\item \LT{} \textbf{Exact identities.} In the flat chart, for a constant (linear) direction, the
+  unconditioned, $X$-less object $G''_0$ equals $2W_{\mathrm{geo}}$ exactly, for any block and any
+  boundary. This is a true identity about a shadow object.
+\item \LN{} \textbf{The strong form is false.} In an exactly solvable $\mathrm{SU}(2)$
+  one-plaquette model, the true conditioned curvature at the barrier is
+  $G''=A-B\beta^2$ with $A=0.20511530$, $B=0.01105929$, negative for $\beta>4.30661$. The
+  longitudinal mode is in the projection's image and the configuration is in the support, so the
+  uniform-in-$a_0$ form fails.
+\item \LT{}/\LC{} \textbf{The good-set theorem.} On the small-field set,
+  $\operatorname{Hess}V\succeq\rho I$ gives $G''\ge\rho>0$, with
+  $\rho=N/12+c_\Box-C_1\beta F_\partial-C_S\beta F_{\mathrm{bulk}}$, linear in $N$.
+\item \LT{} \textbf{Projection class.} The acid test selects linear/divergence-free directions;
+  covariant directions give an explicit sign-indefinite remainder.
+\item \LT{}/\LC{} \textbf{Ultraviolet normalization.} A constant bare margin is false; the correct
+  statement is $Z_j^{-1}G''\ge c_L=4\pi^2/L^2$ with a margin running as $\log(1/a_j)$.
+\item \LM{} \textbf{The head.} Beyond the small-field set, the Hessian modulus is non-positive and
+  the true curvature is measured positive at $\beta=2.5$; proving it is $H1$.
+\end{enumerate}
+
+\subsection{Honesty}
+
+This paper does not prove the mass gap, and it does not claim that $(\star)$ is a new route to it.
+It proves that one route (the $2W_{\mathrm{geo}}$ certificate) is dead, that a genuine theorem holds
+on a nonempty domain, and that the rest is the same wall as before. The classification is the
+result.
+
+% =====================================================================
+\section{The correct object}
+\label{sec:object}
+% =====================================================================
+
+\subsection{Setup}
+
+Let $\Lambda_j$ be a block (a shell) of the lattice at scale $j$, with free links in the block and
+fixed boundary links $U'$. Let $\mu_j(\cdot|U')$ be the conditional Wilson measure. Write
+$V=S+\Phi$, where $S$ is the Wilson action and $\Phi=-\log J$ is the negative log of the Haar
+Jacobian in the flat chart. For a fixed direction $v$ in the tangent space of the block, let
+$a=\langle v,\log U\rangle$ be the coarse field and $\rho_v(a)$ its marginal density.
+
+\begin{claimbox}{cM}
+\claimhead{Definition}{($(\star)$).} \emph{The ultraviolet inequality is}
+\begin{equation}
+(\star)\qquad
+\operatorname{Var}_{\mu(\cdot|U')}\bigl(\langle P^{\mathsf T}\nabla S,v\rangle\bigr)
+\ \le\ E_{\mu(\cdot|U')}\bigl[\langle P^{\mathsf T}H P\,v,v\rangle\bigr]+W_j(v)-\delta_W ,
+\label{eq:star}
+\end{equation}
+\emph{equivalently}
+\begin{equation}
+G''_j(v;a_0):=-\frac{d^2}{da^2}\log\rho_v(a)\Big|_{a_0}
+\ \ge\ \delta_W>0 ,
+\label{eq:starG}
+\end{equation}
+\emph{uniform in the shell $j$, the boundary $U'$, and the coarse field $a_0$.}
+\end{claimbox}
+
+The two forms are the same object: the right side of \eqref{eq:starG} is the conditional curvature
+\begin{equation}
+G''(v;a_0)=E_a\bigl[\partial_v^2V\bigr]-\operatorname{Var}_a\bigl(\partial_vV\bigr)
+=\Delta_{\mathrm{dyn}}+W_j ,
+\label{eq:cond}
+\end{equation}
+with $W_j=W_{\mathrm{geo}}+X$ and $X=-2\operatorname{Cov}(G,\Phi')$, all conditioned at $a=a_0$.
+This is the object that \eqref{eq:split} computes.
+
+\subsection{The shadow object}
+
+If one drops the conditioning and the cross term, one obtains
+\begin{equation}
+G''_0:=E_\mu[H]-\operatorname{Var}_\mu(G)+W_{\mathrm{geo},\mu}.
+\label{eq:shadow}
+\end{equation}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(shadow identity)} \emph{In the flat chart, for a constant (linear) direction
+$v$, and for any block and any fixed boundary $U'$,}
+\begin{equation}
+G''_0=2W_{\mathrm{geo},\mu}.
+\label{eq:shadow2}
+\end{equation}
+\emph{The identity is exact. It is a statement about $G''_0$, not about $G''$.}
+\end{claimbox}
+
+\begin{proofx}
+The flat-chart Stein identity gives
+$\operatorname{Var}(G_v+\Phi'_v)=E[H_{vv}+\Phi''_{vv}]$, and the boundary term vanishes because the
+Haar density vanishes at the chart edge and the boundary links are not integrated. The cross-Stein
+identity gives $\operatorname{Cov}(G_v,\Phi'_v)=W_{\mathrm{geo}}$. Hence
+$E[H]-\operatorname{Var}(G)=W_{\mathrm{geo}}$, and adding $W_{\mathrm{geo}}$ once more gives
+\eqref{eq:shadow2}.
+\end{proofx}
+
+\textbf{Why this is not $(\star)$.} At $\beta=0$ in the single-link model, $W_{\mathrm{geo}}\approx0$
+by symmetry, so \eqref{eq:shadow2} predicts $G''_0=0$. But the true curvature at $\beta=0$ is at
+least $N/12$ (the Haar marginal is strongly convex). The difference is the conditioning and the
+cross term $X$, which are precisely the content of $(\star)$.
+
+% =====================================================================
+\section{The counterexample: the strong form is false}
+\label{sec:counter}
+% =====================================================================
+
+\subsection{The model}
+
+$\mathrm{SU}(2)$, one plaquette, one free link $U=e^{i\xi\cdot\sigma/2}$, fixed boundary holonomy
+$B=e^{i\theta\sigma_3/2}$. The conditional measure is
+$\mu(\cdot|B)\propto e^{-\beta S(U,B)}J(\xi)\,d^3\xi$ in the flat chart, with $J$ the Haar density.
+The coarse field is $a=\xi_3$ (longitudinal) or a transverse component; the curvature is
+$G''(v;a_0)=-d^2/da^2\log\rho_v(a)|_{a_0}$.
+
+\subsection{The exact result}
+
+\begin{claimbox}{cN}
+\claimhead{Theorem}{(counterexample)} \emph{At $\theta=\pi$, longitudinal $v=e_3$, and $a_0=0$,}
+\begin{equation}
+G''(v;a_0)=A-B\beta^2,\qquad
+A=0.20511530,\quad B=0.01105929,\quad \beta_*=\sqrt{A/B}=4.30661 .
+\label{eq:counter}
+\end{equation}
+\emph{In particular $G''<0$ for $\beta>\beta_*$.}
+\end{claimbox}
+
+\begin{proofx}
+The slice $\theta=\pi$, $a_0=0$ has a $\beta$-independent Haar measure: the action vanishes on the
+slice, and the conditioning sets $E[H|a_0]=0$. The curvature is therefore
+$G''=E_{\mathrm{Haar}}[\Phi'/r]-\beta^2\operatorname{Var}_{\mathrm{Haar}}[\sin(r/2)/r]$, whose two
+coefficients are computed by quadrature. Three independent methods (direct quadrature, finite
+differences, and a rejection Monte Carlo) agree to $10^{-6}$.
+\end{proofx}
+
+\subsection{Scope}
+
+The counterexample is \emph{inside} the definition of $(\star)$ for the true object:
+\begin{itemize}
+\item the longitudinal mode $e_3$ lies in the image of the projection $P$;
+\item $a_0=0$ and the boundary $B\to-I$ are in the support of the conditional measure;
+\item the configuration is the barrier of the double-well effective potential, not a measure-zero
+  set.
+\end{itemize}
+Therefore the \textbf{uniform-in-$a_0$ form} of $(\star)$ is false \LN. What is not refuted is the
+shadow inequality \eqref{eq:shadow2}, which is a different object and is positive.
+
+\textbf{Transverse modes and $\theta=0$ stay positive.} The negativity is specific to the
+longitudinal mode at the barrier; it is not a generic failure.
+
+% =====================================================================
+\section{The good-set theorem}
+\label{sec:good}
+% =====================================================================
+
+\subsection{Marginal strong convexity}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(good-set bound)} \emph{Suppose that on the support of the conditional measure,
+$\operatorname{Hess}V\succeq\rho I$ for some $\rho=\rho(U',v)$. Then for every coarse field $a_0$,}
+\begin{equation}
+G''(v;a_0)\ \ge\ \rho .
+\label{eq:good}
+\end{equation}
+\emph{The bound includes the cross term $X$.}
+\end{claimbox}
+
+\begin{proofx}
+If $V$ is $\rho$-strongly convex, the log-density is $\rho$-strongly concave; every marginal is
+$\rho$-strongly concave; hence its second derivative is at least $\rho$. The identity
+\eqref{eq:cond} shows that this is exactly $G''$.
+\end{proofx}
+
+\subsection{The modulus}
+
+In the flat chart, the Haar Jacobian gives $\Phi''\succeq N/12$ pointwise. The plaquette term
+contributes $c_\Box>0$ on the small-field set. The negative contributions come from the field
+strength on the boundary and in the bulk:
+\begin{equation}
+\rho=N/12+c_\Box-C_1\beta F_\partial(U')-C_S\beta F_{\mathrm{bulk}} .
+\label{eq:rho}
+\end{equation}
+On the small-field set $\mathcal S_t=\{F_\partial\le t\}$ with a small block,
+\begin{equation}
+G''(v;a_0)\ \ge\ c_\Box+N/12-C_1\beta t\ >\ 0 ,
+\label{eq:good2}
+\end{equation}
+linearly in $N$ \LC{} (the constants $C_1,C_S$ are explicit but not decimalised). At $\beta=2.5$
+the one-plaquette threshold is $\theta_c\approx0.81$, with $\rho_0=0.217$ and a true
+$G''(e_3)=0.741$.
+
+\textbf{Schur loss.} The Schur complement can exceed $N/12$; the corrected bound is the exact Schur
+complement $\Sigma\succeq\rho$, with no loss. This is the form used in the proof.
+
+\subsection{What the theorem covers}
+
+The theorem covers the small-field set, which includes the deep ultraviolet shells (where the
+measure is concentrated near flat connections) and the small-boundary configurations at any scale.
+It does \emph{not} cover the typical-field region at the physical coupling; that is the head.
+
+% =====================================================================
+\section{Projection and ultraviolet normalization}
+\label{sec:proj}
+% =====================================================================
+
+\subsection{The projection class}
+
+For a constant linear direction $v$ (equivalently, a constant-coefficient projection $P$ with
+$\operatorname{div}v=0$), the shadow identity holds exactly. For a configuration-dependent
+(covariant, parallel-transported) direction,
+\begin{equation}
+G''_P=2W_{\mathrm{geo}}(w)+R_{\mathrm{proj}},
+\label{eq:proj}
+\end{equation}
+with
+\begin{equation}
+R_{\mathrm{proj}}=E\langle (Dw)w,\nabla\Phi\rangle-E\langle (Dw)w,\nabla S\rangle
++\operatorname{Cov}(\langle w,\nabla\Phi\rangle,\operatorname{div}w)
+-\operatorname{Cov}(\langle w,\nabla S\rangle,\operatorname{div}w),
+\label{eq:Rproj}
+\end{equation}
+which is sign-indefinite. The acid test selects the linear class: a right-invariant generator gives
+$G''(\beta=0)<0$ (a false negative), and a bounded radial field gives $W_{\mathrm{geo}}(\beta=0)>0$
+(a false positivity). Only $\operatorname{div}v=0$ passes.
+
+\subsection{The ultraviolet normalization}
+
+In the free ultraviolet block, the Hessian and the variance both scale as
+$\beta_j=2N/g_j^2=\Theta(\log(1/a_j))$, and equipartition gives $E[H]=\operatorname{Var}$ at the
+Gaussian level. A constant bare margin $\delta_W$ is therefore an $O(g_j^2)$ fraction of the
+curvature; after the field-strength renormalization $Z_j$ its normalized value tends to zero. The
+correct statement is
+\begin{equation}
+(\star_{\mathrm{ren}})\qquad Z_j^{-1}G''_j(v)\ \ge\ c_L=\frac{4\pi^2}{L^2},
+\label{eq:ren}
+\end{equation}
+with a margin $\delta_W=\Theta(\beta_j)\propto\log(1/a_j)$. The ultraviolet block must pass the acid
+test ($Q_c=4\pi^2/L^2>0$); the infrared zero mode fails it ($Q(0)=0$).
+
+% =====================================================================
+\section{The head, and what the ultraviolet face is}
+\label{sec:head}
+% =====================================================================
+
+\subsection{The head}
+
+Beyond the small-field set, at $\beta\approx2.5$ and typical field, the bulk Savvidy modulus is
+non-positive ($\rho\le0$). The true curvature is nevertheless measured positive,
+$G''\approx+0.13$ at $\beta=2.5$, carried by the measure (the defect $D$). Proving that this
+positivity is uniform is exactly the infrared wall $H1$:
+\begin{equation}
+E[\Sigma|a_0]\ \ge\ \delta_W ,
+\label{eq:H1head}
+\end{equation}
+the same inequality that the campaign has identified as the gap in the measure coordinate.
+
+\subsection{The pincer, honestly}
+
+The strong-coupling jaw (Dobrushin at $\beta<1/72$, SZZ at $\beta<1/48$) is a theorem but grips
+zero tower shells: the thresholds are crossed before the tower starts. The ultraviolet jaw covers
+all but $O(1)$ shells, but conditionally and only on the small-field set. The head is the remaining
+$O(1)$ shells at $\beta\approx2.5$, and it is $H1$. There is no whole intermediate regime inside the
+tower; the head is the gap.
+
+\subsection{What this paper establishes}
+
+\begin{enumerate}
+\item The strong form of $(\star)$ is false \LN, with an exact counterexample.
+\item The shadow identity $G''_0=2W_{\mathrm{geo}}$ is true \LT, but it is not $(\star)$.
+\item On the small-field set, the correct object is bounded below by an explicit positive modulus
+  \LT{}/\LC.
+\item The projection class is linear/divergence-free \LT; the ultraviolet statement is
+  renormalized with a log-running margin \LT{}/\LC.
+\item The head is $H1$ \LM. The ultraviolet face is therefore not a new route to the gap.
+\end{enumerate}
+
+\begin{qbox}
+The ultraviolet face of the Yang--Mills wall is now classified: one room is proved (the small-field
+set), one door is locked (the uniform-in-$a_0$ form), and one door opens onto the same wall as
+before ($H1$). This is not the mass gap; it is the end of a detour, and the map is the result.
+\end{qbox}
+
+% =====================================================================
+\section{Relation to the v2 paper and to the literature}
+\label{sec:relation}
+% =====================================================================
+
+\subsection{Relation to v2}
+
+The second edition of the campaign's paper presented L3 and the infrared condition H1 as two faces
+of one inequality, with a dashed ``same shape''. This paper corrects the status of that arrow for
+the ultraviolet face:
+\begin{itemize}
+\item the unconditioned identity $G''_0=2W_{\mathrm{geo}}$ is true but describes a shadow object;
+\item the true object is the conditioned coarse curvature, and its strong form is false;
+\item what survives is a good-set theorem and the reduction of the head to H1.
+\end{itemize}
+The ``one species'' language should therefore be read as ``one form, two instances; the identity is
+the open problem'', exactly as the v3 literature wave recommended.
+
+\subsection{Relation to the literature}
+
+The one-loop Hessian in a constant background and its negative transverse-magnetic mode are the
+classical Savvidy--Nielsen--Olesen--Leutwyler computation. The reading of the negative mode as a
+barrier-top artifact of the effective potential, rather than an instability of the true vacuum, is a
+modern reinterpretation, not a 1970s theorem. The strong-coupling mass gap is Osterwalder--Seiler
+(1978), and the modern $N$-uniform version with the radius $1/48$ is Shen--Zhu--Zhu (2023); their
+Bakry--\'Emery constant is linear in $N$, which is consistent with the good-set theorem's linear
+$N$-dependence. Balaban's renormalization-group analysis gives ultraviolet stability at fixed
+volume; it does not give the head. None of these results decides the conditioned inequality at
+$\beta\approx2.5$.
+
+\subsection{What is new here}
+
+\begin{enumerate}
+\item The identification of the correct object (conditioned coarse curvature with $X$) and the
+  explicit failure of the shadow reduction.
+\item An exact, in-scope counterexample to the uniform-in-$a_0$ form.
+\item A genuine positive bound on the correct object on the small-field set, linear in $N$.
+\item The projection-class selection by the acid test.
+\item The ultraviolet normalization with a log-running margin.
+\end{enumerate}
+
+% =====================================================================
+\section{Verification and reproducibility}
+\label{sec:verif}
+% =====================================================================
+
+Every statement is tied to a file in the public repository. The exact counterexample and the
+identities are in \code{research/v3/V3-COUNTEREXAMPLE-SCOPE.md},
+\code{research/v3/RECONCILIATION-STAR.md}, and \code{research/v3/G1-BLOCK-IDENTITY.md}; the good-set
+theorem is in \code{research/v3/V2-TRUE-BOUND.md}; the projection and normalization are in
+\code{research/v3/G3-PROJECTION-TERM.md} and \code{research/v3/V1-UV-NORMALIZATION.md}; the pincer
+is in \code{research/v3/V4-PINCER.md}. The witnesses are in \code{research/v3/w7/} and run under
+\texttt{py -3.12} with numpy.
+
+\clearpage
+\appendix
+
+\section{The two exact identities}
+\label{app:identities}
+
+Let $\Omega$ be the flat chart of the block, $V=S+\Phi$, and let the Haar density vanish on
+$\partial\Omega$ (the chart edge). For a constant direction $v$ and a test function $f$,
+\begin{equation}
+0=\int_\Omega\partial_v\bigl(f\,e^{-V}\bigr)d\xi
+=E\bigl[(\partial_v f)-f\,\partial_vV\bigr],
+\label{eq:stein}
+\end{equation}
+so $E[(\partial_vV)f]=E[\partial_v f]$. Write $G_v=\partial_vS$, $\Phi'_v=\partial_v\Phi$,
+$H_{vv}=\partial_v^2S$, $\Phi''_{vv}=\partial_v^2\Phi$.
+
+\textbf{Stein identity.} With $f=G_v+\Phi'_v$,
+\begin{equation}
+\operatorname{Var}(G_v+\Phi'_v)=E\bigl[H_{vv}+\Phi''_{vv}\bigr].
+\label{eq:stein2}
+\end{equation}
+\textbf{Cross-Stein.} With $f=\Phi'_v$,
+$E[(G_v+\Phi'_v)\Phi'_v]=E[\Phi''_{vv}]$, hence
+$E[G_v\Phi'_v]=E[\Phi''_{vv}]-E[(\Phi'_v)^2]$.
+Since $E[G_v]=-E[\Phi'_v]$ from \eqref{eq:stein} with $f=1$,
+\begin{equation}
+\operatorname{Cov}(G_v,\Phi'_v)=E[\Phi''_{vv}]-\operatorname{Var}(\Phi'_v)=W_{\mathrm{geo}}.
+\label{eq:crossstein}
+\end{equation}
+Combining \eqref{eq:stein2} and \eqref{eq:crossstein},
+\begin{equation}
+\operatorname{Var}(G_v)=E[H_{vv}]-W_{\mathrm{geo}},
+\qquad
+G''_0=E[H_{vv}]-\operatorname{Var}(G_v)+W_{\mathrm{geo}}=2W_{\mathrm{geo}}.
+\label{eq:shadowproof}
+\end{equation}
+Conditioning on $a=a_0$ replaces $E$ by $E[\cdot|a_0]$; the boundary term still vanishes, so the
+same algebra gives the conditioned shadow identity. The true curvature is
+$G''=\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X$ with $X=-2\operatorname{Cov}(G,\Phi')$, which is
+\emph{not} $G''_0$.
+
+\section{Numerical protocol for the counterexample}
+\label{app:numerics}
+
+The model is $\mathrm{SU}(2)$, one plaquette, one free link $U=e^{i\xi\cdot\sigma/2}$, boundary
+$B=e^{i\theta\sigma_3/2}$. The flat-chart density is
+$\propto e^{-\beta S(U,B)}J(\xi)$ with $J(\xi)\propto\sin^2(r/2)/r^2$, $r=|\xi|$; the normalization
+cancels in probabilities. The coarse field is $a=\xi_3$; the marginal $\rho_{e_3}(a)$ is obtained by
+integrating over the transverse components in polar coordinates.
+
+The curvature is computed by three methods: (i) direct quadrature of the marginal, followed by a
+second finite difference in $a$; (ii) a finite-difference evaluation of
+$E[\partial_v^2V]-\operatorname{Var}(\partial_vV)$ at $a=0$; (iii) a rejection Monte Carlo with
+$10^8$ samples. The three agree to $10^{-6}$. At $\theta=\pi$, $v=e_3$, $a_0=0$ the result is
+$A-B\beta^2$ with $A=0.20511530$ and $B=0.01105929$; a fit over $\beta\in[0,6]$ reproduces the
+coefficients to the quoted digits. The witness is \code{research/v3/w7/v3_counterexample_scope.py}.
+
+\section{The projection remainder}
+\label{app:proj}
+
+For a configuration-dependent direction $v=Pw$, the divergence theorem acquires a divergence term.
+The exact identity is
+\begin{equation}
+G''_P=2W_{\mathrm{geo}}(w)+R_{\mathrm{proj}},
+\end{equation}
+with
+\begin{equation}
+\begin{aligned}
+R_{\mathrm{proj}}={}&E\langle (Dw)w,\nabla\Phi\rangle-E\langle (Dw)w,\nabla S\rangle\\
+&+\operatorname{Cov}(\langle w,\nabla\Phi\rangle,\operatorname{div}w)
+-\operatorname{Cov}(\langle w,\nabla S\rangle,\operatorname{div}w).
+\end{aligned}
+\label{eq:Rprojapp}
+\end{equation}
+For a constant-coefficient projection, $Dw=0$ and $\operatorname{div}w=0$, so $R_{\mathrm{proj}}=0$
+and the shadow identity is exact. For a covariant projection, $R_{\mathrm{proj}}$ is
+sign-indefinite. The acid test decides the class: a right-invariant generator gives a false
+negative at $\beta=0$, and a bounded radial field gives a false positivity; only
+$\operatorname{div}w=0$ passes. The derivation and the numerical checks are in
+\code{research/v3/G3-PROJECTION-TERM.md} and \code{research/v3/G2-TWO-PLAQUETTE.md}.
+
+\section{The free ultraviolet block}
+\label{app:uv}
+
+In the free block, the Hessian is $H=\beta_jQ$ with $Q$ the lattice Laplacian on the block, and
+equipartition gives $E[H]=\operatorname{Var}(G)=\beta_jQ_c$ on the nonzero modes, with $Q_c$ the
+lowest nonzero eigenvalue of the pinned block. The pinned coarse curvature is
+\begin{equation}
+G''_{\mathrm{cond}}=\frac{1}{v^{\mathsf T}Cv}=\beta_jQ_c+m\ \longrightarrow\ \beta_jQ_c,
+\label{eq:uvblock}
+\end{equation}
+and $Q_c=4\pi^2/L^2$ for the lowest mode of a block of side $L$. Since
+$\beta_j=2N/g_j^2=\Theta(\log(1/a_j))$, a constant bare margin is an $O(g_j^2)$ fraction of the
+curvature. After the field-strength renormalization $Z_j$, the correct statement is
+\begin{equation}
+(\star_{\mathrm{ren}})\qquad Z_j^{-1}G''_j\ \ge\ c_L=\frac{4\pi^2}{L^2},
+\label{eq:renapp}
+\end{equation}
+with a margin running as $\log(1/a_j)$. The details are in
+\code{research/v3/V1-UV-NORMALIZATION.md}.
+
+\section{Verification map}
+\label{app:verif}
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{5.1cm}
+  >{\raggedright\arraybackslash}p{1.4cm}
+  >{\raggedright\arraybackslash}p{7.6cm}@{}}
+\toprule
+\textbf{Claim} & \textbf{Label} & \textbf{File}\\
+\midrule
+\endhead
+Shadow identity $G''_0=2W_{\mathrm{geo}}$ & \LT & \code{G1-BLOCK-IDENTITY.md};
+  \code{G2-TWO-PLAQUETTE.md}; App.~\ref{app:identities}\\
+Correct object is the conditioned curvature & \LT & \code{RECONCILIATION-STAR.md};
+  \code{V2-TRUE-BOUND.md}\\
+Strong form false, $A-B\beta^2$, $\beta_*=4.30661$ & \LN & \code{V3-COUNTEREXAMPLE-SCOPE.md};
+  App.~\ref{app:numerics}\\
+Counterexample in scope (mode in $\operatorname{im}P$, full support) & \LT{}/\LE & same\\
+Good-set theorem $G''\ge\rho>0$, linear $N$ & \LT{}/\LC & \code{V2-TRUE-BOUND.md}\\
+Projection class linear/divergence-free & \LT & \code{G3-PROJECTION-TERM.md};
+  \code{G2-TWO-PLAQUETTE.md}\\
+UV normalization $Z_j^{-1}G''\ge c_L$, log margin & \LT{}/\LC & \code{V1-UV-NORMALIZATION.md}\\
+Head is $H1$ & \LM & \code{V4-PINCER.md}; \code{STAR2-CLASSIFICATION.md}\\
+\bottomrule
+\end{longtable}
+\normalsize
+
+\section*{References}
+\small
+\begin{enumerate}[label={[\arabic*]},leftmargin=2.2em,itemsep=1pt]
+\item A.~Jaffe, E.~Witten, \emph{Quantum Yang--Mills Theory}, Clay Mathematics Institute.
+\item K.~G.~Wilson, \emph{Confinement of quarks}, Phys.\ Rev.\ D \textbf{10} (1974) 2445.
+\item K.~Osterwalder, E.~Seiler, Ann.\ Phys.\ \textbf{110} (1978) 440.
+\item G.~K.~Savvidy, Phys.\ Lett.\ B \textbf{71} (1977) 133.
+\item N.~K.~Nielsen, P.~Olesen, Nucl.\ Phys.\ B \textbf{144} (1978) 376.
+\item H.~Leutwyler, Nucl.\ Phys.\ B \textbf{179} (1981) 129.
+\item H.~J.~Brascamp, E.~H.~Lieb, J.\ Funct.\ Anal.\ \textbf{22} (1976) 366.
+\item A.~Pr\'ekopa, Acta Sci.\ Math.\ Szeged \textbf{32} (1971) 301.
+\item G.~K\"all\'en, Helv.\ Phys.\ Acta \textbf{25} (1952) 417; H.~Lehmann, Nuovo Cim.\ \textbf{11} (1954) 342.
+\item S.~Shen, R.~Zhu, X.~Zhu, Comm.\ Math.\ Phys.\ \textbf{400} (2023) 805.
+\item M.~Q.~Huber, Phys.\ Rept.\ \textbf{879} (2020) 1.
+\end{enumerate}
+
+\end{document}
