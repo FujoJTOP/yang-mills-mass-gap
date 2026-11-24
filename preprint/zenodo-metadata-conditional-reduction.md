@@ -1,5 +1,13 @@
 # Zenodo submission metadata — A Conditional Reduction of the 4D Pure Yang–Mills Mass Gap
 
+> **Published (v1): 2026-11-23 — DOI 10.5281/zenodo.24486316**
+> https://doi.org/10.5281/zenodo.24486316
+>
+> The deposited v1 PDF and source zip are the snapshot taken before the DOI line was added
+> to the local sources. The local copy now carries the DOI on the title page; if the record
+> is updated, publish it as a new version of the same Zenodo record (v2) rather than a new
+> record.
+
 > Companion files: `docs/YANG-MILLS-CONDITIONAL-REDUCTION.pdf` (manuscript) and
 > `preprint/ym-conditional-reduction-src.zip` (LaTeX source + figure sources).
 > Upload type: **Preprint**. The Markdown working draft is **not** part of the submission.
