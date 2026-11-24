@@ -50,7 +50,7 @@
   可逐字证：**H\* ⟺ ∃(m̃,r₀)：`T↦A_m̃(T)` 单调不增 且 `inf_T A_m̃(T) ≥ r₀`。**
   → 在胶球数据上测这条曲线的单调性/下限；**若 `A_m̃` 非单调（凹/爆），H\* 与"结晶"一起死。** 这是把 H\* 变成可测曲线的关键形式。
 - **T2（理论）**：固定 `J` 步的 RG 桥 `𝔄_κ(R^J S_{a,L})<ε_KP`。**问：有没有一个只靠 UV 入口 + 单调/紧量、避免逐尺度估计的收缩/紧性论证？** 没有它，"有限 J"不简化任何事——O2-Bridge 就等于"在 J 步内证一个跨交叉区的非微扰估计"，与禁闭同难。
-- **T3（审计）**：2026 论文 Faizal–Shabir，*Reflection-Positive Construction of a 4D SU(N) YM Theory with Mass Gap and Confinement*（**已核实真实但被争议**：arXiv:2606.19362、Fortschr.Phys.74(2026)e70097；独立 Zenodo audit 22840696 指其连续声明条件于未证一致输入 + Part3 归一化反向错误；Clay 未解）§10 的 AF–IR 识别：
+- **T3（审计）**：2026 论文 Faizal–Shabir，*Reflection-Positive Construction of a 4D SU(N) YM Theory with Mass Gap and Confinement*（**已核实真实但被争议**：arXiv:2606.19362、Fortschr.Phys.74(2026)e70097；我方读全 PDF 已核 §10：Thm 10.4 局部非全局入、Lemma 10.5 `g_bare` 实为弱耦、Thm 10.8 同裸作用量前提未满足、Eq10.72 调和发散；Clay 未解）§10 的 AF–IR 识别：
   - `Σ_k g_k²` 是否被当收敛（若 `g_k²∼1/k` 则调和发散）；
   - RG 尺度方向是否自洽（`μ↓` 时 AF 耦合应↑，而非↓）；
   - 比较误差 `O(j^{-1})` 是否可和（不可和 ⇒ 端点分别可控 ≠ 中间桥接）；

@@ -33,15 +33,15 @@
 - **H-RS(all)**：`⊕_α`（电通量/磁/拓扑扇区）需逐扇区生成 + 跨扇区一致 `inf_α gap≥m_*`；**不被前者蕴含，是独立开放问题**；`𝒜_test^(α)` 可能需含扩展（'t Hooft）算子。
 - **建议**：当前定理**只写真空表示** `spec(H|_{H_vac⊖ℂΩ})⊆[m_*,∞)`；H-RS(all) 列为扩展。并明确记录：**所用"物理 Hilbert 空间"是真空表示，还是含额外通量/超选择扇区的更大空间**（定义问题，不能靠"Reeh–Schlieder"四字代替）。
 
-## 4. Faizal–Shabir 2026：真实、已发表、**被独立审计质疑**、Clay 未解
+## 4. Faizal–Shabir 2026：真实、已发表、**被争议（我方直读 PDF 核出 §10 实质待补）**、Clay 未解
 - **存在（已核实，web）**：arXiv:**2606.19362** [hep-lat]，2026-06-09；Fortschr. Phys. **74** (2026) 4, **e70097**，DOI **10.1002/prop.70097**（OA）；作者 M. Faizal, A. Shabir。配套计算：Int. J. Geom. Meth. Mod. Phys. (2026) 2650111–2650114。
 - **摘要声明**（已核实）：反射正性格点 → 传递算子一致隙 + 大 Wilson 环面积律（收敛 character/polymer 展开）→ 多尺度到连续（指数聚类 + 正弦张力）→ OS 重构（自伴 H、真空上方谱隙、线性势/=confining）→ universality（telescoping/Lipschitz 唯一极限）→ 强耦合与 AF(弱耦合) 连续极限**匹配为同一理论**。
-- **被质疑（独立审计 Zenodo 22840696）**：指连续极限声明**条件于未证的一致输入**（tightness、covariance、clustering、同一 "Wilson carrier" 上的 hierarchy compatibility），并指 **Part (3) 归一化反向错误**（用谱半径 `r(a)≤1` 归一传递算子，把所需不等式方向弄反 → 指数衰减界未按其所述成立）。
-- **本报告对其 §10 的具体点**（源自外部审计稿，**方程级我方待核**）：Thm 10.4 局部非全局入（与摘要一致）；Lemma 10.5 参数身份（`g_bare`）；Thm 10.8 AF–IR 初始对齐（`d_adm<∞ ≠ d_adm<ε`；App F.10 需"同裸作用量"前提）；Eq(10.72) `Σg_k²~Σ1/k` 调和发散（**与我方 `G1-UNIFORM-ZA` 一致：`Σg_j²~loglog` 发散、真正核用 `Σg⁴`**）；`ε_k` 同名陷阱（10.72 running 余项 vs 10.78 interlacing defect，不同序列）。→ **状态：plausible 且被独立审计之"缺口类型"佐证；我方方程级核验待全 PDF。不作已证事实。**
+- **澄清一处误引（更正，charter §2）**：此前把 Zenodo 记录 **22840696** 当作"FS 的独立审计"是**误引**——该记录实为 **V. Liashkevych 的 G-场证明架构文**，元数据不含 Faizal/Shabir。其"未证一致输入 / Part (3) 归一化反向"等说法**撤回，不作为本报告依据**（`[R]`）。
+- **我方直读 arXiv:2606.19362 全 PDF 已核（[V]，不依赖任何外部转述）**：Thm 10.4 = 小多圆盘内**局部**收缩（`‖K_{k+1}‖≤θ‖K_k‖+c₁g_k²`），**不证任意轨道入圆盘**（论文自认）；Lemma 10.5 的 "strong-coupling sector" 实为**小 `g_bare`=弱耦**（参数身份，[V]）；Thm 10.8 假设**公共收缩多圆盘**并引 App F.10，而 F.10 明确要求**同一裸作用量 / 同一裸耦合**——AF 与强耦合两构造**不满足**该前提（[V]）；Eq(10.72) 断 `Σ|ε_k|<∞` 但 `ε_k` 含 `O(g_k²)~1/k` ⇒ **调和发散**（[V]；与我方 `G1-UNIFORM-ZA` 同源，真正核用 `Σg⁴`）。→ **FS 的"待补证明"现由我方直读支撑。**
 - **底线**：published but **contested**，**Clay 未解**（2 年接受规则）。**作为"两端可控 ≠ 轨道已连接"的活教材使用；不得当作解。**
 
 ## 5. 净判决
 - 两处更正（我方 `1/48` 混淆；H-RS 范围），一处外部声称"真实但被争议"（FS），一个瓶颈如实重申（固定 `J` 桥 = 跨交叉非微扰估计 = 禁闭级）。
 - **RG-ENTRY 3.x 仍是"命名开放假设 + 一条条件定理"的充分框架；其内容 = 非微扰 RG 桥，未被建立、且属禁闭难度。**
 
-*Refs.* arXiv:2204.12737 (Shen–Zhu–Zhu); arXiv:2606.19362 / DOI 10.1002/prop.70097 (Faizal–Shabir); Zenodo 22840696 (independent audit); Osterwalder–Seiler, Ann. Phys. **110** (1978) 440; Kotecký–Preiss, CMP **103** (1986) 19; 内部：G1-UNIFORM-ZA (`Σg²` vs `Σg⁴`), PROOF-P3-UNCONDITIONAL, docs/PROOF-SKELETON。
+*Refs.* arXiv:2204.12737 (Shen–Zhu–Zhu); arXiv:2606.19362 / DOI 10.1002/prop.70097 (Faizal–Shabir, §10 我方直读核 [V]); Osterwalder–Seiler, Ann. Phys. **110** (1978) 440; Kotecký–Preiss, CMP **103** (1986) 19; 内部：G1-UNIFORM-ZA (`Σg²` vs `Σg⁴`), PROOF-P3-UNCONDITIONAL, docs/PROOF-SKELETON。
