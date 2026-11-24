@@ -66,6 +66,15 @@ Savvidy Hessian `−D²+2adF_B` 是**不定**算子，Krein 空间谱论（Pontr
 ### B6. 全单调 / 解析延拓 no-go（原子是整函数，floor 只在 `t→∞` 速率里）
 `C(t)=∫e^{−st}dν(s)` 全单调（Bernstein–Widder）**⟺ `ν≥0`**，与 KL/RP 正性同一件事，**无超出正性的刚性**。故（B1 型线性数据）任何有限 `t` 标量都是 `m₁²` 的**递减上界**：`r(t):=−(1/t)log(C(t)/M₀)` 满足 `m₁²≤r(t)≤M₁/M₀` 且 `r↓m₁²`（`log C` 凸，Cauchy–Schwarz）。**方向反。** 解析孪生**结构性瞎**：边原子贡献 `f₁²e^{−m₁²t}` 是**整函数**（无奇点），而收敛半平面 `Re t>0` 由 UV 延伸（`supp` 到 `+∞`）固定，**与 `m₁²` 无关** ⇒ 半径/延拓/奇异点看不见 IR floor；`t=0` 导数增长=矩比（又上界）且连续统 UV 发散；转移变量 Padé 才把原子看成极点，代价 `M≳2/(am₁)→∞`（`PADE-ROUCHE-DEEP`，relocate 到 `W3`）。Wiener–Ikehara 的"主项"= 领头指数 `m₁²/f₁²`，其正则性假设需**先减去答案**⇒循环。**唯一能印 floor 的是 `t→∞` 速率 = 一致指数簇聚 = 隙（循环）；缺失步仍是搬运（H\*）。** `TOOL-COMPLETELY-MONOTONE.md`。
 
+### B8. 直接攻 key 的五个攻击 · exact failing step（2026-11-24，`KEY-DIRECT-DERIVATION.md`）
+真按宪章 §1 直接攻 `f₁²≥c`（⟺曲率面 `G″(k→0)≥λ`），五路全到精确失败步：
+- **I Savvidy 负模 signed minorant（最佳）**：`[T]` 负模**精确非阿贝尔独占**（U(1)纯规范 0 个，SU(2) ≥1，`E²=−gB`），过酸测、过 IL-(i)(ii)；**死于 `Φ≤m₁`**——`√(2gB)` 单调、`B→0` 时 `→0`，物理真空 `⟨B⟩=0` 而 `m₁>0`，且它是**不稳定鞍点**的曲率（宽度，非谱底）⇒ 转化成谱底 = Savvidy-transport = H1/CP。
+- **II `G″=S−D` 直接控 `D`**：`[T]` `S−D≡E[h]−Var(f)`（Schur 项相消）；非阿贝尔不定 `K` 对 `S,D` 同移 ⇒ 无杠杆；`D<S ⟺ Var(f)<E[h]` = H1。玩具验证 `G″=m²−g²Var(y²)`。
+- **III 变分**：Rayleigh=上界；Temple 需 `E₂`(=I2);Bogoliubov 需 `α_s` 小（`gap(H₀)=0` 故空）。
+- **IV 超收敛/Weinberg 求和规则**：`0⁺⁺` `ρ` 符号确定（`O≥0`+迹反常）⇒ 矩 ⇒ 只上界；无 `V−A` 型带号通道（`0⁻⁺` 是全导数接触项）。
+- **V 胶子凝聚**：`[T]` `⟨¼trF²⟩>0` 非阿贝尔正不变量，但只给 SGL（=隙）或矩上界。
+**真·partial**：负模非阿贝尔独占 `[T]`；纯 U(1) 真空 `K⪰0⇒D≤0⇒G″≥S` 却仍无质量 `[T]`（曲率不能造隙，精确版）；`S−D` 相消恒等式 `[T]`；具名缺失 `W_geo>D−(Δ_dyn+X)` `[O]`。**Clay 仍 0%，无 QED。**
+
 ### B7. 梯度流 no-go（B6 实例：流能 = 完全单调）
 Lüscher 梯度流 `∂_tU=−D_νG_{νμ}` 保反射正性；流向能量 `E(t)=⟨tr G_{μν}G_{μν}⟩(t)` 是 Laplace 变换 `∫h(u)e^{−2tu}du`、`h≥0` ⇒ **完全单调 = B6 = `ν≥0`**，无超出正性的动力学内容。流时"有效质量" `m_flow²(t)=−½∂_t ln E(t)` 是 tilt 谱均值，`m₁² ≤ m_flow²(t)` 且 `↓ m₁²` —— **只上界（= susceptibility / H1）**，`t→∞` 才等式（循环）。**酸测败**：自由无质量 `t²E(t) ≡ 1/(64π²) > 0` ⇒ 任何由 `E, tE, t²E, t²∂_tE` 造的下界都被无隙场满足（vacuous）。`k→0` 粗曲率 `G″=1/χ` 是流不变量。缺失步 `H*(r₀)`。`TRANSPORT-GRADIENT-FLOW.md`。
 

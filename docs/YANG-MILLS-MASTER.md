@@ -154,4 +154,5 @@ f₁² ≥ c₁(β)·u(β)^p·(1 − O(u)) > 0,    u(β)→0.
 - 新 no-go：`INVENT-CONVEXIFICATION.md`、`INVENT-SECOND-CONE.md`、`INVENT-NEW-INDEX.md`、`SCHUR-CONVEX.md`、`GOLDS-POS-MASS.md`
 - 连续极限（进行）：`CONTINUUM-FREDHOLM.md`、`CONTINUUM-VARIANCE-DEFECT.md`、`SYNTHESIS-NEWCONSTRUCTS.md`、`CONTINUUM-CP.md`
 - 硬算：`COMPUTE-*.md`、`LATTICE-TM-GAP.md`、`W7-*.md`
+- 直接攻 key（2026-11-24）：`research/unconditional/KEY-DIRECT-DERIVATION.md`（五路直攻，全到精确失败步；witness `w7/key_direct_derivation.py`）+ 登记册 §B8
 - 免疫：`INEQ-T*`、`INEQ-R*`、`PROOF-*.md`（~60 个）
