@@ -1,0 +1,32 @@
+
+======================================================================
+(1) Gaussian: cheeger fraction = 1/(2pi) exactly
+======================================================================
+  sigma=0.50  h=1.595777  h*sqrt(chi)=0.797888 (sqrt(2/pi)=0.797885)
+           gamma=4.000000  (h^2/4)/gamma=0.159156 (1/2pi=0.159155)   1/chi=4.000000
+  sigma=1.00  h=0.797888  h*sqrt(chi)=0.797888 (sqrt(2/pi)=0.797885)
+           gamma=1.000000  (h^2/4)/gamma=0.159156 (1/2pi=0.159155)   1/chi=1.000000
+  sigma=2.00  h=0.398944  h*sqrt(chi)=0.797888 (sqrt(2/pi)=0.797885)
+           gamma=0.250000  (h^2/4)/gamma=0.159156 (1/2pi=0.159155)   1/chi=0.250000
+
+======================================================================
+(2) Uniform on [-A,A]: kinematic gap & 1/chi both vanish as A->inf
+======================================================================
+   A      gamma=pi^2/(2A)^2    1/chi=3/A^2    h=1/A    h^2/4 <= gamma?
+      1.0      2.467e+00      3.000e+00   1.000e+00   True
+     10.0      2.467e-02      3.000e-02   1.000e-01   True
+    100.0      2.467e-04      3.000e-04   1.000e-02   True
+   1000.0      2.467e-06      3.000e-06   1.000e-03   True
+
+======================================================================
+(3) reading
+======================================================================
+  (1) On the Gaussian the Cheeger fraction h^2/4 = gamma/(2pi) is exact at
+      every sigma -> the base's 1/(2pi) is the true shape constant, scale-free.
+  (2) On a bounded interval (compact group / bounded logU) gamma~1/A^2 -> 0 and
+      1/chi~1/A^2 -> 0 together as A->inf (A ~ 1/a_ell).  Boundedness alone gives
+      a lattice gap that VANISHES in the continuum: it can never supply a physical
+      floor 1/chi >= lambda.  Confirms R1 is acid-vacuous.
+  => The roof's only missing strut is the MAGNITUDE of 1/chi_phys at beta=2.5,
+     i.e. chi_phys <= 1/lambda uniformly = H1 verbatim.  No QED.
+

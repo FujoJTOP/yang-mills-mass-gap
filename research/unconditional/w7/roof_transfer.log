@@ -1,0 +1,44 @@
+==========================================================================
+3D Ising transfer matrix (L=3, periodic) -- dual of 3D Z2 gauge
+  0-form spin gap (D_sigma) and energy gap (D_eps) vs beta
+  beta_c(3D Ising) ~ 0.22165 : gaps -> 0 ONLY near the critical point
+==========================================================================
+    beta      D_sigma        D_eps        lambda0     lambda_odd
+  0.1200     1.579544     3.358653   633.28514168   130.50050851
+  0.1400     1.322310     2.908774   689.12065545   183.66373913
+  0.1600     1.082948     2.510317   764.39318376   258.82031531
+  0.1800     0.858840     2.161652   868.01098041   367.73551742
+  0.2000     0.651171     1.868806  1015.61879593   529.57915932
+  0.2200     0.465217     1.645390  1235.73988492   776.04306117
+  0.2400     0.309483     1.510055  1580.82566083  1160.05128608
+  0.2600     0.191530     1.477451  2144.30404175  1770.54058846
+  0.2800     0.111962     1.545958  3084.22400486  2757.53785111
+  0.3000     0.063367     1.695898  4661.00041601  4374.81141584
+  0.3200     0.035509     1.900659  7307.55990522  7052.62741173
+  0.3400     0.019999     2.136840 11754.86430076 11522.11754814
+  0.3600     0.011416     2.387191 19246.56875048 19028.10252061
+  0.3800     0.006633     2.639790 31904.40982933 31693.49840088
+  0.4000     0.003929     2.886739 53352.73492500 53143.52828041
+  0.4200     0.002373     3.123317 89788.16080412 89575.33771967
+
+Reading: the EVEN-sector gap D_eps has a clear MINIMUM near beta~0.26
+(finite-L critical region; thermodynamic beta_c~0.2217) and rises on
+BOTH sides -> the spectrum is gapped away from the critical point,
+gapless at it.  The ODD gap D_sigma -> 0 at large beta is vacuum
+tunnelling between the two ordered vacua on the finite torus (SSB),
+NOT a physical gapless mode.  Both phases are gapped; the critical
+point is the unique gapless fixed point.  This is the exact 0-form
+ridge -- an ORDER-PARAMETER criterion (it needs a TRANSITION), not a
+single-phase mass-gap criterion.
+
+==========================================================================
+Calibration: exact 2D Ising magnetization m(beta)  [J=1, beta_c=0.44069]
+==========================================================================
+  beta= 0.3000   m= 0.00000
+  beta= 0.4000   m= 0.00000
+  beta= 0.4407   m= 0.27858
+  beta= 0.4800   m= 0.87752
+  beta= 0.6000   m= 0.97361
+  beta= 0.8000   m= 0.99602
+
+Done.  No QED.
