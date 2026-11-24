@@ -1,0 +1,34 @@
+==========================================================================
+(A) free-field FP gap == mass  (one-particle spectrum omega_k = sqrt(khat^2 + m^2))
+==========================================================================
+  m =  0.00   min_k omega_k = 0.000000   (= m ? True)
+  m =  0.01   min_k omega_k = 0.010000   (= m ? True)
+  m =  0.10   min_k omega_k = 0.100000   (= m ? True)
+  m =  0.50   min_k omega_k = 0.500000   (= m ? True)
+  m =  1.00   min_k omega_k = 1.000000   (= m ? True)
+  => gap(FP) = m exactly; m -> 0 gives gap -> 0 (acid: massless is gapless).
+  => a rigorous gap lower bound for FP IS the mass gap (the identity is a tautology).
+
+==========================================================================
+(B) coupling dimension [g^2] = 4 - d  (super-renorm vs MARGINAL/critical)
+==========================================================================
+  d = 2:  [g^2] = +2   super-renormalizable    -> RS applies (finitely many counterterms)
+  d = 3:  [g^2] = +1   super-renormalizable    -> RS applies (finitely many counterterms)
+  d = 4:  [g^2] = +0   MARGINAL (critical)     -> RS NOT applicable (all-orders counterterms)
+  => 4D Yang-Mills is the CRITICAL dimension: g^2 dimensionless, asymptotically free.
+
+==========================================================================
+(C) perturbative counterterm series is asymptotic (IR renormalon at u = d/2 = 2)
+==========================================================================
+  a_n = beta0^n * n!   (factorial growth; ratio a_n/a_{n-1} = beta0 * n -> infinity)
+    n = 1:  a_n = 2.322e-02   ratio a_n/a_(n-1) =   0.0232   (n*beta0 =   0.0232)
+    n = 2:  a_n = 1.078e-03   ratio a_n/a_(n-1) =   0.0464   (n*beta0 =   0.0464)
+    n = 3:  a_n = 7.511e-05   ratio a_n/a_(n-1) =   0.0697   (n*beta0 =   0.0697)
+    n = 4:  a_n = 6.976e-06   ratio a_n/a_(n-1) =   0.0929   (n*beta0 =   0.0929)
+    n = 5:  a_n = 8.099e-07   ratio a_n/a_(n-1) =   0.1161   (n*beta0 =   0.1161)
+    n = 6:  a_n = 1.128e-07   ratio a_n/a_(n-1) =   0.1393   (n*beta0 =   0.1393)
+    n = 7:  a_n = 1.834e-08   ratio a_n/a_(n-1) =   0.1625   (n*beta0 =   0.1625)
+    n = 8:  a_n = 3.407e-09   ratio a_n/a_(n-1) =   0.1858   (n*beta0 =   0.1858)
+  => non-summable (Borel pole at u=2); the 4D SPDE counterterms = the renormalon = H1.
+
+Verdict: gap(FP)=mass [T]; d<4 RS supplies the strut [T]; d=4 MARGINAL -> renormalon wall [NG]/[O].
