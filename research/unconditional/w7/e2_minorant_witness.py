@@ -54,7 +54,7 @@ for tag, Es in (("edge=1 + continuum", Es_cont), ("massless (edge 0)", Es_free))
 print("   => with a continuum the bound is <=0 for all accessible t; positivity needs N(E1)=1 = E2.")
 
 # ---------------------------------------------------------------- (D) genuine strong-coupling minorant
-hr("(D) strong-coupling: u(beta)=c_f(beta) in (0,1) => m1 >= ln(1/u)/a > 0  (a REAL [T] minorant, beta<beta1)")
+hr("(D) strong-coupling: u(beta)=c_f(beta) in (0,1) => m1 >= 4*ln(1/u)/a > 0  (a REAL [C] minorant, beta<beta1)  〔factor-4 corr. 2026-11-24〕")
 # SU(2) plaquette weight e^{(beta/2) Re tr U} = e^{beta cos th};  Haar dU=(2/pi) sin^2 th dth
 def c_f_su2(beta, Nth=6000):
     th = np.linspace(1e-6, np.pi-1e-6, Nth)
@@ -67,9 +67,10 @@ def Z_su2(beta, Nth=6000):
     return float(np.trapezoid(np.exp(beta*np.cos(th))*w, th))
 for beta in (0.005, 0.01, 0.02, 0.05, 0.10, 0.20):
     u = c_f_su2(beta)
-    print(f"   beta={beta:5.3f}:  u=c_f={u: .6e}  (0<u<1: {0<u<1})   ln(1/u)={np.log(1.0/u):7.4f}>0  => m1>0 (lattice units)")
+    m1_lead = 4.0*np.log(1.0/u)   # factor-4 corr. 2026-11-24: P3 flux-tube mass m1 = 4*ln(1/u)/a (lattice a=1)
+    print(f"   beta={beta:5.3f}:  u=c_f={u: .6e}  (0<u<1: {0<u<1})   ln(1/u)={np.log(1.0/u):7.4f}>0  => m1=4*ln(1/u)={m1_lead:7.4f}>0 (lattice units, a=1)")
 print("   => on beta<beta1 the KP/OS cluster expansion gives an EXPLICIT uniform-in-L lower bound m1>=m0(beta)/a,")
-print("      whose leading rate is ln(1/u)/a (>0). This is the one genuine [T] minorant on F_sc;")
+print("      whose leading rate is 4*ln(1/u)/a (>0). This is the one genuine [C] minorant on F_sc;")
 print("      it does NOT extend to beta~2.5 (Savvidy: no stable quadratic minorant, MS-BLIND 1.5).")
 
 hr("SUMMARY")
