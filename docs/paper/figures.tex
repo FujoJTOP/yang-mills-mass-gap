@@ -15,35 +15,33 @@
 \begin{figure}[t]
 \centering
 \begin{tikzpicture}[x=1cm,y=1cm]
-  \node[fbox, fill=cC!10, draw=cC!55, text width=4.6cm] (clay) at (0,5.5)
+  \node[fbox, fill=cC!10, draw=cC!55, text width=5.0cm] (clay) at (0,7.2)
     {\textbf{Clay: existence $\wedge$ gap}\\ uniform $\Delta>0$, $a\to0$, $L\to\infty$};
-  \node[fbox, fill=black!3, text width=4.3cm] (h1) at (-4.6,2.9)
+  \node[fbox, fill=black!3, text width=4.6cm, minimum height=1.4cm] (h1) at (-5.4,4.0)
     {\textbf{H1}: $\chi\le 1/\lambda$\\ (coarse variance ceiling)};
-  \node[fbox, fill=cT!9, draw=cT!55, text width=4.6cm] (hs) at (4.7,2.9)
+  \node[fbox, fill=cT!9, draw=cT!55, text width=4.8cm, minimum height=1.4cm] (hs) at (5.4,4.0)
     {\textbf{$H^*$}: $f_1^2\ge r_0>0$\\ $+$ isolation $I_2$ (residue floor)};
-  \node[fbox, fill=cT!12, draw=cT!70, text width=5.6cm] (bot) at (0,0.25)
+  \node[fbox, fill=cT!12, draw=cT!70, text width=6.2cm] (bot) at (0,0.85)
     {$m_1^2\;\ge\; f_1^2/\chi\;\ge\; r_0\lambda\;>\;0$};
 
-  \draw[arr] (clay) -- node[alab, sloped, above=-1pt]
-      {gap $\Rightarrow \chi\le M_0/\lambda$ \ \LT} (h1);
-  \draw[arr] (hs) -- node[alab, sloped, above=-1pt]
-      {$f_1^2\ge r_0$, $\chi\le 1/\lambda$ $\Rightarrow$ gap \ \LT} (bot);
-  \draw[arr, dashed, draw=cN!80] (h1) -- node[alab, sloped, below=-1pt]
-      {not sufficient: thin atom $w\delta_\varepsilon$} (bot);
+  \draw[arr] (clay.south) -- (h1.north)
+      node[alab, pos=0.5, sloped, above] {gap $\Rightarrow\chi\le M_0/\lambda$ \ \LT};
+  \draw[arr] (hs.south) -- (bot.north east)
+      node[alab, pos=0.5, sloped, below] {$f_1^2\ge r_0,\ \chi\le1/\lambda\Rightarrow$ gap \ \LT};
+  \draw[arr, dashed, draw=cN!80] (h1.south) -- (bot.north west)
+      node[alab, pos=0.5, sloped, below] {not sufficient: thin atom \ \LE};
   \draw[{Stealth[length=5pt,width=4pt]}-{Stealth[length=5pt,width=4pt]},
-        draw=cC!70, thick, dashed] (h1) -- node[alab, below=1pt]
-      {one species \ \LC} (hs);
-
-  \node[font=\scriptsize, text=black!60, align=center, text width=9cm] at (0,-0.95)
-    {Free massless field: H1 holds, yet $f_1^2=0$. \ There is no positivity-only
-     route from the ceiling to the floor.};
+        draw=cC!70, thick, dashed]
+      (h1.east) -- node[alab, above]
+      {$H^*=\text{H1}$: one object \ \LC} (hs.west);
 \end{tikzpicture}
 \caption{The logical geography of the reduction. The gap implies the susceptibility ceiling
 H1 (necessary, \LT), while a residue floor together with that ceiling implies $m_1^2>0$
 (sufficient, \LT). H1 alone is not sufficient, because a measure with a thin atom at
 $\varepsilon\to0$ satisfies it while remaining gapless. The two faces H1 and $H^*$ are the
 same object stated in two vocabularies; that identification is a conjecture (\LC), while the
-implications are theorems.}
+implications are theorems. The free massless field shows why: it satisfies H1 yet has
+$f_1^2=0$, so no positivity-only route leads from the ceiling to the floor.}
 \label{fig:diamond}
 \end{figure}
 }
@@ -89,7 +87,7 @@ implications are theorems.}
 \caption{Left: a Källén--Lehmann measure with an isolated atom of weight $f_1^2$ at $m_1^2$ and
 a continuum above it; the susceptibility $\chi=\int s^{-1}d\nu$ is a residue-weighted harmonic
 mean, dominated by the lightest residue, not by the lightest mass. Right: the thin-atom
-counterexample $\nu=w\delta_\varepsilon+(1-w)\delta_S$ with $w/\varepsilon\le1/\lambda$.
+counterexample $\nu=w\delta_\varepsilon+(1-w)\delta_{s_2}$ with $w/\varepsilon\le1/\lambda$.
 The ceiling H1 is satisfied while $\inf\operatorname{supp}\nu\to0$, which is why H1 is
 necessary but not sufficient.}
 \label{fig:measure}
@@ -107,7 +105,7 @@ necessary but not sufficient.}
   \node[fbox, fill=cT!8, draw=cT!45, text width=4.9cm, minimum height=2.3cm] (tl)
     at (3.0,3.0) {\textbf{typical field, high momentum}\\[2pt]
       \textbf{OPEN CELL} \ \LM\\[1pt]
-      $\operatorname{Var}_\mu(\langle v,\nabla S\rangle\mid0)\le W_{\mathrm{geo}}$\\
+      $\operatorname{Var}(\xi_{k\to0})\le1/\lambda$\\
       \textcolor{cN!85}{\textbf{sign 0\% $=$ H1}}};
   \node[fbox, fill=cT!8, draw=cT!45, text width=4.9cm, minimum height=2.3cm] (tr)
     at (8.6,3.0) {\textbf{high field, high momentum}\\[2pt]
@@ -131,7 +129,7 @@ $90\%$, closed by the theorems G2.1--G2.4. The one open cell --- typical field w
 momentum --- is the region where all four handles fail simultaneously: the WSTC exponent
 vanishes when the field is typical, the AF--UV suppression has not begun at $g\approx1.5$,
 and the $N/12$ floor is roughly ten times too small. That cell is exactly
-$\operatorname{Var}(a_{k\to0})\le 1/\lambda$, with zero slack.}
+$\operatorname{Var}(\xi_{k\to0})\le 1/\lambda$, with zero slack.}
 \label{fig:plane}
 \end{figure}
 }
@@ -156,12 +154,12 @@ $\operatorname{Var}(a_{k\to0})\le 1/\lambda$, with zero slack.}
     9/{\textbf{Clay}}/0/cN}{
     \pgfmathsetmacro{\yy}{-0.66*\k}
     \node[anchor=east] at (6.3,\yy) {\nm};
-    \fill[black!8] (6.5,\yy-0.16) rectangle (15.5,\yy+0.16);
-    \pgfmathsetmacro{\ww}{9.0*\pct/100}
+    \fill[black!8] (6.5,\yy-0.16) rectangle (15.2,\yy+0.16);
+    \pgfmathsetmacro{\ww}{8.7*\pct/100}
     \ifnum\pct>0
       \fill[\cl!70] (6.5,\yy-0.16) rectangle ({6.5+\ww},\yy+0.16);
     \fi
-    \node[anchor=west, text=black!65] at (15.65,\yy) {\pct\%};
+    \node[anchor=west, text=black!65] at (15.35,\yy) {\pct\%};
   }
   \draw[black!25] (6.5,-0.4) -- (6.5,-6.1);
 \end{tikzpicture}
@@ -204,7 +202,7 @@ species is unbuilt.}
   }
   \node[fbox, text width=5.9cm, fill=cM!7, draw=cM!65] at (12.45,-3.55)
     {\textbf{ONE SPECIES}\\[2pt]
-     $\operatorname{Var}_\mu(\langle v,\nabla S\rangle\mid0)\;\le\;E_\mu[H_{vv}\mid0]+W-\delta$\\[2pt]
+     $\operatorname{Var}_\mu(\langle v,\nabla S\rangle\mid0)\;\le\;E_\mu[H_{vv}\mid0]+W_{\mathrm{full}}-\delta$\\[2pt]
      \scriptsize uniform in $(L,U')$: this is H1 in the infrared and L3 in the ultraviolet};
 \end{tikzpicture}
 \caption{The immune map. Eighteen root families, spanning roughly ninety distinct routes, all
@@ -225,23 +223,22 @@ not a theorem and not a proof, but a structural fact about where the difficulty 
     {\textbf{One inequality: a single-sided upper bound on a conditioned variance}\\[2pt]
      \small nonperturbative \quad$\cdot$\quad non-circular \quad$\cdot$\quad free-field-failing
      \quad$\cdot$\quad $(L,a)$-uniform};
-  \node[fbox, text width=5.8cm, fill=cC!8, draw=cC!50] (ir) at (3.7,1.5)
-    {\textbf{Infrared face: H1}\\ $\operatorname{Var}(a_{k\to0})\le 1/\lambda$\\ G2's open cell \ \LM};
-  \node[fbox, text width=5.8cm, fill=cC!8, draw=cC!50] (uv) at (10.3,1.5)
+  \node[fbox, text width=5.3cm, fill=cC!8, draw=cC!50] (ir) at (3.6,1.4)
+    {\textbf{Infrared face: H1}\\ $\operatorname{Var}(\xi_{k\to0})\le 1/\lambda$\\ G2's open cell \ \LM};
+  \node[fbox, text width=5.3cm, fill=cC!8, draw=cC!50] (uv) at (10.4,1.4)
     {\textbf{Ultraviolet face: L3}\\ $\sup_a Z_a^{-1}\lVert H_a\rVert_D<\infty$\\ G1's open node \ \LM};
   \draw[arr] (species.south) -- (ir.north);
   \draw[arr] (species.south) -- (uv.north);
   \draw[{Stealth[length=5pt]}-{Stealth[length=5pt]}, draw=cC!60, thick, dashed]
-    (ir) -- node[alab] {same shape} (uv);
-  \node[font=\scriptsize, text=black!60, align=center, text width=14cm] at (7.0,-0.45)
-    {The shapes coincide because $\operatorname{Var}\ge0$ can only supply a lower edge, while in
-     $G''=E[H]-\operatorname{Var}+W$ the variance subtracts. Building it would close L3 and H1
-     simultaneously.};
+    (ir.east) -- (uv.west);
+  \node[font=\scriptsize, text=black!65] at (7.0,2.55) {same shape};
 \end{tikzpicture}
 \caption{The one-species reduction. The same inequality appears at two scales: as the UV
-force-variance bound L3 and as the IR conditioned-variance bound H1. The unification is a
-conjecture; the dictionaries (Ward, residue--level-gap, $G''=E[H]-\operatorname{Var}+W$) are
-theorems.}
+force-variance bound L3 and as the IR conditioned-variance bound H1. The shapes coincide because
+$\operatorname{Var}\ge0$ can only supply a lower edge, while in
+$G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$ the variance subtracts. The unification is a conjecture; the
+dictionaries (Ward, residue--level-gap, $G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$) are theorems, and
+building the inequality would close L3 and H1 simultaneously.}
 \label{fig:scales}
 \end{figure}
 }
@@ -273,12 +270,14 @@ theorems.}
     \draw[thick, cC!80] (\x-0.09,\ym) -- (\x+0.09,\ym);
     \draw[thick, cC!80] (\x-0.09,\yp) -- (\x+0.09,\yp);
     \fill[cC!85] (\x,\yc) circle (1.6pt);
-    \node[below, text=black!70, align=center] at (\x,-0.75) {\nm};
+    \node[rotate=30, anchor=north east, text=black!70, inner sep=1.5pt]
+      at ({\x+0.12},-1.05) {\nm};
     \node[above=3pt, text=black!70] at (\x,{\yp+0.02}) {$\val$};
   }
 \end{tikzpicture}
 \caption{The $k\to0$ curvature probe on a single $L=8$ volume ($\mathrm{SU}(3)$, $\beta=5.7$),
-with $\mathrm{SU}(2)$/$L=4$ cross-checks. The measured points are positive and volume-stable,
+with an $\mathrm{SU}(3)$ $L=4$ check; all plotted points are $\mathrm{SU}(3)$, while
+$\mathrm{SU}(2)$ ($\beta=2.4$) reproduces the sign without being plotted. The measured points are positive and volume-stable,
 and $W_{\mathrm{geo}}$ is pinned at $+0.32$. This is a $k\to0$ sign probe on a
 gauge-dependent gluon mode in a flat chart, \emph{not} the gauge-invariant $0^{++}$ residue;
 keeping only the proven $W_{\mathrm{geo}}\ge0$ and treating the rest statistically gives

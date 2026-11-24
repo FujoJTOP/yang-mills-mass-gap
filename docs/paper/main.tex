@@ -18,6 +18,8 @@
 \usepackage{tcolorbox}
 \tcbuselibrary{skins,breakable}
 \usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{CJKutf8}
 \usepackage{caption}
 \usepackage{titlesec}
 \usepackage{fancyhdr}
@@ -85,13 +87,13 @@
 %  TITLE
 % =====================================================================
 \begin{center}
-  \vspace*{0.6cm}
+  \vspace*{0.2cm}
   {\LARGE\bfseries A Conditional Reduction of the\\[2pt] 4D Pure Yang--Mills Mass Gap\par}
-  \vspace{0.45em}
+  \vspace{0.35em}
   {\large\itshape and a record of what was actually proven\par}
-  \vspace{1.0em}
+  \vspace{0.8em}
   \rule{0.5\textwidth}{0.6pt}\par
-  \vspace{0.7em}
+  \vspace{0.55em}
   {\small\color{black!60} Yang--Mills campaign \textperiodcentered{} Lean 4 formalization $+$ lattice numerics\par}
   \vspace{0.15em}
   {\small\color{black!60} 23 November 2026\par}
@@ -100,7 +102,7 @@
 \vspace{0.2em}
 
 \begin{tcolorbox}[enhanced, colback=black!3.5, colframe=black!30, boxrule=0.5pt,
-  arc=3pt, left=10pt, right=10pt, top=8pt, bottom=8pt, fontupper=\small, parbox=false]
+  arc=3pt, left=10pt, right=10pt, top=6pt, bottom=6pt, fontupper=\footnotesize, parbox=false]
 \textbf{Status of this document.} This is a \emph{conditional reduction and an audit}, not a
 proof of the Clay problem. The Clay mass gap for 4D pure $\mathrm{SU}(N)$ Yang--Mills remains
 open. The only defensible headline is: \emph{the problem has been rewritten onto one precisely
@@ -122,10 +124,11 @@ silently repaired.
 \end{tcolorbox}
 
 % ---------- abstract ----------
-\begin{tcolorbox}[enhanced, colback=white, colframe=white, boxrule=0pt,
+\begin{tcolorbox}[enhanced, breakable, colback=white, colframe=white, boxrule=0pt,
   left=6pt, right=6pt, top=4pt, bottom=4pt, parbox=false]
 \begin{center}{\large\bfseries Abstract}\end{center}
-\small
+\footnotesize
+\setlength{\parskip}{0pt}
 We report the outcome of a sustained campaign --- Lean 4 formalization plus lattice numerics ---
 aimed at the 4D pure $\mathrm{SU}(N)$ Yang--Mills mass gap. \textbf{We do not prove the mass
 gap.} We prove, instead, a reduction and a ledger.
@@ -174,7 +177,9 @@ not exist}, and naming it precisely is the campaign's real result.
 \end{tcolorbox}
 
 \newpage
-\tableofcontents
+\begin{multicols}{2}
+{\small\tableofcontents}
+\end{multicols}
 \newpage
 
 \input{figures.tex}
@@ -182,5 +187,7 @@ not exist}, and naming it precisely is the campaign's real result.
 \input{body2.tex}
 \input{body3.tex}
 \input{body4.tex}
+\input{body5.tex}
+\input{body6.tex}
 
 \end{document}

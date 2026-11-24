@@ -1,0 +1,71 @@
+% =====================================================================
+%  Appendix B - Verification map
+% =====================================================================
+
+\clearpage
+\section{Verification map}
+\label{app:verif}
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{4.3cm}
+  >{\raggedright\arraybackslash}p{2.2cm}
+  >{\raggedright\arraybackslash}p{8.4cm}@{}}
+\caption{Verification map: each claim, its label, and the file containing the proof.}
+\label{tab:verif}\\
+\toprule
+\textbf{Claim in this paper} & \textbf{Label} & \textbf{File containing the proof / source}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{Claim in this paper} & \textbf{Label} & \textbf{File containing the proof / source}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+P3 residue theorem (I1) & \LT & \code{research/unconditional/PROOF-P3-UNCONDITIONAL.md},
+  \code{PROOF-P1P2.md}, \code{PROOF-P3.md}\\
+P3 gives I1 not I2 & correction & \code{PROOF-P3-UNCONDITIONAL.md} \S5;
+  \code{PROOF-P1P2.md} \S3\\
+No-dissolution theorem & \LC & \code{research/unconditional/PROOF-NO-DISSOLUTION-KINEMATIC.md},
+  \code{PROOF-DISSOLUTION-SPECTRAL-DENSITY.md}\\
+Operative threshold $\approx1.5\,m_g$ & \LT & \code{PROOF-ISOLATION.md} \S4;
+  \code{PROOF-EDGE-E2.md}\\
+$W_{\mathrm{geo}}\ge0$, $E[\Phi'']\ge N/12$ & \LT &
+  \code{research/unconditional/PROOF-JACOBIAN-SAVES.md}\\
+Gauge-invariant PF & \LT{} finite $V$ & \code{research/unconditional/PROOF-GAUSS-INVARIANT-PF.md}\\
+Lemma SC & \LT & \code{research/unconditional/PROOF-COARSE-POINCARE.md} \S(c)\\
+Feshbach--Bogoliubov lemma & \LT{} abstract & \code{research/unconditional/FORGE-BLIND.md} \S2;
+  \code{D-BBS-INTEGRATE-NEG.md} (Lemma NS)\\
+$G''=S-D$ & \LT{} identity & \code{INVENT-VARIANCE-INEQ.md}; \code{docs/new-tools-registry.md} A2\\
+Residue--level-gap lemma & \LT & \code{GAP-G2-edge}; \code{G2-ASSEMBLE-100.md} \S2\\
+Conditional theorem \code{IN-0}\ldots\code{IN-11} & \LC & \code{docs/conditional-theorem.md},
+  \code{lean/YMStatement/}\\
+Spectral squeeze, H1 necessary-not-sufficient & \LT &
+  \code{research/unconditional/REDUCTION-AUDIT.md}\\
+Correct sufficient condition & \LT & \code{REDUCTION-AUDIT.md};
+  \code{LOWER-AMPLITUDE-MECHANISMS.md} \S1\\
+Node board / honest \% & \LT/\LC/\LM & \code{docs/PROOF-SKELETON.md};
+  \code{research/unconditional/G2-ASSEMBLE-100.md}, \code{G1-ASSEMBLE-100.md},
+  \code{ABC-FINAL-LEDGER.md}\\
+Six tools and acid tests & \LT/\LC & \code{docs/new-tools-registry.md};
+  \code{INVENT-TRANSPORT-INEQ.md}, \code{INVENT-VARIANCE-INEQ.md},
+  \code{INVENT-NEW-IDENTITY.md}, \code{INVENT-GAUGE-INVARIANT-MASS.md},
+  \code{INVENT-NEW-MONOTONE.md}\\
+No-gos & \LN & \code{INVENT-CONVEXIFICATION.md}, \code{INVENT-SECOND-CONE.md},
+  \code{INVENT-NEW-INDEX.md}, \code{SCHUR-CONVEX.md}, \code{GOLDS-POS-MASS.md},
+  \code{FORGE-FESHBACH-ANGLE.md}, \code{FORGE-KREIN-SPECTRAL.md}\\
+One species (UV/IR), five conditions & \LM & \code{docs/PROOF-SKELETON.md} \S3;
+  \code{docs/YANG-MILLS-MASTER.md} \S6\\
+Immune map & \LN & \code{docs/YANG-MILLS-MASTER.md} \S5; \code{ABC-FINAL-LEDGER.md}; batch
+  reports \code{ABC*}, \code{C-*}, \code{D-BBS-*}, \code{LOC-*}, \code{MS-*}, \code{LOWER-*},
+  \code{FORGE-*}, \code{K0-*}, \code{BS-*}, \code{TRANSMUTE-*}\\
+$f_1^2>0$ at $\beta=2.2$ ($17\sigma$) & \LE &
+  \code{research/unconditional/COMPUTE-F1SQ-SU2.md}\\
+$G''$ $k\to0$ probe (gauge-dependent mode) & \LE &
+  \code{research/unconditional/COMPUTE-GPP-K0-CONTINUUM.md}\\
+Dimensional correction $G''_a=a^2m_{\mathrm{phys}}^2$ & \LT & \code{docs/PROOF-SKELETON.md}
+  (G1-CONTINUUM-SCALING)\\
+``Machine that does not exist'' & verdict & \code{docs/yang-mills-frontier.md} \S7;
+  \code{YANG-MILLS-MASTER.md} \S9; \code{TOOL-not-iii.md}\\
+\end{longtable}
+\normalsize

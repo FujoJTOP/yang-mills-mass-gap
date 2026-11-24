@@ -55,10 +55,10 @@ the scalar density; the normalization is immaterial). Reflection positivity give
 and $\operatorname{supp}\nu\subset[m_1^2,\infty)$, where $m_1$ is the lightest mass in the
 $0^{++}$ channel. The \textbf{atom} is
 \begin{equation}
-f_1^2 \;:=\; \nu(\{m_1^2\}) \;=\; \bigl|\langle 0|\operatorname{tr}F^2|G\rangle\bigr|^2 ,
+f_1^2 \;:=\; \nu(\{m_1^2\}) \;=\; \bigl|\langle 0|\operatorname{tr}F^2|\mathbb{G}\rangle\bigr|^2 ,
 \label{eq:atom}
 \end{equation}
-the squared overlap of the vacuum with the lightest $0^{++}$ glueball $G$. The \textbf{lock core}
+the squared overlap of the vacuum with the lightest $0^{++}$ glueball $\mathbb{G}$. The \textbf{lock core}
 is: $f_1^2>0$ and the atom is isolated ($\Delta>0$ above it). The campaign summarises this as
 \begin{equation}
 \text{Clay}\iff\neg(\mathrm{iii}),\qquad
@@ -85,6 +85,8 @@ channel}, conditional on that channel carrying the lightest state. This paper th
 between the two is itself a named missing step --- the ordering input that the lightest state
 lies in $0^{++}$ (the corpus's \code{IN-11}, a physical input, not derivable from symmetry).
 
+\figreduction
+
 \subsection{The two halves}
 
 The campaign splits Clay into two halves and a channel:
@@ -104,13 +106,18 @@ The campaign splits Clay into two halves and a channel:
 The single deepest structural finding of the campaign is that \textbf{G1's L3 and G2's H1 are
 one species} (Figure~\ref{fig:scales}): both are a one-sided \emph{upper bound on a variance}.
 L3 is the UV force-variance bound; H1 is the IR conditioned-variance bound
-$\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le W_{\mathrm{geo}}$. The shapes are
+$\operatorname{Var}(\xi_{k\to0})\le1/\lambda$ (curvature form
+$\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le E_\mu[H_{vv}|0]+W_{\mathrm{full}}-\delta$).
+The shapes are
 identical because $\operatorname{Var}\ge0$ can only supply a lower edge, while in the exact
-identity $G''=E[H]-\operatorname{Var}+W$ the variance enters with a minus sign. The two faces
+identity $G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$ (with $W_{\mathrm{full}}=W_{\mathrm{geo}}+X$ as in
+\S\ref{sec:wgeo}) the variance enters with a minus sign. The two faces
 differ only in scale (UV versus IR). This unification is stated in the corpus as a
 \textbf{structural identification and a conjecture}, not a theorem
 (\code{G2-ASSEMBLE-100.md} \S7: ``a structural identification \ldots{} one closure would likely
 close both faces --- but that is a conjecture, not a theorem''). This paper preserves that label.
+
+\figscales
 
 \subsection{What this paper is, and is not}
 
@@ -150,7 +157,7 @@ decomposition (\code{docs/PROOF-SKELETON.md} \S2) is Table~\ref{tab:g1}.
 
 \begin{table}[t]
 \centering
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xcc@{}}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xc>{\raggedright\arraybackslash}p{3.1cm}@{}}
 \toprule
 \textbf{Node} & \textbf{Object} & \textbf{Local \%} & \textbf{Label}\\
 \midrule
@@ -193,12 +200,12 @@ Table~\ref{tab:g2}.
 
 \begin{table}[t]
 \centering
-\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xcc@{}}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}Xc>{\raggedright\arraybackslash}p{3.1cm}@{}}
 \toprule
 \textbf{Node} & \textbf{Object} & \textbf{Local \%} & \textbf{Label}\\
 \midrule
 G2.0 & Identity layer: $G''(k\to0)=E[H|0]-\operatorname{Var}(\nabla S|0)=V_{\mathrm{eff}}''=m_{\mathrm{eff}}^2(k\to0)$;
-  Ward $G''\cdot\operatorname{Var}(a)=1$; Schwinger--Dyson $E[H]=E[f^2]$ & 100\% & \LT{} exact\\
+  exact Ward $E[a\,f]=1$; Stein/IBP $E[H]=E[f^2]$ and $E[\operatorname{Hess}V]=E[\nabla V\otimes\nabla V]\succeq0$ for every measure; $E[-D^2]=E[f^2]$ only for the free field; $G''\operatorname{Var}(\xi)=1$ iff the marginal is Gaussian; the sign sits in the \emph{conditioned} fibre Hessian (cf.\ App.~\ref{app:postaudit}) & 100\% & \LT{} identities\\
 G2.1 & Haar geometric term $W_{\mathrm{geo}}=E[\Phi'']-\operatorname{Var}(\Phi')\ge0$
   (Prékopa), every mode including $k\to0$, every $L$ & 100\% & \LT\\
 G2.2 & Shallow-field band $\{2g\|F\|\le N/12\}$ closed by $\Phi''\succeq N/12$
@@ -208,7 +215,8 @@ G2.3 & High-field cone (WSTC): cone variance mass
   $L$-uniform & 100\% & \LT\\
 G2.4 & AF-UV deep cone: instability $\le\mu^2e^{-c\mu^4/g^4}\to0$ & 100\% & \LT\\
 \textbf{G2.5} & \textbf{Open cell $=$ typical field $\times$ high momentum}:
-  $\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le W_{\mathrm{geo}}$ &
+  the ceiling $\operatorname{Var}(\xi_{k\to0})\le1/\lambda$ (curvature form
+  $\operatorname{Var}_\mu(\langle v,\nabla S\rangle|0)\le E_\mu[H_{vv}|0]+W_{\mathrm{full}}-\delta$) &
   \textbf{0\%} & \textbf{\LM{} $=$ H1}\\
 \textbf{G2.6} & \textbf{Named species}: negative association / anti-FKG
   $\operatorname{Cov}(G,\Phi'|0)\le0$ & \textbf{0\%} &
@@ -224,15 +232,17 @@ closed by the theorems G2.1--G2.4 (Figure~\ref{fig:plane}). The remaining one ce
 field, high momentum --- is a region where all four handles fail \emph{simultaneously}: the WSTC
 exponent vanishes when the field is typical, the AF-UV suppression has not begun at
 $g\approx1.5$, and the $N/12$ floor is roughly ten times too small. That cell is
-\textbf{exactly} $\operatorname{Var}(a_{k\to0})\le1/\lambda$, with zero slack. The sign --- the
+\textbf{exactly} $\operatorname{Var}(\xi_{k\to0})\le1/\lambda$, with zero slack. The sign --- the
 actual proof --- is \textbf{0\%}.
 
 The G2 assembly is complete in the following precise sense: of 26 input rows, every row is
 either (a) a theorem or (b) a reduction to the single species; \textbf{there is no row (c)}, a
 genuinely independent open item. The curvature face H1 and the spectral-edge face $H^*$
 ($f_1^2\ge r_0$ with isolation I2) are one object in two vocabularies, tied by the
-residue--level-gap lemma (I1 $\iff$ I2) and Ward ($G''\cdot\operatorname{Var}(a)=1$). The
+residue--level-gap lemma (I1 $\iff$ I2) and the exact Ward identity $E[a\,f]=1$. The
 unification $H^*=\text{H1}$ is the conjecture; the dictionaries are theorems.
+
+\figplane
 
 \subsection{The dimensional correction}
 
@@ -258,7 +268,8 @@ numerics in \S\ref{sec:tools} and \S\ref{sec:verdict}.
 
 \begin{table}[t]
 \centering
-\begin{tabular}{@{}lllc@{}}
+\begin{tabularx}{\textwidth}{@{}ll>{\raggedright\arraybackslash}p{4.4cm}
+  >{\raggedright\arraybackslash}X@{}}
 \toprule
 \textbf{Half} & \textbf{Object} & \textbf{Local completion} & \textbf{Status}\\
 \midrule
@@ -269,7 +280,7 @@ G2.5--6 & Gap: sign / proof & \textbf{0\%} & \LM{} $=$ H1, the species\\
 Channel & $0^{++}$ identification $+$ no dissolution & 100\% & \LC\\
 \textbf{Clay} & existence $\wedge$ gap & \textbf{0\%} & \textbf{open}\\
 \bottomrule
-\end{tabular}
+\end{tabularx}
 \caption{The node board in one table (see also Figure~\ref{fig:bars}).}
 \label{tab:nodes}
 \end{table}
@@ -277,3 +288,5 @@ Channel & $0^{++}$ identification $+$ no dissolution & 100\% & \LC\\
 The percentages are \textbf{node-local} --- progress toward each node's own goal --- and are
 emphatically \textbf{not} a percentage proof of Clay. Clay is 0\% because the species is
 unbuilt.
+
+\figbars

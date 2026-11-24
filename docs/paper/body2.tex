@@ -7,17 +7,19 @@
 
 Let $\nu\ge0$ be the Källén--Lehmann measure of $\operatorname{tr}F^2$, with
 $\operatorname{supp}\nu\subset[m_1^2,\infty)$, atom weight $f_1^2=\nu(\{m_1^2\})$, and moments
-$M_k=\int s^k\,d\nu(s)$. Let $a$ be the zero-momentum coarse mode
-($a=\langle v,\log U\rangle$ for the relevant mode; $\operatorname{Var}(a)$ is the
+$M_k=\int s^k\,d\nu(s)$. Let $\xi$ be the zero-momentum coarse mode
+($\xi=\langle v,\log U\rangle$ for the relevant mode; $\operatorname{Var}(\xi)$ is the
 zero-momentum connected propagator). The \textbf{susceptibility} is
 \begin{equation}
-\chi \;:=\; \operatorname{Var}(a) \;=\; \int s^{-1}\,d\nu(s)
+\chi \;:=\; \operatorname{Var}(\xi) \;=\; \int s^{-1}\,d\nu(s)
 \qquad(\text{the zero-momentum connected two-point function}).
 \label{eq:chi}
 \end{equation}
 This is the inverse of the effective curvature only in the Gaussian case; in general it is a
 residue-weighted \emph{harmonic} mean of the masses, dominated by the lightest residue. It is
-not the lightest mass.
+not the lightest mass. The equality of the two expressions in \eqref{eq:chi} is the
+zero-momentum Ward statement, up to the normalization of $O$; the squeeze below uses only ratios
+and is normalization-free.
 
 \subsection{The squeeze \LT}
 
@@ -40,7 +42,7 @@ they contain no dynamical input.
 
 The condition H1 is
 \begin{equation}
-\mathrm{H1}:\qquad \operatorname{Var}_\mu(a_{k\to0})=\chi\ \le\ 1/\lambda,
+\mathrm{H1}:\qquad \operatorname{Var}_\mu(\xi_{k\to0})=\chi\ \le\ 1/\lambda,
 \qquad\text{uniform in }(L,a).
 \label{eq:h1}
 \end{equation}
@@ -52,10 +54,10 @@ corpus records it as $\chi=\int s^{-1}d\nu\le M_0/\lambda$ (\code{REDUCTION-AUDI
 
 \textbf{Non-sufficiency.} Take (Figure~\ref{fig:measure}, right panel)
 \begin{equation}
-\nu=w\,\delta_\varepsilon+(1-w)\,\delta_S,\qquad w/\varepsilon\le1/\lambda .
+\nu=w\,\delta_\varepsilon+(1-w)\,\delta_{s_2},\qquad w/\varepsilon\le1/\lambda .
 \label{eq:thinatom}
 \end{equation}
-Then $\chi=w/\varepsilon+(1-w)/S<\infty$, so H1 holds, while
+Then $\chi=w/\varepsilon+(1-w)/s_2<\infty$, so H1 holds, while
 $\inf\operatorname{supp}\nu=\varepsilon\to0$. \textbf{H1 holds and the gap fails.} The measure
 has a thin atom at $\varepsilon$, invisible to the susceptibility because the susceptibility is
 a harmonic mean: a tiny residue at tiny mass contributes $w/\varepsilon$, which can be kept
@@ -67,6 +69,8 @@ everywhere. It is why the audit's verdict is that the chain written as $\iff$ is
 against the corpus's own definitions, it is \textbf{(iv) false $\to$ (iii) conjecture $\to$
 (ii) definition}, plus one genuine one-directional theorem. The final $\iff$ (H1 $\iff$ gap)
 holds in one direction only.
+
+\figmeasure
 
 \subsection{The correct sufficient condition}
 
@@ -86,8 +90,8 @@ H^*:\qquad f_1^2\ge r_0>0\ \ \text{with isolation } I_2,
 \qquad(\text{and }\chi\le1/\lambda\text{ as the matching ceiling}),
 \label{eq:hstar}
 \end{equation}
-where $I_2$ is $\Lambda:=\inf\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})$,
-$\Lambda-m_1^2\ge\delta>0$. The residue--level-gap lemma (\S\ref{sec:reslevel}) turns I1 into
+where $I_2$ is $\Lambda_{\star}:=\inf\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})$,
+$\Lambda_{\star}-m_1^2\ge\delta>0$. The residue--level-gap lemma (\S\ref{sec:reslevel}) turns I1 into
 I2 and back, so $H^*=\text{H1}$ \emph{as a structural identification}; but the identification is
 the conjecture, and the residue datum is strictly stronger than the bare gap.
 
@@ -112,7 +116,7 @@ is the master obstruction (\S\ref{sec:schur}), and it is why H1 --- a second-mom
 The curvature $G''=V_{\mathrm{eff}}''$ and the inverse susceptibility $1/\chi$ coincide only for
 a Gaussian marginal. Ward's identity
 \begin{equation}
-G''\cdot\operatorname{Var}(a)=1
+G''\cdot\operatorname{Var}(\xi)=1
 \qquad\iff\qquad
 \text{the marginal of } a \text{ is Gaussian},
 \label{eq:ward}
@@ -134,7 +138,7 @@ Figure~\ref{fig:diamond}) is:
 \item \LT{} isolated atom at $\inf\operatorname{supp}\nu$ of a channel $\Rightarrow$ exponential
   clustering in that channel;
 \item \LT{} $\text{gap}\Rightarrow\chi\le M_0/\lambda$;
-\item \LT{} $G''\ge\lambda\Rightarrow\operatorname{Var}(a)\le1/\lambda$ (Brascamp--Lieb, one way);
+\item \LT{} $G''\ge\lambda\Rightarrow\operatorname{Var}(\xi)\le1/\lambda$ (Brascamp--Lieb, one way);
 \item \LC{} the unification $H^*=\text{H1}$ (``one object'') --- a structural identification,
   not a theorem;
 \item \textbf{(iv) false} $\text{gap}\iff\text{atom}$, and $\text{H1}\iff\text{gap}$.
@@ -166,7 +170,8 @@ gap theorem.
 \claimhead{Theorem}{(P3)} \emph{Fix $a>0$. There exist $\beta_1=\min(1/48,c/N)>0$ and, for
 each $\beta<\beta_1$, a constant $r_0(\beta)=\tfrac12 c_1(\beta)u(\beta)^p>0$ ($c_1$ a positive
 $\mathrm{SU}(N)$ group constant, $u(\beta)$ the fundamental character coefficient,
-$u\asymp\beta$), such that for every torus $T^4_L$,}
+$u\asymp\beta$; the exponent $p$ is fixed by the character normalization --- the corpus uses
+$p\ge1$ --- and its value only shifts the prefactor), such that for every torus $T^4_L$,}
 \begin{equation}
 f_{1,L}^2=\lim_{t\to\infty}e^{m_1(L)t}\,C_L(t)\ \ge\ r_0(\beta)\ >\ 0,
 \label{eq:p3}
@@ -179,7 +184,7 @@ f_{1,L}^2=\lim_{t\to\infty}e^{m_1(L)t}\,C_L(t)\ \ge\ r_0(\beta)\ >\ 0,
 imports the Osterwalder--Seiler connected-composite expansion and the Kotecký--Preiss criterion;
 the single lemma left as ``standard assembly'' by the earlier drafts --- the \textbf{graded-strip
 Kotecký--Preiss lemma} --- is written out in full in \code{PROOF-P3-UNCONDITIONAL.md} \S2--\S4.
-Its hypothesis is the per-site condition $u(\beta)K<1$ with explicit $K\le CN$ (the plaquette
+Its hypothesis is the per-site condition $u(\beta)K_{\mathrm{KP}}<1$ with explicit $K_{\mathrm{KP}}\le CN$ (the plaquette
 adjacency degree is $\le12$; the $\mathrm{SU}(N)$ link multiplicity is polynomial in $N$,
 bounded by $CN$ on the fundamental sector). The one constant not reduced to a decimal is the
 constant in $C_g\le CN$; its \emph{existence} is proved, and its value only shifts the prefactor
@@ -193,7 +198,7 @@ to time $t$ must meet every intermediate slice, so its plaquette cost is $\ge t/
 forces a single fundamental flux tube, weight $a_0u^{t/a}=a_0e^{-m_1t}$. This tube is the
 \emph{unique} leading concentration, and its amplitude $a_0(\beta)>0$ is a product of positive
 fundamental character coefficients times the positive singlet recoupling
-$f\otimes\bar f\to1$. (iii) $f_1^2=|\langle\Omega|O|G\rangle|^2$ is a modulus-square, so no sign
+$f\otimes\bar f\to1$. (iii) $f_1^2=|\langle\Omega|O|\mathbb{G}\rangle|^2$ is a modulus-square, so no sign
 can undo it. (iv) Every non-tube polymer costs a whole factor $u$ more; the KP criterion is
 independent of backbone length, so the remainder is $O(u)$ uniformly in $t,V,L$.
 
@@ -231,15 +236,17 @@ its analyticity radius.
 \begin{claimbox}{cC}
 \claimhead{Theorem}{(no dissolution)} \emph{Suppose (K-A) the theory has a uniform gap
 $m_g\ge\mu>0$, and (K-B) the lightest $0^{++}$ satisfies $m_{0^{++}}<2m_{\mathrm{lightest}}$
-(implied by $0^{++}$ being the overall lightest). Then the lightest $0^{++}$ is an isolated atom
-of its channel, separated from every continuum by a margin equal to its own mass:
-$m_{0^{++}}<\theta_{0^{++}}=2m_g$.}
+(implied by $0^{++}$ being the overall lightest). Then the lightest $0^{++}$ lies strictly below
+the two-body ($gg$) continuum of its channel: $\theta^{2b}_{0^{++}}\ge2m_g$ and
+$m_{0^{++}}<2m_g$, so the margin $2m_g-m_{0^{++}}$ is positive; it equals $m_{0^{++}}$ when the
+$0^{++}$ is the overall lightest ($m_{0^{++}}=m_g$). (The operative isolation threshold is
+sharper; see the sharpening below.)}
 
 \smallskip
 \textbf{Proof skeleton.} In the confined phase there is no asymptotic gluon, hence no $(gg)$
 cut; the lowest continuum in the $0^{++}$ channel is two glueballs, at $\theta\ge2m_g$. If the
 $0^{++}$ is the overall lightest, $m_{0^{++}}=m_g$, so $m_{0^{++}}<2m_{0^{++}}\le\theta$. The
-atom sits strictly below every continuum by its own mass. Dissolution would require a continuum
+atom sits strictly below the two-body continuum by its own mass. Dissolution would require a continuum
 at or below $m_{0^{++}}$, i.e.\ a state lighter than $\tfrac12m_{0^{++}}$ --- a level crossing
 \textbf{from below} --- or gap closure. Same-channel $0^{++}$ versus excited $0^{++*}$ is a von
 Neumann--Wigner avoided crossing (order cannot flip); a cross-channel $\{0^{++},2^{++}\}$
@@ -248,7 +255,7 @@ hierarchy $m_{0^{++}}\ge2m_{\mathrm{lightest}}$.
 
 \smallskip
 \textbf{Sharpening.} In $0^{++}$, charge conjugation $C$ and parity $P$ cannot separate $gg$
-from $(gg)(gg)$ (both are $C$-even, $P$-even), so the \emph{operative} threshold $\Lambda$ for
+from $(gg)(gg)$ (both are $C$-even, $P$-even), so the \emph{operative} threshold $\Lambda_{\star}$ for
 isolation is the excited $0^{++*}$ at $\approx1.5\,m_g$ (physically $1.56\,m_{0^{++}}$), not the
 two-glueball $2m_{0^{++}}$. The coarser target ``no $0^{++}$ below $2m_g$'' is false; the correct
 I2 is a gap to the excited glueball of size $\delta\approx0.5\,m_1$, fixed by power counting, not
@@ -264,6 +271,7 @@ antecedent is exactly the open dynamics.
 \end{claimbox}
 
 \subsection{Non-negativity of the Haar geometric curvature --- \LT}
+\label{sec:wgeo}
 
 \src{\code{research/unconditional/PROOF-JACOBIAN-SAVES.md}.}
 
@@ -272,7 +280,7 @@ antecedent is exactly the open dynamics.
 $X_\ell=\log U_\ell\in\mathfrak{su}(N)$, so Haar is $dU=J\,dX$ with $\Phi=-\log J$. For
 $\mathrm{SU}(N)$, $\Phi=\sum_{i<j}g(\lambda_i-\lambda_j)$ with
 $g(d)=-2\log\bigl(\sin(d/2)/(d/2)\bigr)$; on $|d|<2\pi$, $g''\ge1/6$. Hence $\Phi$ is convex,
-$e^{-\Phi}dX$ is log-concave, and by Prékopa every linear marginal $a=\langle v,\log U\rangle$
+$e^{-\Phi}dX$ is log-concave, and by Prékopa every linear marginal $\xi=\langle v,\log U\rangle$
 has convex free energy:}
 \begin{equation}
 W_{\mathrm{geo}}:=E[\Phi'']-\operatorname{Var}(\Phi')\ \ge\ 0
@@ -289,8 +297,8 @@ closure.}
 \textbf{The exact split and what fails.} The identity is
 \begin{equation}
 \begin{aligned}
-G''(0)&=E\bigl[H_{vv}+\Phi''\,\big|\,a=0\bigr]
-        -\operatorname{Var}\bigl(G_v+\Phi'\,\big|\,a=0\bigr)
+G''(0)&=E\bigl[H_{vv}+\Phi''\,\big|\,\xi=0\bigr]
+        -\operatorname{Var}\bigl(G_v+\Phi'\,\big|\,\xi=0\bigr)
         =\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X,\\
 \Delta_{\mathrm{dyn}}&=E[H]-\operatorname{Var}(G),\qquad
 X=-2\operatorname{Cov}(G,\Phi').
@@ -299,11 +307,13 @@ X=-2\operatorname{Cov}(G,\Phi').
 \end{equation}
 $W_{\mathrm{geo}}$ is the curvature of the pure-Haar marginal; $X$ is the cross-fluctuation of
 the action force with the Jacobian. The theorem bounds $W_{\mathrm{geo}}$ from \textbf{below by
-0}, but the \emph{measured} $W_{\mathrm{geo}}\approx+0.32$ is what carries the sign at
-$\beta=2.5$. Certifying $W>\operatorname{Var}-E[H]$ needs an upper bound on
+0}, but at $\beta=2.5$ the measured decomposition attributes the sign to this term
+($W_{\mathrm{geo}}=+0.319\pm0.005$ on the probe of \S\ref{sec:verdict}, \LE; that probe is
+gauge-dependent, App.~\ref{app:postaudit}). Certifying
+$W_{\mathrm{geo}}>\operatorname{Var}-E[H]$ needs an upper bound on
 $\operatorname{Var}(G|0)$, which is precisely the induced-mass/H1 object. So this is a
 \textbf{sign theorem, value-free}, not a gap theorem. The $-0.165$ ``DEAD-lean'' value reported
-elsewhere is a proxy that dropped exactly $+W$; measured exactly on its own mode, the marginal
+elsewhere is a proxy that dropped exactly $+W_{\mathrm{geo}}$; measured exactly on its own mode, the marginal
 is $+0.51$ (\S\ref{sec:tools}).
 \end{claimbox}
 
@@ -317,7 +327,7 @@ matrix $T=e^{-aH}$ has a strictly positive kernel $T(U,V)>0$ for all $U,V$ (a li
 electric heat kernel, which is positive by
 $K_t(g,h)=\sum_\lambda d_\lambda\chi_\lambda(g^{-1}h)e^{-tC_\lambda}>0$, times a positive
 magnetic weight). Since $T(gU,gV)=T(U,V)$, it descends to a strictly positive kernel
-$\bar T$ on $\mathcal{A}/\mathcal{G}$; for $0\le f\in H_{\mathrm{phys}}$, $f\ne0$,
+$\bar T$ on $\mathcal{A}/\mathcal{G}$; for $0\le f\in \mathcal{H}_{\mathrm{phys}}$, $f\ne0$,
 $(Tf)(U)>0$ everywhere. So $T$ is positivity-improving at every $\beta>0$, and by
 Jentzsch/Krein--Rutman $\lambda_0=1$ is simple with a strictly positive vacuum $\Omega\equiv1$,
 and $0\le\lambda_1<\lambda_0$, giving a finite-volume gap
@@ -384,33 +394,35 @@ runs the wrong way by $\approx e^{5N_p}$; and the provable regime is $\beta<1/48
 \begin{claimbox}{cT}
 \claimhead{Lemma}{(two-block gap; unconditional, abstract)} \emph{Let}
 \begin{equation}
-A=\begin{pmatrix} A & B\\ B^* & C\end{pmatrix}
+\mathbb{A}=\begin{pmatrix} A & B\\ B^* & C\end{pmatrix}
 \quad\text{on}\quad \mathcal{H}=\mathcal{H}_-\oplus\mathcal{H}_+,
 \qquad C\ge\gamma I .
 \label{eq:twoblock}
 \end{equation}
-\emph{Define the Schur complement $S:=A-BC^{-1}B^*$ on $\mathcal{H}_-$. If $S\ge\mu I$, then}
+\emph{Define the Schur complement $\Sigma:=A-BC^{-1}B^*$ on $\mathcal{H}_-$. If $\Sigma\ge\mu I$, then}
 \begin{equation}
-A\ \ge\ \min\Bigl\{\frac{\mu}{1+2\|B\|^2/\gamma^2},\ \frac{\gamma}{2}\Bigr\}\cdot I\ >\ 0 .
+\mathbb{A}\ \ge\ \min\Bigl\{\frac{\mu}{1+2\|B\|^2/\gamma^2},\ \frac{\gamma}{2}\Bigr\}\cdot I\ >\ 0 .
 \label{eq:twoblock-bound}
 \end{equation}
 \begin{proofx}
-$\langle u,Au\rangle=\langle u_1,Su_1\rangle+\gamma\|u_2+\gamma^{-1}B^*u_1\|^2$; put
+$\langle u,\mathbb{A}u\rangle=\langle u_1,Su_1\rangle+\gamma\|u_2+\gamma^{-1}B^*u_1\|^2$; put
 $v_2=u_2+\gamma^{-1}B^*u_1$ and use
 $\|u_2\|^2\le2\|v_2\|^2+2\|B\|^2\gamma^{-2}\|u_1\|^2$.
 \end{proofx}
 
 The lemma needs \textbf{no hypothesis of a positive Hessian}; $A$ may be arbitrarily negative.
-The indefinite Savvidy Hessian is not hidden but \emph{converted} into the demand $S\ge\mu>0$.
+The indefinite Savvidy Hessian is not hidden but \emph{converted} into the demand $\Sigma\ge\mu>0$.
 For 4D pure $\mathrm{SU}(N)$, this becomes the \textbf{tachyonic-compensation inequality} (TCI):
 \begin{equation}
-\langle\varphi,Q\varphi\rangle+\langle\varphi,K\varphi\rangle-cF\ \ge\ \mu>0
+\langle\varphi,Q\varphi\rangle+\langle\varphi,\mathbb{K}\varphi\rangle-cF\ \ge\ \mu>0
 \qquad\text{for all }\|\varphi\|=1,\ \varphi\in\mathcal{H}_- ,
 \label{eq:tci}
 \end{equation}
-i.e.\ the gauge-invariant effective potential is convex at its minimum, pointwise and
+Here $\mathbb{K}$ is the lift of the block scheme; it is unrelated to the fibre Hessian $K$ of
+the variance decomposition below. Inequality \eqref{eq:tci} says that the gauge-invariant
+effective potential is convex at its minimum, pointwise and
 nonperturbatively, and the Savvidy vacuum has no imaginary part. The tool is not vacuous: on the
-free massless field, $Q=0$, the bottom of $A|_-$ is $0$, $S$ is not $\ge\mu$, TCI fails, and the
+free massless field, $Q=0$, the bottom of $A|_-$ is $0$, $\Sigma$ is not $\ge\mu$, TCI fails, and the
 certificate correctly returns $0$.
 
 \smallskip
@@ -422,23 +434,27 @@ term, which the block elimination never touches
 (\code{D-BBS-INTEGRATE-NEG.md}).
 
 \smallskip
-\textbf{Exact variance decomposition (Savvidy-corrected Brascamp--Lieb).} With
-$K=\Pi_0\operatorname{Hess}V\,\Pi_0$, $c=\Pi_0\operatorname{Hess}V\,v$,
+\textbf{Exact variance decomposition (Savvidy-corrected Brascamp--Lieb).} Here $V$ is the full
+action and $H:=\operatorname{Hess}V$ its Hessian --- not the Hamiltonian $H_a$ of
+\S\ref{sec:intro}. With
+$K=\Pi_0\operatorname{Hess}V\,\Pi_0$, $\mathbf{c}=\Pi_0\operatorname{Hess}V\,v$,
 $h_n=v^{\mathsf T}\operatorname{Hess}V\,v$,
 \begin{equation}
 \begin{aligned}
 G''(0)&=S(v)-D(v),\\
-S&=E_\mu\bigl[h_n-\langle K^{-1}c,c\rangle\mid0\bigr],\qquad
-D=\operatorname{Var}_\mu(\partial_nV\mid0)-E_\mu\bigl[\langle K^{-1}c,c\rangle\mid0\bigr].
+S&=E_\mu\bigl[h_n-\langle K^{-1}\mathbf{c},\mathbf{c}\rangle\mid0\bigr],\qquad
+D=\operatorname{Var}_\mu(\partial_nV\mid0)-E_\mu\bigl[\langle K^{-1}\mathbf{c},\mathbf{c}\rangle\mid0\bigr].
 \end{aligned}
 \label{eq:vardecomp}
 \end{equation}
 Sign law: $D\le0\iff K\succeq0$ (true BL); $D=0\iff$ Gaussian; $D>0\iff$ fiber Savvidy. At
-$\beta=0$, $V=\Phi$ is convex, so $D\le0$ and $G''\ge S\ge N/12>0$ --- a theorem. At
-$\beta=2.5$, $D/S\approx2\%$ (measured; the marginal is essentially Gaussian), so $G''>0$ is
-numerically robust with $\sim98\%$ margin. The residual is a uniform bound on the $2\%$ fiber
-defect, which is H1. The acid test is non-trivial: the free Gaussian has $D=0$, and the $k\to0$
-mode has $\operatorname{Var}(a)=\infty$, so $S=0$ and $G''=0-0=0$; the tool manufactures no
+$\beta=0$, $V=\Phi$ is convex, so $D\le0$ and $G''\ge S\ge N/12>0$ --- a theorem.
+\LE{} At $\beta=2.5$ a measured $D/S\approx2\%$ was reported, but \emph{on the gauge-dependent
+gluon mode}, not the gauge-invariant $0^{++}$ (App.~\ref{app:postaudit}); its one-sided interval
+still includes $0$, and a correct-object audit (App.~\ref{app:postaudit}) finds the composite
+variance $V$-suppressed, so this is a Haar/$W_{\mathrm{geo}}$ number, not a positive-gap proof.
+The residual --- a uniform bound on the fiber defect $D$ --- is H1. The acid test is non-trivial: the free Gaussian has $D=0$, and the $k\to0$
+mode has $\operatorname{Var}(\xi)=\infty$, so $S=0$ and $G''=0-0=0$; the tool manufactures no
 false positivity.
 \end{claimbox}
 
@@ -449,17 +465,18 @@ false positivity.
 \code{docs/conditional-theorem.md}.}
 
 \begin{claimbox}{cT}
-\claimhead{Lemma}{(residue--level-gap)} \emph{Let
-$\Lambda:=\inf\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})$. Then}
+\claimhead{Lemma}{(residue--level-gap)} \emph{Suppose the lightest state is an isolated atom at
+$m_1^2$, and let
+$\Lambda_{\star}:=\inf\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})>m_1^2$. Then}
 \begin{equation}
-f_1^2\ \ge\ \frac{\Lambda M_0-M_1}{\Lambda-m_1^2}
-= M_0\,\frac{\Lambda-\bar R}{\Lambda-m_1^2},
+f_1^2\ \ge\ \frac{\Lambda_{\star} M_0-M_1}{\Lambda_{\star}-m_1^2}
+= M_0\,\frac{\Lambda_{\star}-\bar R}{\Lambda_{\star}-m_1^2},
 \qquad \bar R:=\frac{M_1}{M_0}.
 \label{eq:reslevel}
 \end{equation}
-\emph{The right side is positive \textbf{iff} $\Lambda>\bar R$, and $\Lambda>\bar R$ suffices
-(if $f_1^2=0$ then $\Lambda=m_1^2$ and $\bar R\ge\Lambda$). The converse fails (a positive atom
-with a heavy tail can have $\bar R>\Lambda$). So this is a self-certifying sufficient
+\emph{The right side is positive \textbf{iff} $\Lambda_{\star}>\bar R$, and $\Lambda_{\star}>\bar R$ suffices
+(if $f_1^2=0$ then $\Lambda_{\star}=m_1^2$ and $\bar R\ge\Lambda_{\star}$). The converse fails (a positive atom
+with a heavy tail can have $\bar R>\Lambda_{\star}$). So this is a self-certifying sufficient
 certificate, not an equivalence. By this lemma and Theorem A of \code{mass-spectrum},
 $\text{atom(I1)}\wedge\text{I2}\iff$ sharp two-exponential decay
 $C(t)=f_1^2e^{-m_1t}(1+\eta(t))$, $|\eta(t)|\le Be^{-\delta t}$.}
@@ -485,7 +502,7 @@ in \code{conditional-theorem.md} \S6).
 \code{IN-7}, \code{IN-9}), one explicit magnitude bridge (\code{IN-10},
 \texttt{hcert}: $\text{cert}\le\Delta/\Lambda$), and one physical input (\code{IN-11}, the
 lightest bulk state in $0^{++}/2^{++}$). \code{IN-3} --- the nonperturbative beta-function bound
-in the intermediate-coupling region $\lambda\in[1,7.3]$ --- is \textbf{the single physical wall}.
+in the intermediate-coupling region $\lambda_{\mathrm{tH}}\in[1,7.3]$ --- is \textbf{the single physical wall}.
 Balaban-type RG stops at $\lambda\sim1$; strong-coupling expansions require $\lambda$ large;
 there is no rigorous method in between. The theorem is \LC, and the conditional reads as:
 \emph{if} these twelve inputs hold, Clay follows --- not that they do.
@@ -514,7 +531,7 @@ outside the certificate family are not ruled out. This paper preserves that corr
 P3 residue (I1) & \LT{} ($+$OS/KP) & fixed $a$, $\beta<1/48$, $T^4_L$ &
   $f_1^2\ge r_0(\beta)>0$, uniform in $V,L$ & I2 isolation; $a\to0$; $\beta\approx2.5$\\
 No dissolution & \LC & uniform gap $+$ $0^{++}$ lightest &
-  $m_{0^{++}}<\theta=2m_g$; atom pinned & the gap $+$ ordering themselves\\
+  $m_{0^{++}}<2m_g$ (two-body); atom pinned & the gap $+$ ordering themselves\\
 $W_{\mathrm{geo}}\ge0$ & \LT & Haar, flat chart, $g''\ge1/6$ &
   sign of the geometric term, all $k$, all $L$ & dominance over Savvidy at 2.5\\
 $E[\Phi'']\ge N/12$ & \LT & pointwise, any measure & floor on the Jacobian curvature &
@@ -527,7 +544,7 @@ Feshbach--Bogoliubov & \LT{} abstract & two-block, $C\ge\gamma I$, $S\ge\mu I$ &
   explicit gap, no positive Hessian needed & TCI (the 4D input)\\
 $G''=S-D$ & \LT{} identity & exact & $\beta=0$ positivity $G''\ge N/12$ &
   uniform bound on $D$ at 2.5 ($=$ H1)\\
-Residue--level-gap & \LT & moments available & self-certifying sufficiency $\Lambda>\bar R$ &
+Residue--level-gap & \LT & moments available & self-certifying sufficiency $\Lambda_{\star}>\bar R$ &
   equivalence; $\Lambda$ lower bound\\
 Conditional theorem & \LC & \code{IN-0} \ldots{} \code{IN-11} & Clay conclusion &
   the inputs (esp.\ \code{IN-3})\\
