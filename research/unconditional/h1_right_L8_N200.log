@@ -1,0 +1,88 @@
+# H1-RIGHT beta=1.0 L=8 N=200 gap=4 therm=220 seed=5242 gluon_modes=6
+  therm done 11s plaq=0.2416 RSS=62 peak=64MB
+    1/200 (1s ETA 115s) RSS=61 peak=70MB
+    50/200 (32s ETA 97s) RSS=61 peak=70MB
+    100/200 (63s ETA 63s) RSS=61 peak=70MB
+    150/200 (94s ETA 31s) RSS=62 peak=70MB
+    200/200 (121s ETA 0s) RSS=61 peak=70MB
+  GLUON beta=1.0: Gpp=+0.3716+-0.0704 (+5.3s) bracket=+0.004 Wgeo=+0.254 X=+0.004 S=1/Var=0.256 D/S=0.905 free=0.586 G/free=+0.63 LB_rig=-0.021
+  DENSITY beta=1.0: Var(qbar)=1.050e-05 chi=V*Var=0.0430 | Var_A=5.190e-06 Gpp_dens=+2.558e+05 S=1/Var=1.927e+05 D/S=-0.328 | m0=nan meff1=nan
+  DONE beta=1.0 123s peak RSS=100MB
+# H1-RIGHT beta=1.5 L=8 N=200 gap=4 therm=220 seed=5742 gluon_modes=6
+  therm done 12s plaq=0.3660 RSS=103 peak=104MB
+    1/200 (1s ETA 116s) RSS=103 peak=109MB
+    50/200 (26s ETA 77s) RSS=103 peak=109MB
+    100/200 (51s ETA 51s) RSS=103 peak=110MB
+    150/200 (77s ETA 26s) RSS=104 peak=110MB
+    200/200 (102s ETA 0s) RSS=103 peak=110MB
+  GLUON beta=1.5: Gpp=+0.1059+-0.0655 (+1.6s) bracket=+0.038 Wgeo=+0.254 X=+0.004 S=1/Var=0.261 D/S=0.972 free=0.586 G/free=+0.18 LB_rig=-0.017
+  DENSITY beta=1.5: Var(qbar)=9.289e-06 chi=V*Var=0.0380 | Var_A=5.175e-06 Gpp_dens=+1.854e+05 S=1/Var=1.932e+05 D/S=+0.041 | m0=nan meff1=nan
+  DONE beta=1.5 103s peak RSS=110MB
+# H1-RIGHT beta=2.0 L=8 N=200 gap=4 therm=220 seed=6242 gluon_modes=6
+  therm done 9s plaq=0.4999 RSS=101 peak=110MB
+    1/200 (1s ETA 104s) RSS=102 peak=110MB
+    50/200 (26s ETA 79s) RSS=102 peak=110MB
+    100/200 (52s ETA 52s) RSS=102 peak=110MB
+    150/200 (81s ETA 27s) RSS=102 peak=110MB
+    200/200 (112s ETA 0s) RSS=102 peak=110MB
+  GLUON beta=2.0: Gpp=+0.3198+-0.0801 (+4.0s) bracket=+0.017 Wgeo=+0.242 X=+0.033 S=1/Var=0.266 D/S=0.915 free=0.586 G/free=+0.55 LB_rig=-0.037
+  DENSITY beta=2.0: Var(qbar)=1.298e-05 chi=V*Var=0.0532 | Var_A=6.624e-06 Gpp_dens=+1.197e+05 S=1/Var=1.510e+05 D/S=+0.207 | m0=3.530 meff1=2.873
+  DONE beta=2.0 113s peak RSS=110MB
+# H1-RIGHT beta=2.2 L=8 N=200 gap=4 therm=220 seed=6442 gluon_modes=6
+  therm done 13s plaq=0.5679 RSS=102 peak=110MB
+    1/200 (1s ETA 123s) RSS=102 peak=110MB
+    50/200 (33s ETA 99s) RSS=102 peak=110MB
+    100/200 (63s ETA 63s) RSS=102 peak=110MB
+    150/200 (99s ETA 33s) RSS=102 peak=110MB
+    200/200 (133s ETA 0s) RSS=102 peak=110MB
+  GLUON beta=2.2: Gpp=+0.2225+-0.0783 (+2.8s) bracket=-0.036 Wgeo=+0.249 X=+0.026 S=1/Var=0.281 D/S=0.938 free=0.586 G/free=+0.38 LB_rig=-0.145
+  DENSITY beta=2.2: Var(qbar)=1.350e-05 chi=V*Var=0.0553 | Var_A=5.499e-06 Gpp_dens=+1.476e+05 S=1/Var=1.818e+05 D/S=+0.189 | m0=2.905 meff1=2.654
+  DONE beta=2.2 134s peak RSS=110MB
+# H1-RIGHT beta=2.4 L=8 N=200 gap=4 therm=220 seed=6642 gluon_modes=6
+  therm done 12s plaq=0.6285 RSS=102 peak=110MB
+    1/200 (1s ETA 132s) RSS=103 peak=110MB
+    50/200 (33s ETA 100s) RSS=103 peak=110MB
+    100/200 (63s ETA 63s) RSS=103 peak=110MB
+    150/200 (92s ETA 31s) RSS=103 peak=110MB
+    200/200 (128s ETA 0s) RSS=103 peak=110MB
+  GLUON beta=2.4: Gpp=+0.2981+-0.0670 (+4.4s) bracket=-0.096 Wgeo=+0.256 X=+0.023 S=1/Var=0.287 D/S=0.914 free=0.586 G/free=+0.51 LB_rig=-0.213
+  DENSITY beta=2.4: Var(qbar)=1.057e-05 chi=V*Var=0.0433 | Var_A=4.314e-06 Gpp_dens=+1.811e+05 S=1/Var=2.318e+05 D/S=+0.219 | m0=3.245 meff1=2.686
+  DONE beta=2.4 130s peak RSS=110MB
+# H1-RIGHT beta=2.4 L=4 N=200 gap=4 therm=220 seed=6646 gluon_modes=0
+  therm done 2s plaq=0.6545 RSS=98 peak=110MB
+    1/200 (0s ETA 7s) RSS=98 peak=110MB
+    50/200 (2s ETA 5s) RSS=98 peak=110MB
+    100/200 (3s ETA 3s) RSS=98 peak=110MB
+    150/200 (5s ETA 2s) RSS=98 peak=110MB
+    200/200 (7s ETA 0s) RSS=98 peak=110MB
+  DENSITY beta=2.4: Var(qbar)=1.258e-04 chi=V*Var=0.0322 | Var_A=4.682e-05 Gpp_dens=+1.847e+04 S=1/Var=2.136e+04 D/S=+0.135 | m0=nan meff1=nan
+  DONE beta=2.4 8s peak RSS=110MB
+# H1-RIGHT beta=2.4 L=6 N=200 gap=4 therm=220 seed=6648 gluon_modes=0
+  therm done 4s plaq=0.6394 RSS=99 peak=110MB
+    1/200 (0s ETA 19s) RSS=99 peak=110MB
+    50/200 (5s ETA 14s) RSS=99 peak=110MB
+    100/200 (9s ETA 9s) RSS=99 peak=110MB
+    150/200 (14s ETA 5s) RSS=99 peak=110MB
+    200/200 (18s ETA 0s) RSS=99 peak=110MB
+  DENSITY beta=2.4: Var(qbar)=2.440e-05 chi=V*Var=0.0316 | Var_A=1.254e-05 Gpp_dens=+1.057e+05 S=1/Var=7.974e+04 D/S=-0.325 | m0=nan meff1=nan
+  DONE beta=2.4 20s peak RSS=110MB
+# H1-RIGHT beta=1.5 L=4 N=200 gap=4 therm=220 seed=5746 gluon_modes=0
+  therm done 2s plaq=0.3804 RSS=99 peak=110MB
+    1/200 (0s ETA 8s) RSS=99 peak=110MB
+    50/200 (2s ETA 5s) RSS=99 peak=110MB
+    100/200 (3s ETA 3s) RSS=99 peak=110MB
+    150/200 (5s ETA 2s) RSS=99 peak=110MB
+    200/200 (7s ETA 0s) RSS=99 peak=110MB
+  DENSITY beta=1.5: Var(qbar)=1.542e-04 chi=V*Var=0.0395 | Var_A=7.121e-05 Gpp_dens=+1.209e+04 S=1/Var=1.404e+04 D/S=+0.139 | m0=1.076 meff1=5.009
+  DONE beta=1.5 8s peak RSS=110MB
+# H1-RIGHT beta=1.5 L=6 N=200 gap=4 therm=220 seed=5748 gluon_modes=0
+  therm done 5s plaq=0.3680 RSS=100 peak=110MB
+    1/200 (0s ETA 21s) RSS=100 peak=110MB
+    50/200 (5s ETA 14s) RSS=100 peak=110MB
+    100/200 (9s ETA 9s) RSS=100 peak=110MB
+    150/200 (15s ETA 5s) RSS=100 peak=110MB
+    200/200 (20s ETA 0s) RSS=100 peak=110MB
+  DENSITY beta=1.5: Var(qbar)=3.259e-05 chi=V*Var=0.0422 | Var_A=1.627e-05 Gpp_dens=+5.193e+04 S=1/Var=6.145e+04 D/S=+0.155 | m0=1.916 meff1=3.813
+  DONE beta=1.5 22s peak RSS=110MB
+
+# wrote research/unconditional/h1_right_L8_N200.json  total 731s peak RSS=110MB

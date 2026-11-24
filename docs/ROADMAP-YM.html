@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yang–Mills 质量间隙 · 研究里程表</title>
+<style>
+  :root{
+    --bg:#0e1117; --panel:#161b22; --ink:#e6edf3; --dim:#8b949e; --line:#30363d;
+    --ok:#2ea043; --cond:#2f81f7; --nogo:#da3633; --miss:#d29922; --open:#6e7681;
+    --accent:#a371f7;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:
+       radial-gradient(1200px 600px at 20% -10%, #1b2330 0%, transparent 60%),
+       radial-gradient(900px 500px at 100% 0%, #1a1730 0%, transparent 55%),
+       var(--bg);
+      color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+      -webkit-font-smoothing:antialiased;}
+  .wrap{max-width:1000px;margin:0 auto;padding:34px 26px 60px;}
+  header{text-align:center;margin-bottom:8px;}
+  h1{font-size:26px;margin:0 0 6px;letter-spacing:.5px;font-weight:800;}
+  .sub{color:var(--dim);font-size:14px;line-height:1.6;}
+  .topbadges{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:14px;}
+  .topbadge{font-size:12.5px;padding:5px 12px;border-radius:999px;border:1px solid var(--line);background:var(--panel);}
+  .topbadge b{color:var(--ink)}
+  .zero{color:#ff7b72;font-weight:800}
+  .legend{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:22px 0 6px;
+          font-size:12.5px;color:var(--dim)}
+  .lg{display:flex;align-items:center;gap:6px}
+  .sw{width:11px;height:11px;border-radius:3px;display:inline-block}
+  .timeline{position:relative;margin-top:26px;padding-left:46px;}
+  .timeline::before{content:"";position:absolute;left:16px;top:8px;bottom:8px;width:3px;border-radius:3px;
+      background:linear-gradient(180deg,#2ea043,#2f81f7 38%,#d29922 70%,#6e7681 100%);opacity:.5;}
+  .phase{position:relative;margin-bottom:20px;}
+  .dot{position:absolute;left:-38px;top:18px;width:17px;height:17px;border-radius:50%;
+       border:3px solid var(--bg);box-shadow:0 0 0 2px var(--line);}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:14px;
+        padding:15px 18px;position:relative;transition:.2s;}
+  .card:hover{transform:translateY(-1px);border-color:#444c56;}
+  .ph-head{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:8px;}
+  .ph-name{font-size:16px;font-weight:800;letter-spacing:.3px;}
+  .badge{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;border:1px solid;letter-spacing:.3px;}
+  .b-ok{color:var(--ok);border-color:#2ea04355;background:#2ea04316;}
+  .b-cond{color:var(--cond);border-color:#2f81f755;background:#2f81f716;}
+  .b-nogo{color:var(--nogo);border-color:#da363355;background:#da363316;}
+  .b-miss{color:var(--miss);border-color:#d2992255;background:#d2992216;}
+  .b-open{color:#adbac7;border-color:#6e768155;background:#6e768116;}
+  ul{margin:8px 0 0;padding-left:18px;}
+  li{margin:5px 0;font-size:13.6px;line-height:1.62;color:#c9d1d9;}
+  li b{color:var(--ink)}
+  .k{color:#ffd28a;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.8px;}
+  .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12.8px;color:#9fe6b8;}
+  .here{position:absolute;left:-46px;top:6px;display:flex;align-items:center;gap:6px;
+        font-size:11px;color:var(--accent);font-weight:800;letter-spacing:.5px;}
+  .phase.current .card{border:2px solid var(--accent);box-shadow:0 0 0 4px #a371f720, 0 12px 30px -12px #a371f7aa;}
+  .phase.current .dot{background:var(--accent);box-shadow:0 0 0 2px #a371f755,0 0 14px #a371f7aa;}
+  .p0 .dot{background:var(--ok)} .p1 .dot{background:var(--ok)}
+  .p2 .dot{background:var(--cond)} .p3 .dot{background:var(--nogo)}
+  .p5 .dot{background:var(--open)}
+  .final .card{border-style:dashed;background:#11161d;}
+  footer{margin-top:28px;color:var(--dim);font-size:12.5px;text-align:center;line-height:1.7;}
+  .sharp{margin-top:16px;padding:14px 18px;border-radius:12px;background:#12181f;border:1px solid var(--line);
+         font-size:13.6px;color:#c9d1d9;text-align:center;line-height:1.7;}
+  .sharp b{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Yang–Mills 质量间隙 · 研究里程表</h1>
+    <div class="sub">4D 纯 SU(N) · Clay 千年难题 · Lean 4 + 格点数值 + 条件定理<br>截至 2026-11-23</div>
+    <div class="topbadges">
+      <span class="topbadge">状态：<b>条件归约已机检</b></span>
+      <span class="topbadge">已试路线：<b>~110</b></span>
+      <span class="topbadge">物种：<b>#6–#11 全归约到 H1</b></span>
+      <span class="topbadge">Clay：<span class="zero">0%</span></span>
+    </div>
+  </header>
+
+  <div class="legend">
+    <span class="lg"><span class="sw" style="background:var(--ok)"></span>真定理</span>
+    <span class="lg"><span class="sw" style="background:var(--cond)"></span>条件定理</span>
+    <span class="lg"><span class="sw" style="background:var(--nogo)"></span>no-go（试过、不可行）</span>
+    <span class="lg"><span class="sw" style="background:var(--miss)"></span>精确缺失步</span>
+    <span class="lg"><span class="sw" style="background:var(--open)"></span>未达（开放）</span>
+  </div>
+
+  <div class="timeline">
+
+    <div class="phase p0">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ph-head"><span class="ph-name">Phase 0 · 问题改写</span><span class="badge b-ok">真定理 / 等价</span></div>
+        <ul>
+          <li>Clay = <b>G1 存在</b> + <b>G2 隙</b> + 物理通道（0⁺⁺）。</li>
+          <li>锁芯：隙 ⟺ KL 谱测度原子 <span class="m">f₁² = |⟨0|trF²|G⟩|² > 0</span> @ <span class="m">m₁</span>，<b>且隔离</b> Δ&gt;0。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase p1">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ph-head"><span class="ph-name">Phase 1 · 条件链与真定理（战利品）</span><span class="badge b-ok">真定理 ✅</span></div>
+        <ul>
+          <li>条件链 <span class="k">IN-0 … IN-11 ⇒ Clay</span>（Lean 机检）。</li>
+          <li>真定理：<b>P3 强耦合残数</b> <span class="m">f₁²≥r₀ @ β&lt;1/48</span>（V,L-一致）；<b>无溶解</b>；<b>W_geo≥0</b>（Prékopa）；规范不变 PF；Lemma SC；Feshbach–Bogoliubov 两子块；精确分解 <span class="m">G″=S−D</span>。</li>
+          <li>6 个过自由场酸测的新工具；数值：<span class="m">f₁²&gt;0</span> @ β=2.2（17σ）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase p2">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ph-head"><span class="ph-name">Phase 2 · 墙的定位（~90 路收敛）</span><span class="badge b-cond">定位</span><span class="badge b-nogo">+ no-go</span></div>
+        <ul>
+          <li>墙 = <b>Savvidy 大场凹性</b>（Hess <span class="m">−D²+2adF_B</span> 不定；真物理、规范商后仍在）。</li>
+          <li>90+ 次攻击 → <b>一个物种</b>：非微扰、非循环、带符号的<b>条件方差上界</b>（UV=L3 / IR=H1，同一物两尺度）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase p3">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ph-head"><span class="ph-name">Phase 3 · 物种搜索 #6–#11（全部 → H1）</span><span class="badge b-nogo">no-go（穷尽）</span></div>
+        <ul>
+          <li><b>#6</b> 表示环/符号-Fourier → 死（符号是相位，被模方 <span class="m">|A₁|²</span> 抹掉）。</li>
+          <li><b>#7</b> Picard–Lefschetz thimble → <b>Schur-凸（方向对！）</b>但相位控制 = Stokes = 胶子凝聚。</li>
+          <li><b>#8</b> Bakry–Émery Γ₂ → <span class="m">Γ₂ ≡ H1</span>（忠实方言）。</li>
+          <li><b>#9</b> Cheeger 等周 → 已存（<span class="k">B3-ISOPERIMETRIC</span>）。</li>
+          <li><b>#10</b> Tomita–Takesaki 模理论 → 四重已存；Type III₁ 质量盲。</li>
+          <li><b>#11</b> 解析微局部 → 主符号定理，够不到承载质量的解析宽度 = KL 边。</li>
+          <li><b>结论：反局域化原则 + 两坐标墙</b>（正性面 Schur-凹方向错；thimble Schur-凸但付相位）。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase current p4">
+      <div class="here">▶ 你在这里</div>
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ph-head"><span class="ph-name">Phase 4 · 正面攻 H1（当前）</span><span class="badge b-cond">条件（一条缺失估计）</span></div>
+        <ul>
+          <li><b>最锐形式</b>（零松弛）：<br><span class="m">Var_μ(⟨v,∇V⟩ | a=0) ≤ E_μ[H_vv | a=0] − a²Δ₀²</span>，uniform (L,a)。</li>
+          <li>⟺ <span class="m">D ≤ S − λ</span> 且 <span class="m">S ≥ λ</span>；量纲 <span class="m">G″_a / a² ≥ Δ₀²</span>（不是固定常数）。</li>
+          <li>区域：<b>67–89% 已闭</b>（低场+高场锥），但 <b>H1 实际断言的 0%</b>——目标 <span class="m">k→0</span> 粗模坐在典型场开格。</li>
+          <li><b>两处库级更正</b>：<span class="m">E[−D²]=E[f²]</span> 是<b>假</b>（真: <span class="m">E[HessV]=E[∇V⊗∇V]⪰0</span>）；Ward 积=1 仅高斯。</li>
+          <li><b>隙 = 100% 条件化修正</b> <span class="m">W_geo+X</span>（无条件期望 Hessian 已证 PSD）——不是任取符号。</li>
+          <li><b>Lean 机检</b>：<span class="k">H1 ∧ CP ∧ W_geo≥0 ∧ P3 ∧ 无溶解 ⇒ Δ&gt;0</span>，零 <span class="k">sorryAx</span>。</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="phase final p5">
+      <div class="dot"></div>
+      <div class="card">
+        <div class="ph-head"><span class="ph-name">Phase 5 · Clay 本身（未达）</span><span class="badge b-open">开放 · Clay 0%</span></div>
+        <ul>
+          <li>唯一缺失：<b>一条条件方差估计</b>——非微扰、非循环、跨越 Savvidy 交叉、取 <span class="k">a→0</span> 连续极限、<span class="k">(L,a)</span>-一致。</li>
+          <li><b>这台机器尚不存在</b>。当前数学工具箱里没有它。</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="sharp">
+    <b>最锋利的一句：</b>墙没倒；但墙从"Savvidy 符号"被钉成了<b>一条可写的条件方差不等式</b>，
+    且 <span class="m">G″ = E[f²] − D ≥ λ</span> 的实测缺陷只有 <span class="m">D/S ≈ 2%</span>——
+    <b>Clay 仍是 0%，但墙现在透明、上了标尺、点名了那一条缺失的估计。</b>
+  </div>
+
+  <footer>
+    正面攻 H1 的数值核对（正确对象，非规范依赖胶子）仍在跑；回齐补进 §A。<br>
+    真定理来自 <span class="k">docs/</span> 与 <span class="k">research/unconditional/</span>；每条均标明来源文件，未证者不标 QED。
+  </footer>
+</div>
+</body>
+</html>
