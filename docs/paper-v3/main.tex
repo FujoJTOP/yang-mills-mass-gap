@@ -147,8 +147,10 @@ $G''=-\rho_v''/\rho_v\ge0$, and in the scan it is strict (minimum $0.20$--$0.24>
 averaged curvature is the Fisher information, $E[G'']=I(\rho_v)\ge1/\operatorname{Var}(a)$, positive
 across the boundary at $\beta=2.5$. An exact one-step renormalization-group descent transports the
 ultraviolet floor to $\beta=2.5$ on the box-gap-protected modes, breaking only on the Savvidy soft
-mode. What remains is the \emph{uniform} positive margin, which is exactly $H1$; the spectral class
-is a no-go at the head. Thus the ultraviolet face is not a new route: it is a proved room, a locked door, and a
+mode. At small volume the soft-mode margin is positive (minimum $+0.32>N/12$), decaying
+$\approx1/L$ while the $\beta=0$ Haar floor is $L$-independent; whether it survives
+decompactification is the sharpening of $H1$. What remains is the \emph{uniform} positive margin,
+which is exactly $H1$; the spectral class is a no-go at the head. Thus the ultraviolet face is not a new route: it is a proved room, a locked door, and a
 door back to the same wall.
 
 The verdict is unchanged: \textbf{Clay is $0\%$}. What changes is that the ultraviolet face is now
@@ -578,6 +580,48 @@ $N\approx2000$--$4000$ configurations, one job at a time ($\approx1$--$2$ CPU-ho
 $\mathrm{SU}(2)$ in C/OpenMP). It yields a controlled statistical bound, not a certificate; the
 uniform floor remains $H1$.
 
+\subsection{The soft mode}
+\label{sec:soft}
+
+The one mode on which the descent breaks is the Savvidy soft mode. Six computations decide what can
+be said about it.
+
+\textbf{Small-volume positivity.} In every small-volume $\mathrm{SU}(2)$ model ($1\times1$,
+$1\times2$, $1\times3$, $1\times4$, $2\times2$ cross, 4D single site) the conditioned soft-mode
+curvature at $\beta=2.5$ is positive, with minimum $+0.32>N/12=0.167$. Its scaling is
+$\approx1/L$ ($1.01\to0.65\to0.42$ for $L=2,3,4$), \emph{not} the box-gap $4\pi^2/L^2$; it increases
+with $\beta$ ($0.49\to0.83\to1.60$ for $\beta=1\to4$); and the $\beta=0$ Haar floor is
+$0.23$--$0.25$ and $L$-independent. The full Hessian is indefinite already at small volume (the
+fraction of negative eigenvalues rises from $0.08$ to $1.00$ with $L$), so $\gamma_j<0$,
+$\eta_j\ge1$, and $D=+0.19>0$: the positivity is \emph{measure-carried}, not a Hessian gap.
+
+\textbf{The constant mode.} The constant ($k=0$) mode has an exact closed-form marginal; at
+$\beta=2.5$ its floor is $+0.36$ to $+0.69$ (Cartan and off-diagonal/Savvidy classes), twist-robust,
+with no $1/L^2$ softening on $L=1,2,3$.
+
+\textbf{Anisotropic blocking.} An anisotropic/two-step blocking makes $\eta=0.28$ at $\beta=2.5$
+(versus $22$ isotropic) and gives a volume-uniform, $\beta$-dependent curvature floor
+$\approx0.40$. But the soft mode is a fixed point of the blocking, so no blocking lifts
+$G''_{\mathrm{soft}}$ above its bare value.
+
+\textbf{Rank-one structure.} The exact margin identity is
+$G''=(S-D_{\mathrm{Sav}})+|D_+|=m_{\mathrm{soft}}+|D_+|$, with the overlap lemma
+$\langle\varphi_-|c\rangle=\langle H_{cf}\varphi_-|v\rangle$; the refined bound
+$D_{\mathrm{Sav}}\le g^2\operatorname{Var}(gB,\lambda_4)$ corrects the corpus ($2/\lambda_4$ is an
+asymptote, peak $2.21/\lambda_4$). The ceiling $m_{\mathrm{soft}}\le G''\approx3.5\%\,S$ shows that
+positivity is Brascamp--Lieb-carried, not rank-one-carried. TCI in its gap-bearing strong form is
+false at the barrier; its typical and averaged weakenings stop at a curvature floor.
+
+\textbf{The lattice.} The stored data are gauge-dependent plane waves; the sampled soft mode softens
+with volume ($+0.200\to+0.164\to+0.142$; at $L=8$ the exact-identity value is $+0.080\pm0.189$,
+zero-consistent). Positivity is not certified. The minimal decisive run (Landau gauge with
+Gribov-copy averaging, block-Hessian diagonalization at $\beta=2.5$, $L=8,12$) is specified.
+
+\textbf{The remaining question} is decompactification: the small-volume floor decays
+$\approx1/L$, while the $\beta=0$ Haar floor is $L$-independent. Whether the decay ends at zero
+(then the uniform floor is $H1$) or saturates at the Haar floor is the sharpest open question of the
+ultraviolet face.
+
 \subsection{The pincer, honestly}
 
 The strong-coupling jaw (Dobrushin at $\beta<1/72$, SZZ at $\beta<1/48$) is a theorem but grips
@@ -793,6 +837,12 @@ Local sign at the coarse minimiser & \LT{}/\LE & \code{H4-HEAD-COUNTEREXAMPLE.md
 One-step RG descent & \LT & \code{H1-RG-DESCENT.md}\\
 Spectral no-go at the head & \LN & \code{H6-HEAD-SPECTRAL.md}\\
 Head numerics and one-sided bounds & \LE/\LM & \code{H5-HEAD-NUMERICS.md}\\
+Soft-mode positivity at small volume & \LT{}/\LE & \code{SM1-SOFT-EXACT.md}\\
+Constant-mode floor, no $1/L^2$ softening & \LT{}/\LE & \code{SM4-CONSTANT-MODE.md}\\
+Anisotropic descent $\eta<1$ & \LT & \code{SM3-ANISOTROPIC-RG.md}\\
+Rank-one identity and ceiling & \LT & \code{SM2-RANK-ONE.md}\\
+TCI(strong) false at the barrier & \LN & \code{SM5-TCI-HEAD.md}\\
+Lattice soft mode not certified & \LE/\LM & \code{SM6-SOFT-LATTICE.md}\\
 Head is $H1$ & \LM & \code{V4-PINCER.md}; \code{STAR2-CLASSIFICATION.md}\\
 \bottomrule
 \end{longtable}
