@@ -8,7 +8,7 @@
 | 项 | 路径 | 说明 |
 |---|---|---|
 | PDF | `docs/YANG-MILLS-CONDITIONAL-REDUCTION-V2.pdf` | 81 页,1.45 MB |
-| **Lean 源码包** | `docs/zenodo-v2/ym-v2-lean.zip` | 40 个 `.lean` + 构建脚本 + lakefile/pin + 校验表;104 KB;不含 Mathlib 与 `OSforGFF` |
+| **Lean 源码包** | `docs/zenodo-v2/ym-v2-lean.zip` | 36 个项目 `.lean`(6 个 `YMStatement` + 30 个 `research`)+ `lakefile.lean`、构建脚本、toolchain pin、校验表;104 KB;不含 Mathlib 与 `OSforGFF` |
 | 校验 | `docs/zenodo-v2/SHA256SUMS.txt` | PDF 与 zip 的 sha256 |
 | 描述 | `docs/zenodo-v2/description.html` | 粘贴到 Zenodo 的 Description 字段 |
 | 元数据 | `docs/zenodo-v2/zenodo-metadata.md`(人读)/ `zenodo.json`(机读) | 逐项填入 |
@@ -17,7 +17,7 @@
 
 **不要上传**:`docs/paper-v2/` 的 LaTeX 源码与 `main.aux/log/toc`、任何 `out*.txt`、
 `ym-v2-lean/` 解包目录、`vendor/OSforGFF/`(含 `.lake` 构建产物,11 GB)与 Mathlib 源码。
-Lean 只交 zip:里面是自有的 40 个 `.lean` 文件、`lakefile.lean`、`lean-toolchain`、
+Lean 只交 zip:里面是自有的 36 个项目 `.lean` 文件、`lakefile.lean`、`lean-toolchain`、
 `scripts/` 与 `MANIFEST.sha256`;构建时由 Lake 按 pin 拉取 Mathlib。
 
 ## Lean 包说明(给上传者)
@@ -42,6 +42,8 @@ Lean 只交 zip:里面是自有的 40 个 `.lean` 文件、`lakefile.lean`、`le
   zip `c991fadc00f80a31bf951944257624c31312ea54b30bdacaf7815dfd8e3825aa`。
 - 标题页写明 "Second Edition — The Wall in Two Coordinates"、"version 2"、"supersedes the 31-page v1"。
 - zip 解包后 `ym-v2-lean/README.md` 存在,且 `MANIFEST.sha256` 行数与文件数一致(45 行)。
+- 校验和以 **zip 文件本身**为准;仓库里的解包目录若在 Windows 上被 CRLF 转换,哈希可能不同,
+  这不影响上载的 zip。
 
 ## 2. 在 Zenodo 上发布新版本
 
