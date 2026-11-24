@@ -164,7 +164,7 @@ file containing the proof. We separate the unconditional strong-coupling results
 conditional ones and state explicitly, where relevant, that a residue theorem is \textbf{not} a
 gap theorem.
 
-\subsection{The strong-coupling residue theorem (P3) --- \LT, regime-limited, I1 only}
+\subsection{The strong-coupling residue theorem (P3) --- \LT{} (mod.\ OS/KL), regime-limited, I1 only}
 
 \src{\code{research/unconditional/PROOF-P3-UNCONDITIONAL.md}; \code{PROOF-P1P2.md};
 \code{PROOF-P3.md}.}
@@ -174,21 +174,20 @@ gap theorem.
 each $\beta<\beta_1$, a constant $r_0(\beta)=\tfrac12 c_1(\beta)u(\beta)^p>0$ ($c_1$ a positive
 $\mathrm{SU}(N)$ group constant, $u(\beta)$ the fundamental character coefficient,
 $u\asymp\beta$; the exponent $p$ is fixed by the character normalization --- the corpus uses
-$p\ge1$ --- and its value only shifts the prefactor), such that for every torus $T^4_L$,}
+$p\ge1$ --- and its value only shifts the prefactor), such that, on the cylinder $\mathcal C_L=T^3_L\times\mathbb R$ and for every spatial volume $L$,}
 \begin{equation}
-f_{1,L}^2=\lim_{t\to\infty}e^{m_1(L)t}\,C_L(t)\ \ge\ r_0(\beta)\ >\ 0,
+f_{1,L}^2:=\nu_L(\{E_{1,L}\})=\lim_{t\to\infty}e^{E_{1,L}t}\,C_L(t)\ \ge\ r_0(\beta)\ >\ 0,
 \label{eq:p3}
 \end{equation}
-\emph{\textbf{uniformly in $L$}.}
+\emph{(limit $t\to\infty$ at fixed $L$ first, then $L$-uniformity; $L\to\infty$ is not taken).}
 
 \smallskip
 \textbf{Hypotheses and imports.} Wilson action $S=\beta\sum_p\bigl(1-N^{-1}\operatorname{Re}
 \operatorname{tr}U_p\bigr)$, Haar measure, character expansion with $c_r(\beta)\ge0$. The proof
 imports the Osterwalder--Seiler connected-composite expansion and the Kotecký--Preiss criterion;
-the single lemma left as ``standard assembly'' by the earlier drafts --- the \textbf{graded-strip
-Kotecký--Preiss lemma} --- is written out in full in \code{PROOF-P3-UNCONDITIONAL.md} \S2--\S4.
+the earlier ``standard-assembly'' lemmas are now proved in full in \code{P3-CYLINDER-RESIDUE.md} (cylinder $+$ spectral bridge), \code{P3-FOURWALL-DERIVATION.md} (four-wall geometry), \code{P3-FULLREP-KP.md} (full-representation KP, $K\le CN$), \code{P3-DRESSED-MASS.md} (dressed-mass resummation), modulo the standard OS/Källén--Lehmann representation.
 Its hypothesis is the per-site condition $u(\beta)K_{\mathrm{KP}}<1$ with explicit $K_{\mathrm{KP}}\le CN$ (the plaquette
-adjacency degree is $\le12$; the $\mathrm{SU}(N)$ link multiplicity is polynomial in $N$,
+adjacency degree is $\le20$; the $\mathrm{SU}(N)$ link multiplicity is polynomial in $N$,
 bounded by $CN$ on the fundamental sector). The one constant not reduced to a decimal is the
 constant in $C_g\le CN$; its \emph{existence} is proved, and its value only shifts the prefactor
 of $\beta_1$.
@@ -197,8 +196,8 @@ of $\beta_1$.
 \textbf{Proof skeleton.} (i) $\operatorname{tr}F^2$ is a finite A1g sum of local plaquette
 observables, so $C(t)$ is a sum over connected polymers; absolute convergence is the KP
 condition $uK<1$, uniform in volume and strip length. (ii) A connected polymer linking time $0$
-to time $t$ must meet every intermediate slice, so its plaquette cost is $\ge t/a$; equality
-forces a single fundamental flux tube, weight $a_0u^{t/a}=a_0e^{-m_1t}$. This tube is the
+to time $t$ must meet every intermediate slice, so its plaquette cost is $\ge 4t/a$ (a four-walled tube); equality
+forces the straight four-walled tube, weight $a_0u^{4t/a}=a_0e^{-m_1t}$, $m_1=4\ln(1/u)/a$. This tube is the
 \emph{unique} leading concentration, and its amplitude $a_0(\beta)>0$ is a product of positive
 fundamental character coefficients times the positive singlet recoupling
 $f\otimes\bar f\to1$. (iii) $f_1^2=|\langle\Omega|O|\mathbb{G}\rangle|^2$ is a modulus-square, so no sign
