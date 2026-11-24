@@ -1,0 +1,73 @@
+
+==============================================================================
+PART 1 | pointwise trap:  Q>=0 & Q<=Hess  ==>  Hess>=0  (no PSD minorant of indefinite Hess)
+==============================================================================
+  Savvidy-like Hessian H =
+ [[ 2.   0.6]
+ [ 0.6 -1. ]]
+  eigenvalues of H = [-1.115549  2.115549]    (lambda_min = -1.1155 < 0)
+  any PSD Q with Q<=H found in search?  NO  (as forced: H<0 somewhere => impossible)
+  => a POINTWISE quadratic minorant cannot be sign-definite where Savvidy is negative. [T]
+
+==============================================================================
+PART 2 | expectation compensation E[H_xx]=E[f^2] (Stein) is exact but needs the FULL measure
+==============================================================================
+
+  (a) bounded Gaussian  V=1/2 x^2+1/2 y^2+c x y:  E[H_xx]=a=1 vs E[f^2] (f=a x+c y), full box:
+     c=-0.6 :  E[H_xx]= 1.000000   E[f^2]= 1.000000   diff= 4.17e-09   (exact: both = 1)
+     c= 0.0 :  E[H_xx]= 1.000000   E[f^2]= 1.000000   diff= 8.07e-14   (exact: both = 1)
+     c= 0.6 :  E[H_xx]= 1.000000   E[f^2]= 1.000000   diff= 4.17e-09   (exact: both = 1)
+  (b) SAME Gaussian, SHRINKING box -> the IBP boundary term is left behind:
+     box=+-8.0 :  E[f^2]box= 1.00000   truncation residual = E[f^2]box - 1 = -4.167e-09
+     box=+-3.0 :  E[f^2]box= 0.93294   truncation residual = E[f^2]box - 1 = -6.706e-02
+     box=+-2.0 :  E[f^2]box= 0.74325   truncation residual = E[f^2]box - 1 = -2.567e-01
+     box=+-1.5 :  E[f^2]box= 0.57155   truncation residual = E[f^2]box - 1 = -4.285e-01
+  => Stein compensation is a statement about the UNCONDITIONED, exactly-INTEGRATED measure.
+     Truncation/conditioning re-introduces a boundary term = the variance the gap lives in (H1).
+     FREE FIELD (a,b->0 Gaussian, massless): E[H]=E[f^2]=0 -> identity met, GAP-BLIND. [T]
+
+==============================================================================
+PART 3 | the marginal fixpoint  Q=G''(0)=m^2_bare - g^2 Var(y^2|0), and its self-consistency
+==============================================================================
+
+  exact identity G''(0) == m^2 - g^2 Var(y^2|0):
+     m2=1.00 g=0.00 lam=0.00 :  G''_num= 1.00000   m^2-g2Var= 1.00000
+     m2=1.00 g=0.60 lam=0.50 :  G''_num= 0.81780   m^2-g2Var= 0.81780
+     m2=0.00 g=0.60 lam=0.50 :  G''_num=-0.18220   m^2-g2Var=-0.18220
+
+  FREE-FIELD ACID: m2=0, g=0  ->  G'' = 0.000000  (gapless fixpoint Q=0 admissible)
+  PURE-YM sign  : m2=0, g=0.6 -> G'' = -0.182200  (NO bare source => Q<=0, Savvidy sign)
+
+==============================================================================
+PART 3b | self-consistent closure  Q = b - g^2 Var(y^2|0 ; k=Q) : b=0 (pure YM) vs b>0
+==============================================================================
+     bare b=0.0 g=0.6 :  Q*=-0.39100  (residual 2.22e-16)   sign=NEGATIVE (no gap)
+     bare b=0.0 g=1.0 :  Q*=-1.08611  (residual 8.88e-16)   sign=NEGATIVE (no gap)
+     bare b=1.0 g=0.6 :  Q*= 0.78758  (residual 5.55e-16)   sign=POSITIVE source needed
+     bare b=1.0 g=1.0 :  Q*=-0.08611  (residual 1.39e-17)   sign=NEGATIVE (no gap)
+
+  READING:
+   * b=0,g>0 (pure YM): the self-consistent curvature is Q*<=0 (Savvidy/unstable sign).
+     There is NO positive fixed point -- the fixpoint does not GENERATE a scale.
+   * b>0: Q*>0 because the BARE MASS b is the source. Pure YM has no such bare mass.
+   * the free massless fixpoint is exactly Q=0.  => Q=0 is admissible; no source at Q=0. [V-here]
+
+==============================================================================
+PART 4 | the one explicit scale-breaker (trace anomaly) is HOMOGENEOUS (no Q-independent source)
+==============================================================================
+     f_G=1.0 m_G=1.0 :  (f_G m_G^2)/(f_G) = m_G^2 = 1.0  (relation fixes m_G in terms of f_G;  it is homogeneous, carries no Q-independent source)
+     f_G=2.0 m_G=2.0 :  (f_G m_G^2)/(f_G) = m_G^2 = 4.0  (relation fixes m_G in terms of f_G;  it is homogeneous, carries no Q-independent source)
+     f_G=3.0 m_G=3.0 :  (f_G m_G^2)/(f_G) = m_G^2 = 9.0  (relation fixes m_G in terms of f_G;  it is homogeneous, carries no Q-independent source)
+  => strip bare mass: the only scale-breaker (anomaly) enters ~ f_G m_G^2, i.e. HOMOGENEOUSLY;
+     it relates the residue to the mass but cannot FLOOR either. A nonzero Q = spontaneous
+     scale breaking = dimensional transmutation = the mass gap itself. [T-structure]
+
+==============================================================================
+SUMMARY (no QED)
+==============================================================================
+ 1 pointwise: PSD minorant of an indefinite Hessian does NOT exist (Savvidy kills it). [T]
+ 2 expectation: E[Hess]=E[f^2]>=0 by Stein -- true, but gap-blind (free field saturates). [T]
+ 3 fixpoint Q=G''(0): Q=0 admissible (free); pure YM (b=0) => Q*<=0, NO source at Q=0. [V-here]
+ 4 uniformity: the positive branch needs spontaneous scale breaking = the gap (=H1).
+ => The quadratic-minorant fixpoint does NOT exclude the gapless point; Q=0 solves it,
+    there is no source at Q=0, and a nonzero fixed point IS dimensional transmutation. NO QED.

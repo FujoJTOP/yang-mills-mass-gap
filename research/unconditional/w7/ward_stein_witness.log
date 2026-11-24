@@ -1,0 +1,64 @@
+==============================================================================
+PART A — 1D coarse marginal: the triple holds for EVERY normalised p;
+         G''(0)=-p''(0)/p(0) is FREE (sign and magnitude).
+==============================================================================
+marginal p(a)                  G''(0)       Ward Stein residual       Var(a)
+------------------------------------------------------------------------------
+Gaussian chi=4           +2.500000e-01   1.000000      -2.78e-17       4.0000
+Gaussian chi=1           +1.000000e+00   1.000000      -1.11e-16       1.0000
+Gaussian chi=0.25        +4.000000e+00   1.000000      -4.44e-16       0.2500
+Gaussian chi=100         +1.000000e-02   1.000000      -1.73e-18     100.0000
+Gaussian chi=1e+04       +1.000000e-04   1.000000      -1.36e-20   10000.0000
+Bimodal mu=2.00 s=0.35   -2.583923e+02   1.000000      -1.78e-15       4.1225
+Bimodal mu=1.50 s=0.50   -3.200000e+01   1.000000      -8.88e-16       2.5000
+Bimodal mu=0.60 s=0.50   -1.760000e+00   1.000000      -4.44e-16       0.6100
+Flat-top mixture         +2.777776e+00   0.999996      +0.00e+00       2.6612
+
+  -> Ward=1 & Stein residual=0 to quadrature precision for EVERY p;
+     G''(0) spans POSITIVE (Gaussian), NEGATIVE (bimodal dip), ~0 (flat-top).
+     Gaussian chi->inf (gapless free limit): G''->0< c.  No sign-definite R.
+
+==============================================================================
+PART B — 2D (coarse a + fibre y): variance identity G''=E[H|0]-Var(f|0);
+         Var(f|0)>0 SUBTRACTS (wrong direction to floor G'').
+==============================================================================
+B1 (H>0, cross-coupling)      
+   Ward E[af]         = +1.000000   (=> 1)
+   E[H|0]             = +3.000000
+   Var(f|0)           = +0.801210   (>=0, SUBTRACTS)
+   E[H|0]-Var(f|0)    = +2.198790
+   G''(0) (d m/da)|0  = +2.198801   (identity check)
+   G''(0) <= E[H|0] ? = True
+
+B2 (Savvidy-like H<0 at 0)    
+   Ward E[af]         = +1.000000   (=> 1)
+   E[H|0]             = -1.600000
+   Var(f|0)           = +0.102195   (>=0, SUBTRACTS)
+   E[H|0]-Var(f|0)    = -1.702195
+   G''(0) (d m/da)|0  = -1.701955   (identity check)
+   G''(0) <= E[H|0] ? = True
+
+==============================================================================
+PART C — real SU(2) data (h1_right, L=8): measured G''>0 but the
+         rigorous-style lower bound LB_rig<0 at EVERY beta (no floor).
+==============================================================================
+  beta      L        Gpp       +-SE   1/Var(a)     LB_rig     Gpp/free
+------------------------------------------------------------------------------
+   1.0      8     0.3716     0.0704     0.2557    -0.0212        0.634
+   1.5      8     0.1059     0.0655     0.2614    -0.0168        0.181
+   2.0      8     0.3198     0.0801     0.2662    -0.0375        0.546
+   2.2      8     0.2225     0.0783     0.2806    -0.1449        0.380
+   2.4      8     0.2981     0.0670     0.2873    -0.2133        0.509
+
+  -> Gpp>0 (measured) at all beta; LB_rig<0 at all beta =>
+     no rigorous uniform G''>=c>0 at the crossover. Free reference
+     (4 sin^2(k/2)=0.586 at L=8) is NOT exceeded uniformly (Gpp/free<1).
+  -> W7 (direct): SU(2) beta=2.5 G''=+0.27+-0.004; SU(3) beta=2.5
+     G''=+0.51+-0.08 with E[H]-Var=-0.03 (positivity is Haar-carried).
+
+==============================================================================
+VERDICT: Ward+Stein+variance is ONE identity = 'p is a normalised pdf'.
+Gapless free field (chi->inf) satisfies it with G''->0; bimodal satisfies
+it with G''<0; variance identity computes G''=E[H|0]-Var(f|0)<=E[H|0]
+(wrong direction). No sign-definite R>=c>0 only for gapped. READ, not FORCE.
+==============================================================================
