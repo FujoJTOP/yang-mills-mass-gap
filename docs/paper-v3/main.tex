@@ -796,6 +796,68 @@ necessary ceiling. The falsification battery is: free field (must fail), thin at
 deep double well (no barrier-uniform $\lambda$), carrier/vacuity (must be non-vacuous), and dimension
 ($G''_a=a^2m_{\mathrm{phys}}^2$).
 
+\subsection{The atom: binding, isolation, and the resolution bound}
+\label{sec:atom}
+
+The $H1$ wave left the atom as the irreducible target. Six routes now sharpen what that means.
+
+\textbf{Isolation is the parent, not the child.} Write $I_2$ for the isolation statement
+$\Lambda_\star-m_1^2\ge\delta>0$ and $I_1$ for the atom $f_1^2>0$. A support gap forces the atom
+($I_2\Rightarrow I_1$), but an atom can sit at the edge of a continuum ($I_1\not\Rightarrow I_2$).
+The campaign's ``atom $+$ isolation'' pair is therefore, qualitatively, \emph{isolation alone}; the
+atom is downstream \LT/\LN. Moments upper-bound isolation only (the dual Christoffel bound), and the
+lower end $0$ is realised by thin-gap measures matching any finite moments; structurally, isolation
+is an \textbf{order-2} (second-eigenvalue/TP$_2$) rung above the atom's order-1 (Perron) rung, absent
+on the orderless quotient $\mathcal A/\mathcal G$. This explains the banked no-gos as a tier, and gives
+the exact target
+\begin{equation}
+  \rho=\frac{m_{0^{++*}}}{m_{0^{++}}}\ge1+c>0
+  \quad\text{at }\beta\approx2.5
+  \qquad\text{(order-2 total positivity on }\mathcal A/\mathcal G\text{)}.
+  \label{eq:isolationtarget}
+\end{equation}
+It is exact in solvable models (2D Yang--Mills Casimir ratio $\rho^2=8/3$; the 1D rotor) and correctly
+absent on the free massless composite \LT/\LE.
+
+\textbf{Transport and the exact anchor.} The multiplicative identity $f_1^2(\mu)=Z_O^2f_1^2(\mu_0)$
+has a trivial positive $Z_O$ fixed by the trace anomaly (no Banks--Baxks zero in pure Yang--Mills);
+$Z_O$ was never the wall. The missing step is the state overlap
+$\Omega=|\langle G_{\mathrm{tgt}}|O|G_{\mathrm{eff}}\rangle|^2=1$, i.e.\ the same lightest $0^{++}$
+atom persisting with uniform isolation \LT/\LC/\LM. The only exact positive anchor is the
+strong-coupling residue theorem ($f_1^2\ge r_0(\beta)>0$ for $\beta<1/48$, $L$-uniform); its
+mechanism is \emph{binding}: the minimal connected $\operatorname{tr}F^2$ polymer is a single flux
+tube, and its amplitude is a modulus-square of a positive overlap. It transports nothing to
+$\beta=2.5$: there is no isolation, no $a\to0$, and the $1/48$ Ursell wall cannot be crossed;
+$f_1^2$ is upper-semicontinuous, so continuity carries no sign up. Every solvable model computes the
+ceiling $\chi=1/G''$ exactly and has $f_1^2=0$ (2D Yang--Mills: $\operatorname{tr}F^2=H$ conserved;
+$\beta=0$ Haar: $\chi=0.2688$ but $f_1^2=0$; one plaquette: no time; 1D chain: ceiling only). The
+structural discriminant is \textbf{binding}, not the Haar measure, compactness, or the carrier
+\LT/\LE.
+
+\textbf{Atom readers and the resolution bound.} Discontinuous functionals do read the atom exactly:
+the Stieltjes boundary jump, the Christoffel/Hankel $\lambda_n$, the sup-atom, de Branges/spectral
+shift all return $f_1^2$ and vanish on the free cut. But none is non-circular: each evaluates at
+$x=m_1^2$ (presupposing the gap), or needs $\varepsilon\to0$/$n\to\infty$ (infinite data), or reads
+the largest atom rather than the edge. Stone--Weierstrass makes the obstruction quantitative: for
+every weak-$*$ continuous finite-data functional $g$,
+\begin{equation}
+  \sup_\nu|E(\nu)-g(\nu)|\ \ge\ f_1^2/2 ,
+  \label{eq:resolutionbound}
+\end{equation}
+so the instrument error is at least the signal. The atom is computable from the exact measure by the
+double limit of \S\ref{sec:decompact} (Appendix~F of the companion paper), but not from finite
+$(L,a)$ data. This is the exact quantitative form of the weak-$*$ theorem \LT/\LN.
+
+\textbf{Adversarial status.} The atom is not one object. Its \emph{existence} $f_1^2>0$ is not
+killable in the confined phase, but the protection is confinement kinematics plus the trace anomaly,
+\emph{not} $H1$; changing the carrier to $\operatorname{tr}F\tilde F$ kills $f_1^2$ exactly (parity)
+while keeping the state and the gap. The \emph{residue floor} $f_1^2\ge r_0$ is robust and in models
+strictly easier than the gap (a double well has $O(1)$ residue with gap $\to0$, but $\chi\to\infty$,
+so $H1$ fails). \emph{Isolation} is the gap, modulo the IN-11 heuristic. The strongest no-go is that
+$H1$ plus the squeeze plus positivity plus a fixed gap do not force an atom: there is a gapped
+atomless measure with bounded $\chi$ \LT/\LN. So the full target $H^*$ is the gap; the atom wave
+does not reduce it.
+
 \subsection{The pincer, honestly}
 
 The strong-coupling jaw (Dobrushin at $\beta<1/72$, SZZ at $\beta<1/48$) is a theorem but grips
@@ -883,6 +945,9 @@ $\beta\approx2.5$.
 \item A seven-route attack on $H1$: four equivalent faces of the missing lemma, directional
   no-gos for the standard method classes, a carrier-limited 4D pilot plateau, and the carrier hazard
   that makes $H1$ strictly weaker than the gap and the atom the irreducible target.
+\item A six-route atom wave: isolation is the parent of the atom (order-2 TP$_2$), binding is the
+  structural discriminant, every atom-reader is circular at the Stone--Weierstrass resolution bound
+  $\sup|E-g|\ge f_1^2/2$, and $H1$ plus a fixed gap does not force an atom.
 \end{enumerate}
 
 % =====================================================================
@@ -1108,6 +1173,12 @@ Ricci dominated; Cheeger capacity; gate density & \LT{}/\LC/\LN & \code{Q4-BAKRY
 $H1$ strictly weaker; carrier hazard; $F1$--$F5$ & \LT{}/\LN & \code{Q6-H1-STATUS.md}\\
 Fisher is a variance floor; RMT blind at 3\% & \LT{}/\LN & \code{Q7-TOOL-FORGE.md}\\
 Four faces of the $H1$ lemma & \LT{}/\LC & \code{Q-WAVE-SYNTHESIS.md}\\
+Isolation is the parent; order-2 TP$_2$ target & \LT{}/\LN & \code{R2-ISOLATION.md}\\
+Residue transport: $Z_O$ trivial, state overlap missing & \LT{}/\LM & \code{R1-RESIDUE-TRANSPORT.md}\\
+Atom readers and Stone--Weierstrass bound & \LT{}/\LN & \code{R3-ATOM-FUNCTIONAL.md}\\
+Binding is the discriminant; exact anchors & \LT{}/\LE & \code{R5-EXACT-ANCHORS.md}\\
+Adversarial atom status; gapped atomless measure & \LT{}/\LN & \code{R6-ATOM-ADVERSARIAL.md}\\
+Residue measurement protocol & \LE/\LM & \code{R4-RESIDUE-PROTOCOL.md}\\
 \bottomrule
 \end{longtable}
 \normalsize
