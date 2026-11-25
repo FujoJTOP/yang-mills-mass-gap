@@ -151,6 +151,7 @@ f₁² ≥ c₁(β)·u(β)^p·(1 − O(u)) > 0,    u(β)→0.
 ## 10. 文件索引
 
 - 总册/前沿：`docs/YANG-MILLS-MASTER.md`（本册）、`docs/PROOF-SKELETON.md`（**G1+G2 逐节点状态 + 诚实完成度 %**）、`research/unconditional/ABC-FINAL-LEDGER.md`（**A/B/C 三腿终局账本，§3/§4 源**）、`docs/yang-mills-frontier.md`、`docs/new-tools-registry.md`、`docs/conditional-theorem.md`、`docs/gap-ledger.md`、`docs/IN-AUDIT.md`
+- 波次总账：`research/v3/P-WAVE-SYNTHESIS.md`（周期常模）、`Q-WAVE-SYNTHESIS.md`（H1 七路）、`R-WAVE-SYNTHESIS.md`（原子六路）、`T-WAVE-SYNTHESIS.md`（束缚六路）、`U-WAVE-SYNTHESIS.md`（源对齐/连续极限/大 N）
 - 已证定理：`PROOF-P3.md`、`PROOF-P1P2.md`、`PROOF-ISOLATION.md`、`PROOF-NO-DISSOLUTION-KINEMATIC.md`、`PROOF-JACOBIAN-SAVES.md`、`PROOF-GAUSS-INVARIANT-PF.md`、`PROOF-COARSE-POINCARE.md`
 - 新工具：`INVENT-TRANSPORT-INEQ.md`、`INVENT-VARIANCE-INEQ.md`、`INVENT-NEW-IDENTITY.md`、`INVENT-GAUGE-INVARIANT-MASS.md`、`INVENT-NEW-MONOTONE.md`
 - 新 no-go：`INVENT-CONVEXIFICATION.md`、`INVENT-SECOND-CONE.md`、`INVENT-NEW-INDEX.md`、`SCHUR-CONVEX.md`、`GOLDS-POS-MASS.md`
