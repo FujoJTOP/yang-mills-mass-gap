@@ -53,6 +53,16 @@ CLAUDE.md                         # the project charter (rules of engagement)
 
 `docs/YANG-MILLS-UV-FACE-V3.pdf` — the **focused paper** (19 pages; LaTeX source in `docs/paper-v3/`). It decides the campaign's last ultraviolet inequality `(★)`: the strong form is **false** (exact SU(2) one-plaquette counterexample), the correct object is bounded below on the small-field set, the projection class is linear/divergence-free, the ultraviolet statement is renormalized, and the head is H1. It also records the soft-mode and decompactification waves, including the exact periodic constant-mode anchor `1/(2·Cin(2π)) = 0.20511530` and the saturating periodic `k=0` floor `c = 0.22196 ± 0.00011`, the seven-route H1 attack, the six-route atom wave (four predicates; isolation is the parent; every atom-reader is circular at the resolution bound), the six-route binding wave (the carrier exists; binding is a mechanism, not an axis; no standard expansion reaches β=2.5), and the six-route U wave (binding is the alignment of the `tr F²` source with the first excited transfer eigenvector; the continuum ratio does not run; large-N binding survives). **Still not a proof of Clay, and no QED.**
 
+### Wave index (2026-11-24)
+
+| wave | one-line verdict | file |
+|---|---|---|
+| **P** periodic constant mode | saturates; exact Haar anchor `1/(2·Cin(2π)) = 0.20511530`; `k=0` floor `c = 0.22196 ± 0.00011`; transfer gap `0.6444` | [P-WAVE-SYNTHESIS](research/v3/P-WAVE-SYNTHESIS.md) |
+| **Q** H1 attack | none proves H1; four equivalent faces of the missing lemma; the carrier exists (the `V⁻¹` was the mean-normalized mode); H1 is only a ceiling | [Q-WAVE-SYNTHESIS](research/v3/Q-WAVE-SYNTHESIS.md) |
+| **R** atom | isolation is the parent; every atom-reader is circular at the resolution bound `sup|E−g| ≥ f₁²/2` | [R-WAVE-SYNTHESIS](research/v3/R-WAVE-SYNTHESIS.md) |
+| **T** binding | no standard expansion reaches β=2.5 (activity `1.014`, missing `40–55×`); weight `W` and isolation `I` are incomparable | [T-WAVE-SYNTHESIS](research/v3/T-WAVE-SYNTHESIS.md) |
+| **U** source alignment | `w₁ = |⟨ψ₁|o−1⟩|²/Var(o)`; `γ_w1 = 0`; large-N `w₁ = O(N⁰)` and binding survives | [U-WAVE-SYNTHESIS](research/v3/U-WAVE-SYNTHESIS.md) |
+
 ## Honesty conventions (please respect them when reading)
 
 - Every claim is labelled **真定理 / 条件定理 / no-go / 精确缺失步** (true theorem / conditional theorem / no-go / exact missing step).
