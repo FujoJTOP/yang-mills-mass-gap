@@ -11,6 +11,18 @@
 this paper should be read as one. The Clay problem is a Millennium Prize problem and remains
 unsolved.
 
+The sixth-species wave moved the map, not the verdict: the immune map grew from thirty-three root
+families to \textbf{forty-four}, with five mechanism classes closed, each carrying the number that closes
+it. The meta-theorem $F3\wedge F4=\varnothing$ was carried from four data modes to the whole
+\emph{spectral class} and made quantitative --- $d_N\sim e^{-0.4595N}$ by fit, the floor test
+undecidable in \emph{both} directions at every finite $N$. Two load-bearing constants were corrected:
+$C=2$ rather than $1.5$, at the price $\Delta/1.25\to\Delta/3$ (the physical ratio lies in the band
+$1.54$--$1.56$, so $\rho^2\in[2.37,2.43]$: every point of the band exceeds $2.25$, and $C=2$ is sharp
+only inside the Dirichlet-type tower class), and $\lambda_{\mathrm{tH}}<1/24$ does not occur in the
+source, whose condition is $\beta<1/48$, independent of $N$; the v3 counterexample $G''=A-B\beta^2$ was
+reproduced to five digits. \textbf{No route was opened}, and the one escape created by the closure of
+$(NA)$ --- the subtraction-free target --- has now been closed by an exact $\beta$-scaling identity.
+
 What is true:
 
 \begin{itemize}
@@ -39,8 +51,11 @@ Positive ledger (all traced to files):
 \item \textbf{No-dissolution kinematic theorem} (\code{PROOF-NO-DISSOLUTION-KINEMATIC.md}): the
   lightest $0^{++}$ is pinned below every continuum by its own mass. Label \LC{} on the gap $+$
   ordering.
-\item \textbf{$W_{\mathrm{geo}}\ge0$} (\code{PROOF-JACOBIAN-SAVES.md}): the Haar geometric
-  curvature is non-negative on every mode including $k\to0$, every $L$. Label \LT.
+\item \textbf{$W_{\mathrm{geo}}\ge0$, strengthened} (\code{PROOF-JACOBIAN-SAVES.md},
+  \code{NS-NOSUBTRACTION.md}): $W_{\mathrm{geo}}\ge\lambda(v):=\inf_\xi\langle v,\operatorname{Hess}\Phi\,
+  v\rangle=(N/12)\lVert v\rVert^2>0$, independent of $\beta$ and $a$, with $L$ entering only through
+  $\lVert v\rVert^2$ (199 rows, all pass, tightest $2.4\%$; the chain's $1/(6L)$ scaling measured).
+  Label \LT.
 \item \textbf{Gauge-invariant Perron--Frobenius} (\code{PROOF-GAUSS-INVARIANT-PF.md}):
   finite-volume vacuum and gap, no Gribov/FP sign. Label \LT{} finite volume; edge obstruction
   \LN.
@@ -64,6 +79,28 @@ Positive ledger (all traced to files):
   $\beta<8.9\times10^{-3}$, and the conditional roof $\gamma\ge(1/2\pi)(1/\chi)$.
 \item \textbf{Two-coordinate classification}: the weak-$*$ theorem and the $(G1)$ classification,
   with eight falsification routes and eight $(G1)$ routes.
+\item \textbf{The data-mode theorem, quantified} (\code{ROUND1-VERDICTS.md} \S6,
+  \code{dm\_floor\_defect.log}): $d_N(\varepsilon)>0$ at every $N\le14$ while $\min=0$ always, so
+  neither ``floor $\ge\varepsilon$'' nor ``floor $<\varepsilon$'' is decidable from finite data; fit
+  $d_N\sim e^{-0.4595N}$. Label \LT{} zero direction, \LE{} positive direction, spectral class only.
+\item \textbf{Two bridges to $H1$} (\code{WA-ALIGNMENT.md}, \code{RB-RATIO-BOUND.md}):
+  $w_1\ge(s_2-\bar E)/(s_2-s_1)$, so $w_1\ge w_0$ follows from $s_2\ge(\bar E-w_0s_1)/(1-w_0)$ with
+  $\bar E$ computable and $s_2$ the one isolation input; and by Ky Fan
+  $\rho^2\le C^2\iff e_1\ge t/(1+C^2)$ with $t=T_2(V)$ computable, so the window's upper half inherits
+  $H1$. Label \LT{} for both identities.
+\item \textbf{The Haar crosswalk} (\code{hc\_spherical.log}):
+  $\Phi=-\log J_{\mathrm{Haar}}=-\log\lvert c_{\mathrm{SU}(N)}/c_{\mathrm{flat}}\rvert^2$ to
+  $8.5\times10^{-16}$, a definitional identity \LT{} naming the corpus Jacobian as the Weyl denominator,
+  whose curvature $g''(0)=1/6$ per root aggregates to $N/12$: the provenance of the floor, not a bridge.
+\item \textbf{The double commutator identity} (\code{WA-ALIGNMENT.md}):
+  $\sum_{n\ge1}(E_n-E_0)\lvert\langle n|o|\Omega\rangle\rvert^2
+  =\tfrac12\langle\Omega|[o,[H,o]]|\Omega\rangle\ge0$, exact \LT{}, verified on the double well to
+  $4.3\times10^{-5}$ \LE; being a first moment, it fixes $\bar E$ and gives only upper bounds.
+\item \textbf{Two of the three named inequalities closed} (\code{NA2-NONDEGENERATE.md}): $(NA)$ is false
+  in both directions --- $X(a_0{=}0)=-1.69\times10^{-2}$ ($-67\sigma$) on $\mathrm{SU}(3)$ with the sign
+  following the boundary, and $X(0)<0$ at 15 of 15 chain points --- and $(TCI)$ is under-specified, with
+  both of its readings failing; Proposition D ($X\equiv0$ for a \emph{single-link} coarse field on a
+  rank-one group) \LT{} shows the old ``variance-free face'' was an artefact. Label \LN.
 \end{enumerate}
 
 Negative ledger (the no-gos): Schur-convex, Goldstone, periodic, nested-cone, rigidity,
@@ -99,8 +136,22 @@ and independent diagnoses.
 
 \subsection{What would change the verdict}
 
-Only one thing: \textbf{the construction of the missing species} (or a proof that it cannot
-exist). Concretely, any one of:
+Only one thing: \textbf{the construction of the missing species} (or a proof that it cannot exist).
+After this round the item is smaller than it was: two of the three sub-items of the previous edition are
+closed, and not as escape routes --- a sign source for $(NA)$ is no longer wanted, because $(NA)$ is
+false, and a non-vacuous $(\mathrm{TCI})$ is no longer a target, because the inequality is not well posed
+and both of its readings fail (\code{NA2-NONDEGENERATE.md}, \code{TCI-COMPENSATION.md}). What remains is
+one:
+
+\begin{enumerate}
+\item[(c)] \emph{A uniform lower bound on $s_2$} --- the second support point, i.e.\ isolation in
+  quantitative form --- \emph{and, equivalently, the Dirichlet-form comparison at both ends with unit
+  density} ($\mathcal L_{0^{++}}\ge-d^2/ds^2|_{\mathrm{DD}}$): the last two rounds showed these are two
+  faces of one requirement, and the only input no bridge supplies (\code{WA-ALIGNMENT.md},
+  \code{R2-ISOLATION.md}, \code{KT-RHO2.md}).
+\end{enumerate}
+
+The six names below are these in other coordinates; any one of them would do:
 
 \begin{itemize}
 \item a nonperturbative proof of
@@ -140,6 +191,11 @@ nonperturbative, non-circular, free-field-failing, cutoff-uniform upper bound on
 Build that, and the ultraviolet existence and the infrared gap close together. Until then, the
 honest word is not ``proved'' --- it is ``located.''
 \end{qbox}
+
+\LT{} on the clauses it asserts, a reading on the last: \textbf{we do not know where that species is,
+but we know it cannot lie in any computable function of $\nu$ (the data-mode theorem closes that class),
+cannot lie in the five closed classes, and cannot be obtained by adjusting the constants --- the
+constants have been adjusted, and the hole is still there.}
 
 \subsection{The ultraviolet face, after the classification}
 

@@ -351,7 +351,7 @@ $\rho^2=2$ bounded but $w_1\to0$ ($I\wedge\neg W$). The gap has two independent 
   \qquad(\text{squeeze: }m_1^2\ge f_1^2/\chi\ge w_0\lambda),
   \qquad
   I\wedge(\rho^2\le C^2)\ \Longrightarrow\ G
-  \qquad(\text{window}).
+  \qquad(\text{window},\ C=2\text{ in the Dirichlet class}).
   \label{eq:v3tworoutes}
 \end{equation}
 Neither $W$ nor $I$ alone gives $G$; the double well has $W\wedge I$ yet
@@ -373,10 +373,20 @@ The 2D Yang--Mills Casimir ratio $\rho^2=8/3$ is the holonomy's isolation, not t
 $\operatorname{tr}F^2$ atom (which is $0$); the 1D rotor anchors the same mechanism. The target is
 correctly absent on the free massless composite \LT/\LE. Isolation alone does not give the gap: the
 \textbf{window theorem} states that with $\Delta=(\rho^2-1)\mu_1$, isolation together with a bounded
-ratio $1+c\le\rho^2\le C^2$ gives $\mu_1\ge\delta/(C^2-1)$ \LT, while the double well has
-$\rho^2\to\infty$ and no gap. Thus the upper bound $C$ (the IN-11 heuristic, $C\approx1.5$) is
-load-bearing, and the lower half at $\beta=2.5$ requires a binding-induced TP$_2$ order that neither
-reflection positivity nor the polymer expansion supplies \LT/\LE/\LM.
+ratio $1+c\le\rho^2\le C^2$ gives $\mu_1=m_1^2=\Delta/(\rho^2-1)\ge\Delta/(C^2-1)$ \LT, while the
+double well has $\rho^2\to\infty$ and no gap. Thus the upper bound $C$ is load-bearing, and the lower
+half at $\beta=2.5$ requires a binding-induced TP$_2$ order that neither reflection positivity nor the
+polymer expansion supplies \LT/\LE/\LM.
+
+\textbf{The window constant is class-sharp, not structural.} $C=2$ is the \textbf{sharp value inside
+the Dirichlet-type tower class} (bottom-normalised effective potential, single well, non-degenerate
+bottom), saturated by the 1D Dirichlet string ($\rho^2=(4\pi^2+c)/(\pi^2+c)\le4\iff c\ge0$ sharp; $215$
+shapes give $\sup\rho^2=3.999999$); it is \textbf{not} a structural constant: Neumann/mixed boundary
+conditions give $\rho^2=9$ (box, exact) and $\rho^2=m+1$ (star $K_{1,m}$, unbounded). The physical
+channel sits inside the class ($m_{0^{++*}}/m_{0^{++}}\approx1.56$, $\rho^2=2.43$). Hence
+$\rho^2\le C^2$ and the missing step --- the Dirichlet normalisation of the confining coordinate ---
+are \textbf{the same condition, not independent inputs}. The floor is $\Delta/(\rho^2-1)$:
+$\Delta/3$ inside that class, degrading outside it. \LC/\LM{} (\code{RB-RATIO-BOUND.md}).
 
 \textbf{Transport and the exact anchor.} The identity $f_1^2(\mu)=Z_O^2f_1^2(\mu_0)$ has a trivial
 positive $Z_O$ fixed by the trace anomaly (no Banks--Baxks zero in pure Yang--Mills); $Z_O$ was never
@@ -439,11 +449,12 @@ keeping the state and the gap. The weight floor $W$ is robust and in models stri
 the gap (a double well has uniform $w_1\approx0.97$ with gap $\to0$, but $\chi\to\infty$, so $H1$
 fails). The same double well keeps $W$ \emph{and} $I$ yet has $\lambda_1\to0$ and
 $\rho^2\to\infty$; so neither $W$ nor $I$ alone gives the gap, and the two routes are
-$W\wedge H1$ and $I\wedge(\rho^2\le C^2)$. The strongest no-go is that $H1$ plus the squeeze plus
-positivity plus a fixed gap do not force an atom: there is a gapped atomless measure with bounded
-$\chi$ \LT/\LN. The full target is the pair $(W,I)$ with the two side conditions; the atom wave does
-not reduce it, but it fixes four predicates: $A$ (visibility), $W$ (weight), $I$ (isolation), $G$
-(floor), with $W\Rightarrow A$, $I\Rightarrow B_{\mathrm{spec}}\Rightarrow A$, and $W\perp I$.
+$W\wedge H1$ and $I\wedge(\rho^2\le C^2)$, with $C=2$ sharp only in the Dirichlet class. The strongest
+no-go is that $H1$ plus the squeeze plus positivity plus a fixed gap do not force an atom: there is a
+gapped atomless measure with bounded $\chi$ \LT/\LN. The full target is the pair $(W,I)$ with the two
+side conditions; the atom wave does not reduce it, but it fixes four predicates: $A$ (visibility),
+$W$ (weight), $I$ (isolation), $G$ (floor), with $W\Rightarrow A$,
+$I\Rightarrow B_{\mathrm{spec}}\Rightarrow A$, and $W\perp I$.
 
 \subsection{What the chapter adds to the ledger}
 
@@ -475,8 +486,8 @@ not reduce it, but it fixes four predicates: $A$ (visibility), $W$ (weight), $I$
   fixed gap does not force an atom \LT/\LN.
 \item Six binding routes: the carrier exists (the $V^{-1}$ was the mean-normalized mode); binding is
   the atom's mechanism, not an axis, and the true predicates are $A$, $I$, $G$; isolation needs the
-  window bound $1+c\le\rho^2\le C^2$; no standard expansion reaches $\beta=2.5$ (activity $1.014$,
-  missing factor $40$--$55$) \LT/\LN/\LM.
+  window bound $1+c\le\rho^2\le C^2$, with $C=2$ only inside the Dirichlet class; no standard
+  expansion reaches $\beta=2.5$ (activity $1.014$, missing factor $40$--$55$) \LT/\LN/\LM.
 \end{enumerate}
 
 \begin{qbox}

@@ -81,12 +81,16 @@ The campaign's archive holds reports across the families \code{ABC*}, \code{C-*}
 \code{IMPOSSIBLE-*}, \code{STAR-*}, \code{G1-*}, \code{BLAST-*}, \code{CERT-*},
 \code{ROUTE-NEW-*}. Several contain multi-route audits, so the distinct-route count is on the
 order of \textbf{one hundred and fifty}. \textbf{Every one terminates at the same named species.}
-Table~\ref{tab:immune} gives each root family and the precise place it dies.
+Table~\ref{tab:immune} gives each root family and the precise place it dies.\footnote{The count
+depends on how finely the root families are cut; an independent recount of the same ledger gives
+45--47 (see \code{SIXTH-SPECIES-SYNTHESIS.md} \S3.1). No verdict in the table depends on the
+granularity.}
 
 \footnotesize
 \begin{longtable}{@{}c>{\raggedright\arraybackslash}p{4.15cm}
   >{\raggedright\arraybackslash}p{3.35cm}>{\raggedright\arraybackslash}p{6.0cm}@{}}
-\caption{The immune map: thirty-three root families and where each dies.}
+\caption{The immune map: forty-four root families and where each dies (forty-four is a counting convention;
+see the note before the table).}
 \label{tab:immune}\\
 \toprule
 \textbf{\#} & \textbf{Root family (representative files)} & \textbf{What it tries} &
@@ -117,7 +121,7 @@ Table~\ref{tab:immune} gives each root family and the precise place it dies.
 6 & Upper-bound direction (Bogoliubov, Hylleraas, FSS, Temple/Weinstein, GEVP) &
   a variational bound & variational methods give upper bounds; threshold oracle circular\\
 7 & Strong-coupling-only (rigorous large-$N$ / Chatterjee, SZZ, random surface/CPS
-  $\lambda_{\mathrm{tH}}<1/24$, center vortex) & extend a proven regime &
+  $\lvert\beta\rvert<1/48$, center vortex) & extend a proven regime &
   cannot reach $\beta\approx2.5$; method radius is the obstruction\\
 8 & Index $=0$ (NCG, localization, BPS, Witten spinor) & a topological invariant &
   rigidity no-go: discrete locally-constant index $=$ free value zero\\
@@ -208,7 +212,93 @@ Table~\ref{tab:immune} gives each root family and the precise place it dies.
 33 & Diagnostics (\code{WI-P3-*}, \code{WI-RESLOPE-*}) & read the atom from lattice data &
   the P3 approach law, $\kappa(\tau)$, Re-slope and FSS law are genuine and continuum-robust,
   but each is a read gated by $L\to\infty$ $=$ H1\\
+34 & Harish--Chandra / spherical functions / noncompact symmetric spaces
+  (\code{ROUND1-VERDICTS.md} \S1) & read the atom from the Plancherel density or the spherical
+  transform & \LT{} the split-type Plancherel measure is absolutely continuous with no discrete
+  series, so there is no atom; the boundary mass is not in $H^{1/2}$ (norm $\log$-divergent,
+  $20.72\to36.84$); the compact quotient is pure Peter--Weyl, so every level is an atom with a
+  $\beta$-blind Casimir spectrum (acid FAIL) \LN\\
+35 & Pseudospectral / nonnormal / resolvent contours (\code{ROUND1-VERDICTS.md} \S2,
+  \code{AUDIT-R1.md} \S B2) & count the spectrum with $\|(T-z)^{-1}\|$ plus Rouch\'e & \LN{}
+  Rouch\'e needs $V<\operatorname{dist}/\varepsilon_1=2.47\times10^{-3}<1$, so a single site already
+  fails by $404.8\times$; the abelian rotor carries the same defect (the mechanism does not
+  distinguish Yang--Mills from $U(1)$); in the weighted frame the operator is exactly self-adjoint
+  ($\kappa=1$), so the nonnormality is a gauge artefact\\
+36 & Tropical / min-plus / Maslov (\code{ROUND1-VERDICTS.md} \S3) & strict two-sided bounds from
+  max-plus cycle means & \LT{} $S_W\equiv0$ on the constant-modulus slice, so the critical graph
+  degenerates $n$-fold and $\Delta_{\mathrm{trop}}\equiv0$ against the exact $\Delta=0.6444$;
+  width/signal $3.013$, still $2.415$ after blocking; compactness is a property of the
+  \emph{measure}, not of the action \LN\\
+37 & Setwise / small ball / doubling (\code{ROUND1-VERDICTS.md} \S4) & derive
+  $(D,\alpha,\rho''\ge\kappa)\Rightarrow\operatorname{Var}\le C/\kappa$ & \LN{} scale-invariant
+  ($D,\alpha$ fixed, $\operatorname{Var}$ multiplied by $\lambda^2$); tail placement (locally
+  identical, $\operatorname{Var}\sim\varepsilon R^2$); and $(\log\rho)''<0$ on all of $(0,2)$, so
+  the hypothesis is empty for every $\beta$ and every Gaussian\\
+38 & Lorentzian / M-convex / labelled spaces (\code{ROUND1-VERDICTS.md} \S5) & control the tail by
+  log-concavity of the labelled weights & \LN{} the frustrated plaquette's labelled weight is
+  $(-1)^{2j}w_j$, so there is no positive measure and log-concavity has no referent; stretched
+  Lorentzian log-concavity is unproved in general\\
+39 & ``Ratio-only'' mechanisms for $\rho^2\le C^2$ (\code{RB-RATIO-BOUND.md}) & bound the ratio
+  without bounding the floor & \LN{} $\rho^2\le C^2\iff e_1\ge t/(1+C^2)$ (Ky Fan,
+  $t=T_2(V)=\operatorname{tr}(G^{-1}M)$), so the window inherits H1 and is not an independent
+  predicate; interlacing gives no one-way order on $\rho^2$ ($3.000<3.879<4.605$); the star
+  $K_{1,m}$ has $\rho^2=m+1\to\infty$ with $\operatorname{diam}=2$, so no
+  $(d,\deg,\operatorname{diam})$ bound exists; the double well has $\rho^2=4.48\to807$
+  ($\log\rho^2\approx0.56g$) while $T_2$ is only $\mathrm{poly}(g)$, so no upper-bound-data bound
+  exists either\\
+40 & Four mechanisms for source alignment $w_1\ge w_0$ (\code{WA-ALIGNMENT.md}) & a lower bound on
+  the atom's share of the variance & \LN{} direction (the double commutator gives moments, hence
+  upper bounds); principal angles (need $s_1>0$, i.e.\ the gap); interlacing (interlaces
+  eigenvalues, not overlaps); measurability (finite $T,L$ give only upper bounds); the double well
+  has $w_1\to0.94$--$0.99$ while $s_1$ collapses, so the only $L^2$ lower bound fires there\\
+41 & H\"ormander bracket condition and Fefferman--Phong subellipticity (\code{HORMANDER.md})
+  & close the coarse-mode gap with a subelliptic estimate
+  $\|u\|^2_{H^{1/r}}\lesssim\sum_a\|X_au\|^2+\|u\|^2$
+  & \LN{} the left-invariant fields are a \emph{global frame}, so the bracket condition holds at
+  step $r=1$ --- elliptic, with the \emph{same} principal part $\sum_aX_a^2$ as the free
+  Laplacian, which is maximally hypoelliptic \emph{and} gapless; the estimate is a $k\to\infty$
+  derivative gain while the gap is the $k\to0$ bottom, where it degenerates to $0\lesssim1$; the
+  surviving term $+\|u\|^2$ \emph{is} the mass (removing it is Poincar\'e $=$ H1); the only
+  $\rho>0$ route is the compact resolvent, giving $\rho=(2\pi/L)^2\to0$ \LN\\
+42 & Analytic microlocal analysis: analytic wavefront set, FBI decay, propagation of
+  singularities (\code{MICROLOCAL-BUILD.md}, \code{MICROLOCAL-BLIND.md})
+  & read a singularity-free strip $\{0<p^2<m_0^2\}$ off $\mathrm{WF}_A$
+  & \LT{} the dictionary $w=$ tube half-width $=$ FBI rate $=$ decay rate
+  $=m_1=\inf\operatorname{supp}\nu$ is exact and nonperturbative \LN{} but the
+  $\mathrm{WF}_A$ \emph{set} is mass-blind: free massless ($w=0$), free massive ($w=m$) and
+  interacting Hadamard functions share the same light-cone set, so the set carries no mass
+  information; and propagation is an \emph{upper} bound on the singular set
+  ($\mathrm{WF}\subset\mathrm{WF}(PW)\cup\operatorname{Char}P$) while the gap is an upper bound
+  near the physical point, with nonlinear propagation only adding singularities; a propagation
+  theorem for $m_1\ge m_0$ must be handed the isolated massive seed $f_1^2>0$ as input, and
+  $w=m_1$ inherits the uniformity (free $w=2\pi/L\to0$) \LN\\
+43 & Moment--SOS / Lasserre--Parrilo relaxation of $\operatorname{Var}(a)\le1/\lambda$
+  (\code{SOS-CERTIFICATE.md}) & certify $G''\ge\lambda$ by a positive-semidefinite Gram matrix
+  (dual SOS certificate) & \LT{} the dual is a literal PSD Gram matrix with the correct
+  lower-bound sign, and the acid test is a genuine \emph{infeasibility} on the free field
+  ($\operatorname{Var}(a_{k=0})=\infty$) \LN{} but for a \emph{single linear} functional the
+  degree-2 relaxation is verbatim Popoviciu ($\operatorname{Var}\le(b-a)^2/4$, attained on two
+  endpoint atoms): it returns the cell diameter and is measure-blind, so
+  $\lambda\le1/\pi^2\approx0.10$ against $G''\approx0.4$ ($4\times$ short and $L$-independent);
+  shrinking the cell to $|a|\le1/\sqrt{\lambda}$ is circular, degree $d\ge3$ needs
+  transcendental moments with $\dim M_d=\binom{8192+d}{d}$ plus Savvidy slack, and
+  $d\to\infty$ is the measure $=$ H1\\
+44 & O-minimality, model-theoretic uniformity, proof mining (\code{O-MINIMAL-UNIFORMITY.md})
+  & exclude a gapless $\beta$-interval and extract a uniform $\lambda$ from tame rigidity plus
+  Kohlenbach mining & \LT{} at fixed $(L,a)$, real analyticity and
+  $\mathbb{R}_{\mathrm{an}}$-definability force the zero set of $f_1^2(\beta)$ to be finite, so
+  the Savvidy crossover cannot host an \emph{open} gapless interval (conditional on the P3 seed
+  at $\beta<1/48$) \LN{} but the target --- $\lambda>0$ uniform in $(L,a)$ --- is a uniform
+  boundedness over a noncompact, dimension-growing family
+  ($\dim\sim(L/a)^4\to\infty$, running coupling $\beta(a)\sim\log(1/a)$ non-definable) that no
+  definable-compactness theorem reaches; mining has no in-cell proof to unwind (P3 is already
+  volume-uniform), and ultraproduct transfer encodes finiteness, never appreciability; what is
+  extractable is an RG-stability modulus, which is L3/H1 \LN\\
 \end{longtable}
+
+\medskip
+\noindent \textbf{Every family in the table --- forty-four by the present accounting --- terminates at the
+same named species.}
 \normalsize
 
 \subsection{The waves, in one table}

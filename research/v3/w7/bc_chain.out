@@ -1,0 +1,130 @@
+==============================================================================
+P0  VERIFY the in-repo constants (C2-BALABAN-UNIFORM.md §2.2/§2.3)
+==============================================================================
+  N=2: beta0=0.04644  c*=d lnL/(2 beta0)=29.85  t*=sqrt(c*)=5.46
+  N=3: beta0=0.06966  c*=d lnL/(2 beta0)=19.90  t*=sqrt(c*)=4.46
+  N=2, c=40: q=0.3896  rho(40)=0.6384   (doc: 0.638 for N=2)
+  N=3, c=40: q=0.0608  rho(40)=0.0647   (doc: 0.638 for N=2)
+  L=3 (why L=2 is forced):
+    N=2: c*(L=3)=47.31  vs c*(L=2)=29.85   ratio=1.585
+    N=3: c*(L=3)=31.54  vs c*(L=2)=19.90   ratio=1.585
+
+==============================================================================
+P1  LINK 2 (polymer): the ONLY large-field slack, union bound -> Kotecky-Preiss
+==============================================================================
+  N=2: c*_union=29.85 (t*=5.46)   c**_KP=22.39 (t**=4.73)
+        improvement factor c*/c** = 1.3333  (= d lnL/ln(2d) at L=2)
+        in t*: 1.1547   in admissible g^2: 1.3333
+  N=3: c*_union=19.90 (t*=4.46)   c**_KP=14.93 (t**=3.86)
+        improvement factor c*/c** = 1.3333  (= d lnL/ln(2d) at L=2)
+        in t*: 1.1547   in admissible g^2: 1.3333
+        NOTE: c**_KP = ln(2d)/(2 beta0) is L-INDEPENDENT; c*_union = d lnL/(2 beta0)
+              grows with L  =>  L=2 is the optimal integer blocking factor:
+              L=2: c*_union= 19.90   c*/c**_KP = 1.333
+              L=3: c*_union= 31.54   c*/c**_KP = 2.113
+              L=4: c*_union= 39.80   c*/c**_KP = 2.667
+
+==============================================================================
+P2  UNIT CONVERSION: the corpus has THREE objects called 'lambda'
+==============================================================================
+   (R1) lambda = g^2            [CPB-preprint §3.3: 'with the coupling as expansion parameter']
+   (R2) lambda = lambda_tH=betaN [ch13-machine.tex: crossover at lambda_tH in [1,7.3]]
+   (R3) lambda = beta            [lattice]
+
+                          point |    beta |      g^2 |  lambda_tH
+   --- N=2 ---
+          SZZ radius  beta=1/48 |  0.0208 |  192.000 |      0.042
+    crossover LOW edge lam_tH=1 |  0.5000 |    8.000 |      1.000
+        physical point beta=2.4 |  2.4000 |    1.667 |      4.800
+        physical point beta=2.5 |  2.5000 |    1.600 |      5.000
+         lambda_tH = 7.3 (ch13) |  3.6500 |    1.096 |      7.300
+    g^2 = 1  (Balaban marginal) |  4.0000 |    1.000 |      8.000
+   --- N=3 ---
+          SZZ radius  beta=1/48 |  0.0208 |  288.000 |      0.062
+    crossover LOW edge lam_tH=1 |  0.3333 |   18.000 |      1.000
+        physical point beta=2.4 |  2.4000 |    2.500 |      7.200
+        physical point beta=2.5 |  2.5000 |    2.400 |      7.500
+         lambda_tH = 7.3 (ch13) |  2.4333 |    2.466 |      7.300
+    g^2 = 1  (Balaban marginal) |  6.0000 |    1.000 |     18.000
+
+   => 'lambda ~ 1' (R1, g^2 ~ 1) is lambda_tH = 2N^2 = 8 (N=2), 18 (N=3).
+   => 'lambda_tH = 1' is g^2 = 2N^2 = 8 (N=2), 18 (N=3).
+      The two '1's differ by exactly 2N^2.  They are NOT the same number.
+
+==============================================================================
+P3  LINK 6 (the lambda threshold) + T3: the small-field expansion parameter
+==============================================================================
+   eta_B := t* * g  with g^2 = 2N^2/lambda_tH   (t* from Lemma B, radius in units of g)
+    lambda_tH |       g^2       g |  eta_B(N=2)  eta_B(N=3)
+          1.0 |   18.0000   4.243 |      15.454      18.927
+          2.0 |    9.0000   3.000 |      10.927      13.383
+          7.3 |    2.4658   1.570 |       5.720       7.005
+         18.0 |    1.0000   1.000 |       3.642       4.461
+         50.0 |    0.3600   0.600 |       2.185       2.677
+        100.0 |    0.1800   0.424 |       1.545       1.893
+        358.0 |    0.0503   0.224 |       0.817       1.000
+
+   N=2: at lambda_tH=1 -> g^2=8.000, g=2.828, t*=5.464, eta_B=15.45
+   N=3: at lambda_tH=1 -> g^2=18.000, g=4.243, t*=4.461, eta_B=18.93
+
+   eta_B = 1  (the formal 'O(1)' line) is reached only at
+     N=2: lambda_tH = 2 N^2 c* = 238.8   (g^2 = 1/c* = 0.0335)
+     N=3: lambda_tH = 2 N^2 c* = 358.2   (g^2 = 1/c* = 0.0502)
+
+==============================================================================
+P4  head of the one-loop tower (no new physics; the repo's own flow)
+==============================================================================
+   g_j^2 = 1/(2 beta0 j),  beta_j = 4 N beta0 j ,  lambda_tH(j) = beta_j N
+   --- N=2 ---
+     j=  1: g_j^2= 10.7668  beta_j=   0.372  lambda_tH(j)=    0.743
+     j=  2: g_j^2=  5.3834  beta_j=   0.743  lambda_tH(j)=    1.486
+     j=  5: g_j^2=  2.1534  beta_j=   1.858  lambda_tH(j)=    3.715
+     j= 10: g_j^2=  1.0767  beta_j=   3.715  lambda_tH(j)=    7.430
+     j= 50: g_j^2=  0.2153  beta_j=  18.576  lambda_tH(j)=   37.151
+     shells to reach g^2=1 : j = 10.77   (K = log_2(1/a) = 10.77)
+     head-shell (j=1) lambda_tH = 0.743  -> outside [1,7.3]
+   --- N=3 ---
+     j=  1: g_j^2=  7.1779  beta_j=   0.836  lambda_tH(j)=    2.508
+     j=  2: g_j^2=  3.5889  beta_j=   1.672  lambda_tH(j)=    5.015
+     j=  5: g_j^2=  1.4356  beta_j=   4.179  lambda_tH(j)=   12.538
+     j= 10: g_j^2=  0.7178  beta_j=   8.359  lambda_tH(j)=   25.077
+     j= 50: g_j^2=  0.1436  beta_j=  41.795  lambda_tH(j)=  125.385
+     shells to reach g^2=1 : j = 7.18   (K = log_2(1/a) = 7.18)
+     head-shell (j=1) lambda_tH = 2.508  -> INSIDE [1,7.3]
+
+==============================================================================
+P5  T2: the multiplicative slack M of the constant chain
+==============================================================================
+   per-link factor = how much the ADMISSIBLE g^2 could rise if that link
+   were replaced by the finest estimate known (or computable) today.
+
+   L1: small-field decomposition  (radius t_j = kappa g_j)  factor  1.000
+       kappa is *set by* link 2 (Lemma B); no independent slack
+   L2: polymer / cluster estimate (union bound -> KP)       factor  1.333
+       c*/c** = d lnL/ln(2d) = 1.333 (exact, L-independent)
+   L3: K-quantity  (polymer counting constant)              factor 10.000
+       crude K=80 e^{2+beta} N (P3-FULLREP-KP); 'the true K is smaller' -- NOT quantified -> <=10
+   L4: gauge fixing                                         factor  1.000
+       tower Poincare constant c_L = 4 pi^2/L^2 is the exact torus spectral gap; sharp
+   L5: uv-stability exponent                                factor  1.000
+       superrenormalizable type = fixed by 4D power counting; dimension counting is exact
+   L6: the lambda threshold itself                          factor  1.000
+       NOT a bound: it is the hypothesis 'g in (0,gamma], gamma small'; gamma unpublished
+
+   M in [1.33, 13.33]   (geometric mid ~ 4.22; order 10^0.5)
+
+   TARGETS (factor by which the admissible g^2 must rise):
+     N=2: to physical point (lam_tH=7.3): x  1.10   |  to crossover lower edge (lam_tH=1): x  8.00
+     N=3: to physical point (lam_tH=7.3): x  2.47   |  to crossover lower edge (lam_tH=1): x 18.00
+
+   VERDICT (arithmetic only): M_max ~ 10^1 is the same ORDER as the physical-point
+   target 2.5-3 but BELOW the crossover-edge target 8-18; and the deciding link
+   (L6) contributes exactly 1.00 because it is a parameter, not a bound.
+
+==============================================================================
+P6  the counterfactual: what M would have to be, in each coordinate
+==============================================================================
+   N=2:  lambda_tH=1 needs g^2 rise x8;  equivalently a SMALL PARAMETER at g^2=8 does not exist unless
+         a hidden large parameter is found (N, q=m a, or 1/L).
+   N=3:  lambda_tH=1 needs g^2 rise x18;  equivalently a SMALL PARAMETER at g^2=18 does not exist unless
+         a hidden large parameter is found (N, q=m a, or 1/L).

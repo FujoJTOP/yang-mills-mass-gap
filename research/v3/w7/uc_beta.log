@@ -1,0 +1,191 @@
+
+================================================================================
+[A] exact SU(2) coefficients, the completeness identity, and the forms of u
+================================================================================
+       beta    SUM(n+1)c_n         e^beta   rel.err   min_n c_n
+    0.02083   1.0210518621   1.0210518621  0.00e+00  8.016e-198
+    0.50000   1.6487212707   1.6487212707  1.35e-16  2.172e-116
+    1.00000   2.7182818285   2.7182818285  1.63e-16   1.256e-98
+    2.50000  12.1824939607  12.1824939607  8.75e-16   3.862e-75
+  => c_n = I_n - I_{n+2} is exact, and c_n > 0 for all n (SU(2), beta>0): the
+     character expansion is a POSITIVE sum over surfaces (no Weingarten sign at
+     this level) -- the random-surface / polymer representation is available.
+
+  four exact forms of u(beta) = c_1/c_0 and their agreement:
+       beta            c1/c0           2I2/I1     2(I0/I1-2/b)    max dev
+    0.02083  0.0104164782917  0.0104164782917  0.0104164782917   2.35e-14
+    0.50000  0.2474358565566  0.2474358565566  0.2474358565566   1.30e-15
+    1.00000  0.4803874477402  0.4803874477402  0.4803874477402   5.55e-17
+    2.50000  1.0143902000940  1.0143902000940  1.0143902000940   2.22e-16
+
+  Gauss J-fraction (semi-exact; truncations alternate => two-sided rigorous bounds):
+     u(beta) = 2 / ( 4/beta + 1/( 6/beta + 1/( 8/beta + ... ) ) )
+       beta         L=0         L=1         L=2         L=3           L=7         exact
+    0.02083   0.0104167   0.0104165   0.0104165   0.0104165   0.010416478   0.010416478
+    0.50000   0.2500000   0.2474227   0.2474359   0.2474359   0.247435857   0.247435857
+    1.00000   0.5000000   0.4800000   0.4803922   0.4803874   0.480387448   0.480387448
+    2.50000   1.2500000   0.9917355   1.0159176   1.0143185   1.014390200   1.014390200
+
+  rigorous bracket of beta_tube := u^{-1}(1) from the alternating truncations:
+    L    root of u_L(beta)=1
+    0           2.0000000000
+    1           2.5358983849
+    2           2.4420450748
+    3           2.4471412284
+    4           2.4469109206
+    5           2.4469184985
+    6           2.4469183076
+    7           2.4469183113
+    8           2.4469183113
+  even/odd subsequences converge monotonically to beta_tube; bracket after L=8:
+     beta_tube in (2.442045075, 2.535898385)   [rigorous, no scipy trust]
+
+================================================================================
+[B] exact dictionary between the two corpus normalisations:  u_P3 = 2 u_T5
+================================================================================
+       beta     u_P3=c1/c0     u_T5=I2/I1            ratio     6 u_T5
+    0.02083    0.010416478    0.005208239  2.0000000000000    0.03125
+    0.50000    0.247435857    0.123717928  2.0000000000000    0.74231
+    1.00000    0.480387448    0.240193724  2.0000000000000    1.44116
+    2.50000    1.014390200    0.507195100  2.0000000000000    3.04317
+  => T23-TEMPLATE's 6u = 3.04 (u=I2/I1=0.5072) and T1-POLYMER-RG's u(2.5)=1.01439
+     are THE SAME statement, differing by the exact factor 2.  No contradiction;
+     T23 sec.1.3's 1.09-1.40x 'discrepancy' vs T5 is exactly this factor plus rounding.
+
+================================================================================
+[C] monotonicity [T]: u = 2 (ln c_0)'  =>  u' = 2 Var(cos theta) >= 0
+================================================================================
+  (Cauchy-Schwarz on the plaquette measure => u strictly increasing; hence
+   {beta: u < u_c} is an interval and 'the largest beta' is well defined.)
+       beta              u    u (finite diff)     2 Var(cos)        dev
+    0.02083    0.010416478     0.499972874490    0.499972874   5.64e-14
+    0.50000    0.247435857     0.484772609083    0.484772609   2.23e-11
+    1.00000    0.480387448     0.443451606796    0.443451607   9.92e-12
+    2.00000    0.866254853     0.325418984315    0.325418984   4.00e-11
+    2.50000    1.014390200     0.268238020795    0.268238021   6.85e-11
+
+================================================================================
+[D] the four requested numbers, both conventions
+================================================================================
+      beta     u_P3 = c1/c0     u_T5 = I2/I1     6 u_T5    m1 a = 4ln(1/u)
+      1/48      0.010416478      0.005208239    0.03125       18.257465103
+       0.5      0.247435857      0.123717928    0.74231        5.586415584
+         1      0.480387448      0.240193724    1.44116        2.932649272
+       2.5      1.014390200      0.507195100    3.04317       -0.057150575
+  (m1 a < 0 at beta=2.5: the four-wall tube does not decay -- the dilute-tube
+   binding picture is INVERTED, not merely slowly convergent.)
+
+================================================================================
+[D2] the KP sum is monotone in the grading a  =>  its sharpest member is a -> 0+
+================================================================================
+       beta       Phi(0)    Phi(0.25)     Phi(0.5)       Phi(1)       Phi(2)
+    0.02083 2.099647e-02 2.701999e-02 3.479355e-02 5.784773e-02 1.631335e-01
+    0.50000 5.982529e-01 8.116101e-01 1.119174e+00 2.284307e+00 1.677874e+01
+    1.00000 1.404882e+00 2.018081e+00 3.000346e+00 7.715963e+00 1.733392e+02
+    2.50000 5.050788e+00 8.608317e+00 1.610125e+01 8.518215e+01 5.988329e+04
+  all c_n>0 => Phi strictly increasing in a => the a-optimisation is trivial:
+     min_a Phi(a,beta) = Phi(0,beta) = (e^beta - c_0)/c_0 = beta e^beta/(2I_1) - 1 .
+       beta       Phi(0) sum    Phi(0) closed       dev  Phi(1)/Phi(0)
+    0.02083 2.0996468540e-02 2.0996468540e-02  1.32e-16       2.755117
+    0.50000 5.9825288523e-01 5.9825288523e-01  2.22e-16       3.818297
+    1.00000 1.4048819255e+00 1.4048819255e+00  2.22e-16       5.492250
+    2.50000 5.0507883952e+00 5.0507883952e+00  2.66e-15      16.865119
+  => T1-POLYMER-RG's grading a=1 is CONSERVATIVE by the last column; the exact
+     (weakest) member of the class is the closed form Phi(0,beta).  Both give the
+     same verdict; the exact one moves beta_KP up, not down.
+
+================================================================================
+[E] ceiling theorem: the exact hierarchy of blocking points
+================================================================================
+  beta_tube = u^-1(1)     = 2.446918311   u=1: weight u^(4T) stops decaying
+  beta_KP   = u^-1(1/2)   = 1.044456862   ceiling of ANY KP criterion (lam>=1)
+  beta_f0   = Phi(0)^-1(1)= 0.765528218   lambda_a=1, calibration-free (f0=1/2)
+  u(beta)=1/lambda_a      = 0.036790019   crude u<1/lambda_a, lambda_a=e*Delta=54.366
+
+  2.5 - beta_tube = 0.053082   (2.123% of 2.5)
+  2.5 / beta_KP   = 2.394      2.5 / beta_f0 = 3.266
+  => sup over u_c in (0,1) of beta_max(u_c) = beta_tube = 2.446918 < 2.5 :
+     NO threshold u_c<1 reaches beta=2.5.  The u-route's ceiling is constant-free.
+
+  lambda_a scan of the exact KP root  (root of lambda_a*Phi(0,beta)=1):
+    lambda_a    beta_KP(lambda)   2.5/beta
+       1.000        0.765528218       3.27
+       2.718        0.326562593       7.66
+      20.000        0.049091395      50.93
+      54.366        0.018268566     136.85
+     100.000        0.009962738     250.94
+    1000.000        0.000999625    2500.94
+   10000.000        0.000099996   25000.94
+  even lambda_a = 1 (an animal constant below the structural floor) gives 0.7655, still 3.3x short.
+
+  T1-POLYMER-RG's grading a=1, for continuity with the corpus log:
+    beta_max(KP, a=1, lambda_a=e*Delta) = 0.006720549   (corpus log says beta* ~ 0.0067)
+
+  the animal constant beta=2.5 WOULD need:  lambda_a < 1/Phi(0,2.5) = 0.197989
+  structurally lambda_a >= 1 (at least one polymer meets each point)
+  => short by >= 5.05x at the very best grading; 274.6x at lambda_a = e*Delta.
+
+================================================================================
+[F] the n-profile at beta=2.5: the failure is NOT 'u too big'
+================================================================================
+  grading a=0 (the exact/weakest member).  terms (n+1)c_n/c_0 :
+       beta       n=1       n=2       n=3       n=4       n=5       n=6       sum  share n>=2
+    0.02083    0.0208    0.0002    0.0000    0.0000    0.0000    0.0000    0.0210      0.0078
+    0.50000    0.4949    0.0923    0.0102    0.0008    0.0000    0.0000    0.5983      0.1728
+    1.00000    0.9608    0.3530    0.0775    0.0120    0.0014    0.0001    1.4049      0.3161
+    2.50000    2.0288    1.6964    0.8772    0.3263    0.0945    0.0223    5.0454      0.5979
+  share(n>=2) crosses 1/2 at beta = 1.854865   (at a=1: 0.649156)
+  at beta=2.5, 60% of the exact Ursell sum sits in n>=2 (90% at grading a=1).
+  => even u -> 0 by fiat would NOT restore convergence at beta=2.5: the plaquette
+     measure is dense in ALL representations (f0 = 0.165).  'u too big' is one of
+     two independent failures, and not the binding one.
+
+================================================================================
+[G] cross-checks against the corpus logs
+================================================================================
+       beta            u        u/(1-u)  (BN-RESIDUAL N3 geometric majorant)
+    0.02083   0.01041648         0.0105
+    0.50000   0.24743586         0.3288
+    1.00000   0.48038745         0.9245
+    2.50000   1.01439020       -70.4917
+  at beta=2.5: u/(1-u) = -70.4917  (BN-RESIDUAL: -70.49) =>
+  the geometric majorant has NO VALUE: 'summability of epsilon' is not even statable.
+
+  T23-TEMPLATE  : 6 u_T5(2.5) = 3.0432   (log: 3.04)
+  T1-POLYMER-RG : u(2.5) = 1.01439 (log: 1.01439); f0(2.5) = 0.16527 (log: 0.165)
+  P3 four-wall  : m1 a(2.5) = -0.05715  (log: -0.05715)
+
+  free-field acid test  beta -> infinity:
+       beta         u_P3         Phi(0)   rho_Ur (lam=eD)
+    5.00000   1.43868116   1.424648e+01      7.745190e+02
+   10.00000   1.70837062   4.023280e+01      2.187282e+03
+   50.00000   1.94030616   4.454834e+02      2.421899e+04
+  u -> 2, rho_Ur -> infinity: the diagnostic reports 'no expansion' on the free
+  field, where the true answer is f1^2 = 0.  The no-go manufactures no false atom.
+
+================================================================================
+SUMMARY (labels: [T]/[C]/[NG]/[O]/[V])
+================================================================================
+[A] c_n = I_n-I_{n+2} exact; SUM(n+1)c_n = e^beta; c_n>0                     [T]+[V]
+[A] u = c1/c0 = 2I2/I1 = 2(ln c0)' = Gauss J-fraction                          [T]+[V]
+[B] u_P3 = 2 u_T5 EXACTLY  => T23's 6u=3.04 == T1's u=1.01439                   [T]+[V]
+[C] u' = 2 Var(cos theta) >= 0  =>  {u<u_c} is an interval                     [T]+[V]
+[D] u(1/48)=0.010416  u(0.5)=0.247436  u(1)=0.480387  u(2.5)=1.014390  [V]
+[D2] Phi(0,beta) = beta e^beta/(2I_1) - 1  (a->0 is the sharpest grading)       [T]+[V]
+[E] beta_tube = 2.446918  <-- ABSOLUTE ceiling of the u-route (u=1)
+    beta_KP   = 1.044457  <-- ceiling of ANY KP criterion (lam>=1, u=1/2)
+    beta_f0   = 0.765528  ;  beta_KP(lambda_a=e*Delta) = 0.018269
+    beta=2.5 > 2.4469  =>  u-completeness CANNOT be pushed to 2.5     [NG] class
+    lambda_a needed at 2.5: < 0.1980  (structural floor 1)  => >= 5.05x short
+[F] share(n>=2) at 2.5: 60% (a=0), 90% (a=1); 50% crossing at beta=1.8549       [V]
+[G] u/(1-u)(2.5) = -70.49;  m1 a = -0.05715 (inverted)   [T]+[V]
+
+MD-TABLE u(beta):
+   beta=0.0208333333  u_P3=0.0104164783  u_T5=0.0052082391  6u_T5=0.031249  m1a=+18.257465
+   beta=0.5000000000  u_P3=0.2474358566  u_T5=0.1237179283  6u_T5=0.742308  m1a=+5.586416
+   beta=1.0000000000  u_P3=0.4803874477  u_T5=0.2401937239  6u_T5=1.441162  m1a=+2.932649
+   beta=2.5000000000  u_P3=1.0143902001  u_T5=0.5071951000  6u_T5=3.043171  m1a=-0.057151
+MD-THRESHOLDS:
+   beta_tube=2.446918  beta_KP=1.044457  beta_f0=0.765528  beta_kp_lam_eD=0.018269  beta_kp_a1=0.006721  lam_need=0.197989  b50=1.854865
+
+No QED. Clay 0%.

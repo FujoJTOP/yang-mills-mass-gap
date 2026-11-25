@@ -216,6 +216,10 @@ not a theorem and not a proof, but a structural fact about where the difficulty 
 % ---------------------------------------------------------------------
 % Fig 6 — one species, two scales
 % ---------------------------------------------------------------------
+% The one-species figure is emitted by two chapters (intro and ch03). The body is shared, so the
+% label is written on the first inclusion only: one \label per key, and \ref{fig:scales} stays
+% single-valued (it resolves to the first figure, which is also where the intro cites it).
+\newif\ifscaleslabelled
 \newcommand{\figscales}{%
 \begin{figure}[t]
 \centering
@@ -240,8 +244,9 @@ $\operatorname{Var}\ge0$ can only supply a lower edge, while in
 $G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$ the variance subtracts. The unification is a conjecture; the
 dictionaries (Ward, residue--level-gap, $G''=E[H]-\operatorname{Var}+W_{\mathrm{full}}$) are theorems, and
 building the inequality would close L3 and H1 simultaneously.}
-\label{fig:scales}
-\end{figure}
+\ifscaleslabelled\else\label{fig:scales}\fi
+\end{figure}%
+\global\scaleslabelledtrue
 }
 
 % ---------------------------------------------------------------------

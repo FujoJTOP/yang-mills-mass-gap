@@ -1,0 +1,38 @@
+PART A  Gaussian/Hartree master field W0 : bilinear O=trF^2 has NO atom (g1/Sg=0)
+   2-gluon continuum : weight in lowest bin @ nbins=1e2,1e3,1e4,1e5 = ['7.29e-02', '2.26e-02', '7.09e-03', '2.24e-03']
+  [PASS] A1 atom weight at the lightest point -> 0 under refinement (a.c. cut, ~1/sqrt(nbins))
+   free Gaussian: Var(phi)=0.9988 Var(phi^2)=1.9932  ratio Var(phi^2)/Var(phi)^2=1.9979 (exact 2)
+  [PASS] A2 Gaussian state obeys Wick (ratio=2): no bound-state atom
+   => in EVERY Gaussian (Hartree) master field, at every beta incl. 2.5, g1/Sg = 0 exactly.
+
+PART B  2D exact Singer W0 = exp(-lambda A(C)/2) : trF^2 = H conserved -> g1/Sg = 0
+   SU(2) character Gram max|int chi_a chi_b - delta| = 2.22e-16
+  [PASS] B1 SU(2) character orthogonality (engine of <chi_0|chi_R>=delta_0R)
+   trF^2 residues onto R=0..4 : [0.000e+00 0.000e+00 0.000e+00 0.000e+00 8.327e-16]
+  [PASS] B2 2D trF^2 (=H) atom weight g1/Sg = 0 (conserved density)
+   generic 2D sources: holonomy chi_f -> g1/Sg=1.000 ; chi_f+chi_adj -> g1/Sg=0.500
+  [PASS] B3 generic source: 2D W0 CAN give positive g1/Sg (trF^2 zero is a SELECTION RULE, not generic)
+
+PART C  variational large-N ansatz : rigid-string breathing mode HAS binding
+   kappa   rho*    m1=sqrt(E1-E0)  g1/Sg(O=V)   g1/Sg(O=rho)   (single-tube = UPPER estimate)
+   0.100   0.224   4.5556          0.9353        0.8922
+   0.138   0.263   4.4956          0.9504        0.8949
+   0.193   0.311   4.4137          0.9666        0.8986
+   0.300   0.387   4.2702          0.9754        0.9051
+   0.500   0.500   4.0476          0.9075        0.9154
+  [PASS] C1 breathing ansatz: g1/Sg > 0 STRICTLY (binding present) for every kappa
+  [PASS] C2 ... but g1/Sg is SOURCE-DEPENDENT (O=V vs O=rho differ): source-tube coupling is the missing input
+   rigid-string continuum variational mass m1/sqrt(sigma)=2*pi*sqrt(2*kappa): ['2.81', '3.30', '3.90', '4.87', '6.28']
+  [PASS] C3 continuum rigid-string mass in the lattice band m/sqrt(sigma)~3.3-3.9 (k=0.138-0.193)
+
+PART D  the squeeze / ceiling bracket at beta=2.5 and what it does NOT give
+   (illustrative) chi(2.5)=0.328 : the squeeze gives ONLY the upper face f1^2/M0 <= m1^2 chi/M0
+   the lower face needs the SECOND level (isolation I2) -> that is H1 [O], not supplied by data
+   measure A: atoms (s=1:0.4, s=9:0.6) -> g1/Sg=0.400
+   measure B: atoms (s=1:0.001, 2.5, 6, 12) -> g1/Sg=0.001 (lightest)
+   A moments (M0,M1,M2)=[ 1.   5.8 49. ] ; B moments=[ 1.      5.8002 49.0038]
+  [PASS] D1 two measures share (M0,M1,M2) to <0.01%%
+  [PASS] D2 same first 3 moments, g1/Sg differs 400x => moments CANNOT bound g1/Sg (W2 NG)
+
+# 10/10 checks PASS
+# PART A,B,C,D complete

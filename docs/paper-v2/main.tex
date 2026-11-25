@@ -81,11 +81,11 @@
 \pagestyle{fancy}
 \fancyhf{}
 \renewcommand{\headrulewidth}{0.4pt}
-\fancyhead[L]{\footnotesize\color{black!55}A conditional reduction of the 4D pure Yang--Mills mass gap (v2)}
+\fancyhead[L]{\footnotesize\color{black!55}A conditional reduction of the 4D pure Yang--Mills mass gap (v2, third printing)}
 \fancyhead[R]{\footnotesize\color{black!55}\thepage}
 \setlength{\headheight}{13pt}
 
-\hypersetup{pdftitle={A Conditional Reduction of the 4D Pure Yang-Mills Mass Gap (v2)},
+\hypersetup{pdftitle={A Conditional Reduction of the 4D Pure Yang-Mills Mass Gap (v2, third printing)},
             pdfauthor={Yuxuan Jiang}}
 
 \begin{document}
@@ -107,8 +107,8 @@
   \vspace{0.55em}
   {\small\color{black!60} Yang--Mills campaign \textperiodcentered{} Lean 4 formalization $+$ lattice numerics\par}
   \vspace{0.15em}
-  {\small\color{black!60} 24 November 2026 \textperiodcentered{} version 2 \textperiodcentered{}
-   supersedes the 31-page v1\par}
+  {\small\color{black!60} 24 November 2026 \textperiodcentered{} version 2, third printing
+   (the sixth-species wave) \textperiodcentered{} supersedes the 31-page v1\par}
   \vspace{0.15em}
   {\small\color{black!60} v1 preprint DOI:
    \href{https://doi.org/10.5281/zenodo.24486316}{10.5281/zenodo.24486316}\par}
@@ -238,6 +238,21 @@ The verdict is sober: \textbf{Clay is 0\% --- open.} The wall did not fall. It b
 ruled, instrumented, and twice drawn. The tool that would cross it --- a nonperturbative machine
 transporting the strong-coupling gap and residue across the Savvidy crossing and taking $a\to0$
 --- \emph{does not exist}, and naming it precisely is the campaign's real result.
+
+\emph{The sixth species.} This printing adds one chapter reporting the sixth-species wave: five
+species classes are closed, each with its decisive number --- Harish--Chandra spherical functions,
+pseudo-spectral non-normality, tropical min-plus, Lorentzian/$M$-convexity, and set-type small
+balls. The data-mode meta-theorem is made quantitative: finite data pairs are floor-blind in both
+directions, with defect $e^{-0.4595N}$, and the statement extends from four data modes to the whole
+spectral class. Two load-bearing constants are corrected: $C=1.5$ ($\rho^2\le2.25$) is excluded by
+the physical ratio, which lies in the band $1.54$--$1.56$ ($\rho^2\in[2.37,2.43]$; the older
+$1.6$--$1.8$ band is larger still), so every point of the band exceeds $2.25$; and $C=2$ is sharp
+only inside the Dirichlet-type tower class --- outside it the window bound fails ($\rho^2=9$ for a
+Neumann--Dirichlet box, unbounded for the star $K_{1,m}$), so $\rho^2\le C^2$ and the missing step
+are the same condition, the floor being
+$\Delta/(\rho^2-1)$ and $\Delta/3$ only inside that class. The strong-coupling radius is
+$\beta<1/48$, independent of $N$ --- the inequality $\lambda_{\mathrm{tH}}<1/24$ occurs nowhere in
+the source. \textbf{Clay is still $0\%$; this round opens no new route.}
 \end{tcolorbox}
 
 % ---------- what is new in v2 ----------
@@ -256,6 +271,11 @@ open step has a falsification test. (6) Expanded proofs throughout, a full verif
 central-charge normalizations. (7) A new ultraviolet-face chapter (Chapter~\ref{ch:uvface}) that
 classifies the last inequality $(\star)$ --- exact counterexample, good-set theorem, projection and
 normalization, the head, the soft mode, decompactification, and the periodic constant-mode anchor.
+
+\smallskip
+\textbf{Third printing (the sixth-species wave).} One added chapter
+(\code{ch16-sixth-species.tex}) closes five species classes, makes the data-mode meta-theorem
+quantitative, and corrects two constants; it opens no new route.
 The verdict is unchanged: \textbf{Clay is 0\%.}
 \end{v2box}
 
@@ -286,6 +306,7 @@ The verdict is unchanged: \textbf{Clay is 0\%.}
 \input{ch12-numerics.tex}
 \input{ch13-machine.tex}
 \input{ch15-uvface.tex}
+\input{ch16-sixth-species.tex}
 \input{ch14-verdict.tex}
 \input{refs.tex}
 \input{app.tex}

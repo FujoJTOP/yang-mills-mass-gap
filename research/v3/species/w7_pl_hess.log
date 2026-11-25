@@ -1,0 +1,12 @@
+Hess S_W  >=  -(6 * sup(-lam_min) / N) * beta * g   per link, d=4 (6 plaquettes per link)
+N  dim(G)  sup(-lam_min)   sup(lam_max)   coef4D=6*sup(-lmin)/N   coef4D*2.5    (1/2)Ric=N/8   ratio(act/geom)
+2      3      0.761882      0.762784              2.285646      5.714115      0.250000     22.86
+3      8      0.777245      0.745611              1.554491      3.886227      0.375000     10.36
+4     15      0.804168      0.787250              1.206251      3.015628      0.500000      6.03
+5     24      0.802399      0.808254              0.962879      2.407196      0.625000      3.85
+
+beta=2.5: lambda_dot_0 >= -(coef4D*beta) + (1/2)Ric  (the t=0 value the BD criterion must start from)
+  SU(2): lambda_dot_0 >=   -5.4641   [action  -5.7141, geometry 0.2500]
+  SU(3): lambda_dot_0 >=   -3.5112   [action  -3.8862, geometry 0.3750]
+  SU(4): lambda_dot_0 >=   -2.5156   [action  -3.0156, geometry 0.5000]
+  SU(5): lambda_dot_0 >=   -1.7822   [action  -2.4072, geometry 0.6250]

@@ -1,0 +1,19 @@
+==============================================================================
+lambda_max of Hess S/(N beta) at extremal configurations
+==============================================================================
+upper bound (SZZ) 8(d-1);  single-link 2(d-1)
+
+--- N=2 ---
+  d=2 L=4 vortex-ok=True:  lambda_max(vortex) = 4.000000   lambda_max(flat) = 0.000000   lambda_max(random) = 2.940328
+        C*/8(d-1) = 0.5000   ceiling 1/(2C*) = 0.125000   [SZZ 1/(16(d-1)) = 0.062500]
+  d=3 L=2 vortex-ok=True:  lambda_max(vortex) = 6.000000   lambda_max(flat) = 0.000000   lambda_max(random) = 3.775394
+        C*/8(d-1) = 0.3750   ceiling 1/(2C*) = 0.083333   [SZZ 1/(16(d-1)) = 0.031250]
+  d=4 L=2 vortex-ok=True:  lambda_max(vortex) = 8.000000   lambda_max(flat) = 0.000000   lambda_max(random) = 4.737731
+        C*/8(d-1) = 0.3333   ceiling 1/(2C*) = 0.062500   [SZZ 1/(16(d-1)) = 0.020833]
+--- N=3 ---
+  d=2 L=4 vortex-ok=True:  lambda_max(vortex) = 4.000000   lambda_max(flat) = 0.000000   lambda_max(random) = 2.389892
+        C*/8(d-1) = 0.5000   ceiling 1/(2C*) = 0.125000   [SZZ 1/(16(d-1)) = 0.062500]
+  d=3 L=2 vortex-ok=True:  lambda_max(vortex) = 6.000000   lambda_max(flat) = 0.000000   lambda_max(random) = 3.352687
+        C*/8(d-1) = 0.3750   ceiling 1/(2C*) = 0.083333   [SZZ 1/(16(d-1)) = 0.031250]
+  d=4 L=2 vortex-ok=True:  lambda_max(vortex) = 8.000000   lambda_max(flat) = 0.000000   lambda_max(random) = 3.959854
+        C*/8(d-1) = 0.3333   ceiling 1/(2C*) = 0.062500   [SZZ 1/(16(d-1)) = 0.020833]

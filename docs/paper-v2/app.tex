@@ -90,12 +90,16 @@ systematic error that limits it.
 \subsection{The $\mathrm{SU}(2)$ residue measurement}
 
 Wilson action on a hypercubic lattice, $\beta=2.2$, $L=6$, $T=6$ (the transfer direction is
-taken long enough that the two-exponential fit is stable), $N=4000$ configurations separated by
-enough sweeps to make the integrated autocorrelation time of the correlator smaller than the
-separation. Operator: the zero-momentum connected correlator of $\operatorname{tr}F^2$, built
-from the plaquette; several smearing levels are used to check operator independence. Fit: two
-exponentials, with the residue of the leading one reported as $f_{1,\mathrm{bare}}^2$. Errors:
-jackknife over configurations. Result: $f_{1,\mathrm{bare}}^2=7.14\pm0.42$,
+taken long enough that the reflected single-state form is resolved), $N=4000$ configurations
+separated by enough sweeps to make the integrated autocorrelation time of the correlator smaller
+than the separation. Operator: the zero-momentum connected correlator of
+$\operatorname{tr}F^2$, built from the plaquette; several smearing levels are used to check
+operator independence. Fit: a single $\cosh$,
+$C(t)=A\cosh\bigl(m(t-T/2)\bigr)=\tfrac{A}{2}e^{-mT/2}\bigl(e^{mt}+e^{m(T-t)}\bigr)$ --- one
+state plus its periodic image --- with $m$ held \emph{fixed at the effective-mass plateau} and only
+the amplitude $A$ free; $A$ is reported as $f_{1,\mathrm{bare}}^2$. A two-exponential form is used
+only as the excited-state systematics check. Errors: jackknife over configurations. Result:
+$f_{1,\mathrm{bare}}^2=7.14\pm0.42$,
 $m_G=1.51\pm0.15\,a$. At $\beta=1.0$ the same protocol gives a $0.2\sigma$ signal; the
 interpretation (state at or beyond the cutoff) is in Chapter~\ref{ch:numerics}.
 
@@ -392,6 +396,31 @@ Wilson OPE sees only the diagonal $\sigma$ & \LT/\LN & \code{U2-WILSON-OPE.md}\\
 Large-$N$: $w_1=O(N^0)$, binding survives & \LT/\LC & \code{U3-LARGE-N-BINDING.md}\\
 Continuum: $\gamma_{w_1}=0$, finite $a\to0$ & \LT/\LM & \code{U4-CONTINUUM-ATOM.md}\\
 Entanglement is operator-blind and anti-correlated & \LT/\LN & \code{U5-ENTANGLEMENT-BINDING.md}\\
+Harish--Chandra / spherical route (family 34) & \LN & \code{research/v3/species/ROUND1-VERDICTS.md} \S1;
+  witness \code{w7/hc\_spherical.py}\\
+Pseudospectral / Rouch\'e route (family 35) & \LN/\LE &
+  \code{ROUND1-VERDICTS.md} \S2; \code{AUDIT-R1.md} \S B2; witness \code{w7/ps\_witness.py}\\
+Tropical / min-plus route (family 36) & \LN & \code{ROUND1-VERDICTS.md} \S3;
+  \code{AUDIT-R1.md} \S B1; witnesses \code{w7/tr\_maxplus.py}, \code{tr\_flat.py},
+  \code{tr\_block\_L.py}\\
+Setwise / small-ball route (family 37) & \LN & \code{ROUND1-VERDICTS.md} \S4;
+  \code{AUDIT-R1.md} \S B3; witness \code{w7/sw\_marginal.py}\\
+Lorentzian / M-convex route (family 38) & \LN & \code{ROUND1-VERDICTS.md} \S5;
+  witness \code{w7/lx\_label\_geometry.py}\\
+Quantitative data-mode no-go ($d_N$), spectral class & \LT{}/\LN &
+  \code{ROUND1-VERDICTS.md} \S6; \code{AUDIT-R1.md} \S C-5; witness \code{w7/dm\_floor\_defect.py}\\
+Named inequality (NA): signs, and vacuity at $a_0=0$ & \LN &
+  \code{ROUND1-VERDICTS.md} \S7; witness \code{w7/na\_plaquette.py}\\
+Window constant $C=2$ (class-conditional; Appendix~\ref{app:erratum-C}) & \LC/\LM &
+  \code{RB-RATIO-BOUND.md} \S RB-8, PART E--F; witness \code{w7/rb\_ratio\_bound.py}\\
+Source alignment $w_1\ge w_0$ has no mechanism & \LN & \code{WA-ALIGNMENT.md} \S\S2--3;
+  witness \code{w7/wa\_alignment.py}\\
+$\mathrm{SU}(N)$ Haar curvature $N/12$ re-audited & \LT & \code{AUDIT-R1.md} \S A1;
+  witness \code{w7/audit/audit\_a1\_sun\_hessian.py}\\
+Residue amplitude $A/C(0)$: scope audit & \LE/\LM & \code{AUDIT-C0.md} \S\S2--4;
+  witness \code{w7/audit/audit\_c0\_ratio.py}\\
+External literature cross-check (per-source ledger) & \LT{}/lit. & \code{LIT-CHECK.md} \S1--\S2\\
+Species definition, five conditions, acid test & --- & \code{SIXTH-SPECIES-CHARTER.md} \S\S1--3\\
 \end{longtable}
 \normalsize
 
@@ -443,13 +472,48 @@ DSE exponent & Landau gauge, scaling ansatz & $\kappa\approx0.595$ & \LC\\
 NG rigidity & 1-loop determinant & $\kappa_{NG}=-1/(6\pi)$ & \LT\\
 rigidity ratio & rigid-string model & $\kappa_{\rm light}/\kappa_{\rm exc}=1.733$; mass ratio
   $1.168$ vs lattice $1.538$ & \LE\\
+$\mathrm{SU}(N)$ Haar curvature at the origin & flat chart, $X=0$, $N=2,3,4$ & $c_N=N/12$;
+  $1/6$, $1/4$, $1/3$ & \LT\\
+Harish--Chandra Plancherel & split-type spherical transform & no atom; $H^{1/2}$ norm
+  $20.72\to36.84$ (cutoff $10^2\to10^8$) & \LT{}-analytic\\
+Rouch\'e margin & $\beta=2.5$ tensor, $\varepsilon_1=0.7871$ & $\operatorname{dist}=0.001944$;
+  $\varepsilon_1/\operatorname{dist}=404.8$; admissible $V<2.47\times10^{-3}$ & \LE/\LN\\
+tropical gap prediction & constant-holonomy slice & $\Delta_{\mathrm{trop}}\equiv0$ vs exact
+  $\Delta=0.6444$; width/$\Delta=3.013$ ($2.415$ blocked) & \LE\\
+tropical, frustration-free & $n=64,4096$, $\beta=2.5$ & $\Delta_{\mathrm{trop}}=0$ vs
+  $\Delta=0.267884$; width/$\Delta=4.255$ & \LE\\
+small-ball scale invariance & $\varepsilon=0.1$, $R=100$ & $\operatorname{Var}=1891.27$ under
+  $\mu\to\lambda\mu$ & \LE\\
+plaquette log-curvature & $\rho_\beta\propto e^{-\beta x}\sqrt{x(2-x)}$, $x\in(0,2)$ &
+  $(\log\rho)''=-\tfrac{1}{2x^2}-\tfrac{1}{2(2-x)^2}<0$, $\beta$-independent & \LT\\
+Lorentzian label weights & frustrated plaquette, $\mathrm{SU}(2)$ & $(-1)^{2j}w_j$ signed;
+  partial sum $0.5034$ & \LE\\
+data-mode defect $d_N$ & $N\le14$, $\varepsilon=0.2$ & $d_1=0.582$; $d_{14}=1.36\times10^{-2}$;
+  fit $e^{-0.4595N}$ & \LE\\
+(NA) sign on the natural fibre & one plaquette, $\theta=\pi$, $a_0=0$ &
+  $G''=0.20511530-0.01105929\beta^2$; $\beta_*=4.30661$ & \LT/\LE\\
+ratio anchor & one plaquette $\mathrm{SU}(2)$, $\beta=0$ & $\mu_1=3$, $\mu_2=8$, $\rho^2=8/3$ & \LT\\
+ratio anchor, Dirichlet string & $-u''+cu$, $[0,1]$ & $\rho^2=(4\pi^2+c)/(\pi^2+c)$;
+  $\rho^2\le4\iff c\ge0$ (sharp) & \LT\\
+ratio, star graph & $K_{1,m}$ Laplacian, $m=1000$ & $\rho^2=m+1$, $\operatorname{diam}=2$,
+  $\mu_1=1$ & \LT\\
+ratio, double well & 1D exact diagonalisation, $g:0.5\to12$ & $\rho^2=4.48\to807.36$
+  ($\log\rho^2\approx0.558g$); $T_2=4.34\to20.05$ & \LE\\
+source alignment, double well & same, $g:0.5\to100$ & $w_1=0.944$--$0.991$;
+  $s_1:0.725\to3.0\times10^{-4}$ & \LE\\
+residue amplitude scope & $\mathrm{SU}(2)$, $\beta=2.5$, $L=4,6,8$, $N=2000$ &
+  $A/C(0)=0.5288/0.5475/0.5633$, $m_1$ pinned at the fit bound $0.03$ & \LE\\
+ratio, outside the Dirichlet class & Neumann--Dirichlet box; 2D disc $s$-wave; star $K_{1,m}$ &
+  $\rho^2=9$ (exact), $6.69$ ($q=1$), $5.269$, $m+1$ (unbounded) & \LT/\LE\\
 \end{longtable}
 \normalsize
 
 \textbf{Reading the ledger.} The \LE{} rows are measurements on finite lattices, with the
 statistical method stated in Appendix~\ref{app:protocols}. They are not proofs, and the paper
 does not use them as such. The \LT{}/pert.\ rows are perturbative theorems (the two-loop window)
-or exact computations (the NG determinant). The \LC{} row is truncation-dependent. The
+or exact computations (the NG determinant). The \LC{} row is truncation-dependent. Rows whose configuration is a solvable model rather than a
+lattice carry their witness script in Appendix~\ref{app:verif} in place of a protocol here; their
+\LE{} label means ``computed exactly on the model'', not ``measured on Yang--Mills''. The
 Savvidy rows are the ones where the distinction between a theorem (the removal of the false
 obstruction) and a measurement (the surviving margin) matters most, and the main text keeps them
 separate.
@@ -545,6 +609,135 @@ $a_{IR}\in(0,a_{UV}]$, $a_{IR}/c_{IR}\in[1/3,31/18]$ is two-dimensional. The cor
 \code{G1-A-C-BOUNDS.md} and the synthesis \code{G1-SYNTHESIS.md} have been corrected and carry
 the erratum.
 
+\subsection{Erratum: the strong-coupling radius is $1/48$, not $1/24$}
+\label{app:erratum-radius}
+
+Several places in the first printing of this edition quoted the rigorous strong-coupling frontier
+as $\lambda_{\mathrm{tH}}<1/24$. \textbf{That inequality is not in the source.} Shen--Zhu--Zhu
+(\code{arXiv:2204.12737}) prove the mass gap for $\lvert\beta\rvert<1/(16(d-1))$, which in $d=4$
+is $\lvert\beta\rvert<1/48$, and the condition \emph{does not involve $N$}; written in the 't
+Hooft coupling it reads $\lambda_{\mathrm{tH}}=\beta N<N/48$, which is a different (and
+$N$-dependent) statement. The corpus file \code{SOTA-VERIFIED.md} had already flagged the figure
+as unverified; the present appendix records the independent check and the correction. The
+substitution affects no conclusion: the physical coupling is $\beta\approx2.5$ (i.e.\
+$\lambda_{\mathrm{tH}}\in[1,7.3]$), which is $2.5\times48=120$ times the corrected $\beta$-radius,
+and in 't Hooft units at $\lambda_{\mathrm{tH}}=1$ it is $48/N$, i.e.\ $24$ times ($N=2$) or $16$
+times ($N=3$) the corrected $\lambda$-radius. The rigorous radius therefore still sits two orders
+of magnitude away from the physical point, as the text says.
+
+\subsection{Erratum: two couplings in different coordinates}
+\label{app:erratum-balaban}
+
+The first printing of Chapter~\ref{sec:missing} described the ultraviolet reach of the
+Balaban-type renormalization group and the position of the crossover in one breath: the expansion
+``stops at $\lambda\sim1$'', and ``the crossover is at $\lambda_{\mathrm{tH}}\in[1,7.3]$''. The two
+numbers sit in \emph{different coordinates}, and the sentence mixed them. The parameter that the
+small-field multiscale expansion uses is the coupling $g^2$ (the bare lattice coupling,
+$\beta=2N/g^2$); the lattice-normalized quantity used to place the crossover is
+$\lambda_{\mathrm{tH}}:=\beta N$, which is \emph{not} the 't Hooft coupling. They are related by
+\[
+  \lambda_{\mathrm{tH}}=\beta N=\frac{2N^2}{g^2},
+  \qquad\text{so}\qquad
+  g^2=1\iff\lambda_{\mathrm{tH}}=2N^2=18\ (\mathrm{SU}(3)),\ \;8\ (\mathrm{SU}(2)),
+\]
+and therefore $\lambda_{\mathrm{tH}}=1\iff g^2=2N^2$. The two ``ones'' --- the Balaban edge read
+as $g^2\sim1$, and the lower crossover edge $\lambda_{\mathrm{tH}}=1$ --- differ by exactly
+$2N^2$: $18$ for $\mathrm{SU}(3)$, $8$ for $\mathrm{SU}(2)$ \LT. Reading them as the same $1$ produced
+the figure ``$7.3\times$'', which is a ratio of two numbers in different units. \textbf{That figure
+is retracted.} The distance the expansion must cross, written in one coordinate, is \LE
+\[
+  \text{physical point }(\beta=2.4\text{--}2.5)\!:\ 2.47\times,
+  \qquad
+  \text{lower crossover edge }(\lambda_{\mathrm{tH}}=1,\ g^2=18)\!:\ 18\times,
+\]
+so the target is $2.47\times$ or $18\times$, never $7.3\times$. Correcting the coordinate also
+fixes what a constant-improvement programme may claim; this part is arithmetic, not interpretation.
+\begin{itemize}
+\item \emph{The expansion parameter at the edge is already large} \LE. With the Lemma-B small-field
+  radius $t^*=4.46$ ($\mathrm{SU}(3)$) / $5.46$ ($\mathrm{SU}(2)$) and
+  $g^2=2N^2/\lambda_{\mathrm{tH}}$,
+  \[
+    \eta_B:=t^*g,\qquad
+    \eta_B(\lambda_{\mathrm{tH}}=1)=18.93\ (\mathrm{SU}(3)),\ \;15.45\ (\mathrm{SU}(2)),
+  \]
+  which is $19$--$63$ times the criterion band $[0.3,1]$; $\eta_B=1$ is reached only at
+  $\lambda_{\mathrm{tH}}=2N^2c^*=358$ ($\mathrm{SU}(3)$) / $239$ ($\mathrm{SU}(2)$), i.e.\ at
+  $g^2=0.050$.
+\item \emph{Two quantities that need no construction agree} \LE. First $g^2(\lambda_{\mathrm{tH}}
+  =1)=2N^2$: the most naive reading already exceeds the band by $18$--$60$ times. Second, at the
+  head of the one-loop tower $\beta_{\mathrm{head}}=4N\beta_0=0.836$ ($\mathrm{SU}(3)$) / $0.372$
+  ($\mathrm{SU}(2)$), so $\beta_{\mathrm{head}}<1$ and $e^{-\beta}$ is no suppression there; the
+  tower head sits on the strong-coupling side, at $\lambda_{\mathrm{tH}}=2.508$, \emph{inside}
+  $[1,7.3]$.
+\item \emph{The available slack is finite and known} \LM. The loosest link is L2, the polymer/cluster
+  estimate: replacing the block-union bound by Koteck\'y--Preiss tempered polymer counting gains
+  exactly $4/3$ ($c^*:19.90\to14.93$, $N=3$; $c^{**}=\ln(2d)/(2\beta_0)$ is $L$-independent, so
+  $L=2$ is the optimal blocking factor). The next loosest is L3's crude
+  $K=80e^{2+\beta}N$, bounded by $\le10$ and \textbf{not quantified}. Hence
+  \[
+    M=\tfrac43\times[1,10]\in[1.3,13]\quad(10^{0.5}\text{--}10^{1}),
+  \]
+  which in arithmetic supports $2.47\times$ and does \emph{not} support $18\times$.
+\item \emph{What is optimal, and what is not a bound} \LT/\LM. The limit $\lambda\sim1$ is a
+  \emph{parameter} limit --- a statement about the shape of the theorem --- not slack. L4 is the
+  spectral equality $\lambda_{\min}=(4/a^2)\sin^2(\pi a/L)$, attained by the lowest nonzero mode,
+  and L5 is power counting in the critical dimension: those two links admit no constant
+  improvement, and the $4/3$ and the $\le10$ do not act on them. L6 is a hypothesis $\gamma$ on the
+  effective-coupling sequence, not an inequality, and $\gamma$ is unpublished --- so no improvement
+  acts on it either.
+\end{itemize}
+\textbf{The conclusion is unchanged, and it is not rescued by constants.} The ultraviolet argument
+still does not reach the physical coupling, and the reason is the \emph{type} of the last link, not
+the size of a constant: at $\lambda_{\mathrm{tH}}=1$ there is no small parameter to expand in, and
+pushing past it means abandoning the small-field condition --- the wall of
+\S\ref{sec:missing}, in the other coordinate. What this erratum removes is a factor that never
+existed; what remains to be crossed is $2.47\times$ at the physical point, and the constant chain
+cannot supply the $18\times$ needed at the crossover edge. \LM{}
+(\code{research/v3/species/BC-CHAIN.md} \S\S1--5; witness \code{research/v3/w7/bc\_chain.py} with
+output \code{research/v3/w7/bc\_chain.out}.)
+
+\subsection{Erratum: the isolation constant $C$ is $2$, not $1.5$ --- a class-conditional value}
+\label{app:erratum-C}
+
+The conditional chain uses a window on the second spectral gap,
+$\rho^2:=\mu_2/\mu_1\le C^2$, with $\mu_n$ the eigenvalues of the $0^{++}$-projected coarse
+transfer generator and $\mu_1,\mu_2$ \emph{distinct} values. The corpus value was $C\approx1.5$
+(\code{IN-11}), i.e.\ $\rho^2\le2.25$. \LT{} That value is unusable: \textbf{five exact anchors
+violate it} --- one plaquette $\mathrm{SU}(2)$ at $\beta=0$ ($\mu_1=3$, $\mu_2=8$, $\rho^2=8/3$),
+2D Yang--Mills $\mathrm{SU}(2)$ ($8/3$), the path graph at $N=2$ ($3$), and the Dirichlet box /
+1D rotor / 1D Dirichlet string and 2D $U(1)$ (both $\rho^2=4$); only the Mehler /
+Ornstein--Uhlenbeck kernel
+($\rho^2=2$) passes. The decisive anchor is not a toy: the 4D lattice ratio
+$m_{0^{++*}}/m_{0^{++}}\approx1.56$ gives
+$\rho^2_{\mathrm{phys}}\approx1.56^2=2.43>2.25$ \LE, so the corpus's window was violated by the
+theory it was meant to constrain, before any model of that theory was written down.
+
+\textbf{The replacement is not a structural constant.} \LC{} $C=2$ is the sharp value \emph{inside
+the Dirichlet-type tower class} (bottom-normalised effective potential, single well, non-degenerate
+bottom), saturated by the 1D Dirichlet string,
+$\rho^2(c)=(4\pi^2+c)/(\pi^2+c)\le4\iff c\ge0$, sharp; it is \textbf{not} a structural constant.
+Outside that class the window fails: Neumann and mixed boundary conditions give $\rho^2=9$ (the
+Neumann--Dirichlet box, exact), $6.69$ (the same box with $q=1$) and $5.269$ (the 2D disc, $s$-wave
+sector), and the star $K_{1,m}$ gives $\rho^2=m+1$, \emph{unbounded}. Hence $\rho^2\le C^2$ and the
+missing step --- the Dirichlet normalisation of the confining coordinate --- are \textbf{the same
+condition, not independent inputs}. The floor is $\mu_1\ge\Delta/(\rho^2-1)$: $\Delta/3$ inside
+that class, degrading outside. The price of the correction, inside the class, is
+\[
+  \frac{\Delta}{1.25}\ \longrightarrow\ \frac{\Delta}{3}
+  \quad\text{inside the Dirichlet-type class},
+  \qquad \Delta:=\mu_2-\mu_1 ,
+\]
+and \emph{the window theorem itself is unchanged}; only its constant and the floor it yields move,
+and the constant is now a hypothesis rather than an input. \LM/\LE{}
+(\code{research/v3/species/RB-RATIO-BOUND.md} \S RB-8, PART E--F;
+\code{research/v3/species/w7/kt\_a\_exact.log} \S\S A2, A6--A8.)
+
+\textbf{Conclusion.} This erratum replaces a constant, and the replacement turns out to be
+conditional --- the condition is the missing step itself. The qualitative content of \code{IN-11}
+--- that the lightest bulk state lies in the $0^{++}$ channel --- is unchanged; what moves is a
+numerical constant in an auxiliary input, and what it moves into is the hypothesis. The correction
+is restated with its evidence in Chapter~\ref{ch:sixth}.
+
 \subsection{Corrections preserved from the first edition}
 
 The following corrections are preserved because they are easy to undo by accident.
@@ -560,8 +753,11 @@ The following corrections are preserved because they are easy to undo by acciden
   weak coupling, not on the gauge-invariant $0^{++}$ at the physical coupling. The correct
   object's variance is $V$-suppressed. (Appendix~\ref{app:postaudit}.)
 \item \textbf{The ``$75\times$'' strong-coupling figure was a unit confusion.} The CPS/CNS 2025
-  frontier is $\lambda_{\mathrm{tH}}<1/24$, not a factor $75$ from the physical coupling.
-  (\code{PROOF-EMERGENT-4D.md}.)
+  frontier is $\lvert\beta\rvert<1/(16(d-1))=1/48$ in $d=4$ (equivalently
+  $\lambda_{\mathrm{tH}}<N/48$), not a factor $75$ from the physical coupling.
+  (\code{PROOF-EMERGENT-4D.md}.) \emph{An earlier form of this remark wrote the frontier as
+  $\lambda_{\mathrm{tH}}<1/24$; that number occurs nowhere in the cited source and is retracted
+  in Appendix~\ref{app:errata}.}
 \item \textbf{$G''\operatorname{Var}(\xi)=1$ only for a Gaussian marginal.} Measured $2$--$5\%$
   at $\beta=2.5$; the exact Ward identity is $E[a\,f]=1$.\ (\S\ref{sec:squeeze}.)
 \item \textbf{The atom $=$ atomless-bump distinction is not visible to finite data.} Any

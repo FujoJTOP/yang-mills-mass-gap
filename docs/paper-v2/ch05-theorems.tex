@@ -122,7 +122,7 @@ exponential scale, which is why I2 remains open.
 
 \src{\code{research/unconditional/PROOF-NO-DISSOLUTION-KINEMATIC.md};
 \code{PROOF-DISSOLUTION-SPECTRAL-DENSITY.md}; \code{PROOF-ISOLATION.md};
-\code{PROOF-EDGE-E2.md}.}
+\code{PROOF-EDGE-E2.md}; \code{research/v3/species/RB-RATIO-BOUND.md}.}
 
 \begin{claimbox}{cC}
 \claimhead{Theorem}{(no dissolution)} \emph{Suppose (K-A) the theory has a uniform gap
@@ -151,6 +151,34 @@ two-glueball $2m_{0^{++}}$. The coarser target ``no $0^{++}$ below $2m_g$'' is f
 I2 is a gap to the excited glueball of size $\delta\approx0.5\,m_1$, fixed by power counting, not
 symmetry.
 
+\textbf{The window constant is $C=2$ inside a class, not a structural constant.} The isolation
+threshold above is the window $\rho^2\le C^2$ for the ratio $\rho^2:=(m_{0^{++*}}/m_{0^{++}})^2$,
+with $\Delta:=m_{0^{++*}}^2-m_{0^{++}}^2$; the floor is $\Delta/(\rho^2-1)$, i.e.\ $\Delta/3$
+\emph{inside that class} and $\Delta/(\rho^2-1)$ outside it, degrading with $\rho^2$. \textbf{$C=2$ is
+the sharp value inside the Dirichlet-type tower class} (bottom-normalised effective potential, single
+well, non-degenerate bottom), saturated by the 1D Dirichlet string
+($\rho^2=(4\pi^2+c)/(\pi^2+c)\le4\iff c\ge0$, sharp) and met by the other exact anchors of that class
+--- one plaquette at $\beta=0$ and 2D Yang--Mills at $\mathrm{SU}(2)$ ($8/3$), the two-site path chain
+($3$), 2D $\mathrm{U}(1)$ ($4$) --- while the physical ratio $m_{0^{++*}}/m_{0^{++}}\approx1.56$ gives
+$\rho^2=2.43$, so $C\approx1.5$ ($\rho^2\le2.25$) is excluded. It is \textbf{not} a structural
+constant: Neumann or mixed boundary conditions give $\rho^2=9$ (the Neumann--Dirichlet box, exact) and
+$\rho^2=m+1$ (the star $K_{1,m}$, unbounded). Hence $\rho^2\le C^2$ and the missing step --- the
+Dirichlet normalisation of the confining coordinate --- are \textbf{the same condition, not
+independent inputs}. \LM{} (\code{research/v3/species/RB-RATIO-BOUND.md},
+\code{research/v3/species/w7/kt\_a\_exact.log}). The qualitative content of \code{IN-11} (the lightest
+bulk state in $0^{++}$) is unchanged.
+
+\textbf{The window inherits H1, and is not a fourth predicate.} Let $e_k$ be the $k$-th
+nonzero level of the $0^{++}$-projected coarse generator $\mathcal L$ ($m_k^2=e_k$, so
+$\rho^2=e_2/e_1$), and $t:=T_2(V)=\operatorname{tr}(G^{-1}M)$ the rank-2 trace on a test pair
+($G_{ij}=\langle\phi_i,\phi_j\rangle$, $M_{ij}=\langle\phi_i,\mathcal L\phi_j\rangle$). The Ky Fan
+rank-2 principle $e_1+e_2=\min\{\operatorname{tr}(P_V\mathcal L P_V):\dim V=2,\ V\perp1\}$ gives
+$\rho^2\le t/e_1-1$ for \emph{every} test pair --- independent of $\psi_1$ (the first excited
+vector), no small parameter, direction correct (constructing $V$ upper-bounds a minimum) --- hence
+$\rho^2\le C^2\iff e_1\ge t/(1+C^2)$: a thresholded floor. \LN{} (named class): the window therefore
+inherits H1 rather than adding a fourth independent predicate, and it \textbf{cannot be used as a new
+sufficient condition}.
+
 \textbf{Conditional.} The theorem is a genuine kinematic theorem but inherits rather than proves
 its antecedents: (K-A) is the gap, and (K-B) is the ordering input (\code{IN-11}). It fails only
 on gap closure (deconfinement, not the zero-temperature smooth crossover) or on a factor-2
@@ -161,7 +189,8 @@ antecedent is exactly the open dynamics.
 \subsection{Non-negativity of the Haar geometric curvature}
 \label{sec:wgeo}
 
-\src{\code{research/unconditional/PROOF-JACOBIAN-SAVES.md}.}
+\src{\code{research/unconditional/PROOF-JACOBIAN-SAVES.md};
+\code{research/v3/species/NS-NOSUBTRACTION.md} \S1.4.}
 
 \begin{claimbox}{cT}
 \claimhead{Theorem}{($W_{\mathrm{geo}}\ge0$)} \emph{Work in the flat chart
@@ -181,6 +210,22 @@ measured $0.34$, $0.46$). At $\beta=0$ the geometric term is the whole curvature
 $V_{\mathrm{eff}}''=0.248$ versus $E[\Phi'']-\operatorname{Var}(\Phi')=0.246$, an exact
 closure.}
 \end{claimbox}
+
+\textbf{Quantitative strengthening \LT.} Pr\'ekopa's conclusion strengthens to
+\begin{equation}
+W_{\mathrm{geo}}(v;a)\ \ge\ \lambda(v):=\inf_\xi\bigl\langle v,\operatorname{Hess}\Phi(\xi)\,v
+\bigr\rangle\ \ge\ (N/12)\|v\|^2\ >\ 0
+\qquad\text{for every } a,\ \beta,\ L ,
+\label{eq:wgeo-quant}
+\end{equation}
+because strong log-concavity does not decay under marginalisation: if $-\log f$ is $\lambda$-strongly
+convex, the marginal $g(x)=\int f\,\delta(x-\langle v,\xi\rangle)\,d\xi$ satisfies
+$-(\log g)''\ge\lambda$ (\code{NS-NOSUBTRACTION.md}, Prop.~N1, three lines). The mode enters only
+through $\|v\|^2$, so an $L$-link average gives $\|v\|^2=1/L$, i.e.\ $c=(N/12)/L$; the chain family's
+measured $\approx0.24/L$ sits on the right side of $1/(6L)$. Equation~\eqref{eq:wgeo} is the corollary
+$\ge0$ ($N/12>0$). The $\beta$- and $a$-independence is what makes this usable at the Savvidy head,
+where every other sign is indefinite ($6$ families, $199$ rows, all pass; tightest margin $2.4\%$ on
+the $\mathrm{SU}(2)$ plaquette).
 
 \textbf{The exact split and what fails.} The identity is
 \begin{equation}
@@ -307,9 +352,37 @@ For 4D pure $\mathrm{SU}(N)$, this becomes the \textbf{tachyonic-compensation in
 where $\mathbb{K}$ is the lift of the block scheme; it is unrelated to the fibre Hessian $K$ of
 the variance decomposition below. Inequality \eqref{eq:tci} says that the gauge-invariant
 effective potential is convex at its minimum, pointwise and nonperturbatively, and the Savvidy
-vacuum has no imaginary part. The tool is not vacuous: on the free massless field, $Q=0$, the
-bottom of $A|_-$ is $0$, $\Sigma$ is not $\ge\mu$, TCI fails, and the certificate correctly
-returns $0$.
+vacuum has no imaginary part. \textbf{It is not non-vacuous, however}: on the free massless field
+$\operatorname{Hess}V=(k^2+N/12)I>0$, so $\mathcal{H}_-=\{0\}$ and \eqref{eq:tci} holds
+\textbf{vacuously} --- it does not return zero, it removes the test object. Recorded as a defect of
+the acid test, not a virtue of the inequality (\code{w7/tci\_comp.log}: $\lambda_{\min}=1.1667$,
+$0.2567$, $0.1767$, $0.1667$ with $\dim\mathcal{H}_-=0$ at $k=1,0.3,0.1,0$). \LN{}
+
+\textbf{The repair} is to quantify over a \emph{background}-defined block instead,
+$\mathcal{H}_-^{\mathrm{fix}}(F_B)$ of dimension $\sim(gB)^2V/8\pi^2$ --- fixed by $F$, not by the
+Hessian --- and to require $\dim\mathcal{H}_-^{\mathrm{fix}}\ge1$. Then $F=0\Rightarrow cF=0$ and the
+inequality reads $0\ge\mu$, i.e.\ it \emph{fails} and the acid test fires normally. \LT{}
+(\code{research/v3/species/TCI-COMPENSATION.md}; the statement relative to the named inputs is
+Chapter~\ref{sec:missing}).
+
+\textbf{Status of \eqref{eq:tci} \LN.} As printed, \eqref{eq:tci} is not a well-defined proposition:
+$cF$ is fixed only outside this chapter (\code{SM5-TCI-HEAD.md:74,91}, $cF=g|B|$); $Q$ is ambiguous
+--- the interaction second variation (what a free-field value $Q=0$ would force) versus the Savvidy
+operator $Q_{\mathrm{Sav}}=-D^2+2\operatorname{ad}F_B$ of \code{SM5-TCI-HEAD.md:72}; and $\mathbb{K}$
+has a promissory note but no formula anywhere. Every use below must therefore name its completion;
+\textbf{the one taken here is ours, not the corpus's intent}: $Q=3\lambda_4\varphi_0^2=3cF$ and
+$\mathbb{K}$ from the seven-way enumeration of \code{research/v3/species/TCI-COMPENSATION.md}, so with
+$A_{\mathbb{K}}:=Q+\mathbb{K}$, $(TCI)\iff\lambda_{\min}(A_{\mathbb{K}}|\mathcal{H}_-)\ge cF+\mu$ while
+$(TCI)\not\Rightarrow\Sigma\succeq\mu$ ($\Sigma\preceq A_{\mathbb{K}}$: the Schur form is strictly
+stronger, gap $\|B\|^2/\gamma$). For $\mathbb{K}=\operatorname{Hess}\Phi$ this is the purely magnetic
+threshold $\lambda_{\min}(\beta\operatorname{Hess}S_W|\mathcal{H}_-)\ge N/12+\mu$. \LC{}
+(\code{research/v3/species/w7/tci\_comp.log}).
+
+\textbf{Compensation is not elimination \LT.} $\Sigma\preceq A$ holds identically, so elimination
+needs $\gamma>0$ and can only lower the form, whereas compensation is $\gamma$-free and additive; and
+every Bogoliubov lift is sign-negative,
+$\tfrac12p^2+\tfrac12\omega^2q^2+c\{p,q\}=\tfrac12(p+2cq)^2+\tfrac12(\omega^2-4c^2)q^2$ (spectrum
+$1.000\to0.980\to0.917\to0.600$), so the Feshbach family cannot supply a positive $\mathbb{K}$.
 
 \textbf{Lemma NS (eliminating a negative block raises the survivor).} In the quadratic form
 $\begin{psmallmatrix}A&B\\B^*&C\end{psmallmatrix}$ with $C\prec0$, the Schur complement satisfies
@@ -459,8 +532,11 @@ P3 residue (I1) & \LT{} ($+$OS/KP) & fixed $a$, $\beta<1/48$, $T^4_L$ &
   $f_1^2\ge r_0(\beta)>0$, uniform in $V,L$ & I2 isolation; $a\to0$; $\beta\approx2.5$\\
 No dissolution & \LC & uniform gap $+$ $0^{++}$ lightest &
   $m_{0^{++}}<2m_g$ (two-body); atom pinned & the gap $+$ ordering themselves\\
-$W_{\mathrm{geo}}\ge0$ & \LT & Haar, flat chart, $g''\ge1/6$ &
-  sign of the geometric term, all $k$, all $L$ & dominance over Savvidy at 2.5\\
+$W_{\mathrm{geo}}\ge\lambda$ & \LT & Haar, flat chart, $g''\ge1/6$ &
+  quantitative floor \eqref{eq:wgeo-quant}:
+  $\lambda(v)=\inf_\xi\langle v,\operatorname{Hess}\Phi\,v\rangle\ge(N/12)\|v\|^2$,
+  $\beta$- and $a$-independent, all $k$, all $L$; $\ge0$ is the corollary &
+  dominance over Savvidy at 2.5\\
 $E[\Phi'']\ge N/12$ & \LT & pointwise, any measure & floor on the Jacobian curvature &
   strict gap\\
 Gauge-invariant PF & \LT{} finite $V$ & $\beta>0$, positive Haar pushforward &
@@ -486,3 +562,25 @@ Lean H1 sharpening & \LT{} (logic) & order-algebraic hypotheses & H1 $\not\Right
 \caption{Proved theorems and their exact scope.}
 \label{tab:theorems}
 \end{table}
+
+\subsection{Sector separation: no functional of charged data bounds the neutral sector}
+\label{sec:ss}
+
+\begin{claimbox}{cT}
+\claimhead{Lemma}{(sector separation)} \emph{The literal reading is false, with both counterexamples
+inside pure Yang--Mills: in $d=2$ (fixed $L$, any $N$, any coupling) the exact Migdal tower gives
+$m_n=(2N^2/(N^2-1))m_{\mathrm{ch}}\ge2m_{\mathrm{ch}}$ from charged data alone; in $d=4$ the
+strong-coupling row $m_{0^{++}}\ge4\sqrt\sigma$ uses $\sigma=-\lim_{T\to\infty}T^{-1}\log\langle W_{\mathrm{fund}}\rangle$, itself
+charged. Exact version \LT{} (conditional): $\mathcal D_{\mathrm{ch}}\not\to m_n=\inf\operatorname{supp}\nu_{0^{++}}$, with quantifier
+$\exists F\,\forall T\in\mathfrak C$, where $\mathfrak C$ is the axiom class (reflection
+positivity $+$ OS positivity $+$ unbroken $Z_N^{(1)}$ $+$ area law) closed under neutral decoupling
+decorations $T\mapsto T\otimes N$: no $F$ that is positive anywhere obeys
+$F(\mathcal D_{\mathrm{ch}}(T))\le m_n(T)$ on $\mathfrak C$. What must be narrowed is the
+\textbf{theory class} $\mathfrak C$, not the function class --- the statement holds for \emph{every}
+$F$. Strongest reachable form \LT: \textbf{``Any derivation that furnishes $e_3$ must consume at least
+one assumption not invariant under neutral decoupling decorations.''}}
+\end{claimbox}
+
+\textbf{Why.} Each reading of $\mathcal D_{\mathrm{ch}}$ is fixed by $T\mapsto T\otimes N$ (charged
+operators are $O\otimes1$), while spectra add, so $m_n$ becomes a minimum and a free massless scalar gives
+$m_n=0$: hence $F\le0$ wherever evaluated, and $e_3$ (Chapter~\ref{sec:missing}) cannot be sector data.

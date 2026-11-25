@@ -1,0 +1,55 @@
+==============================================================================
+W1  TIGHT BRANCH.  Parseval-normalised tight frame: F F^T = I_d  (columns = frame vectors)
+    sum_n |<f,e_n>|^2 = f^T F F^T f = ||f||^2 exactly -- and after compression to any
+    subspace P, the compressed frame is STILL Parseval.  Slack = 0 => no direction.
+==============================================================================
+  d=20, n_vectors=60, ||S-I||_inf = 4.441e-16  (tight, bound 1)
+  rank P     max |sum_n|<Pf,Pe_n>|^2/k - ||Pf||^2| / ||Pf||^2
+       1                                            6.570e-16
+       4                                            9.908e-16
+      10                                            6.770e-16
+      16                                            7.273e-16
+      20                                            1.206e-15
+  -> worst Parseval defect over all compressions = 1.21e-15  (machine zero)
+     P(sum|e_n><e_n|/k)P = P  is Cholesky-level.  The redistribution has NO slack:
+     it is an identity in every subspace, hence it cannot produce a one-sided bound. (D17)
+
+==============================================================================
+W2  FRAME-NATIVE frame bounds: A = lam_min(S), B = lam_max(S).  S depends on the FRAME,
+    not on the dynamics.  Vary L's gap from 2.0 to 0.0 (theory becomes gapless):
+==============================================================================
+  non-tight frame (1 basis + 6 vectors of a 2nd):  A = 1.000000   B = 2.000000   B/A = 2.0000
+   gap Delta     A = lam_min(S)     B = lam_max(S)   moves?
+        2.00       1.0000000000       2.0000000000       NO
+        1.00       1.0000000000       2.0000000000       NO
+        0.50       1.0000000000       2.0000000000       NO
+        0.10       1.0000000000       2.0000000000       NO
+        0.00       1.0000000000       2.0000000000       NO
+  -> the frame bounds are constants of the frame.  They do not move when the gap closes,
+     so they take the SAME value on the free massless field: acid test fails identically.
+     A datum attached to the frame rather than to the theory cannot detect the theory. (D10)
+
+  W2b  the only way to make A,B depend on L: build the frame FROM L.  The natural choice
+       is the DIFFUSION frame  e_k = e^{-tL} delta_k  (k = 1..d).  Then
+           S = sum_k e^{-tL}delta_k delta_k^T e^{-tL} = e^{-2tL},
+       so   A = e^{-2t lam_max(L)}   and   B = e^{-2t*0} = 1.
+       L = diag(0, Delta, 1.9, 3.1, 6.0),  lam_max = 6.0 (the UV end):
+     t    Delta    A=e^{-2t*lam_max}          B  A moves with Delta?
+  0.10     2.00         0.3011942119     1.0000                   NO
+  0.10     1.00         0.3011942119     1.0000                   NO
+  0.10     0.10         0.3011942119     1.0000                   NO
+  0.10     0.00         0.3011942119     1.0000                   NO
+  0.25     2.00         0.0497870684     1.0000                   NO
+  0.25     1.00         0.0497870684     1.0000                   NO
+  0.25     0.10         0.0497870684     1.0000                   NO
+  0.25     0.00         0.0497870684     1.0000                   NO
+     -> A is exactly the UV number e^{-2t*lam_max}; B is exactly the vacuum value 1.
+        The gap -- the SECOND eigenvalue -- enters neither bound.  Ends, never the edge. (D15)
+        NOTE: this A is the SAME UV quantity that the Choi analysis of candidate (2)
+        produced as its 'positivity margin' (e^{-2t*lam_max}): two different candidate
+        mechanisms hand back the identical UV number as their only positive reading.
+
+==============================================================================
+W3  NON-ADAPTED.  Exact redistribution (a general orthogonal shell decomposition):
+        <Lf,f> = sum_l <P_l f, L P_l f>  +  cross(f),   cross = sum_{l!=l'} <P_l f, L P_l' f>
+    The redistribution is a BOUND iff  min_{f perp Omega, ||f||=1} f^T M f >= Delta,

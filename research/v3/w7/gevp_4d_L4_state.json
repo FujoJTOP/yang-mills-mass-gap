@@ -1,0 +1,22 @@
+{
+ "L": 4,
+ "N": 4000,
+ "n_done": 4000,
+ "protocol": "therm=800,gap=10,cold,beta=2.5,alpha=0.5,APE2+APE4,SU(2)periodic,therm=800,gap=10",
+ "beta": 2.5,
+ "alpha": 0.5,
+ "steps": [
+  2,
+  4
+ ],
+ "tags": [
+  "o0_plaq",
+  "o2_ape2",
+  "o4_ape4"
+ ],
+ "seed": 101,
+ "therm": 800,
+ "gap": 10,
+ "wall_s": 279.61070799827576,
+ "s_per_conf": 0.06869475871324539
+}

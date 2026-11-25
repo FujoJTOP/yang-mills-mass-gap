@@ -1,0 +1,23 @@
+{
+ "L": 32,
+ "beta": 2.5,
+ "ns_ape": 2,
+ "nchains": 1,
+ "N_per_chain": 1,
+ "therm": 0,
+ "gap": 0,
+ "N_total": 1,
+ "chi_O": NaN,
+ "chi_O_se": NaN,
+ "contact_C0": 0.6005787203748101,
+ "chi_phys": NaN,
+ "obar_mean": 1.6077401558983193,
+ "obar_sd": NaN,
+ "chain_walls": [
+  25.180885791778564
+ ],
+ "wall_s": 32.74854755401611,
+ "obar": [
+  1.6077401558983193
+ ]
+}

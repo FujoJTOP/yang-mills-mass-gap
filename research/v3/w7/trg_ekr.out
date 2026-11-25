@@ -1,0 +1,73 @@
+[A] exact SU(2) character coefficients  c_n = I_n(beta) - I_{n+2}(beta)
+    beta        sum(n+1)c_n        e^beta          rel.err     c_0/e^beta   u=c_1/c_0
+    0.020833        1.0210518621      1.0210518621   0.00e+00     0.979435    0.010416
+    0.12            1.1274968516      1.1274968516   4.44e-16     0.888518    0.059964
+    0.3             1.3498588076      1.3498588076   0.00e+00     0.749184    0.149441
+    0.5             1.6487212707      1.6487212707   0.00e+00     0.625683    0.247436
+    1               2.7182818285      2.7182818285   0.00e+00     0.415821    0.480387
+    2               7.3890560989      7.3890560989   1.11e-16     0.215269    0.866255
+    2.3             9.9741824548      9.9741824548   2.22e-16     0.182890    0.958558
+    2.5            12.1824939607     12.1824939607   6.66e-16     0.165268    1.014390
+    4              54.5981500331     54.5981500331   1.11e-16     0.089375    1.316095
+    6             403.4287934927    403.4287934927   4.44e-16     0.050684    1.525452
+
+[B] EKR proven basin: 0.02 per sector, 0.15875 total (HS norm, 63 sectors)
+    r(beta) = ||b||/||A_*|| (one plaquette):  beta=1/48 -> 0.02100 ; beta=2.5 -> 5.05079
+    beta where r = basin_total  (0.1587) : beta* = 0.15015
+    beta where r = basin_sector (0.0200) : beta* = 0.01985
+    overshoot at the target  beta=2.5 :  r/basin_total = 31.82x , r/basin_sector = 252.54x
+    SFZ/OS78 strong-coupling radius 1/48 = 0.02083  =>  beta*(EKR basin)/ (1/48) = 7.2x
+    SU(2) bulk crossover beta_c ~ 2.2986  =>  beta*(EKR basin)/beta_c = 0.065
+
+[C] calibration of the proven reach (fraction of beta_c)
+    2D Ising : beta_max = 0.12 , beta_c = 0.44069 -> 0.272 beta_c ;  tanh(0.12) = 0.1194  (compare basin_total 0.1587)
+    2D XY    : beta_max = 0.18995 , beta_c ~ 1.12 -> 0.170 beta_c
+    SU(2) YM4: target beta = 2.5 , beta_c ~ 2.2986 -> 1.088 beta_c   (i.e. ABOVE the crossover)
+    same-fraction extrapolation to SU(2) YM4: 0.27 * beta_c = 0.626  < 2.5  (short by 3.99x)
+
+[D] irrep truncation at beta = 2.5:  w_n = (n+1)c_n/e^beta   (sum = 1.000000000000)
+    n :          0          1          2          3          4          5          6          7          8          9         10         11         12
+    w :   1.65e-01   3.35e-01   2.80e-01   1.45e-01   5.39e-02   1.56e-02   3.69e-03   7.38e-04   1.28e-04   1.94e-05   2.64e-06   3.24e-07   3.62e-08
+    argmax_n w_n = 1  (j = 0.5) , w_max = 0.3353
+    J (j<=J)   tail T_J = sum_{n>2J} w_n     1/T_J
+    J=0          8.3473e-01              1.1980e+00
+    J=1          2.1908e-01              4.5645e+00
+    J=2          2.0192e-02              4.9525e+01
+    J=3          8.8794e-04              1.1262e+03
+    J=4          2.2412e-05              4.4619e+04
+    J=5          3.6414e-07              2.7462e+06
+    J=6          4.1123e-09              2.4317e+08
+    J=7          3.4086e-11              2.9338e+10
+    J=8          2.1595e-13              4.6307e+12
+    J=9          1.0790e-15              9.2678e+14
+    J=10         4.3587e-18              2.2943e+17
+    J=11         1.4525e-20              6.8845e+19
+    J=12         4.0607e-23              2.4626e+22
+    single plaquette: J(1%) = 3 , J(0.1%) = 3
+
+    volume-consistent truncation (4D L^4 torus, #plaq = 6L^4, need 6L^4 * T_J < eps):
+      L=4   nplaq=    1536  eps=1e-02  need T_J<6.51e-06  =>  J>=5
+      L=4   nplaq=    1536  eps=1e-03  need T_J<6.51e-07  =>  J>=5
+      L=6   nplaq=    7776  eps=1e-02  need T_J<1.29e-06  =>  J>=5
+      L=6   nplaq=    7776  eps=1e-03  need T_J<1.29e-07  =>  J>=6
+      L=8   nplaq=   24576  eps=1e-02  need T_J<4.07e-07  =>  J>=5
+      L=8   nplaq=   24576  eps=1e-03  need T_J<4.07e-08  =>  J>=6
+      L=12  nplaq=  124416  eps=1e-02  need T_J<8.04e-08  =>  J>=6
+      L=12  nplaq=  124416  eps=1e-03  need T_J<8.04e-09  =>  J>=6
+      L=16  nplaq=  393216  eps=1e-02  need T_J<2.54e-08  =>  J>=6
+      L=16  nplaq=  393216  eps=1e-03  need T_J<2.54e-09  =>  J>=7
+
+[E] tail law at beta=2.5:  c_eff(J) = -ln(T_J)/J   (constant => e^{-cJ}; growing => factorial)
+    J=1   T_J=  2.1908e-01  -ln T_J/J =   1.518
+    J=2   T_J=  2.0192e-02  -ln T_J/J =   1.951
+    J=3   T_J=  8.8794e-04  -ln T_J/J =   2.342
+    J=4   T_J=  2.2412e-05  -ln T_J/J =   2.676
+    J=5   T_J=  3.6414e-07  -ln T_J/J =   2.965
+    J=6   T_J=  4.1123e-09  -ln T_J/J =   3.218
+    J=8   T_J=  2.1595e-13  -ln T_J/J =   3.645
+    J=10  T_J=  4.3587e-18  -ln T_J/J =   3.997
+    J=12  T_J=  4.0607e-23  -ln T_J/J =   4.297
+    check J=2: leading factorial term = 3.044e-03 , exact T_J = 2.019e-02 , ratio = 0.15
+    check J=4: leading factorial term = 2.317e-06 , exact T_J = 2.241e-05 , ratio = 0.10
+    check J=6: leading factorial term = 3.211e-10 , exact T_J = 4.112e-09 , ratio = 0.08
+    check J=8: leading factorial term = 1.352e-14 , exact T_J = 2.160e-13 , ratio = 0.06

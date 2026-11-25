@@ -1,0 +1,83 @@
+==============================================================================
+P0  arithmetic of the SZZ constant
+==============================================================================
+  d=2 N=2: Ric_coeff=(N+2)/2-1=1 (=N/2=1?)  8(d-1)=8   radius beta_SZZ<1/(16(d-1))=0.062500   beta_W=N^2*beta=0.250000
+  d=2 N=3: Ric_coeff=(N+2)/2-1=1.5 (=N/2=1.5?)  8(d-1)=8   radius beta_SZZ<1/(16(d-1))=0.062500   beta_W=N^2*beta=0.562500
+  d=3 N=2: Ric_coeff=(N+2)/2-1=1 (=N/2=1?)  8(d-1)=16   radius beta_SZZ<1/(16(d-1))=0.031250   beta_W=N^2*beta=0.125000
+  d=3 N=3: Ric_coeff=(N+2)/2-1=1.5 (=N/2=1.5?)  8(d-1)=16   radius beta_SZZ<1/(16(d-1))=0.031250   beta_W=N^2*beta=0.281250
+  d=4 N=2: Ric_coeff=(N+2)/2-1=1 (=N/2=1?)  8(d-1)=24   radius beta_SZZ<1/(16(d-1))=0.020833   beta_W=N^2*beta=0.083333
+  d=4 N=3: Ric_coeff=(N+2)/2-1=1.5 (=N/2=1.5?)  8(d-1)=24   radius beta_SZZ<1/(16(d-1))=0.020833   beta_W=N^2*beta=0.187500
+  N-independence check:  (N/2)/(8(d-1)N) = 1/(16(d-1))  [N cancels exactly]
+  beta_W = N^2 beta_SZZ  (Wilson normalisation S_W=-(beta_W/N) sum Re tr):
+     N=3, d=4: SZZ radius beta_W = 0.187500  vs head beta_W=2.5  (x13.33)
+     sharp Haar constant lambda_1=(N^2-1)/N : N=2 -> 1.5000, N=3 -> 2.6667,  vs Ric N/2: N=2 -> 1.0000, N=3 -> 1.5000
+
+==============================================================================
+P1/P2  plaquette-pair count: the identity behind 8(d-1)
+==============================================================================
+  d=2 L=4: links=32 plaq=16  diag=2=2(d-1)  rowsum min/max=8/8=8(d-1)=8   lam_max(N)=8.000000   lam_min=-1.301e-15
+        constant vector attains rowsum: ||N.1/1|| check True
+  d=3 L=4: links=192 plaq=192  diag=4=2(d-1)  rowsum min/max=16/16=8(d-1)=16   lam_max(N)=16.000000   lam_min=-8.739e-15
+        constant vector attains rowsum: ||N.1/1|| check True
+  d=4 L=2: links=64 plaq=96  diag=6=2(d-1)  rowsum min/max=24/24=8(d-1)=24   lam_max(N)=24.000000   lam_min=-4.955e-15
+        constant vector attains rowsum: ||N.1/1|| check True
+  => 8(d-1) = 4 (links/plaquette) x 2(d-1) (plaquettes/link) is NOT slack
+     in the v-sup: the constant (k=0) mode saturates it exactly.
+
+==============================================================================
+P3/P4  actual Hessian quadratic form; centre-vortex saturation
+==============================================================================
+
+  --- N=2 (dim su(N)=3) ---
+   d=2 L=4: centre config consistent=True (inconsistent=False)
+      uniform v : <Hess>/(N beta) =  0.000000   8(d-1)|v|^2 =  8.000000   ratio = 0.000000
+      single-lnk: <Hess>/(N beta) =  2.000000   2(d-1)|v|^2 =  2.000000   ratio = 1.000000
+   d=3 L=4: centre config consistent=True (inconsistent=False)
+      uniform v : <Hess>/(N beta) = -0.000000   8(d-1)|v|^2 =  16.000000   ratio = -0.000000
+      single-lnk: <Hess>/(N beta) =  4.000000   2(d-1)|v|^2 =  4.000000   ratio = 1.000000
+   d=4 L=2: centre config consistent=True (inconsistent=False)
+      uniform v : <Hess>/(N beta) =  0.000000   8(d-1)|v|^2 =  24.000000   ratio = 0.000000
+      single-lnk: <Hess>/(N beta) =  6.000000   2(d-1)|v|^2 =  6.000000   ratio = 1.000000
+
+  --- N=3 (dim su(N)=8) ---
+   d=2 L=4: centre config consistent=False (inconsistent=False)
+      uniform v : <Hess>/(N beta) = -0.000000   8(d-1)|v|^2 =  8.000000   ratio = -0.000000
+      single-lnk: <Hess>/(N beta) =  1.000000   2(d-1)|v|^2 =  2.000000   ratio = 0.500000
+   d=3 L=4: centre config consistent=False (inconsistent=False)
+      uniform v : <Hess>/(N beta) =  0.000000   8(d-1)|v|^2 =  16.000000   ratio = 0.000000
+      single-lnk: <Hess>/(N beta) =  2.000000   2(d-1)|v|^2 =  4.000000   ratio = 0.500000
+   d=4 L=2: centre config consistent=False (inconsistent=False)
+      uniform v : <Hess>/(N beta) =  0.000000   8(d-1)|v|^2 =  24.000000   ratio = 0.000000
+      single-lnk: <Hess>/(N beta) =  3.000000   2(d-1)|v|^2 =  6.000000   ratio = 0.500000
+
+==============================================================================
+P5  search for a LARGER value (upper-bound sanity check)
+==============================================================================
+  N=2 d=2 L=2: max over 200 random + ascent <Hess>/(N beta) = 2.378680   vs 8(d-1)=8   ratio=0.2973
+  N=2 d=3 L=2: max over 200 random + ascent <Hess>/(N beta) = 4.940619   vs 8(d-1)=16   ratio=0.3088
+  N=2 d=4 L=2: max over 200 random + ascent <Hess>/(N beta) = 7.475239   vs 8(d-1)=24   ratio=0.3115
+  N=3 d=2 L=2: max over 200 random + ascent <Hess>/(N beta) = 1.436807   vs 8(d-1)=8   ratio=0.1796
+  N=3 d=3 L=2: max over 200 random + ascent <Hess>/(N beta) = 2.294757   vs 8(d-1)=16   ratio=0.1434
+  N=3 d=4 L=2: max over 200 random + ascent <Hess>/(N beta) = 3.431200   vs 8(d-1)=24   ratio=0.1430
+
+==============================================================================
+P6  consequence for the radius
+==============================================================================
+  N=2 d=2  cost coeff C=    8 (SZZ 8(d-1)          ) -> beta_SZZ < 0.062500   beta_W = N^2 beta < 0.250000
+  N=2 d=2  cost coeff C=    2 (single-link 2(d-1)  ) -> beta_SZZ < 0.250000   beta_W = N^2 beta < 1.000000
+
+  N=2 d=3  cost coeff C=   16 (SZZ 8(d-1)          ) -> beta_SZZ < 0.031250   beta_W = N^2 beta < 0.125000
+  N=2 d=3  cost coeff C=    4 (single-link 2(d-1)  ) -> beta_SZZ < 0.125000   beta_W = N^2 beta < 0.500000
+
+  N=2 d=4  cost coeff C=   24 (SZZ 8(d-1)          ) -> beta_SZZ < 0.020833   beta_W = N^2 beta < 0.083333
+  N=2 d=4  cost coeff C=    6 (single-link 2(d-1)  ) -> beta_SZZ < 0.083333   beta_W = N^2 beta < 0.333333
+
+  N=3 d=2  cost coeff C=    8 (SZZ 8(d-1)          ) -> beta_SZZ < 0.062500   beta_W = N^2 beta < 0.562500
+  N=3 d=2  cost coeff C=    2 (single-link 2(d-1)  ) -> beta_SZZ < 0.250000   beta_W = N^2 beta < 2.250000
+
+  N=3 d=3  cost coeff C=   16 (SZZ 8(d-1)          ) -> beta_SZZ < 0.031250   beta_W = N^2 beta < 0.281250
+  N=3 d=3  cost coeff C=    4 (single-link 2(d-1)  ) -> beta_SZZ < 0.125000   beta_W = N^2 beta < 1.125000
+
+  N=3 d=4  cost coeff C=   24 (SZZ 8(d-1)          ) -> beta_SZZ < 0.020833   beta_W = N^2 beta < 0.187500
+  N=3 d=4  cost coeff C=    6 (single-link 2(d-1)  ) -> beta_SZZ < 0.083333   beta_W = N^2 beta < 0.750000
+

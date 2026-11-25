@@ -1,0 +1,5 @@
+# L=8 therm 800 sweeps in 48.2s
+  L=8 n=250/4000  plaq=0.65605  (0.827 s/conf)
+  L=8 n=500/4000  plaq=0.65734  (0.762 s/conf)
+  L=8 n=750/4000  plaq=0.65036  (0.736 s/conf)
+  L=8 n=1000/4000  plaq=0.65175  (0.732 s/conf)

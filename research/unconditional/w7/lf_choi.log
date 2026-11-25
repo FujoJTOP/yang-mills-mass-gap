@@ -1,0 +1,82 @@
+==============================================================================
+W1  the canonical CP map:  Phi(X) = V X V*   (V = transfer operator e^{-aH})
+    claim: C_Phi = vec(V) vec(V)^*  =>  Choi rank = 1, for every V, every dim
+==============================================================================
+   d  rank C_Phi     nonzero eig(C)      ||V||_F^2  eig count>tol
+   2           1                  1     1.00247875              1
+   3           1                  1     1.05226582              1
+   4           1                  1     1.15612967              1
+   8           1                  1     1.73540820              1
+  16           1                  1     3.02820487              1
+  -> rank = 1 in every dimension; the Choi operator is a rank-one projector.
+  -> its ENTIRE spectrum is {||V||_F^2, 0, ..., 0}: there is no second eigenvalue,
+     hence no place for a 'gap' to live.  (Choi's theorem is satisfied trivially.)
+
+==============================================================================
+W2  the only way to get rank > 1: add a non-unitary ingredient
+    Phi_lam(X) = (1-lam) X + lam diag(X)     (Kraus {sqrt(1-lam) I, sqrt(lam)|i><i|})
+==============================================================================
+  d=4
+       lam   rank C   note
+     0e+00        1   rank-1 (conjugation)
+     1e-12        1   rank-1 (conjugation)
+     1e-06        4   full rank -> the step
+     1e-02        4   full rank -> the step
+     5e-01        4   full rank -> the step
+     1e+00        4   full rank -> the step
+  -> a STEP function of lam at lam=0: no threshold-crossing real value, nothing to read
+     as '>= c > 0'.  And lam is a MODELLING choice, not a function of (beta,L,a):
+     same H, same transfer, dephasing 0 vs 0.5:  rank 1 vs 4  -- the dynamics did not change, the rank did.
+
+==============================================================================
+W3  ACID TEST in numbers: H_beta = 1.5 I + [[0,beta],[beta,0]],  spec = 1.5 +- beta
+    the gap 2|1.5-beta| closes at beta=1.5.  Does any Choi datum move at the closure?
+==============================================================================
+   beta       gap   rank C    ||V||_F^2 = Z(2a)   eig(C) 2nd
+   0.00     3.000        1           0.09957414    0.000e+00
+   0.50     2.000        1           0.15365092    3.348e-18
+   1.00     1.000        1           0.37461739    1.739e-17
+   1.40     0.200        1           0.82175831    1.139e-16
+   1.50     0.000        1           1.00247875    1.873e-17
+   1.60     0.200        1           1.22343219    7.713e-17
+  -> the rank is identically 1 ACROSS the closure (identical to the 'gapless' case).
+     The one nonzero Choi eigenvalue is ||e^{-aH}||_F^2 = sum_n e^{-2aE_n} = Z(2a):
+     the partition function at lattice spacing 2a.  It is extensive/UV-dominated and
+     it is SMOOTH through the gap closure  =>  the tool cannot see the IR edge.
+     (corpus: PROOF-THERMODYNAMIC-FORMALISM -- pressure = dominant eigenvalue; the gap
+      is the SECOND eigenvalue, and no bulk thermodynamic quantity carries it.)
+
+==============================================================================
+W4  is the surviving scalar IR or UV?   decomposing Z(2a)
+==============================================================================
+  a=0.25: Z(2a)=  3.24274824   vacuum share=0.3083804004   top-level share=1.784e-02
+  a=0.50: Z(2a)=  2.08366730   vacuum share=0.4799230660   top-level share=1.606e-03
+  a=1.00: Z(2a)=  1.39406543   vacuum share=0.7173264441   top-level share=8.031e-06
+  -> Z(2a) is dominated by the vacuum; its VARIATION with the spectrum is
+     sum_n e^{-2aE_n} -- a sum over the WHOLE spectrum, i.e. an extensive quantity
+     that changes smoothly with every E_n.  A change of the gap alone moves it by
+     the amount of the level itself (e^{-2a*1} = 0.275601 at a=1),
+     indistinguishable from a change of any other level: no threshold, no direction.
+
+==============================================================================
+W5  audit of the class prediction made in MG-META (D4 = channel/spin mismatch)
+==============================================================================
+  D4 demands: the tool reads the wrong channel (line/flux/spin-1/N-ality-blind).
+  But CP/Choi structure is attached to the ALGEBRA, not to any channel: it is the same
+  for every operator in the 0^{++} sector and for every other sector.  A statistic that
+  is constant across channels cannot be 'in the wrong channel'.
+  => D4 does NOT fire.  The class prediction is wrong.
+
+==============================================================================
+SUMMARY (candidate 2 / Choi rank)
+==============================================================================
+ - Choi rank of the canonical map (conjugation by T) is 1 identically (W1): a class
+   constant, same on the free massless field -- zero discriminating power.
+ - the Choi operator of Ad(V) is a RANK-ONE projector: spectrum {||V||_F^2,0,...,0}
+   => there is no second eigenvalue, so no coordinate in which a gap could appear.
+ - rank > 1 needs a non-unitary ingredient whose strength lam is a modelling choice,
+   and the rank is then a STEP function of lam (W2) -- an integer with no threshold value.
+ - the only surviving real scalar is ||e^{-aH}||_F^2 = Z(2a), extensive & UV-dominated,
+   smooth through the gap closure (W3,W4) -- the corpus's dead thermodynamic reading.
+ - verdict:  D16 (integer/rigid invariant vs real infimum) with D10 + D15 + D2 as
+   companions.  NO non-circular Choi-rank-type criterion can be constructed.

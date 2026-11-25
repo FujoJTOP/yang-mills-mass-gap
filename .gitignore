@@ -40,3 +40,10 @@ docs/paper-v3/*.aux
 docs/paper-v3/*.log
 docs/paper-v3/*.toc
 docs/paper-v3/*.out
+
+# ---- Harness diagnostics / derived text extractions (not source) ----
+.dsh-diag/
+docs/v2.txt
+docs/v3.txt
+V2.txt
+V3.txt

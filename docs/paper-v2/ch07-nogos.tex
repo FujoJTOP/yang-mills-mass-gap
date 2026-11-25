@@ -175,6 +175,20 @@ size as the coefficient, so the condensate's own ambiguity straddles zero
 (\code{ROOF-CONDENSATE-FLOOR.md}). Any floor that passes through the condensate inherits the
 ambiguity.
 
+\subsection{The quantitative data-mode no-go}
+\label{sec:datamode}
+
+\LT{} (within the spectral class). Let
+$d_N(\varepsilon):=\max\{\nu'([0,\varepsilon)):D_N(\nu')=D_N(\nu)\}$ be the mass the floor can hide
+inside the fibre of $N$-th order spectral data: $d_N(\varepsilon)>0$ for \emph{every} finite $N$
+($d_1(0.2)=0.582$ down to $d_{14}(0.2)=1.36\times10^{-2}$, fitted $d_N\sim e^{-0.4595N}$), and the
+\emph{same} fibre contains measures with $\nu'([0,\varepsilon))=0$ --- the floor test is undecidable
+in \textbf{both} directions at finite data. Along the gapless ray $\nu_h=(1-h)\nu+h\delta_0$ every
+weak-$*$ continuous datum moves linearly in $h$ ($D_8^{L1}=0.183h$, $M_1\to1.7819$,
+$\chi\to1.8370$), while the floor indicator is $0$ for every $h>0$ and $1$ only at $h=0$: the floor
+is the one jump, at the endpoint of the ray.
+\src{\code{research/v3/species/ROUND1-VERDICTS.md} \S6; witness \code{w7/dm\_floor\_defect.py}.}
+
 \subsection{The consistency, universality, SUSY and entanglement no-gos}
 
 A wave of ``impossible bases'' tested whether a radically different starting point could bypass
@@ -231,8 +245,8 @@ Three structural failure modes recur across families and are worth naming as no-
   Temple/Weinstein, GEVP --- variational methods give \textbf{upper} bounds on eigenvalues; a
   lower bound needs a threshold oracle, and the oracle is circular.
 \item \textbf{Wrong regime (strong coupling only).} Rigorous large-$N$ (Chatterjee), SZZ, random
-  surfaces/CPS, center vortices --- these stop at $\beta<\beta_0$ or
-  $\lambda_{\mathrm{tH}}<1/24$ and cannot reach $\beta\approx2.5$.
+  surfaces/CPS, center vortices --- these stop at $\beta<\beta_0$, in SZZ's case the explicit
+  $\lvert\beta\rvert<1/(16(d-1))=1/48$ (independent of $N$), and cannot reach $\beta\approx2.5$.
 \end{itemize}
 
 \subsection{Summary of no-gos}
@@ -257,6 +271,8 @@ Order parameter (B2) & order-parameter/defect & zero-$T$ pure YM is a single pha
   condense\\
 Markov (BE) & semigroup/flow functionals & homogeneous, zero at equilibrium, or sign-indefinite\\
 Analytic transfer & perturbation/Borel/$1/N$ & essential singularity $e^{-1/(2\beta_0g^2)}$\\
+Data mode (finite data) & reading the floor from finite spectral data & $d_N>0$ and $\min=0$ in the
+  same fibre $\Rightarrow$ undecidable both ways; the floor jumps only at the endpoint of the ray\\
 Consistency/SUSY/entanglement & global/algebraic bases & satisfied by the free field, rigid, or
   wrong channel\\
 Wrong-half/direction/regime & method families & control the wrong scale, sign, or coupling

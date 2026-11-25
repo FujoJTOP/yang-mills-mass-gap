@@ -1,0 +1,115 @@
+==============================================================================
+W1  DIRECTION ACCOUNT.  T = e^{-aH}, spec(H) = {0} v [Delta, inf).  a=1.
+==============================================================================
+  spec(H) = [0.     0.6444 1.3444 2.     4.    ]
+  spec(T) = [1.       0.524977 0.260696 0.135335 0.018316]
+     n        ||T^n||     rate=-(1/(an))log||T^n||
+     1     1.00000000                   -0.000e+00
+     5     1.00000000                   -0.000e+00
+    20     1.00000000                   -0.000e+00
+   100     1.00000000                   -0.000e+00
+  1000     1.00000000                   -0.000e+00
+  -> the vacuum eigenvalue 1 pins the top of spec(T) at 1: the UNPROJECTED exponent is
+     identically 0.  Any 'lower bound on the gap' routed through it reads  Delta <= 0.
+     => without projecting out the vacuum, the Lyapunov datum is vacuous.
+
+==============================================================================
+W2  after projecting the vacuum out: ||T^n P|| = e^{-a Delta n} EXACTLY
+    => the rate is not a bound on the gap, it IS the gap  (the D2 horn)
+==============================================================================
+     n        ||T^n P||         rate      Delta
+     1     0.5249774341   0.64440000   0.644400
+     5     0.0398752280   0.64440000   0.644400
+    20     0.0000025282   0.64440000   0.644400
+   100     0.0000000000   0.64440000   0.644400
+  DIRECTION: a *proven* decay bound  ||T^n P|| <= C e^{-a lam n} (all n)  implies
+             e^{-a Delta n} <= C e^{-a lam n}  =>  Delta >= lam - log C/(a n)  =>  Delta >= lam.
+  => the direction is CORRECT (a norm UPPER bound gives a gap LOWER bound).
+  ==> D1 (direction reversed) does NOT fire for this candidate.  This is the first
+      candidate since C3 (trace/Alon-Boppana) to pass the direction account.
+  But the hypothesis 'C e^{-a lam n} uniformly' is, by the displayed identity, equivalent
+  to  Delta >= lam  in the limit: proving it IS proving the gap  (D2).
+
+==============================================================================
+W3  beta as TIME: the exponent of the beta-cocycle on the physical path
+    asymptotic freedom in lattice units:  a*m(beta) = D0 exp(-c beta)  ->  0 as beta->inf
+==============================================================================
+  fitted c=0.92103, D0=6.44400   (a*m(2.5)=0.6444)
+  a*m(1/48) = 6.3215   a*m(2.5) = 0.6444   a*m(10) = 6.444e-04
+
+  B (upper end of the beta-window)  mean of a*m over [1/48,B]
+                              2.50                   2.486265
+                              3.00                   2.155658
+                              5.00                   1.364395
+                             10.00                   0.687714
+                             30.00                   0.228943
+                            100.00                   0.068649
+                          10000.00                   0.000686
+  -> the beta-average decays to 0 like 1/B: the Lyapunov/ergodic exponent of the
+     beta-cocycle is the beta-INFINITY value of the gap, and that value is 0 (free theory).
+     The physical path points AT the free end.  Wrong half of the axis.  (D3)
+
+==============================================================================
+W4  the beta-average is a function of the WINDOW, not an invariant of the beta=2.5 theory
+    (numerically the window-average sweeps the whole admissible range)
+==============================================================================
+  a*m(2.5) = 0.644400   a*m(1/48) = 6.321530
+         B     mean over [1/48,B]    mean / a*m(2.5)
+      1.00               4.164933             6.4633
+      2.00               2.907611             4.5121
+      2.50               2.486265             3.8583
+      3.00               2.155658             3.3452
+      5.00               1.364395             2.1173
+     10.00               0.687714             1.0672
+     30.00               0.228943             0.3553
+    100.00               0.068649             0.1065
+  10000.00               0.000686             0.0011
+  -> by moving the window end the 'average datum' takes ANY value in (0, a*m(1/48)]:
+     it is a window artefact, not an invariant of the theory at beta=2.5.  The only
+     canonical window is the whole half-line, and there the average is 0 (W3).
+     => the average is a strictly different functional of the beta-family than the
+        point value  (D14); and the only canonical choice of it vanishes  (D3).
+
+==============================================================================
+W5  Lyapunov existence  !=  uniform hyperbolicity (exponential dichotomy)
+    scalar cocycle Phi(n,0) = prod_{k<=n} e^{-Delta}(1+1/k) = e^{-Delta n}(n+1)
+==============================================================================
+     n       rate_n   C_n=||Phi||e^{Delta n}
+     1   0.00685282                      2.0
+    10   0.46021047                     11.0
+   100   0.65384879                    101.0
+  1000   0.69309125                   1001.0
+ 10000   0.69907896                  10001.0
+100000   0.69988487                 100001.0
+  -> the exponent exists and equals -0.7 (rate 0.7: rate_n -> 0.7 as log(n+1)/n -> 0),
+     but C_n = n+1 -> inf: there is NO uniform C.  Lyapunov exponents are limits,
+     not uniform bounds.
+     A (L,a)-uniform lower bound needs the dichotomy CONDITION (uniform hyperbolicity),
+     which is strictly stronger -- and in the beta coordinate it is literally
+     'dist(spec_dichotomy, 0) >= a*lam', i.e. the gap restated in another coordinate.
+
+==============================================================================
+W6  and if beta is randomised, Birkhoff gives the ergodic MEAN, never a point value
+==============================================================================
+  n=  2000:  mean=2.409042   min=0.644695   max=6.307683   (a*m(2.5)=0.644400)
+  n= 20000:  mean=2.494696   min=0.644684   max=6.320904   (a*m(2.5)=0.644400)
+  mean >= min always, so a proven lower bound on the mean says NOTHING about the minimum,
+  and the point value at beta=2.5 is not an ergodic average of anything.
+
+==============================================================================
+SUMMARY (candidate 3 / non-autonomous, Floquet, Lyapunov)
+==============================================================================
+ - DIRECTION: PASS.  A norm upper bound  ||T^n P|| <= C e^{-a lam n}  gives Delta >= lam.
+   D1 does not fire.  (Second candidate ever to pass the direction account, after C3.)
+ - unprojected the exponent is identically 0 (vacuum), i.e. vacuous (W1).
+ - projected, the rate IS the gap (W2): the required uniform decay bound is equivalent
+   to the conclusion -- the D2 horn.
+ - beta-as-time: the exponent is the beta-infinity value, which asymptotic freedom sends
+   to 0; the average decays like 1/B (W3) -- wrong half of the axis (D3).
+ - certifying the point value a*m(2.5) by an average forces the window to collapse onto
+   beta=2.5 (W4): the average is a different functional (D14).
+ - uniform hyperbolicity is strictly stronger than Lyapunov existence (W5) and is the
+   gap in the beta coordinate; ergodic means never control minima (W6).
+ - D12 (no scale separation) never becomes the main cause: it is not even reached,
+   because D3/D14/D2 fire first.  Prediction correction: D13 (carrier identically zero)
+   does NOT fire either -- the carriers here are non-degenerate.

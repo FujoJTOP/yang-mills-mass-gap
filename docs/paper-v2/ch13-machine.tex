@@ -102,13 +102,82 @@ It is worth saying precisely why the modern rigorous toolbox does not reach the 
 the statement is often met with disbelief.
 
 \begin{itemize}
-\item \textbf{Balaban-type renormalization group} controls the ultraviolet and reaches
-  $\lambda\sim1$. It is a small-field, multiscale expansion; the crossover is at
-  $\lambda_{\mathrm{tH}}\in[1,7.3]$, where the expansion parameter is $O(1)$ and no small field
-  is available.
+\item \textbf{Balaban-type renormalization group} controls the ultraviolet and stops at
+  $\lambda\sim1$ \emph{in the $g^2$ coordinate}: it is a small-field, multiscale expansion whose
+  expansion parameter is the coupling. That ``$1$'' is \textbf{not} the lower crossover edge
+  $\lambda_{\mathrm{tH}}=1$. The two coordinates are related by $\lambda_{\mathrm{tH}}=\beta N=2N^2
+  /g^2$, so $g^2=1$ is $\lambda_{\mathrm{tH}}=2N^2$ and the two ``ones'' differ by exactly $2N^2$
+  --- $18$ for $\mathrm{SU}(3)$, $8$ for $\mathrm{SU}(2)$ \LT. Read in one coordinate the distance to
+  be crossed is $2.47\times$ to the physical point ($\beta=2.4$--$2.5$) and $18\times$ to the
+  lower edge $\lambda_{\mathrm{tH}}=1$ ($g^2=18$) \LE; the interval endpoint $7.3$ is the physical
+  point \emph{in the $\lambda_{\mathrm{tH}}$ coordinate}, so reading $[1,7.3]$ as a factor of
+  $7.3$ mixes two coordinates and is retracted (Appendix~\ref{app:erratum-balaban}).
+
+  The expansion parameter at the edge is not marginal but large \LE: with the Lemma-B radius
+  $t^*=4.46$ ($\mathrm{SU}(3)$) and $g^2=2N^2/\lambda_{\mathrm{tH}}$,
+  $\eta_B:=t^*g$ gives $\eta_B(\lambda_{\mathrm{tH}}=1)=18.93$ ($\mathrm{SU}(3)$) / $15.45$
+  ($\mathrm{SU}(2)$) --- $19$--$63$ times the criterion band $[0.3,1]$ --- and $\eta_B=1$ only at
+  $\lambda_{\mathrm{tH}}=2N^2c^*=358$ ($\mathrm{SU}(3)$). Two quantities needing no construction
+  point the same way: $g^2(\lambda_{\mathrm{tH}}=1)=2N^2=18$, and the head of the one-loop tower
+  $\beta_{\mathrm{head}}=4N\beta_0=0.836<1$, where $e^{-\beta}$ suppresses nothing.
+
+  What a constant-improvement programme can reach is now a number \LM: the loosest link is L2, the
+  polymer/cluster estimate, where the block-union bound gives way to Koteck\'y--Preiss polymer
+  counting for exactly $4/3$ ($c^*:19.90\to14.93$, $N=3$); the next loosest is L3's crude
+  $K=80e^{2+\beta}N$, bounded by $\le10$ and \emph{not} quantified. Hence
+  $M=(4/3)\times[1,10]\in[1.3,13]$, i.e.\ $10^{0.5}$--$10^{1}$: this arithmetic supports
+  $2.47\times$ and does \emph{not} support $18\times$. The limit $\lambda\sim1$ is a \emph{parameter}
+  limit and a statement about the \emph{shape} of the theorem, not a slack \LM: L4 is the
+  spectral equality $\lambda_{\min}=(4/a^2)\sin^2(\pi a/L)$, attained by the lowest nonzero mode,
+  and L5 is power counting --- those two links are genuinely optimal, so no constant improvement
+  acts on them \LT{} --- while L6 is a hypothesis
+  $\gamma$ on the effective-coupling sequence rather than a bound.
 \item \textbf{Strong-coupling expansions} (SZZ, random surfaces, center vortices) require
-  $\lambda$ large. They reach $\beta<1/48$ or $\lambda_{\mathrm{tH}}<1/24$; the physical coupling
+  $\lambda$ large. SZZ reach $\lvert\beta\rvert<1/(16(d-1))$, i.e.\ $\beta<1/48$ in $d=4$ and
+  \emph{independent of $N$} (equivalently $\lambda_{\mathrm{tH}}<N/48$); the physical coupling
   is far outside.
+
+  The one input that could supply the missing sector transfer is $u$-completeness, and its blocking
+  point is exact \LM. With $u(\beta):=c_1(\beta)/c_0(\beta)$ the ratio of the first two character
+  coefficients of the Wilson action --- in which convention $u_{\mathrm{P3}}=2u_{\mathrm{T5}}$, which
+  resolves the $3.04$ versus $1.01439$ discrepancy between two corpus files --- one has
+  \[
+    u=0.0104165,\quad 0.2474359,\quad 0.4803874,\quad 1.0143902
+    \qquad\text{at }\beta=1/48,\ 0.5,\ 1,\ 2.5 ,
+  \]
+  and $u(\beta)=1$ at $\beta=2.446918$. The physical point $2.5$ lies $2.12\%$ beyond it, and
+  $\sup_{u_c<1}\beta_{\max}=2.446918<2.5$: \emph{no} admissible convergence constant closes that last
+  $2.12\%$. Granting the widest window $u_c<1$, the strong-coupling machinery therefore stops a
+  \mbox{$2.12\%$} short --- the narrowest miss in this paper, and the only one stated as a supremum
+  over the constant \LT{} / \LM.
+
+  An import from rigorous tensor renormalization does better on the strong-coupling side and still
+  not enough \LE. The analyticity ball of the Ebel--Kennedy--Rychkov type argument has radius
+  $0.1587$ in a Hilbert--Schmidt norm; the physical tensor leaves that ball at
+  $\beta\approx0.65$ in the tail-mass norm, $0.876$ in the HS norm and $1.17$ in the sup norm ---
+  $31.4$ times the SZZ radius in the first case, with a factor $1.8$ spread between normalisations,
+  so a quoted ``$0.63$'' is meaningless unless it carries its norm. The irrep truncation is not the
+  bottleneck: at $\beta=2.5$ the character tail falls below $4\times10^{-5}$ already at $j\le1$, and
+  selection rules leave only $14.5\%$ of the $j\le7$ tensor non-zero. What the import cannot do is
+  enlarge the ball: at $\beta=2.5$ its radius would have to grow by $3.6$--$12.9$ depending on the
+  norm, and that is a property of the map, not of the computation.
+
+  The ceiling of the strong-coupling class itself has now been located \LT{} / \LM: the whole radius
+  enters through one algebraic step, $\rho=N/2-C^*N\lvert\beta\rvert>0\iff\lvert\beta\rvert<1/(2C^*)$,
+  in which the gain $N/2$ is the exact $\mathrm{SU}(N)$ Einstein constant (no slack at all) and every
+  remaining $8(d-1)$ of slack sits in a \emph{single} triangle inequality whose configuration
+  supremum $C^*$ is attained by the maximal centre-vortex configuration with a saturating mode. That
+  supremum is $8.000000$ in $d=2$ --- exactly $8(d-1)$, saturated --- and lies in $[16,24]$ in $d=4$,
+  so the class ceiling is $\beta\le1/32=0.03125$ (against the quoted $1/48$, i.e.\ the published
+  constant is $1.5\times$ loose) and the unconditional bound $C^*\ge2(d-1)$ gives $\le1/12$. Either
+  way the ceiling is $\Theta(1/d)$ and therefore \emph{decreases with dimension}: in $d=4$ the best
+  member of the class stops $8.9\times$ short of $2.5$. Crossing it requires replacing the
+  pointwise-per-configuration $\Gamma_2$ step by an averaged or stopping-time Hessian, and
+  integration by parts gives $E[\operatorname{Hess}]\preceq0$, so that replacement \emph{is} $H1$
+  rather than a bypass. One structural remark is worth recording: the centre $u(1)$ direction has
+  $\mathrm{Ric}=0$ while its Hessian is $+O(N^2\beta)>0$, so the Bakry--\'Emery criterion is false
+  for every $\beta>0$ on $\mathrm{U}(N)$ and the passage to $\mathrm{SU}(N)$ (which splits off the
+  centre) is not cosmetic.
 \item \textbf{Constructive QFT with fermions} (Magnen--Rivasseau--S\'en\'eor and successors)
   constructs the theory with an infrared cutoff; the mass gap is not uniform in the cutoff.
 \item \textbf{Rigorous large-$N$} (Chatterjee) is a strong-coupling statement about the lattice
@@ -120,8 +189,100 @@ the statement is often met with disbelief.
   bounds on the continuum gap, not lower bounds.
 \end{itemize}
 The strongest contemporary rigorous frontier (CPS/CNS 2025) reaches only
-$\lambda_{\mathrm{tH}}<1/24$ (the older ``$75\times$'' figure was a unit confusion; see
-\code{PROOF-EMERGENT-4D.md}), nowhere near $\beta\approx2.5$.
+$\lvert\beta\rvert<1/48$, i.e.\ $\lambda_{\mathrm{tH}}<N/48$ (the older ``$75\times$'' figure was
+a unit confusion, and the intermediate ``$1/24$'' was a further misreading of the same condition;
+see \code{PROOF-EMERGENT-4D.md} and Appendix~\ref{app:erratum-radius}), nowhere near
+$\beta\approx2.5$.
+
+\subsection{The one surviving import: its true scope, and the $L^4$ inside it}
+\label{sec:polchinski}
+
+One published framework does tolerate an indefinite Hessian along a renormalisation flow, and it is
+worth stating its scope exactly, because in this campaign three different statements have been run
+together under its name. The framework is that of \textbf{Bauerschmidt--Bodineau--Dagallier}
+(\emph{Stochastic dynamics and the Polchinski equation: an introduction}, \emph{Probability Surveys}
+\textbf{21} (2024) 200--290, \code{doi:10.1214/24-PS27}; the technical papers are
+\code{arXiv:2202.02301}, \code{arXiv:2202.02295}, \code{arXiv:2307.07619}). An earlier draft of this
+chapter misnamed the authors as ``Bachmann--Dagallier'' and cited Theorem~3.6; both are corrected
+here. \emph{Theorem 3.6 is the Euclidean Gaussian statement} --- a linear space with a time-dependent
+Gaussian covariance --- and it has no Ricci term. The \emph{Riemannian} statement, which is the one a
+compact Lie group needs, is \textbf{Theorem 3.20}, and its geometric hypothesis is
+\begin{equation}
+\operatorname{Hess}_{g_t}V_t+\tfrac12\operatorname{Ric}_{g_t}+\tfrac12\dot g_t
+\ \succeq\ \dot\lambda_t\,g_t ,
+\label{eq:bd320}
+\end{equation}
+with $\dot\lambda_t$ allowed to be negative. The three layers must not be merged.
+
+\emph{Layer 1: the theorem.} (\ref{eq:bd320}) together with the continuity and integrability
+conditions of the source yields a log-Sobolev inequality for the renormalised measure, hence a
+Poincar\'e-type gap for its Dirichlet generator, with constant governed by
+$\gamma^{-1}=\int_0^\infty e^{-2\lambda_t}dt$. Nothing in the theorem is specific to gauge theory.
+
+\emph{Layer 2: the group-geometry application} \LT. For a fixed bi-invariant metric
+($g_t=g$, $\dot g_t=0$) with the normalisation $\operatorname{Ric}_g=(N/4)g$ --- which must be checked
+against the Lie-algebra normalisation actually used --- (\ref{eq:bd320}) reads
+$\operatorname{Hess}_gV_t+\tfrac{N}{8}g\succeq\dot\lambda_t g$, i.e.
+\begin{equation}
+\dot\lambda_t\ \le\ \frac N8+\inf_{\varphi}\lambda_{\min}\operatorname{Hess}_gV_t(\varphi).
+\label{eq:bdexp}
+\end{equation}
+The $N/8$ is precisely the half-Ricci compensation. Note that ``$C_t=tg^{-1}$'' is covariance
+notation, not a definition of the group heat flow; the semigroup must be defined separately, and the
+gradient/Hessian conventions (left translation of tangent vectors, choice of connection, left- versus
+right-invariance of the kernel) have to be fixed before (\ref{eq:bdexp}) is a statement about
+lattice Yang--Mills. The engine used here, $\operatorname{Hess}V_t=E_\mu[\operatorname{Hess}S_W]
+-\operatorname{Cov}_\mu(\nabla S_W)$ --- with no $C_t^{-1}$ term on a group --- is exact at
+$10^{-8}$ numerically but still requires those analytic steps.
+
+Writing $q(t)=\sup_\varphi\lVert(\operatorname{Hess}_gV_t(\varphi))_-\rVert_{\mathrm{op}}$ and
+$\dot\lambda_t=N/8-q(t)$ gives $\lambda_t=Nt/8-Q(t)$ with $Q(t)=\int_0^tq$, hence
+\begin{equation}
+\gamma\ \ge\ \frac N4\,e^{-2Q(\infty)} \qquad\text{whenever } Q(\infty)<\infty .
+\label{eq:bdgamma}
+\end{equation}
+
+\emph{Layer 3: what Yang--Mills still owes} \LM. Four things, and they are not one. The first is the
+$(L,a)$-uniformity of $Q(\infty)$; the second is the verification of the continuity and heat-flow
+conditions of the source in the lattice setting; the third is the spectral bridge from a
+\emph{configuration-space} gap to the \emph{physical} transfer-matrix gap on the gauge-invariant
+subspace, and from there to the $0^{++}$ channel; the fourth is the positive residue and its
+isolation. Only the first is a scalar. The other three are structural, and the third has a sharp
+warning attached to it: the geometric constant survives when $V_t\equiv0$ --- a pure Ricci LSI on the
+configuration space --- so \emph{the free massless field satisfies the geometric inequality}, and a
+configuration-space LSI constant is therefore \textbf{not} a mass-gap certificate. Any use of
+(\ref{eq:bdgamma}) as an acid-test-clean statement has to pass through the spectral bridge first.
+
+\emph{Two measured facts about the negative part} \LE. It does decay exponentially --- the exact
+single-link rate is $0.405$ against $\Lambda=\lambda_1/2=0.375$ --- and on the lattice gauge quotient
+$\lambda_{\min}/\beta$ is intensive ($-0.588$ at $L=2$, $-0.771$ at $L=4$), not extensive. So
+non-summability is not the obstruction. What is measured to grow is the gradient:
+$\sup\lvert\nabla S_W\rvert^2\propto L^4$, from $900$ at $L=2$ to $14400$ at $L=4$. A fourth power in
+the volume is what a uniform bound does not survive.
+
+\emph{Errata} \LE. Two audits of the preparatory script \code{w7\_pl\_hess.py} agree that it
+overestimates the negative part by $1.6$--$1.8\times$ but disagree on the mechanism (a missing
+anti-symmetric term, or the flat chart used instead of a covariant Hessian; the covariant bound is
+exactly $\tfrac12$, the measured worst case $-8\beta/N$ against the formerly quoted $-(4.8/N)\beta$).
+Two variants are withdrawn outright: $\dot C\equiv$ const is zero convexification and fails the
+free-field acid test, and a non-$\mathrm{Ad}$-invariant metric does not break the criterion, so
+``only the shape of $g$ is free'' is all that direction yields --- and with the scale cancelling
+identically, the optimal shape is the bi-invariant one, with improvement exactly $1.000$.
+
+A second import was tested and stops in a different place \LC. The localisation-hierarchy spectral
+certificate of Rai \emph{et al.}\ (\code{arXiv:2411.03680}, \emph{Quantum} \textbf{10} 2065, 2026)
+gives, for a translation-invariant, $k$-body, frustration-free $H=\sum h_i\succeq0$ with $E_0=0$, an
+exact equivalence $\Delta\ge\delta\iff H^2-\delta H\succeq0$, whose $n$-local truncation is legal
+because the discarded $h_ih_j$ are products of positive operators on disjoint supports. Two things
+hold at theorem level: the hierarchy is \emph{independent of $N$ by construction}, so the volume
+axis needs no extra assumption, and an exact conservative certificate is attainable --- on the
+periodic constant-mode kernel at $\beta=2.5$ the feasible set of the relaxation is exactly
+$(-\infty,\mu_1]$ with $\mu_1=1.607302180095$, a $256$-dimensional PSD certificate that loses nothing.
+What fails is the \emph{assumption structure}, not the arithmetic: the measure of 4D Yang--Mills
+provides no frustration-free local decomposition with a common kernel vector, and the relaxation is
+legal only for PSD-monotone truncations, a structure kernels do not have. The \emph{scale} axis is
+moreover blocked by $d^{n^4}$ and by the fact that flag-preserving truncation yields upper bounds.
+The cost is \emph{not} exponential in $L$, contrary to an earlier estimate of ours \LM.
 
 \subsection{What building it would close}
 
@@ -153,6 +314,239 @@ inequalities, each named, each with no slack, each equivalent to the gap in its 
 Each is a lower bound on a curvature or an upper bound on a variance; each fails on the free
 field; each is nonperturbative; each is $(L,a)$-uniform in its statement. Proving any one of them
 would close the gap. None is proved.
+
+\subsection{Five species classes closed by the specification}
+
+A specification is only as strong as what it forbids: the five conditions say what the tool must
+\emph{do}, this round's first wave said what it may not be \emph{made of}. Five mechanism classes are
+closed at class level, so any construction built out of one inherits the death
+(\code{research/v3/species/ROUND1-VERDICTS.md}, corrected per \code{AUDIT-R1.md}).
+
+\begin{itemize}
+\item \textbf{Harish--Chandra.} Wants the atom as a Plancherel singularity or boundary mass; dies
+  because split-rank Plancherel is absolutely continuous and the boundary mass leaves $\mathcal H_{1/2}$
+  (truncated norm $20.72\to36.84$) \LN.
+\item \textbf{Pseudospectral.} Wants Rouch\'e on a resolvent contour, hence $m\ge r>0$ --- the right
+  direction; dies because $\varepsilon_1=0.7871$ against $\operatorname{dist}=0.001944$ leaves
+  $V<\operatorname{dist}/\varepsilon_1=2.47\times10^{-3}<1$ with no positive integer solution
+  ($V=1$ fails by $404.8\times$) \LN.
+\item \textbf{Tropical min-plus.} Wants a max-plus cycle mean with a log-sum-exp squeeze; dies because
+  $S_W\equiv0$ on the constant-modulus slice forces $\Delta_{\mathrm{trop}}\equiv0$ at every $\beta$
+  against the exact $\Delta=0.6444$, and the squeeze is wider than the signal,
+  $\mathrm{width}/\Delta=3.013$ \LN.
+\item \textbf{Lorentzian / M-convex.} Wants TP$_2$ isolation from label log-concavity; dies because the
+  frustrated weight $(-1)^{2j}w_j$ does not preserve sign, so no sign-definite M-convex weight has a
+  referent \LN.
+\item \textbf{Setwise / small ball.} Wants $\operatorname{Var}\le C/\kappa$ from a curvature bound at
+  the mode; dies because $(\log\rho)''=-1/(2x^2)-1/(2(2-x)^2)<0$ on all of $(0,2)$ independently of
+  $\beta$, so the hypothesis $\rho''(\text{mode})\ge\kappa>0$ is empty at every coupling \LN.
+\end{itemize}
+
+\subsection{The data-mode theorem, in quantitative form}
+
+The meta-theorem behind the negative ledger was a dichotomy --- the computable subclass is empty
+($F3\wedge F4=\varnothing$), the full class is equivalent to the gap --- and this round replaced the
+empty set by a number. For $N$ weak-$*$ continuous data $D_N$ of $\nu$, let
+$d_N(\varepsilon):=\max\{\nu'([0,\varepsilon)):D_N(\nu')=D_N(\nu)\}$, with $d_N^{-}$ the same under
+$\min$: the most and the least mass that can hide below $\varepsilon$ without moving the data. Then
+$d_N>0$ for every finite $N$ (computed to $N=14$, from $0.582$ to $1.36\times10^{-2}$; log-slope fit
+$e^{-0.4595N}$) while $d_N^{-}=0$ always, so neither ``floor $\ge\varepsilon$'' nor ``floor
+$<\varepsilon$'' is decidable from finite data. Along $\nu_h=(1-h)\nu+h\delta_0$ every continuous
+datum moves \emph{linearly} ($D_8^{L1}=0.183h$, $M_1\to1.7819$, $\chi\to1.8370$) while
+$\mathbf 1_{G_{0.2}}$ jumps only at $h=0$: the \textbf{quantitative form of
+$F3\wedge F4=\varnothing$}, widened from four data modes to the \emph{spectral class}. Limits: the
+zero direction is elementary (\LT), the positive one a computed extremum (\LE), the last three $N$ turn
+up, so nothing extrapolates (\code{AUDIT-R1.md} \S C-5).
+
+\subsection{The five conditions, as they now stand}
+
+\begin{itemize}
+\item \emph{2, window coordinate.} The ratio is not an independent half: with $t:=T_2(V)$ the Ky Fan
+  trace, $\rho^2\le C^2\iff e_1\ge t/(1+C^2)$. The physical ratio lies in the band $1.54$--$1.56$
+  (\code{RATIO-RHO.md}; the older $1.6$--$1.8$ band of \code{Z1-HOLO.md} is larger still), so
+  $\rho^2\in[2.37,2.43]$ and every point of the band exceeds $2.25$: the exclusion of $C=1.5$ is robust
+  to which end is taken. But $C=2$ is sharp \emph{only inside the Dirichlet-type tower class}; outside
+  it a two-step density string with $q\equiv0$ --- physical, no double well, no sector choice --- gives
+  $\rho^2=5.706377$ from its exact secular equation (FD $5.70487$), a 2000-case random-density battery
+  gives $\sup25.63$ (a single heavy block, $60.169$), a Neumann--Dirichlet box gives $9$, and the star
+  $K_{1,m}$ is unbounded. Inside the class the statement is exact and saturated (DD $+$ unit density
+  $+$ single well: 6000 shapes, $\sup3.99935$, no violation; chain $L=40$, $3.99413$), so the window's
+  upper half is a \emph{floor} statement inheriting H1 \LN.
+\item \emph{Ky Fan is computable but useless in magnitude} \LE/\LN: $t/t^\ast=3.28$--$273$, so the
+  bound is loose by $3.8$--$279\times$ and $e_1\ge t/5$ would need a floor $3.3$--$2671$ times the true
+  one; the GEVP estimate of $\rho^2$ is not one-sided ($3.00,\,3.62,\,3.88,\,4.13,\,3.45$ against the
+  true $3.99413$), so one $4$D lattice point with $\rho^2>4$ decides nothing.
+\item \emph{3, alignment coordinate.} $w_1\ge(s_2-\bar E)/(s_2-s_1)$ with
+  $\bar E=-\tfrac{d}{dt}\log C(t)|_{t=0}$ computable, so $w_1\ge w_0$ follows from
+  $s_2\ge(\bar E-w_0s_1)/(1-w_0)$: sharp and presupposing nothing, hence non-circular --- but the
+  decisive input $s_2$ is not computable. \textbf{The missing step is isolation, and alignment only
+  its coordinate} (\code{WA-ALIGNMENT.md}).
+\item \emph{4, fails the free field.} The battery itself has a hole, so condition 4 needs the battery
+  repaired before it can be applied: $(\mathrm{TCI})$ is under-specified \emph{and} vacuous, both taken
+  up in \S\ref{sec:tci-under}.
+\end{itemize}
+
+\subsection{The third named inequality is under-specified}
+\label{sec:tci-under}
+
+$(\mathrm{TCI})$ is filed as unproved; it is not yet a proposition. \eqref{eq:tci} prints the display,
+then only says ``$\mathbb K$ is the lift of the block scheme'' --- no formula --- $cF$ is fixed nowhere
+in the paper, and $Q$ has two meanings ($Q=0$ on the free field in \code{ch05}; the Savvidy operator
+in \code{SM5-TCI-HEAD.md:72}), $cF:=g|B|$ appearing only there (\code{:74,91}) \LN. It is also
+\emph{vacuous}: its quantifier runs over a Hessian-defined $\mathcal H_-$, and for the free massless
+field $\operatorname{Hess}V=(k^2+N/12)\mathbf 1>0$ gives $\mathcal H_-=\{0\}$ ($\lambda_{\min}=1.1667,
+\,0.2567,\,0.1767,\,0.1667$ at $k=1,0.3,0.1,0$), so the inequality holds by quantifying over nothing
+--- an acid-test false positive, repaired by using a background-defined $\mathcal H_-^{\mathrm{fix}}$
+with $\dim\mathcal H_-^{\mathrm{fix}}\sim(gB)^2V/8\pi^2$ and demanding $\dim\ge1$. A self-consistent
+completion (ours, not the corpus's): $Q=3\lambda_4\varphi_0^2=3cF$, $\mathbb K$ from
+\code{TCI-COMPENSATION.md} \S2.4, so $(\mathrm{TCI})\iff\lambda_{\min}(A_{\mathbb K}|\mathcal H_-)\ge
+cF+\mu$ but $(\mathrm{TCI})\not\Rightarrow\Sigma\succeq\mu$ (the Schur form gains
+$\lVert B\rVert^2/\gamma$); with $\mathbb K=\operatorname{Hess}\Phi$ it reads purely magnetically,
+$\lambda_{\min}(\beta\operatorname{Hess}S_W)\ge N/12+\mu$.
+
+\emph{Compensation is not elimination} \LT: $\Sigma\preceq A$, so elimination needs $\gamma>0$ and can
+only lower, while compensation adds a positive in-block term and is $\gamma$-free; Bogoliubov lifts are
+sign-negative ($\omega^2\to\omega^2-4c^2$; spectrum $1.000\to0.980\to0.917\to0.600$), so they cannot
+supply a positive $\mathbb K$; and $V''(a^*)=(d-2)cF$, margin $(d-3)cF\ge0$, is $\propto F$, only the
+ratio $d-2$ being $F$-independent. \emph{No source is left} \LE: at $\beta=2.5$ ($2\times2$
+$\mathrm{SU}(2)$, $6\times10^4$ samples) $\operatorname{Hess}\Phi\succeq N/12$ exactly ($0.166680$),
+yet $E[n_-]=1.70$, $P(n_->0)=0.851$, median $\inf_{\mathcal H_-}=-0.1796$, $P(\mu_3\ge0)=0.070$ ---
+short by $2.72\times$ at $\beta_c\approx0.76$ --- with the condensate well at $a^*\approx9$--$14$ out of
+reach. Since $V=S_W+\Phi$, a positive order-$0$ term is $\operatorname{Hess}\Phi$ (too small) or the
+condensate (the target): the only non-empty form of $(\mathrm{TCI})$ is H1 \LN{} (\code{tci\_comp.log},
+\code{TCI-COMPENSATION.md}).
+
+The inequality was then tested in both of its readings, and both fail (\code{NA2-NONDEGENERATE.md}
+\S2.6). \emph{Pointwise}: $P(n_-(H)>0)=0.119$ on two plaquettes at $\beta=2.5$, and the pointwise coarse
+curvature is negative on a set of measure up to $P(\Sigma<0\mid a_0{=}0)=0.905$ at $\beta=6$, so no
+pointwise $\mu>0$ exists. \emph{Conditioned}: the conditioned $G''$ changes sign ($+0.717\to-0.189$
+between $a_0=0$ and $1$ at $\beta=6$; $-1.213$ at $B=\mathbf 1$), so the statement is not
+$(L,a)$-uniform. The inertia lemma is exact, $n_-(H)=n_-(H_{AA})+n_-(\Sigma)$ holding on 30 of 30 rows to
+$1.0000$, so the failure is not numerical. Its cause is a category mismatch \LN: the negative modes are
+\emph{pointwise} objects of $\operatorname{Hess}V$, while the only available positive compensation,
+$W_{\mathrm{geo}}=E[\Phi'']-\operatorname{Var}(\Phi')$, is a \emph{conditioned average}; the two do not
+compose inside one pointwise inequality, and the conditioned reading degenerates to $G''\ge\mu>0$,
+i.e.\ to H1 itself. A methodological warning belongs with these numbers \LE: $\partial_a^2U$ taken as a
+Hadamard two-point divided difference is \emph{not} correct for the exponential (it failed in $66\%$ of
+the test cases), and second derivatives were computed instead from
+$E[H]=-dE[G]/da+\operatorname{Var}(G)+\operatorname{Cov}$.
+
+\subsection{Two of the three named inequalities are now closed}
+
+Of the three inequalities named in \S\ref{sec:missing}, one is now false and one is not a proposition;
+only H1 survives.
+
+\emph{$(NA)$ is false, in both directions} (\code{NA2-NONDEGENERATE.md}). At the natural conditioning
+point on $\mathrm{SU}(3)$ the covariance does not vanish:
+$X(a_0{=}0)=-1.69\times10^{-2}\pm2.5\times10^{-4}$ for $B=\omega\cdot\mathbf 1$ at $\beta=4$ --- a
+$67\sigma$ violation, by two independent estimators --- and the sign follows the boundary
+($+1.6\times10^{-4}$ at $B=\mathbf 1$, where the two methods disagree, so that point is unresolved). The
+reverse face fails as well: in the chain family, the only construction with $\Phi'|_0\ne0$, one finds
+$X(0)<0$ at 15 of 15 points ($L=2,3,4$, open and periodic, $-1.9\times10^{-3}$ to $-1.4\times10^{-2}$);
+at $L=2$ it is a sign theorem for \emph{every} $\beta>0$ under the single inequality $\lvert R\rvert\le
+\lvert Q\rvert$, which a $4001^2$ grid verifies with $\max\lvert R\rvert/\lvert Q\rvert=0.99911$ and no
+violation --- so $\beta$ has dropped out of the sign criterion entirely (\code{CT-CHAIN.md}), which is
+stronger than any trend in $\beta$. Rescaled, $\lvert X\rvert\propto L$ and $X/L\to-0.010$; the apparent
+decay in $L$ in the earlier reduction was the normalization slip $X_{\mathrm{na2}}=X_{\mathrm{true}}/L^2$.
+So $(NA)$ is not a variance-free face; it is a false statement with an empty case \LN.
+
+\emph{Proposition D} \LT{} (with its premise) explains why it passed for one. \emph{Let the coarse field
+touch a single link.} Then for any group of rank $1$ the Jacobian is radial --- its argument is the
+eigenvalue \emph{difference} of $\operatorname{ad}A$, not a Cartan projection --- so $\partial_v\Phi$
+vanishes pointwise on $\{\xi_v=0\}$ and $X\equiv0$ \emph{identically}, for every action, coupling,
+volume and direction ($J=(\sin(\rho/2)/(\rho/2))^2$, $\Phi=\varphi(\rho)$,
+$\partial_v\Phi=\varphi'(\rho)\xi_v/\rho$). Whether $X$ can be nonzero is therefore exactly
+$(\operatorname{rank}G\ge2)\vee(\text{a multi-link coarse field})$: the chain family realizes the second
+alternative and is \textbf{not} a counterexample but an instance outside the premise. Writing ``rank''
+for the premise is what made the claim look false, and every solvable model in which $(NA)$ was checked
+was single-link and rank one, so an empty face was read as a structure.
+
+\emph{$(TCI)$} is under-specified, and both of its readings fail (\S\ref{sec:tci-under}). \textbf{Of the
+three named inequalities only H1 remains}, and H1 is the wall.
+
+\subsection{The exact missing step, in two decidable sentences}
+
+Along $\beta=2.5$, uniformly in $(L,a)$ and inside the renormalization window $t\in[t_1,t_2]$:
+
+\begin{enumerate}
+\item[(i)] \emph{Quantitative isolation:} $s_2(t;a,L)\ge\bigl(\bar E_t(a,L)-w_0s_1(t;a,L)\bigr)/(1-w_0)$,
+  with $\bar E_t=\tfrac12\langle\Omega|[o_t,[H,o_t]]|\Omega\rangle/\operatorname{Var}_\mu(o_t)$
+  computable and $s_1<s_2$ the two lowest support points of the $0^{++}$ measure.
+\item[(ii)] \emph{A form comparison at both Dirichlet ends, with unit density:}
+  $\mathcal L_{0^{++}}\ge -d^2/ds^2|_{\mathrm{DD}}$ on $[0,L_s]$, equivalently
+  $\int(W/u_1)^2\le3\lambda_1\int u_2^2$ for the effective potential $W$ of the binding coordinate,
+  hence $e_1\ge\pi^2/L_s^2$. \emph{No Kramers doubling at the bottom} is necessary here but \emph{not
+  sufficient}: a Neumann--Dirichlet half-string is a single well and still gives $\rho^2=9$. The DD
+  form is exactly what the Wronskian deficit measures --- $1.9\times10^{-5}$ on the DD class (the
+  finite-difference floor) against $-5.0066$ on the ND class.
+\end{enumerate}
+
+Why the doubling clause survives as a companion: \emph{exact} doubling gives $\mu_1=\mu_2$,
+$\rho^2=1$, which kills the window's lower bound, and \emph{near}-degeneracy gives $\mu_1\to0$,
+$\rho^2\to\infty$, which kills $C^2$ --- so a single-valued vacuum ($Z_N$ unbroken) is necessary. It is
+not sufficient: the ND half-string has no second well at all and still returns $\rho^2=9$. What the
+missing step has to supply is the DD form comparison --- a statement about the density, not about the
+number of wells.
+
+\textbf{Both sentences are H1, and neither is a new species} \LN: (i) is the isolation $I_2$ in
+quantitative form, its threshold computable, (ii) the comparison operator whose absence the ratio
+coordinate diagnosed. Given (i) the two-point inequality yields $w_1\ge w_0$; given (ii) the rank-two
+trace yields $\rho^2\le C^2$; before both, no route here moves. ``The machine does not exist'' then
+means: \emph{no background-defined comparison operator of that form is known}.
+
+A note on reaching (ii), and on how not to (\code{LP-LIOUVILLE.md}). The Liouville transform is legal and
+non-circular, so an intrinsic length exists \LT{} --- but it is \emph{not} $L_s$:
+$T_{\mathrm{intr}}=10.180$ against $\pi/\sqrt\Delta=3.914$ ($2.601\times$) and $\pi/\sqrt{G''}=6.752$
+($1.508\times$), and $T_{\mathrm{intr}}$ carries no $\sigma$ while $L_s$ diverges as $\sigma\to0$ ---
+different function types, no substitution \LC. A \emph{second-order} Sturm--Liouville representation
+cannot give (ii) either \LN: at $\beta=0$ the gap is infinite while every second-order operator caps at
+$1.61$ on these coefficients, so the form comparison stays $[M]$ with its derivation route blocked. And
+the acid test is a trap here \LN: $\Phi=-\log J$ placed in $q$ returns the free-field floor
+$N/12=0.166667$ at infinite volume, placed in $w$ it drives the bound $9.87\to0.0987\to0.000987$ --- any
+such bound is a floor, never an atom certificate, and not usable alone.
+
+The criterion itself is, on the volumes that can be built, neither measurable nor discriminating
+(\code{GEVP-4D.md}; operators $o_0,o_2,o_4$, $\beta=2.5$). At $L=4$ ($N=4000$) the only legal point
+$(t_0,t)=(1,2)$ gives $\rho^2=41.9\pm46.0$ from $(o_2,o_4)$ --- error above value, $11.2$ after the
+$\cosh$ correction --- $(o_0,o_2)$ leaves $C(1)$ of rank one, and the three-operator fit returns
+$\lambda_2\le0$ ($-0.011$ on recheck), so $\rho^2$ is undefined; at $L=6$ ($N=2000$) the points
+$9.35\pm6.45$, $7.57\pm4.06$, $8.02\pm456$ ($8.18/2.88/3.75$ corrected) show no plateau \LE. The
+free-field control decides the matter: on $\beta=0$ Haar $C(t>0)\approx0$, so $\rho^2$ is undefined
+there, while the exact free tower gives $\rho^2_{\mathrm{free}}=2<4$ \emph{with no mass gap at all} ---
+the criterion does not separate free from interacting. And a point with $\rho^2>4$ can be manufactured by
+volume: an exact noiseless two-state model with true $2.56$ reads $4.76>4$ at $L=4$ in flat-log and
+returns $2.5600$ under the $\cosh$ correction \LE. So the test of (ii) supplies no evidence for or
+against $C=2$ and has no numerical falsification path \LN: (ii) narrows from a testable missing step to
+one that only a proof can settle.
+
+The chain-I arrow $e_3$ crosses an invariance boundary: no functional of charged data bounds
+$\inf\operatorname{supp}\nu_{0^{++}}$ (Chapter~\ref{sec:theorems}), so $e_3$ must consume a non-invariant
+assumption --- the only known one, the $u$-identity ($=$ charged completeness), holds only at
+$\beta<1/48$: same-domain locking is necessity, not luck, and $e_3$, the Savvidy crossing, $X$ are one boundary.
+
+\subsection{The subtraction-free target is closed too: an exact $\beta$ scaling}
+
+Closing $(NA)$ left one target standing: a \emph{subtraction-free} inequality, of the form
+$\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}\ge\lambda$ with $\lambda$ independent of $\beta$. It dies on an
+identity, without a single number \LT{} --- with $H_1,G_1$ the first-order terms,
+\begin{equation}
+\Delta_{\mathrm{dyn}}=\beta\,E[H_1]-\beta^{2}\operatorname{Var}(G_1)
+\label{eq:nosub}
+\end{equation}
+puts the positive piece at $O(\beta^{0})$ and the negative piece at $O(\beta^{2})$, so no statement of
+that form can be uniform in $\beta$ (\code{NS-NOSUBTRACTION.md}).
+
+The numbers are worse than non-uniform \LE: at $\theta=\pi$, $v=e_3$, $a_0=0$ the target reads
+$+0.2024,\,+0.1941,\,+0.1360,\,+0.0282,\,+0.00063,\,-0.1930$ for $\beta=0.5,1,2.5,4,4.3,6$, and at
+$a_0=0.5,1,1.5,2$ its zeros are $2.68,\,1.98,\,1.69,\,1.62$ --- all \emph{below} the matching $G''$ zero,
+so on a window of width $0.15$--$0.26$ one has $G''>0>\mathrm{NOSUB}$: the target is \emph{false where
+the truth holds}.
+
+The acid test kills it as well \LN: on pure Haar at $\beta=0$ it equals the Jacobian floor,
+$\mathrm{NOSUB}=W_{\mathrm{geo}}=0.20512>0$, while $f_1^2=0$; and on the double well, where $X\equiv0$,
+it collapses to $\mathrm{NOSUB}\equiv G''$ --- dying exactly where H1 dies and discriminating nothing. So
+the ledger closes: three named inequalities, the beyond-$\nu$ layer, the window $\rho^2\le C^2$, and this
+last target. \textbf{The equivalence of H1 is therefore structural, not a by-product of the search.}
 
 \subsection{Honest bottom line}
 
