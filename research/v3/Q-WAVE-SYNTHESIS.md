@@ -27,7 +27,7 @@
 | **Q2** loop bootstrap | `[NG]` | The finite-N Makeenko–Migdal equation closes in `W` only at `N=∞`, leaving an `O(1/N²)` connected two-loop term. Writing `χ=χ_G+χ_conn`, equivalently `G″=S−D`, the identity checks to 6 digits. Reflection positivity gives `D≥0`, which only **lowers** `G″`—the wrong direction. UV asymptotics fixes only large-`s` moments. Missing term: `D ≤ S−λ` (the Savvidy rank-one part `D_Sav`). |
 | **Q3** integrate out the negative mode | `[T]`/`[NG]` | Exact inertia lemma (Haynsworth): for `H=[[α,cᵀ],[c,K]]`, `Σ=α−cᵀK⁻¹c`, `n₋(H)=n₋(K)+n₋(Σ)`, so `Σ≻0` iff every negative mode is fibre-confined. One-plaquette `θ=0`: `c_r=0`, `K` indefinite but `Σ=α>0` — excision works. `θ=π` barrier: `K≻0` yet `Σ<0`; the negative mode is **collective** `(radial,e₃)`, aligned with the coarse direction — no fibre mode to excise, positivity not restored. The rank-one lemma `χ≤(1+η)/ρ_rest` reduces to `χ≤1/ρ_*`; the `(1+η)` is cosmetic and small `D/S` does not imply `ρ_rest>0`. Missing 4D estimate: a uniform fibre gap `K⪰γI`, i.e. `E⟨K⁻¹c,c⟩<S`. |
 | **Q4** Bakry–Émery with defect | `[T]`/`[C]`/`[NG]` | `Ric_{SU(N)}=(N/4)g>0` is exact (witness 1e-15), but `Ric+Hess S_W≈−2.3<0`: the Savvidy Hessian dominates. The `k=0` projection is lossless, so the marginal BE constant **is** `ess inf G″`; group Ricci is silent on χ. Weighted rescue via exact 1D Cheeger `λ₁≥h²/4`, so `χ≤4/h²`; finite uniform χ iff the `k=0` marginal is single-well with gate density bounded below. 1D SU(2): `λ₁=0.2645`, `χ≤3.78`; `β=2.5` floor `0.222` gives `χ≤4.5`. Defect measure is the **wrong control**: `ν(G″<0)` shrinks 41× while `λ₁` collapses 170× (Kramers). Missing estimate: a uniform lower bound on the Savvidy gate density, i.e. single-wellness of the 4D `k=0` marginal. |
-| **Q5** 4D numerical plateau | `[V]`/`[O]` | Pilot at `β=2.5`: `χ=Var(a)=4.17±0.18` (`L=4`) and `3.61±0.24` (`L=6`), ratio `0.87`; a free massless field would rise by `(6/4)²≈2.25`. Growth is excluded; a plateau at the Haar value `≈3.7` is consistent. Polyakov correlator decays within `ξ≲1–2` sites. Caveats: the coordinate is gauge-invariant only infinitesimally (≤4% drift under local transforms); the exact force-moment `G″(k=0)=+0.03±0.08` is unresolved (broad marginal, `sd=2.15`); the mean-normalized composite is self-averaging (`Var∝1/V`), while the total-normalized carrier has `Var=χ=O(1)` (T4). Decisive run specified: Landau+FP+Gribov, `L=8,12(16)`, `N≥2000`, one job at a time. |
+| **Q5** 4D numerical plateau | `[V]`/`[O]` | M1 run (`N=2000`): `χ_flat=3.807±0.074` (`L=4`), `3.760±0.072` (`L=6`), `3.823±0.069` (`L=8`); the L=6→8 separation is `0.63σ`, and a free massless field would grow by `(8/6)²=1.78`. The flat-chart plateau persists. But the gauge-invariant cross-check does not confirm it: `χ_P=5.47,5.11,2.77`, and `χ_Landau=37.0±1.9,58.7±3.8,115.4±10.4` with the Gribov spread rising `1.3%→13%`. The flat coordinate is gauge-invariant only infinitesimally; the Landau coordinate is Gribov-unstable. `G″(k=0)=+0.03±0.08` while `1/χ≈0.24`, so `G″χ≈0.13` (strongly non-Gaussian). Decisive run: `L=12` with a gauge-invariant estimator and controlled Gribov copies. |
 | **Q6** logical status of H1 | `[T]`/`[NG]` | H1 is **strictly weaker than the gap**: `gap⇒H1` is a theorem; the converse is false and machine-checked (`H1_does_not_imply_atom`; thin atom `ν=wδ_ε+(1−w)δ_{s₂}`, `w=ε/2λ`, has `χ=1/λ` yet `inf supp ν=ε→0`). The three claimed equivalences (clustering / transfer gap / `G″≥λ`) are false as biconditionals and hold only in the Gaussian-marginal limit. H1 is a theorem in seven regimes (strong coupling `β<1/48`, `β=0` Haar `χ=3.7198`, 1D chain, finite volume non-uniformly, 2D, large-N strong coupling, UV face `[C]` on a different object) and open in the eighth (4D `SU(N)`, `β=2.5`). The free massless `U(1)` field violates H1. **Carrier:** on the mean-normalized composite `Var(q̄)=χ/V→0` (self-averaging); the total-normalized zero mode has `Var(q)=χ=O(1)` (T4), so the carrier exists but carries only the ceiling. |
 | **Q7** sixth-species forge | `[T]`/`[NG]` | Seven candidate families; five collapse onto banked objects. The two survivors are computed no-gos. **Direction theorem:** analytic-duality/Fisher–Rao functionals give `E_ρ[G″]=I(ρ)≥1/Var`, i.e. `Var≥1/I`—a **variance floor**, the logical opposite of H1; Bernstein gives `G″≤τ²` (a ceiling), and a band-limited `ρ_ε=1+εcos(τa)` has `G″=ετ²/(1+ε)→0` at fixed bandwidth. **Frozen-outlier:** the Savvidy soft mode is an exact deterministic eigenvalue `−g|B|`, not a BBP fluctuation; on `G″=S−D` with `D/S≈0.97`, the gap is a 3% residue, below every available RMT relative error (`≥10%`). |
 
@@ -83,17 +83,19 @@ Two further warnings:
 
 ## §3 · The 4D numerical status, and why `G″≥λ` is not the right face
 
-Q5 gives the first controlled 4D pilot: `χ=4.17±0.18` (`L=4`) and `3.61±0.24` (`L=6`), ratio `0.87`,
-against a free-field growth of `2.25`. Growth is excluded; the plateau is consistent with the Haar
-value `≈3.7`. But the exact force-moment estimator gives `G″(k=0)=+0.03±0.08`, while `1/χ≈0.24`:
-`R=G″·χ≈0.13`, far from the Gaussian value `1`. **In 4D the marginal is strongly non-Gaussian**, so
-the equivalence `H1 ⇔ G″≥λ` fails quantitatively. H1 must be stated as the **variance bound**
-`χ≤1/λ`, not as a pointwise curvature bound, unless Gaussianity is proved. This is a correction to
-the campaign's shorthand.
+The M1 run (`N=2000`) gives `χ_flat=3.807±0.074` (`L=4`), `3.760±0.072` (`L=6`),
+`3.823±0.069` (`L=8`); the L=6→8 separation is `0.63σ`, against a free-field growth of
+`(8/6)²=1.78`. The flat-chart plateau persists. **But the gauge-invariant cross-check does not
+confirm it:** `χ_P=5.47,5.11,2.77`, and `χ_Landau=37.0±1.9,58.7±3.8,115.4±10.4` with the Gribov
+spread rising `1.3%→13%`. The flat coordinate is gauge-invariant only infinitesimally (≤4% drift);
+the Landau coordinate is Gribov-unstable. So the plateau is a statement about the flat-chart
+variance, not yet a gauge-invariant H1 measurement.
 
-The pilot also inherits the carrier caveat: the flat-chart coordinate is gauge-invariant only
-infinitesimally (≤4% drift under moderate local transforms), so it is evidence, not a gauge-invariant
-measurement. The decisive run is specified (Landau+FP+Gribov, `L=8,12(16)`, `N≥2000`, one job).
+The exact force-moment estimator gives `G″(k=0)=+0.03±0.08`, while `1/χ≈0.24`: `R=G″·χ≈0.13`, far
+from the Gaussian value `1`. **In 4D the marginal is strongly non-Gaussian**, so the equivalence
+`H1 ⇔ G″≥λ` fails quantitatively. H1 must be stated as the **variance bound** `χ≤1/λ`, not as a
+pointwise curvature bound, unless Gaussianity is proved. This is a correction to the campaign's
+shorthand. The decisive run is `L=12` with a gauge-invariant estimator and controlled Gribov copies.
 
 ---
 

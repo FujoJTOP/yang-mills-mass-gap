@@ -1,0 +1,40 @@
+# M1 4D run  beta=2.5 SU(2) periodic  vols=[4, 6, 8] N=2000 therm=800 gap=10 n_gf=700 n_gribov=48 x5  one job
+
+=== L=4 : N=2000 therm=800 gap=10 ===
+  chi_flat=3.8075+-0.0743 (tau=1.03, Neff=1936, sd=3.06)
+    chi_flat_ms(Var)=3.8056+-0.0748 mean_contrib=0.002
+  plaq=0.6548  chi_P=5.4706  xi_P=5.608  C_P=[0.2697 0.1011 0.0846 0.1011]
+  chi_landau=<|A|^2>/3=37.0487+-1.8577 (n=700, tau=1.86)  Var(ms)=36.9802+-1.8649 mean_contrib=0.069
+  Gribov: mean spread=0.439 (rel 1.3%, max 21.3%) best mean=45.895
+  0++ fit_unsmeared: m1=0.0300 A(f1^2)=6.99e+03 rms=0.001
+  0++ fit_ape2: m1=0.0300 A(f1^2)=158 rms=0.003
+  m_eff unsmeared=[-0.002] ape2=[-0.005]
+  (wall 221.1s)  -> saved D:\Dev\math\research\v3\w7\m1_4d_run_results.json
+
+=== L=6 : N=2000 therm=800 gap=10 ===
+  chi_flat=3.7598+-0.0716 (tau=1.03, Neff=1947, sd=3.19)
+    chi_flat_ms(Var)=3.7588+-0.0709 mean_contrib=0.001
+  plaq=0.6528  chi_P=5.1142  xi_P=3.120  C_P=[0.2541 0.0414 0.0247 0.0218 0.0247 0.0414]
+  chi_landau=<|A|^2>/3=58.6810+-3.8033 (n=700, tau=2.84)  Var(ms)=58.6132+-3.8076 mean_contrib=0.068
+  Gribov: mean spread=7.730 (rel 11.2%, max 120.8%) best mean=58.561
+  0++ fit_unsmeared: m1=0.0300 A(f1^2)=1.38e+05 rms=0.001
+  0++ fit_ape2: m1=0.0397 A(f1^2)=3.42e+03 rms=0.001
+  m_eff unsmeared=[ 0.001 -0.001] ape2=[ 0.004 -0.001]
+  (wall 957.7s)  -> saved D:\Dev\math\research\v3\w7\m1_4d_run_results.json
+
+=== L=8 : N=2000 therm=800 gap=10 ===
+  chi_flat=3.8228+-0.0692 (tau=1.09, Neff=1837, sd=3.25)
+    chi_flat_ms(Var)=3.8172+-0.0682 mean_contrib=0.006
+  plaq=0.6524  chi_P=2.7698  xi_P=2.454  C_P=[0.2503 0.0183 0.0071 0.0056 0.0051 0.0056 0.0071 0.0183]
+  chi_landau=<|A|^2>/3=115.4407+-10.3847 (n=700, tau=6.58)  Var(ms)=115.3029+-10.4159 mean_contrib=0.138
+  Gribov: mean spread=14.376 (rel 13.0%, max 65.8%) best mean=107.506
+  0++ fit_unsmeared: m1=0.0300 A(f1^2)=1.12e+06 rms=0.001
+  0++ fit_ape2: m1=0.0300 A(f1^2)=2.75e+04 rms=0.001
+  m_eff unsmeared=[ 0.001  0.001 -0.001] ape2=[ 0.     0.003 -0.001]
+  (wall 3473.4s)  -> saved D:\Dev\math\research\v3\w7\m1_4d_run_results.json
+
+=== ratios ===
+  chi_flat L=4->6: 3.807->3.760 ratio=0.987  (free-mss L^2 ratio 2.25)
+  chi_flat L=6->8: 3.760->3.823 ratio=1.017  (free-mss L^2 ratio 1.78)
+
+# wrote D:\Dev\math\research\v3\w7\m1_4d_run_results.json
