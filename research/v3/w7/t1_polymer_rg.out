@@ -1,0 +1,99 @@
+
+================================================================================
+[C] exact SU(2) character coefficients and the identity  SUM (n+1)c_n = e^beta
+================================================================================
+  modified-Bessel source: scipy.special.iv
+  beta= 0.02083:  SUM(n+1)c_n = 1.0210518621   e^beta = 1.0210518621   rel.err=0.00e+00
+  beta= 1.00000:  SUM(n+1)c_n = 2.7182818285   e^beta = 2.7182818285   rel.err=1.63e-16
+  beta= 2.50000:  SUM(n+1)c_n = 12.1824939607   e^beta = 12.1824939607   rel.err=8.75e-16
+  => c_n = I_n - I_{n+2} is exact; u(beta)=c_1/c_0 is the single-plaquette activity.
+
+  CALIBRATION-FREE diluteness diagnostic:  trivial-weight fraction f0 = c_0/e^beta
+  (a convergent character/polymer expansion needs the nontrivial plaquettes DILUTE, f0 -> 1)
+    beta= 0.02083:  c_0=1.000054  f0=c_0/e^beta=0.97944  (Phi(0)=(e^beta-c_0)/c_0=0.0210 nontrivial/trivial)
+    beta= 1.00000:  c_0=1.130318  f0=c_0/e^beta=0.41582  (Phi(0)=(e^beta-c_0)/c_0=1.4049 nontrivial/trivial)
+    beta= 2.50000:  c_0=2.013373  f0=c_0/e^beta=0.16527  (Phi(0)=(e^beta-c_0)/c_0=5.0508 nontrivial/trivial)
+  f0: 0.98 (wall, dilute) -> 0.42 (beta=1) -> 0.165 (beta=2.5, DENSE);  expansion dead.
+
+================================================================================
+[D] minimal trF^2 polymer = four-wall tube; per-slice weight u^4, rate m1 a = 4 ln(1/u)
+================================================================================
+  beta       u=c1/c0     u^4 (per slice)    m1 a=4ln(1/u)   u^2 (tube/competitor per slice)
+   0.02083   0.010416     0.000000          18.257465        0.000109
+   1.00000   0.480387     0.053256          2.932649        0.230772
+   2.50000   1.014390     1.058815          -0.057151        1.028987
+  four-wall tube: w(B_T)=a0 u^{4T}; perimeter-6 competitor w ~ u^{6T}=u^2 x tube per slice.
+
+================================================================================
+[E] KP / Ursell ratio  rho_Ur(beta)=lambda_a Phi(1,beta)  at the P3 wall, beta=1, beta=2.5
+================================================================================
+  convergence of the connected-polymer (Ursell) series  <=>  rho_Ur < 1
+  lambda_a = e*Delta (crude P3 animal constant);  Delta=20/12/4 for d=4/3/2
+       beta          u         Phi(1) |      d=4 rho      d=3 rho      d=2 rho
+    0.02083   0.010416   5.784773e-02 |   3.1449e+00   1.8870e+00   6.2899e-01
+    0.10000   0.049979   3.011526e-01 |   1.6372e+01   9.8234e+00   3.2745e+00
+    1.00000   0.480387   7.715963e+00 |   4.1948e+02   2.5169e+02   8.3897e+01
+    2.50000   1.014390   8.518215e+01 |   4.6310e+03   2.7786e+03   9.2620e+02
+  (all three exceed 1 already by beta~O(1); at 2.5 they are astronomically >1.)
+
+  crude KP threshold (d=4):  convergence needs u < 1/lambda_a = 0.01839
+  actual u(2.5) = 1.01439   => factor 55.1x too large
+  rho_Ur(2.5)/rho_Ur(1/48) = 1472.5x  (d=4): 3.14 at the wall -> 4.631e+03 at 2.5
+  crude rho_Ur=1 (d=4) is crossed at beta* ~ 0.00673; 2.5 is 372x beyond it
+  u(beta)=1/lambda_a is reached only at beta ~ 0.03679  (u~beta/2 small-beta)
+  (SZZ/BE wall is beta<1/48~0.02083; the crude KP constant is even tighter --
+   either way beta=2.5 is 10^1-10^3 x beyond the wall.)
+
+================================================================================
+[F] block-spin / one-loop RG: does coarse-graining make the activity small at beta=2.5?
+================================================================================
+  b0(SU(2)) = 0.046439;   8 b0 = 0.371511
+  xi/a=   1.00:  beta_eff= 2.5000   u_eff=1.01439
+  xi/a=   1.30:  beta_eff= 2.4025   u_eff=0.98773   (physical value here)
+  xi/a=   2.00:  beta_eff= 2.2425   u_eff=0.94167
+  xi/a=   4.00:  beta_eff= 1.9850   u_eff=0.86135
+  xi/a=  20.00:  beta_eff= 1.3871   u_eff=0.64386
+  xi/a= 800.00:  beta_eff= 0.0166   u_eff=0.00830
+  physical range xi/a=1.30: beta_eff=2.4025,  u_eff=0.98773
+  => over the physical range u only drops 1.0144->0.9877 (factor 1.027);
+     to reach the KP threshold u<0.0184 one needs beta_eff<~0.037,
+     i.e. xi/a >~ 757.7  -- the lattice has xi/a~1.3. BLOCKED.
+
+================================================================================
+[G] scale separation at beta=2.5: correlation length in lattice units
+================================================================================
+  m a = 1.880  ->  xi/a = 0.532   [strong-coupling leading 4ln(4/beta)]
+  m a = 0.770  ->  xi/a = 1.299   [scaling  m/sqrt(sigma)~3.5, sqrt(sigma)a~0.22]
+  both give xi/a ~ O(1): number of halving (b=2) steps = log2(xi/a) ~ 0.38.  NO RG TOWER (0-1 steps) at beta=2.5.
+
+================================================================================
+[H] acid test: free field beta->inf -- activity does NOT decay; f1^2(free)=0 by structure
+================================================================================
+  beta     u=c1/c0      Phi(1)        rho_Ur(d=4)
+    5.00   1.438681     1.4307e+03     7.7782e+04
+   10.00   1.708371     1.0636e+05     5.7821e+06
+   50.00   1.940306     1.4394e+16     7.8253e+17
+  u -> 2 (c1/c0 -> 2) as beta->inf; activities grow, rho_Ur -> inf.
+  The diagnostic correctly says 'no expansion' on the free field, and the free
+  composite trF^2 has f1^2=0 (2-gluon cut) -- so the no-go never claims a false atom.
+
+================================================================================
+SUMMARY  (labels: [T]/[C]/[NG]/[O]/[V])
+================================================================================
+[C] exact SU(2) c_n=I_n-I_{n+2}, SUM(n+1)c_n=e^beta verified                    [T]+[V]
+[C] diluteness f0(2.5)=c_0/e^beta=0.165 (needs ->1); gas dense   [V]
+[D] four-wall tube w=a0 u^(4T); u(2.5)=1.014, u^4=1.059, m1a=-0.057   [T]+[V]
+[E] Ursell/KP ratio rho_Ur(2.5) = 4.631e+03  (d=4)  >> 1              [V]
+    crude KP needs u < 0.0184; u(2.5)=1.0144  => 55.1x over   [NG] for the class
+[F] one-loop/block-spin: beta_eff(2.5;xi/a=1.3)=2.403, u_eff=0.988;
+    to drop u below 0.0184 needs xi/a>~758, physical xi/a~1.3  [NG]
+[G] no scale separation (xi/a~1.3, <1 halving step) at beta=2.5             [T]+[V]
+[H] free field: expansion maximally bad; f1^2=0 (acid test PASSES, no false atom) [T]+[V]
+
+ MISSING ESTIMATE: a rigorous bound u_eff(beta=2.5) <= 1/lambda_a on the
+ block effective activity at the physical scale (equivalently connected trF^2
+ polymer weights |w(P)| <= e^{-kappa|P|}, kappa >= ln lambda_a). Bare and
+ one-loop values miss it by ~40x; its proof is exactly the crossover/mass-gap
+ control -- circular unless supplied non-perturbatively.
+
+No QED. Clay 0%.

@@ -299,23 +299,48 @@ deep double well (no barrier-uniform $\lambda$), carrier/vacuity (must be non-va
 
 \subsection{The atom: binding, isolation, and the resolution bound}
 
-The $H1$ wave left the atom as the irreducible target. Six routes sharpen what that means.
+The $H1$ wave left the atom as the irreducible target. Six routes sharpen what that means, and an
+adversarial pass corrects the first formulation.
 
-\textbf{Isolation is the parent, not the child.} A support gap forces the atom
-($I_2\Rightarrow I_1$), but an atom can sit at the edge of a continuum ($I_1\not\Rightarrow I_2$).
-The ``atom $+$ isolation'' pair is therefore, qualitatively, isolation alone; the atom is downstream
-\LT/\LN. Moments upper-bound isolation only, and the lower end $0$ is realised by thin-gap measures
-matching any finite moments. Structurally, isolation is an order-2 (second-eigenvalue/TP$_2$) rung
-above the atom's order-1 (Perron) rung, absent on the orderless quotient $\mathcal A/\mathcal G$; this
-explains the banked no-gos as a tier and gives the target
+\textbf{Three predicates, not one.} Define
+\[
+  A:\ f_1^2>0,\qquad
+  I:\ \Lambda_\star=\inf\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})>m_1^2,\qquad
+  G:\ m_1^2>0 .
+\]
+On a K\"all\'en--Lehmann measure $\operatorname{supp}\nu_{\mathrm{ac}}\subseteq
+\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})$, so $\Lambda_\star\le s_{\mathrm{th}}$ and
+\begin{equation}
+  I\ \Longrightarrow\ B_{\mathrm{spec}}\ \Longrightarrow\ A
+  \qquad\text{(both strict)},
+  \label{eq:v3three}
+\end{equation}
+where $B_{\mathrm{spec}}$ is ``the atom lies strictly below its continuum.'' Spectral binding is
+therefore implied by isolation and is not an independent axis; dynamical binding (the flux-tube
+mechanism) is the atom's mechanism, not a third axis. The independent axes are $A$ and $I$; $G$ is
+orthogonal and needs $H1/$ceiling plus an absolute scale. The (binding, isolation) square is a
+triangle: the ``isolation without binding'' cell is empty \LT/\LN.
+
+\textbf{Isolation is the parent.} $I\Rightarrow A$, but an atom can sit at the edge of a continuum
+($A\not\Rightarrow I$). The ``atom $+$ isolation'' pair is therefore, qualitatively, isolation alone;
+the atom is downstream \LT/\LN. Moments upper-bound isolation only, and the lower end $0$ is realised
+by thin-gap measures matching any finite moments. Structurally, isolation is an order-2
+(second-eigenvalue/TP$_2$) rung above the atom's order-1 (Perron) rung, absent on the orderless
+quotient $\mathcal A/\mathcal G$; this explains the banked no-gos as a tier and gives the target
 \begin{equation}
   \rho=\frac{m_{0^{++*}}}{m_{0^{++}}}\ge1+c>0
   \quad\text{at }\beta\approx2.5
   \qquad\text{(order-2 total positivity on }\mathcal A/\mathcal G\text{)}.
   \label{eq:v3isolationtarget}
 \end{equation}
-It is exact in solvable models (2D Yang--Mills Casimir ratio $\rho^2=8/3$; the 1D rotor) and absent on
-the free massless composite \LT/\LE.
+The 2D Yang--Mills Casimir ratio $\rho^2=8/3$ is the holonomy's isolation, not the
+$\operatorname{tr}F^2$ atom (which is $0$); the 1D rotor anchors the same mechanism. The target is
+correctly absent on the free massless composite \LT/\LE. Isolation alone does not give the gap: the
+\textbf{window theorem} states that with $\Delta=(\rho^2-1)\mu_1$, isolation together with a bounded
+ratio $1+c\le\rho^2\le C^2$ gives $\mu_1\ge\delta/(C^2-1)$ \LT, while the double well has
+$\rho^2\to\infty$ and no gap. Thus the upper bound $C$ (the IN-11 heuristic, $C\approx1.5$) is
+load-bearing, and the lower half at $\beta=2.5$ requires a binding-induced TP$_2$ order that neither
+reflection positivity nor the polymer expansion supplies \LT/\LE/\LM.
 
 \textbf{Transport and the exact anchor.} The identity $f_1^2(\mu)=Z_O^2f_1^2(\mu_0)$ has a trivial
 positive $Z_O$ fixed by the trace anomaly (no Banks--Baxks zero in pure Yang--Mills); $Z_O$ was never
@@ -323,13 +348,24 @@ the wall. The missing step is the state overlap
 $\Omega=|\langle G_{\mathrm{tgt}}|O|G_{\mathrm{eff}}\rangle|^2=1$, i.e.\ the same lightest $0^{++}$
 atom persisting with uniform isolation \LT/\LC/\LM. The only exact positive anchor is the
 strong-coupling residue theorem ($f_1^2\ge r_0(\beta)>0$ for $\beta<1/48$, $L$-uniform); its
-mechanism is \emph{binding}: the minimal connected $\operatorname{tr}F^2$ polymer is a single flux
-tube, and its amplitude is a modulus-square of a positive overlap. It transports nothing to
-$\beta=2.5$: no isolation, no $a\to0$, and the $1/48$ Ursell wall cannot be crossed; $f_1^2$ is
-upper-semicontinuous, so continuity carries no sign up. Every solvable model computes the ceiling
-$\chi=1/G''$ exactly and has $f_1^2=0$ (2D Yang--Mills: $\operatorname{tr}F^2=H$ conserved; $\beta=0$
-Haar: $\chi=0.2688$ but $f_1^2=0$; one plaquette: no time; 1D chain: ceiling only). The structural
-discriminant is \textbf{binding}, not the Haar measure, compactness, or the carrier \LT/\LE.
+mechanism is \emph{dynamical binding}: the minimal connected $\operatorname{tr}F^2$ polymer is a
+single four-walled flux tube, and its amplitude is a modulus-square of a positive overlap. It
+transports nothing to $\beta=2.5$: no isolation, no $a\to0$, and the $1/48$ Ursell wall cannot be
+crossed; $f_1^2$ is upper-semicontinuous, so continuity carries no sign up. The scheme-free overlap
+is the atom fraction $w_1=f_1^2/M_0$; reflection positivity gives only log-convexity (which holds at
+$w_1=0$), Perron--Frobenius is vacuum-anchored, and the transfer matrix gives only a decreasing upper
+bound. A block-spin/polymer RG does not reach $\beta=2.5$: the exact SU(2) activity is $0.0104$ at
+the $1/48$ wall but $1.014$ at $\beta=2.5$, so $u^4>1$ and the four-wall tube does not decay
+($m_1a=-0.057<0$); the trivial-character fraction falls from $0.98$ to $0.17$ and the Ursell ratio
+rises to $4.6\times10^3$; a one-loop block flow improves the activity only by $1.03\times$ because
+there is no scale separation, and the missing factor is $40$--$55$. Hence there is no proven uniform
+lower bound $w_1\ge w_0>0$ at $\beta=2.5$; that is the leakage bound $\sum_{n\ge2}w_n\le1-w_0$, i.e.\
+isolation \LT/\LE/\LM. The center-vortex route is neutral-blind: $\operatorname{tr}F^2$ has
+$N$-ality zero, every vortex center phase it sees is $1$, and $\sigma>0$ does not imply an atom (2D
+Yang--Mills confines with $\sigma>0$ yet $f_1^2=0$); the missing object is a sign-cancelling positive
+regrouping in the $N$-ality-zero sector. Every solvable model computes the ceiling $\chi=1/G''$
+exactly and has $f_1^2=0$ (2D Yang--Mills: $\operatorname{tr}F^2=H$ conserved; $\beta=0$ Haar:
+$\chi=0.2688$ but $f_1^2=0$; one plaquette: no time; 1D chain: ceiling only) \LT/\LE.
 
 \textbf{Atom readers and the resolution bound.} Discontinuous functionals do read the atom exactly:
 the Stieltjes boundary jump, the Christoffel/Hankel $\lambda_n$, the sup-atom, de Branges/spectral
@@ -345,14 +381,19 @@ so the instrument error is at least the signal. The atom is computable from the 
 ordered double limit of Chapter~\ref{ch:weakstar}, but not from finite $(L,a)$ data. This is the
 exact quantitative form of the weak-$*$ theorem \LT/\LN.
 
-\textbf{Adversarial status.} The atom is not one object. Its existence $f_1^2>0$ is not killable in
-the confined phase, but the protection is confinement kinematics plus the trace anomaly, \emph{not}
+\textbf{Adversarial status.} The atom is not one object. Its existence $A$ is not killable in the
+confined phase, but the protection is confinement kinematics plus the trace anomaly, \emph{not}
 $H1$; changing the carrier to $\operatorname{tr}F\tilde F$ kills $f_1^2$ exactly (parity) while
 keeping the state and the gap. The residue floor $f_1^2\ge r_0$ is robust and in models strictly
 easier than the gap (a double well has $O(1)$ residue with gap $\to0$, but $\chi\to\infty$, so $H1$
-fails). Isolation is the gap, modulo the IN-11 heuristic. The strongest no-go is that $H1$ plus the
-squeeze plus positivity plus a fixed gap do not force an atom: there is a gapped atomless measure
-with bounded $\chi$ \LT/\LN. So the full target $H^*$ is the gap; the atom wave does not reduce it.
+fails). Isolation alone does not give the gap: the same double well keeps $A$ and a large isolation
+$\lambda_2-\lambda_1$, yet the transfer gap Kramers-collapses $\lambda_1\sim e^{-S}$ and the ratio
+$\rho\to\infty$; so ``isolation is the gap'' is \LC{} on bounded $\rho$ together with $H1$ and an
+absolute scale. The strongest no-go is that $H1$ plus the squeeze plus positivity plus a fixed gap do
+not force an atom: there is a gapped atomless measure with bounded $\chi$ \LT/\LN. The full target
+$H^*$ is the gap; the atom wave does not reduce it, but it fixes the three predicates: $A$
+(visibility), $I$ (isolation), $G$ (floor), with $I\Rightarrow B_{\mathrm{spec}}\Rightarrow A$ and
+$G$ orthogonal without the ceiling.
 
 \subsection{What the chapter adds to the ledger}
 
@@ -379,8 +420,12 @@ with bounded $\chi$ \LT/\LN. So the full target $H^*$ is the gap; the atom wave 
   is carrier-limited; and $H1$ is strictly weaker than the gap, with a carrier hazard that makes the
   atom the irreducible target \LT/\LN/\LE/\LM.
 \item Six atom routes correct the target: isolation is the parent of the atom (order-2 TP$_2$),
-  binding is the structural discriminant, every atom-reader is circular at the resolution bound
-  $\sup|E-g|\ge f_1^2/2$, and $H1$ plus a fixed gap does not force an atom \LT/\LN.
+  every atom-reader is circular at the resolution bound $\sup|E-g|\ge f_1^2/2$, and $H1$ plus a
+  fixed gap does not force an atom \LT/\LN.
+\item Six binding routes: the carrier exists (the $V^{-1}$ was the mean-normalized mode); binding is
+  the atom's mechanism, not an axis, and the true predicates are $A$, $I$, $G$; isolation needs the
+  window bound $1+c\le\rho^2\le C^2$; no standard expansion reaches $\beta=2.5$ (activity $1.014$,
+  missing factor $40$--$55$) \LT/\LN/\LM.
 \end{enumerate}
 
 \begin{qbox}

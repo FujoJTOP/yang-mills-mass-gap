@@ -1,4 +1,12 @@
-# R-WAVE-SYNTHESIS — the atom is a **binding** phenomenon, **isolation** is the gap, and the only exact anchor is strong coupling: six routes, one corrected target, and a resolution bound that makes every atom-reader circular
+# R-WAVE-SYNTHESIS — the atom is a **binding** phenomenon, **isolation** is its parent, and the gap is a **third predicate**: six routes, one corrected target, and a resolution bound that makes every atom-reader circular
+
+> **Correction (T-wave, 2026-11-24).** Two formulations below are superseded. (i) Q6's "no carrier"
+> is false: T4 constructs the total-normalized zero mode, with `Var(q)=χ=O(1)` (the `V^{-1}` was the
+> mean-normalized mode). (ii) "Binding is the discriminant" is too strong: T6 shows spectrally
+> `I ⇒ B_spec ⇒ A`, so spectral binding is implied by isolation; dynamical binding is the atom's
+> mechanism, not an independent axis. The independent axes are `A` (atom visibility) and `I`
+> (isolation); the gap `G` is orthogonal and needs H1/ceiling plus an absolute scale. The corrected
+> statement is in §8.
 
 > **VERDICT (no QED, Clay 0%).** The $H1$ wave left the atom as the irreducible target. Six routes
 > attacked it. The result is a **structural correction**, not a proof:
@@ -169,3 +177,34 @@ No proof, no QED, Clay 0%.*
 *Refs:* `R1-RESIDUE-TRANSPORT.md`, `R2-ISOLATION.md`, `R3-ATOM-FUNCTIONAL.md`, `R4-RESIDUE-PROTOCOL.md`,
 `R5-EXACT-ANCHORS.md`, `R6-ATOM-ADVERSARIAL.md`; witnesses `w7/r1_*.py` … `w7/r6_*.py`;
 `Q-WAVE-SYNTHESIS.md`, `Q6-H1-STATUS.md`, `docs/paper-v2/ch09-weakstar.tex` (corrected).
+
+---
+
+## §8 · Corrections from the T wave (2026-11-24)
+
+The T wave tested the two formulations above that were too strong. The corrected picture:
+
+1. **The carrier exists (T4).** Q6's ``no gauge-invariant non-self-averaging carrier'' is false. The
+   total-normalized zero mode `q=(1/√V)Σ(O−⟨O⟩)` has `Var(q)=χ=O(1)`, not `V^{-1}`; the `V^{-1}`
+   statement is the mean-normalized mode, a bookkeeping artifact. The residual issues are UV
+   renormalization at a fixed scale and the ceiling direction, not carrier existence.
+2. **Binding is a mechanism, not an axis (T6).** On a Källén–Lehmann measure
+   `I ⇒ B_spec ⇒ A` (both strict), so spectral binding is implied by isolation; dynamical binding
+   (the flux tube) is the atom's mechanism. The independent axes are `A` (atom visibility) and `I`
+   (isolation); the gap `G` is orthogonal and needs H1/ceiling plus a scale. The
+   ``isolation without binding'' cell is empty.
+3. **Isolation needs a bounded ratio (T3).** The window theorem: with `Δ=(ρ²−1)μ₁`, isolation plus
+   `1+c≤ρ²≤C²` gives `μ₁≥δ/(C²−1)`; the double well has `ρ²→∞` and no gap. The upper bound `C`
+   (IN-11, `C≈1.5`) is load-bearing.
+4. **No standard expansion reaches β=2.5 (T1/T2/T5).** The polymer activity is `1.014` (`u⁴>1`), the
+   Ursell ratio `4.6×10³`, the block-spin help `1.03×`; the tube overlap has only upper bounds; the
+   center-vortex route is neutral-blind. The missing factor is `40–55×`.
+5. **2D correction.** The Casimir ratio `ρ²=8/3` is the holonomy's isolation, not the `tr F²` atom
+   (which is 0).
+
+The corrected target is the three-predicate pair `(A, I)` with `G` orthogonal, plus the window upper
+bound; the missing object is a **nonperturbative binding theorem** (uniform `w₁≥w₀>0`, equivalently
+the leakage bound), not more variance control.
+
+*Refs:* `T-WAVE-SYNTHESIS.md`; `T4-CARRIER.md`, `T6-BINDING-ADVERSARIAL.md`,
+`T3-TP2-ISOLATION.md`, `T1-POLYMER-RG.md`, `T2-TUBE-OVERLAP.md`, `T5-CENTER-VORTEX.md`.
