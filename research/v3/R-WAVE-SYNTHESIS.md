@@ -16,10 +16,11 @@
 >    So the campaign's pair ``atom $+$ isolation'' is qualitatively **isolation alone**; the atom is
 >    downstream. Isolation is an **order-2** (second-eigenvalue/TP$_2$) condition; the atom is
 >    order-1 (Perron).
-> 2. **Binding is the structural discriminant** `[T]/[V]`. The only exact positive anchor is the
->    strong-coupling residue theorem; its mechanism is a single flux tube (one bound particle). Every
->    solvable model computes the ceiling $\chi=1/G''$ exactly and has $f_1^2=0$; the discriminant is
->    binding, not the Haar measure, compactness, or the carrier.
+> 2. **Binding is the atom's mechanism, not an independent discriminant** `[T]/[V]` (corrected by
+>    U6). The only exact positive anchor is the strong-coupling residue theorem; its mechanism is a
+>    single flux tube (one bound particle). Every solvable model computes the ceiling $\chi=1/G''$
+>    exactly and has $f_1^2=0$. The structural facts are: binding is the mechanism of the atom; the
+>    independent data are the **weight** $W$ and **isolation** $I$; and $W$ and $I$ are incomparable.
 > 3. **Every atom-reader is circular** `[T]/[NG]`. Discontinuous functionals do read $f_1^2$ exactly,
 >    but each presupposes the gap, needs infinite data, or reads the largest atom. The
 >    Stone--Weierstrass resolution bound $\sup_\nu|E-g|\ge f_1^2/2$ makes the instrument error at
@@ -69,7 +70,7 @@ So no finite-moment argument can force $I_2$; this is the same weak-$*$ obstruct
 
 ---
 
-## §2 · Binding is the discriminant
+## §2 · Binding is the atom's mechanism
 
 The only exact positive anchor is P3: $f_1^2\ge r_0(\beta)>0$ for $\beta<1/48$, $L$-uniform. Its
 mechanism is not the Haar measure, compactness, or the gauge-invariant carrier; it is **binding**:
@@ -86,7 +87,9 @@ lacks binding has $f_1^2=0$:
 | strong coupling $\beta<1/48$ | — | $\ge r_0>0$ | flux-tube polymer |
 
 This is the wave's sharpest structural statement: **the atom is a binding phenomenon, not a measure
-phenomenon.** A proof of the atom must control the binding of the minimal flux tube, not the Jacobian
+phenomenon.** But binding is a *mechanism*, not an independent axis (U6): the independent data are
+the weight $W$ and isolation $I$. A proof of the atom must control the binding of the minimal flux
+tube, not the Jacobian
 or the variance.
 
 ---
@@ -147,7 +150,7 @@ separately.
 
 1. **A structural reversal** (R2): isolation is the parent; the atom is downstream; the irreducible
    object is an order-2 TP$_2$ condition, not the order-1 atom.
-2. **Binding as the discriminant** (R5): the atom is a flux-tube phenomenon; all solvable models are
+2. **Binding as the atom's mechanism** (R5, corrected by U6): the atom is a flux-tube phenomenon; all solvable models are
    atomless; the only exact anchor is strong coupling.
 3. **The resolution bound** (R3): a quantitative Stone--Weierstrass obstruction;
    $\sup|E-g|\ge f_1^2/2$; every atom-reader is circular.
