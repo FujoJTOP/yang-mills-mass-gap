@@ -1,0 +1,60 @@
+==========================================================================
+(A) HARD WALL AdS5 -- SL eqn  phi'' - (3/z)phi' + m^2 phi = 0,
+    phi = z^2 J_2(m z);  IR BC J_2(m z0)=0  =>  m_n = j_{2,n}/z0
+==========================================================================
+  max |phi'' - 3/z phi' + m^2 phi|  = 2.73e-07   (SL solution OK)
+  J_2 zeros  j_{2,n}        = [ 5.13562  8.41724 11.61984 14.79595 17.95982]
+  mass ratios m_n/m_1      = [1.      1.63899 2.2626  2.88104 3.49711]
+  (these ratios are the model's real success: lattice 0++*/0++ ~ 1.6-1.8)
+
+  gap m1 = j_{2,1}/z0 vs the IR wall position z0  (z0 is an INPUT):
+    z0 =       0.5   m1 = 1.0271e+01
+    z0 =       1.0   m1 = 5.1356e+00
+    z0 =       5.0   m1 = 1.0271e+00
+    z0 =      50.0   m1 = 1.0271e-01
+    z0 =    1000.0   m1 = 5.1356e-03
+    z0 = 1000000.0   m1 = 5.1356e-06
+  z0 -> infinity (= remove wall = pure AdS = free/CFT)  =>  m1 -> 0.
+  => inf over all z0 of the 'gap' is 0: the gap is not produced by the
+     SL operator, it is the scale z0 that was inserted.
+
+==========================================================================
+(B) PURE AdS5 (no IR wall) -- acid test on the free massless field
+==========================================================================
+  No IR boundary condition => no quantization: the normalizable branch
+  phi ~ z^2 J_2(m z) exists for EVERY m>0 (Bessel oscillates for all z),
+  so the boundary two-point function has spectral weight from s=0 down.
+  inf spec(L) = 0.  The dual is a gapless CFT (free massless scalar).
+  => detector returns NO gap for the free massless field: NOT vacuous.
+  BUT: (A) shows the ONLY region where it returns a gap is finite z0,
+       i.e. where the wall (= the gap) was put in by hand.
+  J_2 has infinitely many zeros (first 12): [ 5.13562  8.41724 11.61984 14.79595 17.95982 21.117  ] ...
+  each zero is a wall position/mass pair; with no wall, m is continuous.
+
+==========================================================================
+(C) BTZ AdS3 -- one scale r+ (T = r+/(2 pi L^2)); scalar QNM
+==========================================================================
+  AdS3 scalar mass-dimension relation:  Delta(Delta-2) = m^2 L^2.
+  Non-rotating BTZ scalar QNM (Cardoso-Lemos; AdS/CFT recipe Son-Starinets):
+    Im(omega_n) = -(r+/L^2)(2n + Delta') = -(2 pi T)(2n + Delta'),  Re = +-k
+    (Delta' a field-dependent O(1) offset; only linear-in-n, ~T scaling matters).
+    Delta'=2.0:  Im(omega)/(2 pi T) = [-2. -4. -6. -8.]  (T-independent)
+    Delta'=3.0:  Im(omega)/(2 pi T) = [-3. -5. -7. -9.]  (T-independent)
+  ratios Im(omega)/(2 pi T) are T-INDEPENDENT => the whole tower scales with T.
+  r+ -> 0 (T -> 0): every frequency -> 0 and BTZ -> pure AdS3, a gapless 2D CFT.
+  => BTZ's discrete 'gap' is the horizon/thermal scale r+ = an input,
+     not a dynamically generated zero-temperature mass gap.
+
+==========================================================================
+VERDICT (no YM theorem; no QED)
+==========================================================================
+  [T] within a fixed model: SL theorem + GKPW lift bulk normal modes to
+      boundary KL atoms; a bulk spectral gap Delta_5>0 => boundary gap if
+      the SL operator is discrete (an IR cap exists).  This is real but is
+      a statement about the MODEL's SL operator.
+  The '5D normal mode => 4D mass gap' chain FAILS for pure YM because:
+    * the IR cap that makes the spectrum discrete IS the confining scale
+      (gap by hand) -- pure AdS / pure gravity is gapless (B, acid);
+    * the bulk must be dual to 4D pure YM -- no such duality (H1);
+    * gap = wall/thermal scale (z0, r+) -> 0 under decompactification (A,C).
+  Net: reduces to H1.  Clay 0%.

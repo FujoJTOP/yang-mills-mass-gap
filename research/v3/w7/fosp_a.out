@@ -1,0 +1,165 @@
+
+====================================================================================
+A  Gantmacher-Krein: tridiagonal (Jacobi) generator => totally positive; else not
+====================================================================================
+  tridiagonal Jacobi generator: min minor = +9.837e-12  #neg = 0  -> TN/TP
+  banded (+next-nearest) gen. : min minor = +4.074e-09  #neg = 0
+  [PASS] GK (sufficient direction): tridiagonal Jacobi generator gives a TP kernel
+  NOTE: GK is SUFFICIENT, not necessary -- a non-tridiagonal generator carries NO
+        general TP guarantee (it may or may not be TP).  The decisive object is the
+        ACTUAL SU(3) kernel, tested in panel C: it is non-tridiagonal and DOES fail.
+  illustration: banded generator seed 0: min minor = -6.24e-05, #neg=2 -> NOT TP
+
+====================================================================================
+B  SU(2) single-plaquette KS kernel : M is the PATH adjacency => TP2
+====================================================================================
+  jmax=4 -> 9 states;  bandwidth(M) = 1  (tridiagonal)
+  [PASS] SU(2) fusion adjacency is TRIDIAGONAL (Jacobi)
+  high-precision (40-digit) TP2 check of K=e^{-H}:
+    g^2= 0.5:  min minor =     4.07861e-6   #neg = 0/1296
+  [PASS] SU(2) TP2 at g^2=0.5 (40-digit)
+    g^2= 1.0:  min minor =    6.46685e-12   #neg = 0/1296
+  [PASS] SU(2) TP2 at g^2=1.0 (40-digit)
+    g^2= 2.4:  min minor =    1.97288e-20   #neg = 0/1296
+  [PASS] SU(2) TP2 at g^2=2.4 (40-digit)
+  float64 larger truncation (fraction of negative minors, relative to max):
+    jmax=4.0 g^2= 0.5: min/max = +1.9e-07  #neg=0/1296
+  [PASS] SU(2) TP2 jmax=4.0 g^2=0.5 (default precision)
+    jmax=4.0 g^2= 1.0: min/max = +5.8e-12  #neg=0/1296
+  [PASS] SU(2) TP2 jmax=4.0 g^2=1.0 (default precision)
+    jmax=4.0 g^2= 2.4: min/max = +4.6e-20  #neg=0/1296
+  [PASS] SU(2) TP2 jmax=4.0 g^2=2.4 (default precision)
+    jmax=6.0 g^2= 0.5: min/max = +1.4e-14  #neg=0/6084
+  [PASS] SU(2) TP2 jmax=6.0 g^2=0.5 (default precision)
+    jmax=6.0 g^2= 1.0: min/max = +1.3e-22  #neg=0/6084
+  [PASS] SU(2) TP2 jmax=6.0 g^2=1.0 (default precision)
+    jmax=6.0 g^2= 2.4: min/max = +1.4e-39  #neg=0/6084
+  [PASS] SU(2) TP2 jmax=6.0 g^2=2.4 (default precision)
+
+====================================================================================
+C  SU(3) single-plaquette KS kernel : M is 2D-lattice => TP2 FAILS
+====================================================================================
+  [PASS] SU(3) fund x [p,q] fusion rule dimension-counts correctly
+  p+q<=3 -> 10 states;  bandwidth(M) = 4  (NOT tridiagonal)
+  [PASS] SU(3) fusion adjacency is NON-tridiagonal (p+q<=3)
+  high-precision (40-digit) TP2 check of K=e^{-H}:
+    g^2= 1.0:  min minor =      -0.191244   #neg = 536/2025  (26%)
+  [PASS] SU(3) TP2 FAILS at g^2=1.0 (p+q<=3, 40-digit)
+    g^2= 2.4:  min minor =     -0.0191043   #neg = 580/2025  (29%)
+  [PASS] SU(3) TP2 FAILS at g^2=2.4 (p+q<=3, 40-digit)
+  p+q<=4 -> 15 states;  bandwidth(M) = 5  (NOT tridiagonal)
+  [PASS] SU(3) fusion adjacency is NON-tridiagonal (p+q<=4)
+  high-precision (40-digit) TP2 check of K=e^{-H}:
+    g^2= 1.0:  min minor =      -0.191259   #neg = 2950/11025  (27%)
+  [PASS] SU(3) TP2 FAILS at g^2=1.0 (p+q<=4, 40-digit)
+    g^2= 2.4:  min minor =     -0.0191043   #neg = 3184/11025  (29%)
+  [PASS] SU(3) TP2 FAILS at g^2=2.4 (p+q<=4, 40-digit)
+
+  LINEAR-EXTENSION dependence (dominance is a PARTIAL order; TP2 needs a total order):
+    order by casimir     : min minor = -1.9126e-01  #neg=38224/142884  TP2=NO
+    order by casimir_rev : min minor = -1.9126e-01  #neg=38224/142884  TP2=NO
+    order by level       : min minor = -1.9126e-01  #neg=34958/142884  TP2=NO
+    order by p           : min minor = -1.9126e-01  #neg=36246/142884  TP2=NO
+    order by q           : min minor = -1.9126e-01  #neg=36246/142884  TP2=NO
+  [PASS] SU(3) TP2 failure is INDEPENDENT of the linear extension of the dominance order   all extensions have negative minors: True
+
+  2D-rescue test: MTP2 / log-supermodularity on the dominance poset (not a 1D order):
+    dominance cone: (dp,dq) = a*(2,-1)+b*(-1,2)+c*(1,1), a,b,c>=0  =>  b-a=(dq-dp)/3.
+  [PASS] dominance: (2,0) dominates (0,1) [same triality]
+  [PASS] dominance: (1,0),(0,1) INCOMPARABLE (different triality/N-ality)
+  [PASS] dominance: (1,1),(1,0) incomparable (triality 0 vs 1)
+  [PASS] dominance order only relates SAME-triality (same centre/N-ality) irreps
+    (structural: the dominance order does NOT order across centre charge; the
+     magnetic term connects different triality, so K mixes sectors - hurts TP2.)
+    g^2= 1.0: MTP2 min = -4.3755e-02  #neg=534/3025  at ((0, 1), (2, 0), (1, 0), (0, 2))
+  [PASS] SU(3) MTP2 (2D log-supermodular) FAILS at g^2=1.0
+    g^2= 2.4: MTP2 min = -2.8904e-04  #neg=630/3025  at ((1, 0), (0, 2), (0, 1), (2, 0))
+  [PASS] SU(3) MTP2 (2D log-supermodular) FAILS at g^2=2.4
+    analytic: discrete d_p d_q C2 = 0.333333 (=1/3 > 0) -> log K submodular -> MTP2 fails
+  [PASS] SU(3) Casimir has a POSITIVE cross term (d_p d_q C2 = 1/3) forcing submodularity
+    READ: the confining Casimir potential is SUBMODULAR in (p,q) -- the exact 2D analogue
+          of T3's anti-correlated Gaussian (sec 2.3).  No 2D order rescues SU(3).
+
+====================================================================================
+D  elimination (1):  free-massless limit g^2 -> 0  must NOT certify a positive gap
+====================================================================================
+  Free massless = decoupled electric theory; the only gap is the Casimir spacing
+  (g^2/2)*Delta C2 -> 0 as g^2 -> 0:
+    g^2= 1.000:  electric gap = 3.7500e-01
+    g^2= 0.300:  electric gap = 1.1250e-01
+    g^2= 0.100:  electric gap = 3.7500e-02
+    g^2= 0.030:  electric gap = 1.1250e-02
+    g^2= 0.010:  electric gap = 3.7500e-03
+  [PASS] free-massless (g^2->0): electric gap -> 0 (no positive gap certified)
+  Magnetic-dominated regime (g^2->0): the -M band edge is approached, bulk gap -> 0:
+    jmax=   4: top -M=+1.902113, 2nd=+1.618034, gap=2.841e-01
+    jmax=   8: top -M=+1.969616, 2nd=+1.879385, gap=9.023e-02
+    jmax=  16: top -M=+1.991468, 2nd=+1.965946, gap=2.552e-02
+    jmax=  32: top -M=+1.997735, 2nd=+1.990944, gap=6.791e-03
+  [PASS] magnetic band gap -> 0 with truncation (continuum from the band edge)   reported
+
+====================================================================================
+E  elimination (2): 2D YM holonomy rho^2=8/3 must NOT be read as the trF^2 atom (w1=0)
+====================================================================================
+  2D YM transfer matrix in the character basis = e^{-t C2(R)} (DIAGONAL);
+  holonomy transfer ratio rho^2 = C2(adj)/C2(fund) = 2.666667  (=8/3)
+  [PASS] 2D YM holonomy rho^2 = 8/3 exactly
+  trF^2 (2D) diagonal:  <0|trF^2|fund> = 0.000e+00  =>  w1 = 0.000e+00
+  [PASS] trF^2 atom w1 = 0 in 2D despite holonomy rho^2=8/3 > 0 (carrier honesty)
+  READ: 8/3 is the HOLONOMY tower ratio; trF^2=H is conserved in 2D so its atom is 0. [T]
+
+====================================================================================
+F  elimination (3): SU(3) 2x2 minors FAIL STABLY at the physical coupling g^2~2.4
+====================================================================================
+  (beta=2.5 <-> bare g^2 = 6/beta ~ 2.4.)  Truncation stability at g^2=2.4:
+    p+q<=3:  10 states, min minor = -1.9104e-02, #neg=  580/2025, TP2=False
+    p+q<=4:  15 states, min minor = -1.9104e-02, #neg= 3132/11025, TP2=False
+    p+q<=5:  21 states, min minor = -1.9104e-02, #neg= 8558/44100, TP2=False
+    p+q<=6:  28 states, min minor = -1.9104e-02, #neg=10630/142884, TP2=False
+    p+q<=7:  36 states, min minor = -1.9104e-02, #neg=10950/396900, TP2=False
+    p+q<=8:  45 states, min minor = -1.9104e-02, #neg=10954/980100, TP2=False
+  [PASS] SU(3) TP2 at physical coupling FAILS for every truncation (never positive)
+
+  Coupling stability across the physical window:
+    g^2= 0.50:  min minor = -6.6142e+00,  #neg=36158
+    g^2= 1.00:  min minor = -1.9126e-01,  #neg=38224
+    g^2= 2.00:  min minor = -3.3129e-02,  #neg=19742
+    g^2= 2.40:  min minor = -1.9104e-02,  #neg=10630
+    g^2= 3.00:  min minor = -8.9293e-03,  #neg= 4666
+    g^2= 4.00:  min minor = -2.8055e-03,  #neg= 1590
+    g^2= 6.00:  min minor = -3.5258e-04,  #neg=  420
+  [PASS] SU(3) TP2 not marginal at physical coupling: minors robustly negative across window   negative everywhere; no fine-tuned sign change
+
+====================================================================================
+G  'is it the transfer matrix in disguise?'  K = e^{-H} by construction
+====================================================================================
+  g^2= 1.00: max|eig(K) - exp(-eig(H))| = 8.88e-16   eig(K) in [9.13e-05, 2.46e+00]
+  g^2= 2.40: max|eig(K) - exp(-eig(H))| = 1.94e-16   eig(K) in [4.05e-10, 1.06e+00]
+  g^2= 8.00: max|eig(K) - exp(-eig(H))| = 2.22e-16   eig(K) in [5.37e-32, 1.00e+00]
+  [PASS] K's spectrum IS exp(-H spectrum): K is the transfer matrix   identity
+  [PASS] SU(3) K is entrywise positive (order-1 Perron positivity HOLDS)   min entry 6.181e-15
+  [PASS] SU(3) K is positive definite (all eigs = e^{-lambda} > 0)
+  TIER: SU(3) K is order-1 positive (entrywise >0, PD) but NOT order-2 positive (TP2).
+        FOSP reproduces, in representation labels, the R2/T3 tier wall: order-1 ok,
+        order-2 (TP2) fails for the physical group.                                [NG]
+  READ: SU(2) TP2 is the Gantmacher-Krein/Jacobi total positivity of the transfer
+        generator (== T3's 1D Sturm-Liouville).  SU(3) is 2D and fails.
+        No new positivity cone is produced.  KILL: TP2 fails (SU(3)) / transfer matrix.
+
+====================================================================================
+SUMMARY:  35 checks, 0 FAIL
+====================================================================================
+ALL PASS
+  FOSP-A ledger:
+    A/B  SU(2): fusion generator is TRIDIAGONAL (Jacobi) => TP2 by Gantmacher-Krein
+         (verified 40 digits).  This IS T3's 1D Sturm-Liouville order-2 structure.
+    C    SU(3): fusion generator is the 2D weight-lattice adjacency => TP2 FAILS
+         (~26% of 2x2 minors negative, 40-digit robust), every linear extension.
+    D    free-massless (g^2->0): electric gap -> 0, no positive gap certified. PASS.
+    E    2D YM rho^2=8/3 coexists with trF^2 atom w1=0. PASS.
+    F    SU(3) TP2 fails STABLY at physical coupling g^2~2.4 (truncation/coupling robust).
+    G    K = e^{-H} is the transfer matrix; SU(2) TP2 = Jacobi/TN restated; no new cone.
+    VERDICT: KILL -- for the physical group SU(3) the 2x2 minors are NOT stably
+             positive; for SU(2) the fusion kernel is the transfer matrix/Mehler in
+             disguise.  FOSP does not supply the missing second cone.
+====================================================================================

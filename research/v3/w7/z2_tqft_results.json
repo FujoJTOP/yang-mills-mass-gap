@@ -1,0 +1,118 @@
+{
+  "verdict": "NG: TQFT/geometric-Langlands/cohomology paradigm cannot force m1>0",
+  "kill_i_metric_independent": true,
+  "kill_ii_only_topological_order": true,
+  "kill_iii_reduces_to_H1": true,
+  "acid_test": "invariant CONSTANT across free<->interacting (blind); only 'topological mass' (3D DGT m=mu*e^2) needs the metric coupling, tree-level, no 4D analogue",
+  "P1_index": {
+    "lams": [
+      0.15,
+      0.3,
+      0.6,
+      1.2,
+      2.4
+    ],
+    "index": [
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "gaps": [
+      0.15156398347708017,
+      0.3000198045499706,
+      0.5999974635397344,
+      1.1999898494691885,
+      2.3999593971864206
+    ]
+  },
+  "P2_2dym": {
+    "g2s": [
+      0.05,
+      0.2,
+      1.0
+    ],
+    "gaps": [
+      0.037500000000000006,
+      0.15000000000000002,
+      0.75
+    ],
+    "C2": [
+      0.0,
+      0.75,
+      2.0,
+      3.75,
+      6.0
+    ]
+  },
+  "P3_dgt_mu_e2": [
+    [
+      0.3,
+      0.5,
+      0.15
+    ],
+    [
+      0.3,
+      1.0,
+      0.3
+    ],
+    [
+      0.3,
+      2.0,
+      0.6
+    ],
+    [
+      1.0,
+      0.5,
+      0.5
+    ],
+    [
+      1.0,
+      1.0,
+      1.0
+    ],
+    [
+      1.0,
+      2.0,
+      2.0
+    ],
+    [
+      3.0,
+      0.5,
+      1.5
+    ],
+    [
+      3.0,
+      1.0,
+      3.0
+    ],
+    [
+      3.0,
+      2.0,
+      6.0
+    ]
+  ],
+  "P4_torus": {
+    "ss": [
+      1.0,
+      2.0,
+      4.0,
+      8.0,
+      16.0
+    ],
+    "lam1": [
+      39.47841760435743,
+      9.869604401089358,
+      2.4674011002723395,
+      0.6168502750680849,
+      0.15421256876702122
+    ],
+    "betti": [
+      1,
+      2,
+      1
+    ]
+  },
+  "clay_percent": 0
+}

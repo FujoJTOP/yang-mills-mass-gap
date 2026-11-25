@@ -1,0 +1,268 @@
+{
+ "protocol": {
+  "note": "exact/solvable only; no Monte Carlo; numpy only"
+ },
+ "free_field_gap": [
+  {
+   "D": 1,
+   "L": 2,
+   "m0": 2.0,
+   "m05": 2.0615528128088303,
+   "m1": 2.23606797749979,
+   "multiplet": 1
+  },
+  {
+   "D": 1,
+   "L": 4,
+   "m0": 1.4142135623730951,
+   "m05": 1.5000000000000002,
+   "m1": 1.7320508075688774,
+   "multiplet": 2
+  },
+  {
+   "D": 1,
+   "L": 8,
+   "m0": 0.7653668647301796,
+   "m05": 0.914213562373095,
+   "m1": 1.2592801267497653,
+   "multiplet": 2
+  },
+  {
+   "D": 1,
+   "L": 16,
+   "m0": 0.3901806440322565,
+   "m05": 0.6342246723184352,
+   "m1": 1.0734248622877274,
+   "multiplet": 2
+  },
+  {
+   "D": 2,
+   "L": 2,
+   "m0": 2.0,
+   "m05": 2.0615528128088303,
+   "m1": 2.23606797749979,
+   "multiplet": 2
+  },
+  {
+   "D": 2,
+   "L": 4,
+   "m0": 1.4142135623730951,
+   "m05": 1.5000000000000002,
+   "m1": 1.7320508075688774,
+   "multiplet": 4
+  },
+  {
+   "D": 2,
+   "L": 8,
+   "m0": 0.7653668647301796,
+   "m05": 0.914213562373095,
+   "m1": 1.2592801267497653,
+   "multiplet": 4
+  },
+  {
+   "D": 2,
+   "L": 16,
+   "m0": 0.3901806440322565,
+   "m05": 0.6342246723184352,
+   "m1": 1.0734248622877274,
+   "multiplet": 4
+  },
+  {
+   "D": 3,
+   "L": 2,
+   "m0": 2.0,
+   "m05": 2.0615528128088303,
+   "m1": 2.23606797749979,
+   "multiplet": 3
+  },
+  {
+   "D": 3,
+   "L": 4,
+   "m0": 1.4142135623730951,
+   "m05": 1.5000000000000002,
+   "m1": 1.7320508075688774,
+   "multiplet": 6
+  },
+  {
+   "D": 3,
+   "L": 8,
+   "m0": 0.7653668647301796,
+   "m05": 0.914213562373095,
+   "m1": 1.2592801267497653,
+   "multiplet": 6
+  },
+  {
+   "D": 3,
+   "L": 16,
+   "m0": 0.3901806440322565,
+   "m05": 0.6342246723184352,
+   "m1": 1.0734248622877274,
+   "multiplet": 6
+  },
+  {
+   "D": 4,
+   "L": 2,
+   "m0": 2.0,
+   "m05": 2.0615528128088303,
+   "m1": 2.23606797749979,
+   "multiplet": 4
+  },
+  {
+   "D": 4,
+   "L": 4,
+   "m0": 1.4142135623730951,
+   "m05": 1.5000000000000002,
+   "m1": 1.7320508075688774,
+   "multiplet": 8
+  },
+  {
+   "D": 4,
+   "L": 8,
+   "m0": 0.7653668647301796,
+   "m05": 0.914213562373095,
+   "m1": 1.2592801267497653,
+   "multiplet": 8
+  },
+  {
+   "D": 4,
+   "L": 16,
+   "m0": 0.3901806440322565,
+   "m05": 0.6342246723184352,
+   "m1": 1.0734248622877274,
+   "multiplet": 8
+  }
+ ],
+ "transfer_1d": [
+  {
+   "m": 1.0,
+   "mu": 0.9624236501192069,
+   "z_ratio": 0.38196601125010515,
+   "delta_T": 0.6180339887498949,
+   "xi": 1.0390434606175136,
+   "open_chain_ratio": 0.3819660112501052
+  },
+  {
+   "m": 0.5,
+   "mu": 0.4949329230945269,
+   "z_ratio": 0.6096117967977924,
+   "delta_T": 0.3903882032022076,
+   "xi": 2.02047581265676,
+   "open_chain_ratio": 0.6096117967977924
+  },
+  {
+   "m": 0.2,
+   "mu": 0.1996681577984152,
+   "z_ratio": 0.8190024875775821,
+   "delta_T": 0.1809975124224179,
+   "xi": 5.008309842822305,
+   "open_chain_ratio": 0.8190024875775818
+  },
+  {
+   "m": 0.0,
+   "mu": 0.0,
+   "z_ratio": 1.0,
+   "delta_T": 0.0,
+   "xi": Infinity,
+   "open_chain_ratio": 0.9930069930069931
+  }
+ ],
+ "toric_2d": [
+  {
+   "L": 2,
+   "n_qubits": 8,
+   "n_stab": 8,
+   "gf2_rank": 6,
+   "GSD_rank": 4,
+   "expected_GSD": 4,
+   "E0": -8.0,
+   "GSD_dense": 4,
+   "E1": -4.000000000000015,
+   "gap": 3.999999999999985,
+   "spectrum_unique_first6": [
+    -8.0,
+    -4.0,
+    0.0,
+    4.0,
+    8.0
+   ]
+  },
+  {
+   "L": 3,
+   "n_qubits": 18,
+   "n_stab": 18,
+   "gf2_rank": 16,
+   "GSD_rank": 4,
+   "expected_GSD": 4
+  },
+  {
+   "L": 4,
+   "n_qubits": 32,
+   "n_stab": 32,
+   "gf2_rank": 30,
+   "GSD_rank": 4,
+   "expected_GSD": 4
+  },
+  {
+   "L": 5,
+   "n_qubits": 50,
+   "n_stab": 50,
+   "gf2_rank": 48,
+   "GSD_rank": 4,
+   "expected_GSD": 4
+  }
+ ],
+ "z2_gauge": [
+  {
+   "D": 2,
+   "L": 2,
+   "n_links": 8,
+   "n_stab": 8,
+   "gf2_rank": 6,
+   "GSD_rank": 4
+  },
+  {
+   "D": 2,
+   "L": 3,
+   "n_links": 18,
+   "n_stab": 18,
+   "gf2_rank": 16,
+   "GSD_rank": 4
+  },
+  {
+   "D": 3,
+   "L": 2,
+   "n_links": 24,
+   "n_stab": 32,
+   "gf2_rank": 21,
+   "GSD_rank": 8
+  },
+  {
+   "D": 3,
+   "L": 3,
+   "n_links": 81,
+   "n_stab": 108,
+   "gf2_rank": 78,
+   "GSD_rank": 8
+  },
+  {
+   "D": 4,
+   "L": 2,
+   "n_links": 64,
+   "n_stab": 112,
+   "gf2_rank": 60,
+   "GSD_rank": 16
+  }
+ ],
+ "summary": {
+  "T": "1D injective MPS => uniform gap = transfer-matrix gap (delta_T=1-|l2|); free-field finite-volume gap closed form; toric code exact stabilizer spectrum",
+  "V": "exact numbers above (no MC)",
+  "NG": [
+   "1D MPS certificate == transfer-matrix gap (reduces to D3 object)",
+   "D>=2 area-law criterion acid-blind: free massless satisfies area law",
+   "D>=2 injectivity->gap is open 2D PEPS gap conjecture; solvable gauge model gap is the exact stabilizer/transfer spectrum, and its GS is non-injective (GSD=4)",
+   "4D L=2 finite-volume gap fails free-massless acid test (massless L=2 gap=2.0)"
+  ],
+  "O": "a 2D/3D injectivity=>gap theorem for a PEPS that provably represents the YM ground state with bounded bond dimension -- does not exist; that is the missing step",
+  "clay": "0%"
+ }
+}

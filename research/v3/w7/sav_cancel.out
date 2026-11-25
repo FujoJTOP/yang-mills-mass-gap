@@ -1,0 +1,99 @@
+############################################################################################
+# SAV-CANCEL: negative-mode cancellation algebra in the physical 0++ channel.
+# deterministic, py -3.12 -I, numpy only.  No QED.  Clay 0%.
+############################################################################################
+============================================================================================
+(1) ANCHORS  [T]+[V]: one-plaquette exact A,B,beta* and rank-one split signs
+============================================================================================
+    A=E_Haar[Phi'/rho]=0.20511530  B=Var_Haar[sin(r/2)/rho]=0.01105929  beta*=sqrt(A/B)=4.30661
+     beta     th         S         D     G=S-D  E[Sigma]    A-Bb^2
+      2.5  0.000   0.72992   0.00000   0.72992   0.72992   0.13599
+      2.5  3.142   0.20512   0.06912   0.13599   0.05549   0.13599
+      6.0  0.000   1.59064   0.00000   1.59064   1.59064  -0.19302
+      6.0  3.142   0.20512   0.39813  -0.19302  -0.65673  -0.19302
+    => theta=pi reproduces G''=A-B beta^2 (<0 above beta*=4.30661); S=E[alpha], D=Var(f).
+       theta=0 : D=0 (no boundary force), G''=S=alpha>0.
+
+============================================================================================
+(2) ONE-PLAQUETTE INTERTWINER  [T]: c_r = g'(r)/r - g/r^2 = sin(th/2)*(...)
+============================================================================================
+    The coarse<->negative coupling is c_r; the rank-one split puts a MINUS in front of
+    the negative-mode projector:  <K^-1 c,c> = <K_+^+ c,c> - <phi_-,c>^2/|lam_-|.
+         th   c_r(r=1.5)   c_r(r=2.5)   (beta=6)
+      0.000      0.00000      0.00000
+      0.785     -0.13559     -0.20383
+      1.571     -0.25055     -0.37663
+      2.356     -0.32735     -0.49209
+      3.142     -0.35433     -0.53264
+    => c_r = sin(th/2)*(stiffness): EXACTLY 0 at theta=0 (axial symmetry decouples the
+       negative mode from the e3 coarse direction), maximal at theta=pi.  This is the
+       intertwiner: the sign and magnitude of the negative-mode contribution D_Sav are
+       carried entirely by the single Hessian matrix element c_r.
+
+============================================================================================
+(3) SAvVIDY CELL (4D L=1) EXACT SELECTION  [T-in-model]+[V]
+============================================================================================
+
+    c1=c2=0.8: lam_min=-0.2102  #neg=2   |gradO_phys|=0.1538
+        gradO_phys along eig  +1.080 : coeff=+0.15384   (|coeff|/|gradO|=1.0000)
+        negmode#0 (ev=-0.2102):  phi.gradO_phys=+1.245e-09 [LINEAR=0]   phi^T Hess(S/b) phi=-0.15148 [paIR]   |phi.uniform_s3|=0.3536 [nonzero]
+        negmode#1 (ev=-0.2070):  phi.gradO_phys=+2.409e-10 [LINEAR=0]   phi^T Hess(S/b) phi=-0.15165 [paIR]   |phi.uniform_s3|=0.3536 [nonzero]
+
+    c1=c2=1.2: lam_min=-0.6219  #neg=2   |gradO_phys|=0.4202
+        gradO_phys along eig  +1.554 : coeff=+0.42024   (|coeff|/|gradO|=1.0000)
+        negmode#0 (ev=-0.6219):  phi.gradO_phys=-1.603e-09 [LINEAR=0]   phi^T Hess(S/b) phi=-0.31708 [paIR]   |phi.uniform_s3|=0.3536 [nonzero]
+        negmode#1 (ev=-0.6177):  phi.gradO_phys=+2.690e-09 [LINEAR=0]   phi^T Hess(S/b) phi=-0.31882 [paIR]   |phi.uniform_s3|=0.3536 [nonzero]
+    => EXACT at the symmetric saddle (c1=c2): the physical 0++ insertion's gradient lies
+       ENTIRELY along the stiffest positive eigenvector; its overlap with every negative
+       (Savvidy) mode is 0 to machine zero.  The negative mode couples to O_phys only
+       QUADRATICALLY (the pair term, strictly bounded by |phi^T Hess(S/b) phi|), and it DOES
+       overlap the gauge-DEPENDENT Cartesian/uniform coordinate (0.354).  This is a
+       point-group/colour selection identity at the high-symmetry point.
+
+============================================================================================
+(4) ROBUSTNESS of the selection  [V]
+============================================================================================
+       c  pert  #neg   max|cos(phi-,gradO)|   max|cos(phi-,uniform)|
+     1.0  0.00     2                0.00000                   0.3536
+     1.0  0.05     2                0.01821                   0.3572
+     1.0  0.15     2                0.09027                   0.5714
+     1.2  0.00     2                0.00000                   0.3536
+     1.2  0.05     2                0.00968                   0.3556
+     1.2  0.15     2                0.07250                   0.3378
+    ensemble (pert 0.08, c=1.1): mean cos^2(phi-,gradO_phys)=0.0008 (n=120)   mean cos^2(phi-,uniform)=0.1255
+    GENERIC random configs: mean cos^2(phi-,gradO_phys)=0.0137 (n=1464)   mean cos^2(phi-,uniform)=0.0846   suppression=6.2x
+    => the EXACT saddle orthogonality is a symmetry identity; at generic configs the linear
+       overlap of the physical scalar with the negative mode is SUPPRESSED (not exactly zero)
+       relative to the gauge-dependent uniform coordinate -- a colour/point-group selection,
+       exact only at the high-symmetry saddle, a genuine suppression generically.
+
+============================================================================================
+(5) ACID TEST  [T]: free massless must NOT acquire a floor
+============================================================================================
+    Free massless: F=0 => no Savvidy background => NO negative mode (lam_->=0);
+    phi_-.gradO_phys=0 VACUOUSLY, and the atom f1^2=0 (no bound state).  The free
+    composite :phi^2: has chi finite but f1^2=0 (WG acid: two-particle cut, no atom).
+      free coarse k=1.000: G''=k^2=1.00000 -> 0 ; no negative mode ; no atom
+      free coarse k=0.300: G''=k^2=0.09000 -> 0 ; no negative mode ; no atom
+      free coarse k=0.100: G''=k^2=0.01000 -> 0 ; no negative mode ; no atom
+      free coarse k=0.020: G''=k^2=0.00040 -> 0 ; no negative mode ; no atom
+    => passes: the selection returns 'zero negative-mode contribution' and produces NO
+       gap on the gapless free field.  It does NOT require the negative mode to vanish:
+       the negative mode exists (ev<0, above) and is simply decoupled from the scalar.
+
+============================================================================================
+VERDICT
+  (1) Anchors exact: A=0.20511530, B=0.01105929, beta*=4.30661, G''=A-B beta^2.
+  (2) Intertwiner c_r = sin(th/2)*(...): exactly 0 at theta=0, maximal at theta=pi; the
+      rank-one split carries the negative-mode sign -P_-/|lam_-|.
+  (3) SELECTION on the Savvidy cell: at the symmetric saddle phi_-.grad O_phys = 0 exactly;
+      grad O_phys = stiffest positive eigenvector; the negative mode couples to O_phys only
+      at 2nd order (pair) and DOES overlap the gauge-dependent coordinate.
+  (4) At generic configs the overlap is a SUPPRESSED (not strictly zero) coupling vs the
+      gauge-dependent coordinate: a colour/point-group selection, exact at high symmetry.
+  (5) Acid clean: no floor on the free field; the negative mode need not vanish.
+  => The cancellation CLOSES for the physical insertion (strict bound: zero linear coupling,
+     pair-bounded above threshold).  But this is a DECOUPLING, not a floor: the physical 0++
+     gap is carried by the positive sector, which the selection is blind to.  Not the D-split,
+     not H1, not W; and not the gap either.  Clay 0%.
+============================================================================================

@@ -1,0 +1,13 @@
+# WG-L24: gauge-invariant total-normalized APE-smeared tr F^2 zero mode (beta=2.5 SU(2))
+# estimator = wg_invariant.py (identical); APE ns=2 alpha=0.5; one process; beta=2.5
+
+=== L=24  N=100 therm=200 gap=3 ===
+    [L24] 10/100 configs  chi_O(run)=0.2650+-0.1378  per_meas=9.87s
+    [L24] 20/100 configs  chi_O(run)=0.6408+-0.2821  per_meas=9.80s
+    [L24] 30/100 configs  chi_O(run)=0.5091+-0.1970  per_meas=10.47s
+    [L24] 40/100 configs  chi_O(run)=0.5142+-0.1579  per_meas=10.59s
+    [L24] 50/100 configs  chi_O(run)=0.5119+-0.1264  per_meas=10.53s
+    [L24] 60/100 configs  chi_O(run)=0.5806+-0.1377  per_meas=10.58s
+    [L24] 70/100 configs  chi_O(run)=0.5646+-0.1186  per_meas=10.85s
+    [L24] 80/100 configs  chi_O(run)=0.5330+-0.1186  per_meas=11.15s
+    [L24] 90/100 configs  chi_O(run)=0.5100+-0.0978  per_meas=11.46s

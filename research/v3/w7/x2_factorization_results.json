@@ -1,0 +1,139 @@
+{
+  "A_free_field_rate": {
+    "m_input": 1.0,
+    "note": "rate->m for massive (locally constant), rate->0 for massless (not locally constant)",
+    "table": [
+      {
+        "d": 1,
+        "r_eval": 8.0,
+        "massive_rate": 1.0,
+        "massless_rate": -0.12502,
+        "massive_LC_decays": true,
+        "massless_LC": false
+      },
+      {
+        "d": 2,
+        "r_eval": 8.0,
+        "massive_rate": 1.06076,
+        "massless_rate": -0.06013,
+        "massive_LC_decays": true,
+        "massless_LC": false
+      },
+      {
+        "d": 3,
+        "r_eval": 8.0,
+        "massive_rate": 1.12502,
+        "massless_rate": 0.12502,
+        "massive_LC_decays": true,
+        "massless_LC": false
+      },
+      {
+        "d": 4,
+        "r_eval": 8.0,
+        "massive_rate": 1.19275,
+        "massless_rate": 0.25003,
+        "massive_LC_decays": true,
+        "massless_LC": false
+      }
+    ]
+  },
+  "A_rate_convergence": [
+    {
+      "d": 3,
+      "r": 6.0,
+      "massive_rate": 1.16669,
+      "massless_rate": 0.16669
+    },
+    {
+      "d": 3,
+      "r": 10.0,
+      "massive_rate": 1.10001,
+      "massless_rate": 0.10001
+    },
+    {
+      "d": 3,
+      "r": 14.0,
+      "massive_rate": 1.07144,
+      "massless_rate": 0.07144
+    },
+    {
+      "d": 4,
+      "r": 6.0,
+      "massive_rate": 1.25902,
+      "massless_rate": 0.33338
+    },
+    {
+      "d": 4,
+      "r": 10.0,
+      "massive_rate": 1.15344,
+      "massless_rate": 0.20003
+    },
+    {
+      "d": 4,
+      "r": 14.0,
+      "massive_rate": 1.10895,
+      "massless_rate": 0.14288
+    }
+  ],
+  "B_2D_YM": {
+    "su2_spectrum": [
+      {
+        "j": 0.0,
+        "C2": 0.0
+      },
+      {
+        "j": 0.5,
+        "C2": 0.75
+      },
+      {
+        "j": 1.0,
+        "C2": 2.0
+      },
+      {
+        "j": 1.5,
+        "C2": 3.75
+      },
+      {
+        "j": 2.0,
+        "C2": 6.0
+      }
+    ],
+    "su3_spectrum": [
+      {
+        "rep": "3/3bar",
+        "C2": 1.3333333333333333
+      },
+      {
+        "rep": "8 (adj)",
+        "C2": 3.0
+      },
+      {
+        "rep": "6",
+        "C2": 3.3333333333333335
+      }
+    ],
+    "e2_probe": 1.0,
+    "gap_su2_j1/2": 0.375,
+    "gap_su3_fund": 0.6666666666666666,
+    "local_constancy_defect": 0.0,
+    "verdict": "observable FA locally constant (topological, no local dof) and transfer matrix gapped => gap and local constancy are independent; task-sign 'gap = failure of LC' predicts gapless => contradicted"
+  },
+  "C_3D_topological_massive": {
+    "mu_input": 1.0,
+    "table": [
+      {
+        "r": 6.0,
+        "rate": 1.16669
+      },
+      {
+        "r": 10.0,
+        "rate": 1.10001
+      },
+      {
+        "r": 14.0,
+        "rate": 1.07144
+      }
+    ],
+    "note": "rate -> mu (=CS mass); mu is an input parameter, never derived"
+  }
+}
