@@ -1,0 +1,120 @@
+==============================================================================
+W1  strong-coupling alignment w1(0)=s/2  +  next coefficient  +  continuation
+==============================================================================
+
+[1] SU(2) exact one-plaquette normaliser  M0(beta) = Var((1/2) tr U)
+    M0(0) = 1/4   (real fundamental: M0(0)=1/N^2, NOT 1/(2N^2))
+    exact series  M0(beta) =
+        beta^0  : 1/4
+        beta^2  : -1/32
+        beta^4  : 5/1536
+        beta^6  : -7/23040
+        beta^8  : 13/491520
+        beta^10 : -121/55050240
+    => only EVEN powers in beta (SU(2): no symmetric rank-3 invariant, d_abc=0).
+    exact series  g(beta)=M0(0)/M0(beta) = 1/r(beta):
+        beta^0  : 1
+        beta^1  : 0
+        beta^2  : 1/8
+        beta^3  : 0
+        beta^4  : 1/384
+        beta^5  : 0
+        beta^6  : -1/11520
+        beta^7  : 0
+        beta^8  : 1/737280
+
+[2] SU(3) one-plaquette normaliser  (generic N>=3: complex fundamental)
+    M0(0)            = 0.055555555556   (exact 1/18 = 0.055555555556)
+    <(Re tr U)^2>    = 0.500000000000   (exact 1/2)
+    <(Re tr U)^3>    = 0.250000000000   (exact 1/4  -- the d_abc cubic Casimir moment)
+    M0'(0) = (1/N^2)<(Re trU)^3>_Haar = 0.009259259259   (exact 1/36)
+    => M0(beta) = 1/18 + beta/36 + ...  (ODD beta term!)
+    => normaliser ratio g = M0(0)/M0(beta) = 1 - beta/2 + ...  (exact linear coeff -1/2)
+
+[3] w1(beta) = a0 (1 - c u + ...)/M0(beta),   a0=s/(4N^2), u=c_f/N.
+    normaliser part of the beta-linear coefficient  (EXACT):
+        SU(2) :  0            (M0 even)
+        SU(3) : -1/2          (d_abc cubic moment; s-independent)
+    amplitude part of the beta-linear coefficient  ([O] = dressed-amplitude [R]):
+        SU(2) : -c/2   in units of s/4   -> the ONLY linear term
+        SU(3) : -c/18  in units of s/2
+    => the full next coefficient is -(s/2)[1/2 + c/18] (N>=3), -(s/4)[c/2] (SU(2)),
+       and its 'c' piece is EXACTLY the unproven dressed-amplitude [R] gap.
+       Proven inputs fix only the '1/2' (SU(3)) / '0' (SU(2)) piece.
+
+[4] Pade / Borel continuation of the exact normaliser to beta=2.5
+    exact  M0(2.5) (SU(2), Bessel) = 0.1341190104 ; exact 1/r(2.5)=1.8640161391
+    partial sums S_m(2.5) of the even series (do they converge to 0.134119?):
+        m= 1 terms : S(2.5)= 0.25000000   (err +1.2e-01)
+        m= 2 terms : S(2.5)= 0.05468750   (err -7.9e-02)
+        m= 3 terms : S(2.5)= 0.18184408   (err +4.8e-02)
+        m= 4 terms : S(2.5)= 0.10766941   (err -2.6e-02)
+        m= 5 terms : S(2.5)= 0.14802672   (err +1.4e-02)
+        m= 6 terms : S(2.5)= 0.12706503   (err -7.1e-03)
+        Pade [2/2] at 2.5 : 0.13413837   (rel.err 1.44e-04)
+        Pade [3/3] at 2.5 : 0.13411895   (rel.err 4.57e-07)
+        Pade [4/4] at 2.5 : 0.13411901   (rel.err 7.80e-10)
+    -> the ONE-PLAQUETTE normaliser series has finite radius |beta|~3.83 (nearest zero
+       of I_1), so it DOES converge at 2.5: raw partial sums still oscillate by ~5%,
+       but Pade [4/4] nails M0(2.5) to 1e-9.  So Pade/Borel WORK on the normaliser.
+       (This is the one-plaquette radius; the full 4D CLUSTER expansion has the
+        separate, smaller KP radius checked in [6].)
+       MORE IMPORTANT: M0(beta)=Var(O)>0 for EVERY beta  =>  w1_norm=a0/M0 > 0 trivially.
+       A continuation that is positive by construction cannot test survival -> VACUOUS.
+    SU(3): the LINEAR term alone (1/18 + 2.5/36 = 0.125) OVERSHOOTS the exact
+       M0(2.5)=0.0524 by 140% -> the SU(3) series is outright divergent at 2.5.
+
+[5] honest bracket:  w1(beta) = a0(1 - c u)/M0(beta),  P3: f1^2=a0(1-O(u)),  u := c_f/N
+    exact one-plaquette c_f(2.5):  SU(2)=2.0423  u=c_f/N=1.0212
+                                   SU(3)=10.6379  u=c_f/N=3.5460
+    At N=2,3 the expansion parameter u(2.5) is O(1)-to-O(3) >> 1:
+    the correction (1-O(u)) is NOT a small correction, so the bracket below is
+    only a formal device -- it becomes usable ONLY if u(2.5)<1/C:
+    SU(3): w1_norm(2.5)=(s/2)M0(0)/M0(2.5)=0.5299 ; u(2.5)=3.546
+        if C=0.00 : C*u=0.00  w1(2.5) in [ 0.5299, 0.5299]  POSITIVE
+        if C=0.10 : C*u=0.35  w1(2.5) in [ 0.3420, 0.7178]  POSITIVE
+        if C=0.20 : C*u=0.71  w1(2.5) in [ 0.1541, 0.9057]  POSITIVE
+        if C=0.28 : C*u=0.99  w1(2.5) in [ 0.0038, 1.0560]  POSITIVE
+        if C=0.50 : C*u=1.77  w1(2.5) in [-0.4096, 1.4694]  includes 0/negative -> FAILS
+        if C=1.00 : C*u=3.55  w1(2.5) in [-1.3491, 2.4089]  includes 0/negative -> FAILS
+    => w1(2.5)>0 is [C] on a dressed-amplitude headroom C with C*u(2.5)<1.
+       At N=2,3, u(2.5)=1.02 / 3.55 >> 1, so the f1^2=a0(1-O(u)) series is itself
+       outside its regime: no O(1) C makes C*u<1.  The bracket is EMPTY at N=2,3.
+       The missing estimate is an explicit O(1) bound on the dressed-amplitude
+       coefficient (=[R]/[O]) *together with* u(2.5)<1 (which holds for large N).
+
+[6] large-N at fixed beta=2.5 (LEADING strong-coupling u=beta/(2N^2)=1.25/N^2):
+    (valid for large N; the measured c_f(2.5)/N is O(1) at N=2,3 and not in this regime)
+     N     u_lead(2.5)=1.25/N^2   u*K     inside u*K<1 ?
+        2        3.125e-01     381.25    no   
+        3        1.389e-01     254.17    no   
+        4        7.812e-02     190.62    no   
+        6        3.472e-02     127.08    no   
+       10        1.250e-02      76.25    no   
+       30        1.389e-03      25.42    no   
+      100        1.250e-04       7.62    no   
+      300        1.389e-05       2.54    no   
+      763        2.147e-06       1.00    YES  
+     1500        5.556e-07       0.51    YES  
+    => leading-order KP radius at beta=2.5 needs N > 763 (crude K; true K smaller).
+    => w1(2.5)=s/2>0 IS inside the strong-coupling radius in the large-N limit
+       (u(2.5)->0 as N->inf, 't Hooft territory W2); NOT at physical N=2,3.
+
+[7] acid tests (charter ¡ì2)
+    (1) free field: cut-only KL measure, residue e^{E1 t}C(t): T=20:5.88e-03 40:2.82e-04 80:1.82e-06 -> 0 (=w1)  [T]/[V]
+    (2) 2D: <chi_{1/2}|chi_{3/2}>=1.39e-17  => f1^2=w1=0  [T]/[V]
+    (3) one plaquette: a0/M0 = s/2 is an ARTEFACT -- no transfer direction,
+        the 'atom' is degenerate (all states at one energy); w1 is not a spectral fraction.
+    (4) strong coupling: w1(0)=s/2 (N>=3, complex fund.) ; s/4 (SU(2), real fund.)  [T] mod KL
+    (5) large N: w1(0)=s/2 for every N>=3, O(N^0); u(2.5)->0 as N->inf.  [T]
+    (6) continuum: w1=(Z_O^2 f1^2)/(Z_O^2 M0)=0.5000000000 invariant => gamma_w1=0  [T]
+
+==============================================================================
+VERDICT (no QED, Clay 0%)
+  * w1(0)=s/2 : [T] at beta<1/48 (U3/P3, mod KL). Next coeff: exact normaliser part
+    (-1/2 SU(3), 0 SU(2)) + amplitude part ([-c] = dressed-amplitude [R]/[O]).
+  * Pade/Borel of the EXACT normaliser reach 2.5 and are positive -- but VACUOUS (M0>0).
+  * w1>0 at 2.5 survives only [C] on an explicit amplitude constant C with C*u(2.5)<1;
+    today C~O(10^2), C*u(2.5)>>1 at N=2,3  =>  the bracket is empty.  [O]
+  * UNCONDITIONAL-shaped positivity at 2.5 holds in the large-N limit (u(2.5)->0).
+==============================================================================
