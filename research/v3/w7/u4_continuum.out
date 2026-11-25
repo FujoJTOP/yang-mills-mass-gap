@@ -1,0 +1,64 @@
+
+==============================================================================
+[A] RG equation: f1^2 and M0 both ~ Z_O^2  =>  w1 = f1^2/M0 invariant (gamma_{w1}=0)
+==============================================================================
+  base (mu0=2.0):  f1^2=0.300000  M0=78.763325  w1=f1^2/M0=0.0038088793
+       mu        Z_O^2      f1^2(mu)        M0(mu)           w1(mu)  dlnw1/dlnmu
+      2.0     1.000000      0.300000     78.763325   0.003808879306             
+      3.0     2.512106      0.753632    197.861832   0.003808879306    +0.00e+00
+      5.0     5.391350      1.617405    424.640660   0.003808879306    +0.00e+00
+     10.0    11.035206      3.310562    869.169542   0.003808879306    +0.00e+00
+     30.0    24.077575      7.223273   1896.429899   0.003808879306    +0.00e+00
+    100.0    44.140825     13.242248   3476.678167   0.003808879306    +0.00e+00
+  check: dln f1^2/dln mu = 1.242670  vs  2*gamma_O(5) = 1.242670
+  => w1 column is constant to ~1e-15; dln w1/dln mu = 0.  gamma_{w1}=0 EXACTLY.
+
+==============================================================================
+[B] free field :phi^2:  --  two-particle cut, NO atom  =>  w1 = 0 for all m, all UV
+==============================================================================
+  m= 0.5: f1^2=0  =>  w1 = 0/M0 = 0 (exact);  M0(Lam=10)=1.92 -> M0(Lam=100)=198.8  (UV-divergent, bare fraction -> 0/0)
+  m= 1.0: f1^2=0  =>  w1 = 0/M0 = 0 (exact);  M0(Lam=10)=1.767 -> M0(Lam=100)=198.5  (UV-divergent, bare fraction -> 0/0)
+  m= 2.0: f1^2=0  =>  w1 = 0/M0 = 0 (exact);  M0(Lam=10)=1.325 -> M0(Lam=100)=197.5  (UV-divergent, bare fraction -> 0/0)
+  => the free composite has NO point mass; w1 = 0 identically (acid PASSES).
+
+==============================================================================
+[C] 2D pure YM: trF^2=H conserved, character-diagonal => <0|trF^2|G>=0 => w1=0
+==============================================================================
+  <chi_0|chi_0.5> = -7.068e-17   (=0 => f1^2(2D trF^2)=0 => w1=0)
+  <chi_0|chi_1> = -7.068e-17   (=0 => f1^2(2D trF^2)=0 => w1=0)
+  <chi_0|chi_1.5> = +0.000e+00   (=0 => f1^2(2D trF^2)=0 => w1=0)
+  <chi_0|chi_2> = -1.767e-17   (=0 => f1^2(2D trF^2)=0 => w1=0)
+  => the 2D 0++ 'glueball' is a HOLONOMY state; the trF^2 atom fraction w1 = 0 EXACTLY,
+     even though 2D is gapped.  w1=0 is the correct continuum answer here.
+
+==============================================================================
+[D] binding -> 0:  atom residue A -> 0  =>  w1=A/M0 -> 0,  RG invariance holds throughout
+==============================================================================
+  fixed continuum total weight M0_cut = 78.463327
+    atom res A     w1=A/(A+cut)      Z_O^2   w1 after Z^2=9
+       1.0e+00     0.0125844215        9.0     0.0125844215
+       3.0e-01     0.0038088792        9.0     0.0038088792
+       1.0e-01     0.0012728585        9.0     0.0012728585
+       1.0e-02     0.0001274318        9.0     0.0001274318
+       1.0e-04     0.0000012745        9.0     0.0000012745
+       1.0e-08     0.0000000001        9.0     0.0000000001
+       0.0e+00     0.0000000000        9.0     0.0000000000
+  => w1 -> 0 as binding vanishes; the Z_O^2 transport maps it to the SAME w1.
+     Anomalous dimension is 0 at every A, yet positivity is NOT protected (0 is absorbing).
+
+==============================================================================
+[E] UV contact: M0=C(0) ~ a^{-(2Delta-4)}.  Free 4D scalar measures G(0) ~ a^{-2}.
+==============================================================================
+         a           G(0)     G(0)*a^2  (->const confirms G(0)~a^-2)
+    1.0000       0.128443     0.128443
+    0.5000       0.582553     0.145638
+    0.3333       1.351595     0.150177
+    0.2500       2.432284     0.152018
+    0.1667       5.525654     0.153490
+    0.1250       9.860082     0.154064
+  measured log-log slope of G(0) vs a: -2.083  (theory -2 => G(0)~a^-2)
+  => :phi^2: (Delta=2): M0=2G(0)^2 ~ a^-4 ;  trF^2 (Delta=4): M0 ~ a^-8 (power count).
+     chi=int s^{-1}dnu ~ a^-4 for trF^2 (T4-CARRIER).  w1=f1^2/M0 is dimensionless.
+     FIXED-SCALE renorm (flow t / point-split eps) removes the contact => finite w1.
+
+Done.  No QED.  Clay 0%.  (self-check only; theorem content in U4-CONTINUUM-ATOM.md)

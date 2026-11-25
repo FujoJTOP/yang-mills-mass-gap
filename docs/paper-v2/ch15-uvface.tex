@@ -310,24 +310,36 @@ barrier-uniform $\lambda$), normalization/vacuity (total- versus mean-normalized
 The $H1$ wave left the atom as the irreducible target. Six routes sharpen what that means, and an
 adversarial pass corrects the first formulation.
 
-\textbf{Three predicates, not one.} Define
+\textbf{Four predicates, not one.} Define
 \[
   A:\ f_1^2>0,\qquad
+  W:\ w_1=f_1^2/M_0\ge w_0>0,\qquad
   I:\ \Lambda_\star=\inf\operatorname{supp}(\nu-f_1^2\delta_{m_1^2})>m_1^2,\qquad
   G:\ m_1^2>0 .
 \]
 On a K\"all\'en--Lehmann measure $\operatorname{supp}\nu_{\mathrm{ac}}\subseteq
 \operatorname{supp}(\nu-f_1^2\delta_{m_1^2})$, so $\Lambda_\star\le s_{\mathrm{th}}$ and
 \begin{equation}
-  I\ \Longrightarrow\ B_{\mathrm{spec}}\ \Longrightarrow\ A
-  \qquad\text{(both strict)},
+  I\ \Longrightarrow\ B_{\mathrm{spec}}\ \Longrightarrow\ A,
+  \qquad W\ \Longrightarrow\ A
+  \qquad\text{(all strict)},
   \label{eq:v3three}
 \end{equation}
 where $B_{\mathrm{spec}}$ is ``the atom lies strictly below its continuum.'' Spectral binding is
-therefore implied by isolation and is not an independent axis; dynamical binding (the flux-tube
-mechanism) is the atom's mechanism, not a third axis. The independent axes are $A$ and $I$; $G$ is
-orthogonal and needs $H1/$ceiling plus an absolute scale. The (binding, isolation) square is a
-triangle: the ``isolation without binding'' cell is empty \LT/\LN.
+therefore implied by isolation; dynamical binding (the flux-tube mechanism) is the atom's mechanism,
+not a third axis. Crucially, $W$ and $I$ are \emph{incomparable}: a threshold atom has weight but
+$\Lambda_\star=m_1^2$ ($W\wedge\neg I$), while a thin isolated atom has $I$ and $G$ with
+$\rho^2=2$ bounded but $w_1\to0$ ($I\wedge\neg W$). The gap has two independent sufficient routes:
+\begin{equation}
+  W\wedge H1\ \Longrightarrow\ G
+  \qquad(\text{squeeze: }m_1^2\ge f_1^2/\chi\ge w_0\lambda),
+  \qquad
+  I\wedge(\rho^2\le C^2)\ \Longrightarrow\ G
+  \qquad(\text{window}).
+  \label{eq:v3tworoutes}
+\end{equation}
+Neither $W$ nor $I$ alone gives $G$; the double well has $W\wedge I$ yet
+$\lambda_1\to0$, $\chi\to\infty$, $\rho^2\to\infty$ \LT/\LN.
 
 \textbf{Isolation is the parent.} $I\Rightarrow A$, but an atom can sit at the edge of a continuum
 ($A\not\Rightarrow I$). The ``atom $+$ isolation'' pair is therefore, qualitatively, isolation alone;
@@ -367,8 +379,23 @@ the $1/48$ wall but $1.014$ at $\beta=2.5$, so $u^4>1$ and the four-wall tube do
 ($m_1a=-0.057<0$); the trivial-character fraction falls from $0.98$ to $0.17$ and the Ursell ratio
 rises to $4.6\times10^3$; a one-loop block flow improves the activity only by $1.03\times$ because
 there is no scale separation, and the missing factor is $40$--$55$. Hence there is no proven uniform
-lower bound $w_1\ge w_0>0$ at $\beta=2.5$; that is the leakage bound $\sum_{n\ge2}w_n\le1-w_0$, i.e.\
-isolation \LT/\LE/\LM. The center-vortex route is neutral-blind: $\operatorname{tr}F^2$ has
+lower bound $w_1\ge w_0>0$ at $\beta=2.5$. This is the \emph{weight} datum $W$, not isolation:
+$W\Rightarrow A$ only, and $W$ and $I$ are incomparable (U6). The object is a
+\emph{source-alignment} quantity,
+\begin{equation}
+  w_1=\frac{|\langle\psi_1|o-1\rangle|^2}{\operatorname{Var}(o)},
+  \label{eq:v3alignment}
+\end{equation}
+the squared direction cosine of the local $\operatorname{tr}F^2$ source onto the first excited
+transfer eigenvector; PF, Harnack, the node theorem, and TP$_2$ control the kernel, not the
+alignment, and none gives $w_1\ge w_0$ unconditionally (U1). The Wilson-loop shape derivative and the
+two-$\operatorname{tr}F^2$ OPE see only the diagonal energy density $\sigma$ and $M_0$, not the
+off-diagonal residue (U2); entanglement is operator-blind and anti-correlated with the atom (U5).
+The continuum running is free: $\gamma_{w_1}=0$ exactly, because $f_1^2$ and $M_0$ carry the same
+$Z_O^2$, so $w_1$ has a finite $a\to0$ limit at fixed physical volume (U4). At large $N$,
+$w_1=O(N^0)$ and $\rho^2=O(N^0)$ bounded; binding survives iff the lightest $0^{++}$ is an isolated
+single-trace glueball, evidence for the $N$-structure of a uniform theorem but not a proof (U3). The
+center-vortex route is neutral-blind: $\operatorname{tr}F^2$ has
 $N$-ality zero, every vortex center phase it sees is $1$, and $\sigma>0$ does not imply an atom (2D
 Yang--Mills confines with $\sigma>0$ yet $f_1^2=0$); the missing object is a sign-cancelling positive
 regrouping in the $N$-ality-zero sector. Every solvable model computes the ceiling $\chi=1/G''$
@@ -392,16 +419,15 @@ exact quantitative form of the weak-$*$ theorem \LT/\LN.
 \textbf{Adversarial status.} The atom is not one object. Its existence $A$ is not killable in the
 confined phase, but the protection is confinement kinematics plus the trace anomaly, \emph{not}
 $H1$; changing the carrier to $\operatorname{tr}F\tilde F$ kills $f_1^2$ exactly (parity) while
-keeping the state and the gap. The residue floor $f_1^2\ge r_0$ is robust and in models strictly
-easier than the gap (a double well has $O(1)$ residue with gap $\to0$, but $\chi\to\infty$, so $H1$
-fails). Isolation alone does not give the gap: the same double well keeps $A$ and a large isolation
-$\lambda_2-\lambda_1$, yet the transfer gap Kramers-collapses $\lambda_1\sim e^{-S}$ and the ratio
-$\rho\to\infty$; so ``isolation is the gap'' is \LC{} on bounded $\rho$ together with $H1$ and an
-absolute scale. The strongest no-go is that $H1$ plus the squeeze plus positivity plus a fixed gap do
-not force an atom: there is a gapped atomless measure with bounded $\chi$ \LT/\LN. The full target
-$H^*$ is the gap; the atom wave does not reduce it, but it fixes the three predicates: $A$
-(visibility), $I$ (isolation), $G$ (floor), with $I\Rightarrow B_{\mathrm{spec}}\Rightarrow A$ and
-$G$ orthogonal without the ceiling.
+keeping the state and the gap. The weight floor $W$ is robust and in models strictly easier than
+the gap (a double well has uniform $w_1\approx0.97$ with gap $\to0$, but $\chi\to\infty$, so $H1$
+fails). The same double well keeps $W$ \emph{and} $I$ yet has $\lambda_1\to0$ and
+$\rho^2\to\infty$; so neither $W$ nor $I$ alone gives the gap, and the two routes are
+$W\wedge H1$ and $I\wedge(\rho^2\le C^2)$. The strongest no-go is that $H1$ plus the squeeze plus
+positivity plus a fixed gap do not force an atom: there is a gapped atomless measure with bounded
+$\chi$ \LT/\LN. The full target is the pair $(W,I)$ with the two side conditions; the atom wave does
+not reduce it, but it fixes four predicates: $A$ (visibility), $W$ (weight), $I$ (isolation), $G$
+(floor), with $W\Rightarrow A$, $I\Rightarrow B_{\mathrm{spec}}\Rightarrow A$, and $W\perp I$.
 
 \subsection{What the chapter adds to the ledger}
 

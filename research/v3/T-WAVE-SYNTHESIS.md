@@ -1,5 +1,11 @@
 # T-WAVE-SYNTHESIS — no standard expansion reaches the binding criterion at β=2.5; the corrections: the carrier exists, binding is a mechanism not an axis, and isolation needs a bounded ratio
 
+> **Correction (U wave, 2026-11-24).** Two formulations below are superseded. (i) The uniform residue
+> floor `W: w₁≥w₀` is a **weight** datum, not isolation: `W⇒A` only, and `W` is incomparable with
+> `I` (U6). The phrase ``w₁≥w₀ = isolation = H*'' is a weight-vs-support conflation. (ii) The gap has
+> two independent sufficient routes, `W∧H1` (squeeze) and `I∧(ρ²≤C²)` (window), not one. The
+> corrected picture is in `U-WAVE-SYNTHESIS.md` §2.
+
 > **VERDICT (no QED, Clay 0%).** Six routes attacked the binding/isolation criterion left by the R
 > wave. None proves it. The wave's value is a **correction package** plus a **sharp no-go**:
 >
@@ -19,8 +25,9 @@
 >    `1+c≤ρ²≤C²` gives `μ₁≥δ/(C²−1)`; the double well has `ρ²→∞` and no gap. The upper bound is
 >    load-bearing.
 >
-> The wave does not reduce Clay. It fixes the **statements** of the three predicates and shows that
-> the missing object is a genuinely nonperturbative binding theorem.
+> The wave does not reduce Clay. It fixes the **statements** of the four predicates (`A,W,I,G`) and
+> shows that the missing objects are a genuinely nonperturbative weight floor and an independent
+> isolation bound.
 
 ---
 
@@ -29,7 +36,7 @@
 | Route | Verdict | Result |
 |---|---|---|
 | **T1** polymer RG at β=2.5 | `[T]`/`[NG]`/`[O]` | Exact SU(2) activity `u=c₁/c₀=0.0104` at the P3 wall but **1.014** at β=2.5, so `u⁴=1.06>1` and the four-wall tube does not decay (`m₁a=−0.057<0`). Trivial-character fraction falls `0.98→0.17` (dense gas); Ursell ratio `3.1→4.6×10³`. A one-loop block flow gives `u_eff=0.988` over `ξ/a≈1.3`, only `1.03×` help, because there is no scale separation. Missing: `u_eff≤1/λ_a`, equivalently `|w(P)|≤e^{−κ|P|}` with `κ≥ln λ_a`; missed `40–55×`. |
-| **T2** flux-tube overlap | `[T]`/`[NG]`/`[O]` | Minimal polymer: straight four-wall tube, weight `a₀u^{4T}`, `a₀>0`. Scheme-free overlap is the atom fraction `w₁=f₁²/M₀`; RP gives only log-convexity (holds at `w₁=0`), PF is vacuum-anchored, the transfer matrix gives only a decreasing upper bound. The object does not collapse with tube length (`w₁` is `T`-independent; roughening is a mass); the estimator does. Missing: uniform `w₁≥w₀>0`, equivalently leakage `Σ_{n≥2}w_n≤1−w₀` = isolation = H*. |
+| **T2** flux-tube overlap | `[T]`/`[NG]`/`[O]` | Minimal polymer: straight four-wall tube, weight `a₀u^{4T}`, `a₀>0`. Scheme-free overlap is the atom fraction `w₁=f₁²/M₀`; RP gives only log-convexity (holds at `w₁=0`), PF is vacuum-anchored, the transfer matrix gives only a decreasing upper bound. The object does not collapse with tube length (`w₁` is `T`-independent; roughening is a mass); the estimator does. Missing: uniform `w₁≥w₀>0`, equivalently leakage `Σ_{n≥2}w_n≤1−w₀`. This is the **weight** datum `W`, not isolation; `W` and `I` are incomparable (U6). |
 | **T3** order-2 TP₂ | `[T]`/`[NG]`/`[O]` | Isolation `ρ²=μ₂/μ₁` is the second eigenvalue of the 0⁺⁺ transfer generator; exact for heat kernels: 2D YM `ρ²=2N²/(N²−1)∈(2,8/3]` (SU(2)=8/3), rotor 4, Mehler 2, box 4. The order-2 certificate is strict total positivity (TP₂ = Sturm–Liouville heat kernel), forcing `μ₁<μ₂`; PF only gives `μ₁>0`. TP₂ cannot be stated on the orderless quotient `𝒜/𝒢` `[NG]`. **Window theorem:** `Δ=(ρ²−1)μ₁`; isolation plus `1+c≤ρ²≤C²` gives `μ₁≥δ/(C²−1)`. Double well: `ρ²→∞`, `Δ=O(1)`, gap→0. The upper half is tractable; the lower half at β=2.5 needs a binding-induced TP₂ order (unbuilt `O(u)` wall). |
 | **T4** gauge-invariant carrier | `[T]`/`[V]` | **A non-vacuous carrier exists.** The total-normalized zero mode `q=(1/√V)Σ(O−⟨O⟩)` of a gauge-invariant density at a fixed physical scale has `Var(q)=Σ_z C(z)=χ=O(1)`, independent of `V`; not `V^{-1}`. Witness: free massive scalar `Var=1/m²` for every `L` in `d=1,2,4` (slope 0); `:φ²:` `χ=4.109/0.689` `L`-independent; one-plaquette `Var=1/4`. The corpus's `Var∝1/V` is the **mean-normalized** mode `(1/V)ΣO` — a normalization artifact. Residual: bare `tr F²` has `χ~a^{-4}`, so renormalize at a fixed scale; `χ` carries only the ceiling `m₁²≤M₀/χ`. |
 | **T5** center-vortex binding | `[T]`/`[NG]`/`[O]` | Tomboulis–Yaffe gives `σ>0` in the charged (N-ality-1) channel; `tr F²` is neutral, every vortex center phase it sees is `1` (witness: neutral phase 1.000000, fundamental ω). The vortex condensate is provably neutral-blind. `σ>0` does not imply an atom: 2D pure YM confines (`σ_fund=g²C₂/2>0`) yet `f₁²(tr F²)=0`. The `m_{0⁺⁺}∝√σ` bridge is measured, not proved. Positive dual-surface measures exist for Z(N)/U(1) (FK/FKG) but are sign-killed for SU(N) in 4D (Weingarten). Missing: a sign-cancelling positive regrouping in the N-ality-zero sector — the non-abelian random-surface sign problem. |
@@ -37,12 +44,13 @@
 
 ---
 
-## §1 · The three predicates
+## §1 · The four predicates
 
-The R wave's ``atom + isolation'' pair is now replaced by three predicates:
+The R wave's ``atom + isolation'' pair is now replaced by four predicates:
 
 ```
    A  (atom visibility)   f₁² > 0
+   W  (weight floor)      w₁ = f₁²/M₀ ≥ w₀ > 0
    I  (isolation)         Λ★ = inf supp(ν − f₁²δ_{m₁²}) > m₁²
    G  (gap)               m₁² = inf supp ν > 0
 ```
@@ -51,18 +59,21 @@ with the strict implications
 
 ```
    I  ⟹  B_spec  ⟹  A          (B_spec: the atom lies strictly below its continuum)
-   G  ⊥  (A, I)  without H1/ceiling + an absolute scale
+   W  ⟹  A
+   W  and  I  are INCOMPARABLE  (threshold atom: W∧¬I; thin isolated atom: I∧¬W)
+   G  ⊥  (A, W, I)  without a side condition
 ```
 
-and the **window theorem**
+The gap has **two independent sufficient routes**:
 
 ```
-   Δ = (ρ²−1)μ₁ ,     1+c ≤ ρ² ≤ C²   ⟹   μ₁ ≥ δ/(C²−1) .
+   W ∧ H1        ⟹  G      (squeeze: m₁² ≥ f₁²/χ ≥ w₀λ)
+   I ∧ (ρ²≤C²)   ⟹  G      (window theorem: Δ=(ρ²−1)μ₁, μ₁ ≥ δ/(C²−1))
 ```
 
-The double well is the witness that the upper bound `C` is load-bearing: it keeps `A` and a large
-`λ₂−λ₁` while `ρ²→∞`, `Δ=O(1)`, and the gap collapses. So ``isolation is the gap'' is `[C]` on
-bounded `ρ` together with `H1` and a scale, not a theorem.
+The double well is the witness that neither route is automatic: it keeps `W` and `I` (uniform
+`w₁≈0.97`, large `Δ`) while `λ₁→0`, `χ→∞`, `ρ²→∞`, so `G` collapses. So both ``binding alone'' and
+``isolation alone'' fail; the gap needs `W∧H1` or `I∧(ρ²≤C²)`.
 
 ---
 
@@ -117,17 +128,18 @@ a fixed physical scale. The ceiling direction remains: `χ` is a residue-weighte
 
 ## §5 · What the wave did not win, and the next object
 
-- No proof of `A`, `I`, or `G` at β=2.5.
+- No proof of `A`, `W`, `I`, or `G` at β=2.5.
 - No standard expansion reaches the binding criterion; the missing factor is `40–55×`.
-- No reduction of Clay: the gap is a third predicate, and the binding theorem is nonperturbative.
+- No reduction of Clay: the gap needs `W∧H1` or `I∧(ρ²≤C²)`, and both inputs are open.
 
-**The next object is a nonperturbative binding theorem** with a specific shape: a uniform lower bound
-`w₁≥w₀>0` on the atom fraction of the minimal four-wall tube at β=2.5, equivalently a leakage bound
-`Σ_{n≥2}w_n≤1−w₀`, strong enough to force the TP₂ order and the window `ρ²≤C²`. No variance,
-positivity, spectral, Perron, RG, RMT, duality, or center-vortex tool currently supplies it.
+**The next objects are a pair.** (i) A uniform lower bound `W: w₁≥w₀>0` on the atom fraction of the
+minimal four-wall tube at β=2.5 (leakage `Σ_{n≥2}w_n≤1−w₀`). (ii) The isolation bound
+`I` with the window `ρ²≤C²`. They are **independent** (U6); neither forces the other, and neither
+alone forces the gap. No variance, positivity, spectral, Perron, RG, RMT, duality, center-vortex,
+Wilson-loop, entanglement, or Harnack tool currently supplies either.
 
-**One line.** *The carrier exists; binding is the atom's mechanism, not an axis; the true predicates
-are A, I, G, with I⇒A and G orthogonal; isolation needs a bounded ratio; no standard expansion
+**One line.** *The carrier exists; binding is the atom's mechanism, not an axis; the predicates are
+A, W, I, G, with `I⇒A`, `W⇒A`, `W⊥I`, and the gap via `W∧H1` or `I∧(ρ²≤C²)`; no standard expansion
 reaches β=2.5, missing 40–55×. No proof, no QED, Clay 0%.*
 
 *Refs:* `T1-POLYMER-RG.md`, `T2-TUBE-OVERLAP.md`, `T3-TP2-ISOLATION.md`, `T4-CARRIER.md`,
