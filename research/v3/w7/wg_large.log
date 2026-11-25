@@ -1,0 +1,34 @@
+# WG-L12-L16: gauge-invariant total-normalized APE-smeared tr F^2 zero mode (beta=2.5 SU(2))
+# estimator = wg_invariant.py (identical); APE ns=2 alpha=0.5; one process; beta=2.5
+
+=== L=12  N=400 therm=500 gap=8 ===
+  L=12 done: per_sweep=112.3 ms  per_meas=553.6 ms  wall=637s
+  chi_O   = 0.4688 +- 0.0279   (total-norm, gauge-inv)
+  C_s(0)  = 0.0370  ->  chi_phys = 0.4318
+  chi_bare= 1.2170   chi_flat=3.5591   chi_P=0.4444
+
+=== L=16 projection (cost ~ L^4 from measured L=12 rates) ===
+  N=300 therm=400 gap=8  ->  25.3 min
+  N=300 therm=400 gap=6  ->  21.8 min
+  N=300 therm=400 gap=5  ->  20.0 min   <-- chosen
+  N=300 therm=350 gap=4  ->  17.9 min
+  projection 20.0 min < 20 min -> RUN L=16 N=300 therm=400 gap=5
+  L=16 done: per_sweep=351.9 ms  wall=1200s (actual 20.0 min)
+  chi_O   = 0.5865 +- 0.0547   (total-norm, gauge-inv)
+  C_s(0)  = 0.0374  ->  chi_phys = 0.5492
+  chi_bare= 1.1409   chi_flat=3.7055   chi_P=0.2889
+
+=== L-trend: chi_O and per-step ratios vs free (L2/L1)^2 ===
+    L4: chi_O = 0.3277 +- 0.0223  (N=800)
+    L6: chi_O = 0.3774 +- 0.0213  (N=400)
+    L8: chi_O = 0.4105 +- 0.0576  (N=160)
+   L12: chi_O = 0.4688 +- 0.0279  (N=400)
+   L16: chi_O = 0.5865 +- 0.0547  (N=300)
+  L4->L6: ratio = 1.152 +- 0.102   vs free 2.25   (plateau = 1)
+  L6->L8: ratio = 1.087 +- 0.165   vs free 1.78   (plateau = 1)
+  L8->L12: ratio = 1.142 +- 0.174   vs free 2.25   (plateau = 1)
+  L12->L16: ratio = 1.251 +- 0.138   vs free 1.78   (plateau = 1)
+  log-log slope d ln chi_O / d ln L = +0.396   (free massless 2.0; plateau 0.0)
+
+# wrote D:\Dev\math\research\v3\w7\wg_large_results.json
+Labels: [V] the SU(2) numbers; [O] continuum/uniform-in-L H1.  No QED.  Clay 0%.

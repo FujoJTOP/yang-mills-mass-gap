@@ -1,10 +1,13 @@
 # W-WAVE-SYNTHESIS — no bronze theorem yet: W1/W2/W3 end at precise missing steps, WG gives the first gauge-invariant plateau
 
 > **Verdict (no QED, Clay 0%).** The W wave did **not** produce a theorem at β=2.5. It produced one
-> genuine numerical positive (WG), one exact-coefficient result with a conditional large-N window
+> genuine numerical measurement (WG), one exact-coefficient result with a conditional large-N window
 > (W1), one closed structural equation without a floor (W2), and one negative (W3: all exact
-> solvable small volumes have `w₁=0`). Per the V3 gate, this is **not a major breakthrough**; stop
-> the broad W wave and reassess.
+> solvable small volumes have `w₁=0`). **WG's extension corrects the flat-chart picture:** the
+> gauge-invariant `χ_O` is strongly sub-linear, not a plateau — `χ_O=0.469±0.028` (L=12) and
+> `0.587±0.055` (L=16), log-log slope `0.371±0.066`; free `L²` is excluded at `24.7σ`, but a pure
+> plateau is also excluded at `5.6σ`. Saturation remains `[O]`. Per the V3 gate, this is **not a
+> major breakthrough**; stop the broad W wave and reassess.
 
 ---
 
@@ -22,8 +25,9 @@
 ## §1 · What this means for V3
 
 - **No theorem at β=2.5** for `W` or `I`; the W wave does not meet the bronze bar.
-- **WG is a genuine positive**: the H1 ceiling now has a gauge-invariant, non-self-averaging numerical
-  plateau at L=4,6,8. It fixes the carrier caveat but is not a proof.
+- **WG is a genuine gauge-invariant measurement, but not a plateau**: `χ_O` grows sub-linearly
+  (slope `0.371±0.066`) from L=4 to L=16. The flat-chart plateau was not exact saturation; a finite
+  `χ_∞` remains possible but unproved. It fixes the carrier caveat and weakens the plateau claim.
 - **W1/W2/W3 give precise missing steps**: P3's dressed amplitude (`[R]`), the 4D master field `W₀`,
   and the cluster radius at N=2,3. None is a new inequality; all are the same nonperturbative input.
 
