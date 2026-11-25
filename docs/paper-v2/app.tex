@@ -115,12 +115,13 @@ gauge-dependent gluon mode, not the gauge-invariant $0^{++}$ residue.
 
 $\mathrm{SU}(2)$, $L=4,6,8$, $N=200$. Operator:
 $q(x)=1-\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle\approx\operatorname{tr}F^2$;
-the measured object is the $k=0$ mode $\bar q$ and its variance. Result:
-$\operatorname{Var}(\bar q)\propto V^{-1.0}$. Interpretation: the variance form of H1 is
-vacuously true for a local composite at large volume; it is a susceptibility, not an inverse
-propagator. The gauge-dependent gluon mode is also measured and fails the free-field acid test
-($G''/\text{free}=0.18$--$0.63$). The glueball two-point function is not resolved at $L=8$
-(fit $m_0\gtrsim\pi$).
+the measured object is the \emph{mean-normalized} $k=0$ mode $\bar q$ and its variance. Result:
+$\operatorname{Var}(\bar q)\propto V^{-1.0}$. Interpretation: this is the self-averaging mode, not
+the total-normalized zero mode that H1 uses; the H1 carrier has
+$\operatorname{Var}(q)=\chi=O(1)$ (Chapter~\ref{ch:uvface}), so the measurement constrains the
+mean-normalized composite but does not make H1 vacuous. The gauge-dependent gluon mode is also
+measured and fails the free-field acid test ($G''/\text{free}=0.18$--$0.63$). The glueball two-point
+function is not resolved at $L=8$ (fit $m_0\gtrsim\pi$).
 
 \subsection{The Savvidy cell}
 
@@ -220,12 +221,12 @@ $\sigma=\langle\operatorname{tr}F^{2}\rangle$, again H1.
 
 \LE{} A post-audit measured the true gauge-invariant $0^{++}$ object --- the $k=0$ mode of
 $q(x)=1-\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle\approx\operatorname{tr}F^2$
---- rather than the gauge-dependent gluon ($\mathrm{SU}(2)$, $L=8$, $N=200$). Two findings, both
-negative for the variance route. (i) The composite zero-momentum variance scales as
-$\operatorname{Var}(\bar q)\propto V^{-1.0}$ ($L=4,6,8$), so the \emph{variance form} of H1,
-$\operatorname{Var}\le1/\lambda$, is vacuously satisfied by any local composite at large $V$ and
-carries no gap content; its apparent $G''>0$ is the wrong scaling (a susceptibility
-$1/\operatorname{Var}\propto V$, not an inverse propagator). (ii) The gauge-dependent gluon mode,
+--- rather than the gauge-dependent gluon ($\mathrm{SU}(2)$, $L=8$, $N=200$). Two findings that
+constrain the variance route. (i) The \emph{mean-normalized} composite zero-momentum variance
+scales as $\operatorname{Var}(\bar q)\propto V^{-1.0}$ ($L=4,6,8$); this is the self-averaging mode,
+not the total-normalized zero mode that H1 uses. The H1 carrier is
+$q=(1/\sqrt V)\sum_x(O-\langle O\rangle)$, with $\operatorname{Var}(q)=\chi=O(1)$
+(Chapter~\ref{ch:uvface}), so the variance form is not vacuous; it remains only a ceiling. (ii) The gauge-dependent gluon mode,
 which does have the right variance behaviour, fails the free-field acid test at every $\beta$
 measured ($G''/\text{free}=0.18$--$0.63$; one-sided lower bound $<0$ at every $\beta$).
 Consequently the $D/S\approx2\%$ quoted in the main text is a compactness/Haar number measured on
@@ -371,7 +372,7 @@ Loop bootstrap does not close; $D\le S-\lambda$ & \LN & \code{Q2-LOOP-BOOTSTRAP.
 Inertia lemma; collective negative mode & \LT/\LN & \code{Q3-SCHUR-DEFECT.md}\\
 Ricci dominated; Cheeger capacity; gate density & \LT/\LC/\LN & \code{Q4-BAKRY-EMERY.md}\\
 4D pilot plateau, carrier-limited & \LE/\LM & \code{Q5-4D-CHI.md}\\
-$H1$ strictly weaker; carrier hazard; $F1$--$F5$ & \LT/\LN & \code{Q6-H1-STATUS.md}\\
+$H1$ strictly weaker; carrier exists; $F1$--$F5$ & \LT/\LN & \code{Q6-H1-STATUS.md}, \code{T4-CARRIER.md}\\
 Fisher is a variance floor; RMT blind at 3\% & \LT/\LN & \code{Q7-TOOL-FORGE.md}\\
 Four faces of the $H1$ lemma & \LT/\LC & \code{Q-WAVE-SYNTHESIS.md}\\
 Isolation is the parent; order-2 TP$_2$ target & \LT/\LN & \code{R2-ISOLATION.md}\\

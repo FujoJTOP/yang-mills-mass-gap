@@ -240,7 +240,7 @@ conditionally; even a proven $H1$ does not force the bottom of the K\"all\'en--L
 thin-atom proposition, machine-checked as \code{H1\_does\_not\_imply\_atom}) (file
 \code{P6-PERIODIC-TO-H1.md}).
 
-\subsection{The $H1$ attack: seven routes and the carrier hazard}
+\subsection{The $H1$ attack: seven routes and the carrier question}
 
 A dedicated wave attacked $H1$ directly. None of the seven routes proves it, but the wave classifies
 why, and it changes the campaign's target.
@@ -285,16 +285,24 @@ $\chi\le1/\lambda$, not as $G''\ge\lambda$, unless Gaussianity is proved. The pi
 gauge-invariant only infinitesimally ($\le4\%$ drift), so this is evidence, not a gauge-invariant
 measurement; the decisive run is specified (Landau+FP+Gribov, $L=8,12(16)$, $N\ge2000$).
 
-\textbf{The carrier hazard.} $H1$ is strictly weaker than the gap: the gap implies it, but the
+\textbf{The carrier question.} $H1$ is strictly weaker than the gap: the gap implies it, but the
 converse is false and machine-checked (thin atom: $\chi=1/\lambda$ with
-$\inf\operatorname{supp}\nu=\varepsilon\to0$). Worse, $H1$ has no canonical carrier. On the
-gauge-invariant composite $\operatorname{tr}F^2$, $\operatorname{Var}\propto1/V$, so $H1$ is
-\emph{vacuously} true; on the gluon $a=\langle v,\log U\rangle$ it holds but is gauge-dependent; the
-gauge-invariant non-self-averaging carrier that would make it non-vacuous is the structural object the
-campaign has not constructed. The irreducible target is therefore the atom on the $0^{++}$
-K\"all\'en--Lehmann measure, $f_1^2\ge r_0$ with isolation $I_2$, with $\chi\le1/\lambda$ as the
-necessary ceiling. The falsification battery is: free field (must fail), thin atom (must not certify),
-deep double well (no barrier-uniform $\lambda$), carrier/vacuity (must be non-vacuous), and dimension
+$\inf\operatorname{supp}\nu=\varepsilon\to0$). The carrier, however, exists: take the
+\emph{total-normalized} zero mode
+\[
+  q=\frac{1}{\sqrt V}\sum_x\bigl(O(x)-\langle O\rangle\bigr)
+\]
+of a gauge-invariant density renormalized at a fixed physical scale. Then
+$\operatorname{Var}(q)=\sum_z C(z)=\chi_O=O(1)$, independent of $V$; it is \emph{not} $V^{-1}$. The
+earlier $\operatorname{Var}\propto1/V$ statement refers to the \emph{mean-normalized} mode
+$V^{-1}\sum_xO(x)$, a self-averaging bookkeeping quantity, and is a normalization artifact rather than
+a no-go \LT/\LE. Two genuine residuals remain: the bare $\operatorname{tr}F^2$ has
+$\chi\sim a^{-4}$ and must be renormalized at a fixed scale; and $\chi$ is a residue-weighted harmonic
+mean, so it carries the \emph{ceiling} $m_1^2\le M_0/\chi$, never the edge. The irreducible target is
+therefore the atom on the $0^{++}$ K\"all\'en--Lehmann measure, $f_1^2\ge r_0$ with isolation $I_2$,
+on this well-defined carrier, with $\chi\le1/\lambda$ as the necessary ceiling. The falsification
+battery is: free field (must fail), thin atom (must not certify), deep double well (no
+barrier-uniform $\lambda$), normalization/vacuity (total- versus mean-normalized), and dimension
 ($G''_a=a^2m_{\mathrm{phys}}^2$).
 
 \subsection{The atom: binding, isolation, and the resolution bound}
@@ -417,8 +425,9 @@ $G$ orthogonal without the ceiling.
 \item A curvature floor is a susceptibility ceiling, never an atom \LT/\LN.
 \item Seven direct attacks on $H1$ reduce its escape hatches to four equivalent faces
   \eqref{eq:v3fourfaces}; the standard methods fail for directional reasons; the 4D pilot plateaus but
-  is carrier-limited; and $H1$ is strictly weaker than the gap, with a carrier hazard that makes the
-  atom the irreducible target \LT/\LN/\LE/\LM.
+  is carrier-limited; and $H1$ is strictly weaker than the gap, with a carrier that exists (the
+  $V^{-1}$ was the mean-normalized mode) but leaves $H1$ only a ceiling, making the atom the
+  irreducible target \LT/\LN/\LE/\LM.
 \item Six atom routes correct the target: isolation is the parent of the atom (order-2 TP$_2$),
   every atom-reader is circular at the resolution bound $\sup|E-g|\ge f_1^2/2$, and $H1$ plus a
   fixed gap does not force an atom \LT/\LN.
