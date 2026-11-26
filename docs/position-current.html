@@ -537,10 +537,28 @@
 
 
 <footer>
-  位置图 · 第 236 轮 · 生成于 <span class="mono">D:\Dev\math\docs\position-round10.html</span><br>
+  位置图 · 第 237 轮 · 生成于 <span class="mono">D:\Dev\math\docs\position-round10.html</span><br>
   依据：<span class="mono">research/v3/species/</span> 下的 <span class="mono">Z01 / Z05 / Z06–Z12 / Y01 / Y04–Y06 / W95A–W95E / V01–V06</span> · 详细台账见 <span class="mono">LOOP-RUNBOOK.md</span>（460+ KB）<br>
   标签：<span class="lv T">[T]</span> 真定理 · <span class="lv C">[C]</span> 条件/待重证 · <span class="lv E">[E]</span> 数值证据 · <span class="lv NG">[NG]</span> no-go · <span class="lv O">[O]</span> 未读原文
 </footer>
+<div class="card">
+  <h3>第 237 轮：两个"缺数"都算出来了，且<b>都在错侧</b> <span class="lv T">[T]</span></h3>
+  <div class="note">
+    <b>① <code>λ_Ur</code>：从"无值"改为"夹逼已定"。</b>严谨夹逼 <code>λ_Ur ∈ [15.5806, 53.0007]</code>（<code>GV1</code>：<code>n=6</code> 精确整数 <code>m₆=14 305 816</code>，三套独立代码逐位相同；上界 <code>L_t=53.0006865</code>，<code>UR6:U2,U7</code>）。判据是 <code>λ_Ur &lt; 1.6</code> ⇒ <b>整段在判据之上</b>：壳质量口径超 <b>9.738×</b>、逐簇口径超 <b>1.450×</b>（环 1 判据 <code>0.5595</code> 超 27.85× / 4.15×）⇒ <b>环 3 关闭</b>。<b>并抓到一处 10 倍错</b>：<code>GU4</code> 的 <code>λ_Ur≈3.3315</code> 把<b>值之比</b> <code>15.909=384/1.7⁶</code> 当成了<b>率之比</b>；正确 <code>384^{1/6}/1.7=1.58589</code>，差 <code>15.909^{5/6}=10.031×</code>。<b>该数早已在库</b>（<code>UR1:21–22</code>、<code>UR2:13,51–56</code>、<code>UR4:18–19,109</code>、<code>LC3:78–79</code>、<code>LOOP-RUNBOOK:16948,17501</code>，时间戳 17:33–17:43）——<code>GU4:219</code> 的"无值"是<b>未消费</b>。
+  </div>
+  <div class="note">
+    <b>② <code>κ_c</code>：从"第二个缺数"降为 <code>λ_Ur</code> 的副产品。</b>关键假设 <b>真</b>：<code>sign(φ^U(Γ))=(−1)^{|Γ|−1}|φ^U(Γ)|</code> 在 4D plaquette 图（Δ=20）上对 <code>n=1…6</code> 的<b>全部 7 510 554 个簇</b>零违例，且<b>两种键活度约定都成立</b> ⇒ 号不依赖形状、也不依赖活度。两者消费<b>同一组整数</b> <code>B_n = 1, 20, 514, 14 748, 450 255, 14 305 816</code> ⇒ <b>边际成本 0</b>。算得 <code>κ_c(6)=0.96272208</code>（SU(3), <code>u=β/9</code>）／<code>0.98333546</code>（SU(2), <code>u=β/4</code>），<b>严格下界</b> <code>0.957804</code>／<code>0.982422</code>（逆向三角），极限 <b>1</b> ⇒ 判据 <code>≥0.81</code> 满足 ⇒ <b><code>CPB-W</code> 与 <code>CPB-S</code> 同时关闭</b>。<code>BREAK-IN-3:18</code> 的"no direct numerical route" <b>只对块尺度 <code>w_q</code> 成立</b>，对"带号泛函"这一层被推翻。误差不是浮点（<code>&lt;1e−15</code>），是<b>假设①</b>。
+  </div>
+  <div class="note">
+    <b>③ <code>BL-6</code> 由"判定"升为 <code>[T]</code>（条件于 <code>O1</code>）。</b>机制层理由：<code>κ_c&lt;1</code> 不是"未证"，而是<b>与 <code>c₀q ≥ γ_ent+ln3</code> 冲突</b>——交错号只给 <b><code>O(1)</code></b> 增益；而 <code>CPB-S</code> 自己的窗口（<code>c₀≥2.60</code>）自动满足该条件。
+  </div>
+  <div class="note">
+    <b>★ 必须记住的限定（<code>G9</code>，<code>[T]</code>）：</b>同一判据在<b>自由场</b>上也"关闭"（<code>ū=27.182818</code>、<code>λ_Ur·u=7.79&gt;1</code>），而那里 <code>ε_T≡0</code> ⇒ 该判据与 <code>ū&lt;1</code> 一样是<b>充分非必要</b>。⇒ <b>环 3 关闭 = "绝对收敛尾界这条路没有定义域"，不是"<code>ε_T≠0</code>"</b>。关掉它<b>不伤任何数学</b>，只是把一条路划掉。
+  </div>
+  <div class="note">
+    <b>残余（全是 <code>[O]</code>）：</b><code>O1</code>（<code>n≥7</code> 的号定理未证；<code>n=7≈1.86e8</code> 簇 / 26 GB、<code>n=8≈4.79e9</code> / 671 GB）· <code>O3</code>（临界调谐 <code>κ_c&lt;1 ⟺ 1−ρ(n) ≲ κ_c^n</code>）· <b>软模排除</b>（紧预解族里是否存在 <code>w_a⇀0</code> 且 <code>H_a w_a=ε_a w_a</code>；无限重简并版已由 <code>GN1-C</code> 造出）。<b>Clay = 0%。</b>
+  </div>
+</div>
 
 </div>
 </body>
