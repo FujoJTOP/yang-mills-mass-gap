@@ -1,0 +1,98 @@
+==============================================================================
+GV1 [A] u-convention audit at beta_W = 2.5  (which u is 0.625?)
+==============================================================================
+  beta/4                     (corpus: P4:143, TT1:60)      u =        0.625   1/u =        1.6   ubar = eD*u =  33.978523
+  I_2(beta)/I_1(beta)        (standard double-expansion ratio) u =    0.5071951   1/u =  1.9716279   ubar = eD*u =  27.573984
+  2 I_2(beta/2)/I_1(beta/2)  (task's guess)                u =    0.5879092   1/u =  1.7009429   ubar = eD*u =  31.962058
+  2 I_2(beta)/beta           (fundamental char coeff, norm. by beta) u =    1.0211729   1/u = 0.97926608   ubar = eD*u =  55.516716
+  I_1(beta)/I_0(beta)        (adjoint-ish ratio)           u =   0.76499675   1/u =  1.3071951   ubar = eD*u =  41.589535
+  => 0.625 is beta/4 EXACTLY; no Bessel ratio gives 0.625 (0.507 / 0.588 / 1.021 / 0.771).
+  => u = 0.625 is a DEFINITION (nominal strong-coupling value), not a derived
+     Bessel coefficient. The verdict is re-checked below under all candidates.
+
+==============================================================================
+GV1 [B] free-field acid test (GU4 CE-1: c_f->1 => u->1/N=0.5, ubar->27.18)
+==============================================================================
+  u_free      = 1/N              = 0.5
+  ubar(free)  = eDelta*u_free    = 27.18281828   (GU4 CE-1 quotes 27.18)  OK
+  ubar(2.5)   = eDelta*0.625     = 33.97852286   (corpus: 33.98)
+  In free field eps_T == 0 identically (no T-dependence) while ubar > 1
+  and (see [E]) lambda_Ur*u > 1 as well => the criterion lambda_Ur*u<1 is
+  SUFFICIENT-ONLY, exactly like ubar<1. Failing it is NOT evidence eps_T != 0.
+
+==============================================================================
+GV1 [C] exact shell masses (gv1_enum_n6.json)
+==============================================================================
+   n  #clusters      A_n=sum|mu|      avg|mu|   lam^sum=A_n^(1/n)  lam^sup
+   1           1               1     1.0000         1.000000   1.000000
+   2          20              20     1.0000         4.472136   1.000000
+   3         458             514     1.1223         8.010403   1.259921
+   4       11132           14748     1.3248        11.020043   1.565085
+   5      280175          450255     1.6070        13.511131   1.888175
+   6     7218768        14305816     1.9818        15.580645   2.220906
+
+  animals growth ratio a_n/a_(n-1): 20.00, 22.90, 24.31, 25.17, 25.77
+  A_n growth ratio A_n/A_(n-1):     20.00, 25.70, 28.69, 30.53, 31.77
+
+==============================================================================
+GV1 [D] extrapolation of lambda^sum = limsup m_n^(1/n)  (only n<=6 is exact)
+==============================================================================
+  constant = lam_6 (rigorous LOWER bound)      lambda^sum_inf =   15.581   *u =    9.738
+  lam_n = a + b/n      (n=2..6)                lambda^sum_inf =   19.896   *u =   12.435
+  lam_n = a + b/n      (n=4..6)                lambda^sum_inf =   24.540   *u =   15.338
+  lam_n = a+b/n+c/n^2  (n=4,5,6)               lambda^sum_inf =   30.834   *u =   19.271
+  lam_n = a-b/n^theta (theta=0.500 fit)        lambda^sum_inf =   29.966   *u =   18.729
+  ratio rho_n=A_n/A_(n-1) = a+b/n              lambda^sum_inf =   37.568   *u =   23.480
+  ratio rho_n = a-b/n^theta (theta=0.915 fit)  lambda^sum_inf =   38.632   *u =   24.145
+
+  spread of the 6 estimators: [15.58, 38.63], median 29.97
+  RIGOROUS: lambda^sum >= lam_6 = 15.580645  (limsup >= any element)
+  RIGOROUS: lambda^sum <= L_t   = 53.000687  (tree identity, C01/C03; = 33.125*u)
+  point estimate (median of fits, n<=6 data): lambda^sum = 30.0 +- 11.5
+  consistent cross-check: C06's rate-ratio reading (see [E]) gives 33.42
+
+  [D2] sup-slot probe from gv1_enum [D] (exact mu, clusters containing a K_6):
+    n= 6: |mu|=120      |mu|^(1/n)=2.220906   *u = 1.388066   K_6
+    n= 7: |mu|=240      |mu|^(1/n)=2.187914   *u = 1.367446   K_6+1 (|E|=17, mu=240)
+    n= 8: |mu|=840      |mu|^(1/n)=2.320251   *u = 1.450157   K_6+2 (|E|=20, mu=-840)
+
+==============================================================================
+GV1 [E] GU4 §3.2: 15.909 is a VALUE ratio, the RATE ratio is 15.909^(1/6)
+==============================================================================
+  value ratio  384/1.7^6        = 15.908810   <- what GU4:167 used
+  rate  ratio  384^(1/6)/1.7    = 1.585890   <- the one that enters lambda
+  L_t/15.90881 = 3.3315   (GU4:168 'lambda_Ur ~ 3.3315')
+  L_t/1.589633 = 33.4202   (corrected)   *u = 20.8876
+  => GU4:168 underestimates lambda_Ur by the factor 10.031 = 15.909^(5/6);
+     corrected reading lambda_Ur*u ~ 20.89 sits on top of the
+     direct enumeration (lam_6 = 15.58, extrapolated ~30).
+
+==============================================================================
+GV1 [F] verdict arithmetic
+==============================================================================
+  lambda^sup @n=6 (full enum) =   2.2209   *u =   1.3881   vs 1: CLOSED by  1.388x   vs 1.6:  1.388x   vs 0.5595 (ring 1):   3.969x
+  lambda^sup floor @n=8 (probe) =   2.3203   *u =   1.4502   vs 1: CLOSED by  1.450x   vs 1.6:  1.450x   vs 0.5595 (ring 1):   4.147x
+  lambda^sum (per site) @n=6 =  15.5806   *u =   9.7379   vs 1: CLOSED by  9.738x   vs 1.6:  9.738x   vs 0.5595 (ring 1):  27.847x
+  lambda^sum extrapolated    =  29.9659   *u =  18.7287   vs 1: CLOSED by 18.729x   vs 1.6: 18.729x   vs 0.5595 (ring 1):  53.558x
+
+  under the other u-candidates (lambda values unchanged, only 1/u moves):
+    beta/4                     (corpus: P4:143, TT1:60)      1/u =  1.6000   lambda^sup= 2.221 -> CLOSED   lambda^sum=15.581 -> CLOSED
+    I_2(beta)/I_1(beta)        (standard double-expansion ratio) 1/u =  1.9716   lambda^sup= 2.221 -> CLOSED   lambda^sum=15.581 -> CLOSED
+    2 I_2(beta/2)/I_1(beta/2)  (task's guess)                1/u =  1.7009   lambda^sup= 2.221 -> CLOSED   lambda^sum=15.581 -> CLOSED
+    2 I_2(beta)/beta           (fundamental char coeff, norm. by beta) 1/u =  0.9793   lambda^sup= 2.221 -> CLOSED   lambda^sum=15.581 -> CLOSED
+    I_1(beta)/I_0(beta)        (adjoint-ish ratio)           1/u =  1.3072   lambda^sup= 2.221 -> CLOSED   lambda^sum=15.581 -> CLOSED
+
+==============================================================================
+GV1 [G] why more n cannot REVERSE the verdict (named certificate)
+==============================================================================
+  A finite-n enumeration gives LOWER bounds on a limsup, never an upper bound.
+  Ring 3 open needs lambda_Ur < 1.6 = an UPPER bound valid for ALL clusters.
+  => no n can open it; only a structural bound |c_Gamma| <= C^n with C < 1.6 can,
+     which is exactly what C06:187 hoped for and what n<=6 refutes.
+  Cost of the full enumeration (measured: n=6 -> 7.218768e6 sets, 177 s DP):
+    n= 7: ~1.860e+08 clusters  ->  level-set memory ~   26.04 GB   DP time ~     75.9 min
+    n= 8: ~4.792e+09 clusters  ->  level-set memory ~  670.90 GB   DP time ~   1956.8 min
+    n= 9: ~1.235e+11 clusters  ->  level-set memory ~17285.91 GB   DP time ~  50417.2 min
+    n=10: ~3.181e+12 clusters  ->  level-set memory ~445375.10 GB   DP time ~1299010.7 min
+  => n=7 is memory-marginal here (16.7 GB free, one 0.88 GB job running),
+     n>=8 needs an orderly-generation (Redelmeier) enumerator in C. Not done.

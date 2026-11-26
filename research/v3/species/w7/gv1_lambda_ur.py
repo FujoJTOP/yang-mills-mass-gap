@@ -67,6 +67,7 @@ print("=" * 78)
 d = json.load(open("gv1_enum_n6.json"))
 rows = d["rows"]
 u = float(u_nom)
+Lt = float(20 ** 20 / 19 ** 19)          # = 53.0006865, tree-counting constant (UR6:U2)
 print("   n  #clusters      A_n=sum|mu|      avg|mu|   lam^sum=A_n^(1/n)  lam^sup")
 lam_sum = []
 for r in rows:
@@ -108,9 +109,9 @@ est.append(("lam_n = a + b/n      (n=4..6)", a3[0]))
 # (iii) lambda_n = a + b/n + c/n^2  (exact 3-point solve n=4,5,6)
 Aq = np.column_stack([np.ones(3), 1 / ns[3:], 1 / ns[3:] ** 2])
 est.append(("lam_n = a+b/n+c/n^2  (n=4,5,6)", lsq(Aq, ls[3:])[0]))
-# (iv) theta scan: lam_n = a - b/n^theta
+# (iv) theta scan: lam_n = a - b/n^theta   (theta bounded away from 0: collinear design)
 best = None
-for th in np.arange(0.05, 3.0, 0.005):
+for th in np.arange(0.50, 3.0, 0.005):
     X = np.column_stack([np.ones(len(ns[1:])), -1 / ns[1:] ** th])
     co = lsq(X, ls[1:])
     pred = X @ co
@@ -137,9 +138,16 @@ vals = np.array([v for _, v in est])
 print(f"\n  spread of the 6 estimators: [{vals.min():.2f}, {vals.max():.2f}], "
       f"median {np.median(vals):.2f}")
 print(f"  RIGOROUS: lambda^sum >= lam_6 = {ls[-1]:.6f}  (limsup >= any element)")
+print(f"  RIGOROUS: lambda^sum <= L_t   = {Lt:.6f}  (tree identity, C01/C03; = 33.125*u)")
 print(f"  point estimate (median of fits, n<=6 data): lambda^sum = {np.median(vals):.1f} "
       f"+- {0.5*(vals.max()-vals.min()):.1f}")
-print(f"  consistent cross-check: C06's rate-ratio reading (see [E]) gives 33.3")
+print(f"  consistent cross-check: C06's rate-ratio reading (see [E]) gives 33.42")
+
+print("\n  [D2] sup-slot probe from gv1_enum [D] (exact mu, clusters containing a K_6):")
+for sp in d.get("sup_probe", []):
+    nn, mm = sp["n"], sp["abs_mu"]
+    print(f"    n={nn:2d}: |mu|={mm:<8d} |mu|^(1/n)={mm**(1.0/nn):.6f}   "
+          f"*u = {mm**(1.0/nn)*u:.6f}   {sp['tag']}")
 
 # ----------------------------------------------- [E] GU4 §3.2 rate- vs value-ratio fix
 print()
@@ -165,7 +173,10 @@ print("GV1 [F] verdict arithmetic")
 print("=" * 78)
 lam6 = ls[-1]
 sup6 = rows[-1]["lam_sup"]
-for label, lam in (("lambda^sup (per cluster)", sup6), ("lambda^sum (per site)", lam6),
+sup8 = max([sup6] + [sp["abs_mu"] ** (1.0 / sp["n"]) for sp in d.get("sup_probe", [])])
+for label, lam in (("lambda^sup @n=6 (full enum)", sup6),
+                   ("lambda^sup floor @n=8 (probe)", sup8),
+                   ("lambda^sum (per site) @n=6", lam6),
                    ("lambda^sum extrapolated", float(np.median(vals)))):
     print(f"  {label:26s} = {lam:8.4f}   *u = {lam*u:8.4f}   "
           f"vs 1: {'CLOSED' if lam*u > 1 else 'open':6s} by {lam*u:6.3f}x   "

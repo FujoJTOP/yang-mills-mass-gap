@@ -1,0 +1,66 @@
+==============================================================================
+GV1 [A] abstract-graph unit tests on mu (exact integers)
+==============================================================================
+  K_2          mu =       -1   expect       -1   OK 
+  K_3          mu =        2   expect        2   OK 
+  K_4          mu =       -6   expect       -6   OK 
+  K_5          mu =       24   expect       24   OK 
+  K_6          mu =     -120   expect     -120   OK 
+  C_4          mu =       -3   expect       -3   OK 
+  C_5          mu =        4   expect        4   OK 
+  C_6          mu =       -5   expect       -5   OK 
+  P_4 (tree)   mu =       -1   expect       -1   OK 
+  K_3-br-K_3   mu =       -4   expect       -4   OK 
+  all abstract tests: PASS
+  K_6 on link ((0, 0, 0, 0), 0): n=6 |E|=15 mu=-120 (expect -120) tau=1296 (expect 1296) OK
+  4D-cube 6 faces:   n=6 |E|=12 mu=-64 (expect -64) tau=384 (expect 384) OK
+
+==============================================================================
+GV1 [B] exact enumeration, 4D plaquette graph (Delta=20), root = ((0, 0, 0, 0), (0, 1))
+==============================================================================
+  enumeration to n=6 in 24.2s
+  n=1: sets=        1 trees=        1 unicyc=       0 dp=      0 max|mu|=      1  A_n=sum|mu|=1            avg=  1.0000
+        lambda^sum_n = A_n^(1/n) =   1.000000   lambda^sup_n = max|mu|^(1/n) = 1.000000   sum*u =  0.625000   sup*u = 0.625000   [0.0s]
+        fast-path vs DP cross-check: 1 sampled, 0 mismatch
+  n=2: sets=       20 trees=       20 unicyc=       0 dp=      0 max|mu|=      1  A_n=sum|mu|=20           avg=  1.0000
+        lambda^sum_n = A_n^(1/n) =   4.472136   lambda^sup_n = max|mu|^(1/n) = 1.000000   sum*u =  2.795085   sup*u = 0.625000   [0.0s]
+        fast-path vs DP cross-check: 1 sampled, 0 mismatch
+  n=3: sets=      458 trees=      402 unicyc=      56 dp=      0 max|mu|=      2  A_n=sum|mu|=514          avg=  1.1223
+        lambda^sum_n = A_n^(1/n) =   8.010403   lambda^sup_n = max|mu|^(1/n) = 1.259921   sum*u =  5.006502   sup*u = 0.787451   [0.0s]
+        fast-path vs DP cross-check: 1 sampled, 0 mismatch
+  n=4: sets=    11132 trees=     8328 unicyc=    2476 dp=    328 max|mu|=      6  A_n=sum|mu|=14748        avg=  1.3248
+        lambda^sum_n = A_n^(1/n) =  11.020043   lambda^sup_n = max|mu|^(1/n) = 1.565085   sum*u =  6.887527   sup*u = 0.978178   [0.2s]
+        fast-path vs DP cross-check: 3 sampled, 0 mismatch
+  n=5: sets=   280175 trees=   177295 unicyc=   81680 dp=  21200 max|mu|=     24  A_n=sum|mu|=450255       avg=  1.6070
+        lambda^sum_n = A_n^(1/n) =  13.511131   lambda^sup_n = max|mu|^(1/n) = 1.888175   sum*u =  8.444457   sup*u = 1.180109   [7.4s]
+        fast-path vs DP cross-check: 57 sampled, 0 mismatch
+  n=6: sets=  7218768 trees=  3854868 unicyc= 2413752 dp= 950148 max|mu|=    120  A_n=sum|mu|=14305816     avg=  1.9818
+        lambda^sum_n = A_n^(1/n) =  15.580645   lambda^sup_n = max|mu|^(1/n) = 2.220906   sum*u =  9.737903   sup*u = 1.388066   [295.1s]
+        fast-path vs DP cross-check: 1445 sampled, 0 mismatch
+
+==============================================================================
+GV1 [C] ratio / growth diagnostics
+==============================================================================
+   n   A_n            A_n/A_(n-1)   lambda^sum_n   lambda^sup_n
+   1  1                       nan       1.000000      1.000000
+   2  20                20.000000       4.472136      1.000000
+   3  514               25.700000       8.010403      1.259921
+   4  14748             28.692607      11.020043      1.565085
+   5  450255            30.529902      13.511131      1.888175
+   6  14305816          31.772698      15.580645      2.220906
+
+==============================================================================
+GV1 [D] sup-version probe beyond n=6: clusters containing a K_6 (exact mu)
+==============================================================================
+  K_6 has 66 plaquette-neighbours outside itself
+  n=7: best |mu| over K_6+1 = 240   -> |mu|^(1/n) = 2.187914   [arg: (2156355,), |E|=17]
+  n=8: best |mu| over K_6+2 = 840   -> |mu|^(1/n) = 2.320251   [arg: (2156355, 2156604), |E|=20]
+  sup-version floor table:
+    n= 6: |mu|=120        |mu|^(1/n)=2.220906  (lambda^sup*u = 1.388066)   K_6
+    n= 7: |mu|=240        |mu|^(1/n)=2.187914  (lambda^sup*u = 1.367446)   K_6+1 (|E|=17, mu=240)
+    n= 8: |mu|=840        |mu|^(1/n)=2.320251  (lambda^sup*u = 1.450157)   K_6+2 (|E|=20, mu=-840)
+
+  json -> gv1_enum_n6.json
+
+total 330.4s
+exit=0 elapsed=330.8s
