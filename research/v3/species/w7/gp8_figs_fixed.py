@@ -18,7 +18,7 @@ def gevp(Ct):
     return np.array([np.linalg.eigvalsh(0.5*((P@Ct[t]@P.T)+(P@Ct[t]@P.T).T))[-1] for t in range(Lt)])
 tot_u,Pb_u=build(A); lt_u=gevp(tot_u); jk_u=np.array([gevp(tot_u-Pb_u[b]) for b in range(NB)])
 tot_c,Pb_c=build(Ac); lt_c=gevp(tot_c); jk_c=np.array([gevp(tot_c-Pb_c[b]) for b in range(NB)])
-TM=10                                        # half period only
+TM=5    # t=1..4 only: S/N>=2 window (t>=5 is noise)
 ts=np.arange(1,TM)
 me,er,sn=[],[],[]
 for t in ts:
@@ -44,10 +44,10 @@ a1.errorbar(ts,me,yerr=er,fmt='o-',color='navy',capsize=3,label=r'connected GEVP
 for nm in NAM:
     r=diag[nm]; a1.plot(np.arange(1,5),np.log(r[:4]/r[1:5]),'--',lw=1,alpha=.45,label=f'diag {nm}')
 a1.axhline(1.108,ls=':',c='green',lw=1.3,label='$L_t$=12 reference (1.108)')
-a1.set_ylabel(r'$m_{eff}(t)$'); a1.set_ylim(0.2,2.2); a1.legend(fontsize=7.5); a1.grid(alpha=.3)
+a1.set_ylabel(r'$m_{eff}(t)$'); a1.set_ylim(0.55,1.75); a1.legend(fontsize=7.5); a1.grid(alpha=.3)
 a1.set_title(fr'connected GEVP, $\beta={beta}$, ${Ls}^3\times{Lt}$, N={N} (20-block JK)')
 a2.axhspan(-1,5,color='gray',alpha=.15); a2.axhline(5,ls='--',c='crimson',lw=1,label='S/N = 5')
-a2.plot(ts,sn,'s-',color='darkorange',ms=4); a2.set_yscale('log'); a2.set_ylim(0.05,200)
+a2.plot(ts,sn,'s-',color='darkorange',ms=4); a2.set_yscale('log'); a2.set_ylim(1.2,150)
 a2.set_xlabel('t'); a2.set_ylabel('S/N'); a2.legend(fontsize=8); a2.grid(alpha=.3,which='both')
 fig.tight_layout(); fig.savefig(os.path.join(OUT,'fig2_meff.png'),dpi=150); plt.close(fig)
 # Fig3
@@ -71,4 +71,5 @@ json.dump(dict(meff=[[float(a),float(b)] for a,b in zip(me,er)],sn=[float(v) for
                lam_unsub=[float(v) for v in lt_u]),open(os.path.join(OUT,'numbers.json'),'w'),indent=1)
 print('figs regenerated (t<=%d)'%TM)
 for t,m,e,s in zip(ts,me,er,sn): print(f' t={t}: m_eff={m:+.4f} +- {e:.4f}  S/N={s:6.2f}')
+
 
