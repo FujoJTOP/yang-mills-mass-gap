@@ -1,0 +1,16 @@
+NG = 3
+  sign=+1 k=0 a=0 b=0 fd=+0.269748 ab_tail=+0.269861 ba_tail=+0.269861 ab_head=+0.269861 ba_head=+0.269861   best=ab_head
+  sign=+1 k=0 a=0 b=1 fd=-0.194870 ab_tail=-0.194889 ba_tail=+0.194889 ab_head=-0.255335 ba_head=+0.255335   best=ab_tail
+  sign=+1 k=0 a=0 b=2 fd=-0.297886 ab_tail=-0.297782 ba_tail=+0.297782 ab_head=-0.017931 ba_head=+0.017931   best=ab_tail
+  sign=+1 k=0 a=1 b=0 fd=+0.194907 ab_tail=+0.194889 ba_tail=-0.194889 ab_head=+0.255335 ba_head=-0.255335   best=ab_tail
+  sign=+1 k=0 a=1 b=1 fd=+0.270010 ab_tail=+0.269861 ba_tail=+0.269861 ab_head=+0.269861 ba_head=+0.269861   best=ab_tail
+  sign=+1 k=0 a=1 b=2 fd=-0.224740 ab_tail=-0.224766 ba_tail=+0.224766 ab_head=+0.334152 ba_head=-0.334152   best=ab_tail
+  sign=+1 k=0 a=2 b=0 fd=+0.297677 ab_tail=+0.297782 ba_tail=-0.297782 ab_head=+0.017931 ba_head=-0.017931   best=ab_tail
+  sign=+1 k=0 a=2 b=1 fd=+0.224792 ab_tail=+0.224766 ba_tail=-0.224766 ab_head=-0.334152 ba_head=+0.334152   best=ab_tail
+  sign=+1 k=0 a=2 b=2 fd=+0.269763 ab_tail=+0.269861 ba_tail=+0.269861 ab_head=+0.269861 ba_head=+0.269861   best=ab_head
+  sign=-1 k=1 a=0 b=0 fd=+0.269973 ab_tail=+0.269861 ba_tail=+0.269861 ab_head=+0.269861 ba_head=+0.269861   best=ab_head
+  sign=-1 k=1 a=0 b=1 fd=+0.194870 ab_tail=-0.353529 ba_tail=+0.353529 ab_head=-0.194889 ba_head=+0.194889   best=ba_head
+  sign=-1 k=1 a=0 b=2 fd=+0.297886 ab_tail=+0.103171 ba_tail=-0.103171 ab_head=-0.297782 ba_head=+0.297782   best=ba_head
+  sign=+1 k=2 a=0 b=0 fd=+0.269968 ab_tail=+0.269861 ba_tail=+0.269861 ab_head=+0.269861 ba_head=+0.269861   best=ab_tail
+  sign=+1 k=2 a=0 b=1 fd=+0.227791 ab_tail=+0.227667 ba_tail=-0.227667 ab_head=-0.353529 ba_head=+0.353529   best=ab_tail
+  sign=+1 k=2 a=0 b=2 fd=-0.281311 ab_tail=-0.281422 ba_tail=+0.281422 ab_head=+0.103171 ba_head=-0.103171   best=ab_tail

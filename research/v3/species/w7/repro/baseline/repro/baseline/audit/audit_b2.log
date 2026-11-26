@@ -1,0 +1,22 @@
+eps1 = 0.7871, dist = 0.001944
+dist/eps1 = 0.002470   (Rouche needs V*eps1 < dist  =>  V < 2.47e-03 < 1)
+single site eps1/dist = 404.9
+
+ V   V*eps1    true_norm(diag model: T0=diag(1,0.1), T=diag(1,0.8871), eps1=0.7871)
+     1     0.7871       0.7871    
+     2     1.5742       0.7769    
+     3     2.3613       0.6971    (V eps1 > 2: vacuous)
+     4     3.1484       0.6192    (V eps1 > 2: vacuous)
+     8     6.2968       0.3835    (V eps1 > 2: vacuous)
+    16    12.5936       0.1471    (V eps1 > 2: vacuous)
+    64    50.3744       0.0005    (V eps1 > 2: vacuous)
+ 65536 51583.3856       0.0000    (V eps1 > 2: vacuous)
+
+ => the 'V*eps1' column of ps_witness [E] is a first-order bound valid only for V*eps1 << 1;
+    for V >= 3 it exceeds the hard bound 2 (and the exact value is decreasing). The decisive
+    number is V=1: eps1/dist = 404.8 > 1, i.e. no positive integer V satisfies the Rouche hypothesis.
+
+  sharpness check eps=0.01, V= 1: (1+eps)^V-1 = 0.010000   V*eps = 0.010000
+  sharpness check eps=0.01, V= 2: (1+eps)^V-1 = 0.020100   V*eps = 0.020000
+  sharpness check eps=0.01, V= 5: (1+eps)^V-1 = 0.051010   V*eps = 0.050000
+  sharpness check eps=0.01, V=10: (1+eps)^V-1 = 0.104622   V*eps = 0.100000

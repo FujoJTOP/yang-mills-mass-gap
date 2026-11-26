@@ -1,0 +1,210 @@
+% =====================================================================
+%  sec01 : the claim, its three limits, and the five rings
+% =====================================================================
+\section{主张、范围与五环链}\label{sec:claim}
+
+\subsection{一句话可核的主张，以及它的三个量化词}\LT
+
+本文的主张只有标题页那一个方框里的句子。它的内容由\textbf{三个量化词}同时限定：
+(i) 窗 $\beta<\beta_1=0.018394=0.8829\times(1/48)$；(ii) 体积轴是"每个有限 $L$ 一致"，不是 $L\to\infty$；
+(iii) 道是 $0^{++}$（$2^{++}$ 走同一条链，\S\ref{sec:kl}），算符是 $O=\tfrac14\operatorname{tr}F^2$。
+删掉任何一个量化词，句子就变成另一个命题，而那个命题本文\textbf{不报}。
+本节把这三个词钉死，并把链上每一环的等级与出处一次列全，后面五节只做逐环展开。
+
+\LM{} \textbf{窗口的数值（统一为 $0.018394$；c03 路线那批读数全部作废）}. 本链消费的 KP 条件是装饰气体的
+$\bar u=e\Delta\,\bar C\,u<1$，其中 $\bar C\equiv N$（\textbf{已证}，\S\ref{sec:cbar}：$|w|^{1/n}/u=c_f/u=N$）、
+$u=c_f/N=\beta/(2N^2)$、$e\Delta=54.3656365692$
+\[
+\bar u<1\quad\Longleftrightarrow\quad \beta<\frac{2N^2}{\bar C\,e\Delta}=\frac{2N}{e\Delta}=0.018394=0.8829\times(1/48)\quad(N=2),
+\]
+故全文窗口记作 $\beta<0.018394$（无约定精确 $\mathrm{SU}(2)$：$0.0735925$，两种独立算法相差 $0.02\%$）。
+\textbf{$\beta=1/12=0.0833$ 不在窗内}——那是 $x=e\Delta Nu=1.1326>1$ 的直接后果（\codep{F07-ADJCBAR.md} \S4）。
+\par\smallskip
+\textbf{$1/48$ 的语义}$= $Shen--Zhu--Zhu 的 \textbf{LSI（Poincaré／指数聚类）半径}，即借用的\textbf{方法半径}，\textbf{不是谱墙}
+（\codep{docs/paper-v2/ch05-theorems.tex:79--84}）。\textbf{KP 分支按 $N$ 携带的形式}是 $\beta_1=c\cdot N$，$c=1/295.6=3.383\times10^{-3}$
+（\codep{V06-RADIUS.md:16--17,:47--52}：$uK=[\beta/(2N^2)][80e^{2+\beta}N]=295.6\,\beta e^\beta/N<1$）。
+\par\smallskip
+\textbf{三个旧读数的下场（都撤）}：(a) $\beta_W\lesssim3.4\times10^{-3}\approx1/298$ 是\textbf{归一化 A}（$u=c_f$，洞 A 之前）的读数，
+按 $u:=c_f/N$ 它转成上面的 $\beta_1=c\cdot N$，不再写成"$N$-无关的 $1/298$"；
+(b) $1.84\times10^{-3}=\hat C\bar C\,$读数（$\hat C=4$、$\bar C=20$）与 c03 路线给出的旧窗口\textbf{一并撤销}
+（\codep{F07-ADJCBAR.md} \S4；\codep{M07-WINDOW2.md} \S5；\codep{C01-CBAR1.md:154}；\codep{C03-BYPASS.md:128--130} 为被否证的两条旧路线）。
+\src{\codep{F07-ADJCBAR.md} \S0 判词 7、\S4；\codep{V06-RADIUS.md:16--17}；\codep{Z02-SEILER.md:82,:106}（旧 A 行读数，仅作历史）。}
+
+\subsection{五环链表（等级与出处并写）}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.055\textwidth} p{0.085\textwidth} L{0.455\textwidth} p{0.115\textwidth} L{0.215\textwidth}@{}}
+\toprule
+环 & 名字 & 内容（逐字级） & 等级 & 出处 \\
+\midrule
+1 & $I1$ & $f_1^2\ge r_0=\tfrac12a_0(1-O(u))>0$，在 $\mathcal{C}_L$ 上、每个有限 $L$ 一致 &
+\LT{}（$\bar C\equiv N$ 已证） & \codep{PROOF-P3-UNCONDITIONAL.md:10--16}；\codep{F07-ADJCBAR.md} \\
+2 & $(L1)$ & $|\varepsilon_T|\le B\bar u^{\,T}$，$\bar u=e\Delta N u$，$\Delta=20$；\textbf{无 $T$ 前因子}、$L$-一致 &
+\LT & \codep{X01-L1C.md:79--82} \\
+3 & $\delta$ & $\kappa=4\ln(1/u)/a$；$\kappa/4=\ln(1/u)/a$ 精确；可达率 $\delta=\ln(1/\bar u)/a=\kappa/4-\ln(e\Delta N)/a$ &
+\LT & \codep{X01-L1C.md:88--101} \\
+4 & 代数 & $\log D\to\eta$：$\eta=(D_{fin}/D_\infty-1)+(R_{hi}/f_1^2)e^{m_1^{dr}t}$，$\exp/\log\Rightarrow|\eta|\le2Be^{-\delta t}$，只需 $D_\infty\ge\tfrac12$ &
+\LT & \codep{X02-THEOREMA.md} \S2.1 \\
+5 & $[KL]$ & $d\mu_O^{(L)}\ge0$（柱面 Källén--Lehmann 表示） &
+\LT{}（已证） & \codep{P3-CYLINDER-RESIDUE.md:67--69} \\
+\midrule
+合 & Theorem A & \codep{IsolatedAtom} $\Leftrightarrow$ \codep{SharpDecay}（$m_2$ 一身二任），本文只用 $\Leftarrow$ &
+\LT & \codep{REPORT.md:95}，$\Leftarrow$ 用 $\nu\ge0$（\codep{REPORT.md:110}） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{五个具体洞（A--E）的裁决（逐条进正文，全部关闭）}\label{sec:holes}
+
+环 1 的等级不是由一个"大概的缺口"决定的，而是由五个\textbf{具体}的洞决定的。五个洞的裁决如下，逐条进正文，
+\textbf{五个洞全部关闭}，每一项都有 \LT{} 归属文件：
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}p{0.03\textwidth} L{0.19\textwidth} L{0.145\textwidth} L{0.545\textwidth}@{}}
+\toprule
+洞 & 内容（逐字级） & 状态 & 裁决与出处 \\
+\midrule
+A & 归一化：$u:=c_f$ 还是 $u:=c_f/N$ & \LT{}（\textbf{关闭}） &
+Gupta (14.18) \textbf{每 tile 一个 $1/N$}、(14.21) $M_{0^{++}}=-4\log(\beta/2N^2)$ $\Rightarrow$ $u=c_f/N=\beta/(2N^2)+O(\beta^3)$；
+\textbf{且 $A^{dressed}$ 就是 $f_1^2$}（\codep{Z06-HOLEA.md} \S0）。\codep{z05} 的一处判定（"$A^{dressed}=a_0$ 不是 $f_1^2$"）随之撤回 \\
+B & \codep{DRESSED:94} 的 $\delta\ge\kappa/3$ 是否落进 $I1$ & \LN{}（\textbf{出局}） &
+$I1$ 与 $D_\infty$ \textbf{都无 $\delta$}：\codep{X01:67} 逐字"与 $\delta$ 无函数关系"；\codep{DRESSED:94} 的 $\delta$ 与 \codep{CYL-RES:151} 的谱隙 $\delta_L$
+\textbf{同名异物}（二者不是同一个数）$\Rightarrow$ 该假命题不落 $I1$（\codep{Z11-HOLEB.md}） \\
+C & $Z_{dec}$ 的块乘性（重耦合能否固定进 $a_0$） & \LT{}（\textbf{关闭}） &
+$\operatorname{Hom}(1,f\otimes\bar f\otimes f\otimes\bar f)=2\neq1^2$ $\Rightarrow$ 重耦合\textbf{非}块乘、cap 型装饰（$w(\gamma)=0$ 而 $w(B_T\cup\gamma)\neq0$）
+被\textbf{整类丢}；修法做完：每因子化点 $\hat C=2$ \textbf{精确}（40 位 Weyl + Catalan 表）、逐 plaquette 包络 $\hat C=4$；
+$\beta_1^{fix}=2N^2/(\hat C\bar Ce\Delta)$：\codep{M07-WINDOW2.md} 的裁决把 $\hat C$ 定死 $4$（判据对 $\gamma$ 求和 $\Rightarrow$ 逐 $\gamma$ 率，$\sup$ 取到；立方体 $(2^{12})^{1/6}=4$）、$\bar C$ 定死 $N=2$
+$\Rightarrow$ $\hat C\cdot\bar C=8>7.0633$ $\Rightarrow$ \textbf{唯一窗口 $\beta<0.018394=0.8829\times\tfrac1{48}$，$1/48$ 在窗外}；
+$\beta=1/48$ 处 $\hat C\bar C\,e\Delta u=1.1326>1$，故 $\delta$ 读数换到 $\beta\le1/96$（\codep{M07-WINDOW2.md} \S4--\S5；\codep{Z08-HOLEC.md}；\codep{Z12-FIXC.md}） \\
+D & $f_1^2$ 的广延性（密度 / 整片求和） & \LT{}（\textbf{关闭}） &
+$f_1^2=V_s\cdot a_0(1+O(u))\propto L^3$ 是对的，$a_0$ 的 $L$-\textbf{无关性已证}；\textbf{一行修法}：$r_0$ 必须带 $V_s$（$L^3\cdot\tfrac12a_0$）或把 $f_1^2$ 归一化（\codep{Z09-HOLED.md}） \\
+E & $r_0$ 的标度 & \LT{}（\textbf{关闭}） &
+$p$ 是\textbf{算子系数指数}（归一化 $\mathrm{A}_{1g}$ plaquette 上 $p=0$）：$a_0=(2N)^{-p}s$ 是\textbf{β-无关的纯数}；
+正确式 $r_0=\tfrac12a_0(1-O(u))\ge\tfrac12(2N)^{-2}>0$（逐 $L$），$\inf_L$ 后 $\ge\tfrac14(2N)^{-2}$；$u^p$ 的幂形式是转写错（\codep{Z10-HOLEE.md} \S0） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{合起来：}$I1$ 的等级是 \LT，\textbf{五个洞 A--E 全部关闭}。
+洞 B 的出局是\textbf{减负}（环 1 不消费 \codep{DRESSED:94}）；洞 C 的修法是\textbf{加压}（$\hat C$ 精确 $2$、包络 $4$，并把窗口乘性写进 \S\ref{sec:delta}）；
+洞 A/E 是\textbf{记账正位}（$u:=c_f/N$、$p=0$）；洞 D 是\textbf{一行修法}（$r_0$ 带 $V_s$）。
+另有一项\textbf{不在 A--E 之列}但同样收口：$\bar C\equiv N$（\S\ref{sec:cbar}）——它是\textbf{已证值}，不是洞。
+五洞方向都写进正文，故不再有"待定"的洞。
+\src{\codep{Z06-HOLEA.md}；\codep{Z11-HOLEB.md}；\codep{Z08-HOLEC.md}；\codep{Z12-FIXC.md}；\codep{Z09-HOLED.md}；\codep{Z10-HOLEE.md}；\codep{F07-ADJCBAR.md}；
+\codep{X01-L1C.md:67}；\codep{P3-DRESSED-MASS.md:94}；\codep{P3-CYLINDER-RESIDUE.md:151}。}
+
+\subsection{逻辑结构：四环给 SharpDecay，第五环加 Theorem A 给隔离}
+
+链的形状是\textbf{一个率}加\textbf{一次翻译}，不是五个并列的不等式：
+
+\begin{keybox}
+\footnotesize
+\begin{tabularx}{\linewidth}{@{}p{0.055\linewidth} L{0.475\linewidth} p{0.03\linewidth} L{0.40\linewidth}@{}}
+\toprule
+环 & 内容 & 等级 & 出处 \\
+\midrule
+环 1 & $f_1^2\ \ge\ r_0(\beta)>0$ & \LT & \codep{PROOF-P3-UNCONDITIONAL.md:10--16} \\
+环 2 & $|\varepsilon_T|\ \le\ B\,\bar u^{\,T}$，$\bar u=e\Delta N u$，$\Delta=20$ & \LT & \codep{X01-L1C.md:79--82} \\
+环 3 & $\delta=\ln(1/\bar u)/a=\kappa/4-\ln(e\Delta N)/a$，$\kappa=4\ln(1/u)/a$ & \LT & \codep{X01-L1C.md:88--101} \\
+环 4 & $|\eta(t)|\ \le\ 2B\,e^{-\delta t}$，指数用 $m_1^{dr}=\kappa-f_{dec}$ & \LT & \codep{X02-THEOREMA.md} \S2.1--2.2 \\
+环 5 & $d\mu_O^{(L)}\ \ge\ 0$（故 Theorem A 的 $\Leftarrow$ 可用） & \LT & \codep{P3-CYLINDER-RESIDUE.md:67--69} \\
+翻译 & \code{SharpDecay} $\Rightarrow$ \code{IsolatedAtom} $\Rightarrow$ $I1\wedge I2$ & \LT & \codep{REPORT.md:95,:110} \\
+\bottomrule
+\end{tabularx}
+\par\smallskip
+\[
+\Longrightarrow\quad \Lambda_\star-(m_1^{dr})^2 \;=\; 2\,m_1^{dr}\delta+\delta^2\;>\;0
+\qquad\text{（}s\text{ 槽换算，\codep{X02-THEOREMA.md} \S4.2）}
+\]
+\end{keybox}
+
+一句话：环 1--4 造出\textbf{双指数形}（原子幅度 + 第二指数），环 5 供给 Theorem A 需要的\textbf{正性}，
+Theorem A 的 $\Leftarrow$ 把"率"翻译成"隔离"。翻译这一步\textbf{零动力学}，全部载重在前四环；
+前四环里并记着两处历史记录（\S\ref{sec:i1} 的 \codep{MASTER:42} 降级记录、\S\ref{sec:l1} 的 \codep{w05} 异议），
+它们各自已被"第二次裁决"与"$T$-一致界的逻辑否证"收口，但记录本身保留。
+
+\subsection{三条限定（不许省）}\label{sec:limits}
+
+\paragraph{限定一：$0^{++}$ 与 $2^{++}$ 两道，其余道不给证书。}\LT
+\codep{Y02-CHANNELS.md:2--5} 与 \codep{:50--60} 逐道清点：语料里 $f_1^2$ 的定义与残数定理最初只有 $0^{++}$ 一份；
+$2^{++}$ 是\textbf{同一条链的第二次实例化}（\codep{A02-2PPI2.md} \S2--\S3：环 2/3/4/5 与桥逐字同值，唯一换件在环 1 的
+$a_0^{(2)}=(\sum c_i^2)(2N)^{-2}$，由 \codep{W95A-2PP.md} 交付），且
+\begin{quote}\small
+$\kappa^{(2)}=4\ln(1/u)/a=\kappa^{(0)}$ \textbf{逐字同值}（\codep{A02-2PPI2.md:60,:83}）；
+链对 $m$ 的全部要求只是 $m_2>0$，\textbf{不要求} $m_2=m_1^{dr}$（\codep{A02-2PPI2.md:85}）。
+\end{quote}
+故两道 $I1$ 与 $I2$ 各有证书，$\inf\operatorname{spec}$ 由 $\min(\Delta_{(0)},\Delta_{(2)})$ 决定，两个因子都有证书
+（\codep{A02-2PPI2.md} \S4(a)）。$(b')_{IN\text{-}11}$（最轻态必属 $\{0^{++},2^{++}\}$）在 $\beta<\beta_1$ 上是 \LT
+（\codep{PROOF-IN11.md:19} 逐字："This \textbf{proves (b$'$)} at strong coupling"），故 $0^{-+}$、奇 $C$、自旋 $\ge3$ 各道
+\textbf{不需要各自证书}；其余道（$1^{--}$、$1^{+-}$、$0^{+-}$、$1^{++}$、$1^{-+}$、$2^{-+}$、$0^{--}$、$3^{--}$）连结论都没有
+（\codep{Y02-CHANNELS.md:31--42}）。
+因此 \codep{docs/paper-v2/ch05-theorems.tex:455--456} 的
+$\inf\operatorname{spec}(H_a|_{\Omega^\perp})\ge\delta\Lambda$ 是\textbf{整个谱}上的陈述，本文只对它给
+"两道 + $(b')$ 成员性" 这一步，不宣称全道各自的证书（\codep{Y02-CHANNELS.md:109--110}；\codep{Y05-P3GEN.md:57}）。
+
+\paragraph{限定二：仅有限 $L$。}\LT
+$d\mu_O^{(L)}\ge0$ 只在有限空间体积成立（\codep{P3-CYLINDER-RESIDUE.md:52--57}：有限 $L$ 谱纯离散，无连续谱）；
+$L$ 只是\textbf{一致性轴}（\codep{PROOF-P3-UNCONDITIONAL.md:15}：先取 $t\to\infty$ 于固定 $L$，不取 $L\to\infty$）。
+若把 $[KL]$ 用在 $L\to\infty$（"原子不是连续谱阈、survives $L\to\infty$"），那一层\textbf{恰好就是 $I2$ 本身}
+$\Rightarrow$ 会与 $I2$ 循环（\codep{Y01-KL.md:108}）。本链\textbf{没有}使用 $L\to\infty$，故不循环。
+
+\paragraph{限定三：两处复核均已返回，且都由第三次裁决 F07 收口。}\LT
+\begin{itemize}
+\item \codep{Y04-AUDITX01}（问 $|\varepsilon_T|$ 是否带 $T$ 前因子）：\textbf{复现——无前因子}。另一套记号独立重写
+$\Rightarrow$ $B=(\bar u/(1-\bar u))^3$，$\varepsilon_T/\bar u^{\,T}=2.329267$ 在 $T=0,\dots,12$ 逐位不变
+（\codep{Y04-AUDITX01.md:93,:173}）。故第 2 环保 \LT；前提两条：$B_T$ 是\textbf{开}管（周期管的反例已做，\codep{:133--137}）与 $\bar u<1$。
+\item \codep{Y06-P3DOWN}（问 \codep{docs/YANG-MILLS-MASTER.md:42} 的降级覆盖到哪一步）：该轮判"覆盖 $I1$ 本身"；\textbf{第三次裁决把它收口}：
+五个洞 A--E 全部关闭、$\bar C\equiv N$（已证，\S\ref{sec:cbar}）、$[KL]$ 已证 $\Rightarrow$ $I1$=\LT{}（无未知常数），
+旧读数（\codep{MASTER:42} 的"[条件/待重证]"与 \codep{Y06-P3DOWN.md:124} 的 "$I1$=\LC"）作为\textbf{历史记账}保留、不再承重
+（\S\ref{sec:i1}）。
+\end{itemize}
+两处都在环的当场展开（\S\ref{sec:l1audit} 与 \S\ref{sec:i1}），正文不把它们挪进附录，也不靠"另文说明"。
+
+\subsection{不主张什么（本文的"不是"）}\label{sec:not}
+
+\begin{notbox}
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{不是"每条道都有证书"。} 只覆盖 $0^{++}$ 与 $2^{++}$ 两道（限定一）；其余道的成员性由 \LT{} 的 $(b')_{IN\text{-}11}$ 挡掉，
+不给各自的 $I1/I2$ 证书（\codep{Y02-CHANNELS.md:107} 逐字："$m>0$ 在 $\beta<\beta_0$ 由 OS'78 逐道给出，不是 P3 的功劳，且不过 $\beta\approx2.5$"）。
+\item \textbf{不是 $L\to\infty$。} 见限定二；\codep{Y01-KL.md:108} 给出循环机制。
+\item \textbf{不是 $\beta=2.5$，也不是 $\beta=1/12$。} 全链只在 $\beta<\beta_1=0.018394$（\S\ref{sec:claim} 的第一个量化词）；
+$\beta=1/12=0.0833$ 也在窗外（$\bar u=e\Delta Nu=1.1326>1$，\codep{F07-ADJCBAR.md} \S4）。
+$1/48$ 是 Shen--Zhu--Zhu 的 \textbf{LSI 半径}（Ursell 级数的\textbf{方法半径}），\textbf{不是谱墙}：
+\codep{docs/paper-v2/ch05-theorems.tex:79--84} 逐字（经 \codep{U07-CPSTRONG.md:63} 转引）"the analyticity radius $1/48$ is the Ursell series radius, not a wall in the spectrum"。\LT
+\item \textbf{不是 Clay 的任何进展。} $I2$ 是 Clay 上一级（\codep{IMP-ARROWS.md:128}，经 \codep{U07-CPSTRONG.md:119} 转引）；
+本文也不取连续极限 $a\to0$（\codep{PROOF-P3-UNCONDITIONAL.md:16}："NOT obtained: isolation I2, continuum $a\to0$, transport to $\beta\approx2.5$"）。
+\textbf{The earlier framing (``transport to $\beta=2.5$'') is withdrawn}（\S\ref{sec:transport-withdrawn}）：extending the window is self-negating —— 常数地板延到 $\beta\to\infty$ 会自我否定，故 $\beta=2.5$ 处的任何读数（$\bar u\approx63.8>1$）只用来显示窗的边界，不是待攻的目标；
+残余缺口 = 一条\textbf{一致陈述} $\forall\beta\in[1/48,2.5]\,\forall L,a:G''_{k=0}/a^2\ge\delta^2>0$（C5 的量词形）；它的 $(E\text{-}I2)$ 读法 $\exists\,\delta,c>0,\ \inf_{L,a}(\Lambda_\star-m_1^2)\ge\delta,\ \inf_L m_1^2\ge c$ 是同一等价类的第三个名字。早先把它命名为 $\Delta_0>0$ 的读法\textbf{已撤回}：$\Delta_0$ 在曲率槽（$\delta_{\mathrm{curv}}:=a^2\Delta_0^2+W_{\mathrm{full}}$，无量纲）、$\Lambda_\star$ 在谱测度 $\nu$ 上（质量²），且 $H1\not\Rightarrow I2$（\codep{T01:78}）；$\Delta_0>0$ 还在四模型上 3/4 败（\codep{N12-VERDICT.md}）。\LM
+\item \textbf{$L=2$ 的 $G''(0)>0$ 在 $\beta=2.5$ 上只有 \LE。} \codep{O24-L2-PUSH.md:7} 把该文件整段标注为
+\LE{}（"本轮实测，日志可逐行核"），\codep{:98} 又写明"单体积、单 $\beta$，不外推到 $L=4,6,8$"；
+并且 \codep{T04-L2ANALYTIC.md:145--153} 给出 $E[\kappa^2]=\infty$（\LT，与实测尾指数 $\alpha\approx1.97\le2$ 逐字一致）
+$\Rightarrow$ $\Delta/\sigma$ 的\textbf{数值无意义}，而\textbf{符号仍成立}（\codep{LOOP-RUNBOOK.md:4502}：median/winsor 稳健估计同号，
+$+0.3814$、$+0.3954$）。\textbf{此处不得写成 \LT}：它是实测 + 稳健符号，不是定理。
+\end{enumerate}
+\end{notbox}
+
+\subsection{标签与三条记账规则}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.09\textwidth} L{0.42\textwidth} L{0.42\textwidth}@{}}
+\toprule
+标签 & 含义 & 本文用法 \\
+\midrule
+\LT & 定理（已证；若依赖一个命名输入必须写明） & 只用于有证明文件与行号的陈述 \\
+\LC & 条件定理 / 依赖未证条件 & 逐条写明缺的是哪一条 \\
+\LN & no-go（某读法被否证） & 用于"这条路走不通"的判决 \\
+\LM & 记号、勘误、记账（不改判词） & 用于 $u:=c_f/N$、$f_1^2=a_0D_\infty$ 一类修正 \\
+\LE & 数值 / 实测 / 估计量 & 用于 $L=2$、$\beta=2.5$ 的格点读数 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+三条规则，全文遵守：(1) 每条断言带标签 + 出处文件名（能带行号就带行号）；
+(2) \LC{} 与 \LE{} \textbf{不升格}为 \LT，哪怕它在别处被那样写过；(3) 本文\textbf{不盖完成戳}，
+不用证明结束符，不对 Clay 报任何百分数。引用外部文献时只转载语料内已核过的条目，并标明是否逐字核。
+\textbf{反向纪律同样成立}：写 \LT{} 的每一句都必须已有 \LT{} 归属文件；本轮 $I1$ 只在五个洞全部关闭、$\bar C\equiv N$ 被算出来、
+$[KL]$ 已证之后才写 \LT，且\textbf{不写成任何 mod}（$\bar C$ 是已证值，不是未知常数）。

@@ -1,0 +1,78 @@
+Q06 - does G''(beta)=S-D satisfy an integrable Riccati-type inequality in beta?
+
+S(beta) := E[H+Phi'']  (= E[kappa])      D(beta) := Var(G+Phi') (= Var(F))
+                            G''(beta) = S-D      (H1 <=> S>D)
+
+Measure: dmu_beta = exp(-beta*h + Phi),  h = sum_P (1-ReTr U_P /2)  (Wilson),  Phi = -log J
+(beta-free).  Flow identity for any observable O:
+
+    d/dbeta E[O] = E[d_beta O] - Cov(O,h)                                     [T]
+
+with the pointwise-affine structure  V = beta*h + Phi  =>  F = beta*g + F_Phi,
+kappa = beta*h2 + kappa_Phi,  g := d_t h,  h2 := d_t^2 h  (both beta-free random variables):
+
+    S' = E[h2] - Cov(kappa,h)                       (1)
+    D' = 2 Cov(F,g) - Cov(F^2,h) + 2 E[F] Cov(F,h)  (2)
+
+Both are 3rd-cumulant objects -> not closed in (S,D).  Samples from p19 (%TEMP%/p19_b*.npz,
+L=2, mod A, 4 chains x 5000 sweeps) give g = F_W/beta and h2 = kappa_W/beta directly, so the
+response terms E[h2] and 2Cov(F,g) are measurable; the Cov(.,h) terms are not (h is not stored)
+and are inferred here as residuals against finite-difference S',D'.
+
+usage: py -3.12 q06_riccati.py            (reads %TEMP%/p19_b{1,2.5,4,6}.npz, prints table)
+
+[Q06] beta=1  chains=4  ns=5000  affine check max|F-(F_W+F_Phi)|,|kappa-(kappa_W+kappa_Phi)| = 5.7e-08
+[Q06] beta=2.5  chains=4  ns=5000  affine check max|F-(F_W+F_Phi)|,|kappa-(kappa_W+kappa_Phi)| = 5.7e-08
+[Q06] beta=4  chains=4  ns=5000  affine check max|F-(F_W+F_Phi)|,|kappa-(kappa_W+kappa_Phi)| = 5.7e-08
+[Q06] beta=6  chains=4  ns=5000  affine check max|F-(F_W+F_Phi)|,|kappa-(kappa_W+kappa_Phi)| = 5.7e-08
+
+--- reproduction of p19 (P19-BETA-AT-L2.md sec.0) ---
+ beta     S_jk    S_pub     D_jk    D_pub     G_jk    G_pub    maxrel
+  1.0   0.5723   0.5723   0.2888   0.2888  +0.2835  +0.2835  9.61e-05
+  2.5   1.9348   1.9348   1.5232   1.5232  +0.4116  +0.4116  8.49e-05
+  4.0   3.3529   3.3529   2.8421   2.8421  +0.5108  +0.5108  7.51e-05
+  6.0   5.3242   5.3242   4.7329   4.7329  +0.5913  +0.5913  7.63e-05
+
+--- affine structure: which beta-power carries D and S ---
+ beta  b^2Var(g)/D   2bCov(g,Phi)/D  Var(Phi)/D  Var_b(g) Var_b(F_Phi)   E[h2] E[kap_Phi]   S-afit
+  1.0        0.789           -0.001       0.212    0.2279       0.0613  0.2427     0.3296  -0.0000
+  2.5        0.963            0.003       0.034    0.2348       0.0516  0.6430     0.3274  -0.0000
+  4.0        0.987           -0.005       0.018    0.1754       0.0506  0.7569     0.3252  +0.0000
+  6.0        0.994           -0.004       0.010    0.1307       0.0456  0.8335     0.3232  +0.0000
+
+  identity check  gap=-G': max|gap+G'| = 2.08e-16 ; G'=[0.0951 0.0758 0.055  0.0256] +- [0.0645 0.0313 0.0434 0.1754] (p19 sigma)
+
+--- pointwise derivatives (non-uniform 3-pt stencils; sn = sqrt(sS^2+sD^2)) ---
+ beta        S   Sprime   +-jk   Dprime   +-jk Dprime-Sprime  q=bDp/D  m=bSp/S   m-q*R  Dp<=Sp
+  1.0   0.5723   0.8899 0.0668   0.7948 0.0653       -0.0951    2.752    1.555 +0.1662     yes  gap/sig(G')=-1.48
+  2.5   1.9348   0.9269 0.0324   0.8511 0.0317       -0.0758    1.397    1.198 +0.0979     yes  gap/sig(G')=-2.42
+  4.0   3.3529   0.9626 0.0439   0.9076 0.0432       -0.0550    1.277    1.148 +0.0657     yes  gap/sig(G')=-1.27
+  6.0   5.3242   1.0087 0.1783   0.9832 0.1751       -0.0256    1.246    1.137 +0.0288     yes  gap/sig(G')=-0.15
+  interval averages:
+    [ 1.0, 2.5] mid= 1.75 dD=+0.8230 dS=+0.9084 diff=-0.0854  D/S up
+    [ 2.5, 4.0] mid= 3.25 dD=+0.8793 dS=+0.9454 diff=-0.0661  D/S up
+    [ 4.0, 6.0] mid= 5.00 dD=+0.9454 dS=+0.9857 diff=-0.0403  D/S up
+
+--- 3rd cumulants inferred from (1),(2) ---
+ beta    E[h2]  2Cov(F,g)   +-jk  Cov(kap,h)  Cov(F^2,h)
+  1.0   0.2427     0.4553 0.0087     -0.6472     -0.3395
+  2.5   0.6430     1.1756 0.0343     -0.2839     +0.3245
+  4.0   0.7569     1.3993 0.0464     -0.2057     +0.4917
+  6.0   0.8335     1.5653 0.0577     -0.1752     +0.5822
+
+--- beta-dependence of D/S: competing closures ---
+  [P1] 1-D/S=c*beta^-p   c=0.4342 p=+0.7285 -> D/S->1 (slow); R(10)=0.919 R(20)=0.951 R(100)=0.985
+  [P2] D/S~beta^s        s=+0.3231 -> unbounded, crossing exists
+  [P3] structural D=Ab^2+Bb+C, S=lb+e: D=[ 0.01884  0.75694 -0.48697] res=9.2e-05 | S=[ 0.9512  -0.41424] res=3.8e-02
+       D=S at beta=[10.67];  D'=S' at beta=5.16   D(6)pred=4.7329 (data 4.7329)
+  [P4] R=Rs*(b/6)^(q-m), q-m(b=6)=+0.110 -> D=S at beta=17.56
+  [P5] G''=S-D quadratic in beta: zeros>1 at [17.31] (p19_fit quotes 17.31)
+  [P6] interval gap [-0.0854 -0.0661 -0.0403] vs midpoint -> zero at beta=7.93
+
+--- verdict ---
+  (a) pointwise D'<=S' on [1,6]: yes ; interval-averaged: yes ; provable from (S,D): NO (3rd cumulants)
+  (b) D/S=[0.505 0.787 0.848 0.889] (monotone up, <1 on [1,6]); 1-D/S ~ beta^-0.73 (p<1 => no
+      crossing in window); structural closure puts D=S at beta=10.7
+  (c) Cov(kap,h), Cov(F^2,h) required -> not closed in (S,D); flow identity is single-beta,
+      so one run storing h closes them exactly (no hierarchy).
+  acid test: free field S=D and every term above vanishes -> comparison is boundary-tight.

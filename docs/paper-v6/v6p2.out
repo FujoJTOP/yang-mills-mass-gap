@@ -1,0 +1,1046 @@
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(main.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/base\inputenc.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/lm\lmodern.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+ (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amscls\amsthm.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mathtools.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tools\calc.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/mathtools\mhsetup.sty))
+ (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tools\bm.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/etoolbox\etoolbox.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype-pdf
+tex.def)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/microtype\microtype.cfg
+)) (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/xcolor\xcolor.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\color.cfg)
+
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
+)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/graphics\mathcolor.ltx)
+) (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/colortbl\colortbl.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tools\array.sty))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tools\tabularx.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tools\longtable.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcolorbox.sty
+
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/frontendlayer\tikz.
+sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgf.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfrcs.st
+y
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-common.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfutil
+-latex.def)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfrcs.
+code.tex
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf\pgf.revision.tex)
+))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/basiclayer\pgfcore.
+sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.c
+fg)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/systemlayer\pgfsys.
+sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s.code.tex
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+libraryfiltered.code.tex))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgf.c
+fg)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-pdftex.def
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+s-common-pdf.def)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+ssoftpath.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/systemlayer\pgfsy
+sprotocol.code.tex))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+e.code.tex
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathutil.
+code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathparse
+r.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.basic.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.trigonometric.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.random.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.comparison.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.base.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.round.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.misc.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfunct
+ions.integerarithmetics.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathcalc.
+code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmathfloat
+.code.tex))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfint.code.
+tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epoints.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathconstruct.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathusage.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+escopes.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+egraphicstate.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransformations.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+equick.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eobjects.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epathprocessing.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+earrows.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eshade.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eimage.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+eexternal.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+elayers.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+etransparency.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+epatterns.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/basiclayer\pgfcor
+erdf.code.tex)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+shapes.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+plot.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-0-65.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/compatibility\pgfco
+mp-version-1-18.sty))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgffor.st
+y
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/utilities\pgfkeys.s
+ty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgfkeys
+.code.tex))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pgf/math\pgfmath.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/math\pgfmath.code
+.tex))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/utilities\pgffor.
+code.tex))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z\tikz.code.tex
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/libraries\pgflibr
+aryplothandlers.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/modules\pgfmodule
+matrix.code.tex)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pgf/frontendlayer/tik
+z/libraries\tikzlibrarytopaths.code.tex)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tools\verbatim.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/environ\environ.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/trimspaces\trimspaces.s
+ty)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskins.code
+.tex
+Library (tcolorbox): 'tcbskins.code.tex' version '6.9.0'
+
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzfill.image
+.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tikzfill\tikzlibraryfil
+l.image.code.tex))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbskinsjigsa
+w.code.tex
+Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '6.9.0'
+))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tcolorbox\tcbbreakable.
+code.tex
+Library (tcolorbox): 'tcbbreakable.code.tex' version '6.9.0'
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/pdfcol\pdfcol.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.s
+ty)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/enumitem\enumitem.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/tools\multicol.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk\CJKutf8.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifpdf.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk\CJK.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk/mule\MULEenc.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk\CJK.enc))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmr.fd)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/caption\ltcaption.sty))
+ (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/titlesec\titlesec.sty)
+ (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty)
+ (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/kvsetkeys\kvsetkeys.sty
+)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefine
+keys.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.s
+ty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds
+.sty))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettit
+lestring.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/stringenc\stringenc.s
+ty) (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+) (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+) (C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\puenc.def)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc
+.sty)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfil
+echeck.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquec
+ounter.sty)))
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdf
+tex.def) (main.aux)
+*geometry* driver: auto-detecting
+*geometry* detected driver: pdftex
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-cmr.cfg)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mk
+ii
+[Loading MPS to PDF converter (version 2006.09.02).]
+)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-b
+ase.sty
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.c
+fg)) (main.out) (main.out)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.bdg)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.enc)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\UTF8.chr)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\c70gbsn.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/cjk/UTF8\c70gbsn.fdx)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/lm\ot1lmr.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/lm\omllmm.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/lm\omslmsy.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/lm\omxlmex.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsa.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msa.cfg)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\umsb.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-msb.cfg)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd) (main.toc
+ [1{C:/Users/hooya/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/h
+ooya/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ec.enc}{C:/Users/hooya
+/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.enc}{C:/Users/hooya
+/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/Users/hooya/App
+Data/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}{C:/Users/hooya/AppDat
+a/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}{C:/Users/hooya/AppDat
+a/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathex.enc}]) (sec01-position.tex
+[2]
+Underfull \hbox (badness 6725) in paragraph at lines 55--55
+[]|[][][]\C70/gbsn/bx/n/10/ff ^^H$[] \OMS/lmsy/m/n/10 ^^Q
+
+Overfull \hbox (6.65639pt too wide) in paragraph at lines 55--55
+[]|$\T1/lmtt/m/n/9 PROOF-[]P3-[]UNCONDITIONAL . 
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
+[]|[][][]\C70/gbsn/bx/n/10/ff ^^H \C70/gbsn/bx/n/10/5d �
+
+Underfull \hbox (badness 10000) in paragraph at lines 55--55
+[]|\T1/lmr/m/n/10 (+13) Theorem
+
+Overfull \hbox (13.2179pt too wide) in alignment at lines 55--55
+[][][][][] 
+
+Underfull \hbox (badness 10000) in alignment at lines 88--88
+[][][][] 
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 116--116
+[]|\C70/gbsn/m/n/9/7b I
+
+Overfull \hbox (18.44865pt too wide) in alignment at lines 116--116
+[][][][] 
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 116--117
+[][] 
+[4]
+Underfull \hbox (badness 10000) in alignment at lines 203--203
+[][][] 
+[5]) (sec02-i1.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\fcolorbox' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\equiv' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Underfull \hbox (badness 2088) in paragraph at lines 19--26
+\T1/lmtt/m/n/9 YANG-[]MILLS-[]MASTER . md : 42$\C70/gbsn/bx/n/10.95/ff ^^H\T1/l
+mr/m/n/10.95 (+20) 2026-11-24 \C70/gbsn/m/n/10.95/5b � \C70/gbsn/bx/n/10.95/8b 
+� \C70/gbsn/bx/n/10.95/66 � \C70/gbsn/bx/n/10.95/6b c \C70/gbsn/bx/n/10.95/ff 	
+ \C70/gbsn/bx/n/10.95/66 � \C70/gbsn/bx/n/10.95/62 � \T1/lmr/m/n/10.95 (+20) P3
+ \C70/gbsn/bx/n/10.95/68 ^^G \C70/gbsn/bx/n/10.95/62 ^^P\T1/lmr/m/n/10.95 (+20)
+ "[\C70/gbsn/bx/n/10.95/67 a \C70/gbsn/bx/n/10.95/4e �\T1/lmr/m/n/10.95 (+20) /
+\C70/gbsn/bx/n/10.95/5f � \C70/gbsn/bx/n/10.95/91 � \C70/gbsn/bx/n/10.95/8b �\T
+1/lmr/m/n/10.95 (+20) ]\C70/gbsn/bx/n/10.95/ff ^^L \C70/gbsn/bx/n/10.95/4e ^^M 
+\C70/gbsn/bx/n/10.95/51 � \C70/gbsn/bx/n/10.95/66 /
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\fcolorbox' on input line 28.
+
+[6]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 56.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 56.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 56.
+
+
+Overfull \hbox (29.86035pt too wide) detected at line 65
+[][][]\OML/lmm/m/it/10.95 r[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 ^^L\OT1/lm
+r/m/n/10.95 ) = []\OML/lmm/m/it/10.95 a[][]\OT1/lmr/m/n/10.95 1 \OMS/lmsy/m/n/1
+0.95 ^^@ \OML/lmm/m/it/10.95 O\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 u\OT1/lmr
+/m/n/10.95 )[]  \OMS/lmsy/m/n/10.95 ^^U  []\OT1/lmr/m/n/10.95 (2\OML/lmm/m/it/1
+0.95 N\OT1/lmr/m/n/10.95 )[] \OML/lmm/m/it/10.95 > \OT1/lmr/m/n/10.95 0\OML/lmm
+/m/it/10.95 ;  [] A[]\OT1/lmr/m/n/10.95 (\OML/lmm/m/it/10.95 L\OT1/lmr/m/n/10.9
+5 )  \OMS/lmsy/m/n/10.95 ^^U  []\OT1/lmr/m/n/10.95 (2\OML/lmm/m/it/10.95 N\OT1/
+lmr/m/n/10.95 )[]\OML/lmm/m/it/10.95 ;  a[] \OT1/lmr/m/n/10.95 = (2\OML/lmm/m/i
+t/10.95 N\OT1/lmr/m/n/10.95 )[]\OML/lmm/m/it/10.95 s \OT1/lmr/m/n/10.95 (\OML/l
+mm/m/it/10.95 s \OMS/lmsy/m/n/10.95 2 \U/msb/m/n/10.95 Z[]\OT1/lmr/m/n/10.95 )\
+OML/lmm/m/it/10.95 :
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 76.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 76.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 83.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\beta' on input line 83.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 83.
+
+[7]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 104.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\equiv' on input line 104.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 104.
+
+[8]) (sec03-l1.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+[9]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 31.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 31.
+
+[10]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 108.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 108.
+
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/amsfonts\ueuf.fd)
+(C:\Users\hooya\AppData\Local\Programs\MiKTeX\tex/latex/microtype\mt-euf.cfg)
+[11]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 156.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 156.
+
+) (sec04-delta.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\kappa' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\kappa' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\delta' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\kappa' on input line 6.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ln' on input line 6.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\kappa' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ln' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 14.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 20.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\delta' on input line 20.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ln' on input line 20.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\kappa' on input line 20.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ln' on input line 20.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Delta' on input line 20.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 20.
+
+[12]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\fcolorbox' on input line 43.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\fcolorbox' on input line 43.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 60.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 60.
+
+
+Underfull \hbox (badness 10000) in alignment at lines 75--75
+[][][][] 
+
+Overfull \hbox (0.60744pt too wide) in paragraph at lines 88--93
+\T1/lmtt/m/n/9 md$\C70/gbsn/bx/n/10.95/ff ^^[$\T1/lmtt/m/n/9 Z12-[]FIXC . md$\C
+70/gbsn/bx/n/10.95/ff ^^[$\T1/lmtt/m/n/9 M07-[]WINDOW2 . md$ \T1/lmr/m/n/10.95 
+(-20) �0 \C70/gbsn/bx/n/10.95/52 $ \C70/gbsn/bx/n/10.95/8b � \T1/lmr/m/n/10.95 
+(-20) 5--6\C70/gbsn/bx/n/10.95/ff 	 \C70/gbsn/bx/n/10.95/30 ^^B \C70/gbsn/bx/n/
+10.95/6b � \C70/gbsn/m/n/10.95/56 � \C70/gbsn/m/n/10.95/5b P \C70/gbsn/bx/n/10.
+95/53 ^^V \C70/gbsn/bx/n/10.95/70 � \C70/gbsn/bx/n/10.95/76 � $[] \OT1/lmr/m/n/
+10.95 (-20) = 2$ \C70/gbsn/bx/n/10.95/66 / \C70/gbsn/bx/n/10.95/7c �[][] \C70/g
+bsn/bx/n/10.95/78 n[][] \C70/gbsn/bx/n/10.95/50 <[][] \C70/gbsn/bx/n/10.95/ff ^
+^H$[]\OT1/lmr/m/n/10.95 (-20) (1\OML/lmm/m/it/10.95 ; f[]f[]\OT1/lmr/m/n/10.95 
+(-20) ) =
+[13]) (sec05-algebra.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\log' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\to' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\eta' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 18.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\eta' on input line 18.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 18.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\exp' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\log' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\infty' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ge' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\<def>-command' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\@tempb' on input line 32.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 32.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
+[]|[][][]\C70/gbsn/bx/n/10/ff ^^H \C70/gbsn/bx/n/10/89 �
+
+Underfull \hbox (badness 10000) in paragraph at lines 57--57
+[]|[][][]\C70/gbsn/bx/n/10/ff ^^H \C70/gbsn/m/n/10/73 �
+
+Underfull \hbox (badness 10000) in alignment at lines 57--57
+[][][][] 
+[14]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 73.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 73.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 73.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 73.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 73.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\infty' on input line 73.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 73.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 97.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\delta' on input line 97.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 97.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 97.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 97.
+
+
+Overfull \hbox (17.85313pt too wide) in alignment at lines 112--112
+[][][][][] 
+[15]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 124.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 124.
+
+) (sec06-kl.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 6.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 27.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `subscript' on input line 27.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 27.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 27.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Leftarrow' on input line 27.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 27.
+
+[16]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 52.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Leftarrow' on input line 52.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 52.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 52.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\Rightarrow' on input line 52.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 52.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 52.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 52.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 70--70
+[]|\C70/gbsn/m/n/9/7b I
+
+Overfull \hbox (15.231pt too wide) in alignment at lines 70--70
+[][][] 
+
+Overfull \hbox (17.0pt too wide) in paragraph at lines 70--71
+[][] 
+[17]
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 135.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 135.
+
+
+Overfull \hbox (15.53908pt too wide) in alignment at lines 152--152
+[][][][][] 
+[18]
+Underfull \hbox (badness 10000) in paragraph at lines 193--193
+[]|[][][]\C70/gbsn/bx/n/10/ff ^^H \C70/gbsn/bx/n/10/7f �
+
+Underfull \hbox (badness 1092) in paragraph at lines 193--193
+[]|$\OML/lmm/m/it/10 m >
+
+Underfull \hbox (badness 10000) in alignment at lines 193--193
+[][][][][] 
+
+Underfull \hbox (badness 10000) in alignment at lines 220--220
+[][] 
+[19]) (sec07-assembly.tex
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 4.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\fcolorbox' on input line 4.
+
+[20]
+Overfull \hbox (27.68436pt too wide) in paragraph at lines 43--43
+[]|\T1/lmtt/m/n/9 P3-FOURWALL-DERIVATION.md 
+
+Overfull \hbox (65.0343pt too wide) in paragraph at lines 43--43
+[]|\T1/lmtt/m/n/9 P3-CYLINDER-RESIDUE.md\C70/gbsn/bx/n/9/ff ^^[\T1/lmtt/m/n/9 Y
+01-KL.md|  
+
+Overfull \hbox (27.23438pt too wide) in paragraph at lines 43--43
+[]|\T1/lmtt/m/n/9 Z12-FIXC.md\C70/gbsn/bx/n/9/ff ^^[\T1/lmtt/m/n/9 Z08-HOLEC.md
+|  
+
+Underfull \hbox (badness 10000) in alignment at lines 43--43
+[][][][][] 
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 50.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\equiv' on input line 50.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 50.
+
+[21] [22]
+Overfull \hbox (110.86934pt too wide) in paragraph at lines 140--140
+\T1/lmtt/m/n/9 P3-FOURWALL-DERIVATION.md:18\C70/gbsn/bx/n/9/ff ^^[\T1/lmtt/m/n/
+9 P3-AUDIT-CORRECTED.md:57,:131\C70/gbsn/bx/n/9/ff ^^[\T1/lmtt/m/n/9 P3-DRESSED
+-MASS.md:3,:18,:170\C70/gbsn/bx/n/9/ff ^^[\T1/lmtt/m/n/9 P3-CYLINDER-RESIDUE.md
+:67--69\C70/gbsn/bx/n/9/ff ^^[ 
+)
+Overfull \hbox (52.82492pt too wide) in paragraph at lines 199--204
+\C70/gbsn/bx/n/10/4e �[][] �[][] \C70/gbsn/bx/n/10/54 ^^H[][] \C70/gbsn/bx/n/10
+/89 �[][]\T1/lmr/bx/n/10 (-20) . \C70/gbsn/bx/n/10/67 , \C70/gbsn/m/n/10/65 � \
+C70/gbsn/bx/n/10/4e � \C70/gbsn/bx/n/10/53 � \C70/gbsn/bx/n/10/51 � \T1/lmtt/m/
+n/9 docs/paper-v6/\C70/gbsn/bx/n/10/ff ^^H\T1/lmtt/m/n/9 main.tex \C70/gbsn/bx/
+n/10/4e ^^N \T1/lmtt/m/n/9 sec01\T1/lmr/m/n/10 (-20) --\T1/lmtt/m/n/9 sec07\C70
+/gbsn/bx/n/10/ff 	 ^^[ \C70/gbsn/bx/n/10/67 * \C70/gbsn/m/n/10/5b � \T1/lmtt/m/
+n/9 paper-v2\T1/lmr/m/n/10 (-20) /\T1/lmtt/m/n/9 paper-v3\T1/lmr/m/n/10 (-20) /
+\T1/lmtt/m/n/9 paper-v4\T1/lmr/m/n/10 (-20) /\T1/lmtt/m/n/9 paper-v5
+[23] (main.aux) )
+(see the transcript file for additional information)<C:/Users/hooya/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/amsfonts/euler/eufm10.pfb><C:/Users/hooya
+/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu03.pfb><C:/Users/h
+ooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu30.pfb><C:/Use
+rs/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu4e.pfb><C:
+/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu4f.pfb
+><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu50
+.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbs
+nu51.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu
+/gbsnu52.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/g
+bsnu/gbsnu53.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arph
+ic/gbsnu/gbsnu54.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/
+arphic/gbsnu/gbsnu55.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/arphic/gbsnu/gbsnu56.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/font
+s/type1/arphic/gbsnu/gbsnu57.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/
+fonts/type1/arphic/gbsnu/gbsnu58.pfb><C:/Users/hooya/AppData/Local/Programs/MiK
+TeX/fonts/type1/arphic/gbsnu/gbsnu59.pfb><C:/Users/hooya/AppData/Local/Programs
+/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu5b.pfb><C:/Users/hooya/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu5c.pfb><C:/Users/hooya/AppData/Local/
+Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu5d.pfb><C:/Users/hooya/AppData/Lo
+cal/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu5e.pfb><C:/Users/hooya/AppDat
+a/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu5f.pfb><C:/Users/hooya/Ap
+pData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu60.pfb><C:/Users/hooy
+a/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu61.pfb><C:/Users/
+hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu62.pfb><C:/Us
+ers/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu63.pfb><C
+:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu64.pf
+b><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu6
+5.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gb
+snu66.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsn
+u/gbsnu67.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/
+gbsnu/gbsnu68.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arp
+hic/gbsnu/gbsnu69.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1
+/arphic/gbsnu/gbsnu6a.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/t
+ype1/arphic/gbsnu/gbsnu6b.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fon
+ts/type1/arphic/gbsnu/gbsnu6c.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX
+/fonts/type1/arphic/gbsnu/gbsnu6d.pfb><C:/Users/hooya/AppData/Local/Programs/Mi
+KTeX/fonts/type1/arphic/gbsnu/gbsnu6e.pfb><C:/Users/hooya/AppData/Local/Program
+s/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu6f.pfb><C:/Users/hooya/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu70.pfb><C:/Users/hooya/AppData/Local
+/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu71.pfb><C:/Users/hooya/AppData/L
+ocal/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu72.pfb><C:/Users/hooya/AppDa
+ta/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu73.pfb><C:/Users/hooya/A
+ppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu74.pfb><C:/Users/hoo
+ya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu75.pfb><C:/Users
+/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu76.pfb><C:/U
+sers/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu77.pfb><
+C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu78.p
+fb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu
+79.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/g
+bsnu7a.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbs
+nu/gbsnu7b.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic
+/gbsnu/gbsnu7c.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/ar
+phic/gbsnu/gbsnu7d.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type
+1/arphic/gbsnu/gbsnu7e.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/
+type1/arphic/gbsnu/gbsnu7f.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fo
+nts/type1/arphic/gbsnu/gbsnu80.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTe
+X/fonts/type1/arphic/gbsnu/gbsnu81.pfb><C:/Users/hooya/AppData/Local/Programs/M
+iKTeX/fonts/type1/arphic/gbsnu/gbsnu82.pfb><C:/Users/hooya/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu83.pfb><C:/Users/hooya/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu84.pfb><C:/Users/hooya/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu85.pfb><C:/Users/hooya/AppData/
+Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu88.pfb><C:/Users/hooya/AppD
+ata/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu89.pfb><C:/Users/hooya/
+AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu8a.pfb><C:/Users/ho
+oya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu8b.pfb><C:/User
+s/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu8c.pfb><C:/
+Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu8d.pfb>
+<C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu8e.
+pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/gbsn
+u8f.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gbsnu/
+gbsnu90.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphic/gb
+snu/gbsnu91.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/arphi
+c/gbsnu/gbsnu94.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/type1/a
+rphic/gbsnu/gbsnu95.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/typ
+e1/arphic/gbsnu/gbsnu96.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts
+/type1/arphic/gbsnu/gbsnu97.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/f
+onts/type1/arphic/gbsnu/gbsnu98.pfb><C:/Users/hooya/AppData/Local/Programs/MiKT
+eX/fonts/type1/arphic/gbsnu/gbsnu99.pfb><C:/Users/hooya/AppData/Local/Programs/
+MiKTeX/fonts/type1/arphic/gbsnu/gbsnu9a.pfb><C:/Users/hooya/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/arphic/gbsnu/gbsnu9f.pfb><C:/Users/hooya/AppData/Local/P
+rograms/MiKTeX/fonts/type1/arphic/gbsnu/gbsnuff.pfb><C:/Users/hooya/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pfb><C:/Users/hooya/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pfb><C:/Users/hooya/AppData/Loc
+al/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb><C:/Users/hooya/AppData/Loca
+l/Programs/MiKTeX/fonts/type1/public/lm/lmbx9.pfb><C:/Users/hooya/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmex10.pfb><C:/Users/hooya/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmmi10.pfb><C:/Users/hooya/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmmi12.pfb><C:/Users/hooya/AppData/Local
+/Programs/MiKTeX/fonts/type1/public/lm/lmmi5.pfb><C:/Users/hooya/AppData/Local/
+Programs/MiKTeX/fonts/type1/public/lm/lmmi6.pfb><C:/Users/hooya/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/hooya/AppData/Local/Pr
+ograms/MiKTeX/fonts/type1/public/lm/lmmi8.pfb><C:/Users/hooya/AppData/Local/Pro
+grams/MiKTeX/fonts/type1/public/lm/lmmi9.pfb><C:/Users/hooya/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/hooya/AppData/Local/Progr
+ams/MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/hooya/AppData/Local/Progra
+ms/MiKTeX/fonts/type1/public/lm/lmr5.pfb><C:/Users/hooya/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/hooya/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/hooya/AppData/Local/Programs/MiK
+TeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTe
+X/fonts/type1/public/lm/lmr9.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/lm/lmri10.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/
+fonts/type1/public/lm/lmri9.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/lm/lmsy10.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/lm/lmsy6.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fo
+nts/type1/public/lm/lmsy7.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fon
+ts/type1/public/lm/lmsy8.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/font
+s/type1/public/lm/lmsy9.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/lm/lmtk10.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/lm/lmtt10.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts
+/type1/public/lm/lmtt9.pfb><C:/Users/hooya/AppData/Local/Programs/MiKTeX/fonts/
+type1/public/amsfonts/symbols/msam10.pfb><C:/Users/hooya/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
+Output written on main.pdf (23 pages, 1527305 bytes).
+Transcript written on main.log.
+pdflatex: major issue: So far, you have not checked for MiKTeX updates.

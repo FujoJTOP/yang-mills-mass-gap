@@ -1,0 +1,173 @@
+% =====================================================================
+%  §8  Errata
+% =====================================================================
+\section{The day's errata: 26 normalization, coordinate, convention and enclosure errors}
+\label{sec:errata}
+
+The campaign caught 26 instances of ``a quantity placed where it does not belong'' in a single day.
+They are not a collection of typos but twenty-six instances of one family: \textbf{putting a quantity
+where it does not belong} (the lesson of \code{LOOP-RUNBOOK.md} \S10.17, quoted verbatim). Several of
+them decided whether a verdict could be pronounced at all, so each is written as
+``wrong $\to$ right $\to$ source'', with a marker for the ones that changed a verdict.
+
+\vspace{2pt}
+{\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.05}
+\begin{longtable}{@{}>{\raggedleft\arraybackslash}p{0.45cm} >{\raggedright\arraybackslash}p{1.95cm} >{\raggedright\arraybackslash}p{4.15cm} >{\raggedright\arraybackslash}p{4.9cm} >{\raggedright\arraybackslash}p{3.65cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Kind} & \textbf{Wrong} & \textbf{Right} & \textbf{Source}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{\#} & \textbf{Kind} & \textbf{Wrong} & \textbf{Right} & \textbf{Source}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+1 & normalization & the number $c=12$--$18$ for $m/\Lambda$ & $c=6.3(3)$; main cause: the corpus value
+$ma=1.073(88)$ was taken as the physical $0^{++}$ (too large by $1.89\times$); secondary cause:
+$\Lambda$ taken as $200$--$240$ MeV instead of $263(4)(9)$ & \code{L2-GLUEBALL-LAMBDA.md};
+\code{LOOP-RUNBOOK.md} \S10.16 \textbf{(verdict changed)}\\
+2 & convention & $m/\Lambda=21$--$25$ (\code{a10}) & withdrawn: two independent errors $\times1.889$ and
+$\times0.558$, net $3.38$ (matching the measured ratio) & \code{LOOP-RUNBOOK.md} \S10.17
+\textbf{(verdict changed)}\\
+3 & domain & using two-loop running to invert $\Lambda_{\mathrm{MS}}$ at $g^{2}=1$
+($\beta=6$, $\mathrm{SU}(3)$) & invalid: gives $147$ MeV against the physical $263$ MeV (off by
+$1.79\times$); the two-loop formula is right, the domain is wrong & \code{LOOP-RUNBOOK.md} \S10.17\\
+4 & coordinate & $\lambda\sim1$ (Balaban's stopping point, reading $g^{2}$) and $\tH=1$ (lower edge of the
+crossover, reading $\beta N$) treated as the same $1$ & same name, different coordinates, differing by
+exactly $2N^{2}$ ($\mathrm{SU}(3)$: $18$; $\mathrm{SU}(2)$: $8$); one must cross $2.47\times$
+(physical point) / $18\times$ (lower edge), not $7.3\times$ & \code{BC-CHAIN.md}:90;
+\code{LOOP-RUNBOOK.md} \S9.8\\
+5 & numerical & $\Gpp(\beta=2.5)=+0.5427$ & $+0.135995$: the second-order term of $\sin(\rho/2)u$, namely
+$s\cos(r/2)/(2r)$, was double counted; $u''=0$ and $\rho'=0$ make it vanish. The test is the archived
+$E[H]\equiv0$ & \code{H1A-EXACT.md} \S2.4\\
+6 & normalization & $Q(\infty)=0.1099$ & $0.2667$ (since $0.1099=0.32957/\lambda_1$, a double error from
+dividing the 13-point trapezoid by $\lambda_1$); plus $Q\propto\beta^{1.14}$, $p=0$, and the threshold
+$e^{-Q}\approx0.77$ instead of $0.90$ & \code{A3-Q-SCALING.md}; \code{LOOP-RUNBOOK.md} \S10.8
+\textbf{(verdict changed)}\\
+7 & norm & reading $L^{4}$ as ``curvature blow-up'' & $L^{4}$ is the matrix dimension: bounding the
+operator norm by the trace loses exactly $\dim=3E=12L^{4}$; measured $\mathrm{tr}/$row-sum
+$=126/1642/10364$ with row sums $=3.51/4.31/3.40=O(1)$ & \code{DENSITY-D.md}; \code{LOOP-RUNBOOK.md} \S9.4\\
+8 & sup/inf & using $d=9.375$ as a $\sup$ & it is a \emph{lower} bound: the correct interval is
+$d\in[3.62,6]\beta^{2}$ ($\beta=2.5$: per plaquette $[22.64,37.5]$); exponents and verdicts unchanged,
+the constant was underestimated by $\ge2.2\times$ & \code{R3-L4.md}; \code{LOOP-RUNBOOK.md} \S9.9\\
+9 & normalization & $\operatorname{Hess}\succeq-(4.8/N)\beta$; later $-(2.9/N)\beta$ & the first is the
+graph-cardinality bound without symmetrization ($\sup\lambda_{\max}=0.752$--$0.763$); the second
+symmetrizes ($\tfrac12[\lambda,\lambda]$) but still sums per plaquette (missing cross-link blocks, a
+factor $8/3$) $\Rightarrow$ the truth is $-8\beta/N$; consequently $\dot\lambda_0$ changes from $-3.51$
+to $-6.29$, threshold $\beta<N^{2}/64$ & \code{AT-STAR.md} E3; \code{MC-METRIC.md} E1;
+\code{LOOP-RUNBOOK.md} \S9.7\\
+10 & coordinate & $120\times$ and $13.3\times$ (distance to the SZZ radius) & $\beta_W=N^{2}\beta_A$;
+correct values $27.6\times(\mathrm{SU}(2))$ / $30.4\times(\mathrm{SU}(3))$, i.e.\ about $30\times$.
+Consequently $1/32\to8.9\times$ should read $19$--$20\times$, and $\tH<N/48$, $\lambda\approx7.3$ should
+read $\lambda>96$, $\lambda\approx3.2$ & \code{BETA-CONVENTION.md}; \code{LOOP-RUNBOOK.md} \S9.8
+\textbf{(verdict changed)}\\
+11 & normalization & using $u_{P3}=c_1/c_0$ as the per-tile weight & $u_{\mathrm{tile}}=I_2/I_1=u_{P3}/2$;
+hence $m_1a(2.5)=+2.715438$, not $-0.057151$ & \code{R4-PERCENT.md} E7; \code{LOOP-RUNBOOK.md} \S9.3\\
+12 & convention & $\beta_{\mathrm{tube}}=2.446918$ and ``off by $2.12\%$'' & withdrawn: a threefold
+misalignment ($u_{P3}$ normalization $\times$ $|X|=1$ $\times$ threshold $1\neq a$); the direction is not
+``$2\%$ off'' but \textbf{$111\%$ over}; correct $\beta_c^{KP}\le1.182227$ (per site), optimal $a=1/6$.
+Also the tabulated $\varphi(\text{cube})$ $2.03\times10^{-3}$ should be $1.916\times10^{-3}$ &
+\code{R4-PERCENT.md}; \code{LOOP-RUNBOOK.md} \S9.3; \code{AUDIT-R5B.md} \textbf{(verdict changed)}\\
+13 & combinatorics & plaquette adjacency number $\Delta=12$ (a 3D value) & $\Delta=20$ ($4(2d-3)$,
+verified by brute force for $d=2,3,4,5\to4,12,20,28$); the $\kappa$ upper bound moves from $48$ to $76$,
+so $\kappa\le4.3307$ and the interval is $[1.4012,4.3307]$; also $\inf_A a_A^{1/A}$ was measured to be
+increasing, so it should read $\lim$ & \code{Q5-KAPPA.md}; \code{LOOP-RUNBOOK.md} \S11.40
+\textbf{(verdict changed)}\\
+14 & dimension & $\mu^{2}=\delta^{3}_{\perp}(0)$ ($L^{-3}$) read directly as $\mu^{2}$ ($L^{-2}$) &
+$\mu^{2}=\varepsilon\,\delta^{3}_{\perp}(0)=1/\varepsilon^{2}$; exactly one power of $a$ is missing (the
+curve delta normalization $\delta_C=a^{-1}$), and it is not a convention that may be dropped &
+\code{MU-3-RENORM.md} \S1; \code{MU-4-LATTICE.md} \S1.3, \S4\\
+15 & sign & \code{(8.4)} giving $G_R=4\pi g^{2}NR\,G/\varepsilon^{2}$ coexisting with
+$\sigma=+2g^{2}N/\varepsilon^{2}$ from \code{(8.5)} & they differ by a sign: either \code{(8.4)} needs a
+minus on the right, or $(\star)$ does; the sign of $(\star)$ is not fixed & \code{MU-3-RENORM.md} \S1.2\\
+16 & dimension & the one-dimensional reduction passing $f''$ off as $\partial_\mu\delta/\delta\sigma$
+($L^{-2}$) & the operator is $L^{-3}$ as a whole; the power-law exponent moves from $p=-1$ to $p=0$
+(which voids the ``rigid exact solution'' of $c_3$) & \code{SP-A-SPDE.md} \S0; \code{RV-3-COVARIANCE.md}
+\S2; \code{LOOP-RUNBOOK.md} \S11.3\\
+17 & convention & $0.2688$ taken as $\Gpp$ & it is $1/\operatorname{Var}(a)$ ($\operatorname{Var}=3.719824$);
+$\Gpp$ at $\beta=0$ is $1/(2\,\mathrm{Cin}\,2\pi)=0.20511530$. The multiplicative reading
+$D/S:=1-\Gpp\operatorname{Var}(a)$ gives $0.2370$ at $\beta=0$ while the true defect ratio is $0$ &
+\code{DS-RATIO.md} (line 209)\\
+18 & dimension & $(\star_1')$ right side $c_1f''+c_3f'/R=c_2g^{2}Nf^{2}/R^{3}$ & it should be
+$c_2g^{2}Nf^{2}/R^{2}$ (one $R$ too many); this error alone voids the ``rigid exact solution'', whose
+amplitude is an artefact of the wrong scaling & \code{C3-COEFF.md} \S1\\
+19 & geometry & taking the intersection angle of the figure-eight to be $\pi/2$ & coplanarity plus a
+single common point forces tangency, with oriented angle $\pi$; $b_0=2\cos(\varphi/2)=0$ $\Rightarrow$
+RHS $\equiv0$, and $\rho_2=0$ (the $\partial^{2}/\partial R_2^{2}$ slot is permanently empty) &
+\code{FIG8.md} \S1.1, \S1.4, \S2.3 \textbf{(verdict changed)}\\
+20 & normalization & \code{na2}'s chain averages ``decreasing in $L$'' & $X_{na2}=X_{\text{true}}/L^{2}$
+(too small by $L^{2}$); after rescaling $|X|\propto L$ and $X/L\to-0.010$ ($\beta=0.5$); the conclusion
+that all $15/15$ are negative is unchanged & \code{CT-CHAIN.md} \S2.1; \code{NA2-NONDEGENERATE.md}\\
+21 & citation & ``Osterwalder--Seiler 1978 proved area law $\Rightarrow$ gap'' & the abstract proves only
+Wilson's confinement bound and a positive self-adjoint transfer matrix, and \textbf{contains no mass gap};
+the proved implication runs $m>0\Rightarrow$ confinement (Chatterjee 2021) & \code{MU5-SIGMA-M.md}
+\S1.1--\S1.2 \textbf{(verdict changed)}\\
+22 & normalization & $\tH<1/24$ (as the SZZ-provable region) & no such display exists in the source; the
+correct reading is $\tH<N/48$ (i.e.\ $\lambda=g^{2}N>96$), and the old $\lambda\approx7.3$ is wrong &
+\code{LIT-CHECK.md} Q3$'$; \code{AUDIT-R1.md} \S A2; \code{LEDGER.md} \#7\\
+23 & bookkeeping & $\sigma a^{2}=\ln(1/u)$; $\sigma>\kappa/a^{2}$ & the $-\kappa$ is missing: correctly
+$c(\beta)=-\log u=\kappa+\sigma a^{2}/\pi$; the version with $\pi$ is wrong & \code{Q4-LOGCONVEX.md};
+\code{LOOP-RUNBOOK.md} \S11.38(4)\\
+24 & normalization & $a^{-1}(\beta=6)=2.91$ GeV (used as the anchor of \code{mu-3}/\code{mu-4}) & $2.243$
+GeV (AT2021 Tab.13); high by $1.30\times$; the direction of the conclusion is unchanged but every number
+that used $2.91$ must be divided by $1.30$ & \code{MU6-NUM.md}; \code{LOOP-RUNBOOK.md} \S11.37\\
+25 & enclosure & $\mathrm{gap}(0)=0.729924127576750\ldots$ with an interval of width $1.4\times10^{-10}$,
+quoted as a rigorous enclosure & $0.729924128620548449$ with width $\pm10^{-55}$: the four molecular
+integrals and their Cauchy tails are valid enclosures, but the quotients $E[g]$, $E[\Phi'']$ were printed
+with collapsed endpoints and the tails never propagated through the division, so the interval did
+\emph{not} contain the truth (it lay $9.05\times10^{-10}$ outside, $6.5$ times its own width); the same
+defect exceeded the $\theta=\pi/2$ width by $50\times$. Found by an independently written interval class,
+and flagged independently from a second pair of coordinates & \code{R10-AUDITCERT.md} \S0, \S3;
+\code{R06-GAPMONO.md} \S4 \textbf{(enclosure corrected)}\\
+26 & bookkeeping & $L=2$ described as a $1\times1\times1\times1$ torus with $16$ links and $2$
+plaquettes & $4L^{4}=64$ links, $6L^{4}=96$ plaquettes, $16$ sites; the $16$-link object is the blocked
+lattice $L_{c}=1$ obtained from $L=2$ by a factor-$2$ blocking. The dimension count $192-48-1=143$
+follows the corrected bookkeeping & \code{R04-L2CERT.md} \S1.0, with \code{O24-L2-PUSH.md}:49 as the
+independent confirmation; the text corrected is \code{Q11-CERT.md} \S6\\
+\end{longtable}
+}
+
+\subsection*{How to use this table (three rules)}
+
+\begin{enumerate}[label=(\roman*)]
+\item The seven rows marked ``(verdict changed)'' (1, 2, 6, 10, 12, 19, 21) are the ones that really
+      affect conclusions; row 25 changes no sign but withdraws an enclosure, which for a certificate is
+      the same kind of damage. The rest affect only numbers or wording. Every row was checked line by
+      line, and none of them changes the sign verdicts of \S\ref{sec:tension} or \S\ref{sec:loop}. \LT
+\item \textbf{Rows 4 and 10 are two attacks of the same disease}: there are two $\beta$ coordinates
+      ($\beta_W=N^{2}\beta_A$). Wherever a bare $1/48$, $1/24$ or $1/32$ appears, first ask ``which
+      $\beta$ is this?''. \LT
+\item \textbf{Rows 14, 16 and 18 are another form of the same disease}: one power of $L$ is dropped or
+      added. Wherever $\delta$, $\delta_C$, $\mu^{2}$ or $\partial_\mu\delta/\delta\sigma$ appears,
+      write the slots down before computing. \LT
+\end{enumerate}
+
+\subsection*{One conclusion-level correction, made the same day}
+
+The table above collects normalization, coordinate and convention errors only. One \emph{conclusion}
+was also withdrawn on the same day and is recorded here rather than in the table: the inference
+``$\beta_c(\mathrm{SU}(3))>\beta^{*}$ implies H1 fails before the $\mathrm{SU}(3)$ scaling window opens,
+hence H1 is the wrong target for the Clay object'' assumed $\beta^{*}$ to be $N$-independent. The $N=3$
+measurement of \eqref{eq:n3} shows $V_0(3)<0$, so $\beta^{*}(3)$ does not exist and H1 holds for every
+$\beta>0$ at $N=3$ --- in particular on the whole $\mathrm{SU}(3)$ scaling region. The structural law of
+\eqref{eq:n32} puts the zero at $\beta^{*}(3)\approx19.6$, i.e.\ $\beta^{*}/\beta_c=1.87\to3.45$; the
+monotonicity of the measured $\delta$ only pushes it further out. \LE
+\src{\code{LOOP-RUNBOOK.md} \S11.39 (lines 1879--1885) for the withdrawn conditional; \eqref{eq:n3} and
+\S\ref{sec:failure} for its falsified antecedent. The measurement is a single-plaquette/patch Monte
+Carlo, not the full theory.}
+
+\vspace{3pt}
+\noindent
+\textbf{One lesson, quoted:} all twenty-six are the same error, ``putting a quantity where it does not
+belong''. The operational form used from now on is: \emph{state the slot, then fill in the numbers}. \LT
+\src{The lesson is verbatim from \code{LOOP-RUNBOOK.md} \S10.17; the ledger is \code{LEDGER.md} (50 main
+rows, 10 contradictions, 11 quantities of undetermined dimension). This table collects only rows whose
+``wrong $\to$ right'' can be checked character by character; the contradictions and the
+undetermined-dimension items of \code{LEDGER.md} are not counted among the 26. Row 25 is the only row of
+the 26 that concerns an \emph{enclosure} rather than a number, and it is recorded here rather than in the
+certificate's own section because the failure mode --- a bound quoted wider than it was --- is the same
+failure mode as the other twenty-five.}
+

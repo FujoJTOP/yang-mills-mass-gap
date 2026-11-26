@@ -1,0 +1,63 @@
+==============================================================================
+I04  f1^2 = |<Omega|O|G>|^2 ,  O = (1/4) tr F^2  =>  [f1^2] = mass^8 (dim 8)
+     f1^2_lat(beta) = a(beta)^8 * f1^2_phys   =>  f1^2_lat ~ exp(-c' beta)
+==============================================================================
+
+[A] two-loop a*Lambda_lat and the exponent 12 pi^2/(11 N^2)
+ N   beta_W        g^2        a*L_lat    dln(aL)/dbeta    -12pi^2/(11N^2)
+ 2     1.00     4.0000   1.439326e-02      -3.11319789        -2.69171029
+ 2     2.00     2.0000   7.282557e-04      -2.90245409        -2.69171029
+ 2     2.50     1.6000   1.725600e-04      -2.86030533        -2.69171029
+ 2     6.00     0.6667   9.665036e-09      -2.76195823        -2.69171029
+ 2    10.00     0.4000   1.643302e-13      -2.73385905        -2.69171029
+ 2   100.00     0.0400  3.843141e-119      -2.69592517        -2.69171029
+
+ 3     1.00     6.0000   7.617652e-02      -1.61780329        -1.19631568
+ 3     2.00     3.0000   1.719442e-02      -1.40705949        -1.19631568
+ 3     2.50     2.4000   8.605268e-03      -1.36491073        -1.19631568
+ 3     6.00     1.0000   9.038025e-05      -1.26656362        -1.19631568
+ 3    10.00     0.6000   6.086307e-07      -1.23846445        -1.19631568
+ 3   100.00     0.0600   4.009306e-54      -1.20053056        -1.19631568
+
+[B] c'(d) = d * 12 pi^2/(11 N^2)  for the three dimension conventions in the corpus
+    d=8 : |<Omega|O|G>|^2 with O dim 4  (ch05 reading, T02-F1SQ.md:17)
+    d=6 : KL-measure atom nu({m1^2})      (A2-SUMRULE-CONDENSATE.md, 'dimension-6 measure')
+    d=2 : ch05 'operator normalized so f1^2 has dimension 2' (A2 note)
+  d  N    c'=d*12pi^2/(11N^2)    f1^2(2.5)/f1^2(6.0)
+  2  2               5.383421             1.5239e+08
+  2  3               2.392631             4.3338e+03
+
+  6  2              16.150262             3.5391e+24
+  6  3               7.177894             8.1399e+10
+
+  8  2              21.533682             5.3933e+32
+  8  3               9.570525             3.5277e+14
+
+[C] same driver as m, different power:  m_lat ~ a*Lambda ~ exp(-12pi^2 beta/(11N^2))
+    => f1^2_lat / m_lat^8  is beta-independent (dimension counting, up to logs)
+    N=3 beta_W=  2.5: a^8=  3.0069e-17  m^8=  3.0069e-17  a^8/m^8=  1.000000
+    N=3 beta_W=  6.0: a^8=  4.4523e-33  m^8=  4.4523e-33  a^8/m^8=  1.000000
+    N=3 beta_W= 10.0: a^8=  1.8829e-50  m^8=  1.8829e-50  a^8/m^8=  1.000000
+
+[D] the target as written:  exists c>0  forall beta: f1^2_lat(beta) >= c ?
+    N=3 beta_W=  2.5: f1^2_lat (F=1) =   3.0069e-17   (falls by  1.000e+00 x w.r.t. beta=2.5)
+    N=3 beta_W=  6.0: f1^2_lat (F=1) =   4.4523e-33   (falls by  6.753e+15 x w.r.t. beta=2.5)
+    N=3 beta_W= 10.0: f1^2_lat (F=1) =   1.8829e-50   (falls by  1.597e+33 x w.r.t. beta=2.5)
+    N=3 beta_W= 20.0: f1^2_lat (F=1) =   4.9605e-93   (falls by  6.062e+75 x w.r.t. beta=2.5)
+    => inf over beta is 0  [NG]; the only legitimate form is the RATIO (a^-8 f1^2 = f1^2_phys)
+
+[E] window anchor (RUN3 via B04.md:204, beta=2.5, L=8, SU(3)): w1=0.3427, C(0)=19.888
+    f1^2_lat(2.5) = w1*M0 = 6.8156   (lattice units, O(1) -- NOT a^-8 suppressed)
+    (a*L)^8 at beta=2.5 = 3.007e-17  =>  the two differ by 2.267e+17 x
+    => the a^8 law is an ASYMPTOTIC ([C], AF-window) statement; the accessible window
+       (beta<=2.5) carries contact/tadpole contamination and cannot confirm it.
+
+[F] strong-coupling floor r0 = (1/4)(2N)^{-2} vs the beta=2.5 lattice value
+    N=2: r0 = 0.015625 ; f1^2_lat(2.5)=6.8156 => ratio 436.2  (window reading: 'floor free' -- but it is a MIXING/TADPOLE number)
+    N=3: r0 = 0.006944 ; f1^2_lat(2.5)=6.8156 => ratio 981.4  (window reading: 'floor free' -- but it is a MIXING/TADPOLE number)
+
+[G] verdict summary
+    f1^2 dim = 8 (mass^8) => lattice beta-scaling = a(beta)^8 = exp(-8*12pi^2 beta/(11N^2))
+    SU(3): c'=9.5705 ; SU(2): c'=21.5337
+    => branch (2) of the task: c(beta) ~ exp(-c' beta), NOT beta-independent (1), NOT 1/beta^n (3)
+    => f1^2 ~ m^8 : same AF driver a(beta), power 8 vs 1

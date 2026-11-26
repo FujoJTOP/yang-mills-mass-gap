@@ -1,0 +1,68 @@
+==============================================================================
+ENV1  Delta = 20   (4D plaquette adjacency degree)
+==============================================================================
+  e*Delta        = 54.365636569180904707   (corpus 54.3656365692)
+  L_t            = 53.000686532808898145   (corpus 53.0006865328)
+  L_t alt form   = 53.000686532808898145   (Delta*(1+1/(Delta-1))^(Delta-1))
+  |L_t - alt|    = 8.2e-29
+
+== S1  the relation  L_t/(e*Delta) ==
+  L_t/(e*Delta)  = 0.97489314716962631774
+  => L_t = e*Delta*(1 - 2.5107%)
+  => e*Delta = L_t*(1 + 2.5753%)
+  first-order asymptotic 1/(2(Delta-1)) = 0.026315789  (= the '2.6%' folklore)
+  exact reduction                        = 0.025106853
+  >>> cb6's 'Delta*e*(1-2.6%)' = 52.9349619226   <-- that is L_t itself, NOT the ratio
+  >>> ratio slot: (1 + 1/19)^19/e = 0.97489314717  = (Delta/(Delta-1))^(Delta-1)/e  [cb6 CB6:102]
+
+== S2  legality: (1+1/m)^m < e for every finite m  =>  L_t < e*Delta strictly ==
+  m=1    (1+1/m)^m = 2.0   vs e = 2.718281828
+  m=2    (1+1/m)^m = 2.25   vs e = 2.718281828
+  m=5    (1+1/m)^m = 2.48832   vs e = 2.718281828
+  m=19   (1+1/m)^m = 2.650034327   vs e = 2.718281828
+  m=100  (1+1/m)^m = 2.704813829   vs e = 2.718281828
+  same route, same object:  rooted-tree Lagrange count
+  r_n := (1/n)*C(n*Delta, n-1) = #rooted trees of size n on degree-Delta graph;  r_n^(1/n) -> L_t
+    n=2     (corpus) 4.472135955
+    n=5     (corpus) 15.09698946
+    n=10    (corpus) 25.52820276
+    n=20    (corpus) 34.93181899
+    n=50    (corpus) 43.64702383
+    n=200   (corpus) 49.96763161
+    n=1000  (corpus) 52.25342124
+    n=5000  (corpus) 52.82487289
+    n=10000   (recomputed) r_n^(1/n) = 52.9072056055   L_t - this = 0.0934809
+    n=40000   (recomputed) r_n^(1/n) = 52.9745468328   L_t - this = 0.0261397
+    n=160000  (recomputed) r_n^(1/n) = 52.9934616652   L_t - this = 0.00722487
+  >> monotone increasing to L_t with no slack left: the Lagrange/Lagrange-type count is TERMINAL at L_t
+
+== S3  gap to 48 ==
+  e*Delta/48      = 1.13261742852
+  L_t/48          = 1.10418096943
+  (L_t/48)/(e*Delta/48) = 0.97489314717
+  needed further reduction from L_t : 0.094351354
+  needed further reduction from e*Delta: 0.11708934
+  beta-window 2N^2/lambda (N=2, Cbar=1): e*Delta -> 0.1471517765 ; L_t -> 0.150941441 ; 48 -> 0.16666666666666666 (=1/12)
+  beta-window 4/lambda (Cbar=N=2 reading): e*Delta -> 0.07357588823 ; L_t -> 0.07547072051
+
+== S4  what would be needed: Delta* <= with L_t(Delta*) = 48 ==
+  Delta*(continuous) = 18.1605728905   (Delta = 20 is 1.10x too big)
+    Delta=18.0 L_t = 47.5634587533
+    Delta=19.0 L_t = 50.2820906009
+    Delta=20.0 L_t = 53.0006865328
+
+== S5  the third number 4.8572: which slot? ==
+  phi^2*e^(1/phi) = 4.8571781362   (corpus 4.857178)
+  alpha* = 0.61803398875 = 1/phi  (a^2+a-1=0) ;  scan max h = 0.205880857294 ;  h(1/phi) = 0.20588085756
+  C := max_alpha [alpha/(1+alpha)]e^-alpha = 0.2058808576 = 1/4.857178136
+  => the criterion reads  lambda_a*K*u <= 1/4.8571781  (a LAMBDA-K-U condition,
+     NOT a bound on lambda_a).  Reading it as 'lambda_a <= 4.8572' gives
+     beta-window 8/4.857178 = 1.64705 > 1/12 = 0.0833333  -> would falsely 'close the gap'
+  >> 4.8572 is the reciprocal of an alpha-optimized coefficient; different slot [T]
+
+== S6  verdict numbers ==
+  lambda_a := e*Delta = 54.3656365692   (definition, P3-FULLREP-KP:89 'one may take')
+  best rigorous upper bound on it = L_t = 53.0006865328   [T]
+  48/53.000687 = 1.104180969  -> still short of 48 by 10.4% ; verdict (b)
+  empirical probe (a_2..a_5 = 20,458,11132,280175): ratios 20,22.9,24.3,25.17 => lambda_* >~ 25.2
+  => L_t is 2.10x above the probed truth: legal but far from tight; 48 is out of reach of this route

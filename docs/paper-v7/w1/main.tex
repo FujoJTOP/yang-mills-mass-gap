@@ -1,0 +1,476 @@
+% =====================================================================
+%  paper-v7/w1 --- the w_1 measurement at beta = 2.5
+%
+%  Build:  pdflatex -interaction=nonstopmode main.tex      (run twice)
+%
+%  Data:   research/v3/species/RUN1.md and research/v3/species/RUN3.md
+%          (verbatim; every number below that comes from RUN1 or RUN3 is
+%          graded  numerical evidence = [E]).
+%  Scope:  one measurement, two limitations, four negatives, one
+%          operator-dependence measurement.
+%          Nothing here is [T]: no statement "w_1 > 0 for all (L,a)" is made,
+%          no Clay claim is made, no completion stamp is put anywhere.
+%  House rules: every numeric claim carries its source file + line;
+%          grades are written as words (with the bracket symbol where the
+%          source itself uses one), never silently upgraded;
+%          the two limitations (S/N, APE) and the four negatives are
+%          mandatory content, not an appendix.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.4cm,top=2.1cm,bottom=2.2cm,headsep=13pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs,array}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\setlist[itemize]{leftmargin=1.5em,itemsep=1.5pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=1.5pt,topsep=3pt}
+\allowdisplaybreaks
+\setlength{\emergencystretch}{2.5em}
+
+\newcommand{\code}[1]{\texttt{\footnotesize\detokenize{#1}}}
+\newcommand{\gr}[1]{\textbf{(#1)}}
+\newcommand{\nogo}{no-go}
+\newcommand{\SU}{\mathrm{SU}}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize $w_1$ at $\beta=2.5$: what is measured, what is not}
+\fancyhead[R]{\footnotesize\thepage}
+\setlength{\headheight}{13pt}
+
+\begin{document}
+
+\begin{center}
+  {\LARGE\bfseries The $w_1$ measurement at $\beta=2.5$\par}
+  \vspace{0.35em}
+  {\large\bfseries A first direct value, two limitations, and what it does not prove\par}
+  \vspace{0.45em}
+  \rule{0.62\textwidth}{0.5pt}\par
+  \vspace{0.4em}
+  {\small Yang--Mills campaign $\cdot$ paper vii, sub-note \code{w1} $\cdot$ 2026-11-25 $\cdot$
+   data \code{RUN1.md} and \code{RUN3.md} (verbatim)\par}
+  \vspace{0.15em}
+  {\small No completion stamp anywhere in this text; no Clay percentage is reported\par}
+\end{center}
+
+\vspace{0.2em}
+
+\noindent
+\textbf{The three sentences of this note.} At $\beta=2.5$, $\SU(2)$ Wilson action, $L_s=6$ and $8$, $L_t=12$,
+the \textbf{direct value} of $w_1=f_1^2/M_0$ is measured for the first time: $w_1(L=6)=0.373\pm0.018$, $w_1(L=8)=0.342\pm0.015$;
+the two volumes differ by $8.3\%$, and the margin over the threshold $r_0=\tfrac12(2N)^{-2}=1/32$ is $10.94\times$.
+\textbf{But these numbers carry two hard limitations}: the signal-to-noise $S/N(2)=2.8$ ($L=6$) and $5.9$ ($L=8$) both
+\textbf{fall short of $\ge10$};
+the 3D-APE levels $n=1,\dots,4$ kill the time correlation outright ($C(1)/C(0)\sim 10^{-3}$), and at those levels $w_1$ \textbf{is undefined}.
+\textbf{And}: $w_1$ and the mass $m$ do not imply each other, $w_1$ is not a function of $\operatorname{Spec}(H)$, $w_1$ is discontinuous
+in the KL weak topology, and $w_1$ depends on the operator base $O$ ($0.343$ on the raw base against $0.017$ on the spatially smeared base);
+\textbf{therefore this measurement does not prove Clay} (\S\ref{sec:not}, where each of the four negative faces is given a model).
+
+\medskip
+{\small
+\textbf{Grade vocabulary (words only throughout; symbols only where the source tags one).} \emph{Numerical evidence} $=$ measured, unproved;
+\emph{theorem} $=$ proved; \emph{proved within a model} $=$ a computation exact on a toy model; \emph{\nogo} $=$ a structural conclusion
+that a class of approaches cannot work; \emph{precise missing step} $=$ the step that is stated precisely but not proved.
+Every $w_1$ number appearing in this note is \textbf{numerical evidence}; not one of them is a theorem.
+}
+
+\section{What is measured}\label{sec:what}
+
+\textbf{Object measured.} The one object measured is a dimensionless ratio
+\begin{equation}\label{eq:w1}
+  w_1 \;=\; \frac{f_1^2}{M_0},
+  \qquad
+  M_0 \;:=\; C(0)\;=\;\operatorname{Var}(O),
+  \qquad
+  O \;=\; \tfrac14\operatorname{tr}F^2 ,
+\end{equation}
+i.e.\ the weight of the lightest $0^{++}$ atom inside the source $O$, as a fraction of the total variance of the source. It is an
+\textbf{atom fraction}, not an atom mass, and not a mass gap.
+
+\textbf{Estimator (conventions pinned down, verbatim from \code{RUN1.md} \S2, lines 33--39).}
+\begin{align}
+  P_n(x) &= \frac13\sum_{i<j\le 3}\tfrac12\operatorname{Re}\operatorname{tr}U_p(x)
+     \quad\text{($U$ is 3D-APE: spatial links only, $\alpha=0.5$, $n$ steps)},\\
+  S_n(t) &= \sum_{x\in\text{time slice }t} P_n(x,t) \quad\text{(zero momentum)},\\
+  C_n(t) &= \frac{1}{L_t}\sum_{t_0}\bigl\langle S(t_0+t)S(t_0)\bigr\rangle_c
+     \quad\text{(time average + periodic)},\\
+  w_1 &= A/C(0),\qquad C(t)=A\bigl(e^{-mt}+e^{-m(L_t-t)}\bigr),
+\end{align}
+the fit window is $t=1,2,3$, the same window for both volumes.
+Errors are a 20-block delete-one jackknife. $A$ is the $\delta$--$\delta$ residue, i.e.\ the lattice reading of $f_1^2$; $C(0)$ is the variance
+of the same operator.
+
+\textbf{Why this ratio is comparable across scales (theorem, not proved anew here).}
+$f_1^2$ and $M_0$ carry the same renormalisation factor: $f_1^2(\mu)=Z_O^2f_1^2(\mu_0)$, $M_0(\mu)=Z_O^2M_0(\mu_0)$,
+hence
+\begin{equation}\label{eq:gamma}
+  \gamma_{w_1}\;=\;2\gamma_O-2\gamma_O\;\equiv\;0,
+  \qquad \frac{d\ln w_1}{d\ln\mu}\;=\;0 .
+\end{equation}
+\gr{Theorem; source \code{research/v3/U4-CONTINUUM-ATOM.md}:318 (verbatim \code{f1^2 and M0 both ~ Z_O^2 => w1 invariant (gamma_w1=0)})}
+This identity is the premise that makes the measurement definable: without it the bare ratio $M_0^{\text{bare}}\sim a^{-8}$ would drag $w_1$
+into a UV artefact instead of a physical quantity (\code{U02.md}:73--74).
+And it is \textbf{precisely because} $\gamma_{w_1}=0$ that comparing it with a pure-number threshold is meaningful; the threshold used here is
+\begin{equation}\label{eq:r0}
+  r_0=\tfrac12(2N)^{-2}\;\overset{N=2}{=}\;\tfrac1{32}=0.03125 .
+\end{equation}
+
+\textbf{What this section does not assume.} It does not assume $w_1>0$. $w_1\in[0,1]$ is the domain ($f_1^2\le M_0$ follows from the KL
+decomposition), not a conclusion; what is measured here is the value of this number at a specific $(\beta,L_s,L_t)$, not its universal
+positivity. At $\beta=2.5$ there was previously \textbf{no direct value} (\code{U02.md}:44 records the $\beta=2.5$ $w_1$ verbatim as ``no value''); this note is the first.
+
+\section{Lattice setup and cost}\label{sec:setup}
+
+\textbf{Configurations and operator.} $\SU(2)$ Wilson action, $\beta=2.5$ ($\kappa=\beta/2=1.25$), two volumes
+$6^3\times 12$ (2592 sites / 10368 links) and $8^3\times 12$ (6144 sites / 24576 links).
+Heat bath $=$ Kennedy--Pendleton, $x_0\sim\sqrt{1-x^2}\,e^{\lambda x}$, $\lambda=2\kappa|a|$, sequential single chain,
+\code{njit}-compiled (\code{fastmath}), \textbf{single-threaded}, \textbf{one job at a time} (no parallelism; see the memory discipline in \code{CLAUDE.md} \S4).
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{Measured parameters (not target values). All taken from \code{RUN1.md}:14--26, grade: numerical evidence.}
+\label{tab:params}
+\begin{tabular}{@{}p{4.3cm}p{4.6cm}p{4.6cm}@{}}
+\toprule
+item & $L_s=6$ job & $L_s=8$ job\\
+\midrule
+geometry & $6^3\times12$ = 2592 sites / 10368 links & $8^3\times12$ = 6144 sites / 24576 links\\
+$\beta$ / $\kappa=\beta/2$ & 2.5 / 1.25 & 2.5 / 1.25\\
+configurations $N$ (measured) & \textbf{6000} (ran to completion) & \textbf{4152} (target $10^4$, truncated by the 265 s budget)\\
+thermalisation $T_{\text{th}}$ & 400 sweeps, \textbf{thermalised once only} & 400 sweeps, \textbf{thermalised once only}\\
+\code{gap} (sweeps per cfg) & 6 & 3\\
+\code{ms/sweep} (single-thread \code{njit}) & \textbf{2.223 ms} & \textbf{5.390 ms}\\
+wall clock & \textbf{290 s} (incl.\ APE $n=1..4$ and 5-level slicing) & \textbf{265 s} (incl.\ APE $n=1,2$)\\
+$\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle$ & $0.65270\pm0.00005$ & $0.65236\pm0.00004$\\
+plaquette autocorrelation (lag 1/2/4/8) & .062/.008/.005/.017 & .143/.063/.044/.052\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{The cost is dominated by the long chain, not by compute.} Both jobs \textbf{thermalise once only}, and every sweep after that is used to
+produce configurations (chained generation). As recorded this round, this is exactly what compresses the cost of the same physical quantity
+from the $11$ h scale down to $265$ s: if every configuration were re-thermalised, $\mathcal{O}(400)$ sweeps would be multiplied into
+$\mathcal{O}(N)$ configurations; chained generation amortises the thermalisation cost into a single one. The $N=4152$ of $L=8$ is truncated
+by the 265 s budget, not by a convergence criterion.
+
+\textbf{Cost update (\code{RUN3.md}).} 8 independent chains $\times$ 1500 cfg, \code{gap}=3, 400 sweeps \textbf{per chain} (independent chains
+rather than one continued chain), \code{prange} across chains with \code{threads}=8 $\le 32$ logical cores: 12000 cfg in $34.0$ s
+(352.6 cfg/s, $22.5\times$ the run1 single-thread throughput), plaquette $0.65234\pm0.00002$ (consistent with run1's $0.65236$).
+\gr{Numerical evidence; \code{RUN3.md}:20, 32, 37}
+
+\textbf{Engineering note (\code{RUN3.md} \S6, a bug found and fixed).} The first version passed \code{Ut = U[c]} (a \code{numpy} view) straight into
+\code{_ape3d}, which modified it in place and thereby \textbf{contaminated the Markov chain}: the next cfg started from an over-smeared
+configuration, which degraded the heat-bath KP acceptance ($x\to\pm1$) and stretched a single job from $\sim40$ s to $>10$ min.
+Fix: copy first, \code{buf = np.empty_like(U[c])}, inside \code{_chains}.
+
+\textbf{Correctness check (the only independent check in this measurement).}
+$\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle=0.6527$ ($L=6$) and $0.6524$ ($L=8$),
+consistent with the literature value $\sim0.65$ for $\beta=2.5$, $\SU(2)$
+\gr{numerical evidence; \code{RUN1.md}:25, 28--29}
+$\Rightarrow$ sampling and heat-bath implementation are correct. Note: this checks the sampling \textbf{only}; it does \textbf{not} check the fit of
+$w_1$; the latter is guarded by the two limitations of \S\ref{sec:sys}.
+
+\section{Results}\label{sec:res}
+
+\begin{table}[t]
+\centering\small
+\caption{Direct values of $w_1$, $\beta=2.5$, $L_t=12$, raw base (no APE).
+In the $m_1$ column: \code{w1(mfit)} is the free-fit mass, \code{w1(1.546)} pins the mass at the allowed lower bound $1.546$
+($\Rightarrow A$ too small, $w_1$ at its lower edge, conservative). All numbers from \code{RUN1.md}:45--59, grade: numerical evidence.}
+\label{tab:results}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+volume & $C(0)$ & $C(1)/C(0)$ & $C(2)/C(0)$ & $m_{\text{fit}}$ & $w_1(m{=}1.546)$ & $S/N(2)$\\
+\midrule
+$L=6$ & 8.405 & $0.08076\pm0.00369$ & $0.01208\pm0.00347$ & 1.984 & $\mathbf{0.3729\pm0.0175}$ & 2.8\\
+$L=8$ & 19.886 & $0.07116\pm0.00296$ & $0.02067\pm0.00503$ & 0.950 & $\mathbf{0.3423\pm0.0151}$ & 5.9\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{The two numbers.}
+\begin{equation}
+  w_1(L=6)=0.373\pm0.018\ \ (20.7\sigma),
+  \qquad
+  w_1(L=8)=0.342\pm0.015\ \ (22.8\sigma).
+\end{equation}
+\gr{Numerical evidence; \code{RUN1.md}:47, 52, 59}
+
+\textbf{The $L$-dependence is one number; do not add structure to it.}
+\begin{equation}
+  \frac{|0.373-0.342|}{0.373}=8.3\% ,
+  \qquad
+  \text{margin}\quad \frac{0.342}{0.03125}=10.94\times\ \text{(at } r_0=1/32\text{)}.
+\end{equation}
+The two volumes agree to $8.3\%$; the margin over the threshold $r_0$ is computed from the smaller of the two values ($L=8$) and taken as $10.94\times$.
+\textbf{This is neither monotonicity nor a plateau}: the whole corpus contains no monotonicity theorem for $w_1(L)$ and no $L$ sequence
+(\code{U02.md}:13, 101--102); two volumes give only ``a difference of $8.3\%$'', and only a third volume would give a direction.
+
+\textbf{The free-fit $w_1$ is not comparable across volumes.}
+$w_1(m_{\text{fit}})=0.587\pm0.191$ ($L=6$) against $0.181\pm0.035$ ($L=8$),
+because the two free-fit masses differ ($1.98$ vs $0.95$); \textbf{only the two values with $m_1$ pinned are comparable}
+(\code{RUN1.md}:58--61). The bold entries in the table are the latter.
+
+\textbf{Cross-$\beta$ context (not used as a criterion).}
+In the corpus the $\beta=2.2$ sequence of $C_1/C_0$ is $0.1367\to0.1229\to0.1216$ (\textbf{first falling, then flat}),
+with $w_\infty\approx0.54$ and margin $0.54/0.03125=17.28\times$
+\gr{numerical evidence; corpus record, not produced this round}.
+It says only that at $\beta=2.2$ the ratio $C_1/C_0$ has already reached a plateau and that the order of magnitude of the $w_1$ margin is the same as at
+$\beta=2.5$ ($10\times$ level); it \textbf{cannot} replace the $\beta=2.5$ value, and the difference of the two margins \textbf{cannot} be read as a
+$\beta$-trend -- those are single points at two $\beta$.
+
+\textbf{\code{run3} reproduces the raw base.} At $N=1.2\times10^4$ configurations (8 chains $\times$ 1500, $34.0$ s) on $8^3\times12$,
+the raw base gives
+\begin{equation}
+  w_1(L=8,\ \beta=2.5,\ m_1=1.546)=0.3427\pm0.0119\ \ (28.8\sigma),
+\end{equation}
+which differs from the run1 value $0.3423\pm0.0151$ by $+0.0004$ (\textbf{$0.02\sigma$}): \textbf{the raw base of \code{run1} is reproduced and the
+target number has not moved}. Table~\ref{tab:run3} lists the three bases on the same 12000 configurations.
+\gr{Numerical evidence $[E]$; \code{RUN3.md}:11--12, 51}
+
+\begin{table}[t]
+\centering\footnotesize
+\caption{Three bases on the same 12000 configurations ($L=8$, $\beta=2.5$, one Markov chain, 20-block delete-one jackknife).
+\code{raw} = the run1 baseline; \code{TAPE}$n$ = spatial APE, $n$ steps, $\alpha=0.5$, staple normalised by $/4$,
+\textbf{time direction not smeared}; $\bar R=-\ln(C_1/C_0)$. All numbers from \code{RUN3.md}:49--53, grade: numerical evidence.}
+\label{tab:run3}
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+base & $C(0)$ & $C(1)/C(0)$ & $C(2)/C(0)$ & $m_{\text{fit}}$ & $w_1(m{=}1.546)$ & $S/N(2)$\\
+\midrule
+\code{raw} & 19.888 & $0.07372\pm0.00265$ & $0.01189\pm0.00238$ & 1.707 & $\mathbf{0.3427\pm0.0119}$ & $\mathbf{5.0}$\\
+\code{TAPE1} (spatial APE $n=1$) & 45.527 & $0.00302\pm0.00297$ & $+0.00299\pm0.00316$ & 1.073 & $0.0168\pm0.0142$ & 0.9\\
+\code{TAPE2} (spatial APE $n=2$) & 39.428 & $0.00150\pm0.00298$ & $+0.00343\pm0.00219$ & 0.762 & $0.0107\pm0.0136$ & 1.6\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Operator dependence}\label{sec:opdep}
+
+\textbf{The same ensemble gives $0.343$ or $0.017$ depending on the operator.} Table~\ref{tab:run3} is one Markov chain, one lattice, one
+$\beta$, one 12000-configuration sample; the only thing that changes between the first and the second row is the operator $O$ used to build the
+source. The raw base ($O=\tfrac14\operatorname{tr}F^2$, unsmeared) gives $w_1=0.3427\pm0.0119$; the spatial-APE base gives
+$w_1=0.0168\pm0.0142$, i.e.\ the rounded pair quoted in the abstract, $0.343$ against $0.017$. The ratio is
+\begin{equation}
+  \frac{0.343}{0.017}\;\approx\;20.2 ,
+\end{equation}
+a factor of twenty between two readings of the \emph{same} physical quantity on the \emph{same} configurations.
+\gr{Numerical evidence $[E]$; \code{RUN3.md}:51--53}
+
+\textbf{This is the \code{u11} witness showing up in real data.} \S\ref{sec:not}(ii) proves, within a model, that no function $F$ with
+$w_1=F(\operatorname{Spec}(H))$ exists: the source family $O_\theta$ gives $w_1(O_\theta)=\cos^2\theta$ while $\operatorname{Spec}(H)$, $\lambda_1$,
+$L$ and $a$ all stay put (\code{U11.md}:90--115). The measurement above is that statement realised on data rather than on a toy model: the spectrum
+is untouched (same ensemble, same lattice, same $\beta$, no change of $H$), and $w_1$ moves by a factor $20.2$ because the operator base changed.
+The mechanism is the one recorded in \code{RUN3.md} \S5: smearing does not ``improve the ground-state overlap''; it pushes the spectral weight up
+($\bar R=2.6075\to5.8014\to6.5039$) and turns the operator into a contact-term/UV-dominated one, so $C(0)$ rises ($19.888\to45.527$) while
+$C(t\ge1)$ collapses. \gr{Mechanism: \code{RUN3.md}:68--72, grade $[C]$; the $w_1=\cos^2\theta$ no-go is a theorem, \code{U11.md}:90--115}
+
+\textbf{Consequence for the wording of the result.} From here on, $w_1(2.5)>0$ \textbf{is meaningful only for the specified $O$}. The correct
+statement is $w_1(2.5;O=\tfrac14\operatorname{tr}F^2,\ \text{unsmeared base})=0.373\pm0.018$ ($L=6$) and $0.342\pm0.015$ ($L=8$), and it does
+\textbf{not} transfer to a smeared base: there the same ensemble gives $0.017\pm0.014$. A reader who quotes ``$w_1(2.5)>0$'' without naming the
+operator has quoted a number that is defined only relative to a choice. This is why the operator base is now listed, together with $S/N(2)$, as a
+limitation rather than as a technical detail.
+
+\textbf{No conflict with \S\ref{sec:not}(ii); it is the same statement.} \S\ref{sec:not}(ii) states a \nogo{} on the class of operator pairs
+$\{(H,O)\}$, and explicitly \emph{not} the claim that ``$w_1$ on YM is unrelated to the spectrum'': on YM, $w_1$ is fixed once
+$(H_{\mathrm{YM}},\tfrac14\operatorname{tr}F^2)$ is fixed (\code{U11.md}:117). Operator dependence and that fixedness are two halves of one
+statement -- $w_1$ is a functional of the \emph{pair}, not of $H$ alone -- so \S\ref{sec:opdep} sharpens \S\ref{sec:not}(ii) instead of
+contradicting it. What it does contradict is any reading of ``$w_1(2.5)>0$'' as a base-independent number.
+
+\textbf{Two remarks on magnitude.} (a) $|0.343-0.017|=0.326$, the same order as the $s$-broadening $0.29$ of \S\ref{sec:sys}: the operator-basis
+direction is the dominant systematic, as that subsection already concluded from the two broadening numbers. (b) The $8.3\%$ volume stability of
+\S\ref{sec:res} is a statement about one base only; it does not transfer to stability under change of base.
+
+\section{Systematics}\label{sec:sys}
+
+The two limitations of this section are \textbf{hard limitations}: wherever the numbers of \S\ref{sec:res} are cited, they must be cited
+together with them. \code{run3} confirms both and removes neither: $S/N(2)=5.0<10$ at $N=1.2\times10^4$, and the repair of the operator base
+did \textbf{not} restore the time correlation.
+
+\subsection{Limitation one: signal-to-noise below target ($S/N(2)$)}
+
+$S/N(t=2)=C(2)/\sigma_{\text{JK}}$ is $2.8$ ($L=6$) and $5.9$ ($L=8$), \textbf{both below the required $\ge10$}.
+Extrapolating with $\sigma\propto1/\sqrt N$: $L=8$ needs $N\approx 4152\times(10/5.9)^2\approx1.2\times10^4$,
+which at $5.390$ ms/sweep $\times$ \code{gap} 3 is about $4.5$ min, \textbf{reachable within 5 minutes next round};
+$L=6$ needs $N\approx 6000\times(10/2.8)^2\approx7.7\times10^4$ (about $17$ min).
+\gr{Numerical evidence; \code{RUN1.md}:79--82}
+
+\textbf{The $1/\sqrt N$ extrapolation fails (\code{run3}).} At $N=1.2\times10^4$ (factor $2.9$ in $N$) the measured
+$S/N(2)$ is $5.0$, not $10$: $N$ grew by $2.9$ and $S/N$ went from $5.9$ to $5.0$, because $C(2)$ itself fell from $0.0207$ to $0.0119$.
+The requirement therefore moves to $N\approx1.2\times10^4\times(10/5.0)^2\approx4.8\times10^4$ (about $136$ s at 352.6 cfg/s).
+\textbf{The $1/\sqrt N$ law is not a usable planning tool here.}
+\gr{Numerical evidence $[E]$; \code{RUN3.md}:13--14, 84}
+
+\textbf{Consequence (this must be written down).} The $20.7\sigma$ and $22.8\sigma$ of this note are the statistical significance
+\textbf{of $w_1$ itself} ($w_1/\sigma_{w_1}$); they are not $S/N(2)$, and the two cannot stand in for each other. $S/N(2)<10$ means that
+\textbf{the signal in the fit window $t=1,2,3$ is itself weak}, so $m_{\text{fit}}$ is unstable (\S\ref{sec:ape}),
+and pinning $m_1=1.546$ is precisely what turns that instability into a ``conservative lower edge''. This note claims the lower edge only.
+
+\subsection{Limitation two: 3D-APE kills the time correlation $\Rightarrow$ $w_1$ undefined at those levels}\label{sec:ape}
+
+\begin{table}[t]
+\centering\small
+\caption{The APE levels ($L=6$: $n=1..4$; $L=8$: $n=1,2$) and the two spatial APE bases of \code{run3}. $*$ = fit mass hit the grid boundary;
+at that level $C(t\ge1)\approx0$, the fit degenerates, the number is meaningless. From \code{RUN1.md}:48--54 and \code{RUN3.md}:49--53,
+grade: numerical evidence.}
+\label{tab:ape}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+volume & base & $C(1)/C(0)$ & $C(2)/C(0)$ & $m_{\text{fit}}$ & $w_1(m{=}1.546)$\\
+\midrule
+$L=6$ & APE1 & $0.00983\pm0.00357$ & $-0.00121\pm0.00521$ & $4.000^{*}$ & $0.0438\pm0.0177$\\
+$L=6$ & APE2 & $0.00337\pm0.00356$ & $0.00086\pm0.00370$ & $0.433$ & $0.0164\pm0.0184$\\
+$L=6$ & APE3 & $0.00408\pm0.00333$ & $0.00081\pm0.00344$ & $1.835$ & $0.0190\pm0.0143$\\
+$L=6$ & APE4 & $-0.00169\pm0.00423$ & $-0.00740\pm0.00357$ & $0.402$ & $-0.0142\pm0.0200$\\
+$L=8$ & APE1 & $0.00159\pm0.00491$ & $0.00331\pm0.00483$ & $0.050^{*}$ & $0.0115\pm0.0226$\\
+$L=8$ & APE2 & $-0.01194\pm0.00489$ & $0.00285\pm0.00497$ & $4.000^{*}$ & $-0.0499\pm0.0217$\\
+$L=8$ & \code{TAPE1} & $0.00302\pm0.00297$ & $+0.00299\pm0.00316$ & $1.073$ & $0.0168\pm0.0142$\\
+$L=8$ & \code{TAPE2} & $0.00150\pm0.00298$ & $+0.00343\pm0.00219$ & $0.762$ & $0.0107\pm0.0136$\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Every level $n\ge1$ flattens the time correlation: $C(1)/C(0)\sim10^{-3}$, and some levels give $C(2)<0$.
+\textbf{$\Rightarrow$ $w_1$ is undefined at those levels} ($A$ is not a residue but only fit noise),
+\textbf{the operator base must be changed} ($\tfrac14\operatorname{tr}F^2$ or a $1\times2$-type base), and adding $n$ cannot rescue it.
+\gr{Numerical evidence; \code{RUN1.md}:12, 74--75}
+
+\textbf{\code{run3}: the repair failed, and the GEVP route is unusable.} Spatial APE ($n=1$, $\alpha=0.5$, staple correctly normalised by $/4$,
+and \textbf{the time direction not smeared}) gives $C(1)/C(0)=0.0030\pm0.0030$ and $C(2)/C(0)=+0.0030\pm0.0032$: not $O(0.1)$ but 0; $n=2$ the
+same ($0.0015\pm0.0030$ / $+0.0034\pm0.0022$). So the confirmation condition for this repair is \textbf{not met}. No $C(2)<0$ appears in this
+basis (the ``$C(2)<0$'' point of \code{run1} is not triggered here), yet $C(1)/C(0)$ also collapses to 0, so the time correlation is still killed
+($S/N(2)\le1.6$): by the letter of that criterion this is ``not triggered'', but in fact \textbf{this GEVP route is unusable}.
+\gr{Numerical evidence $[E]$; \code{RUN3.md}:8--10, 65--66}
+
+\textbf{Convention reminder (one internal inconsistency of the run1 data itself, flagged here as it stands).}
+\code{RUN1.md}:12, 74 words it as ``APE2/APE4 give $C(2)<0$'', but in the table of \S3 of the same file the only negative $C(2)$ entries are those of
+APE4 at $L=6$ ($-0.00740$) and APE1 at $L=6$ ($-0.00121$);
+APE2 at $L=6$ is $+0.00086$ and APE2 at $L=8$ is $+0.00285$, both not negative within $0.6\sigma$.
+\textbf{The conclusion is unaffected} (at these levels $C(1)/C(0)$ is already $\sim10^{-3}$, $w_1$ stays undefined,
+and APE2 at $L=8$ gives $w_1(m_{\text{fit}})=-0.649\pm0.266$, itself an unusable signal),
+but the sentence ``APE2 gives $C(2)<0$'' has \textbf{no corresponding row} in the table; a citation should read
+``APE4 ($L=6$) and APE1 ($L=6$) give $C(2)<0$''.
+
+\subsection{Relative size of the $s$-broadening and the $L$-broadening}
+
+With the two broadening numbers given this round: \textbf{$s$-broadening $=0.29$}, \textbf{$L$-broadening $=0.07$}, ratio $\approx4.1$.
+If these two numbers are the scatter of $w_1$ obtained by scanning the operator/source base ($s$) and by scanning the volume ($L$), the conclusion is:
+\textbf{the dominant systematic lies in the operator-base direction}, the $L$ direction second.
+Hence the ``$8.3\%$ volume stability'' of \S\ref{sec:res} \textbf{cannot} replace ``stability under change of $s$'';
+stability across two volumes does not mean stability under change of base at one volume (\S\ref{sec:ape} gives an instance where changing the base
+kills the signal outright).
+\gr{Both numbers as given this round, not recomputed here; the convention (which family of values the broadening refers to) is not pinned down
+verbatim in \code{RUN1} $\Rightarrow$ see (b) at the end of the note}
+
+\subsection{The correct reading of the margin $10.94\times$}
+
+$10.94\times$ is the ratio ``measured $w_1$ $\div$ a pure-number threshold $r_0=1/32$'', \textbf{not a theorem}.
+The corpus has already ruled on the same kind of reading once: at $\beta=2.2$ the ``$15$--$82\times$ margin'' was judged
+\textbf{numerically true, propositionally false}
+(single point in $\beta$, comparison across conventions, $r_0$ outside the window)
+\gr{source \code{U15.md}:37 (verdict verbatim)}.
+So this note writes only ``ratio to $r_0$ $=10.94\times$'', never ``$w_1$ has a $10.94$-fold surplus and therefore a gap''.
+
+\section{What this does and does not establish}\label{sec:not}
+
+\subsection*{Four negative faces (each with a model, not with adjectives)}
+
+\textbf{(i) $w_1$ and $m$ do not imply each other.} Both directions have exact counterexamples:
+on 2D YM $m=3g^2/8>0$ while $\nu_{\frac14\operatorname{tr}F^2}\equiv0$ ($\operatorname{tr}F^2$ conserved $\Rightarrow f_1^2\equiv0$, $w_1=0$),
+and in the same model $m(L)=\sigma L\to\infty$ ($m(L)/L=0.4038776782$ constant to the digit for $L=2..5$) while $w_1=0$;
+the other direction: on M6 ($\text{osc}\otimes\text{free}$) $w_1=0.5$ (a single atom, $E_1=\omega=1$, weight $1/(2\omega)$) while $m=0$
+($m_C=\min(\omega,\tfrac12(2\pi/C)^2)\to0$).
+\gr{Theorem/proved within a model; \code{U06.md}:69, 91; \code{ATOM2.md}:44; \code{B03-LATTICE.md}:61}
+$\Rightarrow$ a gap does not require an atom, and an atom does not require a gap. \textbf{So $w_1>0$ does not imply $m>0$, and $m>0$ does not imply $w_1>0$.}
+
+\textbf{(ii) $w_1$ is not a function of $\operatorname{Spec}(H)$.} With the same $H$, changing the source changes $w_1$:
+take $O_\theta=1+\varepsilon(\cos\theta\,\psi_1+\sin\theta\,\psi_2)$, $0<\varepsilon\ll1$ (a legitimate source, $O_\theta\ge0$),
+then $\operatorname{Var}(O_\theta)=\varepsilon^2$, $f_1^2=\varepsilon^2\cos^2\theta$, hence
+\begin{equation}
+  w_1(O_\theta)=\cos^2\theta\ \in[0,1],
+  \qquad\text{while }\operatorname{Spec}(H),\ \lambda_1,\ L,\ a\ \text{ all stay fixed}.
+\end{equation}
+\gr{Theorem; \code{U11.md}:90--115 (two-line proof, (3.1)--(3.3))}
+$\Rightarrow$ no such $F$ as $w_1=F(\operatorname{Spec}(H))$ exists. Window: this is a \nogo{} \textbf{on the class of operator pairs $\{(H,O)\}$},
+not ``on YM, $w_1$ is unrelated to the spectrum''; the YM $w_1$ is fixed, once $(H_{\mathrm{YM}},\tfrac14\operatorname{tr}F^2)$ is fixed, to one number
+(\code{U11.md}:117). \S\ref{sec:opdep} is this same statement measured, and it shows why the wording of the result must name $O$.
+
+\textbf{(iii) $w_1$ is discontinuous in the KL weak topology.} The atom functional $\nu\mapsto\nu(\{x\})$ is only \textbf{upper semicontinuous}
+under weak convergence, whereas a floor-type criterion needs \textbf{lower semicontinuity}. Take a sequence of thin atoms
+\begin{equation}
+  \nu_\varepsilon=\varepsilon\,\delta_{m_1^2}+(1-\varepsilon)\,\delta_\Lambda,
+  \qquad \varepsilon\to0,
+\end{equation}
+then $M_0$, $m_1^2$, gappedness and positivity are all preserved, while $w_1=\varepsilon\to0$: the limiting measure has \textbf{no atom} at $m_1^2$,
+the floor of $w_1$ is destroyed, and usc does not stop it.
+\gr{Theorem; \code{U01.md}:110--126 (P-2, P-3 and counterexamples X1/X2)}
+$\Rightarrow$ any compactness argument working at the level of measures (Prokhorov / weak compactness / tightness / Helly) \textbf{must fail};
+this is not a technical shortcoming.
+
+\textbf{(iv) Taken together.} (i)--(iii), together with the operator dependence measured in \S\ref{sec:opdep} (a factor $20.2$ between two bases
+of the same ensemble), say: $w_1$ can serve neither as a proxy for the mass, nor as a proxy for the spectrum, \textbf{nor as a base-independent
+number}, and cannot be carried from finite-lattice data to a uniform statement by compactness. \textbf{Therefore this measurement does not prove
+Clay}, and does not prove that the $0^{++}$ has a mass gap either --- it only turns a quantity that previously had \textbf{no value}
+($w_1$ at $\beta=2.5$, \code{U02.md}:44) into two numbers with errors, on one named operator.
+
+\subsection*{What this note establishes (only these three)}
+
+\begin{enumerate}
+\item \textbf{A direct value at the numerical-evidence grade}: $w_1(\beta=2.5)=0.373\pm0.018$ ($L_s=6$), $0.342\pm0.015$ ($L_s=8$),
+$L_t=12$, raw base, $m_1$ pinned at the allowed lower bound $1.546$. The two volumes differ by $8.3\%$; the ratio to $r_0=1/32$ is $10.94\times$.
+The $L=8$ value is reproduced independently at $N=1.2\times10^4$ as $0.3427\pm0.0119$ ($0.02\sigma$ from $0.3423$), so the raw-base reading is
+stable under a $2.9\times$ increase in statistics.
+\item \textbf{Two pieces of reusable negative knowledge}: $S/N(2)=2.8/5.9$ below $10$, with the $1/\sqrt N$ extrapolation failing at
+$N=1.2\times10^4$ ($S/N=5.0$) so that $N_{\text{req}}\approx4.8\times10^4$ ($L=8$, about $136$ s) is needed;
+3D-APE $n\ge1$ is \textbf{not a usable operator ladder} on these two volumes ($C(1)/C(0)\sim10^{-3}$,
+$\Rightarrow$ $w_1$ undefined at those levels, the base must be changed to $\tfrac14\operatorname{tr}F^2$ or to a $1\times2$ base), and the repair
+attempt (spatial APE, time direction unsmeared) does not fix it either.
+\item \textbf{A cost fact}: chained generation (\textbf{thermalised once only}) plus single-thread \code{njit} compresses the $11$ h scale down to
+$290$ s ($L=6$, $6000$ configurations) and $265$ s ($L=8$, $4152$ configurations).
+\end{enumerate}
+
+\subsection*{What this note explicitly does not establish}
+
+\begin{itemize}
+\item \textbf{Not} an $(L,a)$-uniform positive lower bound for $w_1$. That is the target marked as the \textbf{precise missing step}:
+$\exists w_0>0\ \forall(L,a): w_1\ge w_0$; the verdict of the corpus on it is ``no known method'' (\code{U15.md}:17, 112), while this note gives
+only two volumes, one $\beta$, one $a$.
+\item \textbf{Not} monotonicity or a plateau of $w_1(L)$: no theorem and no $L$ sequence (\code{U02.md}:13, 101--102).
+\item \textbf{Not} $\beta$-monotonicity or a $\beta$-trend: one point at $\beta=2.5$, one point at $\beta=2.2$, no data in between.
+\item \textbf{Not} base independence of the value: the same ensemble gives $0.343$ or $0.017$ depending on $O$ (\S\ref{sec:opdep}).
+\item \textbf{Not} Clay. The four negative faces above are the reasons, not a disclaimer.
+\end{itemize}
+
+\subsection*{Citations and reproducibility}
+{\sloppy
+
+Data: \code{research/v3/species/RUN1.md} (\S0--\S6, all numbers, verbatim);\\
+\code{research/v3/species/RUN3.md} (\S0--\S7, all numbers, verbatim).\\
+Code: \code{research/v3/species/w7/run1_b25_l6.py};\\
+\code{research/v3/species/w7/run3_apebase.py}; \code{run3_w1_jk.py}.\\
+Data files: \code{run1_b25_l6.npz} ($L=6$), \code{run1_b2.5_Ls8Lt12.npz} ($L=8$), \code{run3_L8_b2.5_N12k.npz} ($N=1.2\times10^4$).\\
+Logs: \code{run1_b25_l6.log}, \code{run1_b2.5_Ls8Lt12.log},\\
+\code{run1_bench_b2.5_Ls8Lt12.log}, \code{run3_L8_b2.5_N12k.log},\\
+\code{run3_L8_b2.5_N12k.stdout.log}, \code{run3_bench.log}.\\
+This note writes only \code{docs/paper-v7/w1/}; no other directory was touched; no \code{git commit} was executed.
+}
+
+\vspace{0.6em}
+\noindent\rule{\textwidth}{0.4pt}
+\vspace{0.2em}
+
+\noindent\textbf{One-sentence close.} A number was measured, two limitations were written down, four negative faces were listed, and a fifth
+thing was measured that is not a limitation but a dependence: $w_1$ moves by a factor $20.2$ when the operator moves, so $w_1(2.5)>0$ holds
+only for a named $O$; from here on, quoting $0.373$ or $0.342$ requires quoting $S/N(2)=2.8/5.9$, ``APE $n\ge1$ undefined'', and the
+operator base together with it.
+
+\end{document}

@@ -1,4 +1,4 @@
-qg2_abelian.py   start 2026-11-24 23:53:05
+qg2_abelian.py   start 2026-11-25 12:10:44
 
 ==============================================================================
 PART A -- validation: beta_s = 0 is exactly solvable at every L
@@ -8,9 +8,9 @@ PART A -- validation: beta_s = 0 is exactly solvable at every L
   L=2 N=2 dim=     256 beta_t= 0.1: m_num=2.3059106704  m_analytic=2.3059106704  |diff|=1.78e-15
   L=2 N=2 dim=     256 beta_t= 0.3: m_num=1.2333583188  m_analytic=1.2333583188  |diff|=1.11e-15
   L=2 N=2 dim=     256 beta_t= 0.7: m_num=0.5035723638  m_analytic=0.5035723638  |diff|=1.44e-15
-  L=3 N=2 dim=  262144 beta_t= 0.1: m_num=2.3059106704  m_analytic=2.3059106704  |diff|=3.55e-15
-  L=3 N=2 dim=  262144 beta_t= 0.3: m_num=1.2333583188  m_analytic=1.2333583188  |diff|=1.78e-15
-  L=3 N=2 dim=  262144 beta_t= 0.7: m_num=0.5035723638  m_analytic=0.5035723638  |diff|=5.55e-16
+  L=3 N=2 dim=  262144 beta_t= 0.1: m_num=2.3059106704  m_analytic=2.3059106704  |diff|=2.22e-15
+  L=3 N=2 dim=  262144 beta_t= 0.3: m_num=1.2333583188  m_analytic=1.2333583188  |diff|=4.00e-15
+  L=3 N=2 dim=  262144 beta_t= 0.7: m_num=0.5035723638  m_analytic=0.5035723638  |diff|=2.22e-16
 
   PROVED (exact, all L): at beta_s = 0 the gap does not depend on L.
   The GEOMETRIC R_eff of the same torus grows like ln L (2D).
@@ -90,4 +90,4 @@ PART D -- summary table: is m * R_eff beta-blind / L-independent?
   Column 'm R_eff' varies by >2 decades across beta at FIXED L, and across L
   at fixed beta (see PART A: unbounded in L).  Neither bounded nor L-independent.
 
-total wall 21.6 s
+total wall 17.1 s

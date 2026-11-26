@@ -1,0 +1,6 @@
+[O24] mode=A tag=L2A nsw=15000 burn=800 eps=0.9 G=4 seeds=[400, 401, 402, 403] wall=158.4s (10.02 ms/sweep for 4 chains)
+[O24] acc_link=[0.417 0.415 0.414 0.416] domain-reject=0.0058 final r: mean=3.059 max=5.657 (2pi=6.283)
+   g=0 seed=400 E[kappa]=+1.9240 Var(F)=1.5358 E[F]=+0.0513 Delta=+0.3882 tauK=16.4 tauF=28.8 Neff=522
+   g=1 seed=401 E[kappa]=+1.9282 Var(F)=1.5319 E[F]=-0.0550 Delta=+0.3963 tauK=36.7 tauF=30.1 Neff=408
+   g=2 seed=402 E[kappa]=+1.9481 Var(F)=1.4960 E[F]=+0.0589 Delta=+0.4520 tauK=17.6 tauF=23.8 Neff=630
+   g=3 seed=403 E[kappa]=+1.9168 Var(F)=1.5767 E[F]=+0.0842 Delta=+0.3401 tauK=44.3 tauF=22.3 Neff=338

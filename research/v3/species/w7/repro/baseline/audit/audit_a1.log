@@ -1,0 +1,37 @@
+su(2): dim=3
+   (1) FD Hess eigenvalues: min=0.333333 max=0.333333 spread=0.0e+00
+       c_N(K chart, -tr orthonormal) = 0.333333    [N/6 = 0.333333]
+       c_N(P chart, tr T^aT^b=delta/2) = 0.166667  [N/12 = 0.166667]
+   (2) Rayleigh(random) = 2Phi(tv)/t^2 = 0.333333  (v.H.v = 0.333333)
+   (2) Rayleigh(Cartan) = 2Phi(tv)/t^2 = 0.333333  (v.H.v = 0.333333)
+   (3) Cartan closed form vs spectral: Phi(i diag x) = 0.0096426305 vs 0.0096426305
+   (4) root-coordinate Phi'' = 2 Phi(t H_alpha)/t^2 = 0.166667   [N/12 = 0.166667]
+
+su(3): dim=8
+   (1) FD Hess eigenvalues: min=0.500000 max=0.500000 spread=5.7e-10
+       c_N(K chart, -tr orthonormal) = 0.500000    [N/6 = 0.500000]
+       c_N(P chart, tr T^aT^b=delta/2) = 0.250000  [N/12 = 0.250000]
+   (2) Rayleigh(random) = 2Phi(tv)/t^2 = 0.500000  (v.H.v = 0.500000)
+   (2) Rayleigh(Cartan) = 2Phi(tv)/t^2 = 0.500000  (v.H.v = 0.500000)
+   (3) Cartan closed form vs spectral: Phi(i diag x) = 0.0168642198 vs 0.0168642198
+   (4) root-coordinate Phi'' = 2 Phi(t H_alpha)/t^2 = 0.250000   [N/12 = 0.250000]
+
+su(4): dim=15
+   (1) FD Hess eigenvalues: min=0.666667 max=0.666667 spread=4.3e-09
+       c_N(K chart, -tr orthonormal) = 0.666667    [N/6 = 0.666667]
+       c_N(P chart, tr T^aT^b=delta/2) = 0.333333  [N/12 = 0.333333]
+   (2) Rayleigh(random) = 2Phi(tv)/t^2 = 0.666667  (v.H.v = 0.666667)
+   (2) Rayleigh(Cartan) = 2Phi(tv)/t^2 = 0.666667  (v.H.v = 0.666667)
+   (3) Cartan closed form vs spectral: Phi(i diag x) = 0.0224824648 vs 0.0224824648
+   (4) root-coordinate Phi'' = 2 Phi(t H_alpha)/t^2 = 0.333333   [N/12 = 0.333333]
+
+hc_spherical.su_n_basis(2): -tr(b^2) = [1.0, 1.0, -1.0]  hermitian? [False, False, True]
+   ||hc.ad_matrix(1e-3 b_0)||_max = 0.000e+00  (should be O(1e-3))
+   hc HessPhi eigenvalues = [0. 0. 0.]
+   hc mean=0.000000 spread=0.000000
+hc_spherical.su_n_basis(3): -tr(b^2) = [1.0, 1.0, 1.0, 1.0, 1.0, 1.0, -1.0, -1.0]  hermitian? [False, False, False, False, False, False, True, True]
+   ||hc.ad_matrix(1e-3 b_0)||_max = 7.071e-04  (should be O(1e-3))
+   hc HessPhi eigenvalues = [0.       0.       0.166667 0.166667 0.166667 0.166667 0.166667 0.166667]
+   hc mean=0.125000 spread=0.166667
+
+DICTIONARY: c_K = N/6 ; c_P = N/12 ; root-coordinate = N/12 ; invariant form Hess = -(1/12) B_Killing

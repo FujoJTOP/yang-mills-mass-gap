@@ -1,0 +1,30 @@
+==============================================================================
+[0] exact SU(2) single plaquette (Haar+Gibbs), s = 1 - (1/2)Re tr U
+    u_p(2.5) = 0.507195100   (corpus anchor v06_radius.log:43 = 0.507195)
+    Var(s)(2.5) = 0.134119010   Var(s)(0) = 0.250000000  (=1/4 Haar, PW: <|tr U/2|^2>=1/4)
+    int_0^2.5 Var(s) dbeta = 0.507195100   vs  u_p(2.5)-u_p(0) = 0.507195100
+    => identity int Var = #plaq * [<s>(a)-<s>(b)]  VERIFIED (residual 1.11e-16)
+==============================================================================
+[1] Grönwall budget: need int A/Delta <= log(r0/eps) = 17.974   (eps=1e-6, r0=1/64)
+    (eps=1e-3 -> 11.067 ; eps=1e-12 -> 31.790)
+
+[2] FOUR-MODEL TABLE for  G = int A/Delta dbeta     (A = sqrt(Var_O * Var S_W))
+model                        L       Delta      Var(S_W)             G   verdict
+free Gaussian                4       1.571           384        31.145   DIVERGES  <= free field: f1^2=0 (must fail)
+free Gaussian                6       1.047          1944        105.12   DIVERGES  <= free field: f1^2=0 (must fail)
+free Gaussian                8      0.7854          6144        249.16   DIVERGES  <= free field: f1^2=0 (must fail)
+free Gaussian               16      0.3927      9.83e+04        1993.3   DIVERGES  <= free field: f1^2=0 (must fail)
+2D YM SU(2)                  4         0.6         2.146         3.539   ok  <= target TRUE here [T]
+2D YM SU(2)                  6         0.6         4.828        5.3085   ok  <= target TRUE here [T]
+2D YM SU(2)                  8         0.6         8.584         7.078   ok  <= target TRUE here [T]
+2D YM SU(2)                 16         0.6         34.33        14.156   DIVERGES  <= target TRUE here [T]
+M6 (osc ⊗ free)              -       undef         undef         undef   no beta at all => (G) unformable
+single plaquette             1       undef        0.1341         undef   no transfer direction => Delta undefined
+
+[3] 4D SU(2): what Delta would (G) DEMAND?   (int A dbeta from the exact identity + Jensen)
+   L  int sqrt(Var) lb    int A lb  Delta_req=int A/10  vs 2D Delta=0.6
+   4            44.065      44.065              4.4065            7.344
+   6            99.146      99.146              9.9146            16.52
+   8            176.26      176.26              17.626            29.38
+  16            705.04      705.04              70.504            117.5
+

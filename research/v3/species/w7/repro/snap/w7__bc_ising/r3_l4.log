@@ -1,0 +1,53 @@
+============================================================================================================
+S0 self-checks (SU(2), beta = 2.50)
+  per-link FD check (12 random links x random component): max|fd - g| = 2.97e-09
+  global FD (unit-norm v): <g,v> = -3.1526255625e-01   FD = -3.1526255626e-01   ratio = 1.000000
+  pure gauge  U=1     : sum|g|^2 = 0.000e+00   S_W = 0.000e+00
+  all links U=-1      : sum|g|^2 = 0.000e+00   (central => d(Re tr)=0)
+  Z2 staircase s=1.0 : sum|g|^2 =     0.000   S_W =  240.000   analytic (6*beta/2*sin(pi s))^2*L^4 =     0.000
+  Z2 staircase s=0.5 : sum|g|^2 =   900.000   S_W =  120.000   analytic (6*beta/2*sin(pi s))^2*L^4 =   900.000
+  Z2 staircase s=0.25: sum|g|^2 =   450.000   S_W =   35.147   analytic (6*beta/2*sin(pi s))^2*L^4 =   450.000
+============================================================================================================
+S1  pointwise bound vs sup_phi
+    per plaquette: sum_a (d_a S_p)^2 = (beta^2/4) sin^2(theta_p/2) <= beta^2/4 = 1.5625
+    per link (6 plaquettes, triangle ineq.): |grad_l S_W|^2 <= (6 beta/2)^2 = 9 beta^2 = 56.2500
+    global: |grad S_W|^2 <= 9 beta^2 * #links = 36 beta^2 L^4 = 225.0000 L^4
+  TI ansatz (12 params, 42 starts, Powell): max per-link |grad S_W|^2 = 31.482471
+      = 5.037195 beta^2   (bound 9 beta^2 = 56.2500; staircase gives 14.0625 = 2.25 beta^2)
+      best TI angles (rad): [[-7.545, -2.8741, 4.862], [-4.1198, -0.0129, 8.4766], [-0.1204, -1.4512, 2.7837], [-3.7865, -7.2149, 4.7365]]
+      => rigorous sup_phi >= 125.9299 L^4   (exactly, every L)
+  unconstrained ascent on the full L=2 config (192 params), from the best TI config:
+      start (best TI):   sum|g|^2 = 2014.878
+      after 120 ascent steps: sum|g|^2 = 2173.103  (per link 33.955; per-link bound 9 beta^2 = 56.250, global bound 36 beta^2 L^4 = 3600.0)
+============================================================================================================
+S2  three quantities, L = 2,4,6   (SU(2), beta = 2.5)
+  L=2  E=   64  plaquettes=   96   [1.4s, n=220, acc=0.83]
+     A = <|grad S_W|^2>_mu      =     481.726 +-   3.316    density   7.5270
+     B = sup_phi lower bound    =    2014.878             density  31.4825    (B/A = 4.183)
+     C = Haar random field      =     455.767 +-   6.126    density   7.1214
+     per plaquette S_W (mu)     = 0.7672   (Haar/infinite-T value: 2.5808)
+     tr Cov(grad S)  =     824.174 (modes)      427.492 (direct)   density   6.6796
+     lambda_max Cov  =    +10.9664    lambda(k=0) =     +1.8371    median mode = +4.2279
+  L=4  E= 1024  plaquettes= 1536   [4.0s, n=220, acc=0.78]
+     A = <|grad S_W|^2>_mu      =    7403.206 +-  10.684    density   7.2297
+     B = sup_phi lower bound    =   32238.051             density  31.4825    (B/A = 4.355)
+     C = Haar random field      =    7223.547 +-  22.936    density   7.0542
+     per plaquette S_W (mu)     = 0.9252   (Haar/infinite-T value: 2.4567)
+     tr Cov(grad S)  =    3798.960 (modes)     6510.930 (direct)   density   6.3583
+     lambda_max Cov  =     +8.4665    lambda(k=0) =     +2.0985    median mode = +2.1082
+  L=6  E= 5184  plaquettes= 7776   [12.9s, n=160, acc=0.78]
+     A = <|grad S_W|^2>_mu      =   37163.977 +-  30.714    density   7.1690
+     B = sup_phi lower bound    =  163205.131             density  31.4825    (B/A = 4.391)
+     C = Haar random field      =   36433.327 +-  52.387    density   7.0280
+     per plaquette S_W (mu)     = 0.9053   (Haar/infinite-T value: 2.5375)
+     tr Cov(grad S)  =   16248.278 (modes)    34510.320 (direct)   density   6.6571
+     lambda_max Cov  =    +11.4575    lambda(k=0) =     +2.0655    median mode = +1.9560
+------------------------------------------------------------------------------------------------------------
+S2b  L-exponent fits (log-log through L=2,4,6; local slopes 2->4 and 4->6)
+    A  <|grad S|^2>_mu       : exponent  3.954   (local  3.942 /  3.979)
+    B  sup_phi lower bound   : exponent  4.000   (local  4.000 /  4.000)
+    C  Haar random field     : exponent  3.988   (local  3.986 /  3.991)
+    tr Cov(grad S_W)         : exponent  3.990   (local  3.929 /  4.113)
+    lambda_max Cov           : exponent -0.005   (local -0.373 /  0.746)
+    lambda(k=0) Cov          : exponent  0.116   (local  0.192 / -0.039)
+============================================================================================================

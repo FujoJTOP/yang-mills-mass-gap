@@ -1,0 +1,92 @@
+================================================================================================
+[A] SU(2) one plaquette, s_p = 1 - cos t, weight sin^2 t e^{b cos t}   (mpmath, dps=30)
+    u_p(2.5)  quad   = 0.507195100047020933640870027697
+    u_p(2.5)  Bessel = 0.507195100047020933640870027697      residual 9.86e-32
+    Var(s)(2.5) = 0.134119010431867305348596122993   Var(s)(0) = 0.25
+    FTC: int_0^2.5 Var(s) db = 0.507195100047020933640870027697   vs  u_p(2.5)-u_p(0) = 0.507195100047020933640870027697
+         residual 0.00e+00
+    => Var(s) = d u_p/db ; int Var = u_p(2.5)-u_p(0)   [T]  (both files use this)
+================================================================================================
+[B] IDENTITY TEST in an exactly solvable many-body model (spectrum NOT degenerate, E0 != 0)
+    N independent 2-level plaquettes; S_W = sum_i s_i ; s_i in {e0,e1}; thermal vector |G>
+   N    e0    e1   beta       <S_W>       Var   Sigma(n>=1)  Var+mean^2-p0E0^2   ||(1-P0)S_WG||^2 d07 (=Var)?
+  12   1.0   3.0    0.7    16.74759   7.61688     277.87385          277.87385          277.87385       False
+  12   1.0   3.0    2.5    12.16063   0.31911      15.34887           15.34887           15.34887       False
+  20   0.5   2.0    1.3    13.73660   4.90679     186.60912          186.60912          186.60912       False
+  16   0.0   1.0    1.0     4.30306   3.14579      21.66214           21.66214           21.66214       False
+    => 'Sigma = Var' (d07 2.1) as a general statement: False   (should be False)
+    => exact form  Sigma = Var + <S_W>^2 - p0*E0^2 = ||(1-P0)S_W G||^2  :  Parseval, no assumption
+       beyond (i) {|n>} ONB of S_W-eigenvectors, (ii) S_W|Omega> = E0|Omega>, (iii) <Omega|G> = sqrt(p0).
+       For the Wilson action S_W >= 0 with min = 0 (all U_p = 1) => E0 = 0 => the p0 E0^2 term VANISHES.
+================================================================================================
+[C] h06 table check: Bernoulli plaquettes, p = 1-u_p(2.5);  ratio = 1 + N p/(1-p)
+    N=6V=  1536  <S_W>^2/Var =  1492.4204   Sigma/Var =  1493.4204   (h06: N=1536 ->1493, 7776 ->7556, 24576 ->2.388e4)
+    N=6V=  7776  <S_W>^2/Var =  7555.3784   Sigma/Var =  7556.3784   (h06: N=1536 ->1493, 7776 ->7556, 24576 ->2.388e4)
+    N=6V= 24576  <S_W>^2/Var = 23878.7268   Sigma/Var = 23879.7268   (h06: N=1536 ->1493, 7776 ->7556, 24576 ->2.388e4)
+================================================================================================
+[D] DIRECTION of int sqrt(Var) vs sqrt(T int Var)   (sqrt is CONCAVE)
+profile                        int sqrt(Var)   sqrt(T*int Var)     ratio   direction
+one-plaquette Var(s)             1.119485118       1.124340330  0.995682<= (upper bd)
+Gaussian 3V/(2b^2)               8.083647542      33.165391849  0.243737<= (upper bd)
+    => forced: (1/T)int sqrt(f) <= sqrt((1/T)int f)  =>  int sqrt(Var) <= sqrt(T int Var).  [T]
+       d07 (2.3) writes '>=' ; h06 (2.1) writes '<=' .   The '<=' is the correct one (and is NOT tight:
+       ratio 0.9957 for the exact plaquette profile -- Jensen loses almost nothing here).
+
+    REPAIR of d07's step WITHOUT Jensen: Var_s is decreasing, so with M := Var_s(0) = 1/4
+      monotonicity Var_s(b) nonincreasing on [0,2.5]: True  (Var_s(0)=0.25, Var_s(2.5)=0.13411901043186730535)
+      int sqrt(Var_s) >= (int Var_s)/sqrt(Var_s(0)) = 1.0143902000940418673   (true: 1.0145... )
+      => int sqrt(6V*Var_s) db >= sqrt(6V)*1.014390 = 2.4847 sqrt(V)
+      => 'int A >= c sqrt(V)' is a TRUE statement, c = 2.485 (vs d07's invalid 2.758).
+      Both c sqrt(V) and the sharper c' V (block [E]) are LOWER bounds => d07's PREMISE survives;
+      only its derivation (Jensen '>=') and its constant are wrong.
+================================================================================================
+[E] the numerator needs NO Jensen:   ||(1-P0) S_W G||^2 = Var + <S_W>^2 - p0 E0^2 >= <S_W>^2
+    (Var >= 0, p0E0^2 = 0 for Wilson since E0 = 0)  =>  A(b) = sqrt(Var_O)*||...|| >= sqrt(Var_O)*<S_W>(b)
+    with <S_W>(b) = 6V(1-u_p(b)) :
+    int_0^2.5 (1-u_p) db = 1.8001885768007162107      int_0^2.5 (1-u_p)/b db = 6.020516248203903107
+    (cross-check  ln(2.5/b1) - int_0^2.5 u_p/b db = 6.01966624834037527 ; both must agree)
+    => int A db >= 6V*int(1-u_p) db = 10.8011 * V     (V = L^4)  : POSITIVE VOLUME POWER, c ~ 10.8
+    compare d07 (2.3): 'int A >= 2.758 sqrt(V)'.  Both are LOWER bounds; the true one is V, not sqrt(V).
+================================================================================================
+[F] (G):  int_{b1}^{2.5} A/Delta db <= K = 17.974.    Two numerator variants x two routes.
+    route L1 (direct):  int A/Delta >= A_min * int db/Delta ;   Delta = b*delta  => int db/b = ln(2.5/b1)
+         int_b1^2.5 db/b = ln(2.5/b1) = 6.6003;   int (1-u_p)/b db = 6.0205
+    route L2 (Cauchy-Schwarz, as h06 does): int A/Delta <= sqrt(int A^2) * sqrt(int db/b^2)/delta,
+         sqrt(int_b1^2.5 db/b^2) = sqrt(1/b1 - 1/b2) = 17.1382   (= h06's 17.14 factor)
+  L   V=L^4  6V*int(1-u_p)  d07: 0.276L^2  TRUE Dmax=L1  TRUE delta=L1  h06 N2=~<S_W>(2.5) delta=L2 route
+  4     256           2765          4.416         153.8          514.5               756.9          721.7
+  6    1296        1.4e+04          9.936         778.8           2605                3832           3654
+  8    4096      4.424e+04          17.66          2461           8232           1.211e+04      1.155e+04
+ 16   65536      7.079e+05          70.66     3.938e+04      1.317e+05           1.938e+05      1.848e+05
+    scalings (fit on the four rows):
+      Delta_max (L1)         ~ V^1.000  = L^4.00
+      delta (L1)             ~ V^1.000  = L^4.00
+      delta (L2, h06 style)  ~ V^1.000  = L^4.00
+    => both routes: delta_{S_W} must GROW like L^4 (h06's exponent 4 is right);
+       constants are route-dependent: L1 direct ~ 2.01 L^4 ; L2/C-S (h06) ~ 2.82 L^4.
+    => d07's '0.276 L^2' : is it even TRUE?  TRUE Dmax(L) / (0.276 L^2) = ['34.8', '78.4', '139', '557']
+       (all >= 1 => 'Delta_max >= 0.276 L^2' is a TRUE but sqrt(V)-WEAK necessary condition)
+================================================================================================
+[G] d07 free-field row: S_W = (1/2) x^T M x, weight e^{-b S_W}, dim = 3V
+    <S_W> = dim/(2b) = 3V/(2b);   Var(S_W) = dim/(2b^2) = 3V/(2b^2)  (NOT b-independent!)
+      b=0.003:  Var = 3V/(2b^2) = 129757.7855*V   vs d07's '3V/2 = 1.5V' (b-independent)
+      b=1.000:  Var = 3V/(2b^2) =     1.5000*V   vs d07's '3V/2 = 1.5V' (b-independent)
+      b=2.500:  Var = 3V/(2b^2) =     0.2400*V   vs d07's '3V/2 = 1.5V' (b-independent)
+    FTC check: int_b1^2.5 Var db = (3V/2)(1/b1-1/b2) = 440.5765 V  vs  <S_W>(b1)-<S_W>(2.5) = 440.5765 V
+    => d07's 'Var = 3V/2 exactly, b-independent' contradicts its own (2.2) [T]. free-field G still diverges
+       (int A/Delta diverges logarithmically at b->0), so the four-model VERDICT is unchanged.
+================================================================================================
+[H] h06's N2 is a POINT value at b=2.5, but its C-S route needs sqrt(int A^2 db).  Size the gap:
+    int_0^2.5 (1-u_p)^2 db = 1.3513690608730080631   sqrt(.)/(1-u_p(2.5)) = 2.3589
+    => h06's delta_CS is understated by 2.36x  =>  correct C-S constant ~ 6.65 L^4
+    => the L1 route (delta >= 2.010 L^4) is TIGHTER, hence the one to quote as a
+       necessary condition.  Exponent L^4 unchanged either way.
+================================================================================================
+[SUMMARY]
+  [1] Sigma_{n>=1}|<n|S_W|G>|^2 = Var + <S_W>^2 - p0 E0^2  [T]  (E0=0 for Wilson => Var+<S_W>^2)
+      d07 (2.1) 'Sigma = Var' holds iff <Omega|S_W|G> = <S_W>, i.e. ONLY on the diagonal Omega=G.
+  [2] int sqrt(Var) <= sqrt(T int Var)  [T]  -- d07's '>=' is a sign error (h06 right).
+      BUT the premise 'int A >= c sqrt(V)' is nevertheless TRUE (pointwise: A >= 6V(1-u_p)) --
+      so withdrawing 'proposition 3.1' and 'Delta_max >= 0.276 L^2' is an OVER-retraction:
+      the implication is valid, 0.276 L^2 is true (weak); the correct constant is O(L^4).
+  [3] true numerator O(V) => delta_{S_W} >= c L^4 (c = 2.01 L1-route, 2.82 L2-route).

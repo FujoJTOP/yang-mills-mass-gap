@@ -1,0 +1,124 @@
+d3_averaged.py -- D3 (nu-averaged fiber LSI) witness
+numpy 2.4.6 ; scipy i0/i1/iv ; deterministic, single process, no MC, no network
+
+==============================================================================
+[A] ONE PLAQUETTE (SU(2)): fiber law is U'-independent;  c = 1/C2(adj) = 1/2, beta-FREE
+==============================================================================
+  -sum_a D_a^2 f / f  [fundamental g_11] = 0.750000000   target 0.75 (Richardson, h=.02/.01)
+  -sum_a D_a^2 f / f  [adjoint R_11] = 2.000000000   target 2.00 (Richardson, h=.02/.01)
+  => the Laplacian has gaps {0, 0.75(j=1/2), 2(j=1), 3.75(j=3/2), ...};  C2(adj) = 2
+
+  beta      E[R12^2]      Var/(2 E[R12^2])   (sharp = 1/2; form = 2E[f^2] by Casimir)
+   0.0    0.3333333333    0.500000000000
+   0.1    0.3333330565    0.500000000000
+   1.0    0.3312742672    0.500000000000
+   2.5    0.3037748427    0.500000000000
+   6.0    0.2140181958    0.500000000000
+  => max |ratio - 1/2| = 0.00e+00 over 5 betas   =>  c = 1/2 exactly, beta-FREE
+  => c(U') == 1/2 for every U' (the law does not depend on U')
+  ==> D3/D2 = 1.000000 (exactly) in this model;  averaging gains nothing
+
+==============================================================================
+[B] 1D CHAIN = P4 (flat) CARTAN KERNEL:  c(Delta), sup vs nu-average vs D3-weak
+==============================================================================
+  bulk anchor (flat kernel e^{b cos}, rho=1, beta=2.5): lam1/lam0 = 0.7649967476  Delta = 0.2678836967
+     corpus anchor (SDP-CERT / tr_flat):  -log(I1/I0) = 0.267883696683  => MATCH
+     (the rho=rho_1 P4/max-plus kernel gives 0.6444 -- a DIFFERENT ruler, not mixed here)
+  basis convergence K=8 vs K=40 at 7 kappas: max|c8-c40| = 1.44e-07
+  c(Delta=0) (kappa=5.000, narrow fibre): 0.2296194106
+  c(Delta=pi) (kappa=0, Haar fibre):     1.0000000000   [=1 exactly: uniform on the circle]
+  sup_Delta c = 1.0000000000 at Delta = 1.0000 pi
+  (c increases with Delta: the SYMMETRIC boundary is the worst one)
+  E_nu[c(Delta)] = 0.3034593348    =>  E_nu[c]/sup c = 0.3034593348
+     (this is what R2 [E] measured: an AVERAGE OF CONSTANTS, i.e. D3-weak,
+      not the averaged Poincare constant, and not D3-full)
+  nu-mass in |Delta-pi|<1e-2 : 5.071e-04  (positive, open neighbourhood) => ess-sup = sup
+  c == sup c on that neighbourhood to 2.35e-04 (continuous => no nu-null spike)
+  ==> D3-full constant = 1/sup c = 1.0000000000 = D2 constant  =>  ratio D3-full/D2 = 1.000000
+
+  D3-WEAK (fibre-only test functions), aggregated over nu:
+     lambda_weak = 1.5028629272      lambda_full(D2) = 1.0000000000
+     ratio lambda_weak/lambda_full = 1.502863   (>=1: a real gain, but insufficient)
+     1/E_nu[c] (naive 'average the constant') = 3.2953344493
+     smallest/largest ratio of the aggregated pair: 1.689e-03 / 6.654e-01
+
+==============================================================================
+[C] GAUSSIAN BUNDLE:  mu = nu(dU') x N(0, sigma^2(U'))  =>  c(U') = sigma^2(U')
+==============================================================================
+  C1 continuous sigma^2 in [1.000000, 1.573505]:
+     sup c = 1.5735053528   ess-sup c = 1.5735053528   ratio = 1.000000000000
+  C2a CONTINUOUS spike, height 1000, width 1e-04 (nu-mass 9.09e-04):
+      sup c = 1000.0000   ess-sup c = 1000.0000   ratio = 1.000000000000   => D3 gains NOTHING
+  C2b DISCONTINUITY at one point (nu-mass 0 for Lebesgue nu, 1.0e-04 on this mesh):
+      sup = 1000.0   ess-sup = 1.5735053528   ratio = 635.5
+      => D3-full holds with lambda_f = 0.635524 while D2 needs 1.0e-03
+      => the two definitions DO differ, but only on a nu-null set; and a Gibbs
+         specification makes U' -> c(U') a sup of continuous functions (lsc) and
+         gives the coarse marginal full support, which forces ess-sup = sup
+  C3 two-valued sigma^2 (mass 1-p at 1, mass p=0.10 at 1+K, K=1e+03):
+     lambda_weak = 1/E_nu[sigma^2] = 9.900990e-03   lambda_full = 1/sup sigma^2 = 9.990010e-04
+     ratio lambda_weak/lambda_full = 9.9109   (a big 'gain' -- and still useless:)
+     D3-weak does NOT control F = 1_A(U')*xi :  E_nu[Var]/E|grad_perp|^2 = 1+K = 1001
+     => D3-weak strictly weaker than D3-full, and NOT sufficient for the assembly
+
+==============================================================================
+[D] FREE-FIELD ACID TEST: high band of the sharp factor-2 low pass (1D ring)
+==============================================================================
+   L     min spec(-Delta|fiber)   1/gap          H1 (k->0 mode)
+    4        4.0000000000      0.2500000000      q(0)=0 exactly (Var=inf)
+    8        3.4142135624      0.2928932188      q(0)=0 exactly (Var=inf)
+   12        3.0000000000      0.3333333333      q(0)=0 exactly (Var=inf)
+   16        2.7653668647      0.3616156730      q(0)=0 exactly (Var=inf)
+   24        2.5176380902      0.3971976766      q(0)=0 exactly (Var=inf)
+   32        2.3901806440      0.4183784194      q(0)=0 exactly (Var=inf)
+   64        2.1960342807      0.4553662977      q(0)=0 exactly (Var=inf)
+  => fiber gap -> 2 = 4 sin^2(pi/4), L-UNIFORM  => D3 holds with lambda_f -> 1/2 for all L
+     (same column as R2-H2GLOBAL §1.1 [A]: 4.000, 3.414, 3.000, 2.765, 2.518, 2.390, ...)
+  => and the k->0 mode has eigenvalue 0 exactly, so Var_nu(xi)=inf: H1 FAILS for any lambda
+  => [E] D3 TRUE and H1 FALSE  ==>  D3 =/=> H1 ;  D3 has ZERO gap content (acid-dead)
+
+==============================================================================
+[E] BAKRY-EMERY / STEIN / FISHER INSIDE THE FIBER  (von Mises, beta=2.5)
+==============================================================================
+  Delta   ess-inf V''    E[V'']       Var(V')      sharp lambda_1   BE output
+   0.00   -5.00000000    4.46691569    4.46691569    4.3550325188   -5.00000000
+     Stein/IBP identity  E[V''] = Var(V')   residual = 1.78e-15   (exact, >= 0)
+   0.79   -4.61939766    4.08233593    4.08233593    3.9621339794   -4.61939766
+   1.57   -3.53553391    2.98023725    2.98023725    2.8829481285   -3.53553391
+   2.36   -1.91341716    1.30692220    1.30692220    1.5940768062   -1.91341716
+   3.14   -0.00000000    0.00000000    0.00000000    1.0000000000   -0.00000000
+  => ess-inf V'' = -2 beta cos(Delta/2) < 0 for every beta>0: the BE output has the
+     WRONG SIGN at beta=2.5 (-5.000 at Delta=0, -3.536 at Delta=pi/2) while the true
+     lambda_1 = 4.355033..1.000000 > 0.  BE proves nothing in the fiber either.
+  => E[V'']=Var(V')>=0 is exact (Stein) and positive - but BE needs the POINTWISE bound,
+     and no theorem turns E[V'']>=delta into lambda_1>=delta (Fisher/Cramer-Rao is a
+     variance FLOOR = curvature CEILING: Q7-TOOL-FORGE (iii), H2-DEFECT Thm M).
+  => identical output for D2 and for D3: the engines cannot see the difference.
+
+==============================================================================
+[F] DOBRUSHIN COEFFICIENT AVERAGED OVER nu  (1D chain, cross-block plaquette)
+==============================================================================
+  delta(Delta) = osc_theta [ d/dDelta log w(theta|Delta) ] , w prop exp(beta cos(theta-Delta))
+               = osc_theta [ beta sin(theta-Delta) ] = 2 beta   (INDEPENDENT of Delta)
+  beta        sup_Delta delta   E_nu[delta]   E_nu[delta]/sup   (threshold 1)
+   0.020833       0.041667       0.041667     1.0000000000
+   0.500000       1.000000       1.000000     1.0000000000
+   1.000000       2.000000       2.000000     1.0000000000
+   2.500000       5.000000       5.000000     1.0000000000
+  => averaging the criterion gives ZERO relief (delta is Delta-free); at beta=2.5
+     E_nu[delta] = 5.0 > 1 by 5x  =>  the AVERAGED C(beta)<1 window is still beta<1/6
+
+==============================================================================
+SUMMARY  (numbers only; the labels are in D3-AVERAGED.md)
+==============================================================================
+  [A] one plaquette SU(2):  c = 1/2 = 1/C2(adj), beta-free  => D3/D2 = 1.000000
+  [B] 1D chain / P4-flat:   D3-full/D2 = 1.000000 ;  lambda_weak/lambda_full = 1.502863
+  [C] Gaussian bundle:      ess-sup/sup = 1.000000000000 (continuous sigma^2)
+                            spike at a null set: ratio = 1e3 ; D3-weak/D3-full = 9.9109
+  [D] free field:           fiber gap -> 2 (L-uniform): D3 holds, H1 fails
+  [E] BE in the fiber:      ess-inf V'' = -5.000 at beta=2.5, Delta=0 (wrong sign); true lambda_1 = 4.355033
+  [F] Dobrushin averaged:   E_nu[delta] = 2 beta (zero relief); 5.0 at beta=2.5
+
+  VERDICT (numeric): in every solvable model the D3-full constant EQUALS the pointwise
+  constant (ratio 1.000000); the only strictly weaker version (fibre-only test functions)
+  gains factor 1.5029 and is INSUFFICIENT. No averaging gain on the V-uniformity axis.

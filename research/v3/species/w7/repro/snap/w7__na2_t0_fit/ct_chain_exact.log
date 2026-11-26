@@ -1,0 +1,110 @@
+========================================================================================================
+T1   L=2 SU(2) chain, chain-average coarse field, a0=0 :  exact reduction of X(0) = -2 Cov(G,Phi')
+========================================================================================================
+--------------------------------------------------------------------------------------------------------
+[i] POINTWISE IDENTITIES vs finite differences (random L=2 configurations)
+      #     |G_fd-G_form|/|G|     |P_fd-P_form|/|P|    |P2_fd-P2_form|/|P2|
+      0              2.14e-11              3.64e-12                2.19e-05
+      1              1.54e-10              1.76e-10                6.55e-06
+      2              9.28e-11              1.38e-12                1.27e-05
+      3              4.36e-11              1.12e-11                4.68e-06
+      4              7.03e-10              7.49e-11                6.95e-06
+      5              3.49e-11              1.16e-11                1.34e-06
+      6              3.94e-11              6.88e-12                1.42e-06
+      7              9.30e-11              4.92e-11                3.73e-06
+    worst over 8:  G 7.03e-10   Phi' 1.76e-10   Phi'' 2.19e-05
+    NB G is a FIRST derivative of S: no second divided difference of exp appears anywhere
+    in this script, and Phi'' is the exact scalar phi''(rho), not that of a matrix function.
+
+    constraint-surface form  G = +beta t (Q + w R) :
+      rho=(3.093,5.092) t=-0.772  G_gen=+0.07499630  G_cons=+0.07499630  rel=0.00e+00
+      rho=(0.626,2.432) t=-0.199  G_gen=+0.01980875  G_cons=+0.01980875  rel=0.00e+00
+      rho=(4.790,2.387) t=+2.057  G_gen=+0.28491541  G_cons=+0.28491541  rel=0.00e+00
+
+[v] MONOTONICITY FACTS USED IN THE DISCUSSION
+    psi(0+)=0.16666667   psi(2pi-)=3.1831e+05
+    min dpsi/dr on (0,2pi) = +5.5556e-09 at rho=0.0000   => psi strictly increasing (min is at rho->0 where dpsi/dr = rho/180 -> 0)
+    sigma(0+)=0.50000000  min=-0.10861681 at rho=4.4934  sigma(2pi-)=-7.958e-08
+    dsigma/dr changes sign at rho = [4.4934] (tan(rho)=rho) => sigma NOT monotone
+    (sigma is NOT the one-link function behind Q -- see [vii]; Q = k1k2[T(r1)-T(r2)]/2.)
+
+--------------------------------------------------------------------------------------------------------
+[vii] THE SIGN REDUCES TO A beta-INDEPENDENT GEOMETRIC FACT  (P Q >= 0 and |R| <= |Q|)
+
+    LEMMA 1 (psi strictly increasing).  psi(r) = 2/r^2 - cot(r/2)/r = (sin v - v cos v)/(2 v^2 sin v),
+        v = r/2.  With H(v) := v^2 - 2 sin^2 v + (v/2) sin 2v,   sign(psi') = sign(H) and
+        H(0)=H'(0)=0, H''(v) = 4 sin v (sin v - v cos v) > 0 on (0,pi)  [since (sin v - v cos v)' = v sin v > 0].
+        So psi' > 0 on (0,2pi).                                                      [PROVED]
+    LEMMA 2 (sign Q = sign(rho1 - rho2)).  Q = (1/2) k1 k2 [ T(rho1) - T(rho2) ],  T(r) = tan(r/2)/r ,
+        and T is strictly increasing on (0,pi) and on (pi,2pi) with T(pi-)=+inf, T(pi+)=-inf :
+        T' = [r - sin r] / (2 r^2 cos^2(r/2)) > 0  on (0,pi);  on (pi,2pi) the numerator is
+        (r/2)sec^2(r/2) - tan(r/2) > 0 because tan < 0 there.  Hence, on the three cases
+        (both < pi | both > pi | straddling pi), sign(Q) = sign(rho1-rho2).          [PROVED]
+    COROLLARY (with Lemma 1):  P Q >= 0, with equality iff rho1 = rho2.             [PROVED]
+    REMAINING INEQUALITY (R):  |R| <= |Q| on (0,2pi)^2.                       [verified below]
+    Given (R) and |wbar| <= 1 (elementary: |n1.n2| <= 1 and wbar is a Bessel average of w), the
+    integrand of (***) is pointwise >= 0 and not identically 0  =>  X(0) < 0 for EVERY beta > 0.
+    The whole beta-dependence drops out of the sign question.
+    grid 4001^2 :  #(PQ<0) = 0   max |R|/|Q| (off-diagonal) = 0.99911318   #(|R|>|Q|) = 0
+    the supremum sits at rho = (6.279616, 6.281185) -> 2pi (the corner where Q,R -> 0);
+    there the exact ratio tends to (2pi-eps)/(2pi+eps) -> 1, i.e. |R| < |Q| for every eps>0,
+    and the corner carries weight J(m)J(M) ~ eps^4 -> 0.
+    max |R|/|Q| over the region carrying 99% of the beta=0 weight = 0.586443
+    min |P Q| off the diagonal / max |P Q| = 1.110e-16
+
+--------------------------------------------------------------------------------------------------------
+[iii] QUADRATURE CONVERGENCE of (***)
+      beta      nr,ns,nt              X(0)       <t^2>       <t^4>
+      0.50     100,80,60   -0.010441125207    1.944131   11.360137
+      0.50    150,120,90   -0.010441125207    1.944131   11.360137
+      0.50   200,160,120   -0.010441125207    1.944131   11.360137
+      0.50   300,200,150   -0.010441125207    1.944131   11.360137
+      2.50     100,80,60   -0.033009188896    1.216362    6.916535
+      2.50    150,120,90   -0.033009188896    1.216362    6.916535
+      2.50   200,160,120   -0.033009188896    1.216362    6.916535
+      2.50   300,200,150   -0.033009188896    1.216362    6.916535
+
+--------------------------------------------------------------------------------------------------------
+[ii] INDEPENDENT 3-D MONTE CARLO (pointwise w, no Bessel step) vs the quadrature (***)
+      beta          X_quad            X_MC        se  diff/se   <t^2>_q  <t^2>_MC
+      0.00   -0.0000000000   -0.0000000000  0.00e+00     0.00   2.12151   2.12229
+      0.50   -0.0104411252   -0.0104485071  1.72e-05    -0.43   1.94413   1.94525
+      1.00   -0.0191235583   -0.0191325931  3.60e-05    -0.25   1.75121   1.75260
+      2.50   -0.0330091889   -0.0329842673  9.90e-05     0.25   1.21636   1.21820
+
+--------------------------------------------------------------------------------------------------------
+[iv] X(0) vs beta  (300,200,150).  NQ = <t^2 P Q>, NR = <t^2 P wbar R> ; X = -2 beta (NQ+NR)
+        beta              X(0)        X/beta    -1/2 Cov           NQ           NR        NQ+NR
+        0.05   -0.001105416596   -0.02210833   +0.011054 +1.25579e-02 -1.50372e-03 +1.10542e-02
+        0.10   -0.002199227157   -0.02199227   +0.010996 +1.24856e-02 -1.48945e-03 +1.09961e-02
+        0.25   -0.005403186984   -0.02161275   +0.010806 +1.22510e-02 -1.44464e-03 +1.08064e-02
+        0.50   -0.010441125207   -0.02088225   +0.010441 +1.18053e-02 -1.36416e-03 +1.04411e-02
+        1.00   -0.019123558328   -0.01912356   +0.009562 +1.07506e-02 -1.18886e-03 +9.56178e-03
+        1.50   -0.025697663137   -0.01713178   +0.008566 +9.57504e-03 -1.00915e-03 +8.56589e-03
+        2.00   -0.030214496963   -0.01510725   +0.007554 +8.39402e-03 -8.40399e-04 +7.55362e-03
+        2.50   -0.033009188896   -0.01320368   +0.006602 +7.29400e-03 -6.92164e-04 +6.60184e-03
+    beta->0 :  X/beta = -0.02221903   => c1 - c2 = +0.01110952   (c1 = +1.262716e-02,  c2 = +1.517647e-03)
+    sign: X(0) < 0 at every beta tested:  True
+
+--------------------------------------------------------------------------------------------------------
+[vi] NORMALISATION vs na2_chain.log :  X_na2(chain average) = X_here / L^2  (L=2 -> /4)
+     na2 used G = (1/L)sum_i d/dxi_3^i S and Phi' = (1/L)sum_i d/dxi_3^i Phi, but for
+     a = (1/L)sum_i xi_3^i the unit-speed field is sum_i d/dxi_3^i (no 1/L).  Hence /L^2.
+      beta       na2 X      X_quad/4   ratio        se
+      0.50    -0.00258   -0.00261028  0.9880    0.0004
+      1.00    -0.00470   -0.00478089  0.9841    0.0004
+      2.50    -0.00808   -0.00825230  0.9790    0.0004
+    EXACT  X(0; L=2, beta=2.5) = -0.0330091889  (unit-speed a);  na2's number x4 = -0.03231600
+
+--------------------------------------------------------------------------------------------------------
+[viii] WHICH COVARIANCE CARRIES X?   Cov(G,Phi') = sum_{i,j} Cov(g_i, p_j)  (MC, 4e6)
+       g_i = -beta d/dxi_3^i c12 (per link) ,  p_i = d/dxi_3^i Phi .
+       A SINGLE-LINK coarse field sees only ONE column (and p_k == 0 on the surface).
+      beta     C(g1,p1)     C(g1,p2)     C(g2,p1)     C(g2,p2)          sum         -X/2 off-diag share
+      0.50   +4.759e-03   -2.138e-03   -2.152e-03   +4.755e-03 +5.22425e-03 +5.22425e-03        -82.12%
+      1.00   +1.030e-02   -5.492e-03   -5.528e-03   +1.029e-02 +9.56630e-03 +9.56630e-03       -115.20%
+      2.50   +2.753e-02   -1.918e-02   -1.933e-02   +2.747e-02 +1.64921e-02 +1.64921e-02       -233.51%
+    => the off-diagonal (cross-link) covariances are what survive; they are exactly the terms
+       that do not exist for a single-link coarse field.  |G-(g1+g2)| check: 2.22e-16
+
+  Clay 0%.  Exact reduction, no QED.

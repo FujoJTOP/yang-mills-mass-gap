@@ -1,0 +1,73 @@
+====================================================================================================
+A1  1D chains  (path = reflecting ends; circle = periodic).  L = 2..6
+====================================================================================================
+  path chain L=2                     e1=1 e2=3 rho2=3  Cmin=1.73205  mult=[1, 1]  r3=None  <=4:YES  
+  path chain L=3                     e1=0.58578644 e2=2 rho2=3.414213562  Cmin=1.84776  mult=[1, 1, 1]  r3=1.707107  <=4:YES  
+  path chain L=4                     e1=0.38196601 e2=1.381966 rho2=3.618033989  Cmin=1.90211  mult=[1, 1, 1, 1]  r3=1.894427  <=4:YES  
+  path chain L=5                     e1=0.26794919 e2=1 rho2=3.732050808  Cmin=1.93185  mult=[1, 1, 1, 1, 1]  r3=2.0  <=4:YES  
+  path chain L=6                     e1=0.19806226 e2=0.7530204 rho2=3.801937736  Cmin=1.94986  mult=[1, 1, 1, 1, 1]  r3=2.064962  <=4:YES  
+  circle chain L=2                   only 1 distinct level(s) -> rho^2 UNDEFINED  translation invariance -> exact multiplets
+  circle chain L=3                   only 1 distinct level(s) -> rho^2 UNDEFINED  translation invariance -> exact multiplets
+  circle chain L=4                   e1=2 e2=4 rho2=2  Cmin=1.41421  mult=[2, 1]  r3=None  <=4:YES  translation invariance -> exact multiplets
+  circle chain L=5                   e1=1.381966 e2=3.618034 rho2=2.618033989  Cmin=1.61803  mult=[2, 2]  r3=None  <=4:YES  translation invariance -> exact multiplets
+  circle chain L=6                   e1=1 e2=3 rho2=3  Cmin=1.73205  mult=[2, 2, 1]  r3=1.333333  <=4:YES  translation invariance -> exact multiplets
+====================================================================================================
+A2  Particle in a box, ALL four boundary-condition patterns  (L=1)  [T]
+    DD/NN/PP tower k^2 -> rho^2=4 ; ND tower ((2k-1)pi/2)^2 -> rho^2=9
+====================================================================================================
+  box DD q=0                         e1=9.8696044 e2=39.478418 rho2=4  Cmin=2  mult=[1, 1, 1, 1]  r3=2.25  <=4:YES  rho2=4
+  box DD q=1                         e1=10.869604 e2=40.478418 rho2=3.724000995  Cmin=1.92977  mult=[1, 1, 1, 1]  r3=2.219119  <=4:YES  rho2=3.724
+  box DD q=10                        e1=19.869604 e2=49.478418 rho2=2.49015615  Cmin=1.57802  mult=[1, 1, 1, 1]  r3=1.997365  <=4:YES  rho2=2.49016
+  box NN q=0                         e1=9.8696044 e2=39.478418 rho2=4  Cmin=2  mult=[1, 1, 1, 1]  r3=2.25  <=4:YES  rho2=4
+  box NN q=1                         e1=10.869604 e2=40.478418 rho2=3.724000995  Cmin=1.92977  mult=[1, 1, 1, 1]  r3=2.219119  <=4:YES  rho2=3.724
+  box NN q=10                        e1=19.869604 e2=49.478418 rho2=2.49015615  Cmin=1.57802  mult=[1, 1, 1, 1]  r3=1.997365  <=4:YES  rho2=2.49016
+  box PP q=0                         e1=39.478418 e2=157.91367 rho2=4  Cmin=2  mult=[1, 1, 1, 1]  r3=2.25  <=4:YES  rho2=4
+  box PP q=1                         e1=40.478418 e2=158.91367 rho2=3.925886431  Cmin=1.98138  mult=[1, 1, 1, 1]  r3=2.242134  <=4:YES  rho2=3.92589
+  box PP q=10                        e1=49.478418 e2=167.91367 rho2=3.393675031  Cmin=1.84219  mult=[1, 1, 1, 1]  r3=2.175557  <=4:YES  rho2=3.39368
+  box ND q=0                         e1=2.4674011 e2=22.20661 rho2=9  Cmin=3  mult=[1, 1, 1, 1]  r3=2.777778  <=4:**NO**  rho2=9
+  box ND q=1                         e1=3.4674011 e2=23.20661 rho2=6.692796487  Cmin=2.58704  mult=[1, 1, 1, 1]  r3=2.701171  <=4:**NO**  rho2=6.6928
+  box ND q=10                        e1=12.467401 e2=32.20661 rho2=2.583265722  Cmin=1.60725  mult=[1, 1, 1, 1]  r3=2.225786  <=4:YES  rho2=2.58327
+====================================================================================================
+A3  One plaquette SU(2) beta=0 = Laplacian on SU(2)~S^3:  mu_l=l(l+2)   [T]
+A4  2D YM: mu_R=(g^2/2)C2(R)  (Migdal) -> Casimir tower                 [T]
+====================================================================================================
+  one plaquette SU(2) (S^3)          e1=3 e2=8 rho2=2.666666667  Cmin=1.63299  mult=[1, 1, 1, 1]  r3=1.875  <=4:YES  mu_l=l(l+2); mult (l+1)^2
+  2D YM SU(2) Casimir tower          e1=0.75 e2=2 rho2=2.666666667  Cmin=1.63299  mult=[1, 1, 1, 1]  r3=1.875  <=4:YES  fund -> adj -> next (mult = dim R)
+  2D YM SU(3) Casimir tower          e1=1.3333333 e2=3 rho2=2.25  Cmin=1.5  mult=[1, 1, 1]  r3=1.111111  <=4:YES  fund -> adj -> next (mult = dim R)
+  2D YM SU(4) Casimir tower          e1=1.875 e2=4 rho2=2.133333333  Cmin=1.46059  mult=[1, 1, 1]  r3=1.5  <=4:YES  fund -> adj -> next (mult = dim R)
+  2D YM SU(100) Casimir tower        e1=49.995 e2=100 rho2=2.00020002  Cmin=1.41428  mult=[1, 1, 1]  r3=1.5  <=4:YES  fund -> adj -> next (mult = dim R)
+====================================================================================================
+A5  1D rotor and 2D U(1): tower n^2 with EXACT 2-fold (+-n) degeneracy     [T]
+    -> raw rho^2 = 1 (Kramers face) ; merged rho^2 = 4
+====================================================================================================
+  rotor / 2D U(1) (RAW, unmerged +-n) e1=1 e2=1 rho2=1  Cmin=1  mult=[1, 1, 1, 1, 1]  r3=4.0  <=4:YES  exact 2-fold bottom -> raw rho^2 = 1
+  rotor / 2D U(1) (merged |n|)       e1=1 e2=4 rho2=4  Cmin=2  mult=[1, 1, 1, 1, 1]  r3=2.25  <=4:YES  
+  2D U(1) transfer, numeric 200-pt grid e1=0.99991776 e2=3.9986842 rho2=3.999013121  Cmin=1.99975  mult=[2, 2, 2, 2, 2]  r3=2.249075  <=4:YES  lattice check of the n^2 tower
+====================================================================================================
+A6  Radial towers (physical Dirichlet Laplacians, q=0, no double well)      [T]
+====================================================================================================
+  2D disc (full tower)               e1=5.783186 e2=14.681971 rho2=2.538733967  Cmin=1.59334  mult=[1, 1, 1, 1, 1]  r3=1.796395  <=4:YES  j01=2.404826 j11=3.831706
+  2D disc (s-wave/m=0 sector)        e1=5.783186 e2=30.471262 rho2=5.268940432  Cmin=2.29542  mult=[1, 1, 1]  r3=2.457627  <=4:**NO**  same domain, radial sector only -> 5.27 > 4
+    spherical Bessel zeros: l=0 -> [3.141593 6.283185 9.424778]  l=1 -> [4.493409 7.725252]
+  3D ball (full tower)               e1=9.8696044 e2=20.190729 rho2=2.045748516  Cmin=1.4303  mult=[1, 1, 1, 1]  r3=1.955275  <=4:YES  
+  3D ball (s-wave sector)            e1=9.8696044 e2=39.478418 rho2=4  Cmin=2  mult=[1, 1, 1]  r3=2.25  <=4:YES  spherical s-wave zeros = n*pi -> exactly 4
+====================================================================================================
+A7  Discrete (NON-metric) star K_{1,m}:  spectrum {0, 1^(m-1), m+1}          [T]+[V]
+    rho^2 = m+1 > 4 for m>=4  ->  kills C=2 on the combinatorial-graph class
+====================================================================================================
+  discrete star K_(1,2)              e1=1 e2=3 rho2=3  Cmin=1.73205  mult=[1, 1]  r3=None  <=4:YES  
+  discrete star K_(1,3)              e1=1 e2=4 rho2=4  Cmin=2  mult=[2, 1]  r3=None  <=4:YES  
+  discrete star K_(1,4)              e1=1 e2=5 rho2=5  Cmin=2.23607  mult=[3, 1]  r3=None  <=4:**NO**  
+  discrete star K_(1,5)              e1=1 e2=6 rho2=6  Cmin=2.44949  mult=[4, 1]  r3=None  <=4:**NO**  
+  discrete star K_(1,6)              e1=1 e2=7 rho2=7  Cmin=2.64575  mult=[5, 1]  r3=None  <=4:**NO**  
+====================================================================================================
+A8  summary: models with rho^2 > 4 (C=2 would die on any of these)
+====================================================================================================
+    ** rho^2=9  box ND q=0   rho2=9
+    ** rho^2=6.6928  box ND q=1   rho2=6.6928
+    ** rho^2=5.26894  2D disc (s-wave/m=0 sector)   same domain, radial sector only -> 5.27 > 4
+    ** rho^2=5  discrete star K_(1,4)   
+    ** rho^2=6  discrete star K_(1,5)   
+    ** rho^2=7  discrete star K_(1,6)   
+    total violations: 6
+done. json -> kt_a_exact.json

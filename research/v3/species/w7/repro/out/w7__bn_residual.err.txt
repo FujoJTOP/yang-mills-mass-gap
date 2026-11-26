@@ -1,0 +1,2 @@
+D:\Dev\math\research\v3\species\w7\bn_residual.py:115: RuntimeWarning: divide by zero encountered in divide
+  return 1.0 / lam                                   # hat C(k)

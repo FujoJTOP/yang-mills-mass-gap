@@ -1,0 +1,109 @@
+
+==============================================================================
+[1] WHAT phi^U EXPANDS INTO: spanning trees, and how the block product sharpens it
+==============================================================================
+phi^U(Gamma) = Ursell / Mayer coefficient of the plaquette family Gamma:
+   phi^U(G) = sum_{A subset E(G_Gamma), (Gamma,A) connected} (-1)^{|A|}                (1.1)
+  (i)  cumulant reading: partition-lattice Moebius sum over connected multigraphs, signs +-
+  (ii) Penrose / Brydges-Kennedy tree interpolation: reorganised as a sum over SPANNING
+       TREES of the intersection graph G_Gamma,  |phi^U| <= tau(G_Gamma)   (Penrose)   (1.2)
+  (iii) BLOCK FACTORISATION (new here): (1.1) is multiplicative over 2-connected blocks,
+       because (V,A) is connected  <=>  A contains every bridge AND A restricted to each
+       block is connected & spanning.  Hence, with mu(B) := sum_{A c.s. in B}(-1)^{|A|},
+         phi^U(G) = (-1)^{#bridges} * prod_{blocks B} mu(B)                       (1.3)
+       Consequences:  tree / single edge  -> |mu|=1 ;  K_n -> |mu|=(n-1)! ;  C_n -> n-1.
+       A link carries exactly 6 plaquettes  =>  clique number of the plaquette graph = 6
+       => the factorial growth of |mu| STOPS at n=6.  This is the structural reason a
+          per-cluster Cbar cannot run away, and why tau >> |phi^U| on dense clusters.  [T]
+
+==============================================================================
+[2] EXACT |phi^U| AND tau FOR THE CLIQUE FAMILY  (bitmask enumeration, exact integers)
+==============================================================================
+ the k plaquettes through ONE LINK form K_k (k<=6) -- the only way to get a clique
+  n=1 |E|= 0  phi^U=1      tau=1       |phi^U|^{1/n}=1.0       tau^{1/n}=1.0
+  n=2 |E|= 1  phi^U=-1     tau=1       |phi^U|^{1/n}=1.0       tau^{1/n}=1.0
+  n=3 |E|= 3  phi^U=2      tau=3       |phi^U|^{1/n}=1.259921  tau^{1/n}=1.4422496
+  n=4 |E|= 6  phi^U=-6     tau=16      |phi^U|^{1/n}=1.5650846 tau^{1/n}=2.0
+  n=5 |E|=10  phi^U=24     tau=125     |phi^U|^{1/n}=1.888175  tau^{1/n}=2.6265278
+  n=6 |E|=15  phi^U=-120   tau=1296    |phi^U|^{1/n}=2.2209062 tau^{1/n}=3.3019272
+  => per-cluster Cbar >= (n-1)!^{1/n} up to n=6:  1, 1, 1.2599, 1.5651, 1.8882, 2.2209
+     (K_6 exact: phi^U=-120, tau=1296 -> the tau bound over-counts by 10.8x at n=6)
+     and it STOPS: no K_n for n>=7 (clique number 6)  => per-cluster sup is ~2.22, not factorial.
+     control (the 6 plaquettes at a corner are NOT a clique): |E|=12 phi^U=-64 tau=384
+
+==============================================================================
+[3] NO-GO FOR THE tau ROUTE: the periodic 4D box is 20-regular and tau^{1/96} >> 3.5
+==============================================================================
+ L=2 periodic 4D box: n=96 plaquettes, 4*16=64 links, |E|(simple)=864, degree=18..18
+   (the infinite lattice would give 20*96/2=960 pairs; on the L=2 torus some pairs share
+    TWO links and collapse in the simple graph: 96 pairs lost, deg=18 regular)
+ tau = 3.35591544059935629510374e+116   (exact integer; Bareiss, 0.1 s)
+ tau^{1/n} = 16.36102587      (AM-GM envelope Delta = 20)
+ => sup_Gamma tau(G_Gamma)^{1/n} >= 16.361 >> 3.5.
+    Therefore: NO refinement of Kirchhoff/AM-GM can ever deliver a PER-CLUSTER
+    Cbar <= 3.5 through (1.2). The looseness is not in the algebra, it is in using tau
+    (i.e. position entropy) as the counting device: tau pays for positions again.   [T] no-go
+
+==============================================================================
+[4] WHERE THE <=20 BREAKS: position entropy e*Delta is already charged inside ubar
+==============================================================================
+ ubar := e*Delta*Cbar*u = (KP local sum). Its e*Delta factor is the positioned-tree count:
+   # rooted trees at p with n vertices, max degree Delta  <=  (e*Delta)^n  =  Delta^n * e^n
+   Delta^n  = positions  (already paid by e*Delta in ubar)
+   e^n      = labelled-tree entropy / n!  (Cayley + Stirling) -- see the table below:
+      n      (n^{n-2})^{1/n}   (n^{n-2}/n!)^{1/n}
+    5      2.6265278        1.0081978
+    20     14.822689        1.7849283
+    100    91.201084        2.4004903
+    500    487.724          2.6302759
+    1000   986.27949        2.6692875
+      inf    n/e -> inf        e = 2.7182818
+ => the correct split is  Cbar <= e = 2.71828  (shape entropy only), NOT Delta = 20;
+    charging Cbar=Delta pays the SAME position entropy twice. a01's 20 is an upper
+    bound for the wrong object (per-cluster tau^{1/n}), not for the Cbar in ubar.      [T]
+ pessimistic variant (count rooted unlabelled SHAPES, A000081, growth = Otter constant):
+   n   :       1       2       3       4       5       6       7       8
+   a_n :       1       1       2       4       9      20      48     115
+   ^1/n:     1.0     1.0  1.2599  1.4142  1.5518  1.6475  1.7385  1.8096
+   Otter = 2.9557658  < 3.5  =>  the bound is robust to which of the two splits one uses.
+
+==============================================================================
+[5] CONSTANTS: Chat*Cbar vs 7.0632853 , beta1^fix vs 1/48
+==============================================================================
+ threshold:  Chat*Cbar < 2N^2*48/(e*Delta) = 7.06328527
+ allowed:    Chat=4 -> Cbar < 1.7658213 ;  Chat=2 -> Cbar < 3.5316426
+
+ Cbar                       Chat  Chat*Cbar  <7.0633?  beta1^fix=2N^2/(Chat eD Cbar)  /(1/48)
+ 1 (c01 tree identity)     2.0   2.0        YES        0.073575888               3.531643 (no shrink)
+ 1 (c01 tree identity)     4.0   4.0        YES        0.036787944               1.765821 (no shrink)
+ e=2.7183 [shape split]    2.0   5.4365637  YES        0.027067057               1.299219 (no shrink)
+ e=2.7183 [shape split]    4.0   10.873127   NO        0.013533528               0.6496094 (SHRINKS)
+ Otter=2.9558              2.0   5.9115317  YES        0.024892326               1.194832 (no shrink)
+ Otter=2.9558              4.0   11.823063   NO        0.012446163               0.5974158 (SHRINKS)
+ 2.2209 (K_6 exact sup n<=6) 2.0   4.4418123  YES        0.03312877                1.590181 (no shrink)
+ 2.2209 (K_6 exact sup n<=6) 4.0   8.8836246   NO        0.016564385               0.7950905 (SHRINKS)
+ 3.5 (target)              2.0   7.0        YES        0.021021682               1.009041 (no shrink)
+ 3.5 (target)              4.0   14.0        NO        0.010510841               0.5045204 (SHRINKS)
+ 20 (a01 tau route)        2.0   40.0        NO        0.0036787944              0.1765821 (SHRINKS)
+ 20 (a01 tau route)        4.0   80.0        NO        0.0018393972              0.08829107 (SHRINKS)
+
+==============================================================================
+[6] VERDICT
+==============================================================================
+ [T] phi^U expands into spanning trees (Penrose), signs +-; block product (1.3) is exact.
+ [T] tau route cannot reach 3.5: sup tau^{1/n} >= 16.361  (periodic 4D box, exact).
+ [T] the <=20 loss: e*Delta (positions) is charged twice; residual = shape entropy <= e.
+ [C] e (2.7183) and Otter (2.9558) both < 3.5 -> Cbar <= 3.5 provable at the level of ubar.
+ [E] per-cluster sup observed: (n-1)!^{1/n} to n=6, max 120^{1/6}=2.2209 (exact, clique<=6).
+     Chat=2 exact   : Chat*Cbar = 5.4365637 < 7.0632853 ; beta1^fix = 0.027067057 = 1.299219 x (1/48) >= 1/48 (NO shrink)
+     Chat=4 envelope: Chat*Cbar = 10.873127 > 7.0632853 ; beta1^fix = 0.013533528 = 0.6496094 x (1/48) < 1/48 (shrinks)
+ => (a) TRIGGERS with Chat=2: Cbar <= e <= 3.5, Chat*Cbar = 5.4366 < 7.0633,
+    beta1^fix = 1.2992*(1/48) >= 1/48 -> window back to 1/48, no shrink.
+    (with the stronger c01 tree identity Cbar=1: 2*1=2 < 7.0633, beta1 = 3.53*(1/48).)
+ => (b) does NOT trigger for Cbar itself (provable lower bound 2.2209 < 3.5); it DOES
+    trigger for the tau-envelope (>= 16.36), which is therefore abandoned as an object.
+ => (c) the '<=20' error is bookkeeping (position entropy twice), not the AM-GM algebra.
+    NB a01's 'non-vacuity check' (planar grids 2.05-2.37) understates real 4D clusters:
+    the genuine L=2 box already sits at 16.36, i.e. the Delta=20 envelope is nearly SATURATED.
+
+ done.

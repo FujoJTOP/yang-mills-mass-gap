@@ -1,0 +1,214 @@
+==============================================================================
+PART A   LOCAL q >= 0 :  e_n >= n^2 pi^2/L^2   and   rho^2 = e2/e1 <= 4
+==============================================================================
+  theorem used (Sturm/Pruefer comparison, [std], exact, no small parameter):
+     q >= 0 => theta' = cos^2(theta) + (lam-q) sin^2(theta) <= lam  =>  theta(s) <= s sqrt(lam)
+     eigenvalue condition theta(L) = n pi    =>   n pi <= L sqrt(e_n)
+     =>  e_n >= n^2 pi^2 / L^2      (the FLOOR, for every n)                     [T]
+
+  q=0 (free string)             e1=   9.869604  e2=   39.478409   rho^2=3.999999
+  q=0.5 (const)                 e1=  10.369604  e2=   39.978409   rho^2=3.855346
+  q=10 (const)                  e1=  19.869604  e2=   49.478409   rho^2=2.490156
+  q=1e4 (const)                 e1=10009.869604  e2=10039.478409   rho^2=1.002958
+  q=1e4*1[x<0.1] edge           e1=  11.920919  e2=   47.683039   rho^2=3.999947
+  q=1e2*1[x<0.1] edge           e1=  10.353609  e2=   41.351945   rho^2=3.993964
+  q=1e4*1[|x-.5|<.1] mid        e1=  58.702490  e2=   58.702490   rho^2=1.000000
+  q=1e6*1[|x-.5|<.002] mid      e1=  39.629439  e2=   39.641306   rho^2=1.000299
+  q=10x (ramp)                  e1=  14.760099  e2=   44.510916   rho^2=3.015625
+  q=1e3(x-.5)^2 (harm)          e1=  31.691319  e2=   95.787033   rho^2=3.022501
+  q=1e3|x-.5| (V)               e1= 101.880634  e2=  233.904877   rho^2=2.295872
+  q=1e3 sin^2(pi x)             e1= 285.064841  e2=  285.065185   rho^2=1.000001
+  rand pwc #00 max=2.89         e1=  11.684817  e2=   41.178358   rho^2=3.524091
+  rand pwc #01 max=2.62         e1=  11.149680  e2=   41.006351   rho^2=3.677805
+  rand pwc #02 max=2.24         e1=  11.142389  e2=   40.937015   rho^2=3.673989
+  rand pwc #03 max=2.60         e1=  11.256774  e2=   40.991033   rho^2=3.641455
+  rand pwc #04 max=2.86         e1=  11.594896  e2=   40.773479   rho^2=3.516502
+  rand pwc #05 max=2.97         e1=  11.684121  e2=   40.925310   rho^2=3.502643
+  rand pwc #06 max=2.96         e1=  11.278700  e2=   40.583578   rho^2=3.598250
+  rand pwc #07 max=2.67         e1=  11.164052  e2=   40.819177   rho^2=3.656305
+  rand pwc #08 max=2.87         e1=  11.281539  e2=   41.190161   rho^2=3.651112
+  rand pwc #09 max=2.83         e1=  11.328425  e2=   40.769655   rho^2=3.598881
+  rand pwc #10 max=2.84         e1=  11.830333  e2=   41.127293   rho^2=3.476427
+  rand pwc #11 max=2.78         e1=  11.508768  e2=   40.919637   rho^2=3.555518
+  rand pwc #12 max=2.92         e1=  11.913332  e2=   41.435769   rho^2=3.478101
+  rand pwc #13 max=2.90         e1=  11.542642  e2=   41.000043   rho^2=3.552050
+  rand pwc #14 max=2.44         e1=  11.198882  e2=   40.888392   rho^2=3.651114
+  rand pwc #15 max=2.87         e1=  11.498798  e2=   41.203128   rho^2=3.583255
+  rand pwc #16 max=2.77         e1=  11.153803  e2=   40.603453   rho^2=3.640324
+  rand pwc #17 max=2.64         e1=  11.183224  e2=   40.816179   rho^2=3.649768
+  rand pwc #18 max=2.92         e1=  11.574429  e2=   40.864484   rho^2=3.530583
+  rand pwc #19 max=2.61         e1=  11.267772  e2=   41.175366   rho^2=3.654260
+  rand pwc #20 max=2.86         e1=  11.452499  e2=   41.499902   rho^2=3.623655
+  rand pwc #21 max=2.63         e1=  11.217185  e2=   40.880097   rho^2=3.644417
+  rand pwc #22 max=2.82         e1=  11.645304  e2=   40.938991   rho^2=3.515493
+  rand pwc #23 max=2.75         e1=  11.330983  e2=   40.660539   rho^2=3.588439
+  rand pwc #24 max=2.37         e1=  11.229149  e2=   40.725105   rho^2=3.626731
+  rand pwc #25 max=2.99         e1=  11.522622  e2=   40.618542   rho^2=3.525113
+  rand pwc #26 max=2.90         e1=  11.622877  e2=   41.348905   rho^2=3.557545
+  rand pwc #27 max=2.94         e1=  11.480247  e2=   40.583320   rho^2=3.535056
+  rand pwc #28 max=2.83         e1=  11.073755  e2=   40.797540   rho^2=3.684165
+  rand pwc #29 max=2.97         e1=  11.544638  e2=   41.006726   rho^2=3.552015
+
+    [PASS] A1  e_n >= n^2 pi^2/L^2 on all q>=0 shapes (rel. tol 1e-5) worst relative shortfall = -2.06e-07
+    [PASS] A2  rho^2 <= 4 on all q>=0 shapes sup rho^2 = 3.999999 at [q=0 (free string)]
+  => sup rho^2 = 3.999999  (RB's 215 shapes: 3.999999 -- same value, same cause)
+     rho^2 = 4 is approached at q = 0 (the FREE string) and by huge EDGE potentials;
+     for q not identically 0 one has rho^2 < 4 strictly.  C = 2 is sharp but free.
+
+==============================================================================
+PART B   sign budget:   q >= -beta  =>  e1 >= pi^2/L^2 - beta
+==============================================================================
+  q = - 2.46740 const :  e1 =   7.402201   pi^2-beta =   7.402203   match = True
+  q = - 4.93480 const :  e1 =   4.934800   pi^2-beta =   4.934802   match = True
+  q = - 8.88264 const :  e1 =   0.986958   pi^2-beta =   0.986960   match = True
+  q = - 9.77091 const :  e1 =   0.098694   pi^2-beta =   0.098696   match = True
+    [PASS] B1  constant negative shift saturates the budget exactly (e1 = pi^2 - beta) [T]: constant comparison
+
+  sharp budget for a LOCALISED well q = -beta*1[|x-1/2|<w]  (bisect e1 = 0):
+      w      beta_crit      beta_crit/pi^2
+     0.500       9.8696         1.0000
+     0.300      10.8528         1.0996
+     0.200      13.5455         1.3725
+     0.100      23.0556         2.3360
+     0.040      52.8250         5.3523
+  => beta < pi^2 is SUFFICIENT at every width, and SHARP exactly at w = L_s/2
+     (the widest single well).  Narrow ¡ª i.e. momentum-localised, Savvidy-like ¡ª
+     negativity is penalised: the naive budget is LOSSY there by (L/2w)^2.
+    [PASS] B2  beta_crit(w) >= pi^2 for every w <= L/2 min = 9.8696 at w = L/2
+
+==============================================================================
+PART C   DIRECTION LEMMA:  a ONE-SIDED comparison bounds the floor, not the ratio
+==============================================================================
+  C1  LOCAL class.  maximin over 20-bin piecewise-constant q >= 0:
+      best rho^2 over local q >= 0 :  3.895041      (<= 4)
+    [PASS] C1  local q>=0 : rho^2 <= 4 (adversarial maximum) max = 3.895041
+
+  C2  NON-LOCAL rank-1 positive term.  L = -d^2 + M |psi_k><psi_k| , M >= 0.
+      Then L >= -d^2 (form sense) so the FLOOR survives, and psi_n perp psi_2 are
+      untouched => the spectrum is {n^2 pi^2}_{n != k} union {k^2 pi^2 + M}.
+      k=2, M= 0.5 pi^2 :  e1=  9.869592 (>=pi^2: True)  e2=  44.413017  rho^2=  4.5000  predicted 4+M/pi^2=  4.5000
+      k=2, M= 5.0 pi^2 :  e1=  9.869592 (>=pi^2: True)  e2=  88.825415  rho^2=  8.9999  predicted 4+M/pi^2=  9.0000
+      k=3, M= 0.5 pi^2 :  e1=  9.869592 (>=pi^2: True)  e2=  39.478215  rho^2=  4.0000  predicted 4+M/pi^2=  4.5000
+      k=3, M= 5.0 pi^2 :  e1=  9.869592 (>=pi^2: True)  e2=  39.478215  rho^2=  4.0000  predicted 4+M/pi^2=  9.0000
+      k=4, M= 0.5 pi^2 :  e1=  9.869592 (>=pi^2: True)  e2=  39.478215  rho^2=  4.0000  predicted 4+M/pi^2=  4.5000
+      k=4, M= 5.0 pi^2 :  e1=  9.869592 (>=pi^2: True)  e2=  39.478215  rho^2=  4.0000  predicted 4+M/pi^2=  9.0000
+      => rho^2 = 4 + M/pi^2 (exact, matches to 4 digits); the floor is intact.
+
+  C2b rank-r positive term: shift psi_2 .. psi_{r+1} up by 20 pi^2 each.
+      r=0 :  e1=  9.869592  e2=  39.478215  rho^2=  4.0000
+      r=1 :  e1=  9.869592  e2=  88.825415  rho^2=  8.9999
+      r=2 :  e1=  9.869592  e2= 157.910432  rho^2= 15.9997
+      r=3 :  e1=  9.869592  e2= 236.870303  rho^2= 24.0000
+      => rho^2 = 4, 9, 16, 24, ... : UNBOUNDED over the non-local positive-
+         perturbation class, with 'L >= -d^2' and the floor e1 >= pi^2 holding.
+    [PASS] C2  non-local rank-r : floor holds, rho^2 unbounded rho^2 = 4 + M/pi^2 -> 4, 9, 16, 24, ...
+
+  C3  LOCAL but mixed sign, floor imposed (e1 >= pi^2):  can rho^2 exceed 4 ?
+      best rho^2 with e1 >= pi^2 :  27.184578   (e1=18.0963, e2=491.9404)
+      best q profile: min=-366.763  max= 500.000  #(q<0)=2/20
+      => rho^2 = 27.18 with e1 = 18.10 >= pi^2 > 0 : the FLOOR ALONE DOES NOT
+         BOUND THE RATIO, and this is already true inside the LOCAL class.
+         What buys rho^2 <= 4 is not the floor and not the comparison, but the
+         POINTWISE sign condition q >= 0 (equivalently: single well, bottom
+         normalised, no negative dip) -- RB-6(iv), i.e. the wall itself.
+    [PASS] C3  the floor alone does not bound the ratio (rho^2 = 27.18 at e1 >= pi^2) separation found inside the local class
+
+==============================================================================
+PART D   free field:  the tower is pi^2/L^2 and rho^2 = 4 EXACTLY
+==============================================================================
+  Dirichlet (0,   1.0) : e1=  9.86960389  e2= 39.47840949  rho^2=3.999999   pi^2/L^2=  9.86960440
+  Dirichlet (0,  10.0) : e1=  0.09869604  e2=  0.39478409  rho^2=3.999999   pi^2/L^2=  0.09869604
+  Dirichlet (0, 100.0) : e1=  0.00098696  e2=  0.00394784  rho^2=3.999999   pi^2/L^2=  0.00098696
+  periodic [0,1.0]   : e1= 39.47841760  e2=157.91367042  rho^2=4.000000
+  => the free massless field (f1^2 = 0) SATISFIES the full window at the sharp
+     constant C = 2; its floor vanishes only because L -> infinity.
+     With L_s = L the machine prints a POSITIVE floor on a free field  =>  acid
+     test 1 FAILS (floor-blind, RB-9).  The only escape: L_s must be a UV datum
+     that DIVERGES when confinement is absent:  sigma = 0  =>  L_s = infinity
+     =>  the bound reads e1 >= 0  (silent).  This SELECTS L_s = c/sqrt(sigma).
+    [PASS] D1  free field saturates rho^2 = 4 exactly (Dirichlet and periodic) C=2 sharp
+    [PASS] D2  free field with L_s = L prints a positive floor (acid FAIL) floor-blind
+
+==============================================================================
+PART E   double well = a doubled bottom (two halves, two copies)
+==============================================================================
+  SUSY  H = -d^2 + W,  W = V'^2/4 - V''/2,  V = (g/2)(x^2-1)^2 ,  [-3,3], N=6000
+     g     mu1=gap      mu2        rho^2       Delta      min W    W''(min)
+     0.5   0.792092   3.548898      4.4804    2.75681   -2.0152       0.50
+     2.0   0.748680   6.004109      8.0196    5.25543   -5.5255      26.00
+     4.0   0.454541   8.156553     17.9446    7.70201   -9.7588     116.00
+     8.0   0.119101  13.241568    111.1792   13.12247  -17.9446     488.00
+    12.0   0.024809  20.029810    807.3577   20.00500  -26.0270    1116.00
+    [PASS] E1  rho^2 diverges (upper window FAILS) as the barrier grows 4.48 -> 807.4
+
+  two-copy certificate:  the ODD half-space problem (Dirichlet wall at x=0)
+  reproduces mu1 EXACTLY -- the two lowest states live in the two halves.
+    g=  2.0 : half-domain Dirichlet ground state =  0.748680   vs full mu1 =  0.748680   rel.diff = 1.2e-09
+    g=  8.0 : half-domain Dirichlet ground state =  0.119101   vs full mu1 =  0.119101   rel.diff = 4.6e-08
+    g= 12.0 : half-domain Dirichlet ground state =  0.024809   vs full mu1 =  0.024809   rel.diff = 5.2e-07
+    [PASS] E2  mu1 = half-domain Dirichlet ground state (doubled bottom, exact) (see above)
+    [PASS] E3  min W < 0 : the bottom is pushed BELOW the free value, q >= 0 fails min W = -26.03 at g = 12.0
+
+  budget check on the double well (beta = -min W = g, ell = 1/sqrt(W'')):
+    g=  0.5: pi^2/ell^2 - beta =        2.920   true e1 =   0.792092
+    g=  2.0: pi^2/ell^2 - beta =      251.084   true e1 =   0.748680
+    g=  4.0: pi^2/ell^2 - beta =     1135.115   true e1 =   0.454541
+    g=  8.0: pi^2/ell^2 - beta =     4798.422   true e1 =   0.119101
+    g= 12.0: pi^2/ell^2 - beta =    10988.452   true e1 =   0.024809
+  => the budget does NOT exclude the double well: inside a well pi^2/ell^2 >> beta,
+     so it still 'certifies' a gap that is not there.  The discriminator is
+     irreducibly QUALITATIVE: single connected bottom / no doubling / no rank-1 tower.
+    [PASS] E4  budget form fails to exclude the double well qualitative hypothesis needed
+
+==============================================================================
+PART F   the cost of C=2, and whether RB's t/e1 threshold buys it back
+==============================================================================
+  window:  Delta = (rho^2 - 1) e1   =>   e1 >= Delta/(C^2 - 1)
+    C=1.50 :  C^2= 2.25   floor = Delta/ 1.25 = 0.800000 Delta
+    C=2.00 :  C^2= 4.00   floor = Delta/ 3.00 = 0.333333 Delta
+  floor ratio (C=1.5 over C=2) = 2.4000   <-- the entire 'loss'
+
+  RB's rank-2 threshold:  rho^2 <= C^2  <=>  e1 >= t/(1+C^2) ,  t = e1 + e2
+    C=1.50 :  e1 >= t/ 3.25
+    C=2.00 :  e1 >= t/ 5.00
+    rho^2=1.2500 :  t/Delta= 9.0000   t/5 =  0.4500 Delta   t/3.25 =  0.6923 Delta
+    rho^2=2.2500 :  t/Delta= 2.6000   t/5 =  0.6500 Delta   t/3.25 =  1.0000 Delta
+    rho^2=2.6667 :  t/Delta= 2.2000   t/5 =  0.7333 Delta   t/3.25 =  1.1282 Delta
+    rho^2=3.0000 :  t/Delta= 2.0000   t/5 =  0.8000 Delta   t/3.25 =  1.2308 Delta
+    rho^2=4.0000 :  t/Delta= 1.6667   t/5 =  1.0000 Delta   t/3.25 =  1.5385 Delta
+
+  IDENTITY: at rho^2 = 4, t = 5 Delta/3, so t/5 = Delta/3 IDENTICALLY.
+  => 'recover the loss with the t threshold' is a NO-OP: rho^2 <= C^2 <=> e1 >= t/(1+C^2)
+     and e1 >= Delta/(C^2-1) are THE SAME inequality (Delta = (rho^2-1)e1); both lose
+     the same factor 3/1.25 = 2.4 going 1.5 -> 2.  No compensation exists.
+    [PASS] F1  t/5 == Delta/3 at rho^2 = 4 (same inequality) 1 == 1
+    [PASS] F2  no compensation: same factor 2.4 on both routes 3/1.25 = 2.4
+
+  On the DT route C is IRRELEVANT: the floor is the string's own zero-point energy,
+  e1 >= pi^2/L_s^2 - beta, so the window theorem is never invoked.
+  With L_s = 1/sqrt(sigma):   m_1 >= pi sqrt(sigma) = 3.1416 sqrt(sigma).
+  Measured (Morningstar-Peardon quenched SU(3); PROOF-EFFECTIVE-STRING):
+     m_{0++}/sqrt(sigma) ~ 3.3 - 3.9  =>  the bound holds with 5-25% slack.
+  => the Dirichlet-string hypothesis is quantitatively VIABLE and FALSIFIABLE:
+     any lattice point with m_{0++} < pi sqrt(sigma) kills the species.
+    [PASS] F3  pi sqrt(sigma) sits below the measured ratio 3.1416 < 3.3
+
+==============================================================================
+SUMMARY   16 checks, 0 FAIL
+  [PASS] A1  e_n >= n^2 pi^2/L^2 on all q>=0 shapes (rel. tol 1e-5) worst relative shortfall = -2.06e-07
+  [PASS] A2  rho^2 <= 4 on all q>=0 shapes sup rho^2 = 3.999999 at [q=0 (free string)]
+  [PASS] B1  constant negative shift saturates the budget exactly (e1 = pi^2 - beta) [T]: constant comparison
+  [PASS] B2  beta_crit(w) >= pi^2 for every w <= L/2 min = 9.8696 at w = L/2
+  [PASS] C1  local q>=0 : rho^2 <= 4 (adversarial maximum) max = 3.895041
+  [PASS] C2  non-local rank-r : floor holds, rho^2 unbounded rho^2 = 4 + M/pi^2 -> 4, 9, 16, 24, ...
+  [PASS] C3  the floor alone does not bound the ratio (rho^2 = 27.18 at e1 >= pi^2) separation found inside the local class
+  [PASS] D1  free field saturates rho^2 = 4 exactly (Dirichlet and periodic) C=2 sharp
+  [PASS] D2  free field with L_s = L prints a positive floor (acid FAIL) floor-blind
+  [PASS] E1  rho^2 diverges (upper window FAILS) as the barrier grows 4.48 -> 807.4
+  [PASS] E2  mu1 = half-domain Dirichlet ground state (doubled bottom, exact) (see above)
+  [PASS] E3  min W < 0 : the bottom is pushed BELOW the free value, q >= 0 fails min W = -26.03 at g = 12.0
+  [PASS] E4  budget form fails to exclude the double well qualitative hypothesis needed
+  [PASS] F1  t/5 == Delta/3 at rho^2 = 4 (same inequality) 1 == 1
+  [PASS] F2  no compensation: same factor 2.4 on both routes 3/1.25 = 2.4
+  [PASS] F3  pi sqrt(sigma) sits below the measured ratio 3.1416 < 3.3
+==============================================================================

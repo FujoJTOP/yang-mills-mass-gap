@@ -1,0 +1,16 @@
+# U08 SU(2) beta=2.5  2x2^3  op=clover  ncfg=30000 therm=1000 gap=2 seed=11  [123.0s]
+# <O> = 0.721550   <1/2 Re tr U_p> = 0.673300 +- 0.000436
+# [T] C(0) = Var(Obar):  C(0)=2.2521182393e-02  mean-of-slice-Var=0.022414  (diff 1.08e-04 = MC, identical by construction)
+#     Var_pointwise(O(x)) = 5.602501e-02  != C(0)  (ratio 2.49, V_s=8)
+# [E] tau_int=0.22 meas-units
+
+  t     C(t)/C(0)        C(t)             err
+  0    1.00000000   +2.25211824e-02   1.31e-03
+  1    0.38315233   +8.62904340e-03   1.71e-03
+
+  t   m_eff=ln[C(t-1)/C(t)]   single-pole finite-T solve  [C(t)=f^2(e^{-mt}+e^{-m(T-t)})/(1+e^{-mT})]
+  1    0.959323              1.613561
+
+[E] E1(naive, ln C0/C1) = 0.959323
+[T] L_t=2 single pole: C(1)=f^2/cosh(E1) => E1 = arccosh(C0/C1) = 1.613565   (U04-MEASF1.md:108)
+[wall] 123.0s

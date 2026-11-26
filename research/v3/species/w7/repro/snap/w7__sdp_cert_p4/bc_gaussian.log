@@ -1,0 +1,47 @@
+==============================================================================
+BC-BETHE T0/T3  -- exact Gaussian/free-scalar comparison, tree(z=2d) vs Z^d
+==============================================================================
+
+[1] critical couplings (exact)
+ d   z   beta_c^lat  beta_c^tree  ratio tr/lat
+ 2   4     0.125000     0.144338        1.1547
+ 3   6     0.083333     0.111803        1.3416
+ 4   8     0.062500     0.094491        1.5119
+
+[2] mass ratio m_tree/m_lat at matched beta (tree ABOVE lattice everywhere
+    in the disordered window: tree orders LAST in this model)
+ d     beta      m_lat     m_tree   tree/lat
+ 2  0.03125    0.86603    0.88515     1.0221
+ 2  0.06250    0.70711    0.75299     1.0649
+ 2  0.09375    0.50000    0.59201     1.1840
+ 2  0.12500    0.00000    0.36603        inf
+ 2  0.15625    0.00000    0.00000        inf
+ 2  0.18750    0.00000    0.00000        inf
+ 3  0.02083    0.86603    0.90203     1.0416
+ 3  0.04167    0.70711    0.79204     1.1201
+ 3  0.06250    0.50000    0.66407     1.3281
+ 3  0.08333    0.00000    0.50462        inf
+ 3  0.10417    0.00000    0.26135        inf
+ 3  0.12500    0.00000    0.00000        inf
+ 4  0.01562    0.86603    0.91359     1.0549
+ 4  0.03125    0.70711    0.81810     1.1570
+ 4  0.04688    0.50000    0.70987     1.4197
+ 4  0.06250    0.00000    0.58186        inf
+ 4  0.07812    0.00000    0.41618        inf
+ 4  0.09375    0.00000    0.08856        inf
+
+[3] ACID TEST at the free-massless-field point beta = beta_c^lat
+    (Z^d is the free massless field: m_lat = 0 exactly)
+ d  m_lat(beta_c^lat)  m_tree(beta_c^lat)   tree>0 & lat=0 ?
+ 2          0.000e+00            0.366025               True
+ 3          0.000e+00            0.504623               True
+ 4          0.000e+00            0.581861               True
+
+[4] reading
+    * tree mass is strictly LARGER than the lattice mass at every matched beta;
+    * at beta_c^lat the lattice is gapless (m=0) but the tree is massive
+      => the implication 'm_tree>0 => m_lat>0' is FALSE in an exactly solvable model.
+    * direction of the surviving strict inequality:  m_tree >= m_lat  (UPPER bound
+      on the lattice mass out of a tree mass)  -> useless for a gap lower bound.
+    * NOTE the contrast with the ferromagnetic Ising case (bc_ising.py), where the
+      sign is OPPOSITE: the sign is not a geometric fact, it is FKG-dependent.

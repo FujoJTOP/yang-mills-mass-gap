@@ -1,0 +1,17 @@
+
+=== beta=3 Ls=8 Lt=16 N=100000 gap=3 therm=900 ===
+  m_eff(1) = 2.1987 +- 0.1391 ; m_eff(2) = 1.3719 +- 0.8216 ; rho = -0.210
+  BLUE over window [1,2]: m_eff = 2.1504 +- 0.1297  (weights 0.942/0.058)
+  naive diff m_eff(1)-m_eff(2) = +0.8268 +- 0.8615
+
+=== beta=2.5 Ls=8 Lt=16 N=24000 gap=3 therm=900 ===
+  m_eff(1) = 1.8018 +- 0.1065 ; m_eff(2) = 2.4770 +- 1.4853 ; rho = +0.225
+  BLUE over window [1,2]: m_eff = 1.7941 +- 0.1052  (weights 1.011/-0.011)
+  naive diff m_eff(1)-m_eff(2) = -0.6752 +- 1.4650
+
+[scaling] m_eff(1): beta=2.5 1.802+-0.107 -> beta=3.0 2.199+-0.139 ; m(2.5)-m(3.0) -0.397 +- 0.175 (2.3 sigma => m_eff goes UP as beta increases)
+[scaling] observed m_eff(2.5)/m_eff(3.0) = 0.819 (BLUE: 0.834)
+[scaling] two-loop a(2.5)/a(3.3) = 7.66  (b0=0.04644, b1=0.001818)
+[scaling] two-loop a(2.5)/a(3.6) = 16.56  (b0=0.04644, b1=0.001818)
+[scaling] two-loop a(2.5)/a(4) = 46.50  (b0=0.04644, b1=0.001818)
+[scaling] two-loop a(2.5)/a(3.0) = 3.557  => scaling demands m*a(2.5)/m*a(3.0) = 3.557 ; observed 0.819 (4.3x mismatch)

@@ -1,0 +1,39 @@
+====================================================================================================
+GH2  L_t-ARTEFACT SCAN   SU(2) Wilson  beta fixed, (Ls, Lt) varied independently
+kernel/operator/estimator = run3_apebase.py VERBATIM (_chains, correlators, fit_A, A_at); nlev=1 raw
+m = 1.546 pinned ; fit window t=1,2,3 ; errors = 20-block delete-one jackknife ; numba=0.68.1 threads=8
+gap=2 therm=50 chains=2 ; strictly sequential, one process ; budget=60s
+====================================================================================================
+
+--- beta = 2.5  Ls=6  Lt=12  N = 16 (2 x 8)  gap = 2  therm = 50   (t+0s)
+[E] 16 cfg in 0.1s (125.8 cfg/s, 252 sweeps/s)  compile 0.7s  tau_int: plaq 0.8, S(0) 0.9 cfg
+[E] <1/2 Re tr U_p> = 0.65291 +- 0.00089
+[E] C(0) = 7.0522   C(t)/C(0), t=0..4 : 1.00000  0.08947+-0.07336  0.08756+-0.08362  0.12765+-0.06473  0.06481+-0.07500
+[E] C1/C0 = 0.08947 +- 0.07336 ; C2/C0 = 0.08756 ; S/N(2) = 1.1
+[E] Rbar = -ln C1/C0 = 2.4334 +- 0.8886 (jack) ; full-sample 2.4132
+[E] w1(1.546) = 0.51038 +- 0.34243 (jack) ; full-sample 0.51065 ; w1_nowrap = 0.51037 +- 0.34243
+[E] kappa = w1/(e^m C1/C0) = 1.2257 +- 0.3703
+[E] m_fit(t=1..6) = 0.302 ; m_eff(t)=ln C(t)/C(t+1): 2.433  0.030  -0.397  0.729  -0.499  -690.776
+[wall] elapsed 1s / budget 60s
+
+--- beta = 2.5  Ls=8  Lt=20  N = 16 (2 x 8)  gap = 2  therm = 50   (t+1s)
+[E] 16 cfg in 0.5s (30.6 cfg/s, 61 sweeps/s)  compile 0.1s  tau_int: plaq 0.6, S(0) 0.7 cfg
+[E] <1/2 Re tr U_p> = 0.65218 +- 0.00039
+[E] C(0) = 17.0574   C(t)/C(0), t=0..4 : 1.00000  -0.05270+-0.07348  0.07342+-0.04722  -0.03631+-0.05245  -0.07588+-0.06987
+[E] C1/C0 = -0.05270 +- 0.07348 ; C2/C0 = 0.07342 ; S/N(2) = 1.5
+[E] Rbar = -ln C1/C0 = 27.6310 +- 0.0000 (jack) ; full-sample 27.6310
+[E] w1(1.546) = -0.17341 +- 0.31145 (jack) ; full-sample -0.17337 ; w1_nowrap = -0.17341 +- 0.31145
+[E] kappa = w1/(e^m C1/C0) = 0.6778 +- 0.3660
+[E] m_fit(t=1..6) = 0.050 (EDGE) ; m_eff(t)=ln C(t)/C(t+1): -690.776  -690.776  -690.776  -0.812  -205.123  -209.355  -690.776  -239.923  -414.728  -656.474
+[wall] elapsed 1s / budget 60s
+
+====================================================================================================
+ beta  Ls  Lt      N    <plaq>     C1/C0    Rbar     +-       w1      +-    kap  S/N2     s
+2.500   6  12     16   0.65291   0.08947   2.433  0.889   0.5104  0.3424  1.226   1.1   0.1
+2.500   8  20     16   0.65218  -0.05270  27.631  0.000  -0.1734  0.3114  0.678   1.5   0.5
+
+--- 8.3% recomputed at each available L_t  (w1, same estimator, same m) ---
+
+--- L_t drift at each L_s ---
+
+[wall] total MC+analysis 1s

@@ -1,4 +1,4 @@
-qg3_acid.py   start 2026-11-24 23:54:14
+qg3_acid.py   start 2026-11-25 12:37:34
 
 ==============================================================================
 PART G -- the exact Gaussian dictionary (the tautological reading)
@@ -82,4 +82,4 @@ ACID 3 -- double well: R_eff finite but the gap is 0 (Kramers pair)
   A finite-R_eff certificate must produce a positive floor here.  It cannot.
   VERDICT ACID 3: FAILED, as required.
 
-total wall 0.0 s
+total wall 0.1 s

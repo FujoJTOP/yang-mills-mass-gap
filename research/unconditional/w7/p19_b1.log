@@ -1,0 +1,27 @@
+==== beta=1 eps=1.423 seeds 400-403 ns=5000 burn=800 ====
+[P19] beta=1 tag=b1 nsw=5000 burn=800 eps=1.42302494707577 G=4 seeds=[400, 401, 402, 403] wall=75.8s (13.07 ms/sweep for 4 chains) -> C:\Users\hooya\AppData\Local\Temp\p19_b1.npz
+[P19] acc_link=[0.498 0.499 0.499 0.498] domain-reject=0.0233 final r: mean=3.092 max=5.533 (2pi=6.283)
+    g  E[kappa]   Var(F)    Gpp(0)  Delta_dyn    W_geo        X  sum-check     E[F]   tauK   tauF   Neff
+    0    0.5746   0.2957   +0.2789    +0.0055  +0.2720  +0.0014   +2.8e-07  +0.0028    3.8    4.7   1060
+    1    0.5736   0.2796   +0.2940    +0.0196  +0.2690  +0.0055   +1.1e-06  +0.0485    3.8    5.2    957
+    2    0.5654   0.2821   +0.2833    +0.0195  +0.2706  -0.0068   -1.4e-06  -0.0108    4.1    5.3    952
+    3    0.5754   0.2977   +0.2777    +0.0146  +0.2615  +0.0016   +3.3e-07  -0.0165    2.5    5.0    999
+=== P19  beta=1  tag=b1  L=2  SU(2)  Nsweep/chain=5000  chains=4  seeds=[400 401 402 403]  eps=1.42302  domain-reject=0.0233  wall=76s (13.07 ms/sweep, 4 chains) ===
+acc_link=[0.498 0.499 0.499 0.498]
+
+--- Gpp(0) ---
+   per chain: +0.2789  +0.2940  +0.2833  +0.2778
+   Gpp(0) = +0.2835 +- 0.0049(jk) / 0.0105(tau) / 0.0334(grp)   spread=0.0074  chi2/dof=0.63
+
+--- Delta_dyn ---
+   per chain: +0.0055  +0.0196  +0.0195  +0.0146
+   Delta_dyn = +0.0148 +- 0.0045(jk) / 0.0082(tau) / 0.0298(grp)   spread=0.0066  chi2/dof=0.58
+
+--- Var(F) ---
+   per chain: +0.2957  +0.2796  +0.2821  +0.2977
+   Var(F) = +0.2888 +- 0.0058(jk) / 0.0096(tau) / 0.0415(grp)   spread=0.0092  chi2/dof=0.71
+
+tauK=[3.8 3.8 4.1 2.5]  tauF=[4.7 5.2 5.3 5. ]  Neff=[1060  957  952  999]
+kappa pooled: mean=0.5723 median=0.5573 max=1.825e+01 min=2.129e-01 std=0.2268
+
+VERDICT beta=1: Gpp(0)=+0.2835 (jk 0.0049) | Delta_dyn=+0.0148 | Var(F)=+0.2888

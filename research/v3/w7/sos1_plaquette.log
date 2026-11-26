@@ -1,0 +1,48 @@
+[0] anchors (indep. mpmath, theta=pi)
+    Z          = 1.2188266965286122
+    S=1/(4Z)   = 0.205115297123073148    (q11 0.20511529712307314798)
+    Var(g)     = 0.01105929377297359
+    D(b=2.5)   = 0.06912058608108493695    (q11 0.069120586081084936946)
+    G''=S-D    = 0.135994711041988211    (q11 0.13599471104198821104)
+    beta*      = 4.30660785256  (q11 4.3066078525597...)
+    beta=4.4:  G'' = -0.0089926303   <0  while H>=0 unchanged
+
+[A] q11 scalar H(u) = (beta c/2) g(u) = beta cos(theta/2) sin(u)/(2u)
+    theta=0       c=1.0                    min=0.0015663999  max=0.62499357
+    theta=pi/4    c=0.92387953             min=0.0014471648  max=0.57741877
+    theta=pi/2    c=0.70710678             min=0.001107612  max=0.44193719
+    theta=3*pi/4  c=0.38268343             min=0.0005994353  max=0.23917469
+    theta=pi      c=2.0670321e-43          min=3.237799e-46  max=1.2918818e-43
+    at theta=pi: c = cos(pi/2) = 2.067e-43  -> set exactly 0 => H == 0 identically
+    range of H over u in (0,pi): [0, beta*c/4];  H >= 0 for ALL theta in [0,pi]  [T]
+
+[B] 3x3 Hessian on the slice: analytic vs finite differences (u=1, theta=pi/2, h=1e-4)
+    max|H_analytic - H_FD| = 8.31869e-11   (validate the formula)
+    Hess_exact = [['0.238782', '0.0', '-0.133099'], ['0.0', '0.371881', '0.0'], ['-0.133099', '0.0', '0.371881']]
+
+    spectra over u-grid (401 pts), beta=2.5:
+    theta    u*        min eig Hess S_W       min eig Hess S_W+Phi'' frac<0
+    0        3.134     -0.62498072            -0.15303204            0.50 / 0.28
+    pi/2     3.055     -0.48448683            -0.079835485           0.56 / 0.25
+    pi       2.081     -0.27261363            -0.051142971           1.00 / 0.41
+
+[C] SOS: can H - c = sum A_i^* A_i  (<=> H - c >= 0) ?
+    theta=pi: sup_u (H - c) = -0.001  for c = 0.001  => NEGATIVE (not SOS)
+    theta=pi: sup_u (H - c) = -1.0e-12  for c = 1.0e-12  => NEGATIVE (not SOS)
+    => at theta=pi, H == 0 pointwise, so H - c = -c < 0 identically: literal SOS is impossible.
+    trivial square exists for theta<pi: A(u)=sqrt(beta c/2 * sin u/(2u)), A^2 = H exactly;
+    but ANY nonneg function is a square => zero information (vacuous, measure-blind).
+    SUFFICIENCY TEST: at beta=4.4, G'' = -0.0089926303 < 0 while H >= 0 pointwise for every beta => H-positivity CANNOT imply G''>=c. [T by counterexample]
+
+[D] 1D Brascamp-Lieb on the slice measure w du (log-concavity check)
+    phi''=2/sin^2-1/u^2 :  min over (0,pi) = 1.549234588  at u= 1.3933   => >0 : log-concave  [T]
+    E[g'^2] = 0.02917444834    BL bound E[g'^2]/rho_min = 0.01883152401
+    true Var(g) = 0.01105929377   =>  Var <= BL  [holds]
+    beta=2.5  provable margin  S - beta^2*BL = 0.087418272
+    beta=3.0  provable margin  S - beta^2*BL = 0.035631581
+    analytic window from BL: beta < 3.3003218   (vs exact beta* = 4.3066079 )
+    sharpened pointwise version: E[g'^2/phi''] = 0.01487230962  => Var <= 0.01487230962  [C]
+    NOTE: this BL is a *1D marginal* fact (u only). The 3D density is NOT log-concave:
+          Hess S_W + Phi'' has min eig -0.051142971 at theta=pi => 3D/4D BL prerequisite FALSE.
+
+[E] verdict: SOS fails on the single plaquette in every reading; see SOS1.md

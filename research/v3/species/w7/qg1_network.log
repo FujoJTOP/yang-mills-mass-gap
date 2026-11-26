@@ -1,4 +1,4 @@
-qg1_network.py   start 2026-11-24 23:52:00
+qg1_network.py   start 2026-11-25 12:37:10
 
 ==============================================================================
 PART A -- exact torus family T^d_L, unit conductances
@@ -143,5 +143,5 @@ PART D -- the only TRUE gap FLOOR obtainable from resistances
   condition 5 (uniformity in (L,a)) forbids.
 
 ==============================================================================
-total wall 1.6 s
+total wall 1.8 s
 ==============================================================================

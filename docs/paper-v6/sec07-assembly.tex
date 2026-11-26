@@ -1,0 +1,142 @@
+% =====================================================================
+%  sec07 : the attribution ledger --- I1 = [T], C-bar == N (proved), window 0.018394 = 0.8829 x (1/48)
+% =====================================================================
+\section{归属清单：把 $I1$ 的每一项落到 \LT{} 归属上}\label{sec:assembly}
+
+第三次裁决（\code{F07-ADJCBAR.md}）给出一句必须逐字照抄的话：\textbf{$I1$ = \LT，$\bar C\equiv N$（已证值）}。
+它成立的方式不是补一条新不等式，而是把 $I1$ 拆开后的\textbf{每一项}都落到一个已有的 \LT{} 归属文件上，
+并把唯一一个"常数型"因子（$\bar C$）\textbf{算出来}：
+
+\begin{itemize}
+\item 五项几何/分析输入：四壁几何、全表示 KP、dressed-mass 重求和的 (a)(b)(d)、$[KL]$、以及 $\bar C\equiv N$（权重比）；
+\item 三个洞（A/D/E）是\textbf{记账正位}（$u:=c_f/N$、$r_0$ 带 $V_s$、$p=0$），一个洞（B）\textbf{出局}，一个洞（C）\textbf{修完}（$\hat C$ 精确 $2$、包络 $4$）。
+\end{itemize}
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}L{0.035\textwidth} L{0.175\textwidth} L{0.195\textwidth} L{0.055\textwidth} L{0.38\textwidth}@{}}
+\toprule
+\# & 归属对象 & 归属文件 & 等级 & 出处（逐字级） \\
+\midrule
+1 & 四壁几何（factor-4，$m_1=4\ln(1/u)/a$，四壁非"每片 1 个"） &
+\code{P3-FOURWALL-DERIVATION.md} \S1.1--1.5 & \LT &
+\code{:18}："the four-wall minimal-surface geometry is now a theorem [T]"；\code{P3-AUDIT-CORRECTED.md} Lemma 2.1 同判 \\
+2 & 全表示 KP（$K\le CN$、邻接度 $\Delta=20$、$uK<1$） &
+Seiler, \emph{LNP} \textbf{159}；语料内 \code{P3-FULLREP-KP.md} & \LT &
+\code{P3-AUDIT-CORRECTED.md:57}："standard, Seiler LNP 159 [T]"；\code{U07-CPSTRONG.md:60} 转引 $K\le10^3N$ \\
+3 & dressed-mass 重求和的 (a)(b)(d) &
+\code{P3-DRESSED-MASS.md} & \LT &
+\code{:18}："closed for (a),(b),(d)"；\code{:170}：(a)(b)(d) PASS；(c) 由 $[KL]$ 供 \\
+4 & $[KL]$：柱面 KL/OS 表示，$d\mu_O^{(L)}\ge0$ &
+\code{P3-CYLINDER-RESIDUE.md}；\code{Y01-KL.md} & \LT &
+\code{:67--69}（$\nu_L\ge0$，逐字："$\nu_L\ge0$ is Osterwalder--Schrader reflection positivity"）；\code{Y01-KL.md:56} 判"标准定理" \\
+5 & $\bar C\equiv N$（每片权重比 $=c_f/u$，\textbf{已证值}） &
+\code{F07-ADJCBAR.md} \S1.4、\S3 & \LT &
+\code{F07-ADJCBAR.md}：$|w|^{1/n}/u=c_f/u=N$（cube $\prod\mathrm{mult}=1$；$\mathrm{SU}(2)$ $\langle\tfrac1N\operatorname{tr}U\rangle=0.020827\approx c_f$）；
+$e\Delta$ 已含动物计数（\code{P3-FULLREP-KP:89} $\lambda_a=e\Delta$）；$\Phi(0)/u=2N^2$ \\
+6 & 洞 C 的 $\hat C$（精确 2 / 包络 4）与它的记账 &
+\code{Z12-FIXC.md}；\code{Z08-HOLEC.md} & \LT &
+\code{Z12-FIXC.md:206}：$\hat C=2$ 精确、包络 $\hat C=4$；$\hat C\cdot\bar C=4N=8>7.0633$；
+窗口\textbf{一行收敛（\code{m07} 裁决）}：$\hat C\cdot\bar C=8>7.0633$ $\Rightarrow$ $\beta<0.018394=0.8829\times\tfrac1{48}$，$1/48$ 在窗外 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\textbf{清单的用法（一句）}：$I1$ 的每一分内容都能追到上表的一行；不再有"某项只写在伴文里"的缺口，
+也不再有"常数未定"的缺口（$\bar C\equiv N$ 已证、$e\Delta=54.3656$ 已证、$\hat C\in\{2,4\}$ 已证）。
+故 $I1$ = \LT，\textbf{无未知常数}；$[KL]$ 也已证，未知输入清单为空。
+
+\subsection{$\bar C\equiv N$（两条旧路线只作历史）}\label{sec:cbar-why}
+
+第三条裁决的结论先写成一行，再交代两代被否的读法：\textbf{$\bar C$ 不是 $1$、也不是"不存在"、也不是一个待定的界，而是恒等值 $\bar C\equiv N$}（\S\ref{sec:cbar}）。
+
+第三条裁决同时否掉了两代"$\bar C$ 被消掉"的读法，两句话必须并存（\S\ref{sec:cbar} 已展开）：
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{求和级 $\bar C=1$（树吸收动物）：假。}恒等式 $\sum_{\Gamma\ni x}\tau(G_\Gamma)a^\Gamma=\sum_{T\ni x}a^T$ 在 $n=3$ 就有反例，
+差项 $3a_0a_1a_2$；正确式带 $\prod_{e\notin T}(1+a_e)$（\code{C07-AUDIT.md:12,:41--43}）。
+\item \textbf{"$\bar C$ 消失"（c03 直接界）：输入错。}$|w_p|\le u$ 差一个因子 $N$；正确输入 $|w|^{1/n}/u=c_f/u=N$
+$\Rightarrow x=e\Delta Nu=1.1326>1$，该界不成立（\code{F07-ADJCBAR.md} \S1.4）。
+\item \textbf{所以 $\bar C$ 不是 $1$、也不是"不存在"，而是 $\equiv N$}；逐 $\Gamma$ 的 $\bar C\ge2.2209$（$K_6$）与 $a01$ 的 $\Delta=20$
+都属\textbf{树因子槽}，而 $e\Delta$ 已经把那一槽付过了——两槽同名不同物（\code{F07-ADJCBAR.md} \S2--\S3）。
+\end{enumerate}
+一句话：旧路线\textbf{一条假、一条错}，\textbf{$\bar C\equiv N$ 才是对的}；这条新读法是\textbf{等式}，比旧的可证不等式强，所以 $I1$ 仍是 \LT。
+
+\subsection{主张句（逐字，全文唯一）}
+
+\begin{claimbox}{cT}
+$I1$ and $I2$ are both closed at \code{[T]}; in the strong-coupling window ($\beta<0.018394$), at finite $L$ (uniformly in $L$),
+$m>0$ holds for both the $0^{++}$ and $2^{++}$ channels. \textbf{This is not Clay.}
+\textbf{The residual gap is the uniform statement $\forall\beta\in[1/48,2.5]\ \forall L,a:\ G''_{k=0}/a^2\ge\delta^2>0$.} An earlier draft named this gap $\Delta_0>0$ and identified it with $H1$, $I2$, $(E\text{-}I2)$ and $H^*$. \textbf{That identification is withdrawn}, on three independent grounds: (i) \code{n12}: $\Delta_0>0$ fails the four-model test on three of four models (on 2D YM $G''=0$ with $W_{\mathrm{full}}\ge N/12>0$ forces $\Delta_{\mathrm{dyn}}=-W_{\mathrm{full}}<0$; on M6, $\Phi=0\Rightarrow W_{\mathrm{full}}=0\Rightarrow\Delta_{\mathrm{dyn}}=2\omega>0$ on a gapless model; the single plaquette gives $\Delta_{\mathrm{dyn}}=-0.0691$); (ii) \code{n06}: $\Delta_0$ and $\Lambda_\star$ live on different carriers ($G''$ vs $\operatorname{supp}\nu$), are of different type (position vs distance), and have different quantifier domains, so they are \textbf{incomparable}; (iii) \code{n09}, Theorem N09-1: on M6 the only degenerate scale is the spectral bottom, hence \textbf{any quantity passing the four-model test must be a function of $m$ itself} --- the target is unique and no proxy exists. \textbf{The correct equivalence class is three, not five: $\{\Lambda_\star\ \text{lower bound}\equiv I2\equiv(E\text{-}I2)\}$; $H^*$ and $\Delta_0$ do not belong to it.} \textbf{The withdrawn-transport section (\S\ref{sec:transport-withdrawn}) stands.}
+\textbf{The earlier framing --- ``transport from $\beta<\beta_1$ to $\beta=2.5$'' --- is withdrawn: extending the window is self-negating},
+since a constant floor continued to $\beta\to\infty$ would force $m_{\mathrm{phys}}\ge r/a\to\infty$.
+\end{claimbox}
+
+\subsection{四条限定 D.1--D.4 与新靶（与主张句同等重要）}\label{sec:u1-d}
+
+\begin{notbox}
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{D.1（\codep{G07-KATOADJ.md}）：$I2\Rightarrow m_1>0$ 为\textbf{真，但空转}。} $I2$ 的旁条件
+      $\sup\operatorname{spec}\widetilde T<1$ \textbf{逐字就是} $m_1>0$（\codep{B01-RP.md}:12），
+      故这是\textbf{用旁条件把结论写进去}，不是蕴含。\textbf{唯一合法的反例需要真空简并}
+      （$r_{\mathrm{iso}}=1-e^{-a\delta}=0.4484>0$、$m=0$），而那被 PF 唯一真空排除
+      （\codep{G07-KATOADJ.md} \S0 F、\S1.4--1.5）。
+      初稿用的见证 $\nu=\delta_0+\mathbf 1_{[\delta,\delta+1]}$ \textbf{已撤回}：减除 VEV 后 $f_1^2=0$（$I1$ 假）；
+      把它读成连通原子需真空简并；按逐字定义去真空后 $\sup=e^{-a\delta}$ 是 a.c. 块的上沿
+      $\Rightarrow r_{\mathrm{iso}}=0$ —— 它见证的是 $m>0\wedge\neg$Kato（\code{f04} 的"逆假"方向），
+      不是 Kato$\wedge\neg(m>0)$。
+      \textbf{与 $a$、$\beta$ 无关的一句：}$r_{\mathrm{iso}}$ 与 $I2$ 是\textbf{同一个量}
+      （$E_2-E_1=\Lambda_\star-m_1^2$；2D YM 上同值 $0.625$），真正的对比是
+      $r_{\mathrm{iso}}$（\textbf{距离}）与 $m$（\textbf{位置}）。
+\item \textbf{D.2：窗内 $m>0$ 的 credit 归 SZZ/OS，不是本链。} 在 $\beta<\beta_1$ 上 $m>0$ 由 OS'78 的全观测量聚类
+      （及 SZZ'23 的 LSI 半径）给；本链的增量是残数 $I1$ 与隔离 $I2$，即\textbf{去掉"$0^{++}$ 严格最轻"这一前提}，
+      仅此而已（\codep{Y02-CHANNELS.md:16--20}；\codep{PROOF-IN11.md:19}）。
+\item \textbf{D.3：$\beta<0.018394$ 是粗格点窗，不是 $a\to0$。} 在该点 $a\Lambda\approx0.48$（$\mathrm{SU}(2)$；$\mathrm{SU}(3)$ 为 $0.41$）
+      与 $m_1a=18.26$ 都是\textbf{纯数}，故格距有正下界 $a\ge18.26/m_1$；窗是\textbf{耦合}的窗、$a$ 固定，
+      本文任何一处都不取 $a\to0$（\codep{G05-BETAOFa.md} \S2.2--2.3）。
+\item \textbf{D.4：不是 Clay。} $\beta=2.5$ 处 $\bar u=e\Delta N u\approx63.8>1$，KP 窗外的任何一步本文都没有；
+      连续极限也没有（\codep{PROOF-P3-UNCONDITIONAL.md:16}；\codep{C03-BYPASS.md:184}）。Clay 的读数为 0，不给百分数。
+\item \textbf{不是"每条道都有证书"。} 两道（$0^{++}$、$2^{++}$）各有 $I1/I2$；其余道由 \LT{} 的 $(b')_{IN\text{-}11}$ 成员性挡掉，
+      不给各自证书（\codep{Y02-CHANNELS.md:109--110}；\codep{PROOF-IN11.md:19}）。
+\item \textbf{不是 $L\to\infty$。} $\nu_L\ge0$ 只在有限 $L$；把 $[KL]$ 用在 $L\to\infty$ 会与 $I2$ 循环（\codep{Y01-KL.md:108}）。
+\end{enumerate}
+\end{notbox}
+
+\textbf{新靶（取代"扩窗"）.} 常数地板若延到 $\beta\to\infty$，会给出
+$m_{\mathrm{phys}}\ge r/a\to\infty$——在渐近自由场景内\textbf{自我否定}（\codep{G05-BETAOFa.md} \S3.2），
+故"把本文这扇窗扩到 $\beta=2.5$"在原理上不可能；能跨过去的形式只有\textbf{比值地板}
+\begin{equation}
+\liminf_{a\to0}\ \frac{m_{\mathrm{lat}}(a)}{a\Lambda}\ \ge\ c_0\ >\ 0
+\qquad(\Longleftrightarrow\ m/\Lambda\ge c_0),
+\end{equation}
+其中 $m_{\mathrm{lat}}$ 与 $a\Lambda$ 必须同方案、同归一化（\codep{G05-BETAOFa.md} \S5）。
+\textbf{本文不证它}：本文的每一个数都在固定 $a$ 上，新靶是下一台机器要打的靶，不是本链的推论。\LM（陈述级）
+
+\subsection{Why the transport framing was withdrawn：扩窗自我否定}\label{sec:transport-withdrawn}
+
+\begin{notbox}
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{$\beta<1/48$ 是粗格点，不是小耦合极限。} 窗内（本链窗 $\beta<0.018394$；$1/48$ 只作粗格点的宽松读法，已在本链窗外）$a\Lambda\approx0.48$（$\mathrm{SU}(2)$；$\mathrm{SU}(3)$ 为 $0.41$）
+与 $m_1a=18.26$ 都是\textbf{纯数}（\codep{G05-BETAOFa.md} \S2.2--2.3）$\Rightarrow$ 格距有\textbf{正下界} $a\ge18.26/m_1$；
+窗是\textbf{耦合}的窗、$a$ 固定，本文任何一处都不取 $a\to0$。
+\item \textbf{19 条"扩窗"路线全部死}（\code{g05}/\code{m05} 台账）：
+\code{INVENT}、RG、\code{(CP)}、解析性/KP、单调性、\code{$\Omega$}-PF、直接 2.5、\code{m(L)}、\code{$\beta$}-ODE、
+FKG、\code{log det}、\code{(G)}、块自旋、指标、变分、大 $N$、\code{W-SHIFT}、OS--SCHR\"O、\code{RETRACT}（19 条）。
+\item \textbf{它们的共同死因不是各自的技巧，而是目标本身错。} 常数地板若延到 $\beta\to\infty$，会给出
+$m_{\mathrm{phys}}\ge r/a\to\infty$——在渐近自由场景内\textbf{自我否定}（\codep{G05-BETAOFa.md} \S3.2）。
+故"把本文这扇窗推到 $\beta=2.5$"在原理上\textbf{不可能}；19 条路线不是"技术不够"，是\textbf{靶选错了}。
+\end{enumerate}
+\end{notbox}
+
+\textbf{所以主力陈述收成一条：}$\forall\beta\in[1/48,2.5]\,\forall L,a:G''_{k=0}/a^2\ge\delta^2>0$ —— 其 $(E\text{-}I2)$ 读法（$\exists\,\delta,c>0$，$\inf_{L,a}(\Lambda_\star-m_1^2)\ge\delta$、$\inf_L m_1^2\ge c$）属同一等价类；早先的 $\Delta_0>0$ 命名\textbf{已撤回}（$G'$ 槽 vs $\nu$ 槽；$H1\not\Rightarrow I2$；四模型 3/4 败，\codep{N12-VERDICT.md}），
+且 $\delta_{\mathrm{curv}}:=a^2\Delta_0^2+W_{\mathrm{full}}$（\code{m05}）是\textbf{曲率槽}的量，与 $I2$ 的 $\Lambda_\star-m_1^2$ \textbf{同名不同物}；量纲正确的等价形式就是上面的比值地板。
+本文\textbf{不再}把"transport/搬运"列为未解决项：那一项作为\textbf{靶}已被撤回（它作为\textbf{历史}仍留在语料里）。
+\par\smallskip
+\emph{Consequently this paper does \textbf{not} propose any new proxy for the gap. Five proof classes are closed (averaging, extremal spectrum, transport, similarity ratios, triviality); the only one not refuted is \textbf{constructive RG}, whose status is \code{[O]} (not read through), \textbf{not} \code{[NG]} (refuted).}
+\LT{}（陈述级；撤回本身是逻辑裁决，不是新数学）
+
+\src{\code{g05}（\code{G05-BETAOFa.md} \S2.2--2.3、\S3.2、\S5）；\code{m05}；\code{g03}；\code{G04-M1UNIF.md} \S3.2。}
+
+\src{\code{F07-ADJCBAR.md} \S0--\S5；\code{C07-AUDIT.md:12,:41--43}；\code{Z06-HOLEA.md}；\code{Z08-HOLEC.md}；\code{Z12-FIXC.md}；\code{Z09-HOLED.md}；\code{Z10-HOLEE.md}；
+\code{P3-FOURWALL-DERIVATION.md:18}；\code{P3-AUDIT-CORRECTED.md:57,:131}；\code{P3-DRESSED-MASS.md:3,:18,:170}；\code{P3-CYLINDER-RESIDUE.md:67--69}；
+\code{Y01-KL.md:56,:108}；\code{PROOF-IN11.md:19}；\code{A02-2PPI2.md} \S0--\S4；\code{U07-CPSTRONG.md:60}。}

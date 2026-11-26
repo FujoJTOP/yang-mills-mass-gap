@@ -1,0 +1,59 @@
+==============================================================================
+A) TRUNCATION COST  (a compute question)
+   tail = sum_{j>J} d_j c_j^2 / sum_j d_j c_j^2 ,   columns: beta = 0.0208, 0.2500, 0.5000, 2.5000
+   ------------------------------------------------------------------
+   J= 2   2.20e-29  1.94e-16  7.66e-13  3.61e-05
+   J= 3   1.06e-40  1.94e-23  1.22e-18  3.34e-08
+   J= 4   1.89e-52  7.15e-31  7.19e-25  1.17e-11
+   J= 5   1.51e-64  1.18e-38  1.90e-31  1.87e-15
+   J= 6   6.19e-77  1.01e-46  2.59e-38  1.54e-19
+   J= 7   1.43e-89  4.83e-55  1.99e-45  7.26e-24
+   J= 8   2.01e-102  1.41e-63  9.26e-53  2.08e-28
+   J= 9   1.82e-115  2.63e-72  2.77e-60  3.83e-33
+   J=10   1.10e-128  3.30e-81  5.54e-68  4.74e-38
+   J=11   4.61e-142  2.87e-90  7.72e-76  4.09e-43
+   J=12   1.39e-155  1.79e-99  7.70e-84  2.53e-48
+
+   at beta=2.5: J needed for <1% tail = 2,  <0.1% = 2,  <0.01% = 2
+   dense sectors at J=2: (J+1)^6 = 7.290e+02
+   dense float64 size:        0.01 MB
+   -> the truncation leg is NOT the bottleneck; contraction order is.
+==============================================================================
+B) ANALYTICITY RADIUS  (an analysis question; compute cannot move it)
+   target ball radius = 0.1587  (quoted in the corpus)
+   norm                     beta where ||A(beta)-A_*|| = 0.1587
+   ------------------------------------------------------------------
+   rho_hs                   0.8763
+   rho_sup                  1.1740
+   rho_tail                 0.6543
+
+   spread across normalisations = 1.1740 / 0.6543 = 1.8x
+   -> a '0.63' quoted without a norm is not a physical number.
+==============================================================================
+C) SENSITIVITY to the assumed ball radius (and the 31x check)
+   corpus quotes 7x-30x, i.e. beta* ~ 0.15-0.63 ; 1/48 = 0.0208
+   ------------------------------------------------------------------
+   radius   beta*(tail-mass)   beta*(HS)   ratio to 1/48 (tail)
+   0.1000         0.5183       0.6896       24.9x
+   0.1250         0.5800       0.7738       27.8x
+   0.1587         0.6543       0.8763       31.4x
+   0.2000         0.7356       0.9898       35.3x
+   0.2500         0.8240       1.1150       39.6x
+   0.3000         0.9042       1.2308       43.4x
+   0.4000         1.0478       1.4433       50.3x
+   0.5000         1.1757       1.6391       56.4x
+
+   tail-mass crossing at radius 0.1587 is 0.6543 = 31.4x the SZZ radius
+   -> reproduces the corpus upper end (30x) and IDENTIFIES the normalisation behind 0.63
+   NOTE: an earlier draft printed an MK-type crossing; that recursion was
+         non-standard (3.9 vs beta_c~2.30) and has been REMOVED, not shipped.
+==============================================================================
+D) THE ONLY REAL QUESTION: how much BIGGER must the ball be?
+   rho_hs    at beta=2.5:     0.9783   -> ball must grow x      6.2
+   rho_sup   at beta=2.5:     0.5588   -> ball must grow x      3.5
+   rho_tail  at beta=2.5:     2.0164   -> ball must grow x     12.7
+   (no truncation and no FLOPs change this: it is a property of the map.)
+==============================================================================
+jmax=12  nbeta=400  wall=0.00s
+   REMINDER: 1/48 = 0.0208. The physical point is 2.5.
+   Compute buys the truncation; it does NOT buy the radius.

@@ -1,0 +1,404 @@
+% =====================================================================
+%  paper-v7/ledger --- final reduction and the bookkeeping-debt ledger  (u16)
+%  Three things, and only three things are reported:
+%    (i)  Clay is reduced to "pointwise w1(2.5)>0" + "L-monotone step" + "beta-tail-uniform floor";
+%    (ii) the unique framework = Banach--Alaoglu + Portmanteau (compactness class excluded, USC gives one direction only);
+%    (iii) 34 items of bookkeeping debt, the deepest being that u is defined twice;
+%          this round adds items 35--38, so the total becomes 38.
+%  Discipline: self-contained; every assertion carries a grade (word) + source (file:line); nothing unproved is graded [T].
+%  Compile:  pdflatex -interaction=nonstopmode main.tex   (run twice)
+%  This file writes only under docs/paper-v7/ledger/.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.35cm,top=2.1cm,bottom=2.2cm,headsep=13pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{microtype}
+\usepackage[table]{xcolor}
+\usepackage{booktabs,array,tabularx}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+% ---------- colours ----------
+\definecolor{cT}{HTML}{1D7A3A}
+\definecolor{cC}{HTML}{1F5FA8}
+\definecolor{cNG}{HTML}{A03030}
+\definecolor{cM}{HTML}{8A5A00}
+\definecolor{cE}{HTML}{5B3A8E}
+
+% ---------- grade words (grades are always words, never a vote by symbol) ----------
+\newcommand{\lvT}{\textcolor{cT}{\textbf{theorem}}}
+\newcommand{\lvC}{\textcolor{cC}{\textbf{conditional theorem}}}
+\newcommand{\lvNG}{\textcolor{cNG}{\textbf{no-go}}}
+\newcommand{\lvM}{\textcolor{cM}{\textbf{the exact missing step}}}
+\newcommand{\lvE}{\textcolor{cE}{\textbf{numerical evidence (not a theorem)}}}
+\newcommand{\lvR}{\textcolor{cC}{\textbf{relative statement}}}
+
+\newcommand{\bet}{\beta}
+\newcommand{\rO}{r_0}
+\newcommand{\Dzero}{\Delta_0}
+\newcommand{\Cbar}{\bar{C}}
+\newcommand{\ubar}{\bar{u}}
+\newcommand{\Rbar}{\bar{R}}
+\newcommand{\Wfull}{W_{\mathrm{full}}}
+\newcommand{\Wgeo}{W_{\mathrm{geo}}}
+\newcommand{\Ddyn}{\Delta_{\mathrm{dyn}}}
+
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+\titleformat{\section}{\normalfont\Large\bfseries\color{black!85}}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalfont\large\bfseries\color{black!80}}{\thesubsection}{0.55em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.55em}
+\titlespacing*{\subsection}{0pt}{1.05em}{0.45em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\color{black!55}paper-v7/ledger --- the reduction, the unique framework, the bookkeeping ledger (the 34 items $+$ items 35--38)}
+\fancyhead[R]{\footnotesize\color{black!55}\thepage}
+\setlength{\headheight}{13pt}
+\tolerance=8000
+\emergencystretch=9em
+\hbadness=10000
+\vbadness=10000
+
+\hypersetup{pdftitle={The reduction and the bookkeeping ledger (u16)},pdfauthor={Yang--Mills campaign}}
+
+\begin{document}
+
+% =====================================================================
+\begin{center}
+  \vspace*{0.1cm}
+  {\LARGE\bfseries The Final Reduction and the Bookkeeping-Debt Ledger\par}
+  \vspace{0.35em}
+  {\large\bfseries One reduction, one framework, one debt table\par}
+  \vspace{0.5em}
+  {\small\color{black!60} Yang--Mills campaign \textperiodcentered{} v7 sub-paper (ledger)\textperiodcentered{} after round 172\textperiodcentered{} 2026-11-25\par}
+  \vspace{0.35em}
+  \rule{0.62\textwidth}{0.6pt}\par
+  \vspace{0.4em}
+  {\small\color{black!65} This sub-paper reports no progress on Clay (\texttt{Clay 0\%}).\par}
+  {\small\color{black!65} It does three things only: it writes Clay as three parallel conditions; it explains why there is only one framework; and it tabulates the 34 items of bookkeeping debt (38 items once the four items added this round, 35--38, are included).\par}
+\end{center}
+
+\vspace{0.2em}
+
+\begin{tcolorbox}[colback=black!3,colframe=black!45,boxrule=0.5pt,arc=2pt,left=6pt,right=6pt,top=5pt,bottom=5pt,breakable]
+\textbf{The conclusion in three sentences.}
+\begin{enumerate}[leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+  \item \textbf{Reduction}: Clay is equivalent to three parallel conditions (pointwise $w_1(2.5)>0$, the $L$-monotone step, the $\bet$-tail-uniform floor). Their grades are \textbf{all different}: one is numerical evidence, one is blocked by the absence of FKG together with a counterexample, and one is already dead. So the reduction in $u16$ is \textbf{not} a step "closer"; it writes "what is still missing" as three positions that can each be killed separately.
+  \item \textbf{Framework}: on a family of bounded volume the only tools available are \textbf{Banach--Alaoglu} (weak$^\ast$ compactness) $+$ \textbf{Portmanteau} (set inequalities). Tightness (the existence of a tight class) is \textbf{free}, so the compactness class yields no floor whatsoever; upper semicontinuity is free too, so Portmanteau gives only the single direction "finite volume $\to$ limit".
+  \item \textbf{Ledger}: \textbf{34 items} of bookkeeping debt, the deepest being \textbf{item 29}: $u$ is defined twice ($u:=c_f$ and $u:=c_f/N$, differing by $N$), so \textbf{every formula containing $u$ inherits this ambiguity}. This round adds \textbf{items 35--38}, so the total runs $34\to 38$ and the itemized count runs $25\to 29$; the class-level residual is unchanged at $9$.
+\end{enumerate}
+\end{tcolorbox}
+
+% =====================================================================
+\begin{center}
+\footnotesize\color{black!70}
+Source abbreviations: \texttt{P} $=$ \texttt{docs/position-current.html}; \texttt{RB} $=$ \texttt{research/v3/species/LOOP-RUNBOOK.md};
+\texttt{V6} $=$ \texttt{docs/paper-v6/main.tex}; \texttt{RUN1} $=$ \texttt{research/v3/species/RUN1.md};\\
+\texttt{Q13} $=$ \texttt{research/v3/species/Q13-BETA6.md}; \texttt{O09} $=$ \texttt{research/v3/species/O09-PHICURV.md};
+\texttt{CH05} $=$ \texttt{ch05-theorems.tex}. Numbers are line numbers.
+\end{center}
+
+\section{The reduction}
+
+\subsection{Notation (this sub-paper uses nothing else)}
+
+Cylinder $C_L=T^3_L\times\mathbb{Z}$; $\mathcal{O}=\tfrac14\operatorname{tr}F^2$; $f_1^2$ is the residue of the lightest $0^{++}$ atom;
+$w_1$ is the column of dimensionless quantities in \texttt{RUN1} (\texttt{research/v3/species/RUN1.md:52,59}).
+\textbf{Self-containment declaration}: this sub-paper does \textbf{not} redefine $w_1$, it only quotes the column of \texttt{RUN1}; and the fact that the definition of $w_1$ lacks a $t$ axis is itself one item of debt in the ledger (see \S\ref{sec:ledger}, citation/nomenclature class). Wherever $w_1$ appears below, read it as "the \texttt{RUN1} column value at fixed $t$", not as the $t\to\infty$ limit.
+
+\subsection{The reduction ($u16$, verbatim)}
+
+The box below is the \textbf{verbatim} content of $u16$; only the Markdown inline-code markup has been replaced by typesetting (the formulas themselves, the symbols, the numerical values and the arrows are unchanged character for character):
+
+\begin{tcolorbox}[colback=white,colframe=black!60,boxrule=0.6pt,arc=2pt,left=8pt,right=8pt,top=6pt,bottom=6pt,breakable]
+\textbf{\texttt{Clay}} $\Longleftrightarrow$ pointwise $w_1(2.5)>0$ \;+\; $L$-monotone step \;+\; $\bet$-tail-uniform floor\\
+and the three are:
+\begin{enumerate}[label=\textcircled{\small\arabic*},leftmargin=2.1em,itemsep=1pt,topsep=3pt]
+  \item $w_1(2.5)$ --- \textbf{numerically given} ($0.342\pm0.015$, $22.8\sigma$)
+  \item $L$-monotone step --- \textbf{no FKG}; and there is the counterexample $2/(L-1)\searrow 0$
+  \item $\bet$-tail-uniform floor --- $=\Dzero$, \textbf{already killed} (M6 insufficient, 2D unnecessary)
+\end{enumerate}
+\textbf{Unique framework} $=$ Banach--Alaoglu $+$ Portmanteau (tightness free $\Rightarrow$ compactness class out; USC free $\Rightarrow$ only the one direction "finite volume$\to$limit")
+\end{tcolorbox}
+
+\subsection{The grade of each of the three (grades in words, not by vote count)}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.9cm}Y L{3.05cm}@{}}
+\toprule
+ & \textbf{Content (with source)} & \textbf{Grade} \\
+\midrule
+\textcircled{\small1} & $w_1(2.5)=0.342\pm0.015$, $22.8\sigma$; $L=6$ gives $0.373\pm0.018$, the two volumes agreeing to $8\%$; the margin over $\rO=0.03125$ is $0.342/0.03125=10.94\times$. Sources \texttt{RUN1:52,59}; \texttt{RB:19683,19696,19698}. \emph{Caveat, see item 35: this $10.94\times$ is a dimensionless ratio, not a proved floor.} & \lvE \\
+\textcircled{\small2} & The $L$-monotone step needs "$w_1$ monotone in $L$". \textbf{There is no FKG} (lattice gauge theory gives no monotonicity for this family), and the counterexample family $w_1=2/(L-1)\searrow 0$ exists. Source \texttt{P:397} (counterexample list). & \lvNG{} (FKG) $+$ \lvM{} (the step itself)\\
+\textcircled{\small3} & $\bet$-tail-uniform floor $=\Dzero$: M6 (single-plaquette toy model) is \textbf{insufficient}, 2D YM is \textbf{unnecessary}; so the criterion $\Dzero>0$ is already killed. Source \texttt{P:412}; \texttt{V6:17} (naming withdrawn). & \lvNG \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent\textbf{How to read the three sentences.} The three are \textbf{not} three rewritings of one thing:
+\textcircled{\small1} is a \textbf{number already produced} (its weakness is not the number but the point --- one $\bet$, one family in $L$);
+\textcircled{\small2} is a \textbf{bridge blocked by structure} (what blocks it is the absence of FKG, not compute);
+\textcircled{\small3} is a \textbf{criterion that has been killed} (not undone: done, and killed). The value of writing the three as an equivalence is this: any "progress" must land on one of the three, and two of the three already have an explicit way of dying.
+
+\subsection{The two directions of the reduction: only one is assembled}
+
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt,topsep=2pt]
+  \item \textbf{$\Longleftarrow$ (assembly, can be written down)}: if \textcircled{\small1}\textcircled{\small2}\textcircled{\small3} hold simultaneously in the form "$L$-uniform, $\bet$-tail-uniform", one obtains a non-perturbative transport chain from the strong-coupling region to $\bet=2.5$ --- that is exactly the machine the v7 main line wants. This direction \textbf{is} a conditional theorem: three hypotheses, one conclusion, nothing hidden in between.
+  \item \textbf{$\Longrightarrow$ (the reverse reading, unproved)}: deriving from Clay \textbf{this specific form} of the three (in particular the "point $2.5$" of \textcircled{\small1} and the specific "${\bet}$-tail" scope of \textcircled{\small3}) is \textbf{not proved in this sub-paper}. The honest statement is: in the $\Longrightarrow$ direction there is at present only the weak reading "if they fail then Clay fails", i.e.\ the three are \textbf{candidates in the form of necessary conditions}, not a proved decomposition. This direction is graded \lvM.
+\end{itemize}
+
+\noindent Hence the $\Longleftrightarrow$ of $u16$ should be read as: \textbf{the right-hand side is the complete candidate decomposition of the left-hand side in this round's vocabulary}, where $(\Longleftarrow)$ can be assembled and $(\Longrightarrow)$ is unproved. The \texttt{Clay} percentage is still $0\%$ (\texttt{position-current.html:420}), and this sub-paper does not change that number.
+
+% =====================================================================
+\section{The unique framework}
+
+\subsection{The restricted vocabulary}
+
+Only two tools are allowed this round, and only their \textbf{weak} forms are used:
+\begin{enumerate}[leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+  \item \textbf{Banach--Alaoglu}: a bounded set in the dual space is precompact in the weak$^\ast$ topology $\Rightarrow$ any bounded family has a weak$^\ast$ convergent subnet. \lvT
+  \item \textbf{Portmanteau}: if $\mu_k\Rightarrow\mu$ (weak convergence), then for closed $F$ one has $\limsup_k\mu_k(F)\le\mu(F)$, and for open $G$ one has $\liminf_k\mu_k(G)\ge\mu(G)$. \lvT
+\end{enumerate}
+Both are standard theorems and are not reproved here; the \textbf{uniqueness} of this section is not about these two theorems but about "what can be obtained using only tools of this kind".
+
+\subsection{Tightness is free $\Rightarrow$ the compactness class is out}
+
+On the cylinder $C_L$ the one-point marginals are controlled by the Haar measure (a probability measure on a compact group) and $\mathcal{O}=\tfrac14\operatorname{tr}F^2$ is bounded, so the finite-volume family $\{\mu_{L,\bet}\}$ is \textbf{automatically tight} --- this is what $u16$ calls "tightness for free".
+
+The consequence is decisive: \textbf{the entire output of the compactness class is the single sentence "the limit exists"}. And "the limit exists" carries no information about $w_1$, because existence treats $w_1=0$ and $w_1>0$ alike. The repository already contains the \textbf{explicit counterexample} to this: \emph{tight family $+$ atomic limit $\not\Rightarrow$ uniform floor} (\texttt{P:397}, item 2 of the counterexample list). That is: even if the family is made tight and the limit is made atomic, a uniform floor \textbf{does not follow}. Hence \textbf{the compactness class is out} (\lvNG, for the goal of this round).
+
+\subsection{USC is free $\Rightarrow$ Portmanteau gives one direction only}
+
+$\mathcal{O}$ is a continuous polynomial in the field variables, hence \textbf{upper semicontinuous (USC)} on configuration space; so is the finite-volume truncation $\mathcal{O}_V$. USC is free, so the closed-set side of Portmanteau ($\limsup$) is available for free.
+
+This gives a \textbf{one-way} channel:
+\begin{center}
+a bound at finite volume \;$\Longrightarrow$\; a bound on the limit \quad (the upper-bound direction),
+\end{center}
+while the reverse direction
+\begin{center}
+a bound on the limit \;$\Longrightarrow$\; a bound uniform over all finite volumes \quad (the lower-bound direction)
+\end{center}
+\textbf{does not hold}. This is exactly the shape of what item \textcircled{\small3} of \S1 needs: a uniform floor is precisely the direction "limit $\to$ finite volume". So the set inequalities of weak convergence \textbf{cannot make up} for \textcircled{\small3} in principle; \textcircled{\small3} can only come from structure (M6 insufficient, 2D unnecessary --- two independent kills), never from topology.
+
+\subsection{Which kind of uniqueness "unique" is}
+
+The exact form of the uniqueness assertion of this section is: \emph{within the restricted vocabulary "weak compactness $+$ set inequalities of weak convergence", the tools available are these two, BA $+$ Portmanteau, and there is no third}. This is a \lvR: it holds for the "restricted vocabulary", not for "every possible framework" --- the latter cannot be stated in this round's vocabulary, let alone proved. Any tool beyond this vocabulary (a new monotone quantity, a new cone, a new identity) is \textbf{outside} the exclusion of this section; what this section excludes is only the road "squeeze compactness/weak convergence once more".
+
+\subsection{The framework against the three conditions (one table)}
+
+\begin{center}
+\small
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}L{2.35cm}Y L{2.0cm}@{}}
+\toprule
+\textbf{Tool} & \textbf{What it can give} & \textbf{Effect on the three} \\
+\midrule
+Banach--Alaoglu & a bounded family has a weak$^\ast$ convergent subnet (the limit exists) & \textbf{none} on \textcircled{\small1}\textcircled{\small2}\textcircled{\small3} (existence carries no positivity)\\
+Portmanteau (closed) & $\limsup_k\mu_k(F)\le\mu(F)$: upper bounds pass to the limit & serves \textbf{upper bounds} only, not floors \\
+Portmanteau (open) & $\liminf_k\mu_k(G)\ge\mu(G)$: limit mass is at least the open-set mass & still no \textbf{uniform} lower bound (uniform $\ne$ pointwise)\\
+Tightness (free) & the limit exists and does not escape & \lvNG: counterexample "tight family $+$ atomic limit $\not\Rightarrow$ uniform floor" \\
+USC (free) & the upper-bound direction is available & one-way; no reverse direction \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent\textbf{In one sentence}: the unique framework $=$ BA $+$ Portmanteau, and these two \textbf{cover exactly the "upper bound" half} of the Clay reduction; the lower-bound half (\textcircled{\small2}\textcircled{\small3}) must be supplied by structure. This is not a defect of the framework, it is the framework's \textbf{boundary} --- written as a boundary, so that compactness is never again used to prop up a floor.
+
+% =====================================================================
+\section{The bookkeeping ledger}\label{sec:ledger}
+
+\subsection{Counting rules (set the rules first, then count)}
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+  \item \textbf{One item} $=$ one minimal unit of debt such that "copying it literally produces a wrong conclusion".
+  \item \textbf{A polysemous symbol counts as one item per symbol}, not per sense (otherwise the single entry "$\delta$ has six senses" would become six items and the total would lose meaning). The number of senses is written in brackets.
+  \item \textbf{A clash of numerical values/sequences counts as one item per "pair confused"}.
+  \item It answers only "does this debt really exist"; it does \textbf{not} answer "have all consequences of the debt been settled" (the latter is listed item by item separately, see the sources at each entry).
+\end{enumerate}
+
+\subsection{The deepest item (item 29, verbatim)}
+
+\begin{tcolorbox}[colback=cNG!4,colframe=cNG!65,boxrule=0.7pt,arc=2pt,left=8pt,right=8pt,top=6pt,bottom=6pt,breakable]
+\textbf{The deepest (item 29)}: $u$ is defined twice ($u:=c_f$ and $u:=c_f/N$, differing by $N$)\\
+$\Rightarrow$ \textbf{every formula containing $u$ (window, $\Cbar$, $\ubar$, $r_0$, $\delta$) inherits this ambiguity}
+\end{tcolorbox}
+
+\noindent\textbf{Why it is the deepest (not "the worst miscalculation" but "the deepest structural debt")}: the other 33 items are all "some number or some name is wrong in one place", and one edit fixes each; this item is \textbf{the definition of the symbol itself being non-unique} --- it is \textbf{not wrong in one place}, it is wrong \textbf{at every point of use}. There are five classes of formula containing $u$: window, $\Cbar$, $\ubar$, $\rO$, $\delta$. All five occurred in v2--v6, and all five took part in decisions of the form "inside the window / outside the window" (e.g.\ formulas such as $\ubar=e^\ast\Delta N u$, see \texttt{V6:13}). So this item cannot be closed by "changing one character"; the only fix is \textbf{to re-annotate the domain of definition at every occurrence of $u$}. Source: \texttt{RB:16768} (in the original: this is item 29, and it is the deepest one --- not a wrong number, but the symbol's own definition being non-unique).
+
+\subsection{The 34 items, by class}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{2.1cm} L{1.2cm} L{1.45cm} Y@{}}
+\toprule
+\textbf{Class} & \textbf{Items} & \textbf{Itemized} & \textbf{Entries (senses in brackets for polysemous symbols)} \\
+\midrule
+Symbol polysemy & 6 & 6 & $\Cbar$ three senses; $\delta$ six senses; $\Omega$ four senses; $G$ vs potential; $E[H]$ two senses; $\Ddyn$ two definitions \\
+Numerical name clash & 4 & 4 & $1/48$ vs $1.766/48$; $0.6018$ belongs to $\bet=6$; $\Wfull$ vs $\Wgeo$; $\delta_A\cdot a$ vs $a\Lambda(1/48)$ differ by $0.25\%$ \\
+Sequence name clash & 2 & 2 & $a_n/B_n/m_n/t_n$ four sequences clashing; $T^4_6$ short by $10$ \\
+Scope error & 5 & 5 & $D/S$ misread; $\Phi$ object mismatched; $|w|^{1/n}=c_f$ in \texttt{F07:82}; $a=0$ mistaken for a criterion; $Q_3$ misread \\
+Power error & 3 & 3 & $\Rbar$ off by one power in \texttt{p8}; $\bet$ vs $\bet^2$ unit error; the $.577>.551$ contradiction in \texttt{U14} \\
+Citation / nomenclature & 4 & 4 & citation rewritten; paper number attributed to the wrong person; "RG stable modulus" 4 occurrences, 0 definitions; $w_1$ lacks the $t$ axis \\
+\midrule
+Deepest (conflicting symbol definition) & 1 & 1 & $u:=c_f$ vs $u:=c_f/N$ (item 29, verbatim in the previous subsection) \\
+\midrule
+\textbf{Itemized subtotal} & \textbf{25} & \textbf{25} & \\
+\midrule
+Class-level residual (entries in the chronicle sequence not itemized in this table) & 9 & 0 & see \S\ref{sec:countcheck}: this part has a class-level count only, no itemized identity \\
+\midrule
+\textbf{Subtotal: the 34-item ledger} & \textbf{34} & \textbf{25} & \\
+\midrule
+New this round: item 35 & 1 & 1 & the denominator $\rO=1/32$ of the $10.94\times$ is \textbf{negative} at $\bet=2.5$ ($\rO$ is a floor only for $\bet\le 0.147152$; $\ubar(2.5)=16.99\Rightarrow\rO<0$) $\Rightarrow$ it is a \textbf{dimensionless ratio}, not a proved floor; \texttt{RB:19728--19730}, \texttt{RB:19738} \\
+New this round: item 36 & 1 & 1 & "\texttt{APE2}/\texttt{APE4} show $C(2)<0$" is too broad --- in fact only $L=6$ \texttt{APE4} $-0.00740$ and \texttt{APE1} $-0.00121$ (no negative \texttt{APE2} row) $\Rightarrow$ one over-generalization merging two smearing levels into one sentence; \texttt{RB:19775--19776}, \texttt{RB:19779}; \texttt{RUN1:48,51} \\
+New this round: item 37 & 1 & 1 & step (iii) of \texttt{SG1-1} is demoted to [C] (read as computability, the three-line proof fails) $\Rightarrow$ \texttt{SG1-1} is \lvC, \textbf{not} \lvT, although it was labelled \lvT{} for $60+$ rounds; \texttt{RB:19797--19812} \\
+New this round: item 38 & 1 & 1 & the "target uniqueness" of \texttt{N09-1} holds only under \textbf{fixed $O$}: $w_1$ depends on $O$ ($0.343$ vs $0.017$, factor $20$) $\Rightarrow$ "any quantity passing the four models is a function of $m$" needs that qualifier; \texttt{RB:19849--19879} \\
+\midrule
+\textbf{New-this-round subtotal} & \textbf{4} & \textbf{4} & \\
+\midrule
+\textbf{Grand total} & \textbf{38} & \textbf{29} & \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{tcolorbox}[colback=cM!4,colframe=cM!60,boxrule=0.7pt,arc=2pt,left=7pt,right=7pt,top=5pt,bottom=5pt,breakable]
+\textbf{The $34$/$25$ gap, stated plainly.} Of the $34$ items only $25$ carry an itemized identity; $34-25=9$ exist only as a class-level residual. Those $9$ are \textbf{not} itemized anywhere and must \textbf{not} be read as "already fully listed": the corpus states $34$ only as a \emph{total} (\texttt{P:412,420}), and the itemized list is truncated with an ellipsis at the end of \texttt{P:414}. Independently, the labels of the form "item $N$" in \texttt{LOOP-RUNBOOK.md} cover only $30$ numbers and \textbf{miss $1,2,4,26$}. Both statements hold unchanged this round: adding items 35--38 gives the grand total $38=29$ itemized $+$$9$ class-level, and the number $25$ remains the itemized length of the \textbf{34-item} ledger only --- it is not, and must not be quoted as, the itemized count of the $38$.
+\end{tcolorbox}
+
+\noindent\textbf{How to read the table}: this table \textbf{does not pretend} that all 34 items are itemized. The $25$ that can be named one by one are all above ($6+4+2+5+3+4+1=25$), and the remaining $9$ are counted at class level in "class-level residual". The reason is in the next subsection: $34$ is the endpoint of a \textbf{chronicle sequence}, $25$ is the length of a \textbf{thematic list}, and the two are \textbf{not two orderings of one and the same table}.
+
+\subsection{Verifiability check (this is the answer to "does the count add up")}\label{sec:countcheck}
+
+Per the four requirements of \texttt{AGENTS.md} \S1, the search itself is recorded:
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{3.5cm} L{1.4cm} Y L{1.1cm}@{}}
+\toprule
+\textbf{Query} & \textbf{Tool} & \textbf{Result} & \textbf{Hits} \\
+\midrule
+regex \texttt{"\textbackslash u7b2c\emph{N}\textbackslash u5904"} (the label "item $N$", \emph{N} a 1--2 digit number), over \texttt{LOOP-RUNBOOK.md} & grep & valid response; $30$ distinct numbers obtained: $3,5$--$25$,$27$--$34$ & 47 lines \\
+the same, for the numbers $1,2,4,26$ searched individually (including the spelled-out cardinal forms) & grep & valid response; \textbf{no label with these numbers} & 0 \\
+regex \texttt{"34\textbackslash s*\textbackslash u5904"} (34 followed by the counter), whole repository & grep & valid response; occurs only at \texttt{P:412,420} and in \texttt{position-r172.html} & 5 lines \\
+string "$0.342$", whole repository & grep & valid response; hits \texttt{RUN1:52,59,86}, \texttt{RB:19683,19696,19698} & 11 lines \\
+string "$0.6018$", whole repository & grep & valid response; hits \texttt{Q13:59} (pooled value $+0.6018$ at $\bet=6$) & 1 line \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent\textbf{Conclusion (where it does not add up, say so)}:
+\begin{enumerate}[leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+  \item \textbf{The class counts do add up}: $6+4+2+5+3+4+1=25$, \textbf{consistent} with the number of entries listed one by one in \texttt{position-current.html:412--414} ($24$ "remaining" $+$ item 29).
+  \item \textbf{The difference $34$ minus $25$ $=$ 9 items does not add up}: the number $34$ occurs in the corpus only as a \textbf{total} (\texttt{P:412,420}: "name clash / misreading / wrong attribution, \textbf{34 items}"), while the itemized list is truncated with an ellipsis at the end of \texttt{P:414}. Hence the $9$ items \textbf{have no itemized identity}; this sub-paper records a class-level count only and \textbf{does not manufacture entries}.
+  \item \textbf{The numbering itself has gaps}: the "item $N$" labels of \texttt{LOOP-RUNBOOK.md} cover $30$ numbers and \textbf{miss $1,2,4,26$} (queries and hit counts in the table above). Whether the entries corresponding to these four numbers \textbf{exist or not, this sub-paper asserts nothing}; they also do not affect the consistency of $30\le 34$.
+\end{enumerate}
+
+\noindent Hence: \textbf{the answer to (b) is "one class of counts does not add up, and we can point to which class"} --- it is not that the entry count of one of the six classes is wrong, it is the row "class-level residual": the $9$ items have a count only, and no identity, in any source.
+
+\subsection{Why "$\delta$ six senses" cannot be merged into one}
+
+The six $\delta$'s carry at least three different mathematical roles in the corpus: (i) a step size / lattice quantity (same dimension as $a,\Lambda$), (ii) a mass lower bound (same dimension as $m_1^2$), (iii) a certificate margin (a dimensionless ratio). If the three share a name, then a comparison such as $.577>.551$ in \texttt{U14} will \textbf{silently cross dimensions} (that is one of the power errors in the ledger), and an approximation such as "$\delta_A\cdot a$ vs $a\Lambda(1/48)$ differ by $0.25\%$" will \textbf{silently cross objects} (that is one of the numerical name clashes). What these two have in common is not "a wrong number" but "the two things being compared are not the same thing". That is why the ledger records "$\delta$ six senses" as \textbf{one item of symbol polysemy} while recording its consequences in two different classes --- which is exactly why a classification must carry a consequence column.
+
+% =====================================================================
+\section{Why the ledger matters}
+
+\subsection{The ledger is an anti-recurrence tool, not a confession}
+
+The shape registered by the ledger this round is: name clash / misreading / wrong attribution, \textbf{34 items}, of which \textbf{8 are name clashes}; of these $8$, \textbf{3} once entered paper drafts (v2--v6) in the form of a "conclusion" (rather than a "suspicion"). So the use of the ledger is not bookkeeping, it is \textbf{to stop the next conclusion before it enters a draft}: if a quantity that a new conclusion depends on is polysemous in the ledger, then that conclusion is already untrustworthy \textbf{at the naming stage}, and one need not wait for the computation to finish.
+
+\subsection{Five concrete examples (more than the minimum of 3)}
+
+\begin{center}
+\small
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}L{0.5cm} L{2.5cm} Y L{2.6cm}@{}}
+\toprule
+ & \textbf{name clash / misreading} & \textbf{the concrete consequence it once caused} & \textbf{source} \\
+\midrule
+E1 & $\Wfull$ vs $\Wgeo$ & two quantities of the same name used interchangeably; the \texttt{n10} audit listed it separately as "the 5th item of the same kind", and the affected numerical conclusions were treated as bookkeeping errors & \texttt{RB:9986} \\
+E2 & the four sequences $a_n/B_n/m_n/t_n$ (item 30) & whether $\lambda_T$ uses $t_n$ or $a_n$ \textbf{directly decides whether the gap is $4.75\%$ or $13.3\%$} --- one physical statement, two orders of magnitude & \texttt{RB:17735} \\
+E3 & $\Rbar=M_1/M_0$ in \texttt{p8} & reported as a "first time moment", actually $\langle m^2\rangle$ $\Rightarrow$ \textbf{off by one power} (item 34) & \texttt{RB:19672} \\
+E4 & paper number attributed to the wrong person (item 14) & \texttt{107/110} are in fact Federbush, not Balaban; a three-source search for \texttt{113/115/117} gave \textbf{0 hits} $\Rightarrow$ wrong attribution & \texttt{RB:12111} \\
+E5 & $0.6018$ belongs to $\bet=6$ & it is the pooled value of \texttt{Q13-BETA6} ($\chi^2/\mathrm{dof}=1.22$, 8 groups consistent); quoted outside the domain "$\bet=6$" it becomes a number at $\bet=2.5$ & \texttt{Q13:59} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent\textbf{The three that entered drafts (checkable line by line)}:
+\begin{itemize}[leftmargin=1.5em,itemsep=2pt,topsep=2pt]
+  \item $\Dzero>0$ was once written into a draft as the name of "the gap" and later \textbf{withdrawn}: \texttt{V6:17} states verbatim "The earlier naming of that gap as $\Dzero>0$ is WITHDRAWN (n12): $\Dzero$ sits on $G''$, not on the measure $\nu$." --- this is an instance of an \textbf{object mismatch} (the $\Phi$ class) entering a draft and being withdrawn.
+  \item $0.34/0.46$ was labelled $\mathrm{SU}(2)/\mathrm{SU}(3)$ and written into \texttt{CH05:208--209}, whereas the exact Haar slice value for $\mathrm{SU}(2)$ is $0.20512$; $0.34/0.46$ are in fact the magnitudes for $N=3/N=4$ ($0.342/0.461$) $\Rightarrow$ the numbers themselves are usable, the \textbf{label is wrong}; marked \lvE{} to be corrected (\texttt{O09:104}).
+  \item $\Wfull$ vs $\Wgeo$ (E1): two objects of the same name, once used as "the same one".
+\end{itemize}
+
+\subsection{Three anti-recurrence rules (set this round, written into the process)}
+
+{\footnotesize\emph{(the source heading says three; four are listed --- kept verbatim, the count is not silently edited)}}
+
+\begin{enumerate}[leftmargin=1.6em,itemsep=2pt,topsep=2pt]
+  \item \textbf{The first occurrence of a symbol must carry "domain $+$ normalization"}: the lesson of $u$. Rule: symbols of the $u$-kind are always written $u^{(\mathrm{norm})}$ (e.g.\ $u^{(c_f)}$, $u^{(c_f/N)}$); bare $u$ is forbidden.
+  \item \textbf{A number must carry a quadruple} (value, file:line, $\bet$ and $L$, inside/outside the window). The lesson of $0.6018$: a $0.6018$ detached from $\bet=6$ is meaningless.
+  \item \textbf{An assertion must carry a grade word} (\lvT/\lvC/\lvNG/\lvM/\lvE/\lvR): \texttt{AGENTS.md} \S3. The lesson of $w_1(2.5)$: $22.8\sigma$ is \textbf{numerical evidence}, not a theorem; writing $22.8\sigma$ as "proved" is the easiest place to recur.
+  \item \textbf{Check a new name against the ledger first}: before first use, any new symbol or new term must be compared once against the 34 entries of the ledger (especially the eight high-frequency names $C,\ \delta,\ \Delta,\ \Omega,\ u,\ w,\ R,\ T$). "RG stable modulus" with 4 occurrences and 0 definitions is the price of not checking (item 33).
+\end{enumerate}
+
+\subsection{The dead-end ledger: classification and counts only}
+
+As the task requires, the dead-end ledger is \textbf{not itemized}; only classes and counts are given (details in \texttt{docs/position-current.html}, line 409):
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{3.5cm} L{1.2cm} Y@{}}
+\toprule
+\textbf{Class} & \textbf{Count} & \textbf{Comment} \\
+\midrule
+Circularity / wrong direction (treating "$\Rightarrow$" as "$\Longleftrightarrow$") & 9 & $H1\Rightarrow m>0$, $I2\Rightarrow H1$, $H1\Rightarrow I2$, $I2\Rightarrow m>0$ (bare), $I2\Longleftrightarrow\rho^2>1$, the \texttt{L1} chain, the \texttt{L2} reduction, $\Omega$/Kato/$\det>0$, transport ($\Omega=$ gap $\Rightarrow$ circular)\\
+Structural counterexample & 5 & window enlargement self-refuting, $(\star)$ uniform, the 6th kind (dies of \texttt{SG1-1}), the ratio lemma (boundary false, $\max b(4)=62$), the layered decomposition ($(H)$ false)\\
+Numerically / by scale unreachable & 5 & \texttt{GEVP} ($2.3\times10^7$ configurations, $310$ h), $u$-series @2.5 (divergent, $m_n^{1/n}$ rising to $15.58$), $\hat K=8$ cannot be brought down (six routes), \texttt{P3} loop-order grading ($k=0$ layer $\mathrm{mean}\,b=67.7$), the 19-item transport ledger\\
+Sufficiency misjudged $+$ tautology & 4 & $G''$ sufficient, $f_1^2$ necessary, $W^{\frac12}W^{-\frac12}$ (similarity-invariant $\Rightarrow$ tautology), \texttt{SOS} ($\lambda_{\min}=-g|B|-c$)\\
+Proxy / substitution & 2 & $\Ddyn$ proxy, the three machines \\
+Taxonomy / scope / consistency & 3 & the five classes, $1/48$ preserved as is, 20-route consistency \\
+\midrule
+\textbf{Itemized-checkable subtotal} & \textbf{28} & \\
+\midrule
+Class-level residual (claimed $35+$, not itemized) & $\ge 7$ & $\ge$ is computed as "claimed $35+$ minus itemized $28$" \\
+\midrule
+\textbf{Total} & $\ge 35$ & consistent with the "$35+$ items" claim \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent The same shape as \S\ref{sec:countcheck}: itemized-checkable $28$, claimed $35+$, the difference $\ge 7$ stored as a class-level count only. The \textbf{directional conclusion} is at \texttt{P:397}: 9 give upper bounds only, 9 are circular, 2 are counterexamples, 2 are genuine --- i.e.\ \textbf{upper bounds are complete, lower bounds are all circular or counterexamples}, which is the same statement as the framework boundary of \S2 in another form.
+
+\noindent\textbf{Note on item 37.} In the table above the entry "the 6th kind (dies of \texttt{SG1-1})" stays at class level and its count stays unchanged; but per item 37 the grade of \texttt{SG1-1} itself is \lvC{} this round, not \lvT, because its step (iii) was demoted. The counts of this table ($28$, $\ge 7$, $\ge 35$) are \textbf{not} adjusted for this; the qualifier lives in item 37.
+
+% =====================================================================
+\section*{Sources (file:line)}
+\addcontentsline{toc}{section}{Sources (file:line)}
+\small
+\begin{itemize}[leftmargin=1.3em,itemsep=1.5pt,topsep=2pt]
+  \item \texttt{docs/position-current.html} (line 397) --- the 20-route consistency quartile (9 upper bounds / 9 circular / 2 counterexamples / 2 genuine), and the two counterexamples ($w_1=2/(L-1)$; tight family $+$ atomic limit $\not\Rightarrow$ uniform floor).
+  \item \texttt{docs/position-current.html} (line 409) --- the dead-end ledger, $35+$ items (28 itemized).
+  \item \texttt{docs/position-current.html} (lines 412--414, 420) --- the $34$ items of bookkeeping debt, the deepest being item $29$; $\texttt{Clay }0\%$.
+  \item \texttt{research/v3/species/LOOP-RUNBOOK.md} (lines 9986, 12111, 16768, 17735, 19672, 19683, 19696, 19698) --- item 5, item 14, item 29, item 30, item 34, $w_1(2.5)$ and its $10.94\times$ margin.
+  \item \texttt{research/v3/species/LOOP-RUNBOOK.md} (lines 19728--19738, 19775--19779, 19797--19812, 19849--19879) --- items 35, 36, 37, 38 added this round.
+  \item \texttt{research/v3/species/RUN1.md} (lines 48, 51, 52, 59, 86) --- the $w_1$ column: $L=6$ gives $0.373\pm0.018$, $L=8$ gives $0.342\pm0.015$, the two volumes agreeing to $8\%$; also the \texttt{APE1}/\texttt{APE4} rows $-0.00121$ and $-0.00740$ (item 36).
+  \item \texttt{research/v3/species/Q13-BETA6.md} (line 59) --- $+0.6018$ is the pooled value at $\bet=6$ ($\chi^2/\mathrm{dof}=1.22$).
+  \item \texttt{research/v3/species/O09-PHICURV.md} (line 104) --- the label correction for $0.34/0.46$ (exact $\mathrm{SU}(2)$ value $0.20512$).
+  \item \texttt{docs/paper-v6/main.tex} (lines 13, 17) --- formulas of the type $\ubar=e^\ast\Delta N u$; the withdrawal of the name $\Dzero>0$.
+\end{itemize}
+
+\end{document}

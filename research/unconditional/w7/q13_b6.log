@@ -1,0 +1,37 @@
+=== Q13  beta=6  tag=b6  L=2  SU(2)  Nsweep/chain=20000  chains=8  seeds=[700 701 702 703 704 705 706 707]  eps=0.580948  domain-reject=0.0014  wall=755s (34.32 ms/sweep, 8 chains) ===
+acc_link=[0.384 0.385 0.384 0.385 0.383 0.385 0.383 0.385]
+
+--- Gpp(0) ---
+   per chain: +0.3427  +0.8089  +0.6587  +0.5836  +0.8017  +0.4422  +0.7587  +0.4178
+   Gpp(0) = +0.6018 +- 0.0589(jk25) / 0.0566(jk40) / 0.1450(tau) / 3.1909(grp)   spread=0.1842  chi2/dof=1.22
+
+--- Delta_dyn ---
+   per chain: +0.0655  +0.4978  +0.3861  +0.3009  +0.5019  +0.1876  +0.4950  +0.1639
+   Delta_dyn = +0.3248 +- 0.0593(jk25) / 0.0563(jk40) / 0.1395(tau) / 2.9761(grp)   spread=0.1718  chi2/dof=1.04
+
+--- Var(F) ---
+   per chain: +4.8850  +4.4053  +4.6401  +4.6330  +4.5023  +4.8306  +4.5162  +4.7822
+   Var(F) = +4.6493 +- 0.0580(jk25) / 0.0564(jk40) / 0.1428(tau) / 2.9669(grp)   spread=0.1713  chi2/dof=1.14
+half-split: 1st=+0.6189 2nd=+0.6003 diff=-0.0186 +- 0.1134 (-0.2 sigma)
+
+--- batch means (32 batches x 625 sweeps/chain, 256 batch values) ---
+   Gpp(0) = +0.8812 +- 0.0521(bm)   per-chain sem=0.144 0.148 0.132 0.120 0.176 0.155 0.170 0.128
+   Delta_dyn = +0.5895 +- 0.0523(bm)   per-chain sem=0.146 0.150 0.133 0.118 0.177 0.155 0.171 0.131
+   Var(F) = +4.3699 +- 0.0515(bm)   per-chain sem=0.118 0.152 0.130 0.120 0.170 0.165 0.176 0.125
+
+sigma level (Gpp(0)/error):  10.2 (jk25)   10.6 (jk40)   4.1 (tau)   16.9 (batch-means)
+tauK=[345.9 147.6 103.2 212.  415.7 191.5 266.2 183.3]  (ml=600: [332.2 147.6 103.2 209.9 299.4 186.  259.3 183.3])
+tauF=[48.2 37.5 40.5 35.3 28.3 23.8 34.6 47.7]  (ml=600: [48.2 37.5 40.5 35.3 28.3 23.8 34.6 47.7])
+Neff per chain=[ 58 136 194  94  48 104  75 109]  total Neff=818
+kappa pooled: mean=5.2511 median=5.2444 max=3.257e+01 min=3.205e+00 std=0.4795  frac(kappa<0)=0.000
+
+--- needs for 5 sigma (same G=8 chains, errors ~ ns^-1/2) ---
+   from sigma_jk25=0.0589: ns_needed = 4.78e+03 sweeps/chain (x0.24 of today, wall ~ 3 min)
+   from sigma_jk40=0.0566: ns_needed = 4.43e+03 sweeps/chain (x0.22 of today, wall ~ 3 min)
+   from sigma_tau=0.1450: ns_needed = 2.9e+04 sweeps/chain (x1.45 of today, wall ~ 18 min)
+   from sigma_bm=0.0521: ns_needed = 3.74e+03 sweeps/chain (x0.19 of today, wall ~ 2 min)
+   FD-in-a at a=0.1: reweight rel.err=0.0134 -> sigma_Gpp=2.67  (vs jk 0.059)
+   FD-in-a at a=0.2: reweight rel.err=0.0277 -> sigma_Gpp=1.39  (vs jk 0.059)
+   FD-in-a at a=0.3: reweight rel.err=0.0442 -> sigma_Gpp=0.98  (vs jk 0.059)
+
+VERDICT beta=6: Gpp(0)=+0.6018 (jk25 0.0589 / tau 0.1450) | Delta_dyn=+0.3248 | Var(F)=+4.6493 | sigma=10.2(jk) 4.1(tau)

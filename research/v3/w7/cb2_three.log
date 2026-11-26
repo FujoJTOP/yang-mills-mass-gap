@@ -1,0 +1,38 @@
+== 0 constants, beta = 0.018394  N = 2.0
+cf = beta/(2N)      = 0.0045985
+u  = beta/(2N^2)    = 0.00229925    cf/u = 2.0
+cf = 2u ?            0.0
+
+== 1 reading 1: <(1/N)trU> vs u
+  P(x)=I2/I1; P(beta)   = 0.004598435174  A1/u   = 1.999971806  A1/cf = 0.9999859028
+  P(beta/2)             = 0.002299241897  a1/u   = 0.9999964757  a1/cf = 0.4999982378
+
+== 2 reading 2: <trU> vs c_f
+  2P(beta)              = 0.009196870348  /cf    = 1.999971806
+  2P(beta/2)            = 0.004598483793  /cf    = 0.9999964757
+
+== 3 reading 3: Phi(0) = beta = 2N^2 u ?
+  2N^2 u                = 0.018394  == beta ? True
+  Phi(0)/u              = 8.0   Phi(0)/cf = 4.0
+
+== 4 what W=Cbar*u would be, and the u-free invariant Ubar=eD*W
+  read1 W=u  W = 0.00229925  Cbar=W/u = 1.0  Ubar = 0.1250001058
+  read2 W=cf  W = 0.0045985  Cbar=W/u = 2.0  Ubar = 0.2500002116
+  read3 W=beta  W = 0.018394  Cbar=W/u = 8.0  Ubar = 1.000000846
+  1/eD = 0.01839398443  vs beta = 0.018394  diff = 1.5569e-8
+  beta1(Cb)=2N^2/(eD*Cb): Cb=1,2,8 -> ['0.14715188', '0.073575938', '0.018393984']
+
+== 5 f07 w: |w|=cf^n on cube/tube -> |w|^(1/n)/u
+  n= 6  cf^n per site /u = 2.0   (|<(1/N)trU>^n| per site /u = 1.9999718)   (<trU>^n per site /u = 3.9999436)
+  n= 4  cf^n per site /u = 2.0   (|<(1/N)trU>^n| per site /u = 1.9999718)   (<trU>^n per site /u = 3.9999436)
+  n= 8  cf^n per site /u = 2.0   (|<(1/N)trU>^n| per site /u = 1.9999718)   (<trU>^n per site /u = 3.9999436)
+  n=12  cf^n per site /u = 2.0   (|<(1/N)trU>^n| per site /u = 1.9999718)   (<trU>^n per site /u = 3.9999436)
+  => |w|^(1/n)/u = cf/u = 2.0  ;  = u/u = 1 only if <(1/N)trU>=u (= 0.004598435174 )
+
+== 6 cross-check at beta=1/12 (f07 line 85)
+  P(1/12) = 0.02082730778    cf = 0.02083333333    P/u = 1.9994215
+  eD*u = 0.5663083333    eD*cf = 1.132616667
+
+== 7 small-beta algebra
+  P(x)/x      = 0.249995833437   -> 1/4 = 0.25
+  OK

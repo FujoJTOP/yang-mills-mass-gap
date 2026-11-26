@@ -889,15 +889,16 @@ has a trivial positive $Z_O$ fixed by the trace anomaly (no Banks--Baxks zero in
 $Z_O$ was never the wall. The missing step is the state overlap
 $\Omega=|\langle G_{\mathrm{tgt}}|O|G_{\mathrm{eff}}\rangle|^2=1$, i.e.\ the same lightest $0^{++}$
 atom persisting with uniform isolation \LT/\LC/\LM. The only exact positive anchor is the
-strong-coupling residue theorem ($f_1^2\ge r_0(\beta)>0$ for $\beta<1/48$, $L$-uniform); its
+strong-coupling residue theorem ($f_1^2\ge r_0(\beta_A)>0$ for $\beta_A<1/48$, $L$-uniform);\footnote{$\beta_A=2/(g^2N)$ is the coupling of the source normalization $S=N\beta_A\,\mathrm{Re}\sum_p\operatorname{Tr}Q_p$ (arXiv:2204.12737v1, \S1.1 eq.~(1.2) and \S1.2 eq.~(1.3)), i.e.\ t~Hooft scaling $\beta_A N$. The standard Wilson normalization is $\beta_W=N^2\beta_A$, so the wall $\beta_A<1/48$ reads $\beta_W<N^2/48$: $\beta_W<1/12$ for SU(2) and $\beta_W<3/16$ for SU(3). All couplings in this paper carry an explicit subscript $A$ (source) or $W$ (Wilson); an unsubscripted $\beta$ means $\beta_W$.} its
 mechanism is \emph{dynamical binding}: the minimal connected $\operatorname{tr}F^2$ polymer is a
 single four-walled flux tube, and its amplitude is a modulus-square of a positive overlap. It
-transports nothing to $\beta=2.5$: there is no isolation, no $a\to0$, and the $1/48$ Ursell wall
+transports nothing to $\beta_W=2.5$: there is no isolation, no $a\to0$, and the $\beta_A=1/48$ Ursell wall
 cannot be crossed; $f_1^2$ is upper-semicontinuous, so continuity carries no sign up. The
 scheme-free overlap is the atom fraction $w_1=f_1^2/M_0$; reflection positivity gives only
 log-convexity (which holds at $w_1=0$), Perron--Frobenius is vacuum-anchored, and the transfer matrix
 gives only a decreasing \emph{upper} bound. A block-spin/polymer RG does not reach $\beta=2.5$
-either: the exact SU(2) activity is $u=0.0104$ at the $1/48$ wall but $1.014$ at $\beta=2.5$, so
+either: the exact SU(2) activity is $u=0.0104$ at the wall, $\beta_A=1/48$ (i.e.\ $\beta_W=1/12$),
+and $1.014$ at $\beta_W=2.5$ (i.e.\ $\beta_A=0.625$), so
 $u^4>1$ and the four-wall tube does not decay ($m_1a=-0.057<0$); the trivial-character fraction falls
 from $0.98$ to $0.17$ and the Ursell ratio rises to $4.6\times10^3$. A one-loop block flow improves
 the activity by only $1.03\times$ because there is no scale separation; the missing factor is
@@ -955,7 +956,7 @@ not reduce it, but it fixes four predicates: $A$ (visibility), $W$ (weight), $I$
 
 \subsection{The pincer, honestly}
 
-The strong-coupling jaw (Dobrushin at $\beta<1/72$, SZZ at $\beta<1/48$) is a theorem but grips
+The strong-coupling jaw (Dobrushin at $\beta_A<1/72$, SZZ at $\beta_A<1/48$)\footnote{The $1/72$ threshold is quoted in the same source coupling $\beta_A$ as the SZZ radius; the constant is taken from the source's own normalization and is not re-derived here, so the source coordinate governs.} is a theorem but grips
 zero tower shells: the thresholds are crossed before the tower starts. The ultraviolet jaw now
 includes the renormalization-group descent: a one-step lemma with summable loss transports the
 good-set floor to $\beta\approx2.5$ on box-gap-protected modes. It breaks on the Savvidy soft mode,
@@ -1019,7 +1020,8 @@ The one-loop Hessian in a constant background and its negative transverse-magnet
 classical Savvidy--Nielsen--Olesen--Leutwyler computation. The reading of the negative mode as a
 barrier-top artifact of the effective potential, rather than an instability of the true vacuum, is a
 modern reinterpretation, not a 1970s theorem. The strong-coupling mass gap is Osterwalder--Seiler
-(1978), and the modern $N$-uniform version with the radius $1/48$ is Shen--Zhu--Zhu (2023); their
+(1978), and the modern $N$-uniform version with the radius $\beta_A=1/48$ (i.e.\ $\beta_W<N^2/48$:
+$1/12$ for SU(2), $3/16$ for SU(3)) is Shen--Zhu--Zhu (2023); their
 Bakry--\'Emery constant is linear in $N$, which is consistent with the good-set theorem's linear
 $N$-dependence. Balaban's renormalization-group analysis gives ultraviolet stability at fixed
 volume; it does not give the head. None of these results decides the conditioned inequality at
@@ -1089,13 +1091,16 @@ qualifier, and one of them is withdrawn.
   object \LN.
 \end{enumerate}
 
-The single most useful number produced by that wave is negative for the whole programme and should
-be recorded here: the one non-invariant input that could supply the missing charged-to-neutral sector
-transfer, $u$-completeness, has an exact blocking point at $\beta=2.446918$, so the physical point
-$2.5$ lies $2.12\%$ beyond it and no admissible convergence constant closes that last $2.12\%$
-\LT{}/\LM. The ultraviolet face classified in this paper is therefore still the ceiling, and the
-remaining distance is measured in percent rather than in orders of magnitude --- which is not
-progress toward Clay, but it is a much sharper statement of where the wall is.
+One headline number of that wave was withdrawn before this printing, and the correction is
+instructive. A blocking point $\beta=2.446918$ had been reported for $u$-completeness, placing the
+physical point $2.5$ a mere $2.12\%$ beyond it. That was an artefact of three compounding errors in
+the surrogate (a factor-two normalisation, a truncation to $|X|=1$, and $u_c=1$ in place of the true
+threshold $a$). The refutation needs no new analysis: the smallest \emph{closed} polymer of the
+$\mathrm{SU}(2)$ Wilson theory has $|X|=6$, so estimates built on $|X|=1$ describe an empty set; and
+with the correct per-tile weight the tube mass is positive at the physical point,
+$m_1a(2.5)=+2.7154$. The measured ceiling is instead $\beta_c^{\mathrm{KP}}\le1.182227$, with the
+convergence test failing by $35.5\times$ at $2.5$. The ultraviolet face classified in this paper is
+therefore still the ceiling, and the honest distance is a factor, not a percent.
 
 One further consequence belongs here because it bears on the ultraviolet face directly. The only
 published device found in that wave that tolerates an indefinite Hessian --- the Bauerschmidt--Bodineau--Dagallier

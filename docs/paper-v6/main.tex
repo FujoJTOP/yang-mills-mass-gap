@@ -1,0 +1,210 @@
+% =====================================================================
+%  v6 --- one chain, verbatim scope.
+%  Claim reported (the only one):
+%    On the cylinder C_L = T^3_L x Z, beta < beta_1 = 0.018394 = 0.8829 x (1/48),
+%    for the lightest 0^{++} atom of O = (1/4) tr F^2,
+%        f_1^2 >= r_0(beta) > 0   and   Lambda_star - m_1^2 >= delta > 0  (I2),
+%    uniformly for EVERY FINITE L (no L -> infinity); the SAME chain gives 2^{++}.
+%  Grade (2026-11-25, third ruling F07): I1 = [T], C-bar == N (PROVEN value, not unknown).
+%    Holes A--E closed; e*Delta = 54.3656 already contains the animal count, the per-plaquette
+%    weight ratio is |w|^{1/n}/u = c_f/u = N, so ubar = e*Delta*N*u (x = 1.1326 > 1 at beta=1/12
+%    => beta=1/12 is OUTSIDE the window);
+%    [KL] proven (P3-CYLINDER-RESIDUE:67--69); (b')_{IN-11} proven for beta<beta_1
+%    (PROOF-IN11:19); kappa^{(2)} = kappa^{(0)} verbatim, so both channels close.
+%  Refuted on the way (kept only as history): C-bar = 1 at sum level (false identity, n=3 hand
+%    witness, C07-AUDIT); C-bar disappears (c03's input |w_p| <= u is wrong by the factor N, F07).
+%  This is NOT Clay. The residual gap is (E-I2): exist delta,c>0 with inf_{L,a}(Lambda*-m1^2)>=delta, inf_L m1^2>=c.
+%  The residual gap is the uniform statement: forall beta in [1/48,2.5], forall L,a : G''(k=0)/a^2 >= delta^2 > 0.
+%  The earlier naming of that gap as Delta_0>0 is WITHDRAWN (n12): Delta_0 sits on G'', not on the measure nu.
+%  Build:  pdflatex -interaction=nonstopmode main.tex   (run twice)
+%  House rule: every assertion carries a label chip + a source file; no
+%  proof-completion stamp anywhere; [C]/[E] are never written as [T] --- i.e.
+%  only what already carries [T] in the corpus is written as [T].
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.35cm,top=2.1cm,bottom=2.2cm,headsep=13pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{microtype}
+\usepackage[table]{xcolor}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{CJKutf8}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+% ---------- colours ----------
+\definecolor{cT}{HTML}{1D7A3A}
+\definecolor{cC}{HTML}{1F5FA8}
+\definecolor{cM}{HTML}{B45F06}
+\definecolor{cN}{HTML}{A61B1B}
+\definecolor{cE}{HTML}{6A3D9A}
+
+% ---------- label chips : copied verbatim from docs/paper-v2/main.tex:37--42 ----------
+\newcommand{\labb}[2]{\fcolorbox{#1!35}{#1!8}{\textcolor{#1}{\textbf{\scriptsize #2}}}}
+\newcommand{\LT}{\labb{cT}{T}}
+\newcommand{\LC}{\labb{cC}{C}}
+\newcommand{\LM}{\labb{cM}{M}}
+\newcommand{\LN}{\labb{cN}{N}}
+\newcommand{\LE}{\labb{cE}{E}}
+
+% ---------- code : two variants.
+%   \code  : unbreakable (safe inside moving arguments: section/paragraph titles)
+%   \codep  : URL-style break points, so long file names wrap inside narrow
+%             table cells instead of running into the margin; body text uses this ----
+\newcommand{\brk}{\hspace{0pt}}
+\newcommand{\code}[1]{\texttt{\footnotesize\detokenize{#1}}}
+\newcommand{\codep}[1]{{\footnotesize\path{#1}}}
+
+% ---------- ragged-right fixed-width columns for the wide tables ----------
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+
+% ---------- source line ----------
+\newcommand{\src}[1]{\par\vspace{1pt}{\footnotesize\color{black!55}\raggedright
+  \textbf{出处.} #1\par}\vspace{3pt}}
+
+% ---------- boxes ----------
+\newtcolorbox{claimbox}[1]{enhanced, breakable, colback=#1!5, colframe=#1!70,
+  boxrule=0pt, leftrule=2.6pt, arc=2pt, left=9pt, right=8pt, top=6pt, bottom=6pt,
+  before skip=8pt, after skip=8pt, fontupper=\small, parbox=false}
+\newtcolorbox{keybox}{enhanced, breakable, colback=black!3, colframe=black!45,
+  boxrule=0pt, leftrule=2.4pt, arc=2pt, left=9pt, right=8pt, top=5pt, bottom=5pt,
+  before skip=6pt, after skip=6pt, fontupper=\small, parbox=false}
+\newtcolorbox{notbox}{enhanced, breakable, colback=cN!3, colframe=cN!55,
+  boxrule=0pt, leftrule=2.4pt, arc=2pt, left=9pt, right=8pt, top=5pt, bottom=5pt,
+  before skip=6pt, after skip=6pt, fontupper=\small, parbox=false}
+\newtcolorbox{quotebox}{enhanced, breakable, colback=black!2.5, colframe=black!30,
+  boxrule=0pt, leftrule=2pt, arc=0pt, left=10pt, right=8pt, top=4pt, bottom=4pt,
+  before skip=6pt, after skip=6pt, fontupper=\small, parbox=false}
+
+% ---------- helpers ----------
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\setlist[itemize]{leftmargin=1.5em,itemsep=1.5pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=1.5pt,topsep=3pt}
+\allowdisplaybreaks
+\setlength{\emergencystretch}{2.5em}
+
+% ---------- section style ----------
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.55em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.4em}{0.6em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.45em}
+
+% ---------- header ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\color{black!55}v6 --- one chain, verbatim scope: $\beta<0.018394$, finite $L$, $0^{++}$ and $2^{++}$}
+\fancyhead[R]{\footnotesize\color{black!55}\thepage}
+\setlength{\headheight}{13pt}
+
+\hypersetup{pdftitle={v6: one strong-coupling residue--isolation chain, verbatim scope},
+            pdfauthor={Yang--Mills campaign}}
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+
+% =====================================================================
+%  TITLE
+% =====================================================================
+\begin{center}
+  \vspace*{0.15cm}
+  {\LARGE\bfseries 柱面上一条强耦合残数--隔离链的逐字范围报告\par}
+  \vspace{0.4em}
+  {\large\bfseries 五环，一条链，一个主张：$\beta<0.018394$、有限 $L$、$0^{++}$ 与 $2^{++}$\par}
+  \vspace{0.5em}
+  \rule{0.62\textwidth}{0.6pt}\par
+  \vspace{0.45em}
+  {\small\color{black!60} Yang--Mills 战役 \textperiodcentered{} 第六版（v6，第三次裁决 F07 后修订） \textperiodcentered{} 2026-11-25 \textperiodcentered{} 第六物种轮的汇编\par}
+  \vspace{0.15em}
+  {\small\color{black!60} 只报一条链；不报 Clay 的任何进展；只把已经 \LT{} 的东西写成 \LT\par}
+\end{center}
+
+\vspace{0.3em}
+
+% =====================================================================
+%  THE ONE CLAIM
+% =====================================================================
+\begin{claimbox}{cT}
+\textbf{唯一主张（逐字，不加码）.}\hspace{0.35em}\LT
+\par\smallskip
+$I1$ and $I2$ are both closed at \code{[T]}; in the strong-coupling window ($\beta<0.018394$), at finite $L$ (uniformly in $L$),
+$m>0$ holds for both the $0^{++}$ and $2^{++}$ channels. \textbf{This is not Clay.}
+\textbf{The residual gap is the uniform statement $\forall\beta\in[1/48,2.5]\ \forall L,a:\ G''_{k=0}/a^2\ge\delta^2>0$.} An earlier draft named this gap $\Delta_0>0$ and identified it with $H1$, $I2$, $(E\text{-}I2)$ and $H^*$. \textbf{That identification is withdrawn}, on three independent grounds: (i) \code{n12}: $\Delta_0>0$ fails the four-model test on three of four models (on 2D YM $G''=0$ with $W_{\mathrm{full}}\ge N/12>0$ forces $\Delta_{\mathrm{dyn}}=-W_{\mathrm{full}}<0$; on M6, $\Phi=0\Rightarrow W_{\mathrm{full}}=0\Rightarrow\Delta_{\mathrm{dyn}}=2\omega>0$ on a gapless model; the single plaquette gives $\Delta_{\mathrm{dyn}}=-0.0691$); (ii) \code{n06}: $\Delta_0$ and $\Lambda_\star$ live on different carriers ($G''$ vs $\operatorname{supp}\nu$), are of different type (position vs distance), and have different quantifier domains, so they are \textbf{incomparable}; (iii) \code{n09}, Theorem N09-1: on M6 the only degenerate scale is the spectral bottom, hence \textbf{any quantity passing the four-model test must be a function of $m$ itself} --- the target is unique and no proxy exists. \textbf{The correct equivalence class is three, not five: $\{\Lambda_\star\ \text{lower bound}\equiv I2\equiv(E\text{-}I2)\}$; $H^*$ and $\Delta_0$ do not belong to it.}
+\textbf{The withdrawn-transport section (\S\ref{sec:transport-withdrawn}) stands; the naming of the residual gap as $\Delta_0>0$ is likewise withdrawn.}
+\par\smallskip
+{\footnotesize 中文对照（不加码）：残余缺口 = 一条\textbf{一致陈述} $\forall\beta\in[1/48,2.5]\,\forall L,a:G''_{k=0}/a^2\ge\delta^2>0$；
+C5 所需的量词形状由它给出。早先把这条缺口命名为 $\Delta_0>0$ 并等同于 $H1/I2/(E\text{-}I2)/H^*$ 的读法\textbf{已撤回}；
+正确等价类是\textbf{三个}：$\{\Lambda_\star\text{ 下界}\equiv I2\equiv(E\text{-}I2)\}$，$H^*$ 与 $\Delta_0$ 不属于它。}
+\par\smallskip
+展开成两行（柱面 $\mathcal{C}_L=T^3_L\times_a\mathbb{Z}$，$O=\tfrac14\operatorname{tr}F^2$ 的最轻 $0^{++}$ 原子；$2^{++}$ 走同一条链）：
+\[
+  f_1^2\ \ge\ r_0(\beta)\ >\ 0
+  \qquad\text{且}\qquad
+  \Lambda_\star-m_1^2\ \ge\ \delta\ >\ 0\quad(\text{即 I2})
+\]
+对\textbf{每个有限 $L$ 一致}（不取 $L\to\infty$），在 $\beta<\beta_1=0.018394=0.8829\times\tfrac1{48}$ 上。
+{\footnotesize\emph{Conventions:} $\beta_A$ vs $\beta_W$ differ by $N^2$; the window above uses $\hat C=4$ and $\bar C=N$, both fixed by \code{M07-WINDOW2.md}; the SZZ radius lies \emph{outside} it.}
+\par\smallskip
+\textbf{等级（第三次裁决 F07）.}\ \textbf{$I1$ = \LT，$\bar C\equiv N$（\textbf{已证值}，不是未知常数）}：五个洞 A--E 全部关闭（\S\ref{sec:holes}、\S\ref{sec:i1}），
+$e\Delta=54.3656$ \textbf{已含动物计数}、每片权重比 $|w|^{1/n}/u=c_f/u=N$（\S\ref{sec:cbar}），
+$[KL]$ 已证（\code{P3-CYLINDER-RESIDUE.md:67--69}），$(b')_{IN\text{-}11}$ 在 $\beta<\beta_1$ 上是 \LT（\code{PROOF-IN11.md:19}）。
+$I2$ 与 $I1$ 同级闭合；归属清单见 \S\ref{sec:assembly}。
+\end{claimbox}
+
+\par\smallskip
+{\small
+\textbf{摘要级四条限定（展开见 \S\ref{sec:assembly}）.}
+\textbf{D.1} $I2\Rightarrow m_1>0$ \textbf{为真但空转}：$I2$ 的旁条件 $\sup\operatorname{spec}\widetilde T<1$ 逐字就是 $m_1>0$（\code{B01-RP.md}:12），即用旁条件把结论写进去；唯一合法反例需\textbf{真空简并}（$r_{\mathrm{iso}}=0.4484$、$m=0$），被 PF 唯一真空排除（\code{G07-KATOADJ.md}）。旧见证 $\nu=\delta_0+\mathbf 1_{[\delta,\delta+1]}$ \textbf{已撤回}。$r_{\mathrm{iso}}$ 与 $I2$ 是同一个量（$E_2-E_1=\Lambda_\star-m_1^2$；2D YM 同值 $0.625$）：真正的对比是距离 vs 位置。
+\textbf{D.2} $\beta<\beta_1$ 的 $m>0$ credit 归 SZZ/OS，不算本链的增量。
+\textbf{D.3} $\beta<0.018394$ 是\textbf{粗格点}（$a\Lambda\approx0.48$、$m_1a=18.26$ 均为纯数 $\Rightarrow a$ 有正下界），不是 $a\to0$。
+\textbf{D.4} 不是 Clay。
+\textbf{新靶}：$\liminf_{a\to0}m_{\mathrm{lat}}(a)/(a\Lambda)\ge c_0>0$（$\Longleftrightarrow m/\Lambda\ge c_0$）——本文不证。
+\par}
+
+本文只报这一条链。链上每一环给等级、给来源文件与行号；链外的一切（其余 $J^{PC}$ 道的证书、$L\to\infty$、
+$\beta=2.5$、Clay 本身）在 \S\ref{sec:not} 与 \S\ref{sec:kl} 显式排除，排除语与主张语同等重要。
+本文\textbf{不盖任何完成戳}：没有证明结束符，没有完成标记，没有 Clay 的百分数。
+
+\vspace{0.2em}
+{\small\tableofcontents}
+
+\vspace{0.1em}
+\begin{keybox}
+\textbf{读法.} 五环是：\LT{} 残数 $I1$（\S\ref{sec:i1}，$\bar C\equiv N$）$\to$ \LT{} 端点亏损 $(L1)$（\S\ref{sec:l1}，已独立复核）$\to$
+\LT{} 速率 $\kappa/4$ 与可达率 $\delta$（\S\ref{sec:delta}）$\to$ \LT{} 代数 $\log D\to\eta$（\S\ref{sec:algebra}）$\to$
+\LT{} 柱面 KL 表示（\S\ref{sec:kl}，已证）；最后一步不是新环，是已证的 Theorem A 的 $\Leftarrow$ 半边
+（\code{REPORT.md:95}，$m_2$ 一身二任）。\textbf{整链等级 = 最弱一环 = \LT}；归属清单见 \S\ref{sec:assembly}。
+环里仍\textbf{并记两处历史记录}（\S\ref{sec:i1} 里 \code{MASTER:42} 的降级记录、\S\ref{sec:l1} 里 \code{w05} 的异议），
+以及\textbf{两条已被否证的旧路线}（求和级 $\bar C=1$ 的假恒等式、c03 的 $\bar C$ 消失），它们不被藏起来，而是作为历史并列。
+\end{keybox}
+
+\input{sec01-position}
+\input{sec02-i1}
+\input{sec03-l1}
+\input{sec04-delta}
+\input{sec05-algebra}
+\input{sec06-kl}
+\input{sec07-assembly}
+
+\vspace{0.4em}
+\begin{keybox}
+\textbf{交付合规.} 本文件只写 \code{docs/paper-v6/}（\code{main.tex} 与 \code{sec01}--\code{sec07}）；
+未对 \code{paper-v2}/\code{paper-v3}/\code{paper-v4}/\code{paper-v5} 作任何改动；未执行 \code{git commit}。
+标签体系照抄 \code{docs/paper-v2/main.tex:37--42}；\code{} 的定义用 \texttt{\textbackslash detokenize} 包住，
+故文件名里的下划线与花括号不炸。
+全部断言逐条带出处；\LC{} 与 \LE{} 在任何位置都不升格为 \LT；反过来，写 \LT{} 的每一句都已有 \LT{} 归属。
+\end{keybox}
+
+\end{CJK}
+\end{document}

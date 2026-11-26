@@ -1,0 +1,197 @@
+% =====================================================================
+%  sec07 -- The correct target
+% =====================================================================
+\section[The correct target: the pole residue is one step away]{The correct target: $\fone$ is the pole residue, and it is one step away}
+\label{sec:target}
+
+\subsection{The object, stated once and without aliases}
+
+If the route of \S\ref{sec:obs1}--\S\ref{sec:obs2} is closed, the question becomes what the
+corpus's own strongest unconditional theorem is actually about. It is about a residue. With
+$O=\tfrac14\tr F^{2}$ the $0^{++}$ composite operator of the $A_{1g}$ channel,
+\begin{equation}
+\fone:=\nu_O(\{E_1\})=\lim_{t\to\infty}e^{E_1t}C(t)
+=\bigl|\langle\Omega|O|\mathbb{G}\rangle\bigr|^{2}\ \ge\ 0,
+\qquad
+C(t)=\int e^{-Et}\,\mathrm{d}\nu_O(E),\quad \nu_O\ge0,
+\label{eq:f1def5}
+\end{equation}
+equivalently the residue of the $O$-channel return Green function at its lowest pole,
+$\fone=-\lambda_1\operatorname{Res}_{z=z_1}\mathcal{G}(z)
+=-(1/z_1)\,N_O(z_1)/\mathcal{D}_O'(z_1)$ with $\mathcal{D}_O(z)=\det(1-zT_O)$ and
+$z_1=e^{am_1}$ the smallest-modulus zero. \LT{} It is worth saying which residue it is
+\emph{not}, because the corpus contains all the near misses: it is not the residue of the gluon
+propagator, not that of a Savvidy or free propagator, and not that of a Wilson loop. It is the
+atom of the spectral measure of one specific composite operator.
+
+\src{\code{ch05-theorems.tex}:32 (the definition and the correlation function),
+\code{:52}, \code{:60} ($O=\tfrac14\tr F^{2}$ and $\fone=|\langle\Omega|O|\mathbb{G}\rangle|^{2}$
+as a modulus squared); \code{PROOF-P3-UNCONDITIONAL.md}:11--13 (the same, with the transfer matrix
+$T_L=e^{-aH_L}$, $0\le T_L\le1$, discrete spectrum $0=E_0<E_1<\cdots$ at \code{:19});
+\code{ch06-tools.tex}:65--72 (\code{eq:fredholm}, the residue form);
+\code{T02-F1SQ.md} \S1 (the ``which operator's residue'' paragraph, and the list of things it is
+not).}
+
+\subsection{The four implications that are actually proved}
+
+The reason $\fone$ is the correct object is not aesthetic: it is that four implications from it
+are theorems, and each of them is a statement one would want. \LT{}
+\begin{enumerate}
+\item[(I-1)] $\fone>0\Rightarrow\Var_\Omega(O)\ge\fone>0$, since $\nu_O\ge0$ and
+  $C(0)=\int\mathrm{d}\nu_O$. This is an identity, and the converse fails: for free Maxwell
+  $\Var>0$ while $\nu$ is a zero-threshold continuum, i.e.\ $\fone=\nu(\{0\})=0$.
+\item[(I-2)] $\fone>0\Rightarrow C(t)\ge\fone e^{-E_1t}$ for all $t>0$. Note what kind of
+  statement this is: a \emph{one-sided floor}, with no upper bound and no rate.
+\item[(I-3)] $\fone>0$ \emph{together with} I2 ($\Lstar>m_1^{2}$) is \emph{equivalent} to sharp
+  double-exponential decay, $C(t)=\fone e^{-m_1t}(1+\eta(t))$ with $|\eta|\le Be^{-\delta t}$.
+  I2 is a hypothesis here, and it is precisely the hypothesis that is missing.
+\item[(I-4)] In the strong-coupling regime $\beta<\beta_1=\min(1/48,c/N)$ at fixed lattice spacing
+  $a$ one has $\fone\ge r_0(\beta)>0$ uniformly in $L$ (modulo Osterwalder--Seiler /
+  K\"all\'en--Lehmann), with the mechanism being the four-wall tube: $|P|\ge4t/a$,
+  $m_1=4\ln(1/u)/a$, positive amplitude, and a Koteck\'y--Preiss remainder $O(u)$ uniform in
+  $t,V,L$.
+\end{enumerate}
+What (I-4) is \emph{not} is equally important, and the corpus states it: it contains neither I2,
+nor the continuum limit $a\to0$, nor the crossing to $\beta\approx2.5$, and it is not a gap
+theorem --- its own words are ``residue theorem, not a gap theorem''. Also, on the periodic torus
+$T^4_L$ the statement is ill-posed, because the propagator is bounded and $\lim_{t\to\infty}$ does
+not exist; the correct geometry is the cylinder $\mathcal{C}_L=T^3_L\times\mathbb{R}$, and the
+corpus records the platform drift as an erratum-level notation slip.
+
+\src{\code{ch05-theorems.tex}:284--287 (I-1, with the free-Maxwell converse),
+\code{:32} and \code{PROOF-P3-UNCONDITIONAL.md}:13 (I-2), \code{ch05-theorems.tex}:435--436
+(I-3), \code{:24--36}, \code{:52--67}, \code{:69--84} and \code{PROOF-P3-UNCONDITIONAL.md}:11--16,
+\code{:19}, \code{:31--33} (I-4 and its scope); \code{T02-F1SQ.md} \S2.1 (the four-row table),
+\S2.3 (``residue theorem, not a gap theorem'', verbatim, and the $T^4_L$ ill-posedness).}
+
+\subsection{The distance to $m>0$ is exactly one step}
+
+Here is the sentence that replaces the whole of \S\ref{sec:obs1}--\S\ref{sec:obs2}:
+\begin{equation}
+\Bigl(\fone>0\Bigr)\ \wedge\ \Bigl(\Lstar>m_1^{2}\Bigr)
+\ \Longleftrightarrow\ \text{sharp double exponential}
+\ \Longrightarrow\ \text{an isolated lowest atom},
+\label{eq:onestep5}
+\end{equation}
+and the missing conjunct is I2: the isolation of the bottom of the support of $\nu_O$, i.e.\ a
+positive distance between the lowest atom and the rest of the measure. \LT{}/ \LM{} This is not
+an inequality gap; it is a structural fact about $\operatorname{supp}\nu_O$ that neither
+$\Gpp>0$ nor $H1$ nor any statement in the curvature family contains. The corpus's own bookkeeping
+calls I2 the Clay-previous level, and it is the second half of $(CP)=I1\wedge I2$.
+
+Two supporting facts make clear that transport cannot substitute for I2. First, the multiplicative
+residue transport $\fone(\mu)=Z_O(\mu,\mu_0)^{2}\fone(\mu_0)$ is exact and it transports the
+\emph{sign and positivity} of the residue; it transports neither the size nor the isolation,
+because a pointwise positive scalar multiplication cannot move the support of $\nu$. \LT{}/ \LC{}
+Second, the residue--level-gap lemma runs in the direction $\Lstar>\bar R\Rightarrow\fone>0$ and
+fails in reverse: a positive atom with a heavy tail can have $\bar R>\Lstar$. \LT{}
+
+\src{\code{ch05-theorems.tex}:422--436 (I2, the residue--level-gap lemma, its reverse failure, and
+the equivalence), \code{:426--434} ($\Lstar>\bar R\Rightarrow\fone>0$); \code{ch06-tools.tex}:34--48
+(the transport, ending with ``it transports the sign and positivity of the residue; neither the
+size nor the isolation''), \code{:45--48}; \code{ch13-machine.tex}:40--41 (the two halves of
+$(CP)$); \code{IMP-ARROWS.md}:66 (row 14, I2 as the Clay-previous level), \code{:128} ($d_2$).}
+
+\subsection{Why the curvature cannot reach it: an exact counterexample}
+
+The relation between the old object and the new one is settled by a number, not by an argument:
+at $\beta=0$ one has $G''=0.2688$ while $\fone=0$. \LT{} (quoted: the corpus flags this pair as
+proved by quotation, its generating run not repeated --- \code{T02-F1SQ.md} \S6). The corpus also
+records the reason the attempt cannot be repaired by adding a constant: the thin-atom proposition,
+which would say that a positive curvature floor forces the bottom of the K\"all\'en--Lehmann support
+to be an atom, has been machine-checked \emph{false} (\code{H1_does_not_imply_atom}); this is
+\LT{} as reported in \code{ch15-uvface.tex}, and the Lean file itself was not re-opened in this
+round (\code{T02-F1SQ.md} \S6). A second, independent instance is 2D Yang--Mills, where
+$\delta=G''(0)\ge2.01>0$ holds uniformly in $t$ while $\fone(\tr F^{2})\equiv0$ exactly. \LT{} At
+most, a positive curvature floor supplies a susceptibility ceiling $\chi_{k=0}\le1/c_0$, and even a
+proven $H1$ would not force the bottom of the support.
+
+\src{\code{ch15-uvface.tex}:237--241 (the $\beta=0$ pair $G''=0.2688$, $\fone=0$, and the
+machine-checked \code{H1_does_not_imply_atom}, verbatim); \code{H1A-EXACT.md}:176, \code{:220}
+(the same verdict, and the 2D instance $\delta\ge2.01$ with $\fone\equiv0$);
+\code{IMP-ARROWS.md}:92--95 (the 2D exact counterexample).}
+
+\subsection{The two axes}
+
+The reason two ``equivalent'' descriptions never closed is that they are not on the same axis. The
+following table is the whole of it.
+
+\begin{center}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}p{2.6cm}p{5.4cm}X@{}}
+\toprule
+ & $\fone$ & $\Gpp$ \\
+\midrule
+type & an atom weight of a spectral measure (a pole residue) & a static conditional curvature
+     $=1/$ the Poincar\'e constant of a $1$D marginal \\
+axis & long time, $t\to\infty$, $z_1=e^{am_1}$ & static, $k\to0$, $\Var(\xi_{k\to0})$
+     (susceptibility) \\
+object & the $0^{++}$ channel of the composite $O=\tfrac14\tr F^{2}$ & the \emph{field}'s coarse
+     mode $v$, carried by Haar / $\Wg$ \\
+carrier & $|\langle\Omega|O|\mathbb{G}\rangle|^{2}$ (a modulus squared)
+     & $\Dyn+\Wg+X$ (a variance difference) \\
+proved lower bound & $r_0(\beta)>0$ for $\beta<1/48$ (I-4) & $\ge N/12>0$ only at $\beta=0$;
+     at $\beta=2.5$ not proved \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\src{\code{T02-F1SQ.md} \S4.2 (the two-axis table, verbatim in content), \S4.4 (the verdict on the
+``same object'' phrasing); \code{ch06-tools.tex}:17--20 ($G''$ is not $m_1^{2}$: on the composite
+$:\!\varphi^{2}\!:$ one has $\fone=0$ while $G''=1/\chi\ne m_1^{2}$).}
+
+\subsection{The verdict on ``one object, several names''}
+
+The programme's charter lists $\Gpp>0$, the transport of $\fone$, $H1$, $(CP)$ and the gluon
+condensate as ``the same object under several names''. On the \LT{} level that sentence is false,
+and the split is exactly the two rows of the table above: a \emph{static/susceptibility family}
+$\{\Gpp>0,\ H1,\langle\tfrac14\tr F^{2}\rangle\}$ and a \emph{spectral/atom family}
+$\{\fone>0,\ (CP)\}$. Within the first family the identity $H1(\delta)\iff\Gpp\ge\delta$ is exact,
+so $\Gpp\ge0$ is the $\delta=0$ member and is strictly weaker than the physical point. Across the
+families nothing is proved; the only bridge in the corpus is the residue--level-gap lemma, whose
+hypothesis is I2. \LC{} Hence the correct statement of the key is not $H1$ but
+\begin{equation}
+\text{key}\ =\ H1\ +\ \text{``the bottom of the support is an atom''}\ =\ (CP)\ =\ I1\wedge I2 ,
+\label{eq:key5}
+\end{equation}
+and $H1$ alone is strictly weaker than the atom statement, as the machine-checked counterexample
+shows.
+
+\src{\code{T02-F1SQ.md} \S4.4 (the two-family verdict and the corrected form of the key, verbatim);
+\code{H1A-EXACT.md}:65 ($H1(\delta)\iff\Gpp\ge\delta$ exactly); \code{GPP-STRUCT.md}:13
+($\Gpp\ge0\iff H1$ is \emph{not} a statement; the exact equivalence is the family $H1(\delta)$);
+\code{DF-CONTINUITY.md}:39 and \code{R2-H2GLOBAL.md}:72 (the two halves of $(CP)$);
+\code{IMP-ARROWS.md}:70 (row 18: $H1$ alone is strictly weaker than $B_{\mathrm{atom}}$).}
+
+\subsection{What would make it \LT: two revival conditions, stated as tasks}
+
+\begin{enumerate}
+\item \textbf{(b)$\to$(a).} Supply a uniform lower bound $\Lstar\ge m_1^{2}+c$ for the support
+  separation, i.e.\ upgrade the Koteck\'y--Preiss remainder from $t$-uniform $O(u)$ to
+  $O(e^{-\delta t})$: a second exponential scale. The strong-coupling integer grading of (I-4)
+  cannot do this structurally --- the remainder is $O(u)$ for every $t$ by construction.
+\item \textbf{(c)$\to$equivalence.} Build a bridge that puts $\Gpp$ (a static curvature of the
+  field's coarse mode) and $\nu_O$ (a spectral atom of a composite operator) into one object. The
+  only candidate in the corpus is the thin-atom proposition, which is machine-checked false, so
+  the bridge must change species; no constant added to $H1$ can produce it.
+\end{enumerate}
+Both conditions are stated so that failure is decidable, which is the most a paper of this kind
+can honestly offer. Neither is claimed here.
+
+\src{\code{T02-F1SQ.md} \S7 (both revival conditions, verbatim), \S2.2 (the $O(u)$-versus-
+$O(e^{-\delta t})$ obstruction); \code{ch05-theorems.tex}:69--77 (the remainder is $O(u)$, never
+$O(e^{-\delta t})$).}
+
+\subsection{What this section establishes}
+
+\begin{itemize}
+\item \LT{} $\fone$ is the atom of $\nu_O$ at $E_1$, equivalently the residue of the $O$-channel
+      Green function at $z_1=e^{am_1}$; four implications (I-1)--(I-4) are proved from it.
+\item \LT{} The distance from $\fone>0$ to $m>0$ is exactly one condition, I2
+      ($\Lstar>m_1^{2}$), which is structural --- about the support of a measure, not the size of
+      an inequality.
+\item \LT{} $\Gpp>0$ does not imply $\fone>0$: at $\beta=0$, $G''=0.2688$ while $\fone=0$; in 2D,
+      $\delta\ge2.01>0$ while $\fone\equiv0$.
+\item \LM{} The key must be written $(CP)=I1\wedge I2$, not $H1$; the two revival conditions are
+      stated above and neither is met.
+\end{itemize}

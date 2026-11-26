@@ -1,0 +1,48 @@
+====================================================================================================
+Q01  Phi-only (S_W = 0, beta = 0, SU(2), single plaquette, flat chart, v = e_3, a_0 = 0)
+====================================================================================================
+[0] normalisation:  4pi*int sin^2(rho/2)drho = 39.4784176044   (4pi^2 = 39.4784176044)  <- quadrature check
+====================================================================================================
+[1] UNCONDITIONED (marginal over a): Stein/IBP  E[Phi''] = E[(Phi')^2]  =>  Var(Phi') = E(Phi'') - (E Phi')^2
+    E[Phi''_vv]        = 0.333333333333
+    E[(Phi'_v)^2]      = 0.333333333333
+    |diff|/E          = 0.000e+00     (IBP; E[Phi'_v] = 0 by xi -> -xi)
+    => Var_uncond(Phi'_v) = E(Phi'') = 0.333333333333  EXACTLY: slack = (E Phi')^2 = 0
+====================================================================================================
+[2] CONDITIONED at a_0 = 0 (the object H1 uses): slice xi_3 = 0
+    dmu|slice = J dxi_1 dxi_2 = sin^2(r/2)/r dr dphi ; Phi radial => d_3 Phi = h'(rho) xi_3/rho = 0 on slice
+    int sin^2(r/2)/r dr = (1/2)Cin(2pi) = 1.218826696529    Cin(2pi) = 2.437653393057
+    Var(Phi'|0)        = 0.000000000000    (exact: Phi' == 0 identically on the slice)
+    Phi''|0            = h'(r)/r >= 1/6 pointwise
+    E[Phi''|0]         = 0.205115297123
+    1/(2 Cin(2pi))     = 0.205115297123    <- corpus W_0 = 0.20511530 (H1A-EXACT S2.1; p16 log [6])
+    N/12               = 0.166666666667    ratio = 1.230692
+====================================================================================================
+[3] EXACT marginal curvature: p(a) = (2pi/Z) int_{|a|}^{2pi} sin^2(rho/2)/rho drho
+    G''_Phi(a) = -d^2/da^2 log p = f'(a)/(Fs-F(a)) - [f(a)/(Fs-F(a))]^2 ,  f = sin^2(a/2)/a, F' = f
+    (== E[Phi''|a] - Var(Phi'|a) by the conditioning identity; must reproduce [2] at a = 0)
+    G''_Phi(0)         = 0.205115297123    (analytic f'(0)/Fs = 0.205115297123 = 1/(2Cin(2pi)) )
+    min over a-grid    = -15007047.343226306140    at a = 6.282185
+    a = 0.5,1,2,3,4,5,6: 0.18684 0.12634 -0.12673 -0.83538 -2.54937 -9.79406 -135.09101
+    zero crossing      : G''_Phi > 0 up to a = 1.5883, negative beyond
+    edge               : G''_Phi(2pi-1e-3) = -1.500705e+07   (p ~ (2pi-a)^3 => -d^2 log p ~ -3/(2pi-a)^2 -> -infinity)
+    => UNIFORM in a FAILS on the flat chart: G''_Phi(0) = 0.205115 >= N/12 but inf_a G''_Phi = -inf at the cut locus
+    S-D at a=0: S = E[Phi''|0] = 0.205115, D = Var(Phi'|0) = 0
+====================================================================================================
+[4] BL leg: Hess Phi >= (N/12)I => Var(g) <= (12/N)E|grad g|^2 ; g = Phi'_v, grad g = Hess Phi . v
+    |Hess Phi e_3|^2 = h''^2 cos^2 + (h'/rho)^2 sin^2 ; angular average (1/3, 2/3)
+    cut at rho = 2pi - eps and let eps -> 0:
+    eps=   1e-01:  E_eps|grad Phi'|^2 = 1.077027e+00   BL bound (12/N)E = 6.462162e+00   eps*B = 0.646216
+    eps=   1e-02:  E_eps|grad Phi'|^2 = 1.062713e+01   BL bound (12/N)E = 6.376277e+01   eps*B = 0.637628
+    eps=   1e-03:  E_eps|grad Phi'|^2 = 1.061202e+02   BL bound (12/N)E = 6.367210e+02   eps*B = 0.636721
+    eps=   1e-04:  E_eps|grad Phi'|^2 = 1.061050e+03   BL bound (12/N)E = 6.366299e+03   eps*B = 0.636630
+    eps=   1e-05:  E_eps|grad Phi'|^2 = 1.061035e+04   BL bound (12/N)E = 6.366208e+04   eps*B = 0.636621
+    measured Var(Phi'_v) = 0.333333  ->  the BL bound with f = Phi' DIVERGES (vacuous), it is not loose.
+====================================================================================================
+[5] LEDGER (v = e_3 unit; L links iid => sum w_l^2 = 1 gives the same number for every L, incl. L=2)
+    G_v = d_v S_W        = 0          [exact: S_W == 0]
+    H_vv = v^T Hess S_W v = 0         [exact]
+    total force = Phi' ;  Phi'' = h''cos^2 + (h'/rho)sin^2 ;  min Phi'' = N/12 = 0.166667
+    conditioned  : Var(Phi'|0) = 0 <= E[Phi''|0] = 0.2051153   margin = 0.2051153
+    unconditioned: Var(Phi')  = E(Phi'') = 0.3333333          margin = 0 exactly
+    G''_Phi(0) = E[Phi''|0] - Var(Phi'|0) = 0.2051153

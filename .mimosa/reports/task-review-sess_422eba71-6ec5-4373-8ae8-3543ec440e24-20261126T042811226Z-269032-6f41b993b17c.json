@@ -1,0 +1,283 @@
+{
+  "schema_version": "mimosa-task-review/v2",
+  "run_id": "20261126T042811226Z-269032-6f41b993b17c",
+  "run_status": "inconclusive",
+  "errors": [
+    {
+      "stage": "baseline-read",
+      "target": "research/v3/species/w7/gw7_fixeda.py",
+      "reason": "baseline_snapshot_unreadable: file is missing from task baseline"
+    }
+  ],
+  "coverage": {
+    "schema_version": "mimosa-hook-coverage/v1",
+    "status": "partial",
+    "scope": "hook_observed_diff",
+    "baseline": {
+      "complete": true,
+      "captured_files": 848,
+      "candidate_limit": 5000,
+      "truncated": false,
+      "enumeration_error_count": 0,
+      "snapshot_error_count": 0,
+      "compensated_target_count": 0
+    },
+    "change_tracking": {
+      "touched_observed": 0,
+      "touched_retained": 0,
+      "truncated": false,
+      "bash_mutation": true,
+      "bash_discovered": 1,
+      "bash_discovery_limit": 80,
+      "bash_discovery_truncated": false
+    },
+    "candidates": {
+      "eligible_files": 1,
+      "selected_files": 1,
+      "limit": 20,
+      "truncated": false
+    },
+    "scanning": {
+      "required_files": 1,
+      "scanned_files": 1,
+      "skipped_files": 0,
+      "failed_files": 0,
+      "project_checks_required": 0,
+      "project_checks_completed": 0
+    },
+    "notification": {
+      "eligible_findings": 3,
+      "detailed_findings": 3,
+      "detail_limit": 3,
+      "truncated": false
+    },
+    "reason_counts": {
+      "baseline_snapshot_unreadable": 1,
+      "project_check_failed": 1
+    },
+    "reasons": [
+      {
+        "code": "baseline_snapshot_unreadable",
+        "stage": "baseline-read",
+        "target": "research/v3/species/w7/gw7_fixeda.py",
+        "detail": "file is missing from task baseline",
+        "affects_completion": true
+      },
+      {
+        "code": "project_check_failed",
+        "stage": "baseline-read",
+        "target": "research/v3/species/w7/gw7_fixeda.py",
+        "detail": "baseline_snapshot_unreadable: file is missing from task baseline",
+        "affects_completion": true
+      }
+    ],
+    "reasons_truncated": false
+  },
+  "generated_at": "2026-11-26T04:28:11.226Z",
+  "session_id": "sess_422eba71-6ec5-4373-8ae8-3543ec440e24",
+  "target": ".",
+  "revision": "7f2b35dfa9fd42d1b8c77af3d5ca09cd01fe630e",
+  "rules_version": "unavailable",
+  "diff_hash": "db9d1c98036c0cdcf63b2f45e60df7cf61f5fc32cbc9c2c6119075d16fa666cd",
+  "diff": {
+    "algorithm": "sha256",
+    "changed_file_count": 1,
+    "changed_files": [
+      {
+        "file": "research/v3/species/w7/gw7_fixeda.py",
+        "ranges": [
+          {
+            "start": 1,
+            "end": 206
+          }
+        ],
+        "before_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "after_hash": "f1c1888ed63c389285c41ca5cf9330df816452263ff391dbdf7985b894294580"
+      }
+    ]
+  },
+  "timing": {
+    "started_at": "2026-11-26T04:28:10.000Z",
+    "completed_at": "2026-11-26T04:28:11.226Z",
+    "duration_ms": 1226,
+    "measurement": "hook_wall_clock"
+  },
+  "tokens": {
+    "input": 0,
+    "output": 0,
+    "total": 0,
+    "model_calls": 0,
+    "measurement": "known-zero"
+  },
+  "telemetry": {
+    "schemaVersion": "mimosa-gate-telemetry/v1",
+    "profile": "gate",
+    "operation": "Stop",
+    "outcome": "partial/INCONCLUSIVE",
+    "latencyMs": 1226,
+    "peakMemoryBytes": 132681728,
+    "memoryMeasurement": "max-observed-process-rss",
+    "scannedFiles": 1,
+    "cache": {
+      "hits": 0,
+      "misses": 0,
+      "measurement": "not-applicable"
+    },
+    "denyCount": 0,
+    "tokens": {
+      "input": 0,
+      "output": 0,
+      "total": 0,
+      "modelCalls": 0,
+      "measurement": "known-zero"
+    }
+  },
+  "finding_count": 3,
+  "rewake_finding_count": 2,
+  "evidence_boundary": {
+    "scan": "candidate",
+    "static_fix_verification": "observed_static_only",
+    "runtime_verification": "not_performed"
+  },
+  "finding_events": [
+    {
+      "finding_id": "mimosa-85dd94ac912e22d8f0d706c8",
+      "file": "research/v3/species/w7/gw7_fixeda.py",
+      "line": 187,
+      "severity": "high",
+      "category": "路径穿越",
+      "status": "blocked",
+      "decision": "stop_rewake",
+      "at": "2026-11-26T04:28:11.226Z",
+      "evidence": {
+        "kind": "static_scan",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "8c53f68a5bbef2586f2e7a484f6ade0f93590dec060a5cc5e582a69709c1f9b8",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-85dd94ac912e22d8f0d706c8",
+      "file": "research/v3/species/w7/gw7_fixeda.py",
+      "line": 201,
+      "severity": "high",
+      "category": "路径穿越",
+      "status": "blocked",
+      "decision": "stop_rewake",
+      "at": "2026-11-26T04:28:11.226Z",
+      "evidence": {
+        "kind": "static_scan",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "8c53f68a5bbef2586f2e7a484f6ade0f93590dec060a5cc5e582a69709c1f9b8",
+        "runtime_oracle": false
+      }
+    },
+    {
+      "finding_id": "mimosa-1f9e67c4afeb53c2fdd17f54",
+      "file": "research/v3/species/w7/gw7_fixeda.py",
+      "line": 202,
+      "severity": "high",
+      "category": "路径穿越",
+      "status": "blocked",
+      "decision": "stop_rewake",
+      "at": "2026-11-26T04:28:11.226Z",
+      "evidence": {
+        "kind": "static_scan",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "source": "semgrep",
+        "evidence_hash": "3dc5c936744d5be1f33b9b16ac56c30bfdf625eec976af5ed4a69d180905ac4a",
+        "runtime_oracle": false
+      }
+    }
+  ],
+  "findings": [
+    {
+      "finding_id": "mimosa-85dd94ac912e22d8f0d706c8",
+      "file": "research/v3/species/w7/gw7_fixeda.py",
+      "line": 187,
+      "end_line": 187,
+      "severity": "high",
+      "category": "路径穿越",
+      "kind": "semgrep",
+      "advisory": false,
+      "status": "blocked",
+      "evidence_boundary": "candidate",
+      "evidence": [
+        {
+          "kind": "static_scan",
+          "boundary": "candidate",
+          "producer": "deterministic",
+          "source": "semgrep",
+          "file": "research/v3/species/w7/gw7_fixeda.py",
+          "line": 187,
+          "evidence_hash": "8c53f68a5bbef2586f2e7a484f6ade0f93590dec060a5cc5e582a69709c1f9b8",
+          "runtime_oracle": false
+        }
+      ],
+      "already_reported_to_agent": false,
+      "selected_for_rewake": true
+    },
+    {
+      "finding_id": "mimosa-85dd94ac912e22d8f0d706c8",
+      "file": "research/v3/species/w7/gw7_fixeda.py",
+      "line": 201,
+      "end_line": 201,
+      "severity": "high",
+      "category": "路径穿越",
+      "kind": "semgrep",
+      "advisory": false,
+      "status": "blocked",
+      "evidence_boundary": "candidate",
+      "evidence": [
+        {
+          "kind": "static_scan",
+          "boundary": "candidate",
+          "producer": "deterministic",
+          "source": "semgrep",
+          "file": "research/v3/species/w7/gw7_fixeda.py",
+          "line": 201,
+          "evidence_hash": "8c53f68a5bbef2586f2e7a484f6ade0f93590dec060a5cc5e582a69709c1f9b8",
+          "runtime_oracle": false
+        }
+      ],
+      "already_reported_to_agent": false,
+      "selected_for_rewake": true
+    },
+    {
+      "finding_id": "mimosa-1f9e67c4afeb53c2fdd17f54",
+      "file": "research/v3/species/w7/gw7_fixeda.py",
+      "line": 202,
+      "end_line": 202,
+      "severity": "high",
+      "category": "路径穿越",
+      "kind": "semgrep",
+      "advisory": false,
+      "status": "blocked",
+      "evidence_boundary": "candidate",
+      "evidence": [
+        {
+          "kind": "static_scan",
+          "boundary": "candidate",
+          "producer": "deterministic",
+          "source": "semgrep",
+          "file": "research/v3/species/w7/gw7_fixeda.py",
+          "line": 202,
+          "evidence_hash": "3dc5c936744d5be1f33b9b16ac56c30bfdf625eec976af5ed4a69d180905ac4a",
+          "runtime_oracle": false
+        }
+      ],
+      "already_reported_to_agent": false,
+      "selected_for_rewake": true
+    }
+  ],
+  "artifacts": {
+    "immutable_report": ".mimosa/reports/task-review-sess_422eba71-6ec5-4373-8ae8-3543ec440e24-20261126T042811226Z-269032-6f41b993b17c.json",
+    "latest_report": ".mimosa/reports/task-review-sess_422eba71-6ec5-4373-8ae8-3543ec440e24.json",
+    "history_summary": ".mimosa/history/run-20261126T042811226Z-269032-6f41b993b17c.json"
+  }
+}

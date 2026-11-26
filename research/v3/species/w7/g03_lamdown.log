@@ -1,0 +1,52 @@
+== A: the sole unconditional lower bound is the trivial Lambda_star >= m1^2 ==
+   20000 random 4-atom measures: violations of Lambda_star >= m1^2 = 0
+   gap: min 8.456e-05  median 1.584  max 9.109
+   => [T] Lambda_star >= m1^2 always (0 violations); the sample min gap is >0 only because the
+      support is distinct -- the exact infimum 0 is realised by the tower (Part B / Lemma B).
+   => the trivial bound is all positivity alone gives; anything above it is an ABSENCE
+      statement (Part E), not a bound of the same kind.
+
+== B: thin gap (W4 reproduced in closed form) -- fixed (M0,M1,M2)=(2,11,101) of nu0=d_1+d_10 ==
+   reference nu0 = delta_1 + delta_10 : isolation = 9 exact, Lambda_max = 10 exact
+       eps        L        p@1        q@(1+eps)   r@L       |M1-11|   |M2-101|   isolation
+   5.0e-01  10.09551   0.821495   2.000e-01   0.978505 0.0e+00 0.0e+00    5.0e-01
+   5.0e-02  10.00099   0.980222   2.000e-02   0.999778 0.0e+00 1.4e-14    5.0e-02
+   1.0e-02  10.00004   0.996009   4.000e-03   0.999991 0.0e+00 0.0e+00    1.0e-02
+   1.0e-03  10.00000   0.999600   4.000e-04   1.000000 0.0e+00 0.0e+00    1.0e-03
+   1.0e-06  10.00000   1.000000   4.000e-07   1.000000 0.0e+00 1.4e-14    1.0e-06
+   1.0e-09  10.00000   1.000000   4.000e-10   1.000000 0.0e+00 0.0e+00    1.0e-09
+   (eps=0.5 row reproduces R2-ISOLATION W4 verbatim: p=.82149 q=.2 r=.97851 L=10.0955)
+   => [T]+[E] the fibre of the moment map at (2,11,101) reaches isolation eps for EVERY eps>0:
+      inf over the fibre = 0. Exact realisation of 0: the tower/mu touching m1^2 (Lemma B).
+      => no functional of finitely many moments lower-bounds Lambda_star - m1^2. [NG]
+
+== C: Lemma C (Lambda_star <= Lambda_max) -- sharp for 2 atoms, over-shoots with a continuum ==
+   2 atoms {1,7.0}, f1^2=0.6: Lambda_star=7.0000  Lambda_max=7.0000  (equal => sharp)
+   + continuum e^(-(s-1)) on (1,inf), weight 0.4: Lambda_star=1.0000 (touches m1^2), Lambda_max=2.0001 > m1^2
+   => Lemma C bound admits isolation 0 on the SAME (M0,M1)=(1,1.4000) datum;
+   monotone check: M1 - m1^2*M0 = +0.4000 >= 0 => Lambda_max >= m1^2 always.
+   (2-atom datum M1=3.400: Lambda_max=7.0000 = Lambda_star, sharp)
+   => [T] the bounds allow Lambda_star - m1^2 in [0,inf), infimum 0 => no finite margin.
+
+== D: the lower side IS attainable when the state count K is known (so NOT structurally dead) ==
+   3-atom tower, K=3 given: recovered [1.  2.5 7. ]  isolation=1.500000000000  err=8.88e-15   [T] (Prony)
+   8-atom continuum probed at the WRONG K=3: 'isolation' 1.6701 vs true 0.7000  => meaningless
+   2D YM SU(2) Migdal tower: m1^2=C2(f)=0.75, Lambda_star=C2(adj)=2.0 => margin 1.25 = 5/4 exact, rho^2=2.666667 = 8/3   [M]/[E]
+   => a non-trivial lower bound Lambda_star > m1^2 is a THEOREM in solvable models (exact margin).
+      What is missing in 4D is the state count / uniformity, not the definition. No structural
+      no-go on the definition; the dead route is moment/positivity (Part B), not the object.
+
+== E: (Lambda_star >= m1^2+delta) <=> (no support in (m1^2, m1^2+delta)) -- definitional ==
+   checked 18 (measure, delta) pairs: both formulations agree 18/18
+   => [T] 'a lower bound strictly above m1^2' and 'no spectrum in (m1^2, Lambda_star)' are the
+      SAME formula; with delta fixed uniformly in (L,a,beta) it is I2 verbatim.
+
+== F: an exhibited support point is an UPPER bound (threshold carries no lower-bound content) ==
+   nu=.5 d_1+.3 d_4+.2 d_4.3: m1^2=1, continuum edge s_th=4, Lambda_star=4.0  => Lambda_star <= s_th
+   => [T] '2m1 in supp nu' / 's_th in supp nu' yields an UPPER bound on Lambda_star, never a lower one.
+
+VERDICT  (a) fires: 'Lambda_star lower bound' == I2 verbatim => ONE missing piece, not two;
+         (b) no separate piece: the only extra content is uniformity of delta = I2's own quantifier;
+         (c) no structural no-go: non-trivial lower bounds exist as theorems (2D margin 5/4; Prony
+             given K). What dies is the moment/positivity route [NG] - a method, not the object.
+No QED. Clay 0%.

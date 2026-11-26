@@ -1,0 +1,91 @@
+================================================================================================
+P7 / KP:  c_r dim r <= beta^{|r|}/|r|! e^{+-beta}  --  four betas, |r| = 1..8 (SU(2), N=2)
+================================================================================================
+
+[0] exact c_n(beta) = I_n(beta) - I_{n+2}(beta)  vs  direct Haar projection integral
+    max |closed-form - projection| < 1e-18 over (beta,n) in {4 betas} x {0,1,4}   [E, self-check OK]
+    beta=0.018394  c_1 = 0.00919726   (beta/2 = 0.009197    ; c_1/(beta/2)-1 = 2.820e-05  )
+    beta=0.1       c_1 = 0.0500417    (beta/2 = 0.05        ; c_1/(beta/2)-1 = 8.336e-04  )
+    beta=1         c_1 = 0.542991     (beta/2 = 0.5         ; c_1/(beta/2)-1 = 8.598e-02  )
+    beta=2.5       c_1 = 2.04235      (beta/2 = 1.25        ; c_1/(beta/2)-1 = 6.339e-01  )
+
+[1A] RHS as in P3-FULLREP-KP.md line 49:  beta^n/n! * e^{+beta}
+    n=|r|       0.018394           0.1             1           2.5
+        1      0.0187355      0.110517       2.71828       30.4562
+        2     0.00017231    0.00552585       1.35914       38.0703
+        3    1.05649e-06   0.000184195      0.453047       31.7252
+        4    4.85827e-09   4.60488e-06      0.113262       19.8283
+        5    1.78726e-11   9.20976e-08     0.0226523       9.91414
+        6    5.47915e-14   1.53496e-09    0.00377539       4.13089
+        7    1.43976e-16    2.1928e-11   0.000539342       1.47532
+        8    3.31038e-19     2.741e-13   6.74177e-05      0.461037
+
+[1B] RHS as literally quoted in the task:  beta^n/(n! e^{beta})
+    n=|r|       0.018394           0.1             1           2.5
+        1      0.0180588     0.0904837      0.367879      0.205212
+        2    0.000166086    0.00452419       0.18394      0.256516
+        3    1.01833e-06   0.000150806     0.0613132      0.213763
+        4    4.68279e-09   3.77016e-06     0.0153283      0.133602
+        5    1.72271e-11   7.54031e-08    0.00306566     0.0668009
+        6    5.28124e-14   1.25672e-09   0.000510944     0.0278337
+        7    1.38776e-16   1.79531e-11    7.2992e-05    0.00994062
+        8    3.19081e-19   2.24414e-13   9.12399e-06    0.00310644
+
+[2] exact c_n, dim, c_n*dim  (SU(2); dim = n+1)
+    n=|r|  dim   c_n(beta) for beta = 0.018394, 0.1, 1.0, 2.5
+        1    2      0.0091973      0.050042       0.54299        2.0423
+        2    3     4.2293e-05     0.0012508       0.13301        1.1385
+        3    4     1.2966e-07    2.0844e-05      0.021897       0.44153
+        4    5     2.9811e-10    2.6053e-07     0.0027146       0.13137
+        5    6     5.4835e-13    2.6051e-09    0.00026986      0.031696
+        6    7     8.4052e-16    2.1708e-11    2.2389e-05     0.0064277
+        7    8     1.1043e-18    1.5505e-13    1.5937e-06     0.0011238
+        8    9     1.2696e-21    9.6905e-16    9.9331e-08    0.00017264
+
+[2b] SATURATION  s_n := c_n dim r_n / RHS_A(n)   (1 = bound tight, 0 = bound useless)
+    n=|r|       0.018394           0.1             1           2.5
+        1       0.981802      0.905592       0.39951      0.134117
+        2       0.736346      0.679052      0.293591     0.0897148
+        3       0.490895      0.452645      0.193331     0.0556688
+        4       0.306809       0.28288      0.119839     0.0331279
+        5       0.184085      0.169718     0.0714797     0.0191821
+        6       0.107383     0.0989975     0.0415118      0.010892
+        7      0.0613615      0.056568     0.0236392    0.00609398
+        8      0.0345158     0.0318186     0.0132603    0.00337016
+
+[3] beta = 2.5: does the bound still HOLD (RHS >= c_r dim r) for each |r|?
+    |r|=1: c_r dim r = 4.0847       RHS_A = 30.456       slack =     7.456x   HOLDS
+    |r|=2: c_r dim r = 3.4155       RHS_A = 38.07        slack =     11.15x   HOLDS
+    |r|=3: c_r dim r = 1.7661       RHS_A = 31.725       slack =     17.96x   HOLDS
+    |r|=4: c_r dim r = 0.65687      RHS_A = 19.828       slack =     30.19x   HOLDS
+    |r|=5: c_r dim r = 0.19017      RHS_A = 9.9141       slack =     52.13x   HOLDS
+    |r|=6: c_r dim r = 0.044994     RHS_A = 4.1309       slack =     91.81x   HOLDS
+    |r|=7: c_r dim r = 0.0089906    RHS_A = 1.4753       slack =     164.1x   HOLDS
+    |r|=8: c_r dim r = 0.0015538    RHS_A = 0.46104      slack =     296.7x   HOLDS
+    |r|=0 (trivial rep): c_0 = 2.01337;  RHS_A(0)=e^beta = 12.1825  -> HOLDS;  RHS_B(0)=e^-beta = 0.082085 -> FAILS
+    -> reading [1B] is falsified already at |r|=0 for every beta>0: c_0 ~ 1 > e^-beta.
+
+[4] KP per-plaquette rep activity  Phi(a) = sum_{n>=1} c_n dim r_n e^{a n},  a = 1
+    beta      Phi_exact(1)   majorant e^b(e^{b e}-1)   term-peak |r|   frac(|r|<=2)   frac(|r|<=4)
+    0.018394       0.0509495                0.052223               1       0.999794              1
+    0.1             0.301529                0.345213               1       0.994202       0.999992
+    1                8.72149                 38.4753               1       0.676544       0.963228
+    2.5              171.503                   10879               4       0.211893       0.627845
+
+[5] KP HYPOTHESIS (P3-FULLREP-KP.md lines 90,96,121):  lambda_a Phi(a) < 1  [and Thm: u K < 1]
+    lambda_a = e*Delta = 20e = 54.3656 ;  C_g = 2N e^b ;  K = 2 lambda C_g e ;  u = c_f
+    beta        Phi(1)      lambda*Phi   u=c_1        K          u*K      verdict(KP hyp)
+    0.018394     0.05095       2.7699    0.0091973      1204.2      11.075   FAILS
+    0.1          0.30153       16.393     0.050042      1306.6      65.384   FAILS
+    1             8.7215       474.15      0.54299      3213.7        1745   FAILS
+    2.5            171.5       9323.9       2.0423       14403       29415   FAILS
+    -> with these (crude, unoptimised) constants: u*K<1  <=>  beta < 0.0016888   (1/48 = 0.020833; ratio 12.3x)
+
+[6] convergence of the full rep sum at beta = 2.5 (the *only* job of c_r dim r <= RHS):
+    a=1.0: Phi = 171.503;  term peak at |r|=4;  t(400)/t(399) = 0.00852  (<1 => converged);  partials S(|r|<=2) = 36.34
+    a=2.0: Phi = 120567;  term peak at |r|=10;  t(400)/t(399) = 0.0231  (<1 => converged);  partials S(|r|<=2) = 216.66
+    a=4.0: Phi = 3.08786e+31;  term peak at |r|=69;  t(400)/t(399) = 0.171  (<1 => converged);  partials S(|r|<=2) = 10404
+    -> sum converges for every a (term_n ~ (beta/2)^n (n+1) e^{a n}/n! : factorial wins).
+    NOTE: RHS_A(n) is INCREASING in beta for every n (see [1A]) -> the bound is TIGHTEST
+          at small beta, LOOSEST at beta=2.5.  'beta small => RHS small => keep small |r|'
+          has the sign of the beta-dependence inverted; and the bound never truncates |r|.

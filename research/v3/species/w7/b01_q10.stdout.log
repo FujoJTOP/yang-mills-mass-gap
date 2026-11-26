@@ -1,0 +1,9 @@
+====================================================================================================
+B01  SU(2) Wilson  w1(raw) vs beta   Ls=8^3 x Lt=12   operator = run1/run3 lev0 (unchanged)
+m = 1.546 fixed ; w1 = A/C0 ; errors = 20-block delete-one jackknife
+cpu_count=32  numba threads=8 (0.68.1)
+ONE prange pass: 1 betas x 8 chains = 8 independent chains, N=12000/beta  (1500 cfg/chain)
+====================================================================================================
+[T] sites=6144 links=24576  U=12.6 MB total  S=1.15 MB   gap=[np.int64(1)]  therm=[np.int64(100)]
+    beta=10: kappa=5 gap=1 therm=100 chains 0..7
+[T] compile+smoke: 0.9s

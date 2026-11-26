@@ -1,0 +1,48 @@
+=== archive  beta=2.20  L=6  T=6  N=4000  levels=[0, 2, 4, 8] (APE alpha=0.5) ===
+
+-- (g1) S/N per smearing level (20-block delete-one JK) --
+   s      C(0)   C1/C0   C2/C0  SN(t=1)  SN(t=2)  SN(t=3) N_req(SN2=10)
+   0     12.72  0.1229  0.0360    17.57     4.57    -0.06      1.92e+04
+   2     5.782  0.1989  0.0450    17.25     6.01     1.83      1.11e+04
+   4     3.067  0.1965  0.0456    20.08     6.70     1.68       8.9e+03
+   8     1.194  0.1644  0.0387    21.05     4.83     1.30      1.71e+04
+
+-- (g2) raw normalised Gram at t=0 --
+          0      2      4      8
+    0 1.000  0.723  0.563  0.390
+    2 0.723  1.000  0.929  0.709
+    4 0.563  0.929  1.000  0.884
+    8 0.390  0.709  0.884  1.000
+  max|offdiag| = 0.929   eig = [3.13  0.671 0.183 0.017]   kappa = 5.37e-03
+
+-- (g2) raw normalised Gram at t=2 --
+          0      2      4      8
+    0 1.000  1.009  0.952  0.849
+    2 0.860  1.000  0.977  0.890
+    4 0.781  0.979  1.000  0.965
+    8 0.624  0.925  0.984  1.000
+  max|offdiag| = 1.009   eig = [ 3.588  0.407  0.014 -0.009]   kappa = -2.38e-03
+
+-- (g2') whitened Gram at t=2 (metric C(0), kept eig 3/4, kappa=1.86e+02) --
+          0      2      4      8
+    0 0.643  0.366  0.326  0.346
+    2 0.318  0.251  0.200  0.137
+    4 0.180  0.241  0.276  0.290
+    8 0.082  0.254  0.416  0.571
+  max|offdiag| after whitening = 0.416
+
+-- difference operators (normalised s_a - s_b), Gram at t=2 --
+      0->2  0.010  0.005 -0.001
+      2->4  0.008  0.014  0.011
+      4->8  0.007  0.008  0.010
+
+-- T=12 budget --
+  archive T=6: independent separations t=0..3 = 4 points (t>3 is the periodic mirror)
+  run1  T=12: t=0..6 = 7 points; S/N gain from time-origin averaging only = sqrt(12/6) = 1.41
+    s= 0: N_req(SN2=10, T=12) ~  9.59e+03   (T=6:  1.92e+04)
+    s= 2: N_req(SN2=10, T=12) ~  5.53e+03   (T=6:  1.11e+04)
+    s= 4: N_req(SN2=10, T=12) ~  4.45e+03   (T=6:   8.9e+03)
+    s= 8: N_req(SN2=10, T=12) ~  8.57e+03   (T=6:  1.71e+04)
+
+-- gates run1 must print itself (T=12 basis) --
+  rank(C(0)) >= 2 ; kappa(C(0)) >= 0.1 ; max|G_raw| reported but NOT gated ; max|G_whitened(t=2)| <= 0.1 ; S/N(t=2) >= 10 per operator

@@ -1,0 +1,27 @@
+====================================================================================
+RUN3  SU(2) Wilson  beta=2.5  Ls=8^3 x Lt=12  N=1200 (8 chains x 150) gap=3 therm=200
+basis: lev0=raw | lev1..2=T-APE(spatial only, alpha=0.5, /4 staples, time untouched)
+numba=0.68.1 threads=8  w1=A/C(0)  S/N(2)=C(2)/sigma_JK
+====================================================================================
+D:\Dev\math\research\v3\species\w7\run3_apebase.py:407: RuntimeWarning: overflow encountered in scalar multiply
+  ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)
+[T] Ls=8 Lt=12 sites=6144 links=24576 U bytes=12.58 MB/ch
+[T] compile+smoke: 9.0s
+[E] production: 1200 cfg x gap 3 + therm 200 in 4.9s (246.4 cfg/s, 8 chains)  wall=14s
+[E] plaq=0.65245 +- 0.00007  autocorr(lag1)=0.134
+
+   lvl       C(0)     C1/C0     C2/C0   m_fit   w1=A/C0       +-  w1@1.546  S/N(2)    Rbar
+   raw    19.8304   0.07371   0.01192   1.117    0.2190   0.1676    0.3465     1.5  2.6076
+ TAPE1    44.4817   0.00209   0.00500   0.308    0.0064   0.0095    0.0157     0.6  6.1687
+ TAPE2    39.1024  -0.00992  -0.00575   0.392   -0.0131   0.0164   -0.0508    -0.5 690.7755
+
+[C] same-chain w1@1.546: raw=0.3465  TAPE1=0.0157  diff=-0.3308
+
+[wall] total 14.2s ; wrote run3_bench.npz / .json / .log
+Traceback (most recent call last):
+  File "D:\Dev\math\research\v3\species\w7\run3_apebase.py", line 475, in <module>
+    main()
+  File "D:\Dev\math\research\v3\species\w7\run3_apebase.py", line 471, in main
+    open(os.path.join(HERE, f'run3_{tag}.log'), 'w').write("\n".join(OUT) + "\n")
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+PermissionError: [Errno 13] Permission denied: 'D:\\Dev\\math\\research\\v3\\species\\w7\\run3_bench.log'

@@ -1,0 +1,47 @@
+[P1] exact quadrature, SU(2) single plaquette (Haar+Gibbs, e^{-S_W} dU)
+  beta      E[cos]    E[sin^2]   E[H]=E[lam_k]   Var(G)=E[G^2]   E[H]-Var   P(lam<0)
+  0.0000    +0.000000  0.750000   0.000000      0.000000    +0.00e+00   0.5000
+  0.0208    +0.005208  0.749986   0.000109      0.000109    +3.54e-12   0.4956
+  0.5000    +0.123718  0.742308   0.061859      0.061859    +2.06e-09   0.3954
+  1.0000    +0.240194  0.720581   0.240194      0.240194    +8.49e-09   0.2994
+  2.5000    +0.507195  0.608634   1.267988      1.267988    +6.13e-08   0.1050
+  6.0000    +0.762726  0.381363   4.576357      4.576356    +4.83e-07   0.0050
+  -> Stein identity E[H]=E[G^2] (i.e. E[H]-Var(G)=E[G]^2=0) holds to quadrature precision.
+
+[P2] Monte Carlo, beta=2.5, N=400000, direction v=e_3 (fixed), n uniform on S^2
+  E[G]        = -0.001225   (0 by n -> -n symmetry)
+  E[G^2]      = 1.266294
+  E[H]        = 1.267023
+  Var(G)      = 1.266292
+  E[H]-Var(G) = +7.31e-04   vs  E[G]^2 = 1.50e-06
+  exact: E[H]=E[G^2]=1.267700  (rel.dev 5.34e-04)
+
+[P3] numeric Hessian of S_W on SU(2), basis i*sigma_a/2 (h=1e-4), 6 random U
+  phi=2.163965  eig(M)=[-0.349370 -0.349370 -0.349370]   beta*cos(phi)/4=-0.349370   lam_k=beta*cos(phi)=-1.397479
+  phi=1.754890  eig(M)=[-0.114410 -0.114410 -0.114410]   beta*cos(phi)/4=-0.114410   lam_k=beta*cos(phi)=-0.457639
+  phi=1.536427  eig(M)=[+0.021477 +0.021477 +0.021477]   beta*cos(phi)/4=+0.021477   lam_k=beta*cos(phi)=+0.085907
+  phi=1.494107  eig(M)=[+0.047884 +0.047884 +0.047884]   beta*cos(phi)/4=+0.047884   lam_k=beta*cos(phi)=+0.191536
+  phi=1.355126  eig(M)=[+0.133752 +0.133752 +0.133752]   beta*cos(phi)/4=+0.133752   lam_k=beta*cos(phi)=+0.535006
+  phi=0.756456  eig(M)=[+0.454546 +0.454546 +0.454546]   beta*cos(phi)/4=+0.454546   lam_k=beta*cos(phi)=+1.818183
+  max |eig - beta cos(phi)/4| = 3.66e-08  -> Hessian is SCALAR: lam_1=lam_2=lam_3=beta cos(phi)
+
+[P4] does any spectral condition reproduce Var(G)<=E[H]?  beta=2.5
+  lam_k range        : [-2.4969, +2.4997]   (max = beta = 2.50 at phi=0)
+  E[lam_k]           : +1.267023   E[sum lam_k]=+3.801069  E[sum lam_k^2]=7.332409
+  P(lam_k > 1)       : 0.6847     P(lam_k < 0) : 0.1052
+  naive spectral cond 'max_k lam_k <= 1' holds on 0.00% of configurations
+  guessed form  sum lam^2 <= sum lam + (sum lam)^2 :
+    E[sum lam^2]=7.3324  E[sum lam + (sum lam)^2]=25.7983  violated on 4.96% of cfgs
+    (per-cfg, 3-fold degenerate lam: 3b^2c^2 <= 3bc + 9b^2c^2  <=>  0 <= 3bc(1+2bc);
+     fails for every c<0 and for bc < -1/2 -> the guessed form is NOT equivalent.)
+  actual comparison  E[H]=1.267023   Var(G)=1.266292   E[H]-Var(G)=7.31e-04  E[G]^2=1.50e-06
+
+[P5] summary numbers for the dossier (beta grid, exact):
+  beta     E[lam_k]=E[H]=Var(G)   lam_max=beta   P(lam<0)
+  0.0208   0.000109              0.02          0.4956
+  0.5000   0.061859              0.50          0.3954
+  1.0000   0.240194              1.00          0.2994
+  2.5000   1.267988              2.50          0.1050
+  6.0000   4.576357              6.00          0.0050
+
+[DONE]

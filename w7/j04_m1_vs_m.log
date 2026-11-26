@@ -1,0 +1,45 @@
+
+=== [A] free theory: O = bilinear composite (:phi^2: / two-photon cut), m1 = threshold ===
+   scan window: s in [0, 1.5*4m^2], 2e6 points; density ~ sqrt(1-4m^2/s)*theta
+   m = 1        m1 = sqrt(s_thr) = 2            2m = 2            s_thr_scan = 4            s_thr_exact = 4            rho_max = 0.5774
+   m = 0.5      m1 = sqrt(s_thr) = 1            2m = 1            s_thr_scan = 1            s_thr_exact = 1            rho_max = 0.5774
+   m = 0.001    m1 = sqrt(s_thr) = 0.002        2m = 0.002        s_thr_scan = 4e-06        s_thr_exact = 4e-06        rho_max = 0.6547
+   m = 0        m1 = sqrt(s_thr) = 7.07107e-07  2m = 0            s_thr_scan = 5e-13        s_thr_exact = 0            rho_max = 1.0000
+   => m1 = 2m exactly (support is [4m^2,inf)).  m>0: m1=2m>m.  m=0: m1=0=m.
+   => atom weight f1^2 = nu({m1^2}) = 0 (a cut, never an atom): ATOM2.md:42
+
+=== [B] 2D YM: O = 1/4 trF^2 = (1/2) tr E^2 ; O proportional to the Casimir ===
+   j        :     0    1/2      1    3/2      2
+   C2=j(j+1):     0    3/4      2   15/4      6
+   O_{nk} = (1/2)C2(n) delta_nk  (diagonal)  max|offdiag| = 0
+   <Omega|O|k> = ['0', '0', '0', '0', '0']  => all zero
+   sum_n |<Omega|O|n>|^2 = 0 (exact)  => nu_{O,c} == 0 (empty measure) => m1 = +inf
+   E_j = (g^2/2)j(j+1) at g^2=1 : ['0', '3/8', '1', '15/8', '3']
+   m(2D) = E_(1/2) - E_0 = 3/8 = 0.375000
+   N=2: (N^2-1)/(2 beta)|_(beta=2N/g^2) = 3/8 = 0.375000   == (g^2/2)C2(fund) = 3/8 = 0.375000   [True]
+   N=3: (N^2-1)/(2 beta)|_(beta=2N/g^2) = 2/3 = 0.666667   == (g^2/2)C2(fund) = 2/3 = 0.666667   [True]
+
+=== [C] M6: H = (p_a^2+p_b^2)/2 + (1/2)omega^2 a^2, b on circle of length L ===
+   m = min(2 omega, 4 pi^2 / L^2)  (brief convention);  omega = 1.0
+   O = quadratric analogue (:a^2:) -> m1 = 2 omega ;  O = a (ATOM2) -> m1 = omega
+            L                m    m1/m (bilinear)    m1/m (linear)
+            8     6.168503e-01       3.242278e+00     1.621139e+00
+           64     9.638286e-03       2.075058e+02     1.037529e+02
+         1024     3.764955e-05       5.312148e+04     2.656074e+04
+      1000000     3.947842e-11       5.066059e+10     2.533030e+10
+   strictness onset (bilinear): L > 2pi/sqrt(2 omega) = 4.4429  ; (linear): L > 2pi/sqrt(omega) = 6.2832
+   => for every L above the onset: m1 > m STRICTLY, with m->0 as L->inf.
+   mechanism: O acts only on the a-factor; the light state is the b zero mode.
+
+=== [D] single plaquette ===
+   no time direction => no transfer matrix T => m := -log lambda_2(T) undefined;
+   no T => no KL measure nu_O on a Hilbert space => m1 undefined.
+   (structural; ATOM2.md:45,49 ; T03-TOY.md sec.1)
+
+=== [E] summary table (m1 vs m) ===
+   free (m=0)            m1 = 0        m = 0        equality (zero information)
+   free massive composite m1 = 2m      m = m>0      STRICT >   (parity/Wick: <1part|:phi^2:|0>=0)
+   2D YM                 m1 = +inf     m = 3/8      empty channel (nu == 0), not a heavy state
+   M6                    m1 = 2w (or w) m -> 0      STRICT >   (product sector)
+   single plaquette      undefined     undefined    no T
+   => m1 > m exists : M6 [T]+[E], free massive composite [T].  Both = 'O misses the light state'.

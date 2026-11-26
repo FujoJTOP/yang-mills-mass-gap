@@ -1,0 +1,644 @@
+% =====================================================================
+%  ch20-unconditional-i1.tex  --  the strong-coupling window at [T]
+%  Sources (all read for this chapter): research/unconditional/
+%  {PROOF-P3-UNCONDITIONAL, P3-FOURWALL-DERIVATION, P3-DRESSED-MASS,
+%   P3-CYLINDER-RESIDUE, P3-FULLREP-KP, PROOF-IN11}.md
+%  and research/v3/species/{C01-CBAR1, C03-BYPASS, X01-L1C, Z06-HOLEA,
+%  Z07-HOLEB, Z08-HOLEC, Z09-HOLED, Z10-HOLEE, Z12-FIXC, Y01-KL,
+%  Y04-AUDITX01, A02-2PPI2, W95A-2PP, W95C-ORDER, C04-BPRIME}.md
+%  House rules honoured here: every substantive claim carries a chip and a
+%  file name; no closing symbol is printed anywhere; no Clay claim; [C] and
+%  [E] are never written as [T].
+% =====================================================================
+\begingroup
+\renewcommand{\code}[1]{\texttt{\footnotesize\detokenize{#1}}}
+
+\section{The strong-coupling window at $[\mathrm T]$: the residue $I1$, the isolation $I2$, and
+the five holes}
+\label{ch:uncond-i1}
+
+\noindent The residue theorem of \S\ref{sec:p3} was stated at grade \LT{} in its residue and with
+its isolation left open. This chapter is the ledger of what happened to the five holes that the
+audit of that theorem attached, and of the two spectral statements the polymer expansion is
+supposed to deliver. It states both statements with their windows (\S\ref{sec:u1-theorem}), walks
+the five links of $I1$ one line each (\S\ref{sec:u1-five-rings}), closes the five holes in one
+table (\S\ref{sec:u1-holes}), settles the accounting constant at its exact value $\bar C\equiv N$
+--- one identity refuted, one window re-derived (\S\ref{sec:u1-cbar}), states the four
+qualifications and the target that replaces window-extending (\S\ref{sec:u1-d}), instances the
+same chain in the $2^{++}$ channel (\S\ref{sec:u1-i2}), and lists what is still owed
+(\S\ref{sec:u1-ledger}).
+
+\subsection{The main theorem, and its three side conditions}
+\label{sec:u1-theorem}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(strong-coupling window: residue and isolation, two channels)} \emph{Let
+$\mathcal C_L:=T^3_L\times_a\mathbb Z$ be the cylinder (spatial torus of side $L$, infinite
+discrete time, spacing $a$), let $O=\tfrac14\operatorname{tr}F^2$, and let $m_1$ be the lightest
+energy with nonzero $O$-overlap. Fix $N$ and let, in the SZZ coupling $\beta_A=2/(g^2N)$ (Wilson: $\beta_W=N^2\beta_A$; at the quoted $N=2$ the two differ by $N^2=2N=4$)}
+\begin{equation}
+\beta_A\ <\ \beta_\star\ :=\ 3.777\times10^{-3}\ =\ 0.1813\times\tfrac1{48}
+\qquad\bigl(\text{i.e. }\beta_W<0.015108=0.725\times\tfrac1{48}\bigr),
+\label{eq:u1-beta}
+\end{equation}
+\emph{(\LC{} on the value: $3.777\times10^{-3}=W(a^\ast)$ is the computed maximum of the
+criterion at $a^\ast=0.618$; \eqref{eq:u1-window2} below records the $\hat C=1$, $a=0$ reading
+that it replaces. The structure that follows is \LT{}; the window is the one slot of this
+theorem whose value is computed, not proved.)}
+\emph{Then for every finite $L$, \emph{uniformly} in $L$ --- $L$ is a uniformity axis and
+$L\to\infty$ is never taken: the order is fixed-$L$, then $t\to\infty$, then $\inf_L$ ---}
+\begin{enumerate}[label=(\roman*)]
+\item \emph{(residue, $I1$)} \emph{the lightest $0^{++}$ atom of $O$ satisfies}
+      \begin{equation}
+      f_{1,L}^2:=\nu_L(\{E_{1,L}\})=\lim_{t\to\infty}e^{E_{1,L}t}C_L(t)\ \ge\ r_0\ >\ 0\,;
+      \label{eq:u1-f1}
+      \end{equation}
+\item \emph{(isolation, $I2$)} \emph{and}
+      \begin{equation}
+      \Lambda_\star-m_1^2\ \ge\ \delta\ >\ 0,
+      \qquad \Lambda_\star:=\inf\operatorname{supp}\bigl(\nu-f_1^2\delta_{m_1^2}\bigr)\,;
+      \label{eq:u1-i2}
+      \end{equation}
+\item \emph{($2^{++}$ channel)} \emph{both (i) and (ii) hold for
+      $O_{2^{++}}=\sum_x[2P_{12}-P_{13}-P_{23}]$ with its own $\nu^{(2)}$, $m_2$,
+      $f_{1,2}^2$ and $\Lambda_\star^{(2)}$;}
+\end{enumerate}
+\emph{whence both factors of $\min(\Delta_0,\Delta_2)$ carry a certificate.} \LT{}, \emph{with the
+Ursell constant at its exact value $\bar C\equiv N$} (\S\ref{sec:u1-cbar};
+\code{F07-ADJCBAR.md}). \emph{The level is fixed by D.1--D.2 of \S\ref{sec:u1-d}: (i)--(iii)
+certify the two \emph{factors} of the minimum; the step from them to $m_1>0$ is vacuous (D.1), and
+the positivity of the mass inside the window is SZZ/OS's (D.2), not a consequence claimed here.}
+\end{claimbox}
+
+\noindent\textbf{The three side conditions, stated in parallel with the theorem and never
+dropped.} \emph{(1) Coupling:} $\beta_A<\beta_\star=3.777\times10^{-3}=0.1813\times\tfrac1{48}$, i.e.\ $\beta_W<0.015108=0.725\times\tfrac1{48}$ (\LC{} on the value) --- a
+strong-coupling window of a polymer expansion, not a physical coupling.
+\emph{(2) Volume:} $L$ finite, but the bounds are
+$L$-uniform; no $L\to\infty$ limit is taken, and the infinite-volume atom $f_{1,\infty}^2$ is
+\emph{not} claimed (\code{P3-CYLINDER-RESIDUE.md} \S1.4). \emph{(3) Scope:} this is
+\textbf{not Clay}. The spacing $a$ is fixed, the continuum limit $a\to0$ is not taken, nothing
+crosses to $\beta\approx2.5$, and no statement here mentions the continuum mass gap.
+\textbf{Clay remains $0\%$.}
+
+\subsection{Four qualifications (D.1--D.4), and the target that replaces window-extending}
+\label{sec:u1-d}
+
+\noindent These four are part of the statement, not commentary on it: each names a step that
+\eqref{eq:u1-f1}--\eqref{eq:u1-i2} do \emph{not} license, and each was written as if they did in
+some earlier draft.
+
+\begin{enumerate}[label=\textbf{D.\arabic*.},leftmargin=3.4em]
+\item \textbf{(\code{G07-KATOADJ.md}) $I2\Rightarrow m_1>0$ is \emph{true but vacuous}.} The side
+      condition of $I2$, $\sup\operatorname{spec}\widetilde T<1$, is \emph{verbatim} $m_1>0$
+      (\code{B01-RP.md}:12), so the conclusion is written in through the side condition: this is not
+      an implication. The \emph{only} legal counterexample needs a \textbf{degenerate vacuum}
+      ($r_{\mathrm{iso}}=1-e^{-a\delta}=0.4484>0$ with $m=0$), and that is excluded by the
+      Perron--Frobenius uniqueness of the vacuum (\code{G07-KATOADJ.md} \S0 F, \S1.4--1.5). The
+      witness of the earlier draft of this chapter, $\nu=\delta_0+\mathbf 1_{[\delta,\delta+1]}$,
+      is \textbf{withdrawn}: after the VEV is subtracted $f_1^2=0$, so $I1$ fails; reading
+      $\delta_0$ as a connected atom would need a degenerate vacuum; and by the letter of the
+      definition the post-vacuum $\sup=e^{-a\delta}$ is the top of an a.c.\ block, so
+      $r_{\mathrm{iso}}=0$. It witnesses $m>0\wedge\neg\mathrm{Kato}$, not
+      $\mathrm{Kato}\wedge\neg(m>0)$.
+      \emph{Scale-free reading:} $r_{\mathrm{iso}}$ and $I2$ are the \textbf{same quantity}
+      ($E_2-E_1=\Lambda_\star-m_1^2$; both equal $0.625$ on 2D YM), so the real comparison is
+      $r_{\mathrm{iso}}$ (a \emph{distance}) against $m$ (a \emph{position}). What (i)--(iii) do
+      certify is the two \emph{factors} of $\min(\Delta_0,\Delta_2)$; the step from that to
+      $m_1>0$ is exactly the vacuous step above.
+\item \textbf{The $m>0$ credit inside the window is SZZ/OS's, not this chapter's.} For
+      $\beta<\beta_1$ the positivity of the mass is Osterwalder--Seiler's cluster expansion, and
+      the log-Sobolev radius of Shen--Zhu--Zhu is where $1/48$ comes from; the increment here is
+      the residue $I1$ and the isolation $I2$, i.e.\ the removal of the premise ``$0^{++}$ is
+      strictly lightest'' (\S\ref{sec:u1-i2}) --- and nothing more.
+\item \textbf{$\beta_A<3.777\times10^{-3}$ is a coarse-lattice window, not a continuum statement.} At the
+      measured point $a\Lambda(1/48)=0.570$ and $m_1a=18.26$ are pure
+      numbers (\code{G05-BETAOFa.md} \S2.2--2.3), so the spacing has a positive lower bound,
+      $a\ge18.26/m_1$; the window is a window in the \emph{coupling} at fixed $a$, and no $a\to0$
+      is taken anywhere in this chapter. \emph{Value:} $\mathrm{SU}(2)=\mathrm{SU}(3)$ exactly; the
+      earlier $0.48/0.41$ split was an artifact of a sign error in the two-loop prefactor
+      (\code{G05A.md} \S3.2), \LT{}.
+\item \textbf{This is not Clay.} No continuum mass gap is claimed, nothing crosses
+      $\beta\approx2.5$, and \textbf{Clay remains $0\%$}.
+\end{enumerate}
+
+\noindent\textbf{What the residual gap is, and what it is not.} The residual gap is
+$(\mathrm{E\text{-}I2})$: there exist $\delta,c>0$ such that
+$\inf_{L,a}(\Lambda_\star-m_1^2)\ge\delta$ and $\inf_L m_1^2\ge c$ --- the quantifier shape that
+C5 requires. An earlier draft of this chapter named that gap $\Delta_0>0$; \textbf{that
+identification is withdrawn}: $\Delta_0$ lives on the curvature slot
+($\delta_{\mathrm{curv}}:=a^2\Delta_0^2+W_{\mathrm{full}}$, dimensionless) while $\Lambda_\star$
+lives on the spectral measure $\nu$ (mass squared), and $H1\not\Rightarrow I2$
+(\code{T01}, \code{N12-VERDICT.md}); moreover $\Delta_0>0$ fails three of the four model tests
+(on 2D YM $\Delta_{\mathrm{dyn}}=-W_{\mathrm{full}}<0$, on M6 a gapless model passes, and the single
+plaquette gives $-0.0691$). No \LT{} statement of this chapter is conditioned on it.
+
+\noindent\textbf{The target that replaces window-extending.} A constant floor carried to
+$\beta\to\infty$ would give $m_{\mathrm{phys}}\ge r/a\to\infty$ as $a\to0$ --- self-negating
+(\code{G05-BETAOFa.md} \S3.2) --- so extending \emph{this} window is impossible in principle, and
+the object worth stating is a ratio that survives the continuum limit:
+\begin{equation}
+\liminf_{a\to0}\ \frac{m_{\mathrm{lat}}(a)}{a\Lambda}\ \ge\ c_0\ >\ 0
+\qquad(\Longleftrightarrow\ m/\Lambda\ge c_0),
+\label{eq:u1-newtarget}
+\end{equation}
+with $m_{\mathrm{lat}}$ and $a\Lambda$ in the same scheme and the same normalization. Nothing in
+this chapter proves \eqref{eq:u1-newtarget}: everything here is at fixed $a$, and
+\eqref{eq:u1-newtarget} is the target the next machine has to reach, not a result.
+
+\begin{v2box}
+\textbf{The window, and the one constant that costs it.} The Ursell accounting constant is not an
+unknown and not a free bound: it is \emph{exactly} the ratio of the per-tile weight to the
+normalized activity,
+\begin{equation}
+\bar C\ \equiv\ \frac{|w|^{1/n}}{u}\ =\ \frac{c_f}{u}\ =\ N .
+\label{eq:u1-cbarN}
+\end{equation}
+The reason is exact and combinatorial: in a closed tube every link carries one $f$ and one $\bar
+f$, so all recoupling multiplicities are $1$ ($\prod\mathrm{mult}=1$) and $|w|^{1/n}=c_f$ exactly,
+while $u=c_f/N$; and the animal factor is \emph{already inside} $e\Delta$ ($e$ = labelled trees
+per plaquette, $\Delta=20$ = adjacency slots; \code{P3-FULLREP-KP.md}:89 verbatim
+$\lambda_a=e\Delta$), so multiplying once more by $\Delta$ double-counts and
+$\bar C=\Delta=20$ is not a bound on this slot at all
+(\code{F07-ADJCBAR.md} \S2--3; \code{C05-AUDITCBAR.md}). With the interface constant folded
+($\hat C=1$), $\bar u=e\Delta\,N\,u$ and the criterion $\bar u<1$ gives
+\begin{equation}
+\beta_\star=\frac{2N^2}{e\Delta\,N}=0.073576=3.53\times\tfrac1{48},
+\qquad \bar u(\tfrac1{48})=0.2831544 ,
+\label{eq:u1-window2}
+\end{equation}
+so $\beta=1/12=0.08333$ lies \emph{outside} the window --- which withdraws every earlier claim
+that $\beta=1/12$ was the first provable point (\code{F07-ADJCBAR.md} \S4). \emph{Superseded:}
+$\hat C=4$ is forced (\code{M07-WINDOW2.md}), so \eqref{eq:u1-window2} is the $\hat C=1$, $a=0$
+reading and not the criterion window; that window is $\beta_A<3.777\times10^{-3}=0.1813\times\tfrac1{48}$,
+i.e.\ $\beta_W<0.015108=0.725\times\tfrac1{48}$ (\LC{}, \S\ref{sec:u1-theorem}), so the exclusion
+of $1/12$ survives a fortiori. \emph{Window and normalization.} $\hat C=4$ and $\bar C=N=2$ are
+uniquely fixed by the KP criterion and the $u$-normalization (\code{M07-WINDOW2.md}), and the
+resulting arithmetic is machine-verified in Lean (\code{M02-CBAR.lean}: 25 theorems, zero
+\texttt{sorry}, axioms \texttt{[propext, Classical.choice, Quot.sound]}). Hence
+$\hat C\bar C=8>7.0633$ and the window is
+\[
+\beta_A<0.0183940=0.88291\times\tfrac1{48}
+\qquad\bigl(\text{equivalently }\beta_W<0.0735759=3.5316\times\tfrac1{48};\ \text{the two differ by }N^2=4\bigr).
+\]
+The value $1/48=0.0208333$ therefore lies \emph{outside} the window, and $\beta=1/12$ lies far
+outside.
+
+\smallskip
+\noindent\textbf{Correction to the window's number (its number, not $I1$'s content).} The radius
+displayed above is \emph{not} the KP criterion evaluated. $0.018394=1/(e\Delta)$ is the $a=0$
+activation root, written $\lambda_a\Phi(0)=1$ and evaluated at leading order $\Phi(0)\simeq\beta$
+(keeping $\Phi(0)=\beta+\tfrac38\beta^2$ moves the root to $0.0182686$, the $0.018269$ of
+\code{UC-COMPLETE.md:122}) --- a radius of convergence, and at $a=0$ the criterion
+$S_x(a)\le a$, rewritten $\lambda\Phi(a)\le a/(1+a)$, has right-hand side $0$ while the left-hand
+side stays $\ge|w|>0$, so that value is \textbf{illegal} as a criterion window. The criterion at
+$a>0$ is read off $W(a)=a/[(1+a)\lambda\varphi(a)]$, $\varphi(a):=\Phi(a,\beta)/\beta$: for a pure
+exponential envelope its maximum is the closed-form $a^\ast=(\sqrt5-1)/2=0.618$, and the measured
+$\Phi$ (ratio $1:2.7508:7.7238$, slightly above $1:e:e^2$) moves the numerical maximum to
+$0.6150$ with the same value to four digits, so the window is
+\[
+\beta_A\ <\ W(a^\ast)\ =\ 3.777\times10^{-3}
+\qquad\bigl(\beta_W<1.511\times10^{-2}\ \text{by }N^2=4\bigr),
+\]
+with $\Phi(0)=0.0185211$, $\Phi(1)=0.0509474$, $\Phi(2)=0.1430532$ and $\lambda=e\Delta=54.366$
+(\code{ADJ3.md}, \code{ADJ4.md}; \code{w7/adj4\_kp\_a.log} \S2--3). The number printed here thus
+\textbf{over-reports by} $0.018269/0.003777=4.84\times$ --- by $0.018394/0.003777=4.87\times$ for
+this printing's own $0.018394$. Every ``outside the window'' claim below survives, $1/48$ and
+$1/12$ lying outside both radii. What does \emph{not} change is the \emph{content} of $I1$: the five
+rings, the five holes A--E closed, $\bar C\equiv N$, $\hat C=4$, $[KL]$, the 25 Lean theorems. Only
+the window's \emph{value} drops to \LC{} (the maximum at $a^\ast$ is computed --- a grid plus a fine
+scan on a representation sum truncated at $n\le300$ --- not proved), while the structure of $I1$
+stays \LT{}.
+
+\emph{Historical
+note.} Earlier drafts carried a whole table of bounds on this slot --- an exponential bound in
+$\Delta u$, a bound by $e$, a bound by the adjacency degree $\Delta$, and finally a direct bound
+from which $\bar C$ had supposedly disappeared. The table collapses into the single line
+\eqref{eq:u1-cbarN}: every entry is \textbf{withdrawn}, each of them having lain \emph{below} the
+exact value $N$, and the $\bar C$-free route is withdrawn at its input --- $|w_p|\le u$ is off by
+the factor $N$ (\code{F07-ADJCBAR.md} \S1.4) --- so the wider window it produced goes with it.
+\end{v2box}
+
+\noindent\textbf{Two conventions fixed here, once.} \emph{(a) Units.} $\nu_L=\sum_nf_{n,L}^2
+\delta_{E_{n,L}}$ is a measure in the \emph{energy} variable, so its atom sits at
+$E_{1,L}=m_{1,L}$; \S\ref{sec:p3} writes the second support point as a mass squared, and the two
+readings are related by $\Lambda_\star-m_1^2=2m_1\delta_A+\delta_A^2$, so a positive window in
+one variable is a positive window in the other (\code{X01-L1C.md} \S3 row~8, after
+\code{X02-THEOREMA.md} \S4). \emph{(b) Normalization of the residue.} With hole~D's bookkeeping
+the quantity carrying an $L$-independent $r_0$ is the density $\bar f_1^2:=f_{1,L}^2/V_s$,
+$V_s=L^3$; the bare atom weight is extensive,
+$f_{1,L}^2=V_s\,a_0(1-O(u))$ (\code{Z09-HOLED.md} \S3). Statement \eqref{eq:u1-f1} is written in
+the compact form $f_{1,L}^2\ge r_0$ with the standing understanding that either $r_0$ carries
+$V_s$ or $f_1^2$ is read normalized; the two are one inequality multiplied by $V_s$, and the only
+form that is \emph{not} available is a bare extensive $f_{1,L}^2$ against an $L$-independent
+$r_0$ (\code{Z09-HOLED.md} \S5). The constants are $\tfrac12(2N)^{-2}$ at each $L$ and
+$\tfrac14(2N)^{-2}$ after the $\inf_L$, both $\beta$-independent (\code{Z10-HOLEE.md} \S5).
+
+\subsection{$I1$ in five rings: four walls, KP, resummation, spectral bridge, $[KL]$}
+\label{sec:u1-five-rings}
+
+The proof of \eqref{eq:u1-f1} is a chain of five links. Each link is named with the file that
+contains it; each skeleton is one line, because the work is in the file and not in this page.
+
+\begin{enumerate}[label=\textbf{R\arabic*.},leftmargin=2.6em]
+\item \textbf{Four walls} (\code{P3-FOURWALL-DERIVATION.md} \S1.1--1.5; Gupta (14.20)).
+      \emph{Skeleton:} each of the source plaquette's four boundary links carries an open
+      fundamental index pair and $\int dU\,U_{ij}=0$ forbids covering it alone; two unit
+      plaquettes share at most one link, so there are $\ge4$ independent strands; only temporal
+      plaquettes advance time, so each strand crosses $t/a$ slices at $\ge1$ plaquette each;
+      hence $|P|\ge4t/a$, with equality exactly for the straight four-walled tube, whose weight
+      is $a_0u^{4t/a}=a_0e^{-m_1t}$, $m_1=w\ln(1/u)/a$, $w=4$. \LT{}
+\item \textbf{KP in the full representation} (\code{P3-FULLREP-KP.md} \S2.1--2.3, \S4.1).
+      \emph{Skeleton:} Haar is a probability measure, so $|\chi_r(U)|\le\dim r$; the multiplicity
+      cap $c_r\le\beta^{|r|}/(|r|!\,\dim r)$ cancels \emph{exactly} the $\dim r$ that the
+      contraction would cost, leaving $c_r\dim r\le\beta^{|r|}e^{\beta}/|r|!$, whose factorial
+      beats the sub-exponential rep-label entropy; hence
+      $\sum_{P\ni x}|w(P)|e^{a|P|}\le a$ whenever $uK<1$, with $K\le6.1\times10^{2}N$ and
+      plaquette adjacency $\Delta=4(6-1)=20$ (not $12$). \LT{}
+\item \textbf{Resummation of the decorations} (\code{X01-L1C.md} \S1--2,
+      \code{Y04-AUDITX01.md} \S1--3; re-coupling and activity fixed in
+      \code{Z08-HOLEC.md}, \code{Z12-FIXC.md}). \emph{Skeleton:} group clusters by
+      \emph{attachment span} $\alpha$ (not by support); the tube is \emph{open}, so the number of
+      placements is the interval count $(T-\alpha+1)_+$; time translation gives $A(\alpha)$ and
+      the exact identity
+      $\log Z_{\mathrm{dec}}=\sum_\alpha(T-\alpha+1)_+A(\alpha)
+      =\varphi_{\mathrm{dec}}T+\log D_\infty+\varepsilon_T$ with
+      $\varepsilon_T=\sum_{\alpha>T}(\alpha-1-T)A(\alpha)$; the shift
+      $m:=\alpha-1-T$ moves weight and exponent together, so the tail is
+      $|\varepsilon_T|\le B\bar u^{T}$ with $B=(\bar u/(1-\bar u))^{3}$ and \emph{no} $T$
+      prefactor; the activity is the interface-corrected $w_{B_T}=w\prod_{\ell}R(\ell)$, whose
+      envelope is $\hat C=4$ (hole~C). \LT{}
+\item \textbf{Spectral bridge} (\code{P3-CYLINDER-RESIDUE.md} \S1.2--1.4, \S2.1(b), \S2.4).
+      \emph{Skeleton:} at finite $L$ the transfer matrix has a continuous kernel on a compact
+      configuration space, hence is Hilbert--Schmidt, hence compact, hence has purely discrete
+      spectrum --- \emph{every} spectral point is an atom; and
+      $f_1^2=\lim_te^{E_{1,L}t}C_L(t)$ uses only $\delta_L=E_{2,L}-E_{1,L}>0$ \emph{at that $L$}.
+      The residue is a \emph{coefficient} and the isolation is an \emph{eigenvalue spacing}; this
+      is why $m_1$ only \emph{locates} the atom that is being read and enters no inequality of
+      the chain. \LT{}
+\item \textbf{$[KL]$: positivity of the measure} (\code{P3-CYLINDER-RESIDUE.md}:67--69;
+      \code{Y01-KL.md} \S4.1). \emph{Skeleton:} $\nu_L\ge0$ is Osterwalder--Seiler reflection
+      positivity and $f_{n,L}^2\ge0$ is the spectral theorem, so the K\"all\'en--Lehmann
+      representation on the cylinder is a \emph{theorem} --- Osterwalder--Seiler (1978) plus
+      finite-$L$ compactness plus the spectral theorem, with \textbf{no Yang--Mills dynamics in
+      it} --- and not an assumption; since the statement quantifies over the Hermitian,
+      gauge-invariant, time-translation-covariant $O$, it transfers verbatim to $O_{2^{++}}$.
+      \LT{}
+\end{enumerate}
+
+\noindent\textbf{One residual, named rather than absorbed.} The only place where a physical input
+could still enter is the identification of the leading polymer concentration with the leading
+atom --- i.e.\ that the two exact representations of $C_L(t)$ are the \emph{same} function
+(\code{P3-CYLINDER-RESIDUE.md} \S2.1(d)). The $t$-uniform dressed-mass/amplitude resummation
+that this needs is what \code{P3-DRESSED-MASS.md} \S1--4 supplies, and hole~C is its last piece;
+\code{Y01-KL.md} \S4.3 therefore keeps one residual $[\mathrm{R}]$ on the \emph{verbatim} equality
+$a_0D_\infty=|\langle\Omega|O|\mathbb{G}\rangle|^2$. The floor \eqref{eq:u1-f1} does not need
+that equality, and neither does the $I2$ chain of \S\ref{sec:u1-i2}; it is the one debt this
+chapter refuses to pay by relabelling.
+
+\noindent\textbf{And one second residual, in the same spirit.} The floor is \LT{} with the Ursell
+constant at its exact value $\bar C\equiv N\equiv2$, not with "$\bar C$ removed": the summation
+identity that was supposed to give $\bar C=1$ is \emph{false} (\S\ref{sec:u1-cbar},
+\eqref{eq:u1-false-id}), and what replaces it is an exact identity $\bar C=c_f/u=N$
+(\code{F07-ADJCBAR.md} \S3). A constant whose value is proved is a different object from a
+constant that is assumed to be $1$, and the labels of this chapter keep them apart. The tree
+factor $\Delta=20$ and the weight ratio $\bar C=N$ live in different slots; the per-cluster value
+$2.2209$ quoted below belongs to the first slot and is \emph{not} a lower bound for the second.
+
+\subsection{The five holes and how each was closed}
+\label{sec:u1-holes}
+
+\begin{center}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.22}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{3.15cm}%
+  >{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.4cm}@{}}
+\toprule
+\textbf{Hole} & \textbf{What it was} & \textbf{How it is closed} & \textbf{Source} \\
+\midrule
+A & $u=c_f$ vs.\ $c_f/N$: a discrepancy of $N^{4T}$ in the tube weight
+  & \textbf{$u:=c_f/N$}, i.e.\ one $1/N$ per tile, verbatim from Gupta (14.18)/(14.21)
+    ($\beta/2N$ from the expansion $\times$ $1/N$ from the integration $=\beta/2N^2$); and
+    \textbf{$A^{\mathrm{dressed}}$ \emph{is} $f_1^2$}, so there was never a second quantity
+  & \code{Z06-HOLEA.md} \S1--5 \LT{} \\
+B & whether $\delta\ge\kappa/3$ lands inside $I1$
+  & \textbf{out}: neither $I1$ nor $D_\infty$ contains $\delta$, and $D_\infty$ is not a
+    function of $\delta$ --- writing $\delta$ into the definition of $D_\infty$ already fails at
+    $T=0$; the reachable rate is $\delta=\ln(1/\bar u)/a=\kappa/4-\ln(\hat Ce\Delta\bar C)/a$,
+    strictly below $\kappa/4$
+  & \code{Z07-HOLEB.md} \S2--4; \code{X01-L1C.md} \S2.1 \LT{} \\
+C & $Z_{\mathrm{dec}}$ re-coupling is not block-multiplicative:
+    $\mathrm{Hom}(1,f\bar f f\bar f)=2\ne1^2=1$; cap-type decorations have $w(\gamma)=0$ while
+    $w(B_T\cup\gamma)\ne0$
+  & \textbf{$\hat C=2$ exact at each factorization point, envelope $\hat C=4$} per plaquette;
+    then $\delta=\kappa/4-\ln(\hat Ce\Delta\bar C)/a$ and, at $\beta=1/48$ with $\bar C=N=2$,
+    $\delta\,a=1.2618>0$ (interface constant folded, $\hat C=1$) or $0.5686>0$ ($\hat C=2$)
+    --- the $0.56862$ of the earlier draft was the $\bar C=1$ value and is
+    superseded; the interface re-coupling is absorbed into the
+    \emph{activity} and, through it, into $\varphi_{\mathrm{dec}}$, never into $\varepsilon_T$
+  & \code{Z08-HOLEC.md} \S2--4; \code{Z12-FIXC.md} \S1--3; \code{F07-ADJCBAR.md} \S4 \LT{} \\
+D & summing $O$ over the whole slice makes $f_1^2\propto L^3$, so a bare $f_1^2$ cannot be
+    compared with an $L$-independent $r_0$
+  & \textbf{$r_0$ carries $V_s$} (or $f_1^2$ is read normalized); and $a_0$'s $L$-independence is
+    \emph{already proved} --- positive geometric sum over transverse positions, wrap corrections
+    $e^{-cL}$, no entropy $\mu^T$
+  & \code{Z09-HOLED.md} \S3--5 \LT{} \\
+E & $r_0=\tfrac14(2N)^{-2}$ vs.\ $\tfrac12c_1u^{p}$: two $\beta$-scalings for one constant
+  & \textbf{$p$ is the operator-coefficient exponent and $p=0$}; $u$ lives only in the correction
+    factor, $r_0=\tfrac12a_0(1-O(u))$, $\beta$-independent. At $\beta<1/48$ the $u^{p}$ form with
+    $p\ge1$ is $2$--$6$ orders of magnitude too small and misstates $\beta\downarrow0$
+  & \code{Z10-HOLEE.md} \S3--5 \LT{} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent Two audit corrections inside the reconstruction, recorded because a witness that does
+not witness is worse than none: (i) hole~C's original cap witness (a decoration giving a
+\emph{single} $f$ at the shared link) is zero on \emph{both} sides, since
+$\mathrm{Hom}(1,f\bar ff)=0$; the genuine witness is a decoration giving
+$\mathrm{adj}$, where $w(\gamma)=0$ but $w(B_T\cup\gamma)=1$ (\code{Z12-FIXC.md} \S1.3). (ii)
+The cap witness of \code{Z08-HOLEC.md} §2.2 used the wrong arithmetic
+($\dim\mathrm{Hom}(f,f)=1$); the qualitative failure survives, the number does not.
+
+\subsection{The accounting constant: $\bar C\equiv N$ (one refuted identity, one window)}
+\label{sec:u1-cbar}
+
+\noindent Everything in \S\ref{sec:u1-five-rings} that is not the KP estimate itself is a
+statement about \emph{counts}, and every count carried an Ursell/tree constant $\bar C$ --- which
+\code{A01-CBAR.md} could bound only by $\bar C\le\Delta=20$, shrinking the window by $11.3\times$.
+An earlier draft of this ledger claimed $\bar C=1$ at the summation level and declared the
+constant removed. \textbf{That claim is withdrawn in this printing}: the identity it rested on is
+false, and the honest grade is \LT{} with the Ursell constant at its exact value $\bar C\equiv N$.
+What survives is enough for the window, and the bookkeeping is set out below in the order the
+audit settled it.
+
+\subsubsection*{The identity that was hoped for, and the exact counterexample}
+
+Let $G_\Gamma$ be the plaquette-adjacency graph of a connected cluster $\Gamma$. The Ursell
+(Mayer) coefficient is an alternating sum over connected edge subsets,
+\begin{equation}
+\varphi^U(\Gamma)=\sum_{A\subseteq E(G_\Gamma),\,(\Gamma,A)\ \text{connected}}(-1)^{|A|},
+\label{eq:u1-ursell}
+\end{equation}
+so its natural control is a \emph{tree} count: the Penrose tree-graph inequality
+$|\varphi^U(\Gamma)|\le\tau(G_\Gamma)$ (the number of spanning trees) is \LT{} --- a four-line
+delete--contract induction, plus $0$ violations on $875$ enumerated graphs
+(\code{C07-AUDIT.md} \S4.2--4.3). The step that was \emph{hoped} for is
+\begin{equation}
+\boxed{\ \sum_{\Gamma\ni x,\ \Gamma\ \text{connected}}\tau(G_\Gamma)\prod_{p\in\Gamma}a_p
+\;=\;\sum_{T\ni x,\ T\ \text{a tree}}\ \prod_{p\in V(T)}a_p\ }\qquad\text{--- \textbf{false}.}
+\label{eq:u1-false-id}
+\end{equation}
+The smallest witness is the triangle: with $V=\{x,y,z\}$ and edge activities $a_0,a_1,a_2$,
+\[
+\text{LHS}=a_0a_1+a_0a_2+a_1a_2+3a_0a_1a_2,\qquad
+\text{RHS}=a_0a_1+a_0a_2+a_1a_2,
+\]
+so $\text{LHS}-\text{RHS}=3a_0a_1a_2\ne0$: the triangle's $\tau=3$ spanning trees are counted
+three times on the left, and the right side has no cubic term at all. At $n=4$ ($K_4$) the
+discrepancy is a $22$-term polynomial of degrees $[4,6]$, with the tree terms cancelling exactly.
+\textbf{The tree sum does not absorb the animal factor; the animal factor comes back}, and it
+comes back as the product over non-tree edges (\code{C07-AUDIT.md} \S1.1--1.2, \code{[T]}: the
+counterexample is an exact identity of integers).
+
+\subsubsection*{The corrected identity, and the exact value of $\bar C$}
+
+Grouping by spanning tree gives the correct statement,
+\begin{equation}
+\sum_{\Gamma\ni x}\tau(G_\Gamma)a^{\Gamma}
+\;=\;\sum_{T\ni x}a^{T}\prod_{e\notin T}(1+a_e),
+\label{eq:u1-tree-id}
+\end{equation}
+verified symbolically at $n=3,4$ and in integers at $n=4,5$ (unit activities: ratios
+$2,8,64=2^{\#\text{non-tree edges}}$) (\code{C07-AUDIT.md} \S1.2, \LT{}). There is also a sharper
+structural reading: $\varphi^U$ factorizes over $2$-connected blocks,
+$\varphi^U=(-1)^{\#\text{bridges}}\prod_B\mu(B)$, and factorial growth occurs only on cliques,
+while a link carries exactly $2(d-1)=6$ plaquettes and any two of them share that link --- so
+$K_6$ is the largest clique and $(n-1)!$-growth stops at $n=6$
+(\code{C02-URSELL.md} \S1, \LT{}). What the corrected identity does \emph{not} do is make
+$\bar C$ small: the non-tree product is a genuine animal factor, and it has to be paid. The
+resolution the audit finally reached is that $\bar C$ is not a bound to be optimised at all but a
+\emph{ratio}, and that its value is exact:
+\begin{equation}
+\bar C\ \equiv\ \frac{|w|^{1/n}}{u}\ =\ \frac{c_f}{u}\ =\ N
+\qquad(N=2:\ \bar C=2),
+\label{eq:u1-cbar-exact}
+\end{equation}
+because in a closed tube each link carries one $f$ and one $\bar f$, so every recoupling
+multiplicity is $1$ ($\prod\mathrm{mult}=1$, verified on the cube and on the four-wall tube at
+$n=6,4,8,12$) and $|w|^{1/n}=c_f$ exactly, while the normalized activity is $u=c_f/N$. The
+consistent sharpened account is $\Phi(0)/u=2N^2$ (with $\Phi(0)=\sum_{r\ne0}c_rd_r=\beta=2N^2u$,
+the $f$ and $\bar f$ branches), so $\bar C\in[N,2N^2]$
+(\code{F07-ADJCBAR.md} \S1.4 and \S3, \LT{}; \code{C05-AUDITCBAR.md}).
+
+\begin{qbox}
+\textbf{What is \emph{not} available, recorded so that it is not tried again.} Two earlier
+readings are withdrawn. (i) $\bar C=1$ at the summation level, by the refuted identity
+\eqref{eq:u1-false-id}. (ii) Every bound of the form $\bar C\le(\text{const})$ that earlier drafts
+tried on this slot: each of them lay \emph{below} the exact value $N$ and is therefore not a bound
+on the slot at all --- the slot is closed by \eqref{eq:u1-cbar-exact}, not by a bound. Two
+things do survive and are worth keeping. The tree-factor slot is genuinely $N$-free:
+$\Delta=20$ is a four-dimensional adjacency degree, and the animal count $e\Delta$ already
+contains the labelled-tree factor $e$, so the per-cluster supremum $|\varphi^U|^{1/n}=2.220906$
+(attained at $K_6$, with $120=(6-1)!$) is a statement about $\tau$\emph{-counting}, not about
+$\bar C=c_f/u$; the two share a symbol and nothing else (\code{F07-ADJCBAR.md} \S3, \S7). And the
+$\tau$ route cannot be pushed to $3.5$ by any refinement: the $L=2$ periodic box cluster has
+$\tau=3.3559\times10^{116}$, i.e.\ $\tau^{1/96}=16.361$, so $\Delta=20$ is nearly saturated and
+the looseness is in the object $\tau$, not in the algebra (\code{C02-URSELL.md} \S2.2, \LT{}).
+\end{qbox}
+
+\subsubsection*{Consequence: the window, re-derived}
+
+With $\bar u:=\hat C\,e\Delta\,\bar C\,u$ and $\bar C=N$ exact, the lossless condition
+$\hat C\bar C<2N^2\cdot48/e\Delta=7.063285$ ($N=2$) becomes a condition on $\hat C$ alone:
+$\hat C N<7.0633\iff\hat C<3.5316$, and the corresponding radius is
+\begin{equation}
+\beta_\star=\frac{2N^2}{e\Delta\,N}=0.073576=3.53\times\tfrac1{48}
+\qquad(\hat C=1;\ \text{superseded by }\hat C=4\text{; see the note below}),
+\label{eq:u1-window}
+\end{equation}
+with $\bar u(1/48)=0.2831544$, $B=(\bar u/(1-\bar u))^3=0.0616$ and $\delta\,a=\ln(1/\bar u)
+=1.2618$ at $\beta=1/48$; $\kappa/4\cdot a=4.564348$ is untouched, being $\bar C$-free. Two
+readings of the interface constant are worth recording, because they differ in kind: with the
+\emph{exact local} $\hat C=2$ of hole~C the radius is $0.036788=1.766\times\tfrac1{48}$ (still
+containing $1/48$), while with the crude per-plaquette envelope $\hat C=4$ it is
+$0.018394=0.883\times\tfrac1{48}$, which no longer contains $1/48$ and at which $\bar u=1.1326>1$
+already at $\beta=1/48$. The window quoted by the theorem is the criterion value $W(a^\ast)$ of the next paragraph, not the $\hat C=1$ accounting of
+\code{F07-ADJCBAR.md} \S4; the $\hat C=4$ reading is carried in \S\ref{sec:u1-ledger} as a debt
+rather than hidden (\LT{}+\LE{}). \emph{Correction:} both radii in this paragraph are $a=0$ roots
+($\lambda_a\Phi(0)=1$, i.e.\ convergence radii), not values of the criterion; the criterion at
+$a^\ast=0.618$ gives $3.777\times10^{-3}$ (\S\ref{sec:u1-theorem}, \LC{}), and what this paragraph
+keeps is the pair $\hat C=4$, $\bar u(1/48)=1.1326>1$.
+
+\noindent\textbf{Note after \code{M07-WINDOW2.md}.} The $\hat C=1$ reading of the condition displayed
+above is superseded: $\hat C=4$ is forced by the KP criterion together with the $u$-normalization,
+so $\hat C\bar C=8>7.0633$ and the window is the one quoted in \S\ref{sec:u1-theorem}, namely
+$\beta_A<0.88291\times\tfrac1{48}$, i.e.\ $\beta_W<3.5316\times\tfrac1{48}$. The number
+$0.073576$ survives only as the $\hat C=1$, $a=0$ value of that pair in $\beta_W$. Both radii
+are $a=0$ quantities; the criterion window at $a^\ast$ is $\beta_A<3.777\times10^{-3}$, i.e.\
+$\beta_W<0.015108=0.725\times\tfrac1{48}$ (\S\ref{sec:u1-theorem}, \LC{}).
+
+\subsubsection*{The route that would have removed $\bar C$ outright --- withdrawn}
+
+Earlier drafts of this ledger quoted a direct bound on the anchored decoration sum as an
+alternative route that avoids $\bar C$ altogether:
+\begin{equation}
+A(\alpha)=\sum_{\Gamma:\ \alpha(\Gamma)=\alpha,\ \mathrm{att}\,\Gamma=[0,\alpha]}
+\varphi^U(\Gamma),
+\qquad
+|A(\alpha)|\le N_{\mathrm{piv}}\frac{(e\Delta u)^{\alpha}}{1-e\Delta u},
+\label{eq:u1-Aalpha}
+\end{equation}
+with $N_{\mathrm{piv}}\le4\times6=24$ (\code{C03-BYPASS.md} \S2.4). \textbf{That route is
+withdrawn.} Its input $|w_p|\le u$ is off by exactly the factor \eqref{eq:u1-cbar-exact}: the
+per-plaquette weight is $c_f=Nu$, so the correct bound reads
+$N_{\mathrm{piv}}(e\Delta Nu)^{\alpha}/(1-e\Delta Nu)$, whose ratio is
+$e\Delta Nu=1.1326>1$ already at $\beta=1/12$ — the criterion fails there, and the window it had
+claimed is gone (\code{F07-ADJCBAR.md} \S1.4 and \S4, \LT{}). The $\bar C$-free slot was an
+illusion produced by moving $\bar C$ from the tree factor into the weight ratio without noticing.
+Nothing in this chapter uses \eqref{eq:u1-Aalpha}; what it asserts is \eqref{eq:u1-window}.
+\emph{Correction:} $e\Delta Nu=1.1326$ at $\beta=1/48$ is the $a=0$ reading, so the failure asserted
+here is a fortiori; the criterion's own window is $3.777\times10^{-3}$
+(\S\ref{sec:u1-theorem}, \LC{}).
+
+\subsection{$I2$, and the two lightest channels}
+\label{sec:u1-i2}
+
+\noindent $I2$ is \emph{not} an eigenvalue statement of the polymer expansion --- that expansion
+controls a weight (a coefficient), not a spacing, which is exactly why
+\code{PROOF-P3-UNCONDITIONAL.md} \S5 writes ``\textbf{NOT obtained:} isolation $I2$''. The
+isolation comes from a different object, the two-exponential tail of $C_L(t)$.
+
+\begin{claimbox}{cC}
+\claimhead{Theorem}{($I2$ via the two-exponential chain, one instantiation per channel)}
+\emph{On $\mathcal C_L$, for $\beta_A<\beta_\star$ and every finite $L$, the chain}
+\[
+(L1)\ \xrightarrow{\ \mathrm{[T]}\ }\ \text{algebra}\ \xrightarrow{\ \mathrm{[T]}\ }\
+\text{Theorem~A}^{\Leftarrow}\ \xrightarrow{\ \mathrm{[T]}\ }\ I2
+\]
+\emph{closes, where each arrow is a \LT{} link: $(L1)$ is $|\log D_{\mathrm{fin}}(T)-\log
+D_\infty|\le B\bar u^{T}$ with $\bar u=\hat C e\Delta\bar C u<1$, the algebra is
+$D_{\mathrm{fin}}/D_\infty-1=e^{\varepsilon}-1$ with $|e^{\varepsilon}-1|\le2|\varepsilon|$,
+and Theorem~A$^{\Leftarrow}$ is the measure-theoretic equivalence
+$\text{atom}(I1)\wedge I2\iff$ sharp two-exponential decay
+(\S\ref{sec:reslevel}). Hence $\Lambda_\star-m_1^2=2m_1\delta+\delta^2>0$.} \LT{}
+\end{claimbox}
+
+\noindent Three things about this chain are load-bearing and are stated separately.
+
+\emph{(a) Positivity transfers because $O$ is universally quantified.} $\nu^{(2)}_L\ge0$ is the
+same $[KL]$ as in ring 5: the statement is proved for \emph{any} Hermitian, gauge-invariant,
+time-translation-covariant $O$, and $O_{2^{++}}$ is one. $\nu\mapsto\nu^{(2)}$ is therefore a
+free rewrite at the level of \emph{definitions} (\code{A02-2PPI2.md} \S1.2); the resulting
+proposition $I2^{(2)}$ is logically independent of $I2^{(0)}$ but needs no separate proof,
+because it is the same machine instantiated twice.
+
+\emph{(b) The parameters coincide verbatim, which is stronger than leading degeneracy.} The five
+rings eat only $w=4$ and the per-tile weight $u$; neither knows the channel. Hence
+\begin{equation}
+\kappa^{(2)}=4\ln(1/u)/a=\kappa^{(0)},\qquad
+\delta^{(2)}=\delta^{(0)}=\frac{\ln(1/\bar u)}{a}
+=\frac{\kappa}{4}-\frac{\ln(\hat C\,e\Delta\,N)}{a},
+\label{eq:u1-kappa}
+\end{equation}
+with $\bar u,B$ likewise equal. This is \emph{not} the statement $m_2/m_0\to1$: $\kappa$ is the
+bare tube rate and $m^{dr}=\kappa-f_{\mathrm{dec}}$ is the mass, and the coincidence is at the
+level of the rate \emph{parameter}, a combinatorial fact about the operator's per-slice plaquette
+content (\code{Y04-AUDITX01.md} \S4.1: the $4$ is the source plaquette's four edges, not $d=4$
+and not a face count). \LT{}
+
+\emph{(c) The chain needs $m_2>0$, not $m_2=m_0$.} Theorem~A is a two-parameter statement: each
+channel uses its own mass in $e^{-mt}$ and its own threshold in $\Lambda_\star-m^2$. What the
+chain needs is $m_2>0$, which is Osterwalder--Seiler cluster expansion per channel at
+$\beta<\beta_0$ (\code{W95A-2PP.md} \S4, \code{[T]}), not the equality of the two masses --- and
+that equality is in any case only a leading-order statement whose $O(1)$ subleading splitting is
+neither computed nor sign-fixed (\code{PROOF-IN11.md}, the section ``Why the core ordering fails
+even here''; \code{W95C-ORDER.md} \S2). So the requirement is \emph{weaker} than degeneracy, and
+the degeneracy's failure could not break the chain.
+
+\begin{claimbox}{cT}
+\claimhead{Corollary}{(both lightest factors certified, and membership)}
+\emph{With \eqref{eq:u1-f1} instantiated in both channels and \eqref{eq:u1-i2} following from the
+chain above, both factors of $\min(\Delta_0,\Delta_2)$ carry a certificate, so $m>0$ in the
+window no longer rests on the non-theorem "$0^{++}$ is strictly lightest". The membership
+premise needed to exclude the remaining channels is $(b')_{\mathrm{IN-11}}$: no bulk state below
+$\delta$ lies outside $\{0^{++},2^{++}\}$. On $\beta<\beta_1$ it is a theorem ---
+\code{PROOF-IN11.md}:19, verbatim ``This proves $(b')$'' --- obtained from the convergent OS/SZZ
+expansion plus a finite cubic-group lemma ($a_c\ge2$ for every other $J^{PC}$, hence
+$m_c-m_{0^{++}}\ge(a_c-1)\ln(1/u)\to+\infty$). Beyond $\beta_1$ it is physical input and is
+\emph{not} claimed (\code{C04-BPRIME.md} \S5).} \LT{}, \emph{with the exact Ursell constant
+$\bar C\equiv N$} in the $I1$ factor (\S\ref{sec:u1-cbar}); the $I2$ factor carries the same
+constant explicitly through $\bar u=\hat C e\Delta N u$.
+\end{claimbox}
+
+\noindent The four limits of this corollary, none of them optional: it is \emph{not} the first
+proof of $m>0$ at strong coupling, which is Osterwalder--Seiler; its increment is that the two
+factors of the minimum are certified, i.e.\ that the premise "$0^{++}$ strictly lightest" is no
+longer used. It does not cross $\beta\approx2.5$; it takes no $a\to0$; and it keeps the
+normalization of \S\ref{sec:u1-theorem}(b) and the membership $(b')_{\mathrm{IN-11}}$
+(\code{W95C-ORDER.md} \S4, \code{A02-2PPI2.md} \S4(a)).
+
+\subsection{The remaining technical debts}
+\label{sec:u1-ledger}
+
+\noindent These are recorded as numbers, not as prose, because each of them has bitten a previous
+draft.
+
+\begin{itemize}[leftmargin=1.5em]
+\item \textbf{The $\bar C$ ledger, in one line.} $\bar C\equiv|w|^{1/n}/u=c_f/u=N$ \emph{exactly}
+      --- a proved value, not a bound, and not an unknown (\code{F07-ADJCBAR.md} \S1.4, \S3).
+      Consequences, all of them load-bearing: the summation identity that gave $\bar C=1$ is
+      false (\code{C07-AUDIT.md} \S1.1, witness $3a_0a_1a_2$); the later bounds tried on this slot
+      are withdrawn rather than merely superseded, each having lain \emph{below} $N$; and the
+      window is
+      $\beta_A<W(a^\ast)=3.777\times10^{-3}=0.1813\times\tfrac1{48}$, i.e.\
+      $\beta_W<0.015108=0.725\times\tfrac1{48}$ (\LC{}, \S\ref{sec:u1-theorem}), so
+      $\beta_W=1/12=0.08333$ is $5.5\times$ \emph{outside} it. \emph{Debt, stated rather than
+      hidden:} the two remaining radii are $a=0$ roots --- the exact local $\hat C=2$ of hole~C
+      gives $1.766\times\tfrac1{48}$ (still containing $1/48$), and the crude per-plaquette
+      envelope $\hat C=4$ gives $0.883\times\tfrac1{48}$, which does not. (Those two are $a=0$
+      roots; the criterion window is $W(a^\ast)=3.777\times10^{-3}$, \S\ref{sec:u1-theorem},
+      \LC{}.)
+\item \textbf{The $\bar C$-free route is withdrawn.} The direct bound on $A(\alpha)$ rested on
+      $|w_p|\le u$, which is off by the factor $N$; with the correct weight its ratio is
+      $e\Delta Nu=1.1326>1$ at $\beta=1/12$ and the claimed window is gone
+      (\code{F07-ADJCBAR.md} \S1.4, \S4). Withdrawn (\code{F07-ADJCBAR.md}), not outstanding.
+\item \textbf{$\beta_1$ scales like $cN$, not $c/N$.} With $u=c_f/N$ and $K\le591e^{\beta}N$ the
+      criterion $uK<1$ reads $\beta e^{\beta}<N/295.6$, i.e.\
+      $\beta_1(N)=W(N/295.6)$ and, at small argument, $\beta_1=cN$ with
+      $c=1/295.6=3.383\times10^{-3}$. The direction matters: $uK\propto\beta/N$, so a larger $N$
+      gives a \emph{larger} radius, and $\min(1/48,cN)$ is taken by $1/48$ for $N\le6.3$ --- at
+      $N=2,3$ this KP radius does not enter the minimum at all. The physical window is
+      $N$-independent after all: $g^2_1=2N/\beta_1\approx594+O(\ln N)$
+      (\code{LOOP-RUNBOOK.md} \S13.48, \code{V06-RADIUS.md}; \LT{} algebra, \code{[E]} constants).
+\item \textbf{$1/48$ is a method radius, not a spectral wall.} It is Shen--Zhu--Zhu's
+      log-Sobolev radius $|\beta|<1/(16(d-1))=1/48$; no statement about the mass gap follows from
+      it, and no wall is located by it. What it does is bound the window in which the convergent
+      expansion is available (\code{LOOP-RUNBOOK.md} \S13.48).
+\item \textbf{$\bar C$ is $N$-independent.} $\Delta=20$ is a four-dimensional plaquette degree and
+      $e\Delta=54.3656$ carries no $N$; the $N$-dependence of the radius sits entirely in
+      $K\le6.1\times10^{2}N$ (\code{P3-FULLREP-KP.md} \S4.1--4.2). So "the constant got worse"
+      and "the window shrank with $N$" are different statements and only the second is false.
+\item \textbf{At $N=2$ the character coefficient doubles.} Because $f\cong\bar f$, the two
+      orientations add, so $c_f=\beta/N$ rather than the generic $\beta/(2N)$, and
+      $u=c_f/N=\beta/N^2$ --- Gupta's own footnote to (14.18). Every number in this chapter is
+      quoted at $u=\beta/2N^2$ with the $N=2$ caveat applied where it applies
+      (\code{Z06-HOLEA.md} \S1, \S3).
+\item \textbf{One residual $[\mathrm{R}]$, already named.} The verbatim equality
+      $a_0D_\infty=|\langle\Omega|O|\mathbb{G}\rangle|^2$ (\code{Y01-KL.md} \S4.3(3)); the floor
+      and the $I2$ chain do not use it.
+\item \textbf{Two literal forms of \S\ref{sec:p3} are superseded here}, and are corrected here
+      rather than there: $r_0=\tfrac12c_1u^{p}$ with "$p\ge1$" (hole~E: $p=0$ and the constant is
+      $\beta$-independent), and $\beta_1=\min(1/48,c/N)$ (the scaling is $cN$). Both are
+      bookkeeping corrections; neither moves an inequality's direction.
+\item \textbf{What is not obtained.} The continuum limit $a\to0$; transport to
+      $\beta\approx2.5$; the infinite-volume atom $f_{1,\infty}^2$ and the survival of the atom
+      against the continuum threshold at $L=\infty$. \textbf{Clay is not touched: $0\%$.}
+\end{itemize}
+
+\noindent\textbf{One reading note.} Where this printing's abstract lists the strong-coupling
+result as "$I1$, not $I2$", that records the state of the dossier before the five holes were
+closed; nothing in this chapter retracts the abstract's other claims, and nothing in this chapter
+enlarges the window or the grade that the abstract states.
+
+\endgroup

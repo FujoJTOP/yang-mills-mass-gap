@@ -1,0 +1,56 @@
+==============================================================================
+D02 dimension accounting, SU(2), dim(SU(2))=3 (real)
+==============================================================================
+
+[A] 4D FULL TORUS  (r04's object: the S-D / Hessian configuration space)
+  L  sites=L^4  links=4L^4  comps=3*links  plaq=6L^4  gauge=3*sites  phys=comps-gauge cond=phys-1
+  1          1           4             12          6              3                 9           8
+  2         16          64            192         96             48               144         143
+  3         81         324            972        486            243               729         728
+  4        256        1024           3072       1536            768              2304        2303
+  6       1296        5184          15552       7776           3888             11664       11663
+  8       4096       16384          49152      24576          12288             36864       36863
+  r04 check: L=2 -> 192 raw, 144 gauge-fixed, 143 after codim-1 conditioning: True True True
+
+[B] ONE TIME SLICE, SPATIAL LINKS ONLY  (carrier of the Wilson transfer matrix T)
+  L spatial links=3L^3  manifold dim=9L^3  gauge params=3L^3  orbit dim  physical
+  2                 24                 72                 24         24        48
+  3                 81                243                 81         81       162
+  4                192                576                192        192       384
+  6                648               1944                648        648      1296
+  8               1536               4608               1536       1536      3072
+  L=2 -> 24 links, 72-dim manifold, 24-dim gauge orbit, 48 physical
+
+[C] ONE TIME SLICE INCLUDING TEMPORAL LINKS  (the '4*L^3 = 32 link' reading)
+  L  links=4L^3  manifold=12L^3  gauge=3L^3  physical
+  2          32              96          24        72
+  3         108             324          81       243
+  4         256             768         192       576
+  6         864            2592         648      1944
+  8        2048            6144        1536      4608
+  L=2 -> 32 links, 96-dim manifold, 72 physical   (user's 4*L^3=32 confirmed)
+
+[D] MATRIX-ELEMENT INTEGRAL DIMENSION (the hard sub-object of T)
+    T[U,U'] = e^{-S_sp(U)/2} e^{-S_sp(U')/2} W(U,U'),
+    W(U,U') = int prod_x dV(x) exp((beta/2) sum_{x,i} Re tr[U_i(x) V(x+i) U'_i(x)^dag V(x)^dag])
+    -> one integral over L^3 temporal links = 3 L^3 real dimensions.
+  L  integral dim=3L^3   bits at eps=1e-6  ratio to 143
+  2                 24              478.4          5.96
+  4                192             3826.9          0.74
+  6                648            12915.7          0.22
+  8               1536            30614.9          0.09
+  r04's feasibility threshold was '<=20 dims'; the transfer route needs 24 at L=2
+
+[E] TRUNCATION COST: full SU(2) character (Peter-Weyl) basis per link, j<=J
+    basis size b_J = sum_{m=1..2J+1} m^2  (half-integer j included: m=1,2,3,...)
+  J=2: M=5, basis per link b=55 | L=2: states=b^24=1e41.8 | L=4: states=b^192=1e334.1
+  J=3: M=7, basis per link b=140 | L=2: states=b^24=1e51.5 | L=4: states=b^192=1e412.1
+  J=4: M=9, basis per link b=285 | L=2: states=b^24=1e58.9 | L=4: states=b^192=1e471.3
+  (J=3 is not a free choice: see d02_cert.log tail bound)
+
+[F] SANITY: the three counts are distinct objects at L=2
+    full 4D torus raw comps      : 192
+    slice spatial-only manifold  : 72
+    slice incl. temporal manifold: 96
+    r04 conditional dim          : 143
+    -> 96 != 192 ; 143 is not a transfer-matrix dimension (it is 4*L^4*3 - 3*L^4 - 1)

@@ -1,0 +1,122 @@
+==============================================================================
+(A) QI-1 deficit identity  theta = w1 - Delta/(s2-s1)   [random measures]
+    max |theta - (w1 - Delta/eps)| = 3.553e-15   over 500 random measures
+    max (theta - w1)               = 0.000e+00   (bridge is sound: <= 0)
+    identifiability at the degenerate point (s2 -> s1): two-point family nu_eps = w1 d_{s1} +
+    (1-w1) d_{s1+eps} has theta = w1 EXACTLY for every eps, while (s1, s2, Ebar) -> (0,0,0)
+    for every w1.  So at eps = 0 the triple carries NO information about w1: the 0/0 is real.
+==============================================================================
+(B) free field (exact Gaussian, source = bilinear): the 0/0 degeneration, eps -> 0
+        L        s1        s2  eps=s2-s1   Ebar-s1       theta         w1     Delta          bracket
+        8   0.80000   1.26359  4.636e-01   1.27122  -1.742e+00  1.047e-01 8.562e-01  [0.000,1.000]
+       16   0.80000   0.95879  1.588e-01   1.30998  -7.250e+00  2.717e-02 1.156e+00  [0.000,1.000]
+       32   0.80000   0.84545  4.545e-02   1.31116  -2.785e+01  6.801e-03 1.266e+00  [0.000,1.000]
+       64   0.80000   0.81186  1.186e-02   1.31116  -1.095e+02  1.700e-03 1.299e+00  [0.000,1.000]
+      128   0.80000   0.80300  3.000e-03   1.31116  -4.360e+02  4.251e-04 1.308e+00  [0.000,1.000]
+      256   0.80000   0.80075  7.522e-04   1.31116  -1.742e+03  1.063e-04 1.310e+00  [0.000,1.000]
+    eps ~ 1/L^2, Ebar-s1 = O(1) fixed  =>  theta = 1-(Ebar-s1)/eps -> -infinity; w1 -> 0.
+    m-scan at L=64 (massless direction; s1 = 2m is the two-particle threshold):
+      m=0.400  s1=0.80000  eps=1.186e-02  theta=-1.095e+02  w1=1.700e-03
+      m=0.100  s1=0.20000  eps=4.011e-02  theta=-2.977e+01  w1=1.255e-02
+      m=0.020  s1=0.04000  eps=8.015e-02  theta=-1.018e+01  w1=1.336e-01
+    two-point ray check (the removable direction): eps=1e-3, s1=0, w1 = 0.01/0.5/0.99
+      w1= 0.01: theta=0.010000  (Ebar=9.90e-04, s2=1.00e-03, Delta=0.0e+00)
+      w1= 0.50: theta=0.500000  (Ebar=5.00e-04, s2=1.00e-03, Delta=0.0e+00)
+      w1= 0.99: theta=0.990000  (Ebar=1.00e-05, s2=1.00e-03, Delta=0.0e+00)
+==============================================================================
+(C) deep double well: theta vs w1 (soundness + saturation), s2 = SECOND SUPPORT POINT
+         g         s1    s2supp      Ebar        w1     theta  w1-theta     Delta         cert.int.
+       0.5 7.2502e-01    3.4438  0.749266  0.991131  0.991084  4.71e-05  1.28e-04  [0.991084,1.000000]
+       2.0 7.9185e-01    4.7958  0.863557  0.982232  0.982090  1.43e-04  5.71e-04  [0.982090,1.000000]
+       8.0 4.6242e-01    6.3232  0.723110  0.956187  0.955521  6.66e-04  3.91e-03  [0.955521,1.000000]
+      16.0 1.9138e-01    7.5450  0.614551  0.943689  0.942454  1.23e-03  9.08e-03  [0.942454,1.000000]
+      32.0 3.8866e-02    9.9225  0.558846  0.948802  0.947390  1.41e-03  1.40e-02  [0.947390,1.000000]
+      64.0 3.0330e-03   14.2506  0.536284  0.963456  0.962573  8.83e-04  1.26e-02  [0.962573,1.000000]
+     100.0 3.0146e-04   18.2581  0.527945  0.971625  0.971100  5.24e-04  9.57e-03  [0.971100,1.000000]
+    identity check  max|Ebar - Ebar_spec|/Ebar = 0.00e+00   (double-commutator identity, k=120 truncation)
+    threshold form: certified iff s2 >= (Ebar - w0 s1)/(1-w0), i.e. theta >= w0
+    w0=0.10: certified 7/7   required_s2/actual_s2 in [3.21e-02, 2.18e-01]  (margin factor 5x..31x)
+    w0=0.30: certified 7/7   required_s2/actual_s2 in [4.13e-02, 2.21e-01]  (margin factor 5x..24x)
+    w0=0.50: certified 7/7   required_s2/actual_s2 in [5.78e-02, 2.25e-01]  (margin factor 4x..17x)
+------------------------------------------------------------------------------
+(D) GEVP/Ritz estimate of s2 (basis {x,x^3}) and the TP2 proxy s2 ~ rho^2 s1
+         g        s1       mu1    s2supp       mu2 theta(mu2)        w1  overclaim   rho2*s1      err
+       0.5    0.7250    0.7262    3.4438    3.6200   0.991627  0.991131  +4.96e-04    3.6140 +4.9e-02
+       2.0    0.7918    0.7967    4.7958    5.1706   0.983623  0.982232  +1.39e-03    5.1394 +7.2e-02
+       8.0    0.4624    0.4899    6.3232    7.2781   0.961752  0.956187  +5.57e-03    6.8693 +8.6e-02
+      32.0    0.0389    0.0881    9.9225   11.6689   0.955290  0.948802  +6.49e-03    5.1456 -4.8e-01
+     100.0    0.0003    0.0182   18.2581   19.5004   0.972941  0.971625  +1.32e-03    0.3232 -9.8e-01
+    reading: mu2 >= s2 (Ritz is an upper bound) => theta(mu2) >= theta(s2): the estimate can only
+             push the certificate UP (over-claim).  It can also land BELOW s2 with a bad basis, so
+             no GEVP/Ritz/rho^2 estimate controls s2 in the direction the certificate needs (below).
+             rho^2*s1 tracks s2 only in the near-harmonic regime; at g=100 it is off by orders.
+==============================================================================
+(E) 4D beta=2.5 read-only (m1_4d_run_results.json): bare Ebar and fake / impossible certificates
+    L=4: fit m1 pinned at 0.0300
+         [unsm] C(t)/C(0)=[1.0, 0.99526, 0.9972, 1.00082]
+                Ebar = -ln[C(1)/C(0)] = +4.752e-03  bridge(s1=0): s2=0.03: 0.8416, s2=0.1: 0.9525, s2=0.3: 0.9842, s2=1.0: 0.9952
+         [ape2] C(t)/C(0)=[1.0, 0.9918, 0.99633, 1.00225]
+                Ebar = -ln[C(1)/C(0)] = +8.236e-03  bridge(s1=0): s2=0.03: 0.7255, s2=0.1: 0.9176, s2=0.3: 0.9725, s2=1.0: 0.9918
+         smoothing spread of theta at s2=0.3 (unsm vs ape2) = +1.16e-02  => O(1) scheme sensitivity of the certificate, not a renormalisation
+    L=6: fit m1 pinned at 0.0300
+         [unsm] C(t)/C(0)=[1.0, 1.00216, 1.0008, 1.00154, 1.00148, 1.00157]
+                Ebar = -ln[C(1)/C(0)] = -2.153e-03  bridge(s1=0): s2=0.03: 1.0718, s2=0.1: 1.0215, s2=0.3: 1.0072, s2=1.0: 1.0022
+         [ape2] C(t)/C(0)=[1.0, 1.00007, 0.99618, 0.99752, 0.99819, 1.00013]
+                Ebar = -ln[C(1)/C(0)] = -6.554e-05  bridge(s1=0): s2=0.03: 1.0022, s2=0.1: 1.0007, s2=0.3: 1.0002, s2=1.0: 1.0001
+         smoothing spread of theta at s2=0.3 (unsm vs ape2) = +6.96e-03  => O(1) scheme sensitivity of the certificate, not a renormalisation
+    L=8: fit m1 pinned at 0.0300
+         [unsm] C(t)/C(0)=[1.0, 1.0014, 1.00064, 0.9998, 1.00097, 1.00079, 1.00015, 1.00091]
+                Ebar = -ln[C(1)/C(0)] = -1.396e-03  bridge(s1=0): s2=0.03: 1.0465, s2=0.1: 1.0140, s2=0.3: 1.0047, s2=1.0: 1.0014
+         [ape2] C(t)/C(0)=[1.0, 1.00371, 1.00358, 1.00096, 1.00206, 1.00026, 1.00189, 1.00318]
+                Ebar = -ln[C(1)/C(0)] = -3.702e-03  bridge(s1=0): s2=0.03: 1.1234, s2=0.1: 1.0370, s2=0.3: 1.0123, s2=1.0: 1.0037
+         smoothing spread of theta at s2=0.3 (unsm vs ape2) = -7.69e-03  => O(1) scheme sensitivity of the certificate, not a renormalisation
+    L=4: Ebar_bare = +4.8e-3 > 0 (apparently valid): theta >= 0.84 for any s2 >= 0.03, >= 0.98 for
+         s2 >= 0.3.  It certifies that >=98% of the source variance sits at s <= 0.005 -- i.e. in the
+         contact/zero mode, NOT in an atom.  TRUE but MEANINGLESS (vacuous threshold ~1e-2).
+    L=6,8: Ebar_bare < 0  =>  theta > 1 (1.002-1.072): an IMPOSSIBLE value (w1 <= 1).  The bridge
+         self-diagnoses: theta>1 iff Ebar<s1, i.e. the hypothesis 's1 is a support point' is violated.
+==============================================================================
+(F) YM-like measure: atom at m1^2=1 (w1=0.30) + two-particle cut from s2=4. Tail budget
+     Lambda  alpha     Ebar    Delta     theta   >=0.1   >=0.3
+        4.5    0.0   3.2750   0.1750    0.2417    True   False
+        4.5    2.0   3.2681   0.1681    0.2440    True   False
+        5.0    0.0   3.4500   0.3500    0.1833    True   False
+        5.0    2.0   3.4240   0.3240    0.1920    True   False
+        5.5    0.0   3.6250   0.5250    0.1250    True   False
+        5.5    2.0   3.5695   0.4695    0.1435    True   False
+        6.0    0.0   3.8000   0.7000    0.0667   False   False
+        6.0    2.0   3.7059   0.6059    0.0980   False   False
+        8.0    0.0   4.5000   1.4000   -0.1667   False   False
+        8.0    2.0   4.1816   1.0816   -0.0605   False   False
+       16.0    0.0   7.3000   4.2000   -1.1000   False   False
+       16.0    2.0   5.4755   2.3755   -0.4918   False   False
+       64.0    0.0  24.1000  21.0000   -6.7000   False   False
+       64.0    2.0   8.5808   5.4808   -1.5269   False   False
+    budget: theta >= w0  <=>  Delta <= (w1-w0)(s2-s1).  Flat cut: Delta = 0.7(Lambda-s2)/2,
+    so w0=0.1 needs Lambda-s2 <= 2(0.2)(3)/0.7 = 1.71 = 0.57 eps ; w0=0.3 needs Lambda=s2 exactly.
+    => the bridge needs the source's whole spectral weight above s2 to sit within O(eps) of s2.
+==============================================================================
+(G) beta=0 Haar: degenerate level => N-state band criterion
+    SU(2) Haar: Var((1/2)tr U) = 0.2500  (exact 1/4)  => M0 finite at beta=0
+    beta=0: T = |1><1| (rank one) => every excitation at s = infinity: nu = delta_infinity,
+            no (s1,s2,Ebar) at all => the bridge is UNDEFINED (an inf/inf, not a 0/0).
+    regularised: N states spread uniformly over a band of width W => eps=W/(N-1), Ebar-s1=eps(N-1)/2
+                 theta = (3-N)/2  (independent of W);  theta>0 needs N<=2
+      N=    2: eps=1.000e+00  theta=+0.5000  (w1=0.5000)
+      N=    3: eps=5.000e-01  theta=+0.0000  (w1=0.3333)
+      N=    4: eps=3.333e-01  theta=-0.5000  (w1=0.2500)
+      N=    8: eps=1.429e-01  theta=-2.5000  (w1=0.1250)
+      N=  100: eps=1.010e-02  theta=-48.5000  (w1=0.0100)
+      N= 1000: eps=1.001e-03  theta=-498.5000  (w1=0.0010)
+    => few-level certificate: N states in the low band give theta = (3-N)/2 <= 0 for N>=3.
+       free field / beta=0 / any cut: N -> infinity => theta -> -infinity.  No certificate.
+==============================================================================
+(H) summary
+    [T] QI-1  theta = w1 - Delta/(s2-s1),  Delta = int_{[s2,inf)}(s-s2)dnu >= 0   (exact)
+    [T] QI-2  uniform N-state band: theta = (3-N)/2  => N<=2 needed for any w0>0
+    [T] QI-3  theta>1 (resp. theta<0) iff Ebar<s1 (resp. Ebar>s2): a built-in consistency flag
+    [V] free field: eps=s2-s1 ~ 1/L^2 -> 0, w1 -> 0, theta -> -inf  (no positive certificate)
+    [V] double well: theta = w1 - (5e-5..1.4e-3), certified at w0=0.1/0.3/0.5 (saturated)
+    [V] synthetic YM-like: theta<0 for any cut wider than ~0.6 eps  (tail budget)
+    [V] 4D bare read-only: Ebar_bare ~ 0 => theta>=0.98 (meaningless) or theta>1 (impossible)
+    [NG] s2 from GEVP/Ritz/rho^2: upper-bound machines, wrong direction; theta over-claims

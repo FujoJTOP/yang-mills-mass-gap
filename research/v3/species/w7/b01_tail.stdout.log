@@ -1,0 +1,17 @@
+================================================================================================
+B01  SU(2) Wilson  w1(raw) vs beta   Ls=8^3 x Lt=12   operator = run1/run3 lev0 (unchanged)
+m = 1.546 fixed ; w1 = A/C0 ; errors = 20-block delete-one jackknife ; numba=0.68.1 threads=8
+target N = 12000/point ; gap,therm scale with beta ; strictly sequential (one process)
+================================================================================================
+
+--- beta = 4  N = 12000 (8 x 1500)  gap = 6  therm = 1200   (t+0s)
+D:\Dev\math\research\v3\species\w7\b01_scan.py:81: RuntimeWarning: overflow encountered in scalar multiply
+  ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)
+[E] 12000 cfg in 119.5s (100.4 cfg/s, 603 sweeps/s)  compile 0.9s  tau_int: plaq 0.5, S(0) 0.5 cfg
+[E] <1/2 Re tr U_p> = 0.79968 +- 0.00001
+[E] C1/C0 = 0.03790 +- 0.00303 ; C2/C0 = 0.00604 +- 0.00250 ; S/N(2) = 2.4
+[E] m_fit = 2.116 ; w1(m=1.546) = 0.1747 +- 0.0141  S/N = 12.4 ; w1_fit = 0.3154 +- 0.1148
+
+--- beta = 6  N = 12000 (8 x 1500)  gap = 9  therm = 2000   (t+122s)
+D:\Dev\math\research\v3\species\w7\b01_scan.py:81: RuntimeWarning: overflow encountered in scalar add
+  ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)

@@ -1,0 +1,60 @@
+% =====================================================================
+%  sec01 -- Summary (one page)
+% =====================================================================
+\section{Summary}\label{sec:summary}
+
+\begin{keybox}
+\textbf{The verdict, in one sentence.} The coarse-mode curvature condition
+H1 ($\Gpp\ge\delta$) is \emph{not} the road to the mass gap --- there are now two independent
+obstructions, both at label \LT{} --- and the correct object is $\fone$, the pole residue of
+$O=\tfrac14\tr F^{2}$, which is exactly one step from $m>0$, the step being
+$\Lstar>m_1^{2}$ (condition I2).
+\end{keybox}
+
+\vspace{0.1em}
+\begin{center}
+\scriptsize
+\begin{tabularx}{\textwidth}{@{}L{0.9cm}L{2.4cm}Y L{3.4cm}@{}}
+\toprule
+\textbf{\S} & \textbf{Object} & \textbf{Status} & \textbf{Source} \\
+\midrule
+\S\ref{sec:obs1} & $\Gpp>0\Rightarrow\Dyn>0$?
+ & \textbf{False} \LT: $\Wg\ge N/12>0$ separates them; at $L=2,\beta=2.5$ the kinematic block is
+   $67\%$ of the measured $\Gpp$; exact witness at $\theta=\pi$
+ & \code{T01-IMPLY.md}; \code{ch05-theorems.tex}:203--219 \\
+\S\ref{sec:obs2} & $\Dyn>0\Rightarrow m>0$?
+ & \textbf{False} \LT: M6 has $\Gpp=2\omega>0$, $m=0$; reverse false too (2D YM: $\Gpp=0$,
+   $m=3g^{2}/8>0$)
+ & \code{T03-TOY.md} \\
+\S\ref{sec:cert} & $\Gpp=S-D>0$ at $a=0$
+ & \textbf{True, not physical}: one plaquette, $\mathrm{SU}(2)$, $\beta=2.5$; three points \LT,
+   all $\theta$ via monotonicity \LC
+ & \code{Q11-CERT.md}; \code{R03-CERT-THETA.md}; \code{R06-GAPMONO.md}; \code{R10-AUDITCERT.md} \\
+\S\ref{sec:target} & $\fone=\nu_O(\{E_1\})$
+ & \textbf{The correct object} \LT: four proved implications, and the distance to $m>0$ is exactly
+   one condition, $\Lstar>m_1^{2}$
+ & \code{T02-F1SQ.md}; \code{ch05-theorems.tex}:32, 284--287, 435--436 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent
+\textbf{Why each obstruction is fatal.} \emph{(i)} $\Gpp=\Dyn+\Wg+X$ is exact, and
+$\Wg\ge N/12>0$ holds for every $\beta$, every measure and every conditioning point, so a positive
+$\Wg$ masks a negative $\Dyn$: at one plaquette, $\mathrm{SU}(2)$, $\beta=2.5$, $\theta=\pi$ one
+has $\Gpp=+0.135994711\ldots$ with $\Dyn=-0.069120586\ldots$ (\S\ref{sec:obs1}). \LT{}
+\emph{(ii)} In the exactly solvable ``harmonic $\otimes$ free'' model $\Gpp=2\omega>0$ while
+$m=0$, by the identity $\Gpp=4(E_0-V(0))$, which asks whether $a=0$ lies above the ground-state
+energy and says nothing about the spectrum (\S\ref{sec:obs2}). \LT{} The two are independent, so
+repairing one does not revive the route.
+
+\smallskip
+\noindent
+\textbf{Two warnings.} \emph{On the certificate} (\S\ref{sec:cert}): it is the first strict,
+non-Monte-Carlo positivity result in this project --- three points decided by $800$-bit directed
+rounding over exact rational Taylor coefficients, enclosures of width $\le3\times10^{-21}$ (down to
+$1.1\times10^{-117}$ at $\theta=\pi$), margin $1.36\times10^{-1}$ --- and it certifies a
+$0$-dimensional integral at fixed $\beta$ in a window $\beta<\beta^{*}=4.3066$, in lattice units
+($G''_a=a^{2}m^{2}_{\mathrm{phys}}$): true, and not a statement about the theory.
+\emph{On scope}: no step of Clay is closed and no claim of progress on Clay is made below; the
+count remains $0\%$.

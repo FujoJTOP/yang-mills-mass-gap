@@ -1,0 +1,61 @@
+==============================================================================
+[1] p14_main.npz  (nsweeps=10000, nchains=4)  cols: 0=G  1=Phi'  2=Phi''  3=H
+    chain 0  VarG=  1.61055  VarPhi'= 0.057697  Cov=-0.009508  corr= -0.03119  CS= 0.30483
+    chain 1  VarG=  1.53538  VarPhi'= 0.055284  Cov=+0.001891  corr= +0.00649  CS= 0.29134
+    chain 2  VarG=  1.45776  VarPhi'= 0.066586  Cov=+0.007856  corr= +0.02521  CS= 0.31156
+    chain 3  VarG=  1.53516  VarPhi'= 0.049074  Cov=+0.009252  corr= +0.03371  CS= 0.27448
+    pooled   VarG=  1.53471  VarPhi'= 0.057160  Cov=+0.002373  corr= +0.00801  CS= 0.29618
+    ratio VarPhi'/VarG = 0.03725  (3.725%)
+    per-chain sigma_tau(Cov) = [0.01743 0.01577 0.01612 0.01503]
+    sigma_tau(Cov, 4 chains pooled) = 0.008055  =>  Cov in [-0.02179, +0.02654] (3 sigma)
+    CS slack vs 3-sigma measured: 0.08x  (1/|corr| = 124.8)
+==============================================================================
+[2] window bookkeeping.  Var(G+Phi') = VarG + VarPhi' + 2Cov  (identity, [T])
+  A_prompt       VarG=  5.4477  VarPhi'=0.003600  sigmaG=2.3340 sigmaPhi=0.0600  CS=0.14004
+                 ratio VarPhi'/VarG = 0.00066   1/(ratio) = 1513.2
+                 src: VarG: P02-DYNDYN.md:48 ; E[H]: P02:46 ; VarPhi'=3.6e-3: O09-PHICURV.md:80 (single plaquette, a=0.75)  <-- WINDOW MISMATCH
+  B_lattice_P02  VarG=  5.4477  VarPhi'=0.162409  sigmaG=2.3340 sigmaPhi=0.4030  CS=0.94061
+                 ratio VarPhi'/VarG = 0.02981   1/(ratio) = 33.5
+                 src: VarPhi'=Var(G+Phi')-Var(G)-2Cov algebra, P02-DYNDYN.md:54
+  C_lattice_o27  VarG=  5.7307  VarPhi'=0.141400  sigmaG=2.3939 sigmaPhi=0.3760  CS=0.90018
+                 ratio VarPhi'/VarG = 0.02467   1/(ratio) = 40.5
+                 src: o27: VarG=5.7307, Var(G+Phi')=5.8291, Cov=-0.0215 (O27-ADJUDICATE.md:76-78)
+  cross-check B: Var(G+Phi') = 5.447700 + 0.162409 + 2*(-0.014886) = 5.580337  (P02:48 gives 5.580327)
+  cross-check C: Var(G+Phi') = 5.730700 + 0.141400 + 2*(-0.021500) = 5.829100  (o27 gives 5.8291)
+  A vs B: VarPhi' differs by 45.1x  ->  3.6e-3 is NOT a lattice number
+==============================================================================
+[3] algebra.  Cov>=-VarG/2 via CS needs VarPhi'<=VarG/4 ; H1 needs the other side.
+    Var(F)=VarG+VarPhi'+2Cov,  F=G+Phi',  H1: W_full=E[H]+VarG-Var(F)>=0
+  --- A_prompt ---
+    (i) Cov >= -VarG/2 = -2.7239 : CS gives Cov >= -0.14004  [T]  slack 19.45x
+        equals VarPhi' <= VarG/4 = 1.36193 ; have 0.003600  => PASS (378.3x margin)
+    (ii) H1 one-sided: need Cov <= (E[H]-VarG-VarPhi')/2 = 0.44010 ; CS gives Cov <= 0.14004  => SUFFICES
+        threshold: VarPhi' <= 0.03320 gives (sigmaG+sigmaPhi)^2 <= E[H]-?  ->  VarPhi' <= 0.03320
+        Delta=E[H]-VarG=0.88380 ; (sigmaG+sigmaPhi)^2=5.73138 <= E[H]=6.3315 ? YES
+        Var(F) at Cov=+CS: 5.73138  vs E[H]=6.3315  (excess -0.60012)
+  --- B_lattice_P02 ---
+    (i) Cov >= -VarG/2 = -2.7239 : CS gives Cov >= -0.94061  [T]  slack 2.90x
+        equals VarPhi' <= VarG/4 = 1.36193 ; have 0.162409  => PASS (8.4x margin)
+    (ii) H1 one-sided: need Cov <= (E[H]-VarG-VarPhi')/2 = 0.36070 ; CS gives Cov <= 0.94061  => TOO LOOSE by 2.61x
+        threshold: VarPhi' <= 0.03320 gives (sigmaG+sigmaPhi)^2 <= E[H]-?  ->  VarPhi' <= 0.03320
+        Delta=E[H]-VarG=0.88380 ; (sigmaG+sigmaPhi)^2=7.49134 <= E[H]=6.3315 ? NO
+        Var(F) at Cov=+CS: 7.49134  vs E[H]=6.3315  (excess +1.15984)
+  --- C_lattice_o27 ---
+    (i) Cov >= -VarG/2 = -2.8653 : CS gives Cov >= -0.90018  [T]  slack 3.18x
+        equals VarPhi' <= VarG/4 = 1.43267 ; have 0.141400  => PASS (10.1x margin)
+    (ii) H1 one-sided: need Cov <= (E[H]-VarG-VarPhi')/2 = 0.22352 ; CS gives Cov <= 0.90018  => TOO LOOSE by 4.03x
+        threshold: VarPhi' <= 0.01438 gives (sigmaG+sigmaPhi)^2 <= E[H]-?  ->  VarPhi' <= 0.01438
+        Delta=E[H]-VarG=0.58843 ; (sigmaG+sigmaPhi)^2=7.67246 <= E[H]=6.3191 ? NO
+        Var(F) at Cov=+CS: 7.67246  vs E[H]=6.3191  (excess +1.35332)
+  NOTE: (i) is satisfied by ANY window, but it only forces Var(F) >= VarPhi'+2Cov+0 >= 0;
+        it carries no information about H1. The binding side for H1 is (ii).
+==============================================================================
+[4] structural checks ([T] unless noted)
+    N(links,L=2)=64 ; Phi''(0)=0.1666666667 per link (Taylor of -cot(r/2)+2/r)
+    Phi''>= (1/6)*sum_l c_l^2 ; with sum c_l^2 >= N/2 => Phi'' >= N/12 = 5.3333  (E[H]=6.3315 OK)
+    Lambda(r)=phi'(r)/r on r in [0.30,5.657]: min=0.16692 max=0.60853 spread=0.44161
+    pathwise route |Phi'|<=sum r_l|Lambda_l-mu| <= spread*sum r_l : spread=0.4416, sum r ~ 195.8
+    => Var(Phi') <= 86.5^2 = 7480  (need <= 1.3619) : PATHWISE ROUTE DEAD by 5492x
+    exactly aligned (phi'=mu*r for all l) => Phi'=mu*sum r_l c_l=0 exactly => Var(Phi')=0 [T]
+==============================================================================
+done.

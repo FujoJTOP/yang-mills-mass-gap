@@ -1,0 +1,45 @@
+==============================================================================
+O06  H_vv exact form / Phi'' floor / composition    py3.12 numpy, GL n=400
+==============================================================================
+
+[1] exact identity  H_vv|slice = beta*cos(th/2)*sin(rho/2)/(2 rho) = (beta/2)cos(th/2)*sqrt(J)
+  beta=2.5  th= 0.00000 rho=1.7  FD= 5.524158908088e-01 formula= 5.524120626032e-01 rel=6.9e-06
+  beta=2.5  th= 1.10000 rho=1.7  FD= 4.709477252618e-01 formula= 4.709448296507e-01 rel=6.1e-06
+  beta=2.5  th= 3.14159 rho=1.7  FD=-4.440892098501e-06 formula= 3.382548321387e-17 rel=1.3e+11
+  beta=6.0  th= 0.30000 rho=2.9  FD= 1.015409978322e+00 formula= 1.015412994030e+00 rel=3.0e-06
+
+[2] Phi'' = 2/rho^2 - cot(rho/2)/rho  (= g'(rho)/rho, radial Hessian transverse)
+  rho=0.001    FD= 1.6665779867e-01 formula= 1.6666666954e-01
+  rho=0.5      FD= 1.6736834141e-01 formula= 1.6736527071e-01
+  rho=3.1416   FD= 2.0264678824e-01 formula= 2.0264236728e-01
+  rho=3        FD= 1.9858781286e-01 formula= 1.9858394079e-01
+  rho=6        FD= 1.2248158043e+00 formula= 1.2247643141e+00
+  inf Phi'' = 0.1666660309 at rho=1.671e-05   1/6=0.1666666667  N/12(N=2)=0.1666666667
+  Phi'' at rho=2,3,4,5,6: [0.178954, 0.198584, 0.239414, 0.34773, 1.224764]
+
+[3] conditioned-slice moments (v=e_3, a_0=0): E[H_vv|0], E[Phi''|0], Var(force|0)
+  beta      th       E[H_vv|0]     E[Phi''|0]    Sum           Var(G_v|0)    Sum-1/6
+  2.5      0.00000  5.530606e-01  1.768636e-01  7.299241e-01  0.000000e+00  5.633e-01
+  2.5      1.57080  3.773108e-01  1.808728e-01  5.581836e-01  1.523972e-02  3.915e-01
+  2.5      3.14159  2.735642e-17  2.051153e-01  2.051153e-01  6.912059e-02  3.845e-02
+  4.3066   0.00000  9.984448e-01  1.723417e-01  1.170786e+00  0.000000e+00  1.004e+00
+  4.3066   1.57080  6.864318e-01  1.749486e-01  8.613804e-01  2.284099e-02  6.947e-01
+  4.3066   3.14159  4.712537e-17  2.051153e-01  2.051153e-01  2.051155e-01  3.845e-02
+  6        0.00000  1.420010e+00  1.706290e-01  1.590639e+00  0.000000e+00  1.424e+00
+  6        1.57080  9.825586e-01  1.724353e-01  1.154994e+00  2.540626e-02  9.883e-01
+  6        3.14159  6.565540e-17  2.051153e-01  2.051153e-01  3.981346e-01  3.845e-02
+
+  theta=pi (Savvidy pt): E[H_vv|0]=2.736e-17 (c=cos(pi/2)=0 exact)  E[Phi''|0]=0.205115  Var=0.069121  floor/var=2.411
+  theta=0  (aligned)   : E[H_vv|0]=0.553061  E[Phi''|0]=0.176864  Var=0.000000  Var-1/6=-1.667e-01
+  theta=pi: E[H+Phi'']-1/6 =  3.844863e-02  (floor holds with equality iff H_vv=0 & Phi''=1/6)
+
+[3b] quadrature stability (n=200 vs 400), beta=2.5 th=pi
+   n=200  E[Phi'']=0.205115297123  Var=0.069120586081
+   n=400  E[Phi'']=0.205115297123  Var=0.069120586081
+
+[4] model B (4 links, constant chart direction, beta=2.5): is H_vv indefinite?
+  n=120  min H_vv=-1.893109e+00  max= 1.248426e+00  mean=-1.572741e-01  frac<0=0.600
+  alignment Re tr(U_p K_p)/tr K_p : min=-0.266900  max= 0.946045  mean= 0.391867  frac<0=0.050
+  => H_vv = beta*sum_p (1/2)Re tr(U_p K_p) - beta*sum_p (1/2)Re tr(U_p W'_p),  K_p=H_p^2>=0
+     K_p>=0 = positivity ; U_p = geometric (sign-carrying) factor ;
+     negative alignment => H_vv<0 pointwise => no positive pointwise floor.

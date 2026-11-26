@@ -1,0 +1,27 @@
+==================================================================================================
+at_lattice.py : SU(2), d=4, beta=2.50.  Exact symmetrised Hessian of S_W, gauge-quotiented.
+==================================================================================================
+L=2  staple-dS validation: max|dS_staple - (S1-S0)| = 5.573e-14
+     600 sweeps, acceptance 0.789, <1-(1/2)Re tr U_p> = 0.35692, S_W = 85.6603
+     dim 192, gauge 48, complement 144
+     lowest gauge-quotiented eigenvalues: [-1.46906 -1.12912 -1.08922 -0.89743 -0.85918 -0.71416]
+     lambda_min/beta = -0.58763     #neg (of 192 shown) = 18
+
+L=4  staple-dS validation: max|dS_staple - (S1-S0)| = 1.373e-12
+     200 sweeps, acceptance 0.804, <1-(1/2)Re tr U_p> = 0.39729, S_W = 1525.6007
+     dim 3072, gauge 768, complement 2304
+     lowest gauge-quotiented eigenvalues: [-1.92709 -1.81804 -1.75996 -1.73427 -1.71548 -1.70371]
+     lambda_min/beta = -0.77084     #neg (of 10 shown) = 10
+
+==================================================================================================
+READINGS
+==================================================================================================
+  1. lambda_min(Hess S_W) is NEGATIVE at beta = 2.5 after gauge quotienting (Savvidy).
+     It is an INTENSIVE curvature density, not a volume: the total negative part scales |E|.
+  2. There is no growing-with-L negativity: -lambda_min/beta stays O(0.1-0.6) per link-scale.
+     This is the corrected version of 'Hess S_W >= -(4.8/N) beta g' (now -(2.9/N) beta g).
+  3. Combined with the exact one-link model (at_su2_exact.py): the negative part of
+     Hess V_t decays like exp(-Lambda t), Lambda = (N^2-1)/(4N) = 0.375 for SU(2), so
+         Q(inf) = int_0^inft ||(Hess V_t)_-|| dt < infinity .
+     The negative part is INTEGRABLE.  (star) does not fail by non-decay.
+

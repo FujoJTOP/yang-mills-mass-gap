@@ -1,0 +1,67 @@
+====================================================================================================
+P15  window recalculation:  3x E[H] in O21's c  ->  beta0  ->  theta-window on beta in [2.5,6]
+====================================================================================================
+
+[C1] c(2.5) recomputed from O21's model (independent run of the same quadrature)
+   theta      E[Q|0]=E[H]/beta     E[Phi''|0]      c(2.5)          O21 md table    rel.diff
+    0.0000    2.2122422457e-01    0.1768635672    2.9196965145e-01   0.291970     1.2e-06
+    0.7854    2.0276593616e-01    0.1777155200    2.7385214416e-01   0.273852     5.3e-07
+    1.5708    1.5092433525e-01    0.1808728046    2.2327345709e-01   0.223273     2.0e-06
+    2.3562    7.6807048954e-02    0.1886086078    1.5225049208e-01   0.152250     3.2e-06
+
+[C2] the two c-sets (+ the exact decomposition of a 3x error in E[H])
+   variant A: uncorrected          c_A = E[Q] + E[Phi'']/beta           (O21 as published)
+   variant B: task-literal  /3     c_B = c_A/3                          (whole c divided by 3)
+   variant C: exact propagation    c_C = E[Q]/3 + E[Phi'']/beta         (only H_vv carries the 3x)
+   theta      c_A            c_B=c_A/3      c_C (exact)     c_A/c_C
+    0.0000    0.2919696514    0.0973232171    0.1444868351    2.0207
+    0.7854    0.2738521442    0.0912840481    0.1386748534    1.9748
+    1.5708    0.2232734571    0.0744244857    0.1226572336    1.8203
+    2.3562    0.1522504921    0.0507501640    0.1010457928    1.5067
+
+[C3] c_inf = cos(th/2)/(2N): uncorrected vs 3x-corrected (Phi''/beta -> 0 at beta->inf,
+     so the 3x on c_inf is EXACT: c_inf -> c_inf/3, i.e. beta0 -> 3*beta0)
+   theta     c_inf=cos/4     c_inf/3        c(200) meas.    c(200)/c_inf   c_corr(200)   (c_inf/3)
+    0.0000    0.2500000000    0.0833333333    0.2504176420    1.001671      0.0840284740    0.0833333333
+    0.7854    0.2309698831    0.0769899610    0.2313876057    1.001809      0.0776851592    0.0769899610
+    1.5708    0.1767766953    0.0589255651    0.1771947431    1.002365      0.0596209951    0.0589255651
+    2.3562    0.0956708581    0.0318902860    0.0960900866    1.004382      0.0325865571    0.0318902860
+
+[C4] beta0 = V_inf/c_inf,  V_inf = tan^2(th/2)/36
+     sharp : Var <= V_inf          -> beta0 = (1-x^2)/(9x^3)
+     strict: Var <= 6.51 V_inf     -> beta0 = 6.51*(1-x^2)/(9x^3)
+     corrected (3x on c_inf)       -> multiply either by 3
+   theta     V_inf        c_inf       b0_sharp   b0_sharp_x3   b0_strict  b0_strict_x3
+    0.0000    0.0000000    0.2500000    0.000000      0.000000    0.000000      0.000000
+    0.7854    0.0047659    0.2309699    0.020634      0.061903    0.134330      0.402989
+    1.5708    0.0277778    0.1767767    0.157135      0.471405    1.022948      3.068843
+    2.3562    0.1619008    0.0956709    1.692268      5.076805   11.016666     33.049998
+   cross-check vs O22 md table (sharp): 0.02063 / 0.15713 / 1.69227  -> reproduced above
+
+[C5] theta-windows on beta in [2.5,6]  (theta in units of pi; x=cos(th/2))
+     full = {beta0<=2.5}: whole [2.5,6] closed;  partial = {2.5<beta0<=6}: only [beta0,6];
+     none = {beta0>6}
+   bound              K      x(b0=2.5)  th/pi(b0=2.5)   x(b0=6)   th/pi(b0=6)   verdict
+   sharp                1.00   0.340007     0.77914       0.258536    0.83352      full: th<= 0.7791pi ; partial: (0.7791,0.8335]pi ; none: > 0.8335pi
+   strict               6.51   0.577679     0.60792       0.456910    0.69791      full: th<= 0.6079pi ; partial: (0.6079,0.6979]pi ; none: > 0.6979pi
+   sharp x3             3.00   0.470072     0.68846       0.363923    0.76287      full: th<= 0.6885pi ; partial: (0.6885,0.7629]pi ; none: > 0.7629pi
+   strict x3           19.53   0.735697     0.47371       0.610070    0.58228      full: th<= 0.4737pi ; partial: (0.4737,0.5823]pi ; none: > 0.5823pi
+
+[C6] provenance check: is O21's c on the with-1/N branch or the inflated (no-1/N) branch?
+     O15 log [V3]/[V6] and H1A archive (all at N=2, theta=0, beta=2.5):
+        with 1/N  : H1A archived 0.553061 ; O15 MC 0.553129 ; O21 model 0.553129 (see [C1] EQ*beta)
+        no 1/N    : 2 x that = 1.1062  (would be the inflated branch; contradicted by 3 independent numbers)
+     O15 log [V6] (N=3, Z_N centre, beta=6): with 1/N = 0.1021 ; BETASTAR-N Sec.4 = 0.3060
+        ratio 0.3060/0.1021 = 2.9971  ~ N=3  -> the 3x lives in BETASTAR-N's N=3 column,
+        NOT in O21's N=2 c (O21 has no free N factor: S=beta(1-ReTr/N) with N=2 already).
+     general-N coefficient (exact, rho->0): c_inf = cos(th/2)/(2N) = Re tr U_p/(4N)  [T]
+        N=2 -> cos/4 (O21) ;  N=3 -> cos/6 (1.5x smaller, i.e. beta0 x1.5 at fixed V_inf)
+
+[C7] does the 3x-corrected window still contain theta<0.5pi?  (decision line (a)/(b))
+   sharp x3  : th_c(beta0=2.5) = 0.68846 pi  -> NON-EMPTY, contains 0.5pi
+   strict x3 : th_c(beta0=2.5) = 0.47371 pi  -> EMPTY at 0.5pi
+   (b) would need th_c<0 for every theta, i.e. beta0>2.5 even at theta->0: false, beta0(theta=0)=0 identically.
+
+[C8] convergence (npan 240 -> 480, beta=2.5)
+   theta=0.0000  c: 0.291969651448 -> 0.291969651448
+   theta=1.5708  c: 0.223273457090 -> 0.223273457090

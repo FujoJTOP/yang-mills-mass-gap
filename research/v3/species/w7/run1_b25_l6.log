@@ -1,0 +1,83 @@
+==============================================================================
+RUN1  SU(2) Wilson  beta=2.5  Ls=6^3 x Lt=12  target n=6000 gap=6 therm=400 budget=620.0s
+w1 = A/C(0)  (atom fraction),  Rbar = -C'(0)/C(0) = M1/M0  (first cumulant)
+==============================================================================
+[T] thermalised: 400 sweeps in 1.2s (Ls=6 Lt=12 ns=2592 links=10368)
+  [cfg 1/6000] plaq=0.6547  21.28 cfg/s  eta 4.7 min  wall=1s
+  [cfg 101/6000] plaq=0.6531  20.76 cfg/s  eta 4.7 min  wall=6s
+  [cfg 201/6000] plaq=0.6466  20.81 cfg/s  eta 4.6 min  wall=11s
+  [cfg 301/6000] plaq=0.6543  20.81 cfg/s  eta 4.6 min  wall=16s
+  [cfg 401/6000] plaq=0.6523  20.80 cfg/s  eta 4.5 min  wall=21s
+  [cfg 501/6000] plaq=0.6493  20.78 cfg/s  eta 4.4 min  wall=25s
+  [cfg 601/6000] plaq=0.6556  20.77 cfg/s  eta 4.3 min  wall=30s
+  [cfg 701/6000] plaq=0.6527  20.78 cfg/s  eta 4.3 min  wall=35s
+  [cfg 801/6000] plaq=0.6560  20.77 cfg/s  eta 4.2 min  wall=40s
+  [cfg 901/6000] plaq=0.6497  20.77 cfg/s  eta 4.1 min  wall=45s
+  [cfg 1001/6000] plaq=0.6564  20.76 cfg/s  eta 4.0 min  wall=49s
+  [cfg 1101/6000] plaq=0.6505  20.76 cfg/s  eta 3.9 min  wall=54s
+  [cfg 1201/6000] plaq=0.6587  20.77 cfg/s  eta 3.9 min  wall=59s
+  [cfg 1301/6000] plaq=0.6492  20.77 cfg/s  eta 3.8 min  wall=64s
+  [cfg 1401/6000] plaq=0.6503  20.77 cfg/s  eta 3.7 min  wall=69s
+  [cfg 1501/6000] plaq=0.6508  20.77 cfg/s  eta 3.6 min  wall=73s
+  [cfg 1601/6000] plaq=0.6565  20.78 cfg/s  eta 3.5 min  wall=78s
+  [cfg 1701/6000] plaq=0.6537  20.77 cfg/s  eta 3.4 min  wall=83s
+  [cfg 1801/6000] plaq=0.6469  20.77 cfg/s  eta 3.4 min  wall=88s
+  [cfg 1901/6000] plaq=0.6534  20.77 cfg/s  eta 3.3 min  wall=93s
+  [cfg 2001/6000] plaq=0.6524  20.78 cfg/s  eta 3.2 min  wall=98s
+  [cfg 2101/6000] plaq=0.6554  20.78 cfg/s  eta 3.1 min  wall=102s
+  [cfg 2201/6000] plaq=0.6538  20.78 cfg/s  eta 3.0 min  wall=107s
+  [cfg 2301/6000] plaq=0.6462  20.77 cfg/s  eta 3.0 min  wall=112s
+  [cfg 2401/6000] plaq=0.6596  20.77 cfg/s  eta 2.9 min  wall=117s
+  [cfg 2501/6000] plaq=0.6537  20.77 cfg/s  eta 2.8 min  wall=122s
+  [cfg 2601/6000] plaq=0.6529  20.77 cfg/s  eta 2.7 min  wall=126s
+  [cfg 2701/6000] plaq=0.6543  20.77 cfg/s  eta 2.6 min  wall=131s
+  [cfg 2801/6000] plaq=0.6485  20.77 cfg/s  eta 2.6 min  wall=136s
+  [cfg 2901/6000] plaq=0.6554  20.77 cfg/s  eta 2.5 min  wall=141s
+  [cfg 3001/6000] plaq=0.6512  20.77 cfg/s  eta 2.4 min  wall=146s
+  [cfg 3101/6000] plaq=0.6541  20.78 cfg/s  eta 2.3 min  wall=150s
+  [cfg 3201/6000] plaq=0.6566  20.78 cfg/s  eta 2.2 min  wall=155s
+  [cfg 3301/6000] plaq=0.6544  20.78 cfg/s  eta 2.2 min  wall=160s
+  [cfg 3401/6000] plaq=0.6462  20.78 cfg/s  eta 2.1 min  wall=165s
+  [cfg 3501/6000] plaq=0.6481  20.78 cfg/s  eta 2.0 min  wall=170s
+  [cfg 3601/6000] plaq=0.6515  20.78 cfg/s  eta 1.9 min  wall=175s
+  [cfg 3701/6000] plaq=0.6485  20.78 cfg/s  eta 1.8 min  wall=179s
+  [cfg 3801/6000] plaq=0.6543  20.77 cfg/s  eta 1.8 min  wall=184s
+  [cfg 3901/6000] plaq=0.6493  20.77 cfg/s  eta 1.7 min  wall=189s
+  [cfg 4001/6000] plaq=0.6560  20.77 cfg/s  eta 1.6 min  wall=194s
+  [cfg 4101/6000] plaq=0.6467  20.77 cfg/s  eta 1.5 min  wall=199s
+  [cfg 4201/6000] plaq=0.6547  20.78 cfg/s  eta 1.4 min  wall=203s
+  [cfg 4301/6000] plaq=0.6512  20.77 cfg/s  eta 1.4 min  wall=208s
+  [cfg 4401/6000] plaq=0.6487  20.77 cfg/s  eta 1.3 min  wall=213s
+  [cfg 4501/6000] plaq=0.6510  20.77 cfg/s  eta 1.2 min  wall=218s
+  [cfg 4601/6000] plaq=0.6531  20.77 cfg/s  eta 1.1 min  wall=223s
+  [cfg 4701/6000] plaq=0.6569  20.77 cfg/s  eta 1.0 min  wall=228s
+  [cfg 4801/6000] plaq=0.6545  20.77 cfg/s  eta 1.0 min  wall=232s
+  [cfg 4901/6000] plaq=0.6487  20.77 cfg/s  eta 0.9 min  wall=237s
+  [cfg 5001/6000] plaq=0.6531  20.77 cfg/s  eta 0.8 min  wall=242s
+  [cfg 5101/6000] plaq=0.6503  20.78 cfg/s  eta 0.7 min  wall=247s
+  [cfg 5201/6000] plaq=0.6560  20.78 cfg/s  eta 0.6 min  wall=252s
+  [cfg 5301/6000] plaq=0.6448  20.78 cfg/s  eta 0.6 min  wall=256s
+  [cfg 5401/6000] plaq=0.6547  20.77 cfg/s  eta 0.5 min  wall=261s
+  [cfg 5501/6000] plaq=0.6516  20.77 cfg/s  eta 0.4 min  wall=266s
+  [cfg 5601/6000] plaq=0.6529  20.76 cfg/s  eta 0.3 min  wall=271s
+  [cfg 5701/6000] plaq=0.6500  20.76 cfg/s  eta 0.2 min  wall=276s
+  [cfg 5801/6000] plaq=0.6530  20.76 cfg/s  eta 0.2 min  wall=281s
+  [cfg 5901/6000] plaq=0.6573  20.76 cfg/s  eta 0.1 min  wall=286s
+[E] configs kept: 6000  wall=290s  plaq=0.65270 +- 0.00005
+[T] t0 autocorr of plaq series: lag1:0.062, lag2:0.008, lag4:0.005, lag8:0.017
+
+  lvl       C(0)    C1/C0    C2/C0   m_fit        A   w1=A/C0   w1_err  SNR(t=2)    Rbar  Rbar_fd    <t>
+  raw     8.4050  0.08076  0.01208   1.988   4.9598    0.5901   0.1875       3.5  2.5163   1.3445  0.816
+ APE1    16.0442  0.00983 -0.00121   4.000   8.5870    0.5352   0.7370      -0.2  4.6227   1.4797  0.157
+ APE2    23.3875  0.00337  0.00086   0.050   0.0356    0.0015   0.0011       0.2  5.6924   1.4937  0.096
+ APE3    18.6825  0.00408  0.00081   0.050   0.0334    0.0018   0.0010       0.2  5.5014   1.4922  0.135
+ APE4    12.7486 -0.00169 -0.00740   0.900  -0.1002   -0.0079   0.0122      -2.1 690.7755   1.4997  0.014
+
+[C] overlap |rho| of the level operators on the t=2 slice (off-diag ~ orthogonality):
+     raw  1.000  0.462  0.165  0.038 -0.042
+    APE1  0.462  1.000  0.812  0.479  0.037
+    APE2  0.165  0.812  1.000  0.820  0.240
+    APE3  0.038  0.479  0.820  1.000  0.651
+    APE4 -0.042  0.037  0.240  0.651  1.000
+
+[wall] total 290.7s ; wrote run1_b25_l6.npz / .json

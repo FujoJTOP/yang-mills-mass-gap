@@ -1,0 +1,27 @@
+[P14] L=2 SU(2) beta=2.5 mode=A  nsw=10000 burn=800 eps=0.9 G=4 seeds=[500, 501, 502, 503] wall=206.0s (19.08 ms/sweep all 4 chains)
+[P14] acc_link=[0.417 0.416 0.415 0.415]  |<v,X>|max=1.11e-14 (exact constraint)
+  g=0 seed=500 E[kappa]=+2.2638 Cov=-0.0095  VarG=+1.6105  VarPhi'=+0.0577  Var(G+Phi')=+1.6492  E[Phi'']=+1.9298  E[H_vv]=+0.3340  E[G]=+0.0088  E[Phi']=-0.0055  corr=-0.0312
+D:\Dev\math\w7\p14_cov.py:133: RuntimeWarning: invalid value encountered in scalar divide
+  cov / np.sqrt(vG * vP)])
+  g=1 seed=501 E[kappa]=+2.2558 Cov=+0.0019  VarG=+1.5354  VarPhi'=+0.0553  Var(G+Phi')=+1.5944  E[Phi'']=+1.9306  E[H_vv]=+0.3252  E[G]=+0.0074  E[Phi']=-0.0015  corr=+0.0065
+  g=2 seed=502 E[kappa]=+2.2605 Cov=+0.0079  VarG=+1.4578  VarPhi'=+0.0666  Var(G+Phi')=+1.5401  E[Phi'']=+1.9257  E[H_vv]=+0.3348  E[G]=-0.0045  E[Phi']=+0.0098  corr=+0.0252
+  g=3 seed=503 E[kappa]=+2.2694 Cov=+0.0093  VarG=+1.5352  VarPhi'=+0.0491  Var(G+Phi')=+1.6027  E[Phi'']=+1.9465  E[H_vv]=+0.3229  E[G]=+0.0683  E[Phi']=-0.0107  corr=+0.0337
+
+[POOLED] n=40000 samples (4 chains x 10000)  tau_G=1.0 tau_Phi'=1.0 tau_(G Phi')=1.0  Neff=40000
+  Cov            =  +0.002203  +- 0.003439 (jk, 100 blocks)   [tau-series sigma: 0.001420]
+  VarG           =  +1.535516  +- 0.033986 (jk, 100 blocks)   [tau-series sigma: -]
+  VarPhi'        =  +0.057218  +- 0.003924 (jk, 100 blocks)   [tau-series sigma: -]
+  Var(G+Phi')    =  +1.597139  +- 0.033729 (jk, 100 blocks)   [tau-series sigma: -]
+  E[Phi'']       =  +1.933167  +- 0.005253 (jk, 100 blocks)   [tau-series sigma: -]
+  E[H_vv]        =  +0.329215  +- 0.002563 (jk, 100 blocks)   [tau-series sigma: -]
+  E[G]           =  +0.019996  +- 0.029531 (jk, 100 blocks)   [tau-series sigma: -]
+  E[Phi']        =  -0.001959  +- 0.004900 (jk, 100 blocks)   [tau-series sigma: -]
+  corr           =  +0.007432  +- 0.011660 (jk, 100 blocks)   [tau-series sigma: -]
+  Cov/3-sigma: +0.64 (jk)   +1.55 (tau)
+  per-chain Cov = [-0.00951  0.00189  0.00786  0.00925]  mean=+0.002373 grp_err=0.004270 spread=0.008540
+  window stability: Cov(1st half)=+0.00733   Cov(2nd half)=-0.00326
+
+
+[BOOKKEEP] W_full = E[Phi''] + VarG - Var(G+Phi') = +1.8715   = E[Phi''] - VarPhi' - 2Cov = +1.8715
+  cross part -VarPhi'-2Cov = -0.0616   C-S bound |Cov| <= sigma_G sigma_Phi' = 0.2964
+total elapsed 207.1s

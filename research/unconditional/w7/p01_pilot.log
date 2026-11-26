@@ -1,0 +1,9 @@
+[P01] validate: |dV|=0.00e+00  |dtr|=2.22e-16  (L=3, 324 links, 486 plaq)
+[P01] L=3 tag=PILOT ns=250 burn=200 eps=0.9 G=4 seeds=[500, 501, 502, 503] NL=324 NPQ=486
+[P01] wall=47.9s (106.37 ms/sweep for 4 chains) acc_link=[0.151 0.149 0.15  0.149] domain-reject=0.0000 final r: mean=0.739 max=2.067 (2pi=6.283)
+   g=0 seed=500 acc=0.151 E[kappa]=+557912197.1394 Var(F)=0.1809 E[F]=-0.0731 Delta=+557912196.9586 sig_jk=5771828.8360 sig_tau=10647124.7549 tauK=11.6 tauF=9.3 Neff=21 E[H]=+557912196.9696 E[Phipp]=+0.1698 Var(Fw)=0.1808 Var(Fphi)=0.0000
+   g=1 seed=501 acc=0.149 E[kappa]=+549758127.1677 Var(F)=0.1188 E[F]=-0.0263 Delta=+549758127.0489 sig_jk=4289179.0455 sig_tau=10593901.6464 tauK=14.8 tauF=5.6 Neff=17 E[H]=+549758126.9979 E[Phipp]=+0.1698 Var(Fw)=0.1188 Var(Fphi)=0.0000
+   g=2 seed=502 acc=0.150 E[kappa]=+554621328.6864 Var(F)=0.1624 E[F]=+0.0658 Delta=+554621328.5240 sig_jk=6805509.2187 sig_tau=15292597.7972 tauK=22.8 tauF=12.5 Neff=11 E[H]=+554621328.5166 E[Phipp]=+0.1698 Var(Fw)=0.1624 Var(Fphi)=0.0000
+   g=3 seed=503 acc=0.149 E[kappa]=+540351975.1624 Var(F)=0.1154 E[F]=-0.0493 Delta=+540351975.0471 sig_jk=5093167.0665 sig_tau=8800956.3042 tauK=8.5 tauF=4.6 Neff=30 E[H]=+540351974.9927 E[Phipp]=+0.1697 Var(Fw)=0.1153 Var(Fphi)=0.0000
+[P01] COMBINED G=4: E[kappa]=+550660907.0390 Var(F)=0.1471 E[F]=-0.0207 E[H]=+550660906.8692 E[Phi'']=+0.1698 Delta=+550660906.8946 sig_jk=2783504.6646 (+197.83s) sig_tau=5792842.5497 (+95.06s) sd_between=3822687.0388 Var(F)/chain std=0.0324
+[P01] L2=L^4=81 Delta_norm=L^2*Delta=+4955948162.0517 total_wall=47.9s

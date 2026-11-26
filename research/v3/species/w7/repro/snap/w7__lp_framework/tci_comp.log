@@ -1,0 +1,116 @@
+====================================================================================================
+[A] BOGOLIUBOV / SYMPLECTIC SIGN LEMMA:  H = p^2/2 + w^2 q^2/2 + c(pq+qp) = (p+2cq)^2/2 + (w^2-4c^2) q^2/2
+    => every canonical lift shifts w^2 -> w^2 - 4c^2 <= w^2 : the lift can only LOWER the curvature.
+====================================================================================================
+         c                     spec(H1) low3                     spec(H2) low3  sqrt(w^2-4c^2)
+      0.00   [  0.50000  1.50000  2.50000]   [  0.50000  1.50000  2.50000]            1.00000
+      0.10   [  0.48990  1.46969  2.44949]   [  0.48990  1.46969  2.44949]            0.97980
+      0.20   [  0.45826  1.37477  2.29129]   [  0.45826  1.37477  2.29129]            0.91652
+      0.40   [  0.30000  0.90000  1.50000]   [  0.30000  0.90000  1.50000]            0.60000
+   => spectra agree (unitary/squeeze equivalence) and the frequency is 2x reduced by c;
+      c=0 is the maximum.  NO symplectic/Feshbach/Bogoliubov lift can be a POSITIVE compensation. [T]
+
+====================================================================================================
+[B] COMPENSATION vs ELIMINATION on the 4D L=1 Savvidy model (SU(2), beta=2.5)
+    H = [[h_n, c^T],[c, K]];  in-block (COMPENSATION) curvature h_n  vs  Schur (ELIMINATION)
+    Sigma = h_n - c^T K^-1 c .   Lemma: Sigma <= h_n - ||c||^2/lam_max(K)  =>  Sigma <= h_n .
+====================================================================================================
+    field c  h_n(comp) gamma=lmin K  c^T K^-1 c Sigma(elim)  TCI?   elim?
+       0.00     0.1667       0.1667      0.0000      0.1667    OK      OK
+       0.20     0.1853       0.1420      0.0049      0.1804    OK      OK
+       0.30     0.2081       0.1113      0.0241      0.1840    OK      OK
+       0.40     0.2388       0.0689      0.0793      0.1596    OK      OK
+       0.45     0.2570       0.0434      0.1344      0.1226    OK      OK
+       0.50     0.2767       0.0151      0.2235      0.0532    OK      OK
+       0.52     0.2850       0.0030      0.2741      0.0109    OK      OK
+       0.53     0.2892      -0.0032          --          --    OK   UNDEF
+       0.54     0.2935      -0.0095          --          --    OK   UNDEF
+       0.55     0.2978      -0.0159          --          --    OK   UNDEF
+       0.60     0.3203      -0.0496          --          --    OK   UNDEF
+       0.80     0.4192      -0.2086          --          --    OK   UNDEF
+       1.00     0.5233      -0.4014          --          --    OK   UNDEF
+       1.50     0.7280      -0.9738          --          --    OK   UNDEF
+   => in-block (COMPENSATION) curvature h_n > 0 on the whole scan, min +0.1667 (= N/12 at the
+      flat point), and F-MONOTONE INCREASING (h_n = 0.167 -> 0.728 for c = 0 -> 1.5).
+      eliminated (Schur) curvature: Sigma = +0.0109 at c = 0.52 (last point with
+      gamma>0), then K goes INDEFINITE at c_gamma ~ nan and the Schur form is UNDEFINED.
+      => elimination dies exactly at gamma=0 (c_gamma ~ nan); compensation has no such
+      threshold and survives to c = 1.5 (3x further), still positive. [V]
+
+   random-block check of  Sigma <= h_n  (i.e. elimination can never RAISE the in-block form):
+      Sigma <= h_n on all tested blocks: True
+
+====================================================================================================
+[C] 2 PLAQUETTE / 2x2 SU(2) cross block, flat boundary, Haar-importance sample M=60000
+    dim H = 12 (4 free links x 3).  Hess V = beta*Hess S_W + Hess Phi, Phi EXACT, Phi''>=N/12.
+====================================================================================================
+   exact check: min over samples of lam_min(Hess Phi) = 0.166680   (N/12 = 0.166667)   -> Phi'' >= N/12 : True
+   median lam_min(Hess Phi) = 0.1781
+
+    beta   ESS%  E[n_-]  P(n_->0)  med lam_min V  P(lam_min<0)  med mu3  P(mu3>=0)  |lam|/lamPhi
+    0.50   77.5    0.14     0.129         0.0630         0.129  -0.0415      0.285         1.169
+    1.00   37.4    1.15     0.682        -0.0560         0.682  -0.1846      0.103         1.972
+    1.50   13.9    1.55     0.787        -0.1255         0.787  -0.2609      0.076         2.401
+    2.00    5.2    1.67     0.829        -0.1618         0.829  -0.2979      0.071         2.609
+    2.50    2.1    1.70     0.851        -0.1796         0.851  -0.3183      0.070         2.723
+    3.00    0.9    1.70     0.849        -0.1979         0.849  -0.3276      0.083         2.775
+    4.00    0.2    1.63     0.788        -0.2044         0.788  -0.3562      0.116         2.936
+
+   beta=2.5 detail:  quantiles of lam_min(Hess V) (the TCI margin under K=Hess Phi):
+      q0.05 = -0.6745
+      q0.25 = -0.3529
+      q0.50 = -0.1796
+      q0.75 = -0.0511
+      q0.95 = +0.0921
+   P(lam_min<0)= 0.851   =>  (TCI) with K=Hess Phi FAILS on this fraction of the measure at beta=2.5
+   n_- values (weighted):  {0: 0.149, 1: 0.272, 2: 0.389, 3: 0.127, 4: 0.047, 5: 0.014}
+
+   beta-scan: med lam_min(Hess V) = [ 0.063 -0.056 -0.126 -0.162 -0.18  -0.198 -0.204]  at beta = [0.5 1.  1.5 2.  2.5 3.  4. ]
+              P(lam_min<0)        = [0.129 0.682 0.787 0.829 0.851 0.849 0.788]
+   => TCI (K = Hess Phi, the only pointwise-uniform positive lift) holds with a positive
+      margin only for beta < beta_c ~ 0.76  (crossing of the median); FALSE at the head 2.5. [V]
+
+   dimension bookkeeping (the object mismatch): at a Savvidy saddle dim H_- ~ (gB)^2 V/8pi^2
+   (extensive), while on the beta=2.5 measure E[n_-] is the O(1) number in the table above.
+
+====================================================================================================
+[D] COMPENSATION IDENTITY on the lattice: V''(a*) = (d-2) cF  and  V''(a*) - cF = (d-3) cF
+    exact for V = -cF a^2/2 + lam_d a^d (stationarity + homogeneity).  Quartic (d=4) => 2 cF.
+====================================================================================================
+     d      a*^2      cF      V(a*)      V-cF   (d-3)cF
+     3    0.2268    1.00    1.00000   0.00000   0.00000
+     4    0.3571    1.00    2.00000   1.00000   1.00000
+     5    0.4338    1.00    3.00000   2.00000   2.00000
+     6    0.4880    1.00    4.00000   3.00000   3.00000
+   => the compensation V''(a*)-cF = (d-3)cF is (i) >= 0 for every d>=3, (ii) EXACTLY ZERO for a
+      cubic anharmonicity, (iii) proportional to cF=g|B| => NOT F-independent in magnitude,
+      only in the RATIO V''(a*)/cF = d-2. [T]
+
+   ray scan V(X_i + a phi) along the softest eigenvector phi of Hess V at X_i, beta=2.5.
+   (the exponential chart is the ball |xi_link| < 2pi; beyond it Phi=-log J is undefined)
+           case  lam_min V   cF=-V0"  a_chart  V(a_ch)-V0     lam4  a*,extrap    V"(a*)    V"-cF
+   savvidy-like    -2.0268    2.0268    8.000    -17.7399   0.0103     14.005    4.0537   2.0268
+         median    -0.8254    0.8254    7.526     18.3070   0.0092      9.461    1.6509   0.8254
+   => the extrapolated condensate well a* is FAR outside the accessible ball (a* ~ 9-14 while the
+      rays are sampled to |a|<=8), and the predicted margin there is (d-3)cF = cF.
+      So the compensation V''(a*) = cF + R''(a*) with R''>0 is REAL, but it is a LARGE-FIELD
+      object: no small block reaches it.  That is why every small-volume witness (this one
+      included) sees only the negativity �� and why the compensation cannot be tested on 2 plaq.
+   => on the lattice the well curvature exceeds the tachyonic depth, V''(a*)-cF > 0, and the
+      positive source is the condensate amplitude |a*|^2 itself: V''(a*) = cF + R''(a*).
+
+====================================================================================================
+[E] ACID TEST and the VACUITY DEFECT of the literal (TCI)
+====================================================================================================
+   (TCI) quantifies 'for all unit phi in H_-'.  H_- is DEFINED by the Hessian
+   (H_- = negative spectral subspace).  Free massless field: Hess V = (k^2 + N/12) I > 0
+   => H_- = {0} => the quantifier is EMPTY => (TCI) holds VACUOUSLY, it does not 'return 0'.
+      free field k= 1.0: lam_min(Hess V) =  1.1667 > 0  =>  dim H_- = 0
+      free field k= 0.3: lam_min(Hess V) =  0.2567 > 0  =>  dim H_- = 0
+      free field k= 0.1: lam_min(Hess V) =  0.1767 > 0  =>  dim H_- = 0
+      free field k= 0.0: lam_min(Hess V) =  0.1667 > 0  =>  dim H_- = 0
+   => the literal form PASSES the charter-3 acid test VACUOUSLY (a false-positive mode).
+      Fix: quantify over a BACKGROUND-defined H_-^{fix} (dim ~ (gB)^2 V/8pi^2, fixed by F),
+      and require dim H_-^{fix} >= 1 .  Then F = 0 gives cF = 0 and the inequality 0 >= mu fails. [T]
+
+TCI-comp: done.  No QED.  Clay 0%.

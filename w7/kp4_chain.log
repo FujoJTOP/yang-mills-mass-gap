@@ -1,0 +1,33 @@
+pool R=18: 473334 plaquettes
+[H] beam n=2..10 (width 120), start p0
+  n=2: 20 candidates -> best |phi|=1 (1.000000)  [0.0s]
+  n=3: 458 candidates -> best |phi|=2 (1.259921)  [0.0s]
+  n=4: 4346 candidates -> best |phi|=6 (1.565085)  [0.0s]
+  n=5: 5696 candidates -> best |phi|=24 (1.888175)  [0.1s]
+  n=6: 6662 candidates -> best |phi|=120 (2.220906)  [0.3s]
+  n=7: 7559 candidates -> best |phi|=240 (2.187914)  [0.8s]
+  n=8: 7575 candidates -> best |phi|=924 (2.348059)  [2.3s]
+  n=9: 9245 candidates -> best |phi|=5712 (2.614694)  [9.1s]
+  n=10: 10067 candidates -> best |phi|=25080 (2.753802)  [31.0s]
+
+[H] best-at-n table
+  n= 2  max|phi|>=       1  m^(1/n)=1.000000
+  n= 3  max|phi|>=       2  m^(1/n)=1.259921
+  n= 4  max|phi|>=       6  m^(1/n)=1.565085
+  n= 5  max|phi|>=      24  m^(1/n)=1.888175
+  n= 6  max|phi|>=     120  m^(1/n)=2.220906
+  n= 7  max|phi|>=     240  m^(1/n)=2.187914
+  n= 8  max|phi|>=     924  m^(1/n)=2.348059
+  n= 9  max|phi|>=    5712  m^(1/n)=2.614694
+  n=10  max|phi|>=   25080  m^(1/n)=2.753802
+
+[I] the n=11 two-bundle graph: structure + exact phi
+  |B0|=6 |B1|=6 shared=1 n=11
+  cross edges between the two 5-sets (cut vertex removed): 0
+  |E|=34  phi^U=125400  |phi|^(1/11)=2.907245
+  block-product (cut vertex) would be 120^2=14400;  actual/14400 = 8.708
+
+[J] cut-vertex test: is the shared plaquette a cut vertex? (5-set adjacency)
+  shared index {6}, deg inside set = 10
+
+elapsed 47.1s

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": "mimosa-hook-status/v1",
+  "recordedAt": "2026-11-26T04:28:49.114Z",
+  "sessionId": "sess_422eba71-6ec5-4373-8ae8-3543ec440e24",
+  "event": "PostToolUse",
+  "toolName": "Edit",
+  "file": "research/v3/species/w7/gw7_fixeda.py",
+  "outcome": "clear",
+  "coverage": "complete",
+  "findingCount": 0,
+  "durationMs": 14,
+  "hostState": "hook_complete",
+  "reportHint": ".mimosa/reports/"
+}

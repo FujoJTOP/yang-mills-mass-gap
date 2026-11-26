@@ -1,0 +1,252 @@
+% =====================================================================
+%  §4  Five conditions $\to$ one target
+% =====================================================================
+\section{Five conditions $\to$ one target: only $C5$'s rate uniformisation survives}
+\label{sec:five}
+
+The paper lists five requirements the ``machine'' must meet (non-perturbative, sign-controlling lower
+bound, non-circular, acid-tested, $(L,a)$-uniform). This section is pure bookkeeping: the five are
+\emph{not} five independent axes, and scoring them as five manufactures free progress. After the
+individual verdicts exactly one survives, and it has a name.
+
+\subsection{The five, one by one}
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}l l X l@{}}
+\toprule
+\textbf{Condition} & \textbf{Grade} & \textbf{Family of the immune graph / ceiling} & \textbf{Source}\\
+\midrule
+$C1$ non-perturbative & \LN{} (class level) & families 46/47/48/53/54/55; ceiling \textbf{R6}: Balaban stops at
+$g^{2}=1=\tH/(2N)$, short by $2.47\times$ (physical point) / $18\times$ (lower edge) & \code{ch13}:105--119\\
+$C2$ sign-controlling bound & \LN{}+\LM & families 49/50/56/57, plus \code{OS-positivity} $\not\Rightarrow$
+exponential decay; no row in the ceiling table, the ceiling $=$ H1 itself & \code{ch13}:494--508\\
+$C3$ non-circular & \LT{}+\LM & family 47 (presupposing the conclusion is one of the death modes); form
+satisfied, content (isolation $s_2$) not computable & \code{ch13}:509--513\\
+$C4$ acid test & \LE & family 46-acid branch/49/51; the instrument idles (it quantifies over the empty set) & \code{ch13}:514--536\\
+$C5$ $(L,a)$-uniform & \LM & the whole R1--R6 table (built for it); best row \textbf{R4} (TRG, HS norm) $2.9\times$ & \code{LOOP-RUNBOOK}:363--372\\
+\bottomrule
+\end{tabularx}
+\caption{The five conditions as they stand. Four already have family-level verdicts; the fifth has a
+verdict on its import face only, and none on its residual face.}
+\label{tab:five}
+\end{table}
+
+\src{The conditions are quoted verbatim from \code{docs/paper-v2/ch13-machine.tex}:12--30, which is
+word for word the list of \code{docs/PROOF-SKELETON.md}:74--76 (so there is no conflict of standards);
+family numbers from \code{research/v3/species/H1B-FIVE.md} \S1--\S2 and
+\code{LOOP-RUNBOOK.md}:1118--1135, :1546--1551.}
+
+\noindent
+One erratum that must be recorded: the $8.9\times$ of $R1$ has been corrected to $19$--$20\times$
+(the paper itself writes ``an earlier figure of $8.9\times$ made the same conversion slip''). \LT
+\src{\code{docs/paper-v2/ch13-machine.tex}:194--195; \code{H1B-FIVE.md} \S C5; the root cause of the
+conversion is \code{BETA-CONVENTION.md} and errata rows 4 and 10 of \S\ref{sec:errata}.}
+
+\subsection{Logical relations: one implication, one restatement, two filters}
+
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{$C5\Rightarrow C2$.} $C2$ is ``produce a lower bound
+      $m_{\mathrm{eff}}^{2}(k\to0)\ge\lambda>0$''; $C5$ is ``that bound is uniform in $(L,a)$ and
+      survives the continuum limit''. $C5$ is $C2$ \emph{plus axis qualifications}: every tool that
+      satisfies $C5$ satisfies $C2$, and not conversely. \LC
+      \src{\code{ch13}:17--20 and :27--29; \code{H1B-FIVE.md} \S4.1.}
+\item \textbf{$C2$'s window coordinate is a restatement.} The paper says the ratio is ``not an
+      independent half'' and that its upper half ``is a floor statement inheriting H1''. Hence the
+      window supplies no independent half of $C2$. \LT
+      \src{\code{ch13}:494, :504; \code{H1B-FIVE.md} \S4.2.}
+\item \textbf{$C3$ and $C4$ are filters, not propositions.} The originals read ``must not assume''
+      and ``must \emph{fail}'': neither can be refuted nor supported, only violated by a candidate. \LT
+      \src{\code{ch13}:21--26; \code{H1B-FIVE.md} \S4.3.}
+\item \textbf{$C1$ follows from $C5$ inside the setting (not a purely formal implication).} At
+      $\beta\approx2.5$, $g\approx1.5$ there is no small parameter, so any bound uniform in $(L,a)$
+      there cannot be the product of a convergent expansion. \LC
+      \src{\code{ch13}:14--16, :105--119; \code{H1B-FIVE.md} \S4.1, last paragraph.}
+\end{enumerate}
+
+\begin{keybox}
+\textbf{An accounting error, established.} The corpus scores the five as independent axes
+(\code{BC-BETHE.md}:193, the five-condition scorecard in \S5; \code{LF-LASTFOUR.md}:79/130/184/273,
+``1.5/5'', ``1/5'', ``2/5''; \code{MG-META.md}:240/254/266; \code{SDP-CERT.md}:295), while the same
+corpus also writes that the five are several spellings of one object. Treating $C1$/$C3$ as
+independent scoring axes manufactures free progress: any formal construction automatically passes
+$C1$ (it does not expand) and $C3$ (it presupposes nothing), so ``$2/5$'' may equal zero content. \LN
+\end{keybox}
+\src{\code{H1B-FIVE.md} \S4.4; \code{LOOP-RUNBOOK.md} \S11.33 (lines 1739--1744).}
+
+\noindent
+\textbf{The correct convention.} There is one substantive axis (the single lower bound that $C5$
+contains together with $C2$); $C3$/$C4$ are scored \textsc{pass}/\textsc{fail}; $C1$ follows from
+$C5$ inside the setting and is listed separately as an \emph{admission} condition. \LT
+\src{\code{H1B-FIVE.md} \S4.4, last paragraph.}
+
+\subsection{The only target: one name, five spellings}
+
+\begin{keybox}
+\textbf{The only substantive target} $=$ the \textbf{rate uniformisation} of $C5$
+$=$ the corpus object $d5$\,/\,$(CP)$
+$=$ ``the mechanism that transports a rate in lattice units into a physical rate'' (the
+\textbf{cross-scale transport machine} of \code{L3})
+$=$ $p=1$ as decided in \code{A7} (the exponent must equal $1/(2b_0)$)
+$=$ the contradiction of \code{t3}: ``$ma\ge r$'' and ``$\xi/a\to\infty$'' point in strictly opposite
+directions. \LM
+\end{keybox}
+\src{\code{H1B-FIVE.md} \S3; \code{LOOP-RUNBOOK.md} \S11.34 (lines 1746--1759): five independent
+routes (\code{t3}/\code{l3}/\code{a7}/\code{h1b}/\code{BC-BETHE}) converge on the same name. The paper
+itself marks it \textbf{untouched} \code{[M]} in \code{ch13}:171--173.}
+
+\noindent
+Why it is not ``one more constant to tune'': the chain is $\mathrm{RP}\Rightarrow \mathrm{KP}(a)
+\Rightarrow$ exponential clustering $\Rightarrow$ KL, and what it delivers is ``gap $\ge a$'' where $a$
+is in \emph{lattice} units, while near the root $\xi/a\approx0.5$--$1.3$ shows \textbf{no scale
+separation}. Turning ``gap $\ge a$'' into ``gap $\ge c\Lambda$'' is not a matter of a better constant
+but of a mechanism that changes units. \LM
+\src{\code{ch13}:170--173; \code{H1B-FIVE.md} \S3, first item.}
+
+\subsection{What it lacks (item by item, no vague language)}
+
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{A mechanism transporting a lattice rate into a physical one}: $\xi/a\approx0.5$--$1.3$,
+      no scale separation. \LM
+\item \textbf{A replacement for that single triangle inequality}: in $\rho=N/2-C^{*}N\beta$ the $N/2$
+      is the \emph{exact} $\mathrm{SU}(N)$ Einstein constant (zero slack), while the remaining
+      $8(d-1)$ sit entirely inside one triangle inequality whose configuration supremum $C^{*}$ is
+      saturated by the maximal centre vortex ($d=2$: $8.000000$; $d=4$: $[16,24]$) $\Rightarrow$
+      replacing it \emph{is} H1. \LT
+      \src{\code{LOOP-RUNBOOK.md}:368, :377; \code{ch13}:186--197.}
+\item \textbf{The continuum limit}: $1/32$ is a number obtained after converting $\beta_A$ into
+      $\beta_W$; it is not a family that can be pushed to $a\to0$. \LM
+      \src{\code{ch13}:192--195; \code{app:erratum-radius} records the two old mistakes $75\times$ and
+      $1/24$.}
+\item \textbf{Measurability (not computing power)}: $L=4$ gives $\rho^{2}=41.9\pm46.0$ (error larger
+      than the value) and $L=6$ shows no plateau; the free-field control
+      $\rho^{2}_{\mathrm{free}}=2<4$ has \emph{no} mass gap, so the criterion cannot separate free from
+      interacting. \LE
+      \src{\code{ch13}:646--658; \code{GEVP-4D.md}.}
+\item \textbf{The time-integrability half}: after the BD books are fixed, the gap moves to an
+      $L$-uniform bound on $\|\operatorname{Cov}_{\mu_{t,x}}(\nabla S_W)\|_{\mathrm{op}}$ at
+      intermediate $t$, plus integrability in time; both endpoints are proved ($t=0$ is exactly $0$;
+      $t=\infty$ is strictly $\le6\beta$). This is the \emph{narrowest} gap of the campaign: it
+      contains no volume. \LM
+      \src{\code{LOOP-RUNBOOK.md} \S9.4, last paragraph (lines 530--535).}
+\end{enumerate}
+
+\subsection{The cheap side is already closed: a quantitative no-go}
+
+To obtain $C5$ from the arithmetic / polymer side one needs the per-plaquette weight decay rate to
+exceed the surface entropy. The per-plaquette rate of $w_\beta(S)$ is
+$c(\beta)=-\log u=\kappa+\sigma a^{2}/\pi$, and the entropy exponent of plaquette clusters is
+$\kappa\in[1.4012,\,4.3307]$ (the lower bound $\kappa_{\min}=1.40$ of $q4$ is an effective bound). At
+the physical coupling
+\begin{equation}
+  c(2.5)=0.679,\qquad \frac{c(2.5)}{\kappa_{\min}}=\frac{0.679}{1.40}\approx0.49 ,
+\end{equation}
+i.e.\ \textbf{the decay rate is only half the entropy} $\Rightarrow$ the polymer expansion diverges at
+the physical coupling. \LN
+\src{\code{Q4-LOGCONVEX.md}, as reported in \code{LOOP-RUNBOOK.md} \S11.38 (lines 1825--1849); the
+interval for $\kappa$ is from \code{Q5-KAPPA.md} and \S11.40.}
+
+\noindent
+Moreover the ``surviving branch'' of that criterion is circular: $c>\kappa \iff \sigma>0 \iff$ area
+law. \LN
+\src{\code{LOOP-RUNBOOK.md} \S11.38(1) (``tautology: yes'').}
+
+\subsection{Twelve roads, each with its number}
+\label{sec:twelve}
+
+The negative asset of the same wave is a list of routes that cannot work, each ended by a number
+rather than by an impression. Ten were already in force; two are new, and both are of the kind that
+matters --- a route that turns out to be the criterion renamed, and a route whose residual turns out
+not to be noise.
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.4cm}
+  >{\raggedright\arraybackslash}p{3.0cm}
+  >{\raggedright\arraybackslash}p{8.4cm}
+  >{\raggedright\arraybackslash}p{2.6cm}@{}}
+\caption{The twelve roads, each with the number that ends it. All twelve are class-level \LN: in every
+row but two the hypothesis is \emph{false}, and in the other two it is satisfied and the channel is
+still too narrow.}\label{tab:twelve}\\
+\toprule
+\# & Road & Why it dies, with the number & Source\\
+\midrule
+\endfirsthead
+\toprule
+\# & Road & Why it dies, with the number & Source\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & Brascamp--Lieb, all directions & the required $\lambda$ is $38$--$44$ times $N/12$ and
+$\mathrm{Hess}(S_{W}+\Phi)$ is indefinite at $\beta=2.5$: the hypothesis fails, not the constant &
+\code{Q02-BL-PHI.md}\\
+2 & ODE / Riccati for $\Gpp$ & $\Gpp$ does not close: $D'\le S'$ is \emph{equivalent} to $G'\ge0$
+($\max|\mathrm{gap}+G'|=2\times10^{-16}$), a tautology that cannot be upgraded; and $D/S$ crosses $1$ at
+$\beta_{c}\approx8$--$11$, with $\beta=6$ already at $0.941$ & \code{Q06-RICCATI.md}\\
+3 & Curvature-dimension, RC-BL & $\mathrm{ess\,inf}\,K_{+}=0$ (the bad set carries $K_{+}\equiv0$;
+$K\ge N/3-|\lambda_{\min}|=-0.893$ for $\mathrm{SU}(3)$), and $\sum\theta_{j}$ cannot be made
+consistent & \code{Q14-RCBL.md}\\
+4 & Sum of squares & the direction-by-direction pairing needs
+$\Var\le N/12-\langle|\lambda_{-}|\rangle=-0.0367<0$ with $\langle\lambda_{-}\rangle=-0.2033$: false for
+every $\Var\ge0$, pure arithmetic & \code{Q12-SOS.md}\\
+5 & Cauchy--Schwarz & loose by $2.6\times$ on the upper side and $40$--$125\times$ on the lower side &
+\code{Q09-COVLOW.md}\\
+6 & Spectral conditions & $\lambda_{k}$ cancels term by term in $E[H]-\Var(G)$; the named criterion
+$\Lambda\preceq I$ holds on $0.00\%$ of configurations ($\lambda_{\max}=\beta=2.5$) while the target
+holds and is an equality & \code{Q15-SPECTRAL.md}\\
+7 & Two-halves decomposition & the $\Phi$-only margin is \emph{exactly} $0$ unconditionally ($1/3$
+against $1/3$, by parts at machine precision), and on the interacting side $\Phi$ turns negative at
+$a>1.588$ & \code{Q01-PHI-ONLY.md}\\
+8 & The $\beta_{0}$ window's small-$B$ bridge & the claimed bound
+$\Var\le\beta^{2}s^{2}(1/2-1/\pi)^{2}/4$ is broken by a counterexample inside its own window: at
+$B=0.5$, $\Psi=0.082919>0.2971B^{2}=0.0743$ & \code{P20-THETA.md} \S6.5\\
+9 & Pure-$\Phi$ quantities as the witness & they do not vanish on the free field:
+$\Var(\Phi')=2.341\times10^{-3}$, i.e.\ $65\%$ of the interacting value, and $E[\Phi'']-N/12$ is
+identical at $\beta=2.5$ and $10^{-6}$ & \code{P21-REBUILD.md}\\
+10 & Statements uniform in $a$ & the negative region grows monotonically in $\beta$: width
+$1.09\to2.26\to3.57\to4.36\to5.22\to5.66$, depth $-0.016\to-22.7$ for $\beta=2\to40$ &
+\code{Q08-LARGEA.md}\\
+11 & Curvature fluctuation $\beta\Var(\partial_{t}h)\le E[\partial_{t}^{2}h]$ & it is the criterion
+renamed ($S_{W}=\beta h$ makes both sides the same ratio) and it fails at $\theta=\pi$ for every
+$\beta>0$: LHS $=0.027648>0=$ RHS, because $H_{vv}\equiv0$ is a pointwise identity &
+\code{R09-FLUCT.md}\\
+12 & Affine reduction $H=K(a)G+C(a)$ & not an identity: $W(G,H)=O(a)\not\equiv0$,
+$W(G',H')\not\equiv0$, the two channels differ $30$-fold ($K_{c}=10.356$ against $K_{s}=0.308$), and the
+residual is $O(a)$ with $\mathrm{relres}/a\to1.43\times10^{-3}$, stable under a fourfold quadrature
+increase & \code{R07-AFFINE.md}\\
+\end{longtable}
+\normalsize
+
+\noindent
+An accounting point about this table, because the temptation with such a list is to count it. \emph{The
+twelve deaths are not twelve independent pieces of evidence.} Rows 1--6 have a common root, stated in
+the corpus as $E[H_{vv}]|_{a\neq0}<0$: every one of the six is a tool that can produce
+``variance $\le$ curvature'' only if that mean curvature can be made positive, and at $a\neq0$ it
+cannot. Rows 7--12 are structural variants of the same obstruction rather than new obstructions. What
+the table therefore establishes is one negative statement with twelve witnesses: \textbf{the missing
+object is a directional, conditioned, sign-carrying lower bound on $E[H_{vv}]$ at $a\neq0$, and no
+classical variance--curvature tool delivers one.} \LN
+\src{Rows 1--10 are \code{LOOP-RUNBOOK.md} \S11.158 (the ten-row table with the same numbers) with
+\S11.136 and \S11.150 (BL and the common root), \S11.149 (SOS) and \S11.152 (the corrected constant
+$C=3.95$, which supersedes both $1.7454$ and $10.05$); rows 11--12 are that day's additions,
+\code{R09-FLUCT.md} \S2--\S4 and \code{R07-AFFINE.md} \S3--\S6; row 8's counterexample is
+\code{P20-THETA.md} \S6 item 5, with the same arithmetic caught independently in
+\code{Q16-CONFLICT.md};
+\code{docs/paper-v2/ch19-h1-status.tex}, subsection ``twelve roads that end'', carries the same table
+inside the ledger.}
+
+\subsection{Conclusion of this section}
+
+\begin{itemize}
+\item Five conditions $\to$ one substantive axis $\to$ one named object: the rate uniformisation of
+      $C5$, i.e.\ $d5/(CP)=p=1$. \LM
+\item That object is \textbf{not} a shape statement: it asks first for ``gap $\ge a$'' (already
+      delivered on the strong-coupling side) and then for a replacement of $a$. It therefore does not
+      conflict with the \LN{} of \S\ref{sec:position} --- the latter closes ``deducing the gap from the
+      shape'', the former wants ``transporting an existing gap''. \LT
+\item It remains untouched by anyone: the paper says \code{untouched} \code{[M]}, and every closure
+      of the day happened elsewhere. \LM
+\end{itemize}
+

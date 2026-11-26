@@ -1,0 +1,109 @@
+============================================================================================
+(0) s1 per model   [s1 := inf supp nu_w ; covariance s1(tau_a nu) = a + s1(nu), B05-DUAL:80]
+============================================================================================
+  2D YM      : E_j=(g^2/2)j(j+1), g^2=1 :  E(0)=0.0  E(1/2)=0.375  E(1)=1.0
+               s1 = 3g^2/8 = 0.375   (exact rational 3/8)
+  M6         : s1 = omega = 1.0 ;  Gpp = Delta_dyn = 2*omega = 2.0 ; f1sq = 1/(2*omega) = 0.5
+  free m=0   : s1 = 0 (k=0 mode) ;  Gpp = 0 , Delta_dyn = 0 , f1sq = 0
+  single plaq: no transfer matrix => nu_w undefined => s1 UNDEFINED  (ATOM2:45, L2C-SD:24)
+============================================================================================
+(1) COVARIANCE TEST (i):  F(tau_a nu) - F(nu)   vs   a      [nu = 0.5*delta_0 + 0.5*delta_1]
+============================================================================================
+  base nu : s1=0.0  mean=0.5  Var=0.25  f1sq=0.5
+
+  candidate                     a=0.1         a=0.5         a=1.0         a=2.0     verdict
+  F = s1 (target)                 0.1           0.5           1.0           2.0     (i) OK   <-- covariant
+  F = mean                        0.1           0.5           1.0           2.0     (i) OK   <-- covariant
+  F = Var                         0.0           0.0           0.0           0.0     (i) FAIL
+  F = f1sq                        0.0           0.0           0.0           0.0     (i) FAIL
+  F = m2                         0.11          0.75           2.0           6.0     (i) FAIL
+  F = 0 (vacuous)                 0.0           0.0           0.0           0.0     (i) FAIL
+
+  => COVARIANT set (i) among all candidates = { F = s1 , F = mean }  (mean shifts by a: B05-DUAL:82 'mean is covariant').
+     Var / f1sq / m2 / const are G1-INVARIANT => for them G = s1 - F shifts by +a:  G(tau_a nu) = G(nu) + a
+     => the spec's second half 'G(tau_a nu) = G(nu)' FAILS for every one of them.  [T]
+     And the covariant pair splits by (ii):  mean - s1 = Var-in-money  >= 0 always (equality iff nu is one atom).
+     => (i) AND (ii) together are met by NO computable moment functional except F = s1 itself.
+============================================================================================
+(2) LOWER-SIDE TEST (ii):  F <= s1 ?    [mean >= s1 always, equality iff nu is a single atom]
+============================================================================================
+  mean - s1 = 0.5  > 0   => (ii) FAILS for the only covariant moment F  (B05:141-143 NG-3)
+  Var = 0.25  vs  s1 = 0.0 :  Var <= s1 is model-dependent => cannot hold for all nu
+============================================================================================
+(3) THIN-ATOM NO-GO (A3-VERDICT:61-69):  finitely-many moments cannot see s1
+============================================================================================
+  base nu = delta at s2 = 1.0   (s1 = 1.0,  m_k = 1.0^k)
+  nu_eps = (eps/(2*lam)) delta_eps + (1-eps/(2*lam)) delta_s2 ,  lam = 1.0
+         eps      s1(nu_eps)         w_eps        |dm1|        |dm2|        |dm3|
+         0.1             0.1          0.05        0.045       0.0495      0.04995
+        0.01            0.01         0.005      0.00495    0.0049995   0.00499999
+       0.001           0.001        0.0005    0.0004995  0.000499999       0.0005
+      0.0001          0.0001        5.0e-5    4.9995e-5       5.0e-5       5.0e-5
+      1.0e-6          1.0e-6        5.0e-7   4.99999e-7       5.0e-7       5.0e-7
+
+  => s1 drops 1 -> eps (an O(1) change) while every moment drifts by O(eps).
+     F continuous in f.g. moments with F <= s1 for ALL nu  =>  F(delta_s2) <= 0 for every s2  =>  F <= 0 on the class
+     => ' 0 < c0 <= F <= s1 ' (spec (6)) is IMPOSSIBLE for any moment-continuous F.  [T]
+============================================================================================
+(3b) THEOREM SG1-1:  (i) covariance  AND  (ii) F<=s1  AND  finite-moment computability = EMPTY  [T]
+============================================================================================
+  proof by the atom family. For any a>0 put  nu_eps^a = (eps/2lam) delta_eps + (1-eps/2lam) delta_a .
+  eps -> 0 : the moment vector converges to that of delta_a ,  but s1(nu_eps^a) = eps -> 0 .
+  (ii) for all eps  =>  F(delta_a) <= 0 .   (i) on atoms =>  F(delta_a) = F(delta_0) + a .
+  => F(delta_0) + a <= 0  for ALL a > 0  =>  contradiction.  qed
+
+         a    s1(nu_eps^a) @eps=1e-6    |dm1| vs delta_a (ii) forces F<=   (i) forces F=   consistent?
+       0.5                    1.0e-6          2.49999e-7          1.0e-6             0.5            NO
+       1.0                    1.0e-6          4.99999e-7          1.0e-6             1.0            NO
+       2.0                    1.0e-6          9.99999e-7          1.0e-6             2.0            NO
+       5.0                    1.0e-6              2.5e-6          1.0e-6             5.0            NO
+  => no F can satisfy both sides.  The only escape is to give up finite-moment computability.
+     Full-moment sequence DOES determine nu (compact support => unique measure) => the unique (i)+(ii) object
+     reachable that way is s1 itself => G = 0.  Finite truncation is exactly what the atom family kills.
+============================================================================================
+(4) FOUR-MODEL TABLE:  G = s1 - F  +  checks (I) G>=0 , (II) G(M6)!=0 , (III) signature
+============================================================================================
+  single plaquette SU(2), beta=2.5  (computed here, own convention fixed explicitly):
+     conv A  E[(dS/dr)/r] over Haar*exp        = 2.059726101    <-- does NOT match corpus (0.589671194)
+     cross-check E[b cos r] - Var[b sin r]        = 0.9911122436
+     conv B  E_cond[(dS/dr)/r | x3=0] (J=(sin r/r)^2) = 2.212242246    <-- compare corpus N02: 0.589671194
+             relative gap = 2.75
+     c0=2.013373  c1=2.0423458   'gap' -log(c1/c0) = -0.014287644   (corpus ATOM2: -0.0143)
+     classical curvature d2S/dr2|_0 = beta = 2.5 (Haar-normalized Gpp-like)
+     s1 = UNDEFINED (no transfer matrix)  =>  G = s1 - F is UNDEFINED on this model
+
+  model                  s1    F=Gpp   F=Ddyn   F=f1sq |    G=Gpp   G=Ddyn   G=f1sq | G>=0 all ?
+  free m=0              0.0      0.0      0.0      0.0 |      0.0      0.0      0.0 | True
+  2D YM               0.375      0.0      0.0      0.0 |    0.375    0.375    0.375 | True
+  M6 (per-a)            1.0      2.0      2.0      0.5 |     -1.0     -1.0      0.5 | False
+  M6 (for-all-v)        1.0      2.0      0.0      0.5 |     -1.0      1.0      0.5 | False
+  single plaq         undef      2.5  2.05973        0 |    undef    undef    undef | undef
+
+  reference rows:
+    F=0  : G = s1 = (0, 0.375, 1.0, undef)  signature (0, +, !=0, undef)
+           -- passes the signature TEXTUALLY, but F carries zero information => G IS the target (NS2-1: circular)
+    F=s1 : G = 0  = (0, 0, 0, undef)  signature (0,0,0,undef) -- passes 4/4 => falls under N09-1
+
+  => every NON-vacuous candidate gives, on M6,  G = 1 - 2 = -1 < 0   => (I) G>=0 FAILS.
+  => every moment-based candidate violates (i) (see (1)) and the only covariant one (mean) violates (ii) (see (2)).
+============================================================================================
+(5) M6:  m6 = min(omega, (2pi/L)^2/2) -> 0   while  G(M6) = omega = 1  (candidate F=0)
+============================================================================================
+  L=8      m6 = 0.30842514
+  L=16     m6 = 0.077106284
+  L=32     m6 = 0.019276571
+  L=64     m6 = 0.0048191428
+  L=128    m6 = 0.0012047857
+  L=256    m6 = 0.00030119642
+  L=512    m6 = 7.5299106e-5
+  L=1024   m6 = 1.8824776e-5
+  => m6 -> 0 while G(M6) = omega = 1:  G is not a function of m at the level of VALUES.
+============================================================================================
+(6) VERDICT
+============================================================================================
+  P1 filter (G>=0 on the whole grid AND G(M6)>0): passes ONLY on the vacuous row F=0, where G = s1 = the target.
+  Non-vacuous rows : (I) fails on M6 (G = -1);  (i) fails for every moment F;  (ii) fails for F = mean.
+  (3) => 'F <= s1 with F >= c0 > 0' is IMPOSSIBLE for every moment-continuous F  => (2)+(6) of the spec cannot hold.
+  (b) TRIGGERED : G obtainable only from the five classes (Gpp / Delta_dyn / Var / f1sq / H1).
+  (c) TRIGGERED for the only surviving (vacuous) option: F = s1-type is the Krein-Birman/SSF transport itself (NS2 §3 row 3).
+  => (b) DEGENERATE.  No (a).  Clay 0%.

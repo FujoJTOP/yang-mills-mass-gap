@@ -1,0 +1,99 @@
+==============================================================================
+r4_kp.py -- R4 : is the 2.12% real, or is the KP criterion used coarsely?
+==============================================================================
+
+[A] exact SU(2) Wilson data
+  beta=0.020833   c0=1.000054254453 c1=0.010417043432 sum(n+1)c_n/e^b-1=+0.00e+00  min_n c_n=8.016e-198
+  beta=0.500000   c0=1.031577221564 c1=0.255249193422 sum(n+1)c_n/e^b-1=+0.00e+00  min_n c_n=2.172e-116
+  beta=1.000000   c0=1.130318207985 c1=0.542990679068 sum(n+1)c_n/e^b-1=+0.00e+00  min_n c_n=1.256e-98
+  beta=2.500000   c0=2.013372996231 c1=2.042345836511 sum(n+1)c_n/e^b-1=+6.66e-16  min_n c_n=3.862e-75
+
+[B] the four numbers, both normalisations, and the four-wall mass
+        beta    u_P3=c1/c0  u_tile=u_P3/2    m1a(u_P3)   m1a(u_tile)
+    0.020833  0.0104164783   0.0052082391    18.257465     21.030054
+    0.500000  0.2474358566   0.1237179283     5.586416      8.359004
+    1.000000  0.4803874477   0.2401937239     2.932649      5.705238
+    2.500000  1.0143902001   0.5071951000    -0.057151      2.715438
+  UC-COMPLETE ��2.2 reads m1a = 4 ln(1/u_P3) = -0.057151 at beta=2.5 as 'the tube reversed'.
+  P3-FOURWALL ��2.1/��4.2-4.3 fixes the per-tile weight at u_tile = c_f/N (Gupta 14.18/21):
+  m1a = +2.7156.  The whole '2.12%' sits in that factor N=2.
+  surrogate roots: beta_tube = u_P3^-1(1)   = 2.446918311
+                   beta_KP   = u_P3^-1(1/2) = 1.044456862
+                   beta_f0   = Phi0^-1(1)   = 0.765528218
+  u_P3(2.5)=1.0143902001  u_tile(2.5)=0.5071951000  2.5/beta_tube=1.02169  ('the 2.12%')
+  u_tile(beta)<1 for EVERY beta (->1 as beta->inf): u_tile(50)=0.970153
+  => 'the four-wall tube does not decay' has NO beta root in the correct normalisation.
+
+[C] exact polymer weight of a closed surface (explicit Haar contraction)
+  p0 = [(((0, 0, 0, 0), 0), 1), (((1, 0, 0, 0), 1), 1), (((0, 1, 0, 0), 0), -1), (((0, 0, 0, 0), 1), -1)]
+  unit cube (3-cell boundary, P=6): C=8 L=12 V=8 chi=2
+    w = a1^6 2^(C-L) = 6.809422582574e-02    N^chi u_tile^6 = 6.809422582574e-02
+  capped 4-wall tube T=2 (P=10): C=12 L=20 V=12 chi=2  w=4.506200e-03  N^chi u_tile^P=4.506200e-03
+  capped 4-wall tube T=3 (P=14): C=16 L=28 V=16 chi=2  w=2.982021e-04  N^chi u_tile^P=2.982021e-04
+  => at beta=2.5 the minimal closed polymer has w = 6.8094e-02, whereas the
+     surrogate's |X|=1 term is >= 2 u_P3 e^a = 2.0288.
+     surrogate over-count = 30 x ;  |X| shifted 1 -> 6.
+
+[D] exhaustive enumeration: closed oriented plaquette surfaces through p0
+    Pmax=7  wall=3.7s  timed_out=False   (Pmax=7 is COMPLETE: 3.9 s)
+    |X|= 1: 0
+    |X|= 2: 0
+    |X|= 3: 0
+    |X|= 4: 0
+    |X|= 5: 0
+    |X|= 6:       4 surfaces  sum|w|=2.723769e-01  max|w|=6.8094e-02  chi in [2]
+    |X|= 7: 0
+    => NO closed polymer with |X|<=5 exists; the minimum is |X|=6 = the 3-cell
+       boundary (= the T=1 four-wall tube WITH its two end caps), 4 of them through p0.
+    constructed box family (not exhaustive, exact weights):
+      box 1x1x1: P= 6  w=6.809423e-02  = N^2 u_tile^P (6.809423e-02)   rate per slice = u_tile^4
+      box 1x1x2: P=10  w=4.506200e-03  = N^2 u_tile^P (4.506200e-03)   rate per slice = u_tile^4
+      box 1x1x3: P=14  w=2.982021e-04  = N^2 u_tile^P (2.982021e-04)   rate per slice = u_tile^4
+    => the capped tube's RATE (per unit height) is u_tile^4, i.e. m1a=4ln(1/u_tile)=2.7154
+       -- u_tile, NOT u_P3.  This is the P3-FOURWALL/Gupta statement.
+
+[E] exact KP sums at beta=2.5 :  S(a) = sum_{X contains x} |phi(X)| e^{a|X|}
+    KP (CMP 103 (1986) 491): convergence + exponential clustering iff
+         exists a>0 :  S(a) <= a      [threshold a, NOT 1]
+    convention: x = origin site.  Every surface through p0 contains x, so the
+    per-plaquette sums are rigorous LOWER bounds for the per-site sums:
+    a failure of the per-plaquette sum transfers to the criterion.
+    |X|<=4: truncation EMPTY (no closed polymer exists) => S_<=4(a) = 0
+    |X|<=6 (per-plaquette, 1 sizes): min_a S/a = 4.442383e+00 at a*=0.166668  [need <=1] => FAILS
+    |X|<=7 (per-plaquette, 1 sizes): min_a S/a = 4.442383e+00 at a*=0.166668  [need <=1] => FAILS
+    cube-only m= 1 [one cube              ]: min_a S/a = 1.110596e+00 at a*=0.166668 => FAILS
+    cube-only m= 4 [per-plaquette         ]: min_a S/a = 4.442383e+00 at a*=0.166668 => FAILS
+    cube-only m=32 [per-site              ]: min_a S/a = 3.553906e+01 at a*=0.166668 => FAILS
+    => at beta=2.5 the MINIMAL polymer alone already violates KP by 1.1x (m=1),
+       4.4x (per-plaquette) , 35.5x (per-site).  Truncation is a LOWER bound => no
+       a>0 works: the KP criterion FAILS at beta=2.5 within the fundamental skeleton.
+
+[F] beta_c^KP : the root of  m * N^2 * u_tile(beta)^6 * 6e = 1
+    (the truncated S is a lower bound for S, so this root is an UPPER bound for the
+     true KP root: beta_c^KP <= value below.)
+    m= 1 [one cube     ]: u_tile(beta_c)=0.498405 -> beta_c^KP <= 2.435301   (2.5/beta_c=1.0266)   u_P3(beta_c)=0.996810
+    m= 4 [per-plaquette]: u_tile(beta_c)=0.395584 -> beta_c^KP <= 1.778421   (2.5/beta_c=1.4057)   u_P3(beta_c)=0.791169
+    m=32 [per-site     ]: u_tile(beta_c)=0.279720 -> beta_c^KP <= 1.182227   (2.5/beta_c=2.1147)   u_P3(beta_c)=0.559441
+
+  CONTRAST
+    beta_tube(surrogate, = u_P3^-1(1)) = 2.446918311   ('the 2.12%')
+    beta_KP  (surrogate, = u_P3^-1(1/2)) = 1.044456862
+    m=1 root 2.435301 vs beta_tube 2.446918: 1.16e-02 apart
+      -> the 2.12% is a NUMERICAL COINCIDENCE: 4 (N^2) x 6e (min of e^{6a}/a) x u_tile^6
+         lands on u_P3=1.  The two derivations share no step.
+    honest bracket:  1.0445 < beta_c^KP <= 1.1822  ;  2.5 overshoots by >= 111%
+
+[G] beta-scan of the exact (|X|=6, per-site) KP test  min_a S/a <= 1 ?
+        beta     u_tile       w_cube min_a S/a (per-site)  verdict
+     0.50000   0.123718  1.43435e-05       7.4860e-03       ok   (a*=0.1667)
+     1.00000   0.240194  7.68122e-04       4.0089e-01       ok   (a*=0.1667)
+     1.04446   0.250000  9.76562e-04       5.0968e-01       ok   (a*=0.1667)
+     1.50000   0.344144  6.64510e-03       3.4681e+00    FAILS   (a*=0.1667)
+     1.77842   0.395584  1.53283e-02       8.0000e+00    FAILS   (a*=0.1667)
+     2.00000   0.433127  2.64091e-02       1.3783e+01    FAILS   (a*=0.1667)
+     2.50000   0.507195  6.80942e-02       3.5539e+01    FAILS   (a*=0.1667)
+     3.00000   0.567924  1.34215e-01       7.0048e+01    FAILS   (a*=0.1667)
+    => the exact criterion's small-size part turns over between beta=1.0445 and 1.5,
+       far below the surrogate's beta_tube=2.4469.  At beta=1.0445 (= the surrogate's
+       'ceiling') the exact sum still has a factor-2 margin: UC-CEIL is NOT a ceiling of the
+       exact KP criterion, only of the surrogate family rho = lambda_a Phi.

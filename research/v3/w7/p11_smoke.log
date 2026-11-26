@@ -1,0 +1,7 @@
+[P11] L=3 G=4 ns=20 burn=5 eps=0.9 seed0=700 NL=324 NPQ=486 wall=3.3s 131.38ms/sweep acc=[0.444 0.439 0.488 0.447] domrej=0.00040 maxr=5.697
+   g=0 E[k]= +3.8492 Var(F)= 2.3885 E[F]=+0.8416 D=+1.5801 s_jk=0.5875 s_tau=2.7203 tauK=  6.7 tauF=  5.8 Neff=     3
+   g=1 E[k]= +4.2902 Var(F)= 3.5436 E[F]=-0.8655 D=+0.9238 s_jk=0.9516 s_tau=3.3636 tauK=  6.7 tauF=  3.9 Neff=     3
+   g=2 E[k]= +2.8021 Var(F)= 2.5143 E[F]=-1.2706 D=+0.4135 s_jk=0.6902 s_tau=2.4765 tauK=  5.8 tauF=  4.3 Neff=     3
+   g=3 E[k]= +3.8152 Var(F)= 1.5669 E[F]=+0.8594 D=+2.3266 s_jk=0.4273 s_tau=1.5011 tauK=  5.7 tauF=  3.9 Neff=     3
+[P11] L=3 Delta=+1.3110 +- 0.3455(jk) 1.3014(tau) grp=3.7284 ratio_jk=+3.79 EK=+3.6892+-0.6910 VF=2.5033 E[F]=-0.1088 Delta/Np=+0.002698 Np=486
+[P11] L=3 split: E[kappa_SW]=+3.4717 E[kappa_Phi]=+0.2175 Var(F_SW)=0

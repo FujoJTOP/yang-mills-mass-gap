@@ -1,0 +1,1 @@
+L=3 seed=32 eps=0.9 nsweep=5000 tag=A acc=0.598 E[kappa]=+1.7003 varF=1.9051 E[F]=-0.0121 tauK=116.2 tauF=60.9 Neff=43 Delta=-0.2047 sig_jk=0.1052 ratio=-1.95 EK_L4=+0.02099 VF_L4=+0.02352 dE=+1.3669 dPhi=+0.3334 vFA=1.4975 vFB=0.2982 dvV=0.00e+00 dtr=3.33e-16 t=116.4s ms_sweep=23.28

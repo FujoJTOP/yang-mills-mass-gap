@@ -1,0 +1,220 @@
+% =====================================================================
+%  sec02 -- Obstruction one: G''(0) > 0 is strictly weaker than Delta_dyn > 0
+% =====================================================================
+\section[Obstruction one: the curvature floor is strictly weaker than the dynamical block]{Obstruction one: $\Gpp>0$ is strictly weaker than $\Dyn>0$}\label{sec:obs1}
+
+\subsection{What the object is, and what it is not}
+
+The quantity under discussion is the second derivative of the coarse-field-conditioned marginal
+free energy with respect to the coarse amplitude, evaluated at the symmetric point. Throughout,
+$V=S_W+\Phi$ with $\Phi=-\log J$ the Haar Jacobian, $v$ a unit coarse mode,
+$\partial_v=\langle v,\nabla\rangle$, and the conditioning is $\langle v,\xi\rangle=a_0$, read at
+$a_0=0$. The identity that defines it is
+\begin{equation}
+\Gpp=E\bigl[H_{vv}+\Phi''\,\big|\,\xi=0\bigr]-\Var\bigl(G_v+\Phi'\,\big|\,\xi=0\bigr)
+=\Dyn+\Wg+X,
+\label{eq:split5}
+\end{equation}
+with $G_v=\partial_vS_W$, $H_{vv}=\partial_v^2S_W$,
+$\Dyn=E[H]-\Var(G)$ the dynamical block and $X=-2\Cov(G,\Phi')$ the cross-fluctuation of the
+action force with the Jacobian. \LT{}
+
+\src{\code{ch05-theorems.tex}:230--240, \code{eq:split} (the identity above, verbatim);
+\code{ch15-uvface.tex}:20--28, \code{eq:v3object} (the same object under the name
+``coarse-field-conditioned marginal curvature'', with $X=-2\Cov(G,\Phi')$ spelled out).}
+
+Two bookkeeping facts must be pinned before anything else, because both are routinely lost.
+\textbf{First}, the object has four names that are equivalent as an identity and are \emph{not}
+four separate facts: $\Gpp$ in curvature form, $H1$ at $\delta=0$, $m^2_{\mathrm{eff}}(k\to0)$ as
+a susceptibility, and $1/\Var(a)$ by the Ward identity. The corpus's own sentence is
+``\emph{Equivalently} $\Var(\xi_{k\to0})\le1/\lambda$ (H1), \emph{equivalently}
+$m^2_{\mathrm{eff}}(k\to0)\ge\lambda$, \emph{equivalently} $\Gpp\ge\lambda$''. \LT{}
+\textbf{Second}, it carries no physical mass dimension: $G''_a=a^2m^2_{\mathrm{phys}}$, so every
+$\delta$ in this literature is a dimensionless curvature floor and none of them is a physical mass
+bound. \LT{} A third fact is worth recording as an absence rather than as a result: the function
+$G(a)$ itself has never been written down in this corpus, only its second derivative at the
+symmetric point, so all statements below are statements about $\Gpp$ and never about a
+reconstructed potential.
+
+\src{\code{ch08-immune.tex}:11--21 (\code{eq:species}, the four-name display); \code{ch04-gap.tex}:23
+($G''(k\to0)=V''_{\mathrm{eff}}=m^2_{\mathrm{eff}}(k\to0)$); \code{ch18-scalar-h1.tex}:81--83
+(the lattice-unit sentence, verbatim); \code{ch15-uvface.tex}:322 and \code{ch03-existence.tex}:153
+($G''_a=a^2m^2_{\mathrm{phys}}$); \code{GPP-STRUCT.md}:52 (``the checkable definition is $G''$, not
+$G$'').}
+
+\subsection{The kinematic floor}
+
+The split \eqref{eq:split5} is exact algebra, but the three summands are \emph{not} on the same
+footing. The middle one is bounded below by a positive constant, and the bound has nothing to do
+with Yang--Mills dynamics:
+\begin{equation}
+\Wg:=E[\Phi'']-\Var(\Phi')\ \ge\ 0,
+\qquad
+\Wg(v;a)\ \ge\ \lambda(v):=\inf_\xi\bigl\langle v,\operatorname{Hess}\Phi(\xi)\,v\bigr\rangle
+\ \ge\ \frac{N}{12}\|v\|^{2}\ >\ 0 ,
+\label{eq:wgeo5}
+\end{equation}
+the last inequality holding for every $a$, every $\beta$ and every $L$.
+The mechanism is Pr\'ekopa: $g(d)=-2\log\bigl(\sin(d/2)/(d/2)\bigr)$ has $g''\ge1/6$ on $|d|<2\pi$,
+so $e^{-\Phi}dX$ is strongly log-concave with constant $N/12$, and strong log-concavity does not
+decay under marginalisation. \LT{} The two halves of \eqref{eq:wgeo5} are worth separating: the
+first inequality is convexity of the marginal free energy, the second says the floor is
+\emph{quantitative}, uniform in $a$, $\beta$ and $L$, and the mode enters only through
+$\|v\|^2$. \LT{} It is exactly this uniformity that makes the term useless for the purpose at
+hand: a floor that holds for every $\beta$ and every measure, including the pure-Haar measure with
+no Yang--Mills dynamics at all, cannot be evidence of dynamics.
+
+\src{\code{ch05-theorems.tex}:203--206 (\code{eq:wgeo}, $\Wg\ge0$); \code{ch05-theorems.tex}:214--219
+(\code{eq:wgeo-quant}, the quantitative strengthening, verbatim); \code{NS-NOSUBTRACTION.md}
+Proposition N1 (the three-line marginalisation step); \code{P16-PHIQUANT.md} \S0 (the constant is
+$N/12$, sharp, attained at $a_0=0$, and \emph{increases} with $a_0$: pointwise
+$\Phi''\ge N/12+a_0^2/120$).}
+
+\subsection{The logical consequence: the sign constrains $\Dyn$ only from below}
+
+Write $\Wf:=\Wg+X$ for the block that does not contain $H$ or $G$; this is the corpus's own name
+for it. Then \eqref{eq:split5} reads $\Gpp=\Dyn+\Wf$ and $\Wf\ge N/12>0$ by \eqref{eq:wgeo5} with
+the covariance term absorbed. Hence
+\begin{equation}
+\Gpp>0\quad\Longleftrightarrow\quad \Dyn>-\Wf ,
+\qquad\text{and}\qquad
+\Gpp>0\ \Longrightarrow\ \text{nothing about the sign of }\Dyn .
+\label{eq:nowhere5}
+\end{equation}
+This is not a missing estimate: it is the statement that $\Dyn\mapsto\Dyn+\Wf$ with
+$\Wf>0$ is not sign-preserving on the negative side, and the admissible negative range is
+proportional to $\Wf$. \LT{} The physical form of $H1$ does \emph{not} ask for the sign of $\Dyn$
+either; it asks for a margin,
+\begin{equation}
+\Dyn\ \ge\ a^2\Delta_0^2 ,
+\label{eq:h1dyn5}
+\end{equation}
+uniform in $(L,a)$ and in the coarse mode. Between \eqref{eq:nowhere5} and \eqref{eq:h1dyn5} there
+is therefore not a gap but a category change: a sign statement about one number versus a uniform
+lower bound with a margin. The corpus calls the missing object \emph{gate 4}, and states it in the
+form $\inf_{L,a}\bigl[\Gpp_{L,a}-\Wf\big|_{L,a}-a^2\Delta_0^2\bigr]>0$. \LM{}
+
+\src{\code{T01-IMPLY.md} \S4.2 (the break point, verbatim: ``$\Wf\ge N/12>0$ separates $G''$ from
+$\Dyn$ by a positive number independent of the measure, of $\beta$ and of the conditioning
+point''), \S5 (the gate-4 definition); \code{ch08-immune.tex}:12--16 (\code{eq:species}, the
+uniform-in-$(L,a)$ form); \code{ch15-uvface.tex}:60--68 (\code{eq:h1st-dyn}, the margin form
+with $a^2\Delta_0^2$).}
+
+\subsection{An exact witness, inside the certificate's own model}\label{sec:wit}
+
+The non-implication \eqref{eq:nowhere5} does not have to be argued from a bound; there is an
+exact witness, and it sits at the very point where \S\ref{sec:cert} proves its certificate. Take
+one plaquette, $\mathrm{SU}(2)$, $\beta=2.5$, $a=0$, $\theta=\pi$. At $\theta=\pi$ one has
+$c=\cos(\theta/2)=0$, so $S_W\equiv\beta$ \emph{on the slice} and hence
+\begin{equation}
+H\equiv0\ \text{pointwise},\qquad
+\Phi'\equiv0\ \text{pointwise},\qquad
+\Dyn=E[H]-\Var(G)=-\Var(G)=-\beta^{2}\Var(g).
+\label{eq:wit5}
+\end{equation}
+The first two are exact, not numerical: $\Phi=-\log J$ depends on $\rho$ only and the slice
+$\xi_3=0$ is tangent to the equal-$\rho$ spheres, so $\partial_{\xi_3}\rho|_{0}=0$; and $c=0$ kills
+the $\beta$-linear term of $H$ identically. Therefore, with the interval values of
+\S\ref{sec:cert},
+\begin{equation}
+\boxed{\ \Gpp=+0.1359947110419882110\ldots>0\ }
+\quad\text{while}\quad
+\Dyn=-0.0691205860810849369\ldots<0
+\label{eq:witness5}
+\end{equation}
+Both signs are decided by strict interval arithmetic (\LT, the widths are below $10^{-55}$ and the
+two signs are separated from zero by $1.4\times10^{-1}$ and $6.9\times10^{-2}$ respectively), and
+the inequality $\Var(g)>0$ is itself an interval fact,
+$\Var(g)\in[0.0110592937729735899\ldots]$. Since $\Var(g)>0$ for every $\beta>0$ at $\theta=\pi$
+and $\Gpp>0$ on the whole window $\beta<\beta^{*}=4.306607852559758874888\ldots$, the witness
+\eqref{eq:witness5} is not a single point but a $\beta$-interval: on
+$(0,\beta^{*})$ one has $\Gpp>0$ and $\Dyn<0$ \emph{simultaneously}. \LT{}
+
+\src{\code{Q11-CERT.md} \S1.3 (``$\theta=\pi\Rightarrow c=0$: $S_W\equiv\beta$ on the slice;
+$H\equiv0$ pointwise; $\Phi'\equiv0$ pointwise, hence $D=\Var(G)$ with no covariance term'');
+\S2.2 (the interval endpoints: $S$, $D$, $\Var(g)$); \S5 (the window $\beta<\beta^{*}$ with
+$\beta^{*}=4.30660785255975887488820795413835478236$); \code{R03-CERT-THETA.md} \S1 (the same
+reduction for general $\theta$, and the explicit statement that $\Phi'\equiv0$ holds for
+\emph{all} $\theta$ on this slice, not only at $\pi$).}
+
+This single display settles \S\ref{sec:obs1}. No estimate is being invoked, no $\sigma$ is being
+quoted, and no continuum limit is involved: the counterexample to the implication is an exact
+point of an exactly reduced integral, decided by interval arithmetic, and it is the same integral
+whose positivity the project spent a wave certifying.
+
+\subsection{The quantitative accounting at $L=2$, and what survives of it}
+
+The obstruction is also visible in the $4$D lattice measurement, and the accounting is the reason
+the route looked healthy for so long. At $L=2$, $\beta=2.5$, $\mathrm{SU}(2)$ the archived
+decomposition is
+\begin{equation}
+\begin{aligned}
+\Gpp&=+1.696\pm0.293\ (5.8\sigma),\qquad
+\Wf=+1.134\pm0.063\ \ (67\%\ \text{of }\Gpp),\\
+\Dyn&=+0.562\pm0.277\ (2.0\sigma),
+\end{aligned}
+\end{equation}
+with $E[\Phi'']=+1.2325\pm0.0189$ alone contributing $109\%$ of $\Gpp$, and the three-term
+closure reading $0.562+1.09+0.043=1.695$ against the measured $1.696$, a $0.06\%$ deviation.
+The reading is unambiguous: two thirds of a $5.8\sigma$ headline is Jacobian kinematics, and the
+dynamical residue is a $2.0\sigma$ statement. \LE{} And that $\sigma$ must be withdrawn on
+separate grounds --- the tail index of $\kappa$ is $\alpha\approx1.97\le2$, so $E[\kappa^{2}]=\infty$
+and no finite-variance standard error exists (\S\ref{sec:errata}, item~1). \LT{} What survives
+the withdrawal is the sign pattern of \S\ref{sec:wit}, which needs no $\sigma$ at all.
+
+\src{\code{ch19-h1-status.tex}:125--149 (the trap-3 table: $\Gpp$, $\Wf$, $E[\Phi'']$, $\Dyn$ with
+their errors); \code{ch19-h1-status.tex}:484 (the closure $0.562+1.09+0.043=1.695$ against
+$1.696\pm0.293$); \code{T01-IMPLY.md} \S4.2 (``the $5.8\sigma$ of $G''>0$ is $67\%$ kinematics;
+the dynamical margin $\Dyn$ is only $2.0\sigma$ and is covered by no uniformity proof'');
+\code{T04-L2ANALYTIC.md} \S6.2 ($E[\kappa^{2}]=\infty$; see \S\ref{sec:errata}).}
+
+\subsection{A negative $\Dyn$ has a known physical source}
+
+The obstruction would be idle if $\Dyn<0$ were unphysical. It is not. The Savvidy background is
+concave in the modes that matter: the Hessian of the one-loop operator is
+$-D^{2}+2adF_B$, whose lowest eigenvalue is $\lambda_{\min}=-g|B|<0$, and the negativity survives
+the gauge quotient (a $7.1\%$ negative fraction in the $W4$ measurement). This is the same
+phenomenon that blocks every convexity-based route (\S\ref{sec:dead}), and it is the reason a
+positive $\Wg$ is not a technical annoyance but an active mask: it is large exactly where
+$\Dyn$ is negative.
+
+\src{\code{PROOF-SAVVIDY-EXACT-SIGN} (the exact sign $\lambda_{\min}=-g|B|$);
+\code{O06-CURV.md} \S1.3 and \code{O16-SAVVIDY.md} ($\min H_{vv}=-1.893$ for a general
+multi-link direction; the $c^{2}=(\tfrac12,0,\tfrac12)$ exact $50/50$ split);
+\code{CLAUDE.md} \S5 (the wall, stated as ``true physics, not gauge'');
+\code{ch05-theorems.tex}:241--247 (the corpus's own warning that certifying the sign needs an upper
+bound on $\Var(G\,|\,0)$, i.e.\ the $H1$ object itself).}
+
+\subsection{What the sign does carry: two acid tests, one pass and one failure}
+
+A criterion is not a signpost. On the free massless field $\Gpp=0$; the object therefore does
+\emph{pass} the free-field acid test, and its positivity is not vacuous in the trivial sense.
+\LT{} But on the pure-Haar measure --- $\beta=0$, no Yang--Mills dynamics whatsoever --- one has
+$G''=0.248>0$ while $E[\Phi'']-\Var(\Phi')=0.246$, an exact closure: the entire curvature is the
+Jacobian. \LT{} So $\Gpp>0$ \emph{fails} the pure-Haar acid test, and the failure is structural:
+the same positive number is produced by a measure that contains no dynamics. The correct use of
+the object is therefore as a \emph{criterion} (an equivalent rewriting of $H1$, useful for
+bookkeeping) and never as a \emph{signpost} (evidence that a dynamical threshold has been
+crossed).
+
+\src{\code{ch06-tools.tex}:11--16 (the acid test, with $f_1^2=0$ and $G''=0$ for the free field);
+\code{ch05-theorems.tex}:209--211 (the $\beta=0$ closure $0.248$ versus $0.246$, verbatim ``an
+exact closure''); \code{CAVITY-MEAN-FIELD.md}:11 (``it is the Jacobian, present before any
+Yang--Mills dynamics \ldots{} its positivity is non-dynamical''), \code{:21} ($\Delta_{\mathrm{dyn}}=0$
+for the Gaussian equal-split measure); \code{T01-IMPLY.md} \S4.2 (the pass/fail pair, stated as a
+verdict).}
+
+\subsection{What this section establishes}
+
+\begin{itemize}
+\item \LT{} $\Gpp=\Dyn+\Wf$ with $\Wf\ge N/12>0$ for every $a,\beta,L$ and every coarse mode
+      (\eqref{eq:split5}, \eqref{eq:wgeo5}).
+\item \LT{} $\Gpp>0$ does not imply $\Dyn>0$, and the failure is realised exactly: at one
+      plaquette, $\mathrm{SU}(2)$, $\beta=2.5$, $\theta=\pi$, $a=0$ one has
+      $\Gpp=+0.135994711\ldots$ and $\Dyn=-0.069120586\ldots$ (\eqref{eq:witness5}).
+\item \LT{} The measured $4$D accounting attributes $67\%$ of $\Gpp$ to the kinematic block, and
+      the dynamical part is a $2.0\sigma$ statement whose $\sigma$ does not exist
+      ($E[\kappa^{2}]=\infty$).
+\item \LN{} Any route that treats $\Gpp>0$ as evidence of a dynamical threshold is dead: the
+      quantity is positive on a measure with no dynamics ($\beta=0$: $0.248$).
+\end{itemize}

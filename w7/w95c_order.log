@@ -1,0 +1,67 @@
+
+==========================================================================
+W95C-ORDER : mass ordering of 0++, 2++, 0-+, 1--  (numeric backup only)
+==========================================================================
+m_c(beta) = a_c * ln(1/u(beta)) + c_c ,   a_0++ = a_2++ = 1   [PROOF-IN11.md:9,11,23]
+c_c = O(1) subleading remainder, unknown sign  [PROOF-IN11.md:23]
+MODEL for c_c: symmetric split c_0 = -C, c_2 = +C  (C in {0, 0.5, 1}); illustrative only,
+               the remainder is O(1) of UNKNOWN sign [PROOF-IN11.md:23] -> needs m_c>0
+
+==========================================================================
+[1] u(beta) and the anchor u(1/48)
+==========================================================================
+    beta =  0.02083   u = 5.208239e-03   ln(1/u) =   5.2575
+    beta =  0.05000   u = 1.249870e-02   ln(1/u) =   4.3821
+    beta =  0.10000   u = 2.498959e-02   ln(1/u) =   3.6893
+    beta =  0.50000   u = 1.237179e-01   ln(1/u) =   2.0898
+    beta =  1.00000   u = 2.401937e-01   ln(1/u) =   1.4263
+    beta =  2.50000   u = 5.071951e-01   ln(1/u) =   0.6789
+    anchor: u(1/48) = 5.208239e-03  vs corpus 5.208e-3  -> rel.dev = 4.59e-05
+
+==========================================================================
+[2] m2/m0 -> 1  and  (m_c - m0) -> +inf
+==========================================================================
+     beta        u          ln(1/u)    m2/m0 C=0    C=.5     C=1     (m_c-m0) a_c=2
+    1.00000  2.4019e-01    1.4263    1.000000 2.079553 5.691427      +1.4263
+    0.50000  1.2372e-01    2.0898    1.000000 1.629029 2.835282      +2.0898
+    0.20000  4.9917e-02    2.9974    1.000000 1.400417 2.001304      +2.9974
+    0.10000  2.4990e-02    3.6893    1.000000 1.313549 1.743689      +3.6893
+    0.05000  1.2499e-02    4.3821    1.000000 1.257590 1.591343      +4.3821
+    0.02083  5.2082e-03    5.2575    1.000000 1.210194 1.469758      +5.2575
+    0.01000  2.5000e-03    5.9915    1.000000 1.182101 1.400684      +5.9915
+    0.00100  2.5000e-04    8.2940    1.000000 1.128303 1.274196      +8.2940
+     (m2/m0 at the corpus window edge beta=1/48: C=1 -> 1.47 ; C=.5 -> 1.21)
+
+    => m2/m0 -> 1 as beta -> 0 (u -> 0), but SLOWLY: ln(1/u) is only O(1)-O(10)
+       across the whole strong-coupling window, and the O(1) split can flip the
+       sign of (m2 - m0). Degeneracy at leading order != an ordering theorem.
+    => a_c >= 2 channels: m_c - m0 >= (a_c-1) ln(1/u) + O(1) -> +inf  [PROOF-IN11.md:13]
+       (last column, a_c = 2, C = 0) : strictly growing, so 0-+ never competes.
+
+==========================================================================
+[3] inf spec = min(Delta_0, Delta_2) : m>0 needs BOTH
+==========================================================================
+    certificate accounting: cert = min(cert_0++, cert_2++)  [IN-10-attack.md:7]
+    inf_c Delta_c = min(D_0, D_2)                          [PROOF-IN11.md:17]
+
+      D_0++    D_2++   min    inf>0 ?   reading
+    1.0000   1.0000   1.0000   True     gap
+    1.0000   0.5000   0.5000   True     gap
+    0.5000   1.0000   0.5000   True     gap
+    1.0000   0.0000   0.0000   False    0++ certified, gap LOST (2++ floor 0)
+    0.0000   1.0000   0.0000   False    2++ certified, gap LOST (0++ floor 0)
+    0.0000   0.0000   0.0000   False    no gap
+    0.0000   0.0000   0.0000   False    2++ certified, gap LOST (0++ floor 0)
+
+    min(x,y) > 0  <=>  x > 0  AND  y > 0.
+    Witness D_0 = delta > 0, D_2 = 0  =>  inf spec = 0 : covering 0++ alone does
+    NOT give m>0. Same with the roles swapped. (Isomorphic to the T6-5(i)
+    witness m1 = 0, I = T, G = F  [V03-I2GAP.md:120].)
+
+    Escape hatch 'channel-blind certificate' needs cert_blind <= inf_c Delta_c
+    with zero slack = the gap verbatim, not constructible  [C2-bypass-INb.md:13].
+    => m>0 requires 0++ AND 2++, plus (b') membership for 0-+/1--/higher spin.
+
+==========================================================================
+END -- numeric backup only; no theorem is added by this script.
+==========================================================================

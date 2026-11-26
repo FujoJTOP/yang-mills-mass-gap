@@ -1,0 +1,112 @@
+==============================================================================
+ru_joint.py v2 -- joint (a,beta) KP optimisation; the a-curve; two certificates
+==============================================================================
+
+[A] independent re-check of R4 (per-site, |X|=6)
+  u_tile(2.5) = I2/I1 = 0.5071951000   u_P3 = 1.0143902001  (u_P3/u_tile = 2.000000)
+  cube: chi=2 -> N^chi=4 ; w_cube = N^2 u^6 = 6.809423e-02
+  min_a S/a (cube-only, m=32) = 32*4*u^6*6e = 35.539065   [R4: 35.539065]
+  numeric                        = 35.539065 at a*=0.166668   [R4: 35.539 at 1/6]
+  beta_c(m=32) = u_tile^-1(0.279720) = 1.182227   [R4: 1.182227]  CHECK OK
+
+[B] EXACT multiplicities of capped boxes through a fixed site (brute force + dedup)
+    two conventions: ORIENTED = the signed plaquette (m,mu,nu,s) is the label;
+    GEOMETRIC = p and its reversal are identified (drop s).
+    shape (1, 1, 1):  oriented P=6:m=64   |  geometric P=6:m=32
+    shape (1, 1, 2):  oriented P=10:m=192   |  geometric P=10:m=96
+    shape (1, 1, 3):  oriented P=14:m=192   |  geometric P=14:m=96
+    shape (1, 2, 2):  oriented P=16:m=192   |  geometric P=16:m=96
+    shape (2, 2, 2):  oriented P=24:m=64   |  geometric P=24:m=32
+    => per-site multiplicity, cube (P=6):   oriented 64   geometric 32   [R4 used 32]
+    => per-site multiplicity, 1x1xT (T>=2): oriented 192  geometric 96
+    => the ratio is exactly 2, for every size (each geometric box has 2 orientations),
+       and all boxes have chi=2 so N^chi=4 (checked by explicit Haar contraction).
+    tail check at u=0.2797: sum_(T>=26) m*4*u^(4T+2) = 1.741e-56  (negligible)
+
+[C] why S_box is a rigorous LOWER bound for the per-site KP sum
+    every capped 1x1xT box is a closed orientable polymer through the site whose
+    weight is EXACTLY N^2 u_tile^(4T+2) (chi=2); all terms are positive, so deleting
+    the remaining polymers can only DECREASE S.  Hence S >= S_box and the root of
+    min_a S_box/a = 1 is an UPPER bound for the true KP root.  [T]+[V]
+
+[D] joint (a,beta) optimisation -- 4 corners
+    (the cube-only GEOMETRIC corner must reproduce R4's 1.182227)
+  convention       family     beta_c        a*     M(2.5)  2.5/beta_c-1
+   GEOMETRIC    cube only   1.182227  0.166668     35.539          111%
+   GEOMETRIC  boxes T<=40   1.174667  0.162965     50.217          113%
+    ORIENTED    cube only   1.040824  0.166668     71.078          140%
+    ORIENTED  boxes T<=40   1.036669  0.164276    100.434          141%
+
+  beta_c^{KP,opt} = 1.036669   (ORIENTED, full box family, per-site, a optimised)
+  a*(beta_c^opt)   = 0.164276
+  vs R4's 1.182227  -> lower by 12.31% in beta
+  the dominant correction is the FACTOR 2 in the multiplicity (geometric -> oriented),
+  i.e. the same factor 2 that R4 already found in u_tile = u_P3/2 -- now in the COUNT.
+  honest 4-corner bracket for beta_c^KP:  [1.0367, 1.1822]  (upper corner = R4)
+
+[E] the a-curve, ORIENTED convention (all numbers are per-site, T<=40)
+       beta    u_tile  a*=argmin   r(beta)    r/a*  m1a=4ln(1/u)       1/r
+   0.100000  0.024990   0.166668  2.921102  17.526     14.757184    0.3423
+   0.250000  0.062338   0.166658  1.944093  11.665     11.100745    0.5144
+   0.500000  0.123718   0.166514  1.180182   7.088      8.359004    0.8473
+   0.750000  0.183254   0.165942  0.705063   4.249      6.787520    1.4183
+   0.900000  0.217771   0.165233  0.465481   2.817      6.097245    2.1483
+   1.000000  0.240194   0.164564  0.291161   1.769      5.705238    3.4345
+   1.020000  0.244618   0.164410  0.244103   1.485      5.632230    4.0966
+   1.036669  0.248290   0.164276  0.000000   0.000      5.572638       inf
+   1.050000  0.251215   0.164165  0.000000   0.000      5.525777       inf
+   1.100000  0.262106   0.163717  0.000000   0.000      5.356029       inf
+   1.182227  0.279720   0.162885  0.000000   0.000      5.095861       inf
+   1.500000  0.344144   0.158490  0.000000   0.000      4.266780       inf
+   2.000000  0.433127   0.148694  0.000000   0.000      3.346893       inf
+   2.500000  0.507195   0.137641  0.000000   0.000      2.715438       inf
+  => a* DECREASES monotonically from 1/6 = 0.166667 (beta->0) to 0.137641 at beta=2.5,
+     by only 17%: the grading is pinned by |X|min=6 and is essentially beta-blind.
+  => r(beta) is 2-17x LARGER than a* below the root: a* is the MARGIN-optimal a,
+     NOT the rate.  R4's 'gap >= a* = 1/6' is true but not the best the chain gives.
+  => r(beta) is decreasing and hits 0 at beta_c: the certified rate is a beta-window
+     quantity.  It carries NO (L,a) dependence at all (weights are beta-only).
+
+[F] the no-go direction: u_tile(beta) -> 1 as beta -> infinity
+      beta     u_tile      S_box(1/6)     M=min_a S/a
+       2.5   0.507195      1.7105e+01      1.0043e+02
+       3.0   0.567924      4.1149e+01      2.3579e+02
+       5.0   0.719341      4.1167e+02      1.9344e+03
+      10.0   0.854185      7.1119e+04      1.7296e+04
+      20.0   0.925988      5.2699e+09      9.8998e+04
+      50.0   0.970153      7.1738e+12      6.8131e+05
+  u_tile(50) = 0.970153  (-> 1).
+  The MINIMAL polymer alone already fails for every a once its activity beats the
+  threshold:  min_a [m N^2 u^6 e^{6a}]/a = m N^2 u^6 * 6e > 1.  With m=64:
+     u > (1/(64*4*6e))^(1/6) = 0.249202  <=>  beta > 1.040824
+  => r(beta) = 0 for all beta above a FINITE root.  A rate that is uniform on an
+     unbounded beta-window cannot exist in this class, at any a.  [NG] for the class
+
+[G] acid test for the BD-side certificate  c_BD = (N/8) exp(-2 Q(inf))
+    For ANY Gaussian measure mu = exp(-(1/2)<phi,K phi>) the Polchinski potential is
+    V = (1/2)<phi,K phi>, so Hess V = K >= 0 and Q(inf) = 0 EXACTLY.
+    => c_BD = N/8 = 0.2500  =>  ma >= 0.2500 for every Gaussian model.
+    The free MASSLESS gauge field is such a model, and its true value is ma = 0:
+    (i) the k=0 mode of -Delta on T^3_L is exactly 0 (R1: lambda_conf = m^2 -> 0);
+    (ii) on transverse modes the lowest eigenvalue is 4 sin^2(pi/L), which -> 0:
+         L=4,8,16,32,64 -> 2.0000, 0.5858, 0.1522, 0.0384, 0.0096
+    => c_BD > 0 predicts a gap exactly where the gap is 0: the certificate is
+       maximised at the TRIVIAL end, i.e. it is a UV statement, not an IR one.
+    => and c_KP is maximised at the OTHER trivial end (beta=0, u->0).  The two
+       certificates are different functionals, maximal at opposite ends, both
+       vanishing in the interacting middle: they are NOT two names for one object.
+
+[H] is anything alive at |X|=8?  (R4 exhausted |X|<=7: only |X|=6, four of them)
+    Pmax=8  wall=95.4s  timed_out=False
+    |X|= 1:      0 surfaces through a fixed plaquette
+    |X|= 2:      0 surfaces through a fixed plaquette
+    |X|= 3:      0 surfaces through a fixed plaquette
+    |X|= 4:      0 surfaces through a fixed plaquette
+    |X|= 5:      0 surfaces through a fixed plaquette
+    |X|= 6:      4 surfaces through a fixed plaquette
+    |X|= 7:      0 surfaces through a fixed plaquette
+    |X|= 8:      0 surfaces through a fixed plaquette
+    => the |X| gap 7..9 is EMPTY: the next closed polymers after |X|=6 are the
+       1x1xT boxes at |X|=10,14,... (constructed, not exhaustively found).
+
+[total] 99.4s, single process, deterministic, no MC, no download.

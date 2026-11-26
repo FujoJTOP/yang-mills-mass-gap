@@ -1,0 +1,51 @@
+source: w7/ur4_enum_n6.json   pool=50166  R=10  elapsed=265.0s
+Gamma (=-#connected sets) : [1, 20, 458, 11132, 280175, 7218768]
+m_n   (=sum |phi^U|)      : [1, 20, 514, 14748, 450255, 14305816]
+check sum(dist) == Gamma  : [True, True, True, True, True, True]
+check sum(value*count)    : [True, True, True, True, True, True]
+
+== Gamma : ratios Gamma_{n}/Gamma_{n-1} ==
+ n   value      EXACT            decimal      ^(1/n)      increment
+ 1         1                            nan   1.000000  
+ 2        20  20                  20.000000   4.472136  +3.4721
+ 3       458  229/10              22.900000   7.708239  +3.2361
+ 4     11132  5566/229            24.305677  10.271723  +2.5635
+ 5    280175  280175/11132        25.168433  12.288132  +2.0164
+ 6   7218768  7218768/280175      25.765211  13.901997  +1.6139
+
+== m : ratios m_{n}/m_{n-1} ==
+ n   value      EXACT            decimal      ^(1/n)      increment
+ 1         1                            nan   1.000000  
+ 2        20  20                  20.000000   4.472136  +3.4721
+ 3       514  257/10              25.700000   8.010403  +3.5383
+ 4     14748  7374/257            28.692607  11.020043  +3.0096
+ 5    450255  150085/4916         30.529902  13.511131  +2.4911
+ 6  14305816  14305816/450255     31.772698  15.580645  +2.0695
+
+== rounding test: which column reproduces the two quoted strings? ==
+20->25.70->28.69->30.53->31.77     vs m_n ratios -> MATCH
+     quoted : [20, 25.7, 28.69, 30.53, 31.77]
+     m_n    : ['20.0000', '25.7000', '28.6926', '30.5299', '31.7727']
+     Gamma  : ['20.0000', '22.9000', '24.3057', '25.1684', '25.7652']
+20->22.9->24.3->25.17              vs Gamma ratios -> MATCH
+     quoted : [20, 22.9, 24.3, 25.17]
+     m_n    : ['20.0000', '25.7000', '28.6926', '30.5299', '31.7727']
+     Gamma  : ['20.0000', '22.9000', '24.3057', '25.1684', '25.7652']
+
+== is it the same sequence? ==
+TN2 a_n (1,20,458,11132,280175) == Gamma_1..5 : True
+first step identical for both (n=2 all |phi^U|=1): m_2=G_2=20
+m_n/G_n (mean |phi^U|) = ['1.000000', '1.000000', '1.122271', '1.324829', '1.607049', '1.981753']
+
+== reciprocal cross-check against 1/48 (the SZZ wall) ==
+Gamma ratio n=5    lam=  25.1684   1/lam=0.039732   vs 1/48=0.020833   ratio=1.907
+Gamma ratio n=6    lam=  25.7652   1/lam=0.038812   vs 1/48=0.020833   ratio=1.863
+m_n ratio n=6      lam=  31.7727   1/lam=0.031474   vs 1/48=0.020833   ratio=1.511
+m_n^(1/n) at n=6   lam=  15.5806   1/lam=0.064182   vs 1/48=0.020833   ratio=3.081
+
+== mass-rate extrapolations (for the lambda_Ur^mass slot only) ==
+m_n^(1/n)            : ['1.000000', '4.472136', '8.010403', '11.020043', '13.511131', '15.580645']
+increments           : ['+3.4721', '+3.5383', '+3.0096', '+2.4911', '+2.0695']
+affine fit m_n^(1/n)=lam+b/n on n=4,5,6 (verify UR4's 24.54): lam=24.540 b=-54.34
+
+no float ambiguity: all ratios above are exact rationals of integers.

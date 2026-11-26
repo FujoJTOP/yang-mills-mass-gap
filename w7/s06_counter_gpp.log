@@ -1,0 +1,56 @@
+####################################################################################################
+# s06_counter_gpp -- counterexample hunt for (star):  G''_j = E[H_j]-Var_j+W_j >= delta_W > 0
+# model: single plaquette SU(2), theta=pi barrier, v=e3 (longitudinal), flat chart rho<2pi
+# python 3.12.6  numpy 2.4.6  GL n=1200 (r) / 900x500 (e1)
+####################################################################################################
+
+[A] THREE BETAS: E[H], Var, W, G'' at a=0 (theta=pi, v=e3)   [closed form: G''=A-B beta^2]
+   beta          E[H]           Var    W=E[Phi/r]        E[Phi]     E[H]-Var              G          ref         d
+   0.00    +0.0000000     0.0000000     0.2051153     0.3846546   +0.0000000   +0.205115298    +0.205115  +7.0e-10
+   1.00    +0.0000000     0.0110593     0.2051153     0.3846546   -0.0110593   +0.194056004         +nan      +nan
+   2.50    +0.0000000     0.0691206     0.2051153     0.3846546   -0.0691206   +0.135994712    +0.135995  +7.0e-10
+   4.31    +0.0000000     0.2051155     0.2051153     0.3846546   -0.2051155   -0.000000204         +nan      +nan
+   5.00    +0.0000000     0.2764823     0.2051153     0.3846546   -0.2764823   -0.071367047         +nan      +nan
+   6.00    +0.0000000     0.3981346     0.2051153     0.3846546   -0.3981346   -0.193019278    -0.193019  -2.8e-07
+  10.00    +0.0000000     1.1059294     0.2051153     0.3846546   -1.1059294   -0.900814079         +nan      +nan
+  Haar anchors:  A = E[Phi'(r)/r] = 0.205115297820   (= paper W_0 = 1/(2Cin2pi) = 0.20511530)   B = Var_Haar(sin(r/2)/r) = 0.011059293773
+  note:  W := E[Phi'(r)/r] (the beta-independent piece of E[V_33]);  E[Phi''] = 0.384654628 is a DIFFERENT number (not the W of (star)).
+  closed form A - B beta^2 :  beta*=sqrt(A/B) = 4.306608   (archive 4.30661);  check vs quadrature: max|G''-(A-B beta^2)| = 1.89e-15
+  => G''(beta=6, a=0) = -0.193019278   < 0 ?  True   (threshold beta*=4.30661)
+
+[B] INDEPENDENT ROUTE to the same a=0 number:  marginal density + 5-pt FD of log rho
+   beta     G(FD e3,a=0)     G(analytic)       diff
+   0.00     +0.205115297    +0.205115298   -6.9e-10
+   2.50     +0.135994711    +0.135994712   -6.9e-10
+   6.00     -0.193019279    -0.193019278   -6.5e-10
+
+[C] THE DECISIVE CHECK: whole curve G''(a), beta=2.5 (INSIDE the campaign window), theta=pi
+  min_a G''(a) = -0.079194787 at a = 1.81951   (archive o28: -0.079195 @ a=1.822)
+  #grid points with G''<0 : 173 / 241 ;  a-range of negativity: [0.71995, 2.97142]   (archive: [0.7147, 2.9688])
+  a-sample: a=0.00:+0.1360  a=0.31:+0.0682  a=0.63:+0.0123  a=0.94:-0.0305  a=1.26:-0.0596  a=1.57:-0.0754  a=1.88:-0.0789  a=2.20:-0.0709  a=2.51:-0.0514  a=2.83:-0.0196  a=3.14:+0.0273
+
+[D] WHERE DOES IT TURN NEGATIVE?  beta_cv = inf{beta : min_a G''(a) < 0}  (theta=pi, e3)
+  beta_cv = 1.872922   (archive o02_bscan: 1.873291)   => for beta in (1.873, 2.5] the curve G''(a) takes NEGATIVE values
+
+[E] IS IT j-DEPENDENT?  transverse direction v=e1 at a=0 (theta=pi)
+   beta         G(e3)         G(e1)  sign(e3)  sign(e1)
+   0.00     +0.205115     +0.205115      True      True
+   2.50     +0.135995     +0.362312      True      True
+   5.00     -0.071367     +0.612218     False      True
+   6.00     -0.193019     +0.713331     False      True
+  10.00     -0.900814     +1.118117     False      True
+
+[F] theta-dependence at a=0, beta=2.5 (is the barrier theta=pi special?)
+  theta=0.000: E[H]=+0.553061 Var= 0.000000 W= 0.176864 G''=+0.729924
+      min_a G''(a) at this theta = +0.324659
+  theta=1.571: E[H]=+0.377311 Var= 0.015240 W= 0.180873 G''=+0.542944
+      min_a G''(a) at this theta = +0.003200
+  theta=3.142: E[H]=+0.000000 Var= 0.069121 W= 0.205115 G''=+0.135995
+      min_a G''(a) at this theta = -0.079186
+
+[VERDICT] counterexample EXISTS: (star) as stated (uniform in j,U',a, any beta) is FALSE.
+  witness 1: beta=6, theta=pi, v=e3, a=0 :  G'' = -0.193019  (exact closed form A-B beta^2)
+  witness 2: beta=2.5 (in-window!), theta=pi, v=e3, a=1.822 : G'' = -0.079195
+  witness 3: beta=2.5, any beta>1.8733 : the a-curve dips below 0 => delta_W(a-independent) impossible
+  positive:  beta=0 -> +0.205115 ; beta=2.5, a=0 -> +0.135995 ; theta=0 -> +0.729924
+  mechanism: G'' = W - Var ,  W = 0.205115 (Haar anchor, beta-indep.) ,  Var = B beta^2 -> oo

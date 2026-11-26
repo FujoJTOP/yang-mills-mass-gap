@@ -1,0 +1,63 @@
+============================================================================================
+N02  FOUR-MODEL TOUCHSTONE  vs  Delta_0 > 0
+============================================================================================
+
+--- (A) SU(2) single link: TWO different G'' on the SAME measure ---
+   flat chart  G''_flat = -d2/da2 log rho_X        (H1 convention: includes Phi=-log J)
+   Haar norm.  G''_Haar = -d2/da2 log(rho_X / J1)  (table convention: Jacobian divided out)
+   beta=0.00  G''_flat =  0.820466709  (h=2e-2,1e-2,5e-3: 0.820473807,0.820464343,0.820461977)
+             G''_Haar =  0.000e+00  (must be 0: pure/dressed Haar density is flat)
+   beta=2.50  G''_flat =  1.346017812  (h=2e-2,1e-2,5e-3: 1.346021927,1.346016441,1.346015069)
+             G''_Haar =  5.256e-01  (must be 0: pure/dressed Haar density is flat)
+   anchor [T]: Haar Var(x3) = 0.929956045;  9/(4pi^2-6) = 0.268829910;  1/Var = 1.075319641
+   anchor [T] (beta=0): Delta_dyn = 0 exact (S_W=0) and G''_flat = W_geo
+
+--- (A2) Delta_dyn = E[H_vv] - Var(G_v)   (conditioned at X3=0, v=e3) ---
+     H = d2_v S_W  (S_W only: the Jacobian Phi belongs to W_geo, not to Delta_dyn)
+     at x3=0: G_v = d(S_W)/dr * (x3/r) = 0 exactly => Var(G)=Cov(G,Phi')=0
+     H_vv(x3=0) = (dS_W/dr) / r   (radial derivative of a radial function)
+   beta=0.00  Delta_dyn =  0.000000000   W_geo =  0.820461188   Delta_dyn+W_geo =  0.820461188
+   beta=2.50  Delta_dyn =  0.589671194   W_geo =  0.756343417   Delta_dyn+W_geo =  1.346014612
+\n--- (B) 2D YM  (spatial circle, constant holonomy coarse mode) ---
+   [T] constant A1, A0=0  => every plaquette U_p = 1 exactly  => S_W == 0 along the whole line
+       => G = d_v S_W == 0, H = d2_v S_W == 0 identically
+       => Delta_dyn = E[H] - Var(G) = 0 exact;  X = -2Cov(G,Phi') = 0;  W_full = W_geo
+   m = 3g^2/8 = 0.375000000  > 0   (Migdal: E_j = (g^2/2) C2(j), C2(1/2)=3/4)  [T]*
+   H1 convention  (flat chart, includes Phi):  G'' = W_geo =  0.820466709  > 0
+   table convention (Haar-normalized, no Phi): G'' =  0.000e+00  == 0   <-- the table's value
+   => the table's '2D YM: G'' = 0' is NOT the same functional as H1's G''
+   => in H1's own convention, G'' = Delta_dyn + W_full = 0 + 0.820467 > 0
+   => Delta_0^2 = Delta_dyn / a^2 = 0 exactly (EQUALITY, not negative / imaginary)
+
+--- (C) M6 = harmonic(x) (x) free(b):  G'' = 2w, Delta_dyn = 2w, m = 0 ---
+   [T] identity G'' = 4(E0 - V(0)) = 4(w/2 - 0) = 2w = 2.000000   (identical marginal rho ~ exp(-w a^2))
+   W_full = 0 (Lebesgue measure, Phi == 0)  =>  Delta_dyn = 2w = 2.000000
+   [T] along the free direction b: S == 0 => G == H == 0 => Delta_dyn(b) = 0
+   spectrum on a circle of length L: E(n,k) = w(n+1/2) + (2 pi k/L)^2/2
+        L  m_L = min(w, (2pi/L)^2/2)
+        8                0.308425138
+       16                0.077106284
+       32                0.019276571
+       64                0.004819143
+      256                0.000301196
+     1024                0.000018825
+   => m = 0 in the limit; and the inf over coarse modes of Delta_dyn is min(2w, 0) = 0
+
+--- (D) free massless field:  S == 0, Phi == 0 ---
+   G'' = 0, Delta_dyn = 0, W_full = 0, m = 0   (exact; acid test passes with equality)
+
+--- (E) FOUR-MODEL SCORE of the EXISTENTIAL target  (exists Delta_0>0 : Delta_dyn >= a^2 Delta_0^2) ---
+    (Delta_dyn = E[H] - Var(G);  a = 1 in these 0+1 / solvable models)
+model                          m    G"_table         D_dyn  exists D_0>0 ?
+free massless           0.000000    0.000000      0.000000           FALSE
+2D YM                   0.375000    0.000000      0.000000           FALSE
+M6  (mode a only)       0.000000    2.000000      2.000000            TRUE
+M6  (inf over v)        0.000000    0.000000      0.000000           FALSE
+single plaquette           undef    0.135995      0.000000        a=0 only
+
+   touchstone requires:  free FALSE / 2D YM TRUE / M6 FALSE / plaquette n/a
+   target delivers    :  FALSE / FALSE / FALSE(inf, TRUE per-mode) / n/a
+   => no false positive on free field or on M6 (the acid test passes)
+   => but the 2D YM cell is 0 where >0 is required: Delta_dyn is NOT necessary for m>0
+   => Delta_0>0 is a SUFFICIENT-shaped floor (Gate-4 = H1 uniform), not an equivalent target
+   => M6 is blind-proof ONLY under the inf-over-all-coarse-modes reading (per-mode it is 2w: blind)

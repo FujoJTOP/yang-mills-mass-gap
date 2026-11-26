@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\Dev\math\research\v3\species\w7\qi_bracket.py", line 225, in <module>
+    with open("research/v3/w7/m1_4d_run_results.json") as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'research/v3/w7/m1_4d_run_results.json'

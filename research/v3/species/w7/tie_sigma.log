@@ -1,0 +1,97 @@
+========================================================================================================
+TIE-SIGMA  --  one sigma, two rival scalings.   SU(3), Nf=0, AT2021 arXiv:2106.00364v3
+========================================================================================================
+sqrt(sigma) = 0.484956 GeV = 484.956 MeV      sigma = 0.235182 GeV^2   [C]
+Lambda_MS   = 263.040 MeV   [E] Tab.15 (Lambda_MS/sqrt(sigma)=0.5424)   =>  sigma/Lambda_MS^2 = 3.3991
+b0 = 0.069658   b1 = 0.004090   (N=3)
+
+--------------------------------------------------------------------------------------------------------
+[1] SINGLE sigma: sigma(beta) = (a sqrt sigma)^2 * (a^-1)^2,  a^-1 from Tab.13 only
+--------------------------------------------------------------------------------------------------------
+  sigma(beta) over all 10 Tab.13 points: min=0.235182458  max=0.235182458  spread=4.44e-16
+  => sigma is beta-INDEPENDENT to machine precision: [T] IDENTITY, not a measurement.
+     Reason: a^-1 := sqrt(sigma)/(a sqrt sigma)  =>  sigma = (a sqrt sigma)^2 (a^-1)^2 = const.
+     Column 1 and column 3 below therefore vanish by construction; see [4] for the live test.
+
+--------------------------------------------------------------------------------------------------------
+[2] THE FIVE POINTS   (a^-1 discipline check: a^-1(6.00) must be 2.243 GeV, NOT 2.91)
+--------------------------------------------------------------------------------------------------------
+     beta  a sqrt(s)  a^-1[GeV]  a[GeV^-1]  sigma[GeV^2]   shat=a^2s          x   aLam_MS  s/Lam^2
+   5.6900    0.40100     1.2094    0.82688   0.235182458    0.160801 1.1060e-03   0.21750   3.3991
+   5.9000    0.25873     1.8743    0.53352   0.235182458    0.066943 8.6027e-04   0.14034   3.3991
+   6.0000    0.21621     2.2430    0.44584   0.235182458    0.046747 7.6327e-04   0.11727   3.3991
+   6.3000    0.13668     3.5482    0.28184   0.235182458    0.018681 5.3311e-04   0.07413   3.3991
+   6.7000    0.07898     6.1402    0.16286   0.235182458    0.006238 3.3036e-04   0.04284   3.3991
+
+  DISCIPLINE a^-1(6.00, Tab.13) = 2.2430 GeV      (rejected anchor 2.91 GeV = 1.297x too high)
+  CHECK     a*Lambda_MS(beta=6) = 0.11727   (task: 0.117)      x(beta=6) = 7.6327e-04   (task: 7.65e-4)
+  CHECK     a*Lambda_MS / x  at beta=6 = 153.6  (task: 153x)
+  DIMENSIONS a^-1 [GeV], a [GeV^-1], sigma [GeV^2], aLam [1], x [1], shat [1], sigma/Lam^2 [1]
+
+--------------------------------------------------------------------------------------------------------
+[3] THREE LOG-DERIVATIVE COLUMNS, exactly as asked, on the single sigma (GeV^2)
+--------------------------------------------------------------------------------------------------------
+  C1 = d ln sigma / d ln a                  = +6.556e-17     (compare -2)   [T-degenerate: =0)
+  C2 = d ln sigma / d ln(e^-1/(2b0g2))      = +6.957e-17     (compare  2)   [T-degenerate: =0)
+  C3 = d ln(sigma/Lambda_MS^2) / d ln a     = +3.905e-16     (compare  0)   [T-degenerate: =0)
+
+  SAME THREE on shat = a^2 sigma  (the ONLY beta-varying object in Tab.13; sigma's own
+  beta-dependence is unmeasurable: a^-1 is derived from the same column):
+  C1' = d ln(a^2 sigma)/d ln a                = +2.0000   (identity +2: shat = a^2 sigma)
+  C2' = d ln(a^2 sigma)/d ln(e^-1/(2b0g2))    = +2.6389   (mu6's n)
+  C3' = d ln((a^2 sigma)/(a Lambda_MS)^2)/dln a = +3.905e-16  (identity 0)
+  => sign flip C1 = 0 vs C1' = +2 IS mu-4's bookkeeping defect: dropping one 1/a^2.
+
+--------------------------------------------------------------------------------------------------------
+[4] LIVE TEST: the two closed forms carry SPECIFIED coefficients, so they are falsifiable
+--------------------------------------------------------------------------------------------------------
+     beta   shat=a^2s  mu-4: 2g^2N=4N^2/beta  meas/pred   mu6: R=shat/x^2  shat/(aLam)^2
+   5.6900    0.160801                 6.3269    0.02542          131463.5         3.3991
+   5.9000    0.066943                 6.1017    0.01097           90455.6         3.3991
+   6.0000    0.046747                 6.0000    0.00779           80240.6         3.3991
+   6.3000    0.018681                 5.7143    0.00327           65730.7         3.3991
+   6.7000    0.006238                 5.3731    0.00116           57154.2         3.3991
+
+  (i)  mu-4: sigma a^2 = 2g^2N  ==>  measured/predicted runs 1.18x by formula but 25.78x in data  =>  ratio drifts 21.89x  =>  **FALSIFIED [E]**
+       absolute deficit at the five betas: 0.0254, 0.011, 0.00779, 0.00327, 0.00116
+  (ii) mu-6 with x^2: R = shat/x^2 runs 2.30x  =>  not a pure x^2 (this is mu6's real weakness: it rests on R const)
+  (iii) mu-6 with (a Lambda_MS)^2: shat/(a Lambda)^2 = 3.3991 ... 3.3991, spread 4.44e-16  =>  EXACT, coefficient = (sqrt(sigma)/Lambda)^2 = 3.3991
+  (iv) why x is the wrong variable: a*Lambda/x = 197/163/154/139/130  (drifts 1.52x -- NOT a constant offset)
+       local d ln x / d ln(a Lambda_MS) = 0.57/0.67/0.78/0.87  (drifts 0.57 -> 0.87: x is NOT a fixed power of a Lambda over this window)
+       => mu6's n=2.639 is an AVERAGE over a drifting local exponent 3.50 -> 2.28;
+          the exact statement lives one variable over: n_aLam = 2.000000.
+
+--------------------------------------------------------------------------------------------------------
+[5] LOCAL INDICES -- is sigma-a^2 a PURE power of x? of a Lambda? of beta?
+--------------------------------------------------------------------------------------------------------
+        beta window  dln shat/dln x  dln shat/dln aLam  dln shat/dln beta
+   5.690- 5.900           3.488              2.000            -24.180
+   5.900- 6.000           3.002              2.000            -21.366
+   6.000- 6.300           2.556              2.000            -18.800
+   6.300- 6.700           2.292              2.000            -17.818
+  global LS:  n_x = 2.639   n_aLam = 2.000000   n_beta = -19.596
+
+--------------------------------------------------------------------------------------------------------
+[6] COUNTERFACTUAL [X]: if a^-1 were anchored at 2.91 GeV (mu-6's original slip)
+--------------------------------------------------------------------------------------------------------
+  a^-1 x 1.2974 for ALL beta  =>  sigma x 1.6832 for all beta  =>
+  every column in [2]/[3] is a constant SHIFT: C1,C2,C3 unchanged to 1e-15; sigma/Lambda^2 -> 5.7213
+  => the 1.297x anchor error moves OFFSETS only, never exponents. It was a reporting error,
+     not the cause of the mu-4 / mu6 disagreement.
+
+========================================================================================================
+[7] VERDICT
+========================================================================================================
+  C1 = +6.56e-17 (vs -2: NO)   C2 = +6.96e-17 (vs 2: NO, degenerate)   C3 = +3.90e-16 (vs 0: YES)
+  (a) FIRES: d ln(sigma/Lambda_MS^2)/d ln a = 0  =>  sigma proportional to Lambda^2,
+      sigma/Lambda_MS^2 = 3.3991 = O(1)  =>  consistent with mu6, mu-4's sigma_B/sigma_C is wrong.
+  (b) does NOT fire: d ln sigma/d ln a = 0, not -2  =>  sigma proportional to 1/a^2 is EXCLUDED
+      as a statement about the physical tension, and mu-4's coefficient 2g^2N is falsified by
+      21.9x drift.
+  (c) NOT invoked as 'no pure power': the beta-dependence IS a pure power -- but of a*Lambda_MS
+      (exponent exactly 2.000000), NOT of x. mu6 got the right scale and the wrong variable:
+      x/(a Lambda) drifts 1.52x across the window and the local exponent is not constant
+      (3.50 -> 2.28), so 2.63 is an average, not a law.
+  CAVEAT [T]: with a^-1 taken from the same Tab.13 column, C1 and C3 are identities, so the data
+      certify only the O(1) number sqrt(sigma)/Lambda_MS = 1.8437 -- not an independent exponent.
+========================================================================================================

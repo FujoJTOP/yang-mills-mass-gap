@@ -1,0 +1,668 @@
+% =====================================================================
+%  paper-v7/sg1 --- SG1-1: the no-go theorem for the position--defect
+%  decomposition  s_1 = F + G  with  s_1 := inf supp nu_w.
+%
+%  Self-contained: no \input, one file.  Build:
+%      pdflatex -interaction=nonstopmode main.tex     (run twice)
+%
+%  English translation of the corpus note.  Every number, formula, label,
+%  \ref and every [T]/[C]/[NG]/[E] chip is carried over unchanged.  The only
+%  substantive edit is the grade of SG1-1, [T] -> [C] (see the convention
+%  "conv:iii-strict"), together with the three limitations of the corpus and
+%  the precise N09-1 relation, now written into the body.
+%
+%  House rules honoured here:
+%   * labels are literal text  [T] / [C] / [NG] / [O]  (plus [E] for
+%     machine-checked numbers); no \LT-style macros in this sub-paper;
+%   * no completion stamp anywhere (CLAUDE.md sec.2)  ->  \qedsymbol empty;
+%   * every assertion carries a source of the form file:line;
+%   * Clay = 0%.
+% =====================================================================
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.4cm,top=2.15cm,bottom=2.2cm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{microtype}
+\usepackage{array}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+
+% ---------- theorem environments, shared counter ----------
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{convention}[theorem]{Convention}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+% ---------- no completion stamp (CLAUDE.md sec.2) ----------
+\renewcommand{\qedsymbol}{}
+
+% ---------- code / file:line citations ----------
+\newcommand{\code}[1]{\texttt{\footnotesize\detokenize{#1}}}
+
+% ---------- textual grade chips ----------
+\newcommand{\grT}{\textsf{[T]}}
+\newcommand{\grC}{\textsf{[C]}}
+\newcommand{\grN}{\textsf{[NG]}}
+\newcommand{\grO}{\textsf{[O]}}
+\newcommand{\grE}{\textsf{[E]}}
+
+\setlength{\parskip}{2pt}
+\emergencystretch=2em
+
+\begin{document}
+
+\hypersetup{pdftitle={SG1-1: a no-go theorem for the position-defect decomposition},
+  pdfsubject={covariant + lower side + finite-moment computable = empty},
+  pdfkeywords={spectral measure, inf supp, N09-1, SSF/Krein-Birman, no-go}}
+\title{\textbf{SG1-1}: a no-go theorem for the position--defect decomposition\\[3pt]
+\large $\texorpdfstring{s_1=F+G}{s1=F+G}$, \
+$\texorpdfstring{s_1:=\inf\operatorname{supp}\nu_w}{s1 := inf supp nu\_w}$, is not
+reachable by a covariant, lower-bounded, finite-moment functional}
+\author{Yang--Mills mass-gap corpus \quad \texttt{docs/paper-v7/sg1}}
+\date{2026-11-25}
+\maketitle
+
+\vspace{-1.0em}
+\begin{quote}\small
+\textbf{Scope and grade.} This sub-paper states and proves one theorem,
+\textbf{SG1-1} \grC{} --- the grade is \grC{}, not \grT: the proof is a
+three-line argument whose Step~2 needs condition (iii) read as
+\emph{continuity} in finitely many moments, and under the computability
+reading of (iii) that step does not follow, so the step itself is \grC{}
+(Convention~\ref{conv:iii-strict}). It localises what it excludes. It uses
+only the measure-theoretic layer ($\nu\ge 0$, finite moments) and the
+four-model slot table already fixed in the corpus. Labels are literal: \grT{}
+= proved or identity, \grC{} = conditional, \grN{} = no-go for a named class,
+\grO{} = exact missing step, \grE{} = machine-checked number
+(\code{w7/sg1_G.log}, \texttt{py -3.12} + \texttt{mpmath 1.3.0}, exit $0$).
+No completion stamp is attached to any proof. Clay $=0\%$. Only files under
+\texttt{docs/paper-v7/sg1/} are written; no \code{git commit} is performed.
+\end{quote}
+
+% =====================================================================
+\section[Statement]{Statement}\label{sec:statement}
+
+\subsection[Carrier]{Carrier: $s_1$ is the bottom of the support of an $O$-channel measure}
+
+\begin{definition}[spectral measure, weight, $s_1$]\label{def:s1}
+Let $H\ge 0$ be self-adjoint with ground energy $E_0$, $\Omega$ its ground
+vector, and $O=O^\ast$ a gauge-invariant operator. Put
+\begin{equation}
+\nu_w(B)\;=\;\langle\Omega|\,O\,P_H(B)\,O\,|\Omega\rangle
+\;-\;|\langle\Omega|O|\Omega\rangle|^{2}\,\delta_0(B),
+\qquad
+\nu_w=\sum_{n} w_n\,\delta_{E_n-E_0},
+\qquad
+w_n=|\langle\Omega|O|n\rangle|^{2},
+\label{eq:nuw}
+\end{equation}
+and
+\begin{equation}
+s_1(\nu_w)\;:=\;\inf\operatorname{supp}\nu_w .
+\label{eq:s1}
+\end{equation}
+\end{definition}
+
+\noindent
+Sources: \code{ATOM2.md:27} for \eqref{eq:nuw}; \code{NS2.md:29} for
+$w_n=|\langle\Omega|O|n\rangle|^{2}$; \code{NS2.md:31} for \eqref{eq:s1}.
+Thus $s_1$ is the \emph{bottom of the support of the $O$-channel spectral
+measure} --- a property of the pair $(\text{model},O)$, not of the model alone.
+
+\begin{remark}[four limitations that travel with $s_1$]\label{rem:limits}
+\mbox{}
+\begin{enumerate}\itemsep1pt
+\item \textbf{Per operator} \grT. $\nu$ is per operator: changing $O$ changes
+the measure (\code{ATOM2.md:31}). On the same 2D Yang--Mills model,
+$O=\tfrac14\operatorname{tr}F^2$ gives $\nu\equiv0$ (hence
+$s_1=+\infty$, meaningless), while $O=\tfrac12\operatorname{tr}U$ gives an
+atom of exact weight $1$ at $E_1=3g^2/8$ (\code{ATOM2.md:15,16,77--80}; quoted
+at \code{SG1.md:36}). Every instance below therefore carries its $O$.
+\item \textbf{$\tau_a$ is not a symmetry} \grT. There is no operator that
+implements a shift of the spectrum; $\tau_a$ acts on $\nu$ only and not on the
+data $(S_W,\beta,L,a)$ (\code{B05-DUAL.md:85}, quoted at \code{SG1.md:37}).
+\item \textbf{$s_1=m$ is a physical premise} \grC, not a theorem:
+\code{B05-DUAL.md:159} lists "position" and $m_1$ in the same cell and marks
+the identification as \emph{equal to the target (lossless) $\Rightarrow$
+circular}. It is used here only in that conditional reading.
+\item \textbf{$s_1$ is not the model gap} \grT. On the model M6
+(oscillator $\otimes$ free mode, $\omega=w=1$) one has $s_1=\omega=1$
+(\code{ATOM2.md:44}) while the model spectral bottom is
+$m_6=\min(\omega,2\pi^2/L^2)\to0$ (\code{N09-RESTATE.md:46,65}):
+\begin{center}\footnotesize
+\setlength{\tabcolsep}{4pt}%
+\begin{tabular}{l|cccc}
+$L$ & $8$ & $16$ & $32$ & $64$\\\hline
+$m_6$ & $0.30842514$ & $0.077106284$ & $0.019276571$ & $0.0048191428$
+\end{tabular}
+\end{center}
+\grE{} (\code{w7/sg1_G.log:92--95}); the three-point ladder $L=10,40,160$ gives
+$m_6=0.1974$, $0.01234$, $0.000771\to0$ (\code{SG2.md:90}). Hence $s_1$ is
+\emph{not} a function of the gap at the level
+of values --- this is not a defect of the theorem below but its subject matter
+(\S\ref{sec:what}).
+\end{enumerate}
+\end{remark}
+
+\subsection{The three conditions}
+
+Throughout, $\mathcal M$ denotes the class of non-negative Borel measures on
+$[0,\infty)$ with finite moments $m_k(\nu):=\int\lambda^k\,d\nu(\lambda)$ for
+$k\le N$ and with $s_1(\nu)=\inf\operatorname{supp}\nu\in\mathbb R$. (Spectral
+measures \eqref{eq:nuw} form a subclass; the theorem is proved on all of
+$\mathcal M$, hence \emph{a fortiori} on the physical subclass.) That
+quantifier domain is fixed once and for all:
+
+\begin{convention}[quantifier domain of (ii): the whole measure class]\label{conv:domain}
+All three conditions below are quantified over the \emph{entire} class
+$\mathcal M$ of non-negative Borel measures on $[0,\infty)$ with finite
+moments up to the fixed $N$ and $s_1(\nu)\in\mathbb R$ --- i.e.\ over
+\emph{all measure classes}, not merely over the spectral measures
+\eqref{eq:nuw} that physics supplies. The statement is therefore
+\emph{stronger} than its physical-class version: a functional that fails on
+the larger class fails \emph{a fortiori} on the physical subclass, and the
+emptiness proved below is an emptiness on all measure classes.
+\end{convention}
+
+\begin{definition}[G1 shift]\label{def:G1}
+For $a\in\mathbb R$ set $(\tau_a\nu)(B):=\nu(B-a)$, i.e.\ $\tau_a\nu$ is the
+energy-axis translate. For every $\nu\in\mathcal M$,
+\begin{equation}
+s_1(\tau_a\nu)\;=\;a+s_1(\nu).
+\label{eq:s1cov}
+\end{equation}
+\end{definition}
+\noindent\eqref{eq:s1cov} is \grT{} (\code{B05-DUAL.md:80}).
+
+\begin{definition}[the three conditions]\label{def:three}
+A functional $F:\mathcal M\to\mathbb R$ satisfies
+\begin{enumerate}\itemsep2pt
+\item[\textbf{(i)}] \textbf{G1-covariance}: $F(\tau_a\nu)=F(\nu)+a$ for all
+$\nu\in\mathcal M$ and all $a\in\mathbb R$;
+\item[\textbf{(ii)}] \textbf{lower side}: $F(\nu)\le s_1(\nu)$ for all
+$\nu\in\mathcal M$;
+\item[\textbf{(iii)}] \textbf{finite-moment computability}: there are
+$N<\infty$ and a continuous $\Phi:\mathbb R^{N}\to\mathbb R$ with
+$F(\nu)=\Phi\bigl(m_1(\nu),\dots,m_N(\nu)\bigr)$ for all $\nu\in\mathcal M$.
+\end{enumerate}
+\end{definition}
+
+\begin{convention}[which shift: (i) is pinned to the G1 energy axis]\label{conv:G1}
+Condition (i) must be read on the \emph{energy} axis (\textbf{G1}), not on the
+space axis (\textbf{G2}): under a spatial translate $U(x)$ the object
+$\inf\operatorname{supp}\nu$ is invariant, so a G2 reading makes (i)
+\emph{empty} --- it constrains nothing --- and simultaneously puts it in direct
+conflict with (ii) (\code{B05-DUAL.md:76--83}, quoted at \code{NS2.md:18}).
+The conflict is an artefact of the reading, not of the mathematics. Hence (i)
+is pinned to G1 here, and no G2 reading is used anywhere below.
+\end{convention}
+
+\begin{convention}[reading of (iii): fixed $N$, $\Phi$ continuous, dependence on $m_1,\dots,m_N$ only]\label{conv:iii-strict}
+Condition (iii) is defined in exactly one way, and this is the only reading
+used: there is an $N<\infty$, \emph{fixed independently of $\nu$}, and a
+continuous $\Phi:\mathbb R^{N}\to\mathbb R$ such that
+$F(\nu)=\Phi\bigl(m_1(\nu),\dots,m_N(\nu)\bigr)$ for every $\nu\in\mathcal M$.
+If (iii) is instead read as \emph{computability} --- recursion-theoretic, or
+"computable from $(S_W,\beta,L,a)$ by an algorithm" --- then Step~2 of the
+proof of Theorem~\ref{thm:sg1}, namely the passage
+$F\bigl(\nu_\varepsilon^{(a)}\bigr)\to F(\delta_a)$, which uses nothing but
+continuity of $\Phi$, no longer follows, and the three-line proof collapses.
+That step is therefore itself \grC{}, and consequently the true grade of
+\textbf{SG1-1} is \grC{}, not \grT. This is the only reason for the
+downgrade, and it is stated here rather than buried in a remark.
+\end{convention}
+
+\begin{remark}[on (iii)]\label{rem:iii}
+Condition (iii) is \emph{finite-moment continuity}, not computability in the
+recursion-theoretic sense: it says $F$ depends on $\nu$ only through finitely
+many moments $(m_1,\dots,m_N)$ with $N$ fixed independently of $\nu$, and
+continuously. Every functional obtained by inserting finitely many moments into
+a closed expression is of this form. The distinction is not cosmetic: the
+proof of Theorem~\ref{thm:sg1} uses exactly continuity, and nothing else ---
+so a "computable but discontinuous in the moment topology" $F$ is outside the
+class killed below, and that is the one gap the theorem leaves
+(Remark~\ref{rem:sharp-iii} and \S\ref{sec:what}).
+\end{remark}
+
+\subsection{The theorem}
+
+\begin{theorem}[SG1-1 \grC]\label{thm:sg1}
+\mbox{}
+\[
+\textbf{(i)}\ \text{G1-covariant}\quad\wedge\quad
+\textbf{(ii)}\ F\le s_1\quad\wedge\quad
+\textbf{(iii)}\ \text{finite-moment computable}
+\quad=\quad\varnothing .
+\]
+Equivalently: no functional $F:\mathcal M\to\mathbb R$ satisfies
+\ref{def:three}(i), (ii) and (iii) simultaneously, where (i) is the G1 energy
+shift (Convention~\ref{conv:G1}), (ii) quantifies over the whole class
+$\mathcal M$ (Convention~\ref{conv:domain}) and (iii) is the strict reading of
+Convention~\ref{conv:iii-strict}. The grade is \grC, because the last step of
+the proof is conditional on that reading.
+\end{theorem}
+
+\noindent
+The corpus statement, transcribed from \code{SG1.md:62--67}
+(markdown emphasis and backticks are markup; mathematical symbols are restored
+in math mode; no word is changed, all Chinese wording is translated):
+
+\begin{quote}\small
+\textbf{SG1-1 \grC}: \textbf{(i)} G1-covariance $\wedge$ \textbf{(ii)}
+$F\le s_1$ $\wedge$ \textbf{(iii)} finite-moment computable $=\varnothing$\\
+Proof: the atom family $\nu_\varepsilon^{(a)}$ makes the moments drift by
+$O(\varepsilon)$ while $s_1:1\to\varepsilon$\\
+\hspace*{2.1em}machine check $a=0.5/1/2/5$ all \textsf{NO} (\code{sg1_G.log})\\
+$\Rightarrow$ the only escape left is the \textbf{full-moment limit}
+$\Rightarrow$ the only reachable object is $F=s_1$
+$\Rightarrow$ $G\equiv0$ $\Rightarrow$ collides with N09-1\\
+and $G=s_1$ is exactly the \textbf{SSF/Krein--Birman
+$\operatorname{tr}\bigl(f(H)-f(H_0)\bigr)$ body} (\code{NS2:116})
+\end{quote}
+
+\noindent
+\textbf{One transcription departure, declared.} The corpus text prints
+\grT{} for SG1-1 at \code{SG1.md:62}; it is printed \grC{} here, in accordance
+with Convention~\ref{conv:iii-strict}. This is the only place where the
+transcription departs from the source, and the departure is the grade chip
+only: every symbol, number and connective is preserved.
+
+% =====================================================================
+\section[Proof]{Proof}\label{sec:proof}
+
+\subsection{The atom family}
+
+\begin{lemma}[thin atom: all moments converge, $s_1$ jumps]\label{lem:atom}
+Fix $a\ge0$, $\lambda>0$ and $0<\varepsilon<\min(a,2\lambda)$. Put
+\begin{equation}
+\nu_\varepsilon^{(a)}\;=\;\frac{\varepsilon}{2\lambda}\,\delta_\varepsilon
+\;+\;\Bigl(1-\frac{\varepsilon}{2\lambda}\Bigr)\,\delta_a
+\;\in\;\mathcal M .
+\label{eq:atomfam}
+\end{equation}
+Then
+\begin{equation}
+s_1\bigl(\nu_\varepsilon^{(a)}\bigr)=\varepsilon,
+\qquad
+m_k\bigl(\nu_\varepsilon^{(a)}\bigr)
+=\frac{\varepsilon}{2\lambda}\,\varepsilon^{k}
++\Bigl(1-\frac{\varepsilon}{2\lambda}\Bigr)a^{k}
+\;\xrightarrow[\ \varepsilon\downarrow0\ ]{}\; a^{k}=m_k(\delta_a)
+\quad(k\ge1).
+\label{eq:atommom}
+\end{equation}
+\end{lemma}
+
+\noindent
+The family is the same thin-atom shape used against H1
+(\code{A3-VERDICT.md:61--69}); here the weight $\varepsilon/2\lambda$ is
+bookkeeping only --- the proof below needs $w_\varepsilon\to0$, nothing more.
+
+\subsection[Proof of SG1-1]{Proof of Theorem~\ref{thm:sg1}}
+
+\begin{proof}
+Let $F$ satisfy \ref{def:three}(i)--(iii), with data $N,\Phi$. Fix $a\ge0$ and
+let $\varepsilon\downarrow0$ along \eqref{eq:atomfam}. Three steps.
+
+\smallskip
+\noindent\emph{Step 1 (moments converge).} By \eqref{eq:atommom}, the moment
+vector $\bigl(m_1,\dots,m_N\bigr)\bigl(\nu_\varepsilon^{(a)}\bigr)$ tends to
+that of the single atom $\delta_a\in\mathcal M$.
+
+\smallskip
+\noindent\emph{Step 2 (lower side kills $F$ on atoms) \grC.} Continuity of
+$\Phi$ in (iii) together with Step 1 gives
+$F\bigl(\nu_\varepsilon^{(a)}\bigr)\to F(\delta_a)$, while (ii) gives
+$F\bigl(\nu_\varepsilon^{(a)}\bigr)\le s_1\bigl(\nu_\varepsilon^{(a)}\bigr)=\varepsilon$.
+Hence
+\begin{equation}
+F(\delta_a)\;\le\;0\qquad\text{for every }a\ge0 .
+\label{eq:step2}
+\end{equation}
+The chip \grC{} sits on this step alone: it is exactly the step that a
+computability reading of (iii) voids (Convention~\ref{conv:iii-strict}).
+
+\smallskip
+\noindent\emph{Step 3 (covariance kills atoms).} $(\tau_a\delta_0)(B)=\delta_0(B-a)=\delta_a(B)$,
+so by (i) applied at $\nu=\delta_0$,
+\begin{equation}
+F(\delta_a)=F(\tau_a\delta_0)=F(\delta_0)+a \qquad(a\ge0).
+\label{eq:step3}
+\end{equation}
+Combining \eqref{eq:step2} and \eqref{eq:step3},
+\[
+F(\delta_0)+a\;\le\;0\qquad\text{for every }a\ge0,
+\]
+which is false for any $a>|F(\delta_0)|$. Hence no such $F$ exists and the
+intersection is empty (conditionally on the reading of (iii) fixed in
+Convention~\ref{conv:iii-strict}).
+\end{proof}
+
+\begin{remark}[what the proof does and does not use]\label{rem:cheap}
+\mbox{}
+\begin{itemize}\itemsep1pt
+\item It uses \emph{one} moment ($N\ge1$) and continuity, no more. Hence it
+already kills every $F$ of the form $\Phi(m_1)$ with $\Phi$ continuous --- in
+particular every "position estimate built out of the first moment".
+\item It uses neither positivity of $F$ nor compact support nor gauge input:
+(ii) is a two-sided squeeze against a quantity that jumps, and a single jump
+suffices.
+\item Conversely it does \emph{not} touch functionals that are discontinuous
+in the moment topology --- and $s_1$ itself is exactly such a functional
+(\eqref{eq:atommom} is a sequence with all moments convergent and
+$s_1$ jumping from $\varepsilon$ to $a$). This is the precise content of the
+dichotomy in Corollary~\ref{cor:dich}.
+\end{itemize}
+\end{remark}
+
+\subsection[Machine check]{Machine check (\grE, \code{w7/sg1_G.log})}
+
+Script: \code{research/v3/species/w7/sg1_G.py}; log:
+\code{research/v3/species/w7/sg1_G.log}; status: \texttt{py -3.12},
+\texttt{mpmath 1.3.0}, exit $0$ (\code{SG1.md:158}). Two tables are relevant.
+
+\smallskip
+\noindent\emph{(a) Moments drift by $O(\varepsilon)$ while $s_1$ moves by
+$O(1)$} (base $\nu=\delta_{s_2}$, $s_2=1$, $\lambda=1$;
+\code{sg1_G.log:37--42}):
+
+\begin{center}\footnotesize
+\begin{tabular}{r|r|r|r|r|r}
+$\varepsilon$ & $s_1(\nu_\varepsilon)$ & $w_\varepsilon$ & $|\Delta m_1|$ &
+$|\Delta m_2|$ & $|\Delta m_3|$\\\hline
+$10^{-1}$ & $0.1$ & $0.05$ & $0.045$ & $0.0495$ & $0.04995$\\
+$10^{-2}$ & $0.01$ & $0.005$ & $0.00495$ & $0.0049995$ & $0.00499999$\\
+$10^{-6}$ & $10^{-6}$ & $5\cdot10^{-7}$ & $4.99999\cdot10^{-7}$ &
+$5\cdot10^{-7}$ & $5\cdot10^{-7}$
+\end{tabular}
+\end{center}
+
+\smallskip
+\noindent
+So $s_1$ drops $1\to\varepsilon$ (an $O(1)$ change) while every moment drifts
+by $O(\varepsilon)$: finitely many moments cannot see the jump.
+
+\smallskip
+\noindent\emph{(b) The four-row inconsistency at $\varepsilon=10^{-6}$}
+(\code{sg1_G.log:55--60}): for each $a$, (ii) forces $F\le10^{-6}$ while (i)
+forces $F=a$.
+
+\begin{center}\footnotesize
+\begin{tabular}{r|r|r|r|r|c}
+$a$ & $s_1(\nu_\varepsilon^{(a)})$ & $|\Delta m_1|$ vs $\delta_a$ &
+(ii) forces $F\le$ & (i) forces $F=$ & consistent?\\\hline
+$0.5$ & $1.0\cdot10^{-6}$ & $2.49999\cdot10^{-7}$ & $1.0\cdot10^{-6}$ & $0.5$ & \textsf{NO}\\
+$1.0$ & $1.0\cdot10^{-6}$ & $4.99999\cdot10^{-7}$ & $1.0\cdot10^{-6}$ & $1.0$ & \textsf{NO}\\
+$2.0$ & $1.0\cdot10^{-6}$ & $9.99999\cdot10^{-7}$ & $1.0\cdot10^{-6}$ & $2.0$ & \textsf{NO}\\
+$5.0$ & $1.0\cdot10^{-6}$ & $2.5\cdot10^{-6}$ & $1.0\cdot10^{-6}$ & $5.0$ & \textsf{NO}
+\end{tabular}
+\end{center}
+
+\noindent
+All four rows are \textsf{NO}, as Theorem~\ref{thm:sg1} requires. Truncating
+the moment list is precisely what the atom family kills: a finer grid of $a$
+does not help, because the obstruction is the jump, not the resolution.
+
+\subsection{The dichotomy, and where the survivor lands}
+
+\begin{corollary}[dichotomy]\label{cor:dich}
+The only way past Theorem~\ref{thm:sg1} is to abandon (iii): one must use the
+\emph{full} moment sequence, i.e.\ the measure itself. On compact support the
+full moment sequence determines $\nu$ uniquely, so the object reached this way
+carries no less information than $\nu$; the only $(i)+(ii)$ object the corpus
+can name in that region is $s_1$ itself, whence
+\begin{equation}
+F=s_1\qquad\Longrightarrow\qquad G:=s_1-F\equiv0 .
+\label{eq:dich}
+\end{equation}
+\end{corollary}
+
+\begin{remark}[window of the corollary --- it is a dichotomy, not an
+impossibility theorem]\label{rem:sharp-iii}
+\code{SG1.md:143} states the window verbatim: the conclusion of
+Theorem~\ref{thm:sg1} covers only $F$ continuous in finitely many moments; the
+full-moment route can be taken, but then "without consulting the spectrum"
+fails. ``This is a dichotomy, not an absolute impossibility'' \grT. The
+mechanism is the one isolated in Remark~\ref{rem:cheap}: $s_1$ is
+discontinuous in the moment topology, and the escape region is the class of
+functionals discontinuous at the atom limit. The corollary's identification of
+the extremal survivor with $s_1$ is an identification of \emph{reachability},
+and it is the weakest link of this section --- it is not a classification
+theorem for that class.
+\end{remark}
+
+\begin{remark}[signature of the survivor: it lands inside N09-1's
+domain]\label{rem:sig}
+$G\equiv0$ has the four-model signature $(0,0,0,\text{undef})$ --- free field
+$0$, 2D Yang--Mills $0$, M6 $0$, single plaquette undefined --- hence it
+\emph{passes} the slot-value test $4/4$ and therefore lies in
+$\operatorname{dom}(\mathrm{N09\text{-}1})=\{X:X\ \text{passes }\text{\textcircled{1}}\}$
+(\code{Q03-TARGET.md:87}; slot table \code{N09-RESTATE.md:49},
+\code{N12-VERDICT.md:36}). N09-1 then returns $G=f(m)$. So the survivor
+produces no object beyond the target: the "defect" is the zero functional
+(degenerate end $f\equiv0$), and $F=s_1$ is the position itself. See
+\S\ref{sec:what} for the precise form of this "collision".
+\end{remark}
+
+% =====================================================================
+\section[Sharpness]{Sharpness: dropping any one of the three conditions leaves solutions}\label{sec:sharp}
+
+\begin{proposition}[mutual irredundancy]\label{prop:sharp}
+Each of the three conditions is necessary: dropping any single one leaves a
+non-empty class of solutions, and each witness below fails exactly one
+condition and satisfies the other two.
+\end{proposition}
+
+\begin{center}\footnotesize
+\begin{tabular}{@{}l|l|c|c|c|l@{}}
+drop & witness $F$ & (i) & (ii) & (iii) & mechanism / source\\\hline
+(i) & $F\equiv0$ & $\times$ & $\checkmark$ & $\checkmark$ &
+$F(\tau_a\nu)-F(\nu)=0\ne a$; $0\le s_1$; $\Phi\equiv0$\\
+(i) & $\mathrm{Var}$, $f_1^2$, $m_2$ & $\times$ & model-dep. & $\checkmark$ &
+shifts $0,0,0,0$ at $a=0.1/0.5/1/2$ (\code{sg1_G.log:17--20})\\
+(ii) & $F=\overline\lambda:=m_1/m_0$ & $\checkmark$ & $\times$ & $\checkmark$ &
+$\overline\lambda-s_1\ge0$, equality iff $\nu$ is one atom\\
+(iii) & $F=s_1$ & $\checkmark$ & $\checkmark$ (equality) & $\times$ &
+$s_1(\tau_a\nu)=a+s_1(\nu)$; atom family \eqref{eq:atommom}
+\end{tabular}
+\end{center}
+
+\noindent
+Details, one line each.
+
+\smallskip
+\noindent\textbf{Dropping (i) $\Rightarrow$ shape.} $F\equiv0$ is covariant-free,
+finite-moment ($N=0$) and below $s_1$ on $\mathcal M\subset$ measures on
+$[0,\infty)$. The price is that $G:=s_1-F$ is then \emph{not} G1-invariant:
+$G(\tau_a\nu)=G(\nu)+a$, so the decomposition of \code{NS2-0} collapses --- the
+very identity $F=s_1-G$ with $G$ a \emph{shape} functional requires (i). The
+same verdict covers the shape candidates: $\mathrm{Var}$, $f_1^2$ and $m_2$
+all have zero shift under $\tau_a$ (\code{sg1_G.log:17--20}), hence satisfy
+(i) for no $a\ne0$; the census of covariant functionals among the tested
+candidates is exactly $\{s_1,\ \overline\lambda\}$ (\code{sg1_G.log:22}).
+
+\smallskip
+\noindent\textbf{Dropping (ii) $\Rightarrow$ the mean.}
+$F=\overline\lambda=m_1/m_0$ is G1-covariant ($+a$ exactly, at
+$a=0.1/0.5/1/2$: \code{sg1_G.log:16}) and finite-moment ($N=2$, $\Phi$ smooth
+on $m_0>0$). It fails (ii) on the class: $\overline\lambda\ge s_1$ with
+equality iff $\nu$ is a single atom, so on
+$\nu=\tfrac12\delta_0+\tfrac12\delta_1$ one has
+$\overline\lambda-s_1=0.5-0=0.5>0$ (\code{sg1_G.log:12,30}). This is the corpus's
+NG-3 (\code{B05-DUAL.md:141--143}): the mean is on the \emph{wrong side}, so it
+can only give upper bounds --- the opposite of what a lower bound on the
+position needs.
+
+\smallskip
+\noindent\textbf{Dropping (iii) $\Rightarrow$ $s_1$ itself.}
+$F=s_1$ is perfectly covariant (\eqref{eq:s1cov}) and satisfies (ii) with
+equality. It is not finite-moment computable: \eqref{eq:atommom} exhibits two
+measures whose first $N$ moments agree to $O(\varepsilon)$ while their $s_1$
+differ by $1-\varepsilon$. So the only exact witness of (i)${}+{}$(ii) is the
+target, and the corpus's own summary of this degeneration is
+\code{SG1.md:105}: "either it degenerates into the position itself, or one has
+to hand over $G$" (translated from the corpus wording).
+
+\smallskip
+\noindent
+Hence the emptiness in Theorem~\ref{thm:sg1} is a genuine three-way
+incompatibility, not one condition carrying the whole theorem, and the
+sharpness table also displays the cost of each concession: shape (drop (i)) is
+available but carries no certificate direction; the mean (drop (ii)) is
+available but on the upper side; the position (drop (iii)) is available but is
+the target.
+
+% =====================================================================
+\section[What it excludes]{What it excludes}\label{sec:what}
+
+\subsection[The sixth species]{The sixth species: the specification \code{NS2-S} cannot be met}
+
+The corpus's sixth-species specification (\code{NS2.md:59--69}) asks for a pair
+of computable functionals $(F,G)$ with
+\begin{quote}\footnotesize
+(1) $s_1=F+G$ (exact identity), \quad
+(2) $F=F(S_W,\beta,L,a)$ computable \emph{without} the spectrum, \quad
+(3) $F(\tau_a\nu)=F(\nu)+a$, $G(\tau_a\nu)=G(\nu)$, \quad
+(4) $G\ge0$ computable and not a renaming of $H1/\mathrm{Var}/G''/f_1^2$, \quad
+(5) $F(\mathrm{M6})=0$, $G(\mathrm{M6})=\omega\ne0=m_6$, \quad
+(6) $F\ge c_0$ $(L,a)$-uniformly $\Rightarrow$ $s_1\ge c_0$.
+\end{quote}
+Items (1)--(3) are already fixed as \grT{} algebra (\code{NS2-0},
+\code{NS2.md:38--47}): given any G1-invariant $G\ge0$, $F:=s_1-G$ satisfies
+both premises automatically, so the identity carries no information and the
+only real question is whether an admissible $F$ exists at all
+(\code{SG1.md:46}). Theorem~\ref{thm:sg1} answers it in the negative for the
+finite-moment branch:
+
+\begin{itemize}\itemsep2pt
+\item $(2)\wedge(3)\wedge[\,F\ \text{finite-moment, i.e.\ in (iii)}\,]=\varnothing$
+(Theorem~\ref{thm:sg1}, with $c_0>0$ in (6) playing no role --- the obstruction
+is already at $F\le s_1$);
+\item the two ways out are exactly (6)'s degenerations: either $F=s_1$
+($G\equiv0$, no defect, and (6) becomes the target statement itself), or $F$
+violates (i) or (ii) and then \code{NS2-0}'s split of the certificate
+direction is void.
+\end{itemize}
+
+\noindent
+One conditional step must be flagged, because it is not part of
+Theorem~\ref{thm:sg1}: the passage from "(2) $F$ is computed from
+$(S_W,\beta,L,a)$ without the spectrum" to "(iii) $F$ is continuous in finitely
+many moments" is a \emph{reading}, marked \grC{} here. \code{SG1.md:132}
+asserts it flatly ("any $F$ computed directly from $S_W$ is a function of
+finitely many moments", translated); this paper keeps the assertion but labels
+it \grC, since a computable functional could in principle be discontinuous in
+the moment topology --- which is exactly the gap in
+Remark~\ref{rem:sharp-iii} and the reason for the grade \grC{} carried by
+Theorem~\ref{thm:sg1} itself.
+
+\subsection[The specification]{The specification $F=s_1-G$: the decomposition is a tautology plus
+a hole}
+
+Assembling the above: the decomposition $s_1=F+G$ is \grT{} but content-free,
+and Theorem~\ref{thm:sg1} says the pair cannot be made non-vacuous on the
+finite-moment side. In other words, for the specification to succeed one needs
+an $F$ that is simultaneously
+\begin{enumerate}\itemsep1pt
+\item[(a)] G1-covariant, (b) below the position, (c) computable without the
+spectrum, (d) positive uniformly;
+\end{enumerate}
+and (a)${}\wedge{}$(b)${}\wedge{}$(c) already has no solution. The only survivor
+of (a)${}\wedge{}$(b) is $F=s_1$, for which (c) fails and (d) is the target.
+So the residual content of the specification is: \emph{prove the position is
+positive} --- verbatim the Clay-side statement, not a new object.
+
+\subsection[SG2]{The escape of \S99.3 is a false positive, and so is $s_1$}
+
+The corpus's \S99.3 promoted $F=s_1-G$ to "the first candidate in 60+ rounds to
+escape N09-1", on the ground that $G(\mathrm M6)=\omega\ne0$ while $m_6\to0$.
+\code{SG2.md} kills that reading in two steps, both inherited here:
+
+\smallskip
+\noindent\emph{(1) $G$ violates the M6 slot value.} The slot-value test demands
+$X(\mathrm M6)=0$ \emph{exactly} (\code{N09-RESTATE.md:49}: "must take exactly
+0", translated); $G(\mathrm M6)=\omega=1\ne0$ (\code{ATOM2.md:44}). This is a
+false positive of exactly the $\Delta_0$ type, whose four-model row reads
+"M6 positive (false positive) $\times$" (\code{N12-VERDICT.md:13}). Same type,
+same verdict.
+
+\smallskip
+\noindent\emph{(2) $s_1$ itself violates it.} With the specification's own
+choice $F(\mathrm M6)=0$ (\code{NS2.md:65}),
+\[
+s_1(\mathrm M6)=F(\mathrm M6)+G(\mathrm M6)=0+\omega=1\;>\;0=m_6 ,
+\]
+with $\omega=1$ (\code{ATOM2.md:44}) and $m_6\to0$ under $L\to\infty$
+(\code{N09-RESTATE.md:65});
+so the object the specification wants to bound from below is \emph{itself} a
+false positive on the M6 slot. Splitting $s_1$ into $F+G$ does not move the
+defect off the object: whichever summand carries $\omega$, the sum carries it
+(\code{SG2.md:99--104}). Hence
+\begin{quote}\small
+\textbf{escape $\equiv$ expulsion} (\code{SG2.md:135--138}; translated):
+escaping $\operatorname{dom}(\mathrm{N09\text{-}1})$ and failing the four-model
+test are the same statement, because the domain \emph{is} the set of
+test-passers (\code{Q03-TARGET.md:87}).
+\end{quote}
+
+\subsection{Precise relation to N09-1, and what remains open}
+
+\begin{remark}[SG1-1 and N09-1: no implication in either direction; they meet only at a degenerate end]\label{rem:n09rel}
+\mbox{}
+\begin{itemize}\itemsep1pt
+\item \textbf{No implication either way.} N09-1
+(\code{N09-RESTATE.md:44--53}, \grT{} conditional on the M6 specification and
+the $L\to\infty$ reading) quantifies over \emph{quantities on models} that pass
+the slot-value test; SG1-1 quantifies over \emph{functionals on measures}
+(Convention~\ref{conv:domain}). Neither implies the other.
+\item \textbf{Where they meet.} Only at the survivor: $G\equiv0$ passes $4/4$
+and lands inside $\operatorname{dom}(\mathrm{N09\text{-}1})$
+(Remark~\ref{rem:sig}). That contact is a \emph{degenerate end}
+($F=s_1\Rightarrow G\equiv0$), not an implication: it is one shared boundary
+point of two different statements, not one statement entailing the other.
+\item \textbf{The word "collision" is not an implication.} In the corpus's
+phrasing the branch $F=s_1$ "collides with N09-1". Precisely: N09-1's
+conclusion is $G=f(m)$ with $f(0)=0$ and $f>0$; the survivor is $f\equiv0$, so
+the collision is at the \emph{degenerate end} of that family. What is excluded
+is the existence of a \emph{non-trivial} defect $G$; the zero defect is not an
+object at all. This refinement should be carried whenever the corpus's
+collision phrase is quoted.
+\item \textbf{Grade bookkeeping.} Since SG1-1 is \grC{} and N09-1 is \grT{}
+(conditional on its own premises), no transfer of grade in either direction is
+available, which is a second, independent reason why no implication holds.
+\end{itemize}
+\end{remark}
+
+\smallskip
+\noindent\textbf{What remains open} \grO. The class not touched by
+Theorem~\ref{thm:sg1} is the full-moment / moment-discontinuous class. There
+the corpus's named object is the SSF/Krein--Birman relative trace
+$\operatorname{tr}\bigl(f(H)-f(H_0)\bigr)=\int f'\xi$ with
+$\xi_{H+a}(\lambda)=\xi_H(\lambda-a)$, which is G1-covariant and whose bottom is
+transported losslessly --- the corpus's own verdict is that this \emph{is} the
+circular body of (i) and simultaneously a transport argument, i.e.\ the class
+with $0/19$ successes (\code{NS2.md:116}, \code{NS2.md:83}). So the open region
+is exactly "the position, transported", and it is where the Clay-side work
+already lives. No new object is produced there by this paper, and none is
+claimed.
+
+\medskip
+\noindent\textbf{Honest summary.} This sub-paper adds no new quantity and no new
+numerical evidence: \eqref{eq:atomfam}--\eqref{eq:step3} is a three-line
+argument, the tables are re-readings of \code{sg1_G.log}, and the fourth
+section is bookkeeping over already-ruled corpus items. What is added is the
+isolation of SG1-1 as a statement with its three conditions made explicit ---
+including the pinning of (i) to the G1 energy axis, the quantifier domain of
+(ii) as the whole measure class, and the strict reading of (iii) that fixes the
+grade at \grC{} --- its sharpness witnesses, the exact N09-1 relation (degenerate
+contact, no implication), and the exact boundary of what it does \emph{not}
+exclude. Clay $=0\%$; no completion stamp.
+
+\end{document}

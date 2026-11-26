@@ -1,0 +1,31 @@
+============================================================================================
+T1  SCALARIZATION            N=3  beta=2.50   lambda_1=(N^2-1)/(2N)=1.3333   (1/2)Ric=N/8=0.3750
+============================================================================================
+  C_t = t g^{-1}  =>  Cdot = g^{-1},  Cddot = 0   =>   Cdot Hess V Cdot = Hess V,  -(1/2)Cddot = 0
+  (star)  <v,Hess_g V_t v>_g >= lamdot_t  for every g-unit v, every phi, every t>0
+
+  DIMENSION of lamdot_t:  <v,Hess V_t v>_g is dimensionless (v is g-unit, V_t is an action),
+  so lamdot_t is DIMENSIONLESS = a curvature FLUX (curvature per unit flow time t).
+  t itself is heat time measured in units of g^{-1}, i.e. t = (length)^2 in the physical metric
+  g_phys = a^2 g.  Then lam_t is dimensionless, int e^{-2 lam} dt has dimension a^2, so
+  gamma = 1/int e^{-2 lam} scales like 1/a^2 = a physical mass^2.  Free field check below.
+
+============================================================================================
+T2  FEASIBILITY OF (star):  lam_t <= M(t),  feasible <=> I = int_0^inf e^{-2M} < inf
+============================================================================================
+ceiling m(t)                                     M(inf)  I=int e^-2M    gamma_max   verdict
+--------------------------------------------------------------------------------------------
+free field  S_W=0            (literal form, no source)      0.00000        1e+06            -   DEAD (I(T) not convergent)
+literal (star):  m=-a e^{-ct}                  -3.00002    4.034e+08            -   DEAD (I(T) not convergent)
+literal + delta/(1+t), delta=0.40               2.52619    2.952e+04            -   DEAD (I(T) not convergent)
+literal + delta/(1+t), delta=0.60               5.28929         1539    0.0006496   FEASIBLE  gamma_max=0.0006496
+MANIFOLD (3.100):  N/8 - a e^{-ct}         374996.99998        174.6     0.005728   FEASIBLE  gamma_max=0.005728
+flat phi^4: 1/(1+t) - chi/(1+t)^2              10.81552        67.07      0.01491   FEASIBLE  gamma_max=0.01491
+Ric>0 + delta/(1+t), delta=0.40            375002.52619        69.76      0.01433   FEASIBLE  gamma_max=0.01433
+
+============================================================================================
+FREE-FIELD ACID TEST (S_W = 0  =>  V_t = 0  =>  Hess V_t = 0, i.e. m(t) = 0 for all t)
+============================================================================================
+  literal form:   lamdot <= 0  =>  lam_t <= 0  =>  int e^{-2 lam} >= int 1 = inf  =>  NO admissible lam.
+  Yet the TRUE answer for Haar on SU(N)^E is a LSI with gamma = lambda_1(Delta_g).  Table:
+     N     lambda_1 = (N^2-1)/(2N)     N/4 (yield of the half-Ric source)     ratio

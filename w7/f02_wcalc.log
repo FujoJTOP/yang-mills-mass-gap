@@ -1,0 +1,66 @@
+====================================================================================
+§1  WHERE the Savvidy negative mode is (exact): colour-3 transverse magnetic B
+====================================================================================
+   helicity s=+1:  lam_min = +3.000000000000
+   helicity s=-1:  lam_min = -1.000000000000
+   => lam_{n,s} = k_par^2 + (2n+1) g|B| + 2 s g|B| ; bottom at n=0, s=-1, k_3=k_4=0:
+      lam_min = -g|B|.  Direction: transverse magnetic (colour 3 background,
+      eps_- = (e_1 - i e_2)/sqrt2), LLL profile in the 1-2 plane, constant in 3,4.
+      (matches PROOF-SAVVIDY-EXACT-SIGN; lattice: O06 'pointwise min -1.893', W4 7.1% neg)
+
+====================================================================================
+§2  Lattice model with a localised negative mode of the Savvidy shape
+    M = -Delta_h + V,  V = -c inside a disk of radius R (depth tuned to lam_min ~ -gB)
+====================================================================================
+    grid 64x64, h=0.09524, L=6.0, depth c=1.6, target lam_min=-gB=-1.0
+    lambda_min(M) = -1.12502177   (next -0.471279)
+    <psi|V|psi>   = -1.36508185  (= <psi|M|psi> - ||grad psi||^2)
+    localisation: max site weight 8.375e-04, sites with w>1e-3: 0
+    (transverse LLL is localised exactly this way: width 1/sqrt(gB) << box)
+
+====================================================================================
+§3  Conjugation audit   A = W^{1/2} M W^{-1/2}   (candidate designs)
+====================================================================================
+    W                          ||A s.psi - lam min s.psi||   <psi|A|psi> pred=lam_min-¼<|grad logW|²>  lam_min(sym)
+    e^{-c Phi}, c=0.02                          5.313e-13     -1.125316                    -1.125321     -1.125316
+    e^{-c Phi}, c=0.10                          5.186e-13     -1.132377                    -1.132512     -1.132403
+    (1+|F|^2)^k, k=1/2                          5.495e-13     -1.128559                    -1.128591     -1.128561
+    (1+|F|^2)^k, k=1                            5.645e-13     -1.139171                    -1.139299     -1.139201
+    det(Hess Phi)^a (const)                     5.331e-13     -1.125022                    -1.125022     -1.125022
+    random smooth                               5.261e-13     -1.306214                    -1.181188     -1.310645
+    oracle kappa/psi^2                          7.120e-13     -1.365082                    -1.364706     -1.387171
+
+    col2 ~ 0  : W^{1/2}psi is an EXACT eigenvector of A with eigenvalue lam_min(M) -- for every W
+    col3 < 0  : the negative mode witnesses against A >= Delta^2 > 0 -- for every designed W
+    col4 = col3: <psi|A|psi> = lam_min - ¼<|grad log W|^2>_psi  <= lam_min  (identity T4)
+                 => the best weight in the whole class is the TRIVIAL one (grad log W = 0 on supp psi);
+                    every designed gradient makes the negative mode strictly worse.
+    col5 <= lam_min(M): the self-adjoint part is pushed DOWN by -¼|grad log W|²
+
+====================================================================================
+§4  The conjugation term EXACTLY: bonds get multiplied by cosh(δ log f) >= 1, diagonal untouched
+====================================================================================
+    max|½(A+A*) - (M - P_cosh)| (interior) = 5.684e-14   [exact identity]
+    continuum form: P -> ¼|grad logW|² ;  max(P_cosh)=1.1218e-02, max(¼|grad logW|²)=2.2432e-02
+    diagonal correction |diag(A)-diag(M)| : max = 5.684e-14  (exactly zero: A_ii = M_ii)
+    every bond weight cosh(delta log f) >= 1 : min = 1.000000, max = 1.000102  -> hopping is strictly ENLARGED, never reduced
+    => no positive zero-order term is created anywhere; the only effect is to spread the
+       operator over larger hoppings, which lowers the bottom (spectral flow downward).
+
+====================================================================================
+§5  General theorem: spectrum is similarity-invariant for ANY positive invertible W
+====================================================================================
+    random self-adjoint M (80x80): lam_min=-2.89351291  lam_max=+9.46688165
+    max |spec(S M S^-1) - spec(M)| over 6 random SPD S = 2.504e-12
+    => no W of any kind (multiplicative or not) can move the bottom of the spectrum.
+
+====================================================================================
+§6  VERDICT
+====================================================================================
+    (a) negative-mode location      : lam_min = -g|B| (n=0, s=-1, k_3=k_4=0)  [exact]
+    (b) similarity residual, worst W: 7.12e-13 -> lam_min(A)=lam_min(M)
+    (c) witness <psi0|A|psi0>       : -1.125022 (max over designs; = lam_min - ¼<|grad logW|²> <= lam_min)
+    (d) conjugation term            : exact lattice identity max err 5.68e-14; every bond weight >= 1.0000 (>=1, i.e. hopping only grows)
+    (e) arbitrary SPD W             : spec shift 2.50e-12
+    => W-CALC (pointwise cancellation of the Savvidy negative mode by a positive weight)
+       DOES NOT EXIST.  Verdict (c): structural theorem. D1/W-SHIFT is a similarity.

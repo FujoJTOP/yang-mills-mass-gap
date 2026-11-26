@@ -1,0 +1,20 @@
+####################################################################################################
+# TR test 2 -- BLOCKING (T_L = K^L) and the per-step squeeze width
+####################################################################################################
+    nz=320  beta=2.5  rho_inf=0.699352  exact Delta=0.644388  l1/l0=0.524984
+    tropical critical self-loops: 2 of 320;  second-diagonal deficit delta_2 = 3.497e-04  => rigid prediction beta*delta_2 = 8.741e-04
+
+      L   lam0(T_L)^(1/L)  Delta_L (per step)  rho_inf^(L)/L    N_eff^(L)      w_L  w_L/Delta  s_L=logN/L  beta*L*d2
+      1        228.173837            0.644388       0.699352   1.2831e+02   1.9418      3.013      4.8545  8.741e-04
+      2        228.173837            0.644388       0.699352   5.3944e+03   1.7186      2.667      4.2966  1.748e-03
+      3        228.173837            0.644388       0.699352   2.1716e+05   1.6385      2.543      4.0961  2.622e-03
+      4        228.173837            0.644388       0.699352   8.6559e+06   1.5974      2.479      3.9934  3.497e-03
+      5        228.173837            0.644388       0.699352   3.4412e+08   1.5725      2.440      3.9313  4.371e-03
+      6        228.173837            0.644388       0.699352   1.3670e+10   1.5559      2.415      3.8898  5.245e-03
+
+    reading: Delta_L is EXACTLY L-independent (eigenvalues are powers) and so is w_L:
+    blocking multiplies numerator and denominator by L.  The per-step width is the
+    entropy rate s_L/beta with s_L ~ log N_eff (POSITIVE), so N_eff^(L) = e^{L s}, not
+    e^{o(L)}.  The lead's survival hypothesis fails quantitatively on this kernel.
+
+VERDICT -> TR-TROPICAL.md.  No QED.

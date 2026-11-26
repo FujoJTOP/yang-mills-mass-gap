@@ -1,0 +1,106 @@
+==============================================================================
+R1 / LEVEL 1 & 2  --  non-Gaussian chain, P4-type kernel
+==============================================================================
+  beta=2.5, kappa=0.85, n=240:  lam1/lam0 = 0.5476743140
+    continuous-time gap  -log(lam1/lam0) = 0.60207449
+    discrete-time   gap  1 - lam1/lam0   = 0.45232569
+
+------------------------------------------------------------------------------
+[1] EXACT: gap(T) = gap of the carre-du-champ form in L^2(mu),  mu = Omega^2
+------------------------------------------------------------------------------
+    mu-stochastic: max|P mu - lam0*h| = 4.58e-16   (flat vector fixed)
+    smallest nonzero eigenvalue of the Dirichlet form in L^2(mu): 0.4523256860
+    1 - lam1/lam0                                              : 0.4523256860
+    [PASS] 1.1 gap(T) = gap(semigroup Dirichlet form in L^2(Omega^2)) |diff| = 1.22e-15
+
+------------------------------------------------------------------------------
+[2] the DISCRETE-vs-CONTINUOUS time factor  (1-x)/(-log x),  x = lam1/lam0
+------------------------------------------------------------------------------
+          x        1-x     -log x     ratio
+    0.99000   0.010000   0.010050   0.99499
+    0.90000   0.100000   0.105361   0.94912
+    0.70000   0.300000   0.356675   0.84110
+    0.52498   0.475020   0.644395   0.73716
+    0.30000   0.700000   1.203973   0.58141
+    0.10000   0.900000   2.302585   0.39087
+    0.01000   0.990000   4.605170   0.21498
+  measured at beta=2.5: x=0.54767 -> 0.75128
+    [PASS] 2.1 the two legitimate gap normalisations differ by a computable, unbounded ratio discrete/continuous = 0.7513; log-x / (1-x) -> inf as x -> 1
+
+------------------------------------------------------------------------------
+[3] the GRADIENT substitution lam1^grad(mu), and its restoration for a narrow kernel
+------------------------------------------------------------------------------
+    lam1^grad(mu)  geometric-mean weights : 0.40193982
+    lam1^grad(mu)  arithmetic-mean weights: 0.40212935   rel.diff = 4.72e-04
+    semigroup gap                        : 0.60207449
+    ratio lam1^grad / gap                : 0.667592  <-- metric mismatch at beta=2.5
+    [PASS] 3.1 geometric and arithmetic weights agree to O(h^2) (discrete ground-state transform) 4.72e-04
+    narrow-kernel restoration: k_eps = exp(-(y-x)^2/(2 eps)), matched weight eps/2
+      eps   gap(=-log l1/l0)   (eps/2)lam1^grad     ratio
+   0.4000         0.41070624         0.36853580   0.89732
+   0.2000         0.33344425         0.36865339   1.10559
+   0.1000         0.26072209         0.28478618   1.09230
+   0.0500         0.19884736         0.21168447   1.06456
+   0.0250         0.14893307         0.15738119   1.05672
+   0.0125         0.10997953         0.11611295   1.05577
+    [PASS] 3.2 with the matched metric weight eps/2 the gradient constant -> the gap (residual O(eps)) ratio 0.8973 -> 1.0558 (monotone down toward 1)
+    READING.  The LSI controls the GRADIENT form, not the transfer gap.  The step
+    'gradient form = gap' is exact only for a DIFFUSION generator (eps -> 0, ratio 1);
+    for the isotropic lattice kernel at beta=2.5 it costs the fixed factor printed above
+    (0.668).  For a Schroedinger/KS generator it costs exactly the kinetic convention 2.
+
+------------------------------------------------------------------------------
+[4] the FULL chain: lam_conf(chain) <= lam1^grad(mu_slice), strictly
+------------------------------------------------------------------------------
+  per-L form of the slice-marginal lemma:  lam_conf(chain_L) <= lam1(marginal_L),
+  and marginal_L -> |Omega|^2 as L -> inf (so the L=inf bound is lam_slice).
+    L  grid      dim   lam_conf  lam1(marg_L)     slack
+    1    20       20   0.278166      0.278166 -0.000000
+    2    20      400   0.089188      0.258101  0.168913
+    3    20     8000   0.061103      0.278884  0.217780
+    [PASS] 4.1 lam_conf(chain_L) <= lam1(marginal_L) at every L (slice-marginal lemma) slacks: -0.0000, 0.1689, 0.2178
+    [PASS] 4.2 at L=1 the lemma is an EQUALITY (the chain is its own marginal) slack = -2.22e-16
+    [PASS] 4.3 lam_conf(chain_3) < lam_slice (the L->inf vacuum marginal): strict wrong-space loss 0.0611 < 0.4019
+    finite-L slice marginal -> |Omega|^2  (why the L->inf slice marginal IS the vacuum):
+      L=  1: ||marg_L - |Omega|^2||_1 = 6.659e-01
+      L=  2: ||marg_L - |Omega|^2||_1 = 4.512e-01
+      L=  4: ||marg_L - |Omega|^2||_1 = 1.544e-01
+      L=  8: ||marg_L - |Omega|^2||_1 = 1.301e-02
+      L= 16: ||marg_L - |Omega|^2||_1 = 9.608e-05
+
+------------------------------------------------------------------------------
+[5] LEVEL 2: restriction to a subspace cannot lower the constant (projection is safe)
+------------------------------------------------------------------------------
+    full space    lam1 = 0.40193982
+    even subspace lam1 = 0.40196404   ratio = 1.000060
+    [PASS] 5.1 restriction to a subspace can only INCREASE the constant ratio 1.000060 >= 1
+    odd  subspace lam1 = 2.06782318   ratio = 5.144609
+    [PASS] 5.2 the odd sector is strictly heavier: the slow mode lives in the even (vacuum-like) sector odd/full = 5.1446
+    [PASS] 5.3 the vacuum sector loses NOTHING (ratio 1 to numerical precision) 1.00006026
+
+------------------------------------------------------------------------------
+[6] the LSI -> Poincare loss, exact on the two-point space
+------------------------------------------------------------------------------
+    mu = (1-eps, eps);  E(f) = (f1-f0)^2;  lam_P = 1/(eps(1-eps));  gamma = 2/sup_f Ent(f^2)/E(f)
+    parametrise E(f)=1:  f = (a, a+1), scan a  (avoids the 0/0 corner at a -> +-inf)
+        eps        lam_P    gamma_LSI  lam_P/gamma  log(1/eps)/2
+      5e-01 4.000000e+00 4.000091e+00       1.0000        0.3466
+      1e-01 1.111111e+01 8.091015e+00       1.3733        1.1513
+      1e-02 1.010101e+02 4.308480e+01       2.3444        2.3026
+      1e-03 1.001001e+03 2.892817e+02       3.4603        3.4539
+      1e-06 1.000001e+06 1.449337e+05       6.8997        6.9078
+    [PASS] 6.1 the LSI constant is strictly weaker than Poincare, loss UNBOUNDED in log(1/eps) lam_P/gamma: 1.000 (eps=0.5) -> 6.900 (eps=1e-6); predicted log(1/eps)/2 = 6.908
+    [PASS] 6.2 both constants are positive: an LSI bound is VALID but loses the log factor gamma=1.449e+05 < lamP=1.000e+06
+
+==============================================================================
+VERDICT
+==============================================================================
+  [1] gap(T) = gap(carre-du-champ form in L^2(vacuum)) : EXACT (machine precision).
+  [2] discrete vs continuous time normalisation: factor (1-x)/(-log x), computable.
+  [3] the GRADIENT form needs the metric matched to the kinetic term; matched, it equals
+      the gap (ratio -> 1 as eps -> 0); at beta=2.5 with the unit metric it is off by a
+      fixed factor printed above.
+  [4] the full-chain Poincare constant is STRICTLY below the vacuum-slice constant.
+  [5] the subspace projection never lowers the constant (gauge-invariance analog).
+  [6] the LSI constant is strictly weaker than Poincare with an unbounded loss.
+==============================================================================

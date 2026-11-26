@@ -1,0 +1,122 @@
+====================================================================================================
+MODEL (2)  1D DIRICHLET STRING   --  exact, Gaussian
+====================================================================================================
+  S_W = (1/2)phi^T A phi,  A = tridiag(2,-1) Dirichlet;  P_t = heat semigroup (var 2t).
+  Hess V_t = A(I+2tA)^{-1}  >  0  for every t  =>  q(t) = ||(Hess V_t)_-||_op = 0 EXACTLY.
+  Cov_t = 2t A^2 (I+2tA)^{-1}   [PSD, increasing in t]  =>  sup_t ||Cov_t||_op = lam_max(A).
+
+      L     lam_1   lam_max  sup_t C_abs  sup_t C_int=C/L  tr/op at t=inf
+      2    1.0000    3.0000     3.000000         1.500000            1.33
+      4    0.3820    3.6180     3.618034         0.904508            2.21
+      6    0.1981    3.8019     3.801938         0.633656            3.16
+      8    0.1206    3.8794     3.879385         0.484923            4.12
+     32    0.0091    3.9909     3.990944         0.124717           16.04
+    128    0.0006    3.9994     3.999407         0.031245           64.01
+
+  the op-norm bound is L-uniform:  lam_max(A) = 2+2cos(pi/(L+1))  <=  4  for every L,
+  and -> 4.  The INTENSIVE version C/L -> 0 like 1/L.  tr/op ~ L = the '3E' factor.
+
+  the curve, L = 6 and L = 32  (t in units of lam_1 t):
+    lam1*t    L=6 C_abs    L=6 C_int   L=32 C_abs   L=32 C_int      q
+       0.1     3.016273     0.502712     3.946171     0.123318    0.0
+     0.316     3.512413     0.585402     3.976666     0.124271    0.0
+         1     3.705421     0.617570     3.986421     0.124576    0.0
+      3.16     3.770855     0.628476     3.989511     0.124672    0.0
+        10     3.792060     0.632010     3.990491     0.124703    0.0
+      31.6     3.798806     0.633134     3.990801     0.124713    0.0
+       100     3.800948     0.633491     3.990899     0.124716    0.0
+
+  three-segment fit, L = 32 (exact formulas, no noise):
+    t->0   : C ~ A t^p,  p = 0.999973 (exact 1),  A = 31.842944  [exact A = 2 lam_max^2 = 31.8553]
+    mid    : rational shape  C(t) = c t/(1+b t) fits with b = 1/(2 lam_eff);
+             C(t)/lam_max is monotone;  C(lam_max t = 1/2) / lam_max = 0.500000 ;  C(10) / lam_max = 0.952381
+    t->inf : C -> lam_max = 3.99094385   (rate = 0: SATURATION, not exponential decay)
+             q(t) = 0 for all t  =>  Q(inf) = 0  =>  the BD bound is vacuous on this model
+
+  the rise, in absolute t (L = 32, lam_max = 4):
+           t        C_abs   C/lam_max  2t lam_max^2
+      0.0001     0.003183    0.000798      0.003186
+       0.001     0.031603    0.007919      0.031855
+        0.01     0.295006    0.073919      0.318553
+        0.03     0.771030    0.193195      0.955658
+         0.1     1.771520    0.443885      3.185527
+         0.3     2.815258    0.705412      9.556580
+           1     3.546611    0.888665     31.855266
+           3     3.830958    0.959913     95.565797
+          10     3.941563    0.987627    318.552656
+         100     3.985950    0.998749   3185.526555
+
+====================================================================================================
+MODEL (4a)  P4 PERIODIC KERNEL, one site, U(1), NON-GAUSSIAN
+====================================================================================================
+  e^{-S_W} = e^{beta cos theta}   (the P4 Boltzmann kernel); P_t = heat semigroup on the
+  UNIT circle (-Delta eigenvalues n^2 => lam_1 = 1).  g = beta sin theta, Hess S_W = beta cos theta.
+  mu_{t,th0}(d th) propto K_t(th-th0) e^{beta cos th} d th /(2 pi); exact 1D quadrature (4096 pts).
+
+    lam1*t        C_abs          q(t)             HV  B_quad/B_char
+      0.01     0.128186  2.596400e+00      -2.596400       1.00e+00
+      0.03     0.406876  2.813946e+00      -2.813946       1.00e+00
+       0.1     1.574173  3.661183e+00      -3.661183       1.00e+00
+     0.316     3.877827  4.266422e+00      -4.266422       1.00e+00
+         1     2.615208  1.112594e+00      -1.112594       1.00e+00
+      3.16     1.957105  6.923392e-02      -0.069234       1.00e+00
+        10     1.912537  6.932367e-05      -0.000069       1.00e+00
+      31.6     1.912492  2.886580e-14      -0.000000       1.00e+00
+       100     1.912492  0.000000e+00       0.000000       1.00e+00
+
+  t -> inf check (Stein identity on the flat circle): Cov_nu = E_nu[Hess S_W]
+    measured beta^2 Var_nu(sin) = 1.91249187 ;  beta E_nu[cos] = 1.91249187 ;  beta I1(beta)/I0(beta) = 1.91249187
+
+  t->0   : C ~ A t^p,  p = 1.00156 +- 9.4e-02
+  t->inf : q ~ B e^(-lam t),  lam = 1.013093 +- 2.4e-01    [lam_1 = 1]
+  sup_t C_abs = 3.877827 at lam1*t = 0.316 ;  C(t=inf) = 1.912492
+  => bounded, saturating:  int_0^inf C dt = infinity ;  Q(inf) ~ 4.516160
+
+  beta-scan of the decay rate (is it lam_1 = 1, or a dynamical scale?):
+     beta          lam   lam/lam_1
+    0.500     1.014940    1.014940
+    1.000     1.029638    1.029638
+    2.500     1.057828    1.057828
+    5.000     1.070702    1.070702
+
+====================================================================================================
+MODEL (4b)  P4 PERIODIC KERNEL as a CIRCULANT ring  (the P4 anchor)
+====================================================================================================
+  A = 1D periodic Laplacian on Z_L:  lam_k = 2-2cos(2 pi k/L),  k = 0..L-1.
+  lam_max = 4 EXACTLY for every even L (k = L/2).  Gaussian => q(t) = 0.
+
+      L      lam_1  lam_max  sup_t C_abs   C_int=C/L  tr/op(t=inf)  L-exponent
+      2   4.000000   4.0000     4.000000    2.000000          1.00            
+      4   2.000000   4.0000     4.000000    1.000000          2.00            
+      6   1.000000   4.0000     4.000000    0.666667          3.00            
+      8   0.585786   4.0000     4.000000    0.500000          4.00            
+     16   0.152241   4.0000     4.000000    0.250000          8.00            
+     64   0.009631   4.0000     4.000000    0.062500         32.00            
+    256   0.000602   4.0000     4.000000    0.015625        128.00            
+  log-log slope of sup_t C_abs over L = 2,4,6,8 :  -2.403e-16   (== 0: L-uniform, exactly)
+
+  the curve on the ring (L = 6):  
+    lam1*t        C_abs      C_int      q
+       0.1     1.777778   0.296296    0.0
+     0.316     2.866213   0.477702    0.0
+         1     3.555556   0.592593    0.0
+      3.16     3.847793   0.641299    0.0
+        10     3.950617   0.658436    0.0
+      31.6     3.984240   0.664040    0.0
+       100     3.995006   0.665834    0.0
+
+====================================================================================================
+SUMMARY  --  C(t) = ||Cov_{mu_t}(grad S_W)||_op  on the four models
+====================================================================================================
+  model                        bounded?   integrable?   sup_t C_abs     L-uniform?   q(t)
+  (1) single link SU(2)        YES         NO (sat.)     0.403062         n/a (1 link) exp, rate 3
+  (2) 1D Dirichlet string      YES         NO (sat.)     lam_max<=4       YES         == 0 exactly
+  (3) 2D YM tower              YES         NO (sat.)     0.40             YES         exp, rate E_1
+  (4a) P4 U(1) one site        YES         NO (sat.)     (see above)      n/a          exp, rate 1
+  (4b) P4 circulant ring       YES         NO (sat.)     4 EXACTLY        YES (p=0)   == 0 exactly
+
+  Common law (all four):  C(0)=0 exactly;  C(t) rises like t;  C(t) -> ||E_nu[Hess S_W]||_op > 0.
+  =>  sup_t C(t) < infinity  (branch (c))  but  int_0^inf C(t) dt = infinity (saturation).
+  =>  the BD-relevant object is q(t)=||(Hess V_t)_-||_op = ||(E[Hess S_W] - Cov)_-||_op,
+      whose integrability comes from the exact CANCELLATION of the two O(1) terms.
+

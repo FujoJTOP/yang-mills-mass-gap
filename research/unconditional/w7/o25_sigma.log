@@ -1,0 +1,9 @@
+o25_L2_A2_11.npy           n= 5000 EK=+1.6480 VF=1.9173 D=-0.2692 tauK=  44.8 tauF=  49.6 Neff=   101 sig_tau=0.2191
+o25_L2_A2_12.npy           n= 5000 EK=+1.6685 VF=1.9838 D=-0.3153 tauK=  73.6 tauF=  84.2 Neff=    59 sig_tau=0.2657
+o25_L3_A_31.npy            n= 5000 EK=+1.7215 VF=1.9368 D=-0.2153 tauK= 128.3 tauF=  57.5 Neff=    39 sig_tau=0.2033
+o25_L3_A_32.npy            n= 5000 EK=+1.7003 VF=1.9051 D=-0.2047 tauK= 116.2 tauF=  60.9 Neff=    43 sig_tau=0.2031
+o25_L3_A_33.npy            n= 5000 EK=+1.7222 VF=1.8333 D=-0.1111 tauK=  41.6 tauF=  49.2 Neff=   102 sig_tau=0.1807
+
+L=2: 2 groups, EK=+1.6583 VF=1.9505 Delta=-0.2923 +- 0.1722 (-1.70 sigma, tau-corrected)  EK/L4=+0.10364 VF/L4=+0.12191
+
+L=3: 3 groups, EK=+1.7147 VF=1.8917 Delta=-0.1771 +- 0.1132 (-1.56 sigma, tau-corrected)  EK/L4=+0.02117 VF/L4=+0.02335

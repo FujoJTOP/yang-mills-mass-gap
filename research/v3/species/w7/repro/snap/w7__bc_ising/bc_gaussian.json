@@ -1,0 +1,190 @@
+{
+ "model": "H = 1/2 sum phi^2 - beta sum_edges phi phi  (free scalar / Gaussian)",
+ "exact_formulae": {
+  "Z^d": "m_lat = sqrt(max(0, 1 - 4 d beta)), beta_c = 1/(4d)",
+  "tree(z=2d)": "m_tree = sqrt(max(0, 1 - 4 beta sqrt(z-1))), beta_c = 1/(4 sqrt(z-1))"
+ },
+ "critical_couplings": {
+  "2": {
+   "beta_c_lat": 0.125,
+   "beta_c_tree": 0.14433756729740646,
+   "ratio": 1.1547005383792517
+  },
+  "3": {
+   "beta_c_lat": 0.08333333333333333,
+   "beta_c_tree": 0.11180339887498948,
+   "ratio": 1.3416407864998738
+  },
+  "4": {
+   "beta_c_lat": 0.0625,
+   "beta_c_tree": 0.0944911182523068,
+   "ratio": 1.5118578920369088
+  }
+ },
+ "mass_table": [
+  {
+   "d": 2,
+   "frac_of_beta_c_lat": 0.25,
+   "beta": 0.03125,
+   "m_lat": 0.8660254037844386,
+   "m_tree": 0.8851517661135239,
+   "ratio_tree_over_lat": 1.0220852208786313
+  },
+  {
+   "d": 2,
+   "frac_of_beta_c_lat": 0.5,
+   "beta": 0.0625,
+   "m_lat": 0.7071067811865476,
+   "m_tree": 0.7529855895751131,
+   "ratio_tree_over_lat": 1.064882433048626
+  },
+  {
+   "d": 2,
+   "frac_of_beta_c_lat": 0.75,
+   "beta": 0.09375,
+   "m_lat": 0.5,
+   "m_tree": 0.5920143133081083,
+   "ratio_tree_over_lat": 1.1840286266162166
+  },
+  {
+   "d": 2,
+   "frac_of_beta_c_lat": 1.0,
+   "beta": 0.125,
+   "m_lat": 0.0,
+   "m_tree": 0.3660254037844387,
+   "ratio_tree_over_lat": Infinity
+  },
+  {
+   "d": 2,
+   "frac_of_beta_c_lat": 1.25,
+   "beta": 0.15625,
+   "m_lat": 0.0,
+   "m_tree": 0.0,
+   "ratio_tree_over_lat": Infinity
+  },
+  {
+   "d": 2,
+   "frac_of_beta_c_lat": 1.5,
+   "beta": 0.1875,
+   "m_lat": 0.0,
+   "m_tree": 0.0,
+   "ratio_tree_over_lat": Infinity
+  },
+  {
+   "d": 3,
+   "frac_of_beta_c_lat": 0.25,
+   "beta": 0.020833333333333332,
+   "m_lat": 0.8660254037844386,
+   "m_tree": 0.9020315969382766,
+   "ratio_tree_over_lat": 1.041576370619724
+  },
+  {
+   "d": 3,
+   "frac_of_beta_c_lat": 0.5,
+   "beta": 0.041666666666666664,
+   "m_lat": 0.7071067811865476,
+   "m_tree": 0.7920366176825634,
+   "ratio_tree_over_lat": 1.120108926622795
+  },
+  {
+   "d": 3,
+   "frac_of_beta_c_lat": 0.75,
+   "beta": 0.0625,
+   "m_lat": 0.5,
+   "m_tree": 0.6640655130520275,
+   "ratio_tree_over_lat": 1.328131026104055
+  },
+  {
+   "d": 3,
+   "frac_of_beta_c_lat": 1.0,
+   "beta": 0.08333333333333333,
+   "m_lat": 0.0,
+   "m_tree": 0.5046226387114139,
+   "ratio_tree_over_lat": Infinity
+  },
+  {
+   "d": 3,
+   "frac_of_beta_c_lat": 1.25,
+   "beta": 0.10416666666666666,
+   "m_lat": 0.0,
+   "m_tree": 0.26135227065225136,
+   "ratio_tree_over_lat": Infinity
+  },
+  {
+   "d": 3,
+   "frac_of_beta_c_lat": 1.5,
+   "beta": 0.125,
+   "m_lat": 0.0,
+   "m_tree": 0.0,
+   "ratio_tree_over_lat": Infinity
+  },
+  {
+   "d": 4,
+   "frac_of_beta_c_lat": 0.25,
+   "beta": 0.015625,
+   "m_lat": 0.8660254037844386,
+   "m_tree": 0.9135866368650886,
+   "ratio_tree_over_lat": 1.0549189814442075
+  },
+  {
+   "d": 4,
+   "frac_of_beta_c_lat": 0.5,
+   "beta": 0.03125,
+   "m_lat": 0.7071067811865476,
+   "m_tree": 0.818096012774128,
+   "ratio_tree_over_lat": 1.1569624765885247
+  },
+  {
+   "d": 4,
+   "frac_of_beta_c_lat": 0.75,
+   "beta": 0.046875,
+   "m_lat": 0.5,
+   "m_tree": 0.7098743756295117,
+   "ratio_tree_over_lat": 1.4197487512590234
+  },
+  {
+   "d": 4,
+   "frac_of_beta_c_lat": 1.0,
+   "beta": 0.0625,
+   "m_lat": 0.0,
+   "m_tree": 0.5818609561002116,
+   "ratio_tree_over_lat": Infinity
+  },
+  {
+   "d": 4,
+   "frac_of_beta_c_lat": 1.25,
+   "beta": 0.078125,
+   "m_lat": 0.0,
+   "m_tree": 0.41617630313644177,
+   "ratio_tree_over_lat": Infinity
+  },
+  {
+   "d": 4,
+   "frac_of_beta_c_lat": 1.5,
+   "beta": 0.09375,
+   "m_lat": 0.0,
+   "m_tree": 0.08856217223385209,
+   "ratio_tree_over_lat": Infinity
+  }
+ ],
+ "acid_test": [
+  {
+   "d": 2,
+   "m_lat": 0.0,
+   "m_tree": 0.3660254037844387,
+   "acid_counterexample": true
+  },
+  {
+   "d": 3,
+   "m_lat": 0.0,
+   "m_tree": 0.5046226387114139,
+   "acid_counterexample": true
+  },
+  {
+   "d": 4,
+   "m_lat": 0.0,
+   "m_tree": 0.5818609561002116,
+   "acid_counterexample": true
+  }
+ ]
+}

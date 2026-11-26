@@ -1,0 +1,32 @@
+====================================================================================================
+STEP A  at U=1, W = -1 (centre):  D2 vs covariant Hess, for several left-invariant G
+  SU(2):  D2 = [0.5 0.  0. ] ...  (D2 = delta/2),  d = 0.0e+00
+     G=delta       : eig(Hess Re tr(UW)) = [0.5 0.5 0.5]   (isotropic: 0.00e+00)
+     G=stretch e1  : eig(Hess Re tr(UW)) = [0.5 0.5 0.5]   (isotropic: 0.00e+00)
+  SU(3):  D2 = [0.5 0.  0.  0.  0.  0.  0.  0. ] ...  (D2 = delta/2),  d = 0.0e+00
+     G=delta       : eig(Hess Re tr(UW)) = [0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5]   (isotropic: 1.11e-16)
+     G=stretch e1  : eig(Hess Re tr(UW)) = [0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5]   (isotropic: 1.11e-16)
+
+====================================================================================================
+STEP B  sup_W lam_max(Hess phi_W):  is it exactly 1/2 ?
+  SU(2) over 4000 Haar W:  sup lam_max(CHART D2) = 0.762402   sup lam_max(COVARIANT Hess) = 0.495360   (exact value: 0.5)
+  SU(3) over 4000 Haar W:  sup lam_max(CHART D2) = 0.763770   sup lam_max(COVARIANT Hess) = 0.498474   (exact value: 0.5)
+
+====================================================================================================
+STEP C  is the covariant Hessian isotropic at the centre?  (SU(3), off-torus W)
+  Re tr W = +1.2456  eig(Hess) = [-0.346631 -0.318735 -0.318735 -0.224382 -0.224382 -0.079692 -0.079692 -0.068575]  spread = 0.2781
+  Re tr W = +0.6560  eig(Hess) = [-0.303611 -0.220948 -0.220948 -0.191244 -0.191244  0.084176  0.084176  0.084934]  spread = 0.3885
+  Re tr W = -0.8437  eig(Hess) = [-0.084622 -0.035738 -0.035738  0.107443  0.107443  0.350121  0.350121  0.36584 ]  spread = 0.4505
+  Re tr W = -0.4184  eig(Hess) = [-0.213072 -0.083811 -0.083811 -0.059173 -0.059173  0.352174  0.352174  0.352532]  spread = 0.5656
+
+====================================================================================================
+STEP D  consequence at the centre-element configuration (exact, all N)
+  config:  U_1(x)=(-1)^(x2+x3+x4), U_mu(x)=(-1)^x1 (mu>=2) on an even torus
+  => every plaque in the (1,mu) planes equals -1, so a direction-1 link sits in 6
+     plaques all equal to -1 and Hess S_W = -(beta/N)*6*(delta/2) = -(3 beta/N) delta.
+  (star) at t=0 then requires  Ric_G > (6 beta/N) delta ;  sup_G lam_min(Ric_G) = N/4
+  => feasible iff  6 beta/N < N/4  iff  beta < N^2/24.
+    SU(2): threshold beta* = N^2/24 = 0.1667 ; deficit at beta=2.5: 15.00x
+    SU(3): threshold beta* = N^2/24 = 0.3750 ; deficit at beta=2.5: 6.67x
+    SU(4): threshold beta* = N^2/24 = 0.6667 ; deficit at beta=2.5: 3.75x
+    SU(5): threshold beta* = N^2/24 = 1.0417 ; deficit at beta=2.5: 2.40x

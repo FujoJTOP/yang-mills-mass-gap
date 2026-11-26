@@ -1,0 +1,16 @@
+{
+ "S0": {
+  "fd_ok": true
+ },
+ "S1": {
+  "ti_perlink": 31.482471211115055,
+  "ti_perlink_over_beta2": 5.037195393778409,
+  "staircase_perlink": 14.0625,
+  "perlink_bound": 56.25,
+  "global_bound": 225.0
+ },
+ "S1b": {
+  "full_L2_ascent": 2173.1034401471347,
+  "per_link": 33.95474125229898
+ }
+}

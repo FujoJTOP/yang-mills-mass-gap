@@ -1,0 +1,63 @@
+====================================================================================
+[0] SU(2) one-plaquette: quadrature vs closed form <cos> = I1'/I1 - 1/b
+    quad u_p(2.5)   = 0.507195100
+    closed form     = 0.507195100      residual 1.11e-16
+    Var(s)(2.5)     = 0.134119010   Var(s)(0)= 0.250000000  (=1/4 Haar)
+    (I2) int_0^2.5 Var(s) dbeta = 0.507195100   vs  u_p(2.5)-u_p(0) = 0.507195100
+         residual 1.11e-16  => FTC identity VERIFIED [T]
+====================================================================================
+[0b] CONVENTION WARNING: 0.5072 is the INDEPENDENT(single)-plaquette value.
+     int_0^2.5 Var(S_W) dbeta = 6V u_p^{4D}(2.5) EXACT, but the number 3.043V comes from
+     u_p^{single}=0.5072.  4D MC/independent differ at O(10%) => 3.04V is a PROXY [C]/[E].
+====================================================================================
+[1] TEST OF (I1)  sum_{n>=1}|<n|S_W|G>|^2 = Var(S_W)   ?   (exact, N independent 2-level)
+    N=6V      p      <S_W>    Var(S_W)    sum_n>=1    ratio    <S_W>^2-p0 E0^2
+    1536 0.4928      756.9      383.92      573343     1493             572959
+    7776 0.4928       3832      1943.6 1.46863e+07     7556        1.46843e+07
+   24576 0.4928  1.211e+04     6142.73 1.46684e+082.388e+04        1.46678e+08
+    => (I1) is FALSE unless <Omega|S_W|G> = <S_W>; gap = <S_W>^2 - p0 E0^2 = O(V^2),
+       Var(S_W) = O(V)  => the sum is V-times larger than Var. Exact corrected identity:
+       sum_{n>=1}|<n|S_W|G>|^2 = Var(S_W) + <S_W>^2 - p0 E0^2      [T]
+
+    corollary: the sharp Cauchy-Schwarz numerator is sqrt(Var+<S_W>^2-p0E0^2) ~ <S_W> = 6V(1-u_p)
+    i.e. O(V) -- NOT O(sqrt V).  D04's 12V is right in scaling; d07's 'sqrt V sharpening' is not.
+====================================================================================
+[2] DIRECTION of int sqrt(Var) vs sqrt(T int Var)  (exact single-plaquette Var(beta))
+    int_0^2.5 sqrt(Var(s)) dbeta = 1.121185115
+    sqrt(2.5 * int Var)          = 1.126049622     ratio 0.995680
+    => int sqrt(Var) <= sqrt(T int Var): the inequality runs <=, Jensen(sqrt concave) is an UPPER bound.
+       d07 (2.3) writes >= : SIGN ERROR.  d07's 2.758 sqrt(V) is a ceiling, not a floor.
+====================================================================================
+[3] INT Var CONVERTED: certificate needs  int A/Delta <= 17.974   (A = sqrt(VO*NUM))
+    N1 = sqrt(int Var)          (d07 numerator, Var-only)      ~ 1.744 sqrt(V)
+    N2 = int sqrt(Var+<S_W>^2)  (correct numerator, ~<S_W>)     ~ 2.96 V
+   L        V   N1=sqrt(intVar)    N2~<S_W>  reqDelta_min N1  reqDelta_min N2  req delta N1  req delta N2
+   4      256             27.91         757            1.553            42.11         26.61         721.8
+   6     1296              62.8        3832            3.494            213.2         59.88          3654
+   8     4096             111.6   1.211e+04            6.211            673.8         106.4     1.155e+04
+  16    65536             446.6   1.938e+05            24.84        1.078e+04         425.8     1.848e+05
+    (req delta = delta_{S_W} with Delta(beta)=beta*delta ; strong coupling gives delta=O(1) [T])
+    => N1 route needs delta >= 1.66 L^2  ;  N2 route needs delta >= 2.82 L^4   (Var_O=1)
+    both violate delta=O(1) already at L=4  => (b): same loop, and the TRUE numerator makes it worse
+====================================================================================
+[4] CAN WE BACK-SOLVE Delta FROM int Var ?  direction test
+    Var(beta) >= p1*Delta^2 with p1 ~ e^{-beta*Delta}/Nstates  =>  Delta <= (1/beta)(log(Nstates)+log(Delta^2/Var))
+    (entropy Nstates = e^{O(V)} swamps it)   and Var-heavy tail: linear-response Var = sum p_n (E_n-<E>)^2
+    at beta=2.5:  Var(S_W)/(6V)^2 = 0.0224  (2% level: NOT exponentially small)
+    => no exponential smallness => the low-T inversion is unavailable => Var cannot pin m from below.
+    The only clean inequalities that exist run  Delta <= f(Var)  (upper bounds on the gap).
+====================================================================================
+[5] ACID TEST: int Var per volume, with the gap
+    4D SU(2) beta<=2.5 : int Var / V = 3.0432      gap Delta = ? (target, unknown)      -> [C]
+    2D YM SU(2) exact  : int Var / V = 0.5072      gap Delta = 3/(2beta)=0.6  [T] > 0
+    free Gaussian      : int Var / V = (3/2)(1/beta1-1/beta2) = 440.6  (Delta=2pi/L -> 0, m=0)
+    single plaquette   : int Var / V = 0.5072      no transfer => Delta undefined
+    => int Var/V is O(1) in ALL models, INCLUDING the massless free field (m=0, f1^2=0).
+       It does not separate m=0 from m>0 => vacuous as a carrier of m. (same mechanism as d07 (c))
+====================================================================================
+[6] SUMMARY
+    (I1) FALSE off the diagonal: sum_n>=1 = Var + <S_W>^2 - p0E0^2  (extra O(V^2))
+    (I2) TRUE (FTC of <S_W>); number 3.043V is a single-plaquette PROXY
+    (I3) direction reversed: 2.758 sqrt(V) is an UPPER bound
+    => int Var = 3.04V appears only as sqrt(V) (or, correctly, as <S_W>=O(V)) multiplying 1/Delta
+    => (b): same loop, quantitatively closed; no m-lower-bound.  (c) holds as the m-blindness leg.

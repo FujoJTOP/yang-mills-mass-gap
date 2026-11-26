@@ -1,0 +1,20 @@
+eD = e*20 = 54.3656365691809
+
+-- 1. exact identity: sum_a (T-a+1)_+ A(a)  ==  phi*T + log D_inf + eps_T --
+  U=0.25  max|residual| over T=0..8 = 7.8886e-31   phi=0.4444444444  logD=0.2962962963  D=1.344868577
+  U=0.5654  max|residual| over T=0..8 = 3.1554e-30   phi=2.993479995  logD=-0.9009369152  D=0.4061889168
+  cross-check vs corpus:  U=0.25 -> D_inf = 1.3448686  (corpus window at ubar<=0.25: [0.690478, 1.448374])
+  cross-check vs corpus:  U=0.5654 -> D_inf = 0.40618892  (corpus lower bound at ubar=0.5654: 0.030111)
+
+-- 2. ||T_-|| as an ABSOLUTE sum:  sum_a |A(a)| = U/(1-U)  (diverges iff U>=1) --
+  ubar=     0.125  sum|A| = 0.1428571429   FINITE
+  ubar=      0.25  sum|A| = 0.3333333333   FINITE
+  ubar=    0.2634  sum|A| = 0.3575889221   FINITE
+  ubar=       1.0  sum|A| = +infinity           DIVERGES
+  ubar=   16.9893  sum|A| = +infinity           DIVERGES
+  ubar=   33.9785  sum|A| = +infinity           DIVERGES
+
+-- 3. honest tree sum  R = u (1+R)^Delta  (Delta=20): root exists? --
+  C03 slack point u=0.0104     u=    0.0104  R_root = 0.01363543623947797
+  beta=0.018394 (u=beta/4)     u= 0.0045985  R_root = 0.005089966740991339
+  beta=2.5 (u=beta/4)          u=     0.625  R_root = none  => tree sum DIVERGES

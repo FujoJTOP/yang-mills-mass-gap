@@ -1,0 +1,61 @@
+================================================================================================
+[1] h1e: is the closed form PURE ANALYTIC?  (slice th=pi, x=rho/2 in (0,pi) <=> rho in (0,2pi))
+    Z  quad = 1.218826696528229   closed 0.5*Cin(2pi)        = 1.218826696528612   d = -3.83e-13
+    N1 quad = 0.871244998311689   closed (3/4)[ln3+Ci(pi)-Ci(3pi)] = 0.871244998311964   d = -2.75e-13
+    N2 quad = 0.676703157945306   closed ln2+Ci(2pi)-Ci(4pi)   = 0.676703157945519   d = -2.13e-13
+    Ci via scipy.special.sici: Ci(pi)=0.073667912046 Ci(2pi)=-0.022560661746 Ci(3pi)=0.010620202965 Ci(4pi)=-0.006116639132  Cin(2pi)=2.437653393057
+    V0 (quadrature) = 0.011059293772974    V0 (closed) = 0.011059293772973    |d| = 2.0e-16
+    W0 = 1/(2Cin2pi) = 0.205115297123   V0*W0 = 0.002268430  V0/W0 = 0.053917450
+    beta*(h1e closed) = sqrt(W0/V0) = 4.30660785
+    domain check: the closed form's upper limit x=pi is rho=2pi, i.e. the fundamental-domain
+    boundary.  Without that cut the integral DIVERGES (log), so the closed form USES the domain,
+      int_0^X sin^2x/x dx  for X = pi,10,100,1000,1e4 : 1.218827 1.764264 2.939956 4.088827 5.240337
+      predicted 0.5*Cin(2pi)+0.5*ln(X/pi) at X=1e4      = 5.251632
+    => finite-by-construction, never sampled: PURE ANALYTIC.  [T]
+================================================================================================
+[2] o07: R(beta)=Var(F'|0)/E(F''|0) on ONE plaquette, th=pi, slice {x3=0}.
+    KERNEL: measure e^{-S} J r dr on (0,2pi); at th=pi S==beta on the slice (Haar).
+    o07_ratio.py::n2_exact uses r in (1e-12, 2pi-1e-11), nr=400003  -> EXACT QUADRATURE,
+    NOT MC, and the upper limit 2pi IS the fundamental-domain cut.  Re-derived here from
+    scratch (midpoint rule, analytic Phi'):
+    beta=0 : Var=0.000e+00  E=0.205115297123   (W0 target 0.205115297123;  d=+1.0e-13)
+    beta=3.00000  Var=0.099533644  E=0.205115297  R=0.485257050  R-1=-5.147e-01  Var/b^2=0.011059294
+    beta=3.50000  Var=0.135476349  E=0.205115297  R=0.660488762  R-1=-3.395e-01  Var/b^2=0.011059294
+    beta=4.00000  Var=0.176948700  E=0.205115297  R=0.862679200  R-1=-1.373e-01  Var/b^2=0.011059294
+    beta=4.30661  Var=0.205115502  E=0.205115297  R=1.000000997  R-1=+9.973e-07  Var/b^2=0.011059294
+    beta=4.50000  Var=0.223950699  E=0.205115297  R=1.091828362  R-1=+9.183e-02  Var/b^2=0.011059294
+    beta=5.00000  Var=0.276482344  E=0.205115297  R=1.347936250  R-1=+3.479e-01  Var/b^2=0.011059294
+    beta*(o07 re-derived, fundamental domain r<2pi) = 4.30660785   Var=0.205115297 E=0.205115297 Var-E=-1.11e-16 R=1.0000000000
+    2D (r,phi) check at beta*: Var=0.205115301  E=0.205115297   (phi-trivial, 1D reduction exact)
+================================================================================================
+[3] CONTROL — what the O24 bug would do to beta*: integrate the SAME kernel to r=R_max
+    (repeated-cover measure; total mass ~ 0.5 ln(R_max/2pi), improper as R_max->oo).
+      R_max/2pi   int w (mass)   E        Var/b^2     beta*(broken)
+           1      77593.111    0.205115   0.0110593       4.3066
+           2      49566.648    0.160547   0.0430554       1.9310
+           4      30263.035    0.131477   0.0444973       1.7189
+           8      17884.799    0.111236   0.0435534       1.5981
+          16      10320.787    0.096380   0.0415887       1.5223
+          64       3269.639    0.076057   0.0370100       1.4335
+        1024        290.538    0.053496   0.0293089       1.3510
+    => WITHOUT the ball cut beta* is cutoff-dependent and diverges (mass ~ ln R_max,
+       normalised Var/beta^2 -> 0).  The domain is not a detail: it DEFINES beta*.
+================================================================================================
+[4] MC control (2D flat slice, random-walk Metropolis, 64 chains).  Exact same kernel.
+    V(x1,x2,s) = beta(1 - cos(r'/2)cos(th/2) + sin(r'/2)sin(th/2)u) - log J,  r'=|(x1,x2,s)|
+    exact under w=sin^2/r (correct) : <r>=2.5776  <Phi'/r>=0.205115
+    exact under w=sin^2   (no 1/r)  : <r>=3.1416  <Phi'/r>=0.225706
+    exact under w=sin^2*r           : <r>=3.5522  <Phi'/r>=0.246986
+    (MC samples p_2D = sin^2(r/2)/r^2  <=>  radial w = sin^2(r/2)/r = the first line)
+    FD   beta=3.00000  Var=0.099253+-0.000718  E=0.204850+-0.000340  R=0.48452  <r>=2.573 rmax=5.036 acc=0.86  E[F]=+1.0734  beta*_implied=4.3099
+    FD   beta=4.30661  Var=0.204538+-0.001479  E=0.204850+-0.000340  R=0.99847  <r>=2.573 rmax=5.036 acc=0.86  E[F]=+1.5409  beta*_implied=4.3099
+    FD   beta=5.00000  Var=0.275703+-0.001994  E=0.204850+-0.000340  R=1.34588  <r>=2.573 rmax=5.036 acc=0.86  E[F]=+1.7890  beta*_implied=4.3099
+    FREE beta= 4.30661  Var=0.805018  E=0.138550  R=5.81030  <r>=6.69 rmax=46.2 acc=0.86   (escapes: <r> vs 2pi=6.283)
+    CAP8 beta= 4.30661  Var=0.805018  E=0.138550  R=5.81030  <r>=6.69 rmax=46.17 acc=0.86
+================================================================================================
+SUMMARY
+  beta*_h1e_closed     = 4.30660785
+  beta*_o07_original   = 4.30660785   (o07_ratio.py exact quadrature, r<2pi)
+  beta*_o07_funddomain = 4.30660785   (this script, independent quadrature, r<2pi)
+  |funddomain - original| = 2.55e-09   target 4.30661
+  Clay 0%.  No QED.

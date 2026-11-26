@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "D:\Dev\math\research\v3\species\w7\at_scalar.py", line 183, in <module>
+    with open("research/v3/species/w7/at_scalar.json", "w") as fh:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'research/v3/species/w7/at_scalar.json'

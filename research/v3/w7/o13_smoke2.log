@@ -1,0 +1,26 @@
+==============================================================================
+o13_ldep.py  SU(2) beta=2.50  L=2   (2^4 lattice, 64 links, 96 plaquettes)
+mode v: k=0 constant, direction mu=1, Lie sigma_1, v=e1/L^2, ||v||=1
+==============================================================================
+[val 1] S_W quaternion vs explicit 2x2 matrices : rel.dev = 1.19e-16
+[val 2] analytic dS_W/dx vs central FD            : rel.dev = 1.06e-09
+[val 3] beta=0 Haar: E[Phi''_vv] ex=1.333335 mc=1.243058+-0.017819 | E[Phi'^2] ex=1.333337 mc=1.616901+-0.090487 | acc=0.146
+  tune eps=0.1500 -> acc=0.917
+  tune eps=0.1570 -> acc=0.417
+  tune eps=0.1391 -> acc=1.000
+  tune eps=0.1497 -> acc=0.583
+  tune eps=0.1402 -> acc=0.833
+  HMC L=2 beta=2.50: 300 traj x 8 steps, eps=0.1402, acc=0.687, 30.0s
+Traceback (most recent call last):
+  File "D:\Dev\math\research\v3\w7\o13_ldep.py", line 443, in <module>
+    main()
+  File "D:\Dev\math\research\v3\w7\o13_ldep.py", line 411, in main
+    o = summarize(rec, beta, g)
+        ^^^^^^^^^^^^^^^^^^^^^^^
+  File "D:\Dev\math\research\v3\w7\o13_ldep.py", line 331, in summarize
+    d = derived(rec)
+        ^^^^^^^^^^^^
+  File "D:\Dev\math\research\v3\w7\o13_ldep.py", line 328, in derived
+    return dict(G=a[:, 0], P=a[:, 1], Pip=a[:, 2], Hsv=a[:, 3], S0=a[:, 4])
+                  ~^^^^^^
+IndexError: too many indices for array: array is 1-dimensional, but 2 were indexed

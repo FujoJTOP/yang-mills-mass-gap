@@ -1,0 +1,71 @@
+================================================================================
+(1) SU(2) Weyl integrals  (mp.dps=40)
+================================================================================
+   n :  mult(1 in f^n)   Catalan(n/2)  mult(adj in f^n)   R=1+adj/mult1
+   0 :           1.0            1.0            0.0       1.0
+   1 : 2.09956486e-49            0.0  1.25155587e-47       0/0
+   2 :           1.0            1.0            1.0       2.0
+   3 : 1.01198143e-47            0.0  1.95701957e-47       0/0
+   4 :           2.0            2.0            3.0       2.5
+   5 : 2.36585193e-47            0.0  4.21211963e-47       0/0
+   6 :           5.0            5.0            9.0       2.8
+   7 : 6.96517966e-47            0.0  1.44607874e-46       0/0
+   8 :          14.0           14.0           28.0       3.0
+   9 : 7.21870083e-47            0.0  -3.76288219e-46       0/0
+  10 :          42.0           42.0           90.0   3.142857
+  11 : 3.4117375e-46            0.0  1.87531065e-46       0/0
+  12 :         132.0          132.0          297.0      3.25
+
+  Hom(1, f f f f)           = 2.0  = 2   (Z08 (2.1) reproduced)
+  Hom(1,f)*Hom(1,f)  (naive)= 1.0  = 1
+  mult(1 in f (x) fbar)     = 1.0  = 1
+  R(kappa=2, all f)         = 2.0  = 2
+  R(kappa=4, all f)         = 2.5  = 5/2 = C_3/C_2 = 2.5
+  R(kappa<=4) <= 2^(kappa/2) ?  True    (2 <= 2,  2.5 <= 4)   =>  per-plaquette Chat <= 2^{sum kappa/2} <= 4^{|gamma|}
+
+  cap test:  B_T side = f (x) fbar = 1 + adj;   true = mult1(A);  naive = mult1(A)
+  (w(gamma)=0 but w(B_T+gamma)!=0  <=>  mult(1 in A)=0, mult(adj in A)!=0)
+    kappa=1, A=f   (Z08's witness) w(gamma)= 2.09956e-49  w(B+gamma)= 1.27255e-47  both zero
+    kappa=1, A=adj               w(gamma)=-1.13324e-47  w(B+gamma)=         1.0  CAP-FAILURE
+    kappa=2, A=adj(x)j=2         w(gamma)= 1.39536e-47  w(B+gamma)=         1.0  CAP-FAILURE
+
+================================================================================
+(2) straight four-wall tube: shared links per decoration plaquette (4D torus, L=4,T=6)
+================================================================================
+  |B_T| = 24 = 4T = 24;   |links(B_T)| = 52
+  histogram (#shared links per non-B_T plaquette): {0: 4389, 1: 188, 4: 6}
+  plaquettes with >1: 6  all are time-translates of p0 (plane 12, x=origin), k=4:
+    [1, 2, 3, 4, 5, 6]
+  => sum_l kappa_l <= 4|gamma| ;  enhancement needs kappa_l >= 2 ;  kappa_l <= 4 always
+  => Chat = 2^nu <= 2^{sum kappa/2} <= 2^{2|gamma|} = 4^{|gamma|}   [provable, safe]
+  backbone-side plaquettes per link (histogram): {1: 8, 2: 44}  (the 1's are the 4 cross-section links at t=0 and t=T; p0 supplies the 2nd)
+
+================================================================================
+(3) new KP window:  Chat*ubar < 1  <=>  beta < beta1^fix = 8/(Chat*eD*Cbar)
+================================================================================
+  eD = e*Delta = 54.3656365692 ;  u = beta/8 ;  ubar = 6.795704571*Cbar*beta
+  Chat       beta1^fix(Cbar=1)  vs 1/48      | beta1^fix(Cbar=N^2=4)  vs 1/48
+  1  naive                    0.14715178 (keep x0.14158)            | 0.036787944 (keep x0.56631)
+  2  per factorization point 0.073575888 (keep x0.28315)            | 0.018393972 (SHRINK x1.1326)
+  4  provable per plaquette  0.036787944 (keep x0.56631)            | 0.009196986 (SHRINK x2.2652)
+  16 Z08 rho^4 (over-count)  0.009196986 (SHRINK x2.2652)           | 0.0022992465 (SHRINK x9.0609)
+  no-loss condition for the P3/SZZ window 1/48:  Chat*Cbar < 7.06328527   (= 7.06x,
+     already recorded in LOOP-RUNBOOK:6182 for Chat=1)
+     Chat*Cbar: 2*1=2  4*1=4  4*4=16  16*1=16
+
+================================================================================
+(4) delta = ln(1/(Chat*ubar))/a = kappa/4 - ln(Chat*eD*Cbar)/a
+================================================================================
+  Cbar = 1 (the value implicit in Y04:117 / X01 §3 row 6)
+   beta      ubar      | Chat=1            | Chat=2            | Chat=4            | Chat=16
+   0.0833333 0.56630871 | 0.566309/0.5686159179138452  1.13262/ KP-FAIL   2.26523/ KP-FAIL   9.06094/ KP-FAIL 
+   0.0416667 0.28315436 | 0.283154/1.2617630984737906 0.566309/0.5686159179138452  1.13262/ KP-FAIL   4.53047/ KP-FAIL 
+   0.0208333 0.14157718 | 0.141577/1.9549102790337358 0.283154/1.2617630984737906 0.566309/0.5686159179138452  2.26523/ KP-FAIL 
+   0.0104167 0.070788589 | 0.0707886/2.648057459593681 0.141577/1.9549102790337358 0.283154/1.2617630984737906  1.13262/ KP-FAIL 
+
+  Y04:117 check: kappa/4*a=ln(1/u) at u=0.0104 = 4.5659495 ; ln(eD) = 3.995732274 ; delta*a = 0.57022
+  identity delta_fix(beta) = delta_old(Chat*beta): 0.568615917914 == 0.568615917914
+  beta=1/12 survives iff Chat < 1/ubar = 1.7686512   => Chat=2 and Chat=4 KILL the old reference point; Chat=1 (naive) is the one that dies of
+     Z08's over-count 16, not of the exact factor 2/4.
+
+Z12 done. No QED, Clay 0%.

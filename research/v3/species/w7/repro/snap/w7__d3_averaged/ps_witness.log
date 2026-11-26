@@ -1,0 +1,101 @@
+
+============================================================================
+[A] 2x2: identical spectrum {1, e^-m}, different normality.  a0 = 1
+============================================================================
+  sigma = {1, 0.548812};  half-gap delta = 0.225594;  z_mid = 0.774406
+    c    dep(T)   ||T||/rho  omega-rho  kappa(z_mid)  min_{|z-zmid|=0.4d}||(T-z)^-1||
+   0.0    0.0000     1.0000     0.0000       1.0000         4.1157
+   0.1    0.2150     1.0071     0.0055       1.2459         5.0489
+   0.5    0.5803     1.1505     0.1111       2.6009        10.1400
+   1.0    1.0474     1.4703     0.3229       4.6479        17.8860
+   2.0    2.0250     2.2899     0.7995       8.9769        34.3707
+  -> non-normality INFLATES kappa and every resolvent norm; it never lowers the floor.
+
+============================================================================
+[B] Gelfand deficit  m >= -(1/(n a0)) log ||A^n||^{1/n};  A = P_{vac^perp} T P_{vac^perp}
+============================================================================
+  normal sector A = diag(e^-m,0),  m_true = 0.6
+    n=  1  ||A^n||^(1/n)=0.548811636094  bound=0.600000000000  deficit=1.11e-16
+    n=  2  ||A^n||^(1/n)=0.548811636094  bound=0.600000000000  deficit=1.11e-16
+    n=  4  ||A^n||^(1/n)=0.548811636094  bound=0.600000000000  deficit=1.11e-16
+    n=  8  ||A^n||^(1/n)=0.548811636094  bound=0.600000000000  deficit=1.11e-16
+    n= 16  ||A^n||^(1/n)=0.548811636094  bound=0.600000000000  deficit=1.11e-16
+  non-normal sector A = [[lam,c],[0,0]] (same spectrum for every c)
+    c=0.5:  kappa(A)=||A||/rho=1.352786  (1/a0)log kappa=0.302166  deficit(n=1)=0.302166
+       n=  1  ||A^n||^(1/n)=0.74242455  bound=0.297834  deficit=0.302166
+       n=  2  ||A^n||^(1/n)=0.63831907  bound=0.448917  deficit=0.151083
+       n=  4  ||A^n||^(1/n)=0.59187577  bound=0.524459  deficit=0.075541
+       n=  8  ||A^n||^(1/n)=0.56993711  bound=0.562229  deficit=0.037771
+       n= 16  ||A^n||^(1/n)=0.55927464  bound=0.581115  deficit=0.018885
+       n= 64  ||A^n||^(1/n)=0.55140889  bound=0.595279  deficit=0.004721
+    c=1.0:  kappa(A)=||A||/rho=2.078489  (1/a0)log kappa=0.731641  deficit(n=1)=0.731641
+       n=  1  ||A^n||^(1/n)=1.14069900  bound=-0.131641  deficit=0.731641
+       n=  2  ||A^n||^(1/n)=0.79121987  bound=0.234179  deficit=0.365821
+       n=  4  ||A^n||^(1/n)=0.65896181  bound=0.417090  deficit=0.182910
+       n=  8  ||A^n||^(1/n)=0.60137003  bound=0.508545  deficit=0.091455
+       n= 16  ||A^n||^(1/n)=0.57449010  bound=0.554272  deficit=0.045728
+       n= 64  ||A^n||^(1/n)=0.55512159  bound=0.588568  deficit=0.011432
+    c=5.0:  kappa(A)=||A||/rho=9.165311  (1/a0)log kappa=2.215426  deficit(n=1)=2.215426
+       n=  1  ||A^n||^(1/n)=5.03002925  bound=-1.615426  deficit=2.215426
+       n=  2  ||A^n||^(1/n)=1.66148686  bound=-0.507713  deficit=1.107713
+       n=  4  ||A^n||^(1/n)=0.95490488  bound=0.046144  deficit=0.553856
+       n=  8  ||A^n||^(1/n)=0.72392189  bound=0.323072  deficit=0.276928
+       n= 16  ||A^n||^(1/n)=0.63031481  bound=0.461536  deficit=0.138464
+       n= 64  ||A^n||^(1/n)=0.56814195  bound=0.565384  deficit=0.034616
+
+============================================================================
+[C] exact one-plaquette / 2D-U(1) rotor on the circle;  Haar = dphi is FLAT
+============================================================================
+  beta  ||L-L^T||_F/||L||_F  ||[L,L^T]||_F/||L||_F^2  kappa(z=0.05)  kappa(z=0.5)  kappa(z=0.005)  cond
+   0.0          0.000000e+00              0.000000e+00       1.000000      1.000000        1.000000      1.000
+   0.5          5.009984e-03              5.435404e-06       1.053034      1.029759        1.057488      1.649
+   1.0          1.002086e-02              1.087939e-05       1.178048      1.105004        1.190989      2.718
+   2.0          2.004886e-02              2.182736e-05       1.449229      1.298278        1.472090      7.389
+   2.5          2.506774e-02              2.734833e-05       1.559574      1.390699        1.583668     12.182
+   4.0          4.015420e-02              4.419961e-05       1.803830      1.622310        1.826932     54.598
+  -> dep == 0 and kappa == 1 EXACTLY at beta = 0 (free / Haar point): the operator is normal.
+  -> both > 0 for beta > 0, and this model is ABELIAN: the defect is NOT nonabelian-essential.
+     (charter A2/F2: the mechanism therefore fails the nonabelian-essentialness axiom.)
+
+============================================================================
+[D] conversion cost cond(e^{-W/2}) = exp((Wmax-Wmin)/2)
+============================================================================
+  (i) rotor, W = -beta(cos phi - 1) on the circle: BOUNDED
+      beta= 0.0   cond = e^{0.00} = 1.0000e+00
+      beta= 2.5   cond = e^{5.00} = 1.2182e+01
+      beta= 4.0   cond = e^{8.00} = 5.4598e+01
+  (ii) confining W = (g/2)(x^2-1)^2 on [-R,R]: UNBOUNDED in R
+      g=0.5  R=  2.0  W_max=      2.25   cond = e^{      1.12} = 3.080e+00
+      g=0.5  R=  3.0  W_max=     16.00   cond = e^{      8.00} = 2.981e+03
+      g=0.5  R=  4.0  W_max=     56.25   cond = e^{     28.12} = 1.639e+12
+      g=0.5  R=  6.0  W_max=    306.25   cond = e^{    153.12} = 3.172e+66
+      g=0.5  R=  8.0  W_max=    992.25   cond = e^{    496.12} = 2.913e+215
+      g=0.5  R= 10.0  W_max=   2450.25   cond = e^{   1225.12} = 1.014e+304   [overflow]
+  -> W unbounded => cond = infinity: in the flat frame the resolvent bound says NOTHING;
+     in the weighted frame the same operator is exactly self-adjoint (kappa == 1).
+
+============================================================================
+[E] Rouche perturbation is not volume-uniform
+============================================================================
+  normalized one-site operators: ||T(2.5)-T(0)|| = eps1 = 0.787100
+  contour inside the gap: dist(edge, sigma) = 0.001944   (E1 = 1.9481)
+  single site:  eps1/dist = 404.8256
+     V      V*eps1/dist   (V independent sites: ||Delta T^{tensor V}|| = V*eps1 + O(eps1^2))
+        1           404.8256
+        2           809.6511
+        4          1619.3022
+        8          3238.6044
+       16          6477.2089
+      256        103635.3422
+    65536      26530647.6087
+  -> ||E|| is EXTENSIVE (~V); dist(contour,sigma) is not.  Rouche fails for macroscopic V.
+     Same obstruction as the banked e^{-cV} constants of PROOF-GAUSS-INVARIANT-PF.
+
+============================================================================
+[F] finite-moment blindness: competitor matching M_0..M_4 of a gapped 2-atom nu, inf supp = 0
+============================================================================
+  target nu: M_j = [1.0000e+00 2.5000e+00 8.5000e+00 3.2500e+01 1.2850e+02 5.1250e+02
+ 2.0485e+03]
+  no admissible competitor found by fsolve
+
+DONE

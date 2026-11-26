@@ -1,0 +1,42 @@
+====================================================================================================
+E1  verify  lam2-lam1 = INT (W/u1)^2 / INT u2^2      (W = const Wronskian)
+====================================================================================================
+  free      lam1=9.869592 lam2=39.478215  lhs=29.60862295 rhs=29.60836117  rel.err=8.84e-06   (W is constant to 2.4e+00)
+  parab     lam1=10.032494 lam2=39.831120  lhs=29.79862586 rhs=29.79836154  rel.err=8.87e-06   (W is constant to 2.4e+00)
+  smooth    lam1=11.816953 lam2=41.285351  lhs=29.46839747 rhs=29.46813761  rel.err=8.82e-06   (W is constant to 2.3e+00)
+  bump      lam1=13.454626 lam2=45.948015  lhs=32.49338966 rhs=32.49312441  rel.err=8.16e-06   (W is constant to 2.4e+00)
+  two-step  lam1=12.261494 lam2=47.563643  lhs=35.30214913 rhs=35.30179768  rel.err=9.96e-06   (W is constant to 2.5e+00)
+  free      lam1=9.869592 lam2=39.478215  lhs=29.60862295 rhs=29.60836117  rel.err=8.84e-06   (W is constant to 2.4e+00)
+====================================================================================================
+E2  what the identity says about the constant:   rho^2 <= 4  <=>  INT(W/u1)^2 <= 3 lam1 INT u2^2
+====================================================================================================
+    equivalently  3 lam1 >= INT (W/u1)^2 / INT u2^2 = lam2-lam1 ,   i.e. lam2 <= 4 lam1
+    bc=DD: (lam2-lam1)/lam1 = 2.999981   3 - this = +0.000019   -> rho^2 = 3.999981
+    bc=ND: (lam2-lam1)/lam1 = 8.006639   3 - this = -5.006639   -> rho^2 = 9.006639
+====================================================================================================
+E3  the identity on a two-step string (w=1 on [0,1/2], 10 on [1/2,1]) -- generalised form
+====================================================================================================
+    lam1=1.570793 lam2=8.961166  rho^2=5.704869
+    generalised identity: lam2-lam1 = 7.39037334 ;  INT(W/u1)^2/INT(w u2^2) = 7.92452828
+====================================================================================================
+E4  EXECUTABLE CRITERION (T3) on three models:
+    Q := INT (W/u1)^2 / ( 3 * e1 * INT u2^2 )      [rho^2 <= 4  <=>  Q <= 1]
+    W = u1 u2' - u1' u2 ;  e1 = lowest tower eigenvalue ;  u1 nodeless is the HYPOTHESIS
+====================================================================================================
+  (a) DD free string    e1=9.869599 e2=39.478327 rho^2=3.99999315
+      INT(W/u1)^2=0.02467384  INT u2^2=0.000833  ratio=29.60861162 (= e2-e1 = 29.60872865)
+      Q = A/(3 e1 B) = 0.99999376      (analytic: 1 exactly -> saturated)
+      scale check (u2 -> 3 u2): Q = 0.99999376  (must be unchanged)
+  (b) ND half-string    e1=2.465346 e2=22.188087 rho^2=8.99998973
+      INT(W/u1)^2=0.01643558  ratio=19.73913368 (= e2-e1 = 19.72274160)   Q = 2.66887958  (>1 !)
+  (c) double well Lam=20 E0=8.227207 E1=8.477450 E2=20.222046
+      two-integral form (nodeless reference u0):
+        E1-E0=2.50243295e-01  vs  INT(W01/u0)^2/INT u1^2 = 2.50243490e-01
+        E2-E0=11.99483902  vs  INT(W02/u0)^2/INT u2^2 = 11.99483060
+        rho^2 = r2/r1 = 47.932638   (direct: 47.932709)   Q = (rho^2-1)/3 = 15.6442  (>1 !)
+      single-integral form with the NODAL u1 (hypothesis violated) -> 1/eps divergence:
+        eps= 3.0e-02  Q_eps=  0.0000e+00
+        eps= 1.0e-02  Q_eps=  1.3143e+01
+        eps= 3.0e-03  Q_eps=  2.4514e+01
+        eps= 1.0e-03  Q_eps=  4.6969e+01
+        eps= 3.0e-04  Q_eps=  1.2015e+02

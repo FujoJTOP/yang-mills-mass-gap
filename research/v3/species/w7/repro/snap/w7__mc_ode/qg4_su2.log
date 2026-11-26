@@ -1,0 +1,63 @@
+qg4_su2.py   start 2026-11-25 12:11:03
+
+==============================================================================
+PART 1 -- exact SU(2) one-plaquette spectrum = the group Laplacian on S^3
+  class-angle form:  L f = -(1/sin^2 th) d/dth( sin^2 th f' ) ,  th in (0,pi)
+  substitution f = u/sin(th)  =>  L = -u'' , u(0)=u(pi)=0
+  => eigenvalues n^2-1 = 4j(j+1) = 3, 8, 15, 24, ...  (n = 2j+1)
+  Verified below as a GENERALISED eigenproblem A f = lam B f, B = diag(sin^2 th).
+==============================================================================
+  grid N=3000, generalised eigenvalues of the class Laplacian
+  (index n = 2j+1; n=1 is the constant, j=0, lambda=0):
+    j=0.0  lam =     0.00046307    4j(j+1) =   0.00   |diff| = 4.63e-04   rel = 4.6e+05
+    j=0.5  lam =     3.00185143    4j(j+1) =   3.00   |diff| = 1.85e-03   rel = 6.2e-04
+    j=1.0  lam =     8.00416459    4j(j+1) =   8.00   |diff| = 4.16e-03   rel = 5.2e-04
+    j=1.5  lam =    15.00739920    4j(j+1) =  15.00   |diff| = 7.40e-03   rel = 4.9e-04
+    j=2.0  lam =    24.01154970    4j(j+1) =  24.00   |diff| = 1.15e-02   rel = 4.8e-04
+    j=2.5  lam =    35.01660831    4j(j+1) =  35.00   |diff| = 1.66e-02   rel = 4.7e-04
+
+  EXACT: mu_1 = 3, mu_2 = 8  (the corpus value, rb_ratio_bound.py PART E),
+  and the sequence is 4j(j+1) with multiplicity (2j+1)^2.
+  Note what this is: an OPERATOR spectrum, not the spectrum of a graph Laplacian.
+
+==============================================================================
+PART 2 -- the read-only comparison, and why SU(2) has no scalar network
+==============================================================================
+  Geometric R_eff of the spatial 3-torus (the 'skeleton' of a 4D lattice,
+  from qg1 PART A):  L=4: 0.4333,  L=6: 0.4539,  L=8: 0.46595
+  It SATURATES (R_inf ~ 0.47): it is L-independent, and beta-independent.
+
+  Read-only corpus numbers at beta = 2.5 (SU(2), 4D):
+     m_1 a = 1/(xi/a) in [0.77, 1.89]         (BN-RESIDUAL.md:293)
+     strong-coupling first term m a = 1.88    (same line)
+     m_{0++*}/m_{0++} ~ 1.54-1.56             (AUDIT-CH16.md:33)
+
+  Multiplying by the geometric R_eff ~ 0.47 gives 0.36-0.89: bounded, and
+  L-independent BECAUSE R_eff is L-independent and m a is L-independent.
+  The same test on free Maxwell gives  w_min*R_eff ~ 1/L -> 0 (qg3 ACID 1).
+
+  So the test does separate gapped from gapless -- but only because it is
+  literally 'is lambda L-independent?' with a beta-free constant stuck on.
+  All the discriminating information sits in lambda, none in R_eff.
+
+  WHY THERE IS NO SCALAR NETWORK (T0b, sharp):
+   (i) For a scalar network the Dirichlet form is E(f)=sum_e c_e (f_x-f_y)^2,
+       i.e. a QUADRATIC form in the vertex variables.  The Wilson weight
+       exp(beta Re tr U_p) is NOT a quadratic form in the link variables:
+       it is a matrix element of the regular representation, and the
+       quadratic expansion around a background is the Savvidy Hessian
+       -D^2 + 2 ad F_B -- an OPERATOR in the adjoint fibre, indefinite.
+   (ii) A conductance is a positive number.  'ad F_B' has both signs, so the
+       'conductances' of any non-abelian effective network are sign-indefinite
+       => no M-matrix => no effective resistance (R_eff is defined only for
+       PSD Laplacians with non-negative weights).
+   (iii) Even the abelian Z2 case works only because U(1)/Z_N plaquettes
+       exponentiate to a real positive weight after the duality transform;
+       for SU(2) the dual is not a spin model with positive weights.
+  => the constant c in lambda >= c/R_eff would have to carry a g-dependence
+     (T0b), and the monotonicity direction (T0c) has no meaning.
+
+     SU(2) 4D beta=2.5 (read-only):  m a = [0.77, 1.89]   R_eff = 0.46595   m a R_eff = ['0.3588', '0.8806']
+                free Maxwell T^3_L:  m a = [0.7653668647301796]   R_eff = 0.46595   m a R_eff = ['0.3566']
+
+total wall 0.5 s

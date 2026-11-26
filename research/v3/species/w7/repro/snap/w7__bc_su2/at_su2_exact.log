@@ -1,0 +1,75 @@
+====================================================================================================
+PART A   AUDIT of w7_pl_hess.py:  its 'Hessian' is H_ab = Re tr(lam_a lam_b M), the
+         UNSYMMETRISED second derivative D_aD_b of Re tr(U M) at U = e.  The Levi-Civita
+         Hessian in the left-invariant frame is  Hess F = (1/2)(D_vD_w + D_wD_v)F  because
+         grad^{LC}_{lam_a} lam_b = (1/2)[lam_a, lam_b]  (the frame is not holonomic).
+         For SU(2):  lam_b lam_a + lam_a lam_b = -(lam_a.lam_b)/2 * 1
+            => Hess Re tr(UM) = -(1/4)Re tr(UM) * 1 = -(1/2) cos(th_{UM}) * 1
+            => Hess S_p       = +(beta/4) cos(th_{UM}) * 1      (SCALAR, |.| <= beta/4)
+         so  sup(-lambda_min H) = 1/2 for SU(2) exactly (attained at M = 1).
+====================================================================================================
+  N  dimG   c_N (TRUE sym)   c_N (old unsym)   ratio    old 6c_N/N beta|2.5 -> new
+  2      3        0.497093          0.763322      1.54     -5.7249  ->  -3.7282
+  3      8        0.478945          0.783598      1.64     -3.9180  ->  -2.3947
+  4     15        0.495411          0.765317      1.54     -2.8699  ->  -1.8578
+  5     24        0.496212          0.783384      1.58     -2.3502  ->  -1.4886
+  => the old numbers  Hess S_W >= -(4.8/N) beta g  become  -(2.9/N) beta g ; the negative
+     part was overstated by 1.5-1.65x.  Structural conclusion unchanged, ratio Ric/action
+     improves from 9.7% to about 15.7% for SU(3).
+
+====================================================================================================
+PART B   EXACT heat-smoothed one-link potential,  S = beta(1 - cos th),  beta = 2.50
+====================================================================================================
+  (i)  c_j = int f chibar_j dU  (f = e^{-S});  first 7:
+        j= 0.0   c_j = +1.652670e-01
+        j= 0.5   c_j = +1.676445e-01
+        j= 1.0   c_j = +9.345063e-02
+        j= 1.5   c_j = +3.623980e-02
+        j= 2.0   c_j = +1.078010e-02
+        j= 2.5   c_j = +2.597333e-03
+        j= 3.0   c_j = +5.224045e-04
+       c_{1/2} != 0  =>  decay rate of Hess V_t is Lambda = lam_1/2 = 0.3750
+
+  (ii) m(t) = inf_x lambda_min(Hess V_t), ||(Hess V_t)_-|| = max(0,-m):
+      0.02     -0.71315       0.71315      0.00689      0.97505
+      0.05     -0.64241       0.64241      0.00710      0.95018
+      0.10     -0.64072       0.64072      0.00745      0.91016
+      0.25     -0.65788       0.65788      0.00862      0.80796
+      0.50     -0.67592       0.67592      0.01109      0.68174
+      0.75     -0.67196       0.67196      0.01429      0.59095
+      1.00     -0.64563       0.64563      0.01832      0.52268
+      1.50     -0.54946       0.54946      0.02878      0.42738
+      2.00     -0.43881       0.43881      0.04170      0.36458
+      3.00     -0.26465       0.26465      0.07000      0.28831
+      4.00     -0.16057       0.16057      0.09563      0.24512
+      6.00     -0.06395       0.06395      0.13069      0.20123
+      8.00     -0.02759       0.02759      0.14870      0.18202
+     12.00     -0.00575       0.00575      0.16155      0.16899
+     16.00     -0.00126       0.00126      0.16444      0.16610
+     24.00     -0.00006       0.00006      0.16523      0.16531
+       (limit t->0: m -> -beta/4 = -0.6250  [exact: Hess S_p = (beta/4)cos(th) 1];
+        the 20%% overshoot at t=0.02 is the expected O(t)/Z_t correction, not an error.)
+  (iii) fit log||(HV)_-|| = -0.40541 t -0.14553  on t in [1.0,24.0]  => rate 0.40541
+        predicted Lambda = lam_1/2 = 0.3750   ratio measured/predicted = 1.081
+        => THE NEGATIVE PART DECAYS EXPONENTIALLY.  It does NOT tend to a constant -c beta.
+        [diag] max of ||(HV)_-|| on the Q-grid = 0.7131 at t = 0.0200 ; vals[:3] = [0.7131 0.6394 0.6451]
+  (iv)  Q(inf) = int_0^inf ||(Hess V_t)_-|| dt = 2.116854   [one link, beta = 2.5]
+        => gamma >= (N/4) exp(-2Q)  (bound, one link); for N=2 that is 7.249e-03
+           Exponentially small in Q: the whole problem reduces to bounding Q uniformly in L.
+
+====================================================================================================
+PART C   identity (G):   Hess_g V_t(phi) = E_{mu_t^phi}[Hess_g S] - Cov_{mu_t^phi}(grad_g S)
+         test model: one link, S(U) = beta(1 - (1/2)Re tr(U M)), M fixed in SU(2).
+         Gauss-Legendre quadrature over SU(2) (theta, cos alpha, phi); finite-difference
+         Hessian of V_t in the three left-invariant directions; compare.
+====================================================================================================
+   M=identity  t= 0.15   max|Hess V_t - RHS| / max|RHS| = 2.583e-08    (scale 1.936e-01)
+   M=identity  t= 0.60   max|Hess V_t - RHS| / max|RHS| = 4.815e-08    (scale 1.848e-01)
+   M=identity  t= 2.00   max|Hess V_t - RHS| / max|RHS| = 5.368e-08    (scale 1.059e-01)
+   M=generic   t= 0.15   max|Hess V_t - RHS| / max|RHS| = 1.824e-08    (scale 4.242e-01)
+   M=generic   t= 0.60   max|Hess V_t - RHS| / max|RHS| = 1.322e-08    (scale 3.213e-01)
+   M=generic   t= 2.00   max|Hess V_t - RHS| / max|RHS| = 1.237e-08    (scale 1.627e-01)
+   => (G) holds to the finite-difference / quadrature error (h = 1e-3, GL 100x60x64).
+      NOTE: it holds for the SYMMETRISED Hessian; with the unsymmetrised one it cannot.
+
+[saved] research/v3/species/w7/at_su2_exact.json

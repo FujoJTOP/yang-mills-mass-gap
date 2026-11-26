@@ -1,0 +1,40 @@
+sqrt(sigma) = 0.484956 GeV = 484.96 MeV   sigma = 0.235182 GeV^2
+Lambda_MS[SU3] = 263.040 MeV      sigma/Lambda^2 = 3.3991
+Lambda_MS[SU2] = 281.566 MeV      sigma/Lambda^2 = 2.9665
+[N=3] b0=0.069658 b1=0.004090  g2(a^-1=2.91GeV)=1.0  ->  g2(Lambda_MS)=1.5605  =>  2 g2 N = 9.363   (at beta=6: 2 g2 N = 6.00)
+[N=2] b0=0.046439 b1=0.001818  g2(a^-1=2.91GeV)=1.0  ->  g2(Lambda_MS)=1.2929  =>  2 g2 N = 5.172   (at beta=6: 2 g2 N = 4.00)
+
+--- sigma/Lambda^2  vs  2 g^2 N ---
+  SU3  g2=6/beta=1            formula= 6.000  measured/formula = 0.5665
+  SU3  g2(Lambda_MS) 2-loop   formula= 9.363  measured/formula = 0.3630
+  SU2  g2=6/beta=1            formula= 4.000  measured/formula = 0.7416
+  SU2  g2(Lambda_MS) 2-loop   formula= 5.172  measured/formula = 0.5736
+
+--- SU3: beta in [5.6924,6.7000], g2 = 2N/beta ---
+     beta a sqrt(sig)  sigma a^2  x=e^-1/(2b0g2)   R=sa2/x
+   5.6924     0.40100   0.160801       1.103e-03    145.81
+   5.8000     0.31603   0.099875       9.696e-04    103.01
+   5.8941     0.26130   0.068278       8.664e-04     78.81
+   5.9900     0.21959   0.048220       7.725e-04     62.42
+   6.0625     0.19509   0.038060       7.083e-04     53.74
+   6.2350     0.14899   0.022198       5.762e-04     38.52
+   6.3380     0.12948   0.016765       5.094e-04     32.91
+   6.5000     0.10319   0.010648       4.197e-04     25.37
+   6.6000     0.09024   0.008143       3.723e-04     21.87
+   6.7000     0.07898   0.006238       3.304e-04     18.88
+  sigma a^2 falls x25.78;  x falls x3.34;  R runs x7.72  =>  exponent n = dln(sa2)/dln(x) = 2.630
+
+--- SU2: beta in [2.5090,2.8000], g2 = 2N/beta ---
+     beta a sqrt(sig)  sigma a^2  x=e^-1/(2b0g2)   R=sa2/x
+   2.5090     0.17857   0.031887       1.167e-03     27.33
+   2.6000     0.13279   0.017633       9.133e-04     19.31
+   2.6500     0.11342   0.012864       7.983e-04     16.11
+   2.7000     0.09698   0.009405       6.978e-04     13.48
+   2.7500     0.08375   0.007014       6.099e-04     11.50
+   2.8000     0.07242   0.005245       5.331e-04      9.84
+  sigma a^2 falls x6.08;  x falls x2.19;  R runs x2.78  =>  exponent n = dln(sa2)/dln(x) = 2.306
+
+a*sqrt(sigma)(beta=6, interp. Tab.13) = 0.21621  =>  a^-1 = 2.243 GeV   (task anchor: 2.91 GeV)
+  sigma a^2(beta=6) = 0.046747 (Tab.13)  vs  sigma/2.91^2 = 0.027773
+  e^(-1/(2 b0 g2)) at beta=6 (g2=1) = 7.6327e-04
+  R(beta=6) = 61.25 (Tab.13 a)   36.39 (a^-1=2.91)

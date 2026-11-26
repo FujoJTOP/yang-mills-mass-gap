@@ -1,0 +1,193 @@
+% =====================================================================
+%  §6  Structural closure of the loop algebra
+% =====================================================================
+\section{Structural closure of the loop algebra: no sector is both faithful and non-degenerate}
+\label{sec:loop}
+
+The loop-equation route had two hopes: (a) use scale covariance to pin the string tension as
+$\propto\Lambda^{2}$; (b) find on non-planar loops a genuine test of the area law. Both closed on the
+same day, but in different ways: the first turned out to be a \emph{weak} result (it excludes
+homogeneous monomials only), the second turned out to be \emph{impossible} (no sector is
+simultaneously faithful and non-degenerate).
+
+\subsection{$\kappa_W=0$: a true theorem, but it excludes only homogeneous monomials}
+
+Apply the scaling $x\to sx$, $C_R\to C_{sR}$ with $\theta$ fixed to \eqref{eq:MM}: the left side
+$\partial_\mu\delta/\delta\sigma_{\mu\nu}$ carries weight $s^{-3}$, and so does the right side
+$\oint\dd y\,\delta^{4}$. Writing $W(sC)=s^{\kappa_W}W(C)$ and $G=W\cdot W$ (so $\kappa=2\kappa_W$),
+matching gives
+\begin{equation}
+  \kappa_W-3=2\kappa_W-3 \;\Longrightarrow\; \kappa_W=0 ,
+\end{equation}
+and the solution is unique (it is pinned by the power difference between $O(W^{2})$ and $O(W)$, not
+by the area law or by positivity). A second, independent derivation: a zero-length arc gives
+$G(R,0)=W(R)$, hence $\kappa_G=\kappa_W$, while the product gives $\kappa_G=2\kappa_W$; the same
+solution. \LT
+\src{\code{RV-3-COVARIANCE.md} \S1--\S2; \code{LOOP-RUNBOOK.md} \S11.19, \S11.28.}
+
+\noindent
+\textbf{Its entire non-empty content is one statement: zero anomalous dimension} --- $W$ carries no
+$R^{-p}$ multiplicative prefactor. It excludes every pure power decay $W\sim R^{-p}$ with $p\neq0$,
+and it excludes schemes in which $\kappa_W$ is tuned as a free parameter. \LT
+\src{\code{KW1-CONS.md} \S1--\S2, \S5.1.}
+
+\begin{keybox}
+\textbf{Stated plainly: this is a weak result.} For $F(x)=e^{-cx^{\alpha}}$ one has
+$\kappa_W(s)=-\alpha c(sx)^{\alpha}$, which is \emph{not constant} (unless $\alpha=0$ or $c=0$), so
+``$\kappa_W=0$'' \textbf{does not apply} to it --- not ``it is allowed'', but a \emph{type error}.
+Reductio: reading $\kappa_W=0$ as a pointwise constraint on profiles would exclude
+$e^{-\sigma R^{2}}$; but \eqref{eq:sigma-mu} of \S\ref{sec:tension} already established that the area
+law \emph{is} a solution $\Rightarrow$ that reading is wrong $\Rightarrow$ \textbf{$\alpha$ is entirely
+free}. \LT
+\end{keybox}
+\src{\code{KW1-CONS.md} \S1.2(ii), \S2.2; numerical check in \S1.3 ($s=0.5,1,2,8$ columns, with
+$e^{-x},e^{-x^{2}},e^{-x^{1/2}},e^{-x^{3}}$ all non-$s$-constant and $x^{-2}$, constant both
+$s$-constant).}
+
+\noindent
+\textbf{The real source of $\alpha=2$ is elsewhere}: in the additive / planar sector \eqref{eq:MM}
+reduces to $G_R=-(4\pi g^{2}N/\varepsilon^{2})RG$, i.e.\ the source has $R$-power $q=1$; with
+$\alpha=q+1$ this gives $\alpha=2$ and $\sigma=2g^{2}N/\varepsilon^{2}$, valid in that sector only and
+independent of $\kappa_W$. \LT
+\src{\code{KW1-CONS.md} \S4.2 (including the four-point check of $G_R/G$ at $R=0.5,1,2,4$);
+\code{RV-1-EQUATION.md} \S8.3(i).}
+
+\noindent
+\textbf{An attribution error (erratum level)}: crediting $\alpha=2$ to $\kappa_W$ is wrong;
+$\kappa_W=0$ has \textbf{zero content} for $\sigma$, for the spectrum and for $m_{0^{++}}$, hence it
+\textbf{cannot be used to prove a gap}. \LN
+\src{\code{KW1-CONS.md} \S3.4 attribution table (six independent rows, the first five with different
+owners), \S5.3(4), \S5.4; \code{LOOP-RUNBOOK.md} \S11.36 (lines 1780--1802, ``I overrated
+$\kappa_W=0$'').}
+
+\subsection{The area law holds only in the degenerate sector}
+
+On the planar circle family $A_1+A_2\equiv\pi R^{2}$, so $\theta$ always drops out (step 1 of
+\S\ref{sec:tension}). The mode language makes this precise: in the basis
+$\varphi_k=\cos(2\pi k\theta)$ the $k=0$ equation involves $G_0$ only (\emph{closure}), but closure is
+\emph{not} degeneracy: if $S_k=0$ and there is no resonance then $G_k=0$ ($\theta$-independence), which
+contradicts the physical $G=W_1W_2$ (generically non-multiplicative) $\Rightarrow$ the physical $k\ge1$
+components must be carried by the contact source. The checkable criterion is
+\begin{equation}
+  A_1(R):=2\int_0^{1}G(R,\theta)\cos(2\pi\theta)\,\dd\theta ,
+  \qquad A_1\neq0 \Rightarrow \text{the two variables cannot be dispensed with}.
+\end{equation}
+\LT
+\src{\code{RV-3-COVARIANCE.md} \S3, \S5 (with the numerical check that the Fourier coefficients of
+$\theta(1-\theta)$ reproduce $-1/(\pi^{2}k^{2})$ digit by digit); \code{RV-4-LINEAR.md} for the
+correction that the second variable brings a $\theta$-direction second-order term plus a resonance
+condition, not a nonlinearity.}
+
+\noindent
+\textbf{So the planar family cannot refute the area law}: it tests the coefficient, not the functional
+form. Testing the functional form requires an \emph{non-additive} splitting, i.e.\ $A_1+A_2\neq A$ ---
+a non-planar loop or a self-intersecting one. \LT
+\src{\code{RV-2-AREALAW.md} \S6.}
+
+\subsection{The non-degenerate sector: the principal symbol is never elliptic}
+
+Take the two-variable reduction on a figure-eight. First fix the geometry: two coplanar circles with
+\emph{exactly one} common point $\iff$ the radical axis is tangent to the circles $\iff$ the circles
+are \textbf{tangent} (parallel tangents, oriented angle $\pi$). ``Coplanar $+$ one common point $+$
+angle $\pi/2$'' does not exist geometrically (a transverse intersection always gives two points). \LT
+\src{\code{FIG8.md} \S1.1 (the radical-axis argument).}
+
+Tangency kills two things at once: \LT
+\begin{itemize}
+\item the right-hand $\dd y_\nu$ weight satisfies $t_1+t_2=0$ (because of $2\cos(\varphi/2)$ with
+      $\varphi=\pi$) $\Rightarrow$ \textbf{RHS $\equiv0$};
+\item $\rho_2=\partial x_*/\partial R_2=0$ $\Rightarrow$ the $\partial^{2}/\partial R_2^{2}$ slot is
+      \textbf{permanently empty}.
+\end{itemize}
+Hence the tangent figure-eight is not a two-variable reduction but ``one variable $+$ one empty slot''
+$+$ zero right-hand side: a first-order homogeneous constraint. \LN
+\src{\code{FIG8.md} \S2.2--\S2.3, \S7 item 1.}
+
+\noindent
+A genuinely transverse figure-eight (non-circular, or two skew circles) gives nonzero $\rho_b$ and
+$\varphi\neq\pi$. But its principal symbol matrix
+\begin{equation}
+  \begin{pmatrix} a_{11} & a_{12}/2\\ a_{12}/2 & a_{22}\end{pmatrix},
+  \qquad
+  \det \;=\; -\frac{(\rho_1R_1-\rho_2R_2)^{2}}{16\pi^{2}R_1^{2}R_2^{2}} \;\le\; 0 ,
+\end{equation}
+with equality only on one hypersurface. That is: \textbf{at every non-degenerate point the operator is
+hyperbolic, never elliptic}. \LT
+\src{\code{FIG8.md} \S0.5 item 3 (with the five-point numerical check of the $\det$ formula, maximum
+deviation $3.5\times10^{-18}$).}
+
+\begin{keybox}
+\textbf{Immune-graph family 57 (the third closure of this document).} Maximum-principle arguments
+(maximum principle, Harnack, comparison theorems, monotonicity) \emph{all require ellipticity}. A
+hyperbolic operator has no maximum principle $\Rightarrow$ any proposal to ``get a lower bound on loop
+space from monotonicity / a maximum principle'' is \textbf{structurally inexpressible} in loop-equation
+coordinates --- it is not ``not yet done''. \LN
+\end{keybox}
+\src{\code{LOOP-RUNBOOK.md} \S11.23 (lines 1546--1551); the family-57 entry of \code{H1B-FIVE.md}
+\S C2; \code{FIG8.md} \S0.5 item 3 for the four-step chain (sign of $f''$ $\Rightarrow$ monotonicity of
+$f'$ $\Rightarrow$ comparison via $f^{2}$ homogeneity $\Rightarrow$ boundedness of $1/f$).}
+
+\noindent
+\textbf{The area law is not a solution in this sector, and the reason is dimensional.} Substituting
+term by term gives
+\begin{equation}
+  \frac{\text{LHS}}{G}=4\pi\sigma^{2}(\rho_1R_1+\rho_2R_2),
+  \qquad R\text{-power} = +1 ,
+\end{equation}
+so the residual is $O(\sigma^{2}R)\to\infty$ and there is no solution for any $\sigma\neq0$ (at
+$\sigma=0$, $G\equiv1$ and only $b_1=0$ survives). Numerically ($\sigma=0.37$):
+$4\pi\sigma^{2}R_1=1.7203361\,R_1$, five points agreeing to $10^{-5}$; sweeping $R_2$ from $0.7$ to
+$10$ changes LHS/$G$ only through $R_1$ (the numerical trace of $a_{22}=0$); and
+LHS/$G\div R_1$ at $R_1=1,2,4,8$ is constant to the $1.7206$ level $\Rightarrow$ the power is exactly
+$+1$. \LT+\LE
+\src{\code{FIG8.md} \S4.1--\S4.3; witness \code{w7/fig8_res.py}.}
+
+\noindent
+And this does not depend on any geometric factor: \textbf{any} second-order $L^{-3}$ reduction fails to
+hold a Gaussian, because $[a_{ij}]=L^{-1}$ is fixed by $L^{-3}$ while
+$\partial^{2}_RG/G=O(\sigma^{2}R^{2})$, so $a\cdot\partial^{2}G/G=O(\sigma^{2}R)$ (power $+1$), while
+RHS/$G=O(R^{0})$. Adding variables, changing the intersection angle, or going non-planar only changes
+the pure-number coefficients $\rho_b$, $2\cos(\varphi/2)$, never the $R$-power. \LT
+\src{\code{FIG8.md} \S4.2 (``fix the slots first, fill in the geometry last''); this is precisely the
+antidote to the earlier $c_3$ mishap.}
+
+\subsection{One sector, two requirements, not jointly satisfiable}
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}l X X l@{}}
+\toprule
+\textbf{Sector} & \textbf{Faithful (area law is a solution)} & \textbf{Non-degenerate} & \textbf{Conclusion}\\
+\midrule
+circle (\code{rv-1}/\code{rv-2}) & \textbf{yes} (residual identically $0$, $1.62\times10^{14}\to0$) & \textbf{no}
+($A_1+A_2\equiv\pi R^{2}$ $\Rightarrow$ pointwise algebraic; $G_\theta\equiv0$ forced) & tests the coefficient only\\
+figure-eight (\code{fig8}) & \textbf{no} (residual $4\pi\sigma^{2}(\rho_1R_1+\rho_2R_2)$, power $+1$) & \textbf{yes}
+($\det\le0$, non-congruent, $H2$ fails) & structure without faithfulness\\
+\bottomrule
+\end{tabularx}
+\caption{The final death cause of the loop-algebra line: no sector satisfies both requirements.}
+\label{tab:sectors}
+\end{table}
+
+\src{\code{LOOP-RUNBOOK.md} \S11.22 (lines 1536--1544); \code{FIG8.md} \S0.5 items 1--3, \S4, \S7.}
+
+\begin{keybox}
+\textbf{Structural conclusion (the main result of this section).} The loop algebra has \textbf{no sector
+that is simultaneously faithful and non-degenerate}: the circle sector yields
+$\sigma=2g^{2}N\mu^{2}$ but degenerates into an algebraic relation (it tests the coefficient only);
+the figure-eight has genuine structure (non-multiplicative, $k\ge1$ nonzero, $\det\le0$) but the area
+law is not its solution (residual power $+1$). \LN
+\end{keybox}
+\src{\code{LOOP-RUNBOOK.md} \S11.22, last paragraph (verbatim: ``the final death cause of the string
+tension line (SP-F)'').}
+
+\subsection{Incidentally: the linear layer does not force a gap either}
+
+The linearized layer forces no decay at all: the surviving solutions are a power law
+$R^{-0.679}$ and $G\to c\neq0$. But $p=-0.679\neq0$ is \emph{forbidden} by $\kappa_W=0$, so that
+power-law solution is an artefact of the bookkeeping, not a solution; what remains, $G\to c\neq0$, is
+not decay. Hence the linear layer has zero content. \LN
+\src{\code{RV-4-LINEAR.md}, as reported in \code{LOOP-RUNBOOK.md} \S11.16; the sentence ``$p=-0.679$ is
+forbidden'' is at \code{LOOP-RUNBOOK.md} line 1647 and \S11.28.}

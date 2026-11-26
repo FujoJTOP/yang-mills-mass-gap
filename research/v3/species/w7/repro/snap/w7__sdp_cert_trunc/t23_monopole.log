@@ -1,0 +1,24 @@
+  beta=2.6 [5/20] R=3.851 dens=0.586 ncl=1 |mono|=0.4985 frac=0.4727 t=2s
+  beta=2.6 [10/20] R=3.837 dens=0.591 ncl=1 |mono|=0.4988 frac=0.4724 t=4s
+  beta=2.6 [15/20] R=3.839 dens=0.586 ncl=1 |mono|=0.4941 frac=0.4672 t=6s
+  beta=2.6 [20/20] R=3.836 dens=0.587 ncl=1 |mono|=0.4943 frac=0.4683 t=8s
+[beta=2.6] vdens=0.5895+-0.0012 nclust=1.00 spanfrac=0.590 | mono/abs=0.4939+-0.0008 mono/frac=0.4685+-0.0007
+  beta=3.0 [5/20] R=3.876 dens=0.576 ncl=1 |mono|=0.4924 frac=0.4677 t=9s
+  beta=3.0 [10/20] R=3.868 dens=0.572 ncl=1 |mono|=0.4939 frac=0.4681 t=11s
+  beta=3.0 [15/20] R=3.908 dens=0.578 ncl=1 |mono|=0.4942 frac=0.4679 t=12s
+  beta=3.0 [20/20] R=3.844 dens=0.577 ncl=1 |mono|=0.5051 frac=0.4776 t=14s
+[beta=3.0] vdens=0.5744+-0.0012 nclust=1.00 spanfrac=0.574 | mono/abs=0.4953+-0.0010 mono/frac=0.4699+-0.0009
+  beta=6.0 [5/20] R=4.431 dens=0.324 ncl=1 |mono|=0.4031 frac=0.3929 t=16s
+  beta=6.0 [10/20] R=4.578 dens=0.283 ncl=1 |mono|=0.3918 frac=0.3826 t=17s
+  beta=6.0 [15/20] R=4.523 dens=0.301 ncl=1 |mono|=0.4004 frac=0.3914 t=19s
+  beta=6.0 [20/20] R=4.548 dens=0.303 ncl=1 |mono|=0.3933 frac=0.3833 t=20s
+[beta=6.0] vdens=0.3037+-0.0028 nclust=1.05 spanfrac=0.304 | mono/abs=0.3989+-0.0013 mono/frac=0.3893+-0.0012
+[cold eps=0.05] vdens=0.0000 mono/abs=0.0000 R=8.94
+[cold eps=0.5] vdens=0.2911 mono/abs=0.4790 R=3.42
+[random] vdens=0.6699 mono/abs=0.5029 (UV noise floor)
+[u] u(beta)=I2/I1: 0.020833:0.00521, 0.500000:0.12372, 2.500000:0.50720, 6.000000:0.76273
+[phys] a=0.0987 fm  xi=0.1154 fm
+[phys] n_mon = 415.536 /fm^3 ; n_mon*xi^3 = 0.6383
+[phys] vortex area density = 187.23 /fm^2 ; area*xi^2 = 2.4925
+[phys] sigma = 0.497 /fm^2 ; sqrt(sigma)/Lambda = 1.760 ; sigma/Lambda^2 = 3.098
+saved t23_monopole.json  (25s)

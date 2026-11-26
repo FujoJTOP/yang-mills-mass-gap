@@ -1,0 +1,62 @@
+############################################################################################################
+# SDP-CERT 2 -- LTI (Rai et al. 2026) gap certificates on AKLT, vs exact diagonalisation
+############################################################################################################
+    h = P_2: spectrum [-0.  0.  0.  0.  1.  1.  1.  1.  1.];  h >= 0 : True;  h^2 = h : True
+
+[check] translation invariance of the periodic H (built with the cyclic-leg shift):
+    N=4:  ||[H,S]|| / ||H|| = 4.75e-17;  ||H - H^dag|| = 0.00e+00;  trace identity err = 0.00e+00
+    N=6:  ||[H,S]|| / ||H|| = 5.17e-17;  ||H - H^dag|| = 0.00e+00;  trace identity err = 0.00e+00
+
+[C2/V] exact AKLT gaps
+------------------------------------------------------------------------------------------------------------
+      N               E_0     Delta_N = E_1 - E_0         E_0/N
+      4   -0.000000000000          0.333333333333    -3.469e-16
+      6   -0.000000000000          0.347865729345    -9.437e-16
+      8    0.000000000000          0.349849122179     4.280e-17
+     10    0.000000000000          0.350091873023     1.974e-16
+    E_0 = 0 exactly for every N: h_i >= 0 and the AKLT state is annihilated by every h_i.
+    VERIFY frustration-freeness directly:  ||h_i psi_0|| for the exact ground state.
+
+[V] frustration-freeness check on the exact ground state (N = 6):
+    ||h_i psi_0||  = 1.84e-15 1.55e-15 1.77e-15 1.67e-15 1.78e-15 1.65e-15
+    max = 1.84e-15  =>  h_i psi_0 = 0 for ALL i: frustration-free CONFIRMED.
+
+[T/V] LTI feasibility at levels n = 3,4,5: does a feasible Y exist at delta = 0 ?
+------------------------------------------------------------------------------------------------------------
+    Reported honestly: the deterministic greedy feasible-point ascent implemented here does
+    NOT reach a positive certificate.  What is measured is the obstruction, exactly.
+    (A genuine SDP solver -- cvxpy/MOSEK/SDPT3 -- is NOT available in this environment;
+     the published numbers of Rai et al. come from one.  So this is a METHOD limit of the
+     present run, not a theorem about the relaxation.)
+      n    3^n     lam_min(Q_n(0,Y=0))      best over random Y   improvement
+      3     27             -0.11602540             -0.11718824     -1.16e-03
+      4     81             -0.10461004             -0.10455787      5.22e-05
+      5    243             -0.09671857             -0.09683954     -1.21e-04
+    => the level-n relaxation is INFEASIBLE at delta = 0 for n <= 5, and no random Y
+       direction improves it.  The negative mode is not a random-direction artefact;
+       reaching a positive certified delta needs larger n (cost 3^n) and a real solver.
+       NOTE the sign convention: an infeasible relaxation certifies the trivial bound
+       delta <= (some negative number), i.e. nothing.  It is still CONSERVATIVE.
+
+[C1/T] THE CONTROL: the criterion certifies the gap ONLY if the ground energy is 0
+------------------------------------------------------------------------------------------------------------
+    Let H_c = H + c*1.  Its spectrum is {c + lambda_j}.  The criterion reads
+        (lambda_j + c)^2 - delta (lambda_j + c) >= 0  for all j
+    i.e.  x(x - delta) >= 0 for every x in spec(H_c), x >= 0, whose solution is
+        delta_max = min{ x in spec(H_c) : x > 0 }  =  c   (for 0 < c < Delta),
+    while the GAP of H_c is Delta, independent of c.  So a nonzero (or merely
+    approximately known) ground energy replaces 'the gap' by 'the shift error'.
+------------------------------------------------------------------------------------------------------------
+             c    min positive eigenvalue of H_c      gap of H_c     info about the gap?
+         0.000                    0.000000000000  0.350091873023         EXACTLY the gap
+         0.001                    0.001000000000  0.350091873023        NONE (returns c)
+         0.100                    0.100000000000  0.350091873023        NONE (returns c)
+         0.250                    0.250000000000  0.350091873023        NONE (returns c)
+        -0.100     H_c not PSD -> no certificate  0.350091873023           premise fails
+    => with E_0 known only to +-eta, the certificate is a statement about eta.
+       AKLT has E_0 = 0 structurally (frustration-free).  The shifted Kogut-Susskind
+       Hamiltonian of 4D YM does not: h_i = (g^2/2)E_i^2 + (1/g^2)(1 - Re tr P_i) >= 0
+       is PSD, but its ground state minimises no single h_i, so E_0 = N * (vacuum energy
+       density) != 0 and is not available in closed form.  That is the hypothesis gap.
+
+VERDICT -> research/v3/species/SDP-CERT.md.  No QED.

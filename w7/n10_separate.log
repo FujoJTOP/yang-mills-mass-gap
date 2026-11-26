@@ -1,0 +1,57 @@
+================================================================================================
+[A] exact single plaquette beta=2.5, flat chart  (self-check vs o27 Tier-1 unconditional)
+  E[H_vv]=+0.500379  E[Phi'']=+0.184014  Var(G)=0.272802  Var(G+Phi')=0.499617  Var(Phi')=0.034694  Cov=+0.096060
+  [V] self-check |mine - o27| max dev = 4.52e-07   -> kernel OK
+  UNCOND : Delta_dyn=A=+0.227577  W_geo=+0.149319  X=-0.192121  W_full=-0.042801  R=W_full/floor=-0.2568
+  xi=0 SLICE (exact): G_v == 0 and Phi' == 0 identically => Var(G)=Var(Phi')=Cov=0
+    E[H_vv|0]=+0.572192  E[Phi''|0]=+0.173248  (Lemma B floor N/12=0.166667)
+    Delta_dyn|0 = E[H|0]-0 = +0.572192 > 0   [T]   W_geo|0 = E[Phi''|0] = +0.173248  W_full|0 = +0.173248  R=1.0395
+    => the toy's sign answer is FORCED by the single-scalar conditioning, not measured:
+       one mode IS the whole coordinate, so the force vanishes on the slice.
+       It therefore cannot test Delta_dyn vs G''; only a multi-mode 4D ensemble can.
+================================================================================================
+[B] beta=2.5, L=2, SU(2): routes that measured Delta_dyn directly (G''-Delta_dyn=W_full by [T])
+  route                                             G"    D_dyn  W_full  R=Wf/F   s_jk sig_jk sig_tau
+  p19 b2.5 (4 chains x5000)                    +0.4116  +0.1401 +0.2715    1.63 0.0419  +3.34   +1.43
+  p02   (4 chains x19500, fund-domain reject)  +2.0020  +0.8838 +1.1182    6.71 0.0501 +17.64     -  
+  o13_ldep L2 (1500 traj)                      +2.0148  +1.0655 +0.9493    5.70 0.3326  +3.20     -  
+  o27 mode A (mu=0,Lie0)                       +1.6960  +0.5619 +1.1341    6.80 0.2770  +2.03     -  
+  o27 mode B (all mu,Lie0)                     +0.9459  -0.1789 +1.1248    6.75 0.2251  -0.79     -  
+  floor N/12 = 0.166667;  exact unconditional single plaquette W_full = -0.0428 (R=-0.26)
+  [E] W_full/N/12 spans 1.63 .. 6.80  => W_full != N/12 (never 1.00)
+  [E] user's bound Delta_dyn <= G''-N/12 : at G''=0.6018 -> 0.4351; measured Delta_dyn = +0.1401 (0.32x the bound)
+      true G''(beta=2.5,L=2) is 0.4116 (p19) / 0.3942 (p01), NOT 0.6018 (that is beta=6): bound becomes 0.2449
+  [E] sign of Delta_dyn: + in 4/5 routes, but -0.179 in 1 route; magnitudes 0.14..1.07 (7.6x).
+      => sign positive but NOT route-independent; magnitude not converged.
+================================================================================================
+[C] Delta_dyn(beta) from p19 (L=2): 1.0:+0.0148  2.5:+0.1401  4.0:+0.2221  6.0:+0.2962
+  linear fit: Delta_dyn = +0.0554*beta -0.0188   => zero at beta = 0.338
+  exact beta=0 closure (pure Haar, Phi flat): Delta_dyn = 0  -> fit intercept -0.0188 compatible with 0
+  => Delta_dyn>0 is a DYNAMICAL, beta-growing statement, not a kinematic floor;
+     it passes the beta=0 acid test in the sense that it vanishes there.
+================================================================================================
+[D] Delta_dyn at beta=2.5 across L, mode, estimator (all measured, all [E])
+  L=2  p11  L=2 k=0 uniform, |v|=1        Delta_dyn=+0.3144 +- 0.0910  (+3.45 sig)  8/8 chains +
+  L=3  p11  L=3 k=0 uniform, |v|=1        Delta_dyn=+0.3713 +- 0.1005  (+3.69 sig)  8/8 chains +; ratio 1.181 => O(L^0)
+  L=2  p19  L=2 4x5000                    Delta_dyn=+0.1401 +- 0.0419  (+3.34 sig)  1 of 4 chains NEGATIVE (-0.0079)
+  L=2  o27A L=2 mu=0,Lie0                 Delta_dyn=+0.5619 +- 0.2770  (+2.03 sig)  2.0 sigma
+  L=2  p02  L=2 4x19500 fund-reject       Delta_dyn=+0.8838 +- 0.0501  (+17.64 sig)  17.6 sigma, hard reject 4.64%
+  L=2  o13  L=2 1500 traj                 Delta_dyn=+1.0655 +- 0.3326  (+3.20 sig)  3.2 sigma
+  L=2  o27B L=2 all mu,Lie0               Delta_dyn=-0.1789 +- 0.2251  (-0.79 sig)  NEGATIVE, 0.8 sigma
+  L=3  o13  L=3 560 samples               Delta_dyn=-0.5720 +- 0.6090  (-0.94 sig)  NEGATIVE, 0.9 sigma; tau=740 >> bin 14
+  => 6 of 8 positive; magnitude spread 0.14 .. 1.07 = 7.6x;
+     the two NEGATIVE centres are both <1 sigma from 0, one is mode B, one is L=3 with tau>>bin.
+  => cross-L same-sign evidence exists ONLY on the p11 k=0 uniform mode (+0.314 -> +0.371).
+================================================================================================
+[VERDICT] W_full = N/12 : FALSE.  W_full >= N/12 : numerically true at all measured points
+          (min ratio 1.025 in research/v3/species/H1C-WFULL.md), but [V] not [T]:
+          what is [T] is W_geo >= (N/12)||v||^2 (ch05 eq:wgeo-quant); W_full = W_geo + X,
+          X = -2Cov(G,Phi') sign-indefinite (X<0 at 21% of 232 scanned points; exact
+          unconditional single-plaquette X = -0.192 < 0).
+[VERDICT] Delta_dyn IS separable from G'' and IS directly measured (8 estimates above, same
+          ensembles, identity residual <=1e-16).  (c) does not apply - not a rename.
+[VERDICT] Delta_dyn>0 at beta=2.5: 6/8 estimates positive; the hardest are p11 (L=2 and L=3,
+          8/8 chains, >3.5 sigma, ratio 1.18 => O(L^0)) and p02 (17.6 sigma).  Both negative
+          centres are <1 sigma from 0 (mode B; L=3 with tau>>bin).
+          => sign supported but NOT mode/L invariant; magnitude unconverged 7.6x;
+          it is NOT implied by the bound G''-N/12 (measured value = 0.32x that bound).

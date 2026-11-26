@@ -1,0 +1,230 @@
+% =====================================================================
+%  sec06 : ring 5 ([KL]), Theorem A, the assembly, and the negatives
+% =====================================================================
+\section{环 5（$[KL]$）、Theorem A 与结论}\label{sec:kl}
+
+\subsection{$[KL]$：柱面 KL 表示，已证，无动力学内容}
+
+\begin{quotebox}
+\textbf{\codep{P3-CYLINDER-RESIDUE.md:67--69}（逐字节引）.}
+``$C_L(t)=\int_0^\infty e^{-st}d\nu_L(s)=\sum_{n\ge1}f_{n,L}^2e^{-E_{n,L}t}$,
+$\nu_L:=\sum_{n\ge1}f_{n,L}^2\delta_{E_{n,L}}$, $\nu_L\ge0$.
+This is the \textbf{Källén--Lehmann (spectral) representation} on the lattice.
+$f_{n,L}^2\ge0$ is the spectral theorem $\dots$; $\nu_L\ge0$ is Osterwalder--Schrader reflection positivity.''
+\end{quotebox}
+
+三方合成，\LT：(i) OS 反射正（Osterwalder--Seiler 1978）给自伴收缩 $T_L=e^{-aH_L}$、$0\le T_L\le1$、$H_L\ge0$、唯一真空 $\Omega_L$；
+(ii) 有限空间体积谱\textbf{纯离散}（无连续谱，每个谱点都是原子）；(iii) 紧算子谱定理给 $\nu_L\ge0$ 与原子抽取
+$f_1^2=\nu_L(\{E_{1,L}\})=\lim_te^{E_{1,L}t}C_L(t)$。故环 5 是\textbf{标准定理，无任何 YM 动力学内容}，
+不是假定、不是开放问题。\LT
+\src{\codep{P3-CYLINDER-RESIDUE.md:46--57,:67--69,:71--83}；命名输入的原陈述在 \codep{P3-DRESSED-MASS.md:135--137}；
+判定在 \codep{Y01-KL.md:85--103}（"(a)：$I2$ 的路径在 $[KL]$ 这一环上闭合"）。}
+
+一个必须并列的限定：$[KL]$ 的载体是\textbf{有限 $L$}；把 $[KL]$ 用在 $L\to\infty$（"原子不是连续谱阈"）那一层恰好就是 $I2$
+本身 $\Rightarrow$ 会循环。本链只吃有限 $L$ 的 $\nu\ge0$，不循环。\LT
+\src{\codep{Y01-KL.md:108}（\S4.3 第 2 条）。}
+
+\subsection{Theorem A：$m_2$ 一身二任，本文只用 $\Leftarrow$}
+
+\begin{quotebox}
+\textbf{\codep{REPORT.md:95--98}（逐字节引）.} ``定理 A. 设 $\nu$ 是 $[0,\infty)$ 上的有限正测度，$0<m_1<m_2$。则
+\codep{IsolatedAtom}$(\nu;m_1,m_2)$ $\Leftrightarrow$ $\exists Z\ C$, \codep{SharpDecay}$(\nu;m_1,Z,m_2,C)$.''
+\par\smallskip
+\codep{REPORT.md:459--460}：\codep{IsolatedAtom} $:=$
+$0<m_1\wedge m_1<m_2\wedge\nu\{m_1\}\ne0\wedge\nu(\mathrm{Ioo}\,0\,m_2\setminus\{m_1\})=0$；
+\codep{REPORT.md:463--465}：\codep{SharpDecay} $:=$
+$0<Z\wedge m_1<m_2\wedge0\le C\wedge\forall t\ge0,\ |\text{correlator}(t)-Ze^{-m_1t}|\le Ce^{-m_2t}$。
+\end{quotebox}
+
+三点必须写清（都是陈述级，不是新数学）：\LM
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{$m_2$ 一身二任}：它同时是衰减率与隔离阈值；\codep{docs/paper-v2/ch05-theorems.tex:434--436} 的
+$\text{atom}(I1)\wedge I2\iff|\eta|\le Be^{-\delta t}$ 是它的\textbf{等价改写}（$\delta:=m_2-m_1$，$B=C/f_1^2$，需 $f_1^2>0$），
+不是逐字陈述。
+\item \textbf{$\Leftrightarrow$ 不生产 $I2$}：\codep{IsolatedAtom} 已含 $\nu((0,m_2)\setminus\{m_1\})=0$（即 $I2$）。
+本文用的正是 $\Leftarrow$（有率 $\Rightarrow$ 有隔离），方向正确。
+\item \textbf{"残数--level-gap 引理"是多余引用}：\codep{ch05:434} 的"By this lemma and Theorem A"里，该引理不属这条桥
+（它的前件 $\Lambda_\star>\bar R$ 比目标更强），不许当作桥的一环。
+\end{enumerate}
+\src{\codep{X02-THEOREMA.md:17--53}（\S1.1--1.3 逐字对照表）、\codep{:168--172}（\S5(c)）；\codep{REPORT.md:100}（"$\Leftarrow$ 是全部内容"）、
+\codep{REPORT.md:110}（"$\Leftarrow$ 需要正性 $\nu\ge0$"）。}
+
+\subsection{装配：五环 + $\Leftarrow$ $\Rightarrow$ $I2$}
+
+\begin{keybox}
+\footnotesize
+\begin{tabularx}{\linewidth}{@{}L{0.585\linewidth} p{0.035\linewidth} L{0.36\linewidth}@{}}
+\toprule
+内容（逐环） & 等级 & 出处 \\
+\midrule
+环 1：$f_1^2=a_0D_\infty\ \ge\ r_0(\beta)>0$ & \LT & \codep{PROOF-P3-UNCONDITIONAL.md:10--16}、\codep{F07-ADJCBAR.md} \\
+环 2：$|\log D_{fin}(T)-\log D_\infty|\le B\bar u^{\,T}$ & \LT & \codep{X01-L1C.md:79--82} \\
+环 3：$\delta=\ln(1/\bar u)/a=\kappa/4-\ln(e\Delta)/a>0$ & \LT & \codep{X01-L1C.md:88--101} \\
+环 4：$|\eta(t)|\le2B e^{-\delta t}$，指数 $m_1^{dr}=\kappa-f_{dec}$ & \LT & \codep{X02-THEOREMA.md} \S2.1--2.2 \\
+环 5：$d\mu_O^{(L)}\ge0$ $\Rightarrow$ Theorem A 的 $\Leftarrow$ 可用 & \LT & \codep{P3-CYLINDER-RESIDUE.md:67--69} \\
+\midrule
+结论：\code{SharpDecay}$(\nu;\,m_1^{dr},\,Z=f_1^2,\,m_2=m_1^{dr}+\delta,\,C=O(f_1^2B))$ & \LT & 装配（$Z>0$ 用 $I1$） \\
+$\Longrightarrow$ \code{IsolatedAtom} $\Longrightarrow$ $I1\wedge I2$ & \LT & \codep{REPORT.md:95} \\
+$\Longrightarrow$ $\Lambda_\star-(m_1^{dr})^2=2m_1^{dr}\delta+\delta^2>0$ & \LT & \codep{X02-THEOREMA.md} \S4.2 \\
+\bottomrule
+\end{tabularx}
+\end{keybox}
+
+\textbf{装配结论的等级 = 最弱一环 = \LT}：第 2--5 环与 Theorem A 的 $\Leftarrow$ 本来都是 \LT；第 1 环在本轮由
+五个洞全关 + $\bar C\equiv N$（已证） + 已证的 $[KL]$ 变成 \LT{}（无未知常数），故 $Z=f_1^2>0$ 的前提到手，
+整链不再有弱于 \LT{} 的一环（\S\ref{sec:i1}、\S\ref{sec:cbar}）。
+\begin{quotebox}
+\textbf{两道同链（逐字，\codep{A02-2PPI2.md}）}：``$\kappa^{(2)}=4\ln(1/u)/a=\kappa^{(0)}$，\textbf{逐字}''（\codep{:83}）；
+``链对 $m$ 的\textbf{全部要求是 $m>0$}（不求相等）：$m_2>0$ 由 OS'78 逐道簇聚给''（\codep{:85}）。
+故 $0^{++}$ 与 $2^{++}$ 是\textbf{同一条链的两次实例化}，$\min(\Delta_{(0)},\Delta_{(2)})$ 的两个因子都有证书（\codep{:96}）。
+\end{quotebox}
+
+两个约定必须写在这里，因为它们决定"$\delta$ 在哪个坐标":
+
+\LM{} \textbf{$s$ 槽换算}：$m_1^{dr}$ 是质量、$\Lambda_\star$ 是质量平方，$\Lambda_\star=(m_1^{dr}+\delta)^2$
+$\Rightarrow$ $\Lambda_\star-(m_1^{dr})^2=2m_1^{dr}\delta+\delta^2$。所以"$\delta$ 在质量上"与"$\delta$ 在 $s$ 上"差一个因子 $2m_1^{dr}$。
+\LT{}（初等代数）
+\src{\codep{X02-THEOREMA.md:117--143}（\S4.1--4.2，四处 $\delta$ 逐字对照）；\codep{W03-L2.md:37--46}（同一换算的独立记账）。}
+
+\LM{} \textbf{存在形式 vs 指定形式}：本文的结论是\textbf{存在} $\delta>0$ 使 $\Lambda_\star-m_1^2\ge\delta$
+（\codep{docs/paper-v2/app.tex:789} 的读法）。若按\textbf{预先指定}的 $\delta$ 消费（例如窗口定理 $\rho^2\le C^2$ 那条），
+则需 $2m_1\delta_A+\delta_A^2\ge\delta$，这是两个不同来源常数的\textbf{数值比较}，不能靠符号统一蒙过去。
+\LT{}（记账）
+\src{\codep{X02-THEOREMA.md:143}（逐字引 \codep{ch02-squeeze.tex:219--223}）。}
+
+\subsection{本文不主张什么（逐条带标签，与 \S\ref{sec:not} 呼应）}
+
+\paragraph{(a) 不是"每条道都有证书"，但两道已齐。}\LT
+\codep{docs/paper-v2/ch05-theorems.tex:455--456} 逐字是
+``the gap is equivalent to $\inf\operatorname{spec}(H_a|_{\Omega^\perp})\ge\delta\Lambda$ uniformly in $a$''：
+那是\textbf{整个谱}。本文给的是：$0^{++}$ 与 $2^{++}$ \textbf{两道各自}的 $I1$ 与 $I2$ 证书（同一条链的两次实例化，
+$\kappa^{(2)}=\kappa^{(0)}$ 逐字同值），加上 $(b')_{IN\text{-}11}$ 的\textbf{成员性}——最轻态必属 $\{0^{++},2^{++}\}$
+（\codep{PROOF-IN11.md:19} 逐字："This \textbf{proves (b$'$)} at strong coupling: no $0^{-+}$, odd-C, or spin-$\ge3$ state is the lightest"）。
+三者合起来给 $\inf\operatorname{spec}=\min(\Delta_{(0)},\Delta_{(2)})$ 的两个因子，故\textbf{强耦合窗内 $m>0$ 成立}；
+但其余道仍\textbf{没有各自证书}（\codep{Y02-CHANNELS.md:109--110}），$0^{-+}$ 是全导数算符、残数 unprotected（\codep{C1-derive-INb.md:21}），
+且 $I2$ 不被"$O$-无关性"覆盖：它是能级间距的数据（\codep{Y05-P3GEN.md:64--67}）。
+\src{\codep{Y02-CHANNELS.md:50--60,:107}；\codep{Y05-P3GEN.md:57--70}；\codep{PROOF-IN11.md:3,:19}；\codep{A02-2PPI2.md} \S0 判词 4。}
+
+\paragraph{(b) 不是 $L\to\infty$。}\LC{} $\nu_L\ge0$ 只在有限体积成立；$L$ 只作一致性轴。用于 $L\to\infty$ 会与 $I2$ 自身循环，
+本链\textbf{未使用}该极限（\codep{Y01-KL.md:108}；\codep{PROOF-P3-UNCONDITIONAL.md:15}）。
+
+\paragraph{(c) 不是 $\beta=2.5$，也不是 $\beta=1/12$。}\LT{} 全链只在 $\beta<0.018394=0.8829\times(1/48)$（\S\ref{sec:claim}）；$1/48$ 是 Ursell 级数的方法半径
+（SZZ 的 LSI 半径），方法停在那里，但没有绝对强耦合方法能越过它的解析半径（\codep{docs/paper-v2/ch05-theorems.tex:79--84}）。
+$\beta=1/12=0.0833$ \textbf{已在窗外}（$\bar u=e\Delta Nu=1.1326>1$，\codep{F07-ADJCBAR.md} \S4）；
+$\beta=2.5$ 处 $\bar u=e\Delta Nu\approx63.8>1$，更无从谈起（\codep{C03-BYPASS.md:184} 给出同向读数）。
+$Z_O$ 与 $(CP)$ 属 $2.5$ 侧，与本链正交（\codep{U07-CPSTRONG.md:90--96}：$r_0>0$ 到 $f_1^2>0$ "没有箭头"，两端是同一式）；
+\textbf{"扩窗"作为靶已撤回}（\S\ref{sec:transport-withdrawn}），故 $2.5$ 侧不是本文的待办。
+
+\paragraph{(d) 不是 Clay 的任何进展。}\LT{} $I2$ 是 Clay 上一级的隔离命题（\code{IMP-ARROWS.md:128} 经 \code{U07-CPSTRONG.md:119}）；
+本文不取 $a\to0$、不在 $2.5$ 侧取任何一步。Clay 上的读数为 0，且不给百分数。
+\textbf{残余缺口 = 一条一致陈述} $\forall\beta\in[1/48,2.5]\,\forall L,a:G''_{k=0}/a^2\ge\delta^2>0$（C5 的量词形）；其 $(E\text{-}I2)$ 读法（$\exists\delta,c>0$：$\inf_{L,a}(\Lambda_\star-m_1^2)\ge\delta$、$\inf_L m_1^2\ge c$）是同一等价类的第三个名字。早先的 $\Delta_0>0$ 命名\textbf{已撤回}（$\Delta_0$ 在 $G'$ 槽、$\Lambda_\star$ 在 $\nu$ 上，$H1\not\Rightarrow I2$；且四模型 3/4 败，\codep{N12-VERDICT.md}）。\LM
+
+\paragraph{(e) $L=2$ 的 $G''(0)>0$ 在 $\beta=2.5$ 上只有 \LE。}\LE{}（数值）$+$\LT{}（$E[\kappa^2]=\infty$ 的解析事实）
+\codep{O24-L2-PUSH.md:7} 逐字把该文件标为 \LE{}："\S0/\S2/\S3 全部数值 \LE（本轮实测，日志可逐行核）"，
+\codep{:98} 又限定"单体积、单 $\beta$，结论不外推到 $L=4,6,8$"；而 \codep{T04-L2ANALYTIC.md:145--153} 给出
+\[
+E[\kappa^2]\le4\,E[\delta^{-4}]=4C\int_0^{\delta^*}\delta^{-4}\cdot\delta^3\,d\delta=4C\int_0^{\delta^*}\frac{d\delta}{\delta}=\infty
+\quad(\text{对数发散})\ \Longrightarrow\ \operatorname{Var}(\kappa)=\infty ,
+\]
+与实测尾指数 $\alpha\approx1.97\le2$ 逐字一致。故 $\Delta=+0.3942\pm0.0258$ 里的 $\sigma$ 不是有限方差意义上的标准差，
+$\Delta/\sigma$ 的\textbf{数值无意义}；但\textbf{符号仍成立}（median 版 $+0.3814$、winsor 版 $+0.3954$，
+\codep{LOOP-RUNBOOK.md:4502}："符号结论仍成立 $\dots$ 但 $\Delta/\sigma$ 的数值无意义"）。
+\textbf{这一条不许写成 \LT}：它是"实测 + 稳健符号"，不是定理。
+\src{\codep{O24-L2-PUSH.md:5--7,:98}；\codep{T04-L2ANALYTIC.md:145--153}；\codep{LOOP-RUNBOOK.md:4495--4520}（\S11.183--11.184）。}
+
+\subsection{可解模型说了什么、没说什么（$I2$ 的相容性，不是 4D 的证据）}
+
+$I2$ 在 4D 上未证，但它在可解模型上可\textbf{精确}判定：这决定的只是"$I2$ 是否自相矛盾"。
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.30\textwidth} L{0.13\textwidth} L{0.15\textwidth} L{0.13\textwidth} L{0.22\textwidth}@{}}
+\toprule
+模型 & $\Lambda_\star$ & $m_1^2$ & $\Lambda_\star-m_1^2$ & 判定 \\
+\midrule
+单 plaquette（挂 Laplace/Peter--Weyl 塔） & $2$ & $3/4$ & $5/4$ & $I2$ 真 \LT（无动力学 \LC） \\
+2D YM，$\mathrm{SU}(2)$（Migdal 精确） & $g^2$ & $3g^2/8$ & $5g^2/8$ & $I2$ 真 \LT \\
+$N=\infty$ 单 plaquette（Casimir 塔） & $2m_1^2$ & $(N^2-1)/(2N)$ & $(N^2+1)/(2N)$ & $I2$ 真 \LT \\
+M6（$\text{osc}\otimes\text{free}$，$m=0$） & $0$ & $0$ & $0$ & $I2$ \textbf{假} \LT（对照） \\
+$4'$（有质量自由模 $\mu>0$） & $\mu^2$ & $\mu^2$ & $0$ & $I2$ \textbf{假} \LT \\
+X（见证测度 $0.6\delta_4+1_{(4,\infty)}e^{-(s-4)}$） & $4$ & $4$ & $0$ & $I2$ \textbf{假}，但 $f_1^2=0.6>0$ \LT \\
+\bottomrule
+\end{tabularx}
+\end{center}
+\src{\codep{V05-I2TOY.md:35--43}（表）、\codep{:61--110}。}
+
+四条结论，逐条带标签：
+
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{存在性}：$I2$ 在某类模型上精确真 $\Rightarrow$ 它不自相矛盾。\LT
+\item \textbf{机制}：$I2$ 真的唯一机制是"规范群紧致 $\Rightarrow$ $0^{++}$ 塔是纯离散 Casimir 塔、道内无多粒子割"；
+这对 4D 的"$m_g$ 之上、$\approx1.5m_g$ 之下有没有连续割底"\textbf{一言不发}。\LC
+\item \textbf{反例面}：一旦底部是割，差\textbf{恰为 0}（M6、$4'$、X）$\Rightarrow$ $I2$ 不是"有隙"的改写，是\textbf{支撑命题}。\LT
+\item \textbf{量纲裁决}：$\Lambda_\star$ 与其 $m_1^2$ \textbf{同槽位}（质量平方），$\Lambda_\star=2m_1$ 是槽位错配；
+唯一约定无关的比是 $\rho^2=\Lambda_\star/m_1^2$，而 $I2\iff\rho^2>1$。故"$I2\iff m_1<2$"不是判据（它是 $a=1$ 的格点产物）。\LT
+\end{enumerate}
+\src{\codep{V05-I2TOY.md:18--19,:122--130}（\S4 的诚实线）；\codep{W04-TWOTUBE.md:11--15,:49--55,:99--104}（\S5(a)）。}
+
+并且：$\Lambda_\star$ 是\textbf{道内}激发 $0^{++*}$（格点 $\approx1.56\,m_{0^{++}}$，即 $\approx1.5m_g$ 量级），\textbf{不是}两胶球阈值 $2m_g$。
+\LT{}（结构）$+$\LM（数值）
+\src{\codep{W04-TWOTUBE.md:14,:76--83}；\codep{docs/paper-v2/ch05-theorems.tex:147--152}（经 \codep{U03-I2.md:82--87}、\codep{V01-I2S.md:40} 转引）。}
+
+\textbf{所以}：这些模型给的是 $I2$ 的\textbf{相容性}与反例面的精确定位，\textbf{不是} $I2$ 的证据，更不是本文的 4D 证据。
+本文的 $I2$ 只由 $\S\ref{sec:kl}$ 的装配给出，模型只用来把"$\Lambda_\star$ 该在哪个槽位"钉死。
+
+\subsection{链的全表与文件索引}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.055\textwidth} L{0.20\textwidth} p{0.10\textwidth} L{0.30\textwidth} L{0.19\textwidth}@{}}
+\toprule
+环 & 内容 & 标签 & 出处 & 若该环不成立 \\
+\midrule
+1 & $f_1^2\ge r_0>0$（$I1$） & \LT{}（$\bar C\equiv N$ 已证） & \codep{PROOF-P3-UNCONDITIONAL.md:10--16}；\codep{F07-ADJCBAR.md} & 无原子 $\Rightarrow$ $I2$ 无对象 \\
+2 & $|\varepsilon_T|\le B\bar u^{\,T}$（$(L1)$） & \LT & \codep{X01-L1C.md:79--82} & $\Lambda_\star=m_1$，$I2$ \textbf{假} \\
+3 & $\delta=\kappa/4-\ln(e\Delta N)/a>0$ & \LT & \codep{X01-L1C.md:88--101} & 第二指数退化，只剩 $I1$ \\
+4 & $|\eta|\le2Be^{-\delta t}$，指数 $m_1^{dr}$ & \LT & \codep{X02-THEOREMA.md} \S2.1--2.2 & $\eta$ 不衰减（用裸 $\kappa$） \\
+5 & $d\mu_O^{(L)}\ge0$（$[KL]$） & \LT & \codep{P3-CYLINDER-RESIDUE.md:67--69} & $\Leftarrow$ 的 $\nu\ge0$ 前提落空 \\
+2$^{++}$ & 同一条链的第二次实例化（换件只在 $a_0^{(2)}$） & \LT & \codep{A02-2PPI2.md} \S2--\S4 & $2^{++}$ 无证书 $\Rightarrow$ $\min(\Delta_{(0)},\Delta_{(2)})$ 只剩一个因子 \\
+合 & \codep{SharpDecay} $\Rightarrow$ \codep{IsolatedAtom} & \LT{}（翻译） & \codep{REPORT.md:95,:110} & $I2$ 无法从率翻译过来 \\
+$m>0$ & 两道 + $(b')_{IN\text{-}11}$ 成员性 & \LT{}（强耦合窗内） & \codep{PROOF-IN11.md:19}；\codep{A02-2PPI2.md} \S4(a) & 只剩"最轻态属哪一道"无证书 \\
+整 & $I1\wedge I2$（本文主张） & \LT & 最弱一环 = 环 1（已 \LT） & —— \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.34\textwidth} L{0.62\textwidth}@{}}
+\toprule
+文件（本文引用） & 在本文里的角色 \\
+\midrule
+\codep{research/v3/species/X01-L1C.md} & 环 2 的全部簿记；$\kappa/4$ 与可达率 $\delta$；$u:=c_f/N$ 勘误 \\
+\codep{research/v3/species/X02-THEOREMA.md} & 环 4 的代数；Theorem A 的逐字纠正；$s$ 槽换算 \\
+\codep{research/v3/species/Y01-KL.md} & 环 5 的判定与"有限 $L$"限定 \\
+\codep{research/v3/species/Y02-CHANNELS.md} & 限定一：逐道清点，只有 $0^{++}$ 有结论 \\
+\codep{research/v3/species/Y05-P3GEN.md} & $O$-依赖的两个槽位；$I2$ 不被 $O$-无关性覆盖 \\
+\codep{research/v3/species/V05-I2TOY.md} & $I2$ 的可满足性（2D YM 等），不涉 4D 内容 \\
+\codep{research/v3/species/W04-TWOTUBE.md} & $\Lambda_\star$ 与 $m_1^2$ 同槽位；两管读法被否证 \\
+\codep{research/v3/species/W02-L1.md},\ \codep{W03-L2.md} & $(L1)$ 的初版陈述；速率梯子与 $(L2)$ 的冗余性 \\
+\codep{research/v3/species/W05-TDECAY.md} & \codep{w05} 的异议：$Cu+Be^{-\delta t}$ 不产生 $\delta$ \\
+\codep{research/v3/species/U07-CPSTRONG.md} & 环 1 的逐条核准；\codep{MASTER:42} 降级记录的引文 \\
+\codep{research/unconditional/PROOF-P3-UNCONDITIONAL.md} & 环 1 的定理陈述 \\
+\codep{research/unconditional/P3-CYLINDER-RESIDUE.md} & \codep{[KL]} 的证明（$:67$--$69$） \\
+\codep{research/unconditional/P3-DRESSED-MASS.md} & 骨架--装饰分解、$m_1^{dr}$、式 (4.1) \\
+\codep{research/mass-spectrum/REPORT.md} & Theorem A（$:95$），$\Leftarrow$ 的正性前提（$:110$） \\
+\codep{docs/YANG-MILLS-MASTER.md} & 总册的降级记录（$:42$） \\
+\codep{docs/paper-v2/ch05-theorems.tex} & Theorem P3 的排版版（$:25$--$35$）、$m>0$ 的整谱陈述（$:455$--$456$） \\
+\codep{research/v3/species/O24-L2-PUSH.md},\ \codep{T04-L2ANALYTIC.md} & $L=2$、$\beta=2.5$ 的 \LE{} 与 $E[\kappa^2]=\infty$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection{一句话}
+
+在两道（$0^{++}$、$2^{++}$）、有限 $L$、$\beta<0.018394$ 这三重限定下，链是：$I1$（\LT，$\bar C\equiv N$）$\to$ 端点亏损的尾部求和（\LT，已独立复核）$\to$
+$\kappa/4$ 与可达率 $\delta$（\LT）$\to$ $\log D\to\eta$ 的代数且指数为 $m_1^{dr}$（\LT）$\to$ 柱面 KL（\LT，已证）$\to$
+Theorem A 的 $\Leftarrow$（\LT，用 $\nu\ge0$）$\Rightarrow$ $\Lambda_\star-m_1^2=2m_1^{dr}\delta+\delta^2>0$。
+\textbf{主张句（逐字，与 \S\ref{sec:assembly} 一致）：}$I1$ and $I2$ are both closed at \code{[T]}; in the strong-coupling window ($\beta<0.018394$), at finite $L$ (uniformly in $L$), $m>0$ holds for both the $0^{++}$ and $2^{++}$ channels. \textbf{This is not Clay.} \textbf{The residual gap is the uniform statement $\forall\beta\in[1/48,2.5]\ \forall L,a:\ G''_{k=0}/a^2\ge\delta^2>0$.} An earlier draft named this gap $\Delta_0>0$ and identified it with $H1$, $I2$, $(E\text{-}I2)$ and $H^*$. \textbf{That identification is withdrawn}, on three independent grounds: (i) \code{n12}: $\Delta_0>0$ fails the four-model test on three of four models (on 2D YM $G''=0$ with $W_{\mathrm{full}}\ge N/12>0$ forces $\Delta_{\mathrm{dyn}}=-W_{\mathrm{full}}<0$; on M6, $\Phi=0\Rightarrow W_{\mathrm{full}}=0\Rightarrow\Delta_{\mathrm{dyn}}=2\omega>0$ on a gapless model; the single plaquette gives $\Delta_{\mathrm{dyn}}=-0.0691$); (ii) \code{n06}: $\Delta_0$ and $\Lambda_\star$ live on different carriers ($G''$ vs $\operatorname{supp}\nu$), are of different type (position vs distance), and have different quantifier domains, so they are \textbf{incomparable}; (iii) \code{n09}, Theorem N09-1: on M6 the only degenerate scale is the spectral bottom, hence \textbf{any quantity passing the four-model test must be a function of $m$ itself} --- the target is unique and no proxy exists. \textbf{The correct equivalence class is three, not five: $\{\Lambda_\star\ \text{lower bound}\equiv I2\equiv(E\text{-}I2)\}$; $H^*$ and $\Delta_0$ do not belong to it.} \textbf{The earlier framing --- ``transport from $\beta<\beta_1$ to $\beta=2.5$'' --- is withdrawn: extending the window is self-negating}, since a constant floor continued to $\beta\to\infty$ would force $m_{\mathrm{phys}}\ge r/a\to\infty$. \textbf{The withdrawn-transport section (\S\ref{sec:transport-withdrawn}) stands; the naming of the residual gap as $\Delta_0>0$ is likewise withdrawn.}
+两处并记的历史记录（\codep{MASTER:42} 的降级记录、\codep{w05} 对 $T$-一致 $O(u)$ 的否证）、两条被否证的旧路线（求和级 $\bar C=1$ 的假恒等式、c03 的输入错）
+与三处复核的裁决（\codep{Y04-AUDITX01} 肯、\codep{Y06-P3DOWN} 的降级被 F07 收口）都在正文当场写明；归属清单见 \S\ref{sec:assembly}。

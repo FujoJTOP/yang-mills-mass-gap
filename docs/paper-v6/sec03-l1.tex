@@ -1,0 +1,167 @@
+% =====================================================================
+%  sec03 : ring 2 --- (L1): |eps_T| <= B ubar^T, no T prefactor, L-uniform
+% =====================================================================
+\section{环 2：$(L1)$ ， 无 $T$ 前因子、$L$-一致}\label{sec:l1}
+
+\subsection{陈述}
+
+\begin{keybox}
+\textbf{$(L1)$［端点亏损率］}\LT{} 存在 $\beta_1>0$、$B<\infty$、$\delta>0$，使对一切 $\beta<\beta_1$、
+一切空间体积 $L$、一切 $T=t/a\in\mathbb{N}$：
+\[
+\bigl|\log D_{fin}(T)-\log D_\infty\bigr|\ \le\ B\,e^{-\delta t},\qquad t=aT,
+\]
+其中 $D_\infty:=\lim_TD_{fin}(T)$ 存在且 $D_\infty=1+O(u)\ge\tfrac12$；$\delta=\ln(1/\bar u)/a$，$B=B(\beta,N)$
+与 $L,T$ \textbf{都无关}。换句话说：$|\varepsilon_T|\le B\bar u^{\,T}$，\textbf{没有 $T$ 前因子}。
+已由独立审计复核（\codep{Y04-AUDITX01}），前提为开管且 $\bar u<1$，见 \S\ref{sec:l1audit}。
+\end{keybox}
+\src{\codep{X01-L1C.md:79--82}（式 \codep{(L1-c.2)}）；\codep{W02-L1.md:21--23}（同一陈述的初版形式）。}
+
+记号（逐项钉死，下文不再重定义）：$T:=t/a$；$u=c_f/N$（\S\ref{sec:i1} 的勘误）；$\kappa:=4\ln(1/u)/a$；
+$B_T$ = 直四壁管，$w(B_T)=a_0u^{4T}=a_0e^{-\kappa t}$；$Z_{dec}(B_T)$ = 附着于 $B_T$ 的装饰气体；
+$\varphi_{dec}=\lim_TT^{-1}\log Z_{dec}$，$f_{dec}=\varphi_{dec}/a$；$D_{fin}(T):=Z_{dec}(B_T)e^{-\varphi_{dec}T}$；
+$\bar u:=e\Delta\,N\,u$（$\bar C\equiv N$ 已证，\S\ref{sec:cbar}），$\Delta=20$，$e\Delta=54.3656365692$。
+\src{\codep{X01-L1C.md:14--20,:71--75}；\codep{P3-DRESSED-MASS.md:35,:46--47,:89}；\codep{F07-ADJCBAR.md} \S1.4。}
+
+\LM{} 记账：\codep{X01-L1C.md:71} 写 $\bar u=e\Delta\bar C u$，同文件 \codep{:96} 把合并常数记作 $\bar C=e\Delta$。
+第三次裁决把那个 $\bar C$ \textbf{算成恰为 $N$}（\S\ref{sec:cbar}：$|w|^{1/n}/u=c_f/u=N$，而不是 $1$），
+故本文统一写 $\bar u=e\Delta\,N\,u$；\textbf{两批旧读数一并作废}：$\bar u=e\Delta u$（隐含 $\bar C=1$）与"$\bar C=e\Delta$"的记账。
+\src{\codep{X01-L1C.md:71,:96}；\codep{F07-ADJCBAR.md} \S1.4、\S4；\codep{C07-AUDIT.md:12}（$\bar C=1$ 的假恒等式）。}
+
+\subsection{精确恒等式：为什么全部 $T$-依赖只落在一类簇上}
+
+把装饰气体按"附着跨度"分组。对连通 Ursell 簇 $\Gamma$，记 $\operatorname{att}\Gamma=[i_\Gamma,j_\Gamma]\subset\mathbb{Z}$
+为它与管共享 link 的聚合物所占时间段的最小--最大，$\alpha(\Gamma):=j_\Gamma-i_\Gamma$。由时间平移 + 空间环面，
+簇权只依赖 $\alpha$，故 $A(\alpha):=\sum_{\Gamma:\,\alpha(\Gamma)=\alpha,\ \operatorname{att}\Gamma=[0,\alpha]}\varphi^U(\Gamma)$
+与绝对位置无关。于是\textbf{恒等式}\LT
+\begin{equation}
+\log Z_{dec}(B_T)=\sum_{\alpha\ge0}(T-\alpha+1)_+A(\alpha)
+=\varphi_{dec}T+\log D_\infty+\varepsilon_T,
+\label{eq:l1c1}
+\end{equation}
+\[
+\varphi_{dec}:=\sum_{\alpha\ge0}A(\alpha),\qquad
+\log D_\infty:=\sum_{\alpha\ge0}(1-\alpha)A(\alpha),
+\]
+\[
+\varepsilon_T=\sum_{\alpha>T}(\alpha-1-T)A(\alpha).
+\]
+\src{\codep{X01-L1C.md:37--47}（式 \codep{(L1-c.1)}）。}
+
+验算 $T=0$：$\log Z_{dec}=A(0)$，右端 $=0+(\varphi_{dec}-\sum\alpha A)+\sum_{\alpha\ge1}(\alpha-1)A(\alpha)=A(0)$，逐项抵消。\LT
+顺带得到 $D_\infty$ 的\textbf{存在性}（右端是绝对收敛级数，不先取极限），且 $|\varphi_{dec}|,|\log D_\infty|\le\bar u/(1-\bar u)^2=O(u)$。
+\src{\codep{X01-L1C.md:46--47}。}
+
+一处\textbf{最易错}的地方：把"限制到有限管 $B_T$"的条件写成 $\operatorname{supp}\Gamma\subset[0,T]$ 是错的；
+正确条件是 $\operatorname{att}\Gamma\subset[0,T]$（装饰可以伸出管的上下两端，只要附着点落在 $[0,T]$）。
+写错会漏掉 $T$ 以上的整类簇，并破坏 \eqref{eq:l1c1}。\LT
+\src{\codep{X01-L1C.md:26--32}。}
+
+三类簇的去处（这是 \eqref{eq:l1c1} 的全部内容）：(i) 内部簇 $\operatorname{att}\Gamma\subset(0,T)$ 贡献恰为密度 $\times$ 长度
+$\varphi_{dec}T$，零缺陷；(ii) 单端簇全部进 $\log D_\infty$（与 $T$ 无关，两端同值，不留 $O(1)$ 残差）；
+(iii) 越端簇（$\operatorname{att}\Gamma$ 含两端且 $\alpha>T$）是唯一被 $(T-\alpha+1)_+$ 截掉的一类，它就是 $\varepsilon_T$。\LT
+\src{\codep{X01-L1C.md:49--57}。}
+
+\subsection{成本与计数}
+
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{跨度 $\Rightarrow$ 成本。}\LT{} $\Gamma$ 连通且 $\operatorname{att}\Gamma=[i,j]$ $\Rightarrow$ $\Gamma$ 内有一条连通链把片 $i$ 与片 $j$ 相连，
+跨 $\alpha=j-i$ 条时间边界，每跨一次至少 1 个 temporal plaquette $\Rightarrow$ $|\Gamma|\ge\alpha$。
+\src{\codep{X01-L1C.md:69}；\codep{P3-FOURWALL-DERIVATION.md:42}；\codep{P3-DRESSED-MASS.md:55}。}
+
+\item \textbf{Ursell 树图界。}\LT{} $|\varphi^U(\Gamma)|\le\bar C^{|\Gamma|}u^{|\Gamma|}$（Ursell 树图 + 每 plaquette 一个 $u$）。\\
+\textbf{动物计数。}\LT{} 经定点 plaquette 的连通动物数 $\le(e\Delta)^{|\Gamma|}$，$\Delta=20$。
+\src{\codep{X01-L1C.md:71--74}；\codep{P3-DRESSED-MASS.md:64--65}（KP (2.1) 与 $\Delta=20$ 的同一行）。}
+
+\item \textbf{系数量级。}\LT{} 取 $\bar u:=e\Delta\,N\,u$（每片权重比 $N$，\S\ref{sec:cbar}）得
+$|A(\alpha)|\le\bar u^{\alpha+1}/(1-\bar u)$（$\alpha\ge0$；多出的一个 $\bar u$ 因每个簇至少 1 个 plaquette）。
+$\bar u<1$ 等价于 KP 的 $uK<1$ $\Rightarrow$ \textbf{这一环不引入新的 $\beta$ 限制}；必要时按 P3 \S4.3 的同一手法把 $\beta_1$ 缩一个 $N$-依赖常数。
+\src{\codep{X01-L1C.md:71--75}；\codep{F07-ADJCBAR.md} \S1.4（权重比 $c_f/u=N$ 的精确核对）。}
+\end{enumerate}
+
+\subsection{求和：前因子被几何吃掉}
+
+\begin{keybox}
+\textbf{核心一步（这就是"无 $T$ 前因子"的来源）.}\LT
+\[
+|\varepsilon_T|\ \le\ \sum_{\alpha>T}(\alpha-1-T)\,|A(\alpha)|\ \le\ \frac{\bar u^{\,T+3}}{(1-\bar u)^3}
+\quad\Longrightarrow\quad
+\bigl|\log D_{fin}(T)-\log D_\infty\bigr|\le B\,\bar u^{\,T},
+\]
+\[
+B:=\frac{\bar u^3}{(1-\bar u)^3},\qquad \delta:=\frac{\ln(1/\bar u)}{a}.
+\]
+关键一步是 $\sum_{m\ge1}m\,x^m=x/(1-x)^2$：位移后系数 $(\alpha-1-T)$ 把多项式前因子\textbf{恰好}吃成纯几何，
+故 $T$ 只出现在指数上，不出现在 $B$ 之外。$B,\delta$ 与 $L,T$ 无关。
+\par\smallskip
+\textbf{另记（历史）}：曾有一条"$\bar C$ 消失"的直接界（\code{C03-BYPASS.md} 命题 C03.2）给出 $94(e\Delta u)^T$ 的同一形状，
+但它的输入 $|w_p|\le u$ 差一个因子 $N$（正确输入 $|w|^{1/n}/u=c_f/u=N$），故 $x=e\Delta Nu=1.1326>1$、该界在 $\beta=1/12$ 不成立
+（\code{F07-ADJCBAR.md} \S1.4）。本节只保留上面的 $\bar u=e\Delta Nu$ 版本。
+\end{keybox}
+\src{\codep{X01-L1C.md:77--82}。}
+
+由此 $\varepsilon_T$ 的\textbf{定义}必须写成 $\varepsilon_T:=\log D_{fin}(T)-\log D_\infty=\log Z_{dec}(B_T)-\varphi_{dec}T-\log D_\infty$，
+\textbf{不是} $\log D_{fin}(T)-\log D_\infty-(-\delta T)$：$\delta$ 是 $\varepsilon_T$ 的\textbf{上界率}，不是它的一个加项；
+把它写进定义等价于定义 $D_\infty:=\lim e^{\delta t}D_{fin}$，而 $D_{fin}$ 只收敛、不指数增长，该写法在 $T=0$ 就不成立。\LT
+\src{\codep{X01-L1C.md:63--67}（式 \codep{(L1-c.2a)}）。}
+
+\subsection{这一环为什么恰好是 $I1/I2$ 的分界（并与 \code{w05} 的异议并记）}
+
+P3 只给到 $|\log D_{fin}(T)|\le Cu$，\textbf{$T$-一致}（\codep{P3-DRESSED-MASS.md:116}）。这个界对 $T$ 失明：
+$T^{-m}$ 与 $e^{-\delta t}$ 都能满足它。于是：
+
+\begin{notbox}
+\textbf{若把环 2 降回 P3 的 $T$-一致 $O(u)$，则 $\Lambda_\star=m_1$ $\Rightarrow$ $I2$ 假}（不是"未证"）。\LT{}（逻辑）$+$\LT{}（$(L1)$，\codep{Y04-AUDITX01} 已复核）
+\par\smallskip
+机制：$D_{fin}(T)=D_\infty+O(T^{-m})$ $\Rightarrow$ $e^{m_1^{dr}t}C(t)=a_0D_\infty+O(T^{-m})+\text{high}$ $\Rightarrow$ $\eta(t)$ 只能多项式趋 0
+$\Rightarrow$ $\nu$ 在 $m_1^{dr}$ 上方紧贴连续谱 $\Rightarrow$ $\Lambda_\star=m_1$。所以 $(L1)$ 是分界线，不是"更紧一点的常数"。
+\src{\codep{W02-L1.md:29--32}；\codep{X02-THEOREMA.md:87--93}（\S2.3）；\codep{X02-THEOREMA.md:166}（\S5(b)）；\codep{W05-TDECAY.md:27--31}（\S2 的判别标准逐字）。}
+\end{notbox}
+
+\textbf{\codep{w05} 的异议（本文并记，不化解）}：\codep{P3-DRESSED-MASS} 式 (3.3) 的实际形状是
+$C_L(t)=A^{dressed}e^{-m_1^{dressed}t}(1+O(u))+O(e^{-m_1^{dressed}t}e^{-\delta t})$，即 $|\eta|\le Cu+Be^{-\delta t}$；
+那个 $t$-无关的 $Cu$ 项\textbf{容纳任意小的第二级}（$\lambda_2/\lambda_1\in[1-Cu,1)$，甚至一条刚开在 $m_1$ 上方的割），
+因此单凭它拿不到正的 $\delta$。\LT{}（逻辑）
+\src{\codep{W05-TDECAY.md:29--30}（逐字引 \codep{SUB2-I2-STRONG.md:15}）、\codep{:69--72}、\codep{:124}（\codep{E2} 记账）。}
+
+因此环 2 的内容不是"再紧一点的 $O(u)$"，而是\textbf{把估计搬到端点亏损 $\varepsilon_T$ 上并做尾部求和}：
+体项 $e^{\varphi_{dec}T}$ 与管的 $u^{4T}$ 同阶相消、只会重算 $m_1^{dr}$，\textbf{永远不产生 $\delta$}；
+产生 $\delta$ 的只有"伸到管子另一端"的簇。\LT
+\src{\codep{W02-L1.md:59--65}（\S3 第 3 条，本任务最易踩的坑）；\codep{X01-L1C.md:53--57}。}
+
+\LM{} 两条勘误（不改本环的判词）：(a) \codep{P3-DRESSED-MASS:51}（"every $P\in\mathfrak{P}_{rest}$: $|P|\ge6T$"）与 \codep{:55}
+（长装饰 rate $\ge2\kappa$）\textbf{只对整管型装饰}成立；单壁平行装饰给 $|P|=4T+\ell$、率 $\kappa(1+\ell/T)\to\kappa$，
+故 \codep{:94} 的 $\delta\ge\kappa/3$ \textbf{撤回}。(b) 由此 \codep{W03-L2.md} 里"领先阶 $\Lambda_\star\ge(3/2)^2m_1^2$"的强耦合读法也随之降为记账。
+本环\textbf{不消费}这两条：$(L1)$ 的结构是尾部求和，不是谱窗；装饰气体纵向转移矩阵的谱隙路线（$\sup_{j\ge2}|\theta_j|\le u$）是\textbf{多余}的。
+\src{\codep{W05-TDECAY.md:66--69,:113,:123}（\codep{E1}）；\codep{X01-L1C.md:84}；\codep{W02-L1.md:91--96}。}
+
+\subsection{引理的独立形式（供他人独立立它）}
+
+环 2 的内容可以抽成一条与谱论无关的引理，这样它不依赖本文的其余部分：
+
+\begin{quotebox}
+\textbf{Lemma（两端缺陷，边际率）.}（\codep{X01-L1C.md:123}，逐字节引）
+设 $Z_{dec}(B_T)$ 为直四壁管 $B_T$ 上的装饰气体（KP 可和），$A(\alpha)$ 如 \S\ref{sec:l1} 的 \eqref{eq:l1c1} 之前所设。
+则 \eqref{eq:l1c1} 成立；且存在 $\bar u=\bar u(\beta,N)<1$（原文记 $\bar u=e\Delta\bar C u$）、$B<\infty$，使一切 $T\in\mathbb{N}$、一切空间体积 $L$：
+$\bigl|\sum_{\alpha>T}(\alpha-1-T)A(\alpha)\bigr|\le B\bar u^{\,T}$。\textbf{$L$-一致；$\beta$-显式。}
+\par\smallskip
+{\footnotesize 引文里的 $\bar C$ 是原文的记账；按 \S\ref{sec:cbar} 的第三次裁决，实际常数是 $\bar u=e\Delta\,N\,u$（$\bar C\equiv N$，已证；\codep{F07-ADJCBAR.md} \S1.4）。}
+\end{quotebox}
+
+它\textbf{不是} Theorem A 的引理，也不是任何"谱窗"引理：定理 A 是纯测度论（$\nu\ge0$、$e^{-Et}$ 的控制收敛），\textbf{零聚合物内容}；
+本引理是 KP/Mayer 形式下的"边界条件缺陷"引理（非齐次活动度一族），\textbf{不知道 $\nu$}。两者的桥在 \S\ref{sec:algebra} 的恒等代数。
+这条分工是本节能被独立复核的前提。\LT
+\src{\codep{X01-L1C.md:125}（\S4(b) 逐字："定理 A 不知道 $Z_{dec}$，L1-c 不知道 $\nu$"）。}
+
+\subsection{复核已回：无 $T$ 前因子由独立审计复现}\label{sec:l1audit}
+
+\LT{} 独立复核 \codep{Y04-AUDITX01} \textbf{不看本环的推导}、用自己的一套记号重写了一遍，三项全部复现：
+(i) 分解式 $\log Z_{dec}(B_T)=\sum_{\alpha\ge0}(T-\alpha+1)_+A(\alpha)$ 是\textbf{开管 + 按 $\operatorname{att}$ 分组}下的
+精确恒等式（\codep{Fraction} 精确算术残差 $=0$，不是 $1\mathrm{e}{-16}$；\codep{:47--49}）；
+(ii) $|\varepsilon_T|\le B\bar u^{\,T}$ \textbf{无 $T$ 前因子}，$B=(\bar u/(1-\bar u))^3$，且 $\varepsilon_T/\bar u^{\,T}=2.329267$
+在 $T=0,\dots,12$ \textbf{逐位不变}（\codep{:93}）；多出来的是常数里的一个 $1/(1-\bar u)$，不是 $T$；
+(iii) $\kappa/4=\ln(1/u)/a$ \textbf{精确}，那个 $4$ 是\textbf{源 plaquette 的四条边}（不是 $d=4$、不是"面数"），
+零扭折极小唯一 $\Rightarrow$ 无面熵（\codep{:108,:173}）。
+\textbf{前提两条，缺一即出 $T$ 前因子}：$B_T$ 是\textbf{开}管（周期管的反例已做，放置数退化成 $T$，\codep{:133--137}）
+与 KP 的 $\bar u<1$（\codep{:173}）。故第 2 环保 \LT，本环的复核与归属\textbf{均已结清}。
+\src{\codep{Y04-AUDITX01.md:8--12,:43--49,:93,:108,:133--137,:173}；\codep{X01-L1C.md:77--82}。}

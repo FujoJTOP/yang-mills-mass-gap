@@ -1,0 +1,91 @@
+==============================================================================
+Z10-HOLEE :: r0 = 1/4(2N)^-2  vs  r0 = 1/2 c1 u^p   [holes E]
+==============================================================================
+convention:  u = c_f/N = beta/(2N^2) + O(beta^3)   [FOURWALL:81]
+             a0 = (2N)^-p s   (beta-FREE numbers)  [DRESSED:36,119; T2:114; FOURWALL:86]
+
+------------------------------------------------------------------------------
+(1) exact SU(2) fundamental activity vs leading beta/2N   [convention cross-check]
+------------------------------------------------------------------------------
+      beta       cf_exact    beta/2N (N=2)      ratio       u=cf/N
+  0.020833    0.005208239      0.005208333   0.999982  0.002604120
+  0.041667    0.010415913      0.010416667   0.999928  0.005207957
+  0.500000    0.123717927      0.125000000   0.989743  0.061858963
+  1.000000    0.240193721      0.250000000   0.960775  0.120096860
+  2.500000    0.507195093      0.625000000   0.811512  0.253597547
+  => cf -> beta/2 as beta -> 0 (ratio -> 1): the leading-order u = beta/(2N^2) is right;
+     both statements below are evaluated in u, so the open u-normalisation (hole A) is
+     NOT load-bearing for the beta-scaling verdict.
+
+------------------------------------------------------------------------------
+(2) the three candidate floors at the wall beta = 1/48
+------------------------------------------------------------------------------
+    F_DR = 1/4 (2N)^-2            [DRESSED:124]
+    F_p0 = 1/2 c1 u^0 = 1/2 (2N)^-2   [PROOF:31 with p=0, c1=a0=(2N)^-2]
+    F_p1 = 1/2 c1 u^1 ,  F_p2 = 1/2 c1 u^2   [PROOF:31 as literally written, p>=1]
+
+  N      u(1/48)           F_DR           F_p0         F_p1         F_p2   F_p1/F_DR   F_p2/F_DR
+  2    2.604e-03 1.562500000e-02 3.125000000e-02    8.138e-05    2.119e-07   5.208e-03   1.356e-05
+  3    1.157e-03 6.944444444e-03 1.388888889e-02    1.608e-05    1.861e-08   2.315e-03   2.679e-06
+  4    6.510e-04 3.906250000e-03 7.812500000e-03    5.086e-06    3.311e-09   1.302e-03   8.477e-07
+
+  F_p0 / F_DR = 2 exactly, for every N  (the factor 2 is the L-limit margin, X02:111):
+    N=2:  1/2(2N)^-2 / [1/4(2N)^-2] = 2.000000000000
+    N=3:  1/2(2N)^-2 / [1/4(2N)^-2] = 2.000000000000
+    N=4:  1/2(2N)^-2 / [1/4(2N)^-2] = 2.000000000000
+
+  p>=1 puts the floor 2.5-3.3 orders of magnitude BELOW the DR value at the SAME beta.
+  => p>=1 and 1/4(2N)^-2 are NOT the same scale; they cannot both be the quoted r0.
+
+------------------------------------------------------------------------------
+(2b) robustness: the corpus has TWO u normalisations (hole A). does the verdict move?
+     u = c_f/N = beta/(2N^2)  [FOURWALL:81]   vs   u = c_f = beta/(2N)  [exact SU(2) = 0.0104 @1/48]
+------------------------------------------------------------------------------
+  N      u=c_f/N    F_p1/F_DR    F_p2/F_DR        u=c_f    F_p1/F_DR    F_p2/F_DR
+  2    2.604e-03    5.208e-03    1.356e-05    5.208e-03    1.042e-02    5.425e-05
+  3    1.157e-03    2.315e-03    2.679e-06    3.472e-03    6.944e-03    2.411e-05
+  4    6.510e-04    1.302e-03    8.477e-07    2.604e-03    5.208e-03    1.356e-05
+  => both normalisations give F_p1/F_DR <= 1/48 and F_p2/F_DR <= 1/64 (worst case N=2):
+     the beta-scaling verdict is INDEPENDENT of hole A.  [both p>=1 readings are far off]
+
+------------------------------------------------------------------------------
+(3) which u makes  1/2 c1 u^p = 1/4 (2N)^-2 ?   (c1 = (2N)^-2)
+------------------------------------------------------------------------------
+    1/2 c1 u^p = 1/4 c1  <=>  u^p = 1/2  <=>  u* = 2^(-1/p)
+  p    u* = 2^(-1/p)    u(1/48), N=2     u*/u(1/48)
+  1         0.500000       2.604e-03      1.920e+02
+  2         0.707107       2.604e-03      2.715e+02
+  3         0.793701       2.604e-03      3.048e+02
+  4         0.840896       2.604e-03      3.229e+02
+
+  => the beta-FREE value 1/4(2N)^-2 is what 1/2 c1 u^p gives at u* = 0.5 (p=1) or
+     0.707 (p=2) -- i.e. at u ~ O(1), the STRONG-coupling end u->1, NOT at beta<1/48
+     where u = 2.6e-3 (N=2).  Hence 1/4(2N)^-2 is the u->1 (large-beta) evaluation
+     of the same amplitude; at beta<1/48 the u^p form spuriously vanishes.
+
+------------------------------------------------------------------------------
+(4) is a0 beta-free?  two spellings in the corpus, and what each implies
+------------------------------------------------------------------------------
+  FOURWALL:81-86 : tube weight = a0 u^{4N_t}, a0 = (2N)^-2 [endpoint recouplings] [transverse sum]
+                   -> the 4N_t plaquette activities are ALL in the exponent; the two
+                      insertions' own measure sits at zeroth order (no extra c_f)
+                   -> a0 = pure numbers, beta-FREE.
+  AUDIT-COR:78   : a0(beta) = (2N)^-p [prod_{wall plaquettes} c_f] [recoupling]
+                   -> would put the SAME c_f factors in a0 that u^{4N_t} already carries
+                      (double count), and contradicts AUDIT-COR:87 (p=0).
+
+  consequence if AUDIT-COR:78 were right: a0 ~ u^2 -> r0 -> 0 as beta -> 0,
+  i.e. the beta->0 limit of the residue would be 0 at leading order.  Check at N=2:
+    beta= 2.083e-02  u= 2.604e-03  a0~(2N)^-2 u^2 =    4.239e-07  vs a0=(2N)^-2 = 6.250e-02
+    beta= 1.000e-03  u= 1.250e-04  a0~(2N)^-2 u^2 =    9.766e-10  vs a0=(2N)^-2 = 6.250e-02
+    beta= 1.000e-05  u= 1.250e-06  a0~(2N)^-2 u^2 =    9.766e-14  vs a0=(2N)^-2 = 6.250e-02
+  => the u^2 reading drives the amplitude to 0 with beta; Z05-AUDITI1:79's checked
+     beta->0 behaviour (f1^2 -> a0 > 0, amplitude survives) selects the beta-FREE a0.
+
+==============================================================================
+VERDICT (b): SAME quantity, one formula's u-power is wrong.
+  r0(per L) = 1/2 a0 = 1/2 c1 u^0 >= 1/2 (2N)^-2   (beta-FREE, p=0)
+  r0(inf_L) = 1/4 (2N)^-2                          (the extra 1/2 is the L margin)
+  the literal 'u^p, p>=1' at PROOF:31 is a transport error out of the superseded
+  PROOF-P3.md:7; it is a valid but non-sharp bound that mis-states beta -> 0.
+==============================================================================

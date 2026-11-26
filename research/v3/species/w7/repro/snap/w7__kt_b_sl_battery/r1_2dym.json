@@ -1,0 +1,154 @@
+{
+ "rows0": [
+  {
+   "beta": 0.5,
+   "j": 0.0,
+   "closed": 1.13031820798497,
+   "quad": 1.1303182079849703,
+   "reldiff": 1.9644433165495275e-16
+  },
+  {
+   "beta": 0.5,
+   "j": 0.5,
+   "closed": 0.5429906790681532,
+   "quad": 0.5429906790681531,
+   "reldiff": 2.044644719372443e-16
+  },
+  {
+   "beta": 0.5,
+   "j": 1.0,
+   "closed": 0.13301054954599142,
+   "quad": 0.13301054954599134,
+   "reldiff": 6.260159598701258e-16
+  },
+  {
+   "beta": 2.5,
+   "j": 0.0,
+   "closed": 9.73425685698021,
+   "quad": 9.734256856980211,
+   "reldiff": 1.8248510035221294e-16
+  },
+  {
+   "beta": 2.5,
+   "j": 0.5,
+   "closed": 14.00449197329939,
+   "quad": 14.00449197329939,
+   "reldiff": 0.0
+  },
+  {
+   "beta": 2.5,
+   "j": 1.0,
+   "closed": 12.397380202981365,
+   "quad": 12.39738020298137,
+   "reldiff": 4.298545685417632e-16
+  }
+ ],
+ "rows1": [
+  {
+   "beta": 0.25,
+   "lam0": 1.0315772215635854,
+   "lam_half": 0.12762459671095303,
+   "lam1": 0.010580447875961144,
+   "gap_full": 2.0897510765502116,
+   "gap_inv": 2.0897510765502116,
+   "ratio": 1.0
+  },
+  {
+   "beta": 0.5,
+   "lam0": 1.13031820798497,
+   "lam_half": 0.2714953395340766,
+   "lam1": 0.04433684984866381,
+   "gap_full": 1.4263094984449358,
+   "gap_inv": 1.4263094984449358,
+   "ratio": 1.0
+  },
+  {
+   "beta": 1.0,
+   "lam0": 1.590636854637329,
+   "lam_half": 0.6889484476987382,
+   "lam1": 0.21273995923985264,
+   "gap_full": 0.836723306231589,
+   "gap_inv": 0.836723306231589,
+   "ratio": 1.0
+  },
+  {
+   "beta": 2.5,
+   "lam0": 9.73425685698021,
+   "lam_half": 7.002245986649695,
+   "lam1": 4.132460067660455,
+   "gap_full": 0.32942034584356966,
+   "gap_inv": 0.32942034584356966,
+   "ratio": 1.0
+  },
+  {
+   "beta": 4.0,
+   "lam0": 99.96828419564,
+   "lam_half": 81.89895788154115,
+   "lam1": 59.0188052548694,
+   "gap_full": 0.19936671114027968,
+   "gap_inv": 0.19936671114027968,
+   "ratio": 1.0
+  },
+  {
+   "beta": 8.0,
+   "lam0": 108132.42948185494,
+   "lam_half": 98164.22480478133,
+   "lam1": 83591.37328065961,
+   "gap_full": 0.09671483540242441,
+   "gap_inv": 0.09671483540242441,
+   "ratio": 1.0
+  }
+ ],
+ "rows2": [
+  {
+   "beta": 0.5,
+   "m1": 1.4263094984449358,
+   "f1sq": 0.0,
+   "conn_max": 0.0
+  },
+  {
+   "beta": 2.5,
+   "m1": 0.32942034584356966,
+   "f1sq": 0.0,
+   "conn_max": 0.0
+  },
+  {
+   "beta": 4.0,
+   "m1": 0.19936671114027968,
+   "f1sq": 0.0,
+   "conn_max": 0.0
+  }
+ ],
+ "checks": [
+  {
+   "name": "0.1 d_j c_j = 2 I_{2j+1}(2b)/(2b) matches the direct group quadrature of int e^{b tr U} chi_j",
+   "ok": true,
+   "info": "max rel.diff = 6.26e-16"
+  },
+  {
+   "name": "0.2 the Peter-Weyl sum rule sum_j d_j^2 c_j = e^{2 beta} (validates the multiplier set)",
+   "ok": true,
+   "info": "max rel.err = 4.58e-16"
+  },
+  {
+   "name": "1.1 the gauge projection costs exactly 1 (gap_inv/gap_full = 1) at every beta",
+   "ok": true,
+   "info": "the lightest non-vacuum irrep is the same in both sectors (j=1/2, real for SU(2))"
+  },
+  {
+   "name": "1.2 U(1) control: positive gap, projection lossless",
+   "ok": true,
+   "info": "gaps 1.4168, 0.8066, 0.2679, 0.1467"
+  },
+  {
+   "name": "2.1 a strictly positive gap coexists with an EMPTY spectral measure (f_1^2 = 0)",
+   "ok": true,
+   "info": "gap > 0 and atom = 0 at the same time"
+  },
+  {
+   "name": "2.2 hence Level 3 (atom + positive residue) is logically INDEPENDENT of Levels 1-2",
+   "ok": true,
+   "info": "2D YM: Levels 1-2 hold (gap > 0), Level 3 fails (no atom) -- witness is exact"
+  }
+ ]
+}

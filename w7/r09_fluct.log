@@ -1,0 +1,61 @@
+R09-FLUCT  beta=2.5, single plaquette SU(2), slice xi3=a=0  (py -3.12)
+target:  beta*Var(d_t h) <= E[d_t^2 h]   with h = S_W/beta, t = xi3 = a
+
+[0] definition audit
+    h := S_W/beta pointwise: max|beta*h - S_W| over grid = 0.0e+00
+    d_a h (FD, th=0.7, eta=1.1) = +0.1629348225   s*g = +0.1629348225   diff -9.1e-12
+    d_a^2 h (FD)             = +0.2231548279   (c/2)g = +0.2231809637   diff -2.6e-05
+    => G_v = beta*d_a h,  H_vv = beta*d_a^2 h,  h is beta-free (d_beta h = 0)
+
+[1] beta=2.5, a=0:  d_a h = s*g,  d_a^2 h = (c/2)*g,  g=sin(u)/(2u)  (SAME random variable)
+    theta/pi      E[g]     Var(g)  LHS=b*Var(dth)  RHS=E[d2h]    ratio  hold
+       0.000pi  0.442448   0.003273      0.00000000    0.221224   0.0000   YES
+       0.500pi  0.426878   0.004877      0.00609589    0.150924   0.0404   YES
+       1.000pi  0.357411   0.011059      0.02764823    0.000000 2526668109027528.0000    NO
+
+[2] beta cancels identically:  beta*Var(d_a h) <= E[d_a^2 h]  <=>  Var(G_v) <= E[H]
+    theta=0.000pi: Var(G_v)=0.00000000  E[H_vv]=+0.55306056  ratio_q06=0.0000000000  ratio_q04=0.0000000000  diff=0.0e+00
+    theta=0.500pi: Var(G_v)=0.01523972  E[H_vv]=+0.37731084  ratio_q06=0.0403903594  ratio_q04=0.0403903594  diff=0.0e+00
+    theta=1.000pi: Var(G_v)=0.06912059  E[H_vv]=+0.00000000  ratio_q06=2526668109027528.0000000000  ratio_q04=2526668109027528.0000000000  diff=0.0e+00
+
+[3] r02 kernel (exact, pointwise-positive integrand => unconditional [T]):
+    E[g] - 2E[g^2] = (1/2) int_0^pi e^{-beta(1-c cos u)} sin^3 u (u - sin u)/u^3 du >= 0
+    beta=  0.0 th=0.00pi: Z(E1-2E2)=+9.727092e-02  halfint=+9.727092e-02  min(integrand)=+2.32e-21  2Var/E=0.061886
+    beta=  0.0 th=0.50pi: Z(E1-2E2)=+9.727092e-02  halfint=+9.727092e-02  min(integrand)=+2.32e-21  2Var/E=0.061886
+    beta=  0.0 th=1.00pi: Z(E1-2E2)=+9.727092e-02  halfint=+9.727092e-02  min(integrand)=+2.32e-21  2Var/E=0.061886
+    beta=  0.5 th=0.00pi: Z(E1-2E2)=+6.149796e-02  halfint=+6.149796e-02  min(integrand)=+8.52e-22  2Var/E=0.048196
+    beta=  0.5 th=0.50pi: Z(E1-2E2)=+6.045135e-02  halfint=+6.045135e-02  min(integrand)=+9.86e-22  2Var/E=0.052075
+    beta=  0.5 th=1.00pi: Z(E1-2E2)=+5.899780e-02  halfint=+5.899780e-02  min(integrand)=+1.40e-21  2Var/E=0.061886
+    beta=  2.5 th=0.00pi: Z(E1-2E2)=+1.520050e-02  halfint=+1.520050e-02  min(integrand)=+1.56e-23  2Var/E=0.014796
+    beta=  2.5 th=0.50pi: Z(E1-2E2)=+1.134382e-02  halfint=+1.134382e-02  min(integrand)=+3.25e-23  2Var/E=0.022848
+    beta=  2.5 th=1.00pi: Z(E1-2E2)=+7.984483e-03  halfint=+7.984483e-03  min(integrand)=+1.90e-22  2Var/E=0.061886
+    beta=  6.0 th=0.00pi: Z(E1-2E2)=+3.734983e-03  halfint=+3.734983e-03  min(integrand)=+1.42e-26  2Var/E=0.003122
+    beta=  6.0 th=0.50pi: Z(E1-2E2)=+1.168057e-03  halfint=+1.168057e-03  min(integrand)=+8.25e-26  2Var/E=0.006095
+    beta=  6.0 th=1.00pi: Z(E1-2E2)=+2.411105e-04  halfint=+2.411105e-04  min(integrand)=+5.74e-24  2Var/E=0.061886
+    beta= 20.0 th=0.00pi: Z(E1-2E2)=+3.919087e-04  halfint=+3.919087e-04  min(integrand)=+9.84e-39  2Var/E=0.000280
+    beta= 20.0 th=0.50pi: Z(E1-2E2)=+2.181857e-06  halfint=+2.181857e-06  min(integrand)=+3.44e-36  2Var/E=0.000562
+    beta= 20.0 th=1.00pi: Z(E1-2E2)=+2.004903e-10  halfint=+2.004903e-10  min(integrand)=+4.77e-30  2Var/E=0.061886
+    => 2Var(g)/E[g] <= 1/2 for every (beta,c) tested; max = 0.061886  [T]
+
+[4] sufficient condition [T]: beta*s^2 <= c, i.e. beta*sin^2(th/2) <= cos(th/2)
+    beta=2.5: holds [T] for theta/pi <= 0.3882
+    exact ratio(1) boundary, grid in beta (ratio NOT monotone in beta -> scan, no bisection):
+    theta=0.00pi  c=1.00000: LHS==0 for every beta -> holds all beta
+    theta=0.50pi  c=0.70711: fails on beta in never  max ratio=0.0405 at beta=2.328  (at beta=2.5: 0.0404)
+    theta=1.00pi  c=0.00000: fails on beta in [0.001,60.000]  max ratio=60640034616660976.0000 at beta=60.000  (at beta=2.5: 2526668109027528.0000)
+
+[5] a-dependence at theta=pi, beta=2.5 (q04 reduction, rho in [|a|,2pi])
+    a=0.00: Var(G_v)=0.069121  E[H_vv]=+0.000000  FAIL  (E[H]-Var=-0.069121)
+    a=0.25: Var(G_v)=0.071391  E[H_vv]=-0.063221  FAIL  (E[H]-Var=-0.134611)
+    a=0.50: Var(G_v)=0.071628  E[H_vv]=-0.124031  FAIL  (E[H]-Var=-0.195660)
+    a=1.00: Var(G_v)=0.065727  E[H_vv]=-0.235040  FAIL  (E[H]-Var=-0.300767)
+    a=2.00: Var(G_v)=0.036106  E[H_vv]=-0.398972  FAIL  (E[H]-Var=-0.435078)
+
+[6] verdict
+    theta=0     : 0 <= (1/2)E[g] = 0.221225 -> holds (degenerate, s=0)
+    theta=pi/2  : 0.006096 <= 0.150909      -> holds (ratio 0.0404)
+    theta=pi    : 0.027648 <= 0             -> FAILS  (H_vv == 0 pointwise: c=0)
+    [T] a=0 slice, any beta>=0, any c in [0,1]: 2Var(g) <= E[g] (r02 kernel)
+        => beta*Var(d_t h) <= E[d_t^2 h] holds whenever beta*sin^2(th/2) <= cos(th/2)
+    [E] theta=pi at every beta>0: counterexample (exact, no quadrature error)
+    [E] a>0, theta=pi: E[H_vv]<0 fails harder

@@ -1,0 +1,239 @@
+{
+ "round": 216,
+ "title": "GW2 numerical prior - extracted numbers",
+ "convention": {
+  "beta": "beta_W = 2N/g^2, N=2 (SU(2) Wilson, 1/2 Re tr plaquette normalization; BETA-CONVENTION.md:64)",
+  "lattice": "Ls=8 x Lt=12 unless stated",
+  "operator": "raw lev0 = (1/3) sum_space sum_3planes 1/2 Re tr U_p, zero momentum",
+  "estimator": "w1 = A/C0 with m=1.546 fixed; Rbar = -ln(C1/C0); 20-block delete-one jackknife"
+ },
+ "one_loop_slope": {
+  "value": 2.6917102912061885,
+  "formula": "-12 pi^2/(11 N^2), N=2",
+  "src": "G05A.md:55 with beta_W=2N/g^2"
+ },
+ "two_loop": {
+  "exponent": "51/121",
+  "src": "G05A.md:17,43,54-55 (corrected sign)",
+  "aLam": "aLam = exp(-1/(2 b0 g^2)) * (b0 g^2)^(-51/121), b0=11N/(48 pi^2), g^2=4/beta_W",
+  "validity": "B04.md:64: beta<5.5 only monotonicity, absolute values off O(10); B04.md:63: beta>=6 ~1pct verified",
+  "check_vs_G05A": "aLam(beta_W=2.30)=5.91436e-03 vs G05A.md:129 corrected 5.91e-3"
+ },
+ "points": [
+  {
+   "beta": 2.2,
+   "C1o0": 0.12654,
+   "C1o0_err": 0.00299,
+   "Rbar": 2.0671968152633986,
+   "Rbar_err": 0.02362889204994468,
+   "m_fit": 1.69,
+   "m_fit_edge": false,
+   "w1_1546": 0.5904,
+   "w1_1546_err": 0.0138,
+   "snr2": 8.9,
+   "aLam_2loop": 0.0075974892158282995,
+   "mfit_over_aLam": 222.44190837140286,
+   "Rbar_over_aLam": 272.08947015767853,
+   "dln_aLam_2loop": -2.5001250169762863,
+   "src": "NEW w7/b01_gw2p.log (b01_scan.py)",
+   "tag": "[E] new"
+  },
+  {
+   "beta": 2.5,
+   "C1o0": 0.07372,
+   "C1o0_err": 0.00265,
+   "Rbar": 2.6074811461805147,
+   "Rbar_err": 0.03594682582745524,
+   "m_fit": 1.707,
+   "m_fit_edge": false,
+   "w1_1546": 0.3427,
+   "w1_1546_err": 0.0119,
+   "snr2": 5.0,
+   "aLam_2loop": 0.0035757856719900666,
+   "mfit_over_aLam": 477.37760497540864,
+   "Rbar_over_aLam": 729.2050993451596,
+   "dln_aLam_2loop": -2.5231152498838747,
+   "src": "research/v3/species/RUN3.md:51",
+   "tag": "[E]"
+  },
+  {
+   "beta": 2.75,
+   "C1o0": 0.05515,
+   "C1o0_err": 0.00256,
+   "Rbar": 2.8976985332826257,
+   "Rbar_err": 0.04641885766092475,
+   "m_fit": 2.706,
+   "m_fit_edge": false,
+   "w1_1546": 0.2507,
+   "w1_1546_err": 0.0123,
+   "snr2": 1.3,
+   "aLam_2loop": 0.001899193660425563,
+   "mfit_over_aLam": 1424.815202570575,
+   "Rbar_over_aLam": 1525.752003949572,
+   "dln_aLam_2loop": -2.5384420718222667,
+   "src": "NEW w7/b01_gw2p.log (b01_scan.py)",
+   "tag": "[E] new"
+  },
+  {
+   "beta": 3.0,
+   "C1o0": 0.04749,
+   "C1o0_err": 0.00035,
+   "Rbar": 3.047236116421107,
+   "Rbar_err": 0.007369972625815961,
+   "m_fit": 3.94,
+   "m_fit_edge": false,
+   "w1_1546": 0.2137,
+   "w1_1546_err": 0.0117,
+   "snr2": 18.2,
+   "aLam_2loop": 0.0010051894696834279,
+   "mfit_over_aLam": 3919.6590481999924,
+   "Rbar_over_aLam": 3031.5042171908112,
+   "dln_aLam_2loop": -2.5512144234375937,
+   "src": "research/v3/species/B01.md:30,43",
+   "tag": "[E]"
+  },
+  {
+   "beta": 4.0,
+   "C1o0": 0.0379,
+   "C1o0_err": 0.00303,
+   "Rbar": 3.2728041668937564,
+   "Rbar_err": 0.07994722955145118,
+   "m_fit": 2.116,
+   "m_fit_edge": false,
+   "w1_1546": 0.1747,
+   "w1_1546_err": 0.0141,
+   "snr2": 12.4,
+   "aLam_2loop": 7.689766145167724e-05,
+   "mfit_over_aLam": 27517.091678135126,
+   "Rbar_over_aLam": 42560.51621219194,
+   "dln_aLam_2loop": -2.5863383903797423,
+   "src": "research/v3/species/B01.md:31,44",
+   "tag": "[E]"
+  },
+  {
+   "beta": 6.0,
+   "C1o0": 0.02901,
+   "C1o0_err": 0.00313,
+   "Rbar": 3.5401146808488244,
+   "Rbar_err": 0.10789382971389176,
+   "m_fit": 3.475,
+   "m_fit_edge": false,
+   "w1_1546": 0.1309,
+   "w1_1546_err": 0.0139,
+   "snr2": 9.4,
+   "aLam_2loop": 4.1893202657129397e-07,
+   "mfit_over_aLam": 8294901.749194923,
+   "Rbar_over_aLam": 8450331.93051037,
+   "dln_aLam_2loop": -2.621462357321891,
+   "src": "research/v3/species/B01.md:32,45",
+   "tag": "[E]"
+  },
+  {
+   "beta": 10.0,
+   "C1o0": 0.02513,
+   "C1o0_err": 0.00259,
+   "Rbar": 3.683692927426636,
+   "Rbar_err": 0.10306406685236769,
+   "m_fit": 4.0,
+   "m_fit_edge": true,
+   "w1_1546": 0.1129,
+   "w1_1546_err": 0.0119,
+   "snr2": 9.5,
+   "aLam_2loop": 1.0956462458501139e-11,
+   "mfit_over_aLam": 365081340364.2334,
+   "Rbar_over_aLam": 336211887858.7908,
+   "dln_aLam_2loop": -2.64956153087561,
+   "src": "research/v3/species/B01.md:33,46",
+   "tag": "[E]"
+  }
+ ],
+ "archived_beta22_L6T6": {
+  "beta": 2.2,
+  "C1o0": 0.12295,
+  "err": 0.007,
+  "mfit_free": 1.296,
+  "src": "research/v3/species/AUDIT-C0.md:92-93,98; RUN2.md:65,91",
+  "status": "[E]"
+ },
+ "slopes_Rbar": [
+  {
+   "pair": [
+    2.2,
+    2.5
+   ],
+   "dlnRbar_dbeta": 1.8009477697237215,
+   "err": 0.14339141561851462
+  },
+  {
+   "pair": [
+    2.5,
+    2.75
+   ],
+   "dlnRbar_dbeta": 1.160869548408444,
+   "err": 0.23484069949187583
+  },
+  {
+   "pair": [
+    2.75,
+    3.0
+   ],
+   "dlnRbar_dbeta": 0.5981503325539244,
+   "err": 0.18800114225399672
+  },
+  {
+   "pair": [
+    3.0,
+    4.0
+   ],
+   "dlnRbar_dbeta": 0.2255680504726496,
+   "err": 0.08028621307209417
+  },
+  {
+   "pair": [
+    4.0,
+    6.0
+   ],
+   "dlnRbar_dbeta": 0.133655256977534,
+   "err": 0.06714282910944902
+  },
+  {
+   "pair": [
+    6.0,
+    10.0
+   ],
+   "dlnRbar_dbeta": 0.03589456164445293,
+   "err": 0.03730221203769254
+  }
+ ],
+ "window_distance": {
+  "I1_window": "beta < 3.777e-3",
+  "src": "docs/position-current.html:375",
+  "convention": "beta_A [C]: MASTER:130 labels 0.0183940 as beta_A; position-current.html:375 ratio 0.018394/3.777e-3=4.8700 taken without N^2; ADJ4.md:17,21 evaluates Phi at beta_A",
+  "user_662": {
+   "value": 661.9009796134499,
+   "verdict": "mixes conventions: beta_W head over beta_A window"
+  },
+  "like_for_like_betaA": {
+   "head": 0.625,
+   "ratio": 165.47524490336247
+  },
+  "like_for_like_betaW": {
+   "window": 0.015108,
+   "ratio": 165.47524490336247
+  },
+  "fingerprint": {
+   "ratio_of_ratios": 4.0,
+   "equals": "N^2=4",
+   "src": "BETA-CONVENTION.md:144"
+  },
+  "abs_gap_betaW": 2.484892
+ },
+ "verdict": {
+  "rule": "DeepSeek numerical prior: C_emp = |d log m_lat/d beta| from ratio of m_fit between nearby beta families; ~2.688 => (F) has a chance; orders off => wrong species",
+  "outcome": "(iii) undetermined by existing data",
+  "naive_reading": "applied literally to Rbar: slope POSITIVE (+1.80 at 2.2->2.5 down to +0.04 at 6->10), sign opposite to -2.688, magnitude 3x-75x off; but Rbar is a UV one-step quantity at fixed L (B01.md:66-77), not m_lat, so this cannot decide the rule",
+  "contaminations": "Rbar slope vs m_fit slope disagree on the same pair (2.2->2.5: +1.80 vs +0.03) => contamination fraction NOT beta-stable => Rbar proxy invalid",
+  "decisive_measurement": "fixed-a (fixed physical volume) beta scan, ARCHIVE-r214b.md:214-217 (sec 12.4)"
+ },
+ "all_tag": "[E]"
+}

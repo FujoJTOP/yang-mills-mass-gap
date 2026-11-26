@@ -1,0 +1,44 @@
+====================================================================================================
+MODEL (3)  2D YM CHARACTER TOWER on one link  --  and the FLOW-CHOICE test
+====================================================================================================
+  beta = 2.5;  S_W = beta(1-q_0);  s3 quadrature 80^3 nodes.
+
+  ---- FLOW A: the BBD/BD heat-kernel flow  (must reproduce model (1)) ----
+  [A]  spectrum: E_0 = 0.000e+00, E_1 = 3.000000, E_2 = 8.000000, E_3 = 15.000000   (lam_1 used for the time axis = 3.0)
+    lam1*t        C_abs          q(t)    lam_min HV  local rate  B_quad/B_char
+       0.1     0.105914  6.610458e-01     -0.661046         nan       1.00e+00
+     0.316     0.302348  6.668644e-01     -0.666864    -0.12172       1.00e+00
+         1     0.403062  3.149311e-01     -0.314931     3.29049       1.00e+00
+      3.16     0.324851  2.326445e-02     -0.023264     3.61865       1.00e+00
+        10     0.317005  2.302874e-05     -0.000023     3.03418       1.00e+00
+      31.6     0.316997  9.936497e-15     -0.000000     2.99497       1.00e+00
+       100     0.316997  1.110234e-16     -0.000000         nan       1.00e+00
+  => rate(t->inf) ~ 3.034184 ... nan   (lam_1 = 3 ; KERNEL flow)
+     sup_t C_abs = 0.403062
+
+  ---- FLOW B: the 2D YM TRANSFER-MATRIX flow  (E_1 = the physical 2D YM gap) ----
+  [B]  spectrum: E_0 = -0.000e+00, E_1 = 0.329420, E_2 = 0.856778, E_3 = 1.561088   (lam_1 used for the time axis = 0.32942034584356966)
+    lam1*t        C_abs          q(t)    lam_min HV  local rate  B_quad/B_char
+   0.03294     0.039182  6.374520e-01     -0.637452         nan       1.00e+00
+    0.1041     0.121411  6.568290e-01     -0.656829    -0.13863       1.00e+00
+    0.3294     0.316997  6.339939e-01     -0.633994     0.05173       1.00e+00
+     1.041     0.395286  2.848135e-01     -0.284814     0.37047       1.00e+00
+     3.294     0.323785  2.010775e-02     -0.020108     0.38753       1.00e+00
+     10.41     0.317002  1.528740e-05     -0.000015     0.33249       1.00e+00
+     32.94     0.316997  2.386980e-15     -0.000000     0.33012       1.00e+00
+  => rate(t->inf) ~ 0.387534 ... 0.330121   vs  E_1 = 0.329420  (the 2D YM gap)
+     sup_t C_abs = 0.395286
+
+  ---- beta-dependence of the two rates (both fitted in ABSOLUTE t) ----
+     beta   E_1 = 2DYM gap   flow-B rate   flow-A rate   lam_1
+    1.000         0.836723      0.852099      3.002174   3.000
+    2.000         0.418479      0.466703      3.004636   3.000
+    2.500         0.329420      0.390515      3.005706   3.000
+    4.000         0.199367      0.279513      3.007332   3.000
+    8.000         0.096715      0.173936      3.004688   3.000
+
+  => FLOW B's rate tracks E_1 = the 2D YM mass gap (a dynamical, beta-dependent number):
+     'integrability of C requires m>0' is circular EXACTLY for that flow.
+     FLOW A's rate is 3 = lam_1(SU(2)) for every beta: the one-link group gap, NOT dynamical.
+     BBD sec.5 fixes the flow to be P_t = the group heat semigroup  =>  FLOW A.
+

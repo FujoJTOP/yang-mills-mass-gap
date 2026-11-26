@@ -1,0 +1,63 @@
+\contentsline {section}{\numberline {1}主张、范围与五环链}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}一句话可核的主张，以及它的三个量化词}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}五环链表（等级与出处并写）}{3}{subsection.1.2}%
+\contentsline {subsection}{\numberline {1.3}五个具体洞（A--E）的裁决（逐条进正文，全部关闭）}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.4}逻辑结构：四环给 SharpDecay，第五环加 Theorem A 给隔离}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}三条限定（不许省）}{5}{subsection.1.5}%
+\contentsline {paragraph}{限定一：$0^{++}$ 与 $2^{++}$ 两道，其余道不给证书。}{5}{paragraph*.1}%
+\contentsline {paragraph}{限定二：仅有限 $L$。}{5}{paragraph*.2}%
+\contentsline {paragraph}{限定三：两处复核均已返回，且都由第三次裁决 F07 收口。}{5}{paragraph*.3}%
+\contentsline {subsection}{\numberline {1.6}不主张什么（本文的"不是"）}{5}{subsection.1.6}%
+\contentsline {subsection}{\numberline {1.7}标签与三条记账规则}{6}{subsection.1.7}%
+\contentsline {section}{\numberline {2}环 1：$I1$ 残数（\fcolorbox {cT!35}{cT!8}{\textcolor {cT}{\textbf {\scriptsize T}}}{}，$\bar C\equiv N$ 已证）}{6}{section.2}%
+\contentsline {subsection}{\numberline {2.1}定理（逐字）}{6}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}机制四步（四步各有 \fcolorbox {cT!35}{cT!8}{\textcolor {cT}{\textbf {\scriptsize T}}}{} 归属）}{6}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}$r_0$ 是什么，不是什么}{7}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.4}$u$ 的定义：一处必须改的勘误}{7}{subsection.2.4}%
+\contentsline {subsection}{\numberline {2.5}$\beta <0.018394$ 的三层来源（必须分开）}{7}{subsection.2.5}%
+\contentsline {subsection}{\numberline {2.6}$\bar C\equiv N$：\textbf {已证值}，不是未知常数}{8}{subsection.2.6}%
+\contentsline {paragraph}{数值（换到窗内的一点）}{8}{paragraph*.4}%
+\contentsline {subsection}{\numberline {2.7}并记：总册的降级记录（历史，已被第三次裁决 F07 收口）}{8}{subsection.2.7}%
+\contentsline {subsection}{\numberline {2.8}这一环的确切范围（三个"不"）}{9}{subsection.2.8}%
+\contentsline {subsection}{\numberline {2.9}为什么这一环不再重证（零新地盘）}{9}{subsection.2.9}%
+\contentsline {section}{\numberline {3}环 2：$(L1)$ ， 无 $T$ 前因子、$L$-一致}{10}{section.3}%
+\contentsline {subsection}{\numberline {3.1}陈述}{10}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}精确恒等式：为什么全部 $T$-依赖只落在一类簇上}{10}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}成本与计数}{10}{subsection.3.3}%
+\contentsline {subsection}{\numberline {3.4}求和：前因子被几何吃掉}{11}{subsection.3.4}%
+\contentsline {subsection}{\numberline {3.5}这一环为什么恰好是 $I1/I2$ 的分界（并与 \texttt {\footnotesize w05} 的异议并记）}{11}{subsection.3.5}%
+\contentsline {subsection}{\numberline {3.6}引理的独立形式（供他人独立立它）}{12}{subsection.3.6}%
+\contentsline {subsection}{\numberline {3.7}复核已回：无 $T$ 前因子由独立审计复现}{12}{subsection.3.7}%
+\contentsline {section}{\numberline {4}环 3：$\kappa $、$\kappa /4$ 与可达率 $\delta $}{12}{section.4}%
+\contentsline {subsection}{\numberline {4.1}$\kappa =4\ln (1/u)/a$ 里的 $4$ 是壁数，不是熵}{12}{subsection.4.1}%
+\contentsline {subsection}{\numberline {4.2}$\kappa /4=\ln (1/u)/a$ 是恒等式}{12}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.3}可达率：$\delta =\ln (1/\bar u)/a=\kappa /4-\ln (e\Delta N)/a$}{12}{subsection.4.3}%
+\contentsline {subsection}{\numberline {4.4}数值（\fcolorbox {cE!35}{cE!8}{\textcolor {cE}{\textbf {\scriptsize E}}}/\fcolorbox {cM!35}{cM!8}{\textcolor {cM}{\textbf {\scriptsize M}}}，只作量级锚）}{13}{subsection.4.4}%
+\contentsline {subsection}{\numberline {4.5}速率梯子：$4,6,8,\dots $（本链只用最前一档）}{13}{subsection.4.5}%
+\contentsline {section}{\numberline {5}环 4：$\log D\to \eta $ 的代数，指数必须是 $m_1^{dr}$}{14}{section.5}%
+\contentsline {subsection}{\numberline {5.1}精确分解（不是不等式）}{14}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}恒等式：$\eta $ 的两项}{14}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}$\exp /\log $：唯一需要的额外事实是 $D_\infty \ge \tfrac 12$}{14}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.4}三个必须同时成立的条件（缺一即断）}{15}{subsection.5.4}%
+\contentsline {paragraph}{B1 是本环的\textbf {唯一定理级内容}，必须写足。}{15}{paragraph*.5}%
+\contentsline {subsection}{\numberline {5.5}$f_1^2=a_0D_\infty $ 与地板链}{15}{subsection.5.5}%
+\contentsline {subsection}{\numberline {5.6}四处 $\delta $ 必须分开（否则 $s$ 槽会记错）}{15}{subsection.5.6}%
+\contentsline {subsection}{\numberline {5.7}$L$-一致性从哪来}{16}{subsection.5.7}%
+\contentsline {section}{\numberline {6}环 5（$[KL]$）、Theorem A 与结论}{16}{section.6}%
+\contentsline {subsection}{\numberline {6.1}$[KL]$：柱面 KL 表示，已证，无动力学内容}{16}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Theorem A：$m_2$ 一身二任，本文只用 $\Leftarrow $}{16}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}装配：五环 + $\Leftarrow $ $\Rightarrow $ $I2$}{17}{subsection.6.3}%
+\contentsline {subsection}{\numberline {6.4}本文不主张什么（逐条带标签，与 \S \ref {sec:not} 呼应）}{17}{subsection.6.4}%
+\contentsline {paragraph}{(a) 不是"每条道都有证书"，但两道已齐。}{17}{paragraph*.6}%
+\contentsline {paragraph}{(b) 不是 $L\to \infty $。}{18}{paragraph*.7}%
+\contentsline {paragraph}{(c) 不是 $\beta =2.5$，也不是 $\beta =1/12$。}{18}{paragraph*.8}%
+\contentsline {paragraph}{(d) 不是 Clay 的任何进展。}{18}{paragraph*.9}%
+\contentsline {paragraph}{(e) $L=2$ 的 $G''(0)>0$ 在 $\beta =2.5$ 上只有 \fcolorbox {cE!35}{cE!8}{\textcolor {cE}{\textbf {\scriptsize E}}}。}{18}{paragraph*.10}%
+\contentsline {subsection}{\numberline {6.5}可解模型说了什么、没说什么（$I2$ 的相容性，不是 4D 的证据）}{18}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.6}链的全表与文件索引}{19}{subsection.6.6}%
+\contentsline {subsection}{\numberline {6.7}一句话}{20}{subsection.6.7}%
+\contentsline {section}{\numberline {7}归属清单：把 $I1$ 的每一项落到 \fcolorbox {cT!35}{cT!8}{\textcolor {cT}{\textbf {\scriptsize T}}}{} 归属上}{21}{section.7}%
+\contentsline {subsection}{\numberline {7.1}$\bar C\equiv N$（两条旧路线只作历史）}{21}{subsection.7.1}%
+\contentsline {subsection}{\numberline {7.2}主张句（逐字，全文唯一）}{22}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}四条限定 D.1--D.4 与新靶（与主张句同等重要）}{22}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Why the transport framing was withdrawn：扩窗自我否定}{23}{subsection.7.4}%

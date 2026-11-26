@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "D:\Dev\math\research\v3\species\w7\mc_dbg.py", line 46, in <module>
+    W = list(M); W[k] = M[k] @ expL(h, a)
+                               ^^^^^^^^^^
+  File "D:\Dev\math\research\v3\species\w7\mc_dbg.py", line 30, in expL
+    return np.cos(t / 2) * np.eye(2) + 2.0 * np.sin(t / 2) * LAM[a]
+                                                             ~~~^^^
+IndexError: list index out of range

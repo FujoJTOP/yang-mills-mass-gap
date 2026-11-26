@@ -1,0 +1,32 @@
+====================================================================================================
+(A) beta=2.5  m1_4d_run_results.json  -- the dataset that produces 0.5288/0.5475/0.5633
+====================================================================================================
+  L=4: reported m1=0.0300000 (bound 0.03)  A/C0 meas=0.52880
+        max|C(t)/C0-1| = 4.74e-03
+        FLAT control (same m, same window): A/C0 = 0.53080   |diff| = 2.0e-03   (=+0.38%)
+        free-m log-fit: m* = 0.00010  -> A/C0 = 0.49821   (m* at/below the 0.03 bound => no resolvable exponential)
+  L=6: reported m1=0.0300000 (bound 0.03)  A/C0 meas=0.54750
+        max|C(t)/C0-1| = 2.16e-03
+        FLAT control (same m, same window): A/C0 = 0.54668   |diff| = 8.2e-04   (=-0.15%)
+        free-m log-fit: m* = 0.02113  -> A/C0 = 0.53332   (m* at/below the 0.03 bound => no resolvable exponential)
+  L=8: reported m1=0.0300000 (bound 0.03)  A/C0 meas=0.56326
+        max|C(t)/C0-1| = 1.40e-03
+        FLAT control (same m, same window): A/C0 = 0.56286   |diff| = 4.0e-04   (=-0.07%)
+        free-m log-fit: m* = 0.01441  -> A/C0 = 0.52984   (m* at/below the 0.03 bound => no resolvable exponential)
+
+  SENSITIVITY of the same estimator to a genuine atom  C(t)/C(0) = w e^{-s t} + (1-w):
+    L=4: w=0:0.5308  w=0.001:0.5306  w=0.005:0.5299  w=0.01:0.5289  w=0.05:0.5214  w=0.2:0.4930  w=0.5:0.4358
+    L=6: w=0:0.5467  w=0.001:0.5464  w=0.005:0.5455  w=0.01:0.5443  w=0.05:0.5348  w=0.2:0.4989  w=0.5:0.4263
+    L=8: w=0:0.5629  w=0.001:0.5626  w=0.005:0.5615  w=0.01:0.5600  w=0.05:0.5488  w=0.2:0.5062  w=0.5:0.4195
+
+====================================================================================================
+(B) beta=2.2  f1sq_b2.2_L6.npz  -- the dataset the PAPER's 17 sigma actually uses
+====================================================================================================
+  levels=[0, 2, 4, 8], L=6, T=6, N=4000
+  C(t)/C(0) = [1.0, 0.12295, 0.03597, -0.00087, 0.03597, 0.12295]
+  C(1)/C(0) = 0.12295   (paper: 0.123 +- 0.007)
+  window t=1..2, m=1.51: A=7.1601  A/C(0)=0.5627 | FLAT control A/C(0)=5.2778  -> flat/measured = 9.38x
+  window t=1..3, m=1.51: A=7.0916  A/C(0)=0.5573 | FLAT control A/C(0)=5.6444  -> flat/measured = 10.13x
+  free-m 2-point fit: m* = 1.296  (paper plateau 1.51) -> exponential IS resolved
+  => flat-correlator control is 9.4x away from the measured A/C(0) on THIS dataset,
+     i.e. the estimator is NOT a tautology when the correlator actually decays.

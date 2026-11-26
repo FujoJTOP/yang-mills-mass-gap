@@ -1,0 +1,47 @@
+================================================================================================
+[O11-PHYS] Delta = E[kappa|0] - Var(F|0)   beta = 2.5   (2026-11-25 13:55:55)
+================================================================================================
+
+[1a] single plaquette SU(2): EXACT (deterministic quadrature, 4e5 pts)
+   <Phi''> = W0 = 0.2051152971   Var(G)/beta^2 = V0 = 0.0110592938   E[H] = 0 (exact, centre B)
+   Delta = W0 - beta^2 V0 = +0.1359947110     (quadrature err < 1e-9)
+
+[1b] single plaquette SU(2): MC pools, 500000 valid samples per group, 2 groups
+  N=2: 500000 valid / 800000 draws  (acc 6.25e-01)
+   N=2 seed=101: acc=6.250e-01  ESS=2.225e+05  E[H]=+0.00000  Var(G)=0.069195  <Phi''>=0.20509  Var(Phi')=0.00e+00
+            Var(F)=0.069195  E[kappa]=0.205089  Delta=+0.135894 +- 0.000097  (1402.4 sigma)   [6.8s]
+  N=2: 500000 valid / 800000 draws  (acc 6.25e-01)
+   N=2 seed=102: acc=6.250e-01  ESS=2.224e+05  E[H]=+0.00000  Var(G)=0.069100  <Phi''>=0.20516  Var(Phi')=0.00e+00
+            Var(F)=0.069100  E[kappa]=0.205158  Delta=+0.136057 +- 0.000125  (1092.3 sigma)   [7.8s]
+   >>> N=2: 2-group mean Delta = +0.135976 +- 0.000079   (group spread 0.000163)  = 1723.2 sigma
+
+[1b] single plaquette SU(3): MC pools, 500000 valid samples per group, 2 groups
+  N=3: 500000 valid / 5600000 draws  (acc 8.93e-02)
+   N=3 seed=201: acc=8.929e-02  ESS=6.493e+04  E[H]=+0.09534  Var(G)=0.005715  <Phi''>=0.34659  Var(Phi')=9.17e-04
+            Var(F)=0.006252  E[kappa]=0.441925  Delta=+0.435673 +- 0.000281  (1549.0 sigma)   [48.5s]
+  N=3: 500000 valid / 5600000 draws  (acc 8.93e-02)
+   N=3 seed=202: acc=8.929e-02  ESS=6.461e+04  E[H]=+0.09543  Var(G)=0.005729  <Phi''>=0.34663  Var(Phi')=9.23e-04
+            Var(F)=0.006271  E[kappa]=0.442063  Delta=+0.435792 +- 0.000280  (1556.6 sigma)   [48.8s]
+   >>> N=3: 2-group mean Delta = +0.435733 +- 0.000198   (group spread 0.000118)  = 2196.0 sigma
+
+[2] L=2 4D SU(2): 16 sites, 64 links, 96 plaquettes, beta=2.5
+
+--- mode A_k0: |v|=1, <v,X>=0 imposed exactly ---
+   seed=11: acc=0.813  Nsamp=1200  tau_K=71.2 tau_F=97.2  Neff~12
+            E[kappa]=1.7963 (sem 0.0566)  Var(F)=2.1015  E[F]=-0.1881
+            Delta=-0.3053 +- 0.3274 (block-jk, 25 blocks)  = -0.9 sigma   [17.1s]
+Traceback (most recent call last):
+  File "D:\Dev\math\research\unconditional\w7\o11_physical.py", line 245, in <module>
+    modes.setdefault(name, []).append((d0, sg, neff, Ks.mean(), Fs.var()))
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'numpy.ndarray' object has no attribute 'append'
+
+===== [2] L=2 SU(2) chains (o11_lat.py, eps=0.9, burn=500) =====
+mode=A seed=11 eps=0.9 nsweep=5000 acc=0.593 E[kappa]=+1.7853 varF=2.1443 E[F]=-0.0700 tauK=34.9 tauF=47.9 Neff=104 Delta=-0.3591 sigma_jk=0.1959 ratio=-1.8 t=104.9s
+mode=A seed=12 eps=0.9 nsweep=5000 acc=0.589 E[kappa]=+1.7751 varF=1.8579 E[F]=-0.0752 tauK=90.7 tauF=70.6 Neff=55 Delta=-0.0828 sigma_jk=0.1379 ratio=-0.6 t=104.8s
+mode=B seed=21 eps=0.9 nsweep=2500 acc=0.584 E[kappa]=+1.2603 varF=1.1900 E[F]=+0.0237 tauK=90.7 tauF=73.3 Neff=28 Delta=+0.0703 sigma_jk=0.1448 ratio=+0.5 t=57.6s
+A11: n=5000 Delta=-0.3591 +- 0.1959
+A12: n=5000 Delta=-0.0828 +- 0.1379
+B21: n=2500 Delta=+0.0703 +- 0.1448
+A 2-group: Delta=-0.2209 +- 0.1198  (-1.84 sigma)  spread=0.2763 (=1.15 sigma_diff)
+need sigma<=0.0736 => samples x2.65 => per-group sweeps 13231

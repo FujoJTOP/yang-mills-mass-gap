@@ -1,0 +1,103 @@
+% =====================================================================
+%  sec04 : ring 3 --- kappa, kappa/4, and the reachable rate delta
+% =====================================================================
+\section{环 3：$\kappa$、$\kappa/4$ 与可达率 $\delta$}\label{sec:delta}
+
+\subsection{$\kappa=4\ln(1/u)/a$ 里的 $4$ 是壁数，不是熵}
+
+四壁直管每片 4 个 plaquette，每片每壁一个 $c_f$ $\Rightarrow$ $w(B_T)=u^{4T}=e^{-\kappa t}$，$\kappa:=4\ln(1/u)/a$。
+同一个 $4$ 亦可读作\textbf{源 plaquette 的四条边 = 四条通量链}（\codep{Y04-AUDITX01.md:11}）；它\textbf{不是} $d=4$、\textbf{不是}面数。
+这里\textbf{没有熵项}：零扭折极小\textbf{唯一}（\codep{P3-FOURWALL-DERIVATION.md} \S1.5），故没有 $\mu^T$ 形状的路径熵；
+装饰熵已单独记在 $f_{dec}=\varphi_{dec}/a=O(u/a)$ 与 $m_1^{dr}=\kappa-f_{dec}$ 里。\LT
+\src{\codep{X01-L1C.md:17}（\S0 表第三行）、\codep{:92}（\S3 第 1--3 行）；\codep{P3-DRESSED-MASS.md:35,:57}（Remark 1.5："no path entropy"）。}
+
+\subsection{$\kappa/4=\ln(1/u)/a$ 是恒等式}
+
+把 $\kappa$ 的定义式除以 4：$\kappa/4=\ln(1/u)/a$，纯代数（$4$ 与 $4$ 相消），\textbf{精确}，无余项。\LT
+独立审计逐字同判："那个 $4$ 是源 plaquette 的四条边，不是 $d=4$；零扭折极小唯一 $\Rightarrow$ 无面熵"（\codep{Y04-AUDITX01.md:11,:108,:173}）。
+\src{\codep{X01-L1C.md:93}（\S3 第 2 行）；\codep{Y04-AUDITX01.md:11,:173}。}
+
+\subsection{可达率：$\delta=\ln(1/\bar u)/a=\kappa/4-\ln(e\Delta N)/a$}
+
+环 2 给出的率\textbf{不是} $\kappa/4$，而是 $\delta=\ln(1/\bar u)/a$，$\bar u=e\Delta\,N\,u$（$\bar C\equiv N$ 已证，\S\ref{sec:cbar}）。于是
+\begin{equation}
+\delta=\frac{\ln(1/u)-\ln(e\Delta N)}{a}=\frac{\kappa}{4}-\frac{\ln(e\Delta N)}{a}
+\qquad\Longrightarrow\qquad
+\frac{\delta}{\kappa}=\frac14\Bigl(1-\frac{\ln(e\Delta N)}{\ln(1/u)}\Bigr),
+\label{eq:rate}
+\end{equation}
+其中 $e\Delta=54.3656365692$、$N=2$（$\Rightarrow e\Delta N=108.73$）。
+\LT{}（\eqref{eq:rate} 的两端是恒等变形；$e\Delta$ 已证、$\bar C\equiv N$ 已算，见 \S\ref{sec:l1} 与 \S\ref{sec:cbar}）。
+\src{\codep{X01-L1C.md:95--98}（\S3 第 4--7 行）；\codep{F07-ADJCBAR.md} \S1.4、\S4（权重比 $N$ 进 $\bar u$）；\codep{W02-L1.md:42}（上确界读法 $\delta=\kappa/4$）。}
+
+三件事必须同时说清：
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{$\delta<\kappa/4$ 严格}：可达率比 $\kappa/4$ 少一个簇常数项 $\ln(e\Delta N)/a>0$。字面取 $\delta=\kappa/4$
+会把 $(\bar C)^{\,T}$ 留在 $B$ 之外。\LT
+\item \textbf{但 $\delta>0$}：只要 $\bar u<1$（即 $\beta<0.018394$）；且 $\beta\to0$ 时 $\ln(e\Delta N)/\ln(1/u)\to0$ $\Rightarrow$ $\delta/\kappa\to\tfrac14$。\LT
+\item \textbf{不损 $I2$}：$I2$ 只要\textbf{某个} $\delta>0$，任何正窗口够用；物理的 $\approx0.5m_1$ 窗口不在 $I2$ 的定义里。\LT
+\end{enumerate}
+\src{\codep{X01-L1C.md:98--101}（\S3 第 6--8 行与结论段）。}
+
+\subsection{数值（\LE/\LM，只作量级锚）}
+
+\LM{} \textbf{第三次裁决后的参考点}（\codep{F07-ADJCBAR.md} \S4；\codep{Z12-FIXC.md:139--149}）：
+$\mathrm{SU}(2)$、$\beta=1/48$、$u=1/384$、$e\Delta=54.3656$、$\bar C=N=2$，取\textbf{精确} $\hat C=2$（每因子化点的值）
+$\Rightarrow$ $\bar u=e\Delta Nu=0.283154$、$\hat C\bar u=0.56631<1$ $\Rightarrow$ $\delta\cdot a=\ln\!\big(1/(\hat C\bar u)\big)=\mathbf{0.56862>0}$。
+若取逐 plaquette 包络 $\hat C=4$，该点越界（$1.1326>1$），同一数 $0.56862$ 出现在 $\beta=1/96$。\LT{}（恒等式）$+$\LE{}（数值）
+\src{\codep{F07-ADJCBAR.md} \S4 表；\codep{Z12-FIXC.md:143--149,:162}；$u$ 值交叉核 \codep{BETA-CONVENTION.md:187}。}
+
+\LM{} \textbf{两个旧锚点的下场（都撤）}：(a) $\beta_W=1/12$ 处 $\bar u=e\Delta Nu=1.1326>1$，
+即\textbf{该点根本不在窗内}，任何 $\delta$ 读数无意义（\codep{F07-ADJCBAR.md} \S1.4 逐字："\code{c03}' 的'首次落窗'要撤回"）；
+(b) 早先以 $\bar C=1$（即 $\bar u=e\Delta u$）记的 $\delta\cdot a=0.56862$ @$\beta=1/48$、$\hat C=4$ 也随 $\bar C\equiv N$ 作废——
+同一个数现在出现在 $\hat C=2$ 的那一格。$\delta>0$ 本身始终是 \LT{}（只要 $\hat C\bar u<1$，上式正是 $0.5663<1$）。\LM
+
+\LM{} $\beta=1/48$、$N=3$：$u=1/288=3.47\times10^{-3}$、$\ln(1/u)=5.663$、$u/\ln(1/u)=6.1\times10^{-4}$。
+这个数在 \codep{W03-L2.md} 里用来判"位移/装饰会不会把激发拉下来"，结论是排序安全（需 $u$ 大 1600 倍才危险）。\LT{}（算术）$+$\LE{}（读数）
+\src{\codep{W03-L2.md:95}（\S4.3）。}
+
+\subsection{速率梯子：$4,6,8,\dots$（本链只用最前一档）}
+
+截面是格点闭合多边形 $\Rightarrow$ 周长必为偶数且 $\ge4$；$=4$ 只有单位方（唯一）$\Rightarrow$ 速率阶梯 $4,6,8,\dots$，\textbf{没有 $5$}。
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}L{0.30\textwidth} L{0.16\textwidth} L{0.17\textwidth} L{0.28\textwidth}@{}}
+\toprule
+类 & $|P|$ & 速率 & 本文是否消费 \\
+\midrule
+四壁直管（唯一最小） & $4t/a$ & $\kappa=4\ln(1/u)/a$ & 是（环 1、环 4 的 $m_1^{dr}$） \\
+周长-6 宽管（$1\times2$ 截面） & $6t/a$ & $1.5\kappa$ & 否 \\
+两管 / 两粒子 & $8t/a$ & $2\kappa$ & 否 \\
+端点亏损 $D_{fin}-D_\infty$ & --- & $\delta\le\kappa/4$（本节） & 是（环 2、环 3） \\
+\bottomrule
+\end{tabularx}
+\end{center}
+\src{\codep{W02-L1.md:46--55}（\S2.3 表）；\codep{W03-L2.md:73--90}（\S4.1--4.2）；\codep{P3-FOURWALL-DERIVATION.md} \S3.3。}
+
+\LM{} \textbf{\codep{(3.3)} 的更正（\codep{Z03-DM.md} \S3 + \codep{Z07-HOLEB.md}）}：上表第三、四行的"$1.5\kappa$ / $2\kappa$"只对\textbf{整管型}簇成立；
+单壁平行装饰（每片 1 个 plaquette、$\ell\le T$）给 $|P|=4T+\ell$，$\ell=T$ 即 $5T\Rightarrow$ 率 $\tfrac54\kappa=1.25\kappa$。
+故 \codep{P3-DRESSED-MASS:94} 的 $\delta\ge\tfrac12\kappa-O(u/a)\ge\kappa/3$ \textbf{作废}（\codep{Z07-HOLEB.md:128}），正确值是
+\[
+\delta=\tfrac14\kappa+f_{dec},
+\]
+其中单壁 $5T$ 给 $1.25\kappa$、$m_1^{dr}=\kappa-f_{dec}$，因而 $\delta<\kappa/3$ 严格；下游 \codep{W03:140} 的 $(4/3)^2m_1^2=16/9\,m_1^2$ 一并改 $(5/4)^2=25/16\,m_1^2$（\codep{Z07-HOLEB.md:111}）。
+本链\textbf{不用}这两行：环 2 的 $\delta$ 来自尾部求和（端点亏损），不来自"更高扇区空"。\LT{}（逻辑）
+
+\LM{} \textbf{洞 C 修完后：$\hat C$ 是精确常数；乘积 $\hat C\cdot\bar C=4N=8$ 已越过旧门槛 $7.0633$}（\codep{Z08-HOLEC.md}；\codep{Z12-FIXC.md}；\codep{M07-WINDOW2.md} \S0 判词 5--6）。
+每因子化点的 $\hat C=2$ 是\textbf{精确值}（$\operatorname{Hom}(1,f\bar f f\bar f)=2$ 除以 $1\cdot1$；40 位 Weyl 积分复核，且 $\operatorname{mult}(1\in f^{2m})=$ Catalan 全表相符），但不是判据需要的那个数：判据对 $\gamma$ 求和 $\Rightarrow$ 逐 $\gamma$ 的率 $\Rightarrow$ $\sup$ 取到 $\Rightarrow$ \textbf{$\hat C=4$}（立方体 $(2^{12})^{1/6}=4$、$1024/1024$；$4000$ 个随机闭复形 $\le4$）。
+不是 $2^{\text{全部划分}}$；KP 需要的\textbf{逐 plaquette 包络}可证为 $\hat C=4$（$\sum_\ell\kappa_\ell\le4|\gamma|$、$\kappa_\ell\ge2$ 才激活、$R(\kappa)\le2^{\kappa/2}$）。
+\textbf{记账（\code{m07} 已裁决，收敛成一行）}：判据对 $\gamma$ 求和 $\Rightarrow$ 逐 $\gamma$ 率、$\sup$ 取到 $\Rightarrow\hat C=4$（[T+E]；立方体 $(2^{12})^{1/6}=4$、$1024/1024$），
+并由同一归一 $u=\beta/(2N^2)$ 定 $\bar C=N=2$。于是
+\begin{equation}
+\hat C\cdot\bar C=4N=8>7.0633
+\quad\Longrightarrow\quad
+\beta<\frac{2N^2}{\hat C\,\bar C\,e\Delta}=\frac{1}{e\Delta}=0.0183939721=0.8829107\times\tfrac1{48},
+\label{eq:window}
+\end{equation}
+\textbf{$1/48=0.0208333$ 在窗外}（超窗 $1.1326\times=e\Delta/48$）。\LT
+\par\smallskip
+\emph{Earlier printed values ($1/48$, $1.766\times1/48$, $3.532\times1/48$, $0.1472$) came from inconsistent conventions ($\hat C\in\{1,2\}$, $\bar C\in\{1,N\}$) and are superseded.}
+数值：$\beta\le1/96$（$\hat C\bar Ce\Delta u=0.56631<1$）给 $\delta\cdot a=0.56862>0$；$\beta=1/48$ 处同一量 $=1.1326>1$，$\delta$ 读数无意义。
+\src{\codep{M07-WINDOW2.md} \S0 判词 5--6、\S3--\S5（四常数核准）；\codep{Z12-FIXC.md:20,:97,:139--149,:206}；\codep{Z08-HOLEC.md} \S2；\codep{W05-TDECAY.md:65--66,:123}（\codep{E1}）；\codep{X01-L1C.md:84}。}

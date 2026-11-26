@@ -1,0 +1,279 @@
+D:\Dev\math\research\v3\species\w7\bn_residual.py:115: RuntimeWarning: divide by zero encountered in divide
+  return 1.0 / lam                                   # hat C(k)
+
+==============================================================================
+[A] N2: 2D Ising row-transfer gap mu1(L)  vs strip width L  (PBC)
+==============================================================================
+
+  K = 0.3   (K_c = 0.440687, K* = 0.616679)   exact m_inf = 2|K-K*| = 0.633358
+     L     mu1(L)        mu1 - m_inf     monotone?
+     2   0.82916823   +1.958e-01    
+     3   0.70880394   +7.545e-02    DOWN
+     4   0.66550043   +3.214e-02    DOWN
+     5   0.64791285   +1.455e-02    DOWN
+     6   0.64019916   +6.841e-03    DOWN
+     7   0.63665105   +3.293e-03    DOWN
+     8   0.63496896   +1.611e-03    DOWN
+     9   0.63415530   +7.970e-04    DOWN
+    10   0.63375610   +3.978e-04    DOWN
+    -> disordered phase: gap converges to m_inf FROM ABOVE; mu1 NON-INCREASING in L.
+    -> in BOTH cases mu1(L) is NON-INCREASING: the task's hypothesis
+       (monotone NON-DECREASING) is refuted by an exact solvable model.
+
+  K = 0.6   (K_c = 0.440687, K* = 0.310832)   exact m_inf = 2|K-K*| = 0.578335
+     L     mu1(L)        mu1 - m_inf     monotone?
+     2   0.21098600   -3.673e-01    
+     3   0.08528840   -4.930e-01    DOWN
+     4   0.03828993   -5.400e-01    DOWN
+     5   0.01830127   -5.600e-01    DOWN
+     6   0.00908416   -5.693e-01    DOWN
+     7   0.00461831   -5.737e-01    DOWN
+     8   0.00238613   -5.759e-01    DOWN
+     9   0.00124716   -5.771e-01    DOWN
+    10   0.00065754   -5.777e-01    DOWN
+    -> ordered phase: the two lowest levels are the two broken
+       sectors, split by the tunnelling factor; gap -> 0 EXPONENTIALLY in L.
+    -> in BOTH cases mu1(L) is NON-INCREASING: the task's hypothesis
+       (monotone NON-DECREASING) is refuted by an exact solvable model.
+
+==============================================================================
+[B] N2: TFIM ring gap vs L   H=-J sum sz sz - h sum sx  (tunneling regime)
+==============================================================================
+
+  h/J = 0.5
+     L      gap           log(gap)/L     monotone?
+     4   3.549043e-02   -0.834623    
+     5   1.540245e-02   -0.834646    DOWN
+     6   6.892445e-03   -0.829555    DOWN
+     7   3.145887e-03   -0.823094    DOWN
+     8   1.455848e-03   -0.816521    DOWN
+     9   6.806469e-04   -0.810274    DOWN
+    10   3.207267e-04   -0.804492    DOWN
+    11   1.520715e-04   -0.799196    DOWN
+    12   7.246879e-05   -0.794363    DOWN
+
+  h/J = 2.0
+     L      gap           log(gap)/L     monotone?
+     4   2.070981e+00   +0.182006    
+     5   2.030805e+00   +0.141686    DOWN
+     6   2.013785e+00   +0.116669    DOWN
+     7   2.006292e+00   +0.099470    DOWN
+     8   2.002912e+00   +0.086825    DOWN
+     9   2.001361e+00   +0.077092    DOWN
+    10   2.000641e+00   +0.069347    DOWN
+    11   2.000304e+00   +0.063027    DOWN
+    12   2.000145e+00   +0.057768    DOWN
+  -> h<J: gap collapses exponentially in L (tunneling); in the ordered
+     phase there is NO volume-monotonicity in the +L direction.
+
+==============================================================================
+[C] N2: RP => susceptibility is SUPER-additive under doubling (task's subadditivity is RP-forbidden)
+==============================================================================
+
+  d=1  L_torus=256  M=0.2   box m=32 -> 2m=64
+    chi(V )  (m  =(32,)) = 675.82922138
+    chi(2V)  (2m =(64,)) = 1475.62070198
+    cross = (chi(2V)-2chi(V))/2 = +61.98112961   >=0 ? True
+    chi(2V)/chi(V) = 2.183422
+    task's subadditivity  chi(2V) <= 2 chi(V) ?  False
+
+  d=2  L_torus=128  M=0.2   box m=16 -> 2m=32
+    chi(V )  (m  =(16, 128)) = 35931.81829485
+    chi(2V)  (2m =(32, 128)) = 86506.14041190
+    cross = (chi(2V)-2chi(V))/2 = +7321.25191110   >=0 ? True
+    chi(2V)/chi(V) = 2.407508
+    task's subadditivity  chi(2V) <= 2 chi(V) ?  False
+
+  d=4  L_torus=32  M=0.4   box m=4 -> 2m=8
+    chi(V )  (m  =(4, 32, 32, 32)) = 419578.78292056
+    chi(2V)  (2m =(8, 32, 32, 32)) = 1157274.35061211
+    cross = (chi(2V)-2chi(V))/2 = +159058.39238550   >=0 ? True
+    chi(2V)/chi(V) = 2.758181
+    task's subadditivity  chi(2V) <= 2 chi(V) ?  False
+
+==============================================================================
+[C'] free MASSLESS (zero mode removed): a-bar(R)=sum_{|z|<=R} C(z) is unbounded  (acid-clean)
+==============================================================================
+
+  d=2: a-bar(R) = sum over |z|_inf <= R of C(z)   (free massless)
+    R= 2   a-bar = 12.008866   a-bar/R^2 = 3.002216
+    R= 4   a-bar = 31.124505   a-bar/R^2 = 1.945282
+    R= 8   a-bar = 81.697025   a-bar/R^2 = 1.276516
+    growth factor a-bar(2R)/a-bar(R) = 2.6456  (2^d for a purely extensive object = 4)
+    -> a-bar grows without bound (massless). A functional that is
+       finite/decaying on this object PASSES the free-massless acid test.
+    control (M=0.40, same box sums):
+      R= 2   a-bar = 2.820207
+      R= 4   a-bar = 4.487650
+      R= 8   a-bar = 5.749470
+      -> the massive object SATURATES; the massless one does not.
+      CAVEAT: zero-mode-subtracted torus propagator, valid for R << L.
+
+  d=4: a-bar(R) = sum over |z|_inf <= R of C(z)   (free massless)
+    R= 2   a-bar = 2.691446   a-bar/R^2 = 0.672861
+    R= 4   a-bar = 7.979869   a-bar/R^2 = 0.498742
+    R= 8   a-bar = 20.873222   a-bar/R^2 = 0.326144
+    growth factor a-bar(2R)/a-bar(R) = 2.4380  (2^d for a purely extensive object = 16)
+    -> a-bar grows without bound (massless). A functional that is
+       finite/decaying on this object PASSES the free-massless acid test.
+    control (M=0.40, same box sums):
+      R= 2   a-bar = 1.794788
+      R= 4   a-bar = 3.595828
+      R= 8   a-bar = 5.064328
+      -> the massive object SATURATES; the massless one does not.
+      CAVEAT: zero-mode-subtracted torus propagator, valid for R << L.
+
+==============================================================================
+[D] N1: the five rate sources -- values, beta/(L,a)-behaviour
+==============================================================================
+
+  source                         value            beta-dep?   (L,a)-dep?   acid(free)   type
+  (1) W_geo>=0 (Prekopa const)   floor 0 (sign)   none        none         PASS=0       sign
+  (2) BL floor HessPhi|_0=N/12   N/12  (SU2 1/6)  none        none         same as free point-eval
+  (3) trace anomaly 11N/3        b0=11N/3         none        V-extensive  PASS!=0      coefficient
+  (4) strong-coupling radius     1/48             threshold   none         regime only  threshold
+  (5) exact Haar anchor          2Cin(2pi)=4.87530679         none        none         same as free anchor
+
+  check: Cin(2pi) = 2.4376533931,  2*Cin(2pi) = 4.8753067861
+  check: N/12 for N=2,3,4 =  ['0.166667', '0.250000', '0.333333']
+  (1) == (2):  W_geo's floor IS the Pr��kopa/Haar Hessian floor N/12 (AUDIT-R1 A1).  => only FOUR independent sources.
+
+  (L,a)-inconsistency argument [T]:
+    a modulus c that is a pure dimensionless number yields  m1*a >= c  on every
+    lattice. But along the physical line the gap in lattice units VANISHES:
+        m1*a = m_phys * a -> 0   as  a -> 0 .
+    Hence a fixed c>0 is inconsistent: it would force m1*a >= c > 0 forever,
+    i.e. m_phys >= c/a -> infinity. Any (L,a)-consistent floor must have a
+    modulus that itself scales like a (or carries a physical scale).
+    a= 0.50   m1*a (physical gap 0.7 in fm^-1) = 0.3500   -> a fixed modulus c=0.5 is VIOLATED
+    a= 0.25   m1*a (physical gap 0.7 in fm^-1) = 0.1750   -> a fixed modulus c=0.5 is VIOLATED
+    a= 0.10   m1*a (physical gap 0.7 in fm^-1) = 0.0700   -> a fixed modulus c=0.5 is VIOLATED
+    a= 0.05   m1*a (physical gap 0.7 in fm^-1) = 0.0350   -> a fixed modulus c=0.5 is VIOLATED
+
+==============================================================================
+[E] N1: finite-T decay => floor, WITH the exact rate; T=inf is the gap
+==============================================================================
+
+  Lemma (T).  nu>=0, C(t)=int e^{-s t} dnu, M0=C(0). Suppose
+        C(t) <= M0 (1+theta) e^{-c t}      for all t in [0,T].
+  Then for every eps in [0,c):
+        nu([0,eps))  <=  M0 (1+theta) exp(-(c-eps) T) .
+  Proof: C(t) >= nu([0,eps)) e^{-eps t}, plug t=T.
+  Corollary: T<inf gives nu([0,eps)) <= eta only for
+        T >= log(M0(1+theta)/eta)/(c-eps) ,
+  and nu([0,eps))=0 (a floor at eps) requires T=inf. So the "rate" one needs is
+  theta(T), the DEFECT of the decay bound -- and theta==0 (all T) IS the gap.
+
+    eta=   1e-02  eps=0.0  c=1.0  ->  T >=    4.605
+    eta=   1e-02  eps=0.5  c=1.0  ->  T >=    9.210
+    eta=   1e-04  eps=0.0  c=1.0  ->  T >=    9.210
+    eta=   1e-04  eps=0.5  c=1.0  ->  T >=   18.421
+    eta=   1e-06  eps=0.0  c=1.0  ->  T >=   13.816
+    eta=   1e-06  eps=0.5  c=1.0  ->  T >=   27.631
+    eta=   1e-10  eps=0.0  c=1.0  ->  T >=   23.026
+    eta=   1e-10  eps=0.5  c=1.0  ->  T >=   46.052
+    -> T ~ (1/(c-eps)) log(1/eta):  divergence as eps->0 (the floor is
+       the eps=0 endpoint) and as eta->0 (exactness).  No finite T.
+
+  witness: two-point family nu_h = (1-h) delta_{s=1} + h delta_{s=0}
+     h        m1^2=inf supp   r(t)=-(1/t)log C(t)/M0  at t=1,2,4,8
+       0e+00   1.00          r( 1.0)=1.00000000
+       0e+00   1.00          r( 2.0)=1.00000000
+       0e+00   1.00          r( 4.0)=1.00000000
+       0e+00   1.00          r( 8.0)=1.00000000
+      ------------------------------------------------------------
+       1e-06   0.00          r( 1.0)=0.99999828
+       1e-06   0.00          r( 2.0)=0.99999681
+       1e-06   0.00          r( 4.0)=0.99998660
+       1e-06   0.00          r( 8.0)=0.99962806
+      ------------------------------------------------------------
+       1e-02   0.00          r( 1.0)=0.98296314
+       1e-02   0.00          r( 2.0)=0.96903374
+       1e-02   0.00          r( 4.0)=0.89270760
+       1e-02   0.00          r( 8.0)=0.57156237
+      ------------------------------------------------------------
+       1e-01   0.00          r( 1.0)=0.84143492
+       1e-01   0.00          r( 2.0)=0.75298565
+       1e-01   0.00          r( 4.0)=0.53750018
+       1e-01   0.00          r( 8.0)=0.28744631
+      ------------------------------------------------------------
+
+==============================================================================
+[F] N2/N3: Fekete accounting -- correct version + the exact missing quantity
+==============================================================================
+
+  LEMMA (Fekete accounting, [T]).  a(L)>=0, deficit delta(L):=2a(L)-a(2L).
+  Then exactly (divide a(2L)=2a(L)-delta(L) by 2L):
+        a(L_n)/L_n = a(L_0)/L_0 - sum_{k<n} delta(L_k)/(2 L_k),  L_k = 2^k L_0.
+  (i)   delta >= 0 (subadditive): a(L)/L non-increasing along dyadics, so
+        Fekete gives a(L)/L -> inf >= 0  ==>  a(L) <= C L : LINEAR, not bounded.
+  (ii)  a <= A bounded  <=>  a(L)/L -> 0  <=>  the slope-drops satisfy
+        sum_k [ a(L_k)/L_k - a(L_{k+1})/L_{k+1} ]  =  a(L_0)/L_0  (EXACT equality).
+        I.e. the "deficit" bookkeeping is an IDENTITY: any deficit input strong
+        enough to conclude boundedness is EQUIVALENT to the conclusion.  There
+        is no such thing as "subadditivity + an upper bound => bounded" with the
+        two inputs weaker than the output.
+  (iii) delta = c (Theta(1)): sum_k c/(2 L_k) < c/L_0 < inf  ==> the slope only
+        drops by c/L_0: a(L_n) ~ (a_0/L_0 - c/L_0) L_n, STILL LINEAR/UNBOUNDED.
+  (iv)  delta = c L: sum_k c/2 = n c/2 grows without bound ==> a(L_n)/L_n < 0
+        for n > 2a_0/(c L_0): the hypothesis SELF-REFUTES.
+  ==> There is NO admissible strength of "negative linear term": (iii) is too
+      weak and (iv) is self-refuting.  The only remaining option is that the
+      deficit equals the extensive part exactly -- i.e. an UPPER (reverse)
+      doubling inequality, which is what H1 is.
+
+     n    a(L_n) [delta=0]  a(L_n) [delta=c]  a(L_n) [delta=cL]   a/L [delta=c]
+     0              8.000              8.000              8.000       8.0000
+     1             16.000             15.000             15.000       7.5000
+     2             32.000             29.000             28.000       7.2500
+     3             64.000             57.000             52.000       7.1250
+     4            128.000            113.000             96.000       7.0625
+     5            256.000            225.000            176.000       7.0312
+     6            512.000            449.000            320.000       7.0156
+
+  THE CORRECT VOLUME STATEMENT (what actually has to be proved, [T]).
+  Write a doubling as V + V' across a plane; chi(V u V') = chi(V)+chi(V')+2Cross,
+        Cross := sum_{x in V, y in V'} C(x-y)  (the plane-crossing correlation).
+  REFLECTION POSITIVITY gives  Cross = <Phi_V , theta Phi_V> = ||.||^2  >= 0
+  (block [C] verifies the sign numerically), hence
+        a-bar(2V) := chi(2V)/|2V| = a-bar(V) + Cross/|V|   >=  a-bar(V):
+  the density is NON-DECREASING under doubling -- the sign RP forces.
+  So bounding a-bar needs an UPPER bound on the RP-positive Cross:
+        Cross(V,V') <= C |boundary| = O(L^{d-1})      ==>  Cross/|V| = O(1/L) -> 0.
+  But Cross = O(L^{d-1}) IS "exponential clustering across the plane", i.e. the
+  gap.  Precisely: the missing inequality is
+        Cross(V,V') / |V|  ->  0 ,
+  and by positivity this is equivalent to m1 > 0.  The "linear term" the task
+  asks about is the extensive part 2*chi(V); the "deficit" is Cross; RP fixes
+  its SIGN (positive), so no term of the right sign exists.
+
+
+==============================================================================
+[G] N3: two-scale transport -- what eps( beta ) the polymer route can give
+==============================================================================
+
+  Inputs (T1-POLYMER-RG, logged): at beta=2.5
+     activity u = 1.01439   (need u < 1/lambda_a = 0.01839 for KP; 55.2x over)
+     Ursell/KP ratio rho_Ur = 4.6e3 (need < 1)
+     xi/a = 1.3  ==> block-spin steps available = log2(xi/a) in [-0.9, 0.4] = 0..1
+  Consequence 1 (stronger than the brief): the Ursell bound on the step error is
+     |eps| <= sum_{n>=1} u^n = u/(1-u) = -70.4927
+  which is NEGATIVE / meaningless: the geometric majorant has no value. So the
+  polymer route does not give eps = O(1); it gives eps UNDEFINED.
+  Consequence 2: even with a hypothetical eps = O(1) in lattice units,
+     m1*a at beta=2.5 lies in [0.53,1.88] (T1 witness G), so eps/(m1*a) = O(1):
+     no gain from one step, and there are 0-1 steps to run.
+  Consequence 3: eps must be multiplied by the number of steps and compared with
+  m1(beta_0) at beta_0<1/48; since the ladder beta_0 -> 2.5 has O(1) steps and
+  each eps = O(1)*m1, the transport inequality m1(beta') >= m1(beta)-eps is
+  VACUOUS rather than merely non-summable.
+
+  Ursell-majorant values u/(1-u) at the logged activities:
+    u= 0.0104  ->  eps_bound =      +0.0105   ok
+    u= 0.4800  ->  eps_bound =      +0.9231   ok
+    u= 0.9880  ->  eps_bound =     +82.3333   ok
+    u= 1.0140  ->  eps_bound =     -72.4286   DIVERGES/MEANINGLESS
+
+==============================================================================
+DONE
+==============================================================================

@@ -1,0 +1,26 @@
+==============================================================================
+o13_ldep.py  SU(2) beta=2.50  L=3   (3^4 lattice, 324 links, 486 plaquettes)
+mode v: k=0 constant, direction mu=1, Lie sigma_1, v=e1/L^2, ||v||=1
+==============================================================================
+[val 1] S_W quaternion vs explicit 2x2 matrices : rel.dev = 0.00e+00
+[val 2] analytic dS_W/dx vs central FD            : rel.dev = 3.14e-09
+[val 3] beta=0 Haar: E[Phi''_vv] ex=1.333335 mc=1.320083+-0.020505 | E[Phi'^2] ex=1.333337 mc=1.366685+-0.100913 | acc=0.388
+  tune eps=0.1000 -> acc=0.750
+  HMC L=3 beta=2.50: 700 traj x 8 steps, eps=0.1000, acc=0.610, 41.0s
+  ---- constrained xi=0 L=3 : moments (mean +- boot sigma) ----
+    E[Hsv|0]       = +5.922963  +- 0.060861
+    Var(G|0)       = +6.494512  +- 0.594673
+    E[Phi..|0]     = +1.367550  +- 0.036566
+    Var(Phi'|0)    = +0.264572  +- 0.063013
+    Cov(G,Phi'|0)  = -0.201062  +- 0.141103
+    Delta_dyn      = -0.571549  +- 0.608943
+    W_geo          = +1.102978  +- 0.033498
+    X_cov          = +0.402124  +- 0.282205
+    W_full         = +1.505103  +- 0.259611
+    Gpp(0)         = +0.933553  +- 0.641708
+    Var(G+Phi')    = +6.356960  +- 0.635214
+    E[G|0]         = +0.033167  +- 0.175033
+    E[Phi'|0]      = +0.011700  +- 0.039701
+    identity (I) residual |W_full - (E[Phi..]+VarG-Var(G+Phi'))| = 2.22e-16
+    <1-trU_p/2> = 0.6559   sd(Hsv)=0.5281 sd(G)=2.5482   n=560 bins=40 k=14  tau_dyn~743.3
+  FD-h check on one config: Hsv(h=0.05,0.10,0.20) = 5.326594 5.326493 5.326086

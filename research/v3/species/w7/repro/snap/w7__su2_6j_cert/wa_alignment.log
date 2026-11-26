@@ -1,0 +1,76 @@
+================================================================================================
+WA-ALIGNMENT witness   (numpy 2.4.6, scipy 1.18.1)
+================================================================================================
+
+[A] DOUBLE WELL  H=-(1/2)d^2+(g/2)(x^2-1)^2 , source o=x  (exactly solvable identity)
+    [H,x]=-d/dx , [x,[H,x]]=1  =>  Ebar := sum_n s_n w_n = 1/(2 Var x)   EXACT, every V
+        g     s1=gap s2(2nd supp)     Var(x)        w1 Ebar_spec Ebar_exact   L2bound       chi
+      0.5  7.250e-01       3.4438     0.66732   0.991131   0.749266   0.749267    0.9911 9.140e-01
+      2.0  7.918e-01       4.7958     0.57900   0.982232   0.863557   0.863560    0.9821 7.203e-01
+      8.0  4.624e-01       6.3232     0.69145   0.956187   0.723110   0.723114    0.9555 1.435e+00
+     16.0  1.914e-01       7.5450     0.81359   0.943689   0.614551   0.614559    0.9425 4.018e+00
+     32.0  3.887e-02       9.9225     0.89468   0.948802   0.558846   0.558858    0.9474 2.185e+01
+     64.0  3.033e-03      14.2506     0.93231   0.963456   0.536284   0.536302    0.9626 2.962e+02
+    100.0  3.015e-04      18.2581     0.94703   0.971625   0.527945   0.527967    0.9711 3.052e+03
+    identity max |Ebar_spec - Ebar_exact| / Ebar : 4.25e-05
+    completeness  sum_n |<n|x|0>|^2 = Var(x) : max rel err 1.33e-15
+    SOUNDNESS of Lambda (no mass in (s1,Lambda)): Lambda=1.3*s2 OVER-claims:  g=0.5: 0.9935>w1=0.9911, g=2.0: 0.9868>w1=0.9822, g=8.0: 0.9664>w1=0.9562, g=16.0: 0.9560>w1=0.9437, g=32.0: 0.9596>w1=0.9488, g=64.0: 0.9712>w1=0.9635, g=100.0: 0.9778>w1=0.9716
+    SLACK of the sharp L2 bound (w1 - L2): g=0.5: +4.7e-05, g=2.0: +1.4e-04, g=8.0: +6.7e-04, g=16.0: +1.2e-03, g=32.0: +1.4e-03, g=64.0: +8.8e-04, g=100.0: +5.2e-04
+    READ: w1 -> ~0.94..0.99 (Kramers doublet: |x_10|^2 ~ Var x) while s1 = E1-E0
+          COLLAPSES (0.73 -> 1.9e-? : Kramers) and chi = sum |c_n|^2/s_n -> infinity.
+          The L2 bound FIRES (w1 >= L2, slack < 1e-3) => it is not a YM mechanism.
+
+[B] DIRECTION: the moment is an UPPER-bound machine; no floor follows from it
+    measures with the SAME (M0=1, M1=Ebar=1.0), w1 swept:
+      w1=1         -> high mass 0.0000 at s=-   (same M0, same M1: OK)
+      w1=0.5       -> high mass 0.5000 at s=1.5000   (same M0, same M1: OK)
+      w1=0.1       -> high mass 0.9000 at s=1.0556   (same M0, same M1: OK)
+      w1=0.01      -> high mass 0.9900 at s=1.0051   (same M0, same M1: OK)
+      w1=0.0001    -> high mass 0.9999 at s=1.0001   (same M0, same M1: OK)
+      w1=0         -> high mass 1.0000 at s=1.0000   (same M0, same M1: OK)
+    => w1 is NOT a function of (M0,M1): the moment bounds w1 ABOVE (w1 <= Ebar/s1, Markov)
+       and never below.  Diagonalising finitely many moments cannot see the bottom atom
+       (corpus ROUND1 S6: d_N ~ e^{-0.46N}, 'two-way blind').
+
+[C] EXISTING 4D ENGINE (m1_4d_run_results.json, read-only; beta=2.5, SU(2), N=2000)
+      L    M0=C(0)bare         M0/V_s m_eff(t=1)  A/C(0) unsm  A/C(0) ape2
+      4      1.321e+04          206.5  -1.95e-03       0.5288       0.5276
+      6      2.527e+05           1170   1.36e-03       0.5475       0.5614
+      8      1.994e+06           3894   7.61e-04       0.5633       0.5643
+    t-profile (unsmeared, relative to C(0)):
+      L=4 : [1.      0.99526 0.9972  1.00082]
+      L=6 : [1.      1.00216 1.0008  1.00154 1.00148 1.00157]
+      L=8 : [1.      1.0014  1.00064 0.9998  1.00097 1.00079 1.00015 1.00091]
+    ARTIFACT TEST (flat C(t) refit with the same form and m1=0.03):
+      L=4 : flat-model A/C(0)=0.5308   measured A/C(0)=0.5288   |diff|=2.0e-03
+      L=6 : flat-model A/C(0)=0.5467   measured A/C(0)=0.5475   |diff|=8.2e-04
+      L=8 : flat-model A/C(0)=0.5629   measured A/C(0)=0.5633   |diff|=4.0e-04
+    READ: the quoted A/C(0) is REPRODUCED by a flat correlator => it is pure cosh
+          normalisation, NOT a measurement of f1^2/M0.
+    BOUND on any decaying component (data-driven floor = max_t|C(t)/C(0)-1|):
+      L=4 floor=4.74e-03  s1*a=0.3: r<1.05e-02 ; s1*a=0.5: r<7.50e-03 ; s1*a=1.0: r<5.48e-03
+      L=6 floor=2.16e-03  s1*a=0.3: r<3.63e-03 ; s1*a=0.5: r<2.77e-03 ; s1*a=1.0: r<2.27e-03
+      L=8 floor=1.40e-03  s1*a=0.3: r<2.00e-03 ; s1*a=0.5: r<1.62e-03 ; s1*a=1.0: r<1.42e-03
+    READ: at these volumes any state with s1*a >~ 0.3 carries <1%% of the bare
+          variance; i.e. >99%% of C(0) sits in an essentially NON-DECAYING
+          (contact / zero-mode) component.  That is why Ebar_bare ~ 0.
+
+[D] beta anchors for w1 (what is actually known, with labels)
+    beta=0   : w1 = s/4 exactly (SU(2) real fundamental, M0=1/N^2)  [T] (U3/W1)
+    beta<1/48: w1 >= w0(beta) > 0 (P3 four-wall residue)             [T] mod [KL]
+    beta=2.5 : no measurement of w1 (see [C]); strong-coupling series outside radius uK>>1 [T]
+    one-plaquette normaliser proxy w1^norm(2.5) = (s/4) M0(0)/M0(2.5) = 0.4660
+      -> positive BY CONSTRUCTION (M0=Var(O)>0 for every beta) => VACUOUS (W1 S4B)
+
+================================================================================================
+VERDICT (structural; no QED):
+  1. The double-commutator identity is TRUE and its direction is UP: it pins the FIRST
+     MOMENT of nu_w, hence gives upper bounds (w1 <= Ebar/s1) and no floor.
+  2. The only exact lower bound is the residue-level-gap lemma w1 >= (s2-Ebar)/(s2-s1):
+     sharp, and after [A] its ONLY non-computable input is s2 = the channel isolation.
+  3. It FIRES on the double well (w1~0.97, bound~0.9x) => not a YM mechanism; and in YM the
+     moment is UV-dominated (Ebar ~ a^-2 bare / ~1/t flowed) so it is vacuous until the
+     fixed-scale window of U4 S3.1 is entered -- inside which it IS isolation.
+  4. w1 is measurable in principle (a ratio of correlator quantities) but the existing
+     L=4..8 data at N=2000 are contact-dominated: no L-trend of w1 is extractable.
+================================================================================================

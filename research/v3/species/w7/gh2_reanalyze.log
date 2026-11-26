@@ -1,0 +1,56 @@
+========================================================================================================
+GH2 / S1   archived-configuration re-analysis   (same estimator: run3_apebase.correlators+A_at)
+m = 1.546 pinned, fit window t=1,2,3, 20-block delete-one jackknife.  NO new sampling.
+========================================================================================================
+
+--- run1_b25_l6.npz   beta=2.5 Ls=6 Lt=12 N=6000
+    C(0) = 8.4050 ; m_fit = 1.988
+    C(t)/C(0), t=0..11 : 1.00000  0.08076  0.01208  -0.00197  0.00133  -0.00808  -0.01084  -0.00808  0.00133  -0.00197  0.01208  0.08076
+    Rbar = 2.5164 +- 0.0460 ; w1 = 0.37292 +- 0.01753
+    ceiling e^m*C1/C0 = 0.37896 ; kappa = w1/ceiling = 0.9841 +- 0.0099
+
+--- run1_b2.5_Ls8Lt12.npz   beta=2.5 Ls=8 Lt=12 N=4152
+    C(0) = 19.8865 ; m_fit = 0.891
+    C(t)/C(0), t=0..11 : 1.00000  0.07116  0.02067  0.01871  0.00853  0.00577  -0.00217  0.00577  0.00853  0.01871  0.02067  0.07116
+    Rbar = 2.6429 +- 0.0416 ; w1 = 0.34233 +- 0.01510
+    ceiling e^m*C1/C0 = 0.33395 ; kappa = w1/ceiling = 1.0252 +- 0.0148
+
+--- run3_L8_b2.5_N12k.npz   beta=2.5 Ls=8 Lt=12 N=12000
+    C(0) = 19.8880 ; m_fit = 1.707
+    C(t)/C(0), t=0..11 : 1.00000  0.07372  0.01189  0.00548  0.00462  -0.00243  -0.00133  -0.00243  0.00462  0.00548  0.01189  0.07372
+    Rbar = 2.6075 +- 0.0355 ; w1 = 0.34273 +- 0.01189
+    ceiling e^m*C1/C0 = 0.34594 ; kappa = w1/ceiling = 0.9907 +- 0.0072
+
+--- gw7_b2.59_Ls10.npz   beta=2.59 Ls=10 Lt=15 N=12000
+    C(0) = 35.2513 ; m_fit = 2.254
+    C(t)/C(0), t=0..11 : 1.00000  0.06370  0.00651  0.00087  0.00398  0.00328  0.00179  -0.00311  -0.00311  0.00179  0.00328  0.00398
+    Rbar = 2.7537 +- 0.0334 ; w1 = 0.29174 +- 0.00937
+    ceiling e^m*C1/C0 = 0.29890 ; kappa = w1/ceiling = 0.9760 +- 0.0086
+
+--- gw7_b2.66_Ls12.npz   beta=2.66 Ls=12 Lt=18 N=12000
+    C(0) = 56.4185 ; m_fit = 2.408
+    C(t)/C(0), t=0..11 : 1.00000  0.06140  0.00543  0.00117  -0.00088  -0.00204  0.00414  0.00034  0.00041  0.00011  0.00041  0.00034
+    Rbar = 2.7904 +- 0.0368 ; w1 = 0.28049 +- 0.01072
+    ceiling e^m*C1/C0 = 0.28813 ; kappa = w1/ceiling = 0.9735 +- 0.0075
+
+========================================================================================================
+                      file  beta  Ls  Lt      N    Rbar       w1    kap w1/ceil
+           run1_b25_l6.npz 2.500   6  12   6000   2.516   0.3729  0.984   0.984
+     run1_b2.5_Ls8Lt12.npz 2.500   8  12   4152   2.643   0.3423  1.025   1.025
+     run3_L8_b2.5_N12k.npz 2.500   8  12  12000   2.608   0.3427  0.991   0.991
+        gw7_b2.59_Ls10.npz 2.590  10  15  12000   2.754   0.2917  0.976   0.976
+        gw7_b2.66_Ls12.npz 2.660  12  18  12000   2.790   0.2805  0.974   0.974
+
+--- dimension conversion  w1 = kappa*exp(m)*C1/C0 = kappa*exp(m-Rbar) ---
+[T] the 8.3% pair as the paper computes it (both rows from RUN1)
+    ln(w1_A/w1_B) = +0.0856  =  Rbar_B-Rbar_A (+0.1265)  +  ln(kappa_A/kappa_B) (-0.0409)   residual +9.93e-06
+    => w1 ratio +8.94%  <->  Delta Rbar +0.1265 = +5.03% of Rbar ; kappa carries -4.09% of the log
+[T] L_s=6 from RUN1 vs the N=12000 L_s=8 row the paper headlines
+    ln(w1_A/w1_B) = +0.0844  =  Rbar_B-Rbar_A (+0.0911)  +  ln(kappa_A/kappa_B) (-0.0067)   residual +2.55e-05
+    => w1 ratio +8.81%  <->  Delta Rbar +0.0911 = +3.62% of Rbar ; kappa carries -0.67% of the log
+[T] GW7 style: 8x12 -> 10x15
+    ln(w1_A/w1_B) = +0.1611  =  Rbar_B-Rbar_A (+0.1462)  +  ln(kappa_A/kappa_B) (+0.0149)   residual +4.98e-06
+    => w1 ratio +17.48%  <->  Delta Rbar +0.1462 = +5.61% of Rbar ; kappa carries +1.49% of the log
+[T] GW7 style: 8x12 -> 12x18
+    ln(w1_A/w1_B) = +0.2004  =  Rbar_B-Rbar_A (+0.1829)  +  ln(kappa_A/kappa_B) (+0.0175)   residual -6.77e-06
+    => w1 ratio +22.19%  <->  Delta Rbar +0.1829 = +7.01% of Rbar ; kappa carries +1.75% of the log

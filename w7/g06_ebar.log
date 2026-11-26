@@ -1,0 +1,79 @@
+== S1. definition of e-bar and the 8/e-bar round trip ==
+  definition (Z07:84,100):  e-bar := ub/u = e*D*C-bar ,  D=20, C-bar=1 (sum level)
+  e*D                = 54.365636569180904707
+  corpus number (Z12:97, Y04:117, C03:126): 54.3656365692
+  |e*D - corpus|     = 1.90953e-11
+  beta_1 = 8/e-bar   = 0.147151776469   (Z12:97 gives 1.4715178e-1)
+  8/0.147152         = 54.365553985
+  8/0.14715          = 54.3662928984   (f05 quoted the 5-digit window 0.14715)
+  round trip 8/(8/e-bar) - e-bar = 0.0
+  => e-bar(from 0.147152) = 54.3656  vs  e*D = 54.365637 : agree to 6 s.f.;
+     the 54.366 from 8/0.14715 is pure 5-digit rounding of beta_1 (err 0.000656329).
+== S2. D = 20 is a combinatorial integer (no a) ==
+  #plaquettes on L=8 torus: 24576 ; #links: 16384
+  plaquettes per link: [6]   (= 2(d-1) = 6)
+  adjacency degree of a root plaquette: 20   (= 4*(6-1) = 20)
+  => D = 20, integer, independent of the lattice spacing a  [T]
+  (cross-check: min/max degree over all plaquettes = 20 / 20)
+== S3. animal counts through a fixed plaquette (D enters only here) ==
+  a_n (n=1..5): [1, 20, 458, 11132, 280175]
+  corpus (C03:111): 1, 20, 458, 11132, 280175
+  match: True
+  a_n^(1/n): ['1.0', '4.47214', '7.70824', '10.2717', '12.2881']   -> e*D = 54.3656 is a valid envelope
+== S4. EXACTNESS: delta_A(a)*a independent of a (50 dps) ==
+     a            delta_A(a)                delta_A(a)*a          dev
+  1.0          0.568615917914            0.56861591791384524505 0.0
+  0.5          1.13723183583             0.56861591791384524505 0.0
+  0.1          5.68615917914             0.56861591791384524505 4.01e-51
+  0.01         56.8615917914             0.56861591791384524505 -2.67e-51
+  0.001        568.615917914             0.56861591791384524505 2.67e-51
+  1.0e-6       568615.917914             0.56861591791384524505 4.01e-51
+  1.0e-12      568615917914.0            0.56861591791384524505 -2.67e-51
+  ub = e-bar*u = 0.5663087143 ;  ln(1/ub) = 0.56861591791384524505
+  identity residual  delta_A(a)*a - ln(1/ub)  at a=1: -4.0091e-51
+  kappa/4*a = ln(1/u) = 4.5643481914678362385   (u = 1/96 exactly)
+  same with the truncated u=0.0104 (f05's [E] line): kappa/4*a = 4.56594947283 , delta_A*a = 0.570217199281
+== S5. what the danger would look like: e-bar -> e-bar(1+c1*a) ==
+  L := ln(1/ub_0) = 0.568615917914  (the pure numerator)
+  e-bar(a) = e-bar_0*(1+c1*a)  =>  delta_A(a)*a = L - ln(1+c1*a):
+  NOT a constant any more; the extra piece is -ln(1+c1*a) = O(1) at a=1.
+  exact flip threshold:  c1*a > e^L - 1 = 1/ub_0 - 1 = 0.7658213176  (so c1 > 0.7658213176 at a=1)
+     a        c1*a (c1=1)   delta_A*a (c1=1)   sign
+  1.0      1.0           -0.124531262646     -
+  0.7      0.7           0.0379876668517     +
+  0.5      0.5           0.163150809806      +
+  0.1      0.1           0.47330573811       +
+  0.01     0.01          0.558665587061      +
+  c1=0.5    -> sign flips for a > 1.5316426   (a=1: delta_A = 0.163150809806)
+  c1=0.766  -> sign flips for a > 0.99976673   (a=1: delta_A = -0.000101184267923)
+  c1=1.0    -> sign flips for a > 0.76582132   (a=1: delta_A = -0.124531262646)
+  c1=3.0    -> sign flips for a > 0.25527377   (a=1: delta_A = -0.817678443206)
+  => the danger, IF e-bar had an O(a) piece, is LIVE AT a=1 (where beta_1=0.147
+     and delta_A*a=0.5686 are quoted): c1 > 0.7658 (a 77% lattice artifact in
+     the animal constant) flips the sign.  c1 must be 0 EXACTLY, not 'small'.
+     same threshold if the O(a) sits in u instead: numerator = L - ln(1+c*a).
+== S6. the OTHER amplifiers (no 1/a, hence harmless) ==
+  (i) c_f = beta/(2N) + O(beta^3) => u = beta/(2N^2) + O(beta^3):
+      this shifts the NUMERATOR by O(u), relative size u/L = 0.0183193 ; margin L/u = 54.587128
+      no 1/a factor => cannot flip the sign (numerator stays ~0.57 >> u=0.0104).
+  (ii) C-hat (Z12=4) and C-bar (>=1):  numerator becomes ln(1/(C-hat*e-bar*C-bar))
+      beta=1/12 (u=1/96) C-hat=1, C-bar=1  (C03 route) numerator=0.56861592    win beta<0.147152   sign=+
+      beta=1/12 (u=1/96) C-hat=4, C-bar=1  (Z12 window) numerator=-0.81767844   win beta<0.0367879  sign=-
+      beta=1/12 (u=1/96) C-hat=4, C-bar=e  (C02 pessim.) numerator=-1.8176784    win beta<0.0135335  sign=-
+      beta=1/48 (u=1/384) C-hat=1, C-bar=1  (C03 route) numerator=1.9549103     win beta<0.147152   sign=+
+      beta=1/48 (u=1/384) C-hat=4, C-bar=1  (Z12 window) numerator=0.56861592    win beta<0.0367879  sign=+
+      beta=1/48 (u=1/384) C-hat=4, C-bar=e  (C02 pessim.) numerator=-0.43138408   win beta<0.0135335  sign=-
+      => the numerator IS a pure number in every reading, but its SIGN is a
+         beta-window statement, not an a-statement: beta=1/12 sits OUTSIDE the
+         C-hat=4 window (beta_1^fix=3.679e-2 < 0.0833, Z12:161-162), that is why
+         the C-hat=4 row at beta=1/12 is negative.  a-dependence: none anywhere.
+         => delta_A = (pure number)/a in every in-window reading; no O(1) remainder.
+== S7. verdict ==
+  (1) e-bar = u-bar/u = e*D*C-bar = e*20*C-bar ; = 54.3656365692 with C-bar=1;
+      8/e-bar = 0.1471517765 = beta_1 ; 8/0.147152 = 54.3656 : consistent [E]
+  (2) D=20 combinatorial integer, C-bar pure (tree=animal identity), e constant
+      => e-bar is a pure number, a-INDEPENDENT [T]
+  (3) delta_A = (1/a)[ln(1/u) - ln e-bar] = ln(1/ub)/a , numerator pure [T]
+      => delta_A is EXACTLY proportional to 1/a ; no O(1) remainder (S4: dev 0 to 50 dps)
+  (4) f05's danger does NOT exist ; but it is not vacuous: c1 > 0.7658 at a=1 flips (S5).
+  (5) residual a-dependence is only: 1/a^p conversions, L/a counting, e^{-cL/a}.

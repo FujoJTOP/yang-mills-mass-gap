@@ -1,0 +1,67 @@
+========================================================================================================
+STEP 1  sanity: Koszul Gamma(delta) = f/2 and Ric(delta) = (N/4) delta
+  SU(2) dim= 3  max|Gamma(delta)-f/2|=0.00e+00  max|Ric(delta)-(N/4)delta|=0.00e+00
+  SU(3) dim= 8  max|Gamma(delta)-f/2|=0.00e+00  max|Ric(delta)-(N/4)delta|=3.33e-16
+
+========================================================================================================
+STEP 2  (T1) explicit SU(2) 3x3 toy: how Hess depends on G   [W = -1, beta=2.5]
+  G=delta (bi-invariant)   6*Hess S_p = [-3.75 -3.75 -3.75]   Ric_G(diag) = [0.5 0.5 0.5]   eig(Ric) = [0.5 0.5 0.5]   rho(G,-1) = -3.50000
+  G=diag(1,1,2)            6*Hess S_p = [-3.75 -3.75 -3.75]   Ric_G(diag) = [0. 0. 2.]   eig(Ric) = [0. 0. 2.]   rho(G,-1) = -3.75000
+  G=diag(1,1,.5)           6*Hess S_p = [-3.75 -3.75 -3.75]   Ric_G(diag) = [0.75  0.75  0.125]   eig(Ric) = [0.125 0.75  0.75 ]   rho(G,-1) = -7.37500
+  G=diag(1,4,4)            6*Hess S_p = [-3.75 -3.75 -3.75]   Ric_G(diag) = [0.03125 0.875   0.875  ]   eig(Ric) = [0.03125 0.875   0.875  ]   rho(G,-1) = -3.73438
+  closed form check (SU(2), diagonal G): Ric_11 = [g1^2-(g2-g3)^2]/(2 g2 g3), cyclic
+     G=diag[1, 1, 1]: closed form [0.5 0.5 0.5]  code [0.5 0.5 0.5]
+     G=diag[1, 1, 2]: closed form [0. 0. 2.]  code [0. 0. 2.]
+     G=diag[1, 4, 4]: closed form [0.03125 0.875   0.875  ]  code [0.03125 0.875   0.875  ]
+
+========================================================================================================
+STEP 3  (Q1) sup over SHAPES of lam_min(Ric_G)   [delta = I, det G = 1]
+  SU(2): sup_G lam_min(Ric_G) = 0.500000    N/4 = 0.500000    SAME (bi-invariant optimal)
+          eigen(Ric at optimum) = [0.5 0.5 0.5]
+          best of 4000 random NON-diagonal G = 0.143317  (<= 0.502)
+  SU(3): sup_G lam_min(Ric_G) = 0.750000    N/4 = 0.750000    SAME (bi-invariant optimal)
+          eigen(Ric at optimum) = [0.75 0.75 0.75 0.75 0.75 0.75 0.75 0.75]
+          best of 4000 random NON-diagonal G = -21.021807  (<= 0.752)
+
+========================================================================================================
+STEP 4  (Q2) inf_W sup_G mu(G,W): is there a configuration that NO metric shape can fix?
+  SU(2) beta=2.5:  bi-invariant  inf_W mu = -3.500000  (at W#200, max_W mu = +4.000000)
+      formula check: -(6 c_N/N) beta + N/8 = -5.464115   [c_N from w7_pl_hess]
+      bounded shape family (1089 shapes, log-eigs in [-2,2], det=1):
+        sup_G mu  : min over W = -3.500000   <-- DECISIVE if < 0
+        inf_G mu  : min over W = -104.107198
+        bi-invariant mu min   = -3.500000
+        worst W for every shape: #200;  mu(bi-inv at that W) = -3.500000
+        boundary check at that W (condition number scan, SU(2)):
+          log-spread  0.0: mu =    -3.500000
+          log-spread  0.5: mu =    -3.771540
+          log-spread  1.0: mu =    -4.881098
+          log-spread  2.0: mu =   -16.654116
+          log-spread  3.0: mu =  -103.857818
+          log-spread  5.0: mu = -5509.616460
+  SU(3) beta=2.5:  bi-invariant  inf_W mu = -2.125000  (at W#8, max_W mu = +2.875000)
+      formula check: -(6 c_N/N) beta + N/8 = -3.511225   [c_N from w7_pl_hess]
+      bounded shape family (633 shapes, log-eigs in [-2,2], det=1):
+        sup_G mu  : min over W = -1.539402   <-- DECISIVE if < 0
+        inf_G mu  : min over W = -34239.052297
+        bi-invariant mu min   = -2.125000
+        worst W for every shape: #86;  mu(bi-inv at that W) = -1.675914
+        boundary check at that W (condition number scan, SU(3)):
+          log-spread  0.0: mu =    -1.675914
+          log-spread  0.5: mu =    -1.796705
+          log-spread  1.0: mu =    -1.918384
+          log-spread  2.0: mu =   -13.455612
+          log-spread  3.0: mu =  -100.659313
+          log-spread  5.0: mu = -5506.417955
+
+========================================================================================================
+STEP 5  the explicit worst configuration (realizable on the lattice)
+  U_1(x)=(-1)^(x2+x3+x4),  U_mu(x)=(-1)^x1 (mu=2,3,4)  on an even torus.
+  Then every (1,mu) plaque = -1 and every (mu,nu) plaque = +1, so a direction-1 link
+  sits in 6 plaques all equal to the centre element -1: Hess S_W = -(3 beta/N) delta.
+  The negative block is ISOTROPIC, so no metric shape can align anything with it;
+  (star) at t=0 then needs  Ric_G > (6 beta/N) delta.
+  SU(2) beta=2.5:  block = -3.7500 delta ;  needed lam_min(Ric_G) > 7.5000 ;  sup_G = 0.5000  ==> short by 15.00x  (Ric must be 15.00x larger)
+  SU(3) beta=2.5:  block = -2.5000 delta ;  needed lam_min(Ric_G) > 5.0000 ;  sup_G = 0.7500  ==> short by 6.67x  (Ric must be 6.67x larger)
+
+wrote mc_ricci.json

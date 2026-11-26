@@ -1,0 +1,26 @@
+{
+ "L": 6,
+ "N": 8000,
+ "bounds": [
+  1000,
+  1000,
+  1000,
+  1000,
+  1000,
+  1000,
+  1000,
+  1000
+ ],
+ "beta": 2.5,
+ "tags": [
+  "o0_plaq",
+  "o2_ape2",
+  "o4_ape4",
+  "R_2x1"
+ ],
+ "therm": 400,
+ "gap": 10,
+ "nchain": 8,
+ "wall_s": 172.2496736049652,
+ "engine": "m1_fast njit heat bath, chain-parallel"
+}

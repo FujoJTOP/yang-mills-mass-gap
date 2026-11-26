@@ -1,0 +1,206 @@
+"""GW7 -- FIXED-PHYSICAL-VOLUME beta scan (the ARCHIVE-r214b.md:217 'fixed a' scan).
+
+Why a new file: b01_scan.py hard-codes `Ls, Lt = 8, 12` (b01_scan.py:73) and is not to be
+modified. This script is a thin driver over the *same* kernel (run3_apebase._chains,
+nlev=1 raw only), so the operator/estimator is byte-identical to run1/run3/B01;
+
+    S(t) = (1/3) sum_space sum_{3 spatial planes} (1/2) Re tr U_p     (zero momentum, slice t)
+    C(t) = (1/Lt) sum_t0 <S(t0+t) S(t0)>_c
+    Rbar = -ln C(1)/C(0)          <- primary observable (tight error bar, GW2 table §1)
+    w1   = A/C(0), m = 1.546 fixed
+    m_fit = free-mass least squares on t=1..6
+
+The only change is that (Ls, Lt) come from the command line, which is what makes
+Ls*a(beta) = const executable at all.  Sequential: one point at a time, one process.
+
+Run:  py -3.12 gw7_fixeda.py --points 2.59:10:15 2.66:12:18 --n 12000 --tag gw7 --budget 560
+"""
+import os
+import sys
+import time
+import json
+import argparse
+
+import numpy as np
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+from run3_apebase import _chains, index_tables, hot, correlators, fit_A, A_at  # noqa: E402
+
+M1546 = 1.546
+OUT = []
+
+
+def P(*a):
+    s = " ".join(str(x) for x in a)
+    print(s, flush=True)
+    OUT.append(s)
+
+
+def tau_int(x):
+    x = np.asarray(x, float)
+    n = len(x)
+    y = x - x.mean()
+    v = float(np.dot(y, y)) / n
+    if v <= 0:
+        return 0.5
+    t = 0.5
+    for lag in range(1, min(n // 4, 300)):
+        c = float(np.dot(y[:-lag], y[lag:])) / (n - lag) / v
+        if c <= 0:
+            break
+        t += c
+    return t
+
+
+def jack(fn, S, Lt, nb=20):
+    idx = np.array_split(np.arange(S.shape[0]), nb)
+    vals = np.empty(nb)
+    for b in range(nb):
+        keep = np.concatenate([idx[j] for j in range(nb) if j != b])
+        Sm = S[keep][:, 0, :]
+        vals[b] = fn(correlators(Sm, Lt))
+    m = np.nanmean(vals)
+    e = np.sqrt((nb - 1) / nb * np.nansum((vals - m) ** 2))
+    return float(m), float(e)
+
+
+def point(beta, Ls, Lt, n, gap, therm, chains, threads, seed):
+    import numba
+    numba.set_num_threads(threads)
+    per = max(1, n // chains)
+    N = per * chains
+    plus, minus = index_tables(Ls, Lt)
+    U = hot(chains, Ls, Lt, seed)
+    rng = np.empty((chains, 2), np.uint64)
+    ss = np.uint64(seed)
+    for c in range(chains):
+        ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)
+        rng[c, 0] = ss | np.uint64(1)
+        s1 = ss ^ np.uint64(0x9E3779B97F4A7C15)
+        rng[c, 1] = s1 if s1 != np.uint64(0) else np.uint64(0x2545F4914F6CDD1D)
+    S = np.zeros((N, 1, Lt))
+    plaq = np.zeros(N)
+
+    t0 = time.time()
+    _chains(U[:1], rng[:1], plus, minus, beta / 2.0, 2, gap, 2, 0.5, 1, Lt,
+            np.zeros((2, 1, Lt)), np.zeros(2))
+    t_comp = time.time() - t0
+
+    t1 = time.time()
+    _chains(U, rng, plus, minus, beta / 2.0, per, gap, therm, 0.5, 1, Lt, S, plaq)
+    dtw = time.time() - t1
+
+    Sb = S[:, 0, :].reshape(chains, per, Lt)
+    pb = plaq.reshape(chains, per)
+    tau_p = float(np.mean([tau_int(pb[c]) for c in range(chains)]))
+    tau_s = float(np.mean([tau_int(Sb[c, :, 0]) for c in range(chains)]))
+
+    C = correlators(S[:, 0, :], Lt)
+    C0 = float(C[0])
+    m_fit, A_fit, edge = fit_A(C, Lt, ts=np.arange(1, 7))
+    f_bar = lambda Cc: -np.log(max(Cc[1] / Cc[0], 1e-12))
+    w_fix, w_fix_e = jack(lambda Cc: A_at(Cc, Lt, M1546) / Cc[0], S, Lt)
+    r_bar, r_bar_e = jack(f_bar, S, Lt)
+    _, s1 = jack(lambda Cc: Cc[1], S, Lt)
+    _, s2 = jack(lambda Cc: Cc[2], S, Lt)
+    snr2 = C[2] / s2 if s2 > 0 else float('inf')
+
+    res = dict(beta=float(beta), Ls=int(Ls), Lt=int(Lt), N=N, chains=chains, per=per,
+               gap=gap, therm=therm, seed=seed, sec=dtw, sec_compile=t_comp,
+               plaq=float(plaq.mean()), plaq_err=float(plaq.std(ddof=1) / np.sqrt(N)),
+               C=[float(x) for x in C], C1o0=float(C[1] / C0), C2o0=float(C[2] / C0),
+               C1e=float(s1 / C0), Rbar=float(r_bar), Rbar_err=float(r_bar_e),
+               Rbar_prop=float(-np.log(max(C[1] / C0, 1e-12))),
+               m_fit=float(m_fit), m_edge=bool(edge),
+               w1=float(w_fix), w1_err=float(w_fix_e), w1_fit=float(A_fit / C0),
+               snr2=float(snr2), tau_plaq=tau_p, tau_S0=tau_s)
+    return res, S, plaq
+
+
+def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--points', type=str, nargs='+', default=['2.59:10:15', '2.66:12:18'],
+                    help='beta:Ls:Lt ...')
+    ap.add_argument('--n', type=int, default=12000)
+    ap.add_argument('--chains', type=int, default=8)
+    ap.add_argument('--threads', type=int, default=8)
+    ap.add_argument('--gap', type=int, default=6)
+    ap.add_argument('--therm', type=int, default=1200)
+    ap.add_argument('--budget', type=float, default=560.0)
+    ap.add_argument('--seed', type=int, default=20261125)
+    ap.add_argument('--tag', type=str, default='gw7')
+    a = ap.parse_args()
+
+    pts = [(float(p.split(':')[0]), int(p.split(':')[1]), int(p.split(':')[2])) for p in a.points]
+    import numba
+    P("=" * 96)
+    P("GW7  SU(2) Wilson  FIXED PHYSICAL VOLUME  Ls*aL(beta) = 8*aL(2.5) = 2.860629e-2")
+    P(f"operator/kernel identical to run1/run3/B01 (run3_apebase._chains, nlev=1 raw) ; "
+      f"m = {M1546} fixed")
+    P(f"errors = 20-block delete-one jackknife ; numba={numba.__version__} threads={a.threads} ; "
+      f"points = {pts}")
+    P(f"N target = {a.n}/point ; gap={a.gap} therm={a.therm} ; strictly sequential ; "
+      f"budget = {a.budget:.0f}s")
+    P("=" * 96)
+
+    T0 = time.time()
+    rows = []
+    for i, (beta, Ls, Lt) in enumerate(pts):
+        left = a.budget - (time.time() - T0)
+        npts = len(pts) - i
+        n = max(a.chains, (a.n // a.chains) * a.chains)
+        if rows:
+            r0 = rows[-1]
+            vol0 = r0['Ls'] ** 3 * r0['Lt']
+            vol = Ls ** 3 * Lt
+            sweeps0 = r0['N'] * r0['gap'] + r0['chains'] * r0['therm']
+            rate0 = sweeps0 / r0['sec']                       # sweeps/s at vol0
+            est = (n * a.gap + a.chains * a.therm) * vol / vol0 / rate0
+            allow = max(1.0, left / npts)
+            if est > allow:                                   # cut N, never the point
+                sw = allow * rate0 * vol0 / vol
+                n = int(max(2 * a.chains, ((sw - a.chains * a.therm) / a.gap) // a.chains * a.chains))
+                est2 = (n * a.gap + a.chains * a.therm) * vol / vol0 / rate0
+                P(f"[budget] beta={beta:g} Ls={Ls}: projected {est:.0f}s > {allow:.0f}s "
+                  f"-> N={n} (now {est2:.0f}s)")
+        P("")
+        P(f"--- beta = {beta:g}  Ls={Ls} Lt={Lt}  N = {n} ({a.chains} x {n//a.chains})  "
+          f"gap = {a.gap}  therm = {a.therm}   (t+{time.time()-T0:.0f}s)")
+        r, S, plaq = point(beta, Ls, Lt, n, a.gap, a.therm, a.chains, a.threads,
+                           a.seed + int(1000 * beta))
+        rows.append(r)
+        P(f"[E] {r['N']} cfg in {r['sec']:.1f}s ({r['N']/r['sec']:.1f} cfg/s, "
+          f"{r['N']*a.gap/r['sec']:.0f} sweeps/s)  compile {r['sec_compile']:.1f}s  "
+          f"tau_int: plaq {r['tau_plaq']:.1f}, S(0) {r['tau_S0']:.1f} cfg")
+        P(f"[E] <1/2 Re tr U_p> = {r['plaq']:.5f} +- {r['plaq_err']:.5f}")
+        P(f"[E] C1/C0 = {r['C1o0']:.5f} +- {r['C1e']:.5f} ; C2/C0 = {r['C2o0']:.5f} ; "
+          f"S/N(2) = {r['snr2']:.1f}")
+        P(f"[E] Rbar = -ln C1/C0 = {r['Rbar']:.4f} +- {r['Rbar_err']:.4f} (jack) ; "
+          f"prop {r['Rbar_prop']:.4f}")
+        P(f"[E] m_fit = {r['m_fit']:.3f}{' (edge)' if r['m_edge'] else ''} ; "
+          f"w1(1.546) = {r['w1']:.4f} +- {r['w1_err']:.4f} ; w1_fit = {r['w1_fit']:.4f}")
+        np.savez(os.path.join(HERE, f"gw7_b{beta:g}_Ls{Ls}.npz"), S=S, plaq=plaq,
+                 beta=np.float64(beta), Ls=np.int64(Ls), Lt=np.int64(Lt),
+                 N=np.int64(r['N']), gap=np.int64(a.gap), therm=np.int64(a.therm))
+        del S, plaq
+        json.dump(rows, open(os.path.join(HERE, f"gw7_{a.tag}.json"), 'w'), indent=1)
+
+    P("")
+    P("=" * 96)
+    P(f"{'beta':>6} {'Ls':>3} {'Lt':>3} {'N':>6} {'<plaq>':>9} {'tau':>4} {'C1/C0':>9} "
+      f"{'Rbar':>7} {'+-':>6} {'m_fit':>6} {'w1':>7} {'s':>5}")
+    for r in rows:
+        P(f"{r['beta']:>6.3f} {r['Ls']:>3d} {r['Lt']:>3d} {r['N']:>6d} {r['plaq']:>9.5f} "
+          f"{r['tau_plaq']:>4.1f} {r['C1o0']:>9.5f} {r['Rbar']:>7.3f} {r['Rbar_err']:>6.3f} "
+          f"{r['m_fit']:>6.3f} {r['w1']:>7.4f} {r['sec']:>5.1f}")
+    P("")
+    P(f"[check] <plaq> strictly increasing in beta: "
+      f"{'PASS' if all(rows[j]['plaq'] < rows[j+1]['plaq'] - 3*np.hypot(rows[j]['plaq_err'], rows[j+1]['plaq_err']) for j in range(len(rows)-1)) else 'FAIL'}")
+    P(f"[wall] total {time.time()-T0:.0f}s")
+    json.dump(rows, open(os.path.join(HERE, f"gw7_{a.tag}.json"), 'w'), indent=1)
+    open(os.path.join(HERE, f"gw7_{a.tag}.log"), 'w').write("\n".join(OUT) + "\n")
+
+
+if __name__ == '__main__':
+    main()

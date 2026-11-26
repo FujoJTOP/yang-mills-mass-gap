@@ -1,0 +1,4 @@
+checked 400 random 6-sets: failures = 0
+|phi| values seen: {1: 126, 2: 146, 3: 13, 4: 63, 6: 19, 8: 20, 12: 5, 14: 1, 16: 2, 22: 1, 24: 2, 28: 1, 42: 1}
+K_6 on one link of p0: |phi^U| = 120 (expect 120)
+cube Q_3 (6 faces): |phi^U| = 64 (F07:64 says 64)

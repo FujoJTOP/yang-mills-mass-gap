@@ -1,0 +1,80 @@
+============================================================================
+[C2] corpus u = c_1/c_0 in the R5-AUDIT convention  c_n = I_n(b) - I_{n+2}(b)
+============================================================================
+  b        u=c1/c0         c0            note
+  0.02    0.010000      1.000050
+  0.10    0.049979      1.001251
+  0.50    0.247436      1.031577
+  1.00    0.480387      1.130318
+  1.50    0.688288      1.308889
+  2.00    0.866255      1.590637
+  2.50    1.014390      2.013373
+  2.63    1.048369      2.152997
+  3.00    1.135847      2.635580
+  lead's list 0.0104/0.247/0.480/1.014 vs mine: u(0.02)=0.0100 u(0.5)=0.2474 u(1.0)=0.4804 u(2.5)=1.0144
+  ==> u = 1 at  b* = 2.446918 ;  u(2.5) = 1.014390  (reproduces TRG-EKR's 1.014390 to 6 digits)
+  ==> c_0(2.5) = 2.013373 ; c_0/e^2.5 = 0.165268 (reproduces TRG-EKR's 0.165268)
+  n-growth at b = 2.5 :  c_n vs geometric/factorial reference
+    n= 0  c_n=2.013373e+00   (b/2)^n/n!=1.000000e+00   c_n/((b/2)^n/n!)=2.0134
+    n= 2  c_n=1.138489e+00   (b/2)^n/n!=7.812500e-01   c_n/((b/2)^n/n!)=1.4573
+    n= 4  c_n=1.313739e-01   (b/2)^n/n!=1.017253e-01   c_n/((b/2)^n/n!)=1.2915
+    n= 8  c_n=1.726412e-04   (b/2)^n/n!=1.478290e-04   c_n/((b/2)^n/n!)=1.1678
+    n=12  c_n=3.395275e-08   (b/2)^n/n!=3.037968e-08   c_n/((b/2)^n/n!)=1.1176
+    n=16  c_n=1.851630e-12   (b/2)^n/n!=1.698011e-12   c_n/((b/2)^n/n!)=1.0905
+    n=24  c_n=3.624141e-22   (b/2)^n/n!=3.412987e-22   c_n/((b/2)^n/n!)=1.0619
+  => c_n decays FACTORIALLY in n (ratio -> const * (b/2)^n/n!), not geometrically, not as a power.
+     In the dictionary of [C1] that is sigma_0 = infinity, i.e. the deepest possible class (E).
+
+============================================================================
+[C3] middle class f = R^{-p}(log R)^q against (star_1):  full algebra
+============================================================================
+  bookkeeping: file
+    p=1    q=0       LHS/RHS = 2*R**2/(A*C)
+    p=0    q=0       LHS/RHS = 0
+    p=-1   q=0       LHS/RHS = 0
+    p=-1   q=1       LHS/RHS = 1/(A*C*log(R)**2)
+    p=-1   q=-1      LHS/RHS = (2 - log(R))/(A*C*log(R))
+    p=2    q=0.5     LHS/RHS = R**3*(-0.25*log(R)**0.5 - 2.5*log(R)**1.5 + 6*log(R)**2.5)/(A*C*log(R)**3.0)
+  bookkeeping: consistent
+    p=1    q=0       LHS/RHS = 2*R/(A*C)
+    p=0    q=0       LHS/RHS = 0
+    p=-1   q=0       LHS/RHS = 0
+    p=-1   q=1       LHS/RHS = 1/(A*C*R*log(R)**2)
+    p=-1   q=-1      LHS/RHS = (2 - log(R))/(A*C*R*log(R))
+    p=2    q=0.5     LHS/RHS = R**2*(-0.25*log(R)**0.5 - 2.5*log(R)**1.5 + 6*log(R)**2.5)/(A*C*log(R)**3.0)
+
+  --- exponent matching in general (log-power bookkeeping), file's (star_1) ---
+  f'' ~ R^{-p-2}[ p(p+1)L^q - q(2p+1)L^{q-1} + q(q-1)L^{q-2} ]
+  RHS ~ C R^{-2p-3} L^{2q}
+  (i)  R-powers equal : -p-2 = -2p-3  =>  p = -1
+  (ii) with p=-1 the L^q term has coefficient p(p+1)=0, so LHS log-degrees = {q-1, q-2},
+       RHS log-degree = 2q.  Need 2q=q-1 AND 2q=q-2  =>  contradiction for every real q.
+  (iii) coefficient check at p=-1: f=R, f''=0 => LHS=0 while RHS=C g2N R^2/R^3 = C g2N/R != 0.
+  => even p=-1 (the file's 'only exponent') is NOT a solution: LHS vanishes identically.
+
+  --- same test, dimensionally consistent bookkeeping c1 f''/R = C f^2/R^3 ---
+  (i)  R-powers equal : -p-3 = -2p-3  =>  p = 0
+  (ii) then f = A L^q, and LHS log-degrees {q, q-1, q-2}, RHS 2q  => again contradiction
+       (and for p=0 exactly, the p(p+1) term vanishes identically: LHS = q R^{-3}(...) vs RHS R^{-3})
+  => under BOTH bookkeepings: no solution in the whole two-parameter power-log family.
+
+  --- area law check (file's sec.5 item 2) ---
+  f = e^{-sigma R^2}:  LHS/RHS (file) = 2*R**3*sigma*(2*R**2*sigma - 1)*exp(R**2*sigma)/C
+  -> ratio = e^{+sigma R^2}*(4 sigma^2 R^2-2 sigma)*R^3/C  -> +infinity: the area law fails (star_1) too.
+  NOTE: for the area law the bilinear factor is NOT f^2 -- the two arcs' minimal surfaces add,
+        W(C_xy)W(C_yx) = W(C) = f.  So 'f^2' is class-dependent (right for power, wrong for area).
+
+============================================================================
+[C1] the dictionary, written out
+============================================================================
+  Let kappa = log(entropy of surfaces of unit area)  [a combinatorial constant of the 4D lattice,
+  independent of beta and NOT a functional of c_n].  Let sigma_0 = lim_n (-log c_n)/n and
+  alpha the sub-exponential exponent of c_n ~ e^{-kappa n} n^{alpha-1}.
+     (E) W ~ e^{-sigma R^2}                <=> sigma_0 > kappa          (a GAP in the ratio test)
+     (P) W ~ R^{-p}                        <=> sigma_0 = kappa exactly, and c_n ~ e^{-kappa n} n^{-p/2-1}
+     (I) W ~ R^{-p}(log R)^q               <=> sigma_0 = kappa exactly, and c_n ~ e^{-kappa n} n^{-p/2-1}(log n)^q
+  Derivation of the exponent map: W(R) = sum_{A <= A_max(R)} Omega_A prod_p c_{j_p}; with Omega_A ~ e^{kappa A}
+  and c ~ e^{-kappa A} A^{alpha-1}, the summand is A^{alpha-1}, and A_max ~ R^2, so W ~ R^{2 alpha}.
+  Matching R^{-p} = R^{2 alpha} gives alpha = -p/2, i.e. c_n ~ e^{-kappa n} n^{-p/2-1}.  q passes through as-is.
+  What fixes (P) vs (I) is alpha and q per se, NOT kappa; but the (E) vs (P),(I) border is sigma_0 vs kappa,
+  and kappa is NOT computable from c_n.

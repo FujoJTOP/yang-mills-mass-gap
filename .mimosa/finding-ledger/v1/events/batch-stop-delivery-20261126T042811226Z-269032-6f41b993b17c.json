@@ -1,0 +1,96 @@
+{
+  "schemaVersion": "mimosa-finding-ledger-batch/v1",
+  "batchId": "stop-delivery-20261126T042811226Z-269032-6f41b993b17c",
+  "runId": "20261126T042811226Z-269032-6f41b993b17c",
+  "runStatus": "completed",
+  "coverage": {
+    "status": "complete",
+    "reasons": []
+  },
+  "source": {
+    "component": "zcode-hook",
+    "operationId": "StopDelivery"
+  },
+  "revision": "7f2b35dfa9fd42d1b8c77af3d5ca09cd01fe630e",
+  "diffHash": "db9d1c98036c0cdcf63b2f45e60df7cf61f5fc32cbc9c2c6119075d16fa666cd",
+  "rulesVersion": "unavailable",
+  "sessionHash": "1d29b03c89625abadb02cedb89a236027edbedff06a15269d3043b54b751c560",
+  "reportRef": ".mimosa/reports/task-review-sess_422eba71-6ec5-4373-8ae8-3543ec440e24-20261126T042811226Z-269032-6f41b993b17c.json",
+  "events": [
+    {
+      "eventId": "hook-b7759c46803842e0b99267d0d6a7490d",
+      "findingId": "mimosa-85dd94ac912e22d8f0d706c8",
+      "type": "finding_blocked",
+      "at": "2026-11-26T04:28:11.756Z",
+      "identity": {
+        "projectRelativeFile": "research/v3/species/w7/gw7_fixeda.py",
+        "ruleId": "security",
+        "codeEvidenceHash": "8c53f68a5bbef2586f2e7a484f6ade0f93590dec060a5cc5e582a69709c1f9b8",
+        "confidence": "stable"
+      },
+      "scope": "direct",
+      "line": 187,
+      "endLine": 187,
+      "reasonCode": "stop_rewake",
+      "reportedToAgent": true,
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "evidenceHash": "8c53f68a5bbef2586f2e7a484f6ade0f93590dec060a5cc5e582a69709c1f9b8"
+      },
+      "sequence": 0
+    },
+    {
+      "eventId": "hook-004aac18dcfe9b74be873bb29ac7d56e",
+      "findingId": "mimosa-85dd94ac912e22d8f0d706c8",
+      "type": "finding_blocked",
+      "at": "2026-11-26T04:28:11.756Z",
+      "identity": {
+        "projectRelativeFile": "research/v3/species/w7/gw7_fixeda.py",
+        "ruleId": "security",
+        "codeEvidenceHash": "8c53f68a5bbef2586f2e7a484f6ade0f93590dec060a5cc5e582a69709c1f9b8",
+        "confidence": "stable"
+      },
+      "scope": "direct",
+      "line": 201,
+      "endLine": 201,
+      "reasonCode": "stop_rewake",
+      "reportedToAgent": true,
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "evidenceHash": "8c53f68a5bbef2586f2e7a484f6ade0f93590dec060a5cc5e582a69709c1f9b8"
+      },
+      "sequence": 1
+    },
+    {
+      "eventId": "hook-8d80ec89209d6ec38a2c060d891470ef",
+      "findingId": "mimosa-1f9e67c4afeb53c2fdd17f54",
+      "type": "finding_blocked",
+      "at": "2026-11-26T04:28:11.756Z",
+      "identity": {
+        "projectRelativeFile": "research/v3/species/w7/gw7_fixeda.py",
+        "ruleId": "security",
+        "codeEvidenceHash": "3dc5c936744d5be1f33b9b16ac56c30bfdf625eec976af5ed4a69d180905ac4a",
+        "confidence": "stable"
+      },
+      "scope": "direct",
+      "line": 202,
+      "endLine": 202,
+      "reasonCode": "stop_rewake",
+      "reportedToAgent": true,
+      "evidence": {
+        "kind": "source",
+        "boundary": "candidate",
+        "producer": "deterministic",
+        "evidenceHash": "3dc5c936744d5be1f33b9b16ac56c30bfdf625eec976af5ed4a69d180905ac4a"
+      },
+      "sequence": 2
+    }
+  ],
+  "observedFindingIds": [],
+  "verifiedFiles": [],
+  "recordedAt": "2026-11-26T04:28:12.319Z"
+}

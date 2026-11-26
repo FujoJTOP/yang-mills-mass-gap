@@ -1,0 +1,103 @@
+====================================================================================================
+R07-AFFINE  (beta=2.5, theta=pi/2;  model S_W = beta[1 - c cos(rho/2) + t a w])
+====================================================================================================
+
+-- A1  structural identities (all should be 0) --
+[A1a] r01's A  minus  a*w(ρ)            : 0
+[A1b] r01's C  minus  B                 : 0
+[A1c] d_aa[-cos(ρ/2)] - B/2             : (a**2*(-rho*cos(rho/2) + 2*sin(rho/2))/4 - rho**2*sin(rho/2)/2)/rho**3
+[A1d] d_a[a*w(ρ)] - B   (=A' vs B)      : 0
+  =>  {A,B,C,D} 的秩塌缩不是 a=0 现象: 恒有 A = a w,  C = B  (= d_a B ... 见 A1c)
+
+-- A2  exact decomposition  H = K0 G + beta*Delta,  K0 = c/(2t) --
+[A2a] H - K0 G - [ t D - (c^2/4t) A ]   : 0
+[A2b] Delta = a*(-a**2*rho**2*t**2*sin(rho/2) - 6*a**2*rho*t**2*cos(rho/2) + 12*a**2*t**2*sin(rho/2) - c**2*rho**4*sin(rho/2) + 6*rho**3*t**2*cos(rho/2) - 12*rho**2*t**2*sin(rho/2))/(4*rho**5*t)
+[A2c] Delta 小 a 展开: a*(-c**2*sin(rho/2)/(4*rho*t) + 3*t*cos(rho/2)/(2*rho**2) - 3*t*sin(rho/2)/rho**3) + O(a**3)
+
+-- A3  trig-basis decomposition  f = P sin(ρ/2) + Q cos(ρ/2) + R --
+  P_G = -a**2*t/rho**3 + a*c/(2*rho) + t/rho
+  Q_G = a**2*t/(2*rho**2)    R_G = 0
+  P_H = (12*a**3*t - a*rho**2*(a**2*t + 2*a*c + 12*t) + 2*c*rho**4)/(4*rho**5)
+  Q_H = a*(-6*a**2*t + rho**2*(a*c + 6*t))/(4*rho**4)    R_H = 0
+  Q_H/Q_G = -3*a/rho**2 + c/(2*t) + 3/a
+  P_H/P_G = (6*a**3*t - a*rho**2*(a**2*t + 2*a*c + 12*t)/2 + c*rho**4)/(rho**2*(-2*a**2*t + rho**2*(a*c + 2*t)))
+  (Q_H/Q_G) - (P_H/P_G)  simplified : (-a**4*t**2 + 6*a**3*c*t - a**2*c**2*rho**2 + 12*a**2*t**2 - 6*a*c*rho**2*t - 12*rho**2*t**2)/(2*a*t*(2*a**2*t - a*c*rho**2 - 2*rho**2*t))
+  P_H - (Q_H/Q_G)*P_G    simplified : -a**3*t/(4*rho**3) + 3*a**2*c/(2*rho**3) - a*c**2/(4*rho*t) + 3*a*t/rho**3 - 3*c/(2*rho) - 3*t/(a*rho)
+  K_s - K_c  numerator over common denom, series in a: -3/a - a*c**2/(4*t**2) + O(a**2)
+
+-- A4  Wronskians (w.r.t. rho; same zero set as w.r.t. u=rho/2) --
+  W1 = W(G,H)      = a*(-a**4*rho**4*t**2 + a**4*rho**3*t**2*sin(rho) + 12*a**4*rho**2*t**2*cos(rho) + 12*a**4*rho**2*t**2 - 48*a**4*rho*t**2*sin(rho) - 48*a**4*t**2*cos(rho) + 48*a**4*t**2 - 2*a**3*c*rho**4*t*cos(rho) + 8*a**3*c*rho**4*t + 18*a**3*c*rho**3*t*sin(rho) + 48*a**3*c*rho**2*t*cos(rho) - 48*a**3*c*rho**2*t - a**2*c**2*rho**6 - a**2*c**2*rho**5*sin(rho) - 4*a**2*c**2*rho**4*cos(rho) + 4*a**2*c**2*rho**4 - 4*a**2*rho**4*t**2*cos(rho) + 16*a**2*rho**4*t**2 + 36*a**2*rho**3*t**2*sin(rho) + 96*a**2*rho**2*t**2*cos(rho) - 96*a**2*rho**2*t**2 - 6*a*c*rho**6*t - 6*a*c*rho**5*t*sin(rho) - 24*a*c*rho**4*t*cos(rho) + 24*a*c*rho**4*t - 12*rho**6*t**2 - 12*rho**5*t**2*sin(rho) - 48*rho**4*t**2*cos(rho) + 48*rho**4*t**2)/(16*rho**9)
+  W2 = W(G',H')    = a*(-a**4*rho**6*t**2 - a**4*rho**5*t**2*sin(rho) - 24*a**4*rho**4*t**2*cos(rho) + 24*a**4*rho**4*t**2 + 240*a**4*rho**3*t**2*sin(rho) + 1200*a**4*rho**2*t**2*cos(rho) + 240*a**4*rho**2*t**2 - 2880*a**4*rho*t**2*sin(rho) - 2880*a**4*t**2*cos(rho) + 2880*a**4*t**2 + 2*a**3*c*rho**6*t*cos(rho) + 12*a**3*c*rho**6*t - 38*a**3*c*rho**5*t*sin(rho) - 288*a**3*c*rho**4*t*cos(rho) - 192*a**3*c*rho**4*t + 960*a**3*c*rho**3*t*sin(rho) + 960*a**3*c*rho**2*t*cos(rho) - 960*a**3*c*rho**2*t - a**2*c**2*rho**8 + a**2*c**2*rho**7*sin(rho) + 12*a**2*c**2*rho**6*cos(rho) + 12*a**2*c**2*rho**6 - 48*a**2*c**2*rho**5*sin(rho) - 48*a**2*c**2*rho**4*cos(rho) + 48*a**2*c**2*rho**4 + 4*a**2*rho**6*t**2*cos(rho) + 24*a**2*rho**6*t**2 - 76*a**2*rho**5*t**2*sin(rho) - 576*a**2*rho**4*t**2*cos(rho) - 384*a**2*rho**4*t**2 + 1920*a**2*rho**3*t**2*sin(rho) + 1920*a**2*rho**2*t**2*cos(rho) - 1920*a**2*rho**2*t**2 - 6*a*c*rho**8*t + 6*a*c*rho**7*t*sin(rho) + 72*a*c*rho**6*t*cos(rho) + 72*a*c*rho**6*t - 288*a*c*rho**5*t*sin(rho) - 288*a*c*rho**4*t*cos(rho) + 288*a*c*rho**4*t - 12*rho**8*t**2 + 12*rho**7*t**2*sin(rho) + 144*rho**6*t**2*cos(rho) + 144*rho**6*t**2 - 576*rho**5*t**2*sin(rho) - 576*rho**4*t**2*cos(rho) + 576*rho**4*t**2)/(64*rho**11)
+  W1 series in a (a->0): a*(-3*t**2/(4*rho**3) - 3*t**2*sin(rho)/(4*rho**4) - 3*t**2*cos(rho)/rho**5 + 3*t**2/rho**5) + O(a**2)
+  W2 series in a (a->0): a*(-3*t**2/(16*rho**3) + 3*t**2*sin(rho)/(16*rho**4) + 9*t**2*cos(rho)/(4*rho**5) + 9*t**2/(4*rho**5) - 9*t**2*sin(rho)/rho**6 - 9*t**2*cos(rho)/rho**7 + 9*t**2/rho**7) + O(a**2)
+  W{sin(ρ/2),cos(ρ/2),1} = -1/8 (nonzero => 1 is NOT in their span)
+  a=0.0 rho=2.5:  W1=0.000000e+00+0.000000e+00j   W2=0.000000e+00+0.000000e+00j
+  a=0.0 rho=4.0:  W1=0.000000e+00+0.000000e+00j   W2=0.000000e+00+0.000000e+00j
+  a=0.3 rho=2.5:  W1=-7.206421e-04+0.000000e+00j   W2=-8.461580e-06+0.000000e+00j
+  a=0.3 rho=4.0:  W1=-8.067746e-04+0.000000e+00j   W2=-2.629055e-05+0.000000e+00j
+  a=1.2 rho=2.5:  W1=-4.156967e-03+0.000000e+00j   W2=-4.913544e-05+0.000000e+00j
+  a=1.2 rho=4.0:  W1=-4.651098e-03+0.000000e+00j   W2=-1.526051e-04+0.000000e+00j
+
+-- A5  u-form (u=rho/2, g=sin(u)/u):  A = a*sin(u)/(2u) = (a/2) g(u) --
+  A  in u : a*sin(U)/(2*U)
+  B  in u : (4*U**2*sin(U) + a**2*(U*cos(U) - sin(U)))/(8*U**3)
+  Co in u : (4*U**2*sin(U) + U*a**2*cos(U) - a**2*sin(U))/(8*U**3)
+  D  in u : a*(12*U**2*(U*cos(U) - sin(U)) + a**2*(-U**2*sin(U) - 3*U*cos(U) + 3*sin(U)))/(32*U**5)
+  G  in u : (2*U**2*a*c*sin(U) + t*(4*U**2*sin(U) + a**2*(U*cos(U) - sin(U))))/(8*U**3)
+  H  in u : (2*U**2*c*(4*U**2*sin(U) + U*a**2*cos(U) - a**2*sin(U)) - a*t*(-12*U**2*(U*cos(U) - sin(U)) + a**2*(U**2*sin(U) + 3*U*cos(U) - 3*sin(U))))/(32*U**5)
+  G(u)|a=0 : t*sin(U)/(2*U)    [= c/2 * sin(u)/(2u)]
+  H(u)|a=0 : c*sin(U)/(4*U)    [= (c/2) * sin(u)/(2u)]
+
+====================================================================================================
+PART B  measure = w exp(-beta S) drho on [|a|,2pi], GL n=6000 (r01 convention)
+====================================================================================================
+
+  a     E[G]      E[H]      Var(G)     Var(H)     Cov        K_LS      C_LS      R2(aff)    relres
+ 0.00 +0.804775 +0.402387 1.221530e-02 3.053824e-03 +6.107648e-03 +0.50000000 +0.00000000 1.00000000 0.000e+00
+ 0.30 +0.897072 +0.327992 1.874393e-02 2.892875e-03 +7.363638e-03 +0.39285444 -0.02442731 0.99998712 5.809e-04
+ 0.75 +0.988335 +0.206016 3.181100e-02 2.346002e-03 +8.638163e-03 +0.27154641 -0.06236272 0.99985518 2.754e-03
+ 1.20 +1.018545 +0.077074 4.804680e-02 1.502600e-03 +8.493278e-03 +0.17677097 -0.10297515 0.99917834 1.288e-02
+
+-- B1  closed form for r01's K and C :  K_LS = K0 + beta*Cov(G,Delta)/Var(G),
+     C_LS = beta*( E[Delta] - (Cov(G,Delta)/Var(G))*E[G] ),  Delta = t D - (c^2/4t) A
+  a     K_LS(num)   K0+bCov/Var   diff        C_LS(num)   C_pred      diff
+ 0.00 +0.50000000 +0.50000000 -1.11e-16  +0.00000000 +0.00000000 +0.00e+00
+ 0.30 +0.39285444 +0.39285444 -1.67e-16  -0.02442731 -0.02442731 -3.82e-17
+ 0.75 +0.27154641 +0.27154641 -1.11e-16  -0.06236272 -0.06236272 -2.08e-17
+ 1.20 +0.17677097 +0.17677097 -1.11e-16  -0.10297515 -0.10297515 -9.71e-17
+
+-- B2  exact variance identity:  Var(H) = K_LS^2 Var(G) + beta^2 Var(Delta)(1-corr^2(G,Delta))
+  a     Var(H)-K^2Var(G)   beta^2*Var(D)*(1-r^2)    rel./Var(H)
+ 0.00 +0.000000e+00       +0.000000e+00         0.000e+00
+ 0.30 +3.727251e-08       +3.727251e-08         1.445e-16
+ 0.75 +3.397402e-07       +3.397402e-07         1.563e-16
+ 1.20 +1.234626e-06       +1.234626e-06         2.265e-16
+
+-- B3  residual order in a:  relres = rms(H-KG-C)/rms(H)  ;  also sup-norm --
+  a       relres      relres/a    relres/a^2   max|H-KG-C|/max|H|   N=6000 vs N=1500
+ 0.02  2.858692e-05  1.429346e-03  7.146731e-02   6.439894e-04      2.858692e-05 vs 2.858692e-05
+ 0.05  7.362897e-05  1.472579e-03  2.945159e-02   1.629720e-03      7.362897e-05 vs 7.362897e-05
+ 0.10  1.549734e-04  1.549734e-03  1.549734e-02   3.330535e-03      1.549734e-04 vs 1.549734e-04
+ 0.20  3.451334e-04  1.725667e-03  8.628335e-03   6.988502e-03      3.451334e-04 vs 3.451334e-04
+ 0.30  5.808574e-04  1.936191e-03  6.453971e-03   1.107257e-02      5.808574e-04 vs 5.808574e-04
+ 0.50  1.250675e-03  2.501351e-03  5.002701e-03   2.106582e-02      1.250675e-03 vs 1.250675e-03
+ 0.75  2.754163e-03  3.672217e-03  4.896289e-03   3.941328e-02      2.754163e-03 vs 2.754163e-03
+ 1.00  6.062150e-03  6.062150e-03  6.062150e-03   7.239374e-02      6.062150e-03 vs 6.062150e-03
+ 1.20  1.287934e-02  1.073278e-02  8.943983e-03   1.292724e-01      1.287934e-02 vs 1.287934e-02
+
+-- B4  what happens at G's interior zero rho_z:  H = K0*0 + beta*Delta  =>  H(rho_z)=beta*Delta(rho_z)
+  a      rho_z        G(rho_z)      H(rho_z)      beta*Delta(rho_z)   K_c(rho_z)
+ 0.30  6.270680137  -3.588e-17  -0.02035663  -0.02035663    +10.477112
+ 0.75  6.216700645  +8.470e-14  -0.05302165  -0.05302165    +4.441781
+ 1.20  6.133126306  +4.987e-17  -0.08984403  -0.08984403    +2.904294
+
+-- B5  pointwise 'would-be' K:  K_c(rho)=Q_H/Q_G = K0 + 3/a - 3a/rho^2  (NOT constant)
+  a     K_c(2.5)   K_c(4.0)   K_c(6.0)   K_s(2.5)   K_s(4.0)   K_s(6.0)
+ 0.30  +10.356000  +10.443750  +10.475000  +0.308025  +0.385216  +0.412745
+ 0.75  +4.140000  +4.359375  +4.437500  +0.086012  +0.253872  +0.314655
+ 1.20  +2.424000  +2.775000  +2.900000  -0.093173  +0.147848  +0.238462
+
+-- A6  numerical check of A1c (correct version, rho=sqrt(a^2+s^2)):  d_aa[-cos(rho/2)] - B/2 --
+   d_aa[-cos(rho/2)] - B/2  = 0
+
+DONE

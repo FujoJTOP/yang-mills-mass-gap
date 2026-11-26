@@ -1,0 +1,504 @@
+% =====================================================================
+%  §3  Solvable models: exact success inside the scaling region, exact failure outside it
+% =====================================================================
+\section{Solvable models: exact success inside the scaling region, exact failure outside it}
+\label{sec:failure}
+
+\S\ref{sec:scalar} says that the whole content of H1 is $\Gpp\ge\delta$. This section evaluates
+$\Gpp$ exactly, first at $N=2$ on a 3-dimensional model, then at $N=3$ on the same model by Monte
+Carlo. The two answers are different in sign, and the difference matters: \textbf{at $N=2$ there is
+an exact zero, but it lies outside the window where the model is read; at $N=3$ the coefficient flips
+sign, so there is no zero at all and H1 holds on the entire $\mathrm{SU}(3)$ scaling region.}
+
+\subsection{Model 1: a single $\mathrm{SU}(2)$ plaquette, closed form}
+
+Take $U=\exp(\xi)$, $\xi\in\mathbb{R}^{3}$, $|\xi|<2\pi$; boundary holonomy
+$B=\exp(i\theta\sigma_3/2)$; action and flat-chart measure
+\begin{gather}
+  S=\beta\Big(1-\cos\tfrac{\rho}{2}\cos\tfrac{\theta}{2}
+            +\sin\tfrac{\rho}{2}\sin\tfrac{\theta}{2}\,u\Big),
+  \qquad u=\frac{\xi_3}{\rho},\notag\\
+  \mathrm{d}\mu = e^{-S}J\,\dd^{3}\xi,
+  \qquad J=\frac{\sin^{2}(\rho/2)}{\rho^{2}},
+  \qquad \Phi=-\log J ,
+  \label{eq:model1}
+\end{gather}
+with $v=e_3$ and conditioning $\langle v,\xi\rangle = a_0 = 0$. \LT
+\src{\code{H1A-EXACT.md} \S2.1 (same convention as \code{research/v3/species/w7/na_plaquette.py}).}
+
+On the slice there are two exact simplifications, and everything below rests on them: \LT
+\begin{enumerate}[label=(\roman*)]
+\item $\Phi$ is radial, so $\Phi'\equiv 0$ on the slice, hence $\Var(\Phi')=0$ and
+      $X=-2\operatorname{Cov}(G,\Phi')=0$;
+\item $\rho'=0$ and $u''=0$, hence $H_{vv}=\beta c\sin(r/2)/(2r)$ with $c=\cos(\theta/2)$; so at
+      $\theta=\pi$ one has $c=0$ and $E[H]=0$ \emph{exactly} (not a small number).
+\end{enumerate}
+\src{\code{H1A-EXACT.md} \S2.1, lines 84--88.}
+
+\subsection{$\theta=\pi$: closed form, zero, and a table}
+
+At $\theta=\pi$ the vacuum sits at $\xi_3=-\pi$ (far from the conditioning point); on the slice
+$S\equiv\beta$ independently of $r$, so the measure is \emph{exactly} Haar. Hence \LT
+\begin{gather}
+  \Var=\beta^{2}V_0,\qquad
+  V_0=\Var_{\mathrm{Haar}}\!\Big(\tfrac{\sin(r/2)}{r}\Big)=0.0110593,\notag\\
+  E[H]=0,\qquad \Wg = 0.2051153\ (\beta\text{-independent}),\qquad
+  X=0 ,\notag
+\end{gather}
+\begin{equation}
+  \boxed{\;\delta_{\max}(\beta)=\Gpp(\beta)=0.2051153-0.0110593\,\beta^{2},
+  \qquad \beta^{*}=\sqrt{W_0/V_0}=4.30661\;}
+  \label{eq:delta-beta}
+\end{equation}
+\src{\code{H1A-EXACT.md} \S2.1, lines 93--95; $W_0=1/(2\,\mathrm{Cin}(2\pi))=0.20511530$, see
+\code{docs/paper-v2/ch15-uvface.tex}:185--197 (\code{eq:v3anchor}).}
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}r r r r r@{}}
+\toprule
+$\beta$ & $\Var=\beta^{2}V_0$ & $E[H]$ & $\Wf=\Wg$ & $\delta_{\max}=\Var-E[H]-\Wf$\\
+\midrule
+$0.0$      & $0.000000$ & $0.000000$ & $0.205115$ & $+0.205115$\\
+$0.5$      & $0.002765$ & $0.000000$ & $0.205115$ & $+0.202350$\\
+$1.0$      & $0.011059$ & $0.000000$ & $0.205115$ & $+0.194056$\\
+$\mathbf{2.5}$ & $\mathbf{0.069121}$ & $\mathbf{0.000000}$ & $\mathbf{0.205115}$ & $\mathbf{+0.135995}$\\
+$4.0$      & $0.176949$ & $0.000000$ & $0.205115$ & $+0.028167$\\
+$\mathbf{4.30661}$ & $\mathbf{0.205115}$ & $\mathbf{0.000000}$ & $\mathbf{0.205115}$ & $\mathbf{0.000000}$\\
+$\mathbf{6.0}$ & $\mathbf{0.398135}$ & $\mathbf{0.000000}$ & $\mathbf{0.205115}$ & $\mathbf{-0.193019}$\\
+$10.0$     & $1.105929$ & $0.000000$ & $0.205115$ & $-0.900814$\\
+\bottomrule
+\end{tabular}
+\caption{Model 1 ($\theta=\pi$, $N=2$) row by row in $\beta$. The physical point $\beta=2.5$ is on the
+safe side, the zero is exactly at $\beta^{*}=4.30661$, and beyond it $\delta<0$. Numbers from
+\code{H1A-EXACT.md} \S2.1.}
+\label{tab:model1}
+\end{table}
+
+The same model at $\theta=0$ (vacuum at the conditioning point) gives the other side: on the slice
+$s=0$, so $G\equiv0$ and $\Var=0$ exactly, while $E[H]>0$; hence
+$\delta=+0.290877\,(0.5)$, $+0.729924\,(2.5)$, $+1.590639\,(6.0)$, $+2.587494\,(10.0)$, the margin
+increasing \emph{monotonically} in $\beta$. \LT
+\src{\code{H1A-EXACT.md} \S2.1, the $\theta=0$ table (lines 110--115).}
+
+\begin{keybox}
+\textbf{First reading.} At $\theta=0$ H1 is true for all $\beta$; at $\theta=\pi$ the margin falls
+like $\beta^{2}$, vanishes exactly at $\beta^{*}=4.30661$ and is negative beyond. H1 is therefore not
+$\beta$-uniform: its truth value depends on whether the \emph{vacuum sits at the conditioning point},
+not on any estimation technique. \LN
+\end{keybox}
+
+\subsection{Mechanism: exact Savvidy concavity}
+
+At $\theta=\pi$ the action $S=\beta\big(1+\sin(\rho/2)u\big)$ is \emph{linear} in $u=\xi_3/\rho$, so
+the conditioning point $\xi_3=0$ is not a minimum (the minimum is at $\xi_3=-\pi$). On that slice $S$
+does not depend on $r$, hence the measure is Haar, hence all the bending comes from the Jacobian, and
+the $\beta^{2}$ variance term drives $\Gpp$ negative. In one line: \textbf{``curvature at the
+conditioning point'' $=$ ``stability of that point''}. \LT
+\src{\code{H1A-EXACT.md} \S2.3.}
+
+This is exactly the shape of the wall recorded in \code{CLAUDE.md} \S5: $\operatorname{Hess}$ of
+$-D^{2}+2adF_B$ is indefinite, with W4 measuring $7.1\%$ negative modes. The solvable model gives the
+\textbf{exact scalar version} of it: $\delta<0 \iff$ the vacuum is not at the conditioning point. \LT
+\src{\code{H1A-EXACT.md} \S2.3; the negative-mode fraction is from \code{CLAUDE.md} \S5.}
+
+\subsection{Four models: sign table and three verdicts}
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright}p{3.6cm} r r r r l@{}}
+\toprule
+\textbf{Model} & $\Var$ & $E[H]$ & $\Wf$ & $\delta$ & \textbf{Clause}\\
+\midrule
+1 \; $\theta=\pi,\ \beta=2.5$ & $0.069121$ & $0$ & $0.205115$ & $+0.135995$ & (a)\\
+1 \; $\theta=\pi,\ \beta=6$ & $0.398135$ & $0$ & $0.205115$ & $\mathbf{-0.193019}$ & \textbf{(b)}\\
+1 \; $\theta=\pi,\ \beta=\beta^{*}$ & $0.205115$ & $0$ & $0.205115$ & $0$ & (c)\\
+1 \; $\theta=0,\ \beta=2.5$ & $0$ & $0.553061$ & $0.176864$ & $+0.729924$ & (a)\\
+2 \; 2D YM ($t\to\infty$, $\varphi=1.5$) & $0$ & $\Wg-\delta$ & $\Wg$ & $+2.0101$ & (a)\\
+3 \; P4 periodic kernel, $\beta=2.5$ & $0$ & $0$ & $0.22196$ & $+0.22196$ & (a)\\
+4 \; 1D Dirichlet string & $0$ & $\pi^{2}/L^{2}$ & $0$ & $\pi^{2}/L^{2}\to0$ & \textbf{(c)}\\
+\bottomrule
+\end{tabularx}
+\caption{Sign table over four models (\code{H1A-EXACT.md} \S3). Clauses: (a) true; (b) H1 holds with
+$\delta<0$ (exact counterexample); (c) degenerate. All numbers are deterministic quadrature or
+series, never sampling.}
+\label{tab:four}
+\end{table}
+
+Three verdicts, one by one: \LT
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{(a) twice, both carried by Haar.} 2D YM gives $\delta\ge2.0101$ (uniform in the area
+      $t=g^{2}A/2$); the P4 periodic kernel gives $\delta=0.22196\pm0.00011$ (uniform in $L$, positive
+      intercept, $q=0.849$). But both satisfy $\Var=E[H]=0$: \emph{the whole margin comes from
+      $\Wg$, with no contribution from the interaction term}.
+\item \textbf{(b) an exact counterexample.} In model 1 at $\theta=\pi$, for $\beta>\beta^{*}$, H1
+      holds with $\delta<0$. This is the closed form \eqref{eq:delta-beta}, not a numerical accident.
+\item \textbf{(c) degenerate twice.} The 1D Dirichlet string gives $\delta=\pi^{2}/L^{2}\to0$ (no
+      infrared margin); model 1 vanishes exactly at $\beta^{*}$.
+\end{enumerate}
+\src{\code{H1A-EXACT.md} \S3 and \S4. The P4 values are quoted from
+\code{docs/paper-v2/ch15-uvface.tex}:199--213 (\code{eq:v3periodic}) and
+\code{P2-PERIODIC-K0.md}, \code{P4-PERIODIC-TRANSFER.md}; 2D YM is the Migdal exact solution with
+$j\le120$ and a five-point difference of step $h=2\times10^{-5}$.}
+
+\subsection{The $N=3$ measurement: the coefficient changes sign, so there is no zero}
+
+The question left open in \S\ref{sec:scalar} was whether $\beta^{*}$ is $N$-independent. It is not.
+Repeating the same single-plaquette (patch) construction at $N=3$ by Monte Carlo gives
+\begin{equation}
+  \delta(0)=+0.34368\pm0.0077,\qquad
+  \delta(6)=+0.63393\pm0.0676,\qquad
+  \delta(10)=+0.95757\pm0.1446 ,
+  \label{eq:n3}
+\end{equation}
+i.e.\ $\delta$ \textbf{increases monotonically in $\beta$}. Fitting the same two-parameter form
+$\delta(\beta)=W_0(N)-V_0(N)\beta^{2}$ gives $V_0(3)<0$; consequently
+\begin{equation}
+  \boxed{\;\beta^{*}(3)\ \text{does not exist}\;}
+  \qquad\Longrightarrow\qquad
+  H1\ \text{holds for every }\beta>0\text{ at }N=3 .
+  \label{eq:n3nobeta}
+\end{equation}
+In particular H1 holds on the \textbf{entire $\mathrm{SU}(3)$ scaling region}, which starts at
+$\beta_c(\mathrm{SU}(3))=5.6924 \ll 10$ and includes $\beta=10$, where
+$\delta=+0.95757\pm0.1446$; and it holds on the $\mathrm{SU}(3)$ target window $\beta\approx6.6$--$7.6$
+of \code{A6-TARGET.md}. \LE
+\src{The three points and their errors are today's single-plaquette/patch Monte Carlo
+(\code{research/unconditional/w7/betastar\_n34.log}, via \code{betastar\_scaling.py}), recorded in
+\code{LOOP-RUNBOOK.md} \S11.46; the fit is the same ansatz as \eqref{eq:delta-beta} with $N=3$
+Haar data. \textbf{Caveat, stated here and not to be dropped: this is a Monte Carlo of a single
+plaquette/patch model, not of the full theory.} It establishes the $N$-dependence of the coefficient
+inside the solvable class, and nothing about $\mathrm{SU}(3)$ Yang--Mills itself. The target window
+$\beta\approx6.6$--$7.6$ is from \code{A6-TARGET.md} (\S10.4 of \code{LOOP-RUNBOOK.md}).}
+
+\begin{keybox}
+\textbf{Second reading, and it replaces the first one's emphasis.} \textbf{H1 is true inside the
+scaling region of both groups}: at $N=3$ there is no zero at all (\eqref{eq:n3nobeta}); at $N=2$ the
+zero sits at $\beta^{*}=4.30661$, which is \emph{above} $\beta_c(\mathrm{SU}(2))=2.2986$ and above the
+$\mathrm{SU}(2)$ target window $\beta\approx2.9$--$3.2$. The exact counterexample of
+\eqref{eq:delta-beta} therefore lives \emph{outside} the windows in which the model is read. \LE
+\end{keybox}
+\src{\code{LOOP-RUNBOOK.md} \S11.39 (for the $\beta^{*}$ versus $\beta_c$ comparison at $N=2$) and
+\S10.4 / \code{A6-TARGET.md} (for the target windows); the $N=3$ input is \eqref{eq:n3}.}
+
+\noindent
+\textbf{What this correction withdraws.} The previous inference --- ``$\beta_c(\mathrm{SU}(3)) >
+\beta^{*}$ implies H1 fails before the $\mathrm{SU}(3)$ scaling window opens, hence H1 is the wrong
+target for the Clay object'' --- is \textbf{withdrawn}: it assumed $\beta^{*}$ to be $N$-independent,
+and \eqref{eq:n3nobeta} shows $\beta^{*}(3)$ does not exist. \LE
+\src{The withdrawn inference is stated in \code{LOOP-RUNBOOK.md} \S11.39 (lines 1879--1885, with the
+conditional ``if $\beta^{*}$ is $N$-independent or grows slower than $\beta_c(N)$''); this document
+writes down its antecedent as false at $N=3$. The route-level no-go survives in the weaker and true
+form below.}
+
+\begin{keybox}
+\textbf{What survives as a no-go.} The \emph{$\beta$-uniform, vacuum-independent} reading of H1 is
+dead: the exact zero at $\beta^{*}=4.30661$ at $N=2$ cannot be removed by any estimate, and any proof
+of H1 that does not carry vacuum-selection information (control of $\Phi''$, i.e.\ of the sign of
+$\Wg$) will be broken by that 3-dimensional model. \LN
+\end{keybox}
+\src{\code{H1A-EXACT.md} \S0 and \S4, first item; \S2.3 for the mechanism.}
+
+\subsection{The $N$-scaling of $\beta^{*}$: $\beta^{*}(N)\propto N^{3/2}$}
+
+The $N=3$ measurement leaves one quantitative question: how far does $\beta^{*}$ move with $N$? By a
+power, and the power is fixed by the two coefficient laws, both structural.
+
+\emph{The constant term scales like $N$.} In de Wit--'t Hooft form
+$J=\prod_{i<j}[\sin(\mu_{ij}/2)/(\mu_{ij}/2)]^{2}$ and $\Phi=2\sum_{i<j}\varphi(\mu_{ij})$ with
+$\varphi''(0)=1/12$: there are $N(N-1)/2$ factors, but each carries the weight $(\nu_i-\nu_j)^{2}$, and
+\begin{equation}
+  \sum_{i<j}(\nu_i-\nu_j)^{2} \;=\; N\sum_i\nu_i^{2} \;=\; N\,\mathrm{Tr}\,v^{2} \;=\; \tfrac{N}{2}
+  \qquad\Longrightarrow\qquad
+  \Phi''(0)=\tfrac16\sum_{i<j}(\nu_i-\nu_j)^{2}=\tfrac{N}{12},
+  \label{eq:phipp}
+\end{equation}
+i.e.\ the $N^{2}$ factors collapse into a \emph{single} $N$. The identity was checked digit by digit for
+$N=2,\dots,6$ and at $N=2$ reproduces $\Phi_\rho/\rho|_{\rho=0}=1/6$ of model 1. \LT
+Measured: $W_0(2)=0.2051153$, $W_0(3)=0.3453\pm0.001$, $W_0(4)=0.4908\pm0.04$, i.e.\ $W_0\propto N$;
+both $N^{0}$ and $N^{2}$ are excluded by the data. \LE
+
+\emph{The quadratic coefficient scales like $1/N^{2}$.} With $G=-\beta\,\partial_v f$ and
+$f=(1/N)\operatorname{Re}\mathrm{Tr}(UB)$ --- the $1/N$ normalization of the Wilson action --- one has
+$\partial_v f=O(1/N)$, hence $V_0=\operatorname{Var}(\partial_v f)=O(1/N^{2})$; measured
+$V_0(2)=0.0110593$, $V_0(3)\approx9.0\times10^{-4}$, $V_0(4)\approx4.9\times10^{-4}$. \LE
+
+Therefore
+\begin{equation}
+  \beta^{*}(N)=\sqrt{W_0(N)/V_0(N)}\;\propto\;\sqrt{N\big/(N^{-2})}=N^{3/2},
+  \label{eq:n32}
+\end{equation}
+and the comparison with $\beta_c$ runs as follows.
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}r r r r r@{}}
+\toprule
+$N$ & $\beta^{*}$ (two-term law) & $\beta^{*}$ (bare $N^{3/2}$ law) & $\beta_c$ & $\beta^{*}/\beta_c$\\
+\midrule
+$2$ & $\mathbf{4.30661}$ & $4.30661$ & $2.2986$ & $\mathbf{1.87}$\\
+$3$ & $\mathbf{19.6}$ & $7.91$ & $5.6924$ & $\mathbf{3.45}$\\
+\bottomrule
+\end{tabular}
+\caption{The zero of the two-term law against the deconfinement $\beta_c$, both in the same Wilson
+normalization $\beta=2N/g^{2}$ (so the ratio is meaningful). The bare $N^{3/2}$ law, normalized at
+$N=2$, is the more conservative column; both entries still exceed $\beta_c$. Numbers from
+\code{BETASTAR-N.md} \S2.}
+\label{tab:betastar}
+\end{table}
+
+\noindent
+\textbf{Both groups therefore sit on the same side.} At $N=2$ the two-term law is the closed form
+\eqref{eq:delta-beta}: $\beta^{*}(2)=4.30661$ against $\beta_c(\mathrm{SU}(2))=2.2986$, a ratio of
+$1.87$. At $N=3$ the same law with the measured coefficients gives
+$\beta^{*}(3)=\sqrt{0.3453/9.0\times10^{-4}}\approx19.6$, against
+$\beta_c(\mathrm{SU}(3))=5.6924$, a ratio of $3.45$; even the bare $N^{3/2}$ law, the conservative
+column, gives $7.91>5.6924$. The ratio $\beta^{*}/\beta_c$ thus grows from $1.87$ to $3.45$ with $N$:
+\textbf{the window in which H1 holds opens faster than the scaling region does.} \LE
+
+\begin{keybox}
+\textbf{Third reading, and the one that closes this section.} $\beta^{*}(N)\propto N^{3/2}$ puts
+$\beta^{*}(3)\approx19.6\gg\beta_c(\mathrm{SU}(3))=5.6924$ and
+$\beta^{*}(2)=4.30661>\beta_c(\mathrm{SU}(2))=2.2986$, with $\beta^{*}/\beta_c=1.87\to3.45$. \textbf{H1
+therefore holds on the scaling region of both groups.} The exact failure of \eqref{eq:delta-beta} happens
+only \emph{outside} the $\mathrm{SU}(2)$ $\beta_c$, where the model is no longer read as a lattice
+approximation of Yang--Mills at all. \LE
+\end{keybox}
+
+\noindent
+\textbf{Why $19.6$ is the conservative entry, not the sharp one.} For $N\ge3$ the term $E[H\mid0]$ stops
+vanishing, so $\delta$ carries a positive linear piece $a\beta$ ($a>0$, $a\propto1/N$) on top of
+$W_0-V_0\beta^{2}$; the measured $\delta$ is monotone increasing (\eqref{eq:n3}) and a two-parameter fit
+returns $V_0(3)<0$, so on the measured range $0\le\beta\le10$ there is no zero at all and the sharp
+statement remains ``$\beta^{*}(3)$ does not exist''. Both readings give the same verdict, and the verdict
+is quoted from \eqref{eq:n32} and \tablename~\ref{tab:betastar}, not from an extrapolation. \LE
+\src{\code{BETASTAR-N.md} \S1.1--\S1.2 ($\Phi''(0)=N/12$, $W_0\propto N$), \S2 ($V_0\propto1/N^{2}$,
+$\beta^{*}(N)\propto N^{3/2}$, the $\beta^{*}/\beta_c$ table), \S3 (the $2N/g^{2}$ normalization, without
+which the ratio would be meaningless) and \S4 (the $a\beta$ term; the sentence that $19.6$ is the
+conservative value, the third term only pushing the zero further out); summarised in
+\code{LOOP-RUNBOOK.md} \S11.48, with the three $\delta$ points of \eqref{eq:n3} in \S11.46. Running code:
+\code{research/unconditional/w7/betastar_scaling.py}. \textbf{Caveat, again not to be dropped: single
+plaquette/patch Monte Carlo, not the full theory}; the $N$-scaling is a statement at the same $a$ and in
+the same $\beta$ normalization, and no $a\to0$ limit is taken.}
+
+\subsection{External validation, and one self-correction kept on the record}
+
+\textbf{External validation.} Five numbers agree digit by digit with the archived corpus (relative
+difference $<10^{-6}$): $\Gpp(0)=0.205115$, $\Gpp(2.5)=0.135995$, $\Gpp(6)=-0.193019$,
+$\Var(1)/\beta^{2}=0.0110593$, $\beta^{*}=4.30661$. \LE
+\src{\code{H1A-EXACT.md} \S2.4, against the \code{[P1]} table and the \code{[A0]} line of
+\code{research/v3/species/w7/na_plaquette.log}.}
+
+\noindent
+\textbf{Self-correction kept on the record.} The first version of the script returned
+$\Gpp(2.5)=+0.5427$; the cause was double counting the second-order term of $\sin(\rho/2)u$, namely
+$s\cos(r/2)/(2r)$, which vanishes because $u''=0$ and $\rho'=0$. The test is the archived
+$E[H]\equiv0$. \LE
+\src{\code{H1A-EXACT.md} \S2.4, last paragraph; errata table row 5 of \S\ref{sec:errata}.}
+
+\subsection{The exact window, and the measured one}
+\label{sec:window}
+
+The certificate of \S\ref{sec:scalar-cert} is a statement at fixed $\theta$. Two moment inequalities
+extend it to a region of $(\beta,\theta)$, and the region comes in two grades whose difference is one
+unproved monotonicity.
+
+\begin{keybox}
+\textbf{Theorem (the analytic window).} On the $\xi_{3}=0$ slice of model~1, with
+$w(\rho)=\sin(\rho/2)/\rho$ and $\mu\propto e^{-\beta(1-c\cos(\rho/2))}\sin^{2}(\rho/2)\rho^{-1}
+\mathrm{d}\rho$,
+\[
+\Var(G)\le E[H]\iff 2\beta s^{2}\Var_{\mu}(w)\le c\,\langle w\rangle
+\qquad\text{and}\qquad
+\beta\sin^{2}\tfrac{\theta}{2}\le\cos\tfrac{\theta}{2}\ \Longrightarrow\ \Var(G)\le E[H],
+\]
+hence $H1$ holds for every $\beta\ge\beta_{0}(\theta)=\sin^{2}(\theta/2)/\cos(\theta/2)$: at
+$\beta=2.5$ this covers $\theta\le0.388\pi$ and at $\beta=6$ it covers $\theta\le0.256\pi$. \LT
+\end{keybox}
+\src{\code{Q04-WEYL.md} \S4.1 (the pointwise ratio $H=\tfrac12\cot(\theta/2)G$ makes the comparison one
+inequality, and $0\le w\le\tfrac12$ gives the sufficient condition); \code{R02-CRIT.md} \S3 (the same
+implication, now with a proof of the moment inequality rather than an observation about the range of
+$w$); \code{R09-FLUCT.md} \S4 (third derivation, same threshold); \code{docs/paper-v2/ch19-h1-status.tex}, subsection ``one window, at two grades'', for the two grades
+side by side.}
+
+\noindent
+The measurement widens this by a factor $2.3$ in $\theta$ at $\beta=2.5$ and $3.1$ at $\beta=6$, and
+the widening is exactly the constant that the stronger of the two moment inequalities buys. With $R:=\langle w\rangle/\Var(w)\ge2$ proved
+unconditionally, the numerical minimum over $\gamma=\beta c\in[0,\infty)$ is
+\begin{gather}
+R_{\min}=\frac{2N_{1}Z}{N_{2}Z-N_{1}^{2}}=32.3177375272,\qquad
+Z=\tfrac12\mathrm{Cin}(2\pi),\notag\\
+N_{1}=\tfrac34[\mathrm{Cin}(3\pi)-\mathrm{Cin}(\pi)],\qquad
+N_{2}=\mathrm{Cin}(4\pi)-\mathrm{Cin}(2\pi),
+\label{eq:Rmin}
+\end{gather}
+attained at $\gamma=0$ (a boundary value, hence exact in $\gamma$), so
+\begin{gather}
+\beta\le\beta_{c}(\theta):=\tfrac12 R_{\min}\frac{\cos(\theta/2)}{\sin^{2}(\theta/2)}
+=16.15887\,\frac{\cos(\theta/2)}{\sin^{2}(\theta/2)}\notag\\
+\Longrightarrow\qquad
+\theta\le0.904\pi\ \ (\beta=2.5),\qquad \theta\le0.786\pi\ \ (\beta=6).
+\label{eq:betac}
+\end{gather}
+\textbf{That is \LE, not \LC}: the only step missing between \eqref{eq:betac} and a theorem is the
+monotonicity of $\Var(w)$ in $\gamma$ (equivalently $R\ge32.32$), and with the proved bound $R\ge2$ the
+widening shrinks to $36\%$--$39\%$ ($\theta\le0.527\pi$, $0.356\pi$), which is also measured because the
+better constant there is $R_{\min}=4.017$ on the multi-period window.
+\src{\code{R05-WCF.md} \S2--\S5 (\eqref{eq:Rmin}: the closed forms at $\beta=0$, the $1/\gamma$
+expansion, the $41$-point table, and the minimum at $\gamma=0$), \S6.2--\S6.3 (\eqref{eq:betac} and the
+sentence naming the missing monotonicity); \code{R02-CRIT.md} \S4 (the $R_{\min}=4.017$ column and its
+dependence on the window $\Lambda$).}
+
+\noindent
+Two boundaries travel with the window, and one of them is quantitative enough to close the question.
+
+\textbf{(1) No sharpening of these two legs makes the window $\theta$-uniform} \LN. The criterion is a
+product, $\beta\,w(\theta)\ge\tfrac19$ with $w=\cos^{3}(\theta/2)/\sin^{2}(\theta/2)$ and $w(\pi)=0$, so
+$\sup_{\theta}\beta_{0}=+\infty$ and no reparametrization can help, the product form being preserved;
+quantitatively $\beta_{0}\asymp8/(9(\pi-\theta)^{3})$, which reproduces the tabulated
+$2.87\times10^{4}$ at $\theta=0.99\pi$ to three digits. \textbf{(2) At $\theta=\pi$ the premises
+collapse} \LM: $c=0$ forces $B=\beta c\equiv0$, the measure is exactly Haar, $\Var=\beta^{2}V_{0}$ is
+unbounded, $V_{\infty}=+\infty$ and $c_{\infty}=0$ with $E[H_{vv}]\equiv0$ --- the variance leg is
+vacuous and the mean-side leg is vacuous. This is the same slice on which
+$\Gpp=0.2051153-0.0110593\beta^{2}$ is exact, so certificate and counterexample are the two faces of
+one degeneration. One honest widening on the other side: $\Var\le\beta^{2}V_{0}$ for all $\theta$ gives
+$H1$ for $\beta\lesssim3.9$ at every $\theta$ (\LC, since $\inf\Wf$ is a table infimum); what remains
+uncovered is the bounded rectangle $\{\theta>0.8335\pi\}\times\{\beta\in(3.9,6]\}$, and it contains
+$(\theta=\pi,\beta>4.30661)$, i.e.\ a point where H1 is \emph{false} rather than unproved.
+\src{\code{P20-THETA.md} \S4.1 (the product form and the impossibility), \S4.2 (the anchors
+$\beta_{0}=2.50$ at $\theta_{\max}=0.7792\pi$ and $6.00$ at $0.8335\pi$), \S3 (the premise-collapse
+table), \S4.4--\S4.5 (the small-$\beta$ leg, $\beta_{\rm unif}\approx3.9$, and the residual rectangle,
+which contains a false point). \textbf{Note on a numerical coincidence}: \eqref{eq:betac} at $\beta=6$
+gives $0.786\pi$, within $0.9\%$ of the $\beta_{0}$-route value $0.7792\pi$; the two routes compute
+different functionals ($\Delta_{\mathrm{dyn}}\ge0$ versus $\Gpp\ge0$ with $\Wf$ included), so agreement
+is not required and the closeness is evidence about the geometry of the slice, not a derivation
+either way.}
+
+\subsection{The lattice ledger: $L=2$ and $L=3$}
+\label{sec:lattice-ledger}
+
+The measured side of the same quantity is a Monte Carlo on the four-dimensional model, with the split
+observation $S_{W}$ versus $\Phi$ maintained per sample so that
+$\Delta_{\mathrm{dyn}}+\Wg+X-\Gpp$ is checked on every configuration (sum check $\le1.6\times10^{-6}$
+at $\beta=6$).
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{6pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}llll@{}}
+\toprule
+volume & $\beta$ & $\Gpp$ & statistics\\
+\midrule
+$L=2$ & $1$   & $+0.2835\pm0.0049$ & $27.0\sigma$ (jk)\\
+$L=2$ & $2.5$ & $+0.4116\pm0.0421$ & $4.0\sigma$ (jk); $+0.3942\pm0.0258$ at $6.0\sigma$ on a
+$1.5\times10^{4}$-sweep run\\
+$L=2$ & $4$   & $+0.5108\pm0.0939$ & $2.3\sigma$ (jk)\\
+$L=2$ & $6$   & $+0.6018\pm0.0589$ & $10.2\sigma$; five estimators span $4.1$--$10.2\sigma$\\
+$L=3$ & $2.5$ & $+0.3396\pm0.0585$ & $5.80\sigma$ (jk) / $2.24\sigma$ ($\tau$)\\
+\bottomrule
+\end{tabular}
+\caption{$\Gpp=E[\kappa]-\Var(F)$ on the lattice, mode $A$, $\|v\|=1$, finite-difference derivatives at
+$h=10^{-3}$. Every entry is \LE: one volume window, one mode, no $a\to0$.}
+\label{tab:ledger}
+\end{table}
+
+\noindent
+Three readings. \emph{(i) The sign is uniform in $\beta$ on this window}: the four $L=2$ central values
+increase monotonically $0.2835\to0.4116\to0.5108\to0.5913$ with no interior minimum and no crossing, and
+$16/16$ chains are positive (weakest $+0.1338$ at $\beta=4$). The mechanism is a competition that does
+not flip: $D/S$ rises $0.505\to0.787\to0.848\to0.889$, approaching $1$ without crossing, so
+$\Gpp=E[\kappa](1-D/S)>0$ with a shrinking margin. \textbf{The extrapolation beyond $\beta=6$ is an
+extrapolation}: a quadratic fit puts the zero near $17.3$, a cubic near $14.9$, and neither is a result.
+\emph{(ii) At $\beta=6$ the statistics suffice only after the estimator is audited}: $4$ chains
+$\times\,5\times10^{3}$ sweeps gave $+0.5913$ at $1.3\sigma$ because $\tau_{K}=100$--$240$; $8$ chains
+$\times\,2\times10^{4}$ sweeps give $+0.6018$ with jk25 $10.2\sigma$, eight-chain scatter
+$9.2\sigma$, long-block batch means $8.2\sigma$, $\tau_{z}$-corrected $7.3\sigma$ and the old
+$\tau_{F}$ formula $4.1\sigma$; $8/8$ chains positive, sign test $p=3.9\times10^{-3}$,
+$\chi^{2}/\mathrm{dof}=1.22$. The single estimator below $5\sigma$ is a formula mismatch: it applies
+$\tau_{F}$ to the fluctuation of the sample variance, whose correlation time is $\tau_{z}=8.7$--$14.1$,
+and treats a fourth moment as Gaussian. \emph{(iii) There is no volume dependence}: at $\beta=2.5$,
+$L=2$ gives $+0.3942$ and $L=3$ gives $+0.3396$, a difference of $-0.055\pm0.064$ ($0.85\sigma$), while
+$\Var(F)$ agrees to $0.7\%$ ($1.535$ against $1.5458$). The $L=3$ number also settles a sampler bug: the
+earlier $-0.177\pm0.062$ came from a chain with no fundamental-domain constraint, which wandered onto
+the repeated flat chart where $\Phi\sim2\log(r/2)$ supplies no restoring force; with the hard rejection
+$|x_{l}|<2\pi$ the variance falls from $1.8917$ to $1.5458$ and the sign flips.
+\src{\code{P19-BETA-AT-L2.md} \S0 and \S2; \code{Q13-BETA6.md} \S0--\S3; \code{P01-L3.md} \S0--\S1;
+\code{O24-L2-PUSH.md} \S2 and \S5; \code{LOOP-RUNBOOK.md} \S11.160--\S11.161 for the combined
+statement.}
+
+\subsection{Where exactness stops: $143$ dimensions and seven}
+\label{sec:exactness-stops}
+
+\textbf{The volume.} At $L=2$ there is no finite-dimensional reduction. The dimension count is exact:
+$192=4L^{4}\cdot3$ link components, minus $48$ for the gauge group, minus one for the conditioning
+$\langle v,X\rangle=a_{0}$, leaves
+\begin{equation}
+192-48-1=143 ,
+\label{eq:143}
+\end{equation}
+and $143\gg20$ is the criterion for ``no interval arithmetic''. Symmetry is a theorem, not a hope:
+$W_{4}$ (order $384$) and the space group (order $6144$) are finite, so every orbit is a finite set and
+$\dim(M/G)=\dim M$; what a finite group buys is the measure factor $1/6144$ and a three-dimensional
+invariant tangent space at the flat point, which is the free field where $\Gpp\equiv0$ and the acid test
+fails. The per-link one-dimensional factorization that made the certificate possible does not exist
+here, because $S_{W}$ is a sum over plaquettes; the by-parts pairing giving $NS=1/4$ is an accident of
+one plaquette. What is available instead is a statistical certificate whose price is explicit: a
+bounded-part-plus-tail-volume Hoeffding bound needs $N\approx3\times10^{8}$ samples ($\approx35$ days
+on one core). One exact simplification does exist, at the corner $a_{0}=16\pi$:
+$\rho_{v}\propto\varepsilon^{191}$ and $\Gpp=+191/\varepsilon^{2}\to+\infty$ --- $Q08$'s
+$+3/(2\pi-a)^{2}$ promoted to $L=2$ --- but the corner is $16\pi$ from the conditioning point. \LN
+\src{\code{R04-L2CERT.md} \S0--\S2 (the count, the rank checks, the finite-group theorem, the orbit
+counts, and the $12$-dimensional toron decomposition $192=45+12+135$), \S3 (the cost of a rigorous
+statistical certificate), \S4.1 (that $\theta=\pi$ does not simplify at $L=2$, and the $3n-1$ corner law
+with $n=64$); \code{Q08-LARGEA.md} \S2.1 for the single-plaquette version.}
+
+\noindent
+\textbf{The group.} $\mathrm{SU}(3)$ is measured, not proved, and the two numbers must be quoted
+together because their signs differ:
+\begin{equation}
+\mathrm{gap}\big|_{\text{weight }|\Delta|^{2}e^{-S_{W}}}=+0.10172408,\qquad
+\mathrm{gap}\big|_{\text{pure Haar}}=-0.23580249
+\qquad(\theta=\pi,\ \beta=2.5,\ a=0).
+\label{eq:su3gap}
+\end{equation}
+Two earlier attempts are dead, for reasons worth keeping. The first inferred $S\equiv D$ from
+$S_{W}\equiv\beta$ on the slice; that is invalid, because $S_{W}\equiv\beta$ is a \emph{value} and
+$G=\partial_{v}S_{W}$ is a derivative --- verified: $S_{W}-\beta=0.0$ at three points while
+$G=\beta sg(u)=1.22167/0.97087/0.24784$, matching finite differences to eighteen digits. The second
+error is the choice of $\Phi$: it used $-\log|\Delta|^{2}$ where the corpus object is
+$\Phi=\sum_{i<j}g(d_{ij})$, the two differing by $\psi=\sum_{i<j}\log d_{ij}^{2}$; with the wrong choice
+the identity $E[\Phi'^{2}]=E[\Phi'']$ holds exactly ($48=48$ in exact rationals, width
+$1.2\times10^{-119}$) and forces $S-D=-\Var(G)-2\mathrm{Cov}\le0$. The obstacle to a certificate is
+dimension, not precision: the $a=0$ slice is seven-dimensional (one eigenvalue direction times a
+five-dimensional flag), two-dimensional Weyl integration is exact only for class functions while $G$
+and $\Phi'$ are not, and $\Phi$ contains $\log$ and $\cot$/$\csc^{2}$ terms that destroy the
+trigonometric-polynomial route that worked at $N=2$. \LE{}/~\LM
+\src{\code{R12-SU3CORR.md} \S0--\S3 (both numbers, the $G\neq0$ verification, the two errors, the exact
+$48=48$, and the seven-dimensional obstacle), \S4 (the verdict); \code{R11-SU3ADJ.md} (the adjudication
+that the $S\equiv D$ inference is invalid); \code{R08-SU3CERT.md} (the file under adjudication, kept on
+the record).}
+
+\subsection{What this section does not claim}
+
+\begin{itemize}
+\item It does \textbf{not} claim that the paper's H1 (fixed physical $\beta$, $(L,a)$-uniform, every
+      coarse mode) has been refuted. What was refuted is the stronger reading ``H1 for all $\beta$ /
+      all vacua''. \LT
+      \src{\code{H1A-EXACT.md} \S0 and \S4, first item.}
+\item It does \textbf{not} claim that $\delta>0$ yields an atom. In 2D YM and in the P4 kernel the
+      positive $\delta$ is carried entirely by the Haar term, while at $\beta=0$ one has
+      $\Gpp=0.2688$ with $f_1^{2}=0$: a positive $\delta$ is a ceiling, not an atom. \LT
+      \src{\code{H1A-EXACT.md} \S2.5, last paragraph, quoting \code{ch15-uvface.tex}:236--241; the
+      difference between $\Gpp=1/(2\,\mathrm{Cin}\,2\pi)=0.20511530$ and $0.2688$ is the subject of
+      \code{DS-RATIO.md} (errata row 17).}
+\item It does \textbf{not} claim that the $\delta$'s above have been scaled to $a\to0$: all of them
+      are surfaced bounds in lattice units. \LM
+      \src{\code{H1A-EXACT.md} \S4, final paragraph (``not closed: an honest statement'').}
+\end{itemize}

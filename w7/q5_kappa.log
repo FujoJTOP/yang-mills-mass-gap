@@ -1,0 +1,30 @@
+== (1) exact adjacency counts, brute force ==
+  d=2: lattice coord 2d= 4 | plaquettes sharing an edge with one plaquette =  4 | 4*(2d-3)= 4 | match=True | neighbours per edge (incl. self) = 2
+  d=3: lattice coord 2d= 6 | plaquettes sharing an edge with one plaquette = 12 | 4*(2d-3)=12 | match=True | neighbours per edge (incl. self) = 4
+  d=4: lattice coord 2d= 8 | plaquettes sharing an edge with one plaquette = 20 | 4*(2d-3)=20 | match=True | neighbours per edge (incl. self) = 6
+  d=5: lattice coord 2d=10 | plaquettes sharing an edge with one plaquette = 28 | 4*(2d-3)=28 | match=True | neighbours per edge (incl. self) = 8
+  -> 3D value is 12, 4D value is 20 (q2's Delta=12 is the d=3 number)
+
+== (2) plaquette animals in Z^4, exact, translation classes ==
+  A=1  a_A=1  a_A^(1/A)=1.000000  (0.0s)
+  A=2  a_A=18  a_A^(1/A)=4.242641  (0.0s)
+  A=3  a_A=374  a_A^(1/A)=7.204832  (0.0s)
+  A=4  a_A=8363  a_A^(1/A)=9.562920  (1.4s)
+  A=5  a_A=194719  a_A^(1/A)=11.425670  (45.5s)
+
+== (3) cross-check: single 2-plane sub-family == Z^2 site animals ==
+  n=1: enumerated in-plane=1  Z^2 site animals=1  match=True  n^(1/n)=1.0000
+  n=2: enumerated in-plane=2  Z^2 site animals=2  match=True  n^(1/n)=1.4142
+  n=3: enumerated in-plane=6  Z^2 site animals=6  match=True  n^(1/n)=1.8171
+  n=4: enumerated in-plane=19  Z^2 site animals=19  match=True  n^(1/n)=2.0878
+  n=5: enumerated in-plane=63  Z^2 site animals=63  match=True  n^(1/n)=2.2902
+  n=6: enumerated in-plane=216  Z^2 site animals=216  match=True  n^(1/n)=2.4495
+  n=7: enumerated in-plane=760  Z^2 site animals=760  match=True  n^(1/n)=2.5796
+
+== (4) kappa bounds ==
+  Delta(plaquette degree, d=4) = 20
+  lower: mu >= 4.06      -> kappa >= 1.401183
+  upper(q2 form 4D)   : mu <= 4*Delta     =    80 -> kappa <= 4.382027
+  upper(refined, no parent) : mu <= 4*(Delta-1) =    76 -> kappa <= 4.330733
+  q2 as printed (Delta=12)  : mu <=    48 -> kappa <= 3.871201
+  widths: q2=2.470  corrected=2.930

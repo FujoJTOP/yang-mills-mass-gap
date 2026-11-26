@@ -1,0 +1,35 @@
+RAT1b - the constraint behind 48, and the pc() wrap trap
+==============================================================================
+[i] chain via ur1_enum, LEGAL range only (x <= 11 => n <= 12):
+    n= 1: b=  20  14n+6=  20  OK
+    n= 4: b=  62  14n+6=  62  OK
+    n= 5: b=  76  14n+6=  76  OK
+    n= 6: b=  90  14n+6=  90  OK
+    n= 8: b= 118  14n+6= 118  OK
+    n=10: b= 146  14n+6= 146  OK
+    n=12: b= 174  14n+6= 174  OK
+    n=13 via pc(): b= 194  (artifact: 5-bit field overflow)
+    correct values for n > 12: rat1_indep.py -> b = 14n+6 for n = 1..60
+
+[ii] tree envelope L_t(D) = D^D/(D-1)^(D-1):
+    L_t(14) = 36.6884124304002510951103392702
+    L_t(15) = 39.4072733445130408257635506816
+    L_t(18) = 47.5634587532959731646347428099
+    L_t(19) = 50.2820906008560238796321500140
+    L_t(20) = 53.0006865328088981452653522586
+    e*Delta (Delta = 20) = 54.3656365691809047072057494270   (= proven bound on lambda_*, ADJ2:14)
+    L_t(14) < 48 ?  True   (14 = Delta - 2(d-1) = boundary rate of the extremal family)
+
+[iii] a_{n+1}/a_n = mean b / mean m   (exact identity, LC4)
+      => ratio <= 48  <=>  mean b <= 48 * mean m ; with max b = 14n+6:
+      need mean m(n+1) >= (14n+6)/48, slope c = 14/48 = 0.291666666666666666666666666667
+
+[iv] exact means (sum_b from the full enumerations, a_6 from UR4 [E])
+     n   mean m  mean m/n   mean b    b/n    ratio
+     2  1.00000   0.50000  32.4000 16.200  32.4000
+     3  1.41485   0.47162  44.0437 14.681  31.1296
+     4  1.81207   0.45302  55.3719 13.843  30.5572
+     5  2.20005   0.44001  66.5286 13.306  30.2396
+     6  2.58211   0.43035        -      -        -   (a_6 level)
+    mean m/n: 0.60, 0.55, 0.43, then 0.43 -> the slope 0.2917 that 48 needs
+    is 1.5x below the measured one: 48 is consistent but NOT asymptotically safe

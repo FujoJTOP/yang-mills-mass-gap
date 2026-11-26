@@ -1,0 +1,11 @@
+=== SU(2) Weingarten table, exact, n<=6  (S^3 hafnian method) ===
+
+n = 1 : 1 classes, n! = 1, 3 independent-looking equations
+  1           Wg = 1/2              = +0.5000000000
+  [0.0s]
+
+n = 2 : 2 classes, n! = 2, 4 independent-looking equations
+  1^2         Wg = 1/3              = +0.3333333333
+  2           Wg = -1/6             = -0.1666666667
+  [0.0s]
+rank deficient n=3: 2 free params

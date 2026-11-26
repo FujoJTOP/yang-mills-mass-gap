@@ -1,0 +1,58 @@
+==============================================================================================================
+T2   d_a^2 U : the Hadamard / divided-difference form,  U = exp(iA),  direction M
+==============================================================================================================
+
+  CORRECT  (Najfeld-Havel / Mathias, THREE nodes):
+      d^2/dh^2 f(W+hM)|_0 = 2 * sum_k  M~_{jk} M~_{kl} f[2](w_j, w_k, w_l) ,   W = V diag(w) V^dag ,
+      f[2](x,y,z) = ( f[1](x,y) - f[1](y,z) ) / (x - z) ,  f[1](x,y) = (f(x)-f(y))/(x-y) .
+  WRONG    (TWO nodes, what na2 first used):
+      f[2](w_j, w_k, w_l)  -->  f[2](w_j, w_k, w_k) = ( f[1](w_j,w_k) - f'(w_k) ) / (w_j - w_k) .
+  The difference is exactly the term that needs THREE distinct eigenvalues; hence the two-point
+  form is exact  <=>  M~ is diagonal  <=>  [M,A] = 0.  A two-point kernel cannot carry a flow's
+  second Frechet derivative.
+
+--------------------------------------------------------------------------------------------------------------
+[2] MINIMAL EXAMPLE   U = exp(i xi.sigma/2),  M = sigma_3/2,  one random point (N=2)
+           h    rel.err 2-pt    rel.err 3-pt
+       1e-02       1.443e-01       2.090e-06
+       1e-03       1.443e-01       1.999e-08
+       1e-04       1.443e-01       1.102e-07
+       1e-05       1.443e-01       1.682e-05
+       1e-06       1.447e-01       1.142e-03
+    => three-node form matches finite differences to roundoff; two-node form is off by O(1).
+
+[2b] EXACT VALIDITY CONDITION:  two-point form exact iff [M,A] = 0 (M~ diagonal).
+    M = sigma_3/2 (generic A)    max|offdiag M~|=4.56e-01   2pt err=1.44e-01   3pt err=1.10e-07
+    M = A   (commuting)          max|offdiag M~|=2.88e-17   2pt err=2.54e-07   3pt err=2.54e-07
+
+[3] REPRODUCE '66% WRONG'  (na2_selftest.py protocol: N=2,3; 6 trials; h=1e-3/1e-4/1e-5)
+      N  trial      h   rel.err 2pt   rel.err 3pt   verdict
+      2      0  1e-03     1.443e-01     1.999e-08   2pt WRONG
+      2      0  1e-04     1.443e-01     1.102e-07   2pt WRONG
+      2      0  1e-05     1.443e-01     1.682e-05   2pt WRONG
+      2      1  1e-03     1.251e-01     1.727e-08   2pt WRONG
+      2      1  1e-04     1.251e-01     4.306e-07   2pt WRONG
+      2      1  1e-05     1.251e-01     5.254e-05   2pt WRONG
+      2      5  1e-05     1.648e-01     2.887e-05   2pt WRONG
+      3      0  1e-03     1.010e-01     2.275e-08   2pt WRONG
+      3      0  1e-04     1.010e-01     4.360e-07   2pt WRONG
+    two-point form   fails (rel.err > 1e-3):  36/36 = 100.0%
+    three-point form fails (rel.err > 1e-3):  0/36 = 0.0%   <- all finite-difference roundoff at h=1e-5 (h^2 in the denominator), no formula error
+    by (N,h):  2pt failures  N=2,h=1e-03:6/6, N=2,h=1e-04:6/6, N=2,h=1e-05:6/6, N=3,h=1e-03:6/6, N=3,h=1e-04:6/6, N=3,h=1e-05:6/6
+    ERROR DISTRIBUTION of the 2-pt form (36 checks):
+      rel.err >    1e-03 :  36/36 = 100.0%
+      rel.err >    1e-02 :  36/36 = 100.0%
+      rel.err >    2e-02 :  36/36 = 100.0%
+      rel.err >    5e-02 :  36/36 = 100.0%
+      rel.err >    1e-01 :  33/36 =  91.7%
+      rel.err >    1e-01 :  18/36 =  50.0%
+      rel.err >    2e-01 :  12/36 =  33.3%
+    the 2-pt error is INDEPENDENT of h (1.443e-1 at h=1e-2 ... 1e-5 in [2]) -- that is the
+    signature of a wrong FORMULA, not of a discretization.  na2's '66%' is therefore an
+    UNDER-count; the honest statement is 'fails on every direction with [M,A]!=0', i.e.
+    generically 36/36 at the 1e-3 level.  What matters for reuse is the h-independence.
+
+[5] AUDIT: who else computes a Hessian along a link direction, and how?
+
+    script                                   how d^2 is obtained                 affected?
+    --------------------------------------------------------------------------------------------

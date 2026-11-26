@@ -1,0 +1,245 @@
+% =====================================================================
+%  sec04 -- The one strict certificate: true, and not a physical statement
+% =====================================================================
+\section{The one strict certificate --- true, and not a physical statement}
+\label{sec:cert}
+
+\begin{keybox}
+\textbf{The certificate.} On a single plaquette, $\mathrm{SU}(2)$, $\beta=2.5$, $a=0$,
+$\theta\in[0,\pi]$, the curvature is positive:
+\[
+\operatorname{gap}(\theta):=S(\theta)-D(\theta)=\Gpp>0 .
+\]
+Three points are proved by interval arithmetic with the signs separated from zero by more than
+$1.3\times10^{-1}$:
+\[
+\begin{aligned}
+\theta&=0:\quad \operatorname{gap}=0.729924128620548449,\\
+\theta&=\tfrac{\pi}{2}:\quad \operatorname{gap}=0.5429439223536897638,\\
+\theta&=\pi:\quad \operatorname{gap}=0.1359947110419882110 .
+\end{aligned}
+\]
+Every $\theta$ follows from these points plus a monotonicity statement; the monotonicity is
+\LC{}, and an unconditional route that does not need it is available and cheap
+(\S\ref{sec:grading}).
+\end{keybox}
+
+\subsection{The method: one pointwise identity, then four one-dimensional integrals}
+
+The reduction is exact and it is short. Write $U=\exp(\xi\cdot\sigma/2)$, $\rho=|\xi|$,
+$u=\rho/2\in(0,\pi)$, $c=\cos(\theta/2)$, $s=\sin(\theta/2)$, and slice at $\xi_3=0$ with
+$v=e_3$. Then
+\begin{equation}
+S_W=\beta\bigl(1-c\cos u+s\sin u\,\xi_3/\rho\bigr),\qquad
+J=4\sin^{2}u/u^{2},\qquad
+\Phi=-\log J=2\log u-2\log\sin u ,
+\end{equation}
+so that, differentiating along $\xi_3$ and evaluating on the slice,
+\begin{equation}
+G=\partial_{\xi_3}S_W\big|_0=\beta s\,g(u),\qquad
+H=\partial^{2}_{\xi_3}S_W\big|_0=\tfrac{\beta c}{2}\,g(u),\qquad
+\Phi'\equiv0,\qquad
+\Phi''=\frac{1}{2u^{2}}-\frac{\cot u}{2u},
+\label{eq:derivs5}
+\end{equation}
+with $g(u)=\sin u/(2u)$. Two of these lines carry the whole structure. \emph{First},
+$\Phi'\equiv0$ is an identity for \emph{every} $\theta$ and not only at $\theta=\pi$, because
+$\Phi$ depends on $\rho$ alone and the slice $\xi_3=0$ is tangent to the equal-$\rho$ spheres
+($\partial_{\xi_3}\rho|_{0}=0$); the covariance term $X=-2\Cov(G,\Phi')$ therefore vanishes
+identically and $D=\Var(G)$ needs no cross-term treatment. \LT{} \emph{Second}, on the slice $G$
+and $H$ are the \emph{same} function of $u$ up to a constant, whence the pointwise identity
+\begin{equation}
+H=\tfrac12\cot(\theta/2)\,G\qquad\text{at }a=0,\ \text{for every }\theta,
+\label{eq:halfcot5}
+\end{equation}
+verified to $10^{-16}$, and at $\theta=\pi$ this degenerates to $H\equiv0$ pointwise. \LT{} So
+\begin{equation}
+S=E[H+\Phi'']=(\beta c/2)\,E_\nu[g]+E_\nu[\Phi''],\qquad
+D=\beta^{2}s^{2}\Var_\nu(g),\qquad
+\nu\propto e^{-\beta(1-c\cos u)}\sin^{2}u\,u^{-1}\mathrm{d}u .
+\label{eq:SD5}
+\end{equation}
+
+The four molecular integrals are entire functions of $u$ on $(0,\pi)$ once $\cot$ is eliminated,
+and one of them is exact in closed form: with the identity $\cot u\,\sin^{2}u=\sin(2u)/2$,
+\begin{equation}
+\Phi''w=-\frac14\frac{\mathrm{d}}{\mathrm{d}u}\Bigl[\frac{\sin^{2}u}{u^{2}}\Bigr]
+\quad\Longrightarrow\quad
+N_S:=\int_0^{\pi}\Phi''w\,\mathrm{d}u=\frac14 ,
+\label{eq:ibp5}
+\end{equation}
+the boundary term being $1\to0$. Hence at $\theta=\pi$, where the weight is Haar and $S$ is
+$\beta$-independent, $S=1/(4Z)=1/(2\,\mathrm{Cin}(2\pi))=0.2051152971230731\ldots$, which is
+exactly the corpus anchor. \LT{}
+
+\src{\code{Q11-CERT.md} \S1.1--\S1.4 (the model, the three derivatives, the $\Phi'\equiv0$
+argument, the entire-function check with the assertion that no negative powers survive, and the
+$N_S=1/4$ integration by parts); \code{R03-CERT-THETA.md} \S1 (the same reduction for general
+$\theta$, and the explicit correction that $\Phi'\equiv0$ holds for all $\theta$);
+\code{R10-AUDITCERT.md} \S1 (an independently re-derived representation, no shared code);
+\code{Q04-WEYL.md} \S0 (\code{eq:halfcot5} as a pointwise identity, and the Weyl formula with its
+normalisation constants $1/N!$ and $(2\pi)^{N-1}$ spelled out).}
+
+\subsection{The interval protocol, and the evidence that the rounding is real}
+
+A positive sign is worth nothing unless the enclosure is honest, so the protocol is stated in
+full. Five ingredients are needed and all five are present:
+(i) Taylor coefficients of the four integrands are \emph{exact rationals} (\code{Fraction}; at
+$\theta=\pi/2$ in $\mathbb{Q}[\sqrt2]$, never floating point);
+(ii) the integration is term by term, $\int_0^{\pi}u^{k}\mathrm{d}u=\pi^{k+1}/(k+1)$, an identity
+for entire functions and not a quadrature;
+(iii) $\pi$ and $\sqrt2$ enter only as $800$-bit \code{libmp} intervals with directed rounding
+(\code{'f'} down, \code{'c'} up);
+(iv) every arithmetic operation carries an outward pad ($2^{-400}$ absolute in \code{q11},
+purely relative in \code{r03});
+(v) the truncation is bounded by a Cauchy estimate ($K=260$ and $K=400$ respectively).
+\LT{}
+
+The proof that the directed rounding is \emph{actually} happening is the width pattern, not the
+endpoints: \code{q11}'s width for $Z$ is $2.018\times10^{-118}$, and
+$2.018\times10^{-118}/2^{-400}=522=2(K_{\max}+1)$ --- exactly the per-operation accumulation of the
+pad, two operations per accumulation step. A ``high precision, roughly'' computation would give
+width $0$ (identical endpoints) or ulp noise, never that number. \LT{} Two genuine bugs were found
+and fixed by using $\theta=\pi$ as a regression: the power index of $\sin^{4}u/(4u^{3})$, which
+corrupted only $\Var(g)$ and was caught because the regression must reproduce the known
+$0.0110592937$; and the \emph{absolute} pad, which under the catastrophic cancellation of the
+$\theta\ne\pi$ series (peak terms $\sim10^{7}$, coefficients as small as $8.5\times10^{-227}$)
+inflated $Z$ to $\pm1.56\times10^{76}$ with the endpoints inverted --- the fix is a purely
+relative pad, after which the $\theta=\pi/2$ width $3.5\times10^{-21}$ matches the magnitude of its
+own Cauchy tail $1.77\times10^{-21}$ instead of collapsing to a point. \LT{}
+
+\src{\code{Q11-CERT.md} \S2.1 (the five ingredients; the $522=2(K_{\max}+1)$ width identity),
+\S2.2 (all intervals with widths and tails); \code{R03-CERT-THETA.md} \S2.1 (both bugs, each found
+by the $\theta=\pi$ regression, which reproduces \code{q11} to $4\times10^{-41}$), \S2.2 (the
+interval table); \code{R10-AUDITCERT.md} \S2 (an independently written interval class, $256$
+panels $\times$ $20$-point Gauss--Legendre with a Cauchy-type remainder bound
+$\le3.1\times10^{-82}$ and a final allowance $\max(10\times\text{bound},10^{-55})$).}
+
+\subsection{Honest grading: what is \LT, what is \LC, and one number that had to be withdrawn}
+\label{sec:grading}
+
+\begin{gradebox}
+\textbf{Three points are \LT.} The $\theta=\pi$ row reproduces \code{q11}'s anchor to
+$3.4\times10^{-45}$ and the $\theta=\pi/2$ row to $1.5\times10^{-19}$ between two independent
+implementations. \textbf{One number had to be withdrawn}: the first general-$\theta$
+implementation reported $\operatorname{gap}(0)=0.729924127576750\ldots$ with an enclosure of
+width $1.4\times10^{-10}$; an independent implementation gives $0.729924128620549$, higher by
+$1.044\times10^{-9}$, i.e.\ about $6.5$ times that enclosure's own width, and the enclosure does
+\emph{not} contain the true value. The four molecular integrals and their tails \emph{are} valid
+enclosures --- the audit verifies that its own $Z\,e^{-\beta c}$ lies inside them at a distance
+equal to their own tails ($7.4\times10^{-11}$ and $1.8\times10^{-21}$) --- so the defect is
+\emph{width loss in the quotient}: the intervals for $E[g]$ and $E[\Phi'']$ were printed with
+collapsed endpoints and the tails did not propagate through the division. The same defect exceeds
+the $\theta=\pi/2$ enclosure by $50\times$. \LE{}/\LT{} The sign verdict never moved (the true value
+is larger, i.e.\ favourable), and the numbers quoted in this section are the audit's, not the
+withdrawn ones.
+\end{gradebox}
+
+\src{\code{R10-AUDITCERT.md} \S0 (the three-row comparison and the $1.044\times10^{-9}$),
+\S3 (the diagnosis: the quotient, not the integrals), \S4 ($D\equiv0$ at $\theta=0$ is an
+identity because $s=0$ exactly, so the sign of the $\theta=0$ row never depended on the withdrawn
+number); \code{R06-GAPMONO.md} \S4 (an independent recomputation by a second method,
+$E[g](c=1)=0.4424484491370$, agreeing with the audit and not with the withdrawn value);
+\code{ch19-h1-status.tex}:149--159 (the same withdrawal recorded in the v2 register).}
+
+Beyond the three points the grading has three tiers, and they must not be mixed.
+\textbf{(a)} An analytic \LT{} window: from $\Phi''\ge1/6$ and $0\le g\le1/2$ one gets
+$D\le\beta^{2}s^{2}/16$ and $S\ge1/6$, hence $\operatorname{gap}>0$ for
+$\theta\le0.4527\pi$ at $\beta=2.5$, with no machine check at all. \LT{}
+\textbf{(b)} The whole interval $[0,\pi]$ \emph{assuming} monotonicity: with $c=\cos(\theta/2)$ as
+the parameter, $\partial_c\operatorname{gap}>0$ at all $501$ interior grid points (minimum
+$+0.44361829$ at $c=2.4\times10^{-4}$, maximum $+0.63898109$ at $c=0.883$, zero sign flips, no
+interior extremum), so $\operatorname{gap}$ decreases strictly in $\theta$ and its worst point is
+$\theta=\pi$. The scan is \LC{} --- $501$ points are not a proof --- so the all-$\theta$ statement
+carries the honest label \LT{}\,$|\,$monotonicity \LC{}.
+\textbf{(c)} An unconditional route that removes the monotonicity: $c\in\{0,\tfrac15,\tfrac25,
+\tfrac35,\tfrac45,1\}$ are all rational (so $\beta c\in\mathbb{Q}$ and the \code{r03} series
+machine consumes them directly), and with the Lipschitz bound $\sup|\operatorname{gap}'|\le0.6390$
+and $|\operatorname{gap}''|\le0.597$ one gets $L\cdot\Delta c=0.1148<0.13599=\min
+\operatorname{gap}$ at $K=6$ subdivisions. Four additional point certificates plus one rigorous
+second-derivative bound therefore upgrade the whole interval to unconditional \LT. \LC{} (budget)
+/ \LM{} (not yet executed).
+
+\src{\code{R03-CERT-THETA.md} \S3.2 (tier (a), including the explicit bound
+$1/u-\cot u\ge u/3$ and the threshold $s^{2}<0.42667$); \code{R06-GAPMONO.md} \S0 (the
+$501$-point scan and the label \LT{}\,$|\,$\LC{}), \S3.2 ($\operatorname{gap}''$ range
+$[-0.0090,+0.5967]$, hence the $0.597$ bound), \S6 (tier (c): the $K=6$ budget table and the
+statement that this route is cheaper than proving $\partial_c\operatorname{gap}>0$).}
+
+\subsection{The window in $\beta$: a window theorem, not global positivity}
+
+At $\theta=\pi$ the weight is Haar for every $\beta$, so $S=1/(4Z)$ is \emph{independent of
+$\beta$} while $D=\beta^{2}V_0$. Hence
+\begin{equation}
+S-D>0\quad\Longleftrightarrow\quad \beta<\beta^{*}:=\sqrt{S/V_0}
+=4.30660785255975887488820795413835478236\ldots,
+\label{eq:betastar5}
+\end{equation}
+so the certificate holds on a window with a $41.9\%$ margin at $\beta=2.5$, and fails at
+$\beta=4.4$ ($S-D=-0.00899$). The window boundary is a \LT{} statement in both directions, since
+both endpoints are interval quantities. \LT{} At $\theta=0$ the situation is better and degenerate
+at once: $s=0$ exactly gives $G\equiv0$ pointwise, hence $D\equiv0$ identically and
+$S-D=S\ge1/6>0$ for \emph{every} $\beta>0$; that is the only $\forall\beta$ positivity on the
+$\theta\ne\pi$ side, and it is degenerate (the variance is absent, not small). \LT{}
+
+\src{\code{Q11-CERT.md} \S5 (the $\beta$-window table and the exact value of $\beta^{*}$);
+\code{R03-CERT-THETA.md} \S3.2 last paragraph (the $\theta=0$, $\forall\beta$ statement and the
+identity $D\equiv0$); \code{R10-AUDITCERT.md} \S4 ($D\equiv0$ is algebraic: $s^{2}=0$ is an exact
+rational multiplier, so $\Var(g)$ never participates).}
+
+\subsection{Boundary of the certificate: $L=2$ and $\mathrm{SU}(3)$}
+
+The certificate stops exactly where the model stops being reducible, and the two boundaries are
+worth stating with their numbers because both have been misreported.
+
+\textbf{$L=2$ is $143$-dimensional.} The raw count is $192=4L^{4}\cdot3$ ($64$ links $\times$ $3$);
+the gauge quotient removes $48=3\cdot16$ (a random configuration has rank $48$), leaving
+$144$; conditioning on the coarse mode removes exactly one more dimension ($\langle v,X\rangle=a_0$
+is a single scalar constraint, and $v$ is not in the gauge image, checked by
+$\operatorname{rank}[J_{\text{gauge}}|v]=46=45+1$), leaving $143$. Symmetry buys nothing
+dimensional: the point group $W_4$ has order $384$ and the full space group
+$(\mathbb{Z}_2)^{4}\rtimes W_4$ has order $6144$ with a single orbit on the $64$ links, but a
+finite group's orbits are finite sets, so $\dim(M/G)=\dim M$ and only a measure factor $1/6144$
+appears. \LT{} Therefore there is no finite-dimensional exact reduction of $S-D$ at $L=2$, no
+analogue of the $1$D closed form, and no interval certificate: the honest statistical route needs
+$N\approx3\times10^{8}$ samples, i.e.\ a $35$-day single-core compute budget at the measured
+$10$\,ms per sweep, so it is not a certification route in the present regime. \LT{}
+\textbf{The $\mathrm{SU}(3)$ number $+0.1017$ is \LE{} only, and it must be recomputed.} The
+$\mathrm{SU}(3)$ computation that produced $\operatorname{gap}=+0.1017$ uses the weight section
+$|\Delta|^{2}e^{-S_W}$ and is weight-dependent: with pure Haar the same code gives $-0.2358$. \LC{}
+Worse, its $\Var(\Phi')=6.81$ exceeds its $E[\Phi'']=6.70$, which violates the exact identity
+$E[\Phi'']=E[\Phi'^{2}]+E[G\Phi']$ (\S\ref{sec:lemmas}, lemma 4); hence $6.81$ is not the
+$\Var(\Phi')$ of \emph{any} IBP-compatible pair, and the pair $(\Phi_{O09},|\Delta|^{2}e^{-S_W})$
+is not such a pair. \LT{} The structural reason is dimensional: the $a=0$ slice for
+$\mathrm{SU}(3)$ is $7$-dimensional (one eigenvalue direction times a $5$-dimensional flag), so the
+$2$D Weyl formula is simply not the right reduction, and what is missing is the dimension and a
+rigorous logarithm bound for $\psi=\sum_{i<j}\log d_{ij}^{2}$, not precision.
+
+\src{\code{R04-L2CERT.md} \S1.1--\S1.3 (the integer count, the rank checks, the flat-point
+decomposition $192=45+12+135$ and its $12$-dimensional toron zero-mode set), \S2 (the finite-group
+theorem and the three orbit counts $384/16/6144$), \S3.1 (the $N\approx3\times10^{8}$ budget);
+\code{R12-SU3CORR.md} \S0 (the two errors and the weight dependence $-0.2358$ versus $+0.1017$,
+and the $7$-dimensional slice); \code{S04-VARPHI.md} verdict item three (the identity violated by
+$6.81>6.70$).}
+
+\subsection{What the certificate is, and what it is not}
+
+It \emph{is} the first strict, non-Monte-Carlo, non-``high precision roughly'' positivity result in
+this project: three interval-decided points, a closed-form anchor reproduced to $45$ digits, and a
+width pattern that proves the directed rounding is real. Up to the withdrawn $\theta=0$ digit it
+also survived an adversarial independent reimplementation, which is the strongest form of
+verification available here.
+
+It \emph{is not} a statement about Yang--Mills. Its object is a $0$-dimensional integral at fixed
+$\beta$ in a window $\beta<\beta^{*}$; its quantity is a dimensionless curvature floor
+($G''_a=a^{2}m^{2}_{\mathrm{phys}}$); and the step from this patch model to the theory is exactly
+the step that \S\ref{sec:obs1}--\S\ref{sec:obs2} have just shown to be insufficient even if it were
+taken. The corpus says this in one line and it is the correct summary: ``what stays open is the
+step from that one-plaquette (patch) model to the theory''. \LM{} The certificate therefore does
+not reduce the Clay count, and it is not offered as progress on Clay.
+
+\src{\code{Q11-CERT.md} \S5 ``honest boundary'' (``this certificate is \emph{not} $\forall\beta$
+positivity, and \emph{not} $4$D lattice or continuum $G''>0$; it is a window certificate on a
+$0$-dimensional toy''); \code{ch18-scalar-h1.tex}:17 (the ``one-plaquette patch model'' sentence,
+verbatim); \code{T01-IMPLY.md} \S5 warning 2 (``do not report the $L=1$ single-plaquette $[T]$ as
+a theory result'').}

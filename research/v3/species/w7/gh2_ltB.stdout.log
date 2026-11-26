@@ -1,0 +1,73 @@
+====================================================================================================
+GH2  L_t-ARTEFACT SCAN   SU(2) Wilson  beta fixed, (Ls, Lt) varied independently
+kernel/operator/estimator = run3_apebase.py VERBATIM (_chains, correlators, fit_A, A_at); nlev=1 raw
+m = 1.546 pinned ; fit window t=1,2,3 ; errors = 20-block delete-one jackknife ; numba=0.68.1 threads=8
+gap=3 therm=400 chains=8 ; strictly sequential, one process ; budget=350s
+====================================================================================================
+
+--- beta = 2.5  Ls=6  Lt=12  N = 24000 (8 x 3000)  gap = 3  therm = 400   (t+0s)
+D:\Dev\math\research\v3\species\w7\gh2_ltscan.py:120: RuntimeWarning: overflow encountered in scalar multiply
+  ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)
+[E] 24000 cfg in 21.4s (1122.1 cfg/s, 3366 sweeps/s)  compile 0.4s  tau_int: plaq 0.9, S(0) 0.6 cfg
+[E] <1/2 Re tr U_p> = 0.65258 +- 0.00002
+[E] C(0) = 8.3559   C(t)/C(0), t=0..4 : 1.00000  0.07262+-0.00136  0.01315+-0.00204  0.00483+-0.00157  0.00087+-0.00142
+[E] C1/C0 = 0.07262 +- 0.00136 ; C2/C0 = 0.01315 ; S/N(2) = 6.4
+[E] Rbar = -ln C1/C0 = 2.6226 +- 0.0187 (jack) ; full-sample 2.6226
+[E] w1(1.546) = 0.33885 +- 0.00722 (jack) ; full-sample 0.33885 ; w1_nowrap = 0.33885 +- 0.00722
+[E] kappa = w1/(e^m C1/C0) = 0.9944 +- 0.0055
+[E] m_fit(t=1..6) = 1.637 ; m_eff(t)=ln C(t)/C(t+1): 2.623  1.709  1.003  1.783  -1.136  -33.759
+[wall] elapsed 22s / budget 350s
+
+--- beta = 2.5  Ls=8  Lt=12  N = 24000 (8 x 3000)  gap = 3  therm = 400   (t+22s)
+D:\Dev\math\research\v3\species\w7\gh2_ltscan.py:120: RuntimeWarning: overflow encountered in scalar add
+  ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)
+[E] 24000 cfg in 71.5s (335.4 cfg/s, 1006 sweeps/s)  compile 0.0s  tau_int: plaq 1.1, S(0) 0.6 cfg
+[E] <1/2 Re tr U_p> = 0.65231 +- 0.00001
+[E] C(0) = 19.8385   C(t)/C(0), t=0..4 : 1.00000  0.07737+-0.00146  0.01011+-0.00146  0.00470+-0.00168  0.00439+-0.00173
+[E] C1/C0 = 0.07737 +- 0.00146 ; C2/C0 = 0.01011 ; S/N(2) = 6.9
+[E] Rbar = -ln C1/C0 = 2.5592 +- 0.0188 (jack) ; full-sample 2.5592
+[E] w1(1.546) = 0.35721 +- 0.00673 (jack) ; full-sample 0.35721 ; w1_nowrap = 0.35721 +- 0.00673
+[E] kappa = w1/(e^m C1/C0) = 0.9839 +- 0.0041
+[E] m_fit(t=1..6) = 1.924 ; m_eff(t)=ln C(t)/C(t+1): 2.559  2.036  0.768  0.069  1.775  -0.906
+[wall] elapsed 94s / budget 350s
+
+--- beta = 2.5  Ls=6  Lt=20  N = 24000 (8 x 3000)  gap = 3  therm = 400   (t+94s)
+[E] 24000 cfg in 45.1s (532.6 cfg/s, 1598 sweeps/s)  compile 0.0s  tau_int: plaq 0.8, S(0) 0.6 cfg
+[E] <1/2 Re tr U_p> = 0.65253 +- 0.00002
+[E] C(0) = 8.3774   C(t)/C(0), t=0..4 : 1.00000  0.07658+-0.00098  0.01165+-0.00130  0.00382+-0.00132  0.00198+-0.00168
+[E] C1/C0 = 0.07658 +- 0.00098 ; C2/C0 = 0.01165 ; S/N(2) = 8.9
+[E] Rbar = -ln C1/C0 = 2.5695 +- 0.0129 (jack) ; full-sample 2.5695
+[E] w1(1.546) = 0.35495 +- 0.00453 (jack) ; full-sample 0.35496 ; w1_nowrap = 0.35495 +- 0.00453
+[E] kappa = w1/(e^m C1/C0) = 0.9878 +- 0.0034
+[E] m_fit(t=1..6) = 1.819 ; m_eff(t)=ln C(t)/C(t+1): 2.569  1.884  1.117  0.675  -0.165  -0.021  -690.776  -656.114  -172.134  -242.256
+[wall] elapsed 140s / budget 350s
+
+--- beta = 2.5  Ls=8  Lt=20  N = 24000 (8 x 3000)  gap = 3  therm = 400   (t+140s)
+[E] 24000 cfg in 100.1s (239.7 cfg/s, 719 sweeps/s)  compile 0.1s  tau_int: plaq 1.1, S(0) 0.6 cfg
+[E] <1/2 Re tr U_p> = 0.65219 +- 0.00001
+[E] C(0) = 19.9424   C(t)/C(0), t=0..4 : 1.00000  0.07740+-0.00131  0.01209+-0.00139  0.00279+-0.00119  0.00223+-0.00150
+[E] C1/C0 = 0.07740 +- 0.00131 ; C2/C0 = 0.01209 ; S/N(2) = 8.6
+[E] Rbar = -ln C1/C0 = 2.5588 +- 0.0169 (jack) ; full-sample 2.5587
+[E] w1(1.546) = 0.35887 +- 0.00625 (jack) ; full-sample 0.35887 ; w1_nowrap = 0.35887 +- 0.00625
+[E] kappa = w1/(e^m C1/C0) = 0.9880 +- 0.0038
+[E] m_fit(t=1..6) = 1.817 ; m_eff(t)=ln C(t)/C(t+1): 2.559  1.857  1.469  0.235  -0.627  0.083  1.135  -0.098  -690.776  -1.264
+[wall] elapsed 241s / budget 350s
+
+====================================================================================================
+ beta  Ls  Lt      N    <plaq>     C1/C0    Rbar     +-       w1      +-    kap  S/N2     s
+2.500   6  12  24000   0.65258   0.07262   2.623  0.019   0.3389  0.0072  0.994   6.4  21.4
+2.500   8  12  24000   0.65231   0.07737   2.559  0.019   0.3572  0.0067  0.984   6.9  71.5
+2.500   6  20  24000   0.65253   0.07658   2.569  0.013   0.3550  0.0045  0.988   8.9  45.1
+2.500   8  20  24000   0.65219   0.07740   2.559  0.017   0.3589  0.0063  0.988   8.6 100.1
+
+--- 8.3% recomputed at each available L_t  (w1, same estimator, same m) ---
+[J] Lt=12: w1(6)-w1(8) = -0.0184 +- 0.0099  = -5.27% (of mean) / -5.42% (of Ls=6)
+           Rbar(8)-Rbar(6) = -0.0634 +- 0.0265
+[J] Lt=20: w1(6)-w1(8) = -0.0039 +- 0.0077  = -1.10% (of mean) / -1.10% (of Ls=6)
+           Rbar(8)-Rbar(6) = -0.0107 +- 0.0212
+
+--- L_t drift at each L_s ---
+[J] Ls=6: Lt 12->20  dw1 = +0.0161 +- 0.0085 (+4.75%)   dRbar = -0.0531 +- 0.0227 (-2.03%)
+[J] Ls=8: Lt 12->20  dw1 = +0.0017 +- 0.0092 (+0.47%)   dRbar = -0.0004 +- 0.0253 (-0.02%)
+
+[wall] total MC+analysis 241s

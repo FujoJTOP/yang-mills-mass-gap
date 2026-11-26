@@ -1,0 +1,118 @@
+
+v02_zeromono.py -- V02-BETAMONO numerical part.
+
+Species note: research/v3/species/V02-BETAMONO.md
+
+  f1^2(beta) = |<vac| O |G(beta)>|^2   is a MODULUS SQUARED  =>  f1^2 >= 0 identically,
+  hence   "f1^2 > 0"  <=>  "<vac|O|G> != 0".
+
+Four checks, all cheap / exact where possible:
+
+ [A][E] Is monotonicity in the coupling FORCED by the species
+        (modulus-squared + KL spectral decomposition)?
+        -> exactly solvable 2-level model: f1^2 = |<0|O|1>|^2 = (1/4)sin^2(theta).
+           It is a BUMP (interior max, decay back toward 0), not a monotone.
+
+ [B][E] Can any moment functional determine the atom?
+        -> exact moment-blind PAIR: same M0 = 1, same chi = 1, different f1^2.
+           Hence Griffiths-type monotonicity (a moment statement) cannot transfer
+           to f1^2 -- and the only rigorous bond is one-sided, f1^2 <= M0.
+
+ [C][V] A real 1-parameter family (anharmonic oscillator, O = x^2):
+        KL sum rule sum_n f_n^2 = Var(O) checked to machine precision;
+        |M| stays > 0; and the SIGN of M is shown to be convention-dependent
+        (raw LAPACK eigenvector signs flip), so "prove M > 0" is ill-posed unless
+        a Kato phase continuation exists -- which presupposes level isolation.
+
+ [D][E] Where exact zeros DO come from: selection rules (symmetry), coupling-free.
+
+Run:  py -3.12 v02_zeromono.py
+
+------------------------------------------------------------------------------
+[A][E]  two-level model: is the residue monotone in the coupling?
+------------------------------------------------------------------------------
+H(D) = [[0, v], [v, D]] in a basis where O = |0><0|;  theta = atan2(2v, D);
+|<0|O|1>| = (1/2)|sin theta|  =>  f1^2 = (1/4) sin^2(theta), exactly solvable.
+
+        D     theta          f1^2    d f1^2/dlnD
+  1.0e-06  1.570796  0.2500000000            nan
+  1.0e-04  1.570746  0.2499999994    -1.3570e-10
+  1.0e-03  1.570296  0.2499999375    -2.6872e-08
+  1.0e-02  1.565796  0.2499937502    -2.6871e-06
+  1.0e-01  1.520838  0.2493765586    -2.6804e-04
+  3.0e-01  1.421906  0.2444987775    -4.4399e-03
+  1.0e+00  1.107149  0.2000000000    -3.6960e-02
+  3.0e+00  0.588003  0.0769230769    -1.1203e-01
+  1.0e+01  0.197396  0.0096153846    -5.5905e-02
+  1.0e+02  0.019997  0.0000999600    -4.1325e-03
+  1.0e+03  0.002000  0.0000010000    -4.2978e-05
+  1.0e+04  0.000200  0.0000000100    -4.2995e-07
+
+  f1^2: 0.2500000000 -> max 0.2500000000 -> 1.000e-08
+  => BUMP.  The species forces NO monotonicity: an exactly solvable atom
+     weight rises, saturates and decays back toward 0 while the atom is
+     present at every coupling.  'f1^2 increasing in beta' is an EXTRA
+     assumption, not a consequence of f1^2 = |M|^2 >= 0.
+
+------------------------------------------------------------------------------
+[B][E]  moment-blindness: can a moment functional see the atom?
+------------------------------------------------------------------------------
+Two KL measures with IDENTICAL M0 = int dnu and IDENTICAL chi = int s^-1 dnu:
+(the first moment M1 happens to differ -- which only strengthens the point)
+  nu1: M0=1.000000  M1=1.000000  chi=1.000000  f1^2=nu({min supp})=1.000000
+  nu2: M0=1.000000  M1=1.250000  chi=1.000000  f1^2=nu({min supp})=0.250000
+  => identical (M0, chi) [and even with M1 shown], DIFFERENT f1^2 (1.0 vs 0.25).
+  => no moment functional determines the atom; in particular Griffiths-type
+     monotonicity of <O> = -dlnZ/dbeta (a MOMENT statement) cannot transfer
+     to f1^2.  The only rigorous bond is one-sided: f1^2 <= M0 = Var(O),
+     and a one-sided upper bound cannot carry a positive lower bound.
+
+------------------------------------------------------------------------------
+[C][V]  a real family: anharmonic oscillator, O = x^2, |G> = first even excited
+------------------------------------------------------------------------------
+KL sum rule: Var(O) = <0|x^4|0> - <0|x^2|0>^2 = sum_{n even, n>=2} |<0|x^2|n>|^2.
+
+    lam           |M|          f1^2        Var(O)   sum_n f_n^2        w1
+   0.00  0.7071067812  0.5000000000  0.5000000000  0.5000000000  1.000000
+   0.01  0.6829890352  0.4664740222  0.4665668948  0.4665668948  0.999801
+   0.03  0.6451240264  0.4161850094  0.4165994687  0.4165994687  0.999005
+   0.10  0.5634538570  0.3174802490  0.3185593498  0.3185593498  0.996613
+   0.30  0.4585424695  0.2102611964  0.2116389175  0.2116389175  0.993490
+   1.00  0.3390915936  0.1149831088  0.1160809126  0.1160809126  0.990543
+   3.00  0.2462988940  0.0606631452  0.0613482295  0.0613482295  0.988833
+  10.00  0.1690372168  0.0285735807  0.0289259481  0.0289259481  0.987818
+  30.00  0.1184689560  0.0140348935  0.0142146573  0.0142146573  0.987354
+ 100.00  0.0797403144  0.0063585177  0.0064412112  0.0064412112  0.987162
+
+  exact anchor lam=0: <0|x^2|2> = 1/sqrt(2) = 0.7071067812, f1^2 = 0.5
+  sum rule: max |Var(O) - sum_n f_n^2| = 3.33e-16   (basis converged)
+  |M| > 0 on the whole grid: True; phase-continued sign(<0|x^2|2>) is constant: True
+  w1 = f1^2/Var(O) in [0.9872, 1.0000]  -- here the atom tracks the moment, so this family gives no universal
+     monotonicity in either direction: neither 'up' nor 'down' is generic.
+
+  PHASE TRAP (why 'prove M > 0' is ill-posed):
+    lam=0.01: raw LAPACK sign M = -0.6829890352 ; after fixing a convention M = +0.6829890352
+    => the SIGN of M is eigenvector-convention, i.e. the phase of |G>; only
+       |M| is physical.  A 'decisive sign' argument must first fix the phase
+       by Kato continuation, which exists only while the level stays isolated
+       => 'prove M != 0 by proving M > 0' already assumes isolation (I2).
+
+------------------------------------------------------------------------------
+[D][E]  the only structural zeros: selection rules (symmetry), coupling-free
+------------------------------------------------------------------------------
+  <0|x|0> = -1.07e-14   (O = x odd, parity-forbidden: exact 0)
+  <0|x|2> = +3.98e-14   (O = x odd, parity-forbidden: exact 0)
+  <0|x|4> = -1.45e-14   (O = x odd, parity-forbidden: exact 0)
+  => exact zeros of a matrix element are symmetry-forced and independent of the
+     coupling.  A zero of <vac|O|G> at a finite generic beta would need an
+     accidental cancellation -- codimension-1 in a 1-parameter family.
+
+------------------------------------------------------------------------------
+VERDICT (numerics)
+  [A] monotonicity in the coupling is NOT implied by f1^2 = |M|^2 >= 0   [E]
+  [B] (M0, chi, and even M1) do not determine f1^2: moment monotonicity cannot
+      transfer to the atom; only f1^2 <= M0 is rigorous                 [E]
+  [C] mechanism-free sign arguments are ill-posed (phase convention)    [V]
+  [D] exact zeros are symmetry/selection-rule zeros                     [E]
+  NOTHING here decides <vac|O|G>(beta=2.5) != 0.
+------------------------------------------------------------------------------

@@ -1,0 +1,71 @@
+========================================================================================================
+[T05] variance-reduction audit for Delta = E[kappa]-Var(F)   data=o24_L2A (L=2,SU(2),b=2.5)  15000x4
+========================================================================================================
+  kappa: mean=+1.9293 std=0.2797 max=18.260   F: mean=+0.0349 std=1.2401 max|F|=6.422
+  Delta(point) = +0.3913   (o24 log: +0.3942)
+
+[1] variance budget of the ESTIMATOR (per-sample, before 1/N)
+  ch0: 1+2tau kappa=   8.7  z=(F-mu)^2=   4.8  w=k-F^2=   4.8 | var_terms: k 0.736  z 23.673  cov +1.362  sum 25.771 | paired w 23.353
+  ch1: 1+2tau kappa=  18.9  z=(F-mu)^2=   5.2  w=k-F^2=   5.2 | var_terms: k 0.998  z 25.380  cov +0.228  sum 26.606 | paired w 25.703
+  ch2: 1+2tau kappa=   9.3  z=(F-mu)^2=   3.6  w=k-F^2=   3.8 | var_terms: k 1.081  z 17.556  cov +2.002  sum 20.639 | paired w 17.445
+  ch3: 1+2tau kappa=  22.7  z=(F-mu)^2=   4.1  w=k-F^2=   4.2 | var_terms: k 1.340  z 19.711  cov +0.875  sum 21.927 | paired w 20.115
+  MEAN over chains:  share(E[kappa] channel)=0.044  share(Var(F) z channel)=0.909  share(cov)=+0.047
+  >>>> paired estimator w=kappa-F^2 cuts the per-sample variance by x1.10  (n=4 chains, spread 1.36..0.92)
+
+[2] control-variate correlations (measured, same-sample pairs, 4 chains)
+  rho(F            (E[F]=0 exact) ) = +0.0131   => CR factor 1-rho^2 = 0.9998   (kappa side x1.000)
+  rho(F^2          (E[F^2]=Var F) ) = +0.1355   => CR factor 1-rho^2 = 0.9817   (kappa side x1.019)
+  rho(z=(F-mu)^2   (Var channel)  ) = +0.1351   => CR factor 1-rho^2 = 0.9818   (kappa side x1.019)
+  rho(kappa        (vs F channel) ) = +0.1355   => CR factor 1-rho^2 = 0.9817   (kappa side x1.019)
+  rho(F, |F|) = +0.0437   rho(F^2,|F|) = +0.9327
+  rho(kappa, |F|) = +0.0797
+
+[3] stratification: bins from a PILOT (chains 0,1), variance measured on chains 2,3
+  --- stratify by |F|, 4 equal-count pilot bins, edges=[0.39  0.826 1.42 ]
+      bin0: n=  7365  mean(w)=+1.8721  var(w)=0.0405
+      bin1: n=  7414  mean(w)=+1.5489  var(w)=0.0671
+      bin2: n=  7675  mean(w)=+0.6784  var(w)=0.1940
+      bin3: n=  7546  mean(w)=-2.4853  var(w)=6.6605
+      weighted within-stratum var = 1.7515  vs total 4.7232   => VR factor x2.70  (pilot overhead x1.5 total cost)
+      optimal allocation (Neyman, same N) var = 3.0468 => x1.55
+  --- stratify by kappa, 4 equal-count pilot bins, edges=[1.786 1.916 2.049]
+      bin0: n=  7259  mean(w)=+0.1701  var(w)=4.4738
+      bin1: n=  7335  mean(w)=+0.3587  var(w)=4.3831
+      bin2: n=  7497  mean(w)=+0.4645  var(w)=4.4364
+      bin3: n=  7909  mean(w)=+0.5532  var(w)=5.4645
+      weighted within-stratum var = 4.7035  vs total 4.7232   => VR factor x1.00  (pilot overhead x1.5 total cost)
+      optimal allocation (Neyman, same N) var = 18.7388 => x0.25
+
+[4] what actually sets N: the HOEFFDING bound, not the variance
+  range bound K = 2/d*^2 = 2222.2   sigma_1(measured, per sample) = 4.87   ratio K/sigma_1 = 456.1
+  (S1) Hoeffding, dp=1e-05: ln(2/dp)=12.21  N = 3.349e+08   [r04: ~3e8]
+  (S1) Hoeffding, dp=0.001: ln(2/dp)=7.60  N = 2.085e+08   [r04: ~3e8]
+  (S2) empirical Bernstein sigma*sqrt(2ln3/N)+3K ln3/N, dp=1e-05 (ln3=12.61):
+        sigma_1 raw          sigma=    4.87  -> N = 3.269e+05
+        x0.5 var             sigma=    2.44  -> N = 3.027e+05
+        x0.1 var             sigma=    0.49  -> N = 2.846e+05
+        x0.01 var            sigma=    0.05  -> N = 2.807e+05
+        perfect (sigma->0)   sigma=    0.00  -> N = 2.803e+05
+        floor (sigma=0) = 3K ln3/eps = 2.803e+05   <- the K-term is a 1/N floor
+  (S2') same with the PAIRED estimator: var reduced x1.10 -> sigma=4.65 -> N = 3.246e+05
+  (S3) truncated Hoeffding: min(kappa,T) with T=2/t^2 + tail bias K*P(d<t):
+        measured P(kappa > K) = 0.00e+00 (n=60000) => the K=2222 truncation is SAFE
+        t=0.03 T= 2222.2 P_tail<=3.50e-04 bias<=0.778 >= 0.05 -> truncation cannot buy eps=0.05
+        t=0.05 T=  800.0 P_tail<=1.62e-03 bias<=3.603 >= 0.05 -> truncation cannot buy eps=0.05
+        t=0.10 T=  200.0 P_tail<=1.30e-02 bias<=28.820 >= 0.05 -> truncation cannot buy eps=0.05
+        t=0.20 T=   50.0 P_tail<=1.04e-01 bias<=230.562 >= 0.05 -> truncation cannot buy eps=0.05
+
+[5] the tau axis: information per wall-second (data + quoted logs)
+  o24 metr.: tau_kappa~6.9, 1+2tau_F~13.6, cost 10.02 ms/sweep(4 chains)
+  o24 (Metropolis): (1+2tau_kappa)= 14.9 (1+2tau_F)= 13.6 cost=10.02 ms | kappa-cost/sweep=  0.149 s  F-cost/sweep= 0.137 s
+  p02 (HMC xi=0)  : (1+2tau_kappa)= 18.2 (1+2tau_F)=  4.8 cost=16.70 ms | kappa-cost/sweep=  0.304 s  F-cost/sweep= 0.080 s
+  HMC/esta: kappa x0.49 cheaper, F x1.70 cheaper per unit info
+  regeneration break-even: need p_reg > 1/(1+2tau) = 0.067 (kappa), 0.073 (F) for a Nummelin atom to pay for itself
+
+[6] verdict arithmetic (eps=0.30, dp=1e-5)
+  (S1) pure Hoeffding (what r04 counted)          N = 3.35e+08
+  (S2) empirical Bernstein, raw sigma             N = 3.27e+05
+  (S2b) empirical Bernstein x paired CV (x1.10)    N = 3.25e+05
+  (S2c) empirical Bernstein, sigma->0 (vector floor) N = 2.80e+05
+  ratio S1/S2c = 1194.9   ratio S1/S2b = 1031.5
+========================================================================================================

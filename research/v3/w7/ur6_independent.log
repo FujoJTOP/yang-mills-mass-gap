@@ -1,0 +1,146 @@
+==============================================================================
+UR6  independent lambda_Ur probe   (mpmath dps=40)
+Delta = 20   e*Delta = 54.3656365692   u(beta=2.5, SU2-exact) = 0.625
+==============================================================================
+
+[A] the tree equation  R = u(1+R)^Delta   -- what 'no positive root' IS
+------------------------------------------------------------------------------
+critical activity      u* = (D-1)^(D-1)/D^D               = 0.0188676801268
+tree growth constant   L_t = D^D/(D-1)^(D-1) = 1/u*       = 53.0006865328
+   (compare: e*Delta = 54.3656365692 ; Lagrange bound is 2.511% tighter)
+   equivalently  u*  = ((D-1)/D)^(D-1) / D  = 0.0188676801268
+
+ root existence test at the three activities of interest:
+   beta=1/12  u=1/96      u = 0.010416667  argmin R* = 0.086062459  f(R*) = -0.0317593   root? True  R = 0.0136653514559
+   C03 rounded u=0.0104   u = 0.0104       argmin R* = 0.086153994  f(R*) = -0.0318463   root? True  R = 0.0136354362395
+   beta=2.5    u=0.625    u = 0.625        argmin R* = -0.12447633  f(R*) = 0.168253     root? False R = -- none --
+
+ *KEY*: the predicate 'no positive root' is a function of (u, Delta) ONLY.
+        It never sees phi^U.  u/u* at beta=2.5 = 33.125429
+        i.e. 'no root' <==>  L_t * u = 33.125429 > 1   with L_t a COUNTING constant.
+
+[B] what C03's 0.013635 actually is  (task 2)
+------------------------------------------------------------------------------
+ solve R = u(1+R)^20  at u = 1/96  ->  R = 0.0136653514559
+ corpus value C03:114            R = 0.013635
+ agreement to                   = NO  (C03 quotes 6 sig figs of 0.0136354)
+ with C03's rounded u=0.0104     R = 0.0136354362395
+
+ the beta it lives on:  u = beta/(2N^2) = beta/8 ,  u=1/96  <=>  beta = 1/12  [= 8/96]
+   => 0.013635 is the SAME tree equation as 'no positive root', just at beta=1/12.
+
+ exact relation between 0.013635 and u:
+   u=1/96           R/u = (1+R)^D = 1.31187374     vs (1+R)^D = 1.31187374     u*(1+R)^D/R = 1 -> 1.0
+   u=0.0104         R/u = (1+R)^D = 1.311099638    vs (1+R)^D = 1.311099638    u*(1+R)^D/R = 1 -> 1.0
+   u at criticality R/u = (1+R)^D = 2.789509818    vs (1+R)^D = 2.7895098175162545   u*(1+R)^D/R = 1 -> 1.0
+
+ *KEY*: R/u is an AMPLITUDE ratio. Both R and u scale with beta, so R/u is
+        beta-covariant.  lambda_Ur is a ROOT (scale-invariant).  Hence this
+        whole comparison -- including C03:114's '41x slack vs e*Delta*u=0.565'
+        -- is structurally incapable of informing lambda_Ur.  (see [D])
+
+[C] lambda_Ur upper bounds and the decisive threshold  (task 4)
+------------------------------------------------------------------------------
+ Penrose/KP tree-graph inequality (C03:69-89):  |phi^U(Gamma)| <= sum_T prod |w|
+   =>  sum_{|Gamma|=n, p0 in Gamma} |phi^U|  <=  #rooted-trees(n) * u^n
+   =>  lambda_Ur <= L_t = 53.0006865328        [T]
+   (C03:89 tabulates r_n^(1/n)/e*Delta -> 1; the exact limit is 1/ e*Delta? no:
+     n=1      (C(20n,n-1)/n)^(1/n) = 1.0             / e*Delta = 0.018393972
+     n=2      (C(20n,n-1)/n)^(1/n) = 4.472135955     / e*Delta = 0.082260344
+     n=5      (C(20n,n-1)/n)^(1/n) = 15.09698946     / e*Delta = 0.2776936
+     n=10     (C(20n,n-1)/n)^(1/n) = 25.52820276     / e*Delta = 0.46956505
+     n=20     (C(20n,n-1)/n)^(1/n) = 34.93181899     / e*Delta = 0.6425349
+     n=50     (C(20n,n-1)/n)^(1/n) = 43.64702383     / e*Delta = 0.80284214
+     n=200    (C(20n,n-1)/n)^(1/n) = 49.96763161     / e*Delta = 0.91910322
+     n=1000   (C(20n,n-1)/n)^(1/n) = 52.25342124     / e*Delta = 0.96114797
+     n=5000   (C(20n,n-1)/n)^(1/n) = 52.82487289     / e*Delta = 0.97165924
+   => Lagrange bound converges to L_t = 53.00068653  (< e*Delta = 54.36563657).  Independent small gain:
+      e*Delta was a 2.5%% overestimate; the exact constant is L_t.
+
+ the decisive test is  lambda_Ur =?= 1/u = 1/0.625 = 1.6
+   best rigorous bound gives   lambda_Ur * 0.625 <= L_t*0.625 = 33.12542908
+   separation between bound and threshold:  L_t/(1/u) = 33.125429  x
+   => the bound is ABOVE 1, so it CANNOT certify lambda_Ur*u < 1;
+      and it CANNOT certify > 1 either.  One-sided.  Undecided.
+
+ sanity collision with the corpus's independent veto (RS3:101 u <= 1/e):
+   u = 0.625 > 1/e = 0.367879 ?  True   (u*e = 1.6989261)
+
+ FREE MICRO-GAIN of this probe (independent of the verdict): replacing e*Delta
+ by its exact Lagrange optimum L_t widens the provable window by 2.575%:
+   corpus  (C03:128):  beta_W < 2N^2/e*Delta = 0.1471517765
+   this probe:         beta_W < 2N^2/L_t     = 0.150941441
+   (SU(2)-exact u=beta/4 reading: beta_W < 4/L_t = 0.07547072051)
+   -> e*Delta was provably NON-optimal; L_t is the exact constant of the same
+      Lagrange count (C03:84-89's own inequality, pushed to its limit).  [T]
+
+[D] D_inf and why it constrains nothing  (task 3)
+------------------------------------------------------------------------------
+ D_inf := exp sum_{alpha>=0} (1-alpha) A(alpha)    (RS2:35, X01:67)  -- a VALUE
+ lambda_Ur := limsup |phi^U|^{1/n}                                  -- a RADIUS
+   U=0.25  (in KP window)   D_inf(geom closed form) = 1.344868577
+   U=0.5654 (beta=1/12)     D_inf(geom closed form) = 0.4061889168
+   U=33.9785 (beta=2.5)     D_inf(geom closed form) = 1.06548684
+   reproduce corpus: D_inf(0.25) = 1.34487  ->  1.34486857738
+
+ *and the closed form is NOT a sum at U>1 (TT1:125): radius 1, series diverges.
+  continuation value at U=33.9785 is 1.0654868 > 0 but meaningless -- it is exp(complex-free
+  analytic continuation of a divergent series), NOT evidence about D_inf(2.5).
+
+ SCALE INVARIANCE WITNESS (why D_inf cannot bound lambda_Ur in EITHER direction):
+  rescale every cluster weight: A(alpha) -> c*A(alpha).
+    * lambda_Ur -> c^{1/n} growth ... careful: lambda_Ur is defined from |phi^U|,
+      so c*|phi^U| gives lambda_Ur -> c*lambda_Ur.  Instead use the RATIO-FREE test:
+      adding a term only at alpha=0,1 changes D_inf arbitrarily, changes limsup not at all.
+     spike A(0) += 0.0    : log D_inf = 0.2962962963   (was 0.2962963) ; limsup |A|^{1/n} unchanged
+     spike A(0) += 1.0    : log D_inf = 1.296296296    (was 0.2962963) ; limsup |A|^{1/n} unchanged
+     spike A(0) += 5.0    : log D_inf = 5.296296296    (was 0.2962963) ; limsup |A|^{1/n} unchanged
+     spike A(0) += -3.0   : log D_inf = -2.703703704   (was 0.2962963) ; limsup |A|^{1/n} unchanged
+  => D_inf and lambda_Ur are independent functionals of {A(alpha)}.
+  => D_inf(0.25)=1.34487 => f1^2 = a0*D_inf > a0  [T] , but ZERO constraint on lambda_Ur.
+     (Also: 1.34487 is a geometric-model value at U=0.25, deep inside the window,
+      not a value at beta=2.5 at all.)
+
+[E] WITNESS: 'no positive root at u=0.625' implies NOTHING about lambda_Ur
+------------------------------------------------------------------------------
+ fixture pair, identical Delta=20 and identical tree verdict, opposite lambda_Ur:
+   F1  phi^U = +1.0^n   (sign-definite)        lambda_Ur = 1.0     lambda_Ur*u = 0.625       < 1  <--  root? no (same u, same Delta)
+   F2  phi^U = (-1)^n * 0.1^n                  lambda_Ur = 0.1     lambda_Ur*u = 0.0625      < 1  <--  root? no (same u, same Delta)
+   F3  phi^U = (-1)^n * 0.5^n                  lambda_Ur = 0.5     lambda_Ur*u = 0.3125      < 1  <--  root? no (same u, same Delta)
+   F4  phi^U = (-1)^n * 4.0^n                  lambda_Ur = 4.0     lambda_Ur*u = 2.5         > 1  <--  root? no (same u, same Delta)
+   F5  phi^U = (-1)^n * 8.0^n                  lambda_Ur = 8.0     lambda_Ur*u = 5.0         > 1  <--  root? no (same u, same Delta)
+   F6  phi^U = (-1)^n * 40.0^n                 lambda_Ur = 40.0    lambda_Ur*u = 25.0        > 1  <--  root? no (same u, same Delta)
+   ALL SIX have Delta=20 at u=0.625 => ALL SIX have NO positive root.
+   Their lambda_Ur*u ranges over 0.0625 .. 25.0, straddling 1.
+   => the predicate does not separate the two sides => it CANNOT imply '>1'.
+   (c) is REFUTED.  [T] by counterexample (both sides witnessed).
+   Admissible range under the only rigorous bound: 0 < lambda_Ur <= L_t = 53.000687,
+   so the predicate leaves lambda_Ur*u free in (0, 33.125429] -- 1 is strictly interior.
+
+[F] independent reading of the geometric growth (C03:111 animals)
+------------------------------------------------------------------------------
+ 4D plaquette animals a_n (C03:111): [1, 20, 458, 11132, 280175]
+ ratios                            : ['20.0', '22.9', '24.3057', '25.1684']
+ a_n^{1/n}                          : ['1.0', '4.472136', '7.7082388', '10.271723', '12.288132']
+ lambda_geo(n<=5) := a_5^{1/5}      = 12.288132   (still rising; a lower reading)
+   lambda_geo*u at u=0.625          = 7.6800826
+   NOTE: lambda_Ur <= lambda_geo is NOT available; animals bound the SUPPORT, 
+         and phi^U carries a sign-alternating character factor.  So even this
+         number is a support-side reading, not a bound on lambda_Ur.  [C]/[NG]
+
+[G] verdict numbers
+------------------------------------------------------------------------------
+ (i)   'no positive root' at u=0.625  <==>  u > u* = 0.01886768  <==>  L_t*u = 33.125429 > 1
+       L_t = 53.00068653 is a ROOTED-TREE COUNTING constant, NOT lambda_Ur.  [T]
+ (ii)  lambda_Ur <= L_t = 53.00068653  (best available, 2.5% better than e*Delta)  =>  lambda_Ur*0.625 <= 33.125429
+ (iii) threshold: lambda_Ur =?= 1/0.625 = 1.6 ; bound/threshold = 33.125429 x  => UNDECIDED
+ (iv)  D_inf(0.25)=1.34487 gives f1^2>a0  [T] ; zero constraint on lambda_Ur  [T]
+ (v)   0.013635 = R(u=1/96) of the SAME equation; R/u=1.3114 is an amplitude reading,
+       and the '41x slack' is amplitude slack -- invisible to the scale-invariant lambda_Ur
+ (vi)  => (b).  Need real phi^U enumeration (n<=6) + growth-rate extrapolation.
+
+==============================================================================
+VERDICT: (b)  -- 'no positive root' does NOT imply lambda_Ur*0.625>1 (refuted by
+         same-Delta fixture [E]); D_inf gives no constraint (scale invariance [D]);
+         best rigorous bound is lambda_Ur <= 53.0006, threshold 1.6, gap 33.13x.
+==============================================================================

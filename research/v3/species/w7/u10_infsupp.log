@@ -1,0 +1,51 @@
+== Part A: exact direction test on model measures ==
+
+[A1] thin atom 0.3*d_0.01+0.7*d_1.5   inf supp = 0.01
+        t      E_eff(t)     E_eff - inf supp
+     0.25     0.992033   +9.820e-01
+     0.50     0.926738   +9.167e-01
+     1.00     0.791408   +7.814e-01
+     2.00     0.555985   +5.460e-01
+     4.00     0.309493   +2.995e-01
+     8.00     0.160495   +1.505e-01
+    16.00     0.085248   +7.525e-02
+    32.00     0.047624   +3.762e-02
+    64.00     0.028812   +1.881e-02
+
+[A2] gapless continuum dnu ~ s^(1/2) on [0,1]   inf supp = 0
+        t      E_eff(t)
+     0.25     0.591368
+     0.50     0.582627
+     1.00     0.564900
+     2.00     0.529062
+     4.00     0.460466
+     8.00     0.354452
+    16.00     0.242138
+    32.00     0.153560
+    64.00     0.093026
+
+[A3] gapped atomless sqrt edge at 1.0   inf supp = 1.0
+        t      E_eff(t)
+     0.25     2.721394
+     0.50     2.640958
+     1.00     2.481580
+     2.00     2.205183
+     4.00     1.860676
+     8.00     1.560300
+    16.00     1.345133
+    32.00     1.205058
+    64.00     1.118775
+
+[A4] ACID TEST: E_eff(1) gapless = 0.564900 ; gapped(atomless,m^2=1) = 2.481580
+     -> one finite-t number does not separate inf supp=0 from inf supp>0;
+
+== SU(2) beta=2.5, L=2 (2^4 periodic), nmeas=8000, sweeps/meas=2, seed=20261125 ==
+  t   C(t)=<O(t)O(0)>_c (zeromom)    C(t)/C(0)      E_eff(t)=-log|C(t)/C(0)|
+  0   +2.610300e+00          1.000000       (E_eff undefined at t=0)
+  1   +2.918439e-01          +0.111805       2.191001 +- 0.098992   <-- t=L/2 (wrap: fwd+bwd both counted)
+
+== SU(2) beta=2.5, L=4 (4^4 periodic), nmeas=900, sweeps/meas=5, seed=20261125 ==
+  t   C(t)=<O(t)O(0)>_c (zeromom)    C(t)/C(0)      E_eff(t)=-log|C(t)/C(0)|
+  0   +2.236943e+01          1.000000       (E_eff undefined at t=0)
+  1   +2.309034e+00          +0.103223       2.270866 +- 0.162775
+  2   +2.258442e-01          +0.010096       4.595605 +- 2.656619   <-- t=L/2 (wrap: fwd+bwd both counted)

@@ -1,0 +1,97 @@
+====================================================================================================
+PART B -- SU(2) 1-D periodic constant mode:  (p,w,q) derived from the transfer operator
+====================================================================================================
+
+[B1] exact one-link Haar marginal  rho1(z) = C (Cin(2pi) - Cin|z|)  on [-2pi,2pi]
+      Cin(2pi) = 2.43765339   normalisation C = 0.07957747   rho1(0) = 0.19398229
+      rho1''(0) = -0.03978874  =>  G''(0) = -rho1''/rho1 = 0.20511530
+      exact closed form 1/(2 Cin(2pi)) = 0.20511530   [check]
+      Var(z) = 3.719824  vs corpus 3.719824 (rel 4.79e-08) ;  1/Var = 0.268830 vs 0.268830
+
+[B2] P4 bulk kernel  M(z,z')=sqrt(rho rho')exp(-beta(1-cos((z'-z)/2))), k=0, dense eigh
+      beta=0.0: lam0=   1.000000  lam1/lam0=0.00000000  Delta=35.582300  top4=[1. 0. 0. 0.]
+      beta=2.5: lam0=   0.474428  lam1/lam0=0.52498371  Delta=0.644388  top4=[0.474 0.249 0.133 0.069]
+      P4 anchor lam1/lam0 = 0.52498, Delta = 0.6444  ->  here Delta = 0.6444 [check]
+      (the susceptibility of z itself is 2.92 here; the corpus chi = 4.45 is the k-conjugate
+       coarse variable a, so it is NOT comparable -- reproduced properly in B2b below)
+
+[B2b] G'' from the P4 transfer matrix (k-integral), independent of B2's chi:
+        L    G(2.5)      G(0)    Wilson   (P4 table: 0.2077..0.2165 / 0.2395..0.2616)
+        4  0.211465  0.254247 -0.042782
+        5  0.213039  0.257185 -0.044146
+        6  0.214389  0.259137 -0.044748
+        7  0.215532  0.260529 -0.044997
+        8  0.216495  0.261571 -0.045076
+      P4 anchor: G(2.5) L=8 = 0.2165, L=4 = 0.2115 ; here 0.2165 / 0.2115
+
+[B3] DERIVE the SL data of the constant mode (h-transformed chain, invariant density = 1):
+      w = 1 ; p = sigma^2(z)/2 ; q = 0  (the uniform shift is an exact flat direction, P4 sec.1)
+      sigma^2(z) = <d^2>_z with jump kernel exp(-beta(1-cos(d/2))), beta = 2.5
+      sigma^2(0) = 1.333075   sigma^2(edge) = 5.114e+01   max = 51.635811
+      T_intr = int sqrt(w/p) dz = int sqrt(2/sigma^2) dz = 10.180126
+      (sigma^2 stays bounded below at the support edge -- the one-sided jump distribution makes it
+       GROW there -- so p is non-degenerate and T is finite; no singular SL endpoint.)
+      phi = sqrt(pw);  Q = (1/2)phi''/phi - (1/4)(phi'/phi)^2;  min Q = -0.052530 at z = -6.0139
+      curvature identity (q=0, at a critical point of pw):  Q = (1/4)(pw)''/(pw)  =>  Q_min = -G''/4
+      -G''/4 = -0.051279  vs  computed min Q = -0.052530   [check]
+      LIOUVILLE BOUND: pi^2/T^2 + ess inf Q = 0.095234 + (-0.052530) = +0.042705
+      derived operator -(p u')' = lam u : lam_0 = -0.000000, lam_1 = 0.055044
+      vs transfer gap Delta = 0.6444 and coarse floor G'' = 0.2165:
+      length slot pi^2/T^2 = 0.0952 = 0.148 x Delta = 0.440 x G''   -> length slot is 2.3x TOO WEAK
+      T_intr * Delta = 6.5600 ;  T_intr / xi = 6.5600 (xi = 1/Delta = 1.5519)
+      pi/sqrt(Delta) = 3.9136 (DT's L_s if e1 = Delta) vs T_intr = 10.1801  -> T_intr/(pi/sqrt(Delta)) = 2.601
+
+[B4] SLOT ANALYSIS -- where does the floor live?
+      coarse effective problem -u'' + G'' u = lam u on R:  T = inf, ess inf Q = G'' = 0.21649
+      => bound = 0 + G'' = 0.21649 = truth exactly: 100% POTENTIAL slot, 0% length slot.
+      DT template pi^2/L_s^2 is the LENGTH slot; here it holds 0.0952 vs 0.2165 real.
+
+====================================================================================================
+PART C -- acid tests
+====================================================================================================
+
+[C1 free field]  placement of the Jacobian Phi = -log J decides everything:
+      (a) Phi in w (measure):  q = Hess V = k^2 I => q_min = 0 ; T = box length L
+          L=1       bound = pi^2/L^2 + 0 = 9.86960440   -> 0
+          L=10      bound = pi^2/L^2 + 0 = 0.09869604   -> 0
+          L=100     bound = pi^2/L^2 + 0 = 0.00098696   -> 0
+      (b) Phi in q (potential):  q_min = N/12 = 0.166667 (SU(2); exact HessPhi = (N/12) I)
+          L=1       bound = pi^2/L^2 + N/12 = 10.03627107   -> 0.166667
+          L=10      bound = pi^2/L^2 + N/12 = 0.26536271   -> 0.166667
+          L=100     bound = pi^2/L^2 + N/12 = 0.16765363   -> 0.166667
+          L=1e+06   bound = pi^2/L^2 + N/12 = 0.16666667   -> 0.166667
+      => TRAP CONFIRMED: (b) manufactures the positive floor 0.166667 on the FREE field at
+         infinite volume (and it is exactly the number the corpus uses as the Haar lower bound).
+         Guard = a PLACEMENT RULE: Phi belongs to w, never to q.  Residual (a) is finite-volume
+         only and -> 0: the bound is a FLOOR, not an atom certificate. It cannot be used alone.
+
+[C2 double well]  the DT-4 operator is  -u'' + W u  with  W = V'^2/4 - V''/2 ,  V=(g/2)(x^2-1)^2
+      (W is the SUSY partner: e^{-V/2} is its exact zero mode, so mu_n are the tunnelling gaps;
+       in the gap form phi0 = e^{-V/2} gives S = V/2 and Q~ = S'^2 - S'' = W -- the SAME potential.)
+          g    mu1(FD)  mu1(DT-4)      min W   pi^2/36      bound  DT budget  ell_impl
+        0.5   0.792090   0.792092    -2.0152    0.2742    -1.7410       2.92    1.4142
+        2.0   0.748680   0.748680    -5.5255    0.2742    -5.2514     251.00    0.1961
+        4.0   0.454544   0.454541    -9.7588    0.2742    -9.4847    1135.00    0.0929
+        8.0   0.119117   0.119101   -17.9445    0.2742   -17.6704    4798.00    0.0453
+       12.0   0.024846   0.024809   -26.0269    0.2742   -25.7527   10988.00    0.0299
+      => PASS (machine silent for every g), and it EXPLAINS DT-4/E4 exactly:
+         DT budget = pi^2/ell^2 + min W with ell = 1.41 (the WELL WIDTH), the Liouville length is
+         T = 6 (the whole interval): (6/1.41)^2 = 18.0  => the budget was inflated by
+         +4.66, which is why it predicted 2.92 ... 10988 > 0.
+         DT-4 used the wrong length; with the DERIVED T the double well passes automatically.
+
+[C2b] gap-form lemma (LP-4) validated on the bare well V (not on W):
+      -u''+V u,  phi0 = the localised ground state,  S = -log phi0,  Q~ = S'^2 - S'' ; T~ = 6
+      g=0.5: T~ = 6.0000 (= 6), ess inf Q~ = -0.5891   (min W = -2.0152: NOT the same,
+             because e^{-V/2} is the zero mode of the PARTNER -u''+Wu, not the ground state of V)
+      gap-form bound = -0.3149 < gap(-u''+V u) = 1.2800   [check: lemma holds]
+      and for the W operator lam_0 = +1.30e-06 (SUSY zero mode e^{-V/2}, exact)
+
+[C3 beta=0 Haar]  curvature 0.205115 > 0 but f1^2 = 0 (no atom):
+      exact anchor G'' = 1/(2Cin2pi) = 0.20511530  (P1, re-derived in B1)
+      Liouville output on the same data: bound = +0.042705 > 0  -> FLOOR-BLIND, but the output
+      never contains a weight: no atom can be certified (same blindness as DT sec.3 row 2).
+      SHARP: min Q = -G''/4 = -0.052530 (exact factor 1/4). The Haar curvature enters the
+      Liouville budget with a MINUS sign, so 'curvature > 0 => certified gap' has the sign wrong.
+
+ALL ANCHOR + ACID-TEST CHECKS PASSED

@@ -1,0 +1,91 @@
+==============================================================================
+B1  z1 = 1/limsup_k |C(k)|^{1/k}        spectral measure with 4 atoms
+    lambda_1 = 0.9500000000  =>  z1 = 1/lambda_1 = 1.0526315789
+          k       |C(k)|^(1/k)         err   (C(k)/C(0))^(1/k)         err
+          5     0.978345177642    2.83e-02      0.890570104310    5.94e-02
+         10     0.955399691363    5.40e-03      0.911534474373    3.85e-02
+         50     0.950001057283    1.06e-06      0.941112818879    8.89e-03
+        100     0.950000000098    9.81e-11      0.945545442112    4.45e-03
+       1000     0.950000000000    0.00e+00      0.949553601465    4.46e-04
+      10000     0.950000000000    0.00e+00      0.949955350704    4.46e-05
+      40000     0.950000000000    0.00e+00      0.949988837479    1.12e-05
+    isolation in the transfer variable: 1-lambda_2/lambda_1 = 0.1579  -> resolves once k >~ 2/delta = 12.7
+    -> limsup is exact but it is 'mass = exponential decay rate'. FINITE k: nothing.
+==============================================================================
+B2  Gauss/Pade [M-1/M]:  x_max <= lambda_1, monotone up  =>  m1_det(M) is an UPPER bound
+      M              x_max        m1_det(M)   m1 - m1_det
+      1     0.850000000000   0.162518929498    -1.112e-01
+      2     0.925000000000   0.077961541470    -2.667e-02
+      3     0.946123203588   0.055382482059    -4.089e-03
+      4     0.949999999997   0.051293294391    -3.369e-12
+      5     0.950000000000   0.051293294388    -2.786e-13
+      6     0.950000000000   0.051293294387     1.792e-13
+      7     0.950000000000   0.051293294388    -9.000e-15
+    exact  lambda_1 = 0.950000000000   m1 = 0.051293294388
+    -> EXACT at M = rank(nu) = 4 (Prony/Pade).  2M moments fix z1 IFF rank T_O <= M.
+    --- the f1^2 = 0 trap: a state at lambda=0.95 exists but has ZERO overlap ---
+    true      m1     = 0.0512932944   (state at lambda=0.95 exists in spec H)
+    m1_det (M=10)    = 0.2231435513   x_max = 0.8000000000
+    m1_det - m1      = 0.1718502569  > 0  : the zero JUMPS OVER
+    -> inf{E_n : f_n^2>0} >= inf{E_n} = m1.  Direction error; more moments cannot fix it.
+==============================================================================
+B3  conditioning:  relative noise 1e-10 on the moments -> endpoint error
+    (dense nu: 10 atoms, so every M below is a genuine under-determination)
+      M     x_max(exact)     m1_det(M)   m1-m1_det  median err@1e-10     max err
+      3   0.967695926648  0.0328373664  -2.279e-02         5.110e-08   2.127e-07
+      4   0.976136899919  0.0241524361  -1.410e-02         2.612e-06   1.257e-05
+      5   0.980894579579  0.0192902874  -9.240e-03         2.371e-04   1.586e-03
+      6   0.984148266625  0.0159787158  -5.928e-03         2.806e-03   9.292e-03
+      8   0.987250630956  0.0128313397  -2.781e-03         3.207e-03   1.583e-02
+     10   0.988912168468  0.0111497597  -1.099e-03         3.965e-03   1.223e-02
+    -> exact moments at 1e-10 relative noise give a biased/bounded endpoint, and the
+       bias shrinks only like the DELTA of the spectrum, not like the noise.
+==============================================================================
+B4  2D YM:  Z(t) = sum_j (2j+1)^2 exp(-t j(j+1)) ,  O = c*H (conserved)
+        t           Z(t)          Z(2t)          Z(3t)  m=3t/(8A),A=1   C(k)
+     0.30 1.16269322e+01 4.43092320e+00 2.60160533e+00       0.112500      0
+     0.70 3.60534804e+00 1.55291472e+00 1.13504449e+00       0.262500      0
+     1.50 1.45116961e+00 1.02230915e+00 1.00111069e+00       0.562500      0
+    -> Tr T^k = Z(kt) exact and nonzero, but C(k) = <0|O T^k O|0> = 0 for ALL k
+       (O = c*H, H|0> = 0)  =>  T_O = 0, D_O(z) == 1 :  NO ZERO AT ALL,  m = 3g^2/8 > 0.
+==============================================================================
+B5  single plaquette (d=0): T = multiplication by f(U) = exp(-beta S_W)
+      k        Tr T^k (quad)      Z(k*beta) exact    rel.err
+      1     1.6526771963e-01     1.6526771963e-01   1.68e-16
+      2     6.5588906778e-02     6.5588906778e-02   6.35e-16
+      3     3.6810989746e-02     3.6810989746e-02   7.54e-16
+      5     1.7497828959e-02     1.7497828959e-02   7.93e-16
+     10     6.2860890655e-03     6.2860890655e-03   4.97e-15
+     20     2.2397249557e-03     2.2397249557e-03   7.75e-15
+    (Z(b) = e^{-b} 2 I1(b)/b is the exact SU(2) single-plaquette partition function)
+    spectrum of T = [0.006738, 1.000000]  (absolutely continuous)
+    --- resolvent:  ||(1-zT)^-1|| = sup_U 1/|1-z f(U)|  =  1/(|z| dist(1/z,[e^-2b,1]))
+               z    numerical sup      1/(|z|dist)
+             0.5   2.00000000e+00   2.00000000e+00
+            0.99   1.00000000e+02   1.00000000e+02
+               1   3.17004773e+09              inf
+               2   7.82676904e+05              inf
+              50   9.32340701e+05              inf
+          1.0003   4.90619096e+07              inf
+             1.5   1.10969233e+06              inf
+             400   5.89908274e-01   5.89908274e-01
+    => singular set = [1, e^(2beta)] = [1, 148.4132]: a CONTINUUM, not a point.
+       z=1 is only the lower EDGE; T is not trace class => no Fredholm determinant.
+==============================================================================
+B6  the OTHER side:  Z gives LOWER bounds on m1, at exponential precision cost
+    exact 3-level: E=[0.0, 1.0, 1.6], w=[1.0, 1.0, 2.0], a=1  =>  m1 = 1.0
+      k              Z-1       m_hat(k)   m1 - m_hat  rel.err needed
+      1 7.7167247716e-01   0.2591950714    7.408e-01       3.679e-01
+      2 2.1685969119e-01   0.7642523595    2.357e-01       1.353e-01
+      3 6.6246562466e-02   0.9047905676    9.521e-02       4.979e-02
+      5 7.4088722549e-03   0.9810154087    1.898e-02       6.738e-03
+      8 3.4098417305e-04   0.9979593119    2.041e-03       3.355e-04
+     12 6.1533867168e-06   0.9998756618    1.243e-04       6.144e-06
+     20 2.0611789508e-09   0.9999993856    6.144e-07       2.061e-09
+     30 9.3576232539e-14   0.9999999990    1.015e-09       9.358e-14
+    -> m_hat(k) <= m1 for EVERY k (lower bound!), ->m1 exponentially in k.
+       Cost: Z-1 must be known to RELATIVE precision e^{-ak m1} (column 5).
+    =>  D_O zero  : cheap-ish, UPPER bound on m1.      Z : LOWER bound, exponential cost.
+        The mass gap needs a LOWER bound.  The zero is on the wrong side.
+==============================================================================
+done.

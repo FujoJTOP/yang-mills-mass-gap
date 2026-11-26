@@ -1,0 +1,18 @@
+================================================================================================
+[O09b] E[Phi''] over the pure-Haar slice, v = T_3, 5-point FD, numpy only
+  model: U ~ Haar(SU(N));  Y = i log U (Hermitian, eigenvalues mu);
+         Phi = sum_{i<j} g(mu_i-mu_j), g(d) = -2 log[sin(d/2)/(d/2)] = -log J  (+const)
+  conditioning slice: S_W constant there (H1A-EXACT.md §2.1) => measure = Haar, beta-independent
+------------------------------------------------------------------------------------------------
+  N=2: E[Phi''] = 0.19208 +- 0.00005   (med 0.2026)   floor N/12 = 0.16667   margin = 15.3%
+        E[Phi'] = -0.00000  (0 by symmetry)   Var(Phi') = 0.00000   min Phi'' = 0.1667
+  N=3: E[Phi''] = 0.31982 +- 0.00006   (med 0.3148)   floor N/12 = 0.25000   margin = 27.9%
+        E[Phi'] = +0.00014  (0 by symmetry)   Var(Phi') = 0.10155   min Phi'' = 0.2500
+  N=4: E[Phi''] = 0.43204 +- 0.00010   (med 0.4325)   floor N/12 = 0.33333   margin = 29.6%
+        E[Phi'] = -0.00128  (0 by symmetry)   Var(Phi') = 0.13528   min Phi'' = 0.3333
+  N=5: E[Phi''] = 0.53880 +- 0.00011   (med 0.5373)   floor N/12 = 0.41667   margin = 29.3%
+        E[Phi'] = -0.00360  (0 by symmetry)   Var(Phi') = 0.15634   min Phi'' = 0.4832
+------------------------------------------------------------------------------------------------
+  paper (ch05-theorems.tex:208-209) reports 'measured 0.34, 0.46' for SU(2), SU(3);
+  the SU(2) exact value here is 0.20512 (= 1/(2 Cin(2pi)) , betastar_scaling.log:5) ->
+  the 0.34 is NOT the single-plaquette Haar slice; its provenance is not in the repo [E].

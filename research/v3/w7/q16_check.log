@@ -1,0 +1,52 @@
+D:\Dev\math\research\v3\w7\q16_check.py:56: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  Z = quad(lambda w: phif(w) * math.exp(-B * w), 0, 2, epsabs=1e-16, epsrel=1e-14, limit=800)[0]
+D:\Dev\math\research\v3\w7\q16_check.py:57: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  e1 = quad(lambda w: (1 - phif(w)) * math.exp(-B * w), 0, 2, epsabs=1e-16, epsrel=1e-14, limit=800)[0] / Z
+D:\Dev\math\research\v3\w7\q16_check.py:58: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  e2 = quad(lambda w: (1 - phif(w)) ** 2 * math.exp(-B * w), 0, 2, epsabs=1e-16, epsrel=1e-14, limit=800)[0] / Z
+D:\Dev\math\research\v3\w7\q16_check.py:67: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  Z_lb = quad(f1, 0, 1, epsabs=1e-16, epsrel=1e-14)[0] + quad(
+D:\Dev\math\research\v3\w7\q16_check.py:78: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  Z1 = quad(lambda w: (lambda z: math.sqrt(z * (2 - z)) / math.acos(1 - z) if 0 < z < 2 else 0)(w)
+D:\Dev\math\research\v3\w7\q16_check.py:103: IntegrationWarning: The occurrence of roundoff error is detected, which prevents 
+  the requested tolerance from being achieved.  The error may be 
+  underestimated.
+  Zl = quad(f, 0, 1, epsabs=1e-16, epsrel=1e-14)[0] + quad(
+[R1] Psi(B) 高精度（w 路 / u 路 + p17 的级数 1-2/(15B)-149/(315B^2)）
+   B        Psi_w(mp30)          Psi_u(mp30)          series        Psi_float_quad
+    0.50  0.0310676700598       0.0829190327519       -1.15873015873    0.03106767
+    1.00  0.295245791927        0.263366160536        0.393650793651    0.29524579
+    2.00  0.924190801351        0.618376593764        0.815079365079    0.92419080
+    2.43  1.06942047696         0.722434741631        0.865024662058    1.06942048
+    3.00  1.15842094077         0.81655381503         0.902998236332    1.15842094
+    5.00  1.14360721821         0.939722001821        0.954412698413    1.14360722
+   10.00  1.06134838883         0.980774657018        0.981936507937    1.06134839
+   50.00  1.01093217076         0.997136620935        0.997144126984    1.01093217
+  200.00  1.00268277363         0.999321394459        0.999321507937    1.00268277
+
+[R2] p04 §6 的 centre 支分项 @ B=2.39（M=0.406）
+  Z1=0.35526637  Z_lb=0.35326555  Z1/Z_lb=1.005664
+  K=0.06824718  Kbar=0.14349726  r=Kbar/Z_lb=0.406202  (K/Z1=0.192101)
+  E[w]=0.338033  W_lo=(1-r)/B=0.248451  B*W_lo=0.593798
+  E2=0.23286552 E3=0.21476362 E4=0.24320574
+  分项: A=B^2(E2-Wlo^2)=0.9776   B=(2/3)*(...)*9B^2=0.6637   C=E[e^2]*9B^2=0.3185  合计=1.9598
+  p04 §6 报: A≈1.05  B≈0.44  C≈0.21  合计 1.699
+
+[R3] 若 W_lo 用 '零'（B<=5/3 的合法替代）:
+  B=1.200  r=0.7155 W_lo=0.2371  C_centre=5.1007   (A=0.6417 B=0.5208)
+  B=1.500  r=0.6262 W_lo=0.2492  C_centre=3.1077   (A=0.7806 B=0.6087)
+  B=1.667  r=0.5794 W_lo=0.2523  C_centre=2.6461   (A=0.8403 B=0.6399)
+  B=2.000  r=0.4934 W_lo=0.2533  C_centre=2.1966   (A=0.9250 B=0.6697)
+  B=2.390  r=0.4062 W_lo=0.2485  C_centre=1.9598   (A=0.9776 B=0.6637)
+
+[DONE]

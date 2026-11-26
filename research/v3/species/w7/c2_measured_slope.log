@@ -1,0 +1,14 @@
+====================================================================================================
+C2  measured  d ln(m a)/d beta  vs  asymptotic  12 pi^2/(11 N^2)   [beta = 2N/g^2 everywhere]
+====================================================================================================
+series        beta1->b2        slope      err      req  ratio
+-------------------------------------------------------------
+SU(3) (L=6->L=24) 6.00->6.30    -0.6383   0.6577   1.1963   0.53  [E]
+SU(2)/Ntau4   2.20->2.50     0.2927   0.2922   2.6917   0.11  [E]
+SU(2)/Ntau4   2.50->2.80     0.3553   0.3111   2.6917   0.13  [E]
+SU(2)/Ntau6   2.20->2.50    -0.8112   1.9418   2.6917   0.30  [E]
+SU(2)/Ntau6   2.50->2.80    -0.5621   1.2026   2.6917   0.21  [E]
+
+-- SU(3) operator/volume systematic on the SAME beta pair [E for inputs, C for the slope]
+  beta=6.0 endpoint taken as am=1.680 (L=6 unsmeared n=0                  356) -> slope -2.1328, ratio  1.78
+  beta=6.0 endpoint taken as am=0.820 (L=10 unsmeared xi/a=1.22 -> am     378) -> slope +0.2594, ratio  0.22

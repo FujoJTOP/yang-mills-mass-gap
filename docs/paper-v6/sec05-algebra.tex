@@ -1,0 +1,134 @@
+% =====================================================================
+%  sec05 : ring 4 --- log D to eta, and why the exponent must be m_1^{dr}
+% =====================================================================
+\section{环 4：$\log D\to\eta$ 的代数，指数必须是 $m_1^{dr}$}\label{sec:algebra}
+
+\subsection{精确分解（不是不等式）}
+
+P3 的骨架--装饰分解给\textbf{恒等}式，\LT
+\begin{align}
+C_L(t)&=a_0u^{4T}Z_{dec}(B_T)+R^{hi}_L(t), \label{eq:decomp}\\
+a_0u^{4T}Z_{dec}(B_T)&=a_0u^{4T}e^{f_{dec}t}D_{fin}(T)=A^{dressed}e^{-m_1^{dressed}t}D_{fin}(T),
+\qquad A^{dressed}=a_0 ,\label{eq:31}
+\end{align}
+其中 $m_1^{dressed}=\kappa-f_{dec}$、$\kappa=4\ln(1/u)/a$、$T=t/a$。\eqref{eq:decomp} 的两项分别是"直管 + 附着装饰"
+与"其余"，前者是本文的载重项，后者只出现在误差里。
+\src{\codep{P3-DRESSED-MASS.md:50}（式 (1.2)）、\codep{:86}（式 (3.1)）、\codep{:88}；\codep{X02-THEOREMA.md:61--63}。}
+
+\subsection{恒等式：$\eta$ 的两项}
+
+记 $f_1^2:=a_0D_\infty$。由 \eqref{eq:decomp}--\eqref{eq:31}，
+\begin{equation}
+C_L(t)=f_1^2e^{-m_1^{dr}t}\Bigl[\frac{D_{fin}(T)}{D_\infty}\Bigr]+R^{hi}_L(t)
+\ \Longrightarrow\
+\eta(t):=\frac{C_L(t)}{f_1^2e^{-m_1^{dr}t}}-1
+=\underbrace{\Bigl(\frac{D_{fin}(T)}{D_\infty}-1\Bigr)}_{\text{端点亏损}}
++\underbrace{\frac{R^{hi}_L(t)}{f_1^2}\,e^{m_1^{dr}t}}_{\text{高扇区}} .
+\label{eq:eta}
+\end{equation}
+\LT{}（初等代数；$m_1^{dr}$ 是\textbf{穿好衣服}的质量，见本节的条件 B1）。
+\src{\codep{X02-THEOREMA.md:65--69}（式 (2.1) 前的三行恒等式）。}
+
+\subsection{$\exp/\log$：唯一需要的额外事实是 $D_\infty\ge\tfrac12$}
+
+取 $\varepsilon:=\log D_{fin}-\log D_\infty$，环 2 给 $|\varepsilon|\le Be^{-\delta t}$。于是
+\[
+\frac{D_{fin}}{D_\infty}-1=e^{\varepsilon}-1,
+\qquad |e^{\varepsilon}-1|\le2|\varepsilon|\quad(|\varepsilon|\le1)
+\qquad\Longrightarrow\qquad |\eta_{lead}|\le2B\,e^{-\delta t}.
+\]
+\textbf{唯一}需要的额外事实是 $D_\infty$ 有正下界，而这是 \LT：P3 \S4.1 逐字给
+$|\log D_{fin}(T)|\le C_1u+O(1)\cdot u=Cu$，$C=C(\beta,N)<\infty$，$T,L$ 一致 $\Rightarrow$ $D_\infty\in[1-Cu,1+Cu]$，
+$u<1/(2C)$ 时 $D_\infty\ge\tfrac12$。转换常数 $B'=O(B/D_\infty)=O(B)$，与 $t,L$ 无关。\LT
+\src{\codep{X02-THEOREMA.md:71--77}（\S2.1）与 \codep{P3-DRESSED-MASS.md:116}（式 (4.1)）。}
+
+\subsection{三个必须同时成立的条件（缺一即断）}\label{sec:b1}
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.05\textwidth} L{0.44\textwidth} p{0.09\textwidth} L{0.30\textwidth}@{}}
+\toprule
+\# & 条件 & 状态 & 断掉的后果 \\
+\midrule
+B1 & 指数必须是\textbf{穿衣服}的 $m_1^{dr}=\kappa-f_{dec}$，不是裸 $\kappa$ & \LT & 用裸 $\kappa$ 则 $\eta(t)\sim e^{+(m_1^{dr}-\kappa)t}=e^{-f_{dec}t}$，$f_{dec}=O(u/a)$ $\Rightarrow$ $\eta$ \textbf{不衰减} \\
+B2 & $R^{hi}$ 的相对率 $\ge\tfrac12\kappa-O(u/a)$（\codep{P3-DRESSED-MASS:51}：$\mathfrak{P}_{rest}$ 最低 $|P|\ge6T$） & \LT{}（见记账） & $R^{hi}$ 不随 $t$ 衰减 $\Rightarrow$ $\eta$ 无界 \\
+B3 & $(L1)$ 必须是\textbf{双侧}且 $B$ 与 $L,T$ 无关 & \LT{}（环 2） & 只单侧或不一致 $\Rightarrow$ $\eta$ 只能得 $T$-无关界 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+\src{\codep{X02-THEOREMA.md:81--85}（\S2.2 表 B1--B3）；\codep{P3-DRESSED-MASS.md:51}。}
+
+\paragraph{B1 是本环的\textbf{唯一定理级内容}，必须写足。}\LT
+若把 \eqref{eq:eta} 的指数写成裸 $\kappa=4\ln(1/u)/a$，则 $\eta$ 的"领头项"变成
+$\eta(t)\sim e^{+(m_1^{dr}-\kappa)t}=e^{-f_{dec}t}$，而 $f_{dec}=\varphi_{dec}/a=O(u)$ 是每单位时间的\textbf{有限}自能，
+不是率隙 $\Rightarrow$ $\eta$ 根本不衰减。等价地，这等于强推 $E_1=4\ln(1/u)/a$ \textbf{精确}，而那与装饰气体的存在矛盾。
+故"穿衣服"不是记号偏好，是正确性条件。\LT
+\src{\codep{X02-THEOREMA.md:83}（B1 行）；\codep{V01-I2S.md} \S2.2（经 \codep{X02} 转引）。}
+
+\LM{} 对 B2 的记账（不改 \eqref{eq:eta} 的代数）：\codep{P3-DRESSED-MASS:51,:55} 的"$\ge6T$ / rate $\ge2\kappa$"
+只对\textbf{整管型}装饰成立（\codep{W05-TDECAY.md:65--66}）。本文的处理是把"附着于管的装饰"全部算进 $Z_{dec}$
+（\codep{X01-L1C.md:26--32} 的附着支撑），因此单壁平行装饰\textbf{不在} $R^{hi}$ 里，而 $R^{hi}$ 与管的第二指数由环 2 提供。
+若有人改用另一种分割（把部分附着装饰挪进 $R^{hi}$），则 B2 的常数需重推，这正是 \S\ref{sec:limits} 限定三要盯住的那类降级。
+
+\subsection{$f_1^2=a_0D_\infty$ 与地板链}
+
+\LM{} \codep{P3-DRESSED-MASS:87} 写 $A^{dressed}=a_0$、\codep{:106} 写 $f_{1,L}^2=A^{dressed}(L)$，是把 $D_{fin}(T)$ 留在式子里；
+$f_1^2=a_0D_\infty$ 是 $T\to\infty$ 的\textbf{极限幅度}（只需 $D_{fin}\to D_\infty$ 的\textbf{存在性}，弱于率那一半）。
+这是记号级修正（\codep{W02-L1.md:106} 的 W3 同判），不是新数学。\LM
+\src{\codep{X02-THEOREMA.md:99--110}（\S3.1--3.2）。}
+
+地板链 \LT{}（$\bar C\equiv N$ 已证，无未知常数）：$a_0=(2N)^{-p}s\ge(2N)^{-2}>0$（$p\in\{0,2\}$ 是\textbf{算子系数指数}，归一化 $\mathrm{A}_{1g}$ 上 $p=0$；
+$s\in\mathbb{Z}_{\ge1}$，正 $c_f$ 乘正单态重耦合），$a_0$ 是\textbf{β-无关的纯数}；
+$D_{fin}\ge\tfrac12$ $\Rightarrow$ $f_1^2=a_0D_\infty\ge\tfrac12(2N)^{-2}\ge\tfrac14(2N)^{-2}=r_0$。
+注意：$a_0$ 的地板是 $(2N)^{-2}$，$\tfrac14(2N)^{-2}$ 是 $r_0=\inf_LA^{dressed}(L)$ 的地板（两个不同的量，不许混写）。
+\textbf{洞 E 的裁决}：正确式是 $r_0=\tfrac12a_0(1-O(u))$，\textbf{β-无关}；$u^p$ 的幂形式是转写错（\codep{Z10-HOLEE.md} \S0）。\LM
+\src{\codep{X02-THEOREMA.md:104--112}；\codep{P3-DRESSED-MASS.md:36,:119,:122,:124}；\codep{Z10-HOLEE.md:18--24,:53--58}。}
+
+\textbf{洞 A 的裁决（逐字）}：$A^{dressed}$ \textbf{就是} $f_1^2$，且 $f_1^2\ge\tfrac12(2N)^{-2}$（\codep{Z06-HOLEA.md} \S0）；
+\textbf{洞 B 的裁决}：$D_\infty$ 与 $\delta$ \textbf{无函数关系}（$\delta$ 只进 $\eta$ 的界，\codep{X01:67}；\codep{Z11-HOLEB}）
+$\Rightarrow$ 环 1 \textbf{不消费}任何 $\delta$。\LT
+\src{\codep{Z06-HOLEA.md} \S0；\codep{Z11-HOLEB.md}：\codep{X01:67}、\codep{DRESSED:94} 与 \codep{CYL-RES:151} 的三个对象不许混。}
+
+\LM{} \textbf{洞 D 的一行修法（广延性）}：$O$ 的定义是\textbf{整片求和}（\codep{DR:25}）$\Rightarrow$ $f_1^2=V_s\cdot a_0(1+O(u))\propto L^3$
+（$V_s=L^3/a^3$），$a_0$ 的 $L$-无关性已证（\codep{Z09-HOLED.md}）。故上式里 $f_1^2$ 与 $r_0$ 的比较\textbf{必须带 $V_s$}
+（$r_0\mapsto V_s\cdot\tfrac12a_0$，或把 $f_1^2$ 归一化），否则"$f_1^2\ge r_0$"\textbf{平凡}、$\inf_L$ 落到 $L_{\min}$。
+这是\textbf{一行}修正，不改链的形状（\codep{Z09-HOLED.md}；\codep{LOOP-RUNBOOK.md} §13.32）。\LM
+
+\subsection{四处 $\delta$ 必须分开（否则 $s$ 槽会记错）}
+
+链上出现的 "$\delta$" 不是同一个对象。下表逐行给对象、量纲与出处：
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}p{0.075\textwidth} L{0.30\textwidth} L{0.26\textwidth} L{0.16\textwidth} L{0.14\textwidth}@{}}
+\toprule
+记号 & 出处（逐字） & 对象 & 量纲 & 本文用法 \\
+\midrule
+$\delta_A$ & \codep{REPORT.md:95} 的 $m_2$；$\delta_A:=m_2-m_1$ & $t$-指数上的率，\textbf{同时}是隔离阈值 & 质量 & 装配时取 $m_2=m_1^{dr}+\delta$ \\
+$\delta_{L1}$ & \codep{X01-L1C.md:79--82}：$|\log D_{fin}-\log D_\infty|\le Be^{-\delta_{L1}t}$ & 率 & 质量 & 环 2、环 3 的 $\delta$ \\
+$\delta_{I2}$ & \codep{docs/paper-v2/app.tex:789}：$\Lambda_\star-m_1^2\ge\delta>0$ & \textbf{质量平方隙} & 质量$^2$ & 本文结论的对象 \\
+$\delta_{\rm phys}$ & \codep{docs/paper-v2/ch05-theorems.tex:151}：$\delta\approx0.5\,m_1$ & 质量（$0^{++*}$ 与 $m_g$ 的间距） & 质量 & \LM/\LE，不作结论 \\
+\bottomrule
+\end{tabularx}
+\end{center}
+\src{\codep{X02-THEOREMA.md:119--127}（\S4.1 的四处 $\delta$ 逐字对照表）。}
+
+\textbf{同名异物（洞 B 的后半）}：\codep{CYL-RES:151} 的 $\delta_L$ 是\textbf{谱隙}（带体积下标 $L$），与 \codep{DRESSED:94} 的余项率 $\delta$、
+以及上表四个 $\delta$ 都\textbf{不是}同一个数；把 $\delta_L$ 读成 $\delta_{L1}$ 就是用谱隙冒充余项率（\codep{Z11-HOLEB.md}）。
+这也是洞 B 判"同名异物"而非"数值不符"的理由。\LM
+
+于是装配处的换算只能是 $\Lambda_\star-(m_1^{dr})^2=2m_1^{dr}\delta_A+\delta_A^2$；把 $\delta_{I2}$ 与 $\delta_{L1}$ 当成同一个数，
+会差一个因子 $2m_1^{dr}$。\LT
+\src{\codep{X02-THEOREMA.md:129--141}。}
+
+\subsection{$L$-一致性从哪来}
+
+本环不产生新的 $\beta$ 条件，也不产生新的 $L$ 依赖：它只把环 2 的 $|\varepsilon_T|$ 界翻译成 $\eta$ 的界，
+翻译的每一步都是 $\exp/\log$ 与 $D_\infty\ge\tfrac12$。因此链的强弱\textbf{完全等于环 2 的强弱}，
+这正是把"$T$-一致 $O(u)$"降回去就会让 $I2$ 变假的原因（\S\ref{sec:l1}）。\LT{}（逻辑）
+\src{\codep{X02-THEOREMA.md:89--93}（\S2.3："链的强弱完全等于 $(L1)$ 的强弱"）。}
+
+本环的每一步都只依赖两个 $L$-一致的界：\eqref{eq:decomp} 的余项界与 $|\log D_{fin}|\le Cu$；
+$f_{dec}$ 的 $L$-一致性由装饰气体的边界修正 $O(e^{-cL/a})$ 给，$\delta$ 只依赖 $\beta$。故 $\eta$ 的界 $|\eta|\le2Be^{-\delta t}$
+在\textbf{每个有限 $L$} 上一致，$B$ 与 $L,T$ 无关。\LT
+\src{\codep{X02-THEOREMA.md:77}；\codep{P3-DRESSED-MASS.md:116}（uniformly in $T,L$）；\codep{W02-L1.md:83}（$L$-一致记账）。}

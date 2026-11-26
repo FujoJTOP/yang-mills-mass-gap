@@ -1,0 +1,307 @@
+% =====================================================================
+%  PART VI -- THE VERDICT, THE DISCLOSURE, AND THE APPENDIX
+%  (merged edition v3, section 6)
+% =====================================================================
+\clearpage
+\part{The verdict, the disclosure, and the appendix}
+
+\section{The verdict}
+\label{sec:verdict}
+
+\subsection{Clay: \texorpdfstring{$0\%$}{0 percent}}
+\label{sec:verdict-clay}
+
+This subsection states the figure first and the reasons second, because the figure is the
+deliverable and the reasons are only its justification.
+
+\begin{claimbox}{cN}
+\textbf{Clay: $0\%$.} The four-dimensional pure $SU(N)$ Yang--Mills mass gap is not proved in
+this paper, is not reduced to a finite computation in this paper, and is not placed within one
+lemma of any tool developed here. What is proved is a reduction, a set of supporting theorems, one
+measurement at the physical coupling, and a systematic negative survey. The percentage above is a
+judgement about distance to a complete unconditional proof, not a measure of effort.
+\end{claimbox}
+
+The honest structure of the failure is not ``we did not find the argument''. It is that
+\textbf{each of the three legs of the reduction closes on its own premise}: the reduction is exact,
+and every attempt to discharge a leg returns that leg. We take the three legs in turn.
+
+\subsubsection*{(i) Pointwise positivity at the physical coupling}
+
+The leg asks for $w_1(2.5) > 0$ for the physical operator. \textbf{Numerically, it holds.} On
+$L_t = 12$, with the \code{njit} heat bath at $\beta = 2.5$, on $L_s = 6$ and $L_s = 8$, the
+measurement gives
+\[
+  w_1(2.5) \;=\; 0.3427 \,\pm\, 0.0119 \qquad (28.8\,\sigma \text{ from zero}),
+\]
+so the sign is not in doubt at this lattice spacing and this volume. But the statement is not a
+statement about the Hamiltonian: on the \emph{same} Markov chain and the same $12000$
+configurations, a second operator gives $0.0168 \pm 0.0142$. \textbf{The two differ by a factor
+$20.2$.} The one-line counterexample $w_1 = \cos^2\theta$ at fixed spectrum shows why: $w_1$ is a
+property of the pair $(H, O)$, not of $H$. Hence the leg splits in two: its pointwise form is \LE{}
+(numerically satisfied), while its uniform form is \LO{} and, until $O$ is named, vacuous as a
+statement about the theory. Transporting it to the continuum requires an $O$-independence statement
+that does not exist here.
+
+\subsubsection*{(ii) The $L$-monotone step}
+
+The leg asks for a monotone quantity in the volume that survives the infinite-volume limit.
+\textbf{No such step exists in the class of quantities considered.} The obstruction is two-sided
+realizability: both a $2/(L-1)$ profile and a constant profile are realizable within the same
+structural assumptions, so no monotonicity theorem can be extracted from the structure alone; and
+there is \textbf{no FKG inequality} for the lattice gauge measure at $\beta = 2.5$ to supply the
+comparison that realizability leaves open. The leg is therefore not merely unproved but
+unavailable: nothing in the present toolkit produces it. \LN{}
+
+\subsubsection*{(iii) The $\beta$-tail-uniform floor}
+
+The leg asks for a floor on the spectral quantity that is uniform in $\beta$ along the tail.
+\textbf{This floor is $\Delta_0$, and $\Delta_0$ has already been judged dead}: the model $M6$ is
+insufficient to supply it, and the two-dimensional theory is unnecessary for it, so neither the
+solvable-model route nor the dimensional-reduction route reaches it. Renaming the floor does not
+create one; the leg and the target are the same object. \LO{}
+
+\begin{v3box}
+\textbf{Reading of the three legs together.} (i) holds numerically and depends on $O$ with a factor
+$20$; (ii) does not exist as a step, and no FKG is available to create it; (iii) is $\Delta_0$,
+already dead. The three failures are of three different kinds --- empirical-but-operator-bound,
+structurally-absent, and identically-the-target --- which is why the reduction does not collapse
+into a single missing lemma.
+\end{v3box}
+
+\src{Leg (i): the measurement of \S\ref{sec:measurement}, $\beta = 2.5$, $L_t = 12$; operator
+pair as stated in \S\ref{sec:m-opdep}. Leg (ii): two-sided realizability construction,
+\code{research/unconditional/} notes. Leg (iii): $\Delta_0$ and its ledger entry,
+\S\ref{sec:ledger}.}
+
+\subsubsection*{The direction of the twenty routes}
+
+The verdict is reinforced, rather than merely asserted, by the survey of \S\ref{sec:survey}: twenty
+routes to uniformity in $(L, a)$ were attacked, and they fail in a \emph{uniform direction}. That
+uniformity is the substantive finding, not the individual failures.
+
+\begin{center}
+\small
+\begin{tabularx}{\textwidth}{@{}l X c@{}}
+\toprule
+\textbf{Class} & \textbf{Routes} & \textbf{Count} \\
+\midrule
+Upper bound only & compactness, reflection positivity, Berezin--Lieb, the probabilistic reading,
+the Krein--Rutman residual, concavity, the RG modulus, two Ursell constants & $9$ \\
+Circular & positivity improvement, minimality, operator inequalities, definability, the
+strong--weak bridge, and the named obstructions $\Delta_0$, $T4$, $H1$, $M(\beta)$ & $9$ \\
+Counterexample & two natural implications, each killed by an explicit machine-checked
+counterexample & $2$ \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\noindent The direction is one-way: \textbf{the upper side is complete and the lower side is
+empty.} Nine routes give only upper bounds on the quantity wanted; nine give lower bounds only by
+assuming what is to be proved; two are false as stated. Two routes did produce something usable ---
+a block-Loewner inequality that repairs a previously unproved step, and a sampler bug whose
+correction invalidates four earlier numerical sign determinations --- but neither is a lower bound.
+A survey in which every independent route fails in the same direction is evidence about the shape
+of the problem, not a list of unlucky attempts.
+
+\subsubsection*{The only framework that survives, and what it gives}
+
+Exactly one piece of general machinery survives the survey without circularity: the pair
+\textbf{Banach--Alaoglu} (for the existence of weak limits of the finite-volume measures) together
+with \textbf{Portmanteau} (for the identification of the limit's expectation functionals). Both
+are free, and both are free in the direction that does not help.
+
+\begin{itemize}
+\item \textbf{Tightness is free.} The lattice measures are tight by construction on the compact
+field space, so the compactness class of arguments is excluded as a source of new information: it
+supplies existence of a limit, never a gap.
+\item \textbf{Upper semicontinuity is free.} Portmanteau then gives the inequality that runs from
+finite volume to the limit, and only in that direction. There is no companion inequality running
+from the limit back to finite volume, and the gap is exactly the missing companion.
+\end{itemize}
+
+\noindent Consequently the free machinery yields precisely the direction that the nine upper-bound
+routes already used, and says nothing about the lower side. This is the technical content of the
+sentence ``the wall is a direction, not a difficulty''.
+
+\subsection{What would be needed}
+\label{sec:verdict-needed}
+
+The reduction of \S\ref{sec:reduction-equiv} identifies the missing object, and it is worth naming
+its \emph{type} rather than its content, because every previous attempt in this project named the
+content and thereby restated the target.
+
+\begin{qbox}
+\textbf{What is missing is one machine that produces lower bounds} --- not another transport of an
+upper bound across the same interface. The distinction is not rhetorical: the nine upper-bound
+routes of \S\ref{sec:survey} all share a common form (a free inequality applied to a free
+compactness or semicontinuity statement), and the nine circular routes all share the complementary
+form (a lower bound obtained by assuming a lower bound). A machine of the missing type must produce
+a lower bound from hypotheses that do not include one.
+\end{qbox}
+
+Every attempt in this project to build that machine terminated at the same point, and it terminated
+there \emph{independently} in three places:
+
+\begin{enumerate}
+\item \code{N09-1}: the target is unique --- any object strong enough to be transported is already
+the gap, so there is no strictly weaker surrogate to transport.
+\item \code{u04}: the non-circular version of the argument \emph{is} the Clay problem --- removing
+the circular step removes the argument, not the circle.
+\item \code{mon1}: the point $L = \infty$ is itself the gap --- the limit object whose positivity
+would be transported is the object whose positivity is wanted.
+\end{enumerate}
+
+\noindent Three independent lines of work, arriving at three different formulations, identify the
+same point. We regard that coincidence as the strongest single piece of structural evidence
+produced by the campaign, and it is the reason the verdict is stated as a direction rather than as
+a shortage of effort.
+
+\begin{qbox}
+\textbf{This subsection is not a restatement of \S\ref{sec:verdict-clay}, and the distinction is
+deliberate.} \S\ref{sec:verdict-clay} lists \emph{which} legs are closed and \emph{why} each closure
+is of its own kind; this subsection states \emph{what type of object} is absent, and records the
+three independent identifications of that object with the target. The first is a status report on
+three named legs; the second is a claim about the shape of any future proof. Where the two would
+have overlapped --- the naming of $\Delta_0$ as the third leg and as one of the nine circular routes
+--- the material is stated once, in \S\ref{sec:verdict-clay}, and referenced here.
+\end{qbox}
+
+\subsection{What is nevertheless new}
+\label{sec:verdict-new}
+
+The negative verdict does not license self-effacement. Five results below are new, are owned by
+this paper, and would survive the disappearance of every other claim in it.
+
+\begin{enumerate}
+\item[\textbf{1.}] \textbf{A window correction of a factor $4.87$.} A previously published
+criterion window, $0.018394$, is the $a = 0$ activation root and is illegal as a criterion window;
+the correct value is $3.777\times 10^{-3}$, and $0.018394/0.003777 = 4.87$ (the companion ratio
+$4.84$ belongs to the earlier $0.018269$ of \S\ref{sec:est-window-fix}). The over-report was found
+and corrected by this project
+against its own published claim. A published over-report that is caught by its own author is a
+result, and we do not downgrade it to an erratum.
+\item[\textbf{2.}] \textbf{The first numerical value of $w_1$ at $\beta = 2.5$.} The measurement
+$w_1 = 0.3427 \pm 0.0119$ at $28.8\sigma$, on $L_s = 6$ and $L_s = 8$ at $L_t = 12$, with the
+operator dependence ($0.0168 \pm 0.0142$ for the second operator, factor $20.2$) explicitly
+labelled rather than suppressed. The labelling is part of the result: an unlabelled version of this
+number would be misleading.
+\item[\textbf{3.}] \textbf{The no-go of \code{SG1-1}} (\LC{}). A sixth species of proof is
+excluded, at grade \LC{} rather than \LT{} because one step does not survive a computability
+reading. The downgrade from \LT{} to \LC{} was reported by the author of that result, not by a
+critic.
+\item[\textbf{4.}] \textbf{A systematic negative survey of twenty routes} (\S\ref{sec:survey}),
+organized by the direction of failure rather than by chronology. Its value is the invariant
+direction --- nine upper, nine circular, two counterexamples --- not the count.
+\item[\textbf{5.}] \textbf{A ledger of thirty-eight definitional collisions} (\S\ref{sec:ledger}).
+This is a methodological contribution: it is the mechanism by which the errors of this paper were
+caught, including twice during the writing of this manuscript.
+\end{enumerate}
+
+\noindent Item 5 is not bookkeeping decoration. Two of the thirty-eight entries --- corpus item~35,
+a negative $r_0$ (row~26 of Table~\ref{tab:ledger}), and corpus item~36, an over-broad formulation
+of the asymptotic-perturbation estimate (row~27) --- were found
+\emph{while this section was being drafted}, and both were found by an independent review pass
+rather than by the author of the affected claim. That is the mechanism, and it is the subject of
+the next subsection.
+
+\subsection{AI contribution statement}
+\label{sec:verdict-ai}
+
+This paper is a multi-agent artifact, and the statement below is written so that a reader can tell
+what was done by which kind of agent.
+
+\begin{claimbox}{cC}
+\textbf{The great majority of the derivations, the numerical work, and the audits in this paper were
+carried out by AI agents}, over many rounds and across more than a hundred sub-agent assignments.
+\textbf{The human author's role was fourfold}: to set the target, to hold the honesty line, to
+refuse to call an unproved statement a theorem, and to demand, in every round, an answer to the
+question \emph{who is opposing this}. The last of these is the one that mattered most, because it
+converted each round from a claim into a contest.
+\end{claimbox}
+
+Concretely:
+
+\begin{itemize}
+\item \textbf{All thirty-eight ledger entries were caught by independent review} --- AI auditing
+AI, with the reviewer separated from the author of the claim. No entry was caught by the agent that
+made the error.
+\item \textbf{Two of them were caught during the writing of this manuscript}: corpus items 35 and 36
+(rows 26 and 27 of Table~\ref{tab:ledger}) --- a negative $r_0$ and an over-broad
+asymptotic-perturbation estimate. Both were introduced in earlier
+rounds and survived until this section was drafted.
+\item \textbf{The downgrade of \code{SG1-1} from \LT{} to \LC{}} was reported by its own author,
+after a computability reading broke one step of the argument.
+\end{itemize}
+
+\begin{warnbox}
+\textbf{Framing, stated explicitly.} The sentence that carries this subsection is not ``AI agents
+produced correct mathematics'' and must not be read as a claim of credit for the result. It is:
+\emph{the reliability of this paper does not come from AI agents being unable to err; it comes from
+the requirement that every error be caught by an independent path.} The thirty-eight ledger entries
+are evidence for the second sentence and evidence against the first: an error process that
+produced thirty-eight caught collisions is not an error process that can be trusted to have
+produced no uncaught ones. The human author's contribution is therefore best described as the
+maintenance of that requirement, and the paper's claim to reliability is a claim about the
+requirement, not about the agents.
+\end{warnbox}
+
+\noindent We also record the negative side of the disclosure: no step of the reduction, no window
+correction, and no grade assignment in this paper was accepted on the authority of a single agent,
+and the places where a single agent's conclusion was allowed to stand are exactly the places marked
+\LE{} --- measured, not proved.
+
+\appendix
+
+\section{Reproducibility}
+\label{sec:appendix-repro}
+
+\noindent\emph{This appendix is the reproducibility section of the merged draft; it prints as
+Appendix~A because the source issues \code{\textbackslash{}appendix} here.}
+
+Everything numerical, formal, and enumerative in this paper is regenerable from the artefacts
+listed here. Paths of all scripts and logs are given in their respective \code{*.md} files, which
+are the authoritative index; the summary below is for orientation only.
+
+\subsection*{Numerical measurement}
+
+\begin{itemize}
+\item \textbf{Algorithm}: \code{njit} heat bath, single long chain, thermalized once, no
+re-thermalization between volumes.
+\item \textbf{Parameters}: $\beta = 2.5$, $L_s = 6$ and $L_s = 8$, $L_t = 12$, $12000$
+configurations on the shared chain.
+\item \textbf{Cost}: $2.223$~ms/sweep at $L = 6$ and $5.390$~ms/sweep at $L = 8$, measured on the
+reference machine; the long-chain design means the $L = 8$ run is the binding cost.
+\item \textbf{Outputs}: $w_1 = 0.3427 \pm 0.0119$ and $0.0168 \pm 0.0142$ for the two operators
+(\S\ref{sec:measurement}); the sampler bug that invalidates four earlier sign determinations is documented with its
+fix in the same directory.
+\end{itemize}
+
+\subsection*{Formal verification}
+
+\begin{itemize}
+\item \textbf{File}: \code{M02-CBAR.lean}.
+\item \textbf{Content}: $25$ declarations, \code{sorry = 0}.
+\item \textbf{Axioms}: \code{[propext, Classical.choice, Quot.sound]} --- no axiom beyond the three
+permitted by the grade rules stated on the title page.
+\item \textbf{Scope}: the isolation statement and its supporting lemmas; the reduction itself is
+not formalised.
+\end{itemize}
+
+\subsection*{Exhaustive enumeration}
+
+\begin{itemize}
+\item $a_7 = 189\,215\,964$, exact, by complete enumeration rather than by extrapolation.
+\item $b(\Gamma) \le 14n + 6$, and the constant is sharp.
+\item $t_n \le B^n$ with $B = 19^{19}/18^{18} = 50.2820906$.
+\end{itemize}
+
+\subsection*{Provenance}
+
+Every number quoted above appears with its source file at the point of use in
+\S\ref{sec:established}--\S\ref{sec:ledger}. Where a
+number is a judgement rather than a measurement --- the $0\%$ of \S\ref{sec:verdict-clay}, the $20$
+in ``twenty
+routes'', the count of thirty-eight ledger entries --- it is labelled as such at the point of use.
+The provenance rule stated on the title page is the one rule this paper does not relax in its own
+favour.

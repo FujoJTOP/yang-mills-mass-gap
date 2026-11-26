@@ -1,0 +1,27 @@
+RAT1c - independent encoding;  b(A) = boundary, Delta = 20
+==========================================================================
+   level n=2: 20 animals
+   level n=3: 458 animals
+   level n=4: 11132 animals
+   level n=5: 280175 animals
+(A) a_n = [1, 20, 458, 11132, 280175]   corpus [1, 20, 458, 11132, 280175]  match=True
+(B) n, min b, mean b, max b, 14n+6, #viol(b>14n+6)
+     1    20   20.0000    20     20      0   #b<=48 = 1
+     2    32   32.4000    34     34      0   #b<=48 = 20
+     3    39   44.0437    48     48      0   #b<=48 = 458
+     4    46   55.3719    62     62      0   #b<=48 = 32
+     5    49   66.5286    76     76      0   #b<=48 = 0
+
+(C) chain family, n = 1..60 (own encoding, no wrap):
+    b = 14n+6 exactly for all n = 1..60 : True   (b(60) = 846)
+    sharpness =>  sup_n max_A b(A) = +infinity ;  b > 48 for every n >= 4
+
+(D) plate k x k (coplanar):
+    k=1  n= 1  b=  20  b/n = 20.000
+    k=2  n= 4  b=  56  b/n = 14.000
+    k=3  n= 9  b= 108  b/n = 12.000
+    k=4  n=16  b= 176  b/n = 11.000
+    k=5  n=25  b= 260  b/n = 10.400
+    k=6  n=36  b= 360  b/n = 10.000
+
+total 10.0s

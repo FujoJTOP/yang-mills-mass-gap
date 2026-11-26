@@ -1,0 +1,45 @@
+==============================================================================
+[0] RAW BOOKKEEPING  (L=2, 4D, SU(2))
+  sites            = L^D         = 16
+  links            = D*L^D       = 64
+  link components  = 3*links     = 192
+  plaquettes       = C(D,2)*L^D  = 96
+  plaquettes/link  = 2(D-1)      = 6   (check: 6.0)
+  gauge generators = 3*sites     = 48
+  link-level orbit-space dim     = 144
+
+[1] PLAQUETTE-CURVATURE MAP  d(holonomy)/d(link), flat config
+  matrix (288, 192), rank = 135,  kernel = 57
+  kernel split: exact 1-forms d(lambda) = 45 (constant lambda=3 killed at flat)  + harmonic 1-forms H^1(T^4)=D*3 = 12  (toron zero modes of the FREE Hessian)
+  => image dim = 135 = 3*links - 45 - 12 = 192-45-12
+  NOTE: physical dim is 3*links-3*sites = 144; the 12 harmonic dirs are physical (flat for Wilson), not gauge
+
+[2] GAUGE JACOBIAN
+  at the FLAT config: matrix (192, 48), rank = 45 = 48 - 3 (constant gauge = stabiliser of U=1)
+  at a GENERIC config: rank = 48 / 48 (3 random configs, w7/r04_check.log)  => orbit dim a.e. = 48 => physical dim = 144
+  ||v||^2 = mode A = 1.000000000000   (o24: 64*(1/8)^2 = 1)
+  rank([J | v]) = 46   => conditioning <v,X>=0 removes 1 dim, it is NOT a gauge fixing
+  fiber dims: link-level 3*nl-1 = 191;  mod gauge 3*nl-3*ns-1 = 143
+
+[3] HYPERCUBIC SYMMETRY OF THE L=2 TORUS
+  point group |W4| = 2^D * D! = 384   enumerated = 384
+  translations (Z_2)^D        = 16
+  full space group            = 6144
+  *** finite group => orbits are 0-dimensional => dimension removed = 0 ***
+  point group only    : #orbits(list of 64 links) =   8, sizes [4, 12]  => invariant tangent dim = 24
+  translations only   : #orbits(list of 64 links) =   4, sizes [16]  => invariant tangent dim = 12
+  full space group    : #orbits(list of 64 links) =   1, sizes [64]  => invariant tangent dim = 3
+
+[4] CORNER EXPONENT (this is the only exact collapse available)
+  one-link marginal ~ eps^2.99999927  (fit over 1e-2..1e-6)   => per-link p = 3
+  n=1: Dirichlet const numeric 0.333333333333  exact Gamma(3)^n/Gamma(3n) 1.000000000000  |  exponent 3n-1 = 2
+  n=2: Dirichlet const numeric 0.033333333333  exact Gamma(3)^n/Gamma(3n) 0.033333333333  |  exponent 3n-1 = 5
+  n=3: Dirichlet const numeric 0.033333333333  exact Gamma(3)^n/Gamma(3n) 0.000198412698  |  exponent 3n-1 = 8
+  L=2: 64 links at the corner => exponent = 3*64-1 = 191
+  corner a0 = sum_l v_l,3 * 2pi = 2pi * sum(1/8) = 50.265482457437  (max of <v,X>)
+  => rho(a0) ~ (16pi - a0)^191  =>  G''(a0) = 191/(16pi-a0)^2 + O(1/eps)
+
+[5] VERDICT ARITHMETIC
+  raw 192 -> gauge 144 -> conditioned 143 ; symmetry removes 0
+  distance to the q11 threshold dim<=6 : 137 ; to dim<=20 : 123
+==============================================================================

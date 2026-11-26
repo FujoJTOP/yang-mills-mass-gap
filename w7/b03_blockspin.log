@@ -1,0 +1,96 @@
+==============================================================================
+B03 · block-spin decimation (fixed b) — single-step beta and iteration
+==============================================================================
+
+[0] conventions
+  wall  beta_A = 1/48 = 0.020833   ->  beta_W = N^2/48
+  SU(2): beta_W(wall) = 0.08333 ,  beta_W(crossover) = 2.500 ,  ratio = 30.00x
+  SU(3): beta_W(wall) = 0.18750 ,  beta_W(crossover) = 5.690 ,  ratio = 30.35x
+  (2.5*48 = 120x is the convention-mixing error; 30x is like-for-like)
+
+[1] single step:  beta_W,eff = beta_W - C_N ln b ,  C_N = 11N^2/(12 pi^2)
+    N      b           C_N d beta_W / step ratio at beta=1
+    2      2       0.37151       -0.25751        0.74249
+    2      3       0.37151       -0.40815        0.59185
+    3      2       0.83590       -0.57940        0.42060
+    3      3       0.83590       -0.91833        0.08167
+
+    sign check: d beta_W / step < 0 for every N>=1, b>1  ->  beta_eff < beta.
+    (asymptotic freedom: g grows toward the IR, so beta_W = 2N/g^2 shrinks)
+
+[1b] ratio beta_eff/beta at the two ends of the window (b=2)
+     N            beta_W     beta_eff        ratio x=log_b(ratio)
+     SU(2)/cross      2.50000      2.24249      0.89700     -0.15683
+     SU(2)/wall      0.08333     -0.17418     -2.09014      INVALID
+     SU(3)/cross      5.69000      5.11060      0.89817     -0.15494
+     SU(3)/wall      0.18750     -0.39190     -2.09014      INVALID
+     => at its own crossover the one-step ratio is 0.897 (N=2) / 0.898 (N=3): WEAKER,
+        not stronger (nearly N-independent because beta_c ~ N^2).  Note: 2.5 is the
+        SU(2) crossover; SU(3) would give 0.768 at beta_W=2.5 -- wrong pairing, unused.
+     => at the wall the one-loop formula returns ratio<0: ONE step leaves perturbation theory.
+     => no x>0 exists; the d=4 power ansatz beta*b^x is the wrong ansatz (see [5]).
+
+[2] iteration in the *physical* (coarse-graining) direction, from the crossover
+    (one-loop, constant step: valid only while g^2 = 2N/beta_W < 1)
+    SU(2) (N=2, b=2):
+      k=0  beta_W=  2.5000  g^2= 1.600  OUT of one-loop domain
+      k=1  beta_W=  2.2425  g^2= 1.784  OUT of one-loop domain
+      k=2  beta_W=  1.9850  g^2= 2.015  OUT of one-loop domain
+      k=3  beta_W=  1.7275  g^2= 2.316  OUT of one-loop domain
+      steps until beta_W<=0 (formal): 9.71
+    SU(3) (N=3, b=2):
+      k=0  beta_W=  5.6900  g^2= 1.054  OUT of one-loop domain
+      k=1  beta_W=  5.1106  g^2= 1.174  OUT of one-loop domain
+      k=2  beta_W=  4.5312  g^2= 1.324  OUT of one-loop domain
+      k=3  beta_W=  3.9518  g^2= 1.518  OUT of one-loop domain
+      steps until beta_W<=0 (formal): 9.82
+
+[3] iteration in the *UV* (inverse-blocking) direction, wall -> crossover
+    k* = (beta_c - beta_wall) / (C_N ln b) ;  scale factor 2^k*
+    N       beta_wall     beta_c       k*       2^k*
+    2         0.08333      2.500    9.385      668.5
+    3         0.18750      5.690    9.497      722.5
+    => ~9.4-9.5 steps for BOTH N: k* = (beta_c-beta_wall)/(C_N ln b) is N-independent
+       because beta_c ~ N^2 and C_N ~ N^2 cancel.  Ceiling: 10 steps.
+    BUT this direction is *adding* degrees of freedom (mu increases): it is not
+    the pushforward of a measure, it needs a UV completion.  No theorem; no map.
+
+[4] why a power law cannot help at d=4 (engineering dimension)
+    beta_W = 2N/(g^2 a^(4-d)) ; at fixed g, a -> b a gives beta_eff = b^(4-d) beta
+      d=2 : exponent 4-d = +2  ->  beta_eff/beta = b^+2 = 4.0000 (b=2)
+      d=3 : exponent 4-d = +1  ->  beta_eff/beta = b^+1 = 2.0000 (b=2)
+      d=4 : exponent 4-d = +0  ->  beta_eff/beta = b^+0 = 1.0000 (b=2)
+    d=4 is exactly marginal: exponent 0, so the leading term is beta_eff = beta.
+    The whole flow is logarithmic and its SIGN is the one-loop coefficient (AF).
+    d<4 is the opposite case: exponent 4-d>0, beta grows, IR weak coupling
+    (super-renormalisable) -- which is why only d=4 has the hard end at the IR.
+    d=2 'beta_eff = b^2 beta' is thus a dimensional artifact of the normalisation,
+    not a flow statement: in 2D the physical gap m = C2 g^2/2 does not move.
+
+[5] cross-check against the stored activity-matched step (T1-POLYMER-RG §4, §6)
+    activity-matched:  u(2.5)=1.014 -> u_eff=0.988  =>  beta_eff^act=2.40, ratio=0.960
+    coupling one-loop:                             beta_eff    =2.242, ratio=0.897
+    two independent definitions of the same step -> both <1 (0.96 / 0.90).
+    sign is scheme-independent; the SIZE is scheme-dependent. No scheme gives >1.
+
+[6] four-model test of a block-spin-type quantity (Q_BS := one-step beta flow)
+    free field         0          beta=inf, g=0 exactly: no flow, Q_BS=0                     [T]
+    2D YM              >0         exact Migdal blocking, Q_BS!=0 and m=C2 g^2/2>0            [T]
+    M6                 NOT 0      Gaussian marginal is an exact RG fixed point: the a-marginal of M6 [T]
+    M6 (cont.)                    equals that of the gapped HO (sup|drho|=2.3e-14, U09 §3)   
+    single plaquette   undefined  no thermodynamic limit, no tower                           [T]
+    => two horns, both fatal: (i) if Q_BS sees only the blocked (a) marginal, then
+       Q_BS(M6) = Q_BS(HO) exactly (2.3e-14) => it cannot read 0 on M6 and >0 on HO;
+       (ii) if it sees the free (b) direction, it must be min-type => it is the gap
+       itself (U05) => circular.  4-model: FAIL on both horns.
+
+[7] verdict
+    (a) beta_eff > beta  with a theorem : NO  -> (a) not triggered
+    (b) fixed-b block-spin theorems exist for phi^4_4 (GK) and 4D U(1) (Gopfert-Mack,
+        strong-coupling/dipole route); for SU(N) at fixed b: none  -> (b) triggered
+    (c) beta_eff < beta : YES, one loop exactly, ratio 0.90 (N=2) at the crossover;
+        the only beta-raising direction is inverse blocking (UV), 10 steps, no map
+        -> (c) TRIGGERED: the flow points away from 2.5.
+
+    all self-checks passed
+==============================================================================

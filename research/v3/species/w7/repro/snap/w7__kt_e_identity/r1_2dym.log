@@ -1,0 +1,73 @@
+==============================================================================
+R1 / LEVEL 2 & 3  --  2D pure Yang-Mills, exact
+==============================================================================
+
+------------------------------------------------------------------------------
+[0] the exact SU(2) character coefficients and the Peter-Weyl sum rule
+------------------------------------------------------------------------------
+    c_j(beta) = int dU e^{beta tr U} chi_j(U) = 2 I_{2j+1}(2 beta)/(2 beta)   [exact]
+    sum rule:  sum_j d_j^2 c_j(beta) = e^{2 beta}      (K(e) = e^{beta tr 1})
+    beta    j    closed form     quadrature   rel.diff
+    0.50  0.0     1.13031821     1.13031821   1.96e-16
+    0.50  0.5     0.54299068     0.54299068   2.04e-16
+    0.50  1.0     0.13301055     0.13301055   6.26e-16
+    2.50  0.0     9.73425686     9.73425686   1.82e-16
+    2.50  0.5    14.00449197    14.00449197   0.00e+00
+    2.50  1.0    12.39738020    12.39738020   4.30e-16
+    [PASS] 0.1 d_j c_j = 2 I_{2j+1}(2b)/(2b) matches the direct group quadrature of int e^{b tr U} chi_j max rel.diff = 6.26e-16
+    (the TRANSFER MULTIPLIER is chat_j/d_j = c_j: convolution by a class function acts on
+     the j-block as multiplication by (1/d_j) int F chi_j = c_j.)
+  sum rule beta= 0.5: sum d_j^2 c_j =     2.71828183   e^(2beta) =     2.71828183
+  sum rule beta= 1.0: sum d_j^2 c_j =     7.38905610   e^(2beta) =     7.38905610
+  sum rule beta= 2.5: sum d_j^2 c_j =   148.41315910   e^(2beta) =   148.41315910
+  sum rule beta= 4.0: sum d_j^2 c_j =  2980.95798704   e^(2beta) =  2980.95798704
+    [PASS] 0.2 the Peter-Weyl sum rule sum_j d_j^2 c_j = e^{2 beta} (validates the multiplier set) max rel.err = 4.58e-16
+
+------------------------------------------------------------------------------
+[1] LEVEL 2: full L^2(G) vs the gauge-invariant (class-function) subspace
+------------------------------------------------------------------------------
+    lam_j = c_j(beta)  (the multiplier of the j-block);  the class functions are spanned
+    by {chi_j}, so the invariant subspace carries exactly the same multipliers {lam_j} --
+    only the multiplicities differ (d_j^2 on the full space, 1 per irrep on the class fns).
+    beta      lam_0    lam_1/2      lam_1   gap_full    gap_inv   ratio
+    0.25   1.031577   0.127625   0.010580   2.089751   2.089751  1.0000
+    0.50   1.130318   0.271495   0.044337   1.426309   1.426309  1.0000
+    1.00   1.590637   0.688948   0.212740   0.836723   0.836723  1.0000
+    2.50   9.734257   7.002246   4.132460   0.329420   0.329420  1.0000
+    4.00  99.968284  81.898958  59.018805   0.199367   0.199367  1.0000
+    8.00 108132.429482 98164.224805 83591.373281   0.096715   0.096715  1.0000
+    [PASS] 1.1 the gauge projection costs exactly 1 (gap_inv/gap_full = 1) at every beta the lightest non-vacuum irrep is the same in both sectors (j=1/2, real for SU(2))
+    same conclusion for any compact G: both infima run over the same set of irreps
+    (the trivial rep excluded), and the lightest non-trivial rep survives in the
+    class-function sector -- so the ratio is 1, not merely >= 1.
+  U(1) control beta= 0.5: gap = 1.416755  (lam_n = I_n(beta); also ratio 1)
+  U(1) control beta= 1.0: gap = 0.806562  (lam_n = I_n(beta); also ratio 1)
+  U(1) control beta= 2.5: gap = 0.267884  (lam_n = I_n(beta); also ratio 1)
+  U(1) control beta= 4.0: gap = 0.146735  (lam_n = I_n(beta); also ratio 1)
+    [PASS] 1.2 U(1) control: positive gap, projection lossless gaps 1.4168, 0.8066, 0.2679, 0.1467
+
+------------------------------------------------------------------------------
+[2] LEVEL 3: the 0++ atom.  In 2D, O = tr F^2 = the transfer generator => nu = 0, gap > 0
+------------------------------------------------------------------------------
+   2D: the spatial slice has no plaquette, so H = (g^2/2) sum_links E^2 = the Casimir,
+   and tr F^2 is proportional to the electric energy, i.e. to H - E_0.  Hence on the vacuum
+       <Omega|O(t)O(0)|Omega>_conn = 0   for all t,   so the Kallen-Lehmann measure
+       nu_{trF^2} = 0 identically  =>  f_1^2 = nu({m_1^2}) = 0.
+   The mass gap, however, is positive and exact: m_1 = -log(lam_{1/2}/lam_0) > 0.
+  beta= 0.5:  m_1 = 1.42630950 > 0     f_1^2 = 0 (nu empty)    max|connected| = 0.0e+00
+  beta= 2.5:  m_1 = 0.32942035 > 0     f_1^2 = 0 (nu empty)    max|connected| = 0.0e+00
+  beta= 4.0:  m_1 = 0.19936671 > 0     f_1^2 = 0 (nu empty)    max|connected| = 0.0e+00
+    [PASS] 2.1 a strictly positive gap coexists with an EMPTY spectral measure (f_1^2 = 0) gap > 0 and atom = 0 at the same time
+    [PASS] 2.2 hence Level 3 (atom + positive residue) is logically INDEPENDENT of Levels 1-2 2D YM: Levels 1-2 hold (gap > 0), Level 3 fails (no atom) -- witness is exact
+    the sufficient condition for the atom is the residue-level-gap lemma (GAP-G2-edge L2):
+      f_1^2 >= (Lambda M_0 - M_1)/(Lambda - m_1^2),  which needs the ISOLATION datum
+      Lambda > M_1/M_0 -- a second scale.  With nu = 0 the lemma returns 0: the gap alone
+      cannot produce it.  (And Clay asks only for the gap, so Level 3 is ABOVE Clay.)
+
+==============================================================================
+VERDICT
+==============================================================================
+  [1] the gauge projection costs exactly 1 (2D exact; and >= 1 in general by min-max).
+  [2] the gap does NOT imply the atom: 2D YM has m_1 > 0 and f_1^2 = 0 exactly.
+  => Level 3 is independent, and it is strictly stronger than the Clay statement.
+==============================================================================

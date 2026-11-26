@@ -122,3 +122,93 @@ NOT CERTIFIED: that the model is 4D Yang-Mills (it is Ponzano-Regge).
       specific RG map with its own normalisation -- that is the algorithmic
       work this script does NOT do.
     wall 33.74s
+==========================================================================
+SO(3) 6j vertex tensor + interval certificate (integer irreps only)
+jmax=7  prec=70  inflate=1e-55 (6j) / 1e-13 (Bessel)
+CERTIFIED: 6j values, HS norm, contraction constant OF THE SO(3) MODEL.
+NOT CERTIFIED: that the model is 4D Yang-Mills (it is Ponzano-Regge).
+==========================================================================
+[check] {000;000} = 1  (must be 1)
+[check] column-swap invariance: 40/40  (columns 2<->3 is a symmetry for SO(3) 6j; any mismatch would flag a broken Racah sum)
+[check] column-swap 1<->2:      40/40
+[check] NOTE: only INTEGER j is supported here -> this is the SO(3) 6j.
+        Half-integer SU(2) labels would need Gamma(n+1/2) = rational*sqrt(pi);
+        the model below is therefore an SO(3) model and must be labelled so.
+
+--- beta = 0.2 ---
+    nonzero 38109/262144  (14.5% by selection rules)
+    ||A||_HS in [4.8493624234e-03, 4.8493624234e-03]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 0.94s
+
+--- beta = 0.63 ---
+    nonzero 38109/262144  (14.5% by selection rules)
+    ||A||_HS in [4.7908641538e-04, 4.7908641538e-04]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 0.22s
+
+--- beta = 2.5 ---
+    nonzero 38109/262144  (14.5% by selection rules)
+    ||A||_HS in [3.1838200398e-07, 3.1838200398e-07]
+    naive multilinear bound in [6.000019, 6.000019]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 0.22s
+==========================================================================
+SO(3) 6j vertex tensor + interval certificate (integer irreps only)
+jmax=7  prec=70  inflate=1e-55 (6j) / 1e-13 (Bessel)
+CERTIFIED: 6j values, HS norm, contraction constant OF THE SO(3) MODEL.
+NOT CERTIFIED: that the model is 4D Yang-Mills (it is Ponzano-Regge).
+==========================================================================
+[check] {000;000} = 1  (must be 1)
+[check] column-swap invariance: 40/40  (columns 2<->3 is a symmetry for SO(3) 6j; any mismatch would flag a broken Racah sum)
+[check] column-swap 1<->2:      40/40
+[check] NOTE: only INTEGER j is supported here -> this is the SO(3) 6j.
+        Half-integer SU(2) labels would need Gamma(n+1/2) = rational*sqrt(pi);
+        the model below is therefore an SO(3) model and must be labelled so.
+
+--- beta = 0.2 ---
+    nonzero 38109/262144  (14.5% by selection rules)
+    ||A||_HS in [4.8493624234e-03, 4.8493624234e-03]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 2.06s
+
+--- beta = 0.63 ---
+    nonzero 38109/262144  (14.5% by selection rules)
+    ||A||_HS in [4.7908641538e-04, 4.7908641538e-04]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 0.39s
+
+--- beta = 2.5 ---
+    nonzero 38109/262144  (14.5% by selection rules)
+    ||A||_HS in [3.1838200398e-07, 3.1838200398e-07]
+    naive multilinear bound in [6.000019, 6.000019]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 0.38s

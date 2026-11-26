@@ -1,0 +1,28 @@
+================================================================================================
+GW7  SU(2) Wilson  FIXED PHYSICAL VOLUME  Ls*aL(beta) = 8*aL(2.5) = 2.860629e-2
+operator/kernel identical to run1/run3/B01 (run3_apebase._chains, nlev=1 raw) ; m = 1.546 fixed
+errors = 20-block delete-one jackknife ; numba=0.68.1 threads=8 ; points = [(2.59, 10, 15), (2.66, 12, 18)]
+N target = 12000/point ; gap=6 therm=1200 ; strictly sequential ; budget = 560s
+================================================================================================
+
+--- beta = 2.59  Ls=10 Lt=15  N = 12000 (8 x 1500)  gap = 6  therm = 1200   (t+0s)
+[E] 12000 cfg in 147.7s (81.3 cfg/s, 488 sweeps/s)  compile 0.7s  tau_int: plaq 0.6, S(0) 0.5 cfg
+[E] <1/2 Re tr U_p> = 0.66845 +- 0.00001
+[E] C1/C0 = 0.06370 +- 0.00222 ; C2/C0 = 0.00651 ; S/N(2) = 2.5
+[E] Rbar = -ln C1/C0 = 2.7537 +- 0.0334 (jack) ; prop 2.7536
+[E] m_fit = 2.254 ; w1(1.546) = 0.2917 +- 0.0094 ; w1_fit = 0.6064
+
+--- beta = 2.66  Ls=12 Lt=18  N = 12000 (8 x 1500)  gap = 6  therm = 1200   (t+150s)
+[E] 12000 cfg in 331.7s (36.2 cfg/s, 217 sweeps/s)  compile 0.3s  tau_int: plaq 0.5, S(0) 0.5 cfg
+[E] <1/2 Re tr U_p> = 0.67963 +- 0.00001
+[E] C1/C0 = 0.06140 +- 0.00225 ; C2/C0 = 0.00543 ; S/N(2) = 2.4
+[E] Rbar = -ln C1/C0 = 2.7904 +- 0.0368 (jack) ; prop 2.7904
+[E] m_fit = 2.408 ; w1(1.546) = 0.2805 +- 0.0107 ; w1_fit = 0.6820
+
+================================================================================================
+  beta  Ls  Lt      N    <plaq>  tau     C1/C0    Rbar     +-  m_fit      w1     s
+ 2.590  10  15  12000   0.66845  0.6   0.06370   2.754  0.033  2.254  0.2917 147.7
+ 2.660  12  18  12000   0.67963  0.5   0.06140   2.790  0.037  2.408  0.2805 331.7
+
+[check] <plaq> strictly increasing in beta: PASS
+[wall] total 484s

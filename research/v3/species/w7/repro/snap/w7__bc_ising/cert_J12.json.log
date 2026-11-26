@@ -1,0 +1,459 @@
+==========================================================================
+SO(3) 6j vertex tensor + interval certificate (integer irreps only)
+jmax=12  prec=70  inflate=1e-55 (6j) / 1e-13 (Bessel)
+CERTIFIED: 6j values, HS norm, contraction constant OF THE SO(3) MODEL.
+NOT CERTIFIED: that the model is 4D Yang-Mills (it is Ponzano-Regge).
+==========================================================================
+[check] {000;000} = 1  (must be 1)
+[check] column-swap invariance: 40/40  (columns 2<->3 is a symmetry for SO(3) 6j; any mismatch would flag a broken Racah sum)
+[check] column-swap 1<->2:      40/40
+[check] NOTE: only INTEGER j is supported here -> this is the SO(3) 6j.
+        Half-integer SU(2) labels would need Gamma(n+1/2) = rational*sqrt(pi);
+        the model below is therefore an SO(3) model and must be labelled so.
+
+--- beta = 0.02 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.3862289852e-02, 1.3862289852e-02]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 21.77s
+
+--- beta = 0.0964103 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [8.8231637799e-03, 8.8231637799e-03]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.59s
+
+--- beta = 0.172821 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [5.6651614591e-03, 5.6651614591e-03]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.57s
+
+--- beta = 0.249231 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [3.6693496182e-03, 3.6693496182e-03]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.53s
+
+--- beta = 0.325641 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [2.3973948540e-03, 2.3973948540e-03]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.56s
+
+--- beta = 0.402051 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.5799495050e-03, 1.5799495050e-03]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.57s
+
+--- beta = 0.478462 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.0502055563e-03, 1.0502055563e-03]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.51s
+
+--- beta = 0.554872 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [7.0404785410e-04, 7.0404785411e-04]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.52s
+
+--- beta = 0.631282 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [4.7598285855e-04, 4.7598285855e-04]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.51s
+
+--- beta = 0.707692 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [3.2449025896e-04, 3.2449025896e-04]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.50s
+
+--- beta = 0.784103 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [2.2304315399e-04, 2.2304315399e-04]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.45s
+
+--- beta = 0.860513 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.5456269455e-04, 1.5456269455e-04]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.46s
+
+--- beta = 0.936923 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.0796847930e-04, 1.0796847930e-04]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.49s
+
+--- beta = 1.01333 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [7.6016944042e-05, 7.6016944042e-05]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.43s
+
+--- beta = 1.08974 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [5.3936963528e-05, 5.3936963528e-05]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.51s
+
+--- beta = 1.16615 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [3.8562401786e-05, 3.8562401786e-05]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.44s
+
+--- beta = 1.24256 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [2.7776632853e-05, 2.7776632853e-05]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.49s
+
+--- beta = 1.31897 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [2.0154287864e-05, 2.0154287864e-05]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.47s
+
+--- beta = 1.39538 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.4728561093e-05, 1.4728561093e-05]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.43s
+
+--- beta = 1.47179 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.0839005800e-05, 1.0839005800e-05]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.45s
+
+--- beta = 1.54821 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [8.0312843376e-06, 8.0312843376e-06]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.47s
+
+--- beta = 1.62462 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [5.9906829164e-06, 5.9906829164e-06]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.50s
+
+--- beta = 1.70103 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [4.4977184818e-06, 4.4977184818e-06]
+    naive multilinear bound in [6.000000, 6.000000]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.53s
+
+--- beta = 1.77744 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [3.3982973001e-06, 3.3982973002e-06]
+    naive multilinear bound in [6.000001, 6.000001]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.56s
+
+--- beta = 1.85385 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [2.5835220999e-06, 2.5835220999e-06]
+    naive multilinear bound in [6.000001, 6.000001]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.54s
+
+--- beta = 1.93026 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.9759386303e-06, 1.9759386303e-06]
+    naive multilinear bound in [6.000002, 6.000002]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.51s
+
+--- beta = 2.00667 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.5201076777e-06, 1.5201076777e-06]
+    naive multilinear bound in [6.000002, 6.000002]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.52s
+
+--- beta = 2.08308 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.1761011086e-06, 1.1761011086e-06]
+    naive multilinear bound in [6.000004, 6.000004]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.45s
+
+--- beta = 2.15949 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [9.1498700830e-07, 9.1498700830e-07]
+    naive multilinear bound in [6.000005, 6.000005]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.44s
+
+--- beta = 2.2359 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [7.1567631458e-07, 7.1567631458e-07]
+    naive multilinear bound in [6.000007, 6.000007]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.58s
+
+--- beta = 2.31231 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [5.6270705871e-07, 5.6270705871e-07]
+    naive multilinear bound in [6.000010, 6.000010]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.49s
+
+--- beta = 2.38872 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [4.4467818194e-07, 4.4467818194e-07]
+    naive multilinear bound in [6.000013, 6.000013]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.44s
+
+--- beta = 2.46513 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [3.5313604001e-07, 3.5313604001e-07]
+    naive multilinear bound in [6.000017, 6.000017]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.44s
+
+--- beta = 2.54154 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [2.8177821990e-07, 2.8177821990e-07]
+    naive multilinear bound in [6.000022, 6.000022]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.48s
+
+--- beta = 2.61795 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [2.2588104780e-07, 2.2588104780e-07]
+    naive multilinear bound in [6.000029, 6.000029]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.46s
+
+--- beta = 2.69436 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.8188567499e-07, 1.8188567499e-07]
+    naive multilinear bound in [6.000037, 6.000037]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.48s
+
+--- beta = 2.77077 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.4709720101e-07, 1.4709720102e-07]
+    naive multilinear bound in [6.000046, 6.000046]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 6.48s
+
+--- beta = 2.84718 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [1.1946480822e-07, 1.1946480822e-07]
+    naive multilinear bound in [6.000058, 6.000058]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.63s
+
+--- beta = 2.92359 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [9.7420263094e-08, 9.7420263095e-08]
+    naive multilinear bound in [6.000072, 6.000072]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.63s
+
+--- beta = 3 ---
+    nonzero 690358/4826809  (14.3% by selection rules)
+    ||A||_HS in [7.9758688485e-08, 7.9758688485e-08]
+    naive multilinear bound in [6.000089, 6.000089]   -> VACUOUS (>=6): certifies nothing
+      The bound nlegs*||B||^(nlegs-1) is >= nlegs whenever ||B||>=1,
+      and ||B||>=1 always since B[0..0]=1.  So this bound CANNOT certify
+      a contraction < 1.  A real certificate needs the linearisation of a
+      specific RG map with its own normalisation -- that is the algorithmic
+      work this script does NOT do.
+    wall 5.55s
+
+==========================================================================
+CERTIFIED RADIUS for the model map
+    no beta in the sweep certified (raise --sweep-hi or lower --jmax)
+    total wall 237.5s
+    REMINDER: this is a model. Truncation is not the bottleneck;
+    the ball radius is. See radius_push.py section D.

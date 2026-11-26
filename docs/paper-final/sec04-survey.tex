@@ -1,0 +1,258 @@
+% =====================================================================
+%  SECTION 4 -- the negative survey
+%  Twenty routes to uniformity in (L,a): one direction, three layers.
+% =====================================================================
+\clearpage
+\part{The negative survey}
+\section{Twenty routes, one direction}\label{sec:survey}
+
+This section is the audit of what was tried and did not work. It is written to a single
+standard: every route is stated as the theorem it actually proves, then killed by the
+hypothesis that is false, and the failure is attributed to a file. The organisation is
+forced by the material. There is one target (\S\ref{sec:survey-target}), one table of
+twenty routes plus two by-products (\S\ref{sec:survey-table}), and one obstruction with
+three mutually independent layers (\S\ref{sec:survey-three}). What survives is two items,
+one of them a bug (\S\ref{sec:survey-survives}).
+
+\subsection{The target}\label{sec:survey-target}
+
+\begin{claimbox}{cN}
+\claimhead{The target statement}{.} The uniformity asked for throughout the campaign is the
+single sentence
+\[
+\boxed{\;\inf_{L,t}\, w_1\!\left(L,\,2.5,\,t\right) \;>\; 0\;}
+\]
+where $w_1=f_1^2/M_0$ is the atom fraction of the K\"all\'en--Lehmann measure
+($f_1^2=\nu(\{m_1^2\})$, $M_0=\int d\nu=C(0)=\mathrm{Var}(O)$) for the fixed operator
+$O=\tfrac14\mathrm{tr}\,F^2$. This is the gap of \cite{jaffe} read on the atom route of
+\S\ref{sec:reduction-equiv}; the reading is not a weakening of the Clay statement, and
+\S\ref{sec:survey-three} states exactly how far it is from it.
+\src{\code{LOOP-RUNBOOK.md}:18982--18983 (\S160.1); definitions \code{LOOP-RUNBOOK.md}:18950--18956.}
+\end{claimbox}
+
+Three bookkeeping facts make this a well-posed sentence, and each was a separate round of
+work to establish.
+
+\begin{itemize}
+\item \textbf{The lattice spacing is not a free parameter.} At the physical coupling
+  $\beta=2.5$ the spacing is pinned, $a=a(\beta)$; the family is a graph, not a rectangle.
+  Leaving $a$ free loses $\beta=2.5$; pinning it degrades ``$a$-uniformity'' to a
+  statement about one point. Both readings are recorded in the corpus, and the second is
+  the one used here.
+\item \textbf{The ratio is scale invariant.} The engineering dimension of $w_1$ vanishes
+  identically, $\gamma_{w_1}=2\gamma_O-2\gamma_O\equiv 0$, because numerator and
+  denominator carry the same anomalous dimension. This is why no renormalisation of the
+  bare ratio can move the target; the bare ratio nevertheless drifts to zero, $w_1^{\rm
+  bare}\to0$, because the contact term makes $M_0\sim a^{-8}$. That drift is an artefact
+  of not fixing the renormalisation scheme, not information about the atom.
+\item \textbf{The order of the infima does not matter.} On a product set the three
+  infima $\inf_L\inf_t$, $\inf_t\inf_L$ and $\inf_{(L,t)}$ coincide (a two-line lemma).
+  ``The order is the difficulty'' is therefore false; what is genuinely open is the
+  domain constraint, whether $\lim$ sits inside or outside the $\inf$, and the missing
+  $t$-axis.
+\end{itemize}
+
+\begin{warnbox}
+\textbf{The operator is not decoration.} $w_1$ depends on $O$, so \emph{every} infimum
+above is taken at fixed $O$. The witness is one line and exact: on a fixed $H$ take the
+legitimate sources $O_\theta=1+\varepsilon(\cos\theta\,\psi_1+\sin\theta\,\psi_2)$; then
+$w_1=\cos^2\theta\in[0,1]$ while $\mathrm{Spec}(H)$ does not move at all. Hence $w_1$ is a
+property of the pair $(H,O)$, never of $H$ alone, and a statement of the form ``$w_1>0$''
+has no content until $O$ is named. This is the same fact that makes the measured factor
+$20.2$ between two operators on one Markov chain a feature rather than an error.
+\src{\code{U11.md} \S\S1--2, \code{LOOP-RUNBOOK.md}:19241--19252 and :19283--19289 (\S165).}
+\end{warnbox}
+
+\subsection{A table of twenty routes, one direction}\label{sec:survey-table}
+
+Twenty routes were attacked, in the sense that each was pushed until it either produced a
+uniform lower bound on $w_1$ or produced the exact reason it cannot. All twenty fail, and
+they fail in one direction: nine give only upper bounds, nine are circular, two have
+explicit counterexamples. Two further items were produced by the same sweep and are kept
+because they are usable.
+
+{\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.5cm} >{\raggedright\arraybackslash}p{3.15cm} >{\raggedright\arraybackslash}p{4.9cm} >{\raggedright\arraybackslash}p{1.15cm} >{\raggedright\arraybackslash}p{5.1cm}@{}}
+\caption{Twenty routes to an $(L,a)$-uniform floor on $w_1$, grouped by the direction of what they
+produce, with two by-products. The group headings partition the outputs, not the methods
+(\S\ref{sec:survey-table}, notes).}\label{tab:routes}\\
+\toprule
+\textbf{\#} & \textbf{Route} & \textbf{What it gives} & \textbf{Grade} & \textbf{Cause of death}\\
+\midrule
+\endfirsthead
+\toprule
+\textbf{\#} & \textbf{Route} & \textbf{What it gives} & \textbf{Grade} & \textbf{Cause of death}\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+\multicolumn{5}{@{}l}{\emph{Only upper bounds (9)}}\\
+1 & compactness & Arzel\`a--Ascoli transports, does not produce: the output is the identity $\inf_K w_1=w_1(x_0)$ & \LN & $K$ is not compact ($a=0$ and $L=\infty$ have no member); relative compactness does not exclude $\ell=0$\\
+2 & reflection positivity & $\widehat w_1(T)\downarrow\ \ge w_1$ \cite{os1973}, i.e.\ an upper bound; the direction is reversed & \LN & RP fixes the sign of the monotone quantity, only constrains $w_1$ from above; $2/(L-1)\searrow0$ and $w_1\equiv0$ both satisfy it\\
+3 & Berezin--Lieb & $\sum_j\lambda_j\le\sum_j\varepsilon_j$ is a sum bound: $\lambda_1\le(1/N)\sum\lambda$ & \LN & a trace inequality bounds the bottom from above; its only lower-shaped corollary needs $u\ge0$, and on YM the hypothesis \emph{is} the target\\
+4 & probabilistic reading \cite{chatterjee} & $w_1=P(S=m_1^2)$ and $|EX|^2\le E|X|^2$ is an upper bound & \LN & the modulus square is not the expectation of an indicator; $|\langle\mathbb{G}|\phi\rangle|^2$ is a difference of two positive currents, sign indefinite\\
+5 & Krein--Rutman residual $D_\infty$ & information content a factor $2.0975$ (window $[0.690,1.448]$) & \LN & fails the free-field acid test: at $\beta=0$, $D_\infty=1$ while $w_1=0$\\
+6 & concavity & the chord lemma is true: $f$ concave, $f\ge0$, left end $r_0$ $\Rightarrow$ $f(2.5)\ge r_0(\beta_2-2.5)/(\beta_2-\beta_1)$ & \LN & $w_1$ is not concave: the Lorentzian witness $v^2/(4v^2+D^2)$ changes the sign of $f''$ at $2v/\sqrt3$; ray concavity would force $w_1(\infty)\ge r_0$ against the free end\\
+7 & RG modulus $\delta_A\cdot a$ & a pure number, $\delta_A\cdot a=0.5686159$ & \LN & a $0.24\%$ coincidence with $a\Lambda(1/48)=0.5700$ (other $\beta$ give $1.208$, $7.4\times10^3$, $5.2\times10^{10}$); the free field is equally ``constant'' ($2\pi/8=0.7854$)\\
+8 & $\Phi$ (object mismatch) & an activity sum $\Phi(0)=\sum_{r\ne0}c_r\dim r=\beta=2N^2u$ & \LN & $\Phi$ is a sum over $f$ and $\bar f$ (each carrying $\dim f=N$); $\bar C$ wants one slab, and one plaquette may take $f$ or $\bar f$ but not both\\
+9 & $\varphi_{\rm dec}$ & the decay density of the decoration gas, $\log Z_{\rm dec}=\varphi_{\rm dec}T+\log D_\infty+\varepsilon_T$ & \LN & Fekete already gives its rate and its existence without any positivity; a tool whose output is already a theorem adds nothing\\
+\multicolumn{5}{@{}l}{\emph{Circular (9)}}\\
+10 & positivity improvement & Perron--Frobenius locks the vacuum at every $\beta>0$ & \LN & assumes $r>0$: a uniform cone-improvement constant is equivalent to a uniform gap, so the hypothesis is the conclusion\\
+11 & minimality & $\lambda_1(\nu)\ge\operatorname{ess\,inf}G''$ & \LN & reduces to $\operatorname{ess\,inf}G''=H1$, and the Savvidy tail \cite{savvidy,no,leutwyler} makes $\operatorname{ess\,inf}G''<0$\\
+12 & operator inequalities & Temple \cite{temple}, Weyl, Lieb--Thirring, Cheeger, ELS & \LN & $w_1$ is not a function of $\mathrm{Spec}(H)$: at fixed spectrum $w_1=\cos^2\theta\in[0,1]$; the input is the target\\
+13 & definability & $o$-minimality can be had on $L/a\le C$ & \LN & the non-circular version requires $(N=\infty,\beta=\infty)$ to be in the family with value $>0$, which is the Clay problem itself\\
+14 & strong--weak bridge & $\beta<3.777\times10^{-3}$ gives $f_1^2\ge r_0$; $\beta\to\infty$ gives $m_{\rm lat}=D_0e^{-c\beta}$ & \LN & the two ends are of different types, $662\times$ apart; no interpolation theorem (non-negative real-analytic can be zero in between)\\
+15 & $\Delta_0$ & $\exists\Delta_0>0\ \forall a<a_0:\ m_{0^{++}}(a)\ge\Delta_0$ & \LN & M6: $\Delta_{\rm dyn}>0$ while $m=0$ (not sufficient); 2D: $\Delta_{\rm dyn}=0$ while $m>0$ (not necessary); and the floor is the target renamed (\S\ref{sec:reduction-legs}(iii)), which is why the row sits in this group rather than among the counterexamples\\
+16 & $T4$ & the same statement in physical units, $=H1$ dimension-corrected & \LN & its antecedent is its conclusion in another notation: $C>0\iff(T4)\iff H1$, so the step consumes what it proves\\
+17 & $H1$ & a one-sided variance bound at typical field and $k\to0$ & \LN & $H1\not\Rightarrow m>0$: the thin atom witnesses a gap-free state satisfying $H1$\\
+18 & $M(\beta)=m/\Lambda$ & an identity ($\gamma_m=0$): flow invariant and positive by construction & \LN & an identity cannot floor anything; its positivity is free and its uniformity is the assumption\\
+\multicolumn{5}{@{}l}{\emph{Counterexamples (2)}}\\
+19 & $w_1(L)$ monotonicity & the mechanism family realises both directions & \LN & $w_1=2/(L-1)$ is non-increasing with limit $0$; non-increasing does not imply $\inf>0$; identity of the mechanism family, not a defect of one member\\
+20 & tight family $+$ limit atom & a compact family in $\mathcal P([0,3])$, weakly closed & \LN & $\int s\,d\mu\equiv2.4$, $E$ jumps $0.3\to0$, $\mathrm{TV}\equiv0.6$: tightness does not give a uniform floor, the atom survives only at the limit point\\
+\multicolumn{5}{@{}l}{\emph{By-products (2)}}\\
+21 & block-Loewner & $K_\beta\succeq K_{\beta'}$ for all $N$ & \LT & not a route to $w_1$ (blocked by the $D$-factor and by not transporting eigenvectors) but it repairs the previously unproved step of D05\\
+22 & QR-sampler bug & the sampler fabricates sign changes & \LE & four corpus conventions need revision; earlier numerical ``$c_r$ changes sign'' conclusions are void\\
+\end{longtable}
+}
+
+\src{Row sources, in the order of the table.
+1: \code{U01.md} \S\S1--3 (\code{LOOP-RUNBOOK.md}:19064--19070).
+2: \code{U03.md} (\code{LOOP-RUNBOOK.md}:19307--19311); the bound $\widehat w_1(1)=e^{1.68}\cdot0.184\approx0.83$ is \code{U14}/\code{UNIF2}.
+3: \code{U11.md} \S1, \code{LOOP-RUNBOOK.md}:19257--19263.
+4: \code{U12.md}; \code{LOOP-RUNBOOK.md}:19295--19298.
+5: \code{U10.md} \S3 (factor $2.0975$, window $[0.690,1.448]$); acid test at $\beta=0$: \code{LOOP-RUNBOOK.md}:19301--19302.
+6: \code{U13.md} \S3 (Lorentzian witness, $f''$ sign change at $2v/\sqrt3$); \code{LOOP-RUNBOOK.md}:19136--19144.
+7: \code{MON3.md} \S3(iv) ($\delta_A\cdot a=0.5686159$ versus $a\Lambda(1/48)=0.5700$, ratio $0.9976$; other $\beta$: $1.208/7.394\times10^3/5.188\times10^{10}$); free field $2\pi/8=0.7854$, \code{MON3.md}:185.
+8: \code{CB4.md} \S1 row 4 and \code{LOOP-RUNBOOK.md}:16589, :16622; $\Phi(0)=\beta=2N^2u$ is \code{C05-AUDITCBAR.md}:18,52.
+9: \code{U10.md} \S1 (J5, threefold redundancy); Fekete side \code{RS5.md} J1, \code{P4-OTHER.md}:145.
+10: \code{U10.md} \S\S2--3; \code{U15.md} row 10.
+11: \code{U15.md} row 11; $\operatorname{ess\,inf}G''<0$ with $K_S(2.5)=-119$: \code{GAP2.md}:72.
+12: \code{U11.md} \S2; witness \code{LOOP-RUNBOOK.md}:19241--19252.
+13: \code{U04.md} \S3 (\code{LOOP-RUNBOOK.md}:19180--19194).
+14: \code{U13.md} \S1--2 ($2.5/3.777\times10^{-3}=661.9$, i.e.\ $662\times$, \code{U13.md}:56); \code{LOOP-RUNBOOK.md}:19120--19133.
+15: \code{LOOP-RUNBOOK.md}:18914--18916 (\S159.1); \code{Q03-TARGET.md}:127; 2D $m=3g^2/8$ and $\nu_{\frac14{\rm tr}F^2}\equiv0$: \code{N02-FOURMODEL.md}, \code{LOOP-RUNBOOK.md}:19088.
+16: \code{M05-RATIO.md}:97--100; circularity \code{A04-RATIO2.md}:164 (\code{LOOP-RUNBOOK.md}:18894).
+17: \code{Q6-H1-STATUS.md}:208 (thin atom); \code{R6-ATOM-ADVERSARIAL.md}:254 (gapped, atomless); \code{LOOP-RUNBOOK.md}:19048--19053.
+18: \code{MON3.md} \S1; \code{LOOP-RUNBOOK.md}:19391 ($dM/d\ln a=0$, $\gamma_m=0$).
+19: \code{U02.md}, \code{MON1.md} (\code{LOOP-RUNBOOK.md}:18822--18824, :19300).
+20: \code{U16.md} \S3.2, table at :157--164 and :172 (\code{LOOP-RUNBOOK.md}:19351--19355).
+21: \code{U09.md} \S3 (\code{LOOP-RUNBOOK.md}:19460--19464, :19490).
+22: \code{U09.md} \S3 (\code{LOOP-RUNBOOK.md}:19467--19471).}
+
+Two notes on the table, both honest bookkeeping rather than refinement of the content.
+First, the three group headings are not a partition of the \emph{methods} but of the
+\emph{outputs}: route 6 proves a true theorem and its hypothesis is false, and so does
+route 2, which is why the direction of the bound, not the truth of the theorem, is the
+discriminating property. Second, route 14 is graded \LN{} here on the strength of the
+interpolation step (\code{LOOP-RUNBOOK.md}:19127--19133), while the summary ledger of that
+sweep grades the leg \LC{} with the circularity as its cause
+(\code{LOOP-RUNBOOK.md}:19012). The two gradings are both recorded; this paper does not
+silently merge them.
+
+\noindent\textbf{The inequalities behind the table, cited.} The correlation inequalities behind rows 2
+and 10 are Griffiths \cite{griffiths}, Kelly--Sherman \cite{ksherman}, FKG \cite{fkg} and Ginibre
+\cite{ginibre}; log-concavity enters through Pr\'ekopa \cite{prekopa} and Brascamp--Lieb \cite{bl};
+row 12 is Temple's bound \cite{temple} together with the Weyl and Lieb--Thirring inequalities; the
+``output is an upper bound'' pattern of rows 3--6 is what the transport--entropy criterion
+\cite{vrs} and the convolution and entropy-power inequalities \cite{royen,gsv} also produce, and the
+negative-dependence theory of \cite{bbl} is what makes a naive FKG substitute unavailable for a
+lattice gauge measure; and the rates of rows 5, 7 and 9 exist as stated only inside the
+strong-coupling window, which is the log-Sobolev and mixing literature of
+\cite{js,sinclair,feller,bbs}. Every one of these is a true theorem. The column that matters is
+\emph{what it gives}, not whether it is true.
+
+\subsection{The three layers of the obstruction}\label{sec:survey-three}
+
+The twenty failures are not twenty independent accidents. They decompose into three
+layers, each of which is independently sufficient to stop the route, and all three point
+the same way.
+
+\paragraph{1. The instrument layer.} The weak-$*$ instruments --- moments, $\varphi^U$,
+$a_n$, and every other quantity the campaign can actually compute --- cannot resolve an
+atom. The decisive count is $0/14$: of fourteen candidate instruments tested against this
+question, none works, and the failure is located in the class of instruments (finite data,
+weak-$*$ continuous), not in infinite dimensionality. The mechanism is exact: every
+computable quantity is a weak-$*$ continuous functional of $\nu$, whereas $w_1$ is the
+mass of a point. A continuous functional cannot see a point mass, so no sequence of
+computable quantities converges to $w_1$ in a way that could certify a floor. The one
+non-weak-$*$ instrument available is $H1$, and $H1\not\Rightarrow m>0$ (row 17).
+
+\paragraph{2. The continuity layer.} The map $\nu\mapsto\nu(\{x\})$ is only upper
+semicontinuous, and a floor requires lower semicontinuity. Concretely, $w_1$ is
+\emph{discontinuous} in the K\"allen--Lehmann weak topology: there is a family $\nu_\varepsilon$
+with $w_1(\nu_\varepsilon)\to\varepsilon\to0$ across a jump, so that
+\[
+\inf\;=\;0 \qquad\text{while}\qquad w_1>0\ \text{pointwise.}
+\]
+Upper semicontinuity permits exactly this downward jump. The quantitative form is the same
+statement: for any weak-$*$ continuous $g$ the error obeys $\sup|E-g|\ge f_1^2/2$, so a
+continuous instrument cannot even approximate the atom to better than half its mass.
+Consequently the target of \S\ref{sec:survey-target} \emph{may be false}, and its being
+false is not a defect of the route but a property of the object. The sentence is about $\nu$ as an
+unrestricted measure on $[0,\infty)$; read on the atom route of \S\ref{sec:reduction-equiv} the
+same statement is the target itself, and that is the entire content of the qualifier printed there.
+
+\paragraph{3. The implication layer.} Even granting the atom, atom-ness does not imply a
+gap. The two solvable models separate the implications in opposite directions: 2D
+Yang--Mills has a gap and no atom ($m=3g^2/8>0$ while $\nu_{\frac14{\rm tr}F^2}\equiv0$),
+and the M6 model has an atom and no gap ($w_1=0.5$ while $m=0$). The stronger statement is
+available in 2D and is the cleanest single line in the survey: there $m(L)=\sigma L\to\infty$
+while $w_1=0$, so the gap \emph{diverges} while the atom fraction is identically zero.
+$w_1$ and $m$ are therefore completely decoupled --- not merely non-proportional.
+
+\begin{v3box}
+\textbf{The three layers are independent, and the direction is common.} Layer 1 says the
+instruments cannot see the object; layer 2 says the object's own topology forbids the
+floor the target asks for; layer 3 says the floored object would not imply the goal even
+if floored. No one of the three presupposes another, so removing one obstruction would
+leave the other two intact. And the direction of the twenty routes is uniform:
+\textbf{upper bounds are in ample supply, every lower bound is circular or
+counterexampled.}
+\src{\code{U15.md} (the $0/14$ count and the instrument-class localisation);
+\code{U08.md} ($\nu_\varepsilon$); \code{R3} via \code{U11.md} \S3 ($\sup|E-g|\ge f_1^2/2$);
+\code{U01.md} (usc versus lsc); \code{U06.md} and \code{LOOP-RUNBOOK.md}:19520--19537
+(2D, $m(L)=\sigma L\to\infty$ with $w_1=0$); \code{Q03-TARGET.md}:127 and
+\code{LOOP-RUNBOOK.md}:19085--19090 (M6); summary \code{LOOP-RUNBOOK.md}:19164--19170,
+:19316--19325, :19569--19578.}
+\end{v3box}
+
+\subsection{What survives}\label{sec:survey-survives}
+
+Two items survive the sweep, and one of them is a bug.
+
+\begin{itemize}
+\item \textbf{A block-Loewner inequality, \LT.} On the dual side the Griffiths/Bochner
+  positivity gives $c_r(\beta)\ge0$ and $\beta$-non-decreasing (tensor-product
+  multiplicities are non-negative; verified numerically on SU(3) at $\beta=2.5$ and
+  $5.7$), and hence $K_\beta\succeq K_{\beta'}$ for $\beta\ge\beta'$, for all $N$. This
+  repairs the previously unproved step of D05. It does not reach $w_1$: it is blocked by
+  the $D$-factor and it does not transport eigenvectors.
+\item \textbf{A sampler bug, \LE.} The same sweep found that the QR sampler fabricates
+  sign changes. Four corpus conventions therefore require revision, and the earlier
+  numerical determinations of ``$c_r$ changes sign'' are void. This is a by-product of a
+  negative survey, and it is the only place in the paper where a negative result removed a
+  positive claim rather than failing to establish one.
+\end{itemize}
+
+The last observation of the survey closes the FKG family as well, and closes it at $H1$.
+The only monotonicity $w_1$ admits is on the three spectral points $(s_1,s_2,\bar E)$, in
+the right direction:
+\[
+w_1\;\ge\;\frac{s_2-\bar E}{s_2-s_1},
+\]
+and $w_1$ is not monotone in $\beta$ (a $\tfrac14\sin^2\theta$ hump) and is constant under
+$O\mapsto\lambda O$ ($\gamma=0$). The threshold form of that inequality is
+\[
+w_1\ge w_0 \iff \frac{\delta_1}{\varepsilon}\le 1-w_0,
+\]
+which is precisely the isolation of the second support point, i.e.\ $H1$. So the FKG route
+does not deliver a floor either: it delivers $H1$, and $H1$ does not imply $m>0$ (row 17).
+Combined with the instrument layer, the conclusion is that positivity in this family reaches
+the second support point and stops there.
+
+\src{\code{U09.md} \S3 and \code{LOOP-RUNBOOK.md}:19460--19464, :19467--19471, :19490--19498
+(block-Loewner, sampler bug, and the reduction $w_1\ge w_0\iff\delta_1/\varepsilon\le1-w_0$ =
+second support point $=H1$); $H1\not\Rightarrow m>0$: \code{Q6-H1-STATUS.md}:208,
+\code{LOOP-RUNBOOK.md}:19048--19053.}

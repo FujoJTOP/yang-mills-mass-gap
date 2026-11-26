@@ -1,0 +1,379 @@
+% =====================================================================
+%  sec05-ledger.tex --- Section 5: the bookkeeping ledger (38 entries)
+%  Merged edition v3.  All-English body.  Every number carries file:line.
+% =====================================================================
+
+\section{The bookkeeping ledger}\label{sec:ledger}
+
+\subsection{Why a ledger is in a mathematics paper}\label{sec:ledger-why}
+
+A table of one's own errors earns its place in a paper only if it does work. This one does: it is the
+mechanism by which the results of this paper were corrected, not an appendix to them. Three of the five
+examples below moved a numeral that appears in the body; the other two stopped a sentence before it
+reached a page. Without the ledger the same conclusion becomes available again on the next pass, because
+nothing in the mathematics records that it was already tried and failed.
+
+\begin{claimbox}{cN}
+\claimhead{Claim}{.} Each of the five entries below is load-bearing: deleting its row either changes a
+numeral in this paper or restores a sentence that was withdrawn from a draft. The ledger is kept for that
+reason alone, and not as a record of diligence.
+\src{\code{LOOP-RUNBOOK.md} lines 9986, 12111, 16768, 17735, 19672;
+\code{ADJ6.md} lines 1, 11, 135, 138; \code{Q13-BETA6.md} line 59;
+\code{position-current.html} lines 412--414.}
+\end{claimbox}
+
+\noindent\emph{Path convention.} File names are given without their directories throughout this section:
+the position file lives in \code{docs/}, the species files in \code{research/v3/species/}, and the
+chapter files in \code{docs/paper-v2/}. Line numbers are line numbers in those files, and two
+abbreviations are used for the two files that recur: \code{RB:17735} is line 17735 of
+\code{LOOP-RUNBOOK.md}, \code{P:378} is line 378 of the position file. Five further short labels are
+carried over verbatim from the corpus --- \code{V6}, \code{p8}, \code{F07}, \code{ADJ6} and
+\code{Q13} --- because the entries that use them were quoted from the chronicle rather than
+re-typed; this paper does not resolve them to paths, and a reader who wants them should grep the
+label in \code{LOOP-RUNBOOK.md}. Naming the gap is preferable to inventing a path for it.
+
+\begin{enumerate}[label=\textcircled{\small\arabic*},leftmargin=2.3em,itemsep=4pt,topsep=4pt]
+\item \textbf{Four sequences, one label.} The sequences $a_n$, $B_n$, $m_n$, $t_n$ are quoted with two
+labels for one object and with one label for two different objects. Whether $\lambda_T$ is bounded
+through $t_n$ or through $a_n$ decides whether the shortfall against $48$ is $4.75\%$ or $13.3\%$ --- one
+physical statement, two numbers. The row settles it: $B$ bounds both sequences, the shortfall is
+$B/48=1.0475$, and $13.3\%$ is the branch computed with a dominated constant.
+(\code{ADJ6.md:1,11,135,138}; \code{LC3.md:21}; \code{RB:17735}.) This is row~12 of
+\S\ref{sec:ledger-thirtyeight}.
+
+\item \textbf{$W_{\mathrm{full}}$ versus $W_{\mathrm{geo}}$: one name, two objects.} The two were used
+as the same object for several rounds. Pr\'ekopa's inequality \cite{prekopa} --- and its
+Brascamp--Lieb form \cite{bl} --- gives $W_{\mathrm{geo}}\ge0$; it says
+nothing about $W_{\mathrm{full}}$. A row that merged them transfers a theorem to an object the theorem
+does not concern. (\code{RB:9986}.) This is row~10.
+
+\item \textbf{A first moment that is a second moment.} $\bar R=M_1/M_0$ in \code{p8} was reported as a
+first time moment; it is $\langle m^2\rangle$. The power is off by one, and the bridge that consumed the
+number was consequently reported stronger than it is. The row is the reason that bridge carries no \LT{}
+anywhere in this paper. (\code{RB:19672}.) This is row~19.
+
+\item \textbf{A paper number on the wrong author.} Numbers $107/110$ were attributed to Balaban; they
+are Federbush's, and a three-source search for $113/115/117$ returned $0$ hits. The wrong attribution had
+already entered a draft, which is the only reason it is a ledger row rather than a correction made in
+passing. (\code{RB:12111}.) This is row~23.
+
+\item \textbf{A number detached from its coupling.} The value $0.6018$ is the pooled result of the
+$\beta=6$ run ($\chi^2/\mathrm{dof}=1.22$, eight groups consistent). Quoted without $\beta=6$ it becomes
+a number at $\beta=2.5$, which is the coupling of the measurement in this paper.
+(\code{Q13-BETA6.md:59}.) This is row~9.
+\end{enumerate}
+
+\begin{v3box}
+\textbf{Three further entries reached a draft and were withdrawn.} These are not hypothetical: each was
+written as a conclusion, not as a suspicion.
+\begin{itemize}[leftmargin=1.5em,itemsep=3pt,topsep=3pt]
+\item $\Delta_0>0$ was written as the name of the residual gap and withdrawn. Verbatim: ``The earlier
+naming of that gap as $\Delta_0>0$ is WITHDRAWN (n12): $\Delta_0$ sits on $G''$, not on the measure
+$\nu$.'' (\code{paper-v6/main.tex:17}.) This is the object-mismatch class, row~15, caught at draft
+level: the name sat on a carrier that is not the carrier of the statement.
+\item $0.34/0.46$ was written into a draft as the $\mathrm{SU}(2)/\mathrm{SU}(3)$ values
+(\code{ch05-theorems.tex:208--209}). The exact $\mathrm{SU}(2)$ Haar-slice value is
+$0.20512$; $0.34/0.46$ are the magnitudes for $N=3/N=4$ ($0.342/0.461$). The numbers survive, the label
+does not (\code{O09-PHICURV.md:104}). This entry has \emph{no} itemized identity in
+\S\ref{sec:ledger-thirtyeight}: its only trace in the corpus is the correction itself, and it is
+therefore not counted among the twenty-nine rows.
+\item $W_{\mathrm{full}}$ and $W_{\mathrm{geo}}$ were used as one object in a draft, i.e.\
+example~\textcircled{\small2} at draft level. Row and draft error are one entry seen twice, and they are
+counted once. (\code{RB:9986}.)
+\end{itemize}
+\end{v3box}
+
+\noindent\textbf{Why this is not a repository log.} A reader who re-uses $w_1(2.5)$, or the pooled
+$0.6018$, or the window $\beta_A<3.777\times10^{-3}$, needs to know which row sits under the number. In a
+body of results whose only positive content is a measurement, the audit trail is part of the mathematics:
+it is what makes the number quotable at all, and it is what a referee is entitled to check.
+
+% =====================================================================
+\subsection{The thirty-eight}\label{sec:ledger-thirtyeight}
+
+Two counting rules, stated before the count, because a different rule set yields a different total and
+the total is the thing this paper has to defend. \emph{One entry} is one minimal unit of debt such that
+copying it literally produces a wrong conclusion. A polysemous symbol counts once per symbol, with the
+number of senses in brackets; a clash of two numerals or of two sequences counts once per confused pair.
+The rules do not answer ``have all consequences of the debt been settled'' --- each row carries its own
+consequence and its own source.
+
+{\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.055\textwidth}%
+>{\raggedright\arraybackslash}p{0.163\textwidth}%
+>{\raggedright\arraybackslash}p{0.505\textwidth}%
+>{\raggedright\arraybackslash}p{0.207\textwidth}@{}}
+\caption{The thirty-eight entries: class, the one sentence that states the debt, and what the entry
+moves. Rows 30--38 are a class-level residual with no itemized identity
+(\S\ref{sec:ledger-thirtyeight}, Gap~1).}\label{tab:ledger}\\
+\toprule
+\textbf{\#} & \textbf{Class} & \textbf{One sentence} & \textbf{Grade impact} \\
+\midrule
+\endfirsthead
+\toprule
+\textbf{\#} & \textbf{Class} & \textbf{One sentence} & \textbf{Grade impact} \\
+\midrule
+\endhead
+\midrule
+\multicolumn{4}{r@{}}{\footnotesize continued on the next page}\\
+\endfoot
+\bottomrule
+\endlastfoot
+% ------------------------- deepest -----------------------------------
+\textbf{1}\newline{\scriptsize item 29} & Symbol definition, non-unique (deepest) &
+$u$ is defined twice, $u:=c_f$ and $u:=c_f/N$, and the two differ by $N$; every formula containing $u$
+therefore inherits the ambiguity. (\code{RB:16768}.) &
+No local grade moves; it sits under the window, $\bar C$, $\bar u$, $r_0$ and $\delta$. \\
+\midrule
+% ------------------------- polysemy 6 --------------------------------
+\textbf{2} & Symbol polysemy (1/6) & $\bar C$ carries three senses (sum-level constant, condensate,
+coefficient); one of them is the identity $\bar C=1$. & Withdraws $\bar C=1$; the $n=3$ witness stands
+(\code{V6:14}). \\
+
+\textbf{3} & Symbol polysemy (2/6) & $\delta$ carries six senses: step size, mass lower bound,
+certificate margin among them. & No grade moves; makes the comparison of row~21 possible at all. \\
+
+\textbf{4} & Symbol polysemy (3/6) & $\Omega$ carries four senses. & None recorded; the
+$\Omega$/Kato route is already circular (\S\ref{sec:ledger-dead}). \\
+
+\textbf{5} & Symbol polysemy (4/6) & $G$ is written both for a propagator and for the potential that
+$G''$ differentiates. & None recorded; every $G''$ statement must name its carrier. \\
+
+\textbf{6} & Symbol polysemy (5/6) & $E[H]$ carries two senses: the energy of a configuration and an
+expectation under the measure. & None recorded; both readings are in play in the M6 test. \\
+
+\textbf{7} & Symbol polysemy (6/6) & $\Delta_{\mathrm{dyn}}$ carries two definitions, one of them
+$\Delta_{\mathrm{dyn}}=-W_{\mathrm{full}}$ on 2D Yang--Mills. & Blocks the four-model test until one
+definition is fixed. \\
+\midrule
+% ------------------------- numerical clash 4 -------------------------
+\textbf{8} & Numerical name clash (1/4) & $1/48$ and $1.766/48$ are both called ``the threshold'';
+the first is the P3 residue constant, the second the shifted one. & The $\beta_A$ window inherits the
+factor $1.766$. \\
+
+\textbf{9} & Numerical name clash (2/4) & $0.6018$ is the pooled $\beta=6$ value
+($\chi^2/\mathrm{dof}=1.22$); detached from $\beta=6$ it reads as a $\beta=2.5$ number. &
+Quotable only at $\beta=6$ (\code{Q13-BETA6.md:59}). \\
+
+\textbf{10}\newline{\scriptsize item 5} & Numerical name clash (3/4) & $W_{\mathrm{full}}$ and
+$W_{\mathrm{geo}}$ are two objects under one name, used as one object. & Pr\'ekopa's
+$W_{\mathrm{geo}}\ge0$ does not transfer to $W_{\mathrm{full}}$ (\code{RB:9986}). \\
+
+\textbf{11} & Numerical name clash (4/4) & $\delta_A\cdot a$ and $a\Lambda(1/48)$ differ by $0.24\%$,
+and the agreement is read as an identity. & No grade moves; the $0.24\%$ is not an identity test. \\
+\midrule
+% ------------------------- sequence clash 2 --------------------------
+\textbf{12}\newline{\scriptsize item 30} & Sequence name clash (1/2) & $a_n$, $B_n$, $m_n$, $t_n$ are four
+sequences under two labels; $t_n$ versus $a_n$ decides $4.75\%$ versus $13.3\%$. & $13.3\%$ is
+withdrawn; $4.75\%$ survives (\code{ADJ6.md:11,135,138}; \code{RB:17735}). \\
+
+\textbf{13} & Sequence name clash (2/2) & The old $T^4_6$ convention counts $7218758$ at $n=6$, short by
+$10$; the clean value under $nx\ge8$ is $7218768$. & Any count built on the old convention is short by
+$10$ (\code{RB:18570}). \\
+\midrule
+% ------------------------- scope error 5 -----------------------------
+\textbf{14} & Scope error (1/5) & The defect ratio $D/S\approx2\%$ at $\beta=2.5$ is quoted without its
+denominator. & No grade moves; the $2\%$ needs the word ``defect'' attached (\code{P:414}). \\
+
+\textbf{15} & Scope error (2/5) & $\Phi$ is attached to the wrong carrier: $\Delta_0$ sits on $G''$,
+not on the measure $\nu$. & The name $\Delta_0>0$ is withdrawn (\code{V6:17}). \\
+
+\textbf{16} & Scope error (3/5) & The input $|w|^{1/n}=c_f$ at \code{F07:82} rests on $|w_p|\le u$,
+which is wrong by the factor $N$. & Removes one input to the $\bar C$ route (\code{V6:14}). \\
+
+\textbf{17} & Scope error (4/5) & $a=0$ is an activation point of the recursion, not a criterion; using
+it as one over-reports the window by $4.84\times$. & Window corrected to
+$\beta_A<3.777\times10^{-3}$ from $0.018394$ (\code{main.tex:162--163}). \\
+
+\textbf{18} & Scope error (5/5) & $Q_3$ is misread: the vertex count of the cube is quoted as a slice
+count of the decomposition. & No grade moves; the count must be recomputed per object. \\
+\midrule
+% ------------------------- power error 3 -----------------------------
+\textbf{19}\newline{\scriptsize item 34} & Power error (1/3) & $\bar R=M_1/M_0$ in \code{p8} is reported as a
+first time moment; it is $\langle m^2\rangle$, one power off. & The bridge is over-stated and carries no
+\LT{} (\code{RB:19672}). \\
+
+\textbf{20} & Power error (2/3) & $\beta$ and $\beta^2$ appear in one comparison under one symbol. &
+Any inequality mixing the two is void. \\
+
+\textbf{21} & Power error (3/3) & The contradiction $.577>.551$ in \code{U14} compares two different
+$\delta$'s. & No grade moves; it is an artefact of row~3. \\
+\midrule
+% ------------------------- citation / nomenclature 4 -----------------
+\textbf{22} & Citation, nomenclature (1/4) & A citation is rewritten in paraphrase and then quoted as
+if verbatim. & The cited claim's grade is not inherited. \\
+
+\textbf{23}\newline{\scriptsize item 14} & Citation, nomenclature (2/4) & $107/110$ are attributed to Balaban;
+they are Federbush's, and $113/115/117$ return $0$ hits. & Attribution corrected; the Balaban chain is
+not available (\code{RB:12111}). \\
+
+\textbf{24} & Citation, nomenclature (3/4) & ``RG stable modulus'' occurs $4$ times and is defined $0$
+times. & The RG-modulus route has no stated object. \\
+
+\textbf{25} & Citation, nomenclature (4/4) & $w_1$ is defined with no $t$ axis, so $w_1(2.5)$ is a
+column at fixed $t$. & $w_1(2.5)$ stays \LE; no $t$-limit is available. \\
+\midrule
+% ------------------------- new this round 4 --------------------------
+\textbf{26}\newline{\scriptsize item 35} & New this round: denominator outside its window & The denominator
+$r_0=1/32$ of the $10.94\times$ is negative at $\beta=2.5$ ($r_0$ is a floor only for
+$\beta\le0.147152$; $\bar u(2.5)=16.99$ gives $r_0<0$). & The ``floor'' reading is withdrawn; the
+$10.94\times$ is a dimensionless ratio, not a proved floor (\code{RB:19728--19730}; \code{RB:19738}). \\
+
+\textbf{27}\newline{\scriptsize item 36} & New this round: over-generalized sign statement & ``\code{APE2}
+and \code{APE4} show $C(2)<0$'' is too broad: only $L=6$ \code{APE4} at $-0.00740$ and \code{APE1} at
+$-0.00121$ are negative; there is no negative \code{APE2} row. & The sign statement is narrowed to
+$L=6$, \code{APE1}/\code{APE4} (\code{RB:19775--19779}; \code{RUN1:48,51}). \\
+
+\textbf{28}\newline{\scriptsize item 37} & New this round: grade demotion & Step (iii) of \code{SG1-1} holds
+only under a fixed-$N$, continuity reading; read as computability, the three-line proof fails. &
+\code{SG1-1} is \LC{} and not \LT, after being labelled \LT{} for $60+$ rounds
+(\code{RB:19797--19812}). \\
+
+\textbf{29}\newline{\scriptsize item 38} & New this round: quantifier scope & The target uniqueness of
+\code{N09-1} holds only at fixed $O$: $w_1$ depends on $O$, $0.343$ versus $0.017$, a factor $20.2$. &
+\code{N09-1} is restricted to fixed $O$; the uniqueness is not $O$-free
+(\code{RB:19849--19879}; \code{P:378}). \\
+\midrule
+% ------------------------- residual 9 --------------------------------
+\textbf{30} & Class-level residual (1/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+
+\textbf{31} & Class-level residual (2/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+
+\textbf{32} & Class-level residual (3/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+
+\textbf{33} & Class-level residual (4/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+
+\textbf{34} & Class-level residual (5/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+
+\textbf{35} & Class-level residual (6/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+
+\textbf{36} & Class-level residual (7/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+
+\textbf{37} & Class-level residual (8/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+
+\textbf{38} & Class-level residual (9/9) & No itemized identity in any source: the itemized list is
+truncated by an ellipsis at \code{position-current.html:414}. & Counted, not quotable. \\
+\end{longtable}
+}
+
+\noindent\emph{Reading the table.} The classes add up as stated in the corpus: $1$ deepest $+$ $6$
+polysemy $+$ $4$ numerical $+$ $2$ sequence $+$ $5$ scope $+$ $3$ power $+$ $4$ citation $=25$ named
+entries, plus the $4$ added this round $=29$, plus the $9$ class-level residual $=38$. The three
+examples most often re-quoted ($w_1(2.5)$, $0.6018$, $\beta_A$) sit under rows 25, 9 and 17 respectively.
+
+\begin{warnbox}
+\textbf{Gap 1: twenty-nine of thirty-eight.} Of the $38$ entries, $29$ carry an itemized identity ---
+$25$ named one by one and $4$ added this round (rows 26--29). The remaining $9$ (rows 30--38) exist as a
+class-level residual only: the corpus states the total, and its itemized list is cut off by an ellipsis
+at \code{position-current.html:414}, where the visible list contains $24$ entries beside item $29$.
+$29+9=38$; the arithmetic of the total is therefore checked, and the identity of nine entries is not.
+
+\textbf{Gap 2: the label sequence has holes.} Labels of the form ``item $N$'' in
+\code{LOOP-RUNBOOK.md} cover only $30$ of the numbers $1$--$34$: the labels $1$,
+$2$, $4$ and $26$ never occur. Inside the table above this is visible as absence: rows 1, 10, 12, 19 and
+23 carry a recovered ledger number in the \#{} column, the other named rows do not, because the corpus
+does not give one.
+
+\textbf{The nine are not manufactured.} A ledger that invented nine entries in order to reach a round
+number would commit precisely the error it exists to prevent. The residual is reported as a residual, and
+any future reader who wants those nine must find them in the chronicle, not in this table.
+\end{warnbox}
+
+\subsubsection*{Verification of the two counts (search recorded, not asserted)}
+
+Per the provenance rule of this paper, the searches behind the two gaps are recorded with tool state,
+query and hit count, so that ``0 hits'' is never confused with ``the tool failed''.
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.40\textwidth}%
+>{\raggedright\arraybackslash}p{0.08\textwidth}%
+>{\raggedright\arraybackslash}X%
+>{\raggedright\arraybackslash}p{0.13\textwidth}@{}}
+\toprule
+\textbf{Query} & \textbf{Tool} & \textbf{Result} & \textbf{Hits} \\
+\midrule
+regex \code{\textbackslash u7b2c(\textbackslash d\{1,2\})\textbackslash u5904} over
+\code{LOOP-RUNBOOK.md} & grep & valid response; $34$ distinct numbers, $3$, $5$--$25$, $27$--$38$ &
+$51$ lines \\
+the same, restricted to $1$--$34$ & grep & valid response; $30$ present, $1$, $2$, $4$, $26$ absent &
+$0$ labels \\
+\code{38} beside the counter token, repository-wide & grep & valid response;
+\code{position-current.html:412,420} & $2$ lines in that file \\
+\bottomrule
+\end{tabularx}
+\caption{The two count checks, recorded with tool state, query and hit count, so that ``$0$ hits'' is
+never confused with ``the tool failed''.}\label{tab:ledger-verify}
+\end{table}
+
+\noindent Two readings follow. First, $30\le34$ is consistent: the label sequence is a subset of the
+ledger, so the missing four neither raise nor lower the total. Second, the four missing numbers are
+\emph{not} claimed to be empty entries --- whether entries with those numbers exist is something this
+paper does not assert, and the count does not depend on it.
+
+% =====================================================================
+\subsection{The dead-route ledger}\label{sec:ledger-dead}
+
+The second ledger is given as classes and counts only: the individual routes are surveyed elsewhere in
+this paper, and itemizing them a second time would duplicate that survey without producing a number. All
+counts below are from \code{position-current.html:409}, where the same table appears as ``the
+dead-route ledger, $35+$ entries, one number each''.
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{4pt}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.36\textwidth}%
+>{\raggedright\arraybackslash}p{0.07\textwidth}%
+>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Class} & \textbf{Count} & \textbf{Comment} \\
+\midrule
+Circularity, or a direction reversed ($\Rightarrow$ read as $\Longleftrightarrow$) & $9$ &
+$H1\Rightarrow m>0$, $I2\Rightarrow H1$, $H1\Rightarrow I2$, $I2\Rightarrow m>0$ bare,
+$I2\Longleftrightarrow\rho^2>1$, the \code{L1} chain, the \code{L2} reduction, $\Omega$/Kato/$\det>0$,
+transport \\
+Structural counterexample & $5$ & window enlargement self-refuting, $(\star)$ uniform, the sixth
+species, the ratio lemma ($\max b(4)=62$), the layered decomposition \\
+Numerically or by scale unreachable & $5$ & \code{GEVP} ($2.3\times10^7$ configurations, $310$\,h), the
+$u$-series at $2.5$, $\hat K=8$ from six directions, the \code{P3} loop-order grading, the $19$-item
+transport ledger \\
+Sufficiency misjudged, or tautology & $4$ & $G''$ sufficient, $f_1^2$ necessary,
+$W^{1/2}W^{-1/2}$ similarity-invariant, \code{SOS} with $\lambda_{\min}=-g|B|-c$ \\
+Proxy, or substitution & $2$ & $\Delta_{\mathrm{dyn}}$ as proxy, the three machines \\
+Taxonomy, scope, consistency & $3$ & the five classes, $1/48$ preserved as it stands, the twenty-route
+consistency check \\
+\midrule
+\textbf{Itemized-checkable subtotal} & $\mathbf{28}$ & $9+5+5+4+2+3$ \\
+Class-level residual (claimed $35+$, not itemized) & $\ge7$ & computed as claimed $35$ minus itemized
+$28$ \\
+\midrule
+\textbf{Total} & $\mathbf{\ge35}$ & consistent with the ``$35+$'' claim at \code{P:409} \\
+\bottomrule
+\end{tabularx}
+\caption{The dead-route ledger as classes and counts. Itemized-checkable $28$, claimed $35+$, and the
+difference stored as a class-level count rather than as invented rows.}\label{tab:deadroutes}
+\end{table}
+
+\noindent The same shape as \S\ref{sec:ledger-thirtyeight}: itemized-checkable $28$, claimed $35+$, and
+the difference $\ge7$ stored as a class-level count only, not as invented rows. The directional reading of
+the same table is at \code{position-current.html:397}: nine routes give upper bounds only, nine are
+circular, two have explicit counterexamples, two produced something usable. That is the campaign's failure
+written as a shape --- upper bounds are complete, and every lower bound terminates in the target.
+
+\begin{qbox}
+\textbf{What the two ledgers do not claim.} Neither ledger claims that the consequences of a debt are all
+settled; each row answers one question only, namely whether the debt exists and what it moves. The
+dead-route counts are not adjusted for item~37: the sixth species still dies of \code{SG1-1}, but
+\code{SG1-1} is \LC{} rather than \LT{} this round, so the kill is conditional and the row 28 qualifier
+travels with it. No total in this section is a theorem, and none of them is offered as progress.
+\end{qbox}

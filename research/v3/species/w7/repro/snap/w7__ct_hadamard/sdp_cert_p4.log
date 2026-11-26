@@ -1,0 +1,89 @@
+##########################################################################################################
+# SDP-CERT 1 -- P4 circulant kernel: exact gap, T_L = K^L, and the certificate value c(L)
+##########################################################################################################
+
+[A1/T/V] resolution: lambda_j^(n)/n  vs  I_j(beta)   (beta = 2.500)
+        (note: the correct normalisation is I_j, NOT 2*pi*I_j -- the FFT of the first row
+         of the circulant already carries the 2*pi weight)
+----------------------------------------------------------------------------------------------------------
+         n          lambda_0/n          lambda_1/n          lambda_2/n   max rel.err(j<=2)
+         8   3.290190337843893   2.517888021316339   1.283072369915921           5.175e-03
+        16   3.289839144053845   2.516716245312792   1.276466148108524           2.267e-10
+        32   3.289839144050123   2.516716245288698   1.276466147819164           1.110e-15
+        64   3.289839144050123   2.516716245288698   1.276466147819164           1.110e-15
+       128   3.289839144050123   2.516716245288698   1.276466147819164           1.110e-15
+       256   3.289839144050123   2.516716245288698   1.276466147819164           1.110e-15
+       512   3.289839144050123   2.516716245288698   1.276466147819164           1.110e-15
+      1024   3.289839144050123   2.516716245288698   1.276466147819164           1.110e-15
+      2048   3.289839144050123   2.516716245288698   1.276466147819164           1.110e-15
+    (mode indexing, not rank indexing: lambda_j = lambda_{n-j}, so the spectrum is
+     doubly degenerate for 1 <= j <= n-2; ranking would mislabel mode j as mode 2.)
+    => NO resolution dependence for n >= 16 (trapezoidal aliasing is O(e^{-c n})).
+       The P4 kernel is exactly solvable at every resolution => P4 CANNOT probe the a-axis.
+       Any (L,a)-uniformity conclusion drawn from P4 would be drawn from a model with no a.
+
+[A2/T] the contrast that matters: the positivity/LP certificate IS resolution-divergent
+----------------------------------------------------------------------------------------------------------
+         n     Delta exact    CW/tropical width w(n)    w(n)/Delta    (log n)/beta
+        16  0.267883696674                0.58537096        2.1852        1.109035
+        64  0.267883696683                1.13988870        4.2552        1.663553
+       256  0.267883696683                1.69440645        6.3252        2.218071
+      1024  0.267883696683                2.24892419        8.3952        2.772589
+      4096  0.267883696683                2.80344194       10.4651        3.327106
+    => the true gap is resolution-free; the only *positivity* certificate available on P4
+       diverges like (log n)/beta.  Positivity gives top-eigenvalue information only, and
+       its width tracks the size of the configuration space -- which is what 1/a blows up.
+
+[A3/T/V] blocked operator T_L = K^L, L = 1..8: the gap is exactly multiplicative
+----------------------------------------------------------------------------------------------------------
+    n=256, beta=2.5: lambda_0=8.4219882088e+02, lambda_1=6.4427935879e+02, Delta=0.267883696683
+      L        Delta(T_L)      Delta(T_L)/L   Delta(T_L)/L - Delta(K)   half-gap on T_L? c(L)/L
+      1    0.267883696683    0.267883696683                 8.327e-16            0.267883696683
+      2    0.535767393365    0.267883696683                 2.776e-16            0.267883696683
+      3    0.803651090048    0.267883696683                -1.665e-16            0.267883696683
+      4    1.071534786730    0.267883696683                -5.551e-17            0.267883696683
+      5    1.339418483413    0.267883696683                -1.665e-16            0.267883696683
+      6    1.607302180095    0.267883696683                 5.551e-17            0.267883696683
+      7    1.875185876778    0.267883696683                 1.110e-16            0.267883696683
+      8    2.143069573460    0.267883696683                -5.551e-17            0.267883696683
+    => spec(K^L) = spec(K)^L exactly, hence Delta(T_L) = L*Delta(K) and the PER-STEP gap
+       is exactly L-independent: c(L)/L == c(1).  On P4 the certificate value does not
+       decay, does not grow polynomially -- it is EXACTLY constant.  The question 'is c(L)
+       uniform in L' has the answer YES on P4, and the answer is YES by algebra, not by
+       the certificate: the blocking direction is a power, not a thermodynamic limit.
+
+[A4/T] the LTI certificate on a circulant kernel: sharp, and it costs the whole spectrum
+----------------------------------------------------------------------------------------------------------
+    L=3: lambda_0(T_L) = 5.9737065839e+08, lambda_1(T_L) = 2.6743771524e+08, lambda_1/lambda_0 = 0.447691414847
+    delta_star (circulant class) = 0.803651090048   [= Delta(T_L) exactly]
+    A = lambda_0(T_L)*1 - T_L >= 0 : True   (rel. min eigenvalue 6.111e-16)
+    A in the Fourier basis is diagonal to 1.64e-07  (off-diagonal mass)
+    its diagonal (the certificate symbols) has min = 2.919114e-07 >= 0
+    site-basis density of A (fraction of entries |A_ij| > 1e-12): 1.000000
+    => the certificate exists, is sharp (delta = Delta, zero loss), and is the spectral
+       decomposition:  A = sum_j (lambda_0 - lambda_j)|j><j|  with every term PSD.
+       Every term is rank-1 and FULLY SUPPORTED in the site basis.  The 'n-local'
+       truncation that Rai et al. use to make the SDP finite is locality in the SITE
+       basis; a circulant kernel has none, so the truncation has nothing to truncate and
+       the certificate costs exactly the diagonalisation it replaces.
+
+[A5/T] positivity data is GAP-BLIND: the explicit family  K_s = K + s u u^T
+----------------------------------------------------------------------------------------------------------
+    invariants for every s >= 0: Perron vector u (=1/sqrt(n)); lambda_1 (unchanged);
+    every entry positive; spectrum non-negative.  Only lambda_0 moves.
+            s         lambda_0         lambda_1   lambda_1/lambda_0         Delta_s   all>0   K_s u = lam_0 u ?
+        0e+00  2.105497052e+02  1.610698397e+02        0.7649967476    0.2678836967    True           3.570e-14
+        1e-02  2.105597052e+02  1.610698397e+02        0.7649604160    0.2679311903    True           1.549e-13
+        1e-01  2.106497052e+02  1.610698397e+02        0.7646335870    0.2683585312    True           8.489e-14
+        1e+00  2.115497052e+02  1.610698397e+02        0.7613805915    0.2726219259    True           8.981e-14
+        1e+01  2.205497052e+02  1.610698397e+02        0.7303108365    0.3142850321    True           2.436e-14
+        1e+02  3.105497052e+02  1.610698397e+02        0.5186604173    0.6565059119    True           8.347e-14
+        1e+03  1.210549705e+03  1.610698397e+02        0.1330551228    2.0169917794    True           3.087e-13
+        1e+04  1.021054971e+04  1.610698397e+02        0.0157748451    4.1493386917    True           1.819e-12
+    => lambda_1/lambda_0 ranges over (0.765, 0.0158] and -> 0, i.e. Delta_s ranges over
+       [0.268, 4.149) and DIVERGES, at fixed positivity data.  Any certificate functional
+       invariant under rank-one Perron perturbations -- the whole Collatz-Wielandt /
+       tropical / log-convex (Family I) class -- cannot bound the gap in either direction.
+       This is why 'validated numerics gives only upper bounds' and 'the SDP gives a
+       certificate' are different statements: the SDP constraint is quadratic positivity
+       (H^2 - delta H >= 0), which is not a functional of the entrywise data.

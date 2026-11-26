@@ -1,0 +1,326 @@
+scripts=73  high-signal cited numbers=237  matched=115
+
+-- _patch                 [w7]  no citing note; stdout 0B
+
+== at_lattice             [w7] notes=AT-STAR.md
+   hi 0/0  stdout=0B
+
+== at_scalar              [w7] notes=AT-STAR.md
+   hi 0/0  stdout=6476B
+
+== at_su2_exact           [w7] notes=AT-STAR.md
+   hi 0/0  stdout=5316B
+
+== bc_gaussian            [w7] notes=BC-BETHE.md  <-- 3 unmatched
+   hi 0/3  stdout=0B
+     MISS            1.155  (BC-BETHE.md:235) nearest=None
+     MISS            1.342  (BC-BETHE.md:235) nearest=None
+     MISS            1.512  (BC-BETHE.md:235) nearest=None
+
+== bc_ising               [w7] notes=BC-BETHE.md
+   hi 3/3  stdout=2235B
+
+== bc_su2                 [w7] notes=BC-BETHE.md
+   hi 5/5  stdout=2936B
+
+== bn_residual            [w7] notes=BN-RESIDUAL.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 1 unmatched
+   hi 6/7  stdout=15103B
+     MISS            15558  (SIXTH-SPECIES-SYNTHESIS.md:321) nearest=+7321.25191110
+
+-- cov_link               [w7]  no citing note; stdout 0B
+
+-- cov_models             [w7]  no citing note; stdout 0B
+
+== ct_chain_L             [w7] notes=CT-CHAIN.md  <-- 1 unmatched
+   hi 0/1  stdout=7424B
+     MISS            2.4e5  (CT-CHAIN.md:252) nearest=300
+
+== ct_chain_exact         [w7] notes=CT-CHAIN.md
+   hi 0/0  stdout=8411B
+
+== ct_hadamard            [w7] notes=CT-CHAIN.md
+   hi 0/0  stdout=0B
+
+== d3_averaged            [w7] notes=D3-AVERAGED.md
+   hi 0/0  stdout=8772B
+
+== dm_floor_defect        [w7] notes=AUDIT-CH16.md,LEDGER.md,SIXTH-SPECIES-SYNTHESIS.md
+   hi 6/6  stdout=3088B
+
+== dn_density             [w7] notes=DENSITY-D.md
+   hi 6/6  stdout=11330B
+
+== dn_perlink             [w7] notes=DENSITY-D.md
+   hi 0/0  stdout=0B
+
+== ds_acid                [w7] notes=DS-RATIO.md
+   hi 1/1  stdout=8357B
+
+== ds_ratio               [w7] notes=DS-RATIO.md  <-- 1 unmatched
+   hi 5/6  stdout=17799B
+     MISS           4.4151  (DS-RATIO.md:261) nearest=4.30661
+
+== dt_dirichlet           [w7] notes=DT-DIRICHLET.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 2 unmatched
+   hi 10/12  stdout=15664B
+     MISS            15880  (SIXTH-SPECIES-SYNTHESIS.md:323) nearest=10988.452
+     MISS            10.51  (SIXTH-SPECIES-SYNTHESIS.md:323) nearest=10.369604
+
+== hc_spherical           [w7] notes=AUDIT-R1.md,LEAD-NOTE-NA-SU3.md,ROUND1-VERDICTS.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 6 unmatched
+   hi 0/6  stdout=0B
+     MISS              1e2  (AUDIT-R1.md:306) nearest=None
+     MISS              1e8  (AUDIT-R1.md:306) nearest=None
+     MISS            20.72  (AUDIT-R1.md:306) nearest=None
+     MISS            36.84  (AUDIT-R1.md:306) nearest=None
+     MISS          2.5e−11  (SIXTH-SPECIES-SYNTHESIS.md:61) nearest=None
+     MISS 0.16666666666666666  (SIXTH-SPECIES-SYNTHESIS.md:300) nearest=None
+
+== kt_a_exact             [w7] notes=KT-RHO2.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 1 unmatched
+   hi 5/6  stdout=8009B
+     MISS             8051  (SIXTH-SPECIES-SYNTHESIS.md:322) nearest=200
+
+== kt_b_sl_battery        [w7] notes=KT-RHO2.md  <-- 1 unmatched
+   hi 7/8  stdout=6343B
+     MISS             1200  (KT-RHO2.md:142) nearest=1079
+
+== kt_c_geom              [w7] notes=KT-RHO2.md  <-- 1 unmatched
+   hi 5/6  stdout=4978B
+     MISS             8000  (KT-RHO2.md:379) nearest=2355.6791
+
+== kt_d_gevp              [w7] notes=KT-RHO2.md
+   hi 1/1  stdout=15052B
+
+== kt_e_identity          [w7] notes=KT-RHO2.md
+   hi 6/6  stdout=3506B
+
+== lp_anchor              [w7] notes=LP-LIOUVILLE.md
+   hi 0/0  stdout=6979B
+
+== lp_framework           [w7] notes=LP-LIOUVILLE.md
+   hi 0/0  stdout=5504B
+
+== lx_label_geometry      [w7] notes=SIXTH-SPECIES-SYNTHESIS.md
+   hi 3/3  stdout=10044B
+
+-- mc_dbg                 [w7]  no citing note; stdout 0B
+
+-- mc_dbg2                [w7]  no citing note; stdout 0B
+
+== mc_lattice             [w7] notes=AUDIT-R5B.md,DENSITY-D.md,LOOP-RUNBOOK.md,MC-METRIC.md,R3-L4.md  <-- 6 unmatched
+   hi 0/6  stdout=0B
+     MISS            14400  (DENSITY-D.md:17) nearest=None
+     MISS             1920  (DENSITY-D.md:17) nearest=None
+     MISS          21.5753  (DENSITY-D.md:302) nearest=None
+     MISS            9.375  (DENSITY-D.md:302) nearest=None
+     MISS             3840  (MC-METRIC.md:145) nearest=None
+     MISS           −9.750  (MC-METRIC.md:336) nearest=None
+
+== mc_ode                 [w7] notes=MC-METRIC.md
+   hi 0/0  stdout=2688B
+
+== mc_ricci               [w7] notes=MC-METRIC.md  <-- 2 unmatched
+   hi 0/2  stdout=0B
+     MISS          1.5e−14  (MC-METRIC.md:79) nearest=None
+     MISS             4000  (MC-METRIC.md:313) nearest=None
+
+== mc_tensor              [w7] notes=MC-METRIC.md
+   hi 0/0  stdout=0B
+
+== na2_chain              [w7] notes=CT-CHAIN.md,NA2-NONDEGENERATE.md,SIXTH-SPECIES-SYNTHESIS.md
+   hi 0/0  stdout=0B
+
+== na2_selftest           [w7] notes=CT-CHAIN.md,NA2-NONDEGENERATE.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 4 unmatched
+   hi 0/4  stdout=0B
+     MISS             1e−3  (CT-CHAIN.md:303) nearest=None
+     MISS             1e−4  (CT-CHAIN.md:303) nearest=None
+     MISS             1e−5  (CT-CHAIN.md:303) nearest=None
+     MISS          2.6e−10  (SIXTH-SPECIES-SYNTHESIS.md:311) nearest=None
+
+== na2_su3_na             [w7] notes=CT-CHAIN.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 2 unmatched
+   hi 1/3  stdout=14488B
+     MISS         −1.69e−2  (SIXTH-SPECIES-SYNTHESIS.md:312) nearest=-0.016399
+     MISS          −2.0e−4  (SIXTH-SPECIES-SYNTHESIS.md:312) nearest=-0.000208
+
+== na2_t0_fit             [w7] notes=SIXTH-SPECIES-SYNTHESIS.md
+   hi 0/0  stdout=0B
+
+-- na2_tci                [w7]  no citing note; stdout 0B
+
+== na2_two_plaquette      [w7] notes=SIXTH-SPECIES-SYNTHESIS.md  <-- 9 unmatched
+   hi 0/9  stdout=0B
+     MISS           800000  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+     MISS            16042  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+     MISS         4.691e−5  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+     MISS             1e−5  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+     MISS             7e−5  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+     MISS         +0.03018  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+     MISS         −0.01434  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+     MISS         +0.00105  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+     MISS           0.0011  (SIXTH-SPECIES-SYNTHESIS.md:320) nearest=None
+
+== na_plaquette           [w7] notes=CT-CHAIN.md,NA2-NONDEGENERATE.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 6 unmatched
+   hi 2/8  stdout=5116B
+     MISS        +0.031019  (NA2-NONDEGENERATE.md:338) nearest=0.0335
+     MISS        0.0316458  (NA2-NONDEGENERATE.md:338) nearest=0.0335
+     MISS         −0.02307  (SIXTH-SPECIES-SYNTHESIS.md:310) nearest=-0.01106
+     MISS             1000  (SIXTH-SPECIES-SYNTHESIS.md:310) nearest=6.00
+     MISS             8000  (SIXTH-SPECIES-SYNTHESIS.md:310) nearest=6.00
+     MISS    +0.0316458126  (SIXTH-SPECIES-SYNTHESIS.md:310) nearest=0.0335
+
+== ns_nosub               [w7] notes=NS-NOSUBTRACTION.md
+   hi 2/2  stdout=24370B
+
+== ps_witness             [w7] notes=AUDIT-R1.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 7 unmatched
+   hi 0/7  stdout=0B
+     MISS            65536  (AUDIT-R1.md:168) nearest=None
+     MISS            51583  (AUDIT-R1.md:168) nearest=None
+     MISS            25791  (AUDIT-R1.md:168) nearest=None
+     MISS           0.7871  (SIXTH-SPECIES-SYNTHESIS.md:62) nearest=None
+     MISS         0.001944  (SIXTH-SPECIES-SYNTHESIS.md:62) nearest=None
+     MISS            404.8  (SIXTH-SPECIES-SYNTHESIS.md:62) nearest=None
+     MISS          2.47e−3  (SIXTH-SPECIES-SYNTHESIS.md:62) nearest=None
+
+== qg1_network            [w7] notes=QG-NETWORK.md
+   hi 0/0  stdout=11279B
+
+== qg2_abelian            [w7] notes=QG-NETWORK.md  <-- 2 unmatched
+   hi 3/5  stdout=5575B
+     MISS          6.2e−15  (QG-NETWORK.md:293) nearest=4.00e-15
+     MISS             1e−3  (QG-NETWORK.md:293) nearest=3.323613e-04
+
+== qg3_acid               [w7] notes=QG-NETWORK.md
+   hi 2/2  stdout=5498B
+
+== qg4_su2                [w7] notes=QG-NETWORK.md
+   hi 4/4  stdout=3904B
+
+== qi_bracket             [w7] notes=QI-BRACKET.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 3 unmatched
+   hi 4/7  stdout=4951B
+     MISS            10635  (SIXTH-SPECIES-SYNTHESIS.md:324) nearest=500
+     MISS             1000  (SIXTH-SPECIES-SYNTHESIS.md:324) nearest=500
+     MISS           −498.5  (SIXTH-SPECIES-SYNTHESIS.md:324) nearest=-4.360e+02
+
+== r1_2dym                [w7] notes=R1-BRIDGE.md
+   hi 0/0  stdout=5608B
+
+== r1_chain               [w7] notes=R1-BRIDGE.md
+   hi 0/0  stdout=7266B
+
+== r1_gauss               [w7] notes=R1-BRIDGE.md
+   hi 0/0  stdout=6688B
+
+== r2_h2global            [w7] notes=LEDGER.md,R2-H2GLOBAL.md  <-- 1 unmatched
+   hi 0/1  stdout=0B
+     MISS     9.638286e-03  (R2-H2GLOBAL.md:393) nearest=None
+
+== r3_l4_volume           [w7] notes=AUDIT-R5B.md,R3-L4.md  <-- 1 unmatched
+   hi 0/1  stdout=0B
+     MISS            3.904  (R3-L4.md:275) nearest=None
+
+== radius_push            [w7] notes=LEDGER.md  <-- 1 unmatched
+   hi 3/4  stdout=3314B
+     MISS            252.5  (LEDGER.md:95) nearest=400
+
+== rb_ratio_bound         [w7] notes=QG-NETWORK.md,RB-RATIO-BOUND.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 14 unmatched
+   hi 0/14  stdout=0B
+     MISS           6.2e−4  (QG-NETWORK.md:191) nearest=None
+     MISS         0.023439  (RB-RATIO-BOUND.md:166) nearest=None
+     MISS         0.052609  (RB-RATIO-BOUND.md:166) nearest=None
+     MISS             1001  (SIXTH-SPECIES-SYNTHESIS.md:66) nearest=None
+     MISS           807.36  (SIXTH-SPECIES-SYNTHESIS.md:66) nearest=None
+     MISS            20.05  (SIXTH-SPECIES-SYNTHESIS.md:66) nearest=None
+     MISS           2.6667  (SIXTH-SPECIES-SYNTHESIS.md:185) nearest=None
+     MISS         2.666666  (SIXTH-SPECIES-SYNTHESIS.md:307) nearest=None
+     MISS         4.000000  (SIXTH-SPECIES-SYNTHESIS.md:307) nearest=None
+     MISS             1000  (SIXTH-SPECIES-SYNTHESIS.md:307) nearest=None
+
+== ru_joint               [w7] notes=RATE-UNIFORM.md
+   hi 3/3  stdout=7231B
+
+== sdp_cert_aklt          [w7] notes=SDP-CERT.md
+   hi 0/0  stdout=0B
+
+== sdp_cert_p4            [w7] notes=SDP-CERT.md
+   hi 0/0  stdout=0B
+
+== sdp_cert_trunc         [w7] notes=SDP-CERT.md
+   hi 0/0  stdout=0B
+
+-- su2_6j_cert            [w7]  no citing note; stdout 2518B
+
+== sw_marginal            [w7] notes=AUDIT-R1.md,SIXTH-SPECIES-SYNTHESIS.md
+   hi 4/4  stdout=5446B
+
+== t23_monopole           [w7] notes=T23-TEMPLATE.md  <-- 3 unmatched
+   hi 0/3  stdout=0B
+     MISS           0.5072  (T23-TEMPLATE.md:396) nearest=None
+     MISS         5.208e-3  (T23-TEMPLATE.md:396) nearest=None
+     MISS           0.0313  (T23-TEMPLATE.md:396) nearest=None
+
+== tci_comp               [w7] notes=SIXTH-SPECIES-SYNTHESIS.md,TCI-COMPENSATION.md  <-- 4 unmatched
+   hi 0/4  stdout=0B
+     MISS         0.166680  (SIXTH-SPECIES-SYNTHESIS.md:314) nearest=None
+     MISS         0.166667  (SIXTH-SPECIES-SYNTHESIS.md:314) nearest=None
+     MISS            2.723  (SIXTH-SPECIES-SYNTHESIS.md:314) nearest=None
+     MISS             1e−5  (SIXTH-SPECIES-SYNTHESIS.md:314) nearest=None
+
+== tr_block_L             [w7] notes=SIXTH-SPECIES-SYNTHESIS.md  <-- 12 unmatched
+   hi 0/12  stdout=0B
+     MISS             2026  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS         0.267884  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS             4096  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            4.255  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS           10.465  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS           0.6444  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS          0.52498  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            3.013  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            2.415  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS           4.8545  (SIXTH-SPECIES-SYNTHESIS.md:304) nearest=None
+
+== tr_flat                [w7] notes=AUDIT-R1.md,SDP-CERT.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 12 unmatched
+   hi 0/12  stdout=0B
+     MISS             2026  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS         0.267884  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS             4096  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            4.255  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS           10.465  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS           0.6444  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS          0.52498  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            3.013  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            2.415  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS             1e−3  (SIXTH-SPECIES-SYNTHESIS.md:302) nearest=None
+
+== tr_maxplus             [w7] notes=SIXTH-SPECIES-SYNTHESIS.md  <-- 11 unmatched
+   hi 0/11  stdout=0B
+     MISS             2026  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS         0.267884  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS             4096  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            4.255  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS           10.465  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS           0.6444  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS          0.52498  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            3.013  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS            2.415  (SIXTH-SPECIES-SYNTHESIS.md:63) nearest=None
+     MISS         0.699352  (SIXTH-SPECIES-SYNTHESIS.md:303) nearest=None
+
+== wa_alignment           [w7] notes=SIXTH-SPECIES-SYNTHESIS.md,WA-ALIGNMENT.md
+   hi 5/5  stdout=5953B
+
+== audit_a1_sun_hessian   [audit] notes=AUDIT-R1.md,SIXTH-SPECIES-SYNTHESIS.md
+   hi 1/1  stdout=2270B
+
+== audit_b1_tr_flat       [audit] notes=AUDIT-R1.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 1 unmatched
+   hi 4/5  stdout=790B
+     MISS             1e−3  (SIXTH-SPECIES-SYNTHESIS.md:316) nearest=1.18e-05
+
+== audit_b2_ps_tensor     [audit] notes=AUDIT-R1.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 2 unmatched
+   hi 0/2  stdout=0B
+     MISS            404.8  (SIXTH-SPECIES-SYNTHESIS.md:317) nearest=None
+     MISS           0.7871  (SIXTH-SPECIES-SYNTHESIS.md:317) nearest=None
+
+== audit_b3_sw_marginal   [audit] notes=AUDIT-R1.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 1 unmatched
+   hi 3/4  stdout=1284B
+     MISS             1e−6  (SIXTH-SPECIES-SYNTHESIS.md:318) nearest=2.7e-07
+
+== audit_c0_ratio         [audit] notes=AUDIT-C0.md,SIXTH-SPECIES-SYNTHESIS.md  <-- 1 unmatched
+   hi 5/6  stdout=2505B
+     MISS             5e−4  (SIXTH-SPECIES-SYNTHESIS.md:319) nearest=4.0e-04

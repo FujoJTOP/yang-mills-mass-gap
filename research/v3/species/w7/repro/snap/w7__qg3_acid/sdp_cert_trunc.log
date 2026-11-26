@@ -1,0 +1,46 @@
+##########################################################################################################
+# SDP-CERT 3 -- the truncation step: PSD-monotone for a frustration-free chain, INVALID
+#                for a positive transfer kernel
+##########################################################################################################
+
+[T-A/V] frustration-free chain (AKLT, OPEN chain N=6, k=2, level n=4):  H^2 >= [H^2]_n ?
+----------------------------------------------------------------------------------------------------------
+    pairs kept in [H^2]_n : 9;  pairs discarded (j-i >= 4) : 1   [disjoint supports since j-i >= 2]
+    lambda_min( H^2 - [H^2]_n ) = -5.336e-15   (rel. -1.81e-17)
+    lambda_min( [H^2]_n ) = -9.038e-15  (the truncated operator is itself PSD)
+    => the discarded terms ARE PSD: products of two PSD operators on disjoint supports.
+       Hence Q_n <= H^2 - delta H, the level-n relaxation is VALID, and it is FINITE.
+       That single inequality is the whole engine of the hierarchy.
+
+[T-B/V] positive transfer kernel (P4, n_res = 128, beta = 2.5): is the same truncation valid?
+----------------------------------------------------------------------------------------------------------
+    A = lambda_0*1 - K >= 0 : True  (lambda_min = 1.659e-14)
+    A's nonzero spectrum = the gap data: lambda_0 - lambda_1 = 98.959731041
+       m   lambda_min(A^2 - [A^2]_m)        rel.    truncation PSD-monotone?
+       1               -1.573557e+05   -8.04e-02   NO  -> relaxation INVALID
+       2               -1.478239e+05   -7.55e-02   NO  -> relaxation INVALID
+       4               -1.299845e+05   -6.64e-02   NO  -> relaxation INVALID
+       8               -1.002896e+05   -5.12e-02   NO  -> relaxation INVALID
+      16               -6.514369e+04   -3.33e-02   NO  -> relaxation INVALID
+      32               -7.010714e+04   -3.58e-02   NO  -> relaxation INVALID
+      64               -7.295220e+04   -3.73e-02   NO  -> relaxation INVALID
+    => for EVERY bandwidth m < n_res/2 the discarded piece A^2 - [A^2]_m is NOT PSD.
+       Positivity of K's entries (K_ij > 0) gives positivity of a *function*, not of an
+       operator product; there is no tensor-factor structure to make h_i h_j PSD.
+       Hence a level-n relaxation of this shape does not exist for a measure/kernel model:
+       the truncation buys finiteness at the price of validity, and validity here is
+       exactly the frustration-free tensor structure that YM does not have.
+
+[T/V] a VERIFIED certificate at blocking length L = 6 on the P4 kernel
+----------------------------------------------------------------------------------------------------------
+    n_res = 256, beta = 2.5, L = 6:  lambda_0(T_L) = 3.5685170351e+17, lambda_1 = 7.1522931535e+16
+    exact per-step gap  mu_1 = -log(lambda_1/lambda_0) = 1.607302180095207
+    A = lambda_0 1 - T_L  :  lambda_min = -9.299e+01  (>= 0 : True)
+      delta = 0.803651090048:  lambda_min(Y(delta)) = +2.116101e+01   FEASIBLE (certificate)
+      delta = 1.605694877915:  lambda_min(Y(delta)) = +8.247779e+01   FEASIBLE (certificate)
+      delta = 1.607302180095:  lambda_min(Y(delta)) = -6.555883e+01   infeasible
+      delta = 1.608909482275:  lambda_min(Y(delta)) = -1.148666e+14   infeasible
+    => the certificate verifies at delta = mu_1 (margin 0 to rounding) and fails at
+       delta = 1.001 mu_1: the feasible set is exactly (-inf, mu_1].  CONSERVATIVE.
+       But the certificate object is a FULL 256x256 PSD matrix; there is no local
+       generator.  The SDP at 'level n' has nothing local to be a level of.

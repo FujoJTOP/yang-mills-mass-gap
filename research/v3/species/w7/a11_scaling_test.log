@@ -1,0 +1,88 @@
+==============================================================================
+A11 · two-point consistency at xi/a ~ 1: is it evidence for scaling?
+==============================================================================
+
+[A] inputs, straight from A8-MASS-LAMBDA.md:51-52  [E]
+    beta=6.00  m a=1.0730+-0.0880  xi/a=0.9320   m/Lambda=612.5+-50.2
+    beta=6.30  m a=0.8860+-0.1590  xi/a=1.1287   m/Lambda=709.4+-127.3
+    => both points have xi/a in [0.93,1.13]: O(1), no scale separation.
+
+[B] joint value and chi^2 (1 dof) on m/Lambda  [C]
+    weights w_i=1/sigma_i^2 -> joint  m/Lambda = 625.5 +- 46.7
+    difference = -96.9 +- 136.8  =  -0.708 sigma
+    chi^2(1 dof) = 0.5014   p-value = 0.4789   (p = erfc(sqrt(chi^2/2)) = 0.4789)
+    verdict on TENSION only (no tension): p = 0.48 > 0.30 -> branch (a) is alive.
+
+[C] the identical test written as a ratio (this is what 'scaling' means)  [C]
+    measured   r_meas = m a(6.30)/m a(6.00) = 0.8257 +- 0.1629  (19.7%)
+    m/Lambda consistency  <=>  r_meas = a(6.30)/a(6.00) (two-loop)  -- same test, same number.
+
+[D] three predictions for r, all computed, none fitted to r  [C][M]
+    D1 SC absolute  m a = 4 ln(2N/beta):  beta=6.00 -> +0.00000 ; beta=6.30 -> -0.19516
+       ratio = undefined / sign flip: the leading SC formula has its zero exactly at
+       beta = 2N = 6.  At these two betas the SC expansion is at/past its edge.  [M]
+    D2 SC slope  d(m a)/d ln beta = -4 (exact at leading order, F1):
+       Delta m a = 4 ln(6.30/6.00) = 0.19516
+       additive   -> m a(6.30) = 0.8778  => r_SC = 0.8181
+       log-slope  -> m a(6.30) = 0.8946  => r_SC = 0.8337
+       (one anchor number used: m a(6.00); the slope -4 is parameter-free.)
+    D3 two-loop scaling  a(6.30)/a(6.00) = 0.7130   (A8 quotes 0.713 from its own Lambda a values 1.7518e-3/1.2489e-3 = 0.7129)
+    D4 null / cutoff  r = 1.0000  (m a set by the lattice only, no running)
+
+[E] how far is each prediction from the datum, and can the datum separate them?  [M]
+                     model   r_pred  r_pred-r_meas   sigmas    chi^2       p
+       SC slope (additive)   0.8181        -0.0076   -0.047   0.0022  0.9628
+            SC slope (log)   0.8337        +0.0080   +0.049   0.0024  0.9610
+          two-loop scaling   0.7130        -0.1128   -0.692   0.4790  0.4889
+         null (no running)   1.0000        +0.1743   +1.070   1.1442  0.2848
+
+    model separation |r_SC - r_scaling| = 0.1207  =  0.741 sigma of the
+    present measurement  =>  the present data cannot tell them apart (< 1 sigma).
+    sigma_r needed for 3 sigma separation: 0.0402 (4.9%),
+    i.e. a factor 4.0 smaller than today's 0.163.
+
+    Log-slope form (scheme-free, no anchor at all):
+      s := d ln(m a)/d ln beta = -3.92 +- 4.04   (error > 100%: slope unmeasured)
+      scaling predicts -6.93 ; SC predicts -4/(m a) = -3.73 ; null predicts 0.00
+      all three sit within |z| < 1.1 sigma of the datum.
+
+    Power check -- run the SAME test on a world with zero scaling (r = 1 exactly):
+      it returns chi^2 = 1.144, p = 0.285  -- nearly the same p as the
+      scaling hypothesis (0.489).
+    Likelihood ratios on the same two numbers:
+      L(scaling)/L(null)  = 1.39   (needs ~10 for 'moderate')
+      L(SC slope)/L(null)= 1.77   (also 'not worth mentioning')
+    Fluke probability, stated as asked:
+      if the lattice mass had NO beta-running at all (r = 1), the chance of landing
+      at least 1.07 sigma away from r=1 is p = 0.285  (~28%).
+      So 'the two points agree' is reproduced by a zero-scaling world in ~1 case out of 3.5;
+      the observed agreement is not rare information about scaling.
+
+[F] lever arm: where do the two hypotheses actually separate?  [M]
+      beta  xi/a(SC)    m a SC  m a scal    diff  sigmas@8%
+      6.00    0.93    1.0730    1.0730 +0.0000       0.00
+      6.30    1.14    0.8778    0.7650 +0.1128       1.61
+      6.60    1.45    0.6918    0.5449 +0.1469       2.65
+      6.90    1.95    0.5140    0.3878 +0.1262       3.07
+      7.20    2.91    0.3437    0.2757 +0.0680       2.47
+    8% is the *statistical* scale A8 already has at beta=6.00; at beta=6.30 the corpus has 18%.
+    Read: only past xi/a ~ 2 do the two laws pull apart by >= 3 sigma at fixed precision.
+
+    beta at which xi/a = 2 (m a = 0.5):  SC says 6.92 ; scaling says 6.68
+    => a discriminating pair is beta ~ 6.7 and 6.9, both with
+       an INDEPENDENT scale (r0/a or sqrt(sigma) a) so xi/a is not circular.  [NG] in corpus
+
+[G] why the 8%/18% errors should not be read as gaussian  [E]
+    research/probe-m/REPORT.md:137-146 (beta=6.2, L=10 pilot): the SAME operator with
+    ladder level n=0,8,16,32 gives xi/a(t<=3) = 0.41, 0.99, 1.18, 1.42 -- a factor 3.5
+    spread at ONE beta.  At xi/a ~ 1 the 'mass' is not yet an operator-independent
+    observable, so 8% and 18% are lower bounds on the systematic error.
+    A8-MASS-LAMBDA.md:40 itself notes the truncation spread (one-loop vs two-loop) is 30%.
+
+==============================================================================
+VERDICT: branch (a).  p = 0.48 (no tension), and the strong-coupling slope
+reproduces r = 0.82-0.83 vs measured 0.826 (0.05 sigma), i.e. equally well as
+two-loop scaling (0.713, 0.76 sigma).  Two-point agreement at xi/a ~ 1 is WEAK
+evidence, not a scaling test.  Strong evidence needs two points with measured
+xi/a >= 2 (beta ~ 6.9-7.0) and an independent scale at each.
+==============================================================================

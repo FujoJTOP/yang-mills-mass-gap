@@ -1,0 +1,134 @@
+% =====================================================================
+%  sec08 -- Errata ledger
+% =====================================================================
+\section{Errata ledger: eight corrections to the corpus}\label{sec:errata}
+
+A verdict paper is only as good as its ledger. The eight entries below are places where the
+internal corpus stated something that later work, in the same corpus, showed to be wrong,
+mis-quantified, or mis-attributed. Each entry gives the original statement, the correction, and
+the file that decides it. No entry is a change of a \LT{} verdict in this paper; two of them
+remove the word ``statistical interval'' from numbers that were being quoted as if they were
+certificates, and one of them is a missing file that was not missing.
+
+\vspace{0.2em}
+{\footnotesize
+\begin{longtable}{@{}L{0.4cm}L{3.7cm}L{6.3cm}L{3.9cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Original statement} & \textbf{Correction} & \textbf{Decided by} \\
+\midrule
+\endhead
+1 & The $L=2$ decompositions were quoted with Gaussian errors: $\Delta=+0.3942\pm0.0258$
+    ($6.0\sigma$), $G''=+1.696\pm0.293$ ($5.8\sigma$), $\Delta_{\mathrm{dyn}}=+0.562\pm0.277$
+    ($2.0\sigma$)
+  & $E[\kappa^{2}]=\infty$: with $\kappa\le2/\delta^{2}$ and a shell volume $\propto\delta^{3}$,
+    $E[\kappa^{2}]\le4C\int_0^{\delta^{*}}\mathrm{d}\delta/\delta=\infty$ (log divergence), and
+    the measured tail index is $\alpha\approx1.97\le2$, so the sample variance does not converge
+    and no $k\sigma$ interval is asymptotically valid. Withdraw the interval; keep only the
+    qualitative agreement of the three estimators in sign
+  & \LT{} \code{T04-L2ANALYTIC.md} \S6.2; \code{R04-L2CERT.md}:109; \code{O24-L2-PUSH.md}
+    (the measured tail) \\
+2 & ``$H1$ must hold for all $a$'', with $a$ written for the coarse amplitude and scanned in
+    $\inf_a\beta^{*}(a)=1.8729$
+  & There are two different symbols. $a$ is the \emph{lattice spacing} (the cutoff) and $a_0$ is
+    the \emph{coarse-field amplitude}. $H1$'s quantifiers are $(L,a)$ and $v$ only; the
+    conditioning point is pinned at $a_0=0$. So $\inf_{a_0}$ is not in $H1$'s quantifiers, and the
+    uniform-in-$a_0$ strengthening was already a known \LN{}: it is a quantitative cross-section
+    of an established no-go, not a new counterexample
+  & \LT{}/\LN{} \code{O28-INFA.md} \S0.1--\S0.3; \code{ch15-uvface.tex}:46 \\
+3 & $R-1\propto L$: the ratio $R$ ``diverges with volume'', read off a table going
+    $R_1=0.337\to R_4=-1.472$
+  & Inside any single replicated normalisation $S_L=LS_1$ and $D_L=LD_1$, so $R_L\equiv R_1$
+    \emph{exactly} --- the ratio is $L$-independent by arithmetic, not approximately. The table's
+    drift is an artefact of mixing two conventions (numerator at fixed block amplitude,
+    denominator at another). The real defect of $R$ is that it is a ratio and carries no scale
+  & \LT{} \code{T10-C5.md} \S0(c)2 \\
+4 & The file \code{GKS-GAUGE.md} ``does not exist'' and its result is unavailable
+  & It exists (6841 bytes) and its content is used in the corpus: at $\beta=2.5$, $\mathrm{SU}(3)$
+    the character coefficients $c_r(\beta)$ alternate in sign, so the positive-character cone
+    exists only for $\beta<\beta_1\approx1/48$ and does not extend to the physical point; the
+    minimal-frustration plaquette has $\Cov(G,\Phi')=0.22\beta^{2}>0$
+  & \LN{}/\LE{} \code{O04-NONAB-GAP.md}:62, :114, :155; file \code{GKS-GAUGE.md} \\
+5 & An instruction was issued to translate \code{ch18} from Chinese to English
+  & \code{ch18} was English from the start: measured Han characters $=0$ and CJK punctuation
+    $=0$; the chapter title is an English sentence and the file is $637$ lines. The premise of the
+    instruction was wrong, and the workflow cost is recorded as the error, not the translation
+  & \LE{} \code{LOOP-RUNBOOK.md} \S11.49 (``my premise was wrong in one place: \code{ch18} was always
+    English'') \\
+6 & $C=1.7454$ \LT{} (one source) versus $C=10.05$ (another), with the discrepancy attributed to a
+    range/beta-freezing dispute
+  & Both are branch artefacts. $1.7454=0.2971\cdot(2.43)^{2}$ is the \emph{range} branch evaluated
+    at the crossing point; $10.05$ comes from dropping the $L=4$--$8$ centre chain and
+    recomposing with the old four-lemma set (the same machine with $C_1=1$ and $2/B^{2}$ gives
+    $6.46$, not $10.05$). The correct value is $C=3.9512=2.25\cdot B^{*2}$ with $B^{*}=1.3252$
+  & \LT{}/\LC{} \code{Q16-CONFLICT.md} \S0, \S4.1--\S4.2 \\
+7 & The $\beta=6$, $L=2$ result was $+0.5913$ at $1.3\sigma$, and later at $4.1\sigma$
+  & The old $\sigma_\tau$ applies $\tau_F$ to the fluctuation of the \emph{sample variance}
+    $z=(F-\bar F)^{2}$, whose decorrelation time is $\tau_z\approx\tau_F/3.5$; using $\tau_F$
+    overestimates that block by $1.83\times$. The correct object is $\tau_z$, after which the same
+    data give $7.3\sigma$; and at $\beta=6$ the variance block is $96.9\%$ of $\sigma^{2}_{\tau}$,
+    so the bottleneck is $F$-fluctuation, not the $\kappa$ tail
+  & \LT{}/\LE{} \code{Q13-BETA6.md} \S2, \S2.1 (the $\tau_F$ misuse), \S2.3 ($96.9\%$) \\
+8 & ``2D Yang--Mills has $G''>0$ for all $t$'', quoted as evidence that the failure of $G''\ge0$
+    is a four-dimensional phenomenon
+  & Withdraw: in 2D Yang--Mills $G''>0$ on all of $\varphi\in(0,\pi)$ \emph{if and only if}
+    $t\ge t_c=1.3439$; below the threshold there is a window where $G''<0$ (at $t=1$:
+    $[1.271,1.871]$, minimum $-2.87$). Also, the 2D and $P_4$ cases are vacuous for the acid test
+    ($\Var=E[H]=0$, all margin from $\Wg$), so their global convexity carries no interacting
+    content
+  & \LE{} \code{O02-LOGCONCAVE.md} \S0 (the table and the final two bullets) \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{What these eight entries do and do not change}
+
+None of the eight changes a \LT{} verdict of this paper. Two of them (entries 1 and 7) change the
+\emph{epistemic status} of numbers that were being read as statistical intervals: entry 1 says
+that a $6.0\sigma$ and a $5.8\sigma$ are not intervals at all, because the fourth moment of
+$\kappa$ diverges; entry 7 says that a $1.3\sigma$ was a formula mismatch and that the same data
+support $4.1\sigma$ (old formula) or $7.3\sigma$ (corrected), so the number was never a property
+of the data alone. Two of them (entries 2 and 8) are quantifier corrections: a symbol collision
+that let a known no-go be re-read as a new counterexample, and a conditional convexity result that
+had lost its condition. Two (entries 3 and 6) are bookkeeping of normalisation: a ratio that was
+thought to scale and does not, and a constant that was the value of the wrong branch at the
+crossing point. One (entry 5) records a workflow error whose only trace is the instruction itself.
+One (entry 4) is a missing file that was not missing --- the file is
+\code{research/unconditional/GKS-GAUGE.md}, $6841$ bytes --- and the most embarrassing kind,
+because the result it contains (the positive-character cone stops at $\beta\approx1/48$) is
+load-bearing for \S\ref{sec:dead} items 8--9.
+
+\src{\code{T04-L2ANALYTIC.md} \S6.2 and \code{:180} (the two new registry entries: ray-wise
+quadratic homogeneity, and $E[\kappa^{2}]=\infty$); \code{O28-INFA.md} \S0; \code{T10-C5.md}
+\S0(c); \code{O04-NONAB-GAP.md}:62, :114; \code{LOOP-RUNBOOK.md} \S11.49; \code{Q16-CONFLICT.md}
+\S0; \code{Q13-BETA6.md} \S2; \code{O02-LOGCONCAVE.md} \S0.}
+
+\subsection{Two further corrections that belong to the certificate, not to the corpus}
+\label{sec:errata2}
+
+For completeness, and because \S\ref{sec:cert} is the only place in this paper where a number was
+withdrawn, the two certificate-level corrections are repeated here in ledger form rather than left
+buried in \S\ref{sec:grading}. (i) The first general-$\theta$ implementation printed
+$\operatorname{gap}(0)=0.729924127576750$ with an enclosure of width $1.4\times10^{-10}$; the truth
+is $0.729924128620548449$, higher by $1.044\times10^{-9}$, and the enclosure does not contain it,
+because the quotient lost the tails of $Z,N_A,N_B,N_S$ (which are themselves valid enclosures).
+\LT{}/\LE{} (ii) The same defect exceeds the $\theta=\pi/2$ enclosure by $50\times$; the sign
+verdict is unaffected in both cases, and the numbers used in \S\ref{sec:cert} are the audit's.
+Additionally, the $\mathrm{SU}(3)$ value $\operatorname{gap}=+0.1017$ is \LE{} only, is
+weight-dependent (pure Haar gives $-0.2358$), and its $\Var(\Phi')$ violates the exact identity of
+\S\ref{sec:lemmas} lemma 4, so it must be recomputed rather than quoted.
+
+\src{\code{R10-AUDITCERT.md} \S0, \S3; \code{R06-GAPMONO.md} \S4 (the independent recomputation and
+its ``worth re-checking whether the tail really entered the quotient'' note);
+\code{R12-SU3CORR.md} \S0; \code{S04-VARPHI.md} verdict item three.}
+
+\subsection{Closing status}
+
+Everything displayed in this document is either an identity with a named file, a counterexample
+with an exact computation, an interval-decided sign, or a measurement with its scope attached. The
+count that matters is unchanged and unimproved: the Clay mass gap for $4$D pure $\mathrm{SU}(N)$
+Yang--Mills is open, this paper establishes no progress on it, and the object on which progress
+would have to be made is $\fone$ together with I2 (\S\ref{sec:target}) --- not the coarse-mode
+curvature, whose two obstructions are the subject of \S\ref{sec:obs1} and \S\ref{sec:obs2}. The
+one strict certificate (\S\ref{sec:cert}) is real, and it certifies a $0$-dimensional integral in a
+window; it is recorded here because a verdict paper must record what it did prove, not only what
+it refuted.

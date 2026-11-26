@@ -1,0 +1,78 @@
+==============================================================================
+[0] threshold and the two readings
+    threshold T = 96/(5e) = 7.0632852704917
+    K_hat < T  <=>  sup_n|phi^U|^{1/n} < T/4 = 1.7658213176229   (C_hat=4, (prodR)^{1/n}=4)
+
+[A] validation of phi_fast against phi_3n on named graphs
+    [phi_fast] n=3 2^n=8 #indep sets=3
+    K_3: phi_fast=2 phi_3n=2  OK  |phi|^{1/3}=1.259921
+    [phi_fast] n=4 2^n=16 #indep sets=4
+    K_4: phi_fast=-6 phi_3n=-6  OK  |phi|^{1/4}=1.565085
+    [phi_fast] n=5 2^n=32 #indep sets=5
+    K_5: phi_fast=24 phi_3n=24  OK  |phi|^{1/5}=1.888175
+    [phi_fast] n=6 2^n=64 #indep sets=6
+    K_6: phi_fast=-120 phi_3n=-120  OK  |phi|^{1/6}=2.220906
+
+[B] k link-bundles at one site (pairwise sharing exactly one plaquette)
+    box R=2: 3750 plaquettes, links carry [1, 3, 4, 5, 6]
+    [phi_fast] n=6 2^n=64 #indep sets=6
+    k=1: links=[((0, 0, 0, 0), 0)] n=6 |E|=15 phi^U=-120 |phi|=120 |phi|^{1/n}=2.220906 (prodR)^{1/n}=4.000000 K_hat>=8.883625 [0.0s]  3n-DP=-120 OK
+          link kappa histogram {1: 18, 6: 1}  sum(kappa)=24 (=4n=24)  (prodR)^{1/n} activated=1.414214
+          shared plaquette counts per pair: []   (block product would be 120^1)
+    [phi_fast] n=11 2^n=2048 #indep sets=32
+    k=2: links=[((0, 0, 0, 0), 0), ((0, 0, 0, 0), 1)] n=11 |E|=34 phi^U=125400 |phi|=125400 |phi|^{1/n}=2.907245 (prodR)^{1/n}=4.000000 K_hat>=11.628979 [0.0s]  3n-DP=125400 OK
+          link kappa histogram {1: 24, 6: 2, 2: 4}  sum(kappa)=44 (=4n=44)  (prodR)^{1/n} activated=1.877862
+          shared plaquette counts per pair: [1]   (block product would be 120^2)
+    [phi_fast] n=15 2^n=32768 #indep sets=98
+    k=3: links=[((0, 0, 0, 0), 0), ((0, 0, 0, 0), 1), ((0, 0, 0, 0), 2)] n=15 |E|=54 phi^U=155244960 |phi|=155244960 |phi|^{1/n}=3.516154 (prodR)^{1/n}=4.000000 K_hat>=14.064614 [0.2s]
+          link kappa histogram {1: 30, 2: 3, 6: 3, 3: 2}  sum(kappa)=60 (=4n=60)  (prodR)^{1/n} activated=2.000000
+          shared plaquette counts per pair: [1, 1, 1]   (block product would be 120^3)
+
+[B2] the KP4 table (sup reading) vs the new n=15 point
+    n= 5: max|phi^U| >=      24  ^1/5 = 1.888175
+    n= 6: max|phi^U| >=     120  ^1/6 = 2.220906
+    n= 7: max|phi^U| >=     240  ^1/7 = 2.187914
+    n= 8: max|phi^U| >=     924  ^1/8 = 2.348059
+    n= 9: max|phi^U| >=    5712  ^1/9 = 2.614694
+    n=10: max|phi^U| >=   25080  ^1/10 = 2.753802
+    n=11: max|phi^U| >=  125400  ^1/11 = 2.907245
+    n=15: max|phi^U| >= 155244960  ^1/15 = 3.516154   <- NEW
+
+[B3] limsup witness: r replicas of the k=3 cluster, joined by single bridge plaquettes
+    replica value V=155244960 (n3=15);  bridge factorisation is the block rule phi^U=prod(blocks)
+    (checked at n=13 in kp4_higher.py: 120*120=14400 for two K_6 + one bridge plaquette [E])
+    r=   1: n=    15  (V^r)^(1/n) = 3.516154
+    r=   2: n=    31  (V^r)^(1/n) = 3.376391
+    r=   3: n=    47  (V^r)^(1/n) = 3.332966
+    r=   5: n=    79  (V^r)^(1/n) = 3.299277
+    r=  10: n=   159  (V^r)^(1/n) = 3.274601
+    r= 100: n=  1599  (V^r)^(1/n) = 3.252810
+    r=1000: n= 15999  (V^r)^(1/n) = 3.250653
+    r->inf limit: V^(1/16) = 3.250413   (each bridge adds exactly 1 plaquette)
+    => limsup_n >= 3.250413   [C, uses cut-vertex factorisation]
+    => sup_n    >= 3.516154        [E, the n=15 cluster itself]
+
+[C] reference rates for a *tree of blocks* (exact block multiplicativity)
+    120^(1/6) = 2.220906   (K_6, 6 plaquettes)
+    120^(1/7) = 1.981645   (UR2 bridge chain, 7k-1 law)
+    120^(1/5) = 2.605171   (shared-plaquette block product, 6+5k law)
+    125400^(1/11) = 2.907245  (n=11 measured, block product 14400)
+    k=1: measured rate 2.220906
+    k=2: measured rate 2.907245
+    k=3: measured rate 3.516154
+
+[D] the averaged readings (arithmetic sum over clusters) -- KP4 sec.1 m_n
+    n=1: m_n=sum|phi^U|=1  m_n^{1/n}=1.000000   (sup over clusters at fixed n <= m_n)
+    n=2: m_n=sum|phi^U|=20  m_n^{1/n}=4.472136   (sup over clusters at fixed n <= m_n)
+    n=3: m_n=sum|phi^U|=514  m_n^{1/n}=8.010403   (sup over clusters at fixed n <= m_n)
+    n=4: m_n=sum|phi^U|=14748  m_n^{1/n}=11.020043   (sup over clusters at fixed n <= m_n)
+    n=5: m_n=sum|phi^U|=450255  m_n^{1/n}=13.511131   (sup over clusters at fixed n <= m_n)
+    => the summed/averaged layer rate m_5^(1/5) = 13.511131 is 4.6x the measured sup 2.9072
+
+[E] verdict numbers
+    sup_n |phi^U|^{1/n} >= max over computed witnesses = 3.516154
+    K_hat >= 4*3.516154 = 14.064614   vs threshold 7.063285  ratio 1.9912
+    n=11 point: 125400^(1/11) = 2.907245  -> K_hat >= 11.628979
+    T/4 = 1.7658213176229 ;  |phi|^{1/n} must fall below this for K_hat<T
+
+elapsed 0.2s

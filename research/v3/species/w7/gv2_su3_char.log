@@ -1,0 +1,4 @@
+D:\Dev\math\research\v3\species\w7\gv2_su3_char.py:74: RuntimeWarning: divide by zero encountered in divide
+  acc = acc * (alternant(p, q) / V)
+D:\Dev\math\research\v3\species\w7\gv2_su3_char.py:74: RuntimeWarning: invalid value encountered in multiply
+  acc = acc * (alternant(p, q) / V)

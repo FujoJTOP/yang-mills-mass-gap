@@ -1,0 +1,53 @@
+== S1  phi^U on cliques K_n  (witness for the pointwise sup) ==
+ n   |phi^U(K_n)|=(n-1)!   ^(1/n)    tau(K_n)=n^(n-2)
+  2                    1   1.000000                    1
+  3                    2   1.259921                    3
+  4                    6   1.565085                   16
+  5                   24   1.888175                  125
+  6                  120   2.220906                 1296
+  7                  720   2.559708                16807
+  8                 5040   2.902711               262144
+  9                40320   3.248811              4782969
+ 10               362880   3.597297            100000000
+ K_6 = the 6 plaquettes at one link (all pairwise share that link):
+ |phi^U| = 120  ->  Cbar >= 2.220906 > 1.7658  => pointwise Cbar=1 is FALSE
+
+== S2  tree-graph inequality  LHS=sum_{Gamma connected,ni x}|phi^U|  <=  RHS=#rooted trees ni x ==
+  counterexamples: 0   (0 => inequality holds on all sampled graphs, n<=6)
+
+== S3  tree entropy: labelled vs unlabelled (positioned) count ==
+ n   (n^(n-2))^(1/n)   (n^(n-2)/n!)^(1/n)   -> limit e
+    2       1.000000         0.707107
+    3       1.442250         0.793701
+    5       2.626528         1.008198
+   10       6.309573         1.393233
+   20      14.822689         1.784928
+   50      42.757392         2.194571
+  100      91.201084         2.400490
+  200     189.679194         2.532417
+  500     487.723997         2.630276
+ 1000     986.279486         2.669288
+ e = 2.718282  ; 1/n! division turns n^(n-2) divergence into entropy e per vertex
+
+== S4  4D torus L=6: 6L^4=7776 plaquettes, deg = 20 (Delta=20 expected) ==
+ n   #sets(ni x)   sum|phi^U|      max|phi^U|   (sum)^(1/n)   (max)^(1/n)   viol |phi|>tau
+  1            1              1            1       1.000000     1.000000        0
+  2           20             20            1       4.472136     1.000000        0
+  3          458            514            2       8.010403     1.259921        0
+  4        11132          14748            6      11.020043     1.565085        0
+  5       280175         450255           24      13.511131     1.888175        0
+ empirical per-Gamma Cbar (n<=5, exact) = 1.888175
+ |phi^U(S)| <= tau(G[S]) violations: 0  (0 => Penrose pointwise bound holds)
+
+== S5  plaquettes through one link: 6  -> adjacency among them = K_6 ==
+ graph: n=6, |E|=15 ; phi^U = -120 ; tau = 1296
+
+== S6  window:  Cbar=1 (one bill) vs Cbar=20 (a01 product bound) ==
+ threshold  Chat*Cbar < 2N^2*48/(eDelta) = 7.06328527
+  Chat=2 Cbar=  1.0000 [one-bill Cbar=1             ] Chat*Cbar=   2.0000 OK  beta1=7.357589e-02 = 3.5316*(1/48)
+  Chat=2 Cbar= 20.0000 [a01 product                 ] Chat*Cbar=  40.0000 NG  beta1=3.678794e-03 = 0.1766*(1/48)
+  Chat=2 Cbar=  2.2209 [exact per-Gamma sup (K_6)   ] Chat*Cbar=   4.4418 OK  beta1=3.312877e-02 = 1.5902*(1/48)
+  Chat=4 Cbar=  1.0000 [one-bill Cbar=1             ] Chat*Cbar=   4.0000 OK  beta1=3.678794e-02 = 1.7658*(1/48)
+  Chat=4 Cbar= 20.0000 [a01 product                 ] Chat*Cbar=  80.0000 NG  beta1=1.839397e-03 = 0.0883*(1/48)
+  Chat=4 Cbar=  2.2209 [exact per-Gamma sup (K_6)   ] Chat*Cbar=   8.8836 NG  beta1=1.656438e-02 = 0.7951*(1/48)
+ e*Delta = 54.365637

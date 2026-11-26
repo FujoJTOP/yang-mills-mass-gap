@@ -1,0 +1,127 @@
+
+==============================================================================
+[1] WHAT CBAR IS: the Ursell tree-graph constant, not an animal/entropy constant
+==============================================================================
+definition (X01-L1C:71):  |phi^U(Gamma)| <= Cbar^{|Gamma|} u^{|Gamma|}
+  phi^U(Gamma) = Ursell/Mayer polynomial of a connected cluster Gamma
+  |Gamma|      = number of plaquettes in Gamma (one factor u = c_f/N each)
+  => Cbar      = sup_Gamma ( |phi^U(Gamma)| / u^{|Gamma|} )^{1/|Gamma|}
+  ubar := e*Delta*Cbar*u is then exactly the KP l.h.s.  sum_{g ni x}|w(g)|e^{a|g|}  (Z02-SEILER:68)
+
+numerical reading: ubar=0.57 at (SU(2), beta_W=1/12) with e*Delta=54.365637, u=0.0104
+  => Cbar_implied = ubar/(e*Delta*u) = 1.0000   (i.e. Cbar=1 is ASSUMED, never proved)
+
+==============================================================================
+[2] PROVABLE BOUND I: naive Cayley tree count does NOT give a constant (shows what is at stake)
+==============================================================================
+ n   n^{n-2}          (n^{n-2})^{1/n}   [per-vertex envelope; blow-up]
+   1  1.0              1.0
+   2  1.0              1.0
+   3  3.0              1.4422496
+   5  125.0            2.6265278
+  10  100000           6.3095734
+  20  2.6214           14.822689
+  50  3.5527           42.757392
+ 100  1.0e+1           91.201084
+ => envelope grows like n/e : NO size-independent Cbar from Cayley alone.
+    (the tree entropy must be paid by the lattice position sum -> see [3];
+     this is exactly why a *graph* bound, not a labelled-tree count, is the right route.)
+
+==============================================================================
+[3] PROVABLE BOUND II: Kirchhoff + AM-GM on the plaquette-adjacency graph  =>  Cbar <= Delta = 20
+==============================================================================
+ n     (Delta^{n-1}/n)^{1/n}     2*Delta-per-vertex
+     1   1.0                       2.0
+     2   3.16227766                6.32455532
+     3   5.108729549               10.2174591
+     5   7.962143411               15.92428682
+    10   11.77408037               23.54816075
+    50   17.4192718                34.8385436
+   500   19.63495886               39.26991772
+  5000   19.95400128               39.90800255
+ => PROVABLE:  Cbar <= Delta = 20.0   (crude: Cbar <= 2*Delta = 40.0)
+
+ non-vacuity check: tau of an m x m planar plaquette grid (n=m^2), and (tau)^{1/n}:
+   m=2  n= 4  tau=4.0                 tau^{1/n}=1.4142136
+   m=3  n= 9  tau=192.0               tau^{1/n}=1.7934949
+   m=4  n=16  tau=100352.0            tau^{1/n}=2.0539761
+   m=6  n=36  tau=3.25655396352e+13   tau^{1/n}=2.3733096
+ (grids are far below the envelope 20 -- the bound is safe and loose by ~2-3x;
+  no claim that 20 is attained, only that it is provable.)
+
+==============================================================================
+[4] N-SCALING: Cbar is O(1) in N (provable); the reading Cbar = N^2 is a DOUBLE COUNT
+==============================================================================
+ Cbar from [3] depends on Delta only:  dCbar/dN = 0  (Delta is a lattice degree, not an N-power)
+ => Cbar = O(1);  ubar = e*Delta*Cbar*u ~ Cbar*beta/(2N^2)*O(1)  =>  beta_1 ~ N^2 (Wilson beta)
+    the N^2 reading (Z02-SEILER sec.4 route D) reproduces the u=c_f normalisation:
+    e*Delta*N^2*c_f/N = e*Delta*N*c_f  == route A  =>  identical criterion, only bookkeeping.
+    Taking BOTH u=c_f/N and Cbar=N^2 pays the per-link 1/N twice. Rejected. [T]
+
+ exact SU(2) c_f(beta) vs the two normalisations (window remark, AGENTS sec.2.1):
+   beta=0.01       c_f=0.005000041667       b/(2N)=0.0025               b/N=0.005
+   beta=0.020833333 c_f=0.01041704343        b/(2N)=0.005208333333       b/N=0.01041666667
+   beta=0.1        c_f=0.05004167969        b/(2N)=0.025                b/N=0.05
+   => at N=2 (f ~ fbar) c_f = beta/N + O(beta^3) = 2*(beta/2N): the repo's c_f=beta/(2N)
+      is the N>=3 statement. This makes u 2x LARGER at N=2 => window 2x SMALLER (direction safe).
+
+==============================================================================
+[5] THRESHOLD AND WINDOW: does Chat*Cbar < 7.0632853 hold?
+==============================================================================
+ no-shrink threshold:  Chat*Cbar < 2N^2*48/(e*Delta) = 7.06328527
+ => allowed Cbar:  Chat=4 -> Cbar < 1.7658213 ;  Chat=2 -> Cbar < 3.5316426
+
+ Chat  Cbar   Chat*Cbar   ok?   beta1^fix=2N^2/(Chat*eD*Cbar)   beta1/(1/48)   shrink
+ 4.0   1.0    4.0         YES   0.03678794412                1.76582        1.77x widen
+ 2.0   1.0    2.0         YES   0.07357588823                3.53164        3.53x widen
+ 4.0   20.0   80.0        NO    0.001839397206               0.0882911      0.09x
+ 2.0   20.0   40.0        NO    0.003678794412               0.176582       0.18x
+ 4.0   40.0   160.0       NO    0.0009196986029              0.0441455      0.04x
+
+==============================================================================
+[6] DELTA AT THE NEW WINDOW: delta = ln(1/(Chat*ubar))/a = kappa/4 - ln(Chat eD Cbar)/a
+==============================================================================
+
+ Chat=4 Cbar=20 :
+   beta=0.0208333 ubar=2.8315436  Chat*ubar=11.326174  delta*a=-2.4271164
+   beta=0.01     ubar=1.3591409  Chat*ubar=5.4365637  delta*a=-1.6931472
+   beta=0.002    ubar=0.27182818 Chat*ubar=1.0873127  delta*a=-0.083709268
+   beta=0.001    ubar=0.13591409 Chat*ubar=0.54365637 delta*a=0.60943791
+   beta=0.0002   ubar=0.027182818 Chat*ubar=0.10873127 delta*a=2.2188758
+   delta>0  <=>  beta < 0.0018393972   (= (1/48)*0.0882911)
+
+ Chat=2 Cbar=20 :
+   beta=0.0208333 ubar=2.8315436  Chat*ubar=5.6630871  delta*a=-1.7339692
+   beta=0.01     ubar=1.3591409  Chat*ubar=2.7182818  delta*a=-1.0
+   beta=0.002    ubar=0.27182818 Chat*ubar=0.54365637 delta*a=0.60943791
+   beta=0.001    ubar=0.13591409 Chat*ubar=0.27182818 delta*a=1.3025851
+   beta=0.0002   ubar=0.027182818 Chat*ubar=0.054365637 delta*a=2.912023
+   delta>0  <=>  beta < 0.0036787944   (= (1/48)*0.176582)
+
+ Chat=4 Cbar=1 :
+   beta=0.0208333 ubar=0.14157718 Chat*ubar=0.56630871 delta*a=0.56861592
+   beta=0.01     ubar=0.067957046 Chat*ubar=0.27182818 delta*a=1.3025851
+   beta=0.002    ubar=0.013591409 Chat*ubar=0.054365637 delta*a=2.912023
+   beta=0.001    ubar=0.0067957046 Chat*ubar=0.027182818 delta*a=3.6051702
+   beta=0.0002   ubar=0.0013591409 Chat*ubar=0.0054365637 delta*a=5.2146081
+   delta>0  <=>  beta < 0.036787944   (= (1/48)*1.76582)
+
+==============================================================================
+[7] SUM CHECK: the geometric identity used for |A(alpha)| and |eps_T| (X01 sec.2.4)
+==============================================================================
+  x=0.1    sum m x^m = 0.123456790123    x/(1-x)^2 = 0.123456790123    rel.err=9.98e-32
+  x=0.5    sum m x^m = 2.0               x/(1-x)^2 = 2.0               rel.err=0.0
+  x=0.9    sum m x^m = 90.0              x/(1-x)^2 = 90.0              rel.err=0.0
+
+==============================================================================
+[8] VERDICT FLAGS
+==============================================================================
+ Cbar defin.      : |phi^U(G)| <= Cbar^{|G|}u^{|G|} ,  Cbar = sup_G (|phi^U|/u^{|G|})^{1/|G|}   [T]
+ Cbar provable    : Cbar <= Delta = 20.0   (crude 2*Delta = 40.0)                                  [T]
+ Cbar N-scaling   : Cbar = O(1) in N ; Cbar=N^2 is a double count of the per-link 1/N          [T]
+ Cbar < 1.766 ?   : NOT established (provable bound 20 >> 1.766)                              [NG]
+ Chat*Cbar<7.0633 : with provable Cbar: 4*20 = 80 > 7.0633  -> 1/48 does NOT survive          [T]
+ new window       : beta1^fix = 0.0018393972 = (1/48)*0.0882911 > 0  -> (c) NOT triggered                     [T]
+ => branch (b) triggers: recompute, I1 stays [T] mod Cbar with the smaller window.
+
+ done.

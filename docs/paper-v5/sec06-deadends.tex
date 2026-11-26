@@ -1,0 +1,157 @@
+% =====================================================================
+%  sec06 -- The twelve dead ends
+% =====================================================================
+\section{The twelve dead ends, each with one number}\label{sec:dead}
+
+A dead end is a theorem, not a mood. Each row below names a route, the mechanism of its death,
+and one number that makes the death checkable; every row is \LN{} in the corpus's sense (a
+statement about a whole class of approaches) or an exact counterexample to the route's central
+claim. The rows are grouped only for reading: rows 1--6 kill the analytic inequalities, rows 7--9
+kill the decompositions and the tool families, rows 10--12 kill the model-level and structural
+shortcuts.
+
+{\footnotesize
+\begin{longtable}{@{}L{0.45cm}L{2.1cm}L{4.55cm}L{2.55cm}L{4.3cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Route} & \textbf{How it dies} & \textbf{One number} & \textbf{Source} \\
+\midrule
+\endhead
+1 & \LN{} Brascamp--Lieb (BL) with $\Phi''\succeq(N/12)\id$
+  & the direction is wrong by an order of magnitude: BL bounds $\Var$ \emph{below} by the
+    Dirichlet form, H1 needs it below $E[H]$; the required strong-convexity constant is
+    $\gtrsim6.3$, i.e.\ $\sim38\times$ the budget $\Phi$ can supply
+  & $(12/N)E|\nabla G_v|^{2}\ge240.5$ against $E[H_{vv}]=6.3315$ ($\ge38\times$), and against
+    $\Var(G_v)=5.4477$ ($\ge44\times$)
+  & \code{Q02-BL-PHI.md} \S3, \S4(a) \\
+2 & \LN{} a scalar ODE $G''=F(a,G')$
+  & $G$ obeys a transport equation on the \emph{fibre measure},
+    $\partial_a\mu_a=(G'(a)-F)\mu_a$; writing $G''=F(a,G')$ asserts that the slice's force law is
+    determined by its mean, refuted by an implementation lemma (universal, not model-specific)
+  & no universal $F$ exists; the first counterexample is a collision of two $(a,G')$ points
+  & \code{Q05-ODE.md} \S0, \S3.1 \\
+3 & \LN{} directed-random-curvature BL (RC-BL)
+  & the conjecture is stated with the \emph{harmonic} mean of $K$ while the provable floor is an
+    \emph{arithmetic} mean; the harmonic mean needs $\operatorname{ess\,inf}K>0$ and gets $0$
+  & $K\ge N/3-1.893=-0.893$ ($\mathrm{SU}(3)$) $\Rightarrow$
+    $\operatorname{ess\,inf}K_+=0\Rightarrow\bar\kappa=0$
+  & \code{Q14-RCBL.md} \S1.2, \S1.3 \\
+4 & \LN{} sum of squares (SOS) with non-negative coefficients
+  & per-direction pairing is \emph{arithmetically} impossible at $a=0$, not merely unproven; and
+    with signed coefficients the whole expression fails, so the representation is false
+  & need $\Var\le N/12-\langle|\lambda_-|\rangle=-0.0367<0$; and
+    $S-D(0.75)=-0.005888<0$
+  & \code{Q12-SOS.md} \S0, \S3 \\
+5 & \LN{} Cauchy--Schwarz on $\Cov(G,\Phi')$
+  & H1 needs an \emph{upper} bound on the covariance; CS supplies one that is too loose by a
+    factor $2.6$
+  & need $\Cov\le+0.3607$, CS gives $+0.9406$ ($2.61\times$)
+  & \code{Q09-COVLOW.md}:12, :99 \\
+6 & \LN{} the spectral route ($\lambda_{\max}\le1$)
+  & $E[H_{vv}]=E[G_v^{2}]$ is half of an identity, so the spectral hypothesis degenerates to
+    $0\ge0$; the only named spectral equivalence fails on the real action
+  & $\lambda_{\max}=\beta=2.5$ with $10.5\%$ negative modes at $\beta=2.5$
+  & \code{Q15-SPECTRAL.md} \S3, \S4 \\
+7 & \LN{} splitting into an $S_W$ half and a $\Phi$ half
+  & $H1$ does not contain $\Phi''$ at all ($H1\iff m_{G'}\ge0$); the $\Phi$ half's margin is
+    identically zero on the slice, and the $S_W$ half is false
+  & $\Phi$ sector $=(E\Phi')^{2}+\Cov=0$ \emph{exactly}; worst $S_W$ half $+0.4351$ over
+    $28$ grid points
+  & \code{Q03-SEPARATE.md} \S0.1--\S0.2; \code{S04-VARPHI.md} \\
+8 & \LN{} a $\beta_0$-window conditional theorem
+  & fails the acid test: the free massless field satisfies premise \emph{and} conclusion and
+    produces the same finite $\beta_0$, with the largest margin
+  & $\beta_0$ identical for the free field and for Yang--Mills; vacuous
+  & \code{P13-ACID.md}:12; \code{LOOP-RUNBOOK.md}:3036, :3889 \\
+9 & \LN{} any $\Phi$-only tool
+  & excluded universally by the acid test: a $\Phi$-only quantity cannot distinguish
+    $\beta=2.5$ from $\beta=10^{-6}$
+  & $\Var(\Phi')\to2.341\times10^{-3}$ ($65\%$ of its interacting value, not $0$);
+    $E[\Phi'']-N/12$ identical at $\beta=2.5$ and $10^{-6}$
+  & \code{P21-REBUILD.md} \S1--\S2; \code{ch19-h1-status.tex}:485--491 \\
+10 & \LN{} any statement uniform in $a_0$
+  & the sign of $G''(a)$ is not uniform: it is positive at $a=0$ and negative on a window, and
+    the negative region widens and deepens with $\beta$; the uniform-in-$a_0$ form is false
+  & $G''(a)<0$ on $[0.71,2.97]$, min $-0.07919$ at $a=1.81$ ($\beta=2.5$, $\theta=\pi$);
+    sign of $G''(0)$ flips at $\beta^{*}=4.3066$
+  & \code{O02-LOGCONCAVE.md} \S0; \code{Q08-LARGEA.md} \S3--\S4;
+    \code{ch15-uvface.tex}:46 \\
+11 & \LN{} the $\mathrm{SU}(3)$ certificate route
+  & a value-to-derivative error: $S_W\equiv\beta$ holds \emph{on} the slice, but $G=\partial_\tau
+    S_W$ is the derivative \emph{off} it and is non-zero; a second error uses the wrong $\Phi$
+    (differing by $\psi=\sum_{i<j}\log d_{ij}^{2}$)
+  & $G=\beta s\,g(u)\ne0$, checked to $18$ digits; so $D$ must contain $\Var(G)$ and the reported
+    $S\equiv D$ is invalid
+  & \code{R12-SU3CORR.md} \S0--\S1; \code{R11-SU3ADJ.md} \\
+12 & \LN{} the Riccati coupling of $S$ and $D$ in $\beta$
+  & the proposed target $D'\le S'$ is the same inequality as $G'\ge0$, because $S-D\equiv G$:
+    an identity that constrains nothing; and the derivatives do not close in $(S,D)$
+  & third cumulant terms are $17\%$ of $S'$ and $37\%$ of $D'$ (not negligible);
+    $D/S$ crosses $1$ near $\beta\approx8$--$17$ ($[E]$ extrapolation)
+  & \code{Q06-RICCATI.md} \S0, \S2--\S4 \\
+\bottomrule
+\end{longtable}
+}
+
+\subsection{Why rows 1--6 are a single statement}
+
+Rows 1--6 are six different attempts to manufacture a lower bound on $H1$'s left-hand side, and
+they fail in a pattern: each supplies a bound in the direction that the inequality does not need,
+or with a constant that is smaller than the quantity it must dominate by an explicit factor
+($38\times$, $44\times$, $2.6\times$, or a whole sign). The one structural remark that unifies
+them is that $H1$'s difficulty is not a shortage of inequalities but the sign of the Savvidy
+Hessian: the negative mode $\lambda_-$ with $c^{2}=(\tfrac12,0,\tfrac12)$ is an exact $50/50$
+split, and every convexity-based budget spends its entire allowance on the positive mode. \LN{}
+That is why the SOS row (4) is not a technicality: a non-negative-coefficient pairing would need
+$\Var\le-0.0367$, which is impossible for $\Var\ge0$, so the expression is not merely hard to
+represent --- it is not representable in that form.
+
+\src{\code{Q02-BL-PHI.md} \S3--\S4 (the $38\times$/$44\times$ factors and the required
+$\lambda\gtrsim6.3$); \code{Q12-SOS.md} \S3 (the exact $-0.0367$ and the $a=0$ arithmetic
+impossibility), \S0 (the counterexample $S-D(0.75)=-0.005888$); \code{Q14-RCBL.md} \S1.2--\S1.3
+(arithmetic versus harmonic mean, and the three windows); \code{O16-SAVVIDY.md} (the exact
+$50/50$ mode split); \code{O06-CURV.md} \S4.4 ($\min H_{vv}=-1.893$).}
+
+\subsection{Why rows 7--9 are a single statement}
+
+Rows 7--9 all die of the same cause: they work with the $\Phi$ sector. Row 7 shows that $H1$ does
+not contain $\Phi''$ at all, so a decomposition cannot help; row 9 shows that every $\Phi$-only
+quantity is invisible to the acid test, because at $\theta=\pi$ the measure is Haar for all
+$\beta$ and a $\Phi$-only functional cannot see $\beta$; row 8 is the same disease in the form of
+a conditional theorem. The positive content is the surviving pair
+$\{m_{G'},-\Cov(G,\Phi')\}$, both of which contain $G=\partial_vS_W$ --- the only object in the
+candidate list that carries a power of $\beta$. \LT{}/\LN{}
+
+\src{\code{Q03-SEPARATE.md} \S0.1 (\code{(I1)}--\code{(I3)} and $H1\iff m_{G'}\ge0$);
+\code{P21-REBUILD.md} \S1--\S2 (the acid test and the surviving pair); \code{P13-ACID.md}:12
+(the $\beta_0$ failure); \code{LOOP-RUNBOOK.md}:3036 (``the $\beta_0$ conditional theorem did not
+pass the acid test'').}
+
+\subsection{Why rows 10--12 are a single statement}
+
+Rows 10--12 die of quantifier and identity errors rather than of estimates, and they are the rows
+most likely to be re-proposed. Row 10: the sign of $G''(a)$ is a \emph{projective} property
+($G''(0;tv)=t^{2}G''(0;v)$ for $t\ne0$, an exact quadratic homogeneity along rays), so any
+statement about it must fix the normalisation and the point; the uniform-in-$a_0$ form is false,
+and the corpus says so explicitly in the v2 register. \LT{}/\LN{} Row 11: $S_W\equiv\beta$ on the
+slice is a statement about a \emph{value}; $G$ is a derivative off the slice, and conflating them
+is the single most expensive error of the wave --- it produced a reported $S\equiv D$ that would
+have made $\mathrm{SU}(3)$ look \emph{positively} hopeless for the wrong reason. Row 12: an
+identity cannot be a target. $S-D\equiv G$ makes ``$D'\le S'$'' literally ``$G'\ge0$'', and since
+the third cumulants are $17\%$ and $37\%$ of the derivatives, no two-variable closure exists.
+
+\src{\code{T04-L2ANALYTIC.md} \S1.1 (the exact ray homogeneity $G''(0;tv)=t^{2}G''(0;v)$);
+\code{ch15-uvface.tex}:46 (``hence the uniform-in-$a_0$ form of ($\star$) is false'', verbatim)
+  \LN{};
+\code{Q08-LARGEA.md} \S3--\S4 (the negative window, its width and depth, and the
+non-commutativity of $a\to2\pi$ with $\beta\to\infty$); \code{R12-SU3CORR.md} \S1;
+\code{Q06-RICCATI.md} \S2 (``there is no Riccati in $\beta$'') and \S0 (the identity
+$D'\le S'\iff G'\ge0$).}
+
+\subsection{The ledger of the dead}
+
+Twelve routes, each with a number, and no route in the coarse-mode family survives them: the
+analytic ones die on direction or constant, the decompositions die on neutrality, the tool
+families die on the acid test, and the shortcuts die on quantifiers. This is the sense in which
+\S\ref{sec:obs1}--\S\ref{sec:obs2} are a \emph{verdict} rather than a setback: the route was not
+abandoned for lack of effort or lack of ideas, it was closed by its own internal accounting. The
+correct object, together with what is actually known about it, is \S\ref{sec:target}.

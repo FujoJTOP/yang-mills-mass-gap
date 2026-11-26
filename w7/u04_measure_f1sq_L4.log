@@ -1,0 +1,22 @@
+[E] SU(2) Wilson   L=4^4  V=256  plaq=1536  beta=[2.0]
+[E] O(t)=sum_(mu<nu)sum_a(Re c_a(clover))^2/V_s ;  C(t)=<O(t)O(0)>-<O>^2
+[E] therm=300 meas=600 nblk=30 step=0.6 seed=2026
+[E] extraction (periodic cosh, L_t=4): f1^2=C(0), E1=(2/L)arccosh(C(0)/C(t=L/2))
+
+[C] ---- beta=2.0 ----
+    acceptance(therm) = 0.379  blocks=30
+    <O>        = 9.190877e-01
+    C(0)       = 1.715888e-03  +- 9.31e-05   (winsor/blk)
+    C(2)       = 1.655689e-04  +- 1.05e-04   (winsor/blk)
+    C(2)/C(0) = 0.096492
+    C_B(0)=1.263813e-03  C_B(2)=1.767281e-05 +- 2.34e-05  [magnetic only; beta=0 acid test]
+    f1^2=C(0)  = 1.715888e-03  +- 9.31e-05
+    E1         = 1.5146  +- 0.0334
+    <1/2 Re tr U_p> = 0.504694 +- 1.77e-03 (robust) | 0.504694 +- 1.75e-03 (sigma, control)
+    [t=14.3s]
+
+=== SUMMARY  L=4 ===
+beta     <O>            C(0)           C(1)          C1/C0      E1      f1^2=C(0)      CB(1)
+ 2.0  9.190877e-01  1.715888e-03  1.655689e-04   0.096492   1.5146  1.715888e-03  1.767281e-05
+
+[E] total wall 14.3s

@@ -1,0 +1,130 @@
+Q04-WEYL  single plaquette SU(2):  Weyl formula -> 1-D integrals for Var(G_v|a), E[H_vv|a]
+====================================================================================================
+[1] Weyl / Haar constants, SU(2)
+    Cin(2pi)                         = 2.4376533931
+    1/(2 Cin(2pi))                   = 0.2051152971   (paper W0 = 0.20511530)
+    int_{SU(2)} 1 dU  (class formula (1/pi) int_0^2pi sin^2(rho/2) drho) = 0.999999999999894
+    int_{SU(2)} 1 dU  (full     (1/4pi^2) int drho sin^2(rho/2) int_S2 dOmega) = 0.999999999999998
+    int_T |Delta|^2 dt /(2pi) /2!    = 0.999999999999893   (1/N! needed; N=2: |Delta|^2=4sin^2 t)
+    int J d^3xi = int_0^2pi sin^2(rho/2)drho * 4pi = 39.478417604345  (= 4 pi^2 = 39.478417604357)
+    => dU = (1/4pi^2) J d^3xi exactly:  the plaquette model IS a Haar integral.
+
+[2] a=0, theta=pi  -> slice measure = 'Haar' slice  sin^2(rho/2)/rho drho
+    Z = Cin(2pi)/2                   = 1.218826696528   vs 1.218826696529
+    E[w]  , w = sin(rho/2)/rho       = 0.3574113534
+    V0 = Var[w]                      = 0.0110592938   (H1A archive 0.0110593)
+    E[Phi'']                         = 0.2051152971   (O09/H1A archive 0.2051153)  = 1/(2Cin2pi)? True
+    beta^2 V0 at beta=2.5            = 0.0691205861   (H1A archive Var=0.069121)
+    [discipline] same quadrature with the WRONG 3-D radial weight sin^2(rho/2):
+        E[G]=0.772110  Var(G)=0.072367  E[H]=0.000000   -> does NOT reproduce 0.0691210
+
+[3] theta=0 check: Var(G)=0 exactly (t=0),  E[H]=(beta/2)E[w]  vs H1A archive
+    beta= 0.500   E[H]=0.095581  (archive 0.095581)  Var(G)=0.000e+00  E[Phi'']=0.1952954
+    beta= 2.500   E[H]=0.553061  (archive 0.553061)  Var(G)=0.000e+00  E[Phi'']=0.1768636
+    beta= 6.000   E[H]=1.420010  (archive 1.420010)  Var(G)=0.000e+00  E[Phi'']=0.1706290
+    beta=10.000   E[H]=2.418516  (archive 2.418516)  Var(G)=0.000e+00  E[Phi'']=0.1689784
+
+[4] a=0 slice, pointwise in rho:  H(rho)/G(rho) = (1/2)cot(theta/2)  (exact, no inequality)
+    theta=0.0796 pi   ratio = 3.979144932934   target 0.5*cot(th/2) = 3.979144932934   max dev = 8.88e-16
+    theta=0.5000 pi   ratio = 0.500000000000   target 0.5*cot(th/2) = 0.500000000000   max dev = 1.11e-16
+    theta=0.7500 pi   ratio = 0.207106781187   target 0.5*cot(th/2) = 0.207106781187   max dev = 5.55e-17
+    theta=0.9000 pi   ratio = 0.079192220162   target 0.5*cot(th/2) = 0.079192220162   max dev = 1.39e-17
+    theta=0.0 pi: degenerate (t=0 -> G==0 / c=0 -> H==0)
+    theta=1.0 pi: degenerate (t=0 -> G==0 / c=0 -> H==0)
+
+[5] O09-PHICURV 2.2 table reproduced from the 1-D integral (beta=2.5, theta=pi)
+    a      E[Phi'']  (ref)      E[H]     (ref)      Var(G)   (ref)      Cov     (ref)      G''     (ref)
+   0.00    0.2051 ( 0.2051)    0.0000 (  0.0000)   0.0691 ( 0.0691)    0.0000 (  0.0000)    0.1360 (  0.1360)
+   0.25    0.2094 ( 0.2094)   -0.0632 ( -0.0632)   0.0714 ( 0.0714)   -0.0034 ( -0.0034)    0.0812 (  0.0812)
+   0.50    0.2162 ( 0.2162)   -0.1240 ( -0.1240)   0.0716 ( 0.0716)   -0.0072 ( -0.0072)    0.0336 (  0.0336)
+   0.75    0.2262 ( 0.2262)   -0.1815 ( -0.1816)   0.0697 ( 0.0697)   -0.0114 ( -0.0114)   -0.0059 ( -0.0059)
+   1.00    0.2398 ( 0.2398)   -0.2350 ( -0.2350)   0.0657 ( 0.0657)   -0.0158 ( -0.0158)   -0.0368 ( -0.0368)
+   1.50    0.2818 ( 0.2818)   -0.3277 ( -0.3277)   0.0527 ( 0.0527)   -0.0243 ( -0.0243)   -0.0730 ( -0.0730)
+   2.00    0.3517 ( 0.3516)   -0.3990 ( -0.3990)   0.0361 ( 0.0361)   -0.0306 ( -0.0306)   -0.0773 ( -0.0773)
+
+[6] independent checks
+    a=0.00 th=1.0000pi : 1-D  E[G]=+0.89352838 Var(G)=0.06912059 E[H]=+0.00000000
+                      2-D  E[G]=+0.89352838 Var(G)=0.06912059 E[H]=+0.00000000   max|diff|=2.55e-10
+    a=0.50 th=1.0000pi : 1-D  E[G]=+0.82831091 Var(G)=0.07162846 E[H]=-0.12403107
+                      2-D  E[G]=+0.82831091 Var(G)=0.07162846 E[H]=-0.12403107   max|diff|=3.70e-10
+    a=0.50 th=0.5000pi : 1-D  E[G]=+0.90557312 Var(G)=0.02555992 E[H]=+0.26181825
+                      2-D  E[G]=+0.90557312 Var(G)=0.02555992 E[H]=+0.26181825   max|diff|=3.14e-11
+    a=0.00 th=1.0000pi : G(analytic)=+1.2428819833  G(FD)=+1.2428819314 (h=1e-3)
+                    : H(analytic)=+0.0000000000  H(FD)=+0.0000000004   rel dev vs h=5e-4: 3.81e-05
+    a=0.40 th=0.0000pi : G(analytic)=+0.2469187492  G(FD)=+0.2469187389 (h=1e-3)
+                    : H(analytic)=+0.6090252301  H(FD)=+0.6090252175   rel dev vs h=5e-4: 5.28e-09
+    a=0.90 th=0.6000pi : G(analytic)=+1.2229215095  G(FD)=+1.2229214585 (h=1e-3)
+                    : H(analytic)=+0.1096522584  H(FD)=+0.1096522557   rel dev vs h=5e-4: 1.20e-08
+
+[7] single plaquette: exact 1-D integrals
+    a=0:  Var(G|0) = beta^2 t^2 Var_{mu_th}(w),   E[H|0] = (beta c/2) E_{mu_th}(w)
+          mu_th prop exp(-beta(1-c cos(rho/2))) sin^2(rho/2)/rho drho,  w=sin(rho/2)/rho
+    a!=0: 1-D in rho in [|a|,2pi], same weight with S=beta(1-c cos(rho/2)+t sin(rho/2) a/rho)
+
+    beta=2.5,  theta dependence at a=0 (t=sin(th/2), c=cos(th/2)):
+      theta      c        E[w]      Var(w)     Var(G)     E[H]     Var/E[H]   E[H]-Var
+    0.000pi  +1.00000   0.44245  0.003273   0.000000  +0.553061     0.0000  +0.553061
+    0.100pi  +0.98769   0.44190  0.003328   0.000509  +0.545580     0.0009  +0.545071
+    0.250pi  +0.92388   0.43894  0.003627   0.003319  +0.506915     0.0065  +0.503595
+    0.400pi  +0.80902   0.43297  0.004242   0.009159  +0.437849     0.0209  +0.428690
+    0.500pi  +0.70711   0.42688  0.004877   0.015240  +0.377311     0.0404  +0.362071
+    0.600pi  +0.58779   0.41867  0.005733   0.023452  +0.307608     0.0762  +0.284156
+    0.750pi  +0.38268   0.40141  0.007474   0.039871  +0.192018     0.2076  +0.152146
+    0.900pi  +0.15643   0.37724  0.009632   0.058729  +0.073767     0.7961  +0.015038
+    0.990pi  +0.01571   0.35951  0.010925   0.068265  +0.007059     9.6711  -0.061206
+    1.000pi  +0.00000   0.35741  0.011059   0.069121  +0.000000        inf  -0.069121
+
+    beta dependence at theta=pi and theta=pi/2 (a=0):
+      beta   theta      Var(G)      E[H]     Var/E[H]
+      0.500   1.00pi    0.002765   +0.000000         inf
+      0.500   0.50pi    0.001222   +0.066370      0.0184
+      1.000   1.00pi    0.011059   +0.000000         inf
+      1.000   0.50pi    0.004207   +0.138391      0.0304
+      2.500   1.00pi    0.069121   +0.000000         inf
+      2.500   0.50pi    0.015240   +0.377311      0.0404
+      4.307   1.00pi    0.205115   +0.000000         inf
+      4.307   0.50pi    0.022841   +0.686431      0.0333
+      6.000   1.00pi    0.398135   +0.000000         inf
+      6.000   0.50pi    0.025406   +0.982559      0.0259
+     10.000   1.00pi    1.105929   +0.000000         inf
+     10.000   0.50pi    0.026884   +1.687180      0.0159
+
+    a dependence at beta=2.5, theta=pi (NOTE: E[H]<0 for a>0 => Var<=E[H] fails there):
+      a       Var(G)      E[H]     Var/E[H]   E[H]-Var
+     0.00    0.069121   +0.000000         inf   -0.069121
+     0.25    0.071391   -0.063221     -1.1292   -0.134611
+     0.50    0.071628   -0.124031     -0.5775   -0.195660
+     0.75    0.069718   -0.181550     -0.3840   -0.251267
+     1.00    0.065727   -0.235040     -0.2796   -0.300767
+     1.50    0.052686   -0.327729     -0.1608   -0.380415
+     2.00    0.036106   -0.398972     -0.0905   -0.435078
+     2.80    0.012532   -0.464577     -0.0270   -0.477108
+     3.35    0.003258   -0.473424     -0.0069   -0.476683
+     3.90    0.000090   -0.451225     -0.0002   -0.451315
+     4.45    0.000723   -0.396716     -0.0018   -0.397439
+
+[8] algebraic verdict
+    On a=0: H = (1/2)cot(th/2) G pointwise, so
+        Var(G) <= E[H]  <=>  2 beta t^2 Var(w) <= c E[w]        (one inequality, one measure)
+    Pointwise bound 0 <= w = sin(rho/2)/rho <= 1/2  =>  Var(w) <= E[w^2] <= (1/2)E[w]
+        => Var(G) <= (beta^2 t^2/2) E[w] <= (beta c/2)E[w] = E[H]   whenever  beta t^2 <= c
+      beta=0.50: sufficient condition beta sin^2(th/2)<=cos(th/2) holds for th/pi <= 0.7281
+      beta=1.00: sufficient condition beta sin^2(th/2)<=cos(th/2) holds for th/pi <= 0.5758
+      beta=2.50: sufficient condition beta sin^2(th/2)<=cos(th/2) holds for th/pi <= 0.3881
+    exact crossing theta_c(beta) where Var(G)=E[H] (a=0):
+      beta=0.50 : theta_c/pi = 0.9805  (Var<=E[H] for th < theta_c)
+      beta=1.00 : theta_c/pi = 0.9618  (Var<=E[H] for th < theta_c)
+      beta=2.50 : theta_c/pi = 0.9171  (Var<=E[H] for th < theta_c)
+      beta=6.00 : theta_c/pi = 0.8771  (Var<=E[H] for th < theta_c)
+
+[9] the H1-form inequality Var(G) <= E[H] + W_geo holds iff G''>=0 (single plaquette, a=0)
+      beta    theta   Var(G)    E[H]    E[Phi'']   E[H]+E[Phi'']-Var    G''
+      2.500   1.00pi   0.06912  +0.00000    0.20512      +0.135995    +0.135995
+      2.500   0.50pi   0.01524  +0.37731    0.18087      +0.542944    +0.542944
+      4.307   1.00pi   0.20512  +0.00000    0.20512      +0.000000    +0.000000
+      4.307   0.50pi   0.02284  +0.68643    0.17495      +0.838539    +0.838539
+      6.000   1.00pi   0.39813  +0.00000    0.20512      -0.193019    -0.193019
+      6.000   0.50pi   0.02541  +0.98256    0.17244      +1.129588    +1.129588
+
+[10] L=2 lattice reference (different object, P02): Var(G)=5.4477, E[H]=6.3315, ratio=0.8604
+     single plaquette does NOT reproduce these; it is a 4-D 96-plaquette constrained HMC value.

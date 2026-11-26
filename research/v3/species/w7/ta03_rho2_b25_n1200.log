@@ -1,0 +1,62 @@
+==============================================================================
+BLOCK 1  exact anchors of rho^2 = mu2/mu1  (definition: ch05-theorems.tex:155,
+         ch16-sixth-species.tex:527-532, app.tex:705; slot form LOOP-RUNBOOK:5545)
+==============================================================================
+[T] (1) 1b single plaquette SU(2), beta=0: mu_l = l(l+2) = [3, 8, 15, 24]
+        rho^2 = mu2/mu1 = 8/3 = 8/3 = 2.6666666667
+[T] (2) 2D YM SU(2): C2(fund)=3/4, C2(adj)=2, rho^2 = 8/3 = 2.6666666667  (beta-independent)
+[T] (3) 2D YM SU(3): C2(fund)=4/3, C2(adj)=3, rho^2 = 9/4 = 2.2500000000  (beta-independent)
+[T] (4) free tower T^4: e1 = min>0 = 1, e2 = next distinct > e1 = 2  (degeneracies 8, 24)
+        rho^2 = 2/1 = 2 = 2.0000000000   [no gap: m=0]
+[T] extra: 1D Dirichlet string q=0: mu_k=k^2 pi^2, rho^2 = 4pi^2/pi^2 = 4.0
+
+[T] acid test (reproduce B02-LARGEN.md:88): free field with mass mu on T^4,
+    e1 = mu^2+1, e2 = mu^2+2  =>  rho^2(mu) = (mu^2+2)/(mu^2+1) :
+      mu =    0.0 : rho^2 = 2.000000   gap m = 0.0
+      mu =    0.5 : rho^2 = 1.800000   gap m = 0.5
+      mu =    1.0 : rho^2 = 1.500000   gap m = 1.0
+      mu =    2.0 : rho^2 = 1.200000   gap m = 2.0
+      mu =    5.0 : rho^2 = 1.038462   gap m = 5.0
+      mu =   10.0 : rho^2 = 1.009901   gap m = 10.0
+      mu =  100.0 : rho^2 = 1.000100   gap m = 100.0
+    => rho^2 > 1 holds for EVERY mu >= 0, including mu = 0 (no gap at all).
+       rho^2 > 1 is therefore not a gap criterion; at mu=0 it is 2 exactly,
+       the same value as N=inf (B02-LARGEN.md:81-90).
+
+# TA03 MC SU(2) beta=2.5  2x2^3  ncfg=1200 therm=1000 gap=2 seed=2026  [7.0s]
+# <1/2 Re tr U_p> = 0.670452 +- 0.001157
+
+C(0) matrix (0++ channel, per time slice):
+[[ 0.373148  0.037688 -0.142683]
+ [ 0.037688  0.023628 -0.013468]
+ [-0.142683 -0.013468  0.704299]]
+C(1) matrix:
+[[ 0.089238  0.019429 -0.109904]
+ [ 0.019429  0.009622 -0.009559]
+ [-0.109904 -0.009559  0.455497]]
+eig C(0) = [0.019605 0.323269 0.7582  ]  (need all > 0)
+
+single-operator T=2 effective mass  m = arccosh(C0_ii/C1_ii),  rho2 = m^2/m^2 (n/a):
+   S_geo=12(1-Pbar)       C0/C1 =  4.18151  m_eff =  2.10921
+   1/4 trF^2 clover       C0/C1 =  2.45564  m_eff =  1.54723
+   1x2 rect Wilson        C0/C1 =  1.54622  m_eff =  1.00267
+
+2x2 / 3x3 GEVP:  C(1)v = lambda C(0)v ,  lambda_n = 1/cosh(m_n)
+   [S_geo=12(1-Pbar)+1/4]  lambda = [0.416201 0.156303]
+        m = [1.52331  2.542939]
+        rho^2 = (m2/m1)^2 = 2.786733
+   [S_geo=12(1-Pbar)+1x2]  lambda = [0.649491 0.181424]
+        m = [0.997089 2.391734]
+        rho^2 = (m2/m1)^2 = 5.753836
+   [1/4+1x2]  lambda = [0.646917 0.403019]
+        m = [1.002304 1.55859 ]
+        rho^2 = (m2/m1)^2 = 2.418047
+   [S_geo=12(1-Pbar)+1/4+1x2]  lambda = [0.649506 0.407357 0.106664]
+        m = [0.99706  1.546879 2.928364]
+        rho^2 = (m2/m1)^2 = 2.406965
+
+jackknife (8 bins) on the two lowest GEVP masses:
+   [S_geo=12(1-Pbar)+1/4] m1 = 1.5232 +- 0.0634 ; m2 = 2.5463 +- 0.1487 ; rho^2 = 2.7973 +- 0.3857  [8/8 bins]
+   [S_geo=12(1-Pbar)+1x2] m1 = 0.9971 +- 0.0393 ; m2 = 2.3965 +- 0.2274 ; rho^2 = 5.7873 +- 1.1707  [8/8 bins]
+   [1/4+1x2] m1 = 1.0024 +- 0.0413 ; m2 = 1.5593 +- 0.0574 ; rho^2 = 2.4216 +- 0.2131  [8/8 bins]
+   [S_geo=12(1-Pbar)+1/4+1x2] m1 = 0.9967 +- 0.0395 ; m2 = 1.5470 +- 0.0614 ; rho^2 = 2.4105 +- 0.2300  [8/8 bins]

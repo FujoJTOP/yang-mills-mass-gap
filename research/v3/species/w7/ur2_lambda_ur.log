@@ -1,0 +1,51 @@
+==============================================================================
+[A] sanity checks on phi^U (exact integers)
+    K_6  (6 plaquettes on one link): |E|=15, phi^U = -120   (expect -120)
+    C_4  (4-cycle):          phi^U = -3   (expect -3: 4 paths -1 each, cycle +1)
+    K_3 --bridge-- K_3:      phi^U = 4   (expect 2*2 = 4  => block product)
+    multiplicative-over-blocks verified; phi^U(chain of k K_6) = 120^k
+    => per-cluster growth floor: 120^(1/6) = 2.220906
+    [A2] 2 bundles + bridge: n=13, |E|=32, phi^U = 14400 (expect 14400 = 120^2)
+    [A2] chain of k bundles costs 7k-1 vertices -> rigorous floor 120^(1/7) = 1.981645
+==============================================================================
+[B] exact enumeration of connected n-sets through a fixed root (4D, Delta=20)
+    n=1  #connected sets=1         m_n=1          max|phi^U|=1       m_n^(1/n)=  1.0000  (0.0s)
+           -> level n=2 built: 20 sets (0.0s)
+    n=2  #connected sets=20        m_n=20         max|phi^U|=1       m_n^(1/n)=  4.4721  (0.0s)
+           -> level n=3 built: 458 sets (0.0s)
+    n=3  #connected sets=458       m_n=514        max|phi^U|=2       m_n^(1/n)=  8.0104  (0.0s)
+           -> level n=4 built: 11132 sets (0.0s)
+    n=4  #connected sets=11132     m_n=14748      max|phi^U|=6       m_n^(1/n)= 11.0200  (0.2s)
+           -> level n=5 built: 280175 sets (0.9s)
+    n=5  #connected sets=280175    m_n=450255     max|phi^U|=24      m_n^(1/n)= 13.5111  (9.5s)
+==============================================================================
+[C] lambda_Ur  and  lambda_Ur * 0.625
+    e*Delta (provable upper bound on lambda_Ur, Penrose+animal) = 54.3656365692
+    tree-sum critical u_c = 19^19/20^20 = 0.018867680126765380755653181076
+    1/u_c = 53.000687  (= effective tree-resummation lambda)
+    threshold for (a): lambda_Ur < 1/u = 1.600000
+
+    estimate of lambda_Ur        lambda       lambda*u     vs 1    
+    rigorous floor: 120^(1/6)    1.98165      1.23853      >1      
+    m_1^(1/1) exact              1.00000      0.62500      <1      
+    m_2^(1/2) exact              4.47214      2.79508      >1      
+    m_3^(1/3) exact              8.01040      5.00650      >1      
+    m_4^(1/4) exact              11.02004     6.88753      >1      
+    m_5^(1/5) exact              13.51113     8.44446      >1      
+    ratio m_2/m_1                20.00000     12.50000     >1      
+    ratio m_3/m_2                25.70000     16.06250     >1      
+    ratio m_4/m_3                28.69261     17.93288     >1      
+    ratio m_5/m_4                30.52990     19.08119     >1      
+    tree-sum 1/u_c               53.00069     33.12543     >1      
+    tree/animal bound e*Delta    54.36564     33.97852     >1      
+
+    worst case (smallest measured) lambda_Ur*u = 0.62500  (u=.625)
+    all estimates exceed 1 -> series sum_n c_n u^n diverges at beta=2.5
+
+    [cross-check] R=u(1+R)^20 at u=0.0104 : R = 0.01363544  (C03-BYPASS:114 reports 0.013635)
+    [cross-check] D_inf(u=0.25) = 1.34486858  (P4-OTHER:103 window [0.690478,1.448374])
+    NOTE: R=0.013635 and D_inf=1.34487 are *not* lambda_Ur (they are the resolved
+          single-tree sum / normalisation at beta<<2.5); quoting them as lambda_Ur
+          would be a category error.  The m_n table above is the real input.
+==============================================================================
+total wall time 10.6 s

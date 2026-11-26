@@ -1,0 +1,18 @@
+threshold 7.0632852705;  K_hat < T  <=>  K_hat/4 < 1.7658213 (only if (prodR)^{1/n}=4)
+cluster                 n                kappa hist  prodR(bd)  root_bd         tau     K_bd  root_ex     K_ex
+beam x1                 6             {1: 18, 6: 1}      8.000   1.4142        1296   3.1408   1.1872   2.6367
+beam x2                11       {1: 24, 2: 4, 6: 2}   1024.000   1.8779    10616832   5.4594   1.5516   4.5107
+beam x3                15 {1: 30, 2: 3, 3: 2, 6: 3}  32768.000   2.0000 74998213632   7.0323   1.6212   5.7005 (R3/R5 by bound)
+
+cube K_2,2,2: tau = 384 (C06 5.3 quotes 384) ; prodR=2^12=4096 ; (prodR*tau)^{1/6} = 10.7840492368
+
+[verdict] per-witness K_hat (phi^U route, exact integer phi, per-cluster prodR):
+  beam x1: n=6 K_hat <= 2.6367 (exact-R where tabulated) / 3.1408 (envelope R<=2^(k/2))
+  beam x2: n=11 K_hat <= 4.5107 (exact-R where tabulated) / 5.4594 (envelope R<=2^(k/2))
+  beam x3: n=15 K_hat <= 5.7005 (exact-R where tabulated) / 7.0323 (envelope R<=2^(k/2))
+  cube:     n=6 K_hat = 10.7840   > T = 7.0633   [T]+[E] (C06 5.3: 10.784)
+
+  => sup_gamma is still attained on the CLOSED-SURFACE (all kappa=2) family;
+     the phi^U giants (n=11,15) carry (prodR)^{1/n} = 1.8779, 2.0000, NOT 4.
+     so 'K_hat >= 4*sup' OVER-counts those witnesses by 4/2.0000 = 2.00x.
+     but K_hat >= 10.7840 > 7.0633 still holds (ratio 1.527).

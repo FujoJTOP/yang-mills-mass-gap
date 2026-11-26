@@ -1,0 +1,29 @@
+================================================================================================
+GH3  SU(2) Wilson  beta=2.5  Ls=6^3 x Lt=20  N=160000 (8 chains x 20000)  gap=4 therm=400  budget=280.0s
+levels: raw(alpha=0.0,n=0), a10n1(alpha=0.1,n=1), a20n1(alpha=0.2,n=1), a30n1(alpha=0.3,n=1), a50n1(alpha=0.5,n=1), a10n3(alpha=0.1,n=3)
+obs   : W11_p0, W11_px, W11_pxxx, W12_p0, W22_p0   (normalisation: W11,W22 -> /3 planes ; W12 -> /6 oriented loops)
+numba=0.68.1 threads=8
+================================================================================================
+[T] hot-config means (control, must be ~0): W11_p0=+0.0114 W11_px=+0.0032 W11_pxxx=+0.0040 W12_p0=+0.0014 W22_p0=+0.0002
+[T] obs0 total=49.3101789273  run3 ref=49.3101789273  diff=+3.55e-14
+[T] hot plaq(all 6 planes)=+0.00694 (must be ~0)
+[T] |loop trace| bound on random configs: max |mean| = 0.0589 (must be <= 1)
+[T] sites=4320 links=17280 U=8.85 MB/ch S=768.0 MB
+D:\Dev\math\research\v3\species\w7\gh3_probe.py:258: RuntimeWarning: overflow encountered in scalar multiply
+  ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)
+[T] compile+smoke: 0.1s
+[E] production: 160000 cfg x (gap 4 + 6 levels x 5 obs) in 524.2s (305.2 cfg/s)  wall=525s
+[E] plaq=0.65251 +- 0.00001  autocorr(lag1)=0.094
+[W] wall 525s exceeded budget 280.0s
+[E] wrote gh3_probe.npz (768.0 MB) -- raw data safe before analysis
+
+### raw  (alpha=0.0, n=0)
+      obs      C(0)       Phi1       Phi2       Phi3       Phi4  S/N(1)  m_eff(1)  m_eff(2)
+   W11_p0    8.3884    0.07396    0.01119    0.00212    0.00087   98.85    1.8882    1.6652
+                 +-    0.00075    0.00064    0.00039    0.00070
+   W11_px    5.9451    0.03309    0.00174   -0.00021    0.00085   52.90    2.9456       nan
+                 +-    0.00063    0.00040    0.00058    0.00067
+ W11_pxxx    4.7145    0.02095    0.00119    0.00027   -0.00005   29.75    2.8640    1.4939
+                 +-    0.00070    0.00057    0.00063    0.00064
+   W12_p0   18.0181    0.09954    0.01747    0.00474    0.00110  133.26    1.7402    1.3052
+                 +-    0.00075    0.00058    0.00038    0.00062

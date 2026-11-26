@@ -1,0 +1,62 @@
+==============================================================================
+RUN1  SU(2) Wilson  beta=2.5  Ls=8^3 x Lt=12  target n=10000 gap=3 therm=400 budget=265.0s levels=(1, 2) tag=b2.5_Ls8Lt12
+w1 = A/C(0)  (atom fraction),  Rbar = -C'(0)/C(0) = M1/M0  (first cumulant)
+==============================================================================
+[T] thermalised: 400 sweeps in 2.5s (Ls=8 Lt=12 ns=6144 links=24576)
+  [cfg 1/10000] plaq=0.6550  15.74 cfg/s  eta 10.6 min  wall=3s
+  [cfg 101/10000] plaq=0.6536  15.83 cfg/s  eta 10.4 min  wall=9s
+  [cfg 201/10000] plaq=0.6530  15.85 cfg/s  eta 10.3 min  wall=15s
+  [cfg 301/10000] plaq=0.6490  15.83 cfg/s  eta 10.2 min  wall=22s
+  [cfg 401/10000] plaq=0.6515  15.84 cfg/s  eta 10.1 min  wall=28s
+  [cfg 501/10000] plaq=0.6534  15.81 cfg/s  eta 10.0 min  wall=34s
+  [cfg 601/10000] plaq=0.6518  15.79 cfg/s  eta 9.9 min  wall=41s
+  [cfg 701/10000] plaq=0.6516  15.77 cfg/s  eta 9.8 min  wall=47s
+  [cfg 801/10000] plaq=0.6513  15.74 cfg/s  eta 9.7 min  wall=53s
+  [cfg 901/10000] plaq=0.6551  15.70 cfg/s  eta 9.7 min  wall=60s
+  [cfg 1001/10000] plaq=0.6540  15.68 cfg/s  eta 9.6 min  wall=66s
+  [cfg 1101/10000] plaq=0.6546  15.67 cfg/s  eta 9.5 min  wall=73s
+  [cfg 1201/10000] plaq=0.6503  15.66 cfg/s  eta 9.4 min  wall=79s
+  [cfg 1301/10000] plaq=0.6525  15.65 cfg/s  eta 9.3 min  wall=86s
+  [cfg 1401/10000] plaq=0.6541  15.63 cfg/s  eta 9.2 min  wall=92s
+  [cfg 1501/10000] plaq=0.6543  15.61 cfg/s  eta 9.1 min  wall=99s
+  [cfg 1601/10000] plaq=0.6495  15.61 cfg/s  eta 9.0 min  wall=105s
+  [cfg 1701/10000] plaq=0.6532  15.61 cfg/s  eta 8.9 min  wall=111s
+  [cfg 1801/10000] plaq=0.6567  15.61 cfg/s  eta 8.8 min  wall=118s
+  [cfg 1901/10000] plaq=0.6563  15.61 cfg/s  eta 8.6 min  wall=124s
+  [cfg 2001/10000] plaq=0.6567  15.62 cfg/s  eta 8.5 min  wall=131s
+  [cfg 2101/10000] plaq=0.6482  15.62 cfg/s  eta 8.4 min  wall=137s
+  [cfg 2201/10000] plaq=0.6548  15.62 cfg/s  eta 8.3 min  wall=143s
+  [cfg 2301/10000] plaq=0.6514  15.62 cfg/s  eta 8.2 min  wall=150s
+  [cfg 2401/10000] plaq=0.6531  15.63 cfg/s  eta 8.1 min  wall=156s
+  [cfg 2501/10000] plaq=0.6502  15.65 cfg/s  eta 8.0 min  wall=162s
+  [cfg 2601/10000] plaq=0.6533  15.66 cfg/s  eta 7.9 min  wall=169s
+  [cfg 2701/10000] plaq=0.6535  15.68 cfg/s  eta 7.8 min  wall=175s
+  [cfg 2801/10000] plaq=0.6501  15.69 cfg/s  eta 7.6 min  wall=181s
+  [cfg 2901/10000] plaq=0.6541  15.70 cfg/s  eta 7.5 min  wall=187s
+  [cfg 3001/10000] plaq=0.6563  15.71 cfg/s  eta 7.4 min  wall=193s
+  [cfg 3101/10000] plaq=0.6526  15.72 cfg/s  eta 7.3 min  wall=200s
+  [cfg 3201/10000] plaq=0.6511  15.74 cfg/s  eta 7.2 min  wall=206s
+  [cfg 3301/10000] plaq=0.6555  15.75 cfg/s  eta 7.1 min  wall=212s
+  [cfg 3401/10000] plaq=0.6521  15.76 cfg/s  eta 7.0 min  wall=218s
+  [cfg 3501/10000] plaq=0.6517  15.77 cfg/s  eta 6.9 min  wall=225s
+  [cfg 3601/10000] plaq=0.6519  15.78 cfg/s  eta 6.8 min  wall=231s
+  [cfg 3701/10000] plaq=0.6523  15.79 cfg/s  eta 6.7 min  wall=237s
+  [cfg 3801/10000] plaq=0.6508  15.79 cfg/s  eta 6.5 min  wall=243s
+  [cfg 3901/10000] plaq=0.6499  15.80 cfg/s  eta 6.4 min  wall=249s
+  [cfg 4001/10000] plaq=0.6484  15.81 cfg/s  eta 6.3 min  wall=256s
+  [cfg 4101/10000] plaq=0.6525  15.81 cfg/s  eta 6.2 min  wall=262s
+[C] wall budget 265.0s hit at cfg 4152/10000
+[E] configs kept: 4152  wall=265s  plaq=0.65236 +- 0.00004
+[T] t0 autocorr of plaq series: lag1:0.143, lag2:0.063, lag4:0.044, lag8:0.052
+
+  lvl       C(0)    C1/C0    C2/C0   m_fit        A   w1=A/C0   w1_err w1@1.546  SNR(t=2)    Rbar    <t>
+  raw    19.8865  0.07116  0.02067   0.891   3.3625    0.1691   0.0306   0.3423       4.1  2.6428  1.190
+ APE1    37.6609  0.00159  0.00331   0.788   0.2333    0.0062   0.0119   0.0115       0.7  6.4417  0.018
+ APE2    55.2518 -0.01194  0.00285   4.000 -35.8568   -0.6490   0.2662  -0.0499       0.6 690.7755 -0.200
+
+[C] overlap |rho| of the level operators on the t=2 slice (off-diag ~ orthogonality):
+     raw  1.000  0.465  0.171
+    APE1  0.465  1.000  0.809
+    APE2  0.171  0.809  1.000
+
+[wall] total 265.2s ; wrote run1_b2.5_Ls8Lt12.npz / .json

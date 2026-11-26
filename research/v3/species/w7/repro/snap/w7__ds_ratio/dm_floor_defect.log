@@ -1,0 +1,60 @@
+reference: M0=1.000000  floor=0.25  atom=0.4  ngrams=301
+
+=== (alpha) finite moments: mass that can hide below eps ===
+  N |   eps=0.05 max/min |   eps=0.125 max/min |   eps=0.20 max/min
+  1 |  5.601e-01/0.0e+00 |  5.717e-01/0.0e+00 |  5.822e-01/0.0e+00 |
+  2 |  3.895e-01/0.0e+00 |  4.121e-01/0.0e+00 |  4.331e-01/0.0e+00 |
+  3 |  3.278e-01/0.0e+00 |  3.609e-01/0.0e+00 |  3.920e-01/0.0e+00 |
+  4 |  2.671e-01/0.0e+00 |  3.173e-01/0.0e+00 |  3.650e-01/0.0e+00 |
+  5 |  2.066e-01/0.0e+00 |  2.755e-01/0.0e+00 |  3.448e-01/0.0e+00 |
+  6 |  1.262e-01/0.0e+00 |  2.095e-01/0.0e+00 |  3.144e-01/0.0e+00 |
+  8 |  2.512e-02/0.0e+00 |  6.648e-02/0.0e+00 |  1.951e-01/0.0e+00 |
+ 10 |  3.127e-03/0.0e+00 |  1.038e-02/0.0e+00 |  5.376e-02/0.0e+00 |
+ 12 |  5.057e-04/0.0e+00 |  1.826e-03/0.0e+00 |  1.073e-02/0.0e+00 |
+ 14 |  6.846e-04/0.0e+00 |  2.375e-03/0.0e+00 |  1.363e-02/0.0e+00 |
+
+=== (gamma) Laplace samples C(t), t in [0,T] (dt=0.5): mass below eps ===
+  N (T=N/2) |   eps=0.05 max/min |   eps=0.20 max/min
+  1 ( 0.5) |  4.470e-01/0.0e+00 |  4.879e-01/0.0e+00 |
+  2 ( 1.0) |  3.108e-01/0.0e+00 |  3.851e-01/0.0e+00 |
+  3 ( 1.5) |  2.360e-01/0.0e+00 |  3.519e-01/0.0e+00 |
+  4 ( 2.0) |  1.300e-01/0.0e+00 |  3.131e-01/0.0e+00 |
+  5 ( 2.5) |  4.788e-02/0.0e+00 |  2.482e-01/0.0e+00 |
+  6 ( 3.0) |  1.052e-02/0.0e+00 |  1.303e-01/0.0e+00 |
+  8 ( 4.0) |  4.287e-04/0.0e+00 |  1.023e-02/0.0e+00 |
+ 10 ( 5.0) |  5.736e-05/0.0e+00 |  1.645e-03/0.0e+00 |
+ 12 ( 6.0) |  6.204e-06/0.0e+00 |  2.183e-04/0.0e+00 |
+
+=== decay of the moment defect d_N(0.20) ===
+  N=  1  d_N=5.8219e-01
+  N=  2  d_N=4.3308e-01
+  N=  3  d_N=3.9201e-01
+  N=  4  d_N=3.6497e-01
+  N=  5  d_N=3.4479e-01
+  N=  6  d_N=3.1436e-01
+  N=  7  d_N=2.6998e-01
+  N=  8  d_N=1.9509e-01
+  N=  9  d_N=1.1696e-01
+  N= 10  d_N=5.3758e-02
+  N= 11  d_N=2.2439e-02
+  N= 12  d_N=1.0728e-02
+  N= 13  d_N=1.1192e-02
+  N= 14  d_N=1.3634e-02
+  strictly positive for all N<=14 : True
+  fitted log-slope over N=5..14  : -0.4595  (d_N ~ e^(-0.459 N))
+
+=== 1_{G_eps} and continuous functionals along the gapless ray nu_h=(1-h)nu+h*delta_0 ===
+     h      floor   D8_L1(nu_h,nu)   M1        chi       1_{G_0.2}  sup  d_8(0.2)
+   1.0e-01  0.000   1.830e-01     1.603677  1.653301     0     4.45e-02
+   1.0e-02  0.000   1.830e-02     1.764045  1.818631     0     4.45e-03
+   1.0e-03  0.000   1.830e-03     1.780081  1.835164     0     4.45e-04
+   1.0e-04  0.000   1.830e-04     1.781685  1.836817     0     4.45e-05
+   1.0e-06  0.000   1.830e-06     1.781861  1.836999     0     4.45e-07
+   1.0e-09  0.000   1.830e-09     1.781863  1.837001     0     4.45e-10
+  -> every weak-* continuous datum moves by O(h); the floor jumps at h=0 only.
+  -> 1_{G_0.2} is 0 for every h>0 and 1 at h=0 : discontinuous exactly at the ray endpoint.
+
+=== SUMMARY (one-sidedness) ===
+  max mass below eps  > 0  for all finite N   => 'floor >= eps' unprovable from finite data
+  min mass below eps  = 0  for all finite N   => 'floor <  eps' unpinnable from finite data by itself
+  both directions fail at every finite N; only the infinite datum (or a discontinuity) decides.

@@ -1,0 +1,175 @@
+============================================================================================================
+dn_density.py -- task-2 / R3 : is  sup|grad S_W|^2 ∝ L^4  a growth or the face count?
+SU(2), beta = 2.5, bi-invariant frame (G = delta), periodic torus, L = 2,4,6,8
+normalisation: |grad S_W|^2 = sum_l sum_a g[l,a]^2  (identical to mc_lattice.py 'gradnorm')
+============================================================================================================
+
+[S1] SANITY -- finite differences vs the analytic gradient, and the corpus numbers
+  L=2: |fd-g|=3.21e-08   z2(s=0.5): S_W=120.000 [corpus 120.0]   sum|g|^2=900.0000 [corpus 900.0]
+  L=4: |fd-g|=4.48e-07   z2(s=0.5): S_W=1920.000 [corpus 1920.0]   sum|g|^2=14400.0000 [corpus 14400.0]
+  => gradient routine reproduces mc_lattice.py bit-for-bit on S_W and on the reported
+     900 / 14400.  The quantity is a POINTWISE value, evaluated at ONE configuration.
+
+[S2] WHAT THE NUMBER IS -- pointwise values at configurations, no measure average
+  config                  S_W       sum|g|^2 per plaquette   per link
+-- L=2   E=64 links   N_p=96 plaquettes
+  pure                  0.000         0.0000       0.0000     0.0000  
+  minus1                0.000         0.0000       0.0000     0.0000  
+  z2 (s=1)            240.000         0.0000       0.0000     0.0000  
+  z2 s=0.25            35.147       450.0000       4.6875     7.0313  
+  z2 s=0.5            120.000       900.0000       9.3750    14.0625  
+  z2 s=0.75           204.853       450.0000       4.6875     7.0313  
+  haar#0              243.126       400.6105       4.1730     6.2595  
+  haar#1              223.802       445.7987       4.6437     6.9656  
+  haar#2              245.705       398.2535       4.1485     6.2227  
+-- L=4   E=1024 links   N_p=1536 plaquettes
+  pure                  0.000         0.0000       0.0000     0.0000  
+  minus1                0.000         0.0000       0.0000     0.0000  
+  z2 (s=1)           3840.000         0.0000       0.0000     0.0000  
+  z2 s=0.25           562.355      7200.0000       4.6875     7.0313  
+  z2 s=0.5           1920.000     14400.0000       9.3750    14.0625  
+  z2 s=0.75          3277.645      7200.0000       4.6875     7.0313  
+  haar#0             3862.957      7079.1792       4.6088     6.9133  
+  haar#1             3815.042      6886.4994       4.4834     6.7251  
+  haar#2             3809.908      7095.1710       4.6193     6.9289  
+  (corpus rows, for comparison: z2_s0.5 -> 900 @L=2, 14400 @L=4 ; z2_s0.25/0.75 -> 450/7200)
+  NOTE: pure, minus1 and the s=1 centre-element config all give |grad S_W|^2 = 0 exactly
+        (they are critical points: every plaquette is +-1 and tr(lam_a * +-1) = 0).
+
+[S3] THE INTENSIVE QUANTITY  d := |grad S_W|^2 / N_p ,  N_p = 6 L^4   (L = 2,4,6,8)
+  bound D1 (rigorous):  d <= 6 beta^2 = 37.5000  for ALL L and ALL phi
+  L           E     N_p      E/N_p   d(z2 s=.5) d(haar mean)  d(haar max)  d/bound
+      2      64      96     0.6667     9.375000     4.546284     5.612608   0.2500
+      4    1024    1536     0.6667     9.375000     4.684375     4.974280   0.2500
+      6    5184    7776     0.6667     9.375000     4.668748     4.810247   0.2500
+      8   16384   24576     0.6667     9.375000     4.675595     4.695815   0.2500
+
+  exact value at z2(s=0.5):  1.5 beta^2 = 9.375000 = (18/8) * (E/N_p) * beta^2
+  per-link value at z2(s=0.5): 2.25 beta^2 = 14.062500 = 18 * beta^2 / 8
+  -> both are ratios of INCIDENCE COUNTS: 18 = aligned plaquette-link incidences at a
+     direction-1 link, 8 = per-plaquette gradient normalisation, E/N_p = 4/6. No dynamics.
+
+[S3b] CERTIFICATE of D1.  For one link l:  g[l,a] = sum_{p incident to l} s_{p,l,a},
+      s_{p,l,a} = -(beta/2) tr(lam_a X_{p,l}) ;  Cauchy-Schwarz over the <=6 plaquettes:
+        |g_l|^2 <= 6 sum_p sum_a s^2 = 6 * (beta^2/4) sum_p sin^2(psi_p) <= 9 beta^2
+      => sum_l |g_l|^2 <= 9 beta^2 * E = 36 beta^2 L^4  =>  d <= 36/6 * beta^2 = 6 beta^2.
+  L=2: sum_l |g_l|^2 =      900.000   6*sum_p sum s^2 =     1800.000   ratio = 0.5000  (<=1 = certificate holds)
+  L=4: sum_l |g_l|^2 =    14400.000   6*sum_p sum s^2 =    28800.000   ratio = 0.5000  (<=1 = certificate holds)
+  L=6: sum_l |g_l|^2 =    72900.000   6*sum_p sum s^2 =   145800.000   ratio = 0.5000  (<=1 = certificate holds)
+  L=8: sum_l |g_l|^2 =   230400.000   6*sum_p sum s^2 =   460800.000   ratio = 0.5000  (<=1 = certificate holds)
+
+[S4] L-EXPONENT  d(L) = A L^p   (log-log least squares over L = 2,4,6,8)
+  d(z2 s=0.5):  9.375000, 9.375000, 9.375000, 9.375000   spread = 0.00e+00
+                exponent p = -0.000000 +- 1.3e-15   (A = 9.375000)
+  d(haar mean): 4.5463, 4.6844, 4.6687, 4.6756
+                +- 0.4602, 0.1149, 0.0635, 0.0139
+                exponent p = +0.0027 +- 0.0271
+  raw |grad S_W|^2 ratio L=2 -> L=4 : 16.0000   (= 16 = (4/2)^4 ; L^8 would give 256)
+
+[S5] PROBING sup_phi -- greedy single-link ascent from three seeds (L=2)
+  seed = z2 s=0.5  (start d = 9.3750)
+      sweep  1: sum|g|^2 =   1421.4971   d = 14.807261
+      sweep  2: sum|g|^2 =   1812.6837   d = 18.882122
+      sweep  3: sum|g|^2 =   1935.1547   d = 20.157862
+      sweep  4: sum|g|^2 =   1986.8004   d = 20.695838
+      sweep  5: sum|g|^2 =   2021.1356   d = 21.053496
+      sweep  6: sum|g|^2 =   2050.0987   d = 21.355195
+      sweep  7: sum|g|^2 =   2063.2999   d = 21.492707
+      sweep  8: sum|g|^2 =   2071.2332   d = 21.575346
+    -> d = 21.575346   (d / d_z2s05 = 2.301)
+  seed = haar  (start d = 4.9300)
+      sweep  1: sum|g|^2 =   1200.5273   d = 12.505493
+      sweep  2: sum|g|^2 =   1593.2655   d = 16.596516
+      sweep  3: sum|g|^2 =   1765.4867   d = 18.390487
+      sweep  4: sum|g|^2 =   1872.9112   d = 19.509492
+      sweep  5: sum|g|^2 =   1940.6519   d = 20.215124
+      sweep  6: sum|g|^2 =   1966.9506   d = 20.489069
+      sweep  7: sum|g|^2 =   1986.0272   d = 20.687783
+      sweep  8: sum|g|^2 =   2000.4210   d = 20.837719
+    -> d = 20.837719   (d / d_z2s05 = 2.223)
+  seed = random  (start d = 4.8105)
+      sweep  1: sum|g|^2 =   1089.6233   d = 11.350242
+      sweep  2: sum|g|^2 =   1441.0699   d = 15.011145
+      sweep  3: sum|g|^2 =   1688.6981   d = 17.590605
+      sweep  4: sum|g|^2 =   1834.4505   d = 19.108860
+      sweep  5: sum|g|^2 =   1912.4309   d = 19.921155
+      sweep  6: sum|g|^2 =   1951.2316   d = 20.325329
+      sweep  7: sum|g|^2 =   1972.2732   d = 20.544512
+      sweep  8: sum|g|^2 =   1980.7321   d = 20.632626
+    -> d = 20.632626   (d / d_z2s05 = 2.201)
+  BEST at L=2: d = 21.575346  [seed z2 s=0.5]  ->  d_sup >= 21.5753
+  z2(s=0.5) density 1.5 beta^2 = 9.3750 is NOT the sup: it is 2.30x below.
+  bound 6 beta^2 = 37.5000  ->  best/bound = 0.5753   =>  9.375 <= d_sup <= 37.5
+
+  LIFT TEST: a period-2 configuration lifts EXACTLY to any even L (identical plaquettes,
+  same per-link gradient), so the density must be identical -- this is an identity, not a fit.
+    L=4: d = 21.575346   (L=2 value 21.575346)
+    L=6: d = 21.575346   (L=2 value 21.575346)
+    L=8: d = 21.575346   (L=2 value 21.575346)
+
+[S6] HESSIAN SIDE -- FD Hessian, row-sum (Gershgorin) bound, binding eigenvector
+     D2 (structural): a plaquette touches 4 links, a link sits in 6 plaquettes => bounded
+     degree => max_i sum_j |Hess_ij| is O(beta) with an L-independent constant.
+  L=2: lambda_min = -9.999998   lambda_max = +7.499999   max row-sum = 15.0000 = 6.0000 beta   (0.1s)
+  L=4: lambda_min = -9.999998   lambda_max = +7.499999   max row-sum = 15.0000 = 6.0000 beta   (17.0s)
+  => the Hessian is NOT extensive: both eigenvalues and row sums are identical at L=2,4.
+
+  binding eigenvector structure (L=2, z2 config):
+    lambda_min = -9.999998   ||v||^2 = 1.000000
+    direction 1: mass = 0.750000
+       gen 1: mass = 0.000000   distinct values =  1   range [-0.0000, +0.0000]
+       gen 2: mass = 0.714578   distinct values =  2   range [-0.2113, +0.2113]
+       gen 3: mass = 0.035422   distinct values =  2   range [-0.0471, +0.0471]
+    direction 2: mass = 0.083333
+       gen 1: mass = 0.000000   distinct values =  1   range [-0.0000, +0.0000]
+       gen 2: mass = 0.079398   distinct values =  2   range [-0.0704, +0.0704]
+       gen 3: mass = 0.003936   distinct values =  2   range [-0.0157, +0.0157]
+    direction 3: mass = 0.083333
+       gen 1: mass = 0.000000   distinct values =  1   range [-0.0000, +0.0000]
+       gen 2: mass = 0.079398   distinct values =  2   range [-0.0704, +0.0704]
+       gen 3: mass = 0.003936   distinct values =  2   range [-0.0157, +0.0157]
+    direction 4: mass = 0.083333
+       gen 1: mass = 0.000000   distinct values =  1   range [-0.0000, +0.0000]
+       gen 2: mass = 0.079398   distinct values =  2   range [-0.0704, +0.0704]
+       gen 3: mass = 0.003936   distinct values =  2   range [-0.0157, +0.0157]
+
+  Rayleigh quotient of that eigenvector, LIFTED periodically (exact identity at any even L)
+    L=2: RQ = -10.000000   (lambda_min = -9.999998)
+    L=4: RQ = -10.000000
+    L=6: RQ = -10.000000
+    L=8: RQ = -10.000000
+
+  naive 'uniform on the direction-1 links' modes (corpus description) -- RQ:
+    L=2: RQ(dir1, gen1..3) = +0.0000 +0.0000 +0.0000   RQ(all links, gen3) = +0.0000
+    L=4: RQ(dir1, gen1..3) = +0.0000 +0.0000 +0.0000   RQ(all links, gen3) = -0.0000
+    L=6: RQ(dir1, gen1..3) = +0.0000 +0.0000 +0.0000   RQ(all links, gen3) = -0.0000
+    L=8: RQ(dir1, gen1..3) = +0.0000 +0.0000 +0.0000   RQ(all links, gen3) = -0.0000
+  => those flat modes are EXACTLY zero at a centre-element configuration (the two
+     occurrences of a direction-1 link in a plaquette carry the same right multiplier
+     and U_1 = +-1 commutes with everything) => the corpus' description of the binding
+     mode as 'uniform on the direction-1 links' is not correct; it is a staggering mode
+
+[S7] AVERAGE vs SUP -- Gibbs measure at beta=2.5 (rough single-link Metropolis, L=2, [V])
+  acceptance = 0.317   <d>_Gibbs = 5.1227 +- 0.0434
+  Haar mean (L=2) = 4.5463 ; d_sup candidate >= 21.5753
+  sup/average separation (densities) = 4.21x  -- same order, no exponential gap
+
+[S8] TRACE vs OPERATOR NORM -- where the L^4 actually comes from
+     tr(Cov) = E|grad S_W|^2 - |E grad S_W|^2 = THE NUMBER THE CORPUS QUOTES (dimension E*3)
+     ||Cov||_op <= row sum  sum_{r,b} |Cov_{(0,a),(r,b)}|  (Gershgorin, block-Toeplitz)
+     Bounding an operator norm by the trace is exactly a factor dim = E = 4 L^4.
+  L     n_samp      tr(Cov)  tr(Cov)/N_p       rowsum    tr/rowsum
+     2     160      442.493       4.6093       3.5064       126.20
+       (16 shift classes used; the L=2 set is COMPLETE, L>=4 is a lower bound)
+     4      64     7077.253       4.6076       4.3105      1641.86
+       (81 shift classes used; the L=2 set is COMPLETE, L>=4 is a lower bound)
+     6      32    35286.332       4.5379       3.4048     10363.64
+       (81 shift classes used; the L=2 set is COMPLETE, L>=4 is a lower bound)
+  => tr(Cov) grows like N_p = 6L^4 with a flat density (~4.6), while the row sum stays O(1)
+     and L-independent.  ||Cov||_op = O(1);  the L^4 is the MATRIX DIMENSION E = 4L^4.
+
+  And at the t = infinity endpoint the identity gives Cov_nu(grad S_W) = E_nu[Hess S_W]
+  exactly, so ||Cov||_op <= sup_phi max_i rowsum_i(Hess S_W) = 6 beta = 15 is RIGOROUS
+  (an average is bounded by the sup of the row sums, and the row sums are L-uniform).
+
+DONE.

@@ -1,0 +1,38 @@
+================================================================================================
+(1) flat Gaussian toy: exact check of the criterion for two covariance ansaetze
+  QUADRATIC V0  (a) Cdot = e^{-tA}        : 1/gamma =     1.6663   gamma =   0.600127   lam_dot(T) = +0.15002
+  QUADRATIC V0  (b) Cdot = 1 (T3* ansatz) : 1/gamma =     2.9999   gamma =   0.333344   lam_dot(T) = +0.03000
+  FREE V0 = 0   (a) Cdot = e^{-tA}        : 1/gamma =     3.3324   gamma =   0.300082   lam_dot(T) = +0.15000
+  FREE V0 = 0   (b) Cdot = 1 (T3* ansatz) : 1/gamma =    29.9990   gamma =   0.033334   lam_dot(T) = +0.00000
+  exact answer for (a) with V0 = 0 (PL-POLCHINSKI 6.3): gamma = lam_min(A) = 0.300000
+  => the T3* ansatz C_t = t g^{-1} (Cdot = const) gives lam_dot = 1/(t + 1/lam_min)
+     for a quadratic V0 (gamma finite) but lam_dot = 0 for the FREE field: in the flat
+     case it therefore has no convexification of its own.  On a compact group the
+     missing convexification is supplied by Ric/2 = (N/8) g, which is why the group
+     criterion survives the free-field test with gamma -> N/8 > 0.
+
+================================================================================================
+(2) compact group: the asymptotic value of lam_dot is lam_min(Ric/2) = N/8
+  SU(2): lam_dot -> N/8 = 0.2500  (beta-independent, because V_t -> const)
+  SU(3): lam_dot -> N/8 = 0.3750  (beta-independent, because V_t -> const)
+  SU(4): lam_dot -> N/8 = 0.5000  (beta-independent, because V_t -> const)
+  SU(5): lam_dot -> N/8 = 0.6250  (beta-independent, because V_t -> const)
+
+================================================================================================
+(3) gamma from a lower bound C and asymptotic rate a
+  C=  0.0 T= 1.0 a=0.25:  gamma >= 1.667e-01   (positive for every finite C)
+  C=  0.0 T= 5.0 a=0.25:  gamma >= 7.143e-02   (positive for every finite C)
+
+  C=  3.5 T= 1.0 a=0.25:  gamma >= 1.520e-04   (positive for every finite C)
+  C=  3.5 T= 5.0 a=0.25:  gamma >= 4.504e-17   (positive for every finite C)
+
+  C= 10.0 T= 1.0 a=0.25:  gamma >= 3.435e-10   (positive for every finite C)
+  C= 10.0 T= 5.0 a=0.25:  gamma >= 2.657e-45   (positive for every finite C)
+
+  C= 40.0 T= 1.0 a=0.25:  gamma >= 3.008e-36   (positive for every finite C)
+  C= 40.0 T= 5.0 a=0.25:  gamma >= 1.368e-175   (positive for every finite C)
+
+  => (star star) is never the obstruction on a compact group.  The obstruction is
+     L-UNIFORMITY of C, and C is controlled by sup|grad S_W|^2, which is EXTENSIVE:
+     measured (mc_lattice.log): sum_links |grad S_W|^2 = 900 at L=2 and 14400 at L=4
+     (SU(2), beta=2.5) -- a factor 16 for L -> 2L, i.e. exactly L^4, 14.06 per link.

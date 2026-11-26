@@ -1,0 +1,949 @@
+% =====================================================================
+\section{The state of $H1$ after the certificate day: one strict certificate, eight strict
+lemmas, one window at two grades, and twelve roads that end}
+\label{ch:h1-status}
+% =====================================================================
+
+Chapter~\ref{ch:scalar-h1} reduced the family $\{H1(\delta)\}$ to the single scalar statement
+$G''(0)\ge\delta$ \eqref{eq:scalar-rule} and exhibited a solvable model in which it fails. A ledger
+therefore has one question left to answer: \emph{is the sign of $G''(0)$ ever \emph{known}, on any
+model, without sampling?} This chapter records the day on which the answer became yes for exactly one
+object, and records with equal care the five places where it is still no.
+
+The five deliverables are these, and they do not overlap.
+
+(i) \emph{One strict certificate} \LT{}/\LC: on a single plaquette, $\mathrm{SU}(2)$, $\beta=2.5$,
+$a=0$, the gap $S-D$ is bounded away from zero by interval arithmetic at three values of the boundary
+holonomy, and --- through a monotonicity that is proved in its identities and measured in its sign ---
+on the whole interval $\theta\in[0,\pi]$ (\S\ref{sec:h1s-cert}). (ii) \emph{Eight strict lemmas}
+\LT{}: a curvature floor $\Phi''\succeq(N/12)\mathrm{id}$ valid for every $X$ and every direction, the
+sign of the mean curvature, a Stein identity that turns the variance--curvature comparison into a
+square, a pointwise ratio that turns the criterion into one moment inequality, two moment inequalities
+with three independent proofs each, the skeleton identity of the whole reduction, and the exact
+$O(a)$ splitting that replaces an approximate affinity (\S\ref{sec:h1s-lemmas}). (iii) \emph{One
+window at two grades} \LT{}/\LC: the analytic window $\beta\sin^{2}(\theta/2)\le\cos(\theta/2)$, and a
+measured window that is $2.3$ times wider and whose tightness is one unproved monotonicity
+(\S\ref{sec:h1s-window}). (iv) \emph{One lattice ledger} \LE: $G''(0)>0$ at every measured coupling
+on $L=2$ and at $L=3$, with the sign carried by $16/16$ and $8/8$ chains (\S\ref{sec:h1s-lattice}).
+(v) \emph{Twelve roads that end} \LN: twelve classical or structural routes, each with the number that
+kills it (\S\ref{sec:h1s-roads}).
+
+And one boundary, stated before any of it is read as progress (\S\ref{sec:h1s-limit}): the certificate
+is a $0$-dimensional toy at one coupling with $a=0$; the physically relevant volume $L=2$ is
+$143$-dimensional and has no certificate at all; the $\mathrm{SU}(3)$ gap is measured and not proved;
+and $a\neq0$ has no criterion, only an exact splitting. \textbf{Nothing here proves a gap and nothing
+here opens a route. Clay remains $0\%$.}
+
+\medskip
+\noindent\textbf{\LN{} \emph{What these results do not imply, stated before they are read as progress.}}
+The results of this chapter establish positivity of $G''(0)$. \textbf{They do not imply a mass gap.} Two
+\LT{}-level obstructions are recorded in \code{docs/paper-v5} \S2--\S3: (i)
+$G''=\Delta_{\mathrm{dyn}}+W_{\mathrm{full}}$ with $W_{\mathrm{full}}\ge N/12>0$, so $G''>0$ is strictly
+weaker than $\Delta_{\mathrm{dyn}}>0$; (ii) the harmonic-oscillator~$\otimes$~free-mode counterexample has
+$G''=2\omega>0$ while $m=0$. The correct target is $f_{1}^{2}$ (the $O=\tfrac14\operatorname{tr}F^{2}$
+pole residue) together with $(CP)$, see \code{paper-v5} \S7.
+
+\src{\code{docs/paper-v5} \S2--\S3, whose second obstruction is M6 (``harmonic oscillator
+$\otimes$ free mode'': $G''=2\omega>0$ while $m=0$), and \S7 (the target $f_{1}^{2}$ together with
+$(CP)$); \code{T01-IMPLY.md}, \code{T03-TOY.md}. Nothing below is retracted: every label of this chapter
+stands as stated. What is withdrawn is one \emph{reading} of them --- that positivity of $G''(0)$ is
+itself a route to $m>0$.}
+
+\subsection{The certificate: $S-D>0$ on a single plaquette}
+\label{sec:h1s-cert}
+
+\subsubsection*{The object, and the two exact simplifications that make it finite-dimensional}
+
+Take one plaquette, $U=\exp(\xi\cdot\sigma/2)$ with $|\xi|<2\pi$, boundary holonomy
+$B=\exp(i\theta\sigma_{3}/2)$, $v=e_{3}$, and condition on the slice $\xi_{3}=a=0$; write
+$u=\rho/2$, $c=\cos(\theta/2)$, $s=\sin(\theta/2)$ and
+$g(u)=\sin u/(2u)$. Then
+\begin{equation}
+G=\partial_{\xi_{3}}S_W=\beta s\,g(u),\qquad
+H=\partial^{2}_{\xi_{3}}S_W=\tfrac{\beta c}{2}\,g(u),\qquad
+\Phi=-\log J,\quad J=\frac{\sin^{2}u}{u^{2}} ,
+\label{eq:h1s-GH}
+\end{equation}
+and two facts are exact for \emph{every} $\theta$, not merely at $\theta=\pi$:
+\begin{enumerate}[label=(\roman*)]
+\item $\Phi$ depends on $\rho$ alone and the slice $\xi_{3}=0$ is tangent to the sphere of constant
+  $\rho$; hence $\Phi'=\Phi_{\rho}\,\xi_{3}/\rho\equiv0$ pointwise, so the conditioned variance has
+  \emph{no} cross term and $\operatorname{Var}(G+\Phi')=\operatorname{Var}(G)$;
+\item the weight on the slice collapses to one dimension,
+  $\nu\propto e^{-\beta(1-c\cos u)}\sin^{2}u\,u^{-1}\,\mathrm{d} u$ on $(0,\pi)$.
+\end{enumerate}
+Consequently
+\begin{equation}
+S:=E[H+\Phi'']=\tfrac{\beta c}{2}\,E_{\nu}[g]+E_{\nu}[\Phi''],\qquad
+D:=\operatorname{Var}(G)=\beta^{2}s^{2}\operatorname{Var}_{\nu}(g),
+\qquad
+\Phi''(u)=\frac{1}{2u^{2}}-\frac{\cot u}{2u} ,
+\label{eq:h1s-SD}
+\end{equation}
+with the gap of the whole reduction being $\mathrm{gap}(\theta):=S-D=G''(0)$ \eqref{eq:scalar-identity}.
+The first of (i)--(ii) is the reason the certificate is cheap: at $\theta=\pi$ the action on the slice
+is the constant $\beta$, the measure is \emph{exactly} Haar, $H\equiv0$ pointwise, and
+$E[\Phi'']=1/(4Z)=1/(2\,\mathrm{Cin}\,2\pi)=0.20511530$ is an integration by parts away from exact
+($\Phi''w=-\tfrac14\mathrm{d}[\sin^{2}u/u^{2}]/\mathrm{d} u$). \LT
+
+\src{\code{research/v3/species/Q11-CERT.md} \S1.1--1.4 (the model, the three derivatives,
+$\Phi'\equiv0$, the four entire integrands, and the exact $NS=1/4$); \code{R03-CERT-THETA.md} \S1 (the
+same reduction for general $\theta$, and the explicit correction that $\Phi'\equiv0$ holds for all
+$\theta$); \code{Q04-WEYL.md} (2.1) and \S1.3 (that the flat-chart measure of the model \emph{is} Haar,
+$\mathrm{d} U=(1/4\pi^{2})J\,\mathrm{d}^{3}\xi$ exactly, so Weyl's formula applies rather than being analogous);
+\code{ch18-scalar-h1.tex} \eqref{eq:scalar-identity} for the identification $\mathrm{gap}=G''(0)$.}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(three certified values, $S-D>0$)}
+\emph{On a single plaquette, $\mathrm{SU}(2)$, $\beta=2.5$, slice $\xi_{3}=0$, $v=e_{3}$,
+$\|v\|=1$, the interval arithmetic described below certifies}
+\begin{equation}
+\mathrm{gap}(0)=0.729924128620548449,\qquad
+\mathrm{gap}(\pi/2)=0.5429439223536897638,\qquad
+\mathrm{gap}(\pi)=0.1359947110419882110,
+\label{eq:h1s-points}
+\end{equation}
+\emph{each with a rigorous enclosure of width $\pm10^{-55}$, and in each case the lower end of $S$
+exceeds the upper end of $D$; at $\theta=0$ one has $D\equiv0$ exactly, because $s=0$ makes $G$
+vanish pointwise.} \LT{}
+\end{claimbox}
+
+\src{\code{R10-AUDITCERT.md} \S0 and \S2 (the three values, the enclosures, the three independent
+numerical roads: its own $256\times20$ Gauss--Legendre with Cauchy remainder
+$\le3.1\times10^{-82}$, \code{mp.quad} at $\mathrm{dps}=45$ agreeing to $10^{-30}$, and
+\code{q04\_weyl.moments} agreeing to $10^{-16}$); \code{Q11-CERT.md} \S2.2 and \S5 (the
+$\theta=\pi$ value, the intervals, and $\beta^{*}$); \code{R03-CERT-THETA.md} \S2.2 and \S3.1 (the
+first certificate at $\theta\neq\pi$); \code{R06-GAPMONO.md} \S4 (the same three values used as an
+independent order check on the monotonicity).}
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}lrrr@{}}
+\toprule
+$\theta$ & $S$ & $D$ & $\mathrm{gap}=S-D$\\
+\midrule
+$0$      & $0.729924128620548449$ & $0$ (exact) & $\mathbf{+0.729924128620548449}$\\
+$\pi/2$  & $0.5581836427245872055$ & $0.0152397203708974417$ & $\mathbf{+0.5429439223536897638}$\\
+$\pi$    & $0.2051152971230731480$ & $0.0691205860810849369$ & $\mathbf{+0.1359947110419882110}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\subsubsection*{What ``strict'' means here, and the two bugs the standard caught}
+
+The pipeline has five ingredients and each one is machine-checked rather than asserted
+(\code{Q11-CERT.md} \S2.1, \code{R03-CERT-THETA.md} \S2.1): the Taylor coefficients of the four
+entire integrands are \emph{exact rationals} (\code{Fraction}; at $\theta=\pi/2$ in $\mathbb{Q}[\sqrt2]$,
+never floating point); the integration is term by term,
+$\int_{0}^{\pi}u^{k}\,\mathrm{d} u=\pi^{k+1}/(k+1)$, which is an identity for entire functions and not a
+quadrature; $\pi$ and $\sqrt2$ enter only as $800$-bit \code{libmp} intervals with directed rounding
+(\code{'f'} down, \code{'c'} up); every arithmetic operation carries an outward padding
+($2^{-400}$ absolute in \code{q11}, relative in \code{r03}); and the truncation is bounded by a Cauchy
+estimate, $K=260$ and $K=400$ respectively. The one input that is not pure arithmetic is
+\code{libmp}'s rounding behaviour, and the padding covers it by more than a hundred orders of
+magnitude.
+
+The evidence that the directed rounding is \emph{actually} happening is the width pattern, not the
+endpoints: \code{q11}'s width for $Z$ is $2.018\times10^{-118}$, and
+$2.018\times10^{-118}/(2^{-400})=522=2(K_{\max}+1)$, i.e.\ exactly the per-operation accumulation of the
+pad. A "high precision, roughly" computation would give width $0$ (identical endpoints) or ulp noise,
+never that number. Two genuine bugs were found and fixed by using $\theta=\pi$ as a regression: the
+power index of $\sin^{4}u/(4u^{3})$, which corrupted only $\mathrm{Var}(g)$ and was caught because the
+regression reproduces \code{q11}'s $0.0110592937$; and the \emph{absolute} padding, which under the
+catastrophic cancellation of the $\theta\neq\pi$ series (peak terms $\sim10^{7}$, coefficients as small
+as $8.5\times10^{-227}$) inflated $Z$ to $\pm1.56\times10^{76}$ with the endpoints inverted --- the fix
+is a purely relative pad, after which the $\theta=\pi/2$ width ($3.5\times10^{-21}$) matches the
+magnitude of its own Cauchy tail ($1.77\times10^{-21}$) instead of collapsing to a point. \LT
+
+\src{\code{Q11-CERT.md} \S2.1 (the five ingredients and the $522=2(K_{\max}+1)$ width identity),
+\S2.2 (all intervals with widths and tails); \code{R03-CERT-THETA.md} \S2.1 (the two bugs, both found
+by the $\theta=\pi$ regression, which reproduces \code{q11} to $4\times10^{-41}$), \S2.2 (the
+interval table); \code{R10-AUDITCERT.md} \S2 (an independently written interval class and an
+independent quadrature with a true remainder bound, not a heuristic one).}
+
+\begin{claimbox}{cE}
+\claimhead{Evidence}{(one number in this chapter had to be withdrawn, and the audit found it)}
+\emph{The first certificate at $\theta\neq\pi$ reported $\mathrm{gap}(0)=0.729924127576750\ldots$
+with an enclosure of width $1.4\times10^{-10}$; an independent implementation gives
+$0.729924128620549$, higher by $1.044\times10^{-9}$, and that enclosure does \emph{not} contain the
+true value. The four molecular integrals $Z,N_{A},N_{B},N_{S}$ and their tails \emph{are} valid
+enclosures --- the audit verifies that its own $Z\,e^{-\beta c}$ lies inside them, at a distance
+equal to their own tails ($7.4\times10^{-11}$ and $1.8\times10^{-21}$) --- so the defect is width loss
+in the quotient: the intervals for $E[g]$ and $E[\Phi'']$ were printed with collapsed endpoints and
+the tails did not propagate through the division. The same audit finds the $\theta=\pi/2$ enclosure
+exceeded by $50\times$ for the same reason. The sign verdict never moved (the true value is
+\emph{larger}), and a second route had already flagged the same $7.8\times10^{-10}$ discrepancy from a
+different pair of coordinates.} \LE{}
+\end{claimbox}
+
+\src{\code{R10-AUDITCERT.md} \S0, \S3 (the diagnosis, the $7.8\times10^{-10}$ in $E[g]$ and the
+$6.9\times10^{-11}$ in $E[\Phi'']$ whose weighted sum is the $1.04\times10^{-9}$ of the gap) and \S4
+(that $D\equiv0$ at $\theta=0$ is an identity, so that clause is unaffected);
+\code{R06-GAPMONO.md} \S4 (the independent flag, from $u$- and $x$-coordinate quadratures).
+\textbf{What stands}: \eqref{eq:h1s-points}, with $\theta=0$ at $\pm10^{-55}$ rather than
+$\pm10^{-10}$, and with the $\theta=0$ entry \emph{corrected} rather than inherited.}
+
+\subsubsection*{From three points to the whole interval}
+
+Three points do not make an interval. The passage uses one structural fact and one measurement, and
+they are of different kinds, so the grading is split accordingly.
+
+\emph{The structural fact} \LT. Put $c=\cos(\theta/2)$ and $x=\cos u$; then
+$\sin^{2}u\,u^{-1}\mathrm{d} u=w(x)\mathrm{d} x$ with $w(x)=\sqrt{1-x^{2}}/\arccos x$, so
+\begin{equation}
+\nu_{c}\ \propto\ e^{\beta cx}\,w(x)\,\mathrm{d} x,\qquad x\in(-1,1),
+\label{eq:h1s-expfam}
+\end{equation}
+a one-parameter exponential family with sufficient statistic $x$. Differentiating $\log Z(c)$ gives
+the covariance formula $\partial_{c}E_{\nu}[f]=\beta\operatorname{Cov}_{\nu}(f,x)$ for every $f$, and
+the derivative of the gap splits into five terms:
+\begin{equation}
+\partial_{c}\,\mathrm{gap}=\underbrace{\tfrac{\beta}{2}E[g]}_{T_{1}>0}
++\underbrace{\tfrac{\beta^{2}c}{2}\operatorname{Cov}(g,x)}_{T_{2}>0}
++\underbrace{\beta\operatorname{Cov}(\Phi'',x)}_{T_{3}<0}
++\underbrace{2\beta^{2}c\operatorname{Var}(g)}_{T_{4}>0}
++\underbrace{T_{5}}_{\text{sign open}} .
+\label{eq:h1s-mono}
+\end{equation}
+$T_{1}>0$ is trivial; $T_{2}>0$ is the rearrangement inequality, since $g$ and $x$ are both strictly
+decreasing in $u$; $T_{4}>0$ is the derivative of the explicit factor $-(1-c^{2})$; $T_{3}<0$ is the
+\emph{only} negative term and it is negative for a reason that is itself provable, namely that
+$\Phi''$ is strictly increasing on $(0,\pi)$ --- equivalently $F(u):=u^{2}+t^{2}+t-2>0$ with
+$t=u\cot u$, and $F\sim2u^{4}/45$ near $0$. The fifth term collects the motion of the measure itself,
+\begin{equation}
+T_{5}=-\beta^{3}(1-c^{2})\bigl[\operatorname{Cov}(g^{2},x)-2E[g]\operatorname{Cov}(g,x)\bigr],
+\label{eq:h1s-T5}
+\end{equation}
+and \emph{its sign is open}: it is the exact missing step. Measured, the positive terms dominate it
+comfortably --- $\min(T_{1}-|T_{3}|)=0.3952$ and $\min(T_{2}+T_{4}+T_{5})=+0.0599$ over $51$ points ---
+but a margin is not a proof.
+
+\emph{The measurement} \LC. On $501$ interior points of $c\in(0,1)$ ($401$ uniform plus $101$
+Chebyshev nodes at both ends, de-duplicated),
+\begin{equation}
+\partial_{c}\,\mathrm{gap}\in(0.44361829,\ 0.63898109),\qquad
+\text{sign flips }0,\qquad\text{interior extremum }0 ,
+\label{eq:h1s-501}
+\end{equation}
+and the analytic derivative agrees with a central difference to $2.9\times10^{-11}$ relative, so the
+grid is measuring the identity \eqref{eq:h1s-mono} and not a discretization of it. Since
+$\mathrm{d}\,\mathrm{gap}/\mathrm{d}\theta=-(s/2)\,\partial_{c}\mathrm{gap}\le0$ with equality only at the two
+endpoints, the gap is strictly decreasing in $\theta$ and its unique worst point is $\theta=\pi$:
+\begin{equation}
+\min_{\theta\in[0,\pi]}\mathrm{gap}(\theta)=\mathrm{gap}(\pi)=0.1359947110\ldots>0 .
+\label{eq:h1s-min}
+\end{equation}
+
+\begin{claimbox}{cC}
+\claimhead{Conditional theorem}{(the whole interval, with the monotonicity as hypothesis)}
+\emph{Assume \eqref{eq:h1s-expfam}--\eqref{eq:h1s-mono} (proved algebra) and the numerical sign
+statement \eqref{eq:h1s-501} (not proved). Then $\mathrm{gap}(\theta)>0$ for every
+$\theta\in[0,\pi]$ at $\beta=2.5$, with the quantitative lower bound \eqref{eq:h1s-min}. The three
+certified points of \eqref{eq:h1s-points} are then \emph{redundant for the inclusion} and serve as
+independent witnesses: monotonicity plus the single point $\theta=\pi$ already implies the interval,
+and any reversal among the three would have falsified the monotonicity at once.} \LC{}
+\end{claimbox}
+
+\src{\code{R06-GAPMONO.md} \S1 (the exponential-family rewriting and the covariance formula), \S2 (the
+five-term split and the numerical table of $T_{1},\dots,T_{5}$ at eleven values of $c$), \S3.1 (the
+lemma $F>0$, i.e.\ $\Phi''$ strictly increasing, verified on $2000$ points with
+$\min F=2.7\times10^{-13}$ consistent with $2u^{4}/45$), \S3.2 (\eqref{eq:h1s-501}, the grid, the
+no-extremum result, and the finite-difference agreement). \textbf{The grade is deliberately
+split}: the identities and $T_{1},T_{2},T_{4}>0$, $T_{3}<0$ are \LT; the sign of $T_{5}$ and hence the
+interval statement is \LC, and this chapter writes it ``\LT{} modulo a \LC{} monotonicity'' nowhere
+else without saying so.}
+
+\emph{The cheap way to remove the hypothesis} \LC{}. A grid of certified points plus one Lipschitz
+bound turns \eqref{eq:h1s-min} into an unconditional statement, and the budget is already computable
+from \eqref{eq:h1s-501}: with $L:=\sup|\partial_{c}\mathrm{gap}|\le0.6390+|\mathrm{gap}''|\,\mathrm{d} c/2$
+and $|\mathrm{gap}''|\le0.597$, a grid of spacing $\mathrm{d} c$ covers the interval as soon as
+$L\,\mathrm{d} c<0.13599$. For $K=5$ ($\mathrm{d} c=0.200$) one gets $0.1397$, too large; for $K=6$
+($\mathrm{d} c=0.167$) one gets $0.1148$, which succeeds; $K=8$ and $K=10$ give $0.0845$ and $0.0669$. Since
+$c\in\{0,1/5,2/5,3/5,4/5,1\}$ makes $\beta c$ rational and the $\mathbb{Q}[\sqrt2]$ series machine
+accepts rational data directly, \textbf{four additional certified points and one strict bound on
+$|\mathrm{gap}''|$ make the whole of $[0,\pi]$ an unconditional \LT{} without any monotonicity
+hypothesis.} That is compute, not mathematics, and it is the reason this chapter states the
+conditional form rather than waiting for the proof of $T_{5}>0$.
+
+\src{\code{R06-GAPMONO.md} \S0 (the honest label
+``\LT{} $\mid$ monotonicity \LC'' and the two routes), \S6 (the $K$-budget, the numbers
+$0.1397/0.1148/0.0845/0.0669$, and the remark that rational $c$ is directly acceptable), \S7 (what
+is \LT{}, what is \LC{}, and the exact missing step).}
+
+\emph{Two more strict fragments of the $\theta$ axis, for completeness} \LT. At $\theta=0$ the
+statement holds for \emph{every} $\beta>0$ and not merely on a window: $s=0$ makes $G\equiv0$
+pointwise, hence $D\equiv0$ identically in $(\beta,\nu)$, while $S\ge E[\Phi'']\ge1/6>0$. And there is
+a purely analytic window needing no machine: with $\Phi''\ge1/6$, $0\le g\le1/2$ and hence
+$\operatorname{Var}(g)\le1/16$, one has $S-D\ge1/6-\beta^{2}s^{2}/16>0$ whenever
+$s^{2}<8/(3\beta^{2})$, i.e.\ $\theta\le0.4527\pi$ at $\beta=2.5$ --- a cruder bound than
+\eqref{eq:h1s-min} but proved in three lines, with the endpoint $\theta=\pi$ supplied separately by
+the exact structure $c=0$.
+
+\src{\code{R03-CERT-THETA.md} \S3.2 items 2--3 (the analytic window $\theta\le0.4527\pi$, the
+three-line derivation, and the $\forall\beta$ statement at $\theta=0$).}
+
+\subsubsection*{What the certificate is not}
+
+Four limits, and each one is a number rather than a caveat.
+
+\textbf{(1) It is a window in $\beta$, and the window closes at a known coupling} \LT. At $\theta=\pi$
+the value $S=1/(4Z)$ is independent of $\beta$ while $D=\beta^{2}V_{0}$ with
+$V_{0}=0.0110592937729736$, so $S-D>0\iff\beta<\beta^{*}$ with
+\begin{equation}
+\beta^{*}=\sqrt{S/V_{0}}=4.3066078525597588749\ldots,
+\label{eq:h1s-betastar}
+\end{equation}
+i.e.\ the certificate at $\beta=2.5$ has a $41.9\%$ margin, and at $\beta=4.4$ the same slice gives
+$S-D=-0.00899<0$. \textbf{The certificate and the exact counterexample of
+Chapter~\ref{ch:scalar-h1} are not in conflict and not in agreement: they live on the same slice at
+different couplings.}
+
+\textbf{(2) It does not extend to $a\neq0$} \LM. At $a\neq0$ the ratio $H/G$ is not constant
+(\S\ref{sec:h1s-lemmas}, lemma 8), and what survives is an exact splitting with an explicit remainder,
+not a criterion.
+
+\textbf{(3) It does not extend to a larger volume} \LN. At $L=2$ there is no finite-dimensional
+reduction at all (\S\ref{sec:h1s-limit}).
+
+\textbf{(4) It is not a statement about Yang--Mills} \LN. Nothing in this subsection contains $a\to0$,
+a continuum limit, or a coarse mode of a four-dimensional theory; $G''(0)$ here is a lattice-unit
+curvature of a $0$-dimensional model at one coupling.
+
+\src{\code{Q11-CERT.md} \S5 (the $\beta$ table $+0.2024/+0.1941/+0.1360/+0.0282/+0.0100/+0.00063/
+-0.00899/-0.0714/-0.1930$ at $\beta=0.5,\dots,6$ and the $41.9\%$ margin), \S6 (that $L=2$ has no
+exact integral representation and therefore no interval certificate);
+\code{Q04-WEYL.md} \S4.3 (the same counterexample read as $E[H]\equiv0$ versus $\beta^{2}V_{0}>0$);
+\code{ch03-existence.tex} \eqref{eq:dim} for why a lattice-unit curvature may not be read as a mass.}
+
+\subsection{Eight strict lemmas, and what each one is allowed to say}
+\label{sec:h1s-lemmas}
+
+The certificate of \S\ref{sec:h1s-cert} is not an isolated computation: it stands on eight statements
+that are proved rather than measured, and the value of the ledger is that each one is quoted with the
+thing it does \emph{not} do. They are collected in Table~\ref{tab:h1s-lemmas} and then, because four of
+them are routinely misquoted in the corpus, discussed one by one.
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.5cm}
+  >{\raggedright\arraybackslash}p{6.4cm}
+  >{\raggedright\arraybackslash}p{3.2cm}
+  >{\raggedright\arraybackslash}p{4.0cm}@{}}
+\caption{The eight strict lemmas of the day. ``Scope'' names the hypothesis that must travel with the
+statement; a lemma quoted without its scope is false somewhere in this campaign's history.}
+\label{tab:h1s-lemmas}\\
+\toprule
+\# & Statement & Source & Scope\\
+\midrule
+\endfirsthead
+\toprule
+\# & Statement & Source & Scope\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & $\Phi''(X;v)\ge\tfrac{N}{12}\langle v,v\rangle$ for every $X$ in the flat chart and every direction
+$v$; sharp, attained only at $X=0$ & \code{P16-PHIQUANT.md} \S3, \S3.1 & all $N$, all measures, all
+$\beta$; $\mathrm{SU}(N)$ with $\langle v,v\rangle=2\operatorname{tr}v^{2}$\\
+2 & $E[H_{vv}\mid0]\ge0$, indeed $H_{vv}=\beta(c/2)g(u)\ge0$ pointwise & \code{P05-CINF.md} \S1.2 &
+$\theta\le\pi$, this slice, $v=e_{3}$; false for $\theta>\pi$\\
+3 & $E[H_{vv}]=E[G_{v}^{2}]$ and hence $E[H]-\operatorname{Var}(G)=E[G]^{2}\ge0$ & \code{Q15-SPECTRAL.md}
+\S4 & measure $e^{-S_W}\mathrm{d}\mathrm{Haar}$, i.e.\ $\Phi$ absent; with $\Phi$ present a covariance term
+remains\\
+4 & $H=\tfrac12\cot(\theta/2)\,G$ pointwise & \code{Q04-WEYL.md} (2.2) & $a=0$ slice; $a\neq0$ has no
+constant ratio\\
+5 & $\operatorname{Var}(w)\le\tfrac12\langle w\rangle$, i.e.\ $2\operatorname{Var}\le\langle w\rangle$ &
+\code{R02-CRIT.md} \S2; \code{R05-WCF.md} \S6.1; \code{R09-FLUCT.md} \S4 & unconditional in $(\beta,c)$;
+three independent proofs\\
+6 & $\langle w\rangle-2\operatorname{Var}(w)\ge2\langle w\rangle^{2}\ge0$ & \code{R05-WCF.md} \S6.1 &
+unconditional; strictly stronger than 5\\
+7 & $G''(0)=m_{G'}+E[\Phi'']-\operatorname{Var}(\Phi')-\operatorname{Cov}(G,\Phi')$ & \code{P21-REBUILD.md}
+\S0 & algebra only; this is the \emph{skeleton} every other item is measured against\\
+8 & $H=K_{0}G+\beta\Delta$ with $K_{0}=\tfrac12\cot(\theta/2)$ and $\Delta=[t\partial_{a}^{2}-c^{2}/(4t)](aw)$
+& \code{R07-AFFINE.md} (4.1) & exact for all $a$; $\Delta$ is odd in $a$, first order $O(a)$\\
+\end{longtable}
+\normalsize
+
+\paragraph{Lemma 1 (curvature floor).} The proof is two lines of calculus plus one convexity theorem.
+With $\Phi=\sum_{i<j}g(\lambda_{i}-\lambda_{j})$, $g(d)=-2\log[\sin(d/2)/(d/2)]$, one has
+$g''(d)=\tfrac12\csc^{2}(d/2)-2/d^{2}\ge1/6$; subtracting the quadratic part,
+$h(X):=\Phi(X)-\tfrac{N}{12}\operatorname{tr}X^{2}=\sum_{i<j}\varphi(\lambda_{i}-\lambda_{j})$ with
+$\varphi(d)=g(d)-d^{2}/12$, and $\sum_{i<j}(\lambda_{i}-\lambda_{j})^{2}=N\operatorname{tr}X^{2}$
+makes the quadratic part of $h$ vanish; $\varphi''=g''-1/6\ge0$ makes $\varphi$ convex, hence $h$ is a
+symmetric convex spectral function, hence convex in $X$ (Davis 1957), hence
+$\operatorname{Hess}\Phi\succeq(N/6)\operatorname{tr}(\cdot)^{2}$, i.e.\
+$\Phi''(X;v)\ge\tfrac{N}{12}\langle v,v\rangle$ after the normalization
+$\langle v,v\rangle=2\operatorname{tr}v^{2}$. Because $\Phi$ is additive over links, the same line gives
+$\Phi''\ge(N/12)\|v\|^{2}$ for \emph{every} direction, not merely for the rank-one ones --- this is the
+step that earlier versions of the ledger claimed and did not have. Two honest qualifications: the
+imported convexity theorem is checked at bibliographic level only, with an elementary hand proof for
+$N=2$; and the floor is a floor, not a witness --- at $a=0.75$, $\beta=2.5$, $\theta=\pi$ one has
+$\Phi''-\operatorname{Var}=+0.176>0$ while $G''(0)=-0.0059<0$, and the deficit is exactly
+$E[H_{vv}]=-0.1816$. The floor cannot cancel the Wilson-side gap: $+0.167$ of floor plus at most
+$+0.08$ of growth against $-0.947$ of $-\beta E[C_{\mathrm{geo}}]$. \LT{}~/~\LM
+
+\src{\code{research/v3/species/P16-PHIQUANT.md} \S1 (the derivatives and the constant
+$\min g''=0.166666675$), \S3 (the theorem, its two hypotheses, and the per-link additivity), \S3.1
+(the numerical adjudication: $\inf\min\mathrm{eig}(\operatorname{Hess}\Phi)$ equals $N/12$ for
+$N=2,\dots,6$ with ratio $1.000000$, attained at $X=0$), \S6 (why the floor does not cancel
+$-\beta E[C_{\mathrm{geo}}]$, and the $a_{0}=0.75$ counterexample that keeps this lemma from being a
+proof of $H1$). The Davis reference is C.~Davis, Arch. Math. \textbf{8} (1957) 276--278,
+DOI 10.1007/BF01898787, cited at bibliographic level: the text was not read.}
+
+\paragraph{Lemma 2 (sign of the mean curvature).} On this slice $H_{vv}/\beta=Q=\cos(\theta/2)g(u)/2$
+with $g>0$ on $(0,\pi)$ and $g(0)=1/2$, so $Q\ge0\iff\cos(\theta/2)\ge0$. Hence the mean-side leg is
+\emph{free} for $\theta\le\pi$, and $E[H_{vv}]=\beta(c/2)G(\beta c)$ with
+$G(B)=E_{\nu_{B}}[g]\in(0,1/2)$ strictly. Beyond $\theta=\pi$ the statement reverses and the growth is
+not linear: a boundary-layer expansion gives $E[H_{vv}]\simeq-0.12699\sqrt{|c|\beta}$, with measured
+slopes $0.460/0.468/0.472$ at $\theta/\pi=1.25/1.5/1.75$. The lemma is therefore quoted with
+$\theta\le\pi$ attached, and the corpus statement that $E[H_{vv}]$ is indefinite in general
+($\min=-1.893$ on four-link random directions) is a statement about a different object, not a
+contradiction. \LT{}~/~\LC
+
+\src{\code{P05-CINF.md} \S1.2 (the pointwise computation and $G<1/2$), \S4 (the clause table), \S6.1
+and \S6.2 (the $\theta>\pi$ branch, the $\sqrt\beta$ law, and the $0.6\%$ numerical check at
+$\beta=10^{4}$); the four-link indefiniteness is \code{O06-CURV.md} and \code{LOOP-RUNBOOK.md}:2426 as
+quoted by \code{P05-CINF.md} \S1.1.}
+
+\paragraph{Lemma 3 (Stein, and why the spectral route is empty).} Take a left-invariant direction
+field $v$; left invariance of Haar makes $\operatorname{div}_{\mathrm{Haar}}v=0$, so
+$\int vf\,\mathrm{d}\mathrm{Haar}=0$ for all smooth $f$. Applying this to $f\,e^{-S_W}$ gives
+$E_{\mu}[vf]=E_{\mu}[fG_{v}]$ with $\mu\propto e^{-S_W}\mathrm{d}\mathrm{Haar}$, and taking $f=G_{v}$ gives
+$E[H_{vv}]=E[G_{v}^{2}]$; hence $E[H]-\operatorname{Var}(G)=E[G]^{2}\ge0$ with equality iff $E[G]=0$.
+On a single plaquette the equality is exact for every $\beta>0$ (the $n\mapsto-n$ symmetry kills
+$E[G]$), and the measured value at $\beta=2.5$ is $E[H]=\operatorname{Var}(G)=1.26799$ with a
+difference of $6\times10^{-7}$. The corollary is a no-go and belongs here rather than in
+\S\ref{sec:h1s-roads}: the spectrum of the Hessian enters the difference only through
+$E[\lambda_{k}]=E[g_{k}^{2}]$ and cancels term by term, so no spectral condition is equivalent to it;
+and the one named spectral equivalence that does exist, $\Lambda\preceq I$ (Brascamp--Lieb /
+$CD(0,\infty)$), is \emph{false} here --- $\lambda_{k}=\beta\cos\varphi$ threefold degenerate,
+$\lambda_{\max}=\beta=2.5>1$, $P(\lambda<0)=0.105$ --- while the target inequality holds and is an
+equality. \LT{}/~\LN
+
+\src{\code{Q15-SPECTRAL.md} \S1--\S2 (the identities), \S3 (the spectral table and
+$P(\lambda\gtrless)$), \S4 (the proof by the divergence identity, and the statement that a spectral
+proof is unavailable).}
+
+\paragraph{Lemma 4 (a pointwise ratio, which is why the criterion is one inequality).} On the $a=0$
+slice $G=\beta s\,w(\rho)$ and $H=\tfrac{\beta c}{2}w(\rho)$ with $w(\rho)=\sin(\rho/2)/\rho$, so
+$H=\tfrac12\cot(\theta/2)G$ \emph{pointwise}, with a measured deviation of $8.9\times10^{-16}$ and
+finite-difference agreement to $1.2\times10^{-8}$. This is an equality, not an inequality, and its
+consequence is that \emph{every} attempt at a pointwise comparison $H(\rho)\ge G(\rho)^{2}/\cdots$ is
+empty: the comparison collapses to one number,
+\begin{equation}
+\operatorname{Var}(G)\le E[H]\iff 2\beta s^{2}\operatorname{Var}_{\mu}(w)\le c\,\langle w\rangle ,
+\label{eq:h1s-crit}
+\end{equation}
+which is the criterion of \S\ref{sec:h1s-window}. Off $a=0$ no such collapse exists because $H$ and
+$G$ stop being proportional --- and \S\ref{sec:h1s-lemmas} lemma 8 is the exact measure of that
+failure. \LT
+
+\src{\code{Q04-WEYL.md} (2.1)--(2.2) and \S4.1 (``the pointwise content is an equality, not an
+inequality''); \code{R09-FLUCT.md} \S1--\S2 (the same pair read as $\partial_{a}h$ and
+$\partial_{a}^{2}h$, with $S_W=\beta h$).}
+
+\paragraph{Lemmas 5 and 6 (two moment inequalities, three independent proofs).} Both are statements
+about the single function $w$, not about the model, and both are unconditional.
+
+\emph{Path (a)}, from the kernel: $A-2B=\tfrac12\int e\,\sin^{3}s\,(s-\sin s)/s^{3}\,\mathrm{d} s$ where
+$e=e^{-\beta(1-c\cos s)}$. The kernel is positive because $s-\sin s>0$, and strictly decreasing;
+pairing the humps $s_{\mp}=2\pi k+\pi\mp u$ around each zero of $\sin$ gives exactly equal exponents
+and exactly equal $|\sin^{3}|$, so $g(s_{-})>g(s_{+})$ and each pair contributes positively, with the
+final partial hump also positive because $\Lambda=11\pi$ ends on the positive side. Hence
+$2\langle w^{2}\rangle\le\langle w\rangle$ and therefore $\operatorname{Var}(w)\le\tfrac12\langle w\rangle$
+for all $\beta\ge0$, all $c\in[0,1]$, and on the multi-period window $\Lambda=22\pi$ where $w$
+changes sign. Sharpness: $2\langle w^{2}\rangle/\langle w\rangle\to1$ as $\beta\to\infty$
+(mass concentrates at $s\to0$, $w\to1/2$), measured maximum $0.996792$, so the constant cannot be
+improved in that form. A negative result belongs to this path and prevents a wrong proof:
+$E|w|\le\langle w\rangle$ is \emph{false} ($E|w|/\langle w\rangle=1.197947$ at $\Lambda=22\pi$,
+$\beta=0$), because $\int|w|$ adds the paired contributions that $\int w$ subtracts; any route through
+$|w|\le1/2\Rightarrow\operatorname{Var}\le\tfrac14\langle w\rangle$ is therefore closed.
+
+\emph{Path (b)}, five lines and measure-free: $w=\tfrac12-D$ with $0\le D\le\tfrac12$, so
+$D^{2}\le D/2$ and
+\begin{equation}
+\langle w\rangle-2\operatorname{Var}(w)
+=\bigl(\tfrac12-\langle D\rangle\bigr)-2\bigl(\langle D^{2}\rangle-\langle D\rangle^{2}\bigr)
+\ge\tfrac12-2\langle D\rangle+2\langle D\rangle^{2}
+=2\langle w\rangle^{2}\ge0 .
+\label{eq:h1s-r05}
+\end{equation}
+This is lemma 6, and it is strictly stronger than lemma 5, equivalently
+$\operatorname{Var}(w)\le\tfrac12\langle w\rangle(1-2\langle w\rangle)$.
+
+\emph{Path (c)}, from the same kernel in the $u$-coordinate:
+$E[g]-2E[g^{2}]=(1/2Z)\int e\,\sin^{3}u\,(u-\sin u)/u^{3}\,\mathrm{d} u\ge0$ pointwise, verified digit by
+digit against $\mathrm{Var}$ on fifteen $(\beta,c)$ pairs (e.g.\ $\beta=2.5$, $\theta=\pi$:
+$7.984483\times10^{-3}$ on both sides), with a pointwise kernel minimum $\ge1.9\times10^{-22}>0$.
+
+All three paths give $\operatorname{Var}(w)\le\tfrac12\langle w\rangle$; they were derived from
+different objects ($A-2B$ versus $D^{2}\le D/2$ versus the direct kernel identity) and none of them
+uses the sign of $\beta c$ or the value of $\theta$. \LT
+
+\src{\code{R02-CRIT.md} \S2 (path (a), including the pairing argument, the sharpness, and the
+negative result $E|w|\le\langle w\rangle$ false); \code{R05-WCF.md} \S6.1 (path (b) verbatim, and the
+comment that lifting the numerical factor $16.16$ requires the missing monotonicity);
+\code{R09-FLUCT.md} \S4 (path (c), the identity, and the $15$-point digit check);
+\code{LOOP-RUNBOOK.md} \S11.170 (\textbf{the explicit statement that these are three independent
+paths to one conclusion}).}
+
+\paragraph{Lemma 7 (the skeleton).} With $F=\partial_{v}V=G+\Phi'$ and $\kappa=\partial_{v}^{2}V=H+\Phi''$,
+\begin{equation}
+\operatorname{Var}(F)-E[\kappa]=-G''(0)=-m_{G'}-E[\Phi'']+\operatorname{Var}(\Phi')
++\operatorname{Cov}(G,\Phi'),
+\label{eq:h1s-skeleton}
+\end{equation}
+which is algebra: it combines $\Delta_{\mathrm{dyn}}=m_{G'}+\operatorname{Cov}(G,\Phi')$,
+$G''(0)=\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X$, $W_{\mathrm{geo}}=E[\Phi'']-\operatorname{Var}(\Phi')$
+and $X=-2\operatorname{Cov}$. Its numerical content is a check, and it checks twice: on the six-point
+$a$-grid the residual is $\le7\times10^{-6}$, and on $L=2$ at $\beta=2.5$ with the archived values
+$0.562+1.09+0.043=1.695$ against the measured $1.696\pm0.293$, a $0.06\%$ deviation. The corpus
+contains an acid test that this identity also passes and that reorganizes the tool set: of the four
+candidate quantities $\{\operatorname{Cov}(G,\Phi'),\operatorname{Var}(\Phi'),m_{G'},
+E[\Phi'']-N/12\}$, the three that involve $\Phi$ alone \emph{fail} the free-field test ---
+$\operatorname{Var}(\Phi')$ tends to $2.341\times10^{-3}$, which is $65\%$ of its interacting value
+rather than zero, and $E[\Phi'']-N/12$ is \emph{identical} at $\beta=2.5$ and $\beta=10^{-6}$ because
+at $\theta=\pi$ the measure is Haar for every $\beta$. What survives is $\{m_{G'},-\operatorname{Cov}\}$,
+both containing $G=\partial_{v}S_{W}$, the only object carrying a power of $\beta$. \LT{}/~\LE
+
+\src{\code{P21-REBUILD.md} \S0 (the identity, its numerical check, and the $L=2$ closure to
+$0.06\%$), \S1--\S2 (the four candidates, the acid test, the free-field values, and the reorganized
+pair), \S3 (the scope list); the split $G''=\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X$ is
+\code{ch05-theorems.tex} \eqref{eq:split}.}
+
+\paragraph{Lemma 8 (an exact splitting instead of an approximate affinity).} The corpus had been
+using $H=K(a)G+C(a)$ with $R^{2}>0.9992$. That is not an identity, and the proof that it is not is
+worth recording because the check is a Wronskian rather than a fit: $W(G,H)=GH'-G'H\not\equiv0$ and
+$W(G',H')=G'H''-G''H'\not\equiv0$, both of first order $O(a)$ (numerically $-7.21\times10^{-4}$ and
+$-8.46\times10^{-6}$ at $a=0.3$, $\rho=2.5$); and $H-KG$ has no constant term in the basis
+$\{\sin(\rho/2),\cos(\rho/2),1\}$ since $W\{\sin,\cos,1\}=-1/8\neq0$, so a strict affinity would force
+$C=0$, i.e.\ a strict proportionality --- which the ratio computation kills as well
+($Q_{H}/Q_{G}=K_{0}+3/a-3a/\rho^{2}$ varies with $\rho$, and the two channels differ by a factor
+$30$: $K_{c}=10.356$ against $K_{s}=0.308$ at $a=0.3$). What \emph{is} exact is
+\begin{equation}
+H=K_{0}G+\beta\Delta,\qquad K_{0}=\tfrac12\cot(\theta/2),\qquad
+\Delta=\Bigl[t\,\partial_{a}^{2}-\frac{c^{2}}{4t}\Bigr]\bigl(a\,w(\rho)\bigr),
+\label{eq:h1s-affine}
+\end{equation}
+with $\Delta$ odd in $a$ and of first order, and hence $K_{\mathrm{LS}}=K_{0}+\beta\operatorname{Cov}(G,\Delta)/
+\operatorname{Var}(G)$, $C_{\mathrm{LS}}=\beta[E\Delta-(\operatorname{Cov}/\operatorname{Var})E[G]]$ and
+$1-R^{2}=\beta^{2}\operatorname{Var}(\Delta)(1-\mathrm{corr}^{2})/\operatorname{Var}(H)$: the fit
+residual is not noise but a computed variance, and it is of order $O(a)$ with
+$\mathrm{relres}/a\to1.43\times10^{-3}$, invariant under raising the quadrature from $1500$ to $6000$
+points. \LT{}/~\LE
+
+\src{\code{R07-AFFINE.md} \S2 (the three exact identities and the mechanism: one operator $L=t\partial_{a}+c/2$
+acting on two adjacent $a$-derivatives), \S3 (the two Wronskians and the $C=0$ argument), \S4--\S5
+(the splitting, the closed forms for $K$ and $C$ reproducing the fit to $10^{-16}$, and the residual
+table).}
+
+\subsection{One window, at two grades}
+\label{sec:h1s-window}
+
+Combining lemmas 4 and 5 turns \eqref{eq:h1s-crit} into a region of $(\beta,\theta)$ in which H1
+holds with no measurement at all, and the region has a strictly provable boundary and a measured one.
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(the analytic window)}
+\emph{With $w(\rho)=\sin(\rho/2)/\rho$, $\mu\propto e^{-\beta(1-c\cos(\rho/2))}\sin^{2}(\rho/2)\rho^{-1}\mathrm{d}\rho$
+on the $a=0$ slice, \eqref{eq:h1s-crit} holds whenever}
+\begin{equation}
+\beta\sin^{2}(\theta/2)\ \le\ \cos(\theta/2),
+\qquad\text{i.e.}\qquad
+\beta\le\frac{\cos(\theta/2)}{\sin^{2}(\theta/2)} .
+\label{eq:h1s-wintight}
+\end{equation}
+\emph{Consequently $H1$ holds for every $\beta\ge\beta_{0}(\theta):=\sin^{2}(\theta/2)/\cos(\theta/2)$;
+at $\beta=2.5$ this covers $\theta\le0.388\pi$ (from $c\ge0.8198$) and at $\beta=6$ it covers
+$\theta\le0.256\pi$ (from $c\ge0.9201$).} \LT{}
+\end{claimbox}
+
+\src{\code{Q04-WEYL.md} \S4.1 (4.1)--(4.2): the implication from $0\le w\le1/2$ through
+$\operatorname{Var}(w)\le\tfrac12\langle w\rangle$ to \eqref{eq:h1s-wintight}, with the numerical
+coverage $\theta/\pi\le0.7281/0.5758/0.3881$ at $\beta=0.5/1/2.5$; \code{R02-CRIT.md} \S3 (the same
+implication, now with the kernel proof of the moment inequality, so that the step is a theorem and not
+an observation); \code{R09-FLUCT.md} \S4 (the third derivation, ending at the same threshold and
+noting $\theta/\pi\le0.3882$ at $\beta=2.5$).}
+
+The measured window is wider, and the gap between the two grades is exactly the factor that lemma 6
+buys. From \eqref{eq:h1s-crit} and lemma 6 one may replace $\tfrac12\langle w\rangle$ by
+$\tfrac12\langle w\rangle(1-2\langle w\rangle)$, i.e.\ replace the constant $2$ in
+$R:=\langle w\rangle/\operatorname{Var}(w)\ge2$ by the measured $R_{\min}$; the smallest value over
+$\gamma=\beta c\in[0,\infty)$ is
+\begin{equation}
+R_{\min}=\frac{\langle w\rangle}{\operatorname{Var}(w)}\Big|_{\gamma=0}
+=\frac{2N_{1}Z}{N_{2}Z-N_{1}^{2}}=32.3177375272 ,
+\qquad Z=\tfrac12\mathrm{Cin}(2\pi),\quad
+N_{1}=\tfrac34[\mathrm{Cin}(3\pi)-\mathrm{Cin}(\pi)],\quad
+N_{2}=\mathrm{Cin}(4\pi)-\mathrm{Cin}(2\pi),
+\label{eq:h1s-Rmin}
+\end{equation}
+so the criterion becomes
+\begin{equation}
+\beta\sin^{2}(\theta/2)\ \le\ \tfrac12\cos(\theta/2)\,R
+\ \Longrightarrow\
+\beta\le\beta_{c}(\theta)=16.15887\,\frac{\cos(\theta/2)}{\sin^{2}(\theta/2)}
+\qquad\text{(measured tier)},
+\label{eq:h1s-winc}
+\end{equation}
+which at $\beta=2.5$ gives $\theta\le0.904\pi$ and at $\beta=6$ gives $\theta\le0.786\pi$ --- a
+$2.3$-fold widening in $\theta$ over \eqref{eq:h1s-wintight} at $\beta=2.5$ and a $3.1$-fold widening
+at $\beta=6$. The corresponding
+``$R\ge2$ but nothing better'' version, using only the proved lower bound $R_{\min}\ge4.017$ on the
+multi-period window, gives $\theta\le0.527\pi$ and $\theta\le0.356\pi$: a $36\%$--$39\%$ widening that
+is \emph{also} at the measured tier, because $R_{\min}=4.017$ there is a numerical minimum and not a
+theorem.
+
+\begin{claimbox}{cE}
+\claimhead{Evidence}{(where the two grades meet, and why the coincidence is not a derivation)}
+\emph{The measured boundary at $\beta=6$, $\theta\le0.786\pi$, sits within $0.9\%$ of a boundary
+obtained from a different functional by a different criterion:
+$\beta_{0}(\theta)=\tan^{2}(\theta/2)/(36c_{\infty})$ with $c_{\infty}=\cos(\theta/2)/4$ gives
+$\theta_{\max}=0.7792\pi$ at $\beta=2.5$ and $0.8335\pi$ at $\beta=6$. The two routes do not compute
+the same thing --- \eqref{eq:h1s-winc} tests $\Delta_{\mathrm{dyn}}\ge0$, i.e.\ $\operatorname{Var}\le E[H]$
+alone, whereas the $\beta_{0}$ route tests $G''(0)\ge0$ with $W_{\mathrm{full}}$ included --- so
+agreement is not required and the $0.9\%$ should be read as evidence that both are describing the
+geometry of the same slice, not as a proof of either.} \LE{}
+\end{claimbox}
+
+\src{\code{R05-WCF.md} \S2--\S5 (\eqref{eq:h1s-Rmin}: the closed forms at $\beta=0$, the $1/\gamma$
+expansion for $\beta>0$, the $41$-point table, and the minimum at $\gamma=0$, which is a boundary
+value and hence exact in $\gamma$), \S6.2--\S6.3 (\eqref{eq:h1s-winc}, the factor $16.158868764$,
+and the sentence that the missing step is the monotonicity of $\operatorname{Var}(w)$ in $\gamma$);
+\code{LOOP-RUNBOOK.md} \S11.169 (the two windows side by side, $0.904\pi$ and $0.786\pi$, and the
+$0.786\pi$ versus $0.7791\pi$ coincidence); \code{P20-THETA.md} \S4.2 (the $\beta_{0}$ route, its
+anchor values $2.50$ at $0.7792\pi$ and $6.00$ at $0.8335\pi$, and $\S2$ for why $\beta_{0}$ is a
+ratio of a $\beta$-free $V_{\infty}$ to a $\beta$-free $c_{\infty}$).}
+
+Two boundaries must be quoted with the window, not after it.
+
+\textbf{(1) No sharpening of these two legs makes the window $\theta$-uniform} \LN. The criterion is a
+product, $\beta\,w(\theta)\ge\tfrac19$ with $w(\theta)=\cos^{3}(\theta/2)/\sin^{2}(\theta/2)$, and
+$w(\pi)=0$: hence $\sup_{\theta}\beta_{0}(\theta)=+\infty$, and no injective reparametrization of
+$\theta$ can change that, because the product form is preserved. Quantitatively
+\begin{equation}
+\beta_{0}(\theta)\ \asymp\ \frac{8}{9(\pi-\theta)^{3}}\qquad(\theta\to\pi),
+\label{eq:h1s-div}
+\end{equation}
+which reproduces the tabulated $2.87\times10^{4}$ at $\theta=0.99\pi$ to three digits. The escape is
+not a better constant on the same legs but a different decomposition --- and the $\theta=\pi$ slice is
+where the decomposition fails, not where it is loose.
+
+\textbf{(2) At $\theta=\pi$ the premises of both legs collapse} \LM. There $c=0$, so $B=\beta c\equiv0$,
+the family $\nu_{B}$ degenerates to the single Haar law, $\operatorname{Var}=\beta^{2}V_{0}$ is
+unbounded in $\beta$, $V_{\infty}=+\infty$ (the variance leg is vacuous, not false), $c_{\infty}=0$ and
+$E[H_{vv}]\equiv0$ (the mean-side leg is vacuous too). This is exactly the slice on which
+\eqref{eq:h1s-betastar} is exact, so the certificate and the counterexample are the two faces of one
+degeneration. There is, however, one honest widening on the other side: a small-$\beta$ leg,
+$\operatorname{Var}\le\beta^{2}V_{0}$ with $V_{0}=W(0)$, gives $H1$ for \emph{every} $\theta$ provided
+$\beta^{2}V_{0}+\delta\le\inf W_{\mathrm{full}}$, i.e.\ $\beta\lesssim3.9$ --- at the measured tier,
+because $\inf W_{\mathrm{full}}$ is a table infimum. What remains uncovered is therefore the bounded
+rectangle $\{\theta>0.8335\pi\}\times\{\beta\in(3.9,6]\}$, and that rectangle contains the known false
+point $(\theta=\pi,\beta>4.30661)$: it is not ``unproved'' but \emph{false}.
+
+\src{\code{P20-THETA.md} \S4.1 (the product form, the impossibility, and the observation that only a
+different decomposition can help), \S2.3 (why $B=\beta c$ is not a substitute variable: the threshold
+goes to zero in $B$-language while the inequality becomes $\beta\le\beta^{*}$), \S3 (the premise
+collapse table, each row \LT{} or \LC{} as marked), \S4.4--\S4.5 (the small-$\beta$ leg, $\beta_{\rm
+unif}\approx3.9$, the residual rectangle, and that it contains a false point);
+\code{O22-THRESHOLD.md} \S0 and \S5 as quoted there for the numerical anchors; \code{Q11-CERT.md} \S5
+for \eqref{eq:h1s-betastar} on the same slice.}
+
+\subsection{The lattice ledger at $L=2$ and $L=3$}
+\label{sec:h1s-lattice}
+
+Everything above is a $0$-dimensional statement. The measured side of the ledger is a Monte Carlo on
+the four-dimensional model at $L=2$ and $L=3$, and its content is the sign of the same quantity,
+$G''(0)=E[\kappa]-\operatorname{Var}(F)$, with the split observation $S_W$ versus $\Phi$ maintained per
+sample so that $\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X-G''(0)$ can be checked on every configuration
+(the sum check is $\le1.6\times10^{-6}$ at $\beta=6$ and $\le1.6\times10^{-5}$ across the $\beta$
+scan).
+
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}lll>{\raggedright\arraybackslash}p{6.4cm}@{}}
+\toprule
+volume & $\beta$ & $G''(0)$ & statistics\\
+\midrule
+$L=2$ & $1$   & $+0.2835\pm0.0049$ (jk) & $27.0\sigma$ (jk)\\
+$L=2$ & $2.5$ & $+0.4116\pm0.0421$ (jk) & $4.0\sigma$ (jk); note also $+0.3942\pm0.0258$ at $6.0\sigma$
+from a $1.5\times10^{4}$-sweep run\\
+$L=2$ & $4$   & $+0.5108\pm0.0939$ (jk) & $2.3\sigma$ (jk)\\
+$L=2$ & $6$   & $+0.6018\pm0.0589$ (jk25) & $10.2\sigma$; five estimators span $4.1$--$10.2\sigma$\\
+$L=3$ & $2.5$ & $+0.3396\pm0.0585$ (jk) & $5.80\sigma$ (jk) / $2.24\sigma$ ($\tau$)\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Three readings, in increasing order of what they cost.
+
+\emph{The sign is uniform in $\beta$ on this window} \LE. At $L=2$ the four central values are
+monotone increasing, $0.2835\to0.4116\to0.5108\to0.5913$, with no interior minimum and no crossing;
+$16/16$ chains have positive central values, the weakest being $+0.1338$ ($\beta=4$) and $+0.2258$
+($\beta=6$). The mechanism is a competition that does not flip: $D/S$ rises $0.505\to0.787\to0.848\to
+0.889$, i.e.\ it approaches $1$ without crossing it, so $G''(0)=E[\kappa](1-D/S)$ stays positive while
+its margin shrinks --- a fit gives $G''\propto\beta^{0.41}$. \textbf{The extrapolation beyond
+$\beta=6$ is an extrapolation}: a quadratic fit puts the zero near $\beta\approx17.3$ and a cubic near
+$14.9$, and those numbers are quoted here as extrapolations, not as results.
+
+\emph{The statistics are enough at $\beta=6$ only after the estimator is fixed} \LE. The first
+$L=2$ determination at $\beta=6$ ($4$ chains $\times\,5\times10^{3}$ sweeps) gave $+0.5913$ but only
+$1.3\sigma$ under the $\tau$-corrected error, because $\tau_{K}$ grows to $100$--$240$ and $N_{\rm
+eff}$ falls to $21$--$71$. Re-running with $8$ chains $\times\,2\times10^{4}$ sweeps (burn
+$2\times10^{3}$, seeds $700$--$707$, $N_{\rm eff}=48$--$194$ per chain, $818$ in total) gives
+$+0.6018$ with five estimators:
+jk25 $\sigma=0.0589$ ($10.2\sigma$), eight-chain scatter $0.0651$ ($9.2\sigma$), long-block
+batch means $0.0733$ ($8.2\sigma$), $\tau_{z}$-corrected $0.0823$ ($7.3\sigma$), and the old
+$\tau_{F}$ formula $0.1450$ ($4.1\sigma$). $8/8$ chains are positive (sign test $p=3.9\times10^{-3}$),
+the half-split difference is $-0.2\sigma$, $\chi^{2}/\mathrm{dof}=1.22$. The one estimator still below
+$5\sigma$ is the old one, and the audit of it is a formula mismatch rather than a matter of taste: it
+applies $\tau_{F}$ to the fluctuation of the sample variance $z=(F-\bar F)^{2}$, whose correlation time
+is $\tau_{z}=8.7$--$14.1$, not $\tau_{F}=24$--$48$, and it treats a fourth moment as Gaussian
+($\mathrm{Var}(z)=2\sigma^{4}$); with $\tau_{z}$ the same machinery returns $7.3\sigma$. \textbf{Even
+under the old estimator the requirement is explicit}: $2.9\times10^{4}$ sweeps per chain, $1.45$ times
+the present run.
+
+\emph{There is no volume dependence} \LE. At $\beta=2.5$ the two volumes give $+0.3942$ ($L=2$) and
+$+0.3396$ ($L=3$), a difference of $-0.055\pm0.064$, i.e.\ $0.85\sigma$; and the quantity that would
+carry a volume effect, $\operatorname{Var}(F)$, agrees to $0.7\%$ ($1.535$ versus $1.5458$). The $L=3$
+number also settles a bug: the earlier negative value $-0.177\pm0.062$ came from a sampler with no
+fundamental-domain constraint, which let the chain wander onto the repeated flat chart where
+$\Phi\sim2\log(r/2)$ supplies no restoring force; with the hard rejection $|x_{l}|<2\pi$ (rejection
+rate $0.14\%$) $\operatorname{Var}(F)$ falls from $1.8917$ to $1.5458$ and the sign flips, exactly as
+the domain analysis predicted.
+
+\src{\code{P19-BETA-AT-L2.md} \S0 and \S2 (the four central values, $16/16$ chains, the monotone
+trend, the $D/S$ mechanism, and the explicit label on the extrapolations);
+\code{Q13-BETA6.md} \S0--\S3 (the $\beta=6$ value, the six estimators, $8/8$ chains, the sign test,
+$\chi^{2}/\mathrm{dof}$, the $\tau_{z}$ analysis and the $2.9\times10^{4}$-sweep requirement);
+\code{P01-L3.md} \S0 and \S1 (the $L=3$ value, $5.80\sigma$/ $2.24\sigma$, the fundamental-domain
+bug and its mechanism); \code{O24-L2-PUSH.md} \S2 and \S5 (the $1.5\times10^{4}$-sweep
+$+0.3942\pm0.0258$ at $6.0\sigma$, the two error estimators, and the limits of the run);
+\code{LOOP-RUNBOOK.md} \S11.160--\S11.161 (the combined statement and the $0.85\sigma$/$0.7\%$
+comparison). \textbf{Every entry is \LE: one volume window, one coarse mode (A), no $a\to0$, and a
+finite-difference definition of $\kappa$ and $F$ with $h=10^{-3}$.}}
+
+\subsection{Twelve roads that end, each with its number}
+\label{sec:h1s-roads}
+
+The campaign's negative asset is a list of routes that cannot work, each ended by a number rather than
+by an impression. Twelve are in force after this day: ten that were already in force, and two that
+this day's work added --- the curvature-fluctuation form, which turned out to be the criterion renamed
+and dies at an exact point, and the affine reduction, whose residual is not noise.
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.4cm}
+  >{\raggedright\arraybackslash}p{3.2cm}
+  >{\raggedright\arraybackslash}p{8.2cm}
+  >{\raggedright\arraybackslash}p{2.8cm}@{}}
+\caption{The twelve roads, each with the number that ends it. All twelve are class-level
+\LN: none is ``the hypothesis was not established'', and in every row but two the hypothesis is
+\emph{false}.}\label{tab:h1s-roads}\\
+\toprule
+\# & Road & Why it dies, with the number & Source\\
+\midrule
+\endfirsthead
+\toprule
+\# & Road & Why it dies, with the number & Source\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1 & Brascamp--Lieb, all directions & the required $\lambda$ is $38$--$44$ times $N/12$, and
+$\operatorname{Hess}(S_{W}+\Phi)$ is indefinite at $\beta=2.5$: the hypothesis fails, not the
+constant & \code{Q02-BL-PHI.md}\\
+2 & ODE / Riccati for $G''$ & $G''$ does not close: $D'\le S'$ is \emph{equivalent} to $G'\ge0$
+($\max|\mathrm{gap}+G'|=2\times10^{-16}$), i.e.\ a tautology that cannot be upgraded; and $D/S$ crosses
+$1$ at $\beta_{c}\approx8$--$11$, with $\beta=6$ already at $0.941$ & \code{Q06-RICCATI.md}\\
+3 & Curvature-dimension, RC-BL & $\mathrm{ess\,inf}\,K_{+}=0$ (the bad set carries $K_{+}\equiv0$;
+$K\ge N/3-|\lambda_{\min}|=-0.893$ for $\mathrm{SU}(3)$), and $\sum\theta_{j}$ cannot be made
+consistent & \code{Q14-RCBL.md}\\
+4 & Sum of squares & the direction-by-direction pairing needs
+$\operatorname{Var}\le N/12-\langle|\lambda_{-}|\rangle=-0.0367<0$ with $\langle\lambda_{-}\rangle=-0.2033$:
+false for every $\operatorname{Var}\ge0$, pure arithmetic & \code{Q12-SOS.md}\\
+5 & Cauchy--Schwarz & loose by $2.6\times$ on the upper side and by $40$--$125\times$ on the lower side &
+\code{Q09-COVLOW.md}\\
+6 & Spectral conditions & $\lambda_{k}$ cancels term by term in $E[H]-\operatorname{Var}(G)$; the
+named spectral criterion $\Lambda\preceq I$ holds on $0.00\%$ of configurations
+($\lambda_{\max}=\beta=2.5$) while the target holds and is an equality & \code{Q15-SPECTRAL.md}\\
+7 & Two-halves decomposition & the $\Phi$-only margin is \emph{exactly} $0$ unconditionally
+($1/3$ against $1/3$, by parts at machine precision), and on the interacting side $\Phi$ turns negative
+at $a>1.588$ & \code{Q01-PHI-ONLY.md}\\
+8 & The $\beta_{0}$ window's small-$B$ bridge & the claimed theorem-grade bound
+$\operatorname{Var}\le\beta^{2}s^{2}(1/2-1/\pi)^{2}/4$ is broken by a counterexample at its own
+window: at $B=0.5$, $\Psi=0.082919>0.2971B^{2}=0.0743$ & \code{P20-THETA.md} \S6.5\\
+9 & $\Phi$-only tools as the witness & they do not vanish on the free field:
+$\operatorname{Var}(\Phi')=2.341\times10^{-3}$, which is $65\%$ of the interacting value, and
+$E[\Phi'']-N/12$ is identical at $\beta=2.5$ and $10^{-6}$ & \code{P21-REBUILD.md}\\
+10 & Statements uniform in $a$ & the negative region grows monotonically in $\beta$: width
+$1.09\to2.26\to3.57\to4.36\to5.22\to5.66$ and depth $-0.016\to-22.7$ for $\beta=2\to40$ & \code{Q08-LARGEA.md}\\
+11 & Curvature fluctuation $\beta\operatorname{Var}(\partial_{t}h)\le E[\partial_{t}^{2}h]$ &
+it is \eqref{eq:h1s-crit} renamed ($S_W=\beta h$ makes both sides the same ratio) and fails at
+$\theta=\pi$ for every $\beta>0$: LHS $=0.027648>0=$ RHS, because $H_{vv}\equiv0$ is a pointwise
+identity & \code{R09-FLUCT.md}\\
+12 & Affine reduction $H=K(a)G+C(a)$ & not an identity: $W(G,H)=O(a)\not\equiv0$,
+$W(G',H')\not\equiv0$, the two channels differ $30$-fold ($K_{c}=10.356$ against $K_{s}=0.308$), and the
+residual is $O(a)$ with $\mathrm{relres}/a\to1.43\times10^{-3}$, stable under a fourfold quadrature
+increase & \code{R07-AFFINE.md}\\
+\end{longtable}
+\normalsize
+
+\begin{claimbox}{cN}
+\claimhead{No-go}{(the classical variance--curvature toolset, as a class)}
+\emph{Rows 1--6 exhaust the classical families that produce ``variance $\le$ curvature''; each dies
+for a distinct reason, and none of the reasons is repairable by sharpening the same tool: Brascamp--Lieb
+is exact on the relevant test function so it has zero slack, curvature-dimension needs a constant that
+is negative, RC-BL has a vanishing essential infimum on the bad set, sums of squares require a negative
+variance, Cauchy--Schwarz is off by a factor, and the spectral route is an identity in disguise. Rows
+7--12 close the structural variants: the two-halves split loses $E[\Phi'']$ exactly, the $\beta_{0}$
+bridge fails its own acid test, pure-$\Phi$ quantities are excluded by the free-field test, $a$-uniform
+statements die on a growing negative region, the fluctuation form is the target renamed, and the affine
+form is an $O(a)$ approximation. What they jointly establish is negative and useful: the missing object
+is not a better constant but a \emph{directional, conditioned, sign-carrying} lower bound on
+$E[H_{vv}]$ at $a\neq0$.} \LN{}
+\end{claimbox}
+
+\src{Rows 1--10 are \code{LOOP-RUNBOOK.md} \S11.158 (the ten-row table, with the same numbers),
+\S11.136 and \S11.150 (BL and the common root $E[H_{vv}]|_{a\neq0}<0$), \S11.149 (SOS) and \S11.152
+(the corrected constant $C=3.95$ that supersedes both $1.7454$ and $10.05$); rows 11--12 are this
+day's additions, \code{R09-FLUCT.md} \S2--\S4 and \code{R07-AFFINE.md} \S3--\S6; row 8's
+counterexample is \code{P20-THETA.md} \S6 item 5, which also records that the same arithmetic
+question was caught independently in \code{Q16-CONFLICT.md}.}
+
+\subsection{Where strictness stops}
+\label{sec:h1s-limit}
+
+\paragraph{The volume.} $L=2$ has $192=4L^{4}\cdot3$ real link components; quotienting by the gauge
+group leaves $144$; conditioning on the coarse mode $\langle v,X\rangle=a_{0}$ is a single scalar
+constraint, so the fibre is
+\begin{equation}
+\dim=192-48-1=143 ,
+\label{eq:h1s-143}
+\end{equation}
+and $143\gg20$ is the criterion for ``no interval arithmetic''. Symmetry does not help, and this is a
+theorem rather than a disappointment: $W_{4}$ (order $384$) and the space group (order $6144$) are
+\emph{finite}, so every orbit is a finite set and $\dim(M/G)=\dim M$; the only thing a finite group buys
+is the measure factor $1/6144$ and a $3$-dimensional invariant tangent space at the flat point --- which
+is the free field, where $G''\equiv0$ and the acid test fails. The per-link $1$-dimensional
+factorization that made \S\ref{sec:h1s-cert} possible does not exist here, because $S_{W}$ is a sum over
+plaquettes and the $\Phi$ terms share the links; the exact integration-by-parts pairing that gives
+$NS=1/4$ is an accident of one plaquette. What $L=2$ has instead is a statistical certificate whose
+price is explicit: a bounded-part-plus-tail-volume Hoeffding bound needs $N\approx3\times10^{8}$
+independent samples ($\approx35$ days on one core), so the honest grade is \S\ref{sec:h1s-lattice}'s
+\LE. One precise simplification does exist, at the corner $a_{0}=16\pi$: there $\rho_{v}\propto
+\varepsilon^{3\cdot64-1}=\varepsilon^{191}$ and $G''=+191/\varepsilon^{2}\to+\infty$, which is
+$Q08$'s $+3/(2\pi-a)^{2}$ promoted to $L=2$ --- but the corner is $16\pi$ away from the conditioning
+point and says nothing about $a_{0}=0$. \LN
+
+\src{\code{R04-L2CERT.md} \S0--\S2 (the dimension ledger, the rank checks, the finite-group theorem,
+the orbit counts $8/4/1$ and the $12$-dimensional toron zero-mode decomposition
+$192=45+12+135$), \S3 (the cost of a rigorous statistical certificate), \S4--\S4.1 (that $\theta=\pi$
+does not simplify at $L=2$, and the corner law $3n-1$ with $n=64$);
+\code{O24-L2-PUSH.md}:49 for the volume bookkeeping; \code{Q08-LARGEA.md} \S2.1 for the
+single-plaquette version.}
+
+\paragraph{The group.} $\mathrm{SU}(3)$ is measured and not proved, and the two numbers must be quoted
+together because their signs differ:
+\begin{equation}
+\mathrm{gap}\big|_{\text{weight }|\Delta|^{2}e^{-S_W}}=+0.10172408,\qquad
+\mathrm{gap}\big|_{\text{pure Haar}}=-0.23580249
+\qquad(\theta=\pi,\ \beta=2.5,\ a=0) .
+\label{eq:h1s-su3}
+\end{equation}
+The two earlier attempts are both dead, and for reasons worth keeping. The first concluded $S\equiv D$
+from $S_{W}\equiv\beta$ on the slice; that inference is invalid, because $S_{W}\equiv\beta$ is a
+\emph{value} and $G=\partial_{v}S_{W}$ is a derivative --- verified: $S_{W}-\beta=0.0$ at three points
+while $G=\beta sg(u)=1.22167/0.97087/0.24784$, matching finite differences to $18$ digits. The second
+error in the same file is the choice of $\Phi$: it used $-\log|\Delta|^{2}$, whereas the corpus object
+is $\Phi=\sum_{i<j}g(d_{ij})$; the two differ by $\psi=\sum_{i<j}\log d_{ij}^{2}$, and with the wrong
+choice the identity $E[\Phi'^{2}]=E[\Phi'']$ holds exactly ($48=48$ in exact rationals, interval width
+$1.2\times10^{-119}$) and forces $S-D=-\operatorname{Var}(G)-2\operatorname{Cov}\le0$. The obstacle to
+a certificate is dimension, not precision: the $a=0$ slice is $7$-dimensional ($1$ eigenvalue
+direction times a $5$-dimensional flag), $2$D Weyl integration is exact only for class functions while
+$G$ and $\Phi'$ are not, and $\Phi$ contains $\log$ and $\cot$/$\csc^{2}$ terms that destroy the
+trigonometric-polynomial route that worked at $N=2$. \LE{}/~\LM
+
+\src{\code{R12-SU3CORR.md} \S0--\S3 (both numbers, the $G\neq0$ verification, the two errors of the
+earlier file, the exact $48=48$, and the $7$-dimensional obstacle), \S4 (the clause-by-clause verdict);
+\code{R11-SU3ADJ.md} (the adjudication that the $S\equiv D$ file's inference is invalid);
+\code{R08-SU3CERT.md} (the file under adjudication, kept on the record).}
+
+\paragraph{The amplitude.} Lemma 8 is the whole of what is known off $a=0$: an exact splitting with an
+explicit odd remainder. There is no $a$-uniform criterion, and row 10 of \S\ref{sec:h1s-roads} says why
+one should not be expected from these legs: the negative region of $G''$ in $a$ widens and deepens
+monotonically with $\beta$.
+
+\paragraph{Two bookkeeping corrections made today, recorded because both changed a quoted number.}
+(i) The $\theta=0$ certificate value was $1.04\times10^{-9}$ too low with an enclosure that did not
+contain the truth; the corrected value is \eqref{eq:h1s-points}. (ii) The dimension bookkeeping that
+called $L=2$ a $16$-link, $2$-plaquette lattice is wrong: $4L^{4}=64$ links and $6L^{4}=96$
+plaquettes, and the $16$-link object is the blocked lattice $L_{c}=1$ obtained from $L=2$ by a factor
+$2$. Neither correction moves a sign, and both are of the same family as the twenty-four rows of the
+errata of the campaign: \emph{a quantity placed where it does not belong}.
+
+\src{\code{R10-AUDITCERT.md} \S0 and \S3 for (i); \code{R04-L2CERT.md} \S1.0 for (ii), with
+\code{Q11-CERT.md} \S6 (line 206) as the text corrected, and \code{O24-L2-PUSH.md}:49 as the
+independent confirmation of $16$ sites / $64$ links / $96$ plaquettes.}
+
+\paragraph{One further correction, which moves no sign.} (iii) $E[\kappa^{2}]=\infty$: the second moment
+of $\kappa=\partial_{v}^{2}V$ diverges, so the ratio $\Delta/\sigma$ --- the $D/S$ quoted in
+\S\ref{sec:h1s-lattice} --- has no numerical value that means anything, and its finite-difference quotes
+carry an infinite-variance error bar in place of a finite one. The \emph{sign} conclusion stands: no sign
+in this chapter is read off $\Delta/\sigma$, every one of them is a sign of $G''(0)$ itself. Same family
+as (i)--(ii): \emph{a quantity placed where it does not belong}.
+
+\subsection{Verdict of this chapter}
+\label{sec:h1s-verdict}
+
+\begin{itemize}
+\item \LT{} \emph{One certificate, three values.} On a single plaquette, $\mathrm{SU}(2)$, $\beta=2.5$,
+$a=0$: $\mathrm{gap}(0)=0.729924128620548449$, $\mathrm{gap}(\pi/2)=0.5429439223536897638$,
+$\mathrm{gap}(\pi)=0.1359947110419882110$, each enclosed within $\pm10^{-55}$ by exact-rational
+Taylor coefficients, directed rounding and Cauchy tails \eqref{eq:h1s-points}. This is the first
+non-trivial positivity of $G''(0)$ in the campaign that is neither a Monte Carlo nor a
+``high-precision estimates''.
+\item \LC{} \emph{The whole $\theta$ interval, conditionally.} The identities
+\eqref{eq:h1s-expfam}--\eqref{eq:h1s-mono} are proved and give four of the five terms of
+$\partial_{c}\mathrm{gap}$ the right sign; the fifth is open, and on $501$ points the total is positive
+with a minimum $0.4436$. The complement is cheap and explicit: four more certified points at rational
+$c$ plus one bound on $|\mathrm{gap}''|$ cover $[0,\pi]$ unconditionally.
+\item \LT{} \emph{Eight lemmas.} $\Phi''\succeq(N/12)\mathrm{id}$ for all $X$ and all directions,
+sharp at $X=0$; $E[H_{vv}]\ge0$ for $\theta\le\pi$; $E[H_{vv}]=E[G_{v}^{2}]$ (Stein) with the spectral
+route thereby empty; $H=\tfrac12\cot(\theta/2)G$ pointwise; $\operatorname{Var}(w)\le\tfrac12\langle w\rangle$
+along three independent paths; $\langle w\rangle-2\operatorname{Var}\ge2\langle w\rangle^{2}$; the
+skeleton identity \eqref{eq:h1s-skeleton}; and the exact splitting
+$H=K_{0}G+\beta\Delta$.
+\item \LT{}/\LC{} \emph{One window at two grades.} $\beta\sin^{2}(\theta/2)\le\cos(\theta/2)$ is a
+theorem and covers $\theta\le0.388\pi$ at $\beta=2.5$ and $0.256\pi$ at $\beta=6$; the measured
+$R_{\min}=32.3177$ widens this to $0.904\pi$ and $0.786\pi$ and the widening is one unproved
+monotonicity away from being a theorem. The window is provably not $\theta$-uniform
+($\beta_{0}\asymp8/(9(\pi-\theta)^{3})$) and at $\theta=\pi$ its premises collapse --- which is the
+slice where the exact counterexample lives, at $\beta>4.30661$, i.e.\ at a different coupling, not a
+different point.
+\item \LE{}/\LM{} \emph{The lattice.} $G''(0)>0$ at every measured coupling: $+0.2835$, $+0.4116$,
+$+0.5108$, $+0.6018$ at $L=2$ with $16/16$ and $8/8$ chains, and $+0.3396$ at $L=3$ with
+$5.80\sigma$; no volume dependence at the $0.85\sigma$/$0.7\%$ level. At $L=2$, $\beta=6$ the five
+estimators span $4.1$--$10.2\sigma$, and the only one below $5\sigma$ is a formula mismatch whose
+correction returns $7.3\sigma$. The rank of the evidence is exactly \LE: one window, one mode, no
+$a\to0$.
+\item \LN{} \emph{Twelve roads.} Each ends on a number: $38$--$44\times$; a tautology at
+$2\times10^{-16}$; $\mathrm{ess\,inf}K_{+}=0$; a required negative variance $-0.0367$; $2.6\times$
+against $40$--$125\times$; a spectral identity; an exactly zero margin; a broken small-$B$ bridge at
+$0.082919>0.0743$; a $65\%$ free-field remnant; a negative region growing $1.09\to5.66$; an exact
+failure $0.027648>0$; and a residual $O(a)$ at $1.43\times10^{-3}$.
+\item \LM{}/\LN{} \emph{What is left.} A directional, conditioned, sign-carrying lower bound on
+$E[H_{vv}]$ at $a\neq0$; a strict certificate at $L=2$, which is $143$-dimensional; and any strict
+statement at $\mathrm{SU}(3)$, which is $7$-dimensional on this slice. None of the three is buyable
+with precision or with statistics.
+\end{itemize}
+
+\textbf{Not done, and not to be read as done.} No number in this chapter carries an $a\to0$ scaling;
+the sharp variance leg ($\Psi\le1$) is measured on a grid, not proved, so the window's width at large
+$\theta$ is a statement about a measured constant; the monotonicity that promotes three points to an
+interval is proved in four of its five terms and measured in the fifth; $E[H_{vv}]\ge0$ is true only on
+$\theta\le\pi$; the floor $\Phi''\succeq N/12$ cannot cancel the Wilson-side gap at $a\neq0$; the
+$L=2$ and $L=3$ numbers are Monte Carlo on one mode with a finite-difference definition of $\kappa$;
+and the $\mathrm{SU}(3)$ gap changes sign with the weight, so it is not even a well-defined number until
+the reduction is fixed. \textbf{Clay remains $0\%$: this chapter states where $H1$ stands, and where it
+stands is --- one certificate at three points with an interval conditional on one monotonicity, eight
+strict lemmas with their scopes attached, one window with two boundaries and a third that is false, one
+lattice ledger, twelve roads that end, and three walls named by their dimension.}

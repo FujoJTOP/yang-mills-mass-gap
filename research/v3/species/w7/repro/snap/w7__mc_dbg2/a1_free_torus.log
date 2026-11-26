@@ -1,0 +1,61 @@
+[1] lambda_1(a=1,L) = 2 m_1 = 4 sin(pi/L);  rate: L*lambda_1 -> 4 pi
+  L=     4  lam1=2.828427124746   L*lam1=11.3137084990   lam1/(4pi/L)=0.9003163162
+  L=     8  lam1=1.530733729460   L*lam1=12.2458698357   lam1/(4pi/L)=0.9744953584
+  L=    16  lam1=0.780361288065   L*lam1=12.4857806090   lam1/(4pi/L)=0.9935868511
+  L=    32  lam1=0.392068561318   L*lam1=12.5461939622   lam1/(4pi/L)=0.9983943930
+  L=    64  lam1=0.196270697310   L*lam1=12.5613246278   lam1/(4pi/L)=0.9995984531
+  L=   128  lam1=0.098164914092   L*lam1=12.5651090037   lam1/(4pi/L)=0.9998996042
+  L=  1024  lam1=0.012271827052   L*lam1=12.5663509011   lam1/(4pi/L)=0.9999984313
+  L= 16384  lam1=0.000766990389   L*lam1=12.5663705374   lam1/(4pi/L)=0.9999999939
+  fitted  d ln lam1 / d ln L = -0.984813      (analytic: -1)
+
+[2] a->0 with L a = 8:  lam1 = (4/a) sin(a pi/8) -> pi/2 ; O(a^2) coeff = -pi^3/768
+  a=1         L=      8.0  lam1=1.530733729460   (lam1-pi/2)/a^2 = -0.040062597   [-pi^3/768 = -0.040372756]
+  a=0.5       L=     16.0  lam1=1.560722576129   (lam1-pi/2)/a^2 = -0.040295003   [-pi^3/768 = -0.040372756]
+  a=0.25      L=     32.0  lam1=1.568274245273   (lam1-pi/2)/a^2 = -0.040353304   [-pi^3/768 = -0.040372756]
+  a=0.125     L=     64.0  lam1=1.570165578477   (lam1-pi/2)/a^2 = -0.040367892   [-pi^3/768 = -0.040372756]
+  a=0.0625    L=    128.0  lam1=1.570638625466   (lam1-pi/2)/a^2 = -0.040371540   [-pi^3/768 = -0.040372756]
+  a=0.03125   L=    256.0  lam1=1.570756900572   (lam1-pi/2)/a^2 = -0.040372452   [-pi^3/768 = -0.040372756]
+  d ln lam1 / d ln a  at fixed L = -1 exactly (lam1 = (4/a) sin(pi/L))
+
+[3] exact -Delta on L^4 (sparse, no MC): smallest nonzero eigenvalue vs 4 sin^2(pi/L)
+  L=4:  ev[0]=+2.350e-16  ev_min_nonzero=2.000000000000   4 sin^2(pi/L)=2.000000000000   [lambda_conf]     2 m_1 = 2.828427124746
+  L=6:  ev[0]=-1.017e-18  ev_min_nonzero=1.000000000000   4 sin^2(pi/L)=1.000000000000   [lambda_conf]     2 m_1 = 2.000000000000
+  L=8:  ev[0]=-3.331e-16  ev_min_nonzero=0.585786437627   4 sin^2(pi/L)=0.585786437627   [lambda_conf]     2 m_1 = 1.530733729460
+
+[4] equal-time slice measure (4D isotropic lattice, unit spacing, L_t = L):
+    C(k) = (1/L) sum_n 1/(z + 2 - 2 cos(2 pi n / L));  lambda_slice = 1/C ;  C^-1 -> sqrt(z(z+4))
+  L=  4  lambda_slice=3.4285714286   sqrt(z(z+4))=3.4641016151   ratio=0.989743   lambda_slice/lambda_1=1.212183   sqrt(z+4)/2=1.224745
+  L=  8  lambda_slice=1.6307435113   sqrt(z(z+4))=1.6389910009   ratio=0.994968   lambda_slice/lambda_1=1.065335   sqrt(z+4)/2=1.070722
+  L= 16  lambda_slice=0.7918651029   sqrt(z(z+4))=0.7950729792   ratio=0.995965   lambda_slice/lambda_1=1.014742   sqrt(z+4)/2=1.018852
+  L= 32  lambda_slice=0.3924490796   sqrt(z(z+4))=0.3939474312   ratio=0.996197   lambda_slice/lambda_1=1.000971   sqrt(z+4)/2=1.004792
+  L= 64  lambda_slice=0.1957705722   sqrt(z(z+4))=0.1965068295   ratio=0.996253   lambda_slice/lambda_1=0.997452   sqrt(z+4)/2=1.001203
+
+[5] gamma_BD = (N/4) e^{-2Q} = 0.75 (Q=0, L- and a-independent) vs lambda_1 = (4/a) sin(pi/L)
+    L      a      lam1        lam_conf    gamma_BD    gamma/lam1   lam1/gamma
+  4        1       2.828427    2.000000    0.750000    0.265165     3.771236
+  8        1       1.530734    0.585786    0.750000    0.489961     2.040978
+  16       1       0.780361    0.152241    0.750000    0.961093     1.040482
+  17       1       0.734998    0.135056    0.750000    1.020411     0.979997
+  32       1       0.392069    0.038429    0.750000    1.912931     0.522758
+  64       1       0.196271    0.009631    0.750000    3.821253     0.261694
+  10000    1       0.001257    0.000000    0.750000    596.831046   0.001676
+  8        1       1.530734    0.585786    0.750000    0.489961     2.040978
+  16       0.5     1.560723    0.608964    0.750000    0.480547     2.080963
+  32       0.25    1.568274    0.614871    0.750000    0.478233     2.091032
+  64       0.125   1.570166    0.616355    0.750000    0.477657     2.093554
+  1000000  8e-06   1.570796    0.616850    0.750000    0.477465     2.094395
+
+  crossing lambda_1 = gamma_BD at a=1:  L* = pi/arcsin(N/16) = 16.655990
+    a=1       L*(a) = pi/arcsin(N a/16) = 16.655990   (physical size a L* = 16.655990)
+    a=0.5     L*(a) = pi/arcsin(N a/16) = 33.461111   (physical size a L* = 16.730556)
+    a=0.25    L*(a) = pi/arcsin(N a/16) = 66.996084   (physical size a L* = 16.749021)
+    a=0.1     L*(a) = pi/arcsin(N a/16) = 167.541790   (physical size a L* = 16.754179)
+    a=0.01    L*(a) = pi/arcsin(N a/16) = 1675.515100   (physical size a L* = 16.755151)
+
+[6] exponent pairs  (d ln . / d ln a ,  d ln . / d ln L)
+    lambda_1 = 2 m_1            (-1, -1)
+    lambda_conf                 (-2, -2)
+    gamma_BD  (lattice units)   ( 0,  0);   in A-units it carries a^{-2} (R1-BRIDGE Sec.2.3)
+
+[done]

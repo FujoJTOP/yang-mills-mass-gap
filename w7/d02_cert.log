@@ -1,0 +1,87 @@
+==============================================================================
+D02 certificate inventory at beta = 2.5  (mpmath dps=30)
+==============================================================================
+
+[1] character coefficients kappa_j = int e^{beta cos th} chi_j dU   (closed form 2(2j+1) I_{2j+1}(beta)/beta = 2 m I_m/beta)
+    irrep label j = (m-1)/2,  m = 2j+1 in {1,2,3,...}; the ODD m are the ones an integer-j scan MISSES
+ m     j               kappa (quad)                 2*I_m/beta   rel.diff
+ 1   0.0      2.0133729962309587532      2.0133729962309587532        0.0
+ 2   0.5       2.042345836510662852       2.042345836510662852        0.0
+ 3   1.0      1.1384889810672854149      1.1384889810672854149   1.73e-31
+ 4   1.5     0.44152693360601237617     0.44152693360601237617   1.12e-31
+ 5   2.0     0.13137390068809285356     0.13137390068809285356        0.0
+ 6   2.5    0.031695677106172867177    0.031695677106172867177        0.0
+ 7   3.0   0.0064276691687619387874   0.0064276691687619387874    1.2e-31
+ 8   3.5   0.0011238201281540813301   0.0011238201281540813301        0.0
+ 9   4.0  0.00017264115141310715028  0.00017264115141310715028   1.39e-31
+10   4.5 0.000023645948887744460309 0.000023645948887744460309   1.27e-31
+11   5.0   2.9215015149797107382e-6   2.9215015149797107382e-6   1.29e-31
+12   5.5   3.2872412148812928391e-7   3.2872412148812928391e-7   1.29e-30
+13   6.0   3.3952745135840865247e-8   3.3952745135840865247e-8    7.1e-30
+14   6.5   3.2407295480664737902e-9   3.2407295480664737902e-9   3.34e-29
+  sum_(m<= 5) m*kappa_m =  11.936508850318654474  e^beta = 12.182493960703473438  rel = 0.0202
+  sum_(m<= 9) m*kappa_m =  12.182220928524975864  e^beta = 12.182493960703473438  rel = 2.24e-5
+  sum_(m<=13) m*kappa_m =  12.182493910605662709  e^beta = 12.182493960703473438  rel = 4.11e-9
+  pointwise reconstruction  sum_{m<=M} kappa_m chi_{(m-1)/2}(th)  vs  e^{beta cos th}:
+    M= 5 th= 0.3  rec=   10.769354375671  exact=   10.895405894439  rel=0.0116
+    M= 5 th= 1.0  rec=   3.8644612792589  exact=   3.8603419385518  rel=0.00107
+    M= 5 th= 2.0  rec=  0.36550101341059  exact=  0.35332495560827  rel=0.0345
+    M= 5 th= 2.6  rec=  0.11658261823674  exact=  0.11739371787875  rel=0.00691
+    M= 9 th= 0.3  rec=   10.895396744092  exact=   10.895405894439  rel=8.4e-7
+    M= 9 th= 1.0  rec=   3.8603608864403  exact=   3.8603419385518  rel=4.91e-6
+    M= 9 th= 2.0  rec=  0.35330154147516  exact=  0.35332495560827  rel=6.63e-5
+    M= 9 th= 2.6  rec=  0.11736064958267  exact=  0.11739371787875  rel=0.000282
+    M=13 th= 0.3  rec=   10.895405905034  exact=   10.895405894439  rel=9.72e-10
+    M=13 th= 1.0  rec=   3.8603419345249  exact=   3.8603419385518  rel=1.04e-9
+    M=13 th= 2.0  rec=  0.35332495493977  exact=  0.35332495560827  rel=1.89e-9
+    M=13 th= 2.6  rec=  0.11739372342818  exact=  0.11739371787875  rel=4.73e-8
+
+[2] RIGOROUS tail bound.  I_m(x) <= (x/2)^m e^{x^2/4}/m!  for x>0  (from I_m = sum_k (x/2)^{2k+m}/(k!(m+k)!))
+    truncated weight sum_M := sum_(m<=M) m*kappa_m  (exact sum = sum_m 2 m^2 I_m/beta = e^beta)
+ M  tail <= 2m^2(be/2)^m e^{b^2/4}/m!    tail/e^beta   sum_M/e^beta
+ 1                          81.737826        6.70945   0.1652677196
+ 2                          51.920744        4.26191     0.50055963
+ 3                          23.967229        1.96735   0.7809182293
+ 4                          8.4374987       0.692592   0.9258891803
+ 5                          2.3711977        0.19464   0.9798083126
+ 6                         0.55130746      0.0452541   0.9954187502
+ 7                         0.10897301     0.00894505   0.9991120567
+ 8                        0.018700677     0.00153505   0.9998500469
+    1 - sum_M/e^beta must be <= tail/e^beta :
+    M=3: 1-sum_M/e^beta =     0.219082   bound =      1.96735   valid=True
+    M=5: 1-sum_M/e^beta =    0.0201917   bound =      0.19464   valid=True
+    M=7: 1-sum_M/e^beta =  0.000887943   bound =   0.00894505   valid=True
+
+[3] EXACT spectrum of the 1-link convolution operator Tf(U)=int e^{beta cos(U V^dag)} f(V)dV
+    Schur: D^j_{mn} are exact eigenvectors, eigenvalue = kappa_j/(2j+1) = 2 I_m/beta, m=2j+1.
+    => lambda_m/lambda_1 = I_m/I_1   (closed form; multiplicity of j is (2j+1)^2 = m^2)
+ m     j    lambda_m/lambda_1    m_m=-log(ratio)  mult
+ 1   0.0                  1.0                0.0     1
+ 2   0.5 0.507195100047020934     0.678859536696     4
+ 3   1.0 0.188487839924766506      1.66872178386     9
+ 4   1.5 0.0548242842275813188      2.90362204035    16
+ 5   2.0 0.0130501303965062859      4.33895715319    25
+ 6   2.5 0.00262376264155617504      5.94314586872    36
+ 7   3.0 0.000456069717036645741       7.6928648719    49
+    KEY: m=2 (j=1/2, the FUNDAMENTAL) gives ratio = I_2/I_1 = 0.5071951000470209
+         = the corpus's u_tile(2.5) = 0.5071951000  ->  toy gap m_toy = 0.678859536696
+    -> a STRICT closed-form gap, but for the decoupled-link toy, NOT for 4D.
+
+[4] Calibration: symmetric 2x2 positive matrix [[a,b],[b,a]] -> lambda2/lambda1 = tanh(Delta/4)
+    with Delta = 2 log(a/b) = projective (Hilbert) diameter.  EQUALITY in d=2
+    => the Birkhoff/Hopf oscillation bound lambda2/lambda1 <= tanh(Delta/4) is SHARP in d=2.
+    J= 0.5  exact ratio=  0.244918662404  tanh(Delta/4)=  0.244918662404  equal=True
+    J= 2.0  exact ratio=  0.761594155956  tanh(Delta/4)=  0.761594155956  equal=True
+    J= 4.0  exact ratio=  0.964027580076  tanh(Delta/4)=  0.964027580076  equal=True
+    J= 8.0  exact ratio=  0.999329299739  tanh(Delta/4)=  0.999329299739  equal=True
+
+[5] Structural identity (machine check on random reals):
+    T[U,U'] = e^{-Ssp(U)/2} e^{-Ssp(U')/2} W(U,U')
+    => T[U,U']T[V,V'] / (T[U,V']T[V,U']) = W[U,U']W[V,V']/(W[U,V']W[V,U'])   (spatial terms cancel identically)
+    2000 random draws: max |lhs-rhs| = 5.96e-8  => identity exact
+    Consequence: the Hilbert/Dobrushin oscillation bound for T depends ONLY on the 3D object W.
+
+[6] Boundedness at L=2 (=> T bounded, and Hilbert-Schmidt on a finite-measure space => compact)
+    #plaquettes = 6L^4 = 96;  0 < T[U,U'] <= e^{beta*plaq} = e^(240.0) = 1.70089e+104
+    kernel strictly positive (integrand of W > 0 on an open set)  => Jentzsch / Perron-Frobenius applies
+    => lambda_1 simple, eigenvector > 0, |lambda_j| < lambda_1 for j >= 2  [QUALITATIVE ONLY: no number]

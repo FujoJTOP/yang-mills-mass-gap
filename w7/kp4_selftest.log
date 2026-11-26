@@ -1,0 +1,6 @@
+K3 0-sum K3: n=5 phi=4  product=4
+K4 0-sum K4: n=7 phi=36  product=36
+K5 0-sum K5: n=9 phi=576  product=576
+K6 0-sum K6: n=11 phi=14400  product=14400
+K3 0-sum K4: n=6 phi=-12  product=12
+K5 0-sum K6: n=10 phi=-2880  product=2880

@@ -1,0 +1,81 @@
+==============================================================================
+PART 1 �� geometry: A1, A2 as explicit functions of (R,theta); additivity check
+==============================================================================
+  A1 = (1/2)R^2 (phi1 - sin phi1),  phi1 = 2 pi theta
+  A2 = (1/2)R^2 (phi2 - sin phi2),  phi2 = 2 pi (1-theta)
+  [check 1] bow formula vs quadrature: max rel diff = 5.72e-09   (formula OK)
+  [check 2] A1+A2 - pi R^2          : max abs diff = 1.42e-14   (=0 exactly)
+
+  R=1:  th      A1        A2        A1+A2      pi R^2
+          0.00   0.00000   3.14159   3.14159   3.14159
+          0.10   0.02027   3.12133   3.14159   3.14159
+          0.25   0.28540   2.85619   3.14159   3.14159
+          0.50   1.57080   1.57080   3.14159   3.14159
+          0.75   2.85619   0.28540   3.14159   3.14159
+          0.90   3.12133   0.02027   3.14159   3.14159
+  R=5:  th      A1        A2        A1+A2      pi R^2
+          0.00   0.00000  78.53982  78.53982  78.53982
+          0.10   0.50667  78.03315  78.53982  78.53982
+          0.25   7.13495  71.40486  78.53982  78.53982
+          0.50  39.26991  39.26991  78.53982  78.53982
+          0.75  71.40486   7.13495  78.53982  78.53982
+          0.90  78.03315   0.50667  78.53982  78.53982
+  => G(R,theta) = exp(-sigma pi R^2) EXACTLY: theta drops out identically.
+  [check 3] max_theta |G(R,th)/G(R,1/2) - 1| = 0.0e+00 (analytic identity, see above)
+
+==============================================================================
+PART 2 �� one-variable reduction (SP-F-LOOPALG sec.3): reproduce 5.44 -> 8.8e14
+==============================================================================
+  (star_1): c1 f'' = c2 g^2 N f^2 / R^3,  f = e^{-sigma R^2}, sigma=1, c1/c2=1
+  => LHS/RHS = (4R^2-2) R^3 e^{+sigma R^2}   (grows like e^{+sigma R^2} R^5)
+    R=1:  LHS/RHS =       5.4366
+    R=2:  LHS/RHS =         6115
+    R=3:  LHS/RHS =   7.4386e+06
+    R=5:  LHS/RHS =   8.8206e+14
+  one-variable residual ratio R=1 -> R=5:  1.622e+14
+  (SP-F-LOOPALG quotes 5.44 -> 8.8e14, i.e. 1.62e+14; agreement: rel.diff 2.34e-03)
+
+==============================================================================
+PART 3 �� two-variable residual (this work): rho = LHS/RHS on C_R,theta
+==============================================================================
+  local loop derivative: dW/dsigma_{mu nu}(x) = -(sigma/2) eps_{mu nu} chi_S(x) W
+  => d_mu(...) = (sigma/2) W t_nu delta_C      [boundary term; NOT identically 0]
+  RHS: oint dy_nu delta^4(x-y) G(y) = g^2 N G(R,theta) t_nu delta_C
+  => rho(R,theta) = (sigma/2) W / (g^2 N G) = sigma/(2 g^2 N)  [W=G by additivity]
+    R=1: rho = 0.500000000000  0.500000000000  0.500000000000  0.500000000000  0.500000000000
+    R=2: rho = 0.500000000000  0.500000000000  0.500000000000  0.500000000000  0.500000000000
+    R=3: rho = 0.500000000000  0.500000000000  0.500000000000  0.500000000000  0.500000000000
+    R=5: rho = 0.500000000000  0.500000000000  0.500000000000  0.500000000000  0.500000000000
+  spread over (R,theta): max=0.500000000000 min=0.500000000000 -> ratio = 1.000000000000
+  two-variable residual ratio R=1 -> R=5 : 1.000000000000
+
+  sigma condition: rho == 1  <=>  sigma = 2 g^2 N   (R- and theta-independent)
+    e.g. g^2 N=1 -> sigma = 2;  g^2 N=0.5 -> sigma = 1
+
+==============================================================================
+PART 4 �� robustness: subleading prefactors in G do not resurrect an R-power
+==============================================================================
+  G <- G(1+0.1/R):  rho(1)=0.454545  rho(5)=0.490196  ratio=1.078431   (still O(1))
+  G <- G(1+1.0/R):  rho(1)=0.250000  rho(5)=0.416667  ratio=1.666667   (still O(1))
+
+==============================================================================
+PART 5 �� DIMENSION TABLE (machine-checked, exponents of L only)
+==============================================================================
+  [W]=L^0  [A]=L^2  [sigma]=L^-2  [g^2N]=L^0   (4D: g dimensionless)
+  [LHS] = [d_mu][d/dsigma] = L^{-3};  [RHS] = [g^2N][dy][delta^4] = L^{-3}   -> MATCH
+  literal 'sigma = 2 g^2 N'      : L^-2 vs L^0   -> off by L^{-2}  (DIMENSIONALLY WRONG)
+  contact-term form 'sigma = 2 g^2 N mu^2': L^-2 vs L^-2   -> MATCH
+  where mu enters: oint dy_nu delta^4(x-y) |_{x=y on C} = t_nu * delta^3_perp(0)
+  i.e. the coincidence/contact term (C3-COEFF sec.2: prescription is an extra input).
+  Lattice units a=1:  mu = 1/a  ->  sigma a^2 = 2 g^2 N  (dimensionless, OK).
+
+==============================================================================
+VERDICT
+==============================================================================
+  one-variable  : 5.44 -> 8.8e14   (ratio 1.62e+14, growth e^{+sigma R^2}R^5)
+  two-variable  : 0.500 -> 0.500   (ratio 1.000000000000)
+  residual: identically 0 once sigma = 2 g^2 N mu^2 is imposed; otherwise the
+  residual is the CONSTANT sigma/(2 g^2 N mu^2) -- no R-power, no theta-mismatch.
+  => area law IS a solution of (star) on the planar two-variable sector  [(a) / [C]]
+  price: the equation fixes only sigma/mu^2, not sigma itself (contact scale mu is
+  an extra input) -> consistency, not a derivation of the string tension.

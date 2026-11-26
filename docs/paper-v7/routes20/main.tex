@@ -1,0 +1,572 @@
+% =====================================================================
+%  paper-v7 / routes20 --- a systematic survey of the twenty routes of the consistency attack
+%  Sole claim (not proved here, only bookkept): once the t axis is restored, the target is one clean sentence
+%      inf_{L,t} w_1(L, 2.5, t) > 0 ,   w_1 = f_1^2 / M_0 ,  M_0 = C(0)
+%  Grades: one verbal grade per route; [T]/[C]/[NG]/[E]/[V] are cited only where the corpus already carries that tag.
+%  Build:  pdflatex -interaction=nonstopmode main.tex   (run twice)
+%  Discipline: no QED stamp; no self-inflation; the Clay percentage uses only the corpus's own 0%.
+%  Write scope: this file and the other files of this directory; no git commit.
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.3cm,top=2.0cm,bottom=2.1cm,headsep=12pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{microtype}
+\usepackage[table]{xcolor}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{enumitem}
+\usepackage{CJKutf8}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,urlcolor=blue!45!black]{hyperref}
+
+% ---------- colours ----------
+\definecolor{cT}{HTML}{1D7A3A}
+\definecolor{cC}{HTML}{1F5FA8}
+\definecolor{cM}{HTML}{B45F06}
+\definecolor{cN}{HTML}{A61B1B}
+\definecolor{cE}{HTML}{6A3D9A}
+
+% ---------- label chips (copied from docs/paper-v2/main.tex:37--42) ----------
+\newcommand{\labb}[2]{\fcolorbox{#1!35}{#1!8}{\textcolor{#1}{\textbf{\scriptsize #2}}}}
+\newcommand{\LT}{\labb{cT}{T}}
+\newcommand{\LC}{\labb{cC}{C}}
+\newcommand{\LM}{\labb{cM}{M}}
+\newcommand{\LN}{\labb{cN}{N}}
+\newcommand{\LE}{\labb{cE}{E}}
+
+% ---------- code ----------
+\newcommand{\code}[1]{\texttt{\footnotesize\detokenize{#1}}\allowbreak}
+\newcommand{\codep}[1]{{\footnotesize\path{#1}}}
+\makeatletter
+\g@addto@macro\UrlBreaks{\do\-}
+\makeatother
+
+% ---------- ragged-right fixed-width columns ----------
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{Z}[1]{>{\raggedright\arraybackslash\footnotesize}p{#1}}
+\newcolumntype{S}[1]{>{\raggedright\arraybackslash\scriptsize}p{#1}}
+
+% ---------- boxes ----------
+\newtcolorbox{claimbox}[1]{enhanced, breakable, colback=#1!5, colframe=#1!70,
+  boxrule=0pt, leftrule=2.6pt, arc=2pt, left=9pt, right=8pt, top=6pt, bottom=6pt,
+  before skip=8pt, after skip=8pt, fontupper=\small, parbox=false}
+\newtcolorbox{keybox}{enhanced, breakable, colback=black!3, colframe=black!45,
+  boxrule=0pt, leftrule=2.4pt, arc=2pt, left=9pt, right=8pt, top=5pt, bottom=5pt,
+  before skip=6pt, after skip=6pt, fontupper=\small, parbox=false}
+\newtcolorbox{warnbox}{enhanced, breakable, colback=cN!3, colframe=cN!55,
+  boxrule=0pt, leftrule=2.4pt, arc=2pt, left=9pt, right=8pt, top=5pt, bottom=5pt,
+  before skip=6pt, after skip=6pt, fontupper=\small, parbox=false}
+\newtcolorbox{gradbox}{enhanced, breakable, colback=cC!3, colframe=cC!50,
+  boxrule=0pt, leftrule=2.4pt, arc=2pt, left=9pt, right=8pt, top=5pt, bottom=5pt,
+  before skip=6pt, after skip=6pt, fontupper=\small, parbox=false}
+
+% ---------- helpers ----------
+\captionsetup{font=small,labelfont=bf,skip=4pt}
+\setlist[itemize]{leftmargin=1.5em,itemsep=1.5pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.8em,itemsep=1.5pt,topsep=3pt}
+\allowdisplaybreaks
+\setlength{\emergencystretch}{2.5em}
+
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.55em}{}
+\titlespacing*{\section}{0pt}{1.3em}{0.55em}
+\titlespacing*{\subsection}{0pt}{0.95em}{0.4em}
+
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\color{black!55}v7 / routes20 --- twenty routes, one verdict: $\inf_{L,t}w_1(L,2.5,t)>0$}
+\fancyhead[R]{\footnotesize\color{black!55}\thepage}
+\setlength{\headheight}{13pt}
+
+\hypersetup{pdftitle={Twenty routes against one inequality: inf-L,t w1(L,2.5,t)>0},
+            pdfauthor={Yang--Mills campaign}}
+
+\begin{document}
+\begin{CJK}{UTF8}{gbsn}
+
+% =====================================================================
+\begin{center}
+  \vspace*{0.1cm}
+  {\LARGE\bfseries A systematic survey of the twenty routes of the consistency attack\par}
+  \vspace{0.35em}
+  {\large\bfseries Twenty routes against one inequality: $\displaystyle\inf_{L,t} w_1(L,2.5,t)>0$\par}
+  \vspace{0.45em}
+  \rule{0.62\textwidth}{0.6pt}\par
+  \vspace{0.4em}
+  {\small\color{black!60} Yang--Mills campaign \textperiodcentered{} v7 / routes20 \textperiodcentered{} 2026-11-25\par}
+  \vspace{0.1em}
+  {\small\color{black!60} one verdict per route \textperiodcentered{} one verbal grade per route \textperiodcentered{} no QED \textperiodcentered{} Clay 0\%\par}
+\end{center}
+
+\vspace{0.2em}
+
+% =====================================================================
+\begin{claimbox}{cT}
+\textbf{Sole claim (verbatim, no inflation).}\hspace{0.35em}\LT
+\par\smallskip
+Once the renormalization scheme $t$ is restored, the target is one \textbf{unambiguous} sentence:
+\[
+  \boxed{\ \inf_{L,t}\ w_1(L,\,2.5,\,t)\ >\ 0\ }\qquad
+  w_1=\frac{f_1^2}{M_0},\quad M_0=C(0).
+\]
+This paper \textbf{does not prove} that sentence; it \textbf{kills each of the twenty routes leading to it, one by one}, and gives each route's \textbf{death type}:
+nine give only an upper bound, nine are circular or equivalent, two have counterexamples; besides these, \textbf{two by-products} (one true theorem \LT, one sampler bug).
+\par\smallskip
+The obstruction has three layers: the \textbf{instrument layer} (weak-$*$ instruments cannot resolve an atom), the \textbf{continuity layer} ($\nu\mapsto\nu(\{x\})$ is only upper semicontinuous),
+and the \textbf{implication layer} (atomicity $\not\Rightarrow$ gap).
+\par\smallskip
+{\footnotesize The negative conclusion of this paper, verbatim, is: "a uniform positive lower bound on $w_1$" is not the road to Clay --- it \textbf{may be false} (usc allows downward jumps in $t$),
+and \textbf{even if true it does not imply a gap} (2D has a gap and no atom; M6 has an atom and no gap). This is not "this route is hard", it is "it does not measure that object".}
+\end{claimbox}
+
+\begin{keybox}
+\textbf{Reading guide (self-contained).}\ Five objects are fixed first; they are not redefined below:
+\begin{itemize}
+\item $O=\tfrac14\operatorname{tr}F^2$ is the $0^{++}$ operator; $C(t)=\langle O(t)O(0)\rangle_c$; $\nu$ is the spectral measure of $O$ (a positive measure);
+$f_1^2=\nu(\{m_1^2\})=|\langle G|O|\Omega\rangle|^2$ is the lowest atom weight; $M_0=C(0)=\int d\nu=\mathrm{Var}_\Omega(O)$;
+\[
+  w_1\ :=\ \frac{f_1^2}{M_0}\ =\ \mu(\{m_1^2\}),\qquad \mu:=\nu/M_0\in\mathcal P([0,\Lambda]).
+\]
+i.e. $w_1$ \textbf{is the probability mass of the lowest atom} (an equivalent reading of $w_1=\lim_t e^{m_1t}P(N_t=0)$, \code{U12.md}).
+\item Lattice side: $L$ is the spatial side length (periodic), $a$ is the lattice spacing, $\beta$ is the coupling (this paper uses only the single physical point $\beta=2.5$);
+$r_0=\tfrac12(2N)^{-2}=0.03125$ is the residue floor already proved on the strong-coupling side ($N=2$).
+\item Three named objects that are cited repeatedly: \textbf{H1} is $\chi\le 1/\lambda$ (inverse-susceptibility ceiling);
+\textbf{$\Delta_0$} is a uniform positive lower bound on $G''_{k=0}$; \textbf{T4} is the modularity statement for $a\to0$ ($m_{\rm lat}=C\,a\Lambda$, $C$ independent of $\beta$).
+\item Grades are always written in \textbf{words}; \LT/\LC/\LN/\LE/\LM{} appear only where the corpus already carries that tag, as evidence of \textbf{where a claim is quoted from}, never as a new verdict of this paper.
+\end{itemize}
+\end{keybox}
+
+\vspace{0.15em}
+\setcounter{tocdepth}{1}
+{\small\tableofcontents}
+
+% =====================================================================
+\section{The target}\label{sec:target}
+\subsection{The object and the scheme (verbatim)}
+
+The object of the target is written verbatim in the corpus (\code{LOOP-RUNBOOK.md:18950--18956}, from the family/scheme audit of \code{U07.md}):
+\[
+  w_1=\frac{f_1^2}{M_0},\qquad
+  f_1^2=\nu(\{m_1^2\})=|\langle G|O|\Omega\rangle|^2,\qquad
+  M_0=\int d\nu=C(0)=\mathrm{Var}(O),\qquad O=\tfrac14\operatorname{tr}F^2 .
+\]
+The measured scheme is $w_1=A/C(0)$, and \textbf{the anomalous dimension of $w_1$ vanishes} ($\gamma_{w_1}=0$).
+The former sentence gives the \textbf{probability} identity of $w_1$: $\mu=\nu/M_0$, $w_1=\mu(\{m_1^2\})$ (\code{U12.md} judges this a true theorem);
+the latter gives the \textbf{scaling} identity of $w_1$: $\gamma_{w_1}=0$ means it \textbf{does not run} under the renormalization-group flow.
+
+\subsection{Why the $t$ axis must be restored}
+
+The bare contact term gives
+\[
+  M_0^{\rm bare}\ \sim\ a^{-8}
+  \qquad\Longrightarrow\qquad
+  w_1^{\rm bare}=\frac{f_1^2}{M_0^{\rm bare}}\ \longrightarrow\ 0
+  \qquad (a\to0),
+\]
+because $f_1^2$ is an IR-clean finite atom (the point mass of the spectral measure at the lowest atom), while $M_0=C(0)$ is dominated by the UV contact term
+(\code{LOOP-RUNBOOK.md:18954}; another statement of the same fact is the $f_1^2\le\mathrm{Var}$ identity of \code{U12-C0VAR.md}).
+\textbf{So without pinning $t$, $w_1$ is meaningless at $a\to0$}: the numerator is an IR quantity, the denominator a UV quantity, and the bare ratio is dragged to zero by $a^{-8}$.
+Once the renormalization scheme $t$ is pinned, the correct notation for the family is $w_1(L,\beta,t)$, and $a=a(\beta)$ is the chart pinned by the coupling.
+
+\subsection{What is \textbf{not} the problem (a two-line lemma)}
+
+Viewing $(L,t)$ as a product set, the three $\inf$ orders are \textbf{identical} (\code{LOOP-RUNBOOK.md:18958--18962}):
+for any bounded function on a product set, $\inf_L\inf_t=\inf_t\inf_L=\inf_{(L,t)}$.
+$\Rightarrow$ \textbf{"the order matters" does not hold}; the defect of the target sentence is not in the order. There are exactly three forks:
+\begin{enumerate}[label=(\roman*)]
+\item the domain is constrained to the graph $a=a(\beta)$ ($a$ is pinned at $\beta=2.5$);
+\item whether the $\lim$ lies inside or outside the $\inf$;
+\item \textbf{the missing $t$ axis}.
+\end{enumerate}
+Of these, (i)(ii) are disambiguable bookkeeping (\S\ref{sec:target-b}), while (iii) is an \textbf{object-level} defect: only once it is restored does the target stand.
+
+\subsection{What it looks like once $t$ is restored, and two inconsistencies that must be recorded}\label{sec:target-b}
+
+\begin{keybox}
+\textbf{Wrong (before restoring $t$):} a $(L,a)$-uniform positive lower bound on $w_1$.
+Missing $t$ (the renormalization scheme) $\Rightarrow$ bare $M_0\sim a^{-8}$ $\Rightarrow$ $w_1^{\rm bare}\to0$ $\Rightarrow$ meaningless at $a\to0$.
+\par\smallskip
+\textbf{Right (after restoring $t$):}
+\[
+  \inf_{L,t}\ w_1(L,\,\beta=2.5,\,t)>0,
+\]
+where $a=a(\beta)$ is pinned at $2.5$; $\gamma_{w_1}=0$ $\Rightarrow$ scale invariant; the three $\inf$'s agree $\Rightarrow$ no order problem.
+\end{keybox}
+
+\textbf{This paper adopts the latter notation}, the reason being verbatim from \code{U07.md} and \code{LOOP-RUNBOOK.md:18976--18992}.
+The two inconsistencies must be recorded side by side and must not be smoothed over (this is item 5 of kill criterion (b), see \S\ref{sec:count}):
+\begin{itemize}
+\item \code{UNIF1.md} writes $\inf_{(L,a)}$, while \code{U4-CONTINUUM-ATOM.md} writes $\inf_{L,a,t}$ ---
+the corpus states itself that the two are \textbf{inconsistent} (\code{LOOP-RUNBOOK.md:18972}). This paper takes the $t$-restored form and declares the choice.
+{\footnotesize\emph{[Fix 5: both source notations are unified here into $\inf_{L,t}$, since $a=a(\beta)$ is pinned at $\beta=2.5$; the two source strings are quoted only as strings, not used as target statements.]}}
+\item at $\beta=2.5$, $a$ is pinned, so "$a$-uniform" \textbf{degenerates} at this point; letting $a$ be independent \textbf{loses} $2.5$
+(\code{LOOP-RUNBOOK.md:18973}). This is also one reason the $t$ axis cannot be omitted: it takes over the place of the $a$ axis.
+\end{itemize}
+
+\begin{warnbox}
+\textbf{Grade of the target (verbal).}\ The \textbf{wording} of the target is definitional (the corpus judges it "a meaningful proposition"),
+while the \textbf{truth value} of the target is open (\code{LOOP-RUNBOOK.md:18996--19002} records three obstacles: $w_1$ has no envelope, $w_1(L)$ is not monotone, $w_1$ has no measured value at $2.5$).
+This paper takes no position on the truth value, only on \textbf{the routes to it}: those routes all carry final verdicts (see \S\ref{sec:table}).
+\end{warnbox}
+
+% =====================================================================
+\section{Twenty routes, one verdict}\label{sec:table}
+\subsection{How to read the table}
+
+Table \ref{tab:routes} has \textbf{22 rows}: rows 1--20 are the \textbf{twenty routes} (9 give only an upper bound + 9 circular or equivalent + 2 counterexamples),
+rows 21--22 are the \textbf{two by-products} (one true theorem, one bug), which are \textbf{not routes}.
+Each row gives \textbf{one sentence} of verdict + one \textbf{verbal grade} + the provenance.
+The "=" sign in the grade column means "this route is equivalent to", not "this route proved".
+
+{\footnotesize\emph{[Fix 2: the bucket that the source calls "loop" is \emph{renamed} here to "loop / broken bridge / no-go", because only 5 of its 9 members are literal loops; the other 4 are broken bridges or no-go. The sole change is the bucket header, not the row set or the counts.]}}
+{\footnotesize\emph{[Fix 1: for $\varphi_{\rm dec}$ one bucket is chosen as the primary grade (upper bound / existence) and the other one (loop, \code{RUNBOOK:15970--15998}) is annotated in the same cell instead of being merged away.]}}
+
+\let\origcode\code
+\let\code\codep
+\setlength{\tabcolsep}{3.6pt}
+\begin{longtable}{@{}Z{0.45cm}Z{2.35cm}Z{7.75cm}Z{2.45cm}S{2.2cm}@{}}
+\caption{Row-by-row verdicts on the twenty routes of the consistency attack (22 rows = 20 routes + 2 by-products)\label{tab:routes}}\\
+\toprule
+\# & Route & One-sentence verdict & Grade (verbal) & Provenance\\
+\midrule
+\endfirsthead
+\toprule
+\# & Route & One-sentence verdict (cont.) & Grade (verbal) & Provenance\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+% ---------------- A. upper bound only (9) ----------------
+\multicolumn{5}{@{}l}{\textbf{A. Upper bound only (9): every true theorem is right, but no direction gives a floor}}\\
+\midrule
+1 & Compactness (Arzel\`a--Ascoli) & transports only, does not produce: equicontinuity + uniform boundedness give relative compactness only; the product is the identity $\inf_K w_1=w_1(x_0)$, which does not exclude $\ell=0$; $K$ itself is not compact (no member at $a=0$, $L=\infty$). & Upper bound only: a carrier, it produces no positivity & \code{U01.md}; \code{RUNBOOK:19064--19075}\\
+2 & Reflection positivity (RP) & RP gives only monotonicity in $t$ ($m_{\rm eff}(t)\downarrow$), whereas $w_1$ is a \textbf{ratio} over $\nu$ and RP constrains signs only; the output is $w_1\le\hat w_1(T)$, the \textbf{opposite} direction to the floor. & Upper bound only: wrong direction & \code{U03.md}; \code{RUNBOOK:19307--19310}\\
+3 & Berezin--Lieb & $\sum\lambda_j\le\sum\varepsilon_j$ bounds only the \textbf{sum} $\Rightarrow$ at best $\lambda_1\le\frac1N\sum\lambda$; the only lower-bound-shaped corollary $E_0\ge N\varepsilon_0$ uses $u\ge0$ only and \textbf{returns 0} on YM; and YM has no positive decomposition (Hess negative mode $7.1\%$). & Upper bound only: wrong direction; its hypothesis is the target & \code{U11.md}; \code{RUNBOOK:19257--19263}\\
+4 & Probability & $w_1$ is indeed a probability ($\mu=\nu/M_0$, $w_1=\mu(\{m_1^2\})$), but $|EX|^2\le E|X|^2$ gives only an upper bound; the modulus squared cannot be written as the expectation of an indicator ($\langle\mathbb G|\varphi\rangle$ is a difference of two positive currents, of indefinite sign). & Upper bound only & \code{U12.md}; \code{RUNBOOK:19295--19297}\\
+5 & $D_\infty$ & the whole information content of $D_\infty$ is the \textbf{factor $2.0975$} (window $[0.690,1.448]$), while at $\beta=0$ one has $D_\infty=1$ (maximal) yet $w_1=0$. & Upper bound only; and it fails the free-field acid test & \code{U10.md:17,51}; \code{RUNBOOK:19301--19302}\\
+6 & Concavity & the chord lemma is a true theorem ($f$ concave + non-negative + left endpoint $r_0$ $\Rightarrow$ $f(2.5)\ge r_0$), but $w_1$ is \textbf{not concave}: the witness $f_1^2=v^2/(4v^2+D^2)$ is Lorentzian, and $f''$ changes sign at $2v/\sqrt3$; concave along rays + non-negative $\Rightarrow$ non-decreasing $\Rightarrow$ contradicts the free endpoint. & Upper bound only: true theorem, false hypothesis & \code{U13.md}; \code{RUNBOOK:19136--19143}\\
+7 & $\delta_A$ & $\delta_A\!\cdot\!a$ differs from $a\Lambda(1/48)=0.5700$ by only $\mathbf{0.24\%}$, while the other three $\beta$ give $1.208/7.4\!\times\!10^3/5.2\!\times\!10^{10}$; the free field $2\pi/8=0.7854$ is "a constant" just as well. & Upper bound only: numerical coincidence, acid test failed & \code{MON3.md}; \code{RUNBOOK:19405--19411}\\
+8 & $\Phi$ & $\Phi$ is a sum over \textbf{two sheets} $f$ and $\bar f$ (each carrying $\dim f=N$), whereas what is wanted is the \textbf{per-sheet} weight $c_f/u=N$ of a single sheet $\Rightarrow$ one sheet can take only one branch and the branches may not be added. & Object mismatch: not even an upper bound (bucket per source, see \S\ref{sec:count}) & \code{CB4.md}; \code{RUNBOOK:16588--16592}\\
+9 & $\varphi_{\rm dec}$ & one-dimensional subadditivity/Fekete give only the \textbf{existence} of $\varphi_{\rm dec}$ and of $D_\infty$, plus the ceiling ($b(T)\le\varphi T$); the positivity side (the \emph{constant} in $D_\infty>0$) stays out of reach; the strict version at the supercritical $\bar u=33.98$ is $[R]$. & Upper bound only (existence); its strict version closes (two buckets coexist, see \S\ref{sec:count}) & \code{P4-OTHER.md:145}; \code{RS6.md}; \code{RUNBOOK:15970--15998}\\
+\midrule
+% ---------------- B. loop / broken bridge / no-go (9) ----------------
+\multicolumn{5}{@{}l}{\textbf{B. Loop / broken bridge / no-go (9): the endpoint is the start, or Clay / H1 / T4 itself}}\\
+\midrule
+10 & K--R (Krein--Rutman) & $r(A)>0$ is an \textbf{assumption, not a conclusion} (a positive operator can be quasi-nilpotent: Volterra type $r=0$); and the fiberwise application is \textbf{compatible} with $\inf_\theta=0$ ($A(0)\mapsto A(0)-n$ preserves all fiberwise hypotheses) $\Rightarrow$ the fiberwise signature cannot in principle give a uniform lower bound. & Loop: the assumption is the conclusion & \code{U10.md} J2/J3; \code{RUNBOOK:19322}\\
+11 & Minimality & the extremal--spectral--capacity family \textbf{degenerates} here into $\mathrm{ess\,inf}\,G''$, and the latter $\ge\lambda$ is exactly H1; taking $\kappa=G''(0)$ yields the target. & Loop: $=$ renamed $=$ H1 & \code{U05.md}; \code{FROZEN-POSITION.md}; \code{RUNBOOK:19322}\\
+12 & Operator (spectral inequality family) & $w_1$ is \textbf{not} a function of $\mathrm{Spec}(H)$: the same $H$ with the legitimate source $O_\theta=1+\varepsilon(\cos\theta\,\psi_1+\sin\theta\,\psi_2)$ gives $w_1=\cos^2\theta\in[0,1]$ while the spectrum \textbf{does not move at all}; the only ELS-type input with matching output is $\Lambda_\star$ ($=$ I2, stronger than Clay). & Loop: the input is the target & \code{U11.md}; \code{RUNBOOK:19241--19252,19270--19272}\\
+13 & Definability (o-minimal) & restricting to a subfamily \textbf{can} be done ($L/a\le C$ $\Rightarrow$ finite), but it exactly \textbf{cuts off} the two limiting directions Clay needs; the non-circular version requires the corner point $(N=\infty,\beta=\infty)$ itself to be a member of the family with value $>0$. & Loop: the non-circular version $=$ Clay itself & \code{U04.md}; \code{RUNBOOK:19180--19194}\\
+14 & Strong--weak bridge & the two ends are of \textbf{different type}: the strong end gives the residue floor $f_1^2\ge r_0=1/32$, the weak end AS gives only $m_{\rm lat}=D_0e^{-c\beta}$ and says nothing about $f_1^2$, a distance of $\mathbf{662\times}$; all three interpolation machines die (Gr\"onwall: hypothesis$\Leftrightarrow$conclusion; Kato: transports values, not non-vanishing; o-minimal: finite zero set only). & Bridge broken: no-go & \code{U13.md}; \code{RUNBOOK:19122--19133}\\
+15 & $\Delta_0$ & \textbf{M6 is not sufficient} ($G''=2\omega>0$ yet $m=0$), \textbf{2D is not necessary} ($m=3g^2/8>0$ yet $G''=0$) $\Rightarrow$ double kill; as a target it passes only $2/4$ of the four models. & Killed: no-go (two counterexamples) & \code{UNIF3.md}; \code{RUNBOOK:19381,19142}\\
+16 & T4 & $a\to0$ imposes four obligations, two of which $=$ T4/H1, already judged $[NG]$; the one-sided upper bound is \textbf{trivially satisfied} by the cutoff state ($37.75$). & no-go & \code{MON3.md}; \code{RUNBOOK:19399--19402}\\
+17 & H1 & H1 $\not\Rightarrow m>0$: the thin atom $\nu=w\delta_\varepsilon+(1-w)\delta_{s_2}$, $w=\varepsilon/2\lambda$ gives $\chi=1/\lambda$ while $\inf\operatorname{supp}\nu\to0$; the Lean lemma \code{H1_does_not_imply_atom} has zero sorry. & no-go: not sufficient (not circular, but equally unreachable) & \code{Q6-H1-STATUS.md:53--56,201--204}; \code{H1-FINAL.md:121}\\
+18 & $M(\beta)$ & $M(\beta)=m_{\rm lat}/(a\Lambda)\equiv m/\Lambda$ is an \textbf{identity} ($\gamma_m=0$), zero content; the term occurs 4 times in the whole repository, with 0 definitions. & Loop: an identity, no new information & \code{MON3.md}; \code{RUNBOOK:19391--19394}\\
+\midrule
+% ---------------- C. counterexample (2) ----------------
+\multicolumn{5}{@{}l}{\textbf{C. With a counterexample (2): the route's direction is refuted by an explicit object}}\\
+\midrule
+19 & $L$-monotonicity ($w_1=2/(L-1)$) & the solvable law $w_1=2/(L-1)$ is \textbf{non-increasing} with limit $0$, while $w_1\equiv0$ is equally admissible $\Rightarrow$ monotonicity \textbf{produces} no floor; moreover the $\beta=2.2$ data $0.1367\to0.1229\to0.1216$ \textbf{first decrease then flatten}, worst at $L=4$ rather than $L=\infty$. & Counterexample: non-increasing $\not\Rightarrow$ floor (label corrected here, see \S\ref{sec:count}) & \code{MON1.md}; \code{U02.md}; \code{RUNBOOK:19300,19592--19601}\\
+20 & Compact family + limit atom & compact family + limit atom $\not\Rightarrow$ uniform floor (computed this round): $\int s\,d\mu\equiv2.4$, $E$ jumps from $0.3$ to $0$, $\mathrm{TV}\equiv0.6$. & Counterexample: constructed & \code{U16.md} §167; \code{RUNBOOK:19353--19355}\\
+\midrule
+% ---------------- D. by-products (2) ----------------
+\multicolumn{5}{@{}l}{\textbf{D. Two by-products (2 rows, \emph{not routes}): the only positive output of this round}}\\
+\midrule
+21 & block-Loewner $K_\beta\succeq K_{\beta'}$ & dual-side Griffiths/Bochner positivity $c_r(\beta)\ge0$ and $\beta$-non-decreasing (tensor-product multiplicities non-negative) $\Rightarrow$ $K_\beta-K_{\beta'}=\sum_r\Delta c_r\,\chi_r$ is a sum of PSD terms, valid for \textbf{arbitrary $N$}; this \textbf{repairs the $[NG]$ of \code{D05}}. & True theorem \LT; but it holds in the free field too $\Rightarrow$ it cannot serve as a floor & \code{U09.md:62--64}; \code{RUNBOOK:19460--19464}\\
+22 & QR-sampler bug & \code{np.linalg.qr} without the Mezzadri phase correction $\Rightarrow$ one samples a \textbf{non-Haar} $Q$, and on $\beta=2.5$ this biased sample "reproduces" a \textbf{negative} $\langle\chi_r\rangle$ ($-0.52\ldots-0.80$) $\Rightarrow$ the four in-repo statements that "$c_r$ of $SU(3)$ changes sign" are void. & Methodological conclusion (a bug); \LE{} review, not a theorem & \code{U09.md:72--73}; \code{RUNBOOK:19467--19470}\\
+\end{longtable}
+\let\code\origcode
+
+\subsection{The direction of the twenty routes is \textbf{uniform}}
+
+\begin{keybox}
+\textbf{Upper bounds all present, lower bounds all circular or counterexamples.}\ This is the only transverse conclusion of Table \ref{tab:routes}:
+\begin{itemize}
+\item \textbf{every instrument gives an upper bound only}: compactness (subsequence bound) · RP ($w_1\le\hat w_1(T)$) · Berezin--Lieb ($\lambda_1\le\frac1N\sum\lambda$) ·
+probability ($|EX|^2\le E|X|^2$) · $D_\infty$ (only the factor $2.1$) · concavity (the chord lemma has the right direction, but $w_1$ is not concave) · $\delta_A$ (numerical coincidence) · $\Phi$ (object mismatch) · $\varphi_{\rm dec}$ (existence only).
+\item \textbf{every lower-bound route closes on something else}: K--R (assumes $r>0$) · minimality ($=\mathrm{ess\,inf}\,G''=$ H1) · operator (input $=$ target) ·
+definability (non-circular version $=$ Clay) · strong--weak bridge (different types at the two ends, $662\times$) · $\Delta_0$ (M6/2D double kill) · T4 · H1 ($\not\Rightarrow m>0$) · $M(\beta)$ (identity).
+\end{itemize}
+\textbf{Do the deaths share one root?} Yes: \textbf{every lower bound must take the target as input} (\code{RUNBOOK:19513--19518}).
+\end{keybox}
+
+\subsection{The counting book: $9+9+2+2=22$ is the \emph{number of table rows}, not the number of routes}\label{sec:count}
+
+Kill criterion (c) is answered here, item by item. The three counts must be \textbf{recorded separately}; mixing them produces the spurious contradiction "twenty routes number twenty-two".
+
+\begin{gradbox}
+\textbf{(c-1) The route layer:} $9$ (upper bound only) $+\,9$ (circular or equivalent) $+\,2$ (with a counterexample) $=\,20$ \textbf{routes}. This layer is consistent.
+\par\smallskip
+\textbf{(c-2) The table-row layer:} $20$ routes $+\,2$ by-products (block-Loewner \LT, QR bug) $=\,22$ \textbf{rows}.
+So the "contradiction" $9+9+2+2=22\ne20$ comes from \textbf{counting the by-products as routes}: the by-products are the \emph{output} of \code{u09} (the FKG route), not routes 21 and 22.
+\par\smallskip
+\textbf{(c-3) The source-file layer: also 22, but \textbf{not the same 22}.}\
+Source files $=$ \code{u01}--\code{u16} (16) $+$ \code{mon1}--\code{mon3} (3) $+$ \code{unif1}--\code{unif3} (3) $=\,22$ files. Their relation to the 20 routes is \textbf{many-to-many}:
+\begin{itemize}
+\item \textbf{one file yields two routes}: \code{u10} gives $D_\infty$ and K--R; \code{u11} gives Berezin--Lieb and operator; \code{u13} gives concavity and the strong--weak bridge; \code{mon3} gives $\delta_A$ and $M(\beta)$.
+\item \textbf{files without a dedicated row}: \code{u06} (tensor product / $w_1$ is not a spectral functional) is merged into "operator"; \code{u08} (equicontinuity) is merged into "compactness";
+\code{u14} (numerical $L$-family) together with \code{unif1}, \code{unif2}, \code{mon2} (the $L=\infty$ step) is bookkeeping/numerical and does not enter the verdict table;
+\code{u07} (audit of the target-sentence definition) and \code{u15} (final adjudication, $0/14$) are \textbf{meta-level} and are not routes themselves.
+\item \textbf{four routes are imported from earlier batches}: $\Phi$ (\code{CB4.md}), $\varphi_{\rm dec}$ (\code{P4-OTHER.md}/\code{RS6.md}),
+T4 (\code{T4-CARRIER.md}), H1 (\code{Q6-H1-STATUS.md}/\code{H1-FINAL.md}).
+\end{itemize}
+$\Rightarrow$ \textbf{correct bookkeeping}: 22 source files $\ne$ 20 routes $\ne$ 22 table rows. Each of the three counts is right on its own; the error lies only in \textbf{treating them as one and the same number}.
+\end{gradbox}
+
+\subsection{The five places where grade or label is unclear (response to kill criterion (b))}\label{sec:count-b}
+
+(The source heading counts four here; the body below lists five, and the body is what is kept.)
+
+(b) asks: if the grade of an item is unclear, say so. In the five places below the \textbf{grade or the label is unclear}; the handling here is \textbf{dual writing + explicit statement}, without covering up for the source.
+
+\begin{warnbox}
+\textbf{(b-1) $\varphi_{\rm dec}$ sits in two buckets at once.}\ The same route is recorded twice in the source and enters two buckets: \code{RUNBOOK:19436} lists it under "upper bound only",
+while \code{RUNBOOK:15970--15998} (\code{RS6.md}) judges it "the strict version is $[R]$ $\Rightarrow$ circular".
+\textbf{Handling}: the main grade is written "upper bound only (existence)", with the parenthetical "its strict version is circular". Both readings are kept; neither is dropped.
+{\footnotesize\emph{[Fix 1: one bucket is \emph{chosen} (upper bound / existence) and the other (\code{RUNBOOK:15970--15998}) is \emph{annotated} --- the fix is the choice made explicit, not a silent merge.]}}
+\par\smallskip
+\textbf{(b-2) "Loop" is a bucket name, not a property of all nine.}\ Of the 9, only 5 are \textbf{literally circular or identical}
+(K--R: the assumption is the conclusion; minimality: renamed; operator: the input is the target; definability: the non-circular version $=$ Clay; $M(\beta)$: identity);
+the other 4 (strong--weak bridge, $\Delta_0$, T4, H1) are \textbf{broken bridges or already judged no-go}, not loops.
+\textbf{Handling}: the bucket header is \emph{renamed} to "loop / broken bridge / no-go" (the source name is quoted verbatim in the table header), and the grade column reads "loop / broken bridge / no-go" row by row.
+{\footnotesize\emph{[Fix 2: the bucket is renamed rather than patched in place, since only 5 of the 9 are loops; the 22 rows and the 20 routes are untouched, so no re-layout follows.]}}
+\par\smallskip
+\textbf{(b-3) The bucket of $\Phi$ and its grade disagree.}\ It is recorded in the "upper bound only" bucket, yet the verdict is \textbf{object mismatch}: $\Phi$ is a sum of two sheets (\code{RUNBOOK:16588--16592}),
+while $c_f/u$ wants the weight of a single sheet $\Rightarrow$ it \textbf{is not even an upper bound}.
+\textbf{Handling}: the bucket follows the source (group A) and the grade column states the true grade, "object mismatch".
+{\footnotesize\emph{[Fix 3: the clean fix is a new bucket "object mismatch"; that moves group A from 9 to 8 and hence changes the $9+9+2$ arithmetic and the group headers, i.e.\ it is the one item that forces a table re-layout. It is therefore flagged here (kill criterion (b)) and the row stays where the source put it.]}}
+\par\smallskip
+\textbf{(b-4) The label "$w_1=2/(L-1)$ (non-monotone)" does not match the source.}\ The source says verbatim "\textbf{non-increasing}, with limit $0$" (\code{MON1.md} §0, \code{RUNBOOK:19300}),
+and $2/(L-1)$ \textbf{is precisely monotone}. The verdict (non-increasing $\not\Rightarrow\inf>0$) is right; the label was wrong.
+The genuine "non-monotone" evidence is the $0.1367\to0.1229\to0.1216$ of \code{u14} (first decreasing, then flat, $\beta=2.2$, \code{RUNBOOK:19592--19595}).
+\textbf{Handling}: the route name keeps "$L$-monotonicity", the grade reads "counterexample", and the same row states both objects ($2/(L-1)$ and the three measured points).
+{\footnotesize\emph{[Fix 4: the label "non-monotone" is replaced by "non-increasing", which is what the source says; $2/(L-1)$ is monotone, and the non-monotone evidence belongs to the three measured points $0.1367/0.1229/0.1216$.]}}
+\par\smallskip
+\textbf{(b-5) The target sentence has two notations in the source.}\ \code{UNIF1.md} writes $\inf_{(L,a)}$, \code{U4-CONTINUUM-ATOM.md} writes $\inf_{L,a,t}$; the source states the inconsistency itself (\code{RUNBOOK:18972}).
+\textbf{Handling}: this paper uniformly takes the $t$-restored form and declares the unification explicitly in \S\ref{sec:target-b}.
+{\footnotesize\emph{[Fix 5: both notations are unified to $\inf_{L,t}$; $a$ is not a free quantifier, since $a=a(\beta)$ is pinned at $\beta=2.5$, so writing $a$ separately would drop the physical point.]}}
+\end{warnbox}
+
+% =====================================================================
+\section{The three layers of the obstruction}\label{sec:layers}
+
+The verdicts of the twenty routes are written one by one, but the obstruction has only \textbf{three layers}, and the three hold \textbf{independently}
+(\code{LOOP-RUNBOOK.md:19164--19169}; the three parties \code{u15}/\code{u01}/\code{u02} each point to the same place).
+
+\subsection{Layer one (instrument layer): weak-$*$ instruments cannot resolve an atom}
+
+\begin{keybox}
+The final adjudication of \code{u15} is $0/14$ feasible (\code{LOOP-RUNBOOK.md:19009--19014}):
+compactness, monotonicity, RP, definability, minimality, transfer, equicontinuity, FKG, K--R, operator, probability, strong--weak bridge, numerics --- fourteen routes killed one by one,
+and only "family definition" obtains \LC{} (well-posedness only). And its \textbf{diagnosis} is not "the family is too large (infinite-dimensional)" but the \textbf{instrument class}:
+\[
+  \parbox{0.9\linewidth}{\centering\textbf{The obstruction is not infinite dimension: it is that our instruments (finite data / weak-$*$ continuity) cannot resolve an atom.}}
+\]
+\end{keybox}
+
+\textbf{Mechanism (why this is one and the same obstruction).}\ Any "computable quantity" is weak-$*$ continuous.
+\par\smallskip
+Such quantities include $\mathrm{Var}$, $Hess$, $E[H]$, $\varphi^U$, $a_n$, all normalized moments, and the Christoffel and Hankel functionals.
+The atom weight $w_1=\mu(\{m_1^2\})$ \textbf{is not in this class}
+(\code{LOOP-RUNBOOK.md:19041--19046}).
+This is the mechanism behind "the target is unique" (\code{N09-1}): everything computable differs from $w_1$, and everything equal to $w_1$ needs $m$ or Clay.
+"Moments do not determine the atom" in \code{u02} and "position without loss $\Rightarrow$ loop" in \code{tb01} are two phrasings of one and the same sentence.
+
+\textbf{A \textbf{quantitative} obstruction (not "a little short").}\ A weak-$*$ continuous functional $g$ has a lower bound on its error against the atom weight:
+\[
+  \sup\bigl|E-g\bigr|\ \ge\ f_1^2/2
+\]
+(\code{R3-2}, \code{LOOP-RUNBOOK.md:19020}). Adding the \textbf{wrong direction} of \code{Y1} and the "gapless ray", the three combine into the $[T]$-level obstruction of \code{u15}.
+$\Rightarrow$ \textbf{the measure layer is proved impossible, not "a little short"}.
+
+\subsection{Layer two (continuity layer): $\nu\mapsto\nu(\{x\})$ is only upper semicontinuous}
+
+\begin{keybox}
+The atom functional $\nu\mapsto\nu(\{x\})$ in the KL-weak topology is \textbf{only usc} (upper semicontinuous), while \textbf{a floor needs lsc}.
+$\Rightarrow$ \textbf{the $\inf$ can be $=0$ while every point is $>0$} (usc allows downward jumps).
+\end{keybox}
+
+Two witnesses (both already in the corpus and recomputable):
+\begin{itemize}
+\item \textbf{thin-atom family} (\code{Q6-H1-STATUS.md:208--215}): $\nu_n=p_n\delta_{m_1^2}+(1-p_n)\delta_\Lambda$, $p_n\to0$;
+$M_0$ fixed, $m_1^2$ fixed, a gap present, $\chi=1/\lambda$ all preserved, while $w_1=p_n\to0$.
+\item \textbf{a gap with no atom} (\code{R6-ATOM-ADVERSARIAL.md:254--259}): for arbitrary $\lambda,M_0,m_1$ there is a positive measure \textbf{with a gap and $f_1^2=0$},
+satisfying moments/positivity/Hankel throughout.
+\end{itemize}
+An explicit family showing that $w_1$ is \textbf{discontinuous} in the KL-weak topology is $\nu_\varepsilon$: $w_1\to\varepsilon\to0$ (\code{U08.md}, \code{RUNBOOK:19303}).
+The same route also computes the equicontinuity bound $\propto L^4$ ($\|\partial_\beta\langle A\rangle\|\le2\|A\|_\infty\|S\|_\infty$, $\|S\|_\infty\le12L^4$),
+and the spectral side $\le2\|\partial_\beta T\|/\Delta$ diverges as $1/\Delta$ when $\Delta\to0$ $\Rightarrow$ \textbf{not $L$-uniform}.
+
+\textbf{Corollary (the most important negative verdict of this paper).}\ Even if all twenty routes failed "by only one step",
+the target itself \textbf{may still be false}: usc excludes upward jumps only, not $\inf=0$. This is the precise meaning of \code{u01}'s "compactness transports but does not produce" ---
+its product is the identity $\inf_K w_1=w_1(x_0)$, not a floor.
+
+\subsection{Layer three (implication layer): atomicity $\not\Rightarrow$ gap}
+
+\begin{keybox}
+\textbf{2D YM}: $m=3g^2/8>0$ while $\nu_{\frac14\mathrm{tr}F^2}\equiv0$ --- \textbf{a gap without an atom}.
+\par\smallskip
+\textbf{M6}: $w_1=0.5$ (a single atom) while $m=0$ --- \textbf{an atom without a gap}.
+\par\smallskip
+{\sloppy
+$\Rightarrow$ \textbf{atom-weight floor and gap imply nothing about each other} (\code{atom2}, \code{LOOP-RUNBOOK.md:19088--19090}).
+\par}
+\end{keybox}
+
+Three witnesses stronger than "mutual non-implication":
+\begin{itemize}
+\item \textbf{the decisive 2D witness} (\code{u06}, \code{RUNBOOK:19534}): the 2D product gives $m(L)=\sigma L\to\infty$ (the gap \textbf{diverges})
+while $w_1=0$ (\textbf{identically zero}) $\Rightarrow$ \textbf{$w_1$ and $m$ are completely decoupled}.
+This is stronger than "a gap with zero atom": it is not "the atom is small", it is "the gap runs to infinity while the atom does not move at all".
+\item \textbf{same $H$, different $O$} (\code{u11}, \code{RUNBOOK:19241--19252}): $w_1=\cos^2\theta$ runs through $[0,1]$ while $\mathrm{Spec}(H)$ does not move at all
+$\Rightarrow$ $w_1$ is \textbf{a property of $(H,O)$, not of $H$}.
+\item four corroborations (\code{RUNBOOK:19246--19252}): 2D YM (gap, $w_1=0$) · $:\!\varphi^2\!:$ (gap, $w_1=0$) ·
+double well ($w_1\approx0.97$ while $\lambda_1\to0$) · same $(M_0,\chi)$ but $f_1^2=1$ versus $0.25$.
+\end{itemize}
+
+\subsection{The three layers in one sentence}
+
+\begin{warnbox}
+\begin{enumerate}[label=\arabic*.]
+\item \textbf{Instrument layer}: weak-$*$ instruments (moments / $\varphi^U$ / $a_n$) \textbf{cannot resolve an atom} (\code{u15}/\code{u02}/\code{tb01}).
+\item \textbf{Continuity layer}: the atom weight is only \textbf{usc}, a floor needs \textbf{lsc} $\Rightarrow$ the $\inf$ can be $=0$ while every point is $>0$ (\code{u01}).
+\item \textbf{Implication layer}: \textbf{atomicity $\not\Rightarrow$ gap} (2D: gap without atom; M6: atom without gap).
+\item the non-weak-$*$ H1 $\not\Rightarrow m>0$ (thin atom); the sixth is excluded by \code{SG1-1} ("covariant $\wedge$ $F\le s_1$ $\wedge$ finite moments" $=\varnothing$).
+\end{enumerate}
+$\Rightarrow$ \textbf{the route "a uniform positive lower bound on $w_1$" would not advance Clay even if it were entirely successful} (\code{LOOP-RUNBOOK.md:19093--19098}).
+\end{warnbox}
+
+% =====================================================================
+\section{What survives}\label{sec:survives}
+
+All twenty routes are dead, but \textbf{something survives}: one true theorem, one bug, one equivalence chain, one number, one reduction.
+
+\subsection{block-Loewner \LT{} (repairs the $[NG]$ of \code{D05})}
+
+\begin{keybox}
+\textbf{Theorem (dual-side Griffiths/Bochner, arbitrary $N$).}\ Let $\chi_r$ be the characters of $SU(N)$ and
+$c_r(\beta)$ the forward character coefficients of the single plaquette. Then
+\[
+  c_r(\beta)\ \ge\ 0,\qquad \beta\mapsto c_r(\beta)\ \text{non-decreasing},
+  \qquad\Longrightarrow\qquad
+  K_\beta-K_{\beta'}=\sum_r\bigl(c_r(\beta)-c_r(\beta')\bigr)\chi_r\ \succeq\ 0,
+\]
+i.e. \textbf{$K_\beta\succeq K_{\beta'}$ holds for $\beta>\beta'\ge0$} (\code{U09.md:51--64}).
+\par\smallskip
+\textbf{One-line proof.}\ $\chi_r(g)=\operatorname{tr}\rho_r(g)$ is positive definite; a sum of positive-definite kernels with non-negative coefficients is still PSD.
+\par\smallskip
+\textbf{What it repairs.}\ In-repo, \code{D05-FKG.md:70--82} records the block-level Loewner order as $[NG]$ ("no lattice order $\Rightarrow$ no partial order").
+This round separates "no lattice order" from "no partial order": $SU(N)$ indeed has no lattice order simultaneously compatible with the group action, with monotonicity of $\mathrm{Re}\,\mathrm{tr}\,U_p$, and with log-supermodularity,
+but \textbf{there are} four partial orders on the dual side (Loewner / dominance / Weyl / Krein), and the Loewner one \textbf{really holds}.
+\end{keybox}
+
+\textbf{Scope (three reasons it is not a floor for $w_1$).}\ These three must be stated alongside the theorem, otherwise the claim is inflated:
+\begin{enumerate}[label=(\roman*)]
+\item it acts on \textbf{unnormalized} eigenvalues; the $D_\beta$ of $T_\beta=D^{1/2}KD^{1/2}$ is \textbf{decreasing} pointwise, so \textbf{all} $T_\beta$ are unordered (\code{U09.md:36}).
+\item even if ordered, it transports eigenvalues only, \textbf{not the normalized kernel and the eigenvectors} --- and $w_1$ depends on source overlaps.
+\item \textbf{acid test vacuum}: $c_r\ge0$ + $\beta$-non-decreasing + block-Loewner \textbf{hold strictly in the free field, where $w_1=0$} (\code{U09.md:142})
+$\Rightarrow$ any $w_1$ proposition derived from them is also true in the free field $\Rightarrow$ it cannot give the positive floor that is missing there.
+\end{enumerate}
+\textbf{The type of the verdict}: the FKG class dies of a \textbf{type mismatch} ($w_1=\mathrm{corr}^2(O,\mathbb G)$ needs \textbf{magnitude + second order}, while the family gives \textbf{sign + first order} only),
+not of "a missing inequality" (\code{RUNBOOK:19475--19478}).
+
+\subsection{QR-sampler bug (four statements voided)}
+
+\begin{warnbox}
+\textbf{Methodological warning (must be recorded).}\ Sampling directly with \code{np.linalg.qr} (\textbf{without the Mezzadri phase correction}) yields a \textbf{non-Haar} $Q$;
+on $\beta=2.5$ this biased sample "reproduces" a \textbf{negative} $\langle\chi_r\rangle$ (measured this round: $-0.52\ldots-0.80$).
+$\Rightarrow$ \textbf{"numerically confirmed sign change of $c_r$" is very likely an artefact of this sampler} (\code{U09.md:72--73}).
+\par\smallskip
+\textbf{Scope of the voiding}: the four in-repo statements that "$c_r$ of $SU(3)$ changes sign" ---
+\code{GKS-GAUGE.md:3(c)}, \code{PROOF-ISOLATION.md:16}, \code{PROOF-EMERGENT-4D.md:9}, \code{BLIND-TEST.md:42} ---
+are judged \textbf{wrong} against $c_r\ge0$. The sign lives in the \textbf{reverse} Weingarten/face-weight sums, not in the forward character coefficients
+(\code{AREALAW-GAP.md:11}, verbatim: positive $c_r\ge0$ live only in the forward series).
+\par\smallskip
+\textbf{Correct re-check}: Haar $SU(3)$, Gram--Schmidt sampling, $n=3\times10^5$; at $\beta=0.1$ the check gives $Z=1.00252$, $\langle\chi_f\rangle=+0.05098$ (matching the first order $\beta/2$);
+at $\beta=2.5$ and $5.7$, for $r$ over $\dim3,6,8,10,15,15,27$, \textbf{all} $\langle\chi_r\rangle>0$ ($>3\sigma$).
+\par\smallskip
+\textbf{Reminder}: any numerical statement concluding "sign / sign change" from QR-type sampling must first pass the Mezzadri phase correction, otherwise the conclusion is void.
+\end{warnbox}
+
+\subsection{$w_1\ge w_0\iff$ H1 (isolation of the second support point)}
+
+\begin{keybox}
+The only object with respect to which $w_1$ is \emph{monotone} is the \textbf{spectral triple} $(s_1,s_2,\bar E)$: the QI identity
+\[
+  w_1\ \ge\ \frac{s_2-\bar E}{s_2-s_1}
+  \qquad\text{(the direction is \textbf{right}, it is a lower bound)},
+\]
+while $w_1$ is \textbf{not monotone} in $\beta$ (the exact $\tfrac14\sin^2\theta$ hump) and \textbf{constant} under operator rescaling $O\to\lambda O$ ($\gamma=0$).
+\par\smallskip
+\textbf{Equivalence chain} (the whole content of this subsection):
+\[
+  w_1\ \ge\ w_0
+  \iff \delta_1/\varepsilon\ \le\ 1-w_0
+  \iff\ \textbf{second support point isolated}
+  \iff\ \textbf{H1}.
+\]
+The right-hand end is what is to be proved, and H1 $\not\Rightarrow m>0$ (\S\ref{sec:table}, row 17).
+$\Rightarrow$ \textbf{the FKG/correlation-inequality family is permanently closed for $w_1$}; its only landing point on $w_1$ is H1.
+\end{keybox}
+
+\subsection{One number (\LC/\LE{} level, not a theorem)}
+
+\begin{gradbox}
+\textbf{$w_1$ now has a number at $\beta=2.5$} (\code{RUNBOOK:19687--19698}, \code{run1}):
+\[
+  L=6:\ w_1=0.373\pm0.018\ (20.7\sigma),\qquad
+  L=8:\ w_1=0.342\pm0.015\ (22.8\sigma),
+\]
+the $L$-dependence is only $8\%$; the margin over $r_0=0.03125$ is $10.94\times$. The run finishes within $10$ minutes (single thread),
+$\langle\tfrac12\mathrm{Re}\,\mathrm{tr}\,U_p\rangle=0.6527/0.6524$ (correctness check passed).
+\par\smallskip
+\textbf{Three qualifications (must be listed)}: (i) $S/N(2)$: $2.8$ at $L=6$ and $5.9$ at $L=8$, \textbf{short of} $\ge10$ ($N_{\rm req}(L=8)\approx1.2\times10^4$);
+(ii) 3D-APE $n=1..4$ kills the time correlation ($C(1)/C(0)\sim10^{-3}$, and APE2/APE4 produce $C(2)<0$), so $w_1$ is \textbf{undefined} in those ensembles;
+(iii) the reading differs from $0.1216$ by $3.1$--$4.8\times$ (reading it via $C(1)/C(0)$ gives $33\%$ lower, $>9\sigma$).
+\par\smallskip
+$\Rightarrow$ \textbf{this is numerical support, not a theorem}. It shows that the target \textbf{may be true} at $\beta=2.5$; it does not show that the target implies a gap (\S\ref{sec:layers}, layer three rules the latter out verbatim).
+\end{gradbox}
+
+\subsection{Reduction: Clay $\iff$ ① the $L=\infty$ step $+$ ② the $a\to0$ modulus}
+
+\begin{keybox}
+\textbf{The reduction that closes the twenty routes} (\code{RUNBOOK:19416--19430,19547--19557}):
+\[
+  \textbf{Clay}\ \Longleftrightarrow\
+  \underbrace{①\ L=\infty\ \text{monotone/convergence step}}_{[C]\ \text{(lemma level, unproved)}}
+  \ +\ \
+  \underbrace{②\ a\to0\ \text{modulus}\ (=\,T4/H1)}_{[NG]\ \text{(already judged)}} .
+\]
+\begin{itemize}
+\item \textbf{①}: no FKG; both $2/(L-1)\searrow0$ and $w_1\equiv0$ are \textbf{admissible}; and $\lim w_1>0$ \textbf{gives an atom but not a gap} (\code{mon2}).
+\item \textbf{②}: T4/H1 already judged $[NG]$; the one-sided upper bound is \textbf{trivially satisfied} by the cutoff state ($37.75$).
+\end{itemize}
+\textbf{The honest statement}: it is not "Clay is only one point $L=\infty$ away" (that is the bookkeeping of \code{mon1}, corrected by \code{mon3} to \textbf{two} items),
+but "one $[C]$, one $[NG]$". None of the twenty routes fills either of the two cells.
+\end{keybox}
+
+% =====================================================================
+\vspace{0.3em}
+\begin{keybox}
+\textbf{Delivery compliance.}\ This file is written only under \code{docs/paper-v7/routes20/}; nothing was changed in \code{paper-v2}--\code{paper-v6}; no \code{git commit} was executed.
+\par\smallskip
+\textbf{Discipline executed.}\ (1) Self-contained: the reading box of \S\ref{sec:target} gives every symbol definition, so reading this paper does not require reading the corpus first.
+(2) A grade per route: all 22 rows of Table \ref{tab:routes} carry a \textbf{verbal grade} cell, none empty.
+(3) No invention: every number and verdict carries its provenance (file name + line numbers); this paper adds \textbf{no} new numerical value and no new theorem.
+(4) Grades in words: the grade column always uses English words (upper bound only / loop / counterexample / no-go / object mismatch / true theorem / bridge broken / identity),
+and \LT/\LC/\LN/\LE{} mark only "the label the assertion already carries in the corpus", never a new verdict of this paper.
+\par\smallskip
+\textbf{No inflation.}\ This paper stamps no completion: no end-of-proof symbol, no improvement of the Clay percentage (the corpus's own $0\%$ is kept),
+no writing of \LC{} or \LE{} as \LT{}, and no writing of "the target has numerical support" as "the target holds".
+\end{keybox}
+
+\end{CJK}
+\end{document}

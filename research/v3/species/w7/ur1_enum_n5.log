@@ -1,0 +1,22 @@
+UR1: 4D plaquette graph (Delta=20), u=0.625, eDelta=54.3656365691809, maxn=5
+  level n=2: 20 animals
+  level n=3: 458 animals
+  level n=4: 11132 animals
+  level n=5: 280175 animals
+enumeration done in 0.3s
+
+n=1: count=       1 trees=       1 max|mu|=     1 sign-viol=      0 | sum|mu|=1            lam=|mu|^(1/n)=1.000000 | m_A=6.250000e-01 m_B=6.250000e-01  [0.0s]
+n=2: count=      20 trees=      20 max|mu|=     1 sign-viol=      0 | sum|mu|=20           lam=|mu|^(1/n)=4.472136 | m_A=7.812500e+00 m_B=4.882812e+00  [0.0s]
+n=3: count=     458 trees=     402 max|mu|=     2 sign-viol=      0 | sum|mu|=514          lam=|mu|^(1/n)=8.010403 | m_A=1.254883e+02 m_B=5.102158e+01  [0.0s]
+n=4: count=   11132 trees=    8328 max|mu|=     6 sign-viol=      0 | sum|mu|=14748        lam=|mu|^(1/n)=11.020043 | m_A=2.250366e+03 m_B=6.016338e+02  [0.2s]
+n=5: count=  280175 trees=  177295 max|mu|=    24 sign-viol=      0 | sum|mu|=450255       lam=|mu|^(1/n)=13.511131 | m_A=4.293966e+04 m_B=7.582454e+03  [10.8s]
+
+--- growth test: m_n ?= c * ubar^n,  ubar = eDelta*u = 33.9785228557 ---
+n=1: m_n^(1/n)=0.625000  (u*lam=0.625000)  lam/u^(? ) : lam^(1/n) ratio to eDelta = 0.018394  m_n/ubar^n=1.839397e-02
+n=2: m_n^(1/n)=2.795085  (u*lam=2.795085)  lam/u^(? ) : lam^(1/n) ratio to eDelta = 0.082260  m_n/ubar^n=6.766764e-03
+n=3: m_n^(1/n)=5.006502  (u*lam=5.006502)  lam/u^(? ) : lam^(1/n) ratio to eDelta = 0.147343  m_n/ubar^n=3.198819e-03
+n=4: m_n^(1/n)=6.887527  (u*lam=6.887527)  lam/u^(? ) : lam^(1/n) ratio to eDelta = 0.202702  m_n/ubar^n=1.688244e-03
+n=5: m_n^(1/n)=8.444457  (u*lam=8.444457)  lam/u^(? ) : lam^(1/n) ratio to eDelta = 0.248523  m_n/ubar^n=9.480607e-04
+
+json -> ur1_enum_n5.json
+total 11.3s

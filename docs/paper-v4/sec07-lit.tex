@@ -1,0 +1,121 @@
+% =====================================================================
+%  §7  Literature verdict
+% =====================================================================
+\section{Literature verdict: the shape is known, the theorems are zero}
+\label{sec:lit}
+
+This section separates two things on the literature side: \textbf{the shape} ($m=C\Lambda$) has
+numerical support and two-dimensional precedent; \textbf{$a$-uniform theorems} are zero. Both hold at
+once, and that is precisely the external version of the verdict of \S\ref{sec:position}.
+
+\subsection{The shape: $m/\Lm=6.3(3)$ at the continuum limit, three independent routes agreeing}
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}l X l@{}}
+\toprule
+\textbf{Route} & \textbf{Data} & \textbf{Result}\\
+\midrule
+$m/\sqrt{\sigma}\div\Lm/\sqrt{\sigma}$ & AT2021 (\texttt{arXiv:2106.00364}, JHEP12(2021)082) Tab.34 $\div$ Tab.15:
+$\mathrm{SU}(3)$ $3.405(21)/0.5424(13)$; $\mathrm{SU}(2)$ $3.781(23)/0.5806(21)$ & $6.28(2)(21)$ / $6.51(2)(64)$\\
+$r_0$ route ($r_0\Lm=0.629(4)$) & MP1999 \texttt{hep-lat/9901004} \S V: $r_0m=4.21(12)$; Chen2006 \texttt{hep-lat/0510074}
+Tab.XXI: $4.16(11)(4)$ & $6.69(20)(23)$ / $6.61(18)(24)$\\
+GeV division & AT2021 Tab.37: $1.653(26)$ GeV $\div$ eq.22: $0.263(4)(9)$ GeV & $6.28(14)(22)$\\
+\bottomrule
+\end{tabularx}
+\caption{$m_{0^{++}}/\Lm^{(N_f=0)}=6.3(3)$: three mutually independent routes, with $\mathrm{SU}(2)$ and
+$\mathrm{SU}(3)$ agreeing.}
+\label{tab:c}
+\end{table}
+
+\noindent
+Together with the uniqueness \eqref{eq:unique} of \S\ref{sec:position} the target is now: \textbf{prove
+$m\ge c\Lambda$ with $c>0$ a pure number}; the value is known, $C=6.3(3)$ (about $5\%$ precision). What
+is missing is the proof, not the number. \LE
+\src{\code{L2-GLUEBALL-LAMBDA.md}, as reported in \code{LOOP-RUNBOOK.md} \S10.16--\S10.17 and
+\code{LIT-VERDICT.md} \S6; the scheme ratio $\Lm/\Lambda_I=2.633$ is from \code{L2-GLUEBALL-LAMBDA.md}.}
+
+\subsection{$a$-uniform theorems: zero (and not ``not found'').}
+
+\begin{itemize}
+\item \textbf{The only rigorous mass gap on the lattice}: Kupiainen, \emph{CMP} \textbf{73} (1980) 273
+      (\texttt{doi:10.1007/BF01197703}) proves $m>0$ and a $1/n$ expansion, \textbf{with no shape}. \LT
+\item \textbf{Constructive 4D gauge theory}: Magnen--Rivasseau--Sénéor, \emph{CMP} \textbf{155} (1993),
+      title verbatim ``\emph{with an infrared cutoff}'' --- the infrared is cut off, no $m$; the Balaban
+      series (\emph{CMP} 102/109/116) proves UV stability and a small-field effective action, no $m$. \LT
+\item \textbf{The only $m$ bound is outside that line}, Osterwalder--Seiler 1978: $ma\ge c(\beta)$, so
+      $a\to0$ gives $m\ge c(\beta)/a\to\infty$ --- \textbf{the direction is reversed}. \LT
+\item \textbf{Precedents for the shape exist only in 2D and in SUSY}: seven of them (O(3)/O(4),
+      O($N$) $\sigma$ models, SUSY $\mathbb{CP}^{N-1}$, SUSY O($N$), etc.), all relying on
+      integrability or SUSY; 4D has neither. \LT
+\end{itemize}
+\src{\code{LIT-VERDICT.md} \S1--\S4 (every DOI checked); \code{L1-UNIFORM-A.md},
+\code{L3-TRANSMUTATION.md}, \code{L5-CLASSICAL.md}.}
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{3.5cm} >{\raggedright\arraybackslash}p{3.6cm} X@{}}
+\toprule
+\textbf{Source} & \textbf{Verbatim} & \textbf{Verdict}\\
+\midrule
+\texttt{arXiv:2606.19362}\newline(Faizal--Shabir, \emph{Fortschr.\ Phys.} \textbf{74} (2026) e70097)
+ & ``transfer operator with a uniform gap \dots\ endure in the continuum''
+ & \textbf{downgraded to a claim}: no constant, no display number; the core is \code{Hypothesis 1};
+ uniform-in-$a$ comes from a \emph{postulated admissible class}; contraction to the Gaussian fixed
+ point; no numerical bound on $\Delta_{\mathrm{phys}}$\\
+\texttt{arXiv:2506.00284}\newline(Jacobsen) & ``no remaining gap'' & \textbf{excluded}: arXiv marks it
+ withdrawn (``does not meet arXiv's research content quality standards'')\\
+\texttt{arXiv:2307.00788}\newline(Lim) & gap $=$ Casimir label & dimensionless, no scaling, not a lattice
+ $a\to0$ limit\\
+\bottomrule
+\end{tabularx}
+\caption{The three preprints claiming to settle 4D: all die at the same step.}
+\label{tab:preprints}
+\end{table}
+
+\noindent
+The furthest point reached by the other nine is ``fixed-lattice-spacing strong coupling / 't Hooft
+region'', and the field's own verdict is already in print: \texttt{arXiv:2611.11534} (2026-11-08)
+verbatim ``\emph{A nontrivial four-dimensional spatial-cutoff construction and a positive spectral
+bound along it are not established.}''; Zenodo 23783328 verbatim ``\emph{the composition across
+scales, the large fields and the crossover remain open. The cube estimate and the existence of the
+continuum limit are not proved, so the continuum Yang--Mills existence and mass-gap problem remains
+open.}'' \LT
+\src{\code{LIT-VERDICT.md} \S4--\S5 and \S7; \code{L4-PREPRINTS.md} (twelve IDs, each opened).}
+
+\begin{keybox}
+\textbf{The common gap of the three claims is the object of \S\ref{sec:five}.} Each of them, in
+transporting ``strong-coupling gap $\to$ weak-coupling continuum window'', turns a hypothesis into a
+theorem; and that step is exactly the rate uniformisation of $C5$, i.e.\ $d5/(CP)=p=1$. This is the
+strongest external confirmation in this document: \textbf{every attempt fails at the same step, and we
+know the step's name.} \LT
+\end{keybox}
+\src{\code{LOOP-RUNBOOK.md} \S10.18 (lines 1006--1019); \code{LIT-VERDICT.md} \S7, conclusion 4.}
+
+\subsection{A premise that must be attached to $6.3(3)$: it is conditional on the scaling form}
+
+The value $6.3(3)$ is obtained by extrapolating $m/\sqrt{\sigma}$ and $r_0m$ measured at
+\emph{accessible} $\beta$ to the continuum limit, so it depends on the scaling form $m=C\Lambda$ itself.
+At accessible $\beta$ the measured logarithmic slope is only $0.53\,(\mathrm{SU}(3))$ and
+$0.21\,(\mathrm{SU}(2))$ of the asymptotic value, and for $\mathrm{SU}(2)$ the $N_\tau=4$ data even
+have the opposite sign; reaching $90\%$ of the asymptotic slope needs $\beta_{90}\approx27$ (where
+$\xi/a\sim10^{11}$), which is inaccessible. \LE
+\src{\code{C2-MEASURED-SLOPE.md}, as reported in \code{LOOP-RUNBOOK.md} \S10.20 (including the
+extrapolation formula for $\beta_{90}$ and the $1\sigma$ interval $[6.3,58]$).}
+
+\begin{keybox}
+\textbf{Hence $6.3(3)$ is ``compatible with the scaling form'', not ``established by it''.} The
+numerical route \textbf{cannot independently confirm} the shape --- it takes the very thing to be proved
+as the hypothesis of its extrapolation. \LN
+\end{keybox}
+\src{\code{LOOP-RUNBOOK.md} \S10.20, the honest-premise paragraph (lines 1064--1067).}
+
+\noindent
+This is the same statement as \S\ref{sec:position}, seen from the literature side: the shape is
+numerically confirmed to $5\%$ precision, while the route to it presupposes $m>0$. That is what the
+title means by ``a consequence, not a route''.
+

@@ -1,0 +1,24 @@
+==============================================================================
+Exact C* on the extremal family  (centre vortex + {0,pi} plane wave)
+==============================================================================
+prediction:  Q = (16/d) m(d-m)   for m = #{components k_mu = 0}
+upper bound 8(d-1);  single-link family 2(d-1)
+
+--- N=2 ---
+  d=2 L=4 centre-config solvable=True: best Q = 8.000000   (predicted 8.0000 at m=1, k=(np.float64(0.0), np.float64(3.142)))   C*/8(d-1) = 1.0000
+  d=3 L=2 centre-config solvable=True: best Q = 10.666667   (predicted 10.6667 at m=2, k=(np.float64(0.0), np.float64(0.0), np.float64(3.142)))   C*/8(d-1) = 0.6667
+  d=4 L=2 centre-config solvable=True: best Q = 16.000000   (predicted 16.0000 at m=2, k=(np.float64(0.0), np.float64(0.0), np.float64(3.142), np.float64(3.142)))   C*/8(d-1) = 0.6667
+--- N=3 ---
+  d=2 L=4 centre-config solvable=True: best Q = 2.500000   (predicted 8.0000 at m=1, k=(np.float64(0.0), np.float64(3.142)))   C*/8(d-1) = 0.3125
+  d=3 L=2 centre-config solvable=True: best Q = 5.333333   (predicted 10.6667 at m=2, k=(np.float64(0.0), np.float64(0.0), np.float64(3.142)))   C*/8(d-1) = 0.3333
+  d=4 L=2 centre-config solvable=True: best Q = 8.000000   (predicted 16.0000 at m=2, k=(np.float64(0.0), np.float64(0.0), np.float64(3.142), np.float64(3.142)))   C*/8(d-1) = 0.3333
+
+==============================================================================
+Reference: the two provable bounds and the reading of the ceiling
+==============================================================================
+   single-link v, any config        : 2(d-1)
+   constant a_e, any config         : <= 8(d-1)  (Perron-Frobenius, sharp)
+   =>  C* in [2(d-1), 8(d-1)];   ceiling beta_SZZ < 1/(2C*)
+   d=2: 1/(2*8(d-1)) = 0.062500   1/(2*2(d-1)) = 0.250000
+   d=3: 1/(2*8(d-1)) = 0.031250   1/(2*2(d-1)) = 0.125000
+   d=4: 1/(2*8(d-1)) = 0.020833   1/(2*2(d-1)) = 0.083333

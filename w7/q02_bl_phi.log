@@ -1,0 +1,44 @@
+================================================================================================
+Q02-BL-PHI  Brascamp-Lieb with Hess(Phi) >= (N/12) I  ->  variance bound?   SU(2) N=2, 12/N=6.0
+================================================================================================
+
+[0] premise (i): Hess Phi >= (N/12) I  [T, p16 [3]]; re-check the two eigenvalues on (0,2pi)
+    inf Phi''_trans = 0.1666666418   inf Phi''_rad = 0.1666666269   N/12 = 0.1666666667
+    => floor holds in BOTH directions, ratio to N/12 = 1.000000 / 1.000000
+
+[1] premise (ii): BL needs Hess V >= lam I for V = S_W + Phi (the density e^{-V} = e^{-S_W} dHaar)
+    Hess V = Hess S_W + Hess Phi;  Hess Phi >= 1/6 but Hess S_W is Savvidy-indefinite.
+    measured pointwise min H_vv = -1.893109 (p16 log [7], o06 [4], beta=2.5)
+    full Hessian min at beta=2.5 (lattice-cpb REPORT sec.3.4/3.5): kappa_eff < 0, min ~ -2.8
+    => V is NOT lambda-convex; BL hypothesis FAILS for the Wilson measure (verdict (c)).
+
+[2] single plaquette beta=2.5, slice xi_3=0, v=e_3: moments and BL right-hand sides
+    th      E[H_vv]     E[H_vv^2]   (12/N)E[H^2] | E[Phi'']   E[Phi''^2]  (12/N)E[Phi''^2]
+   0.000    0.553061    0.310990       1.8659  |  0.17686     0.03155        0.1893
+   1.571    0.377311    0.146173       0.8770  |  0.18087     0.03332        0.1999
+   3.142    0.000000    0.000000       0.0000  |  0.20512     0.04608        0.2765
+    (slice reading: |grad G_v|^2 = <Hess S v,Hess S v>; in the 1-D slice that is H_vv^2.
+
+[3] full space, NO approximation:  |grad G_v|^2 = <Hess S v, Hess S v> >= (v^T Hess S v)^2 = H_vv^2
+    E|grad G_v|^2 >= E[H_vv^2] >= (E H_vv)^2 = 6.3315^2 = 40.087
+    => (12/N) E|grad G_v|^2 >= 240.524   vs   E[H_vv] = 6.3315   ->  ratio 38.0 x
+    => line (a): (12/N)E|grad G_v|^2 <= E[H_vv] is FALSE by >= 38 x  (not a 1-Cov gap)
+    lambda needed for the BL bound to fall to E[H_vv]:  lam >= E|grad G|^2/E[H_vv] >= E[H_vv] = 6.331
+    N/12 = 0.1667  -> short by 38.0 x   => line (b): BL at N/12 is far too weak.
+
+[4] bound vs measured
+    th=0.000: BL(G_v) =     1.866  vs measured Var(G_v)=5.4477 (L=2)  ratio      0.3 x ;  BL(Phi') =     0.189 vs Var(Phi')=3.61e-03 (cond. a=0.75)  ratio 5.2e+01 x
+    th=1.571: BL(G_v) =     0.877  vs measured Var(G_v)=5.4477 (L=2)  ratio      0.2 x ;  BL(Phi') =     0.200 vs Var(Phi')=3.61e-03 (cond. a=0.75)  ratio 5.5e+01 x
+    th=3.142: BL(G_v) =     0.000  vs measured Var(G_v)=5.4477 (L=2)  ratio      0.0 x ;  BL(Phi') =     0.276 vs Var(Phi')=3.61e-03 (cond. a=0.75)  ratio 7.7e+01 x
+    caveat: BL bounds the UNconditioned variance; Var(Phi')=3.6e-3 is a CONDITIONED (a=0.75) bin
+    value and Var(G_v)=5.45 is the constrained xi=0 slice value -> the comparison is upper-side only.
+
+[5] verdict
+    (a) NOT satisfied: (12/N)E|grad G_v|^2 >= 240.6 > E[H_vv] = 6.331 (by >=38x).
+    (b) YES: BL at lam=N/12 is too weak by 1-3 orders of magnitude; needed lam ~ E[H_vv] ~ 6.3
+        (for Phi': needed lam ~ E|grad Phi'|^2/Var(Phi') ~ 1e3).
+    (c) YES, and it is the decisive one: Hess(S_W+Phi) is NOT >= (N/12)I at beta=2.5
+        (Savvidy: min H_vv=-1.893 pointwise; full Hessian min~-2.8). BL's hypothesis fails.
+    => the N/12 convexity CANNOT be converted into a variance bound for the Wilson measure;
+       what it proves is the beta=0 (pure Haar) statement, where G_v == 0 identically.
+================================================================================================

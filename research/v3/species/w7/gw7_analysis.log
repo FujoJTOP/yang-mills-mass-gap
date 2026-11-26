@@ -1,0 +1,41 @@
+== fixed-physical-volume line  Ls*aL = 8*aL(2.5) = 2.860629e-2 ==
+ beta   Ls   Rbar      err
+ 2.500   8   2.6075  0.0359   RUN3.md:51 (raw, Ls=8 Lt=12)
+ 2.590  10   2.7537  0.0334   w7/gw7_fixeda.log
+ 2.660  12   2.7904  0.0368   w7/gw7_fixeda.log
+
+== consecutive log slopes  dln(Rbar)/dbeta ==
+ 2.500 -> 2.590 : +0.606 +- 0.204   (+3.0 sigma from 0 ; H_phys -2.52 -> +15.3 sigma)
+ 2.590 -> 2.660 : +0.189 +- 0.256   (+0.7 sigma from 0 ; H_phys -2.52 -> +10.6 sigma)
+ TOTAL 2.500 -> 2.660 : +0.424 +- 0.119  (+3.6 sigma from 0 ; H_phys -2.52 -> +24.7 sigma)
+
+== H_phys (Rbar ~ a ~ 1/Ls at fixed box) vs measured ==
+ Ls=10 (ideal 10.042, box err -0.42%) beta=2.590 : predicted 2.0772  measured 2.7537 +- 0.0334  -> +20.2 sigma
+ Ls=12 (ideal 11.989, box err +0.09%) beta=2.660 : predicted 1.7400  measured 2.7904 +- 0.0368  -> +28.6 sigma
+
+== archive box control at FIXED beta: beta=2.2, raw, Ls=6 (T=6) vs Ls=8 (T=12) ==
+ Rbar(Ls=6) = 2.0959 +- 0.0569 ; Rbar(Ls=8) = 2.0672 +- 0.0236
+ measured ratio L8/L6 = 0.9863 ; 1/L prediction = 0.7500 ; box-insensitive = 1.0000
+ sigma: vs 1/L  +8.0 ; vs flat  -0.5
+
+== fixed-Ls slope over the same beta span (interpolated from archive) ==
+ 2.5 -> 2.75 fixed Ls : 1.161 (dRbar/dbeta) / 0.422 (dlnRbar/dbeta)
+ 2.5 -> 2.66 fixed Ls (linear interp of Rbar at 2.66): 2.7932
+ fixed-volume 2.5 -> 2.66 measured Rbar(2.66) = 2.7904  vs interpolated fixed-Ls 2.7932
+
+== GW2 §2.1 column check: are those dln(Rbar)/dbeta or dRbar/dbeta? ==
+ (2.2, 2.5): table +1.8009 | dRbar/dbeta +1.8010 | dlnRbar/dbeta +0.7740
+ (2.5, 2.75): table +1.1609 | dRbar/dbeta +1.1608 | dlnRbar/dbeta +0.4221
+ (2.75, 3.0): table +0.5982 | dRbar/dbeta +0.5980 | dlnRbar/dbeta +0.2012
+
+== w1 one-step ceiling check (w1 / (exp(1.546)*C1/C0)) ==
+ beta=2.590 Ls=10 : w1=0.2917  ceiling=0.2989  ratio=0.9760
+ beta=2.660 Ls=12 : w1=0.2805  ceiling=0.2881  ratio=0.9735
+
+== plaquette control (bulk quantity must not depend on Ls) ==
+ beta=2.590 Ls=10 : 0.66845 ; fixed-Ls interpolation at 2.59 ~ 0.6685
+ beta=2.660 Ls=12 : 0.67963 ; fixed-Ls interpolation at 2.66 ~ 0.6782
+ archived fixed-Ls: 0.65234 (2.5) 0.69277 (2.75)  [b01_gw2p.log:22 / RUN3]
+
+== timing ==  147.7 s + 331.7 s = 479.4 s (budget 560 s, cap 600 s)
+ throughput: 81.3 cfg/s at Ls=10Lt=15 ; 36.2 cfg/s at Ls=12Lt=18 ; cost ratio vs Ls=8/Lt=12 (189.5 cfg/s @2.75) = 2.33 / 5.23 (vol ratio 2.44 / 5.06)

@@ -1,0 +1,580 @@
+% =====================================================================
+%  sec02-established.tex
+%  Part II: what is established.
+%  Sources read for this section:
+%    research/v3/lean/{M02-CBAR, L04PropC, L05Counterexamples, M03-COUNTER}.lean
+%    research/v3/species/{C06-WINDOW, ADJ2, ADJ4, C07-AUDIT, F07-ADJCBAR,
+%      D05-FKG, N09-RESTATE, L02-CBARKATO, L06-INTERVAL, Y01-KL,
+%      Z06-HOLEA, Z07-HOLEB, Z08-HOLEC, Z09-HOLED, Z10-HOLEE, Z12-FIXC}.md
+%    docs/paper-v2/ch20-unconditional-i1.tex (five rings, five holes, window)
+%    docs/paper-v7/sg1/main.tex and docs/paper-v7/w1/main.tex
+%    docs/position-current.html:373--417 (round-178 status block)
+%  House rules honoured here: every number carries a source file; grades are
+%  never written above what the sources support; no completion stamp is
+%  printed anywhere; Clay = 0%.
+% =====================================================================
+\clearpage
+\begingroup
+\renewcommand{\code}[1]{\texttt{\footnotesize\detokenize{#1}}}
+
+\part{What is established}
+
+
+\section{What is established: the residue, the isolation, the uniqueness, the no-go, and four machine-verified lemmas}
+\label{sec:established}
+
+\noindent This section is the register of statements that survived audit. It is deliberately narrow:
+every claim below carries a grade chip and the file that produced it, and no number is quoted from
+memory. Of the six subsections, three are theorems in the strict sense (\LT: $I1$, $I2$, and the
+block-Loewner order), two are theorems under hypotheses printed with them (\LC: $N09$-$1$ and
+$SG1$-$1$), one is model-level (\LM: the four machine-verified lemmas), and two carry corrections that
+reduce what an earlier edition of this work asserted --- the window of \S\ref{sec:est-window-fix} and
+the grade of \S\ref{sec:est-sg1-grade}.
+
+\smallskip
+\noindent\textbf{Two grading rules, used throughout.} (1) A claim is graded by the \emph{weakest}
+link of the chain that certifies it, not by the strength of its conclusion. (2) A \emph{computed}
+number never upgrades a \emph{proved} structure, and a proved structure never upgrades a computed
+number: in \S\ref{sec:est-i1} the two are physically separated inside one theorem, and that
+separation is the point of the subsection. \src{\code{position-current.html:373--380}.}
+
+\noindent\textbf{Scope, stated once and not repeated.} Nothing in this section crosses to
+$\beta\approx2.5$, nothing takes $a\to0$, and no statement below mentions the continuum mass gap.
+The residue theorem is a strong-coupling statement at fixed spacing; its window is in the coupling,
+and the spacing has a positive lower bound inside it (\code{docs/paper-v2/ch20-unconditional-i1.tex}
+\S D.3). \textbf{Clay remains $0\%$.}
+
+% =====================================================================
+\subsection{The strong-coupling residue theorem \texorpdfstring{$I1$}{I1}: \texorpdfstring{\LT}{[T]} on the structure, \texorpdfstring{\LC}{[C]} on the value}
+\label{sec:est-i1}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(strong-coupling residue $I1$).} Let
+$\mathcal C_L=T^3_L\times_a\mathbb Z$ be the cylinder (spatial torus of side $L$, discrete time of
+spacing $a$), let $O=\tfrac14\operatorname{tr}F^2$, and let $m_1$ be the lightest energy carrying
+nonzero $O$-overlap. Fix $N$ and work in the SZZ coupling $\beta_A=2/(g^2N)$ (Wilson:
+$\beta_W=N^2\beta_A$). For every finite $L$, \emph{uniformly in $L$},
+\begin{equation}
+\beta_A\ <\ \beta_\star\ :=\ W(a^\ast)\ =\ 3.777\times10^{-3}\ =\ 0.1813\times\tfrac1{48},
+\qquad\text{i.e.}\qquad
+\beta_W\ <\ 0.015108\ =\ 0.725\times\tfrac1{48},
+\label{eq:est-window}
+\end{equation}
+the lightest $0^{++}$ atom of $O$ obeys
+\begin{equation}
+f^2_{1,L}\ :=\ \nu_L(\{E_{1,L}\})\ =\ \lim_{t\to\infty}e^{E_{1,L}t}C_L(t)\ \ge\ r_0\ >\ 0 .
+\label{eq:est-f1}
+\end{equation}
+The order of limits is: $L$ finite and fixed, then $t\to\infty$; $L$ is a uniformity axis and
+$L\to\infty$ is never taken. \emph{Structure: \LT. The window \eqref{eq:est-window}: \LC, computed
+and not proved} (\S\ref{sec:est-window-fix}).
+\end{claimbox}
+
+\noindent\textbf{The five rings, all \LT.} The chain to \eqref{eq:est-f1} has five links. Each is one
+line here because the work is in the file; naming them is what makes the grade auditable.
+
+\begin{enumerate}[label=\textbf{R\arabic*.},leftmargin=2.7em]
+\item \textbf{Four walls} (\code{P3-FOURWALL-DERIVATION.md} \S1.1--1.5). Each of the source
+      plaquette's four boundary links carries an open fundamental index pair and $\int dU\,U_{ij}=0$
+      forbids covering it alone; two unit plaquettes share at most one link, so there are at least
+      four independent strands; only temporal plaquettes advance time, so each strand crosses $t/a$
+      slices. Hence $|P|\ge4t/a$, with equality exactly for the straight four-walled tube, whose
+      weight is $a_0u^{4t/a}=a_0e^{-m_1t}$ with $m_1=4\ln(1/u)/a$. \LT.
+\item \textbf{KP in the full representation} (\code{P3-FULLREP-KP.md} \S2.1--2.3, \S4.1). The
+      criterion is Koteck\'y--Preiss \cite{kp}. Haar is a
+      probability measure, so $|\chi_r(U)|\le\dim r$; the multiplicity cap
+      $c_r\le\beta^{|r|}/(|r|!\dim r)$ cancels exactly the $\dim r$ that the contraction would cost;
+      the factorial beats the sub-exponential rep-label entropy; hence $\sum_{P\ni x}|w(P)|e^{a|P|}
+      \le a$ whenever $uK<1$, with $K\le6.1\times10^2N$ and plaquette adjacency
+      $\Delta=4(6-1)=20$. \LT.
+\item \textbf{Resummation of the decorations} (\code{X01-L1C.md} \S1--2, \code{Y04-AUDITX01.md}
+      \S1--3; activities corrected in \code{Z08-HOLEC.md}, \code{Z12-FIXC.md}). Clusters are
+      grouped by attachment span $\alpha$, not by support; the tube is open, so placements are
+      counted by $(T-\alpha+1)_+$; the shift $\alpha\mapsto\alpha-1-T$ moves weight and exponent
+      together, so the tail is $|\varepsilon_T|\le B\bar u^T$ with no $T$-prefactor; the
+      interface-corrected activity has envelope $\hat C=4$. \LT.
+\item \textbf{Spectral bridge} (\code{P3-CYLINDER-RESIDUE.md} \S1.2--1.4). At finite $L$ the
+      transfer matrix is Hilbert--Schmidt on a compact configuration space, hence compact, hence
+      purely discrete: every spectral point is an atom, and $f_1^2=\lim_te^{E_{1,L}t}C_L(t)$ uses
+      only $\delta_L=E_{2,L}-E_{1,L}>0$ at that $L$ \cite{reed-simon}. \LT.
+\item \textbf{$[KL]$} (\code{P3-CYLINDER-RESIDUE.md}:67--69, \code{Y01-KL.md} \S4.1).
+      $\nu_L\ge0$ is Osterwalder--Seiler reflection positivity \cite{osterwalder-seiler,os1973} and
+      $f_{n,L}^2\ge0$ is the spectral theorem, so the K\"all\'en--Lehmann representation \cite{kl} on
+      the cylinder is a theorem with no Yang--Mills dynamics in it, and it transfers verbatim to the
+      $2^{++}$ channel. \LT.
+\end{enumerate}
+
+\noindent\textbf{The five holes A--E, all closed.} Each hole is a specific defect that an earlier
+draft absorbed by relabelling; each is now closed in its own file.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabularx}{\textwidth}{@{}l>{\raggedright\arraybackslash}p{3.1cm}%
+  >{\raggedright\arraybackslash}X>{\raggedright\arraybackslash}p{3.3cm}@{}}
+\toprule
+\textbf{Hole} & \textbf{What it was} & \textbf{How it is closed} & \textbf{Source} \\
+\midrule
+A & $u=c_f$ vs.\ $u=c_f/N$: a factor $N^{4T}$ in the tube weight
+  & $u:=c_f/N$, one $1/N$ per tile, from Gupta (14.18)/(14.21); and $A^{\mathrm{dressed}}$
+    \emph{is} $f_1^2$, so no second quantity ever existed
+  & \code{Z06-HOLEA.md} \S1--5 \LT \\
+B & whether $\delta\ge\kappa/3$ lands inside $I1$
+  & out: neither $I1$ nor $D_\infty$ contains $\delta$; the reachable rate is
+    $\delta=\ln(1/\bar u)/a=\kappa/4-\ln(\hat Ce\Delta\bar C)/a$, strictly below $\kappa/4$
+  & \code{Z07-HOLEB.md} \S2--4 \LT \\
+C & re-coupling is not block-multiplicative: $\mathrm{Hom}(1,f\bar ff\bar f)=2\ne1^2$; caps have
+    $w(\gamma)=0$ while $w(B_T\cup\gamma)\ne0$
+  & $\hat C=2$ exactly at each factorization point, envelope $\hat C=4$ per plaquette; the
+    interface re-coupling is absorbed into the activity, never into $\varepsilon_T$
+  & \code{Z08-HOLEC.md} \S2--4, \code{Z12-FIXC.md} \S1--3 \LT \\
+D & summing $O$ over the slice makes $f_1^2\propto L^3$, so a bare $f_1^2$ cannot meet an
+    $L$-independent $r_0$
+  & $r_0$ carries the volume factor (equivalently $f_1^2$ is read normalized); $a_0$'s
+    $L$-independence is already proved by a positive geometric sum with wrap corrections $e^{-cL}$
+  & \code{Z09-HOLED.md} \S3--5 \LT \\
+E & $r_0=\tfrac14(2N)^{-2}$ vs.\ $\tfrac12c_1u^p$: two $\beta$-scalings for one constant
+  & $p$ is the operator-coefficient exponent and $p=0$; $u$ lives only in the correction factor,
+    $r_0=\tfrac12a_0(1-O(u))$, $\beta$-independent
+  & \code{Z10-HOLEE.md} \S3--5 \LT \\
+\bottomrule
+\end{tabularx}
+\caption{The five holes A--E of the residue-and-isolation chain, each with the defect that it was and
+the argument that closes it. Every row is \LT{} in its own file; the sources are named in the last
+column.}
+\label{tab:holes}
+\end{table}
+
+\noindent\textbf{The two accounting constants.} \emph{$\bar C\equiv N=2$, as an identity and not as
+an upper bound.} The Ursell constant is $\bar C=c_f/u=N$, one $1/N$ per link from the integration,
+with $|w|^{1/n}/u=c_f/u=N$ on cubes and four-walled tubes (measured $2.0000$ at $n=6,4,8,12$); the
+$\mathrm{SU}(2)$ cross-check at $\beta=1/12$ is $\langle\tfrac1N\operatorname{tr}U_p\rangle
+=0.0208273$ against $c_f=0.0208333$, a $0.03\%$ gap.
+\src{\code{F07-ADJCBAR.md} \S3; \code{M02-CBAR.lean}, \code{cbar_eq_N}, \code{cbar_eq_N_two}.}
+
+\smallskip
+\noindent\emph{$\hat C=4$, and attained rather than bounded.} The KP criterion sums over polymers
+$\gamma$, so what enters is the per-polymer rate $\sup_\gamma(\prod_\ell R(\ell))^{1/|\gamma|}$; the
+handshake identity $E_2/F=2$ on closed clusters gives $2^{E_2/F}=2^2=4$, and a witness attains it:
+all $324/324$ cubes of $T^4_3$ give geometric mean $4.000000$, as do $4000$ random closed
+complexes, with $0$ violations. The "$2$" is the value at each factorization point, not the value on
+a polymer, so it can never replace the $4$. \LT{}$+$\LE.
+\src{\code{ADJ2.md}:13; \code{C06-WINDOW.md} \S2.2--2.3.}
+
+\smallskip
+\noindent\emph{The two constants meet the threshold.} $\hat C\bar C=8$ against
+$2N^2\cdot48/e\Delta=7.0632853\ldots$, and the Lean file contains the integer certificate for
+$8>7.0632853$. \src{\code{M02-CBAR.lean}: \code{chat_times_cbar}, \code{thresh},
+\code{thresh_iff}, \code{thresh_eq_eight_div_x}.}
+
+\smallskip
+\noindent\emph{Penrose, approved with its own caveat.} The tree bound $|\varphi^U(\Gamma)|\le
+\tau(G_\Gamma)$ is \LT{} with a four-line deletion--contraction proof plus $875$ graphs and $0$
+violations; the \emph{citation} to Penrose (1967) and to the Penrose identity in
+Fern\'andez--Procacci stays \LC{} because the original page was never opened
+(\code{C07-AUDIT.md}:17, :24, :124--126, :135).
+
+\smallskip
+\noindent\emph{Lean.} The arithmetic core of the two constants is $25$ theorems in
+\code{M02-CBAR.lean} with \code{sorry} $=0$ and twelve axiom-audit lines returning
+$[\code{propext},\code{Classical.choice},\code{Quot.sound}]$; the last run exits $0$ with no error
+and no warning. \src{\code{M02-CBAR.lean} (theorem count and axiom audit at its end);
+\code{LOOP-RUNBOOK.md}:9512--9528.}
+
+% ---------------------------------------------------------------------
+\subsubsection{The window correction: the value drops to \texorpdfstring{\LC}{[C]}, the structure does not drop}
+\label{sec:est-window-fix}
+
+\begin{warnbox}
+\textbf{What was over-reported, by how much, and why the old number is illegal.} The window printed
+in the earlier edition of this chapter was $\beta<0.018394$. That number is
+$1/(e\Delta)$, the \emph{activation root at $a=0$} of the KP criterion --- and $a=0$ sets the
+right-hand side of the criterion to zero, so the criterion is identically false there and the root
+is a convergence radius, not a criterion window. \textbf{It is therefore not a legal window.} With
+the grading parameter optimized,
+\begin{equation}
+\beta_A\ <\ W(a^\ast)\ =\ 3.777\times10^{-3}\ =\ 0.1813\times\tfrac1{48},
+\qquad\Longleftrightarrow\qquad
+\beta_W\ <\ 0.015108\ =\ 0.725\times\tfrac1{48},
+\label{eq:est-window2}
+\end{equation}
+so the earlier report over-states the window by
+\[
+\frac{0.018269}{0.003777}\ =\ 4.84\times ,
+\qquad\text{and this chapter's own}\quad
+\frac{0.018394}{0.003777}\ =\ 4.87\times .
+\]
+\src{\code{ADJ4.md}:16 (the ratio $1:2.7508:7.7238$ and $\Phi$ table), :19 and :125 (the two
+over-report factors); \code{LOOP-RUNBOOK.md}:17133--17194 (\S131, the same two factors);
+\code{C06-WINDOW.md} \S2.}
+\end{warnbox}
+
+\noindent\textbf{The optimizer, printed so that it can be checked.} With $\lambda=e\Delta=54.3656$
+and $\Phi$ the single-plaquette sum, the criterion $S_x(a)\le a$ is equivalent to
+$\lambda\Phi(a,\beta)\le a/(1+a)$, hence $W(a)=a/[(1+a)\lambda\Phi(a)]$. The measured ratios are
+$\Phi(0):\Phi(1):\Phi(2)=1:2.7508:7.7238$ at $\beta=0.018394$ ($2.75512$ at $\beta=1/48$), and the
+numerical maximum sits at $a^\ast=0.6150$. The closed-form point $a^\ast=(\sqrt5-1)/2=0.618$ is an
+approximation to that maximum, with the same value to four digits, and $a=1$ gives
+$3.372\times10^{-3}$ (the $3.357\times10^{-3}$ of the earlier audit, $0.44\%$ lower).
+\src{\code{ADJ4.md}:16, :19; \code{CB4.md}:53--57 as quoted there; \code{LOOP-RUNBOOK.md}:17149.}
+
+\smallskip
+\noindent\textbf{And the natural coupling is outside, by a wide margin.} At
+$\beta_W=1/12=0.08333$ one has $u=\beta_W/(2N^2)=0.0104$ and $\bar u=e\Delta N u=1.132617>1$, so the
+criterion fails; against the corrected window the same coupling is out by
+$0.08333/0.015108=5.5\times$. \src{\code{M02-CBAR.lean} (\code{cf} at $\beta=1/12$ gives
+$c_f=1/48$); \code{BETA-CONVENTION.md}:187; \code{F07-ADJCBAR.md} \S4.}
+
+\begin{qbox}
+\textbf{Why this is a correction of a value and not a retraction of a theorem.} The window is one
+slot of the statement \eqref{eq:est-window} and it is not a premise of any ring of the chain: the
+five rings \LT{} deliver $f^2_{1,L}\ge r_0>0$ for every $\beta$ at which the KP criterion holds, and
+``at which it holds'' is exactly what the window names. Re-optimizing the grading parameter changes
+\emph{where} the criterion holds, not \emph{what} it delivers. Hence the grade splits: the value of
+the window is \LC{} (computed: a numerical maximum of an explicit function), the residue statement
+stays \LT. \textbf{There is no conflict between the correction and the \LT{} structure, because the
+two occupy different slots of the same sentence}; writing the whole theorem \LC{} would under-state
+the chain, and writing the window \LT{} would over-state a numerical maximum.
+\src{\code{ADJ4.md}:19 (the verdict separates the number from the reason); \code{position-current.html}:375.}
+\end{qbox}
+
+% =====================================================================
+\subsection{The isolation \texorpdfstring{$I2$}{I2} and Proposition C}
+\label{sec:est-i2}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(isolation $I2$).} In the setting of \S\ref{sec:est-i1}, with
+$\Lambda_\star:=\inf\operatorname{supp}\,(\nu-f_1^2\delta_{m_1^2})$ the bottom of the spectrum above
+the leading atom, for every finite $L$ and uniformly in $L$,
+\begin{equation}
+\Lambda_\star-m_1^2\ \ge\ \delta\ >\ 0 ,
+\label{eq:est-i2}
+\end{equation}
+and the same holds in the $2^{++}$ channel with its own $\nu^{(2)}$, $m_2$ and
+$\Lambda^{(2)}_\star$. \LT.
+\end{claimbox}
+
+\noindent\textbf{Why the uniformity in $L$ is the hard half.} Isolation at one $L$ is a statement
+about one transfer matrix; isolation uniformly in $L$ is a statement about a one-parameter family,
+and gaps along a family are exactly what degeneracies destroy: the von Neumann--Wigner phenomenon
+\cite{vnw} makes a crossing generic once the symmetry that protects it is broken. The five rings earn
+the uniformity; an estimate at fixed $L$ would not.
+
+\noindent\textbf{The five rings are the same five.} Isolation is not a second chain: rings R1--R5 of
+\S\ref{sec:est-i1} certify \eqref{eq:est-f1} and \eqref{eq:est-i2} on the same transfer matrix, and
+the five holes A--E are the same five holes. This is why the two statements share a subsection in
+the corpus and are separated here only for readability.
+\src{\code{docs/paper-v2/ch20-unconditional-i1.tex}, its five-ring section and its five-hole table;
+\code{Y02-CHANNELS.md}:16--20.}
+
+\smallskip
+\noindent\textbf{Proposition C, machine-verified.} The isolation has a finite-dimensional shadow that
+is a Lean theorem. In the finite-support model $\mathrm{Spec}=(\text{points},\text{weights})$, put
+$I2:=\exists\Lambda\,(\Lambda$ is the least support point above $m_1$ and $m_1^2<\Lambda)$ and
+$\mathrm{SecExists}:=\exists x\in\text{points},\,m_1<x$. Then
+\begin{equation}
+0<m_1<1\quad\Longrightarrow\quad\bigl(I2\ \Longleftrightarrow\ \mathrm{SecExists}\bigr),
+\label{eq:est-propc}
+\end{equation}
+with \code{sorry} $=0$. The forward direction is unconditional; the backward direction is exactly
+where the window $0<m_1<1$ is spent, through $m_1^2<m_1$.
+\src{\code{L04PropC.lean}: \code{propC}, \code{propC_fwd}, \code{propC_bwd}, \code{sq_lt_self};
+\code{LOOP-RUNBOOK.md}:9109--9129.}
+
+\smallskip
+\noindent\textbf{Two limits of Proposition C, recorded because they are load-bearing.}
+\emph{(i)} $I1$ is automatic only when the point table is declared to be the positive-weight support;
+with a bare grid of points $I2$ does not imply $I1$, and the file contains that counterexample
+(\code{counterexample_I2_not_I1}). \emph{(ii)} The convexity lemma $A1$ is machine-verified in its
+finite-sum form only: \code{MeasureTheory} is unavailable in the build, so the integral form stays
+\LC{} (\code{L04PropC.lean}, header and \code{a1}; \code{LOOP-RUNBOOK.md}:9129). Neither limit
+touches \eqref{eq:est-i2}, which is not a finite-support statement.
+
+% =====================================================================
+\subsection{Uniqueness of the target: \texorpdfstring{$N09$-$1$}{N09-1}}
+\label{sec:est-n09}
+
+\begin{claimbox}{cC}
+\claimhead{Theorem}{(uniqueness of the target, $N09$-$1$; conditional on the M6 specification and
+the $L\to\infty$ reading).} Let a quantity $X$ be required to pass the four-model slot test --- free
+field $0$, $2$D Yang--Mills ``true'', M6 ``false'', single plaquette ``undefined'' --- with the four
+slots kept distinct. Then $X$ is a function of the mass: there is $f$ with $f(0)=0$ and $f>0$ for
+$m>0$ such that $X=f(m)$. \LC. Consequently the target is unique: every admissible ``new
+invariant'' is a relabelling of $m$.
+\end{claimbox}
+
+\noindent\textbf{The grade.} The two hypotheses --- the M6 specification and the $L\to\infty$ reading
+of its spectrum --- are printed in the statement, and by the grading rule of the title page a theorem
+carrying printed hypotheses is \LC, not \LT. The earlier edition graded this statement \LT; that is
+the same species of over-report as the window corrected in \S\ref{sec:est-window-fix}, and it is
+corrected here rather than quietly. The content is unaffected: the hypotheses are the ones under
+which $M6$ was constructed, and no use of $N09$-$1$ in this paper leaves them.
+
+\noindent\textbf{Why.} M6 is oscillator $\otimes$ free mode with $w=1$, and by the $L\to\infty$
+reading its only vanishing scale is the spectral bottom $m_6=\min(w,2\pi^2/L^2)$. A quantity that is
+defined on M6 and not identically true must take the value $0$ there, i.e.\ must vanish with
+$m_6\to0$; on $2$D Yang--Mills it is positive where $m=3g^2/8>0$. A functional that is defined,
+non-vacuous and zero exactly on the degenerate model is therefore a monotone relabelling of $m$ at
+$0$. \src{\code{N09-RESTATE.md}:44--53 (\S2, the four numbered steps), :24--30 (four-valued
+signature).}
+
+\smallskip
+\noindent\textbf{The qualification, and it is the thirty-eighth ledger entry.} Statement
+$N09$-$1$ holds \emph{only at fixed operator $O$}. The four-model test fixes the \emph{model}; it
+does not fix the \emph{operator}, and the atom weight is a property of the pair. On one ensemble, one
+lattice, one $\beta$, with no change of $H$, the same Markov chain and the same $12000$
+configurations give
+\begin{equation}
+\begin{gathered}
+w_1=0.3427\pm0.0119\quad(O=\tfrac14\operatorname{tr}F^2,\ \text{unsmeared}),\\
+w_1=0.0168\pm0.0142\quad(\text{spatial APE }n=1),
+\end{gathered}
+\label{eq:est-w1op}
+\end{equation}
+a ratio $0.343/0.017\approx20.2$. The correct reading of $N09$-$1$ is therefore
+$X=f(m;O)$: uniqueness is uniqueness \emph{per operator}, and any statement of the form
+``$w_1>0$'' has no content until $O$ is named.
+\begin{sloppypar}
+\noindent\src{\code{docs/paper-v7/w1/main.tex}:233, :251, :261--264 (the pair and the ratio
+$20.2$); \code{position-current.html}:377 (entry 38); \code{ATOM2.md}:15--16 for the one-line
+counterexample $w_1=\cos^2\theta$ at fixed spectrum.}
+\end{sloppypar}
+
+% =====================================================================
+\subsection{The no-go \texorpdfstring{$SG1$-$1$}{SG1-1}: \texorpdfstring{\LC}{[C]}, not \texorpdfstring{\LT}{[T]}}
+\label{sec:est-sg1}
+
+\begin{claimbox}{cC}
+\claimhead{Theorem}{(no-go $SG1$-$1$; grade \LC).} On the class $\mathcal M$ of non-negative Borel
+measures on $[0,\infty)$ with finite moments up to a fixed $N$ and with
+$s_1(\nu)=\inf\operatorname{supp}\nu\in\mathbb R$, there is no functional
+$F:\mathcal M\to\mathbb R$ satisfying simultaneously
+\begin{equation}
+\begin{gathered}
+\textbf{(i)}\ \text{$G1$-covariant},\qquad
+\textbf{(ii)}\ F\le s_1,\qquad
+\textbf{(iii)}\ \text{finite-moment computable},\\
+\text{hence}\qquad
+\textbf{(i)}\wedge\textbf{(ii)}\wedge\textbf{(iii)}\ =\ \varnothing .
+\end{gathered}
+\label{eq:est-sg1}
+\end{equation}
+\textbf{The grade is \LC{} and not \LT}, and \S\ref{sec:est-sg1-grade} states exactly which step
+costs the downgrade.
+\end{claimbox}
+
+\begin{proofx}
+Fix $a\ge0$, $\lambda>0$ and $0<\varepsilon<\min(a,2\lambda)$, and put
+\begin{equation}
+\begin{gathered}
+\nu_\varepsilon^{(a)}\ =\ \frac{\varepsilon}{2\lambda}\,\delta_\varepsilon
+\ +\ \Bigl(1-\frac{\varepsilon}{2\lambda}\Bigr)\,\delta_a\ \in\ \mathcal M ,
+\qquad
+s_1\bigl(\nu_\varepsilon^{(a)}\bigr)=\varepsilon ,\\
+m_k\bigl(\nu_\varepsilon^{(a)}\bigr)\ =\ \frac{\varepsilon}{2\lambda}\,\varepsilon^{k}
++\Bigl(1-\frac{\varepsilon}{2\lambda}\Bigr)a^{k}
+\ \xrightarrow[\varepsilon\downarrow0]{}\ a^k=m_k(\delta_a)
+\qquad(k\ge1).
+\end{gathered}
+\label{eq:est-atom}
+\end{equation}
+\emph{Step 1.} By \eqref{eq:est-atom} the moment vector of $\nu_\varepsilon^{(a)}$ converges to that
+of $\delta_a$. \emph{Step 2.} Continuity of $\Phi$ in (iii) gives
+$F(\nu_\varepsilon^{(a)})\to F(\delta_a)$, while (ii) gives
+$F(\nu_\varepsilon^{(a)})\le s_1(\nu_\varepsilon^{(a)})=\varepsilon$; hence $F(\delta_a)\le0$ for
+every $a\ge0$. \emph{Step 3.} $\tau_a\delta_0=\delta_a$, so (i) gives
+$F(\delta_a)=F(\delta_0)+a$; combined with Step 2 this forces $F(\delta_0)+a\le0$ for every $a\ge0$,
+which fails for $a>|F(\delta_0)|$. No such $F$ exists. The argument uses one moment ($N\ge1$) and
+continuity, and nothing else.
+\end{proofx}
+
+\noindent The three-line skeleton is the corpus statement, transcribed word for word: the atom family
+drifts the moments by $O(\varepsilon)$ while $s_1:1\to\varepsilon$; the machine check at
+$a=0.5/1/2/5$ returns \textsf{NO} in all four rows; hence the only escape is the full-moment limit,
+the only reachable object there is $F=s_1$, so $G\equiv0$, which collides with $N09$-$1$.
+\src{\code{SG1.md}:62--67 as quoted in \code{docs/paper-v7/sg1/main.tex}:252--268;
+\code{w7/sg1_G.log}:37--42 (the four \textsf{NO} rows), reproduced at
+\code{docs/paper-v7/sg1/main.tex}:401--404 (values $1.0\cdot10^{-6}$, $2.49999\cdot10^{-7}$,
+$4.99999\cdot10^{-7}$, $9.99999\cdot10^{-7}$, $2.5\cdot10^{-6}$ against $s_1$ equal to
+$0.5/1/2/5$).}
+
+% ---------------------------------------------------------------------
+\subsubsection{Why the grade of \texorpdfstring{$SG1$-$1$}{SG1-1} is \texorpdfstring{\LC}{[C]}: the thirty-seventh ledger entry}
+\label{sec:est-sg1-grade}
+
+\noindent Condition (iii) admits exactly one reading in the proof above: \emph{there is an
+$N<\infty$, fixed independently of $\nu$, and a continuous $\Phi:\mathbb R^N\to\mathbb R$ with
+$F(\nu)=\Phi(m_1(\nu),\dots,m_N(\nu))$ for every $\nu\in\mathcal M$}. Under that reading Step 2 is a
+one-line consequence of continuity, and \eqref{eq:est-sg1} is a theorem.
+
+\smallskip
+\noindent\textbf{If (iii) is read as computability} --- recursion-theoretic, or ``computable from
+$(S_W,\beta,L,a)$ by an algorithm'' --- then the passage
+$F(\nu_\varepsilon^{(a)})\to F(\delta_a)$ does not follow: a functional computable in the moment
+data but discontinuous in the moment topology is outside the killed class. \textbf{That single step
+is therefore \LC, and with it the true grade of $SG1$-$1$ is \LC, not \LT.} The proof is three lines
+long only because continuity is doing all of the work; remove continuity and nothing is left.
+\src{\code{docs/paper-v7/sg1/main.tex}:207--232 (convention \code{iii-strict} and the remark on
+(iii)), :320--330 (Step 2 carries the chip); ledger entry 37,
+\code{position-current.html}:378.}
+
+\smallskip
+\noindent\textbf{Two conventions that the statement needs, and neither is cosmetic.}
+\emph{(1) (i) is pinned to the G1 energy axis.} Under a spatial translate the object
+$\inf\operatorname{supp}\nu$ is invariant, so a G2 reading makes (i) constrain nothing and
+simultaneously puts it in direct conflict with (ii); the conflict is an artefact of the reading.
+\emph{(2) (ii) quantifies over the whole measure class} $\mathcal M$, not merely over the spectral
+measures physics supplies. That makes the emptiness \emph{stronger} than its physical-class version:
+a functional that fails on the larger class fails a fortiori on the subclass.
+\src{\code{B05-DUAL.md}:76--83, :80; \code{docs/paper-v7/sg1/main.tex}:163--205 (conventions
+\code{domain} and \code{G1}).}
+
+\smallskip
+\noindent\textbf{Relation to $N09$-$1$: no implication in either direction.} $N09$-$1$ quantifies
+over \emph{quantities on models} that pass the slot test; $SG1$-$1$ quantifies over
+\emph{functionals on measures}. They meet at exactly one point, and that point is a degenerate end:
+the survivor $F=s_1$ gives $G\equiv0$, which passes $4/4$ and lands inside $\operatorname{dom}(N09$-$1)$
+as the function $f\equiv0$. The corpus phrase ``collides with $N09$-$1$'' therefore means: the
+non-trivial defect $G$ is excluded, and the zero defect is not an object at all. It does not mean
+that one statement entails the other; the two quantify over different carriers, and each is
+conditional on a hypothesis the other does not share --- the $M6$ specification for $N09$-$1$, the
+fixed-$N$ continuity reading of (iii) for $SG1$-$1$ --- so no grade transfers between them.
+\src{\code{docs/paper-v7/sg1/main.tex}:617--641 (remark \code{n09rel}), :441--448 (signature of the
+survivor); \code{N09-RESTATE.md}:44--53.}
+
+% =====================================================================
+\subsection{Four machine-verified lemmas: two counterexamples, two certificates}
+\label{sec:est-counter}
+
+\noindent These four are model-level or arithmetic results, hence \LM: they are verified in a
+solvable model or by exhaustive machine enumeration. Two of them kill implications and two certify
+arithmetic, and the distinction matters, because the second pair is not evidence about Yang--Mills at
+all (\S\ref{sec:est-window-fix}).
+
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.0em]
+\item \textbf{What it kills:} $G''>0\Rightarrow m>0$ (``$G''$ sufficient''). \emph{Witness:} M6 has
+      $G''=1/\mathrm{Var}(a)=2\omega>0$ while its spectral bottom obeys
+      $m_6=\min(\omega,2\pi^2/L^2)\to0$; the finite-dimensional $2\times2$ witness is
+      machine-checked, \code{sorry} $=0$, axioms
+      $[\code{propext},\code{Classical.choice},\code{Quot.sound}]$. The file records that this
+      witness realises the failure through a degenerate vacuum, so it kills the bare implication and
+      is not claimed as an M6-class counterexample.
+      \begin{sloppypar}
+      \noindent\src{\code{L05Counterexamples.lean}; \code{L05-COUNTER.md};
+      \code{LOOP-RUNBOOK.md}:8691--8697, :8841; \code{N09-RESTATE.md}:66 (the $m_6$ formula).}
+      \end{sloppypar}
+\item \textbf{What it kills:} $m>0\Rightarrow f_1^2>0$ (``$f_1^2$ necessary''). \emph{Witness:} in
+      the $2$D Yang--Mills type model $[H,O]=0$ with a non-degenerate spectrum forces the
+      off-diagonal element to vanish, $f_1^2=0$, while the gap stays positive; the explicit
+      $2\times2$ witness is $H=\mathrm{diag}(0,1)$, $O=\mathrm{diag}(3,-1)$ with gap $1$.
+      \src{\code{M03-COUNTER.lean} (\code{f1sq_eq_zero}); \code{LOOP-RUNBOOK.md}:9683--9731.}
+\item \textbf{What it certifies:} the window's arithmetic at the elementary-bound step,
+      $\exp(5/96)\le1.054$ and $4\exp(5/96)<7.0633$; the partial sum is $1.0534632$, the remainder
+      $3.83\cdot10^{-7}$, the margin $4.6\cdot10^{-4}$.
+      \src{\code{LOOP-RUNBOOK.md}:8961--8962; \code{L06-INTERVAL.md}:68--69;
+      \code{L02-CBARKATO.md}:84--85.}
+\item \textbf{What it certifies:} the window arithmetic as a whole --- twenty-five theorems,
+      \code{sorry} $=0$, twelve axiom checks clean, including $8>7.0632853$ and the rational
+      certificate. \src{\code{M02-CBAR.lean}; \code{LOOP-RUNBOOK.md}:9512--9528.}
+\end{enumerate}
+
+\noindent\textbf{How the four are used, and how they are not.} Rows 1 and 2 kill two implications
+that the project had used as inference rules --- ``$G''$ is the key'', ``$f_1^2$ is the key'' --- and
+they kill them on models where the implication is checkable by kernel, not by sampling. Rows 3 and 4
+certify arithmetic, and arithmetic is not a statement about Yang--Mills: they certify that the numbers
+in \S\ref{sec:est-window-fix} are what they are claimed to be. In particular row 4 does not make the
+\emph{window} a theorem, because a numerical maximum of an explicit function is still a numerical
+maximum; \LM{} is exactly the right grade for it, and it is the grade printed.
+
+% =====================================================================
+\subsection{One new \texorpdfstring{\LT}{[T]} this round: the block-Loewner order}
+\label{sec:est-loewner}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(block-Loewner monotonicity in $\beta$).} Split the transfer kernel as
+$T_\beta=D_\beta^{1/2}K_\beta D_\beta^{1/2}$ with $D_\beta=e^{-\beta S_s/2}$ and $K_\beta$ the
+half-plaquette kernel. Then for $\beta>\beta'$
+\begin{equation}
+K_\beta\ \succeq\ K_{\beta'} ,
+\label{eq:est-loewner}
+\end{equation}
+in the Loewner order on $L^2(dU)$: the block coefficients satisfy $c_r(\beta)\ge0$ and are
+non-decreasing in $\beta$ for every representation $r$, with $c_r(\beta)=\langle\chi_r\rangle/d_r$, and
+the tensor-product multiplicities entering the composition of blocks are non-negative.
+\LT.
+\end{claimbox}
+
+\begin{proofx}
+The order \eqref{eq:est-loewner} reduces, term by term, to $c_r(\beta)\ge c_r(\beta')$ for all $r$:
+positive definiteness of $\chi_r(UV^\dagger)$ makes the block comparison a comparison of coefficients
+rather than of kernels. Positivity $c_r\ge0$ and monotonicity in $\beta$ follow from the
+Griffiths/Bochner route applied to $\langle\chi_r\rangle$ \cite{griffiths,ginibre,ksherman}, and the
+composition of two blocks is a sum over $r_1\otimes r_2$ with non-negative multiplicities, so no
+negative weight can enter the comparison.
+\end{proofx}
+
+\noindent\textbf{What it repairs, precisely.} \code{D05-FKG.md} adjudicated four readings of ``the
+order of $T_\beta$'' and left exactly one slot open: at \emph{block} level the coefficient
+monotonicity was known for $\mathrm{SU}(2)$ and marked \LN{} for $\mathrm{SU}(N\ge3)$
+(\code{D05-FKG.md}:69, :100). \eqref{eq:est-loewner} discharges that slot, so the block-level row of
+that adjudication changes from \LN{} to \LT. \src{\code{position-current.html}:380 (the round-178
+record of the new \LT, item 6); \code{D05-FKG.md}:62--71.}
+
+\smallskip
+\noindent\textbf{What it does not repair.} The \emph{full-kernel} order $T_\beta\succeq T_{\beta'}$
+is not established, and \eqref{eq:est-loewner} does not touch it: the factor $D_\beta$ decreases
+pointwise in $\beta$, and that obstacle sits in the other slot of the splitting. And even if the
+block order is granted, what it transports is the \emph{unnormalized} eigenvalue sequence --- not the
+normalized kernel, not the eigenvectors, and not $F$ or $m$. The repair is a repair of one slot, not
+a route to the gap. \src{\code{D05-FKG.md}:71 (the $D$-factor obstacle), :76--82 (``output zero for
+$F$, for $m$, for $\mathbb G$''), :100 (the row table).}
+
+\begin{warnbox}
+\textbf{A bug, caught in the same round, that voids earlier numerical sign determinations.} A
+QR-based sampler fabricates ``sign changes of $c_r$'': the sampled coefficients flip sign as a
+numerical artefact of the factorization, not as a property of the kernel. Consequences, both
+recorded and neither negotiable: (a) four places in the corpus state the coefficient convention in a
+form that the artefact made look consistent, and those statements have to be changed; (b) several
+earlier numerical conclusions of the form ``$c_r$ changes sign here'' are void and are withdrawn
+pending re-derivation. The analytic statement \eqref{eq:est-loewner} is independent of the sampler,
+which is why it keeps \LT{} while the numerical readings do not.
+\src{\code{position-current.html}:417 (the bug entry), :399 (``two solid items: block-Loewner \LT{}
+and the QR-sampler bug'').}
+\end{warnbox}
+
+% =====================================================================
+\subsubsection*{What this section does not claim}
+
+\begin{enumerate}[label=(\roman*),leftmargin=2.2em]
+\item \textbf{Not Clay.} No continuum mass gap is claimed, $a\to0$ is not taken, and no statement
+      here crosses to $\beta\approx2.5$. The residue and the isolation are strong-coupling
+      statements at fixed spacing, and their window \eqref{eq:est-window2} is a window in the
+      coupling, not in the spacing.
+\item \textbf{The positivity of the mass inside the window is not ours.} For $\beta$ below the
+      strong-coupling radius, $m>0$ is Osterwalder--Seiler's cluster expansion \cite{osterwalder-seiler}
+      and the edge $1/48$ of the window is where Shen--Zhu--Zhu's log-Sobolev and Poincar\'e
+      inequalities are proved \cite{szz}; the same conclusion in
+      the polymer language is \cite{seiler,bgdf}, and for the lower-dimensional models
+      \cite{gjs,fo}. What \S\ref{sec:est-i1}--\S\ref{sec:est-i2}
+      add is the residue $I1$ and the isolation $I2$, i.e.\ the removal of the premise that the
+      $0^{++}$ channel is strictly lightest --- and nothing more.
+      \src{\code{docs/paper-v2/ch20-unconditional-i1.tex} \S D.2.}
+\item \textbf{The step from \eqref{eq:est-i2} to $m_1>0$ is vacuous and is not used.} The side
+      condition of the Kato-type reading is verbatim $m_1>0$, so the implication is written in
+      through its own hypothesis; it is recorded as a qualification, never as a gain.
+      \src{\code{docs/paper-v2/ch20-unconditional-i1.tex} \S D.1; \code{G07-KATOADJ.md} \S0 F.}
+\item \textbf{Proposition C is a finite-dimensional shadow.} It covers a finite support with a fixed
+      point table; it does not discharge any statement uniform in $(L,a)$ and must not be read as
+      closing a gap in $\beta$. \src{\code{N09-RESTATE.md}:66--70 (\S5 item 4).}
+\item \textbf{The block-Loewner order produces no lower bound.} By construction it transports
+      eigenvalues, and the project's target is a lower bound on a spectral bottom; the two are
+      different objects, and \S\ref{sec:est-loewner} says so in its own scope sentence.
+\end{enumerate}
+
+\noindent Everything in this section is therefore of one of two kinds: a statement whose proof is
+complete at the grade printed, or a statement whose missing step is named at the place where it is
+missing. There is no third kind in the register, and no claim above is graded above its weakest link.
+
+\endgroup

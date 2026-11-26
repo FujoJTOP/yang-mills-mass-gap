@@ -1,0 +1,38 @@
+==============================================================================================================
+mixed-geometry GEVP   tag=L6  beta=2.5  Ls=6 Lt=12  N=24000
+==============================================================================================================
+
+B1 paper: 11(raw)+11(a50n1)   (2 ops, Gram rank=2/2, kappa=3.77e-01)
+    ops: raw/W11_p0, a50n1/W11_p0
+    m_eff t=1..6:  2.601  2.165  2.140  1.337  1.125  1.055
+    JK         :  0.024  0.059  0.376  0.138  0.097  0.334
+    lam_max(t) : 7.42e-02 1.32e-02 1.63e-03 4.76e-03 3.61e-03 1.78e-03   [NON-monotone -> GEVP lambda is not a clean exponential]
+    lam2/lam1  :  0.020 -0.026  0.201  0.070  0.072 -3.056
+
+B2 geometry: 11+12+22 (raw)   (3 ops, Gram rank=3/3, kappa=1.61e-02)
+    ops: raw/W11_p0, raw/W12_p0, raw/W22_p0
+    m_eff t=1..6:  2.138  1.853  1.655  1.277  1.108  0.964
+    JK         :  0.018  0.026  0.082  0.077  0.066  0.164
+    lam_max(t) : 1.18e-01 2.46e-02 6.98e-03 6.05e-03 3.93e-03 3.08e-03   [MONOTONE: single-exponential OK]
+    lam2/lam1  :  0.187  0.153  0.287  0.410  0.712 -0.047
+
+B3 geom+smear: 11r,11a50,12r,22r   (4 ops, Gram rank=4/4, kappa=1.54e-02)
+    ops: raw/W11_p0, a50n1/W11_p0, raw/W12_p0, raw/W22_p0
+    m_eff t=1..6:  2.136  1.853  1.647  1.241  1.079  0.932
+    JK         :  0.018  0.026  0.070  0.071  0.086  0.127
+    lam_max(t) : 1.18e-01 2.46e-02 7.15e-03 6.99e-03 4.54e-03 3.73e-03   [MONOTONE: single-exponential OK]
+    lam2/lam1  :  0.187  0.156  0.404  0.388  0.802  0.422
+
+B4 geom x2: +22(a30n1),12(a30n1)   (5 ops, Gram rank=4/5, kappa=8.67e-03)
+    ops: raw/W11_p0, raw/W12_p0, raw/W22_p0, a30n1/W12_p0, a30n1/W22_p0
+    m_eff t=1..6:  2.111  1.837  1.641  1.289  1.100  0.915
+    JK         :  0.018  0.025  0.067  0.081  0.102  0.106
+    lam_max(t) : 1.21e-01 2.54e-02 7.27e-03 5.76e-03 4.09e-03 4.12e-03   [NON-monotone -> GEVP lambda is not a clean exponential]
+    lam2/lam1  :  0.190  0.152  0.272  0.418  0.820  0.194
+
+B5 smearing only: 6 alpha levels   (6 ops, Gram rank=3/6, kappa=9.92e-06)
+    ops: raw/W11_p0, a10n1/W11_p0, a20n1/W11_p0, a30n1/W11_p0, a50n1/W11_p0, a10n3/W11_p0
+    m_eff t=1..6:  2.567  2.152  1.968  1.298  1.107  1.062
+    JK         :  0.021  0.066  0.206  0.090  0.085  0.227
+    lam_max(t) : 7.68e-02 1.35e-02 2.73e-03 5.55e-03 3.94e-03 1.71e-03   [NON-monotone -> GEVP lambda is not a clean exponential]
+    lam2/lam1  :  0.053  0.221  0.120  0.355  0.384  0.250

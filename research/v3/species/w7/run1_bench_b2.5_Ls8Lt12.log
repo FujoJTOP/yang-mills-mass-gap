@@ -1,0 +1,5 @@
+==============================================================================
+RUN1  SU(2) Wilson  beta=2.5  Ls=8^3 x Lt=12  target n=3000 gap=4 therm=300 budget=900.0s levels=(1, 2, 3, 4) tag=b2.5_Ls8Lt12
+w1 = A/C(0)  (atom fraction),  Rbar = -C'(0)/C(0) = M1/M0  (first cumulant)
+==============================================================================
+[BENCH] Ls=8 Lt=12 links=24576 200 sweeps in 1.08s = 5.390 ms/sweep

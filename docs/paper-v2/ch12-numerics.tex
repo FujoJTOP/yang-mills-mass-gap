@@ -250,3 +250,67 @@ includes zero). They \emph{calibrate} the diagnostics (P3, Re-slope, FSS) on syn
 do not prove the gap, and they are not offered as evidence for it. Their value is that they turn
 each open step into a falsifiable numerical question, which is the most a finite-volume
 computation can do for a continuum problem.
+
+% ---------------------------------------------------------------------
+\subsection{The atom fraction at the physical coupling}
+\label{sec:w1-b25}
+
+\textbf{At $\beta=2.5$ the atom fraction is resolved on two volumes, and it is positive on both.}
+The run is $\mathrm{SU}(2)$ Wilson with a Kennedy--Pendleton heat bath, single-threaded, on
+$L_s^3\times L_t=6^3\times12$ and $8^3\times12$: $N=6000$ and $N=4152$ configurations, $400$
+thermalization sweeps from one chain, $6$ and $3$ sweeps between configurations, wall-clock
+$290\,$s and $265\,$s. The correctness check is the plaquette,
+$\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle=0.6527$ and $0.6524$, which is the
+literature value at this coupling: the sampling is right.
+
+The observable is the zero-momentum spatial plaquette sum, $S(t)=\sum_x P(x,t)$ with
+$P=\tfrac13\sum_{i<j\le3}\tfrac12\operatorname{Re}\operatorname{tr}U_{ij}$ and $U$ either bare or
+3D-APE smeared ($\alpha=0.5$, $n$ steps). The connected correlator
+$C(t)=L_t^{-1}\sum_{t_0}\langle S(t_0+t)S(t_0)\rangle_c$ is fitted by
+$C(t)=A(e^{-mt}+e^{-m(L_t-t)})$ on the window $t=1,2,3$ at both volumes, and the atom fraction is
+$w_1=A/C(0)$ with the mass pinned at the lowest allowed value $m=1.546$: pinning the mass at its
+lower edge drives the fitted amplitude, and with it $w_1$, to its lower edge (the free-mass fit
+gives $0.587\pm0.191$ at $L=6$, but at a mass $1.98$ that is not comparable across volumes).
+Errors are 20-block delete-one jackknife. Then
+\begin{equation}
+w_1(L=6)=0.373\pm0.018\;(20.7\sigma),
+\qquad
+w_1(L=8)=0.342\pm0.015\;(22.8\sigma).
+\label{eq:w1-b25}
+\end{equation}
+Both are strictly positive, and the $L$-dependence between the two volumes is $8.3\%$: the
+fraction does not dilute, in contrast with the free-field behaviour.
+
+The same estimator at $\beta=2.2$ (route U14) supplies the trend over three volumes: the
+unsmeared ratio runs $C_1/C_0=0.1367\to0.1229\to0.1216$ for $L=4,6,8$ --- a drop and then a
+plateau, not a $1/L$ decay --- and the three-volume fit of the upper bound
+$\hat w_1(t)=e^{mt}C(t)/C(0)$ to $w_\infty+c/L$ gives $w_\infty\approx0.54$. The $\beta=2.5$ pair
+therefore sits inside the plateau rather than on a falling edge. Relative to the published
+constant $r_0=1/32=0.03125$ the measured value carries the ratio $0.342/0.03125=10.94\times$.
+
+\begin{v2box}
+\textbf{The two limitations, stated as limits.}
+\begin{enumerate}
+\item \emph{The signal-to-noise is below the campaign's own threshold.}
+  $S/N(2)=C(2)/\sigma_{\mathrm{JK}}$ is $2.8$ at $L=6$ and $5.9$ at $L=8$, against a required
+  $10$. With $\sigma\propto N^{-1/2}$ the requirement translates to $N\approx1.2\times10^{4}$ at
+  $L=8$ and $7.7\times10^{4}$ at $L=6$. What is detected at $20$--$23\sigma$ is the ratio
+  $C(1)/C(0)$; the residue itself is not a precision measurement.
+\item \emph{Smearing destroys the time correlation instead of improving the operator.} At 3D-APE
+  $n=1,2,3,4$ every smeared level returns $C(1)/C(0)\sim10^{-3}$ at both volumes, and some
+  $C(2)<0$, so $w_1$ is undefined on those levels: the projected correlator is a contact term.
+  The graded smearing family --- the usual operator ladder --- is therefore not available on
+  these volumes, and the numbers in \eqref{eq:w1-b25} are the bare ($n=0$) ones.
+\end{enumerate}
+A third caveat belongs with them. The ratio $10.94\times$ is a ratio and not a proved floor:
+$r_0=1/32$ is positive only for $\beta\le0.147152$, and at $\beta=2.5$ the mean link
+$\bar u=16.989>1$ makes it negative, so there the constant is a historical normalisation rather
+than a certified lower bound. The statement carried by \eqref{eq:w1-b25} is therefore \LE{} at
+fixed coupling and volume --- a measurement, not a floor --- exactly as the reading list at the
+head of this chapter requires.
+\end{v2box}
+
+Nothing here moves the verdict, and the reason is structural rather than technical: $w_1$ and the
+mass do not imply one another in either direction, and $w_1$ is not a function of
+$\operatorname{Spec}(H)$. The four witnesses, and the equivalence they close, are in
+\S\ref{sec:final-reduction}.

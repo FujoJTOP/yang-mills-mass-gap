@@ -1,0 +1,7 @@
+n=   64 beta= 2.50: l1/l0=0.764997 Delta_exact=0.267884 Delta_trop=0 width=1.1399 width/Delta=4.2552 log(n)/beta=1.6636 deficit(beta-max_offdiag)=1.20e-02
+n= 4096 beta= 2.50: l1/l0=0.764997 Delta_exact=0.267884 Delta_trop=0 width=2.8034 width/Delta=10.4651 log(n)/beta=3.3271 deficit(beta-max_offdiag)=2.94e-06
+n=   64 beta= 0.50: l1/l0=0.242500 Delta_exact=1.416755 Delta_trop=0 width=7.4409 width/Delta=5.2520 log(n)/beta=8.3178 deficit(beta-max_offdiag)=2.41e-03
+n= 4096 beta=10.00: l1/l0=0.948600 Delta_exact=0.052768 Delta_trop=0 width=0.6261 width/Delta=11.8646 log(n)/beta=0.8318 deficit(beta-max_offdiag)=1.18e-05
+[trop] self-loop means: min=2.5, max=2.5, #ties=64/64
+[trop] best 2-cycle mean  = 2.487962
+[trop] => tropical eigenvalue rho_inf = 2.500000, gap to any other cycle = 0

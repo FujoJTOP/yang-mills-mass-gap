@@ -1,0 +1,14 @@
+============================================================================================================
+S0 self-checks (SU(2), beta = 2.50)
+  per-link FD check (12 random links x random component): max|fd - g| = 2.97e-09
+  global FD (unit-norm v): <g,v> = -3.1526255625e-01   FD = -3.1526255626e-01   ratio = 1.000000
+  pure gauge  U=1     : sum|g|^2 = 0.000e+00   S_W = 0.000e+00
+  all links U=-1      : sum|g|^2 = 0.000e+00   (central => d(Re tr)=0)
+  Z2 staircase s=1.0 : sum|g|^2 =     0.000   S_W =  240.000   analytic (6*beta/2*sin(pi s))^2*L^4 =     0.000
+  Z2 staircase s=0.5 : sum|g|^2 =   900.000   S_W =  120.000   analytic (6*beta/2*sin(pi s))^2*L^4 =   900.000
+  Z2 staircase s=0.25: sum|g|^2 =   450.000   S_W =   35.147   analytic (6*beta/2*sin(pi s))^2*L^4 =   450.000
+============================================================================================================
+S1  pointwise bound vs sup_phi
+    per plaquette: sum_a (d_a S_p)^2 = (beta^2/4) sin^2(theta_p/2) <= beta^2/4 = 1.5625
+    per link (6 plaquettes, triangle ineq.): |grad_l S_W|^2 <= (6 beta/2)^2 = 9 beta^2 = 56.2500
+    global: |grad S_W|^2 <= 9 beta^2 * #links = 36 beta^2 L^4 = 225.0000 L^4

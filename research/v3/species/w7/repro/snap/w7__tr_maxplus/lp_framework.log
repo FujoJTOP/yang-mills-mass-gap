@@ -1,0 +1,68 @@
+============================================================================================================
+PART A -- exact 1-D anchors: Dirichlet string, q=-beta, harmonic oscillator, Mehler/OU
+============================================================================================================
+
+[A1] Dirichlet string  -u''=lam u on (0,L):  T=L, Q=0  ->  bound = pi^2/L^2 = truth (sharp)
+  string L=1                         T=   1.0000  ess inf Q= +0.00000   bound= +9.86960   lam_1(FD)=  9.86960   slack= -0.00000  ok
+      n=1..3: FD 9.869604 39.478409 88.826399 vs exact 9.869604 39.478418 88.826440
+  string L=3.14159                   T=   3.1416  ess inf Q= +0.00000   bound= +1.00000   lam_1(FD)=  1.00000   slack= -0.00000  ok
+      n=1..3: FD 1.000000 3.999999 8.999996 vs exact 1.000000 4.000000 9.000000
+  string L=10                        T=  10.0000  ess inf Q= +0.00000   bound= +0.09870   lam_1(FD)=  0.09870   slack= -0.00000  ok
+      n=1..3: FD 0.098696 0.394784 0.888264 vs exact 0.098696 0.394784 0.888264
+
+[A2] q=-beta (constant):  lam_n = n^2 pi^2/L^2 - beta ;  bound = pi^2/L^2 - beta = truth
+  q=-0.25pi^2 (n=1)                  T=   1.0000  ess inf Q= -2.46740   bound= +7.40220   lam_1(FD)=  7.40220   slack= -0.00000  ok
+      floor POSITIVE   (DT-1 sharpness: q=-beta is the equality case)
+  q=-0.5pi^2 (n=1)                   T=   1.0000  ess inf Q= -4.93480   bound= +4.93480   lam_1(FD)=  4.93480   slack= -0.00000  ok
+      floor POSITIVE   (DT-1 sharpness: q=-beta is the equality case)
+  q=-0.9pi^2 (n=1)                   T=   1.0000  ess inf Q= -8.88264   bound= +0.98696   lam_1(FD)=  0.98696   slack= -0.00000  ok
+      floor POSITIVE   (DT-1 sharpness: q=-beta is the equality case)
+  q=-0.99pi^2 (n=1)                  T=   1.0000  ess inf Q= -9.77091   bound= +0.09870   lam_1(FD)=  0.09870   slack= -0.00000  ok
+      floor POSITIVE   (DT-1 sharpness: q=-beta is the equality case)
+  q=-1.5pi^2 (n=1)                   T=   1.0000  ess inf Q=-14.80441   bound= -4.93480   lam_1(FD)= -4.93480   slack= -0.00000  ok
+      floor NEGATIVE  -> machine silent   (DT-1 sharpness: q=-beta is the equality case)
+
+[A3] harmonic oscillator  -u''+x^2 u = lam u on R (truncated, Dirichlet):  truth lam_1 = 1
+      T = 2R -> infty, ess inf Q = 0  =>  bound = pi^2/(4R^2) -> 0 : the LENGTH SLOT IS EMPTY
+  oscillator R=4                     T=   8.0000  ess inf Q= +0.00000   bound= +0.15421   lam_1(FD)=  1.00000   slack= +0.84579  ok
+  oscillator R=8                     T=  16.0000  ess inf Q= +0.00000   bound= +0.03855   lam_1(FD)=  1.00000   slack= +0.96145  ok
+  oscillator R=16                    T=  32.0000  ess inf Q= +0.00000   bound= +0.00964   lam_1(FD)=  1.00000   slack= +0.99036  ok
+
+[A4] Mehler / Ornstein-Uhlenbeck generator  L = d^2 - x d,  inv. density rho ~ e^{-x^2/2}
+      SL data: w = rho, p = rho, q = 0.  Spectrum of -L is {0,1,2,...} (exact gap 1).
+      T = int sqrt(w/p) = int 1 dx = 16.0000 (= 2R, grows with truncation)
+      phi = sqrt(pw) = rho, u = rho^{-1/2} v  =>  Q = (1/2)(phi''/phi) - (1/4)(phi'/phi)^2
+                                             = x^2/4 - 1/2   =>  ess inf Q = -1/2
+      FD on [-8,8] (natural BC): lam = -0.000000 1.000000 2.000000   (exact 0,1,2)
+      and if one uses g=(pw)^{-1/4} instead: Q = +x^2/4 - 1/2 had a spurious v' term (algebra
+      error, caught here -> the exponent of the Perron factor is -1/4, phi=sqrt(pw), not (pw)^{1/4}).
+      => Q_eq: T=inf (non-compact) so the LENGTH slot contributes 0, and ess inf Q = -1/2 < 0
+         => the Liouville bound is -1/2, VACUOUS, while the true gap is 1.
+         A positive gap does NOT imply a Liouville floor.  [check] exact gap 1 reproduced.
+
+[A5] Liouville transformation is spectrum-preserving (non-trivial coefficients):
+      x in [0,1]:  -((1+x)^2 u')' = lam u ,  Dirichlet
+      t = int dx/(1+x) = log(1+x) in [0,T], T=log2;  phi = 1+x = e^t;  u = e^{-t/2} v
+      Q = (1/2)phi''/phi - (1/4)(phi'/phi)^2 = 1/2 - 1/4 = 1/4  (constant!)
+      x-form : 20.79228748 82.41913559 185.13050168
+      t-form : 20.79228739 82.41913693 185.13051061
+      max |diff| = 8.93e-06  (two different FD grids, h_x != h_t) [check]
+      T (quadrature) = 0.6931471806 vs log2 = 0.6931471806
+  p=(1+x)^2, q=0, Q=1/4 const        T=   0.6931  ess inf Q= +0.25000   bound=+20.79229   lam_1(FD)= 20.79229   slack= -0.00000  ok
+      Q constant => the Pruefer bound is SHARP here: lambda_n = n^2 pi^2/T^2 + 1/4 exactly
+
+[A6] T and Q are COORDINATE invariants (p,w,q transform as densities):  p~=p/x', w~=w x', q~=q x'
+      x-chart: p=(1+x)^2, w=1, q=0 on [0,1]     ->  T=log2, Q=1/4
+      y-chart: y=log(1+x): p~=e^y, w~=e^y, q~=0 on [0,log2]  ->  T=log2, Q=1/4
+      T_x = 0.6931471806   T_y = 0.6931471806   |diff| = 1.11e-16
+      lam_1: x-chart 20.79228748  y-chart 20.79228740  |diff| = 8.32e-08 [check]
+      => T is a functional of the OPERATOR, not of the chart: this is the 'intrinsic s' DT lacked.
+
+[A7] boundary-condition dictionary (exact, n^2 tower):
+      Dirichlet on [0,T] : lam_n = n^2 pi^2/T^2   -> kappa = pi
+      periodic on [0,T]  : lam_n = 4 n^2 pi^2/T^2 -> kappa = 2pi   (theta=0 half: 4pi^2/T^2)
+      Neumann on [0,T]   : lam_0 = 0             -> kappa = 0  (length slot empty)
+      dirichlet: FD lam_0,lam_1 = 1.000000, 3.999999 ; kappa^2/T^2 with kappa=1pi = 1.000000
+      neumann  : FD lam_0,lam_1 = -0.000000, 1.000500 ; kappa^2/T^2 with kappa=0pi = 0.000000   (natural-BC FD is O(h)=8e-4 accurate)
+
+ALL FRAMEWORK CHECKS PASSED

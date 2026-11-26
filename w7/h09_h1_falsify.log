@@ -1,0 +1,85 @@
+H09 -- falsify 'H1 => m>0' : exact rational witnesses
+H1 : chi = int s^{-1} dnu <= 1/lambda (uniform in (L,a));  m1^2 = inf supp nu;  M0 = 1
+Phi=0 (Gaussian) => W_full = 0 => Delta_dyn = G''(0) = 1/chi   [ch18:28-31 + Q6:83-86]
+
+==============================================================================
+[E1] thin atom, Q02/paper form:  w = eps/(2*lam),  s2 = 2*lam*(1-w)
+==============================================================================
+         eps         w=f1^2                 s2        chi    1/lam     H1     G"=1/chi    Delta_dyn       m1^2   f1^2/chi<=m1^2<=M0/chi
+   1.000e-02   5.000000e-03     1.990000000000   1.000000   1.0000   True     1.000000     1.000000  1.000e-02                     True
+   1.000e-04   5.000000e-05     1.999900000000   1.000000   1.0000   True     1.000000     1.000000  1.000e-04                     True
+   1.000e-06   5.000000e-07     1.999999000000   1.000000   1.0000   True     1.000000     1.000000  1.000e-06                     True
+   1.000e-09   5.000000e-10     1.999999999000   1.000000   1.0000   True     1.000000     1.000000  1.000e-09                     True
+exact chi for eps=1e-9 : 1  == 1/lam ? True
+=> [T] chi == 1/lam EXACTLY at every eps; H1 holds with EQUALITY (delta_max = G'' = lam).
+=> [T] m1^2 = eps -> 0 while H1 true:  no implication (measure level), residue f1^2 = w ~ eps.
+
+==============================================================================
+[E2] NEW: thin atom with a STRICT H1 margin:  w = eps/(4*lam),  s2 = 2*lam*(1-w)
+==============================================================================
+(removes the 'boundary case / equality' objection to E1)
+         eps         w=f1^2                   s2          chi    1/lam     margin         G"    Delta_dyn       m1^2
+   1.000e-02   2.500000e-03       1.995000000000   0.75000000   1.0000   0.250000   1.333333     1.333333  1.000e-02
+   1.000e-04   2.500000e-05       1.999950000000   0.75000000   1.0000   0.250000   1.333333     1.333333  1.000e-04
+   1.000e-06   2.500000e-07       1.999999500000   0.75000000   1.0000   0.250000   1.333333     1.333333  1.000e-06
+   1.000e-09   2.500000e-10       1.999999999500   0.75000000   1.0000   0.250000   1.333333     1.333333  1.000e-09
+=> [T] chi = 3/(4lam) < 1/lam  (H1 strict, margin lam/4),  G'' = 4lam/3 >= lam,
+      Delta_dyn = G'' = 4lam/3 > 0  (Phi=0),  m1^2 = eps -> 0,  f1^2 = eps/(4lam).
+=> so H1(lam) strictly true AND the physical member Delta_dyn >= a^2Delta_0^2 (W_full=0)
+   holds strictly, yet m = 0.  This is a counterexample to BOTH forms of H1.
+
+==============================================================================
+[E3] candidate (2): two NEARLY DEGENERATE atoms, O(1) weights -- does it satisfy H1?
+==============================================================================
+ nu = p*delta_eps + (1-p)*delta_(eps+delta),  p = 1/2,  delta = eps  (mass ratio 1:2)
+       eps      p        chi_exact    1/lam     H1    lb 1/(2eps)
+ 1.000e-01   0.50             15/2   1.0000  False      5.000e+00
+ 1.000e-02   0.50               75   1.0000  False      5.000e+01
+ 1.000e-03   0.50              750   1.0000  False      5.000e+02
+ 1.000e-04   0.50             7500   1.0000  False      5.000e+03
+=> H1 false on 4/4 points.
+=> [T] general bound:  nu([0,2eps]) >= c  ==>  chi >= c/(2eps).  Near-degeneracy at the
+   bottom with O(1) residue is FORBIDDEN by H1.  So candidate (2) does NOT kill the target:
+   it dies on H1 itself, not merely on m>0.
+
+==============================================================================
+[E4] candidate (3): CONTINUOUS spectrum, no atom at all:  dnu = s^a e^{-s}/Gamma(a+1) ds
+==============================================================================
+closed form: M0 = 1,  chi = Gamma(a)/Gamma(a+1) = 1/a,  G'' = a,  m1^2 = inf supp = 0,
+             f1^2 = 0 (no atom),  nu([0,eps]) = int_0^eps s^a e^{-s}/Gamma(a+1) ds.
+     a    chi=1/a     quad chi    1/lam   H1(<=)   strict     G"=a   m1^2   f1^2   nu([0,1e-3])
+  0.25   4.000000  4.000000000   1.0000    False    False     0.25    0.0    0.0      1.569e-04
+  0.50   2.000000  2.000000000   1.0000    False    False     0.50    0.0    0.0      2.377e-05
+  1.00   1.000000  1.000000000   1.0000     True    False     1.00    0.0    0.0      4.997e-07
+  2.00   0.500000  0.500000000   1.0000     True     True     2.00    0.0    0.0      1.665e-10
+  4.00   0.250000  0.250000000   1.0000     True     True     4.00    0.0    0.0      8.326e-18
+=> [T] for every a >= lam:  H1 holds STRICTLY (chi = 1/a <= 1/lam), G'' = a >= lam,
+   Delta_dyn = G'' > 0 (Phi=0), and m1^2 = 0 EXACTLY with NO atom (f1^2 = 0).
+=> the mass in [0,eps] scales like eps^(a+1): the edge residue vanishes; the bottom is
+   at 0 for every eps>0 -- H1 never sees it.  This is not a limit: m = 0 identically.
+
+==============================================================================
+[E5] 'for every lambda':  pick a = 2*lam  ==>  chi = 1/(2lam) <= 1/lam (margin 1/2), m1^2 = 0
+==============================================================================
+     lam   a=2lam        chi=1/a      1/lam  chi/(1/lam)       G"=a     G"/lam   m1^2
+     0.1      0.2   5.000000e+00 1.000000e+01     0.500000        0.2       2.00    0.0
+     1.0      2.0   5.000000e-01 1.000000e+00     0.500000        2.0       2.00    0.0
+    10.0     20.0   5.000000e-02 1.000000e-01     0.500000       20.0       2.00    0.0
+  1000.0   2000.0   5.000000e-04 1.000000e-03     0.500000     2000.0       2.00    0.0
+=> [T] no choice of the floor lambda makes H1 imply m>0: the witness exists for each lam.
+
+==============================================================================
+[E6] the mechanism theorem (this is the ONE link that breaks)
+==============================================================================
+For any positive measure nu and any eps>0:
+    chi = int s^{-1} dnu >= (2eps)^{-1} nu([0,2eps])   ==>   nu([0,2eps]) <= 2 eps chi.
+So H1 (chi <= 1/lam) forces     nu([0,2eps]) <= 2eps/lam   for every eps:  the edge
+residue must vanish at rate O(eps).  H1 therefore constrains the RESIDUE DENSITY at the
+bottom, never its LOCATION.  Any claim 'H1 => m>0' must convert a residue ceiling into a
+position floor; those are different coordinates on the same cone of measures.  [T]
+Numerical check (weight in [0,2eps] vs the H1 ceiling 2eps/lam, lam=1):
+  E1 thin atom (w=eps/2lam)        chi=    1.0000  nu([0,2eps])= 0.000500  ceiling 2eps/lam= 0.002000  H1=True
+  E2 thin atom (w=eps/4lam)        chi=    0.7500  nu([0,2eps])= 0.000250  ceiling 2eps/lam= 0.002000  H1=True
+  E3 near-degenerate 1/2,1/2       chi=  750.0000  nu([0,2eps])= 1.000000  ceiling 2eps/lam= 0.002000  H1=False
+
+==============================================================================

@@ -1,0 +1,19 @@
+# U08 SU(2) beta=2.5  4x4^3  op=clover  ncfg=10000 therm=400 gap=1 seed=9  [51.8s]
+# <O> = 0.750452   <1/2 Re tr U_p> = 0.654460 +- 0.000190
+# [T] C(0) = Var(Obar):  C(0)=1.7570953058e-03  mean-of-slice-Var=0.001789  (diff 3.21e-05 = MC, identical by construction)
+#     Var_pointwise(O(x)) = 5.733246e-02  != C(0)  (ratio 32.63, V_s=64)
+# [E] tau_int=0.01 meas-units
+
+  t     C(t)/C(0)        C(t)             err
+  0    1.00000000   +1.75709531e-03   8.43e-05
+  1    0.13213939   +2.32181502e-04   5.37e-05
+  2    0.01769410   +3.10902134e-05   6.82e-05
+  3    0.13213939   +2.32181502e-04   5.37e-05
+
+  t   m_eff=ln[C(t-1)/C(t)]   single-pole finite-T solve  [C(t)=f^2(e^{-mt}+e^{-m(T-t)})/(1+e^{-mT})]
+  1    2.023898              2.040360
+  2    2.010626              2.363795
+  3    -2.010626              2.040360
+
+[E] E1(naive, ln C0/C1) = 2.023898
+[wall] 51.8s

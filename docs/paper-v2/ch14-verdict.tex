@@ -215,6 +215,88 @@ is the free-field acid test. In four dimensions the susceptibility can still div
 floor remains $H1$; and a curvature floor is a susceptibility ceiling, never an atom. The verdict is
 therefore unchanged: \textbf{Clay is 0\%, and the ultraviolet face is mapped rather than crossed.}
 
+\subsection{The final reduction}
+\label{sec:final-reduction}
+
+\textbf{After the twenty-route closure the verdict can be written as a single equivalence, and the
+equivalence is itself the reason it does not move.} In the atom coordinate the Clay statement
+reads
+\[
+\text{Clay}\;\Longleftrightarrow\;
+\underbrace{w_1(2.5)>0\ \text{pointwise}}_{\text{(i)}}
+\;\wedge\;
+\underbrace{\text{an }L\text{-monotone step}}_{\text{(ii)}}
+\;\wedge\;
+\underbrace{\text{a }\beta\text{-tail-uniform floor}}_{\text{(iii)}} .
+\]
+Each conjunct has a status, and none of the three is a proof.
+
+\begin{enumerate}
+\item[(i)] \textbf{Numerically supplied.} $w_1(L=8,\beta=2.5)=0.342\pm0.015$ ($22.8\sigma$) and
+  $w_1(L=6)=0.373\pm0.018$ ($20.7\sigma$), both positive, with $8.3\%$ $L$-drift
+  (\S\ref{sec:w1-b25}). This is \LE{} at fixed coupling and volume, with $S/N(2)=2.8/5.9$ below
+  the campaign's own threshold of $10$: a measurement of the atom fraction on two volumes, not a
+  proof of the pointwise statement, and not a floor.
+\item[(ii)] \textbf{No FKG, hence no monotone step.} $\mathrm{SU}(N)$ carries Loewner, dominance,
+  Weyl and Krein orders and no lattice order that is at once group-compatible, monotone in
+  $\operatorname{Re}\operatorname{tr}U_p$ and log-supermodular (\code{D05-FKG.md}); $f_1^2$ has no
+  monotonicity theorem in $\beta$ either; and the only exactly soluble $L$-product gives the
+  opposite sign, $w_1=2/(L-1)\searrow0$. Label \LN{} for the mechanism, \LM{} for the step.
+\item[(iii)] \textbf{$=\Delta_0$, already killed.} Written out, a $\beta$-tail-uniform floor is
+  $\Delta_0>0$. On 2D Yang--Mills $\Delta_{\mathrm{dyn}}=0$ exactly while $m=3g^2/8>0$, and since
+  $\Delta_{\mathrm{dyn}}=-W_{\mathrm{full}}$ with $W_{\mathrm{geo}}\ge N/12>0$ this forces
+  $\Delta_0^2=-W_{\mathrm{full}}/a^2<0$ for every $v$: the target is false in the only exactly
+  soluble gapped gauge theory, so it cannot be the missing step (\code{N03-WFULL.md},
+  \code{N12-VERDICT.md}). Label \LN.
+\end{enumerate}
+
+\textbf{Even granting (i), it does not advance Clay} --- and the obstruction is not difficulty, it
+is that the quantity measured is not the quantity wanted.
+\begin{itemize}
+\item \textbf{$w_1$ and $m$ do not imply one another.} 2D Yang--Mills has $m=3g^2/8>0$ while
+  $\nu_{\frac14\operatorname{tr}F^2}\equiv0$: a gap and no atom. The same model's transfer matrix
+  gives $m(L)=\sigma L\to\infty$ while $w_1=0$: the gap diverges and the atom is identically zero.
+  M6 has $w_1=0.5$ while $m=0$: an atom and no gap. So a floor on $w_1$ implies nothing about a
+  gap, and a gap implies nothing about $w_1$ (\code{ATOM2.md}, \code{U06.md}).
+\item \textbf{$w_1$ is not a function of $\operatorname{Spec}(H)$.} Hold $H$ fixed and rotate the
+  source, $o_\theta=1+\varepsilon(\cos\theta\,\psi_1+\sin\theta\,\psi_2)$; then
+  $w_1=\cos^2\theta$ sweeps $[0,1]$ while the spectrum, $\lambda_1$, $L$ and $a$ do not move
+  (\code{U11.md}). No spectral statement --- gap, Kato analyticity, Perron--Frobenius,
+  Krein--Rutman, Loewner comparison --- can bound $w_1$, and $w_1>0$ says nothing about the
+  spectrum.
+\end{itemize}
+Therefore \textbf{even if $w_1>0$, it does not advance Clay}: conjunct (i) measures a quantity
+that neither follows from nor implies a gap, and conjuncts (ii) and (iii) are unavailable. Label
+\LM{} on the gap between the measurement and the verdict.
+
+\textbf{The framework is unique, and that exhausts its content.} Normalise
+$\mu_{L,a}=\nu_{L,a}/M_0\in\mathcal{P}([0,\Lambda])$, so that
+$w_1=\mu(\{\inf\operatorname{supp}\mu\})$ is an atom mass. The one framework this opens is
+\textbf{Banach--Alaoglu + Portmanteau}: $\mathcal{P}([0,\Lambda])$ is weak-$*$ compact and
+metrizable because $[0,\Lambda]$ is compact, so Prokhorov tightness is free, and
+$\nu\mapsto\nu(\{m\})$ is upper semicontinuous. USC runs member $\to$ limit, which is the
+direction a finite-volume statement needs; a uniform $(L,a)$ floor needs limit $\to$ member,
+which USC does not give --- and the obstruction is elementary: a tight family whose limit carries
+an atom $0.3$ has $\inf E=0$ (\code{U16.md} \S3.3). The other six general tools ---
+Ascoli--Arzel\`a's common modulus, $\Gamma$-convergence's common space with a liminf along every
+sequence, uniform large deviations' rate function and exponential tightness, Baire's residual
+set, $L$-induction's $L$-free invariant, Banach--Steinhaus's pointwise hypothesis --- are
+transports of uniformity, not generators of it. Label \LC{} for the reduction, \LM{} for what it
+leaves.
+
+\textbf{Twenty routes, twenty deaths.} Nine give only upper bounds (compactness, reflection
+positivity, Berezin--Lieb, probability and concentration, $D_\infty$, concavity, $\delta_A$,
+$\Phi$, $\varphi_{\mathrm{dec}}$); nine are circular, their input being the target
+(Krein--Rutman, extremality, operator inequalities, definability, the strong--weak bridge,
+$\Delta_0$, $T4$, $H1$, $M(\beta)$); two are refuted by counterexamples ($w_1=2/(L-1)\searrow0$
+against non-monotonicity, and a tight family with a limit atom does not give a uniform floor).
+The ledger is $9/9/2$, and its direction is uniform: \emph{upper bounds are available, lower
+bounds are circular or false}. The single item (c) of \emph{What would change the verdict} above
+is the pair (ii)$\wedge$(iii) of this equivalence; (i) is now numerical only.
+
+That is the final reduction, and it is why the headline is unchanged. \textbf{Clay is 0\%: the
+reduction is a map of the wall, not a crossing of it.}
+
 % =====================================================================
 \section{AI contribution statement}
 \label{sec:ai}

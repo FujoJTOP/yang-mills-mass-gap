@@ -1,0 +1,87 @@
+==============================================================================
+[L1] ENVELOPE LAYER  g(d) = e*Delta(d)/T(d),  Delta = 4(2d-3),  T = 16(d-1)
+==============================================================================
+
+  d   Delta=4(2d-3)   T=16(d-1)   Delta/T      g(d)=e*Delta/T    e*Delta/48 (wrong reading)
+  2            4            16            0.25   0.679570457115   0.226523485705
+  3           12            32           0.375    1.01935568567   0.679570457115
+  4           20            48      0.4166666667    1.13261742852    1.13261742852
+  5           28            64          0.4375    1.18924829995    1.58566439993
+
+  g(3) = e*12/32 = 3e/8  = 1.0193556856721419633   (excess over 1: 1.935568567 %)  [T: identity]
+  g(4) = e*20/48 = 5e/12 = 1.1326174285246021814   (excess over 1: 13.26174285 %)  [T: identity]
+  48/Delta(3) = 32/12 = 2.66666666667 = 8/3 ;  e/(8/3) = 3e/8  -> same number, by construction
+  wrong reading at d=3 (keeping 48): e*12/48 = e/4 = 0.679570457115  (a 32% DROP below 1, not 13.3%)
+  root of g(d)=1:  d* = (3e-4)/(2e-4) = 2.89221119118 (non-integer)
+
+==============================================================================
+[L2] PLAQUETTE ANIMALS in Z^4   (root fixed, adjacency = share a link, degree Delta = 20)
+==============================================================================
+  [cap/time stop at n=6]  (this level size 7218768)
+  wall time 69.7s
+
+   n    a_n            a_n/a_(n-1)    a_n^(1/n)     a_n^(1/n)/eDelta
+   1             1           nan           1.0    0.018393972
+   2            20          20.0    4.47213595    0.082260344
+   3           458          22.9    7.70823878    0.14178513
+   4         11132     24.305677     10.271723    0.18893779
+   5        280175     25.168433    12.2881322    0.22602756
+   6       7218768     25.765211    13.9019967    0.25571294
+
+  calibration a_1 = 1 (corpus)  vs  1 (here)   [MATCH]
+  calibration a_2 = 20 (corpus)  vs  20 (here)   [MATCH]
+  calibration a_3 = 458 (corpus)  vs  458 (here)   [MATCH]
+  calibration a_4 = 11132 (corpus)  vs  11132 (here)   [MATCH]
+  calibration a_5 = 280175 (corpus)  vs  280175 (here)   [MATCH]
+
+==============================================================================
+[L2] PLAQUETTE ANIMALS in Z^3   (root fixed, adjacency = share a link, degree Delta = 12)
+==============================================================================
+  [cap/time stop at n=7]  (this level size 5847002)
+  wall time 82.9s
+
+   n    a_n            a_n/a_(n-1)    a_n^(1/n)     a_n^(1/n)/eDelta
+   1             1           nan           1.0    0.03065662
+   2            12          12.0    3.46410162    0.10619765
+   3           158     13.166667    5.40612018    0.16573337
+   4          2148     13.594937    6.80782791    0.20870499
+   5         29685     13.819832    7.84345503    0.24045382
+   6        414790      13.97305     8.6358425    0.26474574
+   7       5847002     14.096295    9.26199941    0.2839416
+
+==============================================================================
+[L2] lambda_* vs the two reference scales
+==============================================================================
+
+  d=3:  a_n = [1, 12, 158, 2148, 29685, 414790, 5847002]
+        last ratio a_n/a_(n-1) = 14.09629451   Richardson(1/n) = 14.71251525
+        eDelta = 32.61938194   T = 16(d-1) = 32
+        lambda_*/eDelta       = 0.43214475 (lower bound on the true ratio)
+        lambda_*/T(=32)      = 0.4405092   [gap at TRUE layer, lower bound]
+        envelope gap g(3)  = eDelta/T = 1.019355686   [gap at ENVELOPE layer, identity]
+
+  d=4:  a_n = [1, 20, 458, 11132, 280175, 7218768]
+        last ratio a_n/a_(n-1) = 25.76521103   Richardson(1/n) = 28.15232176
+        eDelta = 54.36563657   T = 16(d-1) = 48
+        lambda_*/eDelta       = 0.47392457 (lower bound on the true ratio)
+        lambda_*/T(=48)      = 0.53677523   [gap at TRUE layer, lower bound]
+        envelope gap g(4)  = eDelta/T = 1.132617429   [gap at ENVELOPE layer, identity]
+
+==============================================================================
+[L2'] the claim a_n(3) = 1, 6, ... -- three candidate conventions
+==============================================================================
+  edge-adjacency (the corpus convention):  a_1 = 1, a_2 = 12  (= Delta(3) = 4(2d-3) = 12)
+  vertex-sharing (any common corner):      a_2 = 12
+  plaquettes through ONE link (not an animal count): 2(d-1) = 4 at d=3 (= 6 at d=4 too)
+  => '1, 6' is not a_2 of any edge-adjacency animal model; 6 = 2(d-1) is a PER-LINK count.
+
+==============================================================================
+[VERDICT]
+==============================================================================
+  g(3) = 3e/8 = 1.01935568567214   [T] -- exact algebraic identity e*(2*3-3)/(4*2)
+  d=3 threshold 16(d-1) = 32 (SZZ: |beta| < 1/(16(d-1))), Delta(3) = 12, 32/12 = 8/3
+  d=3 TRUE-layer gap lower bound: lambda_*(3)/32 >= 0.4405092   (eDelta/32 = 1.019355686)
+  => at the ENVELOPE layer the prediction is self-consistent but vacuous (identity);
+     at the TRUE layer the d=3 data put lambda_*/32 near 0.4-0.5, i.e. the same
+     'gap disappears at true level' pattern as d=4 (25.17/48 = 0.524).
+

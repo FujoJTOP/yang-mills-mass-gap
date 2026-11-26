@@ -1,0 +1,265 @@
+% =====================================================================
+%  §2  The scalar form of H1
+% =====================================================================
+\section{The scalar form of H1: $H1(\delta) \iff \Gpp \ge \delta$}
+\label{sec:scalar}
+
+This section does exactly one thing: it rewrites, symbol by symbol, a condition that is usually
+presented as a variance inequality into a \emph{curvature} inequality. The rewrite costs nothing ---
+it is a transposition, model independent. Its payoff is decisive: from then on, ``test H1'' means
+``compute $\Gpp$ exactly'', with no remaining freedom.
+
+\subsection{Four quantities, defined one by one}
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{5pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}l X l@{}}
+\toprule
+\textbf{Quantity} & \textbf{Definition} & \textbf{Location in the corpus}\\
+\midrule
+$\Wg$ & $E[\Phi'']-\Var(\Phi')$, where $\Phi=-\log J$ and $J$ is the Haar Jacobian of the flat chart
+$X=\log U$ ($\dd U = J\,\dd X$) & \code{ch05-theorems.tex}:196--206 (\code{eq:wgeo}); \code{app.tex}:795\\
+$X$ & $-2\operatorname{Cov}(G,\Phi')$ with $G=\langle v,\nabla S_W\rangle$ & \code{ch05-theorems.tex}:230--239; \code{app.tex}:796\\
+$H_{vv}$ & the $vv$ component of $\operatorname{Hess}V$, $V=S_W+\Phi$; the sign really lives in the
+\emph{conditioned} fibre Hessian $K=\Pi_0\operatorname{Hess}V\,\Pi_0$ & \code{ch13-machine.tex}:58--82\\
+$\Var$ & $\Var_\mu(\langle v,\nabla S\rangle \mid \xi=0)$, \textbf{conditioned} (not the unconditional variance) & \code{ch08-immune.tex}:13\\
+\bottomrule
+\end{tabularx}
+\caption{The four sources of notation. $W_{\mathrm{full}} := \Wg + X$ merely bundles the last two
+terms and carries no new content.}
+\end{table}
+
+The exact form of H1 in the paper is (\code{ch08-immune.tex}:11--19, display $(M)$, label
+\code{eq:species})
+\begin{equation}
+  \Var_\mu(\langle v,\nabla S\rangle \mid 0) \;\le\; E_\mu[H_{vv}\mid 0] + \Wf - \delta ,
+  \qquad \text{uniform in } (L,U') ,
+  \label{eq:M}
+\end{equation}
+and its slack-free form is written in \code{app.tex}:179--202 (\code{app:sharp}):
+$\Var_\mu(\langle v,\nabla V\rangle\mid \xi=0) \le E_\mu[H_{vv}\mid\xi=0]-a^{2}\Delta_0^{2}$,
+together with the explicit $\delta := a^{2}\Delta_0^{2} + \Wf$. \textbf{The two displays are the same
+inequality.} \LT
+\src{\code{H1A-EXACT.md} \S1.1, quoting the three places in v2 verbatim; that file already checked
+the equivalence of the two forms.}
+
+\subsection{The identity and the transposition}
+
+The key identity (\code{ch05-theorems.tex}:230--239 \code{eq:split}; \code{ch03-existence.tex}:129--134;
+\code{ch13-machine.tex}:69--73):
+\begin{equation}
+  \Gpp \;=\; E[H_{vv}\mid 0] - \Var(\langle v,\nabla S\rangle\mid 0) + \Wg + X
+        \;=\; E[H\mid 0] - \Var(G\mid 0) + \Wf .
+  \label{eq:split}
+\end{equation}
+Transposing \eqref{eq:split} (pure algebra, valid in any model):
+\begin{equation}
+  \boxed{\;\Var - E[H] - \Wf \;=\; -\Gpp\;}
+  \qquad\Longrightarrow\qquad
+  \boxed{\;H1(\delta) \iff \Gpp \ge \delta\;}
+  \label{eq:equiv}
+\end{equation}
+pointwise, mode by mode, exactly. \LT
+\src{\code{H1A-EXACT.md} \S1.3 (lines 57--68). The paper itself says in \code{ch08-immune.tex}:19
+that ``the display is then $G''\ge\delta$ in curvature form''; here that sentence is simply used to
+the end.}
+
+\begin{keybox}
+\textbf{Corollary (the first structural gain of this document).} The sign of $\delta$ equals the
+sign of the conditioned curvature $\Gpp$, and $\delta_{\max} = \Gpp$. Hence in any model, ``test H1''
+means ``compute $\Gpp$ exactly'': \textbf{there is no independent variance inequality to prove or to
+refute} --- all the information of H1 sits in the sign of the curvature. \LT
+\end{keybox}
+\src{\code{H1A-EXACT.md} \S1.3, last paragraph.}
+
+\subsection{What the scalar test now returns: a certificate, not an estimate}
+\label{sec:scalar-cert}
+
+\S\ref{sec:failure} evaluates $\Gpp$ by quadrature and by Monte Carlo. This subsection records the one
+place where the same number is evaluated by \emph{interval arithmetic}, that is, where its sign stops
+being an estimate and becomes a machine-checked inequality.
+
+\begin{keybox}
+\textbf{Theorem (three certified values).} On a single $\mathrm{SU}(2)$ plaquette, $\beta=2.5$, flat
+chart $|\xi|<2\pi$, slice $\xi_{3}=a=0$, $v=e_{3}$, $\|v\|=1$, with boundary holonomy $\theta$:
+\begin{gather}
+\mathrm{gap}(0)=0.729924128620548449,\qquad
+\mathrm{gap}(\pi/2)=0.5429439223536897638,\notag\\
+\mathrm{gap}(\pi)=0.1359947110419882110,
+\label{eq:certpoints}
+\end{gather}
+each enclosed within $\pm10^{-55}$, where
+$\mathrm{gap}(\theta):=S-D=\Gpp$ with $S=E[H+\Phi''\mid0]$ and $D=\Var(G+\Phi'\mid0)$. At $\theta=0$
+the variance is not small but \emph{identically zero}: $s=\sin(\theta/2)=0$ makes $G$ vanish pointwise,
+so $D\equiv0$ for every $\beta$. \LT
+\end{keybox}
+\src{\code{R10-AUDITCERT.md} \S0 and \S2 (the three values, the enclosures, and three independent
+numerical roads: its own $256\times20$ Gauss--Legendre with a Cauchy remainder bound
+$\le3.1\times10^{-82}$, \code{mp.quad} at $\mathrm{dps}=45$ agreeing to $10^{-30}$, and
+\code{q04_weyl.moments} agreeing to $10^{-16}$); \code{Q11-CERT.md} \S2.2 (the $\theta=\pi$ value and
+its intervals); \code{R03-CERT-THETA.md} \S2.2 (the first certificate away from $\theta=\pi$);
+\code{docs/paper-v2/ch19-h1-status.tex}, subsection ``the certificate'', for the same three numbers
+inside the ledger.}
+
+\noindent
+\textbf{Why this is a different kind of claim.} The pipeline has five ingredients, each checkable
+(\code{Q11-CERT.md} \S2.1, \code{R03-CERT-THETA.md} \S2.1): Taylor coefficients of the four entire
+integrands are \emph{exact rationals} (\code{Fraction}, and $\mathbb{Q}[\sqrt2]$ at $\theta=\pi/2$);
+integration is term by term, $\int_{0}^{\pi}u^{k}\,\mathrm{d}u=\pi^{k+1}/(k+1)$, an identity for entire
+functions; $\pi$ and $\sqrt2$ enter only as $800$-bit \code{libmp} intervals with directed rounding
+(\code{'f'} down, \code{'c'} up); every operation carries an outward pad ($2^{-400}$, absolute in
+\code{q11}, relative in \code{r03}); truncation is controlled by a Cauchy estimate ($K=260$ and
+$K=400$). The only input outside pure arithmetic is \code{libmp}'s own rounding, and the pad covers it
+by more than a hundred orders of magnitude. The evidence that rounding is really directed is the width
+pattern rather than the endpoints: in \code{q11} the enclosure of $Z$ is $2.018\times10^{-118}$ wide and
+$2.018\times10^{-118}/2^{-400}=522=2(K_{\max}+1)$, exactly the per-operation accumulation, whereas a
+``high precision, roughly'' computation would give width $0$ or ulp noise. Two real bugs were found by
+using $\theta=\pi$ as a regression: a power index in $\sin^{4}u/(4u^{3})$ (which corrupted only
+$\Var(g)$, caught because the regression must reproduce \code{q11}'s $0.0110592937$) and an
+\emph{absolute} pad that, under the catastrophic cancellation of the $\theta\neq\pi$ series, inflated
+$Z$ to $\pm1.56\times10^{76}$ with the endpoints inverted --- cured by a purely relative pad, after
+which the $\theta=\pi/2$ width ($3.5\times10^{-21}$) matches its own Cauchy tail
+($1.77\times10^{-21}$). \LT
+\src{\code{Q11-CERT.md} \S2.1--\S2.2; \code{R03-CERT-THETA.md} \S2.1--\S2.2 (both bugs, and the
+regression that reproduces \code{q11} to $4\times10^{-41}$); \code{R10-AUDITCERT.md} \S2 (an
+independently written interval class and a true remainder bound).}
+
+\noindent
+\textbf{From three points to the interval, and the honest grading.} Three points are not an interval.
+Write $c=\cos(\theta/2)$ and $x=\cos u$; then $\sin^{2}u\,u^{-1}\mathrm{d}u=w(x)\,\mathrm{d}x$, so the
+slice measure is a one-parameter exponential family,
+\begin{equation}
+\nu_{c}\propto e^{\beta cx}w(x)\,\mathrm{d}x,\qquad x\in(-1,1),
+\qquad\Longrightarrow\qquad
+\partial_{c}E_{\nu}[f]=\beta\,\mathrm{Cov}_{\nu}(f,x),
+\label{eq:expfam}
+\end{equation}
+and $\partial_{c}\mathrm{gap}$ splits into five terms: $T_{1}=\tfrac{\beta}{2}E[g]>0$;
+$T_{2}=\tfrac{\beta^{2}c}{2}\mathrm{Cov}(g,x)>0$ (rearrangement: $g$ and $x$ are both strictly
+decreasing in $u$); $T_{3}=\beta\,\mathrm{Cov}(\Phi'',x)<0$, the only negative term, negative because
+$\Phi''$ is strictly increasing on $(0,\pi)$; $T_{4}=2\beta^{2}c\Var(g)>0$; and
+$T_{5}=-\beta^{3}(1-c^{2})[\mathrm{Cov}(g^{2},x)-2E[g]\mathrm{Cov}(g,x)]$, \emph{whose sign is open}.
+On $501$ interior points of $c\in(0,1)$, $\partial_{c}\mathrm{gap}\in(0.44361829,0.63898109)$ with zero
+sign flips and no interior extremum, so the gap is strictly decreasing in $\theta$ and its unique worst
+point is $\theta=\pi$, where \eqref{eq:certpoints} certifies $+0.1360$. \textbf{The grading is therefore
+split, and the split is the point}: the three values are \LT; the statement for all
+$\theta\in[0,\pi]$ is \LC, conditional on the numerical sign of $T_{5}$. \LC
+\src{\code{R06-GAPMONO.md} \S1 (the exponential-family rewriting and the covariance formula), \S2 (the
+five terms and their numerical table), \S3.1--\S3.2 ($\Phi''$ strictly increasing, then the $501$-point
+sign measurement and the $2.9\times10^{-11}$ agreement with a central difference). \textbf{The
+complement is cheap and explicit}: a grid of certified points at rational $c\in\{0,\tfrac15,\dots,1\}$
+together with one bound on $|\mathrm{gap}''|\le0.597$ covers the interval as soon as
+$L\,\dd c<0.13599$, which holds from $K=6$ ($0.1148$) and fails at $K=5$ ($0.1397$); four more points
+therefore make all of $[0,\pi]$ unconditional \LT{} without any monotonicity (\code{R06-GAPMONO.md}
+\S6).}
+
+\noindent
+\textbf{And the certificate is a window, not a theorem about the theory.} At $\theta=\pi$ one has
+$S=1/(4Z)$, independent of $\beta$, while $D=\beta^{2}V_{0}$ with $V_{0}=0.0110592937729736$, so the
+same computation gives a positive sign exactly for $\beta<\beta^{*}=4.30660785\ldots$: $\beta=2.5$ has
+a $41.9\%$ margin and $\beta=4.4$ gives $-0.00899$. The certificate and the exact counterexample of
+\S\ref{sec:failure} are one and the same computation at two couplings. No number above is scaled to
+$a\to0$, and none of them is a statement about four-dimensional Yang--Mills. \LN
+\src{\code{Q11-CERT.md} \S5 (the $\beta$ table and the margin); \eqref{eq:delta-beta} of
+\S\ref{sec:failure} for the identical closed form.}
+
+\subsection{The eight strict lemmas the scalar test rests on}
+\label{sec:scalar-lemmas}
+
+The certificate is not an isolated computation. Eight statements are proved rather than measured, and
+each is useful only together with the scope attached to it in Table~\ref{tab:lemmas}.
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.35cm}
+  >{\raggedright\arraybackslash}p{0.12cm} X >{\raggedright\arraybackslash}p{3.5cm}@{}}
+\toprule
+\textbf{\#} & & \textbf{Statement} & \textbf{Scope / source}\\
+\midrule
+1 & & $\Phi''(X;v)\ge\tfrac{N}{12}\langle v,v\rangle$ for every $X$ in the flat chart and \emph{every}
+direction; sharp, attained only at $X=0$ & all $N$, all measures, all $\beta$;
+\code{P16-PHIQUANT.md} \S3--\S3.1\\
+2 & & $E[H_{vv}\mid0]\ge0$, indeed $H_{vv}=\tfrac{\beta c}{2}g(u)\ge0$ pointwise & $\theta\le\pi$ only;
+false for $\theta>\pi$; \code{P05-CINF.md} \S1.2\\
+3 & & $E[H_{vv}]=E[G_{v}^{2}]$, hence $E[H]-\Var(G)=E[G]^{2}\ge0$ & measure $e^{-S_{W}}\mathrm{dHaar}$
+(no $\Phi$); \code{Q15-SPECTRAL.md} \S4\\
+4 & & $H=\tfrac12\cot(\theta/2)G$ pointwise & $a=0$ slice only; \code{Q04-WEYL.md} (2.2)\\
+5 & & $\Var(w)\le\tfrac12\langle w\rangle$, i.e.\ $2\Var\le\langle w\rangle$ & unconditional in
+$(\beta,c)$, three independent proofs; \code{R02-CRIT.md} \S2, \code{R05-WCF.md} \S6.1,
+\code{R09-FLUCT.md} \S4\\
+6 & & $\langle w\rangle-2\Var(w)\ge2\langle w\rangle^{2}\ge0$ & unconditional, strictly stronger than
+5; \code{R05-WCF.md} \S6.1\\
+7 & & $\Gpp=m_{G'}+E[\Phi'']-\Var(\Phi')-\mathrm{Cov}(G,\Phi')$ & algebra only; the skeleton every
+number is measured against; \code{P21-REBUILD.md} \S0\\
+8 & & $H=K_{0}G+\beta\Delta$, $K_{0}=\tfrac12\cot(\theta/2)$,
+$\Delta=[t\partial_{a}^{2}-c^{2}/(4t)](aw)$ & exact for all $a$; $\Delta$ odd, first order $O(a)$;
+\code{R07-AFFINE.md} (4.1)\\
+\bottomrule
+\end{tabularx}
+\caption{The eight strict lemmas. ``Scope'' is load-bearing: a lemma quoted without it is false
+somewhere in the same corpus.}
+\label{tab:lemmas}
+\end{table}
+
+\noindent
+Three of the eight are worth one sentence each, because each one \emph{closes} a route rather than
+opening one. Lemma 1 is the curvature floor: subtracting the quadratic part of $\Phi$ leaves
+$h(X)=\sum_{i<j}\varphi(\lambda_{i}-\lambda_{j})$ with $\varphi=g-d^{2}/12$ convex, hence a symmetric
+convex spectral function, hence convex in $X$ (Davis 1957, checked at bibliographic level only, with an
+elementary hand proof at $N=2$); because $\Phi$ is additive over links the floor holds for every
+direction, which is the step earlier ledgers claimed without having. It is a floor and not a witness:
+at $a=0.75$, $\beta=2.5$, $\theta=\pi$ one has $\Phi''-\Var=+0.176>0$ while $\Gpp=-0.0059<0$, the
+deficit being $E[H_{vv}]=-0.1816$; and the floor cannot buy back $-\beta E[C_{\mathrm{geo}}]$
+($0.167+0.08$ against $-0.947$). Lemma 3 is Stein: left invariance makes $\mathrm{div}_{\mathrm{Haar}}v=0$,
+so $E[H_{vv}]=E[G_{v}^{2}]$ and the difference is a square --- and consequently the Hessian spectrum
+enters only as $E[\lambda_{k}]=E[g_{k}^{2}]$ and cancels, so no spectral condition is equivalent to the
+target; the one named spectral criterion, $\Lambda\preceq I$, is \emph{false} here
+($\lambda_{k}=\beta\cos\varphi$ threefold degenerate, $\lambda_{\max}=2.5$, $P(\lambda<0)=0.105$) while
+the target holds and is an equality. Lemma 8 is the exact replacement for the affine fit
+$H=K(a)G+C(a)$ that the corpus had been using at $R^{2}>0.9992$: two Wronskians are nonzero at first
+order in $a$, the difference $H-KG$ has no constant term in the basis
+$\{\sin(\rho/2),\cos(\rho/2),1\}$, so a strict affinity would force a strict proportionality, which the
+explicit ratio $Q_{H}/Q_{G}=K_{0}+3/a-3a/\rho^{2}$ kills. The residual is not noise: it is
+$O(a)$ with $\mathrm{relres}/a\to1.43\times10^{-3}$, unchanged when the quadrature is raised fourfold.
+\LT{}/~\LE
+\src{\code{P16-PHIQUANT.md} \S3, \S3.1, \S6; \code{Q15-SPECTRAL.md} \S3--\S4;
+\code{R07-AFFINE.md} \S3--\S5. The Davis reference is C.~Davis, \emph{All convex invariant functions of
+hermitian matrices}, Arch. Math. \textbf{8} (1957) 276--278, DOI 10.1007/BF01898787, cited at
+bibliographic level (the text was not read).}
+
+\subsection{Dimensional discipline: $\delta$ is a surfaced bound, not a mass bound}
+
+$\Gpp_a = a^{2}m_{\mathrm{phys}}^{2}$. Hence ``for fixed $a$, $\Gpp_a \ge \lambda$ with $\lambda$ a
+positive constant'' is dimensionally wrong; the correct target is
+$\Gpp_a/a^{2}\ge\Delta_0^{2}$. Every $\delta$ in this document is a dimensionless surfaced lower
+bound in lattice units, and its $(L,a)$-uniformity is precisely the \emph{open} point; it must not be
+read as a physical mass bound. \LT
+\src{\code{docs/paper-v2/ch03-existence.tex}:146--165 (\code{sec:dim}); \code{H1A-EXACT.md} \S1.4.}
+
+\subsection{What the rewrite changes}
+
+Before the rewrite, H1 looks like a variance-estimation task: bound $\Var(G\mid 0)$ above, bound
+$E[H_{vv}\mid 0]$ below, and combine into a positive $\delta$. After the rewrite there is only one
+exit left: \emph{prove that the conditioning point lies in a vacuum with $\Gpp>0$}, and control the
+Jacobian term $\Phi''$ (that is, the sign of $\Wg$).
+
+This is not a matter of taste. \S\ref{sec:failure} exhibits a 3-dimensional model whose variance
+term grows like $\beta^{2}$ while the Haar term $\Wg$ is $\beta$-independent, the two cancelling
+exactly at $\beta^{*}=4.30661$; and it exhibits the opposite phenomenon at $N=3$, where the same
+coefficient flips sign and H1 holds for every $\beta>0$, that is, on the whole $\mathrm{SU}(3)$ scaling
+region. Any argument that only estimates the
+variance and never asks whether the conditioning point is a minimum will get the sign wrong on one
+side or the other. \LN
+\src{\code{H1A-EXACT.md} \S2.3 for the mechanism (Savvidy concavity); the $N=3$ sign flip is the new
+measurement of \S\ref{sec:failure}.}
+
+\noindent
+One sentence closes this section: \textbf{H1 is not a new condition; it is the single-scalar form of
+$\Gpp>0$} (positivity of the second derivative of the free energy, i.e.\ of the susceptibility). It
+is necessary but not sufficient, because it is completely blind to a thin atom (small $f_1^{2}$). \LT
+\src{\code{LOOP-RUNBOOK.md} \S11.39, first paragraph; the machine-checked version of ``necessary but
+not sufficient'' is the module \code{H1Sharpening} in \code{docs/paper-v2} (abstract, item (ii)).}

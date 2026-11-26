@@ -1,0 +1,21 @@
+================================================================================================
+GP3  SU(2) Wilson  beta=3  Ls=8^3 x Lt=16  operator=run3/b01 lev0 raw (normalised /3 over the 3 spatial planes)
+N=60000 (8 chains x 7500)  gap=3  therm=900  seed=20261131
+================================================================================================
+[T] sites=8192 links=32768 U=134.2 MB  threads=8 chains=8 per=7500
+[E] 60000 cfg in 215.7s (278.1 cfg/s, 839 sweeps/s)  compile 0.4s
+[E] <1/2 Re tr U_p> = 0.72320 +- 0.00001  N=60000 gap=3 therm=900
+
+--- beta=3 Ls=8 Lt=16 N=60000  (Lt=16) ---
+  t     C(t)/C(0)         +-   S/N(t)  m_eff(t)       +-  [M] cosh m
+  0   1.00000e+00   1.33e-03   752.23     3.051    0.022         nan
+  1   4.73073e-02   1.04e-03    45.52     2.226    0.220       3.054
+  2   5.10858e-03   1.13e-03     4.53     1.357    0.790       2.242
+  3   1.31511e-03   1.10e-03     1.19    -0.179    0.916       1.584
+  4   1.57222e-03   1.18e-03     1.33     0.524    1.369         nan
+  5   9.30749e-04   1.09e-03     0.85       nan      nan         nan
+  6  -1.40479e-03   1.16e-03     1.22       nan      nan         nan
+
+[S/N>=5] highest t with S/N>=5: 1
+[plateau] windows (>=2 consecutive t, 1 sigma, S/N>=5): NONE
+[wall] total 217.6s (MC 215.7s)

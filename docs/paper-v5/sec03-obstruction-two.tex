@@ -1,0 +1,211 @@
+% =====================================================================
+%  sec03 -- Obstruction two: Delta_dyn > 0 does not imply m > 0
+% =====================================================================
+\section[Obstruction two: the dynamical block does not imply a gap]{Obstruction two: $\Dyn>0$ does not imply $m>0$}\label{sec:obs2}
+
+\subsection{The definitions have to be pinned first, or the comparison is meaningless}
+
+Two quantities are being compared, and comparing them without pinning both is what produced the
+confusion the corpus is now unwinding. Let
+\begin{equation}
+\Gpp:=-\partial_a^{2}\log\rho(a)\big|_{a=0},
+\label{eq:gdef5}
+\end{equation}
+where $\rho$ is the marginal law of the coarse variable $a$ under the model's own measure, so that
+in zero dimensions $\rho\propto e^{-S}$ gives $\Gpp=S''(0)$, and in $0+1$ dimensions
+$\rho=|\psi_0|^{2}$ gives the ground-state marginal. This is the same $-\partial^{2}\log\rho$ that
+the conditional-expectation expansion of \eqref{eq:split5} computes, and the two agree numerically
+to $1.1\times10^{-16}$ on the single plaquette. \LT{} For the gap, let
+\begin{equation}
+m:=\inf\bigl(\mathrm{spec}(H)\setminus\{E_0\}\bigr)-E_0 ,
+\label{eq:mdef5}
+\end{equation}
+\emph{which is defined only when the model has a transfer direction}. \LT{} In a
+zero-dimensional model --- a single plaquette, a $0+0$ double well --- there is no transfer
+matrix and no $E_1$, so $m$ is \emph{undefined}: not $0$, not $>0$. This is a discipline and not a
+pedanticity, because both misreadings fabricate a result. Writing ``undefined $=0$'' manufactures
+a counterexample to the implication out of a model that says nothing; writing ``undefined $>0$''
+defends the implication for free. The corpus records this explicitly, and it is the reason model
+M1 below is scored \emph{undecidable} rather than either way.
+
+\src{\code{T03-TOY.md} \S1 (both definitions, verbatim, including the two-sentence discipline on
+``undefined''); \code{Q11-CERT.md} \S2 (the anchor $S-D=+0.135994711\ldots$ reproduced to
+$1.1\times10^{-16}$ by the $\Gpp=-\partial^{2}\log\rho$ route).}
+
+\subsection{Six models, one table}
+
+The following is the whole comparison. It is deliberately small: three of the six are vacuous,
+and the two that matter are exact.
+
+\begin{center}
+\footnotesize
+\begin{tabularx}{\textwidth}{@{}L{0.55cm}L{4.6cm}L{2.45cm}L{2.5cm}L{2.4cm}@{}}
+\toprule
+\textbf{\#} & \textbf{Model} & $\Gpp$ & $m$ & \textbf{Verdict} \\
+\midrule
+M1 & one plaquette $\mathrm{SU}(2)$, $\beta=2.5$, $\theta=\pi$ & $+0.135994711$ & undefined
+   (no transfer direction) & vacuous \\
+M2 & 2D Yang--Mills, Migdal exact solution & $0$ \emph{exactly} & $3g^{2}/8=0.375>0$
+   & \textbf{reverse fails} \\
+M3 & 1D Dirichlet string, lattice $N=999$ & $\pi^{2}/L^{2}>0$ & $\pi/L>0$ & consistent,
+   but a Gaussian identity \\
+M4 & flat double well $a^{4}/4-a^{2}/2$ & $0+0$: $-1$ exact; $0+1$: $+0.5889$ &
+   $0+0$: undefined; $0+1$: $0.7250$ & $0+1$ consistent \\
+M5 & free field $S\equiv0$ & $0$ & $0$ & vacuous \\
+\textbf{M6} & \textbf{harmonic $\otimes$ free}
+   $\bigl(p_a^{2}+p_b^{2}\bigr)/2+\omega^{2}a^{2}/2$ & $\mathbf{2\omega=2>0}$ & $\mathbf{0}$
+   & \textbf{counterexample} \\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\src{\code{T03-TOY.md} \S2, table (all six rows, with the same entries); \code{LOOP-RUNBOOK.md}
+\S12.3 (the same table in the campaign log).}
+
+\subsection{M6: the counterexample, and why it is not a cheap special case}
+
+In M6 the $a$-direction is a harmonic oscillator and the $b$-direction is free. The marginal is
+$\rho_a\propto e^{-\omega a^{2}}$, so $\Gpp=2\omega=2>0$ identically; the spectrum is
+$\mathrm{spec}(H)=[\omega/2,\infty)$, continuous from $E_0$ upward, so $m=0$. \LT{} Both statements
+are exact --- the first is a Gaussian integral, the second an exact spectrum --- and neither is a
+numerical observation.
+
+The reason this is the \emph{minimal witness} rather than a trick is structural, and it is the
+sentence that should be quoted whenever the route is proposed again: $\Gpp$ is the curvature of
+\emph{one} direction's marginal, while $m$ is a property of the \emph{whole} spectrum. Any model
+whose marginal has a local maximum at the symmetric point while possessing one flat (massless)
+direction will produce $\Gpp>0$ together with $m=0$. There are infinitely many such models, and
+they are not contrived: the mismatch is one structural fact, not one exotic example.
+
+\src{\code{T03-TOY.md} \S2 (M6), \S2 ``why this is not a cheap special case'' (verbatim);
+\code{LOOP-RUNBOOK.md} \S12.1 (the same counterexample recorded as the campaign-level verdict).}
+
+\subsection{The mechanism, which is more useful than the counterexample}
+
+The counterexample is an instance of an identity. In $0+1$ dimensions with a flat measure,
+$H=p^{2}/2+V$, $\rho=|\psi_0|^{2}$, so
+\begin{equation}
+\Gpp=-2\,\frac{\psi_0''}{\psi_0}\Big|_{0}=4\bigl(E_0-V(0)\bigr),
+\label{eq:mech5}
+\end{equation}
+by inserting the Schr\"odinger equation $-\psi_0''/2+V\psi_0=E_0\psi_0$. \LT{} Two numerical
+checks are recorded: the oscillator gives $4(\omega/2-0)=2\omega$ against the measured
+$2.000006$; the double well gives $0.5889400$ by differencing $\psi_0$ against
+$4(E_0-V(0))=0.5889397$, a relative agreement of $3.9\times10^{-7}$ (grid error, $h=3\times10^{-3}$).
+
+The reading of \eqref{eq:mech5} is the whole of \S\ref{sec:obs2}: $\Gpp>0$ is \emph{equivalent} to
+$V(0)<E_0$, i.e.\ to the statement that the point $a=0$ lies above the ground-state energy --- a
+classically forbidden point, a barrier top, a local maximum of the marginal density. It is a
+statement about \emph{one point's value} against \emph{one number}. The gap $m=E_1-E_0$ is
+determined by the \emph{global} shape of the potential and the boundary conditions. To infer
+$m>0$ from $\Gpp>0$ is to claim that a single-point potential value exceeding the ground-state
+energy implies a gap above it, and \eqref{eq:mech5} plus M2/M6 show that this is false in both
+directions.
+
+\src{\code{T03-TOY.md} \S3 (the proposition and its two-line proof; both numerical checks;
+the ``two independent objects, two different propositions'' reading, verbatim).}
+
+\subsection{The reverse direction fails too, and exactly}
+
+The implication is also false backwards. In two-dimensional Yang--Mills on a spatial circle the
+Migdal summation reduces the transfer operator to quantum mechanics on the group manifold,
+$H=(g^{2}/2)C_2$ with $E_R=(g^{2}/2)C_2(R)$; the ground state is the trivial representation, i.e.\
+the constant function with respect to Haar measure, so \emph{every} marginal of the coarse
+variable is flat, $\partial^{2}\log\rho\equiv0$, and $\Gpp=0$ exactly. Meanwhile
+$m=(g^{2}/2)C_2(\text{fund})=g^{2}(N^{2}-1)/(4N)$, which at $N=2$, $g^{2}=1$ is $3g^{2}/8=0.375>0$.
+\LT{}$^{*}$ \,\, The asterisk is honest bookkeeping: the model derivation is strict, but the
+statement $H=(g^{2}/2)C_2$ is quoted as the standard 2D result and its literature source was not
+checked verbatim, so the label is \LT{} inside the model and \LC{} as a citation. The reverse
+failure does not depend on this row: M6 already establishes the structural decoupling of $\Gpp$
+from $m$ independently.
+
+\src{\code{T03-TOY.md} \S2 (M2), \S5 (``\LT{}$^{*}$: the model derivation is strict, the literature
+citation was not checked verbatim'').}
+
+\subsection{The four routes from the curvature to a gap: all four are broken}
+
+It is not that one step is missing. The implication has four candidate proofs in the corpus, and
+each fails for a specific reason; they are recorded here because each failure is a distinct
+theorem.
+
+\begin{enumerate}
+\item \textbf{P1: $\Gpp>0\Rightarrow\fone>0\Rightarrow$ atom $\Rightarrow$ isolation
+$\Rightarrow$ exponential $\Rightarrow$ gap.} \LN{} --- not ``unproved'' but \emph{reversed}. The
+counterexample is exact and is 2D Yang--Mills again: it has an exact area law
+$\sigma_R\propto C_2(R)>0$ and a gapped discrete spectrum, hence $H1$ holds, hence $\Gpp>0$ by
+the identity, and yet $\fone(\tr F^{2})=0$ exactly, because $\tr F^{2}=\tr E^{2}=H$ is conserved
+and the characters are orthogonal. The direction is also wrong in strength: $\fone>0$ together
+with isolation is strictly stronger than a gap, so using the weaker hypothesis to reach the
+stronger conclusion upgrades the conclusion into the premise. What the route needs is the
+existence of a sub-threshold atom, $\Lstar>m_1^{2}$, which is condition I2 --- one level
+\emph{above} Clay, not below it (\S\ref{sec:target}).
+\item \textbf{P2: $\Gpp>0\Rightarrow$ some correlator does not decay.} \LT{} inside a channel and
+open across channels. Within one channel, K\"all\'en--Lehmann makes
+$m^2_{\mathrm{eff}}(k\to0)\ge\lambda$ and $\langle OO\rangle_c\le Ce^{-\lambda|x|}$ the same
+sentence in two languages, so the step carries zero information. Across channels it is a
+different statement entirely: $\Gpp$ is conditional on the coarse amplitude $a$ and lives in the
+$S_W$-channel, while Clay needs the $0^{++}$ channel of $\tr F^{2}$; the kinematic bridge is
+excluded by $Z_N^{(1)}$ charge grading, and the only dynamical bridge the corpus contains is the
+$u$-identity. The missing sentence --- ``positive curvature in the coarse channel implies that the
+spectral measure of the $\tr F^{2}$ channel has support above zero'' --- is not written anywhere in
+the corpus. It is the sector-transfer problem, and it has a name: $e_3$.
+\item \textbf{P3: $\Gpp>0\Rightarrow$ transfer-matrix spectral gap.} \LT{} as a renaming and \LN{}
+as an argument. The renaming is the four-name equivalence of \S\ref{sec:obs1}. The circularity is
+that the only remaining content, the uniformity $\inf_V\Delta_V>0$ over volumes, is \emph{literally
+the gap}: for finite $V$, $\Delta_V>0$ is trivial by Perron--Frobenius/Jentzsch, and the
+infimum over $V$ being positive is the statement to be proved.
+\item \textbf{P4: $\Gpp>0\Rightarrow\langle\tfrac14\tr F^{2}\rangle>0\Rightarrow\cdots$} --- no
+chain. The second half has never been written, and the first half is refuted in 2D (where
+$\langle H\rangle>0$ holds for a gapped theory while $\fone(\tr F^{2})=0$). In $4$D the condensate
+is an operator-product-expansion quantity requiring subtractions, i.e.\ \LC{} at best, and there
+is no proved channel between it and an atom of $\nu$. The corpus's phrasing ``the same object
+under several names'' is a programme statement, not a theorem.
+\end{enumerate}
+
+\src{\code{T01-IMPLY.md} \S2 (the four-row table of what each route additionally needs), \S3
+(the four verdicts with their sources), \S3 P1 (the 2D counterexample and the strength reversal);
+\code{IMP-ARROWS.md}:33--35 (the thin-atom counterexample, machine-checked as
+\code{H1_does_not_imply_atom}), \code{:57} (row 5(iv)), \code{:60} (row 8, K\"all\'en--Lehmann both
+ways), \code{:76} ($Z_N^{(1)}$ grading), \code{:92--95} (the 2D exact counterexample),
+\code{:113} ($e_3$), \code{:137--145} (chain III and $k_2$); \code{ch06-tools.tex}:31--48
+(multiplicative residue transport), \code{:74--75} ($\langle\tfrac14\tr F^{2}\rangle$ as an OPE
+quantity).}
+
+\subsection{The domain question, answered honestly}
+
+A careful reader will object that within the identity's domain the two objects are the \emph{same
+number}: $\Gpp=1/\Var(a)=m^2_{\mathrm{eff}}(k\to0)$ is model-independent algebra, so no
+counterexample can exist inside pure Yang--Mills at fixed $(L,a)$. That objection is correct and
+is why the obstruction is stated in the form it is. Two things follow, and both are needed.
+
+\emph{First}, the bare implication is nevertheless false in the natural class in which the route
+was being pursued. Take $G_{\mathrm{YM}}\times U(1)_{\mathrm{weak}}$ with the abelian factor in the
+Coulomb phase and the coupling weak enough: the Yang--Mills factor has an area law, reflection
+positivity holds, and its $a$-channel curvature is positive; but the full theory's spectrum has no
+gap, because of the photon sector. Hence ``$\Gpp>0$ together with $m=0$'' occurs in the class
+``reflection-positive lattice gauge theory''. \LN{} \emph{Second}, for pure Yang--Mills the failure
+therefore cannot be a sign failure at fixed volume; it must be the failure of \emph{uniformity} ---
+finite volume gapped, infinite volume not --- which is precisely where \S\ref{sec:obs1} put the
+break. Both routes to a rescue end at the same wall: the object must carry its quantifiers, i.e.\
+the statement must be about a uniform positive lower bound plus purity (no decoupled neutral
+massless sector). That conjunction is again $e_3$.
+
+\src{\code{T01-IMPLY.md} \S4.3 (the $G_{\mathrm{YM}}\times U(1)_{\mathrm{weak}}$ class
+counterexample, and the ``(c) does not hold, (b) does'' verdict); \code{IMP-ARROWS.md}:83--90
+(\S2.1(a$'$), the same construction).}
+
+\subsection{What this section establishes}
+
+\begin{itemize}
+\item \LT{} $\Gpp$ and $m$ are decoupled in both directions: M6 gives $\Gpp=2\omega>0$ with $m=0$;
+      2D Yang--Mills gives $\Gpp=0$ with $m=3g^{2}/8>0$.
+\item \LT{} The mechanism is the identity $\Gpp=4(E_0-V(0))$: the curvature measures whether
+      $a=0$ lies above the ground-state energy, a single-point comparison with no functional
+      relation to the spectrum.
+\item \LN{} All four routes from the curvature to a gap are closed: P1 is reversed (2D exact),
+      P2 is a renaming inside one channel and open across channels ($e_3$), P3 is circular
+      ($\inf_V\Delta_V>0$ is the gap), P4 has no chain.
+\item \LM{} For pure Yang--Mills the surviving difficulty is not the sign of $\Gpp$ but its
+      \emph{uniformity} in $(L,a)$ jointly with purity; that conjunction is the exact missing
+      step, and it is not a step on this route at all.
+\end{itemize}

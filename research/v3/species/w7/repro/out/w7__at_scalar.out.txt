@@ -1,0 +1,81 @@
+============================================================================================
+T1  SCALARIZATION            N=3  beta=2.50   lambda_1=(N^2-1)/(2N)=1.3333   (1/2)Ric=N/8=0.3750
+============================================================================================
+  C_t = t g^{-1}  =>  Cdot = g^{-1},  Cddot = 0   =>   Cdot Hess V Cdot = Hess V,  -(1/2)Cddot = 0
+  (star)  <v,Hess_g V_t v>_g >= lamdot_t  for every g-unit v, every phi, every t>0
+
+  DIMENSION of lamdot_t:  <v,Hess V_t v>_g is dimensionless (v is g-unit, V_t is an action),
+  so lamdot_t is DIMENSIONLESS = a curvature FLUX (curvature per unit flow time t).
+  t itself is heat time measured in units of g^{-1}, i.e. t = (length)^2 in the physical metric
+  g_phys = a^2 g.  Then lam_t is dimensionless, int e^{-2 lam} dt has dimension a^2, so
+  gamma = 1/int e^{-2 lam} scales like 1/a^2 = a physical mass^2.  Free field check below.
+
+============================================================================================
+T2  FEASIBILITY OF (star):  lam_t <= M(t),  feasible <=> I = int_0^inf e^{-2M} < inf
+============================================================================================
+ceiling m(t)                                     M(inf)  I=int e^-2M    gamma_max   verdict
+--------------------------------------------------------------------------------------------
+free field  S_W=0            (literal form, no source)      0.00000        1e+06            -   DEAD (I(T) not convergent)
+literal (star):  m=-a e^{-ct}                  -3.00002    4.034e+08            -   DEAD (I(T) not convergent)
+literal + delta/(1+t), delta=0.40               2.52619    2.952e+04            -   DEAD (I(T) not convergent)
+literal + delta/(1+t), delta=0.60               5.28929         1539    0.0006496   FEASIBLE  gamma_max=0.0006496
+MANIFOLD (3.100):  N/8 - a e^{-ct}         374996.99998        174.6     0.005728   FEASIBLE  gamma_max=0.005728
+flat phi^4: 1/(1+t) - chi/(1+t)^2              10.81552        67.07      0.01491   FEASIBLE  gamma_max=0.01491
+Ric>0 + delta/(1+t), delta=0.40            375002.52619        69.76      0.01433   FEASIBLE  gamma_max=0.01433
+
+============================================================================================
+FREE-FIELD ACID TEST (S_W = 0  =>  V_t = 0  =>  Hess V_t = 0, i.e. m(t) = 0 for all t)
+============================================================================================
+  literal form:   lamdot <= 0  =>  lam_t <= 0  =>  int e^{-2 lam} >= int 1 = inf  =>  NO admissible lam.
+  Yet the TRUE answer for Haar on SU(N)^E is a LSI with gamma = lambda_1(Delta_g).  Table:
+     N     lambda_1 = (N^2-1)/(2N)     N/4 (yield of the half-Ric source)     ratio
+     1         0.0000                         0.2500          inf (Ric=0)
+     2         0.7500                         0.5000                 0.67
+     3         1.3333                         0.7500                 0.56
+     4         1.8750                         1.0000                 0.53
+     5         2.4000                         1.2500                 0.52
+    10         4.9500                         2.5000                 0.51
+  => the half-Ric source N/4 reproduces the correct ORDER of gamma for every N, and gives
+     exactly 0 for N=1 (U(1), flat torus: Ric=0), where the criterion MUST fail because
+     the truth is the massless L^-2 behaviour.  The criterion is acid-test-clean in the
+     MANIFOLD form and acid-test-DEAD in the literal flat form.
+
+============================================================================================
+SHARP FORM OF T2 (answers 'is lam_t free to grow?')
+============================================================================================
+  Write m(t) = mu - q(t) with q >= 0 integrable (q = the negative part, decaying).
+  Then M(t) = mu t - Q(t),  Q(t) = int_0^t q <= Q(inf) < inf, and
+      I = int_0^inf e^{-2 mu t + 2 Q(t)} dt.
+    * mu > 0 : M(t) -> +oo linearly, I = e^{2Q(inf)}/(2 mu) < inf  =>  FEASIBLE,
+               gamma_max = 2 mu e^{-2 Q(inf)}, optimal lam_t = mu t - Q(t).
+    * mu = 0 : M(t) = -Q(t) <= 0 bounded above  =>  lam_t bounded above  =>  lam_t -/-> +oo.
+    * mu < 0 : M(t) -> -oo  =>  lam_t -> -oo.
+  ALSO: if q is NOT integrable but mu=0, a 1/t-type ceiling still works: m = delta/t - q,
+  M ~ delta log t, I ~ int t^{-2 delta} converges iff delta > 1/2  (table row 4 vs 3).
+  => ANSWER: lam_t is NOT free to grow.  The ceiling is what it is; the criterion is
+     satisfiable iff the ceiling has a NON-INTEGRABLE PART: either a positive constant
+     floor mu > 0, or a delta/t with delta > 1/2.  In our problem the ONLY candidate for
+     mu is (1/2)Ric_g = N/8 (manifold form) -- the literal form has mu = 0 identically.
+
+============================================================================================
+FEASIBLE REGION IN THE (t, lam) PLANE  (upper envelope = M; the region is the hypograph)
+============================================================================================
+  rows: literal ceiling (mu=0) vs manifold ceiling (mu=N/8).  columns: t.
+   t      m_lit(t)   M_lit(t)   lam_lit_max    m_man(t)   M_man(t)   lam_man_max
+   0.50    -2.0554    -1.4585      -1.4585      -1.6804    -1.2712      -1.2712
+   1.00    -1.0544    -2.2092      -2.2092      -0.6794    -1.8342      -1.8342
+   2.00    -0.2768    -2.7924      -2.7924       0.0982    -2.0413      -2.0413
+   5.00    -0.0051    -2.9962      -2.9962       0.3699    -1.1222      -1.1222
+  10.00    -0.0000    -3.0000      -3.0000       0.3750     0.7490       0.7490
+  20.00    -0.0000    -3.0000      -3.0000       0.3750     4.4992       4.4992
+  50.00    -0.0000    -3.0000      -3.0000       0.3750    15.7498      15.7498
+  -> literal: lam_lit_max converges to -a/c = -3.0000  (a bounded ceiling, NO divergence).
+  -> manifold: lam_man_max ~ (N/8) t  -> +oo.  Same integrable negative part, different source.
+
+  gamma_max(manifold, exact grid integral) = 0.005728
+  certified lower bound  gamma >= 2 mu exp(-2 Q(inf)),  Q(inf)=int_0^inf ||(Hess V_t)_-|| dt:
+     Q(inf) = a/c = 3.0000  =>  gamma >= (N/4)exp(-2a/c) = 0.00185906
+  NOTE the exponential smallness: gamma ~ exp(-2 int||(Hess V_t)_-||).  For SU(3), beta=2.5
+  the bound is gamma ~ 0.00186 -- POSITIVE but useless as a uniform bound.  The whole
+  residual question of the programme is therefore NOT 'does (star) hold' but 'is
+  Q(inf) = int_0^inf ||(Hess V_t)_-|| dt bounded UNIFORMLY IN L'.

@@ -1,0 +1,161 @@
+================================================================================
+PART A  1D chain = path graph {1..N}, Dirichlet Laplacian   mu_k = 2-2cos(k pi/(N+1))
+================================================================================
+   N          mu1          mu2     rho^2 = mu2/mu1
+        2    1.000e+00    3.000e+00   3.000000
+        3    5.858e-01    2.000e+00   3.414214
+        4    3.820e-01    1.382e+00   3.618034
+        5    2.679e-01    1.000e+00   3.732051
+       10    8.101e-02    3.175e-01   3.918986
+       50    3.793e-03    1.516e-02   3.996207
+      100    9.674e-04    3.869e-03   3.999033
+     1000    9.850e-06    3.940e-05   3.999990
+   100000    9.869e-10    3.948e-09   4.000000
+  FD check N=10: mu1=0.081014053 mu2=0.317492934 rho^2=3.918985947
+  [PASS] A FD matches analytic N=10 
+  [PASS] A rho^2 < 4 for every N>=2 
+  [PASS] A sup = 4 (N -> inf) 
+================================================================================
+PART B  hypercube {0,1}^n , L = sum_i (1-flip_i)  =>  spec = 2|S|  =>  rho^2 = 2
+================================================================================
+  n= 2 dim=   4  mu1=2.000000 mu2=4.000000  rho^2=2.000000000
+  [PASS] B n=2: rho^2 = 2 (degree/dimension only) 
+  n= 3 dim=   8  mu1=2.000000 mu2=4.000000  rho^2=2.000000000
+  [PASS] B n=3: rho^2 = 2 (degree/dimension only) 
+  n= 4 dim=  16  mu1=2.000000 mu2=4.000000  rho^2=2.000000000
+  [PASS] B n=4: rho^2 = 2 (degree/dimension only) 
+  n= 5 dim=  32  mu1=2.000000 mu2=4.000000  rho^2=2.000000000
+  [PASS] B n=5: rho^2 = 2 (degree/dimension only) 
+  n= 6 dim=  64  mu1=2.000000 mu2=4.000000  rho^2=2.000000000
+  [PASS] B n=6: rho^2 = 2 (degree/dimension only) 
+  n= 8 dim= 256  mu1=2.000000 mu2=4.000000  rho^2=2.000000000
+  [PASS] B n=8: rho^2 = 2 (degree/dimension only) 
+================================================================================
+PART C  star K_{1,m} : spec {0, 1^(m-1), m+1}  =>  rho^2 = m+1
+================================================================================
+  m=    3  max deg=    4  diam=2  gap mu1=1  rho^2=4
+  m=    4  max deg=    5  diam=2  gap mu1=1  rho^2=5
+  m=   10  max deg=   11  diam=2  gap mu1=1  rho^2=11
+  m=  100  max deg=  101  diam=2  gap mu1=1  rho^2=101
+  m= 1000  max deg= 1001  diam=2  gap mu1=1  rho^2=1001
+  FD check m=4: eig=[0. 1. 1. 1. 5.]
+  distinct: [np.float64(1.0), np.float64(5.0)]  => rho^2=5.000000
+  [PASS] C star m=4 : rho^2 = 5 = m+1 
+  [PASS] C rho^2 = 5 > 4 with degree 5, diam 2, gap 1  => NO degree/diameter bound 
+================================================================================
+PART D  1D Sturm-Liouville  -u''+qu = lam u  on [0,1] Dirichlet, FD N=4000
+================================================================================
+  q = 0                                        mu1=   9.86960 mu2=  39.47841 rho^2= 4.00000  (mu0=0.0e+00)
+  q = 0.01 (const)                             mu1=   9.87960 mu2=  39.48841 rho^2= 3.99696  (mu0=0.0e+00)
+  q = 0.1 (const)                              mu1=   9.96960 mu2=  39.57841 rho^2= 3.96991  (mu0=0.0e+00)
+  q = 1.0 (const)                              mu1=  10.86960 mu2=  40.47841 rho^2= 3.72400  (mu0=0.0e+00)
+  q = 10.0 (const)                             mu1=  19.86960 mu2=  49.47841 rho^2= 2.49016  (mu0=0.0e+00)
+  q = 100.0 (const)                            mu1= 109.86960 mu2= 139.47841 rho^2= 1.26949  (mu0=0.0e+00)
+  q = 1000.0 (const)                           mu1=1009.86960 mu2=1039.47841 rho^2= 1.02932  (mu0=0.0e+00)
+  q = 1e3 (x-1/2)^2                            mu1=  31.69132 mu2=  95.78703 rho^2= 3.02250  (mu0=0.0e+00)
+  q = 1e3 (x-1/4)^2                            mu1=  37.89929 mu2= 118.93075 rho^2= 3.13807  (mu0=0.0e+00)
+  q = 2e3 ((x-1/2)^2-1/16)^2  [two wells, >=0] mu1=  14.58579 mu2=  43.70120 rho^2= 2.99615  (mu0=0.0e+00)
+  q = 1e4 * 1[x<0.1]                           mu1=  11.91503 mu2=  47.65947 rho^2= 3.99995  (mu0=0.0e+00)
+  q = 1e4 * 1[0.4<x<0.6]                       mu1=  58.67387 mu2=  58.67387 rho^2= 1.00000  (mu0=0.0e+00)
+  q = 1e4 * 1[x>0.9]                           mu1=  11.91503 mu2=  47.65947 rho^2= 3.99995  (mu0=0.0e+00)
+  q = 1e6 * 1[|x-1/2|<0.002]                   mu1=  39.60793 mu2=  39.62313 rho^2= 1.00038  (mu0=0.0e+00)
+  q = 1e4 |x-1/2|^3                            mu1=  40.72441 mu2= 137.37115 rho^2= 3.37319  (mu0=0.0e+00)
+  random q>=0 (200 shapes): max rho^2 = 3.999806 at A=0.25 p=5 x0=0.64 s=0.0367
+  [PASS] D q>=0 : rho^2 <= 4 (battery + 200 random) max=3.999999
+  [PASS] D q=0 saturates 4 (free string limit) 
+  --- constant q = -c : exact lam_k = k^2 pi^2 - c ---
+  c= 0.00  exact rho^2=     4.0000  FD=     4.0000  >4? False
+  c= 0.50  exact rho^2=     4.1601  FD=     4.1601  >4? True
+  c= 1.00  exact rho^2=     4.3382  FD=     4.3382  >4? True
+  c= 3.00  exact rho^2=     5.3101  FD=     5.3101  >4? True
+  c= 6.00  exact rho^2=     8.6516  FD=     8.6516  >4? True
+  c= 9.00  exact rho^2=    35.0486  FD=    35.0486  >4? True
+  c= 9.70  exact rho^2=   175.5757  FD=   175.5762  >4? True
+  [PASS] D q=-c , any c>0 : rho^2 > 4  (hypothesis q>=0 is SHARP) 
+  [PASS] D q=-c -> inf as c -> pi^2 
+================================================================================
+PART E  one plaquette SU(2): L_beta = -(1/rho) d/phi (rho d/dphi),
+        rho_beta(phi) = e^{-beta(1-cos phi)} sin^2 phi ,  phi in (0,pi) is arc length
+================================================================================
+   beta      mu1         mu2       rho^2    (NE=3000)
+    0.00      3.00000     8.00000    2.66667   (mu0=-7.9e-11)
+    0.10      3.00200     8.00157    2.66541   (mu0=2.2e-11)
+    0.50      3.04998     8.03928    2.63585   (mu0=-6.3e-11)
+    1.00      3.19966     8.15710    2.54936   (mu0=-1.1e-10)
+    2.00      3.79448     8.62797    2.27382   (mu0=4.1e-11)
+    2.50      4.23626     8.98087    2.12000   (mu0=2.8e-11)
+    4.00      6.10195    10.51206    1.72274   (mu0=4.1e-11)
+    8.00     13.69642    18.40869    1.34405   (mu0=5.2e-11)
+   16.00     29.90170    43.00615    1.43825   (mu0=1.1e-11)
+   64.00    125.98035   187.42540    1.48774   (mu0=1.6e-10)
+  [PASS] E beta=0 : mu1=3, mu2=8 exactly  [tower 4j(j+1), j=1/2,1] got 3.00000,8.00000
+  [PASS] E beta=0 : rho^2 = 8/3 = 2.6667 got 2.666666
+  [PASS] E beta=0 violates IN-11 C=1.5 (C^2=2.25) 
+  convergence / contamination check (singular endpoint at phi=0):
+    beta=  0.0 NE=  750: mu1=   2.99999 mu2=   7.99995 rho^2= 2.66666
+    beta=  0.0 NE= 1500: mu1=   3.00000 mu2=   7.99999 rho^2= 2.66667
+    beta=  0.0 NE= 3000: mu1=   3.00000 mu2=   8.00000 rho^2= 2.66667
+    beta=  0.0 NE= 6000: mu1=   3.00000 mu2=   8.00000 rho^2= 2.66667
+    beta=  8.0 NE=  750: mu1=  13.69692 mu2=  18.41108 rho^2= 1.34418
+    beta=  8.0 NE= 1500: mu1=  13.69652 mu2=  18.40917 rho^2= 1.34408
+    beta=  8.0 NE= 3000: mu1=  13.69642 mu2=  18.40869 rho^2= 1.34405
+    beta=  8.0 NE= 6000: mu1=  13.69639 mu2=  18.40857 rho^2= 1.34405
+  => beta=0 is grid-independent (clean exact anchor).  For beta>0 the vanishing
+     density rho~phi^2 at phi=0 lets the even (g(0)!=0) branch leak in on a grid:
+     the large-beta tower is analytic (see md S2 RB-6'), not taken from this scan.
+================================================================================
+PART F  2D YM Casimir towers  mu_R = (g^2/2) C2(R)
+================================================================================
+  SU(2): C2(fund)= 0.75000 C2(adj)= 2.00000  rho^2=2.666667
+  SU(3): C2(fund)= 1.33333 C2(adj)= 3.00000  rho^2=2.250000
+  SU(5): C2(fund)= 2.40000 C2(adj)= 5.00000  rho^2=2.083333
+  SU(10): C2(fund)= 4.95000 C2(adj)=10.00000  rho^2=2.020202
+  SU(100): C2(fund)=49.99500 C2(adj)=100.00000  rho^2=2.000200
+  [PASS] F SU(2) 2D: rho^2 = 8/3 
+  [PASS] F U(1) 2D: reps n in Z, mu_n=(e^2/2)n^2 => rho^2 = 4/1 = 4 
+================================================================================
+PART G  double well (SUSY) H=-d^2+W, W=V'^2/4-V''/2, V=(g/2)(x^2-1)^2
+================================================================================
+    g     mu0(dropped)   mu1=GAP      mu2        rho^2      T2=mu1+mu2   log(rho^2)/g
+    0.5     1.48e-06     0.79209    3.54890      4.480     4.34099    2.9994
+    2.0    -1.31e-06     0.74868    6.00411      8.020     6.75279    1.0409
+    4.0    -4.43e-06     0.45454    8.15655     17.945     8.61109    0.7218
+    8.0    -1.68e-05     0.11910   13.24157    111.179    13.36067    0.5889
+   10.0    -2.60e-05     0.05550   16.44493    296.324    16.50043    0.5691
+   12.0    -3.73e-05     0.02481   20.02981    807.358    20.05462    0.5578
+  [PASS] G rho^2 grows >100x while Delta=mu2-mu1 stays O(1) (upper bound FAILS) rho^2: 4.48 -> 807.4
+  [PASS] G T2=mu1+mu2 grows only polynomially (x5.6) while rho^2 explodes (x180) 
+  [PASS] G log(rho^2)/g -> const in (0.3,1.2) : exponential in g log(rho^2)/g = 0.5578
+================================================================================
+PART H  Ky Fan: T2(V)=tr(G^-1 M) >= mu1+mu2 for ANY 2-dim V perp 1 ; equality at eigspace
+================================================================================
+  path N=40: mu1=0.023439 mu2=0.052609 mu1+mu2=0.076048 rho^2=2.244499
+  random V: T2-(mu1+mu2) in [2.529e+00, 5.420e+00]
+  [PASS] H T2(V) >= mu1+mu2 always (Ky Fan) 
+  [PASS] H equality at span(psi1,psi2) T2=0.076048305
+================================================================================
+PART I  coarsening: compressed 2x2 ratio is NOT ordered vs the true ratio
+================================================================================
+  path N=8 : mu1=0.120615 mu2=0.467911  rho^2_true = 3.879385
+  coarse = span(delta_1, delta_2)      : rho^2_coarse = 3.000000  (< true)
+  coarse = span(psi_1, delta_1)        : rho^2_coarse = 4.605348  (> true)
+  coarse = span(delta_1, delta_4)       : rho^2_coarse = 1.000000
+  sparse random coarse spaces: below 2725 / above 92
+  [PASS] I coarsening does NOT order the ratio: both directions constructed 3.0000 < 3.8794 < 4.6053
+================================================================================
+PART J  window arithmetic: Delta=(rho^2-1)mu1 ; rho^2<=C^2 => mu1 >= delta/(C^2-1)
+================================================================================
+  Mehler / OU heat kernel              rho^2= 2.0000   C=1.5 ok? True   C=2 ok? True 
+  one plaquette SU(2) beta=0           rho^2= 2.6667   C=1.5 ok? False  C=2 ok? True 
+  2D YM SU(2) (adj/fund)               rho^2= 2.6667   C=1.5 ok? False  C=2 ok? True 
+  path graph N=2                       rho^2= 3.0000   C=1.5 ok? False  C=2 ok? True 
+  box / rotor / 1D Dirichlet string    rho^2= 4.0000   C=1.5 ok? False  C=2 ok? True 
+  2D U(1)                              rho^2= 4.0000   C=1.5 ok? False  C=2 ok? True 
+  C=1.5: mu1 >= delta/(C^2-1) = 0.8000 * delta
+  C=2.0: mu1 >= delta/(C^2-1) = 0.3333 * delta
+  C=3.0: mu1 >= delta/(C^2-1) = 0.1250 * delta
+  [PASS] J C=1.5 violated by >=3 exact anchors 
+  [PASS] J C=2 accommodates every exact anchor 
+================================================================================
+SUMMARY: 0 FAIL
+================================================================================

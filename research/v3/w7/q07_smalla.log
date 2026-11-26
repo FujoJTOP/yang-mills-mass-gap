@@ -1,0 +1,47 @@
+D:\Dev\math\research\v3\w7\q07_smalla.py:82: RuntimeWarning: divide by zero encountered in log
+  return -np.log(quad(f, -14.0, 14.0))
+D:\Dev\math\research\v3\w7\q07_smalla.py:54: RuntimeWarning: invalid value encountered in scalar add
+  return (-f(a + 2 * h) + 16 * f(a + h) - 30 * f(a) + 16 * f(a - h) - f(a - 2 * h)) / (12 * h ** 2)
+D:\Dev\math\research\v3\w7\q07_smalla.py:54: RuntimeWarning: invalid value encountered in scalar subtract
+  return (-f(a + 2 * h) + 16 * f(a + h) - 30 * f(a) + 16 * f(a - h) - f(a - 2 * h)) / (12 * h ** 2)
+D:\Dev\math\research\v3\w7\q07_smalla.py:181: RuntimeWarning: invalid value encountered in divide
+  Fish = np.trapezoid(drho ** 2 / rv, aa)
+D:\Dev\math\research\v3\w7\q07_smalla.py:47: RuntimeWarning: invalid value encountered in log
+  return -np.log(rho_plaq(a, th))
+================================================================================================
+(1) exact one-plaquette SU(2) marginal, beta=2.5,  G(a) = -log rho(a)
+================================================================================================
+    th        G1(+0)        G1(-0)         G2(0)       G3(+0)        G4(0)   stability of G4 (h=0.04/0.02/0.01)
+ 0.000    0.00036496   -0.00036496    0.72992413   0.00000000  -0.13520210     -0.135202/  -0.135201  G3raw=(np.float64(-8.673617379884034e-13), np.float64(0.0))
+ 1.571    0.75489311    0.75435017    0.54294392  -0.21948679  -0.08020860     -0.080209/  -0.080208  G3raw=(np.float64(-0.21948679273424765), np.float64(-0.21948679277891678))
+ 3.142    0.89359634    0.89346035    0.13599471  -0.23217909   0.09636910      0.096369/   0.096369  G3raw=(np.float64(-0.23217907147354483), np.float64(-0.23217908800936268))
+
+anchors (must match O28/P05/W3): th=0: G2=+0.7299241 ; th=pi: G2=+0.1359947
+  th=0.000  G2(0) = +0.729924129
+  th=3.142  G2(0) = +0.135994711
+
+G(a) profile, th=pi (asymmetry) and th=0:
+  th=0.000  G(a)-G(0)  -0.40:+0.058250  -0.20:+0.014589  -0.05:+0.000912  +0.00:+0.000000  +0.05:+0.000912  +0.20:+0.014589  +0.40:+0.058250
+  th=3.142  G(a)-G(0)  -0.40:-0.343960  -0.20:-0.175670  -0.05:-0.044502  +0.00:+0.000000  +0.05:+0.044842  +0.20:+0.181123  +0.40:+0.365924
+
+================================================================================================
+(2) toy validation:  V(a,y)=k(y-a)^2/2 + g y^4/4 + c a^3/3 + d a^4/4,  k=1.3 g=0.7 c=0.5 d=0.2
+    a0 = 0.3 : FD-of-G  vs  cumulant/moment formulas (u-recursion)
+================================================================================================
+   n          FD of G          formula         diff
+   1     0.2038608665     0.2038608675    -9.35e-10
+   2     0.8741600849     0.8741600851    -2.48e-10
+   3     1.4449746220     1.4449746215     4.88e-10
+   4     1.4624897764     1.4624897379     3.85e-08
+  G''' via A3-3Cov+cum3 = 1.4449746215  (same route)   u2,u3,u4 = (np.float64(-0.8326008318389121), np.float64(-0.9188258271596816), np.float64(1.7920234736943683))
+  diagnostic: cum3(F)=+0.084975  Cov(F,kap)=+0.000000
+
+================================================================================================
+(3) Fisher identity  E_rho[G''] = I(rho) = int (rho')^2/rho   (+boundary)
+    [3a] toy over the full line (rho has no support edge)
+================================================================================================
+  E_rho[G2]=+nan  I(rho)=+nan  diff=+nan | I=nan  1/Var=0.816008  I-1/Var=+nan  (CR needs full line)
+
+    [3b] one-plaquette: full support |a|<2pi, boundary term = -(rho'(R)-rho'(-R))
+  th=0.000: int rho G2=+nan  I=+27.051907  bnd=+0.000000  I+bnd-Eavg=+nan  | I-1/Var=+2.6412e+01 Var=1.56180
+  th=3.142: int rho G2=+nan  I=+322.305132  bnd=+0.000000  I+bnd-Eavg=+nan  | I-1/Var=+3.2182e+02 Var=2.05449

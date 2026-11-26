@@ -1,0 +1,34 @@
+========================================================================
+A. ENTROPY PER POINT  (the only place the dimension enters)
+========================================================================
+ n   1D: #intervals   4D: #animals  ratio 4D/1D
+ 1                1              1         1.00
+ 2                2             20        10.00
+ 3                3            458       152.67
+ 4                4          11132      2783.00
+ 5                5         280175     56035.00
+4D growth ratios a_{n+1}/a_n : [20.0, 22.9, 24.31, 25.17] -> rising, >= 20
+1D growth ratio  (n+1)/n     : [2.0, 1.5, 1.333, 1.25] -> ->1
+
+========================================================================
+B. KP THRESHOLD  (|w(gamma)| = w^{|gamma|}, per-point form)
+========================================================================
+1D  (polynomial entropy)      w_KP <= 0.163000
+4D  (lambda ~ 25 per step)    w_KP <= 2.855000e-02
+ratio 1D/4D                   5.709e+00
+  -> the 4D threshold is smaller by the 4D entropy constant, not by a constant
+
+========================================================================
+C. 1D EXACT RADIUS vs WHAT KP GUARANTEES  (hard rods, length l)
+========================================================================
+ l    |z_c| exact   z_KP = 1/(e l^2)   exact/KP
+ 1   inf (entire)         0.36787944        inf   <- degenerate: w has bounded support
+ 2     0.25000000         0.09196986       2.72
+ 3     0.14814815         0.04087549       3.62
+ 4     0.10546875         0.02299247       4.59
+ 5     0.08192000         0.01471518       5.57
+ 6     0.06697960         0.01021887       6.55
+ 7     0.05665278         0.00750774       7.55
+ 8     0.04908699         0.00574812       8.54
+asymptotics (l>=2):  |z_c| ~ 1/(e l)   vs   z_KP ~ 1/(e l^2)  -> both -> 0
+=> the 1D radius is FINITE, shrinks with the polymer length, and is only

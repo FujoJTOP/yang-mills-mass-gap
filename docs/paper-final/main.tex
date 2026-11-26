@@ -1,0 +1,303 @@
+% =====================================================================
+%  A Conditional Reduction of the 4D Pure Yang-Mills Mass Gap:
+%  the reduction, the measurement, and the ledger
+%
+%  MERGED EDITION (v3) -- single self-contained paper.
+%  Build:  pdflatex main.tex   (run twice)
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=2.5cm,top=2.2cm,bottom=2.4cm,headsep=14pt]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,bm}
+\usepackage{microtype}
+\usepackage[table]{xcolor}
+\usepackage{booktabs,array,tabularx,longtable}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,calc,shapes.geometric,decorations.pathreplacing,patterns}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage[colorlinks=true,linkcolor=blue!45!black,citecolor=blue!45!black,
+            urlcolor=blue!45!black,bookmarksnumbered=true,bookmarksopen=true,
+            bookmarksopenlevel=1,breaklinks=true,pdfborder={0 0 0}]{hyperref}
+
+% ---------- colours ----------
+\definecolor{cT}{HTML}{1D7A3A}
+\definecolor{cC}{HTML}{1F5FA8}
+\definecolor{cM}{HTML}{B45F06}
+\definecolor{cN}{HTML}{A61B1B}
+\definecolor{cE}{HTML}{6A3D9A}
+\definecolor{cO}{HTML}{555555}
+
+% ---------- label chips ----------
+\newcommand{\labb}[2]{\fcolorbox{#1!35}{#1!8}{\textcolor{#1}{\textbf{\scriptsize #2}}}}
+\newcommand{\LT}{\labb{cT}{T}}
+\newcommand{\LC}{\labb{cC}{C}}
+\newcommand{\LM}{\labb{cM}{M}}
+\newcommand{\LN}{\labb{cN}{N}}
+\newcommand{\LE}{\labb{cE}{E}}
+\newcommand{\LO}{\labb{cO}{O}}
+
+% ---------- claims ----------
+\newcounter{claim}
+\newcommand{\claimhead}[2]{%
+  \refstepcounter{claim}%
+  \textbf{#1~\theclaim}#2\hspace{0.35em}\ignorespaces}
+\newtcolorbox{claimbox}[1]{enhanced, breakable=false,
+  colback=#1!6, colframe=#1!75, boxrule=0pt, leftrule=2.6pt,
+  arc=2pt, left=7pt, right=6pt, top=5pt, bottom=5pt,
+  before skip=8pt, after skip=8pt, fontupper=\small,
+  parbox=false}
+\newenvironment{proofx}{\par\noindent\emph{Proof.}\ }{\hfill$\square$\par\medskip}
+\newcommand{\src}[1]{\par\noindent\begingroup\sloppy\footnotesize\color{black!55}\textbf{Source.} #1\par\endgroup\vspace{4pt}}
+\newtcolorbox{qbox}{enhanced, colback=black!3, colframe=black!35, boxrule=0pt,
+  leftrule=2pt, arc=0pt, left=12pt, right=10pt, top=5pt, bottom=5pt,
+  before skip=8pt, after skip=8pt, fontupper=\small, parbox=false}
+\newtcolorbox{v3box}{enhanced, breakable, colback=cT!4, colframe=cT!55, boxrule=0pt,
+  leftrule=2.6pt, arc=2pt, left=9pt, right=9pt, top=6pt, bottom=6pt,
+  before skip=10pt, after skip=10pt, fontupper=\small, parbox=false}
+\newtcolorbox{warnbox}{enhanced, breakable, colback=cN!4, colframe=cN!60, boxrule=0pt,
+  leftrule=2.6pt, arc=2pt, left=9pt, right=9pt, top=6pt, bottom=6pt,
+  before skip=10pt, after skip=10pt, fontupper=\small, parbox=false}
+
+% ---------- helpers ----------
+\newcommand{\code}[1]{\texttt{\footnotesize #1}}
+\captionsetup{font=small,labelfont=bf,skip=5pt}
+\captionsetup[table]{position=bottom,skip=4pt}
+\captionsetup[longtable]{position=bottom,skip=4pt}
+\setcounter{tocdepth}{3}
+\setcounter{secnumdepth}{3}
+\setlist[itemize]{leftmargin=1.4em,itemsep=1pt,topsep=3pt}
+\setlist[enumerate]{leftmargin=1.6em,itemsep=1pt,topsep=3pt}
+\allowdisplaybreaks
+\setlength{\emergencystretch}{2em}
+
+% ---------- section style ----------
+\titleformat{\part}[display]
+  {\centering\vspace*{0.4em}}
+  {\normalsize\scshape\color{black!55}Part \thepart}
+  {0.9em}
+  {\LARGE\bfseries}
+  [\vspace{0.75em}{\color{black!25}\rule{\textwidth}{0.5pt}}]
+\titlespacing*{\part}{0pt}{0pt}{1.7em}
+\titleformat{\section}{\large\bfseries}{\thesection}{0.6em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{0.55em}{}
+\titleformat{\subsubsection}{\normalsize\bfseries\itshape}{}{0em}{}
+\titlespacing*{\section}{0pt}{1.35em}{0.65em}
+\titlespacing*{\subsection}{0pt}{1.0em}{0.45em}
+
+% ---------- header ----------
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\color{black!55}The reduction, the measurement, and the ledger (v3.1)}
+\fancyhead[R]{\footnotesize\color{black!55}\thepage}
+\setlength{\headheight}{13pt}
+
+\hypersetup{pdftitle={A Conditional Reduction of the 4D Pure Yang-Mills Mass Gap: the reduction, the measurement, and the ledger},
+            pdfauthor={Yuxuan Jiang},
+            pdfsubject={Yang--Mills mass gap; conditional reduction; lattice measurement; negative survey},
+            pdfkeywords={Yang-Mills, mass gap, Clay Millennium Problem, Kall\'en-Lehmann spectral
+              measure, atom fraction, lattice gauge theory, strong coupling, cluster expansion,
+              reflection positivity, no-go, Lean 4}}
+
+\begin{document}
+
+% =====================================================================
+%  TITLE
+% =====================================================================
+\begin{titlepage}
+\centering
+\vspace*{2.2cm}
+
+{\LARGE\bfseries A Conditional Reduction of the\\[0.35em]
+4D Pure Yang--Mills Mass Gap\par}
+
+\vspace{0.9em}
+{\large\itshape The reduction, the measurement, and the ledger\par}
+
+\vspace{0.5em}
+{\normalsize Third Edition --- \textbf{merged}, superseding the $169$-page v2 and four sub-papers\par}
+
+\vspace{1.1em}
+{\color{black!30}\rule{0.58\textwidth}{0.6pt}}
+
+\vspace{2.2cm}
+{\large Yuxuan Jiang\par}
+\vspace{0.4cm}
+{\small Yang--Mills campaign\quad$\cdot$\quad Lean 4 formalisation $+$ lattice numerics\par}
+\vspace{0.25cm}
+{\footnotesize 24 November 2026\quad$\cdot$\quad v3.1\quad$\cdot$\quad Zenodo \texttt{10.5281/zenodo.20416516}\par}
+
+\vspace{1.1em}
+{\color{black!30}\rule{0.58\textwidth}{0.6pt}}
+
+\vspace{1.7cm}
+\begin{minipage}{0.86\textwidth}
+\small
+\textbf{Status of this document.} This is a conditional reduction and an honest audit of a
+failed campaign. \textbf{The Clay mass gap is \emph{not} proved.} What is proved is a reduction,
+a number of supporting theorems, and one measurement; what is not proved is stated as such, and
+every route that was tried and did not work is listed with the exact reason it failed.
+
+\vspace{0.5em}
+\textbf{Grade symbols.} Every substantive claim carries one of:
+\LT{}~\textbf{theorem} (proved; axioms at most \texttt{[propext, Classical.choice, Quot.sound]}) ;
+\LC{}~\textbf{conditional} (a theorem given an explicit hypothesis, stated in the claim) ;
+\LN{}~\textbf{no-go} (a theorem that a whole class of approaches cannot work) ;
+\LM{}~\textbf{model} (verified in a solvable model or by exhaustive machine enumeration) ;
+\LE{}~\textbf{measured} (numerical, not proved) ;
+\LO{}~\textbf{open} (named, not closed).
+
+\vspace{0.5em}
+\textbf{Provenance rule.} Every bookkeeping number below carries the source file that produced it.
+No claim is asserted without a file, and no number is asserted from memory.
+\end{minipage}
+\vfill
+{\footnotesize\itshape
+\textbf{2020 Mathematics Subject Classification.} 81T13 (primary); 81T25, 60K35, 47A10 (secondary).\par
+\vspace{0.35em}
+\textbf{Key words.} Yang--Mills mass gap; K\"all\'en--Lehmann spectral measure; atom fraction;
+lattice gauge theory; cluster expansion; reflection positivity; negative results; Lean~4.\par}
+\vspace{0.4cm}
+\end{titlepage}
+
+% =====================================================================
+%  ABSTRACT
+% =====================================================================
+\section*{Abstract}
+\addcontentsline{toc}{section}{Abstract}
+
+We report the outcome of a sustained attempt to reduce, and then to close, the four-dimensional
+pure $SU(N)$ Yang--Mills mass gap --- the question as posed in \cite{jaffe}. \textbf{We do not prove
+the mass gap.} What we do establish is
+four things, and one thing we measure.
+
+\emph{First, a reduction.} The gap is written as a positivity statement at a single point at the
+physical coupling, together with a monotonicity step in the volume and a tail-uniform floor in the
+coupling. The rewriting is exact \emph{on the atom route} --- the class of arguments that certifies
+the gap through the atom weight of one fixed operator --- and it is exact only there: outside that
+class it is false, and two solvable models make it false (\S\ref{sec:survey-three}). The reduction is
+itself the reason the problem does not move: every attempt to discharge one of its three legs turns
+out to require the leg itself.
+
+\emph{Second, what is proved.} A strong-coupling residue theorem with a corrected window
+$\beta_A < 3.777\times10^{-3}$ (we previously reported $0.018394$, which is the $a=0$ activation root
+and is \emph{illegal} as a criterion window --- an over-report by a factor $4.87$, corrected here);
+a finite-support shadow of the isolation, verified as a Lean~4 proposition with no \texttt{sorry};
+a uniqueness theorem for the target, conditional on the model specification and stated at grade
+\LC{}; a no-go for the sixth species of proof, also at grade \LC{} rather than \LT{} because one
+step does not survive a computability reading; and four machine-verified lemmas --- two
+counterexamples to two natural implications, and two arithmetic certificates for the window.
+
+\emph{Third, a measurement.} The atom fraction $w_1$ at $\beta = 2.5$ on $L_s = 6$ and $L_s = 8$ with
+$L_t = 12$. For one operator $w_1 = 0.3427 \pm 0.0119$ ($28.8\sigma$); for another, on the same Markov
+chain and the same $12000$ configurations, $w_1 = 0.0168 \pm 0.0142$. \textbf{The two differ by a
+factor $20.2$.} This is not an error: it is the numerical realization of a one-line counterexample
+($w_1 = \cos^2\theta$ at fixed spectrum) which shows that $w_1$ is a property of the pair $(H,O)$ and
+not of $H$ alone. Any statement of the form ``$w_1 > 0$'' therefore has no content until the operator
+$O$ is named.
+
+\emph{Fourth, an exhaustive negative survey.} Twenty routes to uniformity in $(L, a)$ were attacked and
+all fail. They fail with a uniform direction: nine give only \emph{upper} bounds on the quantity wanted
+(compactness, reflection positivity, Berezin--Lieb, the probabilistic reading, the Krein--Rutman
+residual, concavity, the RG modulus, two Ursell constants); nine are circular (the positivity
+improvement, minimality, operator inequalities, definability, the strong--weak bridge, and the named
+obstructions $\Delta_0$, $T4$, $H1$, $M(\beta)$); two have explicit counterexamples. Two produced
+something usable: a block-Loewner inequality (which repairs a previously unproved step) and a sampler
+bug whose correction invalidates four earlier numerical sign determinations.
+
+\emph{Fifth, a ledger.} Thirty-eight definitional collisions, which are the project's own error
+catalogue. We keep them in the paper because they are the mechanism by which the errors in this
+paper were caught --- twice during the writing of this very manuscript.
+
+\bigskip
+\noindent\textbf{The verdict is negative and we state it plainly:} the campaign reduced the problem,
+measured a quantity at the physical coupling, and mapped the wall. It did not break the wall.
+The residual is not a gap in an argument; it is the absence of a method that produces lower bounds
+rather than upper bounds, and every lower bound attempted here terminates in the target itself.
+
+\clearpage
+\tableofcontents
+\clearpage
+
+% =====================================================================
+%  REVISION NOTE (v3.1)
+% =====================================================================
+\begin{v3box}
+\textbf{Note on this revision (v3.1).} This edition changes bookkeeping, not grades --- with one
+exception, item~R4 below, which is a grade that was over-stated and is now corrected downwards. No
+claim is added. The corrections are listed here, in the spirit of the ledger of
+\S\ref{sec:ledger}: each was found by a pass that did not write the sentence it corrects.
+
+\begin{enumerate}[label=\textbf{R\arabic*.},leftmargin=2.8em,itemsep=2pt,topsep=3pt]
+\item \textbf{Two over-report factors were mis-paired.} Against $3.777\times10^{-3}$ the factor for
+      $0.018394$ is $4.87$, not $4.84$; $4.84$ belongs to the earlier $0.018269$
+      (\S\ref{sec:est-window-fix}). The abstract, \S\ref{sec:verdict-new} and the two printed ratios
+      now each name the number they divide.
+\item \textbf{Leg (i) is a floor, not a sign.} v3 wrote it as $\forall(L,a)\,w_1>0$, which is
+      strictly weaker than the target $\inf_{L,t}w_1>0$ of \S\ref{sec:survey-target}. The pointwise
+      form is what the measurement reaches; the gap between the two is the content of
+      \S\ref{sec:reduction-framework}. Both are now named separately, in the statement and in
+      Table~\ref{tab:legs}.
+\item \textbf{The reduction is marked as conditional on the atom route.} As printed in v3 the
+      equivalence read as a statement about the gap \emph{tout court}, which \S\ref{sec:survey-three}
+      contradicts: two solvable models have $w_1$ and $m$ pointing in opposite directions. The
+      restriction is now inside the statement, and the abstract says so.
+\item \textbf{$N09$-$1$ is graded \LC, not \LT.} Its own statement reads ``conditional on the $M6$
+      specification and the $L\to\infty$ reading'', and the grading rule on the title page makes a
+      theorem with printed hypotheses conditional. This is the one substantive grade change in the
+      revision; \S\ref{sec:est-n09} records it where the statement is, and the places that quote the
+      grade have been changed with it.
+\item \textbf{Two of the four machine-verified lemmas are certificates, not counterexamples.}
+      \S\ref{sec:est-counter} already said so in its body; the abstract and the subsection title now
+      say so too.
+\item \textbf{A notation clash between $m_1$ and $m_1^2$.} $\nu$ is carried on $m^2$ and
+      $C(t)=\int e^{-mt}\,d\nu(m^2)$; the measurement section wrote both $d\nu(m)$ and
+      $\nu(\{m_1^2\})$ in one display. A single notation paragraph in \S\ref{sec:reduction-equiv}
+      now fixes the convention, and \eqref{eq:m-defs} follows it.
+\item \textbf{Two numeral clashes in the prose.} The ``\#35/\#36'' of \S\ref{sec:verdict-ai} are
+      corpus \emph{item} labels; they are rows~26/27 of Table~\ref{tab:ledger}, and are now written
+      that way. The $0.25\%$ of ledger row~11 is $0.24\%$ (\S\ref{sec:survey-table}, row~7, where the
+      same ratio is stated correctly).
+\item \textbf{Section numbering.} The source restarted the section counter at Part~III, so v3 printed
+      two \S3, two \S4, two \S5 and two \S6. Numbering now runs continuously through the five parts,
+      and every cross-reference is a \verb|\ref| rather than a typed numeral.
+\item \textbf{The bibliography was complete and unused.} v3 carried seventy-five entries and not one
+      \verb|\cite| in the body. Citations have been added at the places where a result is
+      \emph{inherited} rather than proved --- chiefly \S\ref{sec:reduction-inherited} and the route
+      table of \S\ref{sec:survey-table} --- and the records were re-verified. Three records were
+      wrong and are corrected in the list: the DOI of \cite{mrs} pointed at a fluid-dynamics paper,
+      the year of \cite{gopfert} was 1982, and a volume of \cite{balaban} mixed a separate paper into
+      the \emph{Large field} series. The phrase ``the log-Sobolev radius $1/48$'' has been replaced
+      by what the source proves: $1/48$ is the \emph{edge of the window} in which the log-Sobolev
+      and Poincar\'e inequalities hold.
+\item \textbf{Presentation.} Every table now carries a number and a caption; the total-variation
+      column of Table~\ref{tab:compact} states its normalisation ($L^1$, twice the usual); the
+      bookmarks carry no raw macro; and the box colours are used for grades only --- the one box that
+      had a grade chip without a graded claim (in \S\ref{sec:verdict-needed}) is now uncoloured.
+\end{enumerate}
+\end{v3box}
+\clearpage
+
+% =====================================================================
+%  PARTS
+% =====================================================================
+\input{sec01-reduction.tex}
+\input{sec02-established.tex}
+\input{sec03-measurement.tex}
+\input{sec04-survey.tex}
+\input{sec05-ledger.tex}
+\input{sec06-verdict.tex}
+
+\input{refs.tex}
+
+\end{document}

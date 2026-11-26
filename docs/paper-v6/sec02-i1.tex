@@ -1,0 +1,204 @@
+% =====================================================================
+%  sec02 : ring 1 --- the residue (I1) = [T], no mod C-bar
+% =====================================================================
+\section{环 1：$I1$ 残数（\LT{}，$\bar C\equiv N$ 已证）}\label{sec:i1}
+
+\subsection{定理（逐字）}
+
+\begin{quotebox}
+\textbf{Theorem（\codep{PROOF-P3-UNCONDITIONAL.md:10--16}，逐字节引）.} ``Fix $a>0$, $N$,
+$\beta_1=\min(1/48,c/N)$. For $\beta<\beta_1$, on the \textbf{cylinder} $\mathcal{C}_L=T^3_L\times\mathbb{R}$
+(spatial torus, infinite time), for every spatial volume $L$, the lightest $0^{++}$ atom of
+$O=\tfrac14\operatorname{tr}F^2$ obeys
+$f_{1,L}^2:=\nu_L(\{E_{1,L}\})=\lim_{t\to\infty}e^{E_{1,L}t}C_L(t)\ \ge\ r_0(\beta)>0$,
+\textbf{uniformly in $L$} (limit $t\to\infty$ at fixed $L$ first; $L\to\infty$ is not taken --- $L$ is only the
+uniformity axis). This is the \textbf{residue (I1)}.
+\textbf{Label: \LT{} modulo the standard OS/Källén--Lehmann transfer-matrix representation on the cylinder.}''
+\end{quotebox}
+
+\textbf{上面这段引文里的 $\min(1/48,c/N)$ 与 "mod" 两处都要按后来的裁决更正。}
+\codep{docs/YANG-MILLS-MASTER.md:42}（2026-11-24 审计更正）曾把 P3 标成"[条件/待重证]，不再是 [T]"，
+\codep{Y06-P3DOWN} 又把该降级判到这一句上（\codep{:124}："第一环 $I1$ = $[C]$"）；\textbf{第三次裁决（F07）把这两步一并收口}：
+五个具体洞 A--E \textbf{全部关闭}（\S\ref{sec:holes}），$\bar C\equiv N$ 是\textbf{已证值}（\S\ref{sec:cbar}：$|w|^{1/n}/u=c_f/u=N$），
+$[KL]$ \textbf{已证}（\codep{P3-CYLINDER-RESIDUE.md:67--69}）$\Rightarrow$ \textbf{$I1$ = \LT，无未知常数}。
+被更正的只有两处：窗口（$\min(1/48,c/N)\to0.018394$，\S\ref{sec:claim}）与 $r_0$ 的形状（$u^p\to\tfrac12a_0(1-O(u))$，\S\ref{sec:i1} 下文），
+定理的\textbf{量}（$f_1^2\ge r_0>0$、$L$-一致）一字不改。
+\src{\codep{PROOF-P3-UNCONDITIONAL.md:10--16,:31}；\codep{docs/paper-v2/ch05-theorems.tex:25--35}（Theorem P3，同一式的排版版）；\codep{Z10-HOLEE.md} \S0。}
+
+\subsection{机制四步（四步各有 \LT{} 归属）}
+
+四步各自在\textbf{各自的归属文件}里是 \LT{}（归属见本节末与 \S\ref{sec:assembly} 的清单）；
+四步的\textbf{合}就是 $I1$ 本身，故 $I1$ 的等级 = 最弱一环 = \LT。四步之和不含任何未证的命名输入。
+
+\begin{enumerate}[label=(\arabic*)]
+\item \textbf{柱面 + 谱桥。}\LT{} $T_L=e^{-aH_L}$ 反射正、自伴、$0\le T_L\le1$；有限 $L$ 谱纯离散，
+$C_L(t)=\sum_{n\ge1}f_{n,L}^2e^{-E_{n,L}t}$，$f_{n,L}^2\ge0$；故 $f_1^2=\nu_L(\{E_{1,L}\})=\lim_te^{E_{1,L}t}C_L(t)$。
+\codep{T}$^4_L$ 上 $t\to\infty$ 极限不存在（周期传播子有界），所以必须上柱面。
+\src{\codep{PROOF-P3-UNCONDITIONAL.md:19}；\codep{P3-CYLINDER-RESIDUE.md:46--57}。}
+
+\item \textbf{四壁几何。}\LT{}（\codep{P3-FOURWALL-DERIVATION}）连接时刻 $0$ 与 $t$ 的两个单 plaquette 插入的极小连通规范不变聚合物有
+$|P|\ge4t/a$：每个源 plaquette 的 4 条边界链各带一个开基本指标对（$\int dU\,U=0$），两张 plaquette 至多共一条链
+$\Rightarrow$ $\ge4$ 条股；只有\textbf{时间} plaquette 推进时间 $\Rightarrow$ 每股跨 $t/a$ 片。等号 = 直四壁管，
+$w=a_0u^{4t/a}=a_0e^{-m_1t}$，$m_1=4\ln(1/u)/a$。
+\src{\codep{PROOF-P3-UNCONDITIONAL.md:22}；\codep{P3-FOURWALL-DERIVATION.md} \S1.1--1.5、\codep{:18} 逐字 "now a theorem [T]"。}
+
+\item \textbf{全表示 KP。}\LT{}（\codep{P3-FULLREP-KP}；估计本身是 Seiler 的标准结果）$K:=2\lambda_aC_ge\le80e^{2+\beta}N\le6.1\times10^2N$，邻接度 $\Delta=4\cdot(6-1)=20$；
+收敛前提是逐点条件 $u(\beta)K_{\mathrm{KP}}<1$，故 $\beta_1$ 是\textbf{方法半径}（数值见 \S\ref{sec:claim}：$0.018394$）。
+\src{\codep{PROOF-P3-UNCONDITIONAL.md:25}；\codep{P3-FULLREP-KP.md:120}（经 \codep{U07-CPSTRONG.md:61} 转引）；\codep{P3-AUDIT-CORRECTED.md:57} 逐字 "standard, Seiler LNP 159 [T]"。}
+
+\item \textbf{骨架--装饰重求和与振幅地板。}\LT{}（\codep{P3-DRESSED-MASS} 的 (a)(b)(d)；第 (c) 项换成 $[KL]$）装饰气体在 KP 半径内可和；
+$m_1^{dr}=4\ln(1/u)/a\cdot(1-O(u/\ln(1/u)))$；振幅地板 $\inf_L A^{dressed}\ge\tfrac12(2N)^{-2}>0$
+（正 $c_f$ 乘正单态重耦合 $f\otimes\bar f\to1$）。\textbf{洞 A 的裁决把这一项钉死}：$A^{dressed}$ \textbf{就是} $f_1^2$（载在 $[KL]$ 上，而 $[KL]$ 已证，故不带 mod），故 $f_1^2\ge\tfrac12(2N)^{-2}$；
+旧写 $\tfrac14(2N)^{-2}$ 按裁决更正（\codep{Z06-HOLEA.md} \S0）。第 (c) 项的 $\hat C$ 已由 \codep{Z12-FIXC.md} 做成\textbf{精确的 2}（包络 4），不再留常数。
+\src{\codep{PROOF-P3-UNCONDITIONAL.md:28,:34}；\codep{P3-DRESSED-MASS.md} \S4.2--4.3、\codep{:18} "closed for (a),(b),(d)"；\codep{Z06-HOLEA.md} \S0；\codep{Z12-FIXC.md}。}
+\end{enumerate}
+
+\subsection{$r_0$ 是什么，不是什么}
+
+$r_0$ 是 $O=\tfrac14\operatorname{tr}F^2$ 的 $0^{++}$ 道\textbf{最低原子重量的下界}：
+它\textbf{不是}质量、\textbf{不是}隙、\textbf{不是}隔离率。\LT{}（逐 $L$）
+\begin{equation}
+r_0(\beta)=\tfrac12a_0\bigl(1-O(u)\bigr)\ \ge\ \tfrac12(2N)^{-2}>0,
+\qquad \inf_L A^{dressed}(L)\ \ge\ \tfrac14(2N)^{-2},
+\qquad a_0=(2N)^{-p}s\quad(s\in\mathbb{Z}_{\ge1}).
+\label{eq:r0}
+\end{equation}
+其中 $a_0$ 是\textbf{β-无关的纯数}（$p$ 见下文：算子系数指数，归一化 $\mathrm{A}_{1g}$ 上 $p=0$）。
+\textbf{洞 E 的裁决（\codep{Z10-HOLEE.md} \S0）}：$p$ 是\textbf{算子系数指数}（归一化 $\mathrm{A}_{1g}$ plaquette 上 $p=0$，故 $u^p\equiv1$），
+\textbf{不是} $u$ 的幂；$u$ 只活在修正因子 $(1-O(u))$ 里（\codep{W1B:189} 逐字 $f_1^2=a_0(1-cu+\cdots)$）。
+把 $u$ 抬成 $a_0$ 上的幂，正是洞 E 的表面成因；正确式是 \eqref{eq:r0}，$r_0$ \textbf{β-无关}。
+\src{\codep{Z10-HOLEE.md:18--24,:67--68}；\codep{P3-DRESSED-MASS.md:119,:122,:124--125}；\codep{P3-AUDIT-CORRECTED.md:87}（"\codep{p=0} for the normalized A1g plaquette"）；\codep{U07-CPSTRONG.md:47--55}。}
+
+\LM{} 审计记账：$p$ 的取值在三处旧文件里不齐（\codep{ch05:28} 写 "the corpus uses $p\ge1$"；\codep{PROOF-P3:31} 只写 $u^p$；
+\codep{P3-AUDIT-CORRECTED.md:87} 在归一化 $\mathrm{A}_{1g}$ plaquette 上写 $p=0$）。洞 E 定案后一律取 $p=0$，$u^p$ 的写法作废。
+\src{\codep{Z10-HOLEE.md:53--58}；\codep{U07-CPSTRONG.md:50--51}。}
+
+\subsection{$u$ 的定义：一处必须改的勘误}
+
+链上所有率都写成 $u$ 的函数，故 $u$ 必须先钉死：\textbf{$u:=c_f(\beta)/N=\beta/(2N^2)+O(\beta^3)$}（每 plaquette 一个 $c_f$，每 link 一个 $1/N$）。\LT{}（洞 A）
+\src{\codep{X01-L1C.md:15--16}：\codep{P3-DRESSED-MASS:28} 写 $u:=c_f(\beta)\in(0,1)$ 与同文件 \codep{:35} 的 $w(B_T)=a_0u^{4T}$
+（$a_0$ 必须 $T$-无关）不相容；只有 $u=c_f/N$ 让 $a_0\ge(2N)^{-2}$ 与 $T$ 无关。数值交叉核：$\mathrm{SU}(2)$、$\beta_W=1/12$ $\Rightarrow$
+$u=0.0104=\beta_W/(2N^2)$（\codep{BETA-CONVENTION.md:187}）。}
+
+\subsection{$\beta<0.018394$ 的三层来源（必须分开）}
+
+\begin{enumerate}[label=(\alph*)]
+\item \textbf{真前提}是 KP/Ursell 收敛 $\bar u=e\Delta\,N\,u<1$（$\Delta=20$、$e\Delta=54.3656$、每片权重比 $N$；全表示 KP 的 $uK_{\mathrm{KP}}<1$ 单独一条）。\LT
+\item \textbf{$1/48$ 不是从 KP 解出来的}：\codep{P3-FULLREP-KP.md:124} 逐字说 KP 半径是 $O(1)$、$N$-无关，
+与 Shen--Zhu--Zhu 的 $\beta<1/48$ 相容；若做 Hooft 重标度则读作 $O(1/N)$。故 $1/48$ 是\textbf{借用半径}（SZZ 的 \textbf{LSI 半径}），
+常数未化成十进制。\LM
+\item \textbf{$1/48$ 的语义是方法半径}，不是谱墙（\codep{docs/paper-v2/ch05-theorems.tex:79--84}）。\LT
+\item \textbf{按已证常数的数值}（\codep{F07-ADJCBAR.md} \S4）：
+\[
+\bar u<1\ \Longleftrightarrow\ \beta<\frac{2N^2}{\bar C\,e\Delta}=\frac{2N}{e\Delta}=0.018394=0.8829\times(1/48)\quad(N=2),
+\]
+无约定精确 $\mathrm{SU}(2)$ 给 $0.0735925$（$\langle\tfrac1N\operatorname{tr}U\rangle\cdot e\Delta=1.1323$，两种独立算法相差 $0.02\%$）。
+$\Rightarrow$ \textbf{窗口 $\beta<0.018394$}。另：$1/48$ 是 Shen--Zhu--Zhu 的 \textbf{LSI 半径}（借用的方法半径），\textbf{不是谱墙}，且它已落在本窗之外。\LT{}（算术）$+$\LE{}（数值）
+\item \textbf{$\hat C$ 的记账（已由 \code{m07} 裁决）}：判据对 $\gamma$ 求和 $\Rightarrow$ 需逐 $\gamma$ 的率，$\sup$ 取到（立方体 $(2^{12})^{1/6}=4$，$1024/1024$；$4000$ 个随机闭复形 $\le4$），
+而 "$2$" 只在每个 $\kappa=2$ 的 link 上出现（$E_2/F=2\Rightarrow2^2=4$）$\Rightarrow$ \textbf{$\hat C=4$ [T+E]}；归一条件 $u=\beta/(2N^2)$ 同时定死 $\bar C\equiv c_f/u=N=2$。
+$\Rightarrow$ $\hat C\cdot\bar C=8>7.0633$ $\Rightarrow$ \textbf{唯一窗口 $\beta<0.018394=0.8829\times\tfrac1{48}$}（\codep{M07-WINDOW2.md} \S3--\S5）。
+\emph{Earlier printed values ($1/48$, $1.766\times1/48$, $3.532\times1/48$, $0.1472$) came from inconsistent conventions ($\hat C\in\{1,2\}$, $\bar C\in\{1,N\}$) and are superseded.}\LM
+\end{enumerate}
+\src{\codep{F07-ADJCBAR.md} \S0 判词 7、\S4 表；\codep{U07-CPSTRONG.md:57--64}；\codep{P3-FULLREP-KP.md:90}（$\lambda_a\Phi(0)=e\Delta\beta<1$ 的语料判据）；Shen--Zhu--Zhu, \emph{CMP} \textbf{400} (2023) 805, arXiv:2204.12737（语料内已核过的转引；
+该文证 LSI/Poincaré/指数聚类，不含残数与 KP 全表示估计）。}
+\subsection{$\bar C\equiv N$：\textbf{已证值}，不是未知常数}\label{sec:cbar}
+
+旧的记账把两个乘子并列：
+\[
+|\varphi^U(\Gamma)|\ \le\ \bar C^{\,|\Gamma|}u^{|\Gamma|}
+\quad\text{（Ursell 树图界）},\qquad
+\#\{\text{动物} \ni x\}\ \le\ (e\Delta)^{|\Gamma|}
+\quad\Longrightarrow\quad
+\bar u=e\Delta\cdot\bar C\cdot u ,
+\]
+可证的 $\bar C\le\Delta=20$ 曾把 $\bar u\le1087u$、窗口压到 $1.84\times10^{-3}$。第三次裁决（\code{F07-ADJCBAR.md}）把这个乘子\textbf{钉成恒等值}：
+
+\begin{keybox}
+\textbf{三步，全部已证}.\LT
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{$e\Delta$ 已含动物计数}：$e$ = 标号树/片（Cayley $(n^{n-2}/n!)^{1/n}\to e$），$\Delta$ = 邻接槽位（$=4(6-1)=20$，实测 $\deg=20$）
+$\Rightarrow$ 过定点树（$=$动物）计数率\textbf{一笔}；\code{P3-FULLREP-KP:89} 逐字 $\lambda_a=e\Delta$。
+故 \code{a01} 的再乘 $\Delta$ 是\textbf{重复计账}。
+\item \textbf{每片权重比 $=N$（恒等，不是估计）}：cube 与 4-壁管上 link 关联度全 $=2$、定向相反 $\Rightarrow\prod\mathrm{mult}(1\in f\otimes\bar f)=1$
+$\Rightarrow$ $|w|^{1/n}/u=c_f/u=N$（$c_f=\beta/(2N)$；$n=6,4,8,12$ 实测 $2.0000$）。
+$\mathrm{SU}(2)$ 精确核对：$\langle\tfrac1N\operatorname{tr}U_p\rangle=0.0208273$（$\beta=1/12$）$\approx c_f=\beta/(2N)=0.0208333$（差 $0.03\%$）。
+全表示 sharp 版：$\Phi(0)/u=2N^2$（$f$、$\bar f$ 各 $\beta/2$）。
+\item $\Rightarrow$ \textbf{$\bar C\equiv N$}，$\bar u=e\Delta\,N\,u$；$\beta=1/12$ 处 $\bar u=1.132617>1$ $\Rightarrow$ \textbf{判据不成立，$\beta=1/12$ 不在窗内}。
+\end{enumerate}
+\end{keybox}
+
+\textbf{所以 $\bar C$ 不是"被消掉"，而是"被算出来"}：它\textbf{恰为 $N$}（sharp；旧的可证上界是\textbf{不等式}且更松，这里是\textbf{等式}）。
+\code{a01} 的 $20$ 与 \code{c05} 的 $2N^2$ 是\textbf{同名不同物}（树因子 vs 权重比）——此前四路"冲突"的一半由此而来。
+
+\paragraph{数值（换到窗内的一点）}：$\beta=1/48$、$\hat C=2$（精确局部值）$\Rightarrow$ $\hat C\bar C\,e\Delta u=0.56631<1$、
+$\delta\cdot a=\ln(1/0.56631)=0.56862>0$；若取逐 plaquette 包络 $\hat C=4$，该点越界（$1.1326>1$），须退到 $\beta=1/96$。\LE
+\src{\code{F07-ADJCBAR.md} \S0 判词 3--7、\S4 表；\code{Z12-FIXC.md:139--149}（$\hat C$ 的精确值/包络）；\code{BETA-CONVENTION.md:187}。}
+
+\begin{quotebox}
+\footnotesize
+An earlier route claiming $\bar C=1$ (tree absorbs animals) was refuted by hand at $n=3$ (\code{C07-AUDIT}); another claiming $\bar C$ disappears was refuted by the correct input $c_f/u=N$ (\code{F07}).
+
+\upshape\footnotesize 两条旧路线为何都不成立：
+\textbf{(a) 求和级 $\bar C=1$ 的恒等式是假的}——$\sum_{\Gamma\ni x}\tau(G_\Gamma)a^\Gamma=\sum_{T\ni x}a^T$ 在 $n=3$ 就有反例
+（手算：左 $-$ 右 $=3a_0a_1a_2$；正确式带 $\prod_{e\notin T}(1+a_e)$，\code{C07-AUDIT.md:12,:41--43}）；
+\textbf{(b) "$\bar C$ 消失"的输入是错的}——\code{c03} 的 $|w_p|\le u$ 差一个因子 $N$，正确输入是 $|w|^{1/n}/u=c_f/u=N$
+$\Rightarrow$ $x=e\Delta Nu=1.1326>1$，那条直接界在 $\beta=1/12$ 不成立（\code{F07-ADJCBAR.md} \S1.4）。
+两者都只作为\textbf{历史}保留，不再承重。
+\end{quotebox}
+
+\textbf{$[KL]$ 不需要消}：它\textbf{已证}（\code{P3-CYLINDER-RESIDUE.md:67--69}：$\nu_L\ge0$ 是 OS 反射正 + 紧算子谱定理），
+故 $I1$ 的未知常数清单现在是\textbf{空的}（$\bar C\equiv N$ 已算，$e\Delta$ 已证，$\hat C\in\{2,4\}$ 已证）。
+
+
+\subsection{并记：总册的降级记录（历史，已被第三次裁决 F07 收口）}
+
+环 1 在语料里\textbf{同时存在三代标签}，本文并列而非合并。
+
+\begin{quotebox}
+\textbf{\codep{docs/YANG-MILLS-MASTER.md:42}（逐字节引）.}
+``2026-11-24 审计更正：\codep{PROOF-P3-UNCONDITIONAL.md} 曾称 KP 引理"完整写出并闭合"：
+\textbf{不成立}。最小管道几何应为 $m_1=4\ln(1/u)/a$（四壁管道，非"每片 1 个"；factor-4，Gupta \S14.2.2 / Münster）、
+全表示 KP 未控、dressed-mass 重求和未证。
+\textbf{残数结论 $f_1^2>0$ 存活}（因子 4 只重标定质量），但证明\textbf{不完整} $\Rightarrow$ P3 标 \textbf{[条件/待重证]}，不再是 [T]。''
+\end{quotebox}
+
+\textbf{怎么读这条记录（历史，不承重）。} 它撤掉的是\textbf{旧版}（2026-11-23）的过度声明，并把总册的记账从 \LT{} 改成"[条件/待重证]"。
+\codep{PROOF-P3-UNCONDITIONAL.md:3--8} 记载：2026-11-24 四份并行重推把上述五个缺口逐个关掉
+（\codep{P3-CYLINDER-RESIDUE} 关缺口 4、5；\codep{P3-FOURWALL-DERIVATION} 关缺口 1；\codep{P3-FULLREP-KP} 关缺口 2；
+\codep{P3-DRESSED-MASS} 关缺口 3），文件因此改称"correction assembled"。\LM
+
+\begin{keybox}
+\textbf{三代裁决，逐字并列（不合并、不删）}.\par\smallskip
+第一代（\codep{Y06-P3DOWN.md:124--125}，逐字）："$\Rightarrow$ \textbf{第一环 $I1$ = $[C]$}"；"$I2$ 路径在 $[C]$ 级闭合——不是 $[T]$ 级"。
+\par\smallskip
+第二代（\textbf{已撤回}）：曾以"$\bar C$ 可被消掉"作理由（一读求和级 $\bar C=1$，一读 $\bar C$ 根本不出场）。
+这两条读法随后都被否证：求和级恒等式在 $n=3$ 是假的（\codep{C07-AUDIT}），c03 的输入 $|w_p|\le u$ 差因子 $N$（\codep{F07-ADJCBAR.md} \S1.4）。
+\par\smallskip
+第三代（第三次裁决 F07，现行）：\textbf{$I1$ = \LT{}，$\bar C\equiv N$（已证值）}。理由是五洞 A--E 全部关闭（\S\ref{sec:holes}）、
+$\bar C$ 被算成恰为 $N$（\S\ref{sec:cbar}）、$[KL]$ 已证（\codep{P3-CYLINDER-RESIDUE.md:67--69}）。前两代作为\textbf{历史记账}保留，不再承重。
+\par\smallskip
+\textbf{等级句（逐字）.} \textbf{$I1$ = \LT{}，五个洞 A--E 全部关闭，$\bar C\equiv N$（已证），窗口 $\beta<0.018394$。}
+\end{keybox}
+
+\subsection{这一环的确切范围（三个"不"）}
+
+(i) 固定 $a$，不取连续极限；(ii) 柱面 $\mathcal{C}_L=T^3_L\times\mathbb{R}$，不是 $T^4_L$；
+(iii) 不取 $L\to\infty$，$L$ 只作一致性轴。\LT{}（范围句）
+\src{\codep{PROOF-P3-UNCONDITIONAL.md:16,:32}。}
+
+\LM{} 记账（勘误级）：\codep{IMP-ARROWS.md:69} 行 17 与 \codep{docs/paper-v2/ch05-theorems.tex:531} 的表把平台写成 $T^4_L$，
+与柱面陈述不符；\codep{T02-F1SQ.md:67} 已记账，本文一律用 $\mathcal{C}_L$。
+\src{\codep{U07-CPSTRONG.md:76--77}。}
+
+\subsection{为什么这一环不再重证（零新地盘）}
+
+环 1 已是 $I1$ 的完整链，再打它不产生新地盘：在 $(a$ 固定$)$、$\beta<0.018394$ 内这条链闭合，代价是那儿的\textbf{隙}早已被
+OS'78 / SZZ'23 独立证过 $\Rightarrow$ 残数是唯一还属于强耦合方法自己的东西。故本文\textbf{不再}把"搬运"（$\beta=2.5$）当作靶
+（扩窗自我否定，\S\ref{sec:transport-withdrawn}）；残余缺口写成\textbf{(E-I2)}：$\exists\,\delta,c>0$ 使 $\inf_{L,a}(\Lambda_\star-m_1^2)\ge\delta$、$\inf_L m_1^2\ge c$（C5 的量词形），
+本文没有一条 \LT{} 结论以它为条件。早先的 $\Delta_0>0$ 命名\textbf{已撤回}（\codep{N12-VERDICT.md}：$\Delta_0$ 在 $G''$ 槽、$\Lambda_\star$ 在 $\nu$ 槽，$H1\not\Rightarrow I2$；且 $\Delta_0>0$ 在四模型上 3/4 败——2D YM $\Delta_{\mathrm{dyn}}=-W_{\mathrm{full}}<0$、M6 无隙却过、单 plaquette $-0.0691$）。\LM
+\src{\codep{U07-CPSTRONG.md:119--120,:141--142}（逐字引 \codep{IMP-ARROWS.md:135}："链 II 在 $(a$ 固定, $\beta<1/48)$ 内闭合$\cdots$零新地盘"）；
+\codep{Y02-CHANNELS.md:16--20}（$m>0$ 在强耦合窗不依赖 P3，OS'78 的全观测量聚类已逐道给下界）；\codep{G05-BETAOFa.md} \S3.2。}
+
+同理，$(CP)=[CP\text{-}a]\wedge[CP\text{-}b]=I1\wedge I2$（\codep{DF-CONTINUITY.md:39}），故"强耦合侧的 $(CP)$ 有基础"现在读到
+"$I1$ 与 $I2$ 都有证书"；\textbf{(E-I2) 仍不是定理}（$\beta=2.5$ 侧不是本文的靶，同上节）。\LT/\LC
+\src{\codep{U07-CPSTRONG.md:118--120}。}

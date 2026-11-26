@@ -1,0 +1,58 @@
+==============================================================================
+A.  ANALYTIC `Z_O` between beta_eff = 1/48 and beta_tgt = 2.5   (SU(2), N=2)
+==============================================================================
+  b0 = 11N/(48 pi^2) = 0.046439    b1 = 1.817934e-03
+  g^2(1/48) = 2N/beta = 192.000     g^2(2.5) = 1.6000
+  1-loop anomalous dimension at the target bare coupling:
+    gamma_O = 2 b0 g^2(2.5) = 0.1486    [at 1/48: 17.83]
+  2-loop scaling: a(1/48)/a(2.5) = mu_tgt/mu_eff = 105.1
+
+  scheme        Z_O        Z_O^2      note
+  --------------------------------------------------------------------------
+  tree           120.000    1.440e+04   g^2(1/48)/g^2(2.5) = 192/1.6
+  1-loop          84.016    7.059e+03   g^2(mu0) run to 1/a(2.5), ln-ratio
+  power(not Z) 1.351e+12    1.826e+24   dim-6 residue ratio^6 (R1 s3; NOT Z_O)
+  spread: Z_O^2(tree)/Z_O^2(1-loop) = 2.04  -- the VALUE is not a datum (scheme-dependent)
+  Z_O > 0 in both genuine schemes: True   [T] ratio of like-signed anomaly coefficients, beta_YM<0, g>0
+
+  exact 1-loop identity: Z_O - 1 = 2 b0 g^2(mu0) ln(mu/mu0) = 83.016   => Z_O = 1 + O(g^2)
+  lattice tree reading: Z_O = g^2(mu0)/g^2(mu) = beta(mu)/beta(mu0) = 120  (linear in beta)
+
+==============================================================================
+B.  L=2, SU(2): what one (L,beta) point measures  -- and why it is NOT Z_O
+==============================================================================
+  [check 1] staple vs exact dS (beta=2.5, L=2): max |err| = 4.62e-14   -> the sampler targets the Wilson action
+  [check 2] beta=0.1 : <P> = 0.02803 +- 0.00179   exact 1st order beta/4 = 0.02500   (+1.69 sigma)
+  [check 3] beta=2.5 : <P> = 0.6723 +- 0.0004   (ordered, as it must be at g^2=1.6 on 2^4)
+
+  beta      <P>        <O>a^4 = 1-<P>     ln(O)
+  2.30   0.63794     0.36206        -1.01595
+  2.40   0.65728     0.34272        -1.07084
+  2.50   0.67306     0.32694        -1.11799
+  2.60   0.68809     0.31191        -1.16505
+  2.70   0.70197     0.29803        -1.21056
+  local slope d ln<O>/d beta at beta=2.5 : -0.471
+  2-loop: d ln a/d beta = -2.523  =>  d beta/d ln a = -0.396
+  MEASURED scaling dimension  d ln<O>a^4/d ln a = +0.19
+  expected if O had its canonical dim and 1-loop anomalous dim:
+    d = 4 + 2 b0 g^2(2.5) = 4.149   (canonical 4.000)
+  => the L=2, beta=2.5 point reproduces NEITHER 4 nor 4+2b0g^2 (off by a factor 21.4) -> outside any scaling window
+
+  Single-point content of L=2, beta=2.5:
+    <O>a^4 = 0.3277   (one number; no second scale, no Z_O)
+    Z_O is by definition a RATIO of the anomaly coefficient at TWO scales
+    (INVENT-TRANSPORT-INEQ L10) -> it is not a function of (L, beta) at all.
+    What a beta-FAMILY measures is gamma_O = -dln(beta_YM/2g)/dln mu, i.e. the
+    integrand of Z_O; on L=2 at beta=2.5 the integrand is not in scaling.
+
+  ACID TEST (transport):  f1^2 -> Z_O^2 f1^2  is a homomorphism, 0 -> 0.
+    f1^2(mu0) =   0.0000 -> tree     0.0000 | 1-loop     0.0000 | power    0.000e+00
+    f1^2(mu0) =   0.0010 -> tree    14.4000 | 1-loop     7.0587 | power    1.826e+21
+    => the free field (f1^2 = 0) rides to 0 under every Z_O: transport cannot
+       manufacture weight; only the SIGN survives the scheme change.
+
+[done in 98.2 s]  verdict:  Z_O defined [T] (INVENT L10 / ch06 L34-36);
+Z_O > 0 [T] (ratio of like-signed anomaly coefficients; Z_O^2 a square);  value =
+scheme-dependent (tree 120 vs 1-loop 84.0, Z_O^2 1.44e4 vs 7.06e3);  NOT measurable at
+(L=2, SU(2), beta=2.5) -- Z_O needs two scales; the missing link of t02 is Omega/(CP),
+not Z_O>0; and Z_O is finite and nonzero as a->0 at fixed physical scales => not (c).

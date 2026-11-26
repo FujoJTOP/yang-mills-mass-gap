@@ -1,0 +1,54 @@
+[1] free massless field — Δ_dyn = E[H] − Var(G)
+    L= 4 k= 0  E[H]=0.0000000000  Var(G)=0.0000000000  Δ_dyn=+0.00e+00
+    L= 4 k= 1  E[H]=2.0000000000  Var(G)=2.0000000000  Δ_dyn=-4.44e-16
+    L= 4 k= 2  E[H]=4.0000000000  Var(G)=4.0000000000  Δ_dyn=-8.88e-16
+    L=16 k=14  E[H]=0.5857864376  Var(G)=0.5857864376  Δ_dyn=-1.11e-16
+    L=16 k=15  E[H]=0.1522409350  Var(G)=0.1522409350  Δ_dyn=-5.55e-17
+    max |Δ_dyn| over 28 (L,k) = 3.11e-15   ⇒ Δ_dyn ≡ 0  [exact identity]
+    m = 0  (massless)
+[2] 2D YM — constant holonomy mode (every plaquette = 1)
+    A₁=0.00  plaquette=+0.00e+00  ∂S_W=+0.00e+00  ∂²S_W=-4.44e-06
+    A₁=0.70  plaquette=+0.00e+00  ∂S_W=-1.11e-11  ∂²S_W=+2.22e-06
+    A₁=2.60  plaquette=+3.33e-16  ∂S_W=+0.00e+00  ∂²S_W=-6.66e-06
+    ⇒ S_W ≡ 0, G=H=0 ⇒ Δ_dyn = 0 exactly;  m = (g²/2)C₂ = 0.375000 (g²=1)
+    ⇒ 2D: Δ_dyn = 0  and  m = 0.3750 > 0   (necessity fails here, sufficiency untouched)
+[3] M6 (0+1): a-mode Gaussian ⊗ b-mode free rotor
+    L=   8  λ₁(a)=2.000000  λ₁(b)=3.084e-01  m_L=min=3.084e-01
+    L=  16  λ₁(a)=2.000000  λ₁(b)=7.711e-02  m_L=min=7.711e-02
+    L=  64  λ₁(a)=2.000000  λ₁(b)=4.819e-03  m_L=min=4.819e-03
+    L= 256  λ₁(a)=2.000000  λ₁(b)=3.012e-04  m_L=min=3.012e-04
+    L=1024  λ₁(a)=2.000000  λ₁(b)=1.882e-05  m_L=min=1.882e-05
+    ⇒ Δ_dyn(a) = 2ω = 2.0000 (per-mode, L-independent);  Δ_dyn(b) = 0
+    ⇒ inf_v Δ_dyn = 0  (∀v reading);  m = 0 (L→∞)
+[4] single plaquette (β=2.5) — TWO chart conventions, row is chart-dependent
+    chart A (radial SU(2), sin²r dr, S=β(1−cos r)): ⅓E[f'']=+0.422663 ⅔E[f'/r]=+1.373151 ⅓E[f'²]=+1.267988
+                                                   Δ_dyn = +0.527826
+    chart B (x∈R³, U=e^{ix·σ/2}, sin²(r/2)dr, S=β(1−cos r/2)): Δ_dyn = -0.133255
+    (n02 archived printed value +0.589671 — convention NOT reproduced here: residual 10–13%)
+    ⇒ sign is chart-dependent (+0.528 vs -0.133) and m is undefined:
+      this row can be neither witness nor counterexample ⇒ excluded from the gate.
+    β=0: both charts give Δ_dyn = 0 exactly (f'≡0) ✔ (matches n02)
+[5] H1 on the four models — reading audit (∃Δ₀>0 per model, uniform in (L,a))
+    model            Δ_dyn     H1(≥,weak)  H1(>,strict)   m        (H1 true & m=0) ?
+    free field       +0.0000        F            F         0.0000   no/no
+    2D YM            +0.0000        F            F         0.3750   no/no
+    M6 (∀v)          +0.0000        F            F         0.0000   no/no
+    M6 (per-mode a)  +2.0000        T            T         0.0000   YES/YES
+    single plaquette +0.5278      —            —           undef    excluded
+    rows with Δ_dyn>0 (⇒ H1 true): 1 — ONLY the 'M6 per-mode a' row
+    rows with H1 true AND m=0    : 1 — that same row ⇒ counterexample to H1 ⇒ m>0
+    rows with H1 true AND m>0    : 0 — 2D has m>0 but its H1 is FALSE (Δ_dyn=0 exact)
+    (H1 true AND m=0)  ⇒ per-mode reading instantiates it on M6 (2ω>0, m=0)
+    ⇒ ∀v reading: implication instantiated 0× ⇒ 'self-consistent' only VACUOUSLY
+    ⇒ per-mode   : 1 counterexample (M6) ⇒ sufficiency broken
+
+[6] verdict
+    2D: Δ_dyn=0 exactly while m=3g²/8>0 ⇒ H1 FALSE with m>0 ⇒
+        antecedent false ⇒ 2D is NOT a counterexample to H1 ⇒ m>0 (sufficiency);
+        it refutes only the CONVERSE (m>0 ⇒ H1), i.e. necessity/equivalence.  [T]
+    H1 is (at most) a SUFFICIENT candidate; the four models give it ZERO instantiations
+    except M6 per-mode, which is a counterexample.  Independent [T] kill:
+    thin atom (H1-FINAL.md:18, S10-IFTRIVIAL.md:91, Lean H1_does_not_imply_atom).
+    ⇒ verdict (b): not self-consistent; the joint breaks at M6, not at 2D.
+
+log-copy of the above is written by the caller

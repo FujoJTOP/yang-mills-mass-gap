@@ -1,0 +1,93 @@
+D:\Dev\math\w7\rat1_bounds.py:1: SyntaxWarning: invalid escape sequence '\{'
+  """
+RAT1 - local-ratio lemma a_{n+1} <= 48 a_n, 4D plaquette graph, Delta=20
+==============================================================================
+  level n=2: 20 animals
+  level n=3: 458 animals
+  level n=4: 11132 animals
+  level n=5: 280175 animals
+a_n = [1, 20, 458, 11132, 280175]   (corpus [1, 20, 458, 11132, 280175]) match=True   [0.3s]
+
+[1] boundary b(A) = #growth positions, exact over ALL animals
+ n      a_n  min b    mean b  max b  max/n      sum b  #b<=48   #b>48  maxb-(14n+6)
+ 1        1     20   20.0000     20  20.00         20       1       0             0
+ 2       20     32   32.4000     34  17.00        648      20       0             0
+ 3      458     39   44.0437     48  16.00      20172     458       0             0
+ 4    11132     46   55.3719     62  15.50     616400      32   11100             0
+ 5   280175     49   66.5286     76  15.20   18639660       0  280175             0
+
+  law check: max b(n) - (14n+6) -- (14 = Delta - 6 = 20 - 2(d-1), d=4)
+  max b/n  = ['20.000', '17.000', '16.000', '15.500', '15.200']
+  min b/n  = ['20.000', '16.000', '13.000', '11.500', '9.800']
+
+  argmax sets (n, #argmax, #edges of an argmax set, b):
+    n=1: #argmax=     1  edges=0  b=20  (tree would have 0 edges)
+    n=2: #argmax=     4  edges=1  b=34  (tree would have 1 edges)
+    n=3: #argmax=     6  edges=2  b=48  (tree would have 2 edges)
+    n=4: #argmax=     8  edges=3  b=62  (tree would have 3 edges)
+    n=5: #argmax=    10  edges=4  b=76  (tree would have 4 edges)
+
+[2] identity sum_{A_n} b = sum_{A_{n+1}} m   =>   a_{n+1}/a_n = mean b / mean m
+ n  sum_b(A_n)  sum_m(A_n+1)   mean m  ratio a_n+1/a_n  mean_b/mean_m
+ 1          20            20  1.00000          20.0000        20.0000  OK
+ 2         648           648  1.41485          22.9000        22.9000  OK
+ 3       20172         20172  1.81207          24.3057        24.3057  OK
+ 4      616400        616400  2.20005          25.1684        25.1684  OK
+    mean m(A_6) = sum_b(A_5)/a_6 = 18639660/7218768 = 2.58211  [a_6 from UR4, [E]]
+    ratio a_6/a_5 = 25.7652 = mean b(A_5)/mean m(A_6) = 66.5286/2.5821
+
+[3] the lemma  a_{n+1} <= 48 a_n  on data
+ n  a_n+1/a_n   <=48? slack 48/ratio  48*m_mean - mean_b
+ 1    20.0000    True         2.4000             47.9127
+ 2    22.9000    True         2.0961             54.5795
+ 3    24.3057    True         1.9748             61.5589
+ 4    25.1684    True         1.9072             68.5694
+
+[4] provable 'one-deletion' envelope:  a_{n+1} <= B_eff(n) * a_n
+    per-set: b(A) <= Delta*n = 20n ;  with the identity: mean b(A_n) = B_eff
+ n   20n   mean b  min(20n,mean b)  n with 20n<=48
+ 1    20  20.0000          20.0000
+ 2    40  32.4000          32.4000
+ 3    60  44.0437          44.0437
+ 4    80  55.3719          55.3719
+ 5   100  66.5286          66.5286
+    20n <= 48  <=>  n <= 2 ;   mean b <= 48  <=>  n <= 3.37 (measured)
+    min(20n, mean b) at n=5 = 66.5286  (>> 48)
+    worst case  max_A b(A) <= 48  <=>  n <= 3      (max b = 20,34,48,62,76)
+
+[5] 48 = 8 x 6 : what are 8 and 6 ?
+    d = 4
+    8 = 2d            = 8       (site link-degree: links at a site)
+    6 = 2(d-1)        = 6       (plaquettes through one link)
+    Delta = 4*(6-1)   = 20      (plaquettes adjacent to one plaquette)
+    => 48 = (links/site) x (plaquettes/link) = 48 : a SITE-link-plaquette incidence count
+    boundary increment of the extremal family: Delta - 6 = 14  (6 = plaquettes through the shared link, already boundary via the parent)
+    max b(3) = 48 = (Delta-6)*3 + 6 = 48  -> 48 is the n=3 extreme, not a constant
+    other decompositions: 48 = 2*Delta+8 = 48 ; 48/Delta = 2.4
+
+[6] tree envelope  L_t(D) = D^D/(D-1)^(D-1)  (proven: lambda_* <= L_t(Delta) = e*Delta)
+    L_t(17) = 44.8447844552321975989729076206
+    L_t(18) = 47.5634587532959731646347428099
+    L_t(19) = 50.2820906008560238796321500140
+    L_t(20) = 53.0006865328088981452653522586
+    D_eff with L_t(D_eff) = 48 :  D_eff = 18.1605728904779274526876717014
+    e*Delta = 54.3656365691809047072057494270 ;  e*Delta/48 = 1.13261742852460218140011977973
+
+[7] explicit families on the infinite lattice (exact boundary, no torus)
+  n  chain b    b/n | plate kxk b    b/n |  tube b | 2 x n slab
+  1       20  20.00 |          20  20.00 |      20 |          -
+  2       34  17.00 |           -      - |      34 |         36
+  3       48  16.00 |           -      - |      44 |          -
+  4       62  15.50 |          56  14.00 |      54 |         61
+  5       76  15.20 |           -      - |      60 |          -
+  6       90  15.00 |           -      - |      66 |         86
+  7      104  14.86 |           -      - |       0 |          -
+  8      118  14.75 |           -      - |       0 |        111
+  9      132  14.67 |         108  12.00 |       0 |          -
+ 10      146  14.60 |           -      - |       0 |        136
+ 11      160  14.55 |           -      - |       0 |          -
+ 12      174  14.50 |           -      - |       0 |        161
+    plate 4x4 (n=16): 176  b/n = 11.0
+    => sup_n max_A b(A) = infinity  (both families are linear with slope ~14-16)
+
+total 4.7s

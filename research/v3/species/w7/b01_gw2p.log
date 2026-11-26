@@ -1,0 +1,25 @@
+================================================================================================
+B01  SU(2) Wilson  w1(raw) vs beta   Ls=8^3 x Lt=12   operator = run1/run3 lev0 (unchanged)
+m = 1.546 fixed ; w1 = A/C0 ; errors = 20-block delete-one jackknife ; numba=0.68.1 threads=8
+target N = 12000/point ; gap,therm scale with beta ; strictly sequential (one process)
+================================================================================================
+
+--- beta = 2.2  N = 12000 (8 x 1500)  gap = 6  therm = 1200   (t+0s)
+[E] 12000 cfg in 57.5s (208.5 cfg/s, 1251 sweeps/s)  compile 0.9s  tau_int: plaq 0.9, S(0) 0.6 cfg
+[E] <1/2 Re tr U_p> = 0.56927 +- 0.00003
+[E] C1/C0 = 0.12654 +- 0.00299 ; C2/C0 = 0.02406 +- 0.00271 ; S/N(2) = 8.9
+[E] m_fit = 1.690 ; w1(m=1.546) = 0.5904 +- 0.0138  S/N = 42.8 ; w1_fit = 0.6859 +- 0.0851
+
+--- beta = 2.75  N = 12000 (8 x 1500)  gap = 6  therm = 1200   (t+59s)
+[E] 12000 cfg in 63.3s (189.5 cfg/s, 1137 sweeps/s)  compile 0.1s  tau_int: plaq 0.6, S(0) 0.6 cfg
+[E] <1/2 Re tr U_p> = 0.69277 +- 0.00002
+[E] C1/C0 = 0.05515 +- 0.00256 ; C2/C0 = 0.00342 +- 0.00273 ; S/N(2) = 1.3
+[E] m_fit = 2.706 ; w1(m=1.546) = 0.2507 +- 0.0123  S/N = 20.4 ; w1_fit = 0.8255 +- 0.7352
+
+================================================================================================
+ beta       N    <plaq>   tau     C1/C0     C2/C0  m_fit       w1      +-   S/N  >0?      s
+  2.2   12000   0.56927   0.9   0.12654   0.02406  1.690   0.5904  0.0138  42.8  yes   57.5
+  2.8   12000   0.69277   0.6   0.05515   0.00342  2.706   0.2507  0.0123  20.4  yes   63.3
+
+[check] <plaq> strictly increasing in beta (3 sigma step): PASS
+[wall] total 124s

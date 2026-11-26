@@ -1,0 +1,162 @@
+====================================================================================
+BLOCK 1  structural / resource (no MC)
+====================================================================================
+lattice 4 x 4^3 = 256 sites, 1024 links, SU(2) 3 d.o.f./link = 3072 real d.o.f.
+basis: 6 0++ operators  ->  GEVP matrices 6x6 = 9.2 kB per configuration set (nothing)
+
+[T] criterion boundary is kinematic, not dynamic: if the 2nd 0++ level is the
+    two-glueball cut, then m2 = 2 m1 EXACTLY, hence rho^2 = 4 EXACTLY.
+    So rho^2 <= 4 is satisfied *with equality* by a NON-atomic second level:
+    a measurement returning rho^2 = 4.0 +- s cannot separate 'atom just below
+    the cut' from 'the cut'.  Only m2 < 2m1 by >> s is evidence for an atom.
+    => the L=4 verdict hinges on resolving m2 vs 2m1, i.e. on Delta = (rho^2-1)mu1,
+       not on rho^2 itself (atom3: Delta=(rho^2-1)mu1 is the load-bearing object).
+
+[bench] therm 300 sw = 1.6s ; sweep = 7.1 ms ; measure = 10.9 ms ; per config (gap=2) = 25 ms
+[bench] budget 400s => n = 8000 configs (requested 8000), estimated 201s
+
+    ... 100/8000 configs  [2s, 21 ms/cfg]
+    ... 200/8000 configs  [4s, 21 ms/cfg]
+    ... 300/8000 configs  [6s, 21 ms/cfg]
+    ... 400/8000 configs  [8s, 21 ms/cfg]
+    ... 500/8000 configs  [10s, 21 ms/cfg]
+    ... 600/8000 configs  [12s, 21 ms/cfg]
+    ... 700/8000 configs  [15s, 21 ms/cfg]
+    ... 800/8000 configs  [17s, 21 ms/cfg]
+    ... 900/8000 configs  [19s, 21 ms/cfg]
+    ... 1000/8000 configs  [21s, 21 ms/cfg]
+    ... 1100/8000 configs  [23s, 21 ms/cfg]
+    ... 1200/8000 configs  [25s, 21 ms/cfg]
+    ... 1300/8000 configs  [27s, 21 ms/cfg]
+    ... 1400/8000 configs  [29s, 21 ms/cfg]
+    ... 1500/8000 configs  [31s, 21 ms/cfg]
+    ... 1600/8000 configs  [33s, 21 ms/cfg]
+    ... 1700/8000 configs  [35s, 21 ms/cfg]
+    ... 1800/8000 configs  [38s, 21 ms/cfg]
+    ... 1900/8000 configs  [40s, 21 ms/cfg]
+    ... 2000/8000 configs  [42s, 21 ms/cfg]
+    ... 2100/8000 configs  [44s, 21 ms/cfg]
+    ... 2200/8000 configs  [46s, 21 ms/cfg]
+    ... 2300/8000 configs  [48s, 21 ms/cfg]
+    ... 2400/8000 configs  [50s, 21 ms/cfg]
+    ... 2500/8000 configs  [52s, 21 ms/cfg]
+    ... 2600/8000 configs  [54s, 21 ms/cfg]
+    ... 2700/8000 configs  [56s, 21 ms/cfg]
+    ... 2800/8000 configs  [59s, 21 ms/cfg]
+    ... 2900/8000 configs  [61s, 21 ms/cfg]
+    ... 3000/8000 configs  [63s, 21 ms/cfg]
+    ... 3100/8000 configs  [65s, 21 ms/cfg]
+    ... 3200/8000 configs  [67s, 21 ms/cfg]
+    ... 3300/8000 configs  [69s, 21 ms/cfg]
+    ... 3400/8000 configs  [71s, 21 ms/cfg]
+    ... 3500/8000 configs  [74s, 21 ms/cfg]
+    ... 3600/8000 configs  [76s, 21 ms/cfg]
+    ... 3700/8000 configs  [78s, 21 ms/cfg]
+    ... 3800/8000 configs  [80s, 21 ms/cfg]
+    ... 3900/8000 configs  [82s, 21 ms/cfg]
+    ... 4000/8000 configs  [84s, 21 ms/cfg]
+    ... 4100/8000 configs  [86s, 21 ms/cfg]
+    ... 4200/8000 configs  [88s, 21 ms/cfg]
+    ... 4300/8000 configs  [91s, 21 ms/cfg]
+    ... 4400/8000 configs  [93s, 21 ms/cfg]
+    ... 4500/8000 configs  [95s, 21 ms/cfg]
+    ... 4600/8000 configs  [97s, 21 ms/cfg]
+    ... 4700/8000 configs  [99s, 21 ms/cfg]
+    ... 4800/8000 configs  [102s, 21 ms/cfg]
+    ... 4900/8000 configs  [104s, 21 ms/cfg]
+    ... 5000/8000 configs  [107s, 21 ms/cfg]
+    ... 5100/8000 configs  [109s, 21 ms/cfg]
+    ... 5200/8000 configs  [111s, 21 ms/cfg]
+    ... 5300/8000 configs  [113s, 21 ms/cfg]
+    ... 5400/8000 configs  [115s, 21 ms/cfg]
+    ... 5500/8000 configs  [118s, 21 ms/cfg]
+    ... 5600/8000 configs  [120s, 21 ms/cfg]
+    ... 5700/8000 configs  [122s, 21 ms/cfg]
+    ... 5800/8000 configs  [125s, 21 ms/cfg]
+    ... 5900/8000 configs  [127s, 21 ms/cfg]
+    ... 6000/8000 configs  [129s, 21 ms/cfg]
+    ... 6100/8000 configs  [131s, 21 ms/cfg]
+    ... 6200/8000 configs  [133s, 21 ms/cfg]
+    ... 6300/8000 configs  [135s, 21 ms/cfg]
+    ... 6400/8000 configs  [137s, 21 ms/cfg]
+    ... 6500/8000 configs  [139s, 21 ms/cfg]
+    ... 6600/8000 configs  [142s, 21 ms/cfg]
+    ... 6700/8000 configs  [144s, 21 ms/cfg]
+    ... 6800/8000 configs  [146s, 21 ms/cfg]
+    ... 6900/8000 configs  [148s, 21 ms/cfg]
+    ... 7000/8000 configs  [150s, 21 ms/cfg]
+    ... 7100/8000 configs  [153s, 21 ms/cfg]
+    ... 7200/8000 configs  [155s, 22 ms/cfg]
+    ... 7300/8000 configs  [157s, 22 ms/cfg]
+    ... 7400/8000 configs  [159s, 22 ms/cfg]
+    ... 7500/8000 configs  [161s, 22 ms/cfg]
+    ... 7600/8000 configs  [163s, 21 ms/cfg]
+    ... 7700/8000 configs  [165s, 21 ms/cfg]
+    ... 7800/8000 configs  [166s, 21 ms/cfg]
+    ... 7900/8000 configs  [168s, 21 ms/cfg]
+    ... 8000/8000 configs  [169s, 21 ms/cfg]
+# A1 MC SU(2) beta=2.5  4x4^3  ncfg=8000 therm=300 gap=2 seed=77  [169.3s]
+# <1/2 Re tr U_p> = 0.654771   (sanity; SU(2) beta=2.5 should be ~0.63-0.67)
+
+C(0) (connected, per time slice, 6x6):
+[[ 0.05235  0.00081 -0.00001 -0.00003  0.00541  0.02586]
+ [ 0.00081  0.00005 -0.       0.       0.00009  0.00051]
+ [-0.00001 -0.       0.00033 -0.      -0.      -0.00001]
+ [-0.00003  0.      -0.       0.00033 -0.      -0.00003]
+ [ 0.00541  0.00009 -0.      -0.       0.00062  0.00267]
+ [ 0.02586  0.00051 -0.00001 -0.00003  0.00267  0.02149]]
+eig C(0) = [0.00003 0.00006 0.00032 0.00033 0.00682 0.06759]
+diag C(1)/diag C(0) = [ 0.14547  0.14407 -0.00145  0.00077  0.12398  0.08305]
+diag C(2)/diag C(0) = [ 0.03324  0.01802 -0.01423  0.00539  0.02251  0.02215]
+diag C(3)/diag C(0) = [ 0.14547  0.14407 -0.00145  0.00077  0.12398  0.08305]
+
+single-operator T=4 correlator shape, per operator:
+   S_geo=12(1-Pbar)       C0=+5.235e-02  diag C(t)/C0 = +0.1455 +0.0332 +0.1455
+   clover 1/4 trF^2       C0=+4.876e-05  diag C(t)/C0 = +0.1441 +0.0180 +0.1441
+   1x2 rect Wilson        C0=+3.294e-04  diag C(t)/C0 = -0.0015 -0.0142 -0.0015
+   2x2 square Wilson      C0=+3.263e-04  diag C(t)/C0 = +0.0008 +0.0054 +0.0008
+   adjoint plaquette      C0=+6.161e-04  diag C(t)/C0 = +0.1240 +0.0225 +0.1240
+   magnetic-only (i<j)    C0=+2.149e-02  diag C(t)/C0 = +0.0831 +0.0221 +0.0831
+
+operator priority order (by C(0) signal): ['S_geo=12(1-Pbar)', 'clover 1/4 trF^2', 'magnetic-only (i<j)', 'adjoint plaquette', '1x2 rect Wilson', '2x2 square Wilson']
+
+GEVP ladder:  C(t) v = lam C(t0) v ,  lam = cosh(m(T/2-t))/cosh(m(T/2-t0)) ,  T=L0
+ k   (t0,t) eig C(t0) min                                      lam                          m     rho^2
+ 2   (1, 2)     -1.34e-05  C(t0) not positive definite -> undefined
+ 2   (1, 3)     -1.34e-05  C(t0) not positive definite -> undefined
+ 2   (2, 3)     -2.68e-07  C(t0) not positive definite -> undefined
+ 3   (1, 2)     -2.06e-03  C(t0) not positive definite -> undefined
+ 3   (1, 3)     -2.06e-03  C(t0) not positive definite -> undefined
+ 3   (2, 3)     -2.77e-05  C(t0) not positive definite -> undefined
+ 4   (1, 2)     -2.09e-03  C(t0) not positive definite -> undefined
+ 4   (1, 3)     -2.09e-03  C(t0) not positive definite -> undefined
+ 4   (2, 3)     -2.77e-05  C(t0) not positive definite -> undefined
+ 5   (1, 2)     -2.09e-03  C(t0) not positive definite -> undefined
+ 5   (1, 3)     -2.09e-03  C(t0) not positive definite -> undefined
+ 5   (2, 3)     -2.90e-05  C(t0) not positive definite -> undefined
+ 6   (1, 2)     -2.09e-03  C(t0) not positive definite -> undefined
+ 6   (1, 3)     -2.09e-03  C(t0) not positive definite -> undefined
+ 6   (2, 3)     -2.90e-05  C(t0) not positive definite -> undefined
+
+ta03 pairings on L=4 (same three operators as A03-RHO2.md:104-107):
+   [S_geo=12(1-Pbar)+clover     ] (t0,t)=(1,2)  rho^2 undefined (lambda2<=0)
+   [S_geo=12(1-Pbar)+clover     ] (t0,t)=(1,3)  rho^2 undefined (lambda2<=0)
+   [S_geo=12(1-Pbar)+1x2        ] (t0,t)=(1,2)  rho^2 undefined (lambda2<=0)
+   [S_geo=12(1-Pbar)+1x2        ] (t0,t)=(1,3)  rho^2 undefined (lambda2<=0)
+   [clover+1x2                  ] (t0,t)=(1,2)  rho^2 undefined (lambda2<=0)
+   [clover+1x2                  ] (t0,t)=(1,3)  rho^2 undefined (lambda2<=0)
+   [S_geo=12(1-Pbar)+clover+1x2 ] (t0,t)=(1,2)  rho^2 undefined (lambda2<=0)
+   [S_geo=12(1-Pbar)+clover+1x2 ] (t0,t)=(1,3)  rho^2 undefined (lambda2<=0)
+
+[E] every scheme returned lambda2 <= 0 or a non-positive metric: rho^2 undefined on this lattice even with a 6-operator basis.
+
+jackknife (8 bins), largest basis (all 6):
+   (t0,t)=(1,2): only 0/8 bins give a defined rho^2 -> no error estimate (this IS the L=4 obstruction)
+   (t0,t)=(1,3): only 0/8 bins give a defined rho^2 -> no error estimate (this IS the L=4 obstruction)
+   (t0,t)=(2,3): only 0/8 bins give a defined rho^2 -> no error estimate (this IS the L=4 obstruction)
+
+[E] statistics projection (sigma ~ 1/sqrt(n)): to decide rho^2 <= 4 you need
+    |rho^2-4| >> sigma(stat) AND spread(scheme) << 1.  Statistics shrink the bars
+    around each scheme; they cannot shrink the spread between schemes.
+
+[wall] total 171.1s

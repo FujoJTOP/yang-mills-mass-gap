@@ -1,0 +1,93 @@
+
+========================================================================================
+[1] 2D YM SU(2), g^2=1 : transfer spectrum E_j = (g^2/2) j(j+1),  vacuum j=0
+========================================================================================
+   first levels: [0.375 1.    1.875 3.    4.375]  (j=1/2,1,3/2,2,5/2)
+   m = E_(1/2)                        = 0.375000   (=3g^2/8)
+   min spacing of connected spectrum  = 0.625000   (=5g^2/8, between j=1/2 and j=1)
+   ratio r_iso/m                      = 1.666667
+   [M3] HS rate  -log( sum_i d_i^2 e^{-2E_i t} ) / t :
+        t=  5.0   rate = 0.471874   (limit 2E_1 = 0.750000)
+        t= 10.0   rate = 0.611370   (limit 2E_1 = 0.750000)
+        t= 20.0   rate = 0.680685   (limit 2E_1 = 0.750000)
+        t= 40.0   rate = 0.715343   (limit 2E_1 = 0.750000)
+   [E] SU(3): m = 0.666667, r_iso = 0.833333, ratio = 1.250000   vs SU(2) ratio 1.666667  -> r_iso != const* m
+
+========================================================================================
+[2] M6 (w=1): H = (p_a^2+p_b^2)/2 + a^2/2, b on circle of length L
+========================================================================================
+   spectrum = { n*w } + { 2 pi^2 k^2 / L^2 } ; E1-E0 = min(w, 2 pi^2/L^2) -> 0
+   L=  10.0   m_L = min(w,2pi^2/L^2) = 0.19739209   min spacing = 0.00179869
+   L=  40.0   m_L = min(w,2pi^2/L^2) = 0.01233701   min spacing = 0.00070255
+   L= 160.0   m_L = min(w,2pi^2/L^2) = 0.00077106   min spacing = 0.00003357
+   both -> 0 as L -> inf :  the a-tower atoms are buried in the b-continuum closure
+   [M3] L=  10.0   HS rate (per vacuum-subtracted bottom) = 0.39478418 -> 0
+   [M3] L=  40.0   HS rate (per vacuum-subtracted bottom) = 0.02467401 -> 0
+   [M3] L= 160.0   HS rate (per vacuum-subtracted bottom) = 0.00154213 -> 0
+
+========================================================================================
+[3] Free field (massless): mu = c E^{1/2} dE, C(t) = Gamma(3/2) t^{-3/2}
+========================================================================================
+   no atoms, continuum starts at 0  ->  min spacing = 0 exactly [T]
+   [M3] HS rate:  -log( C_HS(t) ) / t  with C_HS ~ t^{-3/2} :
+        t=   10.0   rate = 0.34538776  -> 0
+        t=  100.0   rate = 0.06907755  -> 0
+        t= 1000.0   rate = 0.01036163  -> 0
+   contact carrier exists in the SAME theory: O = box(phi)  =>  C_O(t) = 0 (t>0) [T]
+     <box phi(x) box phi(0)> = int d^2k (k^2)^2/(k^2) e^{ikx} ~ box^2 delta(x) = contact
+
+========================================================================================
+[4] Single plaquette (d=0): one SU(2) matrix, weight e^{(beta/2) tr U}
+========================================================================================
+   G'' = 0.135995 at beta=2.5, theta=pi  [M/V: w7/o02_plaquette.log, archived 2.9e-7]
+   no time direction  =>  no t, no spectrum, no extensive area
+   => M1 (area law) : UNDEFINED   M2 (spacing) : UNDEFINED   M3 (HS rate) : UNDEFINED
+
+========================================================================================
+[5] M1/M2/M3 candidates x 4 models
+========================================================================================
+candidate                                              free        2D-YM           M6    plaquette   verdict
+M1 = sigma (charged-sector gap / area law)         0.000000     0.375000     0.000000        undef   4/4 PASS
+M2 = isolation radius (bottom atom <-> rest)       0.000000     0.625000     0.000000        undef   4/4 PASS
+M3 = HS rate (= 2*lambda_bot, control)             0.000000     0.750000     0.000000        undef   4/4 PASS
+m (reference, banned)                              0.000000     0.375000     0.000000        undef   4/4 PASS
+
+========================================================================================
+[6] signature collision (why the 4-model test cannot enforce `not a rename`)
+========================================================================================
+   pattern = tuple over (free, 2D-YM, M6, plaquette) of (undef | 0 | +):
+   pat(m) = ('0', '+', '0', 'undef')
+   M1 = sigma (charged-sector gap / area law)     pat = ('0', '+', '0', 'undef')   == pat(m)  COLLISION
+   M2 = isolation radius (bottom atom <-> rest)   pat = ('0', '+', '0', 'undef')   == pat(m)  COLLISION
+   M3 = HS rate (= 2*lambda_bot, control)         pat = ('0', '+', '0', 'undef')   == pat(m)  COLLISION
+   m (reference, banned)                          pat = ('0', '+', '0', 'undef')   == pat(m)  COLLISION
+   => every 4/4 passer has pattern (0,+,0,undef) == pat(m); the numeric value is NOT pinned.
+   => M1 is numerically identical to m on 2D-YM (sigma == 3g^2/8, degenerate identity [T]).
+   => the test is a (transfer-exists? , m>0?) bit test; pass-set = monotone relabelings of m.
+
+========================================================================================
+[7] extra rows needed to certify a non-rename
+========================================================================================
+   (5) massive free scalar, mass w : m=w>0, G''=2w>0, f1^2=1/(2w)>0, sigma=0, r_iso=w
+   (6) free field + contact carrier : C(t)=0 (t>0), m=0  <-- kills every functional of one C
+   consequence: sigma is NOT a function of m (m=w>0, sigma=0) -> sigma passes (5);
+                but sigma is not a gap witness -> it witnesses a DIFFERENT sector.
+   consequence: r_iso(w)=w and M3(w)=2w -> both collapse to m on any relativistic target.
+
+========================================================================================
+[8] audit of the existing U13 `pass` (c1/c3/c4)
+========================================================================================
+   U13 used C(t) = sum_j w_j e^{-E_j t} with c1 -> 0.375 = E_(1/2).
+   that limit requires w_(1/2) > 0  =>  f1^2 > 0  in the fixture.
+   the touchstone's 2D-YM row has f1^2 == 0 (trF^2 = H conserved => C is a contact term).
+   => U13's c1/c3/c4 passes are carrier artefacts, not properties of 2D YM.
+
+========================================================================================
+SUMMARY
+========================================================================================
+   PASS 4/4  M1 = sigma (charged-sector gap / area law)
+   PASS 4/4  M2 = isolation radius (bottom atom <-> rest)
+   PASS 4/4  M3 = HS rate (= 2*lambda_bot, control)
+   PASS 4/4  m (reference, banned)
+   -> (a) does NOT hold for any non-rename; (b) holds (pass-set = relabelings of m);
+      (c) each candidate's exact failure cause is printed above.

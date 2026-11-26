@@ -1,0 +1,54 @@
+====================================================================================================
+[O27-ADJUDICATE] beta=2.5 L=2 SU(2)   2026-11-25 14:14:13
+defs: docs/paper-v2/ch05-theorems.tex eq:split / eq:wgeo ; ch15-uvface.tex eq:v3object
+====================================================================================================
+
+[TIER 1 / exact quadrature] single SU(2) plaquette, flat chart, measure e^{-V} on R^3
+    [V] Phi' FD-dev=1.38e-09  Phi'' FD-dev=4.54e-05  (analytic derivatives verified)
+  [E] single plaquette (4e6-pt radial quadrature, err<1e-9)
+    E[H_vv]=+0.500379  E[Phi'']=+0.184014  Var(G_v)=0.272802  Var(G_v+Phi')=0.499617  Cov(G,Phi')=+0.096060  Var(Phi')=0.034694
+    A=E[H]-Var(G)=+0.227577   B=E[H+Phi'']-Var(G+Phi')=+0.184776   C=E[kappa]-Var(F)=+0.184776
+    W_full=E[Phi'']+Var(G)-Var(G+Phi')=-0.042801 (=W_geo+X: -0.042801)   D=A+W_full=+0.184776   |D-B|=0.00e+00
+    C-A = W_full = -0.042801   [E[Phi'']=+0.184014 ; -Var(Phi')-2Cov=-0.226815]
+
+[TIER 2 / L=2 4D SU(2) Wilson, beta=2.5, constrained xi=0 HMC, ONE ensemble per mode]
+  n=16 sites, 96 plaquettes; HMC 2200 traj x 8 steps, eps=0.1402, therm=200
+
+  --- o13-mode (mu=0,Lie0): acc=0.664  n=2000  tau_H=21.3 tau_(G+Phi')=1.2  Neff~94  [44s]
+      E[H_vv]          =    +6.292535  +- 0.092334
+      E[Phi'']         =    +1.232524  +- 0.018860
+      Var(G_v)         =    +5.730663  +- 0.269013
+      Var(G_v+Phi')    =    +5.829076  +- 0.295418
+      Cov(G,Phi')      =    -0.021478  +- 0.029765
+      Var(Phi')        =    +0.141369  +- 0.014030
+      A                =    +0.561872  +- 0.276980
+      B                =    +1.695982  +- 0.293478
+      C                =    +1.695982  +- 0.293478
+      W_full           =    +1.134110  +- 0.063368
+      D                =    +1.695982  +- 0.293478
+      E[G+Phi']        =    +0.016799  +- 0.084242
+      identity: |D-B|=0.00e+00   |C-B|=0.00e+00   |W_full-(E[Phi'']+VarG-Var(G+Phi'))|=0.00e+00
+      C-A = +1.134110 = W_full ; E[Phi''] part +1.232524 ; cross part -Var(Phi')-2Cov = -0.098414
+
+  --- o11-mode (all mu,Lie0): acc=0.676  n=2000  tau_H=5.0 tau_(G+Phi')=3.0  Neff~398  [44s]
+      E[H_vv]          =    +6.286103  +- 0.050031
+      E[Phi'']         =    +1.319908  +- 0.015315
+      Var(G_v)         =    +6.465012  +- 0.214287
+      Var(G_v+Phi')    =    +6.660134  +- 0.202094
+      Cov(G,Phi')      =    -0.019117  +- 0.050589
+      Var(Phi')        =    +0.233356  +- 0.019248
+      A                =    -0.178909  +- 0.225091
+      B                =    +0.945877  +- 0.210196
+      C                =    +0.945877  +- 0.210196
+      W_full           =    +1.124787  +- 0.103687
+      D                =    +0.945877  +- 0.210196
+      E[G+Phi']        =    +0.078032  +- 0.076433
+      identity: |D-B|=0.00e+00   |C-B|=0.00e+00   |W_full-(E[Phi'']+VarG-Var(G+Phi'))|=0.00e+00
+      C-A = +1.124787 = W_full ; E[Phi''] part +1.319908 ; cross part -Var(Phi')-2Cov = -0.195122
+
+====================================================================================================
+[VERDICT]  A != C. C == B == G''(0) == A + W_full  (exact, residual ~1e-16)
+  exact anchor   : A=+0.2276 (sign +1)  C=+0.1848 (sign +1)    C-A=-0.0428
+  o13-mode (mu=0,Lie0)    : A=+0.562+-0.277  C=+1.696+-0.293  sign(A)=+1 sign(C)=+1
+  o11-mode (all mu,Lie0)  : A=-0.179+-0.225  C=+0.946+-0.210  sign(A)=-1 sign(C)=+1
+total elapsed 88.6s

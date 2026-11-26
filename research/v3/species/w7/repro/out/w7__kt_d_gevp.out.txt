@@ -1,0 +1,145 @@
+====================================================================================================
+D1  method A (direct) vs method B (GEVP): rho^2 on a path chain
+====================================================================================================
+  L=40: direct e1=5.8683976325e-03 e2=2.3439152439e-02 e3=5.2609152244e-02  rho^2=3.9941316024
+    coarse blocks m=2  : nu1=5.000000e-02 nu2=1.500000e-01  rho^2_GEVP=3.00000000  |err|=9.94e-01
+    coarse blocks m=4  : nu1=3.819660e-02 nu2=1.381966e-01  rho^2_GEVP=3.61803399  |err|=3.76e-01
+    coarse blocks m=8  : nu1=2.412295e-02 nu2=9.358222e-02  rho^2_GEVP=3.87938524  |err|=1.15e-01
+    coarse blocks m=16 : nu1=1.348498e-02 nu2=5.564413e-02  rho^2_GEVP=4.12637690  |err|=1.32e-01
+    coarse blocks m=32 : nu1=8.145453e-03 nu2=2.810705e-02  rho^2_GEVP=3.45064323  |err|=5.43e-01
+    exact low space : rho^2_GEVP=3.9941316024  err=9.99e-14
+  L=200: direct e1=2.4428611869e-04 e2=9.7708479907e-04 e3=2.1982170286e-03  rho^2=3.9997557139
+    coarse blocks m=2  : nu1=1.000000e-02 nu2=3.000000e-02  rho^2_GEVP=3.00000000  |err|=1.00e+00
+    coarse blocks m=4  : nu1=7.639320e-03 nu2=2.763932e-02  rho^2_GEVP=3.61803399  |err|=3.82e-01
+    coarse blocks m=8  : nu1=4.824590e-03 nu2=1.871644e-02  rho^2_GEVP=3.87938524  |err|=1.20e-01
+    coarse blocks m=16 : nu1=2.723187e-03 nu2=1.081755e-02  rho^2_GEVP=3.97238741  |err|=2.74e-02
+    coarse blocks m=32 : nu1=1.484469e-03 nu2=5.762209e-03  rho^2_GEVP=3.88166376  |err|=1.18e-01
+    exact low space : rho^2_GEVP=3.9997557139  err=1.05e-12
+====================================================================================================
+D2  tightness:  t = T2(V) = tr(G^-1 M)  vs  the optimal t* = e1+e2
+    bound rho^2 <= t/e1 - 1 ;  RB-2'' threshold  e1 >= t/(1+C^2),  C=2
+====================================================================================================
+  adjacent blocks b=1            t=4.000000e+00 t*=2.930755e-02 t/t*=  136.484  bound=   680.617 (true 3.9941, x 170.4 loose)  t/5= 136.32 x e1
+  adjacent blocks b=2            t=2.000000e+00 t*=2.930755e-02 t/t*=   68.242  bound=   339.809 (true 3.9941, x  85.1 loose)  t/5=  68.16 x e1
+  adjacent blocks b=4            t=1.000000e+00 t*=2.930755e-02 t/t*=   34.121  bound=   169.404 (true 3.9941, x  42.4 loose)  t/5=  34.08 x e1
+  adjacent blocks b=8            t=5.000000e-01 t*=2.930755e-02 t/t*=   17.060  bound=    84.202 (true 3.9941, x  21.1 loose)  t/5=  17.04 x e1
+  adjacent blocks b=20           t=2.000000e-01 t*=2.930755e-02 t/t*=    6.824  bound=    33.081 (true 3.9941, x   8.3 loose)  t/5=   6.82 x e1
+  two smearing radii r=1         t=1.296492e+00 t*=2.930755e-02 t/t*=   44.237  bound=   219.928 (true 3.9941, x  55.1 loose)  t/5=  44.19 x e1
+  two smearing radii r=2         t=3.658636e-01 t*=2.930755e-02 t/t*=   12.484  bound=    61.345 (true 3.9941, x  15.4 loose)  t/5=  12.47 x e1
+  two smearing radii r=4         t=9.608953e-02 t*=2.930755e-02 t/t*=    3.279  bound=    15.374 (true 3.9941, x   3.8 loose)  t/5=   3.27 x e1
+  exact low space (optimal)      t=2.930755e-02 t*=2.930755e-02 t/t*=    1.000  bound=     3.994 (true 3.9941, x   1.0 loose)  t/5=   1.00 x e1
+  double well Lam=20 (N=4000): the two-well coarse space and the tunnelling mode
+    mu1=2.5024e-01 mu2=11.994832 rho^2=47.933
+  double well, two-well basis    t=3.342482e+03 t*=1.224507e+01 t/t*=  272.965  bound= 13355.942 (true 47.9327, x 278.6 loose)  t/5=2671.39 x e1
+====================================================================================================
+D3  bottom multiplicity / near-degeneracy pattern (T2)
+====================================================================================================
+  A1_chains:path_L2                            rho^2=    3.00000  mult=[1, 1]              near_degen=no
+  A1_chains:path_L3                            rho^2=    3.41421  mult=[1, 1, 1]           near_degen=no
+  A1_chains:path_L4                            rho^2=    3.61803  mult=[1, 1, 1, 1]        near_degen=no
+  A1_chains:path_L5                            rho^2=    3.73205  mult=[1, 1, 1, 1, 1]     near_degen=no
+  A1_chains:path_L6                            rho^2=    3.80194  mult=[1, 1, 1, 1, 1]     near_degen=no
+  A1_chains:circle_L4                          rho^2=    2.00000  mult=[2, 1]              near_degen=no
+  A1_chains:circle_L5                          rho^2=    2.61803  mult=[2, 2]              near_degen=no
+  A1_chains:circle_L6                          rho^2=    3.00000  mult=[2, 2, 1]           near_degen=no
+  A2_box_BC:DD_q0                              rho^2=    4.00000  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:DD_q1                              rho^2=    3.72400  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:DD_q10                             rho^2=    2.49016  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:NN_q0                              rho^2=    4.00000  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:NN_q1                              rho^2=    3.72400  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:NN_q10                             rho^2=    2.49016  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:PP_q0                              rho^2=    4.00000  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:PP_q1                              rho^2=    3.92589  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:PP_q10                             rho^2=    3.39368  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:ND_q0                              rho^2=    9.00000  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:ND_q1                              rho^2=    6.69280  mult=[1, 1, 1, 1]        near_degen=no
+  A2_box_BC:ND_q10                             rho^2=    2.58327  mult=[1, 1, 1, 1]        near_degen=no
+  A3_plaquette_2dYM:plaquette_S3               rho^2=    2.66667  mult=[1, 1, 1, 1]        near_degen=no
+  A3_plaquette_2dYM:2dYM_SU2                   rho^2=    2.66667  mult=[1, 1, 1, 1]        near_degen=no
+  A3_plaquette_2dYM:2dYM_SU3                   rho^2=    2.25000  mult=[1, 1, 1]           near_degen=no
+  A3_plaquette_2dYM:2dYM_SU4                   rho^2=    2.13333  mult=[1, 1, 1]           near_degen=no
+  A3_plaquette_2dYM:2dYM_SU100                 rho^2=    2.00020  mult=[1, 1, 1]           near_degen=no
+  A5_rotor_U1:rotor_raw                        rho^2=    1.00000  mult=[1, 1, 1, 1, 1]     near_degen=YES
+  A5_rotor_U1:rotor_merged                     rho^2=    4.00000  mult=[1, 1, 1, 1, 1]     near_degen=no
+  A5_rotor_U1:rotor_numeric                    rho^2=    3.99901  mult=[2, 2, 2, 2, 2]     near_degen=no
+  A6_radial:disc_full                          rho^2=    2.53873  mult=[1, 1, 1, 1, 1]     near_degen=no
+  A6_radial:disc_swave                         rho^2=    5.26894  mult=[1, 1, 1]           near_degen=no
+  A6_radial:ball_full                          rho^2=    2.04575  mult=[1, 1, 1, 1]        near_degen=no
+  A6_radial:ball_swave                         rho^2=    4.00000  mult=[1, 1, 1]           near_degen=no
+  A7_discrete_star:star_m2                     rho^2=    3.00000  mult=[1, 1]              near_degen=no
+  A7_discrete_star:star_m3                     rho^2=    4.00000  mult=[2, 1]              near_degen=no
+  A7_discrete_star:star_m4                     rho^2=    5.00000  mult=[3, 1]              near_degen=no
+  A7_discrete_star:star_m5                     rho^2=    6.00000  mult=[4, 1]              near_degen=no
+  A7_discrete_star:star_m6                     rho^2=    7.00000  mult=[5, 1]              near_degen=no
+  C1_graphs:interval_DD                        rho^2=    3.99984  mult=[1, 1, 1, 1, 1]     near_degen=no
+  C1_graphs:interval_ND                        rho^2=    8.99976  mult=[1, 1, 1, 1, 1]     near_degen=no
+  C1_graphs:interval_NN                        rho^2=    3.99984  mult=[1, 1, 1, 1, 1]     near_degen=no
+  C1_graphs:interval_DD_len2                   rho^2=    3.99996  mult=[1, 1, 1, 1, 1]     near_degen=no
+  C1_graphs:star2_equal                        rho^2=    3.99996  mult=[1, 1, 1, 1, 1]     near_degen=no
+  C1_graphs:star3_equal                        rho^2=    3.99463  mult=[1, 2, 1, 2, 1]     near_degen=no
+  C1_graphs:star4_equal                        rho^2=    3.99196  mult=[1, 3, 1, 2]        near_degen=no
+  C1_graphs:star5_equal                        rho^2=    3.99037  mult=[1, 4, 1, 1]        near_degen=no
+  C1_graphs:star3_unequal                      rho^2=    2.99704  mult=[1, 1, 2, 1, 1]     near_degen=no
+  C1_graphs:star3_oneD                         rho^2=    6.52214  mult=[1, 1, 1, 1, 1]     near_degen=no
+  C1_graphs:lasso_loop2_tail1                  rho^2=   16.87723  mult=[1, 1, 1, 1, 1]     near_degen=no
+  C1_graphs:lasso_loop6_tail1                  rho^2=   10.34133  mult=[1, 1, 1, 1, 1]     near_degen=no
+  C1_graphs:fig8                               rho^2=    3.99996  mult=[1, 3, 1, 1]        near_degen=no
+  C2_domains:square                            rho^2=    2.49966  mult=None                near_degen=no
+  C2_domains:rect2to1                          rho^2=    1.59992  mult=None                near_degen=no
+  C2_domains:Lshape                            rho^2=    1.58397  mult=None                near_degen=no
+  C2_domains:dumbbell                          rho^2=    1.00000  mult=None                near_degen=no
+  C2_domains:annulus                           rho^2=    1.05593  mult=None                near_degen=no
+  C2_domains:tube_straight                     rho^2=    1.00836  mult=None                near_degen=no
+  C2_domains:Y_tube                            rho^2=    1.24484  mult=None                near_degen=no
+  C3_double_well:Lam0.5                        rho^2=    2.73276  mult=None                near_degen=no
+  C3_double_well:Lam1                          rho^2=    2.94855  mult=None                near_degen=no
+  C3_double_well:Lam2                          rho^2=    3.37718  mult=None                near_degen=no
+  C3_double_well:Lam5                          rho^2=    5.07758  mult=None                near_degen=no
+  C3_double_well:Lam10                         rho^2=   10.72962  mult=None                near_degen=no
+  C3_double_well:Lam20                         rho^2=   47.93271  mult=None                near_degen=no
+  C3_double_well:Lam30                         rho^2=  175.07791  mult=None                near_degen=YES
+  C3_double_well:Lam50                         rho^2= 1395.55760  mult=None                near_degen=YES
+  C3_double_well:tilt_eps0                     rho^2=   47.93271  mult=None                near_degen=no
+  C3_double_well:tilt_eps0.01                  rho^2=   47.81231  mult=None                near_degen=no
+  C3_double_well:tilt_eps0.05                  rho^2=   45.17223  mult=None                near_degen=no
+  C3_double_well:tilt_eps0.2                   rho^2=   27.70674  mult=None                near_degen=no
+====================================================================================================
+D4  read-only 4D ledger: what the stored w7 data actually contain
+====================================================================================================
+  at_lattice.json                  multi-op? no   keys=['lattice']
+  at_scalar.json                   multi-op? no   keys=['params', 'cases', 't', 'M_literal', 'M_manifold']
+  at_su2_exact.json                multi-op? no   keys=['audit', 'partB', 'partC']
+  bc_gaussian.json                 multi-op? no   keys=['model', 'exact_formulae', 'critical_couplings', 'mass_table', 'acid_test']
+  bc_ising.json                    multi-op? no   keys=['beta_c_tree', 'beta_c_square', 'strip_convergence', 'mass_table', 'onsager_check']
+  bc_su2.json                      multi-op? no   keys=['bessel_vs_quadrature_maxrelerr', 'beta_c_tree', 'mass_table', 'beta_2p5', 'small_beta_shift', 'bound_support']
+  cert_J12.json                    multi-op? no   keys=['jmax', 'results', 'certified_radius']
+  hc_spherical_results.json        multi-op? no   keys=['S0_S1', 'S2', 'S3', 'S4', 'S5']
+  kt_a_exact.json                  multi-op? no   keys=['A1_chains', 'A2_box_BC', 'A3_plaquette_2dYM', 'A5_rotor_U1', 'A6_radial', 'A7_discrete_star', 'A8_violations']
+  kt_b_battery.json                multi-op? no   keys=['B0_sanity', 'B1_battery', 'B2_det', 'B2b_adversarial_DD', 'B2c_density', 'B3_chains', 'B4_verdict']
+  kt_c_geom.json                   multi-op? no   keys=['C1_graphs', 'C1_random_trees', 'C2_domains', 'C3_double_well']
+  kt_d_gevp.json                   multi-op? YES  keys=['D1_two_methods', 'D2_tightness', 'D3_pattern']
+  kt_e_identity.json               multi-op? no   keys=['E1_identity', 'E2', 'E3_string', 'E4_criterion']
+  lx_label_geometry.json           multi-op? no   keys=['A_su2_label_defect', 'A_onset', 'A_orth_check', 'B_orthogonality_check', 'B_quadrature_convergence', 'B_su3', 'B_note', 'C_u1_bessel']
+  mc_lattice.json                  multi-op? no   keys=['L2', 'L4']
+  mc_ricci.json                    multi-op? no   keys=['beta', 'q1_SU2', 'q1_SU3', 'q2_SU2', 'q2_SU3', 'step5_SU2', 'step5_SU3']
+  na2_chain.json                   multi-op? no   keys=[]
+  na2_su3_na_run.json              multi-op? no   keys=[]
+  na2_t0_fit.json                  multi-op? no   keys=[]
+  na2_tci.json                     multi-op? no   keys=[]
+  na2_two_plaquette.json           multi-op? no   keys=[]
+  ns_nosub.json                    multi-op? no   keys=['log', 'selftest_max_dev', 'scan', 'zeros']
+  qg1_network.json                 multi-op? no   keys=['partA', 'partB', 'partC']
+  qg2_abelian.json                 multi-op? no   keys=['partA', 'partB', 'partC']
+  qg3_acid.json                    multi-op? no   keys=['acid1', 'acid3']
+  qg4_su2.json                     multi-op? no   keys=['part1', 'part2']
+  qi_bracket_results.json          multi-op? no   keys=['A', 'B', 'B_m', 'C', 'D', 'E', 'F', 'G']
+  r1_2dym.json                     multi-op? no   keys=['rows0', 'rows1', 'rows2', 'checks']
+  r1_chain.json                    multi-op? no   keys=['lam', 'gap_cont', 'gap_disc', 'lam_grad', 'lam_grad_arith', 'rows3', 'rows4', 'lam_even']
+  r1_gauss.json                    multi-op? no   keys=['rows', 'checks']
+  r3_l4.json                       multi-op? no   keys=['S0', 'S1', 'S1b']
+  radius_push_results.json         multi-op? no   keys=['jmax', 'nbeta', 'target_radius', 'beta_strong', 'beta_phys', 'crossings', 'sweep', 'tail_budget']
+  ru_joint.json                    multi-op? no   keys=['u_tile_25', 'w_cube', 'beta_c_m32_R4', 'beta_c_opt', 'a_star_opt', 'bracket', 'MULT_ORI', 'MULT_GEO']
+  su2_6j_cert.json                 multi-op? no   keys=['jmax', 'results']
+  sw_marginal.json                 multi-op? no   keys=['beta=0.0', 'beta=0.5', 'beta=1.0', 'beta=2.5', 'beta=4.0', 'A_scale_invariance', 'B_tail_placement', 'D_free_gaussian']
+  t23_monopole.json                multi-op? no   keys=['2.6', '3.0', '6.0', 'controls', 'u', 'phys']
+done. json -> kt_d_gevp.json

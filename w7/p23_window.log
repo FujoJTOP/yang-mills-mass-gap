@@ -1,0 +1,124 @@
+
+==============================================================================
+P23  C_geo := (-D)^+ , D = d^2/ds^2 S_geo , H_vv = beta*D ; ||v||^2 = (1/2)sum_l|a_l|^2 = 1
+==============================================================================
+  py3.12 numpy; FD h=1e-3 central second difference; one job at a time (memory).
+
+==============================================================================
+[0] re-derive D from P06/O06:  D = sum_p[1/2<U_p,K_p> - 1/2<U_p,W'_p>] , K=H^2>=0
+==============================================================================
+  (i) FD D  vs  analytic  D = sum_p -1/2 Re tr[(W'+W^2)U_p],  W'=dW/ds
+      over 400 random (X,v): max rel dev 4.17e-04 ; median 1.63e-06 ; cases >1e-3: 0/400 (they are the near-cancellation |D|~0 cases)  => decomposition and sign confirmed
+  (ii) h-stability of D (same config/direction):
+      h=3.0e-04  D= 7.443470531301e-03
+      h=1.0e-03  D= 7.443468175161e-03
+      h=3.0e-03  D= 7.443457504684e-03
+  (iii) cold config U_p = 1 (X=0): expect D = 1/2 Re tr(H^2) >= 0 hence C_geo = 0
+      D = [0.200745 0.921991 0.14287  0.522964 0.343906 0.425143]   C_geo = [0. 0. 0. 0. 0. 0.]
+  => D = H_vv/beta (exact, beta factors out); C_geo := (-D)^+ is the NEGATIVE PART.
+
+==============================================================================
+[1] single plaquette: 605 directions x 24000 product-Haar configs, reweighted e^{-beta S_geo}
+==============================================================================
+  Haar self-test: <1/2 Re tr U_l>=+0.00024   <S_geo>=1.00166  (Haar: 1.0)
+  directions: 605  (random 300 + const-axis 300 + savvidy + rank1 x4)   ||v||^2 in [1.000000000000, 1.000000000000]
+  D matrix (605, 24000) computed in 229.4s
+
+==============================================================================
+[1a] E[C_geo] and beta*E[C_geo] at beta = 2.0 / 2.5 / 3.0 / 3.5  (per unit ||v||^2)
+==============================================================================
+   beta    ESS     family        E[C_geo]        E[D]      beta*E[C]   /(N/12)    max(-D)
+   2.00   12498   savvidy      0.035855+-0.000755   0.134465   0.071710   0.4303    0.8204
+   2.00   12498   rank1(l0)    0.030711+-0.000641   0.132004   0.061423   0.3685    0.4952
+   2.00   12498   const-axis   0.035702+-0.000012   0.133353   0.071403   0.4284    0.8631
+   2.00   12498   random       0.036588+-0.000342   0.133305   0.073175   0.4391    1.6400
+   2.00   12498   SUP over v  0.054593+-0.001186 (random, dir#267)   beta*E= 0.109185  = 0.6551*(N/12)
+   2.50   10054   savvidy      0.027870+-0.000728   0.157315   0.069676   0.4181    0.8204
+   2.50   10054   rank1(l0)    0.023257+-0.000610   0.154744   0.058142   0.3489    0.4952
+   2.50   10054   const-axis   0.027754+-0.000011   0.156056   0.069386   0.4163    0.8631
+   2.50   10054   random       0.028604+-0.000273   0.156064   0.071510   0.4291    1.6400
+   2.50   10054   SUP over v  0.042900+-0.001145 (random, dir#267)   beta*E= 0.107250  = 0.6435*(N/12)
+   3.00    8212   savvidy      0.021891+-0.000697   0.175977   0.065674   0.3940    0.8204
+   3.00    8212   rank1(l0)    0.017798+-0.000576   0.173431   0.053394   0.3204    0.4952
+   3.00    8212   const-axis   0.021823+-0.000011   0.174616   0.065470   0.3928    0.8631
+   3.00    8212   random       0.022635+-0.000220   0.174718   0.067904   0.4074    1.6400
+   3.00    8212   SUP over v  0.034153+-0.001100 (random, dir#267)   beta*E= 0.102460  = 0.6148*(N/12)
+   3.50    6824   savvidy      0.017448+-0.000664   0.191122   0.061067   0.3664    0.8204
+   3.50    6824   rank1(l0)    0.013831+-0.000542   0.188735   0.048409   0.2905    0.4952
+   3.50    6824   const-axis   0.017427+-0.000010   0.189708   0.060996   0.3660    0.8631
+   3.50    6824   random       0.018198+-0.000181   0.189946   0.063693   0.3822    1.6400
+   3.50    6824   SUP over v  0.027650+-0.001054 (random, dir#267)   beta*E= 0.096775  = 0.5807*(N/12)
+
+==============================================================================
+[1b] beta-scan: TREND of beta*sup_v E[C_geo]  (the object the window depends on)
+==============================================================================
+   beta= 1.50  ESS= 15643  sup_v E[C]=0.069939 (random     dir#267)  beta*sup=0.104908=0.6294(N/12)  beta*<E[C]>=0.069854=0.4191(N/12)
+   beta= 2.00  ESS= 12498  sup_v E[C]=0.054593 (random     dir#267)  beta*sup=0.109185=0.6551(N/12)  beta*<E[C]>=0.072213=0.4333(N/12)
+   beta= 2.50  ESS= 10054  sup_v E[C]=0.042900 (random     dir#267)  beta*sup=0.107250=0.6435(N/12)  beta*<E[C]>=0.070362=0.4222(N/12)
+   beta= 3.00  ESS=  8212  sup_v E[C]=0.034153 (random     dir#267)  beta*sup=0.102460=0.6148(N/12)  beta*<E[C]>=0.066593=0.3996(N/12)
+   beta= 3.50  ESS=  6824  sup_v E[C]=0.027650 (random     dir#267)  beta*sup=0.096775=0.5807(N/12)  beta*<E[C]>=0.062245=0.3735(N/12)
+
+   argmax over beta of beta*sup_v E[C_geo]: beta=2.05  value=0.109203 = 0.6552*(N/12)
+   argmax over beta of beta*<E[C_geo]>_v   : beta=1.95  value=0.072214 = 0.4333*(N/12)
+   d(beta*sup_v E[C])/dbeta |_(2.3..2.7) = -0.00748   d(beta*<E[C]>_v)/dbeta = -0.00614
+   beta*sup_v E[C_geo] at beta=2.0/2.5/3.0/3.5: 0.109185 / 0.107250 / 0.102460 / 0.096775
+
+==============================================================================
+[1c] boundary solves
+==============================================================================
+   N/12 = 0.166667 ; V0 = 0.011059293773 ; sqrt((N/12)/V0) = 3.882 (rank-1 window, O06 sec 4.2)
+   (A) C_geo-only equation  beta*sup_v E[C_geo] = N/12 :  root = nan  (nan = NO crossing; peak 0.109203 < 0.166667)
+   (B) C_geo-only, family-mean  beta*<E[C]>_v = N/12  :  root = nan
+   floor surplus (N/12) - beta*sup_v E[C] : min over beta = 0.057463 at beta=2.05 ; at beta=2.5 = 0.059417
+   (C) full window  beta*sup_v E[C](beta) + beta^2*V0 = N/12 :  root = 2.292220096504794
+   (D) full window with family-mean deficit:                    root = 3.009240848696477
+   composite surplus at beta=2.5: (N/12) - beta*sup E[C] - beta^2*V0 = -0.009704  (negative => window CLOSED at the physical point)
+   same with P06's own deficit (scale x0.907 = its 0.0388 vs our 0.0429): root = 2.505551686963152   (~P06's stated 2.51)
+       V0 x 0.9: full window (C) root = 2.433322535396022
+       V0 x 1.0: full window (C) root = 2.292220096504794
+       V0 x 1.1: full window (C) root = 2.1771352656259526
+   surplus table  S(beta) = (N/12) - beta*sup_v E[C] - beta^2*V0 :
+     beta=1.80  beta*sup_vE[C]=0.108463  beta^2V0=0.035832  S=+0.022372 (+13.42% of N/12)
+     beta=2.00  beta*sup_vE[C]=0.109185  beta^2V0=0.044237  S=+0.013244 (+7.95% of N/12)
+     beta=2.20  beta*sup_vE[C]=0.108933  beta^2V0=0.053527  S=+0.004207 (+2.52% of N/12)
+     beta=2.25  beta*sup_vE[C]=0.108747  beta^2V0=0.055988  S=+0.001932 (+1.16% of N/12)
+     beta=2.30  beta*sup_vE[C]=0.108519  beta^2V0=0.058504  S=-0.000356 (-0.21% of N/12)
+     beta=2.40  beta*sup_vE[C]=0.107950  beta^2V0=0.063702  S=-0.004985 (-2.99% of N/12)
+     beta=2.50  beta*sup_vE[C]=0.107250  beta^2V0=0.069121  S=-0.009704 (-5.82% of N/12)
+     beta=2.60  beta*sup_vE[C]=0.106440  beta^2V0=0.074761  S=-0.014534 (-8.72% of N/12)
+     beta=2.80  beta*sup_vE[C]=0.104567  beta^2V0=0.086705  S=-0.024605 (-14.76% of N/12)
+     beta=3.00  beta*sup_vE[C]=0.102460  beta^2V0=0.099534  S=-0.035327 (-21.20% of N/12)
+   top-4 directions at beta=2.5: #267(random)=0.04290, #82(random)=0.04085, #69(random)=0.04077, #185(random)=0.03949
+   sup_v E[C](2.5): 605 dirs=0.042900 ; 300 random only=0.042900 ; 300 const-axis only=0.028442  (P06, 128 random, got 0.038842)
+
+==============================================================================
+[2] L=2 4D lattice (16 sites, 64 links, 24 plaquettes) at beta=2.5: E[C_geo] zero?
+==============================================================================
+  action cross-check: dict=94.2316248696  array(axis=mu-6, correct)=94.2316248696  rel=6.0e-16
+     [wrong convention axis=mu-7, for the record] =102.6733952258  rel=9.0e-02
+  staple check: dS_staple=+1.152114923712e-01 dS_brute=+1.152114923712e-01 rel=6.2e-14
+  lattice directions: 334  ||v||^2 in [1.000000000000, 1.000000000000]
+  Metropolis beta=2.5: acc=0.662  n_cfg=300  (18.0s thermal+meas)
+  config array (300, 2, 2, 2, 2, 4, 3)
+    100/300 configs  (33.6s)
+    200/300 configs  (66.2s)
+    300/300 configs  (88.1s)
+
+    family        E[C_geo]     E[D]       frac(D<0)    min D     max(-D)  E[C]/n_plaq
+    random        0.00000000   1.252900   0.0000       0.4905   -0.4905   0.00000000
+    const-axis    0.00000000   1.228776   0.0000       0.7485   -0.7485   0.00000000
+    savvidy       0.00000000   1.225189   0.0000       0.8175   -0.8175   0.00000000
+    rank1         0.00066299   1.437872   0.0133      -0.1030   0.1030   0.00002762
+    SUP over v : E[C_geo]=0.00066299  beta*E=0.00165749=0.0099*(N/12)  at rank1
+    negative (cfg,dir) pairs: 4/100200 ; min D over all = -0.102969
+
+==============================================================================
+[3] verdict quantities
+==============================================================================
+  E[C_geo] at beta=2.0 : sup_v=0.054593  <v>_all=0.036107  <v>_rand=0.036588
+  beta=2.0: sup_v E[C]=0.054593  beta*sup=0.109185  <E[C]>_rand=0.036588 beta*<>= 0.073175  ESS=12498  E[D]= 0.133323
+  beta=2.5: sup_v E[C]=0.042900  beta*sup=0.107250  <E[C]>_rand=0.028604 beta*<>= 0.071510  ESS=10054  E[D]= 0.156053
+  beta=3.0: sup_v E[C]=0.034153  beta*sup=0.102460  <E[C]>_rand=0.022635 beta*<>= 0.067904  ESS=8212  E[D]= 0.174660
+  beta=3.5: sup_v E[C]=0.027650  beta*sup=0.096775  <E[C]>_rand=0.018198 beta*<>= 0.063693  ESS=6824  E[D]= 0.189819
+  peak of beta*sup_v E[C_geo] = 0.109203 at beta=2.05  (N/12 = 0.166667, so no C_geo-only crossing exists: True)
+  total runtime 350.6s

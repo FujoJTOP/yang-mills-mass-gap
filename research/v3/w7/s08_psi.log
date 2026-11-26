@@ -1,0 +1,32 @@
+S08-PSI  |  psi = sum_{i<j} log d_ij^2   (role of the r12 correction)
+==============================================================================
+[1] per-pair  g(d) - (-log 4sin^2(d/2)) - log d^2  =  log(1)   (simplify: 0)
+    numeric d=1.234 : -2.220e-16   (=> Phi_O09 - Phi_r08 = sum log d^2 exactly, no constant)
+[2] g'  = (-d/tan(d/2) + 2)/d        [= -cot(d/2) + 2/d :  0]
+    g'' = (d**2 + 2*cos(d) - 2)/(d**2*(1 - cos(d)))   [= csc^2(d/2)/2 - 2/d^2 : 0]
+[3] psi(v) = log[(d+a v)^2] :  psi' = 2*a/(a*v + d) ,  psi'' = -2*a**2/(a*v + d)**2
+[4] f(d) = -log4sin^2(d/2):  f'=-1/tan(d/2)  f''=1/(1 - cos(d))  f'''=-cos(d/2)/(2*sin(d/2)**3)   (f''' != 0 => Phi_r08 NOT quadratic in v)
+    Phi_r08''' at generic (d;a) = (1.1;1),(1.7;1),(2.8;2):  -4.473687  (nonzero)
+
+[5] midpoint quadrature, weight |Delta|^2 dtheta  (r08 measure = Gibbs measure of Phi_r08)
+    lam             N     E[V'']    E[V'^2]   S-D(O09) B=-Eps''-Varps'     C=-Cov
+    (1, 0, -1)   1024   8.000000   8.000000  -0.174716  -0.174718  -0.174717
+    (1, 0, -1)   1536   8.000000   8.000000  -0.174717  -0.174718  -0.174718
+    (1, -1, 0)   1024   8.000000   8.000000   0.592876   0.592877   0.592877
+    (1, -1, 0)   1536   8.000000   8.000000   0.592875   0.592875   0.592875
+
+    lam=(1, 0, -1) : E[psi']=+2.436973  E[psi'']=-1.559288  Var(psi')=1.734006  sum E[a^2/d^2]=0.779644 (= -E[psi'']/2)
+              E[Phi'']=6.440712  E[Phi'^2]=12.554264  Var(Phi')=6.615429  E[V']=3.29e-17
+              id.resid E[V'^2]-E[V'']=-2.665e-15 | broken by E[Phi'^2]-E[Phi'']=+6.113553
+              S-D: direct=-0.174717  -E[psi'']-Var(psi')=-0.174718  -Cov(Phi',psi')=-0.174718
+
+    lam=(1, -1, 0) : E[psi']=+1.218486  E[psi'']=-3.168966  Var(psi')=2.576091  sum E[a^2/d^2]=1.584483 (= -E[psi'']/2)
+              E[Phi'']=4.831034  E[Phi'^2]=5.722868  Var(Phi')=4.238159  E[V']=0.00e+00
+              id.resid E[V'^2]-E[V'']=+0.000e+00 | broken by E[Phi'^2]-E[Phi'']=+0.891834
+              S-D: direct=+0.592875  -E[psi'']-Var(psi')=+0.592875  -Cov(Phi',psi')=+0.592875
+
+[6] attribution test:  weight w = |Delta|^2 = e^{-Phi_r08}  =>  int d_tau^2 w dtheta = 0
+    (translation invariance)  <=>  E[Phi_r08'^2] = E[Phi_r08'']  for ANY smooth Phi_r08,
+    whether or not it is quadratic in tau.  Numeric: see column 3 vs 4 above (they agree).
+
+done

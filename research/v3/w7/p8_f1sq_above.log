@@ -1,0 +1,69 @@
+=== 1. beta=2.2 data: the atom FRACTION w1 = f1^2/M0 (dimensionless) ===
+ lvl       C(0)  C(1)/C(0)  A(m=1.51)  w1=A/C(0)
+  S0    12.8428    0.10785     6.2135     0.4838
+  S2     5.7775    0.18847     4.8425     0.8382
+  S4     3.0464    0.19325     2.6104     0.8569
+  S8     1.1806    0.17627     0.9361     0.7929
+  [M] paper route A/C(0) = 0.5627 (C(1)/C(0)=0.123) vs our npz 0.4838 (C(1)/C(0)=0.1079); 13% estimator/window gap, flagged not hidden
+  robust band: w1(2.2) in [0.48, 0.86] across 2 routes x 4 smearings (s=0 polluted downward by contact/UV weight in M0)
+
+=== 2. r0: what the P3 floor actually says (dimensionless or nothing) ===
+  1/2(2N)^-2, N=2            r0 = 0.03125
+  1/2*c1*u, c1=2N, N=2       r0 = 0.01042
+  1/2(2N)^-2, N=3            r0 = 0.01389
+  1/2*c1*u, c1=2N, N=3       r0 = 0.01562
+  6u(1/48) (NOT r0)                = 0.03125   same digits as r0(SU2) by coincidence -> the corpus number 0.031
+
+  adopt r0 = 0.03125 (SU(2), beta-independent floor)
+  w1(2.2)/r0 = 0.484..0.857 over r0=0.03125 = 15x .. 27x
+  margin to the tightest 口径 r0=1/2*c1*u (N=2)=0.01042: 46x .. 82x
+
+=== 3. dimensional mismatch: 7.14 vs 0.031 is not a comparison ===
+  f1^2_bare = 6.21 carries [mass]^2-ish lattice units (scheme-dependent, COMPUTE-F1SQ:20)
+  r0 = 0.03125 is dimensionless (atom fraction).  Ratio '7.14/0.031' = 199 means nothing; the honest comparand is w1 = 0.484.
+  consistency: w1 = A/C(0) => c0 = 12.843 is the missing unit factor  [PASS]
+
+=== 4. can rho^2 = 2.48 deliver f1^2?  Exact 2-dim counterexample ===
+  model: transfer diag(mu1,mu2), mu2/mu1 = rho^2, source (cos th, sin th)
+  => rho^2 = mu2/mu1 independent of th; w1 = cos^2 th free in (0,1)
+      th    rho^2       w1 f1^2=M0*w1
+   0.002    2.480  1.00000    1.00000
+   0.250    2.480  0.93879    0.93879
+   0.700    2.480  0.58498    0.58498
+   1.000    2.480  0.29193    0.29193
+   1.200    2.480  0.13130    0.13130
+   1.550    2.480  0.00043    0.00043
+  rho^2 fixed at 2.48; w1 spans 4.32e-04 .. 0.999996 = 3.4 decades
+  => rho^2 is a 1-constraint functional on a 2-dof object: it CANNOT fix w1.  corpus: 'rho^2 floor-blind' (new-tools-registry A7)
+
+=== 5. the only exact bridge: residue-level-gap lemma ===
+  f1^2 >= M0(Lam - Rbar)/(Lam - m1^2),  Rbar = M1/M0,  Lam = inf supp(nu - f1^2 delta)
+  two-level case: equality (tautology) -> the lemma returns w1 itself, no new info
+  rho^2= 2.28: w1_lb = (rho^2 - rbar)/(rho^2 - 1),  rbar = Rbar/m1^2
+       rbar= 1.10 -> w1 >= 0.9219  >= r0 OK
+       rbar= 1.50 -> w1 >= 0.6094  >= r0 OK
+       rbar= 1.90 -> w1 >= 0.2969  >= r0 OK
+       rbar= 2.28 -> w1 >= 0.0000  <-- vacuous
+  rho^2= 2.48: w1_lb = (rho^2 - rbar)/(rho^2 - 1),  rbar = Rbar/m1^2
+       rbar= 1.10 -> w1 >= 0.9324  >= r0 OK
+       rbar= 1.50 -> w1 >= 0.6622  >= r0 OK
+       rbar= 1.90 -> w1 >= 0.3919  >= r0 OK
+       rbar= 2.48 -> w1 >= 0.0000  <-- vacuous
+  rho^2= 2.68: w1_lb = (rho^2 - rbar)/(rho^2 - 1),  rbar = Rbar/m1^2
+       rbar= 1.10 -> w1 >= 0.9405  >= r0 OK
+       rbar= 1.50 -> w1 >= 0.7024  >= r0 OK
+       rbar= 1.90 -> w1 >= 0.4643  >= r0 OK
+       rbar= 2.68 -> w1 >= 0.0000  <-- vacuous
+  rho^2= 5.79: w1_lb = (rho^2 - rbar)/(rho^2 - 1),  rbar = Rbar/m1^2
+       rbar= 1.10 -> w1 >= 0.9791  >= r0 OK
+       rbar= 1.50 -> w1 >= 0.8956  >= r0 OK
+       rbar= 1.90 -> w1 >= 0.8121  >= r0 OK
+       rbar= 5.79 -> w1 >= 0.0000  <-- vacuous
+  => a floor on w1 from rho^2 needs Rbar = M1/M0, which is NOT measured anywhere;
+     with rbar -> rho^2 the bound degrades to 0.  So (c)-part: measure M1/M0 (time-moment).
+
+=== verdict inputs ===
+  w1(2.2) = 0.48..0.86   [E]  (A/C(0); scheme-invariant under O -> lam O)
+  w1 is the gamma=0 ratio (U4: f1^2 and M0 share Z_O^2) -> a, Z_a cancel in the ratio
+  estimate w1(2.5) = 0.35..0.8  [M]  (no plateau at 2.5: 40 cfg, ~3.5 sigma; 2.5 is above the 2.30 crossover)
+  => f1^2 >= r0 at 2.5: 15-27x margin if w1 holds; verdict (a)

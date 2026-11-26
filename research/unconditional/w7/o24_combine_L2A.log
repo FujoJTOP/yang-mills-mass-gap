@@ -1,0 +1,31 @@
+=== O24  tag=L2A mode=A Nsweep/chain=15000 chains=4 seeds=[400 401 402 403] eps=0.9 domain-reject=0.0058 burn=800 wall=158s (10.02 ms/sweep for all 4 chains) ===
+acc_link=[0.417 0.415 0.414 0.416]
+g=0 seed=400 E[k]=   1.9240 Var(F)= 1.5359 E[F]=+0.0513 D=+0.3882 s_jk=0.0482 s_tau=0.1364 tauK= 16.4 tauF= 28.8 Neff=   522
+g=1 seed=401 E[k]=   1.9282 Var(F)= 1.5320 E[F]=-0.0550 D=+0.3963 s_jk=0.0536 s_tau=0.1394 tauK= 36.7 tauF= 30.1 Neff=   408
+g=2 seed=402 E[k]=   1.9481 Var(F)= 1.4961 E[F]=+0.0589 D=+0.4520 s_jk=0.0488 s_tau=0.1216 tauK= 17.6 tauF= 23.8 Neff=   630
+g=3 seed=403 E[k]=   1.9168 Var(F)= 1.5768 E[F]=+0.0842 D=+0.3401 s_jk=0.0557 s_tau=0.1243 tauK= 44.3 tauF= 22.3 Neff=   338
+
+--- 4-chain combination ---
+Delta_raw = +0.3942   sigma_jk=0.0258   sigma_tau=0.0653   sigma_grp=0.2064   spread=0.0459
+Delta_raw/sigma_jk = +15.26   /sigma_tau = +6.03   /sigma_grp = +1.91
+chi2/dof over 4 groups = 0.79
+
+--- heavy-tail diagnostics (pooled 60000 samples) ---
+kappa: mean=1.9293 median=1.9193 MAD=0.1322 max=1.826e+01 min=1.182e+00 std=0.2797  max/median=9.5
+F    : mean=+0.0349 median=+0.0307 max|F|=6.422e+00 std=1.2401
+Hill alpha(kappa) top1% = 1.97   Hill alpha(F) = 8.78
+  winsor 0.1%: Delta=+0.3954
+  winsor 1.0%: Delta=+0.4437
+  winsor 5.0%: Delta=+0.6500
+  median-kappa version: Delta=+0.3814
+  frac |kappa-med|>10*MAD: 0.0020
+  top 0.01% of kappa carries 0.1% of E[kappa]
+  top 0.10% of kappa carries 0.3% of E[kappa]
+
+--- normalisation (ch05:208/:214-228: d_v unnormalised, ||v||^2 = 1/L) ---
+Delta_raw : +0.3942 +- 0.0258 (jk) / 0.0653 (tau)   ratio_jk=+15.26 ratio_tau=+6.03
+Delta_norm=L^2*raw: +1.5766 +- 0.1033 (jk) / 0.2613 (tau)   ratio_jk=+15.26 ratio_tau=+6.03
+
+--- needed sample for 5 sigma ---
+  using sigma_jk=0.0258: sigma<= 0.0788 needs x0.11 => 1610 sweeps/chain (x4 chains), wall ~ 67.3 min
+  using sigma_tau=0.0653: sigma<= 0.0788 needs x0.69 => 10302 sweeps/chain (x4 chains), wall ~ 430.3 min

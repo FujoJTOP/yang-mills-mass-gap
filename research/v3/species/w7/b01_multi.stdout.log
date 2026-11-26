@@ -1,0 +1,16 @@
+====================================================================================================
+B01  SU(2) Wilson  w1(raw) vs beta   Ls=8^3 x Lt=12   operator = run1/run3 lev0 (unchanged)
+m = 1.546 fixed ; w1 = A/C0 ; errors = 20-block delete-one jackknife
+cpu_count=32  numba threads=32 (0.68.1)
+ONE prange pass: 4 betas x 8 chains = 32 independent chains, N=12000/beta  (1500 cfg/chain)
+====================================================================================================
+D:\Dev\math\research\v3\species\w7\b01_multi.py:154: RuntimeWarning: overflow encountered in scalar multiply
+  ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)
+[T] sites=6144 links=24576  U=50.3 MB total  S=4.61 MB   gap=[np.int64(4), np.int64(4), np.int64(6), np.int64(6)]  therm=[np.int64(600), np.int64(800), np.int64(1200), np.int64(1500)]
+D:\Dev\math\research\v3\species\w7\b01_multi.py:154: RuntimeWarning: overflow encountered in scalar add
+  ss = ss * np.uint64(6364136223846793005) + np.uint64(1442695040888963407)
+    beta=3: kappa=1.5 gap=4 therm=600 chains 0..7
+    beta=4: kappa=2 gap=4 therm=800 chains 8..15
+    beta=6: kappa=3 gap=6 therm=1200 chains 16..23
+    beta=10: kappa=5 gap=6 therm=1500 chains 24..31
+[T] compile+smoke: 1.5s

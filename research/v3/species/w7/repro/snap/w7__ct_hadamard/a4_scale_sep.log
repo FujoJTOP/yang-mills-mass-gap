@@ -1,0 +1,44 @@
+==============================================================================
+A4-SCALE-SEP  xi/a at beta=2.5  (recomputed from corpus data, no new fits)
+==============================================================================
+
+[R1] direct 0++ GEVP gap, SU(2) Wilson beta=4/g^2, src: tm_gap_results.csv
+     xi/a = 1/(m a), err relative
+tag             L  beta   t_pl         ma           xi/a
+L4_b2.2         4   2.2      2     1.1506    0.869(0.031)
+L4_b2.5         4   2.5      2     1.2562    0.796(0.064)
+L4_b2.8         4   2.8      2     1.3975    0.716(0.034)
+L6_b2.2         6   2.2      3     1.0800    0.926(0.514)
+L6_b2.5         6   2.5      3     0.8467    1.181(0.207)
+L6_b2.8         6   2.8      3     0.7153    1.398(0.441)
+
+  beta=2.5 SU(2), direct:  ma in [0.847, 1.256]  =>  xi/a in [0.73, 1.39]
+  note: L=4,6 are the *temporal* extent => T=1/(La) > 0; LATTICE-TM-GAP.md:26
+        puts beta_c(N_tau=4)=2.30, 2.43(N_tau=6), so these are finite-T
+        screening masses, not the T=0 glueball. Same O(1) conclusion either way.
+
+[R2] ratio chain at beta=2.5, SU(2), src: research/v3/T1-POLYMER-RG.md:241-242
+  ma = 4 ln(4/beta)                      ma=1.880  xi/a=0.532   # strong-coupling leading order (overestimates at the crossover)
+  ma from m/sqrt(s)=3.5, sqrt(s)a=0.22   ma=0.770  xi/a=1.299   # scaling-region ratios (Morningstar-Peardon class)
+
+  combined beta=2.5 SU(2) envelope: xi/a in [0.53, 1.30]
+  => xi/a = 1.0 +- 0.3 (O(1), <= 1.3); NOT >> 1
+
+[R3] SU(3) Wilson beta=6/g^2 reference points (src: research/lattice-cpb/REPORT.md)
+  beta<=3.3  : xi/a < 0.3 (unresolved; am>4.4 2sigma)      REPORT.md:369-373
+  beta=6.0  (n=8, L=6)     ma=1.073 -> xi/a=0.93                 REPORT.md:357
+  beta=6.30 (n=8, L=24)    ma=0.886 -> xi/a=1.13                 REPORT.md:1060
+  beta~7.6-7.8: xi/a=7-8.5 *extrapolated only* (two-loop from the beta=6
+                calibration, never measured)            REPORT.md:1087-1095
+
+------------------------------------------------------------------------------
+(a) SU(3): beta_c=5.6924(2) [hep-lat/0701007], beta=2.5 is 44% BELOW =>
+    strong-coupling side, g^2=2.4. "physical point" is FALSE for SU(3).
+    SU(2): beta_c(N_t=4)=2.2986(6) [2211.16273], beta=2.5 is +8.7% =>
+    crossover / entrance of the scaling window, not its interior.
+    [src: research/v3/species/BETA-CONVENTION.md:102-107,121-122]
+(b) xi/a = O(1) (<=1.3) at beta=2.5 => no scale separation => no continuum
+    limit to start from. HOLDS.
+(c) no measured xi/a >> 1 anywhere in the corpus; the >>1 values are
+    two-loop extrapolations at beta~7.6-7.8 (SU(3)). FAILS as data.
+------------------------------------------------------------------------------

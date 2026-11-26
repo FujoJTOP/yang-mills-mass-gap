@@ -1,0 +1,61 @@
+====================================================================================================
+R01-HG  a!=0 generalisation of  H = (1/2)cot(theta/2) G   [single-plaquette SU(2), H1A/Q04/Q08]
+numpy 2.4.6   sympy 1.14.0   python 3.12.6
+====================================================================================================
+
+[1] sympy: G,H affine in (c/2, t)  ->  G=(c/2)A+tB, H=(c/2)C+tD ;  Wronskian Wr=C*B-D*A
+  Wr(rho,a) = C*B - D*A  =
+    beta**2*(C2**2*a**4*rho**2 + 2*C2*S2*a**4*rho - 2*C2*S2*a**2*rho**3 + S2**2*a**4*rho**2 - 8*S2**2*a**4 + 4*S2**2*a**2*rho**2 + 4*S2**2*rho**4)/(4*rho**6)
+
+  sanity: A(0)=D(0)=0, B(0)=C(0)=beta*w  ->  rank collapse to span{w}:
+    A|a=0 = 0    D|a=0 = 0
+    B|a=0 = S2*beta/rho    C|a=0 = S2*beta/rho
+
+  exact-diff check  dS/da  - (2.4)  simplifies to : 0
+  (H check is done numerically in [3] below: central differences in a)
+
+----------------------------------------------------------------------------------------------------
+[2] endpoint rho=2pi (w=0 there, but it is where proportionality dies):
+  A(2pi) = 0    B(2pi) = -a**2*beta/(8*pi**2)
+  C(2pi) = -a**2*beta/(8*pi**2)    D(2pi) = 3*a*beta*(a**2 - 4*pi**2)/(32*pi**4)
+  => C(2pi) = B(2pi)  (KILLER: A vanishes, C does not)
+  Wr(2pi) = C*B - D*A = a**4*beta**2/(64*pi**4)
+  H/G at rho=2pi  = -3*a/(4*pi**2) + cc/(2*tt) + 3/a   [ = (c/2)/t + 3/a - 3a/(4pi^2) with c=2*cc/2... see below ]
+  written with c,t:  H/G|2pi = c/(2t) + 3/a - 3a/(4pi^2)   => kill term  3/a - 3a/(4pi^2)
+
+----------------------------------------------------------------------------------------------------
+[3] pointwise  beta=2.5  theta=pi/2  K0=(1/2)cot(th/2)=0.500000000000000
+    a      rho-range        rho*     G(rho*)      H(rho*)     H/G at rho*    min H/G     max H/G    spread     std H/G     max|Wr|/beta^2
+  0.00   [ 0.000, 6.283]    1.000    +0.847513    +0.423756    +0.500000    +0.500000   +0.500000      0.0000      0.0000     0.250000
+  0.30   [ 0.300, 6.283]    1.000    +0.968174    +0.355973    +0.367674  -4258.654733 +403475.281891  407733.9366    902.3549     0.250000
+  0.75   [ 0.750, 6.283]    1.000    +1.124925    +0.243458    +0.216422  -11433.655794 +80504.258102  91937.9139    184.6740     0.250000
+  1.20   [ 1.200, 6.283]    1.250    +1.221945    +0.113974    +0.093273  -18530.580142 +121178.241114  139708.8213    278.9644     0.250000
+
+  endpoint check H/G at rho=2pi  (analytic : (1/2)cot(th/2)+3/a-3a/(4pi^2))
+    a=0.30  numeric +10.4772833605   analytic +10.4772027337   diff +8.06e-05
+    a=0.75  numeric +4.4430131008   analytic +4.4430068342   diff +6.27e-06
+    a=1.20  numeric +2.9088127492   analytic +2.9088109347   diff +1.81e-06
+
+  independent check: H vs d/da[G] by central differences in a (fixed transverse s)
+    a=0.00   max rel dev |H - dG/da| = 1.09e-11
+    a=0.30   max rel dev |H - dG/da| = 1.72e-11
+    a=0.75   max rel dev |H - dG/da| = 1.27e-11
+    a=1.20   max rel dev |H - dG/da| = 1.86e-11
+
+----------------------------------------------------------------------------------------------------
+[4] moments under dmu_a ~ w exp(-beta S) drho  (GL n=4000)
+    a     E[G]        E[H]        Var(G)      Var(H)      Cov(G,H)    K0          E[H]/E[G]   Cov/Var(G)  sd(H)/sd(G)  R^2        resid=1-R^2   pointwise K spread/|K0|
+  0.00  +0.804775  +0.402387  +1.221530e-02  +3.053824e-03  +6.107648e-03  +0.500000  +0.500000  +0.500000  +0.500000  1.000000  0.000e+00   0.0000
+  0.30  +0.897072  +0.327992  +1.874393e-02  +2.892875e-03  +7.363638e-03  +0.500000  +0.365624  +0.392854  +0.392857  0.999987  1.288e-05   818814.3369
+  0.75  +0.988335  +0.206016  +3.181100e-02  +2.346002e-03  +8.638163e-03  +0.500000  +0.208448  +0.271546  +0.271566  0.999855  1.448e-04   213816.7608
+  1.20  +1.018545  +0.077074  +4.804680e-02  +1.502600e-03  +8.493278e-03  +0.500000  +0.075671  +0.176771  +0.176844  0.999178  8.217e-04   328036.0568
+
+[5] a=0 control: for exact proportionality all of  E[H]/E[G], Cov/Var(G), sd(H)/sd(G)  must equal
+    K0 = (1/2)cot(th/2); at a=0 they do to machine precision (row 1 above).
+
+----------------------------------------------------------------------------------------------------
+[6] VERDICT
+  * pointwise proportionality H = K*G fails for every a!=0: Wr(2pi) = beta^2 a^4/(64 pi^4) != 0,
+    and H/G|rho=2pi = (1/2)cot(th/2) + 3/a - 3a/(4pi^2).
+  * at a=0 the four functions collapse: (A,B,C,D)|a=0 = (0,beta*w,beta*w,0) -> rank 1 -> K = (1/2)cot(th/2).
+  * numeric spreads above quantify the deviation (column 'spread/|K0|').

@@ -1,0 +1,541 @@
+% =====================================================================
+%  ch21-no-go-and-spec.tex
+%  Structural no-go, and the specification of the missing machine.
+%  Labels used: \LT (theorem) \LC (conditional) \LN (no-go) \LM (exact
+%  missing step) \LE (numerical evidence). No statement in this chapter is
+%  marked closed, and nothing here bears on Clay.
+% =====================================================================
+\let\codeprev\code
+\renewcommand{\code}[1]{\texttt{\footnotesize\detokenize{#1}}}
+
+\section{Structural no-go, and the specification of the machine that does not exist}
+\label{ch:nogo-spec}
+
+The two preceding chapters are the scalar face of the wall: one identity, four exact models, and a
+certificate on a single plaquette. This chapter is the structural face, and its content is negative
+in a precise sense. It is not that the campaign has failed to find the machine; it is that the
+\emph{shape} of every candidate on record is excluded, and that the shape which survives can be
+written down as a specification with four inputs, one of which is missing.
+
+Three things are established below. (i) Two exact benchmark models separate the two coordinates the
+campaign used as targets: $G''>0$ with $m=0$, and $m>0$ with $G''=0$. Neither coordinate implies
+the other, and the necessity of $f_1^2$ fails on the same model (\S\ref{sec:ng-bench}). (ii) Every
+prepared structure --- reflection positivity, K\"all\'en--Lehmann positivity, Osterwalder--Schrader
+reconstruction, topology, block-spin renormalisation, large $N$ --- is a \emph{stage} and not a
+\emph{machine}: each guarantees that the theory exists, that the measure is non-negative, that the
+transfer operator is self-adjoint and that its spectrum lies in $[0,1]$, and none produces a bound
+on $\lambda_2$ (\S\ref{sec:ng-stage}). (iii) One elementary average lemma explains why twenty
+candidate roads died at the same filter, and that filter is itself the gap test
+(\S\ref{sec:ng-a1}). What remains is a specification (\S\ref{sec:ng-spec}) and exactly one
+unclosed sufficient condition (\S\ref{sec:ng-open}).
+
+\textbf{Boundary, stated before anything is read as progress.} Nothing in this chapter proves a gap,
+closes a Clay step, or shrinks the open cell. It records that the search for a handle cannot end in
+a number, and it converts that record into the only form in which it is useful. \textbf{Clay
+remains $0\%$.}
+
+\subsection{Two benchmark counterexamples, stated before anything else}
+\label{sec:ng-bench}
+
+A candidate tool is a quantity attached to a model. The first question about it is therefore not
+whether it is computable but whether the two quantities the campaign used as targets are functions
+of one another. They are not, and two exactly solvable models decide this. Neither needs four
+dimensions, lattice data, or a coupling window.
+
+\paragraph{Benchmark (a): the harmonic oscillator $\otimes$ free mode ($M_6$) \LT.}
+Take $H=\tfrac12(p_a^2+p_b^2)+\tfrac12\omega^2a^2$ on $L^2(\mathbb R^2)$: the $a$-direction is a
+harmonic oscillator, the $b$-direction is free. Let $\rho=|\psi_0|^2$ be the marginal density of
+$a$ and $V$ the potential in that direction. Using $-\tfrac12\psi_0''+V\psi_0=E_0\psi_0$,
+\begin{equation}
+G''(a)=-\partial_a^2\log\rho(a)
+      =-2\,\frac{\psi_0''(a)}{\psi_0(a)}+2\Big(\frac{\psi_0'(a)}{\psi_0(a)}\Big)^{2}
+      =4\big(E_0-V(a)\big)+2\Big(\frac{\psi_0'(a)}{\psi_0(a)}\Big)^{2}.
+\label{eq:ng-m6}
+\end{equation}
+At the symmetric point $a=0$ the wave function is even, so $\psi_0'(0)=0$ and the second term
+vanishes: $G''(0)=4(E_0-V(0))=2\omega$. The spectrum, however, is $\mathrm{spec}(H)=[\omega/2,\infty)$
+and continuous, because the free direction contributes $[0,\infty)$ and the oscillator contributes
+$\{\omega(n+\tfrac12)\}$; hence $m=0$. With $\omega=1$: $G''(0)=2.000000>0$ and $m=0$, both exact.
+
+Read \eqref{eq:ng-m6} literally: $G''(0)>0$ is equivalent to $V(0)<E_0$, that is, to the origin
+lying above the ground-state energy --- in the classically forbidden region, at a barrier top, or
+equivalently at a local maximum of the marginal density. It measures \emph{whether the origin lies in
+the allowed region}. It is a statement about one point. The gap $m=E_1-E_0$ is a statement about the
+whole spectrum, set by the global shape of the potential and by the boundary conditions. There is no
+function relating them, and the same identity reproduces the double-well value
+$4(E_0-V(0))=0.5889397$ against the measured $0.5889$ (difference $3.9\times10^{-7}$, grid error).
+\src{\code{T03-TOY.md} \S2 ($M_6$), \S3 (the identity and its two cross-checks: $2.000006$ for the
+oscillator, $3.9\times10^{-7}$ for the double well); \code{U09-M6.md} \S1, \S5 for the reading
+$m_L=\min(\omega,\tfrac12(2\pi/L)^2)\to0$; reproduction \code{research/v3/w7/t03_toy_models.py}.
+\LT{} at the level of the identity and of the spectrum; the model is $0+1$-dimensional quantum
+mechanics, not a gauge theory.}
+
+\paragraph{Benchmark (b): two-dimensional Yang--Mills \LC.}
+On a spatial circle the transfer operator of 2D $\mathrm{SU}(2)$ Yang--Mills is diagonal in the
+character basis, $T=\sum_j w_jP_j$ with $w_j=e^{-\lambda C_2(j)}$, $\lambda=g^2/2$ and
+$C_2(j)=j(j+1)$. The ground state is the trivial representation, i.e.\ the constant function, so
+\emph{every} coarse marginal is flat and $\partial^2\log\rho\equiv0$: $G''(0)=0$ exactly, at every
+coupling. The spectrum is $E_j=\lambda C_2(j)$, so
+\begin{equation}
+m=\lambda\,C_2(\tfrac12)=\tfrac34\lambda=\tfrac38g^2=0.375\qquad(g^2=1),
+\label{eq:ng-2dym}
+\end{equation}
+which is positive. The same model kills the necessity of $f_1^2$: in two dimensions
+$\operatorname{tr}F^2=H$ along the transfer direction is conserved (there is no propagating degree of
+freedom), hence $O|\Omega\rangle\propto E_0|\Omega\rangle$ and
+$\langle\Omega|O|\mathbb G\rangle=E_0\langle\Omega|\mathbb G\rangle=0$; character orthogonality gives
+the same conclusion. Thus $f_1^2\equiv0$ in a theory with a positive gap.
+\src{\code{T03-TOY.md} \S2 ($M_2$), labelled there \code{[T]*}: exact inside the model, the
+literature not read verbatim; the paper keeps the weaker label. $f_1^2\equiv0$:
+\code{B05-INVENT.md} \S1, \code{D05-FKG.md} \S3.4, \code{IMP-ARROWS.md} \S\S3, 5.}
+
+\begin{claimbox}{cN}
+\claimhead{Corollary}{(two directions of separation)}\label{cor:ng-sep}
+In the class of models where both quantities are defined, neither implication holds:
+$G''(0)=2\omega>0$ with $m=0$ ($M_6$), and $m=3g^2/8>0$ with $G''(0)=0$ (2D Yang--Mills).
+Hence $G''(0)>0$ is not sufficient for $m>0$, and $m>0$ does not force $G''(0)>0$. The necessity
+of $f_1^2$ fails separately, on the second model: a positive gap with $f_1^2\equiv0$.
+\end{claimbox}
+
+\paragraph{What these counterexamples do not say.}
+They do not refute the identity layer. At fixed $(L,a)$ within pure Yang--Mills,
+$G''(0)=E[H+\Phi''\mid0]-\operatorname{Var}(G+\Phi'\mid0)=V_{\mathrm{eff}}''=m_{\mathrm{eff}}^2(k\to0)$
+is exact, so a counterexample \emph{inside} pure Yang--Mills would have to make the infimum over
+$(L,a)$ fail --- which is the wall, not a refutation of an implication. What fails is the bare
+implication in the natural class of reflection-positive lattice gauge theories: for
+$G_{\mathrm{YM}}\times U(1)_{\mathrm{weak}}$ the Yang--Mills factor is gapped while the photon sector
+is gapless, so $G''>0$ and $m=0$ coexist there as well. The correct reading is therefore the one the
+ledger already uses: $G''(0)$ is a \emph{criterion} (an equivalent form of $H1$ at fixed $(L,a)$), not
+a \emph{signpost}.
+\src{\code{T01-IMPLY.md} \S1 (four names of $G''$), \S4.1 (the three-step chain, two of whose steps
+are renamings), \S4.3 (the class-level counterexample and why it does not relocate the route);
+\code{docs/paper-v2/ch05-theorems.tex} \code{eq:split}; \code{ch08-immune.tex} for the four
+equivalent names.}
+
+\subsection{The four-model touchstone}
+\label{sec:ng-touchstone}
+
+From here on no candidate is discussed before it is scored on Table~\ref{tab:ng-bench}. The table has
+four rows and, as a test, only two bits of information.
+
+\footnotesize
+\begin{center}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Model & $m$ & $G''$ & $f_1^2$ & any new tool must give\\
+\midrule
+free massless field & $0$ & $0$ & $0$ & $\mathbf 0$\\
+\textbf{2D Yang--Mills} & $\mathbf{>0}$ & $0$ & $\equiv0$ & $\mathbf{>0}$\\
+\textbf{$M_6$} & $\mathbf 0$ & $\mathbf{2\omega>0}$ & --- & $\mathbf 0$\\
+single plaquette & undefined (no transfer) & $+0.136$ & --- & \textbf{undefined}\\
+\bottomrule
+\end{tabular}
+\captionof{table}{The touchstone. The single-plaquette entry is the certificate value
+$G''(0)=+0.135994711041988098$ of Chapter~\ref{ch:h1-status}, reproduced there against its anchor
+to $1.1\times10^{-16}$; that model has no transfer direction, so its $m$ is \emph{undefined} and
+neither $0$ nor positive. The last column is the requirement, not a measurement.}
+\label{tab:ng-bench}
+\end{center}
+\normalsize
+
+Two remarks fix the table's force, and both are negative.
+
+First, the discipline in the fourth row is load-bearing. A zero-dimensional model has no
+$E_1$; writing ``undefined'' as $0$ manufactures a counterexample, and writing it as ``$>0$''
+defends $H1$ for free. The single-plaquette certificate is a strict positivity statement of the
+left half of $H1$ and was never evidence for the right half.
+
+Second, the table cannot certify that a passing candidate is \emph{not} a relabelling. Its rows can
+report only (i) whether a transfer direction exists and (ii) whether the floor is zero; the signature
+$(0,+,0,\text{undefined})$ is therefore shared by $m$ itself and by every monotone relabelling of $m$.
+Three candidates that pass all four rows are known --- the string tension $\sigma$, the Kato isolation
+margin, and the Hilbert--Schmidt decay rate --- and the third is provably $2\lambda_{\mathrm{bot}}$,
+i.e.\ a renaming, while the second equals $m$ on any relativistic target. The passing set is a subset
+of the monotone relabellings of $m$.
+\src{\code{T03-TOY.md} \S1 (the undefined-value discipline); \code{B05-INVENT.md} \S0, \S4 (B05-1:
+the test carries two bits; all four candidates collide with $m$), \S3 (the three candidates and their
+death causes). \LT{} for the undefined-value discipline and for B05-1; the numerics are \LE.}
+
+\subsection{The structural no-go: every prepared structure is a stage, not a machine}
+\label{sec:ng-stage}
+
+The campaign did not lack structures. It had six, all standard, all applicable, and each of them is
+quoted below with the number that shows it is a stage.
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{Reflection positivity} \LT. It gives a self-adjoint contraction $T=e^{-aH}$,
+  $0\le T\le1$, $\mathrm{spec}\,T\subset[0,1]$ (the negative half-axis is removed), a unique vacuum
+  $\lambda_1=1$ simple, and $T>0$ pointwise at finite volume. Its entire quantitative content about
+  the gap is $\lambda_2\le1$, i.e.\ $m\ge0$. Worse, it holds on both benchmark models: on 2D
+  Yang--Mills the diagonal weights satisfy $w_j=e^{-\lambda C_2(j)}\ge0$ for the whole family
+  $\lambda\ge0$, so every reflection-positivity inequality holds pointwise while $m(\lambda)=3\lambda/4$
+  runs from $0$ to $3.75$; on $M_6$ the two-point kernel is an explicit square,
+  $\langle\Theta f,f\rangle=(2\omega)^{-1}(\int e^{-\omega t}f_a)^2\cdot(\text{free-direction square})\ge0$
+  (checked to $1.8\times10^{-15}$), with $m=0$. A structure that holds on a family whose gap varies
+  from $0$ to $3.75$ cannot determine the gap.
+\item \textbf{K\"all\'en--Lehmann and Osterwalder--Schrader positivity} \LT. These guarantee
+  $\nu\ge0$, hence that $C(t)=\int e^{-Et}d\nu$ is completely monotone and that
+  $m=\inf\operatorname{supp}\nu$ is a rate rather than a complex pole. They are why the word
+  ``spectrum'' can be used at all. They supply no inequality in $\lambda_2$; the four readings of
+  $m$ that they make available --- $-\log\lambda_2$, $\inf\operatorname{supp}\nu$, twice the
+  Poincar\'e constant, $-\frac1a\log\|T|_{\Omega^\perp}\|$ --- are four names of the target.
+\item \textbf{Topology} \LN. In two dimensions $F\wedge F\equiv0$ \emph{identically}: $F\in\Omega^2$
+  and $F\wedge F\in\Omega^4=0$ on a two-manifold, and $\pi_1(\mathrm{SU}(N))=0$ makes the spectral
+  flow vanish as well. Every topological reading is therefore $0$ on the one exactly solvable gapped
+  gauge theory, and a $\beta$-independent quantity that is constant on connected components can only
+  fall in one of two branches: it vanishes on 2D Yang--Mills (where $m>0$), or it is non-zero on a
+  single configuration (which has no transfer matrix and hence no $m$). There is no third branch.
+\item \textbf{Block spin} \LN. One step is a weakening, not a strengthening:
+  $\beta_{W,\mathrm{eff}}=\beta_W-C_N\ln b$ with $C_N=11N^2/12\pi^2>0$, giving
+  $\beta_{\mathrm{eff}}/\beta=0.897$ at the $\mathrm{SU}(2)$ crossover $\beta_W=2.5$ and $0.898$ at
+  the $\mathrm{SU}(3)$ crossover $5.69$. The reason no power-law improvement exists in four
+  dimensions is an exponent, not a constant: $\beta_W=2N/(g^2a^{4-d})$ gives engineering exponent
+  $4-d$, which is $0$ at $d=4$ --- exactly marginal, logarithmic flow, sign fixed by the one-loop
+  coefficient.
+\item \textbf{Large $N$} \LN. The four-dimensional $N=\infty$ gap is an exact missing step, not a
+  theorem; the available proxy $\rho^2=\Lambda_\star/m_1^2=2$ is also the value of the free field,
+  where $e_1=1$, $e_2=2$ on $\mathbb T^4$ give $\rho^2=2$ exactly. A discriminant that takes the
+  same value on a gapped theory and on a free field is not a discriminant.
+\end{enumerate}
+
+The list can be summarised in one step, and this is the chapter's main negative statement.
+
+\begin{qbox}
+\textbf{No handle exists: every handle is either the gap itself or blind to it.} \LN, named class:
+quantities drawn from the prepared structures --- reflection positivity, K\"all\'en--Lehmann/OS
+positivity, topology (indices, winding, spectral flow), block-spin renormalisation, and the
+$1/N$ expansion.
+\end{qbox}
+
+The reason is a dichotomy that the corpus reached from two independent directions, and it is worth
+stating as arithmetic rather than as opinion. A \emph{lossless} quantity --- $\lambda_2$, the
+Poincar\'e constant, $\inf\operatorname{supp}\nu$, $f_1^2$ --- is equivalent to the gap, so a machine
+built on one of them is the gap renamed. A \emph{lossy but inconsistent} quantity --- the twenty
+candidates of \S\ref{sec:ng-a1} --- reports either a positive value on $M_6$ (a false certificate) or
+zero (empty). A machine must therefore be lossy \emph{and} consistently positive \emph{and} of bounded
+loss: an output $\gamma$ with
+\begin{equation}
+\gamma\ \ge\ \rho(T|_{\Omega^\perp})=e^{-a\,m_{\mathrm{eff}}}
+\qquad\text{and}\qquad
+\gamma\ \le\ e^{-a\Delta}<1\ \ \text{uniformly}.
+\label{eq:ng-lossy}
+\end{equation}
+The output is strictly worse than $\lambda_2$, and by an unknown factor. That is exactly why it can
+be proved, and it is also the operational test for ``not a renaming''.
+\src{\code{B01-RP.md} \S1 (the five outputs of reflection positivity, two of them quantitative),
+\S3.1 (the 2D family and the $0\to3.75$ range), \S3.2 (the $M_6$ square, $1.8\times10^{-15}$),
+\S3.4 (the blindness statement), \S5 (what is missing); \code{B04-INDEX.md} \S4 (the
+$\beta$-independent dichotomy), \S5.2; \code{B03-BLOCK.md} \S2.1 ($\beta_{\mathrm{eff}}/\beta=0.897$),
+\S2.3 ($4-d=0$); \code{B02-LARGEN.md} \S3 (the free-field $\rho^2=2$); \code{D06-SPEC.md} \S1.5
+(the lossy/lossless dichotomy and \eqref{eq:ng-lossy}).}
+
+\subsection{Lemma A1, and why twenty roads died at the same filter}
+\label{sec:ng-a1}
+
+Let $d\nu\ge0$ on $[0,\infty)$ with $0<\int d\nu<\infty$ and put
+$m_1:=\inf\operatorname{supp}\nu$. For measurable $w\ge0$ with $0<\int w\,d\nu<\infty$, define the
+$s$-weighted average $A_w(\nu):=\big(\int s\,w(s)\,d\nu(s)\big)/\big(\int w(s)\,d\nu(s)\big)$.
+
+\begin{claimbox}{cT}
+\claimhead{Lemma}{(A1, the average lemma)}\label{lem:ng-a1}
+$A_w(\nu)\ge m_1(\nu)$, with equality if and only if $w\cdot\nu$ is a point mass.
+\end{claimbox}
+
+The argument is two lines: $s\ge m_1$ pointwise on $\operatorname{supp}\nu$, and a non-negative weight
+preserves order. Two corollaries carry the campaign's accounting.
+
+\begin{claimbox}{cT}
+\claimhead{Corollary}{(A1$'$ and A1$''$)}
+
+(A1$'$, direction) Every average-type functional --- finitely many polynomial moments
+$\int s^k\,d\nu$, any finite-$t$ regularisation or truncation, any $s$-extremum such as a
+Cheeger constant, a capacity or a large-deviation rate --- is an \emph{upper} bound:
+$\mathfrak F\ge m_1$. No such functional can prove $m_1\ge\delta$.
+
+(A1$''$, the $M_6$ killer) If $m_1=0$ while $\nu\neq\delta_0$ --- a weight without a floor, which is
+exactly the position of $M_6$ --- then $A_w>0$. Every average-type functional is therefore positive
+on $M_6$, so filter~1 of the touchstone ($M_6\mapsto0$) must fail.
+\end{claimbox}
+
+The consequence for the ledger is a single sentence with twenty instances. All twenty candidates of
+the species waves compute an $s$-weighted average or an $s$-extremum; by A1$'$ they bound the floor
+from above, by A1$''$ they are positive on $M_6$, and therefore \textbf{all twenty die at filter~1}
+--- not at the output end, not for want of a better constant. And filter~1 is itself the gap test: a
+functional that separates $0$ from $>0$ on the pair
+$(M_6,\text{2D YM})$ is, verbatim, a floor detector. The criteria therefore presuppose the
+conclusion.
+\src{\code{D06-SPEC.md} \S1.1 (A1 and its two corollaries), \S1.2 (the mechanism is averaging, not
+monotonicity; the real obstruction is weak continuity), \S1.3 (the twenty-road accounting), \S1.4
+(the repair: read ``whole'' on the model family, not on spacetime). \LT{} for A1 and both corollaries.}
+
+One repair is available and its price must be recorded with it. If ``whole'' is read as
+\emph{whole on the spacetime}, then the functional is an average and A1 applies. If ``whole'' is read
+as \emph{whole on the model family} --- the domain becomes $\{\text{family}\}\times\{\beta\text{-interval}\}$
+instead of a single model --- then filter~1 stops being a pointwise predicate, a
+certificate machine may honestly say ``cannot certify'' on a single model, and A1 no longer applies.
+The price is that the machine no longer returns a number: it returns a modulus and a proof
+(\S\ref{sec:ng-spec}).
+
+\subsection{Five independent impossibilities on the transport side}
+\label{sec:ng-transport}
+
+The transport problem asks for $f_1^2(2.5)>0$ given the seed $f_1^2(\beta_1)\ge r_0>0$ at
+$\beta_1<1/48$. Five refutations are on record; each is independent of the others, and each closes a
+different route.
+
+\begin{enumerate}[label=(\roman*)]
+\item \textbf{The provable lower bound on the vacuum overlap is $e^{-\Theta(V)}$, and it is tight.}
+  \LT{} Write $\Omega=|\langle\psi_\beta|\psi_{\beta'}\rangle|^2=BC(\mu_\beta,\mu_{\beta'})^2$, the
+  squared Bhattacharyya/Hellinger affinity of the two Perron--Frobenius measures. Then
+  $\Omega\ge1/(n^2R_\beta R_{\beta'})$ with $n=e^{\Theta(V)}$ and $R_\beta=e^{\Theta(V)}$, so the only
+  provable bound is $e^{-\Theta(V)}$. It cannot be improved, because the free-field value is of the
+  same order: $\Omega_k=2\sqrt{\beta\beta'}/(\beta+\beta')=0.1810653082661706$ at
+  $(\beta,\beta')=(2.5,1/48)$, independent of the mass, and multiplicativity gives
+  $\Omega=0.1811^{\,n_{\mathrm{dof}}}$, i.e.\ $\log_{10}\Omega\approx-36479$ for four-dimensional
+  $\mathrm{SU}(2)$ at $L=8$ with $n_{\mathrm{dof}}=3\cdot4\cdot L^4=49152$.
+\item \textbf{$\Omega=1$ is literally false.} \LC{} Hellinger is an $f$-divergence and therefore
+  monotone under channels; taking the marginal on a single spatial plaquette $P_0$ gives
+  $\Omega\le\Omega_{P_0}$, so $1-\Omega\ge1-\Omega_{P_0}>0$ independently of the volume. The
+  inequality is conditional on the $\beta=2.5$ plaquette distribution, i.e.\ on a non-perturbative
+  input, and it is labelled accordingly. The opposite failure is exact and points the same way: on
+  2D Yang--Mills and on a single plaquette the Perron--Frobenius vector is $\beta$-independent
+  ($\psi\equiv\mathrm{const}$), hence $\Omega=1$ \emph{exactly} while the atom is $0$. $\Omega$
+  compares vacua; the transport compares residues.
+\item \textbf{No sign is available on the residue side.} \LT{} Two independent statements.
+  (a) \emph{Componentwise monotonicity of $|\mathbb G_\beta\rangle$ is not merely unproved, it is not a
+  well-posed statement}: with the convention $\Omega\equiv1$, $\lambda_0=1$ one has
+  $\langle\mathbb G_\beta|1\rangle=0$, so $\mathbb G_\beta$ changes sign and its nodal set is non-empty;
+  if in some phase convention $\mathbb G_\beta\ge\mathbb G_{\beta'}$ pointwise, equal norms force
+  $\mathbb G_\beta=\mathbb G_{\beta'}$, two different kernels would share an eigenvector, and
+  $\Phi\equiv\mathrm{const}$, a contradiction; and the overall phase is a convention under which the
+  assertion flips.
+  (b) \emph{The connected operator is sign-indefinite at every $\beta$}: because
+  $\langle 1|\mathbb G_\beta\rangle=0$, the functional $F=\langle1|O|\mathbb G_\beta\rangle$ is
+  invariant under $O\mapsto O-c$ for every constant $c$; choosing $c=\langle O\rangle$ --- the
+  subtraction physics requires --- makes the numerical range straddle zero. Positivity of $O$ as a
+  plaquette operator is therefore unusable, and it is not a question of a missing inequality.
+\item \textbf{Gr\"onwall's hypothesis is verbatim its conclusion.} \LT{} For $F\in C^1([\beta_1,2.5])$
+  with $F(\beta_1)>0$, the following are equivalent: $\exists C<\infty$ with $|F'|\le C|F|$;
+  $F>0$ on the interval; $\log F$ Lipschitz. The implication that looks like the free step --- first
+  zero argument --- is what proves it; and at a zero $\beta^*$ the two-dimensional solution forces
+  $f_1^2\approx c(\beta-\beta^*)^2$, so $|F'/F|=2/|\beta-\beta^*|+O(1)$ and $C=\infty$. The existence
+  layer fails too: writing $d|\mathbb G\rangle/d\beta=\sum_{n\neq0}|n\rangle\langle n|S_W|\mathbb G\rangle/(E_0-E_n)$
+  already presupposes $E_0$ isolated and simple on the whole interval, which is the target.
+\item \textbf{The transfer operator at $L=2$ is infinite-dimensional.} \LT{} At $L=2$ the slice
+  carries $3L^3=24$ spatial links, and $T$ acts on $L^2(\mathrm{SU}(2)^{24})$, a separable
+  infinite-dimensional Hilbert space; the $143$ of the certificate ledger is not its dimension but the
+  gauge-quotient count of the full four-dimensional torus, $4L^4\cdot3-3L^4-1=192-48-1$. The
+  matrix-element integral is $24$-dimensional, and a Peter--Weyl truncation at $j\le J$ gives
+  $b_J=\sum_{m\le 2J+1}m^2$ states per link ($J=3$: $140$), hence $140^{24}\approx10^{51.5}$ states at
+  $L=2$ and $10^{412}$ at $L=4$. Direct certification at the physical point is therefore not a matter
+  of more computing, and positivity of the kernel, while it gives $m(L)>0$ for each $L$, gives no
+  number.
+\end{enumerate}
+\src{\code{D01-OMEGA.md} \S2--\S4 ((i) and (ii): the bound, the tightness, the two failure
+directions); \code{D05-FKG.md} \S2 ((iii)(a): the nodal argument, the equal-norm argument, the phase
+objection), \S3.2 ((iii)(b): the translation freedom); \code{D04-ODE.md} \S1.6, \S2.1, \S2.3 ((iv):
+the equivalence, the divergence rate, the existence layer); \code{D02-DIRECT.md} \S1, \S3.1, \S4 ((v):
+the dimension count, the state count, the per-$L$ versus uniform distinction; reproduction
+\code{w7/d02_dimcount.py} and \code{w7/d02_cert.py}).}
+
+\subsection{The specification of the missing machine}
+\label{sec:ng-spec}
+
+Everything above is an exclusion. What follows is the positive residue: the object that is missing,
+written as a specification with acceptance criteria, so that it can be attacked and so that its
+failure can be diagnosed.
+
+\paragraph{Type, and the trap in the output convention.}
+The machine is not a functional $\mathfrak F:\text{Model}\to\mathbb R$; on that type the no-go of
+\S\ref{sec:ng-a1} applies. It is a map $\mathsf M:(\mathfrak M,\mathfrak P,[\beta_0,\beta_1])\to(\Delta,\text{proof})$
+from a model family and a structural packet to a modulus and a proof, with the generator convention
+fixed once and for all:
+$\lambda_2^{\mathrm{gen}}:=m_{\mathrm{eff}}^2\ge0$, and the machine's output is
+$\lambda_2^{\mathrm{gen}}\ge\Delta^2>0$, equivalently
+$\|T|_{\Omega^\perp}\|=e^{-a\,m_{\mathrm{eff}}}\le e^{-a\Delta}<1$. The inequality $\|T|_{\Omega^\perp}\|\le1$
+is free from reflection positivity; only \emph{strictness with an exponent} is content. Reading
+$\lambda_2$ as $\lambda_2(T)$ reverses the required direction, and mixing the two conventions
+manufactures progress.
+
+\paragraph{Inputs.}
+Four, of which three exist. (I1) the family $\{\mu_{\beta,L,a}\}$ with a $\beta$-interval containing
+$2.5$, as a statement uniform on the family rather than per $(L,a)$: available from the
+Kogut--Susskind/Wilson formulation. (I2) a compactness witness --- a uniform \emph{a priori} bound
+making the family precompact in the Käll\'en--Lehmann weak topology (a uniform bound on
+$\sup_p\langle\tfrac1N\operatorname{Re}\operatorname{tr}U_p\rangle$, or an entropy/BV bound): only
+partially available, hence \LM. (I3) a seed,
+a proved strict floor at the left endpoint: $f_1^2>0$ for $\beta_0<1/48$, unconditionally \LT. (I4)
+the object itself: an explicit positive operator, weight or isomorphism carrying the certificate,
+checkable by finite-dimensional truncation on $\ell$-blocks. (I4) is what is missing.
+
+\paragraph{Three operational criteria for ``not a rename''.}
+(1) \emph{Visible loss}: the output and the truth differ by a factor that cannot be removed; a
+candidate claiming $\gamma=\rho(T)$ is a renaming. (2) \emph{The certificate object contains no
+spectrum}: the carrier is algebraic or geometric, not a $\sup/\inf$ of a spectrum. (3) \emph{Failure is
+diagnosable}: at a given capacity the candidate must emit a dual obstruction certificate of Farkas
+type explaining why that capacity is insufficient. None of the twenty candidates of
+\S\ref{sec:ng-a1} has property (3); on failure they report only ``the value is $0$''.
+
+\paragraph{Five filters, in the machine reading.}
+The touchstone of \S\ref{sec:ng-touchstone} becomes a scoring rule for a machine rather than for a
+number, and the four rows become four behaviours rather than four values.
+
+\footnotesize
+\begin{center}
+\begin{tabular}{@{}p{0.6cm}>{\raggedright\arraybackslash}p{5.5cm}>{\raggedright\arraybackslash}p{7.4cm}@{}}
+\toprule
+\# & Filter & Machine reading\\
+\midrule
+1 & four models & the machine \emph{refuses} to certify on the free field, on $M_6$ and on a single plaquette, and it \emph{must truly build} a certificate on 2D Yang--Mills --- if it cannot, it is empty\\
+2 & not of $\min$ type & the certificate is an operator or supremum statement ($\|\cdot\|$, $\succeq$), not an $\inf$ over a set\\
+3 & whole & whole \emph{on the model family}: one certificate covers a whole $\beta$-segment; this is the repaired reading of \S\ref{sec:ng-a1}\\
+4 & not a constant & $\Delta=\Delta(\beta,\Lambda)$, rebuilt at each $\beta$\\
+5 & dimensions & $\Delta$ carries mass dimension and $g\to0$ forces $\rho\to1$, $\Delta\to0$ (it must degenerate when $W\to1$)\\
+\bottomrule
+\end{tabular}
+\captionof{table}{The five filters as a scoring rule for a machine. Filter~1 is a
+non-emptiness test, not a positivity test: a candidate that cannot be built on a theory already known
+to be gapped is not a machine.}
+\label{tab:ng-filters}
+\end{center}
+\normalsize
+
+\paragraph{Three candidate designs, one of them viable.}
+\LT{} is not claimed for any of them; the entries are a classification of the design space.
+
+\footnotesize
+\begin{center}
+\begin{tabular}{@{}p{2.5cm}>{\raggedright\arraybackslash}p{4.4cm}>{\raggedright\arraybackslash}p{2.4cm}>{\raggedright\arraybackslash}p{3.4cm}@{}}
+\toprule
+Candidate & Mechanism class & Filters & Exact missing object\\
+\midrule
+D1 \textbf{W-SHIFT} & similarity transform plus one operator inequality; contains the dead
+Bakry--\'Emery route as the single point $c=\tfrac12$, $K=S$; not variational (the variational
+direction is opposite) & 5/5 & \code{W-CALC}\\
+D3 \textbf{OS-SCHR\"O} & Hilbert-space isomorphism to $L^2(\mathcal A/\mathcal G,d\mu_W)$, then
+$T^2-mT\succeq0$; needs no $E_0$ because $T\succeq0$ by construction & 5/5 \emph{formally} &
+\code{KKN4}\\
+D2 \textbf{RETRACT} & topology of the parameter space (closed floor set, non-empty seed, path lift) &
+5/5 & \code{RETRACT}$(\delta)$\\
+\bottomrule
+\end{tabular}
+\captionof{table}{The three candidates. D1 is ranked first: it has a three-dimensional precedent, it
+strictly contains a dead route as a special case rather than renaming it, and its failure mode is
+diagnosable. D2 is logically legal but the missing object \code{RETRACT}$(\delta)$ is equivalent to a
+gap on the interval, so it relocates the wall to a single point rather than removing it. D3 has the
+hardest object: no four-dimensional orbit-space representation is known, while the three-dimensional
+case exists (Nair 2026, \code{arXiv:2608.10133}, abstract level, not read verbatim).}
+\label{tab:ng-cands}
+\end{center}
+\normalsize
+
+The specification of D1, verbatim, is this: for each $\beta$, find $(c,K)$ with
+\begin{equation}
+W^{1/2}\big(H-\langle\Omega,H\Omega\rangle\big)W^{-1/2}\ \succeq\ \Delta^2\,\mathbf 1_{\Omega^\perp},
+\qquad W=e^{cK},
+\label{eq:ng-d1}
+\end{equation}
+where $H$ is the Kogut--Susskind Hamiltonian and $K$ runs over a class of explicit, gauge-invariant,
+local and explicitly squarable operators: the magnetic Hamiltonian
+$K=\sum_p(1-\tfrac1N\operatorname{Re}\operatorname{tr}U_p)$, the plaquette sum
+$K=\sum_p\tfrac1N\operatorname{Re}\operatorname{tr}U_p$, or a one-block local polynomial. The test is a
+small-matrix computation in the electric-Casimir-truncated strong-coupling basis, and it must pass two
+things: it must \emph{build} the certificate on 2D Yang--Mills (otherwise the machine is empty), and it
+must \emph{fail} on the free field and on $M_6$ (otherwise the certificate is false). The missing object
+is \code{W-CALC}, a weight calculus that cancels the Savvidy negative modes under the conjugation by
+$W^{1/2}\cdot W^{-1/2}$ \emph{pointwise} rather than in integral form, and it must satisfy five
+properties: $W=e^{cK}>0$ local and gauge-invariant; the negative modes of $W^{1/2}HW^{-1/2}$ cancelled
+pointwise in the Savvidy directions; $\Delta\ge c_0>0$ independent of $(L,a)$; $\Delta\to0$ as $g\to0$;
+and a Farkas-type obstruction on failure.
+\src{\code{D06-SPEC.md} \S2.1--\S2.5 (type, four inputs, output convention, three criteria, five
+filters), \S3.1 (D1 and its five filters), \S3.2 (D2), \S3.3 (D3), \S3.4 (four candidates killed on
+the spot: PAD\'E-NEV and LOW-WEIGHT-COUNT by A1, ANOM-WARD because the anomaly is a contact term,
+CERT-RG by the marginality $\beta_{\mathrm{eff}}/\beta=0.897$ and $4-d=0$), \S4.1 (the specification
+\eqref{eq:ng-d1}), \S4.3 (the five properties of \code{W-CALC}). \LM{} for I2, I4 and all three
+missing objects.}
+
+\paragraph{The discipline, in three steps, and the theorem that replaces ``no value''.}
+(1) Build the certificate on 2D Yang--Mills first; if it cannot be built there, the candidate is empty
+and the verdict is not ``needs more computing''. (2) Quantify the wall as a curve:
+$\ell^*(\beta):=\min\{\ell:\ \text{an } \ell\text{-block local }(c,K)\text{ closes the certificate}\}$,
+computed at $L=2$, $\mathrm{SU}(2)$, with $j\le\tfrac12$ or $1$ --- four points
+$\ell^*(0.5),\ell^*(1),\ell^*(2),\ell^*(2.5)$; if $\ell^*$ diverges with $\beta$, the wall is a
+statement about the non-locality a certificate requires, which is a publishable diagnostic and not a
+gap. (3) On failure, solve the dual (Farkas) problem and report \emph{which} direction --- transverse
+magnetic Savvidy, zero mode, boundary --- blocked $(c,K)$; this is what upgrades ``the value is $0$''
+into ``this dimension of the weight is missing''. And where no candidate can exist, the accounting is
+itself a theorem:
+
+\begin{claimbox}{cN}
+\claimhead{Theorem}{(D06-T3, filter incompatibility)}\label{thm:ng-d06t3}
+If $\mathfrak F$ is built from an $s$-weighted average or an $s$-extremum of $\nu$ --- which covers all
+polynomial moments, all finite-$t$ regularisations, and all capacity- or rate-type extrema --- then
+$\mathfrak F(\nu)\ge m_1(\nu)$ by A1, and $\mathfrak F(\mu_{M_6})>0$ on every model with $m_1=0$ and
+$\nu\neq\delta_0$. Hence filters 1, 3 and 5 in the \emph{spacetime-average} reading are jointly
+unsatisfiable, and the full conjunction of all five filters is the empty class under that reading.
+Equivalently: filter~1 is itself the gap test, so ``filter 1 together with computability'' is empty,
+and the twenty roads die at filter~1 rather than at the output end.
+\end{claimbox}
+
+\src{\code{D06-SPEC.md} \S4.2 (D06-T3 verbatim), \S5.1--\S5.3 (the three steps, with their
+acceptance criteria and the memory discipline: one heavy job at a time); \code{SPECIES-EXISTENCE.md}
+Thm~2 and Thm~3 (the class-level form and the circularity of lossless quantities).
+\LN{} for D06-T3, named class: functionals that are spacetime averages or extrema.}
+
+\subsection{The one route that is still open}
+\label{sec:ng-open}
+
+One sufficient condition survives, and it is not a positivity statement. Write
+$F(\beta)=\langle\Omega|O|\mathbb G_\beta\rangle$ and
+$A(\beta):=\|O^\dagger\Omega_\beta\|\,\|S_W\mathbb G_\beta\|+\|S_W\Omega_\beta\|\,\|O\mathbb G_\beta\|$,
+the two terms corresponding to the two terms of $dF/d\beta$. The one-step perturbation expansion gives
+$|F'|\le(A/\Delta)|F|$ pointwise, without assuming $F\neq0$, and the first-zero argument then yields
+
+\begin{equation}
+(G)\qquad
+\int_{\beta_1}^{2.5}\frac{A(\beta)}{\Delta(\beta)}\,d\beta<\infty
+\quad\Longrightarrow\quad
+f_1^2(2.5)\ \ge\ f_1^2(\beta_1)\exp\Big(-\int_{\beta_1}^{2.5}\frac{A}{\Delta}\,d\beta\Big)\ >\ 0 .
+\label{eq:ng-G}
+\end{equation}
+
+The logical gain is real: \eqref{eq:ng-G} contains no $F$, so it is not circular, and it consumes only
+the \emph{integral} of the reciprocal gap rather than its supremum. It is strictly weaker than a
+uniform gap --- a collapse of the form $\Delta(\beta)\ge c/\log(1/|\beta-\beta_c|)$ is allowed, since
+$\int1/\Delta=\int\log<\infty$, while $\Delta=c|\beta-\beta_c|^\alpha$ with $\alpha\ge1$ is not --- and
+strictly stronger than the target, as a three-level model shows: with
+$H=\mathrm{diag}(0,|\beta-\beta_c|^\alpha,1)$, $O=|0\rangle\langle1|+\mathrm{h.c.}$ and
+$\Omega=|0\rangle$, one has $F=1>0$ and $F'\equiv0$, yet $(G)$ fails whenever $\alpha\ge1$. So $(G)$ is
+sufficient and not necessary, the debt $(G)-\text{target}$ is positive, and whether $(G)$ is even
+satisfiable in the physical family --- i.e.\ whether it is vacuous --- is undetermined.
+\src{\code{D04-ODE.md} \S1.4 (the one-over-$\Delta$ cost is structural: the diagonal case needs no
+$1/\Delta$ but is trivial), \S1.6 (both layers circular without $(G)$), \S3.2 (the implication), \S3.3
+(weaker than a uniform gap), \S3.4 (the three-level counterexample; sufficient, not necessary), \S3.5
+(verification requires $\Delta>0$ almost everywhere in the window). \LT{} for the implication and for
+both comparisons; \LM{} for $(G)$ itself.}
+
+The numbers say how far the condition is from what is provable, and they say it in one line. With the
+seed $r_0=1/64$ and $\beta_1\lesssim3.4\times10^{-3}$ (so the same-coordinate Wilson span is
+$\Delta\beta_W=2.4848918868$), a floor $F(2.5)\ge\varepsilon$ requires
+$C_W\le\log(r_0/\varepsilon)/\Delta\beta_W$: $1.106$ for $\varepsilon=10^{-3}$, $3.886$ for
+$10^{-6}$, $9.446$ for $10^{-12}$. The provable constant is
+$A_V/\Delta=12L^4/\Delta$, i.e.\ $6.1\times10^3$ at $L=4$, $3.1\times10^4$ at $L=6$ and
+$9.8\times10^4$ at $L=8$ --- three to four orders of magnitude too large, and worsening as $L^4$
+because $\partial_\beta H=S_W$ is extensive. A multiplicative (Laplace) representation gives
+$\log F$ monotone for free with $C\le12V$, hence a floor $e^{-29.96L^4}$: $10^{-3331}$ at $L=4$ and
+$10^{-53290}$ at $L=8$, with a premise that is not $L$-uniform. The gap in \eqref{eq:ng-G} is therefore
+not an inequality but the $L$-uniformity of $\int A/\Delta$.
+\src{\code{D04-ODE.md} \S4.1--\S4.4 (the demand, the provable bound, the multiplicative version,
+and the per-$(L,a)$ triviality); \code{Z01-P3ASSEMBLY.md} \S\S4, R4 for $r_0=\tfrac14(2N)^{-2}$ and
+$\beta_1$; \code{V05-CPTRANS.md} \S5.4, \S6 for what a discharge would have to be --- a sign carrier in
+the $\beta$ direction of identity type, not an inequality --- and for the fact that $\beta_{\mathrm{eff}}$
+is defined only from above, so that the interval version of the target is not even well posed yet.}
+
+\medskip
+\noindent\textbf{What this chapter does not do.} It does not produce a gap, a bound, or a new route. It
+records that the campaign's handles are exhausted in a way that can be stated as a class-level no-go,
+that the machine which would replace them is specifiable but not built, and that exactly one
+sufficient condition is left unclosed and possibly vacuous. Every claim above is tied to a file and
+carries its label; none is marked closed. \textbf{Clay remains $0\%$.}
+
+\let\code\codeprev

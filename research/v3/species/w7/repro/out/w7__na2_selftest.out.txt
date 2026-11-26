@@ -1,0 +1,27 @@
+--- N=2 ---
+     dU     h=1e-03  max rel err = 5.134e-08
+     dU     h=1e-04  max rel err = 5.151e-10
+     dU     h=1e-05  max rel err = 4.758e-11
+     ddU    h=1e-03  max rel err = 6.628e-01
+     ddU    h=1e-04  max rel err = 6.628e-01
+     ddU    h=1e-05  max rel err = 6.628e-01
+     Phi1   h=1e-03  max rel err = 2.426e-08
+     Phi1   h=1e-04  max rel err = 2.582e-10
+     Phi1   h=1e-05  max rel err = 7.031e-10
+     Phi2   h=1e-03  max rel err = 1.257e-08
+     Phi2   h=1e-04  max rel err = 6.507e-07
+     Phi2   h=1e-05  max rel err = 3.368e-05
+--- N=3 ---
+     dU     h=1e-03  max rel err = 4.399e-08
+     dU     h=1e-04  max rel err = 4.365e-10
+     dU     h=1e-05  max rel err = 1.004e-10
+     ddU    h=1e-03  max rel err = 6.504e-01
+     ddU    h=1e-04  max rel err = 6.504e-01
+     ddU    h=1e-05  max rel err = 6.504e-01
+     Phi1   h=1e-03  max rel err = 1.421e-08
+     Phi1   h=1e-04  max rel err = 6.906e-10
+     Phi1   h=1e-05  max rel err = 2.369e-09
+     Phi2   h=1e-03  max rel err = 9.902e-09
+     Phi2   h=1e-04  max rel err = 6.137e-07
+     Phi2   h=1e-05  max rel err = 1.529e-04
+selftest done

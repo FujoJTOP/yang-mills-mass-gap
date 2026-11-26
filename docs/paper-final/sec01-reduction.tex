@@ -1,0 +1,505 @@
+% =====================================================================
+%  PART I -- THE REDUCTION
+%  (merged edition v3, section 1)
+% =====================================================================
+\clearpage
+\part{The reduction}
+\label{part:reduction}
+
+This part does one thing: it writes the mass gap as an exact statement about a single number, and
+then shows why that rewriting does not move the problem. The rewriting is exact; the obstruction is
+that each of its three conjuncts, when one tries to prove it, requires itself. We state the
+equivalence (\S\ref{sec:reduction-equiv}), identify the one framework in which the object can be
+placed and show that everything that framework gives for free is a \emph{transport} of positivity
+rather than a production of it (\S\ref{sec:reduction-framework}), take the three legs one at a time
+and exhibit the circularity of each (\S\ref{sec:reduction-legs}), record the one sentence that
+summarises the situation (\S\ref{sec:reduction-nomove}), and close with the qualification that
+governs the whole part: $w_1$ is a property of the operator \emph{pair}, not of the Hamiltonian
+(\S\ref{sec:reduction-operator}).
+
+% ---------------------------------------------------------------------
+\section{The equivalence}
+\label{sec:reduction-equiv}
+
+Fix the object once and for all. Let $O=\tfrac14\operatorname{tr}F^2$, let $\nu\ge 0$ be its
+K\"all\'en--Lehmann spectral measure on $[0,\infty)$, and put
+\begin{equation}
+  M_0 \;:=\; \int d\nu \;=\; \operatorname{Var}(O),\qquad
+  m_1^2 \;:=\; \inf\operatorname{supp}\nu,\qquad
+  f_1^2 \;:=\; \nu(\{m_1^2\}),\qquad
+  w_1 \;:=\; \frac{f_1^2}{M_0}\;\in\;[0,1].
+  \label{eq:w1}
+\end{equation}
+So $w_1$ is the atom fraction at the bottom of the spectrum: the weight of the lightest excitation
+in the source $O$, normalised by the total spectral weight. The bound $w_1\in[0,1]$ is an identity,
+not an estimate: $0\le \nu(\{m_1^2\})\le\nu([0,\infty))=M_0$, for every positive measure, every
+$(L,a)$, and every normalisation of $M_0$
+(\code{research/v3/species/U01.md}, \S3). The K\"all\'en--Lehmann representation itself is not an
+assumption of this paper but a theorem of the frame: $\nu\ge0$ and $f_1^2\ge0$ follow from
+reflection positivity and the spectral theorem \cite{kl,os1973}.
+
+\smallskip
+\noindent\textbf{One notation, fixed once.} The variable carried by $\nu$ is $m^2$, so the atom of
+the lightest state sits at the \emph{point} $m_1^2$ and is written $\nu(\{m_1^2\})$; the correlator
+is then $C(t)=\int e^{-mt}\,d\nu(m^2)=\int e^{-\sqrt{s}\,t}\,d\nu(s)$ with $s=m^2$. Writing
+$\nu(\{m_1^2\})$ and $d\nu(m)$ in the same display, as an earlier draft did, is a notational
+collision of exactly the kind catalogued in \S\ref{sec:ledger}; the convention above is used
+throughout.
+
+\begin{claimbox}{cC}
+\claimhead{Reduction}{.} With $w_1$ as in \eqref{eq:w1}, with $\beta=2.5$ the physical coupling of
+this paper, and with the physical operator $O=\tfrac14\operatorname{tr}F^2$ held fixed,
+\begin{align*}
+  \textbf{Clay}\ \text{\emph{on the atom route}}\;\Longleftrightarrow\;&
+  \underbrace{\inf_{L,t}\, w_1(L,2.5,t) \,>\, 0}_{\text{(i) the uniform floor at }\beta=2.5}
+  \;+\;\underbrace{\exists\ \text{a monotone (or convergent) step in } L}_{\text{(ii) the volume step}}\\[2pt]
+  &+\;\underbrace{\exists\,\Delta_0>0\ \ \forall \beta\ge\beta_0:\ m_{0^{++}}(\beta)\ge\Delta_0}_{\text{(iii) the }\beta\text{-tail-uniform floor}} .
+\end{align*}
+Three qualifications belong to the statement and are not commentary on it.
+\emph{(a) Route.} ``On the atom route'' names the class of arguments that certifies the gap through
+the atom weight of a fixed $O$; \S\ref{sec:survey-three} exhibits two solvable models in which $w_1$
+and $m$ point in opposite directions, so the equivalence fails outside that class, and a proof
+outside it cannot be obtained by refining (i)--(iii).
+\emph{(b) Operator.} Leg (i) is stated at fixed $O$; \S\ref{sec:reduction-operator} shows that
+dropping the qualification lets the quantity sweep all of $[0,1]$ at fixed spectrum.
+\emph{(c) Floor, not sign.} Leg (i) asks for an infimum, not for pointwise positivity. The two differ
+by exactly the compactness that \S\ref{sec:reduction-framework} shows one does not have, and it is
+the pointwise form alone that the measurement of \S\ref{sec:measurement} supplies. The three
+conjuncts are not three routes to one target: they are the three things a proof of the target must
+supply, and the equivalence is a rewriting of the quantifiers, not a theorem about Yang--Mills.
+\end{claimbox}
+\src{Reduction and the three-leg split: \code{research/v3/species/U15.md}, \S1 and \S5 (the target
+must be written as $w_1(\beta)\ge w_0(\beta)$ with $w_0(2.5)$ unknown); \code{U02.md}, \S5(c) (the
+target is a full-family infimum, $\inf_{L,a,t}w_1\ge w_0$, not an endpoint value; at fixed $\beta$
+the family is the $\inf_{L,t}$ written in the statement, since $a=a(\beta)$);
+\code{UNIF3.md}, \S0 and \S4.1.}
+
+The one conjunct that is not merely a restatement is (iii), and it is where the equivalence earns
+its keep, because (iii) turns out to be the same statement as a continuity statement in the lattice
+spacing.
+
+\begin{claimbox}{cT}
+\claimhead{Lemma}{.} (Tail identity.) Suppose $\beta\mapsto a(\beta)$ is strictly decreasing with
+$a(\beta)\to 0$ (asymptotic freedom). Then for every $c_0>0$,
+\[
+  \exists a_0\ \forall a<a_0:\ m_{0^{++}}(a)\ge c_0\Lambda
+  \quad\Longleftrightarrow\quad
+  \exists\beta_0\ \forall\beta>\beta_0:\ m_{0^{++}}(\beta)\ge c_0\Lambda .
+\]
+Hence ``$a$-uniform'' and ``$\beta$-tail-uniform'' are not two requirements but one, written in two
+units: $a<a_0\iff\beta>\beta(a_0)$, on the same quantity, in the same units.
+\end{claimbox}
+\begin{proofx}
+Both sides are of the form ``$m\ge c_0\Lambda$ on a terminal set of a monotone parameter''. The map
+$\beta\mapsto a(\beta)$ is a strictly monotone bijection onto its range, so it carries terminal sets
+to terminal sets and preserves the inequality. No estimate on $m$ is used, and none is produced.
+\end{proofx}
+\src{\code{research/v3/species/UNIF3.md}, Lemma A (\S1.2); the arithmetic is the project's own, the
+input ``$a\to 0\iff\beta\to\infty$'' is \code{research/uniqueness/REPORT.md}:43 as quoted there.}
+
+The point of the lemma is negative and it is worth stating separately: it removes a whole class of
+proposed second stages. There is no fifth direction called ``$a\to 0$'' that could be attacked after
+the physical coupling has been settled, because a statement at a \emph{single} $\beta$ (including
+$\beta=2.5$) constrains no sequence with $a\to 0$. What (iii) asks for is uniformity on a
+\emph{tail}, and that is what (ii) and (i) also ask for, in their own variables.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\textwidth}{@{}l l l X@{}}
+\toprule
+Leg & Object & Status & Source \\
+\midrule
+(i)  & $\inf_{L,t}w_1(L,2.5,t)>0$ at fixed $O$ & \LO{} as a floor; \LE{} only pointwise & \code{RUN3.md}, \S3; \code{U11.md}, \S3.2 \\
+(ii) & monotone/convergent step in $L$ & \LN{} for the present toolkit & \code{U02.md}, \S2; \code{U03.md}, \S2--\S3 \\
+(iii) & $\beta$-tail-uniform floor $=\Delta_0$ & \LO{} (value); \LN{} (target eligibility) & \code{H1-FINAL.md}, \S0, \S3 \\
+(iii)$'$ & ($a$-uniform form of (iii)) & \LT{} identical to (iii) & \code{UNIF3.md}, \S1.2 \\
+\bottomrule
+\end{tabularx}
+\caption{The three legs, their objects, and their grades. Row (i) is the uniform floor; the pointwise
+form, which is what a measurement can reach, is strictly weaker (\S\ref{sec:reduction-framework}).
+The equivalence of rows (iii) and (iii)$'$ is the tail identity proved above.}
+\label{tab:legs}
+\end{table}
+
+% ---------------------------------------------------------------------
+\section{The unique framework}
+\label{sec:reduction-framework}
+
+Because $w_1$ is an atom mass, the object $\nu$ lives in a space where compactness costs nothing: a
+variational upper bound (Ritz; the bottom of the spectrum is a minimum of a quadratic form
+\cite{reed-simon}) gives $m_1^2\le\Lambda$, so $\nu/M_0$ is a probability measure on the
+compact $K=[0,\Lambda]$, and $\mathcal{P}(K)$ is weak-$*$ compact and metrisable by
+Banach--Alaoglu with the Prokhorov tightness hypothesis satisfied automatically. That is the whole
+of the good news, and it is the reason the compactness class of arguments is out of play rather
+than merely unpolished.
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{.} (Transport, not production.) Let $K$ be compact, $w_1:K\to[0,1]$ continuous,
+and $w_1(x)>0$ for every $x\in K$. Then
+\[
+  \inf_{x\in K} w_1(x)\;=\;\min_{x\in K} w_1(x)\;=\;w_1(x_0)\;>\;0 ,
+\]
+and, conversely, $\inf_K w_1>0$ implies pointwise positivity on $K$. The two statements are
+equivalent: compactness plus continuity adds nothing to pointwise positivity except the licence to
+move the infimum to the point where it is attained.
+\end{claimbox}
+\begin{proofx}
+A continuous function on a compact set attains its minimum (Weierstrass, one line; no Ascoli--Arzel\`a
+is needed, since a single function is trivially equicontinuous). The converse is immediate. Hence
+the two formulations are equivalent and the compactness hypothesis is not doing work.
+\end{proofx}
+\src{\code{research/v3/species/U01.md}, \S1.1--\S1.2 (``compactness does not produce positivity'' is
+stated there as the whole content of the route); \code{U16.md}, \S3.2 for the choice of $K$ and the
+freeness of tightness.}
+
+So on a truncated window $K=\{L_1,\dots,L_K\}\times[a_{\min},a_0]$ with $a_{\min}>0$ the floor
+$\inf_K w_1=w_1(L^*,a^*)>0$ is available, and it is an \emph{identity}: it carries a positivity that
+was already assumed at every point of $K$ to a single point of $K$. It does not create positivity,
+and it says nothing about $a_{\min}\downarrow 0$, because $a=0$ is not in $K$.
+
+The second free item is the direction of semi-continuity, and its direction is the wrong one.
+
+\begin{claimbox}{cT}
+\claimhead{Proposition}{.} (Atoms are upper semi-continuous.) If $\nu_n\Rightarrow\nu$ weakly and
+$x$ is fixed, then $\limsup_n \nu_n(\{x\})\le\nu(\{x\})$. Consequently, if the limit measure has no
+atom at $m_1^2$, then $w_1^{(n)}\to0$: at the limit the atom can be destroyed, and upper
+semi-continuity does not prevent it. A floor, by contrast, needs a \emph{lower}
+semi-continuous bound.
+\end{claimbox}
+\begin{proofx}
+By the Portmanteau theorem applied to the closed sets $\overline{B_\varepsilon(x)}$,
+$\nu_n(\{x\})\le\nu_n(\overline{B_\varepsilon(x)})$, so
+$\limsup_n\nu_n(\{x\})\le\nu(\overline{B_\varepsilon(x)})$; let $\varepsilon\downarrow0$.
+\end{proofx}
+\src{\code{research/v3/species/U01.md}, \S4.3, Proposition P-2; \code{U16.md}, \S0(c) and \S3.3.}
+
+Weak-$*$ semi-continuity is therefore \emph{free in the direction ``finite volume $\to$ limit''} and
+absent in the direction a floor requires, namely ``limit $\to$ nearby members''. The gap is not
+technical: there is a compact family, with a limit point that carries an atom of mass $0.3$, whose
+uniform floor is exactly $0$.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}rrrrrr@{}}
+\toprule
+$h$ & mass & $\int s\,d\mu_h$ & $E=\text{bottom atom}$ & $\inf\operatorname{supp}$ & $\|\mu_h-\mu_0\|_{TV}$ \\
+\midrule
+$0.000$ & $1.00000$ & $2.40000$ & $0.300000$ & $1.00000$ & $0.000$ \\
+$0.200$ & $1.00000$ & $2.40000$ & $0.000000$ & $0.80000$ & $0.600$ \\
+$0.100$ & $1.00000$ & $2.40000$ & $0.000000$ & $0.90000$ & $0.600$ \\
+$0.050$ & $1.00000$ & $2.40000$ & $0.000000$ & $0.95000$ & $0.600$ \\
+$0.020$ & $1.00000$ & $2.40000$ & $0.000000$ & $0.98000$ & $0.600$ \\
+$0.005$ & $1.00000$ & $2.40000$ & $0.000000$ & $0.99500$ & $0.600$ \\
+$0.001$ & $1.00000$ & $2.40000$ & $0.000000$ & $0.99900$ & $0.600$ \\
+\bottomrule
+\end{tabular}
+\caption{A compact family whose member at $h=0$ carries an atom of mass $0.3$ and whose uniform atom
+floor is $0$. Total variation is quoted on the $L^1$ scale,
+$\|\mu-\nu\|_{TV}=\int|d\mu-d\nu|$, so that the value $0.600$ is twice the usual normalisation
+$\frac12\int|d\mu-d\nu|=0.300$; the constant offset is a convention, the vanishing of the floor is
+not. Computed (\code{U16.md}, \S3.3).}
+\label{tab:compact}
+\end{table}
+
+\noindent The family is $\mu_h=0.3\,\mathrm{Unif}[1-h,1+h]+0.7\,\delta_3$ on $\mathcal{P}([0,3])$,
+with $\mu_0=0.3\,\delta_1+0.7\,\delta_3$. Every moment readout is constant to six digits
+($\int s\,d\mu_h\equiv2.400000$), the family is compact, the limit point carries an atom of mass
+$0.3$, and yet $\inf_{h\in[0,1/2]}E(\mu_h)=0$ while $\sup=0.3$ is attained only at $h=0$. Compact
+family plus a limit atom does \emph{not} give a uniform atom floor (\code{U16.md}, \S3.3, machine
+computed).
+
+Finally, neither end of the parameter space is compact, and this is what removes the tame
+theorems. At $a=0$ and at $L=\infty$ the family has \emph{no member}: the domain is open in $a$ and
+the $L$'s are discrete with no interpolation (\code{U01.md}, \S2.3). The dimension grows like
+$(L/a)^4\to\infty$ (\code{DF-CONTINUITY.md}:247, as quoted in \code{U15.md}), so no o-minimal or
+other tameness hypothesis of finite dimension applies, and a uniformity theorem for a definable
+family cannot be invoked even in principle. The honest formulation is that the obstruction is not
+``not compact'' but ``not closed'': the family has no member at the point where its infimum is
+sought.
+
+\begin{claimbox}{cN}
+\claimhead{No-go}{.} (The generator slot is empty.) The seven general tools for uniformity over an
+infinite-dimensional family --- Banach--Steinhaus, Ascoli--Arzel\`a, Prokhorov, Baire category,
+$\Gamma$-convergence, uniform large deviations, and induction on $L$ --- are all transports or
+promotions: pointwise $\to$ uniform, local $\to$ global, weak $\to$ strong, $L\to L+1$. Not one of
+them turns a non-uniform family into a uniform one. Banach--Steinhaus is the only one that imposes no
+structure on the index set, and its hypothesis is literally ``the family is already uniform at every
+point''; applied to $w_1$ it returns the trivial bound $1$.
+\end{claimbox}
+\src{\code{research/v3/species/U16.md}, \S1 (statements), \S2 (the table of what supplies
+uniformity), \S4 (the $a\to0$ side is outside the range of all seven).}
+
+% ---------------------------------------------------------------------
+\section{Why each leg is circular}
+\label{sec:reduction-legs}
+
+\subsection{(i) Positivity needs the atom, and the atom is what is missing}
+
+The leg asks for $w_1>0$, and $w_1$ is an atom weight. By the proposition above, the atom functional
+is upper semi-continuous only, while a floor requires lower semi-continuity, and the failure is
+realised: a thin atom $p_n\delta_{m_1^2}+(1-p_n)\delta_\Lambda$ with $p_n\to0$ has $w_1=p_n\to0$ with
+$M_0$, $m_1^2$ and the gap all fixed (\code{Q6-H1-STATUS.md}:208--215), and there are gapped
+atomless measures with $f_1^2=0$ and every moment, positivity and Hankel condition satisfied
+(\code{R6-ATOM-ADVERSARIAL.md}:254--259). So compactness together with pointwise positivity does not
+imply a uniform floor at the level of measures, and the disproof is by explicit witnesses rather
+than by a failed search (\code{U01.md}, Proposition P-3).
+
+The instruments do not repair this, and the reason is structural rather than quantitative. Every
+instrument built in this campaign is a weak-$*$ continuous functional of $\nu$: the moments
+$\int s^k\,d\nu$, the Ursell combination \code{$\phi^{U}$}, and the coefficient sequence
+\code{$a_n$}. They are blind to atoms in a precise sense. For any weak-$*$
+continuous $g$ one has $\sup_\nu|E(\nu)-g(\nu)|\ge f_1^2/2$, i.e.\ the error of the instrument is at
+least the signal (\code{R3-ATOM-FUNCTIONAL.md}, Theorem R3-2, as recorded in \code{U15.md}, \S3);
+with $M_0$ and the first moment fixed, $w_1$ ranges over an interval
+(\code{WA-ALIGNMENT.md}:37--39, recorded in \code{U02.md}, \S6); with $(M_0,\chi)$ fixed, $f_1^2=1$
+and $f_1^2=0.25$ are both
+realisable (\code{LF-LASTFOUR.md}:221); and all of them --- $\operatorname{Var}$, Hessian, $E[H]$,
+$\chi$, $f_1^2$ itself as a readout --- are translation-invariant normalised moments, hence
+structurally blind to position (\code{LOOP-RUNBOOK.md}, \S69.1, the \code{tb01} verdict). The
+variance families used to build them are the Efron--Stein ones \cite{es}, and the one lower-bound
+mechanism of a different type, a transport--entropy criterion for a spectral gap \cite{vrs}, needs a
+curvature input that the lattice measure at $\beta=2.5$ does not supply. Fourteen
+named routes were checked against this target and none closes it: $0/14$, eleven no-go, two
+conditional with the hypothesis equal to the conclusion, one numerical
+(\code{research/v3/species/U15.md}, \S2). That is the circularity of leg (i): the positivity must be
+produced by an instrument that can see an atom, and every instrument available is continuous in the
+topology in which atoms are destroyed.
+
+\subsection{(ii) Monotonicity is not there, and would not suffice}
+
+The leg asks for a monotone step in the volume. There is no monotonicity theorem for $w_1(L)$, and no
+$L$-sequence of measurements either; within the known families both directions occur. The
+delocalised lowest mode gives $w_1=2/(L-1)$, i.e.\ $2,1,\tfrac23,\tfrac12,\tfrac25,\tfrac13,\tfrac27$
+for $L=2,\dots,8$, strictly decreasing to $0$ (exact rational check, \code{U02.md}, \S2.2); a
+localised light mode with finite correlation length gives a constant. The volume dependence of a
+mass is in general a genuine $1/L$ expansion rather than a monotonicity \cite{luscher77}, which is
+one more reason to expect no sign here. So $w_1(L)$ is not a property of the species, and no sign can
+be extracted from the structure alone.
+
+Even granting monotonicity, it does not give the leg, because a non-increasing sequence can decrease
+to zero: $2/(L-1)\searrow0$, so ``non-increasing'' does not imply ``infimum positive''. And the one
+positivity input available does not even supply monotonicity in the right family: reflection
+positivity yields $m_{\mathrm{eff}}(t)\downarrow$, $\widehat{w}_1(T)\downarrow$ with
+$\widehat{w}_1(T)\ge w_1$, and $\lambda_2^t\downarrow$ with $\lambda_2\le1$ --- all in the transfer
+direction, all upper bounds on $w_1$, hence the opposite direction to a floor; in the spatial
+direction reflection positivity yields existence, not monotonicity, and $w_1(L)$ is not a member of
+its monotone family at all (\code{U03.md}, \S2--\S3). The leg is therefore not merely unproved: the
+kind of object that would prove it does not exist in the toolkit.
+
+\subsection{(iii) The tail floor is \texorpdfstring{$\Delta_0$}{Delta\_0}, and \texorpdfstring{$\Delta_0$}{Delta\_0} is dead}
+
+The leg asks for a floor uniform on the coupling tail. That object is $\Delta_0$, and $\Delta_0$ has
+already been judged: it is neither sufficient nor necessary for the gap, so it cannot serve as a
+form of the target, and its value is open.
+
+\begin{claimbox}{cN}
+\claimhead{No-go}{.} ($\Delta_0$ is not a rewriting of the gap.) Two implications fail.
+\emph{Insufficiency}: a thin atom has $\Delta_{\mathrm{dyn}}>0$ while $m=0$
+(\code{Q6-H1-STATUS.md}:53--56, 110--114; machine-checked as \code{H1\_does\_not\_imply\_atom} with
+no \code{sorry}). \emph{Unnecessity}: in two-dimensional Yang--Mills $\Delta_{\mathrm{dyn}}=0$ while
+$m=3g^2/8>0$ (\code{N03-WFULL.md}, \S0; \code{H1-FINAL.md}, \S3.3). Hence
+$\Delta_0>0\not\Rightarrow m>0$ and $m>0\not\Rightarrow\Delta_0>0$: the floor is neither a
+sufficient nor a necessary form of the target.
+\end{claimbox}
+\src{\code{research/v3/species/H1-FINAL.md}, \S0 rows 4--5 and \S3.3; \code{N04-2D.md}:14,49 for
+$G''=W_{\mathrm{geo}}+\Delta_{\mathrm{dyn}}$ with $W_{\mathrm{geo}}\ge2$ and
+$\Delta_{\mathrm{dyn}}=O(e^{-2t})\to0$ in two dimensions.}
+
+\smallskip
+\noindent\textbf{Where the missing floor actually sits.} The operator whose spectral gap is wanted is
+the Hessian of the action at a background, $G''=-D^{2}+2adF_B$, and its indefinite direction at a
+constant chromomagnetic field is not an artefact of the expansion: the Savvidy--Nielsen--Olesen
+background \cite{savvidy,no} carries a negative mode in the transverse-magnetic channel
+\cite{leutwyler}, and the instability is physical rather than a gauge copy. This is why the coarse-mode
+gap cannot be had from positivity of $G''$: $G''$ is not positive, so the measure that would supply
+the floor sits partly on the negative side. What is wanted is therefore not a sharper estimate of
+$G''$ but a statement about the spectrum of $\nu$ that does not route through $G''$ at all --- which
+is leg (iii) again.
+
+The solvable model $M6$ is where the insufficiency used to be argued, and that argument must now be
+quoted with its quantifier attached: on $M6$ one has $\Delta_{\mathrm{dyn}}=2\omega$ on the
+$a$-mode while $m_6=\min(\omega,2\pi^2/L^2)\to0$, but the $b$-mode gives $\Delta_{\mathrm{dyn}}=0$,
+so $\inf_v\Delta_{\mathrm{dyn}}=0$ and $M6$ does \emph{not} satisfy the target under the
+$\forall v$ reading of the quantifier (\code{H1-FINAL.md}, \S3.2, correcting
+\code{N12-VERDICT.md}). The insufficiency witness is the thin atom; the unnecessity witness is two
+dimensions.
+
+What remains is a single open cell, and it is not a gap in an argument: it is the absence of a
+$(L,a)$-uniform positive lower bound on $\Delta_{\mathrm{dyn}}$, equivalently a uniform spectral gap
+of the coarse-mode operator $G''$ (\code{H1-FINAL.md}, \S0; \code{N11-FALLBACK.md}, \S6). That cell
+is exactly the content of leg (iii), which is why the leg is circular: to prove it one must already
+have it.
+
+% ---------------------------------------------------------------------
+\section{Why it does not move}
+\label{sec:reduction-nomove}
+
+\begin{qbox}
+\textbf{The equivalence is itself the reason it does not move.} Each of the three legs, the moment
+one sets out to prove it, turns out to require itself: (i) needs an atom seen by an instrument that
+cannot see atoms, (ii) needs a monotone quantity that the positivity in hand does not supply and
+that would not suffice if it did, and (iii) \emph{is} the missing cell, renamed.
+\end{qbox}
+
+This is worth separating from the ordinary experience of a hard problem, where a reduction shortens
+the distance to the target. Here the reduction is exact and the distance is unchanged: the three
+conjuncts are not three lemmas that would compose into a proof, but three descriptions of one
+missing object, and the descriptions are equivalent precisely because they all name the same
+uniformity. A reduction that is an equivalence of this kind cannot be a source of progress; it can
+only be a source of bookkeeping, and the bookkeeping is what the rest of this paper performs.
+
+% ---------------------------------------------------------------------
+\section{The key qualification: \texorpdfstring{$w_1$}{w1} depends on the operator}
+\label{sec:reduction-operator}
+
+The last point is the one that changes how leg (i) must be written, and it is a two-line
+counterexample rather than an empirical worry.
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{.} ($w_1$ is not a function of the spectrum.) Fix any Hamiltonian $H$ with
+bottom $E_0$, first excitation $\psi_1$, second excitation $\psi_2$ and $\lambda_1=E_1-E_0>0$. For
+$\theta\in[0,\pi/2]$ and $0<\varepsilon\ll1$ set
+\[
+  O_\theta \;=\; 1+\varepsilon\bigl(\cos\theta\,\psi_1+\sin\theta\,\psi_2\bigr),
+\]
+which is a legitimate non-negative source. Then $\operatorname{Var}(O_\theta)=\varepsilon^2$ and
+$f_1^2=\varepsilon^2\cos^2\theta$, so
+\[
+  w_1(O_\theta)\;=\;\cos^2\theta\;\in\;[0,1],
+\]
+while $\operatorname{Spec}(H)$, $\lambda_1$, $L$ and $a$ are unchanged. Hence there is no function $F$
+with $w_1=F(\operatorname{Spec}H)$; $w_1=f_1^2/M_0$ is a property of the pair $(H,O)$, not of $H$.
+\end{claimbox}
+\begin{proofx}
+Insert $O_\theta$ into \eqref{eq:w1}. The variance is $\varepsilon^2$ by orthonormality of
+$\Omega,\psi_1,\psi_2$; the bottom atom is the $\psi_1$ component squared, $\varepsilon^2\cos^2\theta$;
+the ratio is $\cos^2\theta$. Nothing in the spectrum enters the computation.
+\end{proofx}
+\src{\code{U11.md}, \S3.2, equations (3.2)--(3.3), with the scope note there: this is a no-go on the
+operator-pair class, not a claim that $w_1$ is spectrum-independent on Yang--Mills, where $(H,O)$ is a
+single fixed pair (file: \code{research/v3/species/U11.md}).}
+
+The counterexample is not a pathology of an unphysical source; it is realised in the measurement.
+On one Markov chain, with the same $12000$ configurations, two operators give atom fractions that
+differ by a factor $20.2$. That a mass estimate is an estimate \emph{for the operator that was
+interpolated}, not for the theory, is the working premise of lattice spectroscopy
+\cite{morningstar}; what the theorem above adds is that the dependence is total --- it can exhaust
+the whole interval $[0,1]$ --- so no amount of statistics can remove it.
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabularx}{\textwidth}{@{}l r r r r r@{}}
+\toprule
+basis & $C(0)$ & $C(1)/C(0)$ & $m_{\mathrm{fit}}$ & $w_1$ (mass pinned) & $S/N(2)$ \\
+\midrule
+\code{raw}   & $19.888$ & $0.07372\pm0.00265$ & $1.707$ & $0.3427\pm0.0119$ & $5.0$ \\
+\code{TAPE1} & $45.527$ & $0.00302\pm0.00297$ & $1.073$ & $0.0168\pm0.0142$ & $0.9$ \\
+\code{TAPE2} & $39.428$ & $0.00150\pm0.00298$ & $0.762$ & $0.0107\pm0.0136$ & $1.6$ \\
+\bottomrule
+\end{tabularx}
+\caption{One Markov chain, one set of configurations, three operators, all read at $m_1=1.546$
+(Table~\ref{tab:m-bases}). Only the operator changes, and the atom fraction changes by a factor $20.2$.}
+\label{tab:opdep-front}
+\end{table}
+
+\noindent Geometry $8^3\times12$, $\beta=2.5$, $\kappa=1.25$, $N=12000$ ($8$ chains $\times$ $1500$
+configurations, $\mathrm{gap}=3$, $400$ thermalisation sweeps per chain), plaquette
+$0.65234\pm0.00002$, errors from a $20$-block delete-one jackknife, $w_1$ with the mass pinned at
+$m_1=1.546$. \code{TAPE} is a spatial APE smearing with the time direction left unsmeared
+(\code{RUN3.md}, \S2--\S3). The two leading entries differ by the factor
+$0.3427/0.0168=20.2$ reported in the abstract; the \code{raw} value reproduces an earlier
+independent run at $0.02\sigma$.
+
+Two consequences follow, and the second is a boundary of this paper.
+
+\begin{v3box}
+\textbf{(1) Leg (i) must be stated at fixed $O$.} ``$w_1>0$'' has no content until $O$ is named: at
+fixed spectrum the value ranges over $[0,1]$. The correct reading of (i) is
+\emph{for the physical operator $O=\tfrac14\operatorname{tr}F^2$, $w_1(2.5)>0$ at each $(L,a)$}, and
+every statement in this paper is to be read that way.
+
+\textbf{(2) The measured value is \LE{} and nothing more.} It is a lattice measurement at
+$L_t=12$, $L_s=6$ and $L_s=8$, at one coupling, with $S/N(2)=5.0<10$: the $28.8\sigma$ quoted in the
+abstract is significance from zero, not a demonstration of a floor, and the deficit in $S/N$ is
+recorded rather than repaired (\code{RUN3.md}, \S4).
+\end{v3box}
+
+\begin{warnbox}
+\textbf{Where the grades must not be guessed.} Three hooks in this part are grade-sensitive and are
+flagged here rather than settled.
+
+(a) The $M6$ row: the insufficiency claim is true per mode ($\Delta_{\mathrm{dyn}}=2\omega$ on the
+$a$-mode) but false under the $\forall v$ quantifier ($\inf_v=0$), and the repository withdrew the
+row on that ground (\code{H1-FINAL.md}:102,138). This part therefore uses the thin atom, not $M6$, as
+the insufficiency witness; any sentence restoring $M6$ to that role would need a grade that is not
+available in the sources.
+
+(b) The factor $20.2$ compares two \emph{operators}, not two theories: it is evidence for the
+operator dependence, and it is not evidence for or against any floor.
+
+(c) Leg (i) at fixed $O$ and the mass gap as usually stated differ by an $O$-independence
+requirement, and no such statement exists in this paper. That is a genuine boundary of the
+reduction, not a technicality: the reduction is exact at fixed $O$, and the passage to a statement
+about $H$ alone is exactly what the counterexample forbids.
+\end{warnbox}
+
+% ---------------------------------------------------------------------
+\section{Where the reduction sits in the literature}
+\label{sec:reduction-inherited}
+
+Almost nothing in this part is new except the reduction itself, and a reader is entitled to know which
+sentences carry an obligation and which are borrowed. The following inventory is organised by what is
+borrowed, not by chronology; every item is used somewhere in the paper, and none of them is used at a
+grade higher than the source supports.
+
+\noindent\textbf{(a) The frame.} The problem is the one posed in \cite{jaffe}: a quantum field theory
+satisfying the Wightman axioms \cite{sw}, with a mass gap above the vacuum. The spectral data
+$\nu$, $m_1$, $f_1^2$ of \eqref{eq:w1} are the K\"all\'en--Lehmann data of that frame \cite{kl}, and
+the positivity that makes $\nu$ a measure at finite volume is reflection positivity
+\cite{os1973}, in the lattice form of Osterwalder--Seiler \cite{osterwalder-seiler}.
+
+\noindent\textbf{(b) The strong-coupling mass gap is not ours.} That lattice gauge theory has a mass
+gap at large $\beta$ is a theorem of the 1970s and 1980s: Seiler's lecture notes \cite{seiler}, the
+Brydges--Giffen--Durhuus--Fr\"ohlich polymer expansion \cite{bgdf}, and, for the lower-dimensional
+models, Glimm--Jaffe--Spencer \cite{gjs} and Feldman--Osterwalder \cite{fo}. The criterion that the
+five rings of \S\ref{sec:est-i1} are run against is Koteck\'y--Preiss \cite{kp}; the edge $1/48$ of
+the strong-coupling window is the threshold of Shen--Zhu--Zhu's log-Sobolev and Poincar\'e
+inequalities \cite{szz}. None of
+these is reproved here. What \S\ref{sec:est-i1} adds is the residue statement $I1$ and, with it, the
+removal of a premise that the earlier literature needed --- that the $0^{++}$ channel be strictly the
+lightest.
+
+\noindent\textbf{(c) The renormalisation-group route.} The programme that would prove the gap at all
+couplings by a multiscale expansion is Balaban's \cite{balaban,balaban-conv}, and its completion with an infrared
+cutoff is Magnen--Rivasseau--S\'enor \cite{mrs}. Neither is used in this paper, and the reason is
+recorded rather than hidden: the estimates are not uniform in the ways \S\ref{sec:survey} needs, and
+the constants in them are not the constants this campaign can control.
+
+\noindent\textbf{(d) Analytic tools.} Log-concavity enters through Pr\'ekopa \cite{prekopa} and
+Brascamp--Lieb \cite{bl}; the spectral statements through Kato \cite{kato} and Reed--Simon
+\cite{reed-simon}; level crossings through von Neumann--Wigner \cite{vnw}; the operator-comparison
+bounds of row 12 of \S\ref{sec:survey-table} through Temple \cite{temple}; the stochastic and
+semigroup side through Feller \cite{feller}, Jerrum--Sinclair \cite{js}, Sinclair \cite{sinclair},
+Bauerschmidt--Brydges--Slade \cite{bbs} and the lecture notes of \cite{chatterjee}.
+
+\noindent\textbf{(e) Other routes to a mass scale, and why none of them is the missing machine.}
+Lattice formulations and their numerical study are Wilson's \cite{wilson} and Creutz's \cite{creutz},
+with the step-scaling and flow technologies of \cite{luscher-stepscaling,luscher-flow} and the
+spectroscopy of \cite{morningstar}; the large-$N$ and loop-equation route is
+\cite{thooft-planar,eguchi-kawai,makeenko-migdal}; the confining-string route is
+\cite{polchinski-strominger,luscher-weisz}; the holographic route is
+\cite{maldacena,gkp,witten,witten-thermal,polchinski-strassler,sakai-sugimoto}; the conformal-bootstrap
+route is \cite{elshowk,prv}; the resurgent route is \cite{abs}; the $\beta$-function and
+$a$-theorem complex is \cite{caswell,vrvl,banks-zaks,polchinski,komargodski-schwimmer,dksst,zamolodchikov,osborn},
+with the conformal-collider bounds of \cite{hofman-maldacena,hofman-li} and the near-conformal lattice
+studies of \cite{aoki}; and the infrared scenarios that put the mass scale in the gauge sector are
+Gribov's \cite{gribov}, its topological formulation by Singer \cite{singer} and Zwanziger
+\cite{zwanziger}, the Dyson--Schwinger truncations of \cite{vsmekal,fischer-alkofer} reviewed in
+\cite{huber}, and the dynamically generated gluon mass of \cite{cornwall}. Confinement itself has
+been proved in a restricted model, three-dimensional $U(1)$ \cite{gopfert}.
+
+Each entry in (e) supplies an upper bound, a scenario, or a numerical value at a fixed coupling. None
+of them supplies the object \S\ref{sec:verdict-needed} names, and the uniform direction of
+\S\ref{sec:survey} is the observation that this is not an accident of any one route.
+
+\label{part:reduction-end}

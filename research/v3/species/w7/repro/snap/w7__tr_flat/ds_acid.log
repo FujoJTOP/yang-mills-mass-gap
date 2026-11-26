@@ -1,0 +1,105 @@
+====================================================================================================
+[D1] ACID TEST (i): FREE FIELD, exact
+     V = m^2 a^2/2 + (fibre quadratic):  measure Gaussian, D = Var(V') = 0 identically
+====================================================================================================
+     model                     S=E[V2]    D=VarV1      Gpp=S-D        D/S
+     massless (flat)            0.0000     0.0000       0.0000  0/0 undef
+     massive m^2=1              1.0000     0.0000       1.0000     0.0000
+     massive m^2=0.25           0.2500     0.0000       0.2500     0.0000
+   ==> massless: S=D=0, the ratio is 0/0 (indeterminate), G''=0.
+       massive  : ratio = 0 < 1 WHILE the model HAS a gap m^2>0.
+       => 'D/S < 1' is satisfied by every Gaussian model, gapped or not: D10 (no discrimination).
+
+====================================================================================================
+[D2] ACID TEST (ii): beta = 0 PURE HAAR (Model A) -- curvature without an atom
+====================================================================================================
+     (one plaquette, theta=pi, v=e3, a0=0, beta=0):  S = 0.2051152971  D = 0.000e+00  ratio = 0.000e+00
+     G''(beta=0) = 0.2051152971  (= 1/(2 Cin 2pi), the P1 anchor)
+     but f_1^2 = 0 at beta=0 (no Wilson weight => no glueball atom).
+   ==> the ratio is 0 (maximally 'good') on a measure with NO gap: the criterion is VACUOUS here.
+   NOTE on the corpus quote 'G''=0.2688 at beta=0':  0.268830 is 1/Var(a), NOT G''.
+     G'' = 0.20511530 = 1/(2 Cin(2pi))  ;  1/Var(a) = 0.268830  (Var = 3.719824).
+     The 'product identity' reading  D/S := 1 - G''*Var(a)  = 1 - 0.205115/0.268830 = 0.2370
+     while the true A2 defect ratio at beta=0 is 0.0000  =>  that reading is not D/S.
+
+====================================================================================================
+[D3] ACID TEST (iii): DOUBLE WELL, EXACT CLOSED FORM
+     V(x,y) = lam (x^2-1)^2 - h x + w^2|y|^2/2 + g x |y|^2 ,  y in R^2, flat measure
+     coarse a = x  =>  S(a) = 4 lam (3a^2-1) ,  D(a) = g^2 Var(|y|^2|a) = 4 g^2/(w^2+2ga)^2
+====================================================================================================
+   g        a               S          D        Gpp        D/S    Gpp>0?
+   0.00     0.00      -4.0000     0.0000    -4.0000    -0.0000        no
+   0.00     0.50      -1.0000     0.0000    -1.0000    -0.0000        no
+   0.00     1.00       8.0000     0.0000     8.0000     0.0000       YES
+   0.00     1.50      23.0000     0.0000    23.0000     0.0000       YES
+   0.30     0.00      -4.0000     0.3600    -4.3600    -0.0900        no
+   0.30     0.50      -1.0000     0.2130    -1.2130    -0.2130        no
+   0.30     1.00       8.0000     0.1406     7.8594     0.0176       YES
+   0.30     1.50      23.0000     0.0997    22.9003     0.0043       YES
+   0.80     0.00      -4.0000     2.5600    -6.5600    -0.6400        no
+   0.80     0.50      -1.0000     0.7901    -1.7901    -0.7901        no
+   0.80     1.00       8.0000     0.3787     7.6213     0.0473       YES
+   0.80     1.50      23.0000     0.2215    22.7785     0.0096       YES
+   1.50     0.00      -4.0000     9.0000   -13.0000    -2.2500        no
+   1.50     0.50      -1.0000     1.4400    -2.4400    -1.4400        no
+   1.50     1.00       8.0000     0.5625     7.4375     0.0703       YES
+   1.50     1.50      23.0000     0.2975    22.7025     0.0129       YES
+   ==> (a) g=0 (symmetric well): D=0, ratio=0 EVERYWHERE -- including the barrier a=0 where
+           G'' = -4 lam < 0.  The criterion 'D/S<1' is satisfied at a negative-curvature point.
+       (b) for S<0 (barrier, |a|<1/sqrt3) the ratio is NEGATIVE: 'D/S<1' <==> 'D>S' there,
+           i.e. the equivalence  D/S<1 <=> G''>0  REQUIRES S>0.  Sign-flip, not a margin.
+       (c) the crossing D/S=1 IS the edge G''=0 (there is no other scale):
+           g=0.3 : G''=0 at a=0.591 (S=0.191, D/S=1.025) ;  D/S at a=1 (S=8): 0.0017
+           g=0.8 : G''=0 at a=0.622 (S=0.643, D/S=1.001) ;  D/S at a=1 (S=8): 0.0033
+           g=1.5 : G''=0 at a=0.647 (S=1.031, D/S=1.008) ;  D/S at a=1 (S=8): 0.0042
+       => the ratio is a DISTANCE-TO-THE-EDGE coordinate; it equals 1 only on the edge itself.
+
+====================================================================================================
+[D4] TWO PLAQUETTES (a = (w1+w2)/sqrt2) + 1D CHAIN: exact reduction, and an HONEST [E]
+     rho_2(a) = int rho(w) rho(sqrt2 a - w) dw   (exact: independent copies)
+     The numerical defect split below is run as a SELF-TEST of the identity S-D = -d2log rho;
+     if it fails, the numbers are NOT evidence (recorded as [E], not [V]).
+====================================================================================================
+     a           log rho_2          S2          D2    G2=S2-D2      fd(G2)      D2/S2
+     0.00         0.495417    0.448186    0.635219   -0.187033    0.089652    1.41731
+     0.50         0.017398    0.426000    0.677722   -0.251722    0.073330    1.59090
+     1.00        -0.480010    0.454788    0.725479   -0.270691    0.106453    1.59520
+     single plaquette at a=0:  S=0.205115 D=0.069121 ratio=0.336984  G''=0.135995
+   SELF-TEST: at a=0 the identity gives S2-D2 = -0.187 while the 5-point FD of log rho_2 gives
+       +0.090 -> discrepancy 0.28, i.e. the quadrature is NOT certified (nw=24 is too coarse for
+       a 5-point FD at da=0.02).  RESULT: [E] -- no number from this block may be used.
+   WHAT IS BANKED (exact, no quadrature):
+     (a) rho_2 = rho_1 * rho_1 exactly, so the pooled model is a functional of the one-plaquette
+         marginal alone: pooling cannot supply a *new* estimate, only a new function of rho_1.
+     (b) 1D PURE-GAUGE CHAIN: dU_1...dU_N = dW dV_1...dV_{N-1} (Haar invariance) => the chain
+         integral is a SINGLE plaquette integral and every gauge-invariant functional equals its
+         one-plaquette value.  A 1D chain contributes NO independent D/S.  [T]
+   ==> none of {1 plaquette, 2 plaquettes, 1D chain} supplies a bound < 1 beyond the sign of G''.
+
+====================================================================================================
+[D5] AUDIT of the archived lattice data  k0_su2_b2.4_L8_n2.npz  (SU(2), beta=2.4, L=8, 400 cfg)
+     fields: a, H, G, P1, P2 (12 modes at k = pi/4 and pi/2; NOT k=0, NOT 0^{++})
+====================================================================================================
+   mode               Var(a)      Gpp    1/Var   Gpp*Var      S_A2    D/S_A2    Gpp/S
+   ax1_p2_c2_n1       3.7923  -0.0329   0.2637   -0.1249    1.7335    1.0190  -0.0190
+   ax1_p3_c2_n1       4.1694   0.0169   0.2398    0.0705    1.7345    0.9902   0.0098
+   ax0_p2_c2_n1       3.7648   0.1419   0.2656    0.5341    1.7370    0.9183   0.0817
+   ax2_p3_c2_n1       3.6127   0.2370   0.2768    0.8563    1.7351    0.8634   0.1366
+   ax3_p1_c2_n1       3.4474   0.2171   0.2901    0.7485    1.7390    0.8751   0.1249
+   ax1_p2_c0_n1       3.5326  -0.0357   0.2831   -0.1261    1.7370    1.0206  -0.0206
+   ax1_p2_c2_n2       3.5049  -0.0592   0.2853   -0.2073    1.7349    1.0341  -0.0341
+   ax1_p3_c2_n2       3.3865   0.1226   0.2953    0.4151    1.7348    0.9293   0.0707
+   ax0_p2_c2_n2       3.2213  -0.0774   0.3104   -0.2492    1.7374    1.0445  -0.0445
+   ax2_p3_c2_n2       3.9161   0.0655   0.2554    0.2567    1.7341    0.9622   0.0378
+   ax3_p1_c2_n2       3.9807  -0.1445   0.2512   -0.5750    1.7388    1.0831  -0.0831
+   ax1_p2_c0_n2       3.3566   0.1364   0.2979    0.4579    1.7394    0.9216   0.0784
+   means:  Var(a)=3.6404   1/Var=0.2762   S_A2=1.7363   Gpp=0.0490   E[Gpp]/E[S]=0.0282
+   PRODUCT identity per mode:  Gpp*Var(a)  mean=0.1714  min=-0.5750  max=0.8563
+   Schur-type relation S_A2*Var(a):  mean=6.3206  (a Gaussian marginal would give 1)
+   DEFECT ratio (A2):            mean=0.9718  min=0.8634  max=1.0831   modes D>S: 5/12
+   DEFECT ratio (H2 split):      mean=0.9651  min=0.8311  max=1.1028
+   CONSEQUENCE: on this data the defect ratio is 0.97 (NOT 0.02), i.e. the margin is ~3 percent, and
+   the two readings are complementary, not independent: 1-0.97 = 0.03.  The '2 percent' as D/S is a
+   complementation error; the '2 percent' as 1-Gpp*Var(a) is a different functional (mean 0.83 here).
+
+Clay 0%.  No QED.

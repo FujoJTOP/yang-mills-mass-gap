@@ -1,0 +1,637 @@
+% =====================================================================
+\section{The scalar face of $H1$: one identity, four exact models, one accounting
+error, and twelve more families}
+\label{ch:scalar-h1}
+% =====================================================================
+
+This chapter reports the wave that stopped writing $H1$ as a family of inequalities and asked
+what single object the family names. The answer is available in the algebra already on the page:
+the exact split \eqref{eq:split} of Chapter~\ref{sec:wgeo}, read as a definition rather than as a
+decomposition, says that $H1(\delta)$ \emph{is} the scalar positivity $G''(0)\ge\delta$, with
+$\delta_{\max}=G''(0)$. Four models whose conditioned curvature is exactly computable then decide
+it: one of them fails, at $\beta>\beta^*=4.30661$, and the mechanism of failure is exact Savvidy
+concavity. Comparing $\beta^*$ with the deconfinement couplings raised a question the campaign had
+not asked --- whether $H1$ is even the right target for $\mathrm{SU}(3)$ --- and the wave withdrew
+it: on the $\mathrm{SU}(3)$ lift of the same model $\delta$ \emph{increases} with $\beta$, so
+$V_0(3)<0$, $\beta^*(3)$ does not exist, and $H1$ covers the whole $\mathrm{SU}(3)$ scaling region
+\LE{}. What stays open is the step from that one-plaquette (patch) model to the theory \LM{}.
+The same wave audited the five conditions (they are not five) and added families 46--57 to the
+immune map, including the two structural statements that survive: $\kappa_W=0$ forbids monomials
+and constrains no exponential, and the loop-equation principal symbol is never elliptic. One
+further corner --- the polymer log-convexity route --- is closed quantitatively, $0.679<1.40$.
+\textbf{No gap is proved and no new route is opened; Clay remains $0\%$.}
+
+\subsection{One identity instead of a family}
+\label{sec:scalar-identity}
+
+Recall the exact split of Chapter~\ref{sec:wgeo}, \eqref{eq:split}:
+$G''(0)=E[H_{vv}+\Phi''\mid\xi=0]-\operatorname{Var}(G_v+\Phi'\mid\xi=0)
+=\Delta_{\mathrm{dyn}}+W_{\mathrm{geo}}+X$, with $\Delta_{\mathrm{dyn}}=E[H]-\operatorname{Var}(G)$
+and $X=-2\operatorname{Cov}(G,\Phi')$. Subtracting $E[H]+W_{\mathrm{full}}$ from both sides,
+$W_{\mathrm{full}}:=W_{\mathrm{geo}}+X$, gives an identity with no content beyond that display:
+\begin{equation}
+\underbrace{\operatorname{Var}_\mu\bigl(\langle v,\nabla S\rangle\mid0\bigr)}_{\operatorname{Var}}
+-\underbrace{E_\mu[H_{vv}\mid0]}_{E[H]}-W_{\mathrm{full}}
+\ =\ -\,G''(0).
+\label{eq:scalar-identity}
+\end{equation}
+It uses no model, no uniformity, and no hypothesis that a gap exists. Substituting the curvature
+form \eqref{eq:opencell-curv} of Chapter~\ref{ch:gap} --- which is
+$\operatorname{Var}\le E[H]+W_{\mathrm{full}}-\delta$ --- and moving terms again yields the
+decision rule
+\begin{equation}
+H1(\delta)\iff G''(0)\ge\delta
+\qquad\text{(pointwise, mode by mode, for every }(\beta,U')\text{)},
+\qquad
+\boxed{\ \delta_{\max}=G''(0).\ }
+\label{eq:scalar-rule}
+\end{equation}
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(the scalar face of $H1$)} \emph{Under the definitions of
+Chapter~\ref{sec:wgeo}, \eqref{eq:scalar-identity} and \eqref{eq:scalar-rule} are algebraic
+identities. Consequently:}
+\begin{enumerate}
+\item \emph{(total order)} \emph{the family $\{H1(\delta)\}_\delta$ is totally ordered by
+  implication, $H1(\delta)\Rightarrow H1(\delta')$ for $\delta'\le\delta$; the family carries
+  exactly the information of one number per coarse mode, $G''(0)$. ``$H1$'' without a $\delta$ is
+  the statement $G''(0)>0$.}
+\item \emph{(no independent variance inequality)} \emph{$\operatorname{Var}$, $E[H]$ and
+  $W_{\mathrm{full}}$ are not separately constrained by $H1$ beyond their appearance in
+  \eqref{eq:scalar-identity}; the sign lives in the curvature. A proposal that bounds
+  $\operatorname{Var}$ without controlling the sign of $G''(0)$ is a claim about $G''(0)$ in
+  disguise, not an independent route.}
+\item \emph{(what a $\beta$-uniform route must deliver)} \emph{a route claiming $H1$ for all
+  $\beta$ and all vacua must produce $G''(0)\ge\delta$ on the whole $(\beta,\text{vacuum})$
+  plane; $\S\ref{sec:scalar-plaquette}$ exhibits a three-dimensional model where this fails
+  exactly.}
+\end{enumerate}
+\LT{}
+\end{claimbox}
+
+\src{\code{ch05-theorems.tex} \eqref{eq:split} and \S\ref{sec:wgeo}; \code{ch08-immune.tex} \S1
+(``the display is then $G''\ge\delta$ in curvature form''); \code{ch04-gap.tex}
+\eqref{eq:opencell-curv}; \code{research/v3/species/H1A-EXACT.md} \S1.3 (identity, $\delta_{\max}$,
+and the same reading of the corpus).}
+
+\textbf{What this does not do.} It does not make $H1$ easier, and nothing here is a step toward
+the gap. It relocates the difficulty into a single number: the open content is now (i) the sign and
+size of $G''(0)$ at the physical point and (ii) its $(L,a)$-uniformity, and (ii) is the part that
+is not closed \LM. Dimensional discipline is unchanged and is what keeps the two apart: the
+curvature floor is a lattice-unit object, $G''_a=a^2m_{\mathrm{phys}}^2$, so every $\delta$ in this
+chapter is a dimensionless curvature floor and none is a physical mass bound
+(\code{ch03-existence.tex} \S\ref{sec:dim}, \eqref{eq:dim}) \LT.
+
+\textbf{Corollary for route classes} \LN. Statement 3 above is not rhetoric: it is decided by the
+next subsection, and it says that any proposal whose target is ``$H1$ for all $\beta$'' --- as
+opposed to the paper's fixed-$\beta$, $(L,a)$-uniform, per-coarse-mode statement
+(\code{ch13-machine.tex}:27--29) --- is dead by \emph{target}, independent of technique. What
+survives is the fixed-coupling reading, and the honest way to state it is
+\eqref{eq:scalar-rule}: prove $G''(0)\ge a^2\Delta_0^2$ uniformly, at the physical point, on a
+gapped vacuum.
+
+\subsection{Exact failure on a single plaquette}
+\label{sec:scalar-plaquette}
+
+The model is the one-plaquette $\mathrm{SU}(2)$ theory in the flat chart with a fixed boundary
+holonomy: $U=e^{\xi}$, $\xi\in\mathbb R^3$, $|\xi|<2\pi$, $B=e^{i\theta\sigma_3/2}$, and
+\begin{equation}
+S=\beta\Bigl(1-\cos\tfrac{\rho}{2}\cos\tfrac{\theta}{2}
++\sin\tfrac{\rho}{2}\sin\tfrac{\theta}{2}\,u\Bigr),\qquad u=\xi_3/\rho,
+\label{eq:scalar-plaq-action}
+\end{equation}
+with measure $e^{-S}J\,d^3\xi$, $J=\sin^2(\rho/2)/\rho^2$, $\Phi=-\log J$; take $v=e_3$ and
+condition on $\langle v,\xi\rangle=a_0=0$. On that slice ($u=0$, $\rho'=0$) two exact
+simplifications hold: $\Phi$ is radial, so $\Phi'\equiv0$ and therefore
+$\operatorname{Var}(\Phi')=0$, $X=0$; and $\rho'=0$, $u''=0$ give
+$H_{vv}=\beta c\sin(r/2)/(2r)$ with $c=\cos(\theta/2)$.
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(exact one-plaquette curvature)} \emph{At $\theta=\pi$: $c=0$, so $E[H]\equiv0$
+exactly; on the slice $S\equiv\beta$ independently of $r$, so the conditioned measure is exactly
+Haar; hence}
+\begin{equation}
+\delta(\beta)=G''(0)=W_0-\beta^2V_0
+=0.2051153-0.0110593\,\beta^2,
+\qquad
+\beta^*=\sqrt{W_0/V_0}=4.30661 ,
+\label{eq:scalar-plaq-delta}
+\end{equation}
+\emph{with $V_0:=\operatorname{Var}_{\mathrm{Haar}}\bigl(\sin(r/2)/r\bigr)=0.01105929$. Therefore}
+\begin{equation}
+\delta(\beta)<0\iff\beta>\beta^*=4.30661 .
+\label{eq:scalar-plaq-zero}
+\end{equation}
+\emph{The coefficient $W_0=1/(2\,\mathrm{Cin}(2\pi))=0.20511530$ is exact
+(\eqref{eq:v3anchor} of Chapter~\ref{ch:uvface}); $V_0$ is a Haar variance computed by
+deterministic quadrature and read digit for digit against the archive.}
+\LT{}/\LE{}
+\end{claimbox}
+
+\src{\code{research/v3/species/H1A-EXACT.md} \S2.1 (model, simplifications, and the table below);
+$W_0$ from \code{ch15-uvface.tex} \eqref{eq:v3anchor}; $V_0$ and the seven point values verified
+against \code{research/v3/species/w7} \code{[P1]} and \code{[A0]} rows.}
+
+\footnotesize
+\begin{center}
+\begin{tabular}{@{}rrrrr@{}}
+\toprule
+$\beta$ & $\operatorname{Var}$ & $E[H]$ & $W_{\mathrm{full}}$ &
+$\delta_{\max}=\operatorname{Var}-E[H]-W_{\mathrm{full}}$\\
+\midrule
+$0$       & $0.000000$ & $0$ & $0.205115$ & $+0.205115$\\
+$1$       & $0.011059$ & $0$ & $0.205115$ & $+0.194056$\\
+$2.5$     & $0.069121$ & $0$ & $0.205115$ & $+0.135995$\\
+$4.30661$ & $0.205115$ & $0$ & $0.205115$ & $0.000000$\\
+$6$       & $0.398135$ & $0$ & $0.205115$ & $-0.193019$\\
+$10$      & $1.105929$ & $0$ & $0.205115$ & $-0.900814$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\normalsize
+\textbf{External check} \LE. The failure is not a numerical artefact, and the numbers are not new:
+five quantities agree with the corpus archive to the last printed digit
+(Table~\ref{tab:scalar-archive}).
+
+\footnotesize
+\begin{center}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{6.0cm}rrl@{}}
+\toprule
+Quantity & This chapter & Archive & Relative difference\\
+\midrule
+$G''(\beta=0,\theta=\pi)$ & $0.205115$ & $0.20511530$ & $<10^{-6}$\\
+$G''(\beta=2.5,\theta=\pi)$ & $0.135995$ & $0.135995$ & $<10^{-6}$\\
+$G''(\beta=6,\theta=\pi)$ & $-0.193019$ & $-0.193019$ & $<10^{-6}$\\
+$\operatorname{Var}(\beta=1)/\beta^2$ & $0.0110593$ & $0.01105929$ & $<10^{-5}$\\
+$\beta^*$ & $4.30661$ & $4.30661$ & $0$\\
+\bottomrule
+\end{tabular}
+\captionof{table}{Three-way digit-for-digit agreement between the recomputation of this chapter and
+the archived one-plaquette values. The archive rows are the \code{[P1]} table and the \code{[A0]}
+line of the one-plaquette run; agreement is the reason the failure below is called exact.}
+\label{tab:scalar-archive}
+\end{center}
+
+\normalsize
+\textbf{Why it fails: exact Savvidy concavity} \LT. At $\theta=\pi$ the action
+\eqref{eq:scalar-plaq-action} is $S=\beta\bigl(1+\sin(\rho/2)u\bigr)$, linear in $u=\xi_3/\rho$;
+the conditioned point $\xi_3=0$ is therefore \emph{not} a minimum --- the minimum sits at
+$\xi_3=-\pi$. On the same slice $S$ does not depend on $r$, so the measure is exactly Haar and all
+curvature comes from the Jacobian, while the $\beta^2$ variance term drives $G''$ down. Hence
+``the curvature at the conditioned point'' \emph{is} ``the stability of that point'',
+$\delta<0\iff$ the vacuum does not sit at the conditioned point. This is the exact scalar version of
+the wall recorded in Chapter~\ref{sec:savvidy}: the Hessian $-D^2+2adF_B$ of the Savvidy cell is
+indefinite (a negative transverse magnetic mode surviving the gauge quotient; the measured
+negative fraction is $7.1\%$). What the solvable model adds is that the phenomenon is not an
+artefact of the continuum or of large volume: three dimensions suffice, and the sign is exact.
+
+\textbf{Scope of the refutation} \LN{}/\LM. Refuted: the reading ``$H1$ for all $\beta$, for all
+vacua''. Not refuted: the paper's $H1$, which is fixed physical $\beta$ with $(L,a)$-uniformity and
+a per-coarse-mode quantifier --- at the physical point $\beta_W=2.4$--$2.5$ one has
+$\beta<\beta^*$ and $\delta=+0.136>0$. The consequence is a constraint on proof routes, not a
+statement about Yang--Mills: any proof of $H1$ must carry vacuum-selection information (sign
+control of $\Phi''$, hence of $W_{\mathrm{geo}}$); a proof that does not will be broken by this
+three-dimensional model at $\beta>\beta^*$. Two honest limitations are recorded: the $\delta$ of
+\eqref{eq:scalar-plaq-delta} is a lattice-unit curvature with no $a\to0$ scaling performed, and the
+model is a single plaquette with a single boundary holonomy.
+
+\textbf{A retracted computation, kept as a criterion.} The first version of this calculation gave
+$G''(\beta=2.5)=+0.5427$: it double-counted a second-order term $s\cos(r/2)/(2r)$ of
+$\sin(\rho/2)u$ which vanishes on the slice because $u''=0$ and $\rho'=0$. The criterion that
+catches the error is not the final number but the archive's $E[H]\equiv0$, which forces any
+candidate expression to vanish at $\theta=\pi$. Recorded so the error is not reused.
+
+\subsection{Four solvable models: where the floor actually lives}
+\label{sec:scalar-four}
+
+Applying \eqref{eq:scalar-rule} to the models whose conditioned curvature is exact gives
+Table~\ref{tab:scalar-models}. One model fails, one degenerates in the infrared, and two are
+positive and uniform in the parameter they are supposed to be uniform in.
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.9cm}
+  >{\raggedright\arraybackslash}p{3.1cm}
+  >{\raggedright\arraybackslash}p{6.3cm}c@{}}
+\caption{Four solvable models decided by \eqref{eq:scalar-rule}. $\delta$ is read off the identity,
+so no separate variance inequality is proved or refuted in any row; the label records whether the
+row's content is exact algebra (\LT) or computed (\LE).}\label{tab:scalar-models}\\
+\toprule
+Model & $\delta$ & Reading & Label\\
+\midrule
+\endfirsthead
+\toprule
+Model & $\delta$ & Reading & Label\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+1. single plaquette $\mathrm{SU}(2)$, $\theta=\pi$, $\beta=2.5$ &
+$+0.135995$ &
+fails above $\beta^*=4.30661$; margin at the physical point is $0.136$ &
+\LT/\LE\\
+1$'$. same, $\beta=6$ &
+$-0.193019$ &
+$H1$ false; exact, not numerical, and the mechanism is Savvidy concavity &
+\LT/\LE\\
+1$''$. same, $\beta=\beta^*$ &
+$0$ &
+degenerate: exact zero, $\delta_{\max}=0$ &
+\LT\\
+1$'''$. same, $\theta=0$, any $\beta$ &
+$\ge+0.2909$ &
+true for every $\beta$, margin increasing in $\beta$; the vacuum sits at the conditioned point &
+\LT/\LE\\
+2. $2$D Yang--Mills (Migdal/heat kernel, exact) &
+$\ge+2.0101$ &
+true for all $\phi\in(0,\pi)$ and all $t=g^2A/2$; the minimum sits at $\phi=1.5$ and the value is
+$t$-stable to $<0.3\%$ for $t\in[5,40]$ &
+\LT/\LE\\
+3. $P4$ periodic kernel, $\beta=2.5$ &
+$+0.22196\pm0.00011$ &
+$L$-uniform: positive intercept of the exponential fit, $q=0.849$; $\operatorname{Var}=E[H]=0$
+exactly, so $\delta=W_{\mathrm{full}}$ &
+\LT/\LE\\
+4. $1$D Dirichlet string &
+$\pi^2/L^2\to0$ &
+degenerate: the ``mass'' is a finite-size effect $\propto1/L^2$, and at $L\to\infty$ $H1$ has no
+content &
+\LT\\
+\end{longtable}
+
+\normalsize
+\textbf{The structural finding, which matters more than the seven numbers} \LT. In models 2, 3 and 4
+the identities $\operatorname{Var}=0$ and $E[H]=0$ are exact, not small: the coarse mode is either
+an exact flat direction of $S_W$ (the periodic chain, where every plaquette is a pure difference;
+the $2$D class angle) or a Gaussian eigenmode whose force depends only on the conditioned
+coordinate ($1$D Dirichlet, $G=\lambda\xi$). By \eqref{eq:scalar-identity} the whole content of
+$H1$ in these models is therefore carried by the Haar/Jacobian term $W_{\mathrm{geo}}$. Two
+consequences. First, this is the solvable version of the theorem \eqref{eq:wgeo}: the floor is
+carried by Haar and Brascamp--Lieb, not by a rank-one interaction term. Second, and this is the
+part to keep, \emph{a positive $\delta$ is a ceiling, not an atom}: at $\beta=0$ the periodic model
+gives $G''=0.2688$ while $f_1^2=0$ (\code{ch15-uvface.tex}:236--241), which is precisely the
+machine-checked statement \code{H1\_does\_not\_imply\_atom}. The variance half of \eqref{eq:scalar-identity}
+is nontrivial in exactly one of the four models --- the non-flat, non-Gaussian one --- and that is
+the one that fails.
+
+\textbf{Two technical warnings the models supply} \LT. In $2$D Yang--Mills $\phi\to0$ is a
+singularity of the marginal ($J(0)=0$, $G''\to+\infty$), so conditioning cannot be placed at the
+$\mathrm{SU}(2)$ identity; the corpus's flat-chart anchor $1/(2\,\mathrm{Cin}(2\pi))$,
+\eqref{eq:v3anchor}, is the correct base point and is exactly the $W_0$ of
+\eqref{eq:scalar-plaq-delta}. And in $1$D the Dirichlet floor decays as $\pi^2/L^2$: the
+Dirichlet-type class necessarily degenerates, which is why the corpus had to move to the periodic
+kernel of model 3 --- whose intercept is positive with $q=0.849$, i.e.\ a genuine saturation
+(\code{ch15-uvface.tex} \S\ref{ch:uvface-periodic}).
+
+\subsection{$\beta^*$ against the critical coupling: the $\mathrm{SU}(3)$ alarm, and its
+withdrawal}
+\label{sec:scalar-beta-star}
+
+The number $\beta^*=4.30661$ is exact inside a three-dimensional toy at fixed $\theta=\pi$, so
+comparing it with a deconfinement coupling is not a theorem about Yang--Mills; it locates the
+failure window of $H1$ relative to the scaling region, which is the question that decides whether
+$H1$ is aimed at the right object. In the standard Wilson coupling $\beta_W=2N/g^2$ the
+deconfinement points are
+\begin{equation}
+\beta_c\bigl(\mathrm{SU}(2)\bigr)=2.2986(6),\qquad
+\beta_c\bigl(\mathrm{SU}(3)\bigr)=5.6924(2)
+\label{eq:scalar-betac}
+\end{equation}
+(\code{research/v3/species/BETA-CONVENTION.md} \S2.2, which also fixes the convention: both are
+$\beta_W$, not the SZZ $\beta_A$; sources are the reference estimate quoted by
+Sale--Lucini--Giansiracusa, arXiv:2211.16273 \S4, and Bazavov--Berg, hep-lat/0701007 \S\,III,
+$\beta_t(4)$; the in-paper occurrence is \code{ch13-machine.tex}:140) \LC.
+
+\textbf{The $\mathrm{SU}(2)$ reading.} $\beta^*(2)=4.30661>\beta_c(\mathrm{SU}(2))=2.2986$: the
+failure window $\beta>\beta^*$ lies \emph{above} the deconfinement coupling, so $H1$ covers the
+entire scaling region $\beta_c\le\beta<\beta^*$, the physical point $2.5$ sits inside it at
+$\delta=+0.136$, and the failure established in \S\ref{sec:scalar-plaquette} is a large-$\beta$
+phenomenon outside $\beta_c$.
+
+\textbf{The alarm, and why it was raised.} An earlier round of this writing
+(\code{LOOP-RUNBOOK.md} \S11.39) raised the opposite worry, and it was a fair one: since
+$\beta^*(2)=4.30661$ already lies \emph{below} $\beta_c(\mathrm{SU}(3))=5.6924$, a $\beta^*(N)$
+growing slowly --- like $\sqrt N$, or not at all --- would put the whole $\mathrm{SU}(3)$ scaling
+region inside the failure window, and $H1$ would then be a condition about the wrong region. That
+objection is now \emph{withdrawn by measurement}, and the measurement runs the other way.
+
+\begin{claimbox}{cE}
+\claimhead{Evidence}{($\beta^*(3)$ does not exist)} \emph{On the canonical $\mathrm{SU}(N)$ lift of
+the model of \S\ref{sec:scalar-plaquette} --- the Cartan-transverse slice, $S=\beta\bigl(1-
+\operatorname{Re}\operatorname{Tr}(UB)/N\bigr)$, the de~Wit--'t~Hooft Jacobian, $B$ the centre
+element, this being the lift for which $N=2$ reproduces
+\eqref{eq:scalar-plaq-delta} --- a Monte Carlo run with $3\times10^{5}$ valid samples out of
+$3.4\times10^{6}$ draws gives}
+\begin{center}
+\footnotesize
+\begin{tabular}{@{}rrrr@{}}
+\toprule
+$\beta$ & $\delta$ & $E[H]$ & $\operatorname{Var}$\\
+\midrule
+$0$  & $+0.34368\pm0.0077$ & $0$ & $0$\\
+$6$  & $+0.63393\pm0.0676$ & $0.3064$ & $0.03239$\\
+$10$ & $+0.95757\pm0.1446$ & $0.6478$ & $0.07483$\\
+\bottomrule
+\end{tabular}
+\end{center}
+\emph{so $\delta$ is monotone \emph{increasing} in $\beta$; the $\beta^2$ coefficient of
+$\delta(\beta)$ is therefore negative, $V_0(3)<0$ in the notation of
+\eqref{eq:scalar-plaq-delta}, the opposite sign to the $\mathrm{SU}(2)$ value
+$V_0=+0.0110593$. Hence $\beta^*(3)$ \textbf{does not exist} (no zero for $\beta\le10$), and since
+$\beta_c(\mathrm{SU}(3))=5.6924\ll10$, $H1$ holds across the \emph{entire} $\mathrm{SU}(3)$
+scaling region and beyond it. The $\mathrm{SU}(N)$ lift at $N=4$ points the same way ($\delta$ from
+$+0.48678$ to $+0.99508$ through $\beta=18$), with errors too large to carry weight on their own.}
+\LE{}
+\end{claimbox}
+
+\src{\code{research/unconditional/w7/betastar\_n34.log} (the $N=3$ and $N=4$ scans, the numbers
+in the display verbatim); \code{research/v3/species/LOOP-RUNBOOK.md} \S11.46 (the reading
+$V_0(3)<0$, the withdrawal of \S11.39, and the $\beta_c\ll10$ comparison); the closed form
+$V_0=(N_2Z-N_1^2)/(4Z^2)$, $Z=\tfrac12\mathrm{Cin}\,2\pi$, which makes the $\mathrm{SU}(2)$
+linear fit in $\beta^2$ exact rather than fitted (\code{LOOP-RUNBOOK.md} \S11.45).}
+
+\textbf{What the withdrawal does and does not cover} \LE{}/\LM. It covers the objection exactly
+where the objection was raised --- inside a solvable model at a fixed centre boundary holonomy ---
+and it gives no part of $H1$. Three limits are recorded rather than hidden: the run is Monte Carlo
+($3\times10^{5}$ valid samples, acceptance $0.0882$) and its errors grow with $\beta$
+($\pm0.1446$ at $\beta=10$); it is a single plaquette, or patch, not the whole theory; and one
+boundary holonomy has been tested. What is still missing is the step from the patch to the theory,
+i.e.\ the $(L,a)$-uniform statement at the physical point, which is $H1$ itself and is the one
+substantive target left in \S\ref{sec:scalar-five}.
+
+\begin{claimbox}{cT}
+\claimhead{Theorem}{(the target is aimed correctly, conditionally on the model)} \emph{In the
+solvable model, and conditional on the measurement above, the answer to the subsection's question
+is no: for neither group is $H1$ pointed at the wrong region. For $\mathrm{SU}(2)$ the one-plaquette
+failure is confined to $\beta>\beta^*(2)=4.30661>\beta_c=2.2986$, outside the scaling region; for
+$\mathrm{SU}(3)$ there is no $\beta^*$ at all, since $\delta$ grows with $\beta$, and
+$\beta_c=5.6924$ lies well inside the region where $\delta>0$. The ``wrong target'' objection of
+\S11.39 is therefore withdrawn.}
+\LC{}
+\end{claimbox}
+
+\textbf{Why this does not touch the paper's $H1$} \LT. The paper's condition is fixed-$\beta$,
+$(L,a)$-uniform, per coarse mode (\code{ch13-machine.tex}:27--29). The toy's failure at
+$\beta>\beta^*$ cannot refute it --- at $2.5$ the toy is on the safe side --- and the $\mathrm{SU}(3)$
+measurement cannot prove it either. What both do is narrow the space in which the objection could
+live: the ``$\beta$-uniform'' phrasing of $H1$ is now known to fail only above $\mathrm{SU}(2)$'s
+scaling region, not inside any scaling region that matters.
+
+\subsection{The five conditions are not five}
+\label{sec:scalar-five}
+
+Chapter~\ref{sec:missing} stated the conditions the missing tool must satisfy. Read again, they do
+not have the same logical type, and the corpus's practice of scoring them as five independent axes
+is an accounting error.
+
+\begin{claimbox}{cN}
+\claimhead{No-go}{(the five-item scorecard)} \emph{Among the five conditions:}
+\begin{enumerate}
+\item \emph{$C5\Rightarrow C2$, so $C2$ is not an independent axis. $C5$ is exactly $C2$ plus the
+  axis qualifications (uniform in $(L,a)$ and surviving the continuum limit), so every tool
+  satisfying $C5$ satisfies $C2$ and not conversely. The paper states the collapse itself:
+  ``These are not six problems; they are one --- the volume-uniform lower bound on
+  $m_{0^{++}}$ along the path'' (\code{ch13-machine.tex}:49--50). The window coordinate of $C2$
+  ($\rho^2\le C^2$) is a restatement of that same floor, not an independent half
+  (\code{ch13-machine.tex}:494, 504).}
+\item \emph{$C3$ and $C4$ are filters, not propositions.} \emph{Their text is ``must not assume''
+  and ``must fail''; such a condition can never be proved, and never be refuted --- only violated
+  by a candidate. Non-circularity is already folded into family 47 (presupposing the conclusion is
+  a way to die), and failing the free field is admission question 2 of \S11.1. Scoring a filter
+  pays for nothing.}
+\item \emph{$C1$ arrives with $C5$ inside the setting} \LC: \emph{at $\beta\approx2.5$, $g\approx1.5$
+  and there is no small parameter, so a bound uniform in $(L,a)$ there cannot be the product of a
+  convergent expansion.}
+\end{enumerate}
+\emph{Consequently the scorecard that counts five axes --- ``$1.5/5$'', ``$2/5$'' and their
+relatives --- manufactures free progress: every formal construction passes $C1$ (it does not
+expand) and $C3$ (it presupposes nothing) automatically, so a score of $2/5$ can mean zero
+content.}
+\LN{}
+\end{claimbox}
+
+\src{\code{research/v3/species/H1B-FIVE.md} \S4.1--4.4 (the implication, the restatement, the
+filters, and the list of scorecard occurrences); scorecard occurrences in
+\code{BC-BETHE.md}:193, \code{LF-LASTFOUR.md}:79/130/184/273, \code{MG-META.md}:240/254/266,
+\code{SDP-CERT.md}:295; the collapse sentence and the window remark in \code{ch13-machine.tex}
+:49--50, :494, :504.}
+
+\textbf{What is left: one target} \LM. After the collapse exactly one substantive object remains,
+and it is the one the paper already marks: $C5$'s \emph{rate uniformisation}. What survives the
+strong-coupling chain is
+$\mathrm{RP}\Rightarrow\mathrm{KP}(a)\Rightarrow$ exponential clustering $\Rightarrow\mathrm{KL}$,
+hence a gap $\ge a$ with $a$ in lattice units and no scale separation near the root
+($\xi/a\approx0.5$--$1.3$); the tool that would turn that into an $(L,a)$-uniform statement is the
+corpus object $d_5$/$(\mathrm{CP})$, marked \emph{untouched} in the paper
+(\code{ch13-machine.tex}:171--173). Two remarks keep the target from being quietly widened. First,
+replacing the single triangle inequality $\rho=N/2-C^*N\lvert\beta\rvert$ \emph{is} $H1$, not a
+bypass of it (\code{LOOP-RUNBOOK.md}:368, 377). Second, the paper's own subsection ``The five
+conditions, as they now stand'' covers only $C2$, $C3$ and $C4$ --- $C1$ and $C5$ are absent
+(\code{ch13-machine.tex}:491--517) --- so the same omission appears twice, independently, and both
+times at $C5$. The next wave has one problem, not five.
+
+\subsection{Families 46--57 of the immune map}
+\label{sec:scalar-families}
+
+The immune map of Chapter~\ref{ch:immune} gained twelve families in this wave. A family is a
+mechanism class: if the class dies, everything built out of it inherits the death, which is why the
+list is worth keeping even where the individual proposals were uninteresting.
+Table~\ref{tab:scalar-fam} gives one line each, with the number that carries the killing.
+
+\footnotesize
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{3.35cm}
+  >{\raggedright\arraybackslash}p{11.05cm}@{}}
+\caption{Immune-map families 46--57, one line each. Every row is a class-level no-go \LN{} except
+row 55, which is an admission rule rather than a no-go; row 47 is the family that absorbs the
+filter $C3$ of \S\ref{sec:scalar-five}.}\label{tab:scalar-fam}\\
+\toprule
+Family & What kills it, with the number that carries it\\
+\midrule
+\endfirsthead
+\toprule
+Family & What kills it, with the number that carries it\\
+\midrule
+\endhead
+\bottomrule
+\endlastfoot
+46. BD/Polchinski--LSI import &
+four directions, each fatal once: $L\to\infty$ fails on $L^*=16.66$; $a\to0$ fails because
+$\gamma/\lambda_1=ma/2\to0$; $\beta\to\infty$ fails because $Q\propto\beta^{1.14}$; and the acid
+test fails because $\gamma_{\mathrm{free}}=m^2$ makes the criterion return $N/4$\\
+47. every shape or scaling argument &
+any statement about the \emph{scaling} of $m$ is logically posterior to $m>0$: $m=C\Lambda$,
+$C=6.3(3)$, slope $=$ one-loop coefficient all presuppose the conclusion --- same order gives a
+tautology, mixed order gives a falsehood\\
+48. numerical continuum extrapolation &
+reaching $90\%$ of the asymptotic slope needs $\beta\approx27$ ($\xi/a\sim10^{11}$); at accessible
+$\beta$ the slope is only $0.53$ ($\mathrm{SU}(3)$) and $0.21$ ($\mathrm{SU}(2)$), and at
+$N_\tau=4$ its sign is reversed\\
+49. averaging over $\nu$ (the $D3$ class) &
+$c$ is lower semicontinuous on the Gibbs class and $\nu$ has full support, so
+$\mathrm{ess}$-$\mathrm{sup}=\sup$ and $D3\equiv D2$: averaging weakens nothing\\
+50. $H2$-global type extra hypotheses &
+incomparable with $H1$; the conjunction gives $m=\lambda\lambda_f/(\lambda+\lambda_f)\le\min$, which
+only loses --- provable at $\beta<1/48$ where it is not needed, and needed at $2.5$ where it is not
+provable\\
+51. $u$-completeness &
+the ceiling is $\beta_c^{\mathrm{KP}}\le1.182$ and $r\equiv0$ for $\beta>1.0408$; the smallest
+\emph{closed} polymer has $\lvert X\rvert=6$, so every estimate at $\lvert X\rvert=1$ describes the
+empty set\\
+52. SDP localisation hierarchies &
+a hierarchy is legitimate iff its truncation is PSD-monotone; the measure and kernel have no such
+structure (relative values $-3.3$ to $-8.0\times10^{-2}$), and the required frustration-free
+common-kernel decomposition does not exist for $4$D Yang--Mills\\
+53. TRG/EKR analytic-ball import &
+the ball has radius $0.1587$ and the physical tensor leaves it at $0.65$, $0.876$, $1.17$ in three
+norms --- $2.9$--$3.8\times$ --- and the radius is a property of the map, not of the computation\\
+54. more compute, higher precision &
+truncation stopped being the bottleneck long ago ($j\le1$ gives $4\times10^{-5}$ at $\beta=2.5$; the
+$6j$ table to $J=7$ takes $1.03$ s; $d\le6\beta^2$ is a theorem), so the obstruction was never
+precision\\
+55. ``a new species'' as the answer &
+the five paradigm classes (positivity, convexity, spectral, Perron, RG) are closed by the 44
+families of Chapter~\ref{ch:immune}; a new species must name the class it escapes and why it is not
+a re-dressing of it\\
+56. the loop-algebra sector &
+$\kappa_W=0$ forbids power laws; the area law solves the loop equation only in the degenerate
+sector; every non-degenerate sector has a hyperbolic symbol (family 57); and the strongest
+same-level conclusion is a floor, not a gap --- hence no gap\\
+57. loop-space coordinates &
+the principal symbol is never elliptic, $\det=-\tfrac{(\rho_1R_1-\rho_2R_2)^2}{16\pi^2R_1^2R_2^2}
+\le0$, so every maximum-principle, Harnack, comparison and monotonicity tool is structurally
+unavailable in this coordinate\\
+\end{longtable}
+
+\normalsize
+Two of these deserve a paragraph, because they are the ones most likely to be misused.
+
+\textbf{The weakening of $\kappa_W=0$} \LT{}/\LM. A corollary of loop-space scale covariance,
+$\kappa_W=0$, is routinely quoted as if it constrained the loop profile. It does not.
+With $\kappa_W(s):=d\ln W(sC)/d\ln s=\epsilon(sx)$ and $\epsilon(x)=xF'(x)/F(x)$, the quantity is
+$s$-independent only for a pure monomial, where $\kappa_W=-p$; every stretched exponential gives
+$\kappa_W(s)=-\alpha c(sx)^\alpha$, which \emph{depends on $s$}, so for that class the equation
+``$\kappa_W=0$'' is not a constraint but a type error
+(\code{KW1-CONS.md} \S1.2, with a four-profile table and a numerical kernel). Hence $\kappa_W=0$
+forbids monomial prefactors --- zero anomalous dimension --- and says nothing about $\alpha$; read
+pointwise it would exclude the area law $e^{-\sigma R^2}$ itself, which the corpus has as a
+solution, and that contradiction is the reductio that shows the reading is wrong
+(\code{KW1-CONS.md} \S2.2). The exponent $\alpha=2$ has an owner and it is not $\kappa_W$: it is
+the $R$-power $q=1$ of the contact source in the additive sector, $\alpha=q+1$. So $\kappa_W=0$ is
+a weak structural theorem and cannot carry the gap, which fixes the final wording of family 56:
+$\kappa_W=0$ forbids power laws, the area law solves the equation only in the degenerate sector,
+and the non-degenerate sectors have a hyperbolic symbol --- no gap
+(\code{LOOP-RUNBOOK.md}:1665).
+
+\textbf{The principal symbol is never elliptic} \LT. In the two-variable (``figure-eight'')
+sector the principal symbol of the loop equation has
+\begin{equation}
+\det=a_{11}a_{22}-\tfrac14a_{12}^2
+=-\frac{(\rho_1R_1-\rho_2R_2)^2}{16\pi^2R_1^2R_2^2}\ \le\ 0,
+\label{eq:scalar-det}
+\end{equation}
+with equality only on a hypersurface, verified at five configurations including an exact parabolic
+one (maximum deviation $3.5\times10^{-18}$) (\code{FIG8.md} \S3, eq.~(0.5.5);
+\code{LOOP-RUNBOOK.md}:1546--1551). The symbol is hyperbolic, not elliptic, and every classical
+tool of the maximum-principle family --- maximum principle, Harnack, comparison, monotonicity ---
+requires ellipticity. The eight-line theorem of the species has every step of that type
+($f''$ sign $\Rightarrow$ $f'$ monotone $\Rightarrow$ comparison of $f'$ with an integral
+$\Rightarrow$ bounded $1/f$), so in this sector the mechanism is not \emph{inherited}: it cannot be
+expressed. What this buys is a no-go, and it should be quoted as one: non-ellipticity does not
+force decay either, so family 57 removes a tool class without supplying a replacement.
+
+\subsection{A quantitative no-go for the polymer route}
+\label{sec:scalar-polymer}
+
+One corner of the arithmetic route was left open by the earlier rounds: prove that the per-area
+decay rate of the surface weight beats the surface entropy,
+$\lim_A\bigl(-\log\lvert w_\beta(A)\rvert\bigr)/A>\kappa$. Three statements now close it.
+
+\textbf{(1) It is a restatement} \LN. With $w_\beta(A)\sim e^{-c(\beta)A}$ one has
+$c(\beta)=\kappa+\sigma(\beta)a^2(\beta)/\pi$, hence $c>\kappa\iff\sigma>0$: proving $c>\kappa$ is
+proving the area law. The corpus's own theorem proves both at once,
+$\sigma=-\log(c_f/c_0)-\gamma$ with $\gamma$ the surface-counting entropy, i.e.\ with $\kappa$
+itself (\code{research/confinement/PROOF.md}, theorem B, as quoted in
+\code{Q4-LOGCONVEX.md} \S1.1, \S4).
+
+\textbf{(2) The direction is wrong for the purpose} \LT. \emph{Direction lemma.} With $w_A>0$ and
+$r_A:=-\log w_A/A$: if $A\mapsto\log w_A$ is convex then $r_A$ is monotone non-increasing, so
+$\lim r_A=\inf_A r_A\le r_{A_0}$ and every finite-$A$ reading is an \emph{upper} bound; if
+$A\mapsto\log w_A$ is concave then $r_A$ is monotone non-decreasing and finite-$A$ readings are
+lower bounds. The criterion needs $\liminf r_A>\kappa$, i.e.\ a lower bound, so log-convexity can
+only refute decay and can never prove it (\code{Q4-LOGCONVEX.md} \S3). The corpus's proposal also
+attached premise and conclusion to opposite objects: ``$-\log w$ convex'' \emph{is} ``$w$
+log-concave''.
+
+\textbf{(3) At the physical point it is quantitatively false} \LE. Two corpus conventions give
+$u(2.5)=1.014390$ and $0.507195$, hence $c(2.5)=-0.014288$ and $+0.678860$; the stronger of the
+two, $0.679$, is still below $\kappa_{\min}=1.40$. And $\kappa$ is not small. With the correct
+four-dimensional face degree $\Delta=4(2d-3)=20$ --- not $12$, which is the three-dimensional value;
+brute-force enumeration gives $4,12,20,28$ for $d=2,\dots,5$ --- the encoding bound yields
+$\mu\le4(\Delta-1)=76$, hence
+\begin{equation}
+\kappa\in[\ln4.06,\ \ln76]=[1.4012,\ 4.3307],
+\label{eq:scalar-kappa}
+\end{equation}
+the lower end by $Z^2$ injection being \LC{} and the upper end \LT{}
+(\code{Q5-KAPPA.md} \S2, \S4). So $0.679<1.4012\le\kappa$: entropy beats weight. The failure is
+already visible at the smallest closed polymer --- the $\lvert X\rvert=6$ cube has weight
+$6.809\times10^{-2}>0$ while $e^{\kappa A}=e^{8.4}=4.4\times10^{3}$, so $\Omega_Aw\approx3\times
+10^{2}>1$ --- and $c(\beta)$ decreases with $\beta$ (it tends to $0$ as $\beta\to\infty$), so
+$c>\kappa$ holds only for $\beta\lesssim1$ ($c=1.40$ at $\beta=0.4983$ in the first convention,
+$1.0290$ in the second), which is the strong-coupling region, not $2.5$
+(\code{Q4-LOGCONVEX.md} \S5).
+
+\begin{claimbox}{cN}
+\claimhead{No-go}{(polymer log-convexity)} \emph{The surviving corner of the arithmetic route is
+dead three ways: it is a restatement of $\sigma>0$; its natural convexity runs in the direction
+that yields upper bounds, not the lower bound the criterion needs; and at $\beta=2.5$ it is false
+by a factor, $0.679<1.40$. What survives is the pair of bounds
+\eqref{eq:scalar-kappa}, whose width $2.93$ cannot be narrowed by finite-$A$ enumeration: a width
+below $1$ would need $\mu_{\max}<e\,\mu_{\min}\approx11.0$, and the enumerated
+$a_5^{1/5}=11.43$ already crosses that. The route cannot be closed by sharpening $\kappa$.}
+\LN{}
+\end{claimbox}
+
+\src{\code{research/v3/species/Q4-LOGCONVEX.md} \S1.1, \S3, \S4, \S5 (the equivalence, the
+direction lemma, and the two conventions at $\beta=2.5$); \code{research/v3/species/Q5-KAPPA.md}
+\S1--\S4 ($\Delta=20$ with the enumeration check, $\mu\le76$, and the width argument);
+\code{research/v3/species/KW1-CONS.md} \S5 for the ``cannot carry the gap'' reading that keeps
+this no-go from being read as a statement about confinement.}
+
+\subsection{Verdict of this chapter}
+\label{sec:scalar-verdict}
+
+\begin{itemize}
+\item \LT{} $H1$ has exactly one numeric content per coarse mode, $\delta_{\max}=G''(0)$
+  \eqref{eq:scalar-rule}. The family of inequalities is an illusion of notation; what must be
+  proved is a single scalar positivity, and it must be proved uniformly.
+\item \LT{}/\LE{} The scalar positivity \emph{fails exactly} on one plaquette,
+  $\delta(\beta)=0.2051153-0.0110593\beta^2<0\iff\beta>\beta^*=4.30661$, digit-for-digit against
+  the archive, and the mechanism is exact Savvidy concavity: the curvature at the conditioned point
+  is the stability of that point.
+\item \LE{}/\LM{} The target is aimed correctly, in the model:
+  $\beta^*(2)=4.30661>\beta_c(\mathrm{SU}(2))=2.2986$, so the one-plaquette failure sits above
+  $\mathrm{SU}(2)$'s scaling region; and at $N=3$ the lift has $\delta$ \emph{increasing} in $\beta$
+  ($+0.34368$, $+0.63393$, $+0.95757$ at $\beta=0,6,10$), so $V_0(3)<0$ and $\beta^*(3)$ does not
+  exist --- $H1$ then holds across the entire $\mathrm{SU}(3)$ scaling region, $\beta_c=5.6924\ll10$.
+  The ``wrong target'' alarm is withdrawn; what stays open is the lift from the patch model to the
+  theory \LM.
+\item \LN{}/\LM{} The five conditions collapse to one: $C5\Rightarrow C2$, $C3$ and $C4$ are
+  filters, $C1$ comes with the setting. The only substantive target left is $C5$'s rate
+  uniformisation (\code{ch13-machine.tex}:171--173), still untouched.
+\item \LN{} Families 46--57 join the immune map, of which two are structural rather than
+  proposal-specific: $\kappa_W=0$ forbids monomials and constrains no exponential, and
+  \eqref{eq:scalar-det} says the loop-equation symbol is never elliptic, so the whole
+  maximum-principle tool class is unavailable there.
+\item \LN{}/\LE{} The polymer log-convexity route is quantitatively closed: $c(2.5)=0.679<\kappa$,
+  and $\kappa\in[1.4012,4.3307]$ cannot be narrowed by the method that needs narrowing.
+\end{itemize}
+
+\textbf{Not done, and not to be read as done.} No $a\to0$ scaling is performed on any $\delta$ of
+this chapter; the $\mathrm{SU}(2)$ model $2$ split $(\operatorname{Var},E[H])$ is fixed by the
+identity rather than by independent quadrature; the constants of model $3$ are quoted from the
+corpus rather than recomputed here; the step from the one-plaquette (patch) model to the theory is
+missing at every $N$, including the $N=3$ sign that lifts the alarm; and the true value of
+$\kappa$ is unknown between the bounds. None of these changes a sign in the tables above, and none
+of them is a gap. \textbf{Clay is $0\%$: this chapter narrows the target and closes twelve families
+plus one corner; it opens no route and proves no mass gap.}

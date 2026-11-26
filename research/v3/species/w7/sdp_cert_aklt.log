@@ -12,8 +12,8 @@
       N               E_0     Delta_N = E_1 - E_0         E_0/N
       4   -0.000000000000          0.333333333333    -3.469e-16
       6   -0.000000000000          0.347865729345    -9.437e-16
-      8    0.000000000000          0.349849122179     7.411e-17
-     10   -0.000000000000          0.350091873023    -2.540e-16
+      8    0.000000000000          0.349849122179     4.280e-17
+     10    0.000000000000          0.350091873023     1.974e-16
     E_0 = 0 exactly for every N: h_i >= 0 and the AKLT state is annihilated by every h_i.
     VERIFY frustration-freeness directly:  ||h_i psi_0|| for the exact ground state.
 

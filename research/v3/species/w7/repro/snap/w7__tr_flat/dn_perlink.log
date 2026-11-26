@@ -1,0 +1,36 @@
+====================================================================================================
+dn_perlink.py -- exact decomposition of |grad S_W|^2 at the z2(s=0.5) configuration
+SU(2), beta = 2.5, L = 2, E = 64 links, N_p = 96 plaquettes
+====================================================================================================
+  sum_l |g_l|^2            = 900.000000
+  per link                 = 14.062500   = 2.250000 beta^2
+  per plaquette (density)  = 9.375000   = 1.500000 beta^2
+  check 1.5 beta^2 = 9.375000 ; 2.25 beta^2 = 14.062500
+
+  distinct per-link values: {0.0: 48, 56.25: 16}
+  (a single value for ALL links => the config is translation invariant => the
+   density is L-independent BY CONSTRUCTION, for every L at once)
+
+  decomposition at link 0 (direction 1, unit cell 0):  g = [ 0.   0.  -7.5]
+  |g|^2 = 56.250000 = 9.000000 beta^2
+     k  sign   s_{p,l,.} = -(beta/2) sg tr(lam_a X)      |s|^2/(beta^2/4)   sin^2(psi)
+     0   +1   [ -0.0000  -0.0000  -1.2500]          1.0000        1.0000
+     0   +1   [ -0.0000  -0.0000  -1.2500]          1.0000        1.0000
+     0   +1   [ -0.0000  -0.0000  -1.2500]          1.0000        1.0000
+     2   -1   [ +0.0000  +0.0000  -1.2500]          1.0000        1.0000
+     2   -1   [ +0.0000  +0.0000  -1.2500]          1.0000        1.0000
+     2   -1   [ +0.0000  +0.0000  -1.2500]          1.0000        1.0000
+  sum over the 6 plaquettes of |s|^2 = 9.375000 = 1.500000 beta^2   (= 6 * beta^2/4, the local budget)
+  |sum|^2 = |g|^2 = 56.250000 = 9.0000 beta^2
+  |sum|^2 / sum|s|^2 = 6.0000  vs the Cauchy-Schwarz bound 6
+  => the 6 contributions are COLLINEAR (all +z), so C-S is EXACTLY SATURATED at this link:
+     |g_l|^2 = 6 * (6 * beta^2/4) = 9 beta^2, which is the per-link bound of D1 itself.
+  Globally only 16 of 64 links are extremal (the direction-1 ones); the other 48 have
+  g = 0 exactly => total = 16 * 9 beta^2 = 900.00 = 144 beta^2, and
+  d = 144 beta^2 / (6 L^4) = (1/4) * 9 beta^2 * (E/N_p) = 1.5 beta^2.
+
+  => d = 1.5 beta^2 is (fraction of extremal links) x (per-link budget) x (E/N_p):
+     a counting statement about the 6 incident plaquettes and the 16/64 = 1/4 fraction.
+     No beta-running, no L-running, no dynamics.
+
+DONE.

@@ -1,0 +1,64 @@
+========================================================================================================
+[1] derivative sanity:  g'' >= 1/6,  g'/d >= 1/6,  phi = g - d^2/12 >= 0,  phi'' = g''-1/6 >= 0
+  min g''            = 0.166666675000 at d=0.001000   (1/6 = 0.166666666667)
+  min g'/d           = 0.166666669444 at d=0.001000
+  min phi = g-d^2/12 = 1.389e-15   min phi'' = g''-1/6 = 8.333e-09  (>=0)
+  monotone steps of g'' : up=300000/300000  (increasing on (0,2pi))
+  phi ~ d^4/720 + ...  : 720*phi(d)/d^4 at d=1e-2 = 0.500012209, d=1e-1 = 0.500079379
+========================================================================================================
+[2] exact Phi'' formula vs 5-pt FD (diagonal directions), N=2,3,4, random X
+  N=2: max rel err exact vs FD = 1.24e-05
+  N=3: max rel err exact vs FD = 1.97e-07
+  N=4: max rel err exact vs FD = 1.14e-07
+========================================================================================================
+[3] DECISIVE: min over ALL directions W of Phi''/ <v,v>/(N/12)  (X = diag(lam), Ad-invariance -> WLOG)
+    spectra battery: equally spaced (R = total spread), two-cluster (near-degenerate), random, tiny
+  N=2: inf over battery  min eig(Hess Phi) = 0.1666666667   N/12 = 0.1666666667   ratio = 1.000000   OK >=1   at equi R=1e-06
+        argmin spectrum = [ 0. -0.]
+  N=3: inf over battery  min eig(Hess Phi) = 0.2500000000   N/12 = 0.2500000000   ratio = 1.000000   OK >=1   at equi R=1e-06
+        argmin spectrum = [ 0.  0. -0.]
+  N=4: inf over battery  min eig(Hess Phi) = 0.3333333333   N/12 = 0.3333333333   ratio = 1.000000   OK >=1   at equi R=1e-06
+        argmin spectrum = [ 0.  0. -0. -0.]
+  N=5: inf over battery  min eig(Hess Phi) = 0.4166666667   N/12 = 0.4166666667   ratio = 1.000000   OK >=1   at equi R=1e-06
+        argmin spectrum = [ 0.  0.  0. -0. -0.]
+  N=6: inf over battery  min eig(Hess Phi) = 0.5000000000   N/12 = 0.5000000000   ratio = 1.000000   OK >=1   at equi R=1e-06
+        argmin spectrum = [ 0.  0.  0. -0. -0. -0.]
+========================================================================================================
+[4] delta^2 lam : exact formula, UNBOUNDED below, but the g'*delta^2 lam ledger is finite
+  gap D= 1.0e+00:  min_v delta^2lam/<v,v> = -5.000000e-01   (-1/(2D) = -5.000e-01)   max_v = +5.000000e-01   sum_i delta^2lam = 0 (by tr)
+  gap D= 1.0e-01:  min_v delta^2lam/<v,v> = -5.000000e+00   (-1/(2D) = -5.000e+00)   max_v = +5.000000e+00   sum_i delta^2lam = 0 (by tr)
+  gap D= 1.0e-02:  min_v delta^2lam/<v,v> = -5.000000e+01   (-1/(2D) = -5.000e+01)   max_v = +5.000000e+01   sum_i delta^2lam = 0 (by tr)
+  gap D= 1.0e-03:  min_v delta^2lam/<v,v> = -5.000000e+02   (-1/(2D) = -5.000e+02)   max_v = +5.000000e+02   sum_i delta^2lam = 0 (by tr)
+  gap D= 1.0e-04:  min_v delta^2lam/<v,v> = -5.000000e+03   (-1/(2D) = -5.000e+03)   max_v = +5.000000e+03   sum_i delta^2lam = 0 (by tr)
+  (2-level check, N=2, pure off-diagonal v with <v,v>=1: delta^2lam_+ = +1/(2d), delta^2lam_- = -1/(2d),
+   g'(d)*delta^2lam_- = -g'(d)/(2d) -> -1/12 as d->0 : FINITE ; the pair ledger 4g'(d)|W|^2/d -> 2/3)
+  => delta^2 lam has NO gap-independent lower bound;  the composite (g'' term + g' term) is bounded below.
+========================================================================================================
+[5] small-X expansion: Phi'' - N/12 = O(a0^2).  pointwise sharp coefficient c_p = inf (Phi''-N/12)/a0^2
+    (N=2 exact, radial formula o09 S1: Phi''-1/6 = rho^2[u^2/120+(1-u^2)/360], a0=rho u
+     => Phi''-1/6 = rho^2/360 + a0^2/180 >= a0^2/120  [T] exact, rho^2>=a0^2)
+  N=2: min (Phi''-N/12)/a0^2 over small-X battery = 0.00833386  (at eps=0.02, spectrum [ 0.02 -0.02])
+  N=3: min (Phi''-N/12)/a0^2 over small-X battery = 0.00937533  (at eps=0.02, spectrum [ 0.02   -0.0098 -0.0102])
+  N=4: min (Phi''-N/12)/a0^2 over small-X battery = 0.00834367  (at eps=0.02, spectrum [ 0.0119  0.0112 -0.0111 -0.012 ])
+  analytic aligned-direction value (1/120)*sum d^4/|X|^4 (N=2 -> exactly 1/120 = 0.00833333)
+========================================================================================================
+[6] conditioned slice curve E[Phi''|a0] : SU(2) single plaquette, H1A-EXACT model (as o09 [4])
+  beta=2.50000 theta=pi: E[Phi''|0] = 0.205115   min over a-grid = 0.203115 at a = -0.250   argmin |a| = +0.00
+      fitted  E[Phi''] = 0.20512 + c_eff a^2 ,  c_eff = +0.020550   (N=2: N/12 = 0.166667)
+      curve a: -2.00:0.24839 -1.75:0.23437 -1.50:0.22346 -1.25:0.21516 -1.00:0.20914 -0.75:0.20518 -0.50:0.20317 -0.25:0.20312 +0.00:0.20512 +0.25:0.20938 +0.50:0.21624 +0.75:0.22618 +1.00:0.23983 +1.25:0.25802 +1.50:0.28180 +1.75:0.31247 +2.00:0.35164
+  beta=2.50000 theta=0 : E[Phi''|0] = 0.176864   min over a-grid = 0.176864 at a = +0.000   argmin |a| = +0.00
+      fitted  E[Phi''] = 0.17686 + c_eff a^2 ,  c_eff = +0.011518   (N=2: N/12 = 0.166667)
+      curve a: -2.00:0.22906 -1.75:0.21465 -1.50:0.20336 -1.25:0.19457 -1.00:0.18785 -0.75:0.18290 -0.50:0.17950 -0.25:0.17752 +0.00:0.17686 +0.25:0.17752 +0.50:0.17950 +0.75:0.18290 +1.00:0.18785 +1.25:0.19457 +1.50:0.20336 +1.75:0.21465 +2.00:0.22906
+  beta=4.30661 theta=pi: E[Phi''|0] = 0.205115   min over a-grid = 0.199507 at a = -0.500   argmin |a| = +0.00
+      fitted  E[Phi''] = 0.20512 + c_eff a^2 ,  c_eff = +0.026840   (N=2: N/12 = 0.166667)
+      curve a: -2.00:0.23559 -1.75:0.22344 -1.50:0.21414 -1.25:0.20729 -1.00:0.20263 -0.75:0.20005 -0.50:0.19951 -0.25:0.20112 +0.00:0.20512 +0.25:0.21192 +0.50:0.22218 +0.75:0.23682 +1.00:0.25707 +1.25:0.28459 +1.50:0.32141 +1.75:0.37003 +2.00:0.43340
+  beta=4.30661 theta=0 : E[Phi''|0] = 0.172342   min over a-grid = 0.172342 at a = +0.000   argmin |a| = +0.00
+      fitted  E[Phi''] = 0.17234 + c_eff a^2 ,  c_eff = +0.010349   (N=2: N/12 = 0.166667)
+      curve a: -2.00:0.21871 -1.75:0.20608 -1.50:0.19610 -1.25:0.18828 -1.00:0.18226 -0.75:0.17781 -0.50:0.17473 -0.25:0.17293 +0.00:0.17234 +0.25:0.17293 +0.50:0.17473 +0.75:0.17781 +1.00:0.18226 +1.25:0.18828 +1.50:0.19610 +1.75:0.20608 +2.00:0.21871
+========================================================================================================
+[7] comparison with the o06 multi-link gap  -beta E[C_geo]  (o06 log [4], beta=2.5, sum_l ||v_l||^2 = 2)
+  min H_vv = -1.893109  => per unit ||v||^2 : -0.9466     (o06 [4])
+  Phi'' floor per unit ||v||^2 : +N/12 = +0.1667 ; Phi'' GROWTH at |a0|<=1.5 : <= +0.08 (see [6])
+  => Phi'' growth is O(a0^2) with c_eff ~ 3.5e-2 and saturates at the flat-chart edge;  beta E[C_geo] is O(beta)
+     and unbounded  =>  the growth CANNOT cancel it (ratio ~ 10x at beta=2.5, worsens with beta).
+========================================================================================================

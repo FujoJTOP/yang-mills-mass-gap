@@ -1,0 +1,6 @@
+generic config gauge-Jacobian rank = 48 /48  => orbit dim a.e. 48 => physical dim 192-48 = 144
+generic config gauge-Jacobian rank = 48 /48  => orbit dim a.e. 48 => physical dim 192-48 = 144
+generic config gauge-Jacobian rank = 48 /48  => orbit dim a.e. 48 => physical dim 192-48 = 144
+
+n=2: slope d log F / d log eps = 5.0000000000  (expected 3n-1=5)
+n=3: slope d log F / d log eps = 8.0000000000  (expected 3n-1=8)

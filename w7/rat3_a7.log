@@ -1,0 +1,29 @@
+[compile] 1.7 s -> C:\Users\hooya\AppData\Local\Temp\rat3_build\a7.exe
+
+=== run nx=6 nmax=6 shards=1 threads=16 ===
+[graph] torus T^4_6 : V = 7776 plaquettes, deg = 20 (share-a-link), p0 = id 0
+[lv 1] a_1 = 1   (cum 2.08ms)
+[lv 2] a_2 = 20   cand = 20 (avg bdry 20.000)  dedup 1.00x   1.04ms
+[lv 3] a_3 = 458   cand = 648 (avg bdry 32.400)  dedup 1.41x   1.01ms
+[lv 4] a_4 = 11132   cand = 20172 (avg bdry 44.044)  dedup 1.81x   1.40ms
+[lv 5] a_5 = 280175   cand = 616400 (avg bdry 55.372)  dedup 2.20x   14.90ms
+   [shard 0/1] uniq = 7218758  (raw 18639650)  535.98ms
+[lv 6] a_6 = 7218758   cand = 18639650 (avg bdry 66.529)  dedup 2.58x   542.04ms
+[done] total 562.59ms
+=== wall 1.2 s ===
+
+=== run nx=14 nmax=7 shards=4 threads=16 ===
+[graph] torus T^4_14 : V = 230496 plaquettes, deg = 20 (share-a-link), p0 = id 0
+[lv 1] a_1 = 1   (cum 59.70ms)
+[lv 2] a_2 = 20   cand = 20 (avg bdry 20.000)  dedup 1.00x   1.23ms
+[lv 3] a_3 = 458   cand = 648 (avg bdry 32.400)  dedup 1.41x   1.02ms
+[lv 4] a_4 = 11132   cand = 20172 (avg bdry 44.044)  dedup 1.81x   1.37ms
+[lv 5] a_5 = 280175   cand = 616400 (avg bdry 55.372)  dedup 2.20x   15.77ms
+[lv 6] a_6 = 7218768   cand = 18639660 (avg bdry 66.529)  dedup 2.58x   541.08ms
+   [shard 0/4] uniq = 47300941  (raw 140009671)  5.60s
+   [shard 1/4] uniq = 47303897  (raw 140029550)  5.58s
+   [shard 2/4] uniq = 47311558  (raw 140042104)  5.64s
+   [shard 3/4] uniq = 47299568  (raw 139992971)  5.54s
+[lv 7] a_7 = 189215964   cand = 2240297184 (avg bdry 310.343)  dedup 11.84x   22.54s
+[done] total 23.16s
+=== wall 23.2 s ===

@@ -1,0 +1,175 @@
+{
+ "lam": [
+  1.0,
+  0.547674313985108,
+  0.42788508553783294,
+  0.12918700444174694,
+  0.03892700327685497
+ ],
+ "gap_cont": 0.6020744862562221,
+ "gap_disc": 0.452325686014892,
+ "lam_grad": 0.40193981759476205,
+ "lam_grad_arith": 0.4021293506316715,
+ "rows3": [
+  {
+   "eps": 0.4,
+   "gap": 0.4107062419338379,
+   "matched": 0.36853579562420324,
+   "ratio": 0.8973221197927933
+  },
+  {
+   "eps": 0.2,
+   "gap": 0.333444251375615,
+   "matched": 0.3686533879218991,
+   "ratio": 1.1055922733741241
+  },
+  {
+   "eps": 0.1,
+   "gap": 0.2607220919415249,
+   "matched": 0.2847861794000257,
+   "ratio": 1.0922978458760524
+  },
+  {
+   "eps": 0.05,
+   "gap": 0.1988473615048429,
+   "matched": 0.21168446648609654,
+   "ratio": 1.0645575826810305
+  },
+  {
+   "eps": 0.025,
+   "gap": 0.1489330732403263,
+   "matched": 0.1573811875122608,
+   "ratio": 1.0567242324900001
+  },
+  {
+   "eps": 0.0125,
+   "gap": 0.10997952507412824,
+   "matched": 0.11611294501339567,
+   "ratio": 1.0557687436378125
+  }
+ ],
+ "rows4": [
+  {
+   "L": 1,
+   "nc": 20,
+   "dim": 20,
+   "lam_conf": 0.2781657249854335,
+   "lam_marg": 0.2781657249854333,
+   "slack": -2.220446049250313e-16,
+   "ratio": 1.0000000000000009
+  },
+  {
+   "L": 2,
+   "nc": 20,
+   "dim": 400,
+   "lam_conf": 0.08918848754515003,
+   "lam_marg": 0.25810144629735704,
+   "slack": 0.16891295875220702,
+   "ratio": 0.3455559386614073
+  },
+  {
+   "L": 3,
+   "nc": 20,
+   "dim": 8000,
+   "lam_conf": 0.06110347905204211,
+   "lam_marg": 0.278883659635105,
+   "slack": 0.21778018058306287,
+   "ratio": 0.21910024822533777
+  }
+ ],
+ "lam_even": 0.40196403797736313,
+ "rows6": [
+  {
+   "eps": 0.5,
+   "lamP": 4.0,
+   "gamma": 4.000091069297632,
+   "ratio": 0.9999772331939313
+  },
+  {
+   "eps": 0.1,
+   "lamP": 11.111111111111109,
+   "gamma": 8.09101534779835,
+   "ratio": 1.3732653608344172
+  },
+  {
+   "eps": 0.01,
+   "lamP": 101.010101010101,
+   "gamma": 43.08479530982137,
+   "ratio": 2.3444489009113454
+  },
+  {
+   "eps": 0.001,
+   "lamP": 1001.0010010010009,
+   "gamma": 289.28173472842275,
+   "ratio": 3.4602979754001373
+  },
+  {
+   "eps": 1e-06,
+   "lamP": 1000001.0000010001,
+   "gamma": 144933.73008283082,
+   "ratio": 6.8997120230707605
+  }
+ ],
+ "checks": [
+  {
+   "name": "1.1 gap(T) = gap(semigroup Dirichlet form in L^2(Omega^2))",
+   "ok": true,
+   "info": "|diff| = 1.22e-15"
+  },
+  {
+   "name": "2.1 the two legitimate gap normalisations differ by a computable, unbounded ratio",
+   "ok": true,
+   "info": "discrete/continuous = 0.7513; log-x / (1-x) -> inf as x -> 1"
+  },
+  {
+   "name": "3.1 geometric and arithmetic weights agree to O(h^2) (discrete ground-state transform)",
+   "ok": true,
+   "info": "4.72e-04"
+  },
+  {
+   "name": "3.2 with the matched metric weight eps/2 the gradient constant -> the gap (residual O(eps))",
+   "ok": true,
+   "info": "ratio 0.8973 -> 1.0558 (monotone down toward 1)"
+  },
+  {
+   "name": "4.1 lam_conf(chain_L) <= lam1(marginal_L) at every L (slice-marginal lemma)",
+   "ok": true,
+   "info": "slacks: -0.0000, 0.1689, 0.2178"
+  },
+  {
+   "name": "4.2 at L=1 the lemma is an EQUALITY (the chain is its own marginal)",
+   "ok": true,
+   "info": "slack = -2.22e-16"
+  },
+  {
+   "name": "4.3 lam_conf(chain_3) < lam_slice (the L->inf vacuum marginal): strict wrong-space loss",
+   "ok": true,
+   "info": "0.0611 < 0.4019"
+  },
+  {
+   "name": "5.1 restriction to a subspace can only INCREASE the constant",
+   "ok": true,
+   "info": "ratio 1.000060 >= 1"
+  },
+  {
+   "name": "5.2 the odd sector is strictly heavier: the slow mode lives in the even (vacuum-like) sector",
+   "ok": true,
+   "info": "odd/full = 5.1446"
+  },
+  {
+   "name": "5.3 the vacuum sector loses NOTHING (ratio 1 to numerical precision)",
+   "ok": true,
+   "info": "1.00006026"
+  },
+  {
+   "name": "6.1 the LSI constant is strictly weaker than Poincare, loss UNBOUNDED in log(1/eps)",
+   "ok": true,
+   "info": "lam_P/gamma: 1.000 (eps=0.5) -> 6.900 (eps=1e-6); predicted log(1/eps)/2 = 6.908"
+  },
+  {
+   "name": "6.2 both constants are positive: an LSI bound is VALID but loses the log factor",
+   "ok": true,
+   "info": "gamma=1.449e+05 < lamP=1.000e+06"
+  }
+ ]
+}

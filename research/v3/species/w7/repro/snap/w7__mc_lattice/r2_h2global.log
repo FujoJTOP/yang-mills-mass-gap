@@ -1,0 +1,130 @@
+
+==============================================================================
+[A] free massless field: fiber band floor (H2-global) vs k->0 mode (H1)
+==============================================================================
+  block map P = sharp factor-2 low-pass; fiber = ker P = high band|k_mu|>pi/2
+  L     min spec(-Delta|_fiber)   G''(0)=q(0) [=H1 object]   #fiber modes
+    4            4.0000000000            0.0000000000          175
+    8            3.4142135624            0.0000000000         3471
+   12            3.0000000000            0.0000000000        18335
+   16            2.7653668647            0.0000000000        58975
+   24            2.5176380902            0.0000000000       303215
+   32            2.3901806440            0.0000000000       965055
+  => fiber (H2-global) gap  -> 2.0 = 4 sin^2(pi/4),  V-UNIFORM, b-INDEPENDENT
+  => G''(0)=q(0)=0 exactly: the coarse mode is FREE  =>  H1 FAILS on the same field
+  => [V]  H2-global TRUE  AND  H1 FALSE   ==>  H2-global /=> H1   (incomparable, one side)
+  b-uniformity: the fiber spectrum does not know b at all (one fixed band), so
+     Lambda_UV^free(b) = 2/a^2 for every b   (cf. H2-b-uniform Sec.1)
+
+==============================================================================
+[B] D1 (Zegarlinski C(beta)<1): exact window, disjoint from beta=2.5
+==============================================================================
+  delta_kj >= 2*beta per straddling plaquette (that IS the plaquette weight 2*beta*[0,1])
+  C(beta) >= 2*beta*deg_future ;  deg_future = 3 in 4D (faces +mu, mu=1..4, ordered)
+  window of D1:  2*beta*deg < 1  <=>  beta < 1/(2*deg)
+    deg=1:  C(beta)>= 2*beta ;  D1 window beta < 0.500000   ;  2.5/bmax =   5.000x
+    deg=3:  C(beta)>= 6*beta ;  D1 window beta < 0.166667   ;  2.5/bmax =  15.000x
+    deg=4:  C(beta)>= 8*beta ;  D1 window beta < 0.125000   ;  2.5/bmax =  20.000x
+  at beta=2.5:
+    deg=3:  C >=   15.000   (corpus quotes C~15)   => C<1 FALSE
+    deg=4:  C >=   20.000   (corpus quotes C~15)   => C<1 FALSE
+  => D1 fails for beta > 1/6 ;  beta=2.5 is 15x outside.  D1 is a ROUTE, not the statement.
+
+==============================================================================
+[C] proven block-local Lambda_UV at beta=2.5, and what it delivers to m
+==============================================================================
+  b     N_p(B)[6b^4]  N_p(B)[3b^4]   Lambda_UV=e^{-2 beta N_p}/C_G   log10
+   2           96            48     3.457e-209 / 5.879e-105    -208.46 /  -104.23
+   4         1536           768      0.000e+00 /  0.000e+00       -inf /     -inf
+   8        24576         12288      0.000e+00 /  0.000e+00       -inf /     -inf
+
+  assembly m = lam*lam_f/(lam+lam_f),  lam=0.165,  lam_f=Lambda_UV(b=2)
+    lam_f = 3.456597e-209   ->   m = 3.456597e-209
+  => the ONLY proven H2-global constant contributes  m = lam_f = e^{-240}: m is 0
+     to >100 digits.  A proven H2-global with the HS constant is QUANTITATIVELY VACUOUS.
+
+==============================================================================
+[D] m = lam*lam_f/(lam+lam_f) <= min(lam,lam_f):  H2-global is LOSS-ONLY for the conclusion
+==============================================================================
+  lam      lam_f      m=harm.mean    min(lam,lam_f)   m/lam     m/lam_f
+   0.1650  1.000e+01  1.623217e-01    1.650000e-01    0.98377   0.01623
+   0.1650  1.000e+00  1.416309e-01    1.650000e-01    0.85837   0.14163
+   0.1650  1.650e-01  8.250000e-02    1.650000e-01    0.50000   0.50000
+   0.1650  1.000e-03  9.939759e-04    1.000000e-03    0.00602   0.99398
+   0.1650  1.000e-30  1.000000e-30    1.000000e-30    0.00000   1.00000
+  => lam_f>>lam: m->lam   (H2g dispensable up to factor 2)
+  => lam_f<<lam: m->lam_f (H2g becomes the binding constraint and kills the bound)
+  => NEVER does H2g RAISE the conclusion above lam.  It can only lower it.
+
+==============================================================================
+[E] D2 vs D3: the split is nu-AVERAGED, so D3 suffices for the assembly
+==============================================================================
+  toy: g(U') = exp(3 tanh U'),  nu = N(0,1)
+    sup_U' g(U')   =   20.07165     <- D2 must bound THIS (pointwise)
+    E_nu[g]        =    3.82120     <- D3 must bound only THIS (averaged)
+    ratio E/sup    =    0.19038     (strict, and can be made 0)
+  two-scale law of total variance:
+    Var_mu(F) = E_nu[ Var_{mu(.|U')}(F) ]  +  Var_nu( E_mu[F|U'] )
+    term1 is E_nu[.]  =>  a nu-averaged fiber LSI (D3) bounds term1 EXACTLY.
+    term2 is coarse  =>  H1 bounds it.
+  => D3 (nu-averaged) is SUFFICIENT for  H1 & D3 => Var_mu(F) <= max(1/lam,1/lam_f) E|grad F|^2
+  => D2 (pointwise) is STRICTLY stronger than D3, and buys ONLY the pointwise-in-U' form
+     that (star dec)/L3-band-decay needs (S4 Sec.3.5), NOT the UC-COMPLETE three candidates.
+
+==============================================================================
+[F] H1 /=> H2-global : explicit product witness
+==============================================================================
+  L=  4:  (2pi/L)^2 = 2.467401e+00   [whole-space Gaussian: LSI -> 0, H2g FALSE]
+  L=  8:  (2pi/L)^2 = 6.168503e-01   [whole-space Gaussian: LSI -> 0, H2g FALSE]
+  L= 16:  (2pi/L)^2 = 1.542126e-01   [whole-space Gaussian: LSI -> 0, H2g FALSE]
+  L= 32:  (2pi/L)^2 = 3.855314e-02   [whole-space Gaussian: LSI -> 0, H2g FALSE]
+  L= 64:  (2pi/L)^2 = 9.638286e-03   [whole-space Gaussian: LSI -> 0, H2g FALSE]
+  coarse marginal nu chosen independently as N(0,1) => H1 TRUE with lam=1.
+  Because mu = nu(da) mu(.|a) with {mu(.|a)} and nu INDEPENDENT (B3-ISOPERIMETRIC,
+  'conditionals do not constrain the marginal'), this is a legal joint measure.
+  => [V] H1 TRUE and H2-global FALSE  ==>  H1 =/=> H2-global.
+  Together with [A] (H2g TRUE, H1 FALSE) => H2-global INCOMPARABLE with H1. [T]+[V]
+
+==============================================================================
+[G] two calibrations: H2-global TRUE while the gap content is 0
+==============================================================================
+  (G1) free massless field : H2-global [A] TRUE, f1^2 = 0, gap = 0        -> vacuous
+  (G2) 2D pure YM (Migdal) : tr F^2 = H conserved => f1^2 = nu({m1^2}) = 0,
+       while the FIBER (band-limited, same as [A]) is uniformly gapped, so
+       H2-global TRUE.  Gap content = 0 (no atom).        -> vacuous
+  => H2-global never carries the atom in any solvable model the corpus owns.
+  => [V] H2-global is a UV STRUCTURAL lemma, not a gap hypothesis.
+
+==============================================================================
+[H] which definition makes the three UC-COMPLETE candidates work?
+==============================================================================
+  cand.                 needs                        D1        D2        D3
+  #3  H1 & X            X => term1 of the split     yes       yes       yes
+  #4  LSI & X           same                         yes       yes       yes
+  S7  'debt moves to X' same                         yes       yes       yes
+  status at beta=2.5    --                        FALSE     [O]       [O]
+  window                --                        beta<1/6  none      none
+  => D1: logically sufficient, numerically false => kills all three (must be DEMOTED).
+  => D2: the corpus's working definition; open at 2.5; no window.
+  => D3: STRICTLY WEAKER than D2 and still sufficient for the three, BUT
+         SZZ gives the FULL LSI, which does NOT imply D3 (extra E|grad_par F|^2 term)
+         -> D3 has NO known window either.  => theorem R2-4 dichotomy (see R2-H2GLOBAL 4.3)
+
+==============================================================================
+[I] full LSI =/=> D3 : the E|grad_par F|^2 leakage (exact toy)
+==============================================================================
+  mu = N(0,s^2) on the coarse coord a  x  N(0,1) on the fiber coord b   (Gaussian => full LSI, lam=1)
+  F = a + b  (general, NOT xi-only).  Exact:  Var= s^2+1 ; E|grad_par F|^2 = s^2 ; E|grad_perp F|^2 = 1
+   s     Var(F)     (1/1)(E|gp|^2+E|gq|^2)   (1/1)E|gq|^2      Var <= E|gq|^2 ?
+     0.1      1.0100                 1.0100           1.0000      NO
+     1.0      2.0000                 2.0000           1.0000      NO
+    10.0    101.0000               101.0000           1.0000      NO
+   100.0  10001.0000             10001.0000           1.0000      NO
+  1000.0  1000001.0000           1000001.0000           1.0000      NO
+  => the full LSI bounds Var by (E|gp|^2+E|gq|^2); it does NOT bound it by E|gq|^2 alone.
+     The obstruction is exactly the leakage the corpus calls 'no grad_perp bound gives a
+     grad_par bound' (PROOF-IR-H1 Sec.1) -- here run in reverse.  So D3 is NOT a corollary
+     of SZZ; and for xi-only f it IS (Var_mu(f) <= lam^-1 E|grad_perp f|^2), which is the
+     RESTRICTED form the assembly cannot use.
+
+[DONE] r2_h2global.py  -- all sections computed, exit 0

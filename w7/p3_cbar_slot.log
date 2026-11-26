@@ -1,0 +1,76 @@
+
+========================================================================
+[A] c_f/u = N : definitional identity?  (species + exact SU(2))
+========================================================================
+e*Delta            = 54.3656365692
+  N=2   c_f=b/(2N)=0.02083333333  u=c_f/N=0.01041666667  c_f/u=2.0
+  N=3   c_f=b/(2N)=0.01388888889  u=c_f/N=0.00462962963  c_f/u=3.0
+  N=4   c_f=b/(2N)=0.01041666667  u=c_f/N=0.002604166667 c_f/u=4.0
+  N=10  c_f=b/(2N)=0.004166666667 u=c_f/N=0.0004166666667 c_f/u=10.0
+  SU(2) exact  c_f = I2/I1 = 0.0208273077849   beta/(2N) = 0.0208333333333  (rel.diff 0.0002892)
+  SU(2) exact  u = c_f/N   = 0.0104136538925   b/(2N^2)  = 0.0104166666667  (rel.diff 0.0002892)
+  => c_f/u = 2.0  (identity: u was DEFINED as c_f/N)
+
+========================================================================
+[B] the OTHER slot: Phi(0)/u = 2N^2  (rep-summed plaquette activity, KP (★★))
+========================================================================
+  N=2   Phi(0)=b=0.083333333  Phi(0)/u = 8.0   (2N^2 = 8)
+  N=3   Phi(0)=b=0.083333333  Phi(0)/u = 18.0   (2N^2 = 18)
+  N=4   Phi(0)=b=0.083333333  Phi(0)/u = 32.0   (2N^2 = 32)
+  N=10  Phi(0)=b=0.083333333  Phi(0)/u = 200.0   (2N^2 = 200)
+
+========================================================================
+[C] u-renormalisation test: is (Cbar, u) -> (Cbar/alpha, alpha*u) inert?
+========================================================================
+  Ubar := eD * Cbar * u = eD * sup_p |w_p|   <-- contains NO u.
+
+  u-def                     Cbar=c_f/u            Ubar    delta*a=ln(1/Ubar)         beta1
+  c_f/(2N^2)  [species]            8.0 1.1326174285246   -0.1245312626461001 0.07357588823
+  c_f/(N c0), c0=1                 2.0 1.1326174285246   -0.1245312626461001 0.07357588823
+  c_f  [tr-unnorm]                 1.0 1.1326174285246   -0.1245312626461001 0.07357588823
+  c_f*2N^2                       0.125 1.1326174285246   -0.1245312626461001 0.07357588823
+  => every row has the SAME Ubar / delta / beta1: pure relocation (verdict (c)).
+
+========================================================================
+[D] window as a function of the ONE physical input W := sup_p |w_p|
+========================================================================
+  criterion: eD * W(beta) < 1  <=>  beta < beta1 ;  Cbar = W/u ; u:=c_f/N (fixed)
+
+  reading                               Cbar=W/u    Ubar@b=1/12       beta1   x(1/48)  1/12 in?
+  W = u   (Z06 per-tile, (1/N)tr)              1   0.56630871430.1471517765 7.0632853       YES
+  W = c_f (PROOF 2' bound, tr)               2.0    1.1326174290.07357588823 3.5316426        no
+  W = Phi(0)=beta (KP (★★))                  8.0    4.5304697140.018393972060.88291066        no
+  spread of window over the three readings = 8.0 x  (Cbar in [1, 2N^2])
+
+========================================================================
+[E] exact SU(2) solves (no species truncation)
+========================================================================
+  eD*I2/I1 = 1         beta1 = 0.0735924895407  = 3.5324395 x (1/48)   (1/12 in? no)
+  eD*(I2/I1)/N = 1     beta1 = 0.147284721923   = 7.0696667 x (1/48)   (1/12 in? YES)
+  eD*(I2/I1)/(2N^2)=1  beta1 = 0.597292440126   = 28.670037 x (1/48)   (1/12 in? YES)
+  beta=1/12 exact:  eD*c_f          = 1.132289846   (>1 => fails)
+                    eD*c_f/N        = 0.5661449229   (<1 => holds)
+                    eD*b            = 4.530469714   (>1 => fails)
+
+========================================================================
+[F] where the N comes from: 3-cube faces, link incidence, orientation product
+========================================================================
+  faces = 6   distinct links = 12   incidences = 24
+  min #bad links over all 64 orientation assignments: 0
+  oriented consistently? YES (=closed 2-cycle)
+  => prod_links mult(1 in f (x) fbar) = 1  => |w(S)| = c_f^|S| * 1
+   n=1  tr-read  c_f: |w|^(1/n)/u = 2.0
+   n=1  Z06 read u  : |w|^(1/n)/u = 1.0
+   n=6  tr-read  c_f: |w|^(1/n)/u = 2.0
+   n=6  Z06 read u  : |w|^(1/n)/u = 1.0
+  *** the ONLY difference between 'N' and '1' is the (1/N) per-tile normalisation ***
+
+========================================================================
+[G] accounting: what a 2x window requires, and what is provably available
+========================================================================
+  f07 Ubar = eD*c_f         = 1.132289846  >1  -> beta=1/12 outside
+  to get beta=1/12 inside you need W <= 0.01839397206  (i.e. eD*W<1)
+  exact single-plaquette W at beta=1/12:  <(1/N)trU>=0.01041365389   <trU>=0.02082730778   Phi(0)=0.08333333333
+  => no exact single-plaquette value below u = c_f/N exists: W_min = u = 0.01041365389
+  => Cbar<1 impossible (Cbar >= |w({p})|/u);  Cbar<N <=> dropping the per-tile 1/N normalisation
+  done.

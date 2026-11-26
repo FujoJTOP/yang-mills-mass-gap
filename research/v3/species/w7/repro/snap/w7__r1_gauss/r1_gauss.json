@@ -1,0 +1,236 @@
+{
+ "rows": [
+  {
+   "L": 2,
+   "m": 0.3,
+   "lam_conf": 0.09,
+   "lam_slice": 0.17612440191387532,
+   "ratio_slice_2m1": 0.2935406698564589,
+   "ratio_conf_slice": 0.5110024449877758
+  },
+  {
+   "L": 2,
+   "m": 0.7,
+   "lam_conf": 0.48999999999999994,
+   "lam_slice": 0.8835742971887547,
+   "ratio_slice_2m1": 0.6311244979919677,
+   "ratio_conf_slice": 0.5545657015590202
+  },
+  {
+   "L": 2,
+   "m": 1.0,
+   "lam_conf": 1.0,
+   "lam_slice": 1.6666666666666667,
+   "ratio_slice_2m1": 0.8333333333333334,
+   "ratio_conf_slice": 0.6
+  },
+  {
+   "L": 2,
+   "m": 1.5,
+   "lam_conf": 2.25,
+   "lam_slice": 3.3088235294117645,
+   "ratio_slice_2m1": 1.102941176470588,
+   "ratio_conf_slice": 0.68
+  },
+  {
+   "L": 2,
+   "m": 2.0,
+   "lam_conf": 4.0,
+   "lam_slice": 5.333333333333333,
+   "ratio_slice_2m1": 1.3333333333333333,
+   "ratio_conf_slice": 0.75
+  },
+  {
+   "L": 4,
+   "m": 0.3,
+   "lam_conf": 0.09,
+   "lam_slice": 0.32487183818250875,
+   "ratio_slice_2m1": 0.5414530636375147,
+   "ratio_conf_slice": 0.2770323229723568
+  },
+  {
+   "L": 4,
+   "m": 0.7,
+   "lam_conf": 0.48999999999999994,
+   "lam_slice": 1.3043139449060732,
+   "ratio_slice_2m1": 0.9316528177900524,
+   "ratio_conf_slice": 0.37567642507669885
+  },
+  {
+   "L": 4,
+   "m": 1.0,
+   "lam_conf": 1.0,
+   "lam_slice": 2.1428571428571432,
+   "ratio_slice_2m1": 1.0714285714285716,
+   "ratio_conf_slice": 0.46666666666666656
+  },
+  {
+   "L": 4,
+   "m": 1.5,
+   "lam_conf": 2.25,
+   "lam_slice": 3.720817120622568,
+   "ratio_slice_2m1": 1.240272373540856,
+   "ratio_conf_slice": 0.6047058823529412
+  },
+  {
+   "L": 4,
+   "m": 2.0,
+   "lam_conf": 4.0,
+   "lam_slice": 5.647058823529412,
+   "ratio_slice_2m1": 1.411764705882353,
+   "ratio_conf_slice": 0.7083333333333333
+  },
+  {
+   "L": 6,
+   "m": 0.3,
+   "lam_conf": 0.09,
+   "lam_slice": 0.43359739645210416,
+   "ratio_slice_2m1": 0.7226623274201737,
+   "ratio_conf_slice": 0.20756582197315276
+  },
+  {
+   "L": 6,
+   "m": 0.7,
+   "lam_conf": 0.48999999999999994,
+   "lam_slice": 1.4357909761605085,
+   "ratio_slice_2m1": 1.0255649829717919,
+   "ratio_conf_slice": 0.3412753026978367
+  },
+  {
+   "L": 6,
+   "m": 1.0,
+   "lam_conf": 1.0,
+   "lam_slice": 2.2222222222222223,
+   "ratio_slice_2m1": 1.1111111111111112,
+   "ratio_conf_slice": 0.44999999999999996
+  },
+  {
+   "L": 6,
+   "m": 1.5,
+   "lam_conf": 2.25,
+   "lam_slice": 3.7481693922382235,
+   "ratio_slice_2m1": 1.2493897974127413,
+   "ratio_conf_slice": 0.6002930402930402
+  },
+  {
+   "L": 6,
+   "m": 2.0,
+   "lam_conf": 4.0,
+   "lam_slice": 5.656565656565657,
+   "ratio_slice_2m1": 1.4141414141414141,
+   "ratio_conf_slice": 0.7071428571428572
+  },
+  {
+   "L": 8,
+   "m": 0.3,
+   "lam_conf": 0.09,
+   "lam_slice": 0.5049611163715918,
+   "ratio_slice_2m1": 0.8416018606193197,
+   "ratio_conf_slice": 0.17823154512707196
+  },
+  {
+   "L": 8,
+   "m": 0.7,
+   "lam_conf": 0.48999999999999994,
+   "lam_slice": 1.4710970517049613,
+   "ratio_slice_2m1": 1.0507836083606867,
+   "ratio_conf_slice": 0.33308475428735534
+  },
+  {
+   "L": 8,
+   "m": 1.0,
+   "lam_conf": 1.0,
+   "lam_slice": 2.2340425531914896,
+   "ratio_slice_2m1": 1.1170212765957448,
+   "ratio_conf_slice": 0.4476190476190476
+  },
+  {
+   "L": 8,
+   "m": 1.5,
+   "lam_conf": 2.25,
+   "lam_slice": 3.749885560828235,
+   "ratio_slice_2m1": 1.2499618536094117,
+   "ratio_conf_slice": 0.600018310826276
+  },
+  {
+   "L": 8,
+   "m": 2.0,
+   "lam_conf": 4.0,
+   "lam_slice": 5.656845753899479,
+   "ratio_slice_2m1": 1.4142114384748699,
+   "ratio_conf_slice": 0.7071078431372549
+  },
+  {
+   "L": 12,
+   "m": 0.3,
+   "lam_conf": 0.09,
+   "lam_slice": 0.5740164648248939,
+   "ratio_slice_2m1": 0.9566941080414898,
+   "ratio_conf_slice": 0.15678992766776276
+  },
+  {
+   "L": 12,
+   "m": 0.7,
+   "lam_conf": 0.48999999999999994,
+   "lam_slice": 1.4824886867945446,
+   "ratio_slice_2m1": 1.058920490567532,
+   "ratio_conf_slice": 0.33052528789240476
+  },
+  {
+   "L": 12,
+   "m": 1.0,
+   "lam_conf": 1.0,
+   "lam_slice": 2.236024844720497,
+   "ratio_slice_2m1": 1.1180124223602486,
+   "ratio_conf_slice": 0.4472222222222222
+  },
+  {
+   "L": 12,
+   "m": 1.5,
+   "lam_conf": 2.25,
+   "lam_slice": 3.7499995529651913,
+   "ratio_slice_2m1": 1.2499998509883972,
+   "ratio_conf_slice": 0.6000000715255779
+  },
+  {
+   "L": 12,
+   "m": 2.0,
+   "lam_conf": 4.0,
+   "lam_slice": 5.656854242130503,
+   "ratio_slice_2m1": 1.4142135605326258,
+   "ratio_conf_slice": 0.7071067821067821
+  }
+ ],
+ "checks": [
+  {
+   "name": "1.1 lam_conf <= lam_slice at all 25 (L,m) points",
+   "ok": true,
+   "info": "min slack = 8.612e-02"
+  },
+  {
+   "name": "2.1 lam_slice = sqrt(m^2(m^2+4)) to <1% at L=24 whenever xi=1/m <= L/7",
+   "ok": true,
+   "info": "max rel.err = 1.53e-03 over m>=0.3"
+  },
+  {
+   "name": "2.1b at m=0.1 (xi=10 > L/7=3.4) the finite-L cutoff is visible, as it must be",
+   "ok": true,
+   "info": "L=24 gives 0.1669 vs L=inf 0.2002"
+  },
+  {
+   "name": "2.2 lam_slice/(2 m1) = sqrt(m^2+4)/2 -> 1 as m -> 0 (continuum)",
+   "ok": true,
+   "info": "m=0.1 -> 1.00125;  m=0.7 -> 1.05948"
+  },
+  {
+   "name": "3.1 loss = m/sqrt(m^2+4) (-> m/2 in the continuum): the Gibbs constant is NOT the gap",
+   "ok": true,
+   "info": "ratio 0.4472 at m=1"
+  },
+  {
+   "name": "4.1 free massless -> lam_conf = 0",
+   "ok": true,
+   "info": "0.00e+00"
+  }
+ ]
+}

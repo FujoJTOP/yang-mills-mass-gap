@@ -1,0 +1,41 @@
+=== c05_cbar.py : independent audit of Cbar <= 20 and Cbar = O(1) ===
+[A] 4D torus L=6: plaquettes=7776  plaquettes/link=[6]  adjacency degree=[20]  => Delta = 20
+[B] n= 1 animals_through_fixed_plaq=     1 max_t(G)=         1  t^(1/n)= 1.0000  mckay^(1/n)= 1.0000  Delta=20
+[B] n= 2 animals_through_fixed_plaq=    20 max_t(G)=         1  t^(1/n)= 1.0000  mckay^(1/n)= 1.0000  Delta=20
+[B] n= 3 animals_through_fixed_plaq=   458 max_t(G)=         3  t^(1/n)= 1.4422  mckay^(1/n)= 1.4422  Delta=20
+[B] n= 4 animals_through_fixed_plaq= 11132 max_t(G)=        16  t^(1/n)= 2.0000  mckay^(1/n)= 2.0000  Delta=20
+[B] random clusters n=7..12 (400 draws): max t^(1/n) = 3.2079  (Delta=20, 2Delta=40)
+
+[C] exact character-coefficient weights, w(P) = (prod_p c_{r_p}) * prod_links mult(1 in tensor)
+    per-plaquette ratio |w|^{1/n}/u  with u = c_f/N  ==>  this IS the lower bound on Cbar
+    cube(6 plaq)         n=  6 links= 12 mult_prod=     1  c_f/u=N=2  |w|^(1/n)/u =   2.0000
+    tube T=1 (4 plaq)    n=  4 links=  8 mult_prod=     1  c_f/u=N=2  |w|^(1/n)/u =   2.0000
+    tube T=2 (8 plaq)    n=  8 links= 16 mult_prod=     1  c_f/u=N=2  |w|^(1/n)/u =   2.0000
+    tube T=3 (12 plaq)   n= 12 links= 24 mult_prod=     1  c_f/u=N=2  |w|^(1/n)/u =   2.0000
+    => Cbar >= N exactly (mult_prod>=1), i.e. NOT O(1): Cbar >= 2 at N=2, before any tree factor
+
+[D] N-scaling of the per-plaquette activity, beta=1e-3 (u = c_f/N = beta/2N^2)
+      N   c_f/u  Beta/(2u)   Phi0/u  Cbar<=B*D  Cbar<=A*D  b1(Cbar=20)  b1(Cbar=2N^2*D)
+      2    2.00       4.00     8.00       80.0       40.0   1.8394e-03       4.5985e-04
+      3    3.00       9.00    18.00      180.0       60.0   4.1386e-03       4.5985e-04
+      4    4.00      16.00    32.00      320.0       80.0   7.3576e-03       4.5985e-04
+      5    5.00      25.00    50.00      500.0      100.0   1.1496e-02       4.5985e-04
+     10   10.00     100.00   200.00     2000.0      200.0   4.5985e-02       4.5985e-04
+    eDelta = e*20 = 54.3656
+    KEY: beta1^fix = 2N^2/(Chat eDelta Cbar).  With Cbar = O(1) it scales as N^2 -> WRONG.
+         With Cbar = 2N^2 * Delta it is N-independent, and beta1^fix = 1/(Chat eDelta e^beta).
+    NOTE: Cbar_sharp = Phi(0)/u = 2N^2 (no extra Delta: trees already counted by lambda_a=eDelta)
+          Cbar <= 20 holds only for 2N^2 <= 20  <=>  N <= 3.16  =>  FAILS for N >= 4
+          N= 2: Cbar_sharp = 2N^2 =    8.0  <=20? True   Chat*Cbar_sharp =    32.0  vs 7.0633 -> shrink  4.530x   beta1 = 4.598493e-03
+          N= 3: Cbar_sharp = 2N^2 =   18.0  <=20? True   Chat*Cbar_sharp =    72.0  vs 7.0633 -> shrink 10.194x   beta1 = 4.598493e-03
+          N= 4: Cbar_sharp = 2N^2 =   32.0  <=20? False   Chat*Cbar_sharp =   128.0  vs 7.0633 -> shrink 18.122x   beta1 = 4.598493e-03
+          N=10: Cbar_sharp = 2N^2 =  200.0  <=20? False   Chat*Cbar_sharp =   800.0  vs 7.0633 -> shrink 113.262x   beta1 = 4.598493e-03
+
+[E] arithmetic
+    Ĉ*C̄ = 80 ; 7.0633 ;  ratio = 11.326 ;  beta1^fix(20, N=2) = 8/(4 eDelta 20) = 1.839397e-03 ; (1/48)/b1 = 11.326
+    check 1.8394e-3 ? 1.8394e-03   (1/48 = 2.083333e-02)
+    honest  beta1 = 1/(Ĉ eDelta) = 4.598493e-03 = (1/48)/4.530  [N-independent]
+    Gupta (14.21): -4 ln(beta/2N^2), N=2 beta_W=1/12 -> u=0.010417, 4ln(1/u)=18.25739   (=DR file's 4ln(1/0.0104)= 18.26380)
+    SU(2) beta=0.10000: u_exact=I2/I1=0.024990  c_f/N=0.012510  c0=1.001251  q_exact=0.024989589839412667 vs c_f/N_species=0.012500
+    SU(2) beta=0.08333: u_exact=I2/I1=0.020827  c_f/N=0.010423  c0=1.000868  q_exact=0.020827307784932806 vs c_f/N_species=0.010417
+    SU(2) beta=0.50000: u_exact=I2/I1=0.123718  c_f/N=0.063812  c0=1.031577  q_exact=0.12371792827832075 vs c_f/N_species=0.062500

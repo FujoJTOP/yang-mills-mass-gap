@@ -1,0 +1,31 @@
+========================================================================================================
+[P02-DYNDYN] Delta_dyn = E[H_vv]-Var(G_v) on L=2 SU(2) beta=2.5; 4 chains x 20000 sweeps, one job   2026-11-25 14:20:46
+model: o13/o27 constrained xi=0 HMC + O24 fundamental-domain reject |x_l|<pi
+========================================================================================================
+  [V] vectorised vs o13_ldep: rel dev S_W=1.21e-16  force=1.39e-16
+  [V] analytic force vs central FD (h=1e-6): rel dev=1.69e-09
+  eps tune 0.1402 -> acc=0.683
+
+  production: n=19500 sweeps x 4 chains, acc=0.662 (per chain 0.662 0.657 0.663 0.666), wall=325.5s, 16.7 ms/sweep(all chains)
+  fundamental-domain rejections (all chains, mean) : 0.0464
+
+  quantity                      ch0             ch1             ch2             ch3          COMBINED    sigma_jk sigma_tau
+  E[H_vv]                  6.275148        6.319132        6.336868        6.394667          6.331454    0.013191  0.020732
+  E[Phi'']                 1.261780        1.254200        1.231424        1.255535          1.250735    0.004722  0.007601
+  Var(G_v)                 5.387627        5.429035        5.421561        5.552536          5.447690    0.045918  0.047908
+  Var(G_v+Phi')            5.541455        5.541195        5.564889        5.673769          5.580327    0.049501  0.041021
+  Cov(G,Phi')             -0.009006       -0.027586        0.003395       -0.026349         -0.014886    0.005698  0.000000
+
+  tau per chain (H, G, z=(G-mu)^2, F=G+Phi', 1+2tau_H):
+    ch0: tau_H=    9.1  tau_G=    2.1  tau_z=    2.7  tau_F=    1.9  1+2tau_H= 19.14  Neff_H~  1019
+    ch1: tau_H=    7.9  tau_G=    1.9  tau_z=    2.5  tau_F=    2.0  1+2tau_H= 16.74  Neff_H~  1165
+    ch2: tau_H=    8.4  tau_G=    1.9  tau_z=    3.1  tau_F=    1.9  1+2tau_H= 17.71  Neff_H~  1101
+    ch3: tau_H=    9.1  tau_G=    1.8  tau_z=    2.9  tau_F=    1.9  1+2tau_H= 19.14  Neff_H~  1019
+
+  Delta_dyn = E[H_vv]-Var(G_v) = +0.883764
+    sigma_jk  = 0.050051  -> Delta/sigma = +17.66 sigma
+    sigma_tau = 0.027004  -> Delta/sigma = +32.73 sigma
+  consistent: B = E[H+Phi'']-Var(G+Phi') = +2.001861 +- 0.051446 (jk)
+  identity |A+W_full-B| = 8.88e-16
+  E[G+Phi'] = +6.328291 +- 0.013611 (must contain 0)
+total elapsed 326.1s   [chek dev 1.7e-09]

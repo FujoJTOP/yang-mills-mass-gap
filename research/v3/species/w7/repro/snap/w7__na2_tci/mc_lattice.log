@@ -1,0 +1,33 @@
+========================================================================================================
+SANITY: analytic g and D2 vs finite differences (L=2, random Haar config)
+  |fd - g| = 2.73e-08   |fd - D2_diag| = 7.64e-04   |fd - D2_mixed| = 1.79e-04   (h=1e-06 for g, 0.001 for D2)
+  asymmetry of the assembled Hessian: max|H-H^T| = 0.00e+00
+  and lambda_min(Hess S_W + Ric/2) at delta = -4.837765
+========================================================================================================
+L=2  E=64 links  dim=192  #plaques=96  SU(2) beta=2.5  (50 shapes)
+  pure      S_W=   0.000 mu(delta)=  +0.2500 sup_G mu=  +0.2500 [           delta]  sum|gradS|^2=     0.00
+  z2        S_W= 240.000 mu(delta)=  -9.7500 sup_G mu=  -9.7500 [           delta]  sum|gradS|^2=     0.00
+  minus1    S_W=   0.000 mu(delta)=  +0.2500 sup_G mu=  +0.2500 [           delta]  sum|gradS|^2=     0.00
+  haar0     S_W= 251.574 mu(delta)=  -5.1877 sup_G mu=  -5.1051 [ diag(-0.7,+0.0)]  sum|gradS|^2=   468.91
+  haar1     S_W= 245.907 mu(delta)=  -4.6815 sup_G mu=  -4.6169 [ diag(+0.7,-1.3)]  sum|gradS|^2=   473.31
+  z2_s0.25  S_W=  35.147 mu(delta)=  -2.0202 sup_G mu=  -1.7709 [ diag(+2.0,+2.0)]  sum|gradS|^2=   450.00
+  z2_s0.5   S_W= 120.000 mu(delta)=  -4.5912 sup_G mu=  -2.7743 [ diag(-0.7,+1.3)]  sum|gradS|^2=   900.00
+  z2_s0.75  S_W= 204.853 mu(delta)=  -8.2068 sup_G mu=  -7.9574 [ diag(+2.0,+2.0)]  sum|gradS|^2=   450.00
+  ==> inf_config sup_G mu  = -9.750000   (< 0  => no metric shape can give lambda_dot_0 > 0)
+      inf_config mu(delta) = -9.750000
+      max_config sum|grad S_W|^2 =    900.00   (per link:   14.06)
+========================================================================================================
+L=4  E=1024 links  dim=3072  #plaques=1536  SU(2) beta=2.5  (9 shapes)
+  pure      S_W=   0.000 mu(delta)=  +0.2500 sup_G mu=  +0.2500 [           delta]  sum|gradS|^2=     0.00
+  z2        S_W=3840.000 mu(delta)=  -9.7500 sup_G mu=  -9.7500 [           delta]  sum|gradS|^2=     0.00
+  minus1    S_W=   0.000 mu(delta)=  +0.2500 sup_G mu=  +0.2500 [           delta]  sum|gradS|^2=     0.00
+  haar0     S_W=3802.304 mu(delta)=  -5.0192 sup_G mu=  -5.0192 [           delta]  sum|gradS|^2=  7194.09
+  haar1     S_W=3850.856 mu(delta)=  -4.9735 sup_G mu=  -4.9735 [           delta]  sum|gradS|^2=  7194.90
+  z2_s0.25  S_W= 562.355 mu(delta)=  -2.0202 sup_G mu=  -2.0202 [           delta]  sum|gradS|^2=  7200.00
+  z2_s0.5   S_W=1920.000 mu(delta)=  -5.5572 sup_G mu=  -4.6696 [ diag(-2.0,+1.3)]  sum|gradS|^2= 14400.00
+  z2_s0.75  S_W=3277.645 mu(delta)=  -8.2068 sup_G mu=  -8.2068 [           delta]  sum|gradS|^2=  7200.00
+  ==> inf_config sup_G mu  = -9.750000   (< 0  => no metric shape can give lambda_dot_0 > 0)
+      inf_config mu(delta) = -9.750000
+      max_config sum|grad S_W|^2 =  14400.00   (per link:   14.06)
+
+wrote mc_lattice.json

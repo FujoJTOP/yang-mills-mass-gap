@@ -1,0 +1,12 @@
+[Z1] zero crossing of E[H|0](theta) between 3pi/4 and pi  (bisection, 40 iters)
+   N=2 beta= 2.5: theta_c/pi = 1.000000   E[H](theta_c)=-1.73e-13
+   N=2 beta= 6.0: theta_c/pi = 1.000000   E[H](theta_c)=-4.16e-13
+   N=3 beta= 2.5: theta_c/pi = 0.933321   E[H](theta_c)=+3.64e-14
+   N=3 beta= 6.0: theta_c/pi = 0.951662   E[H](theta_c)=-2.55e-13
+   N=4 beta= 2.5: theta_c/pi = 0.885078   E[H](theta_c)=-3.12e-14
+   N=4 beta= 6.0: theta_c/pi = 0.899573   E[H](theta_c)=+9.97e-14
+[Z2] BETASTAR §4 check: Z_N centre, N=3, beta=6 -> their E[H]=+0.306, Var(G)=+0.0317
+   N=2: <H>_(with 1/N)=+0.0000   <H>_(no 1/N)=+0.0000   Var(G)=+0.3972
+        BETASTAR-N §4 table (N=3, beta=6): E[H]=+0.3060, Var(G)=+0.0317
+   N=3: <H>_(with 1/N)=+0.1022   <H>_(no 1/N)=+0.3067   Var(G)=+0.0317
+        BETASTAR-N §4 table (N=3, beta=6): E[H]=+0.3060, Var(G)=+0.0317

@@ -1,0 +1,215 @@
+% =====================================================================
+%  §5  Closure of the string-tension side
+% =====================================================================
+\section{Closure of the string-tension side: $\sigma>0$ does not entail $m>0$}
+\label{sec:tension}
+
+This section closes what looks like the cheapest route: the area law is already proved at strong
+coupling, $\sigma>0$ is the standard confinement indicator, and ``$\sigma$ and $m^{2}$ have the same
+dimension'' seems to leave only a dimensional analysis. Four steps later the route is closed:
+$\sigma$ on the lattice is a power-divergent $1/a^{2}$, $\sigma=2g^{2}Nm^{2}$ can only be scheme
+bookkeeping, the proved implication runs the other way, and the sector that produces the area law
+carries \emph{its own} gapless direction.
+
+\subsection{Step 1: the area law is indeed a solution of the two-variable loop equation}
+
+Insert $W=e^{-\sigma A}$ into the Makeenko--Migdal equation
+\begin{equation}
+  \partial_\mu\frac{\delta W}{\delta\sigma_{\mu\nu}(x)}
+  \;=\; g^{2}N\oint_{C}\dd y_\nu\,\delta^{4}(x-y)\,W(C_{xy})W(C_{yx}),
+  \label{eq:MM}
+\end{equation}
+and on the planar circle family $\theta$ drops out exactly: the two circular segments satisfy
+$A_1+A_2=\tfrac12R^{2}\cdot2\pi=\pi R^{2}$ as an identity, so $G\equiv W$. The residual
+\begin{gather}
+  \rho(R,\theta):=\frac{\text{LHS}}{\text{RHS}}=\frac{\sigma}{2g^{2}N}
+  \ \equiv\ 0.500000000000 ,\notag\\
+  \rho(5)/\rho(1)=1.000000000000 ,\notag
+\end{gather}
+has $R$-power $0$ and $\theta$-mismatch $0$ (an exact identity, not a small number); the
+one-dimensional reduction on the same $(R,\theta)$ grid runs $5.4366\to8.821\times10^{14}$ (ratio
+$1.622\times10^{14}$). Hence \LT
+\begin{equation}
+  \sigma \;=\; 2g^{2}N\,\mu^{2},
+  \qquad \mu = \text{contact-term / coincident-point scale}.
+  \label{eq:sigma-mu}
+\end{equation}
+\src{\code{RV-2-AREALAW.md} \S1--\S5; witness \code{w7/rv2_arealaw.py} / \code{.log} (PART 1 three
+geometry checks, PART 3 twenty residuals, PART 5 the dimensional table).}
+
+\noindent
+\textbf{Its limitation must be recorded at the same time}: in the planar family $A_1+A_2\equiv\pi R^{2}$
+turns the equation into a pointwise \emph{algebraic} relation and forces $G_\theta\equiv0$.
+\textbf{The planar family does not test the functional form of the area law, only its coefficient.} \LT
+\src{\code{RV-2-AREALAW.md} \S6, the ``structural theorem'' item.}
+
+\subsection{Step 2: on the lattice $\sigma\propto1/a^{2}$, exactly}
+
+Putting \eqref{eq:sigma-mu} back on the lattice needs only arithmetic. With
+$\delta^{4}(x-y)\to a^{-4}\delta_{x,y}$ (a dimensionful density), a line integration carrying the link
+length $a$, and a one-dimensional curve delta $\delta_C=a^{-1}$: \LT
+\begin{equation}
+  \delta^{3}_{\perp}(0)=a\cdot a^{-4}=a^{-3},
+  \qquad
+  \mu^{2}=\frac{\delta^{3}_{\perp}(0)}{\delta_C}=a^{-2},
+  \qquad
+  \sigma=\frac{2g^{2}N}{a^{2}}\ \propto\ \frac{1}{a^{2}} .
+\end{equation}
+\src{\code{MU-4-LATTICE.md} \S1--\S3; scripts \code{w7/mu4_lattice.py}, \code{w7/mu4_lattice.log}.}
+
+\begin{table}[h]
+\centering\footnotesize
+\setlength{\tabcolsep}{7pt}
+\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}l l l l@{}}
+\toprule
+\textbf{Normalization} & \textbf{Contact term} & \textbf{$a$-power} & \textbf{Fit ($L=4,6,8,16,32$)}\\
+\midrule
+$K_A$: dimensionless Kronecker, no $a^{4}$ & $1$ & $0$ & $p=0.0000$\\
+$K_B$: $\delta^{4}\to a^{-4}\delta_{x,y}$ with line measure $a$ & $a^{-3}$ & $-3$ & $p=+3.0000$\\
+$K_C=K_B/\delta_C$: divided by the curve delta $a^{-1}$ & $a^{-2}$ & $-2$ & $p=+2.0000$\\
+\bottomrule
+\end{tabular}
+\caption{The three normalizations separated by varying $a$. One has
+$\sigma_C a^{2}=\sigma_B a^{3}=2g^{2}N$ identically. At $a=1$ all three agree numerically --- which is
+why the original check had zero resolving power.}
+\label{tab:apower}
+\end{table}
+
+\noindent
+Two independent numerical criteria point the same way (fixed physical volume $La=1$): \LE
+\begin{itemize}
+\item $R:=\sigma a^{2}/e^{-1/(2b_0g^{2})}=156.2/205.4/254.0$ ($L=4,6,8$), fitted by
+      $R\propto L^{+0.700}$ --- \emph{running}, not constant;
+\item $\sigma/\Lambda^{2}=351/629/982$ (diverging like $L^{2}$) --- $1/\Lambda^{2}$ is excluded.
+\end{itemize}
+\src{\code{MU-4-LATTICE.md} \S3.3 (with the row-by-row table of $x=1/(2b_0g^{2})$, $g^{2}$,
+$\beta=2N/g^{2}$).}
+
+\begin{keybox}
+\textbf{A methodological accident that must be recorded.} Before the lattice arithmetic was done, a
+broadcast vote decided \textbf{5:1} that $\mu^{2}$ should be $1/\Lambda^{2}$. The exact lattice
+arithmetic overturned it: $\varepsilon=a$ rather than $1/\Lambda$, so $\sigma\propto1/a^{2}$ and the
+continuum content is zero. A vote is not a criterion. \LN
+\end{keybox}
+\src{\code{LOOP-RUNBOOK.md} \S11.25--\S11.26 (the 5:1) against \S11.30 (the overturning);
+\code{MU-4-LATTICE.md} \S0; the same family is recorded in \S11.24 (``the $\varepsilon=1/\Lambda$
+conjecture is refuted'') and \S11.20.}
+
+\subsection{Step 3: $\mu^{2}$ is a renormalization constant, not a mass}
+
+The $\mu^{2}$ of \eqref{eq:sigma-mu} occupies the dimensional slot of $(\text{mass})^{2}$, but on the
+lattice it is forced to $1/\varepsilon^{2}$, and $\varepsilon$ is a \textbf{prescription}: \LT
+\begin{center}\footnotesize
+\begin{tabular}{@{}l l@{}}
+\toprule
+Prescription & $\mu^{2}$\\
+\midrule
+lattice ($\varepsilon=a$) & $1/a^{2}$\\
+dimensional regularization & $0$ (the power divergence is removed wholesale, no pole)\\
+point splitting & $(4\pi)^{-3/2}/\varepsilon^{2}$\\
+heat kernel & $\Lambda^{2}/(4\pi)$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Four prescriptions, four values $\Rightarrow$ \textbf{prescription dependence holds} $\Rightarrow$
+$\mu^{2}$ is a renormalization constant. \LT
+\src{\code{MU-1-PRESCR.md} \S1, \S7(3), collected in \code{MU-3-RENORM.md} \S0.5 and \S6(0); this
+document does not repeat the table, only its conclusion.}
+
+\noindent
+The criterion is purely exponential, with no number to hide behind: fixed physical $\sigma$ requires
+$\dd\ln(\sigma a^{2})/\dd\ln a=2$ (exactly), whereas the candidate $\mu^{2}\simeq1/a^{2}$ gives
+$\dd\ln(\sigma a^{2})/\dd\ln a=1/t\to0$; the exponents $2$ and $1/t$ are of \emph{different type}, so
+no common interval can exist. \LT
+\src{\code{MU-3-RENORM.md} \S5.2.}
+
+\subsection{Step 4: $\sigma=2g^{2}Nm^{2}$ is scheme bookkeeping only}
+
+Renaming the $\mu^{2}$ of \eqref{eq:sigma-mu} as $m^{2}$ leaves two factors: \LT
+\begin{center}\footnotesize
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
+\toprule
+Factor & Origin & Nature\\
+\midrule
+$2$ & normalization of $\tfrac12\varepsilon_{\mu\nu}$ (i.e.\ $1/(\tfrac12)$) & pure convention, no physics\\
+$g^{2}N=\lambda(\mu)$ & the right-hand coefficient of \eqref{eq:MM}; in 4D it runs and is scheme dependent & \textbf{the physical content is here}\\
+\bottomrule
+\end{tabularx}
+\end{center}
+The physical ratio $\sigma/m^{2}$ must be RG-invariant (both are spectral quantities), while
+$2\lambda(\mu)$ runs; hence, if $m$ is a physical mass, this relation \textbf{can only be a
+scheme-dependent bookkeeping identity, never an identity}. Conversely, it is precisely that running
+factor that demotes $\mu^{2}$ from ``mass'' to ``renormalization constant''. \LT
+\src{\code{MU-3-RENORM.md} \S7; the same section gives the criterion: if $\sigma/m^{2}$ is ever
+measured to be a universal $O(1)$ number, then the $\mu^{2}$ here must be renamed away from $m$.}
+
+\begin{keybox}
+\textbf{$\sigma>0\not\Rightarrow m>0$.} The literature contains no proved
+$\sigma>0\Rightarrow m>0$; and the proved arrow runs the other way: \emph{exponential decay of
+correlations $+$ nontrivial centre $\Rightarrow$ unbroken centre $\Rightarrow$ confining}
+(Chatterjee 2021). The spectral gap is a \emph{sufficient-condition input} to the area law, not a
+corollary of it. \LN
+\end{keybox}
+\src{\code{MU5-SIGMA-M.md} \S1.2 (quoting Chatterjee, \emph{CMP} 2021, \texttt{arXiv:2006.16229},
+\texttt{doi:10.1007/s00220-021-04086-y}, verbatim: ``if \dots correlations decay exponentially \dots,
+then center symmetry does not break'').}
+
+\noindent
+At the same time a widely repeated citation must be corrected: the abstract of Osterwalder--Seiler
+1978 announces only a ``positive self-adjoint transfer matrix'', existence and analyticity of the
+infinite-volume limit, and ``\textbf{we verify Wilson's confinement bound}'' --- \textbf{the abstract
+contains no mass gap}. ``OS 1978 proved that the area law implies a gap'' has no checkable textual
+basis. \LT
+\src{\code{MU5-SIGMA-M.md} \S1.1 (checked verbatim against the INSPIRE/Elsevier abstract,
+\texttt{doi:10.1016/0003-4916(78)90039-8}); the same file lists seven ``not found'' items in \S7 with
+the query strings.}
+
+\subsection{The area law carries its own gapless direction}
+
+This is the hardest statement of the section. The area law's own correction term (effective string
+theory, the Lüscher term)
+\begin{equation}
+  V(R)=\sigma R-\frac{\pi(D-2)}{12R}+O(R^{-3})
+\end{equation}
+shows that \emph{in the very sector that produces the area law the level spacing is
+$O(1/R)\to0$} --- the string's oscillation modes. \textbf{The area law carries a gapless direction in
+the $R\to\infty$ limit}, so $\sigma>0$ cannot by itself entail a bulk gap; the gap must come from
+another sector (local gauge-invariant operators), and the area law is precisely silent about that
+sector. \LT
+\src{\code{MU5-SIGMA-M.md} \S2 and \S3.1; Lüscher--Symanzik--Weisz, \emph{NPB} \textbf{173} (1980)
+365 (checked through secondary quotation; that file marks it \code{[B]}).}
+
+\noindent
+\textbf{The exact missing step (fixed in writing)}: from ``area law'' to ``exponential decay of
+connected correlators of local gauge-invariant operators'' (item L4 of that file). It needs
+interchange of limits, uniqueness of the vacuum and OS reconstruction, none dispensable; it does not
+exist in the literature and cannot be assembled from L1--L3. \LM
+\src{\code{MU5-SIGMA-M.md} \S2 table and the ``exact missing step'' paragraph.}
+
+\noindent
+The two sides are indeed mutually independent, and the other side is also proved: the
+fundamental-representation Higgs region (Fradkin--Shenker type) has a mass gap while Wilson loops obey
+a perimeter law (no area law). And $\sigma=m^{2}$ is false in every model --- for 4D
+$\mathrm{SU}(3)$, $m^{2}/\sigma\approx15$; in 2D YM both scale like $g^{2}N$ and the ratio is a pure
+number, \emph{not} an equality. \LT
+\src{\code{MU5-SIGMA-M.md} \S3.2 and \S4.}
+
+\subsection{Two things this section leaves open (stated honestly)}
+
+\begin{itemize}
+\item \textbf{The opposite claim $\sigma\propto\Lambda^{2}$.} \code{MU6-NUM.md} uses
+      $\sqrt{\sigma}=484.96$ MeV and $\Lambda_{\mathrm{MS}}=263.04$ MeV to get
+      $\sigma/\Lambda^{2}_{\mathrm{MS}}=3.399/2.967$, with $2g^{2}N$ run to $\Lambda_{\mathrm{MS}}$
+      giving $9.363$ and ratios $0.567/0.363$, i.e.\ $O(1)$, and local exponents
+      $n=2.63\,(\mathrm{SU}(3))/2.31\,(\mathrm{SU}(2))$, concluding $\sigma\propto\Lambda^{2}$. This
+      contradicts $n=0$ from \code{mu-4}. \LM
+\item \textbf{A normalization error found in the same round}: the anchor $a^{-1}(\beta=6)$ of $2.91$
+      GeV is high by $1.30\times$; the correct value is $2.243$ GeV (AT2021 Tab.13). The direction of
+      the conclusion is unchanged, but every number that used $2.91$ must be divided by $1.30$. \LE
+\end{itemize}
+\src{\code{LOOP-RUNBOOK.md} \S11.37 (lines 1804--1823); \code{MU6-NUM.md}. This document's handling:
+both sides are displayed and not adjudicated; but \emph{the string-tension side as a route to $m>0$}
+is closed by the four steps above, independently of this conflict --- the closure rests on
+prescription dependence and on the direction of the proved arrow, neither of which depends on the
+value of $n$.}

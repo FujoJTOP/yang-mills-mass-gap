@@ -1,0 +1,70 @@
+==============================================================================
+a_n (rooted at p0, 4D plaquette graph, deg 20)   n = 1..7
+==============================================================================
+  a_1 = 1
+  a_2 = 20
+  a_3 = 458
+  a_4 = 11132
+  a_5 = 280175
+  a_6 = 7218768
+  a_7 = 189215964
+
+-- adjacent ratios (exact fractions) --
+  r_2 = a_2/a_1 = 20/1 = 20.000000
+  r_3 = a_3/a_2 = 229/10 = 22.900000
+  r_4 = a_4/a_3 = 5566/229 = 24.305677
+  r_5 = a_5/a_4 = 280175/11132 = 25.168433
+  r_6 = a_6/a_5 = 7218768/280175 = 25.765211
+  r_7 = a_7/a_6 = 15767997/601564 = 26.211670
+
+-- increments of the ratio sequence --
+  r_3 - r_2 = +2.900000
+  r_4 - r_3 = +1.405677
+  r_5 - r_4 = +0.862756
+  r_6 - r_5 = +0.596778
+  r_7 - r_6 = +0.446459
+  increment ratios: 4:0.4847, 5:0.6138, 6:0.6917, 7:0.7481
+
+-- roots a_n^(1/n) --
+  a_1^(1/1) = 1.0
+  a_2^(1/2) = 4.47213595499958
+  a_3^(1/3) = 7.70823877815999
+  a_4^(1/4) = 10.2717230060433
+  a_5^(1/5) = 12.2881322316181
+  a_6^(1/6) = 13.9019966892853
+  a_7^(1/7) = 15.2202763983819
+
+-- lambda_* bounds (lambda_* := lim a_n^(1/n); if the limit exists it equals limsup) --
+  [T] lambda_* = limsup_n a_n^(1/n) >= a_7^(1/7) = 15.2202763983819   (limsup >= any term: unconditional)
+  [T] was: >= a_6^(1/6) = 13.9019966892853
+  [T] upper (Penrose/tree envelope, e*Delta, Delta=20): lambda_* <= e*20 = 54.3656365691809
+  [T] local-ratio form: IF a_{n+1} <= 48 a_n for all n THEN lambda_* <= 48
+  observed sup_{n<=7} r_n = 15767997/601564  -> 48/sup = 1.8312 (slack)
+
+-- 48-test: C_48(n) = 48^n / a_n  (margin of the local-ratio envelope) --
+  n=2  48^n/a_n = 1.1520e+02
+  n=3  48^n/a_n = 2.4147e+02
+  n=4  48^n/a_n = 4.7686e+02
+  n=5  48^n/a_n = 9.0945e+02
+  n=6  48^n/a_n = 1.6943e+03
+  n=7  48^n/a_n = 3.1026e+03
+
+-- trend of r_n --
+  r_2..r_7 = 20.0000, 22.9000, 24.3057, 25.1684, 25.7652, 26.2117
+  monotone increasing: True
+  fit  Dr_n = C n^(-p):  p = 2.2060   C = 31.2622  (least squares on log-log, n=2..6)
+  => sum_{n>=7} Dr_n ~ 2.2768  =>  r_inf ~ 28.489
+  geometric fit (ratio fixed at 0.7481):  r_inf ~ 27.538
+  naive step-1 extrapolation: a_8 ~ a_7 * r_inf ~ 5.390e+09
+
+-- level-6 -> level-7 generation stats (from rat3_a7.log, 4 shard passes) --
+  raw candidate pairs per pass = 560074296 ; avg boundary |dS| at |S|=6 = 77.5859
+  distinct 7-sets = 189215964 ; dedup factor = 2.9600
+  => a_8 scale: raw pairs ~ a_7 * |dS|(7) ~ 1.68e+10  (|dS| slope ~11.1/step => |dS|~89)
+  => a_8 needs >= 90 shard-passes at 16 B/key and 3 GB/pass
+
+-- verdict slots --
+  (a) exact: a_7 = 189215964   a_7/a_6 = 26.211670   a_7^(1/7) = 15.2202763984
+  ratio <= 48 at n=7 ?  True   (48 - r_7 = 21.7883)
+  ratio still increasing ? True   (r_7 - r_6 = +0.4465)
+  any sign of approaching 48 ? r_7/48 = 0.5461 ; extrapolated r_inf/48 ~ 0.5935

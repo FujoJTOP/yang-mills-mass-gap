@@ -1,0 +1,409 @@
+% =====================================================================
+%  PART III -- THE MEASUREMENT  (the only positive result in the paper)
+%  Replaces the stub.  English only.  Every number carries its source.
+%  Primary sources:
+%    research/v3/species/RUN1.md      (beta = 2.5, L_s = 6, 8; run1)
+%    research/v3/species/RUN3.md      (beta = 2.5, L_s = 8, N = 1.2e4; run3)
+%    research/v3/species/RUN2.md      (estimator identity, m_1 window)
+%    docs/position-current.html       (cost origin, four-model ledger)
+%    docs/paper-v2/ch12-numerics.tex  (beta = 2.2 volume family)
+%    docs/paper-v7/routes20/main.tex  (contact term M_0 ~ a^-8)
+%    docs/yang-mills-frontier.md      (gamma_{w_1} = 0)
+% =====================================================================
+
+\clearpage
+\part{The measurement}
+
+% Section numbering runs continuously through the parts, so that no two
+% sections of this paper carry the same number.  (The v3 source restarted
+% the counter here, which produced a second \S3, \S4, \S5 and \S6.)
+% Cross-references use \label/\ref throughout and are unaffected.
+
+\section{Measuring the atom fraction \texorpdfstring{$w_1$}{w1} at \texorpdfstring{$\beta=2.5$}{beta=2.5}}
+\label{sec:measurement}
+
+This part carries the only positive result of the paper, and it is a measurement, not a theorem:
+everything in it is graded \LE{} except where a statement is arithmetic or definitional. We define
+the quantity (\S\ref{sec:m-what}), report what the lattice actually cost (\S\ref{sec:m-setup}),
+give the numbers (\S\ref{sec:m-results}), show that they are determined by the operator and not only
+by the theory (\S\ref{sec:m-opdep}), list the three systematics that limit them (\S\ref{sec:m-syst}),
+record the two bugs found while producing them (\S\ref{sec:m-bugs}), and say in one place what the
+measurement does and does not establish (\S\ref{sec:m-scope}). The order is deliberate: the negative
+half of this part is longer than the positive half, and the reason is in \S\ref{sec:m-scope}.
+
+\subsection{What is measured}
+\label{sec:m-what}
+
+The object is the atom fraction of the spectral measure of the $0^{++}$ channel at zero momentum.
+Fix the operator, its connected two-point function and its spectral measure,
+\begin{equation}
+O=\tfrac14\operatorname{tr}F^2,
+\qquad
+C(t)=\langle O(t)O(0)\rangle_c=\int e^{-mt}\,d\nu(m^2),
+\qquad
+M_0=C(0)=\operatorname{Var}(O),
+\label{eq:m-defs}
+\end{equation}
+let $m_1$ be the lowest mass in $\nu$ and $f_1^2=\nu(\{m_1^2\})=|\langle G|O|\Omega\rangle|^2$ the
+weight of the lowest atom. The measured quantity is
+\begin{equation}
+w_1 \;=\; \frac{f_1^2}{M_0} \;=\; \frac{\nu(\{m_1^2\})}{\nu(\mathbb{R}_+)}\in[0,1],
+\qquad
+\gamma_{w_1}=0 .
+\label{eq:m-w1}
+\end{equation}
+
+\begin{claimbox}{cE}
+\claimhead{Claim}{(definition, and the one identity that makes it a number).}
+For every gauge-invariant $O$ with $\|O\|<\infty$ one has $0\le w_1\le1$; and $w_1$ is invariant
+under operator rescaling $O\mapsto ZO$.
+\end{claimbox}
+
+\begin{proofx}
+$f_1^2=\nu(\{m_1^2\})\le\nu(\mathbb{R}_+)=M_0$ is the statement that one atom is at most the total
+mass of a positive measure, and positivity gives $f_1^2\ge0$. For the second part, both $f_1^2$ and
+$M_0$ are quadratic in $O$, so $O\mapsto ZO$ multiplies numerator and denominator by $|Z|^2$ and the
+ratio is unchanged; hence the anomalous dimension of $w_1$ vanishes, $\gamma_{w_1}=0$. This is the
+whole content: the identity fixes the value of $w_1$ under a change of normalisation, and fixes
+nothing about its sign. Positivity of $w_1$ is not a scaling statement and is not obtained here.
+\end{proofx}
+
+The scaling identity is what makes the number meaningful, and its failure at finite cutoff is the
+reason a scheme has to be named before any number is quoted:
+\begin{itemize}
+\item the numerator is an infrared quantity, a point mass at the lowest atom;
+\item the denominator is dominated by the ultraviolet contact term of $O^2$ at coincident points,
+  $M_0^{\mathrm{bare}}\sim a^{-8}$;
+\item therefore $w_1^{\mathrm{bare}}=f_1^2/M_0^{\mathrm{bare}}\to0$ as $a\to0$. The ratio is dragged
+  to zero by the denominator, and the vanishing carries no information about the spectrum.
+\end{itemize}
+So $w_1$ is not a number but a family $w_1(L,\beta,t)$, with $t$ the renormalisation scheme, i.e.\
+the prescription that removes the contact term from $M_0$. Every number in this part belongs to one
+explicit member of that family, and to exactly one:
+\begin{equation}
+w_1 \;=\; \frac{A}{C(0)},
+\qquad
+C(t)=\frac{1}{L_t}\sum_{t_0}\langle S(t_0+t)S(t_0)\rangle_c,
+\qquad
+S(t)=\sum_{\mathbf{x}}P(\mathbf{x},t),
+\label{eq:m-est}
+\end{equation}
+with $C(t)$ fitted by $A\,(e^{-mt}+e^{-m(L_t-t)})$ on $t=1,2,3$ at fixed $L_t$, the mass pinned at
+$m_1=1.546$, and $P=\tfrac13\sum_{i<j\le3}\tfrac12\operatorname{Re}\operatorname{tr}U_{ij}$ the
+zero-momentum spatial plaquette sum. In words: the scheme $t$ here is \emph{the bare operator with
+the contact term left in the denominator}, and the measured value is the ratio of the fitted
+amplitude to the unsubtracted $t=0$ correlator of the same operator at the same lattice spacing. It
+is the only scheme the present data define, and it is the scheme to which $0.3427$ belongs. In
+particular it is a finite-$a$ statement: nothing below is a continuum value of $w_1$, and
+\S\ref{sec:m-scope} says so again in the negative list.
+\src{Definitions and the estimator: \code{eq:m-defs}--\code{eq:m-est} follow the pinned conventions
+of \code{RUN1.md:31--39} and \code{RUN3.md:41--47} verbatim (operator, zero-momentum sum, periodic
+time averaging, fit window $t=1,2,3$ at both volumes, $w_1=A/C(0)$, $20$-block delete-one jackknife
+errors). The pinning mass $m_1=1.546$ is the lower edge of the allowed window derived in
+\code{RUN2.md:101--104}. $\gamma_{w_1}=0$ with the reading ``$f_1^2$ and $M_0$ carry the same
+$Z_O^2$'' is \code{docs/yang-mills-frontier.md:339}. The contact term
+$M_0^{\mathrm{bare}}\sim a^{-8}$ and the resulting $w_1^{\mathrm{bare}}\to0$ are
+\code{docs/paper-v7/routes20/main.tex:168--177}.}
+
+\subsection{Lattice setup and cost: how eleven hours became 265 seconds}
+\label{sec:m-setup}
+
+The run is four-dimensional $\mathrm{SU}(2)$ Wilson with $\beta=2.5$ ($\kappa=\beta/2=1.25$), spatial
+volumes $L_s=6$ and $L_s=8$, temporal extent $L_t=12$, periodic boundary conditions, a
+Kennedy--Pendleton heat bath compiled with \code{numba.njit} and \code{fastmath}, and sequential
+single-chain updates. The observable is the zero-momentum spatial plaquette sum \eqref{eq:m-est};
+one configuration yields the correlator at every operator level at once.
+
+The estimate this run replaces was eleven hours per core for a single volume. The cause was not the
+machine and not the algorithm: the plan thermalised each of $10^{5}$ independent configurations
+separately, that is, it paid $10^{5}$ times for $400$ equilibration sweeps each. The fix is one line
+of logic --- thermalise once per chain, then produce configurations consecutively along that chain,
+and measure all operators on each configuration --- and it changes the cost by two orders of
+magnitude. Measured:
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+volume & lattice (sites / links) & $N$ & sweeps/cfg & ms/sweep & wall clock \\
+\midrule
+$L_s=6$  & $6^3\times12$ \ (2592 / 10368) & $6000$  & $6$ & $2.223$ & $290$ s \\
+$L_s=8$  & $8^3\times12$ \ (6144 / 24576) & $4152$  & $3$ & $5.390$ & $265$ s \\
+$L_s=8$  & $8^3\times12$, eight chains $\times\,1500$ & $12000$ & $3$ & --- & $34.0$ s \\
+\bottomrule
+\end{tabular}
+\caption{Cost of the measurement. The first two rows are single-threaded, no parallel; the third is
+the same volume with eight independent chains over \code{prange}, $352.6$ configurations per second.
+Sources: \code{RUN1.md:16--25} (rows 1--2), \code{RUN3.md:20--37} (row 3).}
+\label{tab:m-cost}
+\end{table}
+
+The correctness check is the plaquette,
+$\langle\tfrac12\operatorname{Re}\operatorname{tr}U_p\rangle=0.65270\pm0.00005$ at $L_s=6$,
+$0.65236\pm0.00004$ at $L_s=8$, and $0.65234\pm0.00002$ in the independent eight-chain run, all
+three consistent with the values tabulated for $\mathrm{SU}(2)$ in \cite{creutz} ($\approx0.65$ at
+this coupling). The sampler is therefore
+right; the estimator is a separate matter, and \S\ref{sec:m-syst} is about the estimator.
+
+\begin{qbox}
+\textbf{The eleven-hour estimate was an implementation problem, not a machine problem.} Eleven hours
+per core against $265$ s measured is a factor $1.5\times10^{2}$, and every digit of that factor is
+accounted for by re-thermalisation, not by hardware. The same correction is what makes the
+statistics affordable later: the run that \S\ref{sec:m-syst} says is still needed
+($N\approx4.8\times10^{4}$) costs about $136$ s at the measured throughput, not eleven hours.
+\end{qbox}
+\src{Cost origin and the ``$10^{5}$ thermalisations'' diagnosis: \code{docs/position-current.html:406}
+(``the $11$ h/core of a1 comes from thermalisation being repeated $10^{5}$ times''). Plaquettes and
+sweep times: \code{RUN1.md:23--25}, \code{RUN3.md:20--21,33}. The factor
+$1.5\times10^{2}=11\,\mathrm{h}/265\,\mathrm{s}$ is arithmetic on these two numbers.}
+
+\subsection{Results}
+\label{sec:m-results}
+
+\begin{table}[htbp]
+\centering\small
+\begin{tabular}{@{}llrrrr@{}}
+\toprule
+operator & volume & $w_1$ (at $m_1=1.546$) & $w_1/\sigma$ & $N$ & run \\
+\midrule
+raw ($\tfrac14\operatorname{tr}F^2$) & $L_s=6$, $L_t=12$ & $0.373\pm0.018$  & $20.7\sigma$ & $6000$  & run1 \\
+raw ($\tfrac14\operatorname{tr}F^2$) & $L_s=8$, $L_t=12$ & $0.342\pm0.015$  & $22.8\sigma$ & $4152$  & run1 \\
+raw ($\tfrac14\operatorname{tr}F^2$) & $L_s=8$, $L_t=12$ & $0.3427\pm0.0119$ & $28.8\sigma$ & $1.2\times10^{4}$ & run3 \\
+\bottomrule
+\end{tabular}
+\caption{The measurement. Errors are $20$-block delete-one jackknife. Sources:
+\code{RUN1.md:47,52} (rows 1--2), \code{RUN3.md:51} (row 3); the $w_1/\sigma$ column is the ratio of
+the two columns to its left ($0.373/0.018=20.7$, $0.342/0.015=22.8$, $0.3427/0.0119=28.8$).}
+\label{tab:m-results}
+\end{table}
+
+Three readings of Table~\ref{tab:m-results}, in increasing order of how much they cost:
+
+\begin{enumerate}
+\item \emph{Reproducibility.} The two $L_s=8$ runs are independent: different seeds, $8$ chains
+  instead of one, $N$ larger by a factor $2.9$. They agree to $+0.0004$, that is $0.02\sigma$. The
+  number did not move when the statistics tripled, and that is the strongest single statement in
+  this part.
+\item \emph{Significance at fixed mass.} $0.3427/0.0119=28.8\sigma$ away from zero. This is the
+  significance of $w_1$ with $m_1$ pinned; it is \emph{not} the signal-to-noise of the correlator,
+  which is $5.0$ and is discussed in \S\ref{sec:m-syst}. The two numbers are not interchangeable and
+  we do not present the larger one as if it were the smaller one's replacement.
+\item \emph{Volume dependence.} $(0.373-0.342)/0.373=8.3\%$ between $L_s=6$ and $L_s=8$: the
+  fraction does not dilute with volume, in contrast with the free-field behaviour.
+\end{enumerate}
+
+The volume trend is available at a second coupling, where the same estimator was run on three
+volumes: at $\beta=2.2$ the unsmeared ratio runs $C_1/C_0=0.1367\to0.1229\to0.1216$ for $L=4,6,8$,
+a drop and then a plateau rather than a $1/L$ decay, and the three-volume fit of the upper bound
+$\hat w_1(t)=e^{mt}C(t)/C(0)$ to $w_\infty+c/L$ gives $w_\infty\approx0.54$. The worst point of that
+family is therefore at $L=4$, the smallest volume, and not at $L=\infty$: the finite volume pushes
+the fraction \emph{down}, so the $\beta=2.5$ pair sits inside a plateau rather than on a falling
+edge. This is a trend, not a limit, and it is the reason we do not extrapolate
+$w_1(2.5)$ to $L=\infty$ anywhere in this paper.
+\src{Agreement $0.02\sigma$ and the $28.8\sigma$ ratio: \code{RUN3.md:11--12,51}. The $8.3\%$:
+\code{RUN1.md:59} and \code{docs/paper-v2/ch12-numerics.tex:281}. The $\beta=2.2$ family
+$0.1367\to0.1229\to0.1216$ for $L=4,6,8$, the fit to $w_\infty+c/L$ with $w_\infty\approx0.54$, and
+the reading ``inside the plateau, not on a falling edge'': \code{docs/paper-v2/ch12-numerics.tex:284--288};
+the same family and the statement that the infimum sits at $L=4$: \code{docs/position-current.html:382}.}
+
+\subsection{Operator dependence}
+\label{sec:m-opdep}
+
+This subsection is the most important one in the paper, because it converts the number above from a
+fact about Yang--Mills into a fact about a pair.
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\begin{tabular}{@{}lrrrr@{}}
+\toprule
+basis (same chain, same $12000$ configurations) & $C(0)$ & $C(1)/C(0)$ & $w_1$ & $S/N(2)$ \\
+\midrule
+raw ($\tfrac14\operatorname{tr}F^2$)      & $19.888$ & $0.07372\pm0.00265$ & $0.3427\pm0.0119$ & $5.0$ \\
+spatial APE, $n=1$                        & $45.527$ & $0.00302\pm0.00297$ & $0.0168\pm0.0142$ & $0.9$ \\
+spatial APE, $n=2$                        & $39.428$ & $0.00150\pm0.00298$ & $0.0107\pm0.0136$ & $1.6$ \\
+\bottomrule
+\end{tabular}
+\caption{One Markov chain, one set of $12000$ configurations, three operators, all at $m_1=1.546$.
+Only the operator changes. Source: \code{RUN3.md:49--53}.}
+\label{tab:m-bases}
+\end{table}
+
+The ratio of the first row to the second is $0.343/0.017\approx20.2$. Same chain, same
+configurations, same jackknife blocks, same fit window: nothing statistical distinguishes the two
+numbers, and the difference is not a bug (\S\ref{sec:m-bugs} lists the bugs that were found, and this
+is not one of them).
+
+\begin{v3box}
+\textbf{The twenty-fold difference is a theorem about notation, realized on data.} Take a
+Hamiltonian $H$ whose lowest atom $m_1^2$ is two-fold degenerate, with orthonormal vectors
+$\psi_1,\psi_2$, and fix the source family
+\[
+O_\theta=\mathbf 1+\varepsilon\,(\cos\theta\,\psi_1+\sin\theta\,\psi_2),
+\qquad \varepsilon\ll1 .
+\]
+$H$ is untouched, so the spectrum is untouched: $m_1$, every $m_n$, and the support of $\nu$ are the
+same for every $\theta$. But the overlap of the excited part with the lowest atom is
+$\varepsilon\cos\theta$, so $f_1^2=\varepsilon^2\cos^2\theta$, while in the scheme $t$ that removes
+the contact term carried by $\mathbf 1$ one has $M_0=\varepsilon^2$. Hence
+\[
+w_1=\cos^2\theta\in[0,1],
+\qquad \text{spectrum fixed.}
+\]
+As $\theta$ runs over $[0,\pi/2]$, $w_1$ sweeps the whole unit interval at a fixed, massive,
+unchanged spectrum. The statement is \LT{} --- the proof is \S\ref{sec:reduction-operator} --- and on
+these configurations it is additionally \LE, since the factor $20.2$ of Table~\ref{tab:m-bases} is
+its instance at $\cos^2\theta=0.049$.
+\end{v3box}
+
+The consequence is a statement about language, and it is not negotiable: the sentence
+``$w_1(2.5)>0$'' has no content until $O$ is specified. $w_1$ is a property of the pair $(H,O)$ and
+not of $H$ alone; Table~\ref{tab:m-bases} is that sentence instantiated on real configurations, with
+the factor $20.2$ standing in for the free parameter $\theta$. Two corollaries follow.
+\begin{itemize}
+\item A change of operator basis is not a change of statistics, so no amount of $N$ will move
+  $0.0168$ towards $0.3427$; and no amount of $N$ will make the two agree.
+\item The uniqueness statement \texttt{N09-1} --- ``any quantity that passes the four-model test is a
+  function of $m$'' --- is true only under \textbf{fixed $O$}. Under a change of $O$ at fixed $H$ the
+  quantity moves by a factor $20$ while $m$ does not move at all. This is ledger item $38$, and it is
+  the reason the qualifier is now written into the statement rather than left implicit. \LC{}
+\end{itemize}
+\src{Table~\ref{tab:m-bases} and the factor $20.2$: \code{RUN3.md:49--53}; the same factor quoted as
+``$0.343$ vs $0.017$, factor $20$'' at \code{docs/position-current.html:378}. The
+$\cos^2\theta$ witness is the one-line counterexample of route \code{u11}, quoted in the abstract of
+this paper; the ledger entry is item $38$ at
+\code{docs/paper-v7/ledger/main.tex:268}, with the fixed-$O$ qualifier at
+\code{docs/position-current.html:378}.}
+
+\subsection{Three systematics}
+\label{sec:m-syst}
+
+None of the three is fatal and all three are load-bearing for \S\ref{sec:m-scope}; we state them in
+the order in which they would mislead a reader who stopped after Table~\ref{tab:m-results}.
+
+\begin{warnbox}
+\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=2.1em]
+\item \textbf{The signal-to-noise is below the campaign's own threshold, and the $1/\sqrt N$ route to
+  it is dead.} $S/N(2)=C(2)/\sigma_{\mathrm{JK}}=5.0$, with
+  $C(2)/C(0)=0.01189\pm0.00238$. The extrapolation used in the planning stage --- $\sigma\propto
+  N^{-1/2}$, so $5.9$ at $N=4152$ should become $10$ at $N=1.2\times10^{4}$ --- failed: $N$ rose by
+  $2.9\times$ and $S/N$ went from $5.9$ to $5.0$. The requirement is therefore
+  $N\approx1.2\times10^{4}\times(10/5.0)^{2}\approx4.8\times10^{4}$, about $136$ s at the measured
+  $352.6$ configurations per second. Statistics can be bought; they were not bought here, and the
+  threshold $S/N\ge10$ is not met.
+\item \textbf{The time correlation is killed by the operator basis, so the GEVP route is unavailable.}
+  With spatial APE ($n=1$, $\alpha=0.5$, time direction not smeared, staple normalised $/4$),
+  $C(1)/C(0)=0.0030\pm0.0030$ and $C(2)/C(0)=+0.0030\pm0.0032$; $n=2$ gives
+  $0.0015\pm0.0030$ and $+0.0034\pm0.0022$. The earlier $/6$ normalisation of run1 gives the same
+  $10^{-3}$. So $C(1)\to0$ with $S/N\le1.6$: the projected correlator is a contact term, not a
+  propagating state, and a generalised eigenvalue extraction of $m_1$ --- the standard variational
+  spectroscopy of \cite{morningstar} --- hence any statement about
+  the $\beta$- or $a$-dependence of $w_1$, cannot be built on this basis at $L\le8$.
+\item \textbf{The dominant uncertainty is the smearing level, not the volume.} The spread induced by
+  the smearing parameter $s$ is $0.29$, against $0.07$ for the volume $L$: a factor $4$. Since the
+  $L$-dependence of Table~\ref{tab:m-results} is $8.3\%$, quoting it as an error bar while holding the
+  operator fixed would understate the operator dependence of \S\ref{sec:m-opdep} by the very factor
+  the quantity is most sensitive to.
+\end{enumerate}
+\end{warnbox}
+\src{(1) $S/N(2)=5.0$, $C(2)/C(0)=0.01189\pm0.00238$, the failed $1/\sqrt N$ extrapolation
+($5.9\to5.0$ at $2.9\times$ the statistics), and $N\approx4.8\times10^{4}$:
+\code{RUN3.md:13--14,51,84}; the $136$ s is $4.8\times10^{4}/352.6$ on the throughput of
+\code{RUN3.md:37}. Note one internal inconsistency in that file, which we resolve in favour of the
+table and flag rather than repair: the prose at \code{RUN3.md:14} writes $\pm0.0038$, which would
+give $S/N(2)=3.1$ and contradicts its own quoted $5.0$; the table value $\pm0.00238$ reproduces
+$0.01189/0.00238=5.0$ and is the one used here. (2) The three APE levels, the $/4$ versus $/6$
+normalisation, $S/N(2)\le1.6$ and ``this GEVP route is unusable'': \code{RUN3.md:8--10,52--53,56,66}.
+(3) ``$s$-broadening $0.29$ is $4\times$ the $L$-broadening $0.07$'': \code{U14.md:88--89} as
+recorded at \code{RUN2.md:8}.}
+
+\subsection{Two bugs found}
+\label{sec:m-bugs}
+
+Both are recorded because the second one is the mechanism by which a wrong number would have entered
+the paper, and the first one is the mechanism by which a whole class of earlier numbers may already
+have.
+
+\begin{qbox}
+\textbf{Bug 1: smearing mutated the Markov chain in place.} The first version of the smeared run
+passed \code{Ut = U[c]} --- a \code{numpy} \emph{view}, not a copy --- into the APE routine, which
+modified it in place. The chain was then continued from the smeared configuration instead of the
+sampled one. Symptoms: heat-bath acceptance degraded as $x\to\pm1$, and a single job went from about
+$40$ s to more than $10$ min. Fix: allocate \code{buf = np.empty\_like(U[c])} and copy per
+configuration. Consequence: \textbf{any earlier result of the form ``smear, then re-measure'' may be
+contaminated}, and we do not certify a smeared level produced before the fix. The raw ($n=0$) numbers
+of Tables~\ref{tab:m-results} and~\ref{tab:m-bases} are unaffected, since the raw path applies no
+smearing at all.
+
+\textbf{Bug 2: the self-contradiction that was not one.} The run chain reported $w_1=0.577$ against
+the strict ceiling $\hat w_1(1)=e^{m_1}C(1)/C(0)=0.551$. Since $w_1\le\hat w_1(1)$ is an identity,
+the pair $(0.577,\,0.551)$ is impossible, and it was flagged as an internal contradiction. It is not:
+the mass had been pinned at $m=1.50$, and the reported value is consistent only for $m_1\ge1.546$.
+At $m_1=1.546$ the same data give $0.373\pm0.018$. The resolution is therefore that \emph{the pinned
+value was wrong}, and the identity is exactly what caught it. Two consequences we keep: every $w_1$
+in this part is quoted at $m_1=1.546$, the lower edge of the allowed window, so they are
+\emph{lower edges and not central values}; and ``report $\hat w_1(t)$ alongside $w_1$'' is now a
+mandatory step of the analysis, not a courtesy.
+\end{qbox}
+\src{Bug 1: \code{RUN3.md:76--78}. Bug 2: the ceiling $\hat w_1(1)=e^{m_1}C_1/C_0=0.551$, the
+reported $0.577$, the window $m_1\ge1.546$ and the instructive reading of the pair:
+\code{RUN2.md:101--104}; the pinned-$1.546$ values are those of Table~\ref{tab:m-results}.}
+
+\subsection{What this does and does not establish}
+\label{sec:m-scope}
+
+\begin{v3box}
+\textbf{What can be said.} For the raw operator $O=\tfrac14\operatorname{tr}F^2$, at $\beta=2.5$,
+$L_s=8$, $L_t=12$, in the scheme \eqref{eq:m-est}, the atom fraction is
+\[
+w_1=0.3427\pm0.0119 ,
+\]
+which is $28.8\sigma$ away from zero and reproduced by an independent run at $0.02\sigma$; the
+dependence on the volume between $L_s=6$ and $L_s=8$ is $8.3\%$; and at $\beta=2.2$ the family over
+$L=4,6,8$ decreases and then flattens, with the infimum at the smallest volume. That is the positive
+content of this paper, and it is a measurement (\LE{}), not a floor.
+\end{v3box}
+
+\begin{warnbox}
+\textbf{What cannot be said.} Four sentences, each of which the numbers above forbid.
+\begin{enumerate}[label=\textbf{(\roman*)},leftmargin=2.3em]
+\item \emph{``$w_1>0$ for any operator.''} A change of basis on the same configurations gives
+  $0.0168\pm0.0142$, a factor $20.2$ smaller (\S\ref{sec:m-opdep}). $w_1$ is a property of $(H,O)$.
+\item \emph{``The signal-to-noise is enough.''} $S/N(2)=5.0<10$ (\S\ref{sec:m-syst}, item 1). The
+  $28.8\sigma$ of Table~\ref{tab:m-results} is the significance of $w_1$ at pinned mass and does not
+  replace it.
+\item \emph{``Time correlations are present.''} $C(1)/C(0)=0.003$ and the GEVP route is unavailable
+  on these volumes (\S\ref{sec:m-syst}, item 2).
+\item \emph{``This advances Clay.''} $w_1$ and $m$ do not imply one another in either direction:
+  \begin{itemize}
+  \item \textbf{2D Yang--Mills:} $m=3g^2/8>0$ while $\nu_{\frac14\operatorname{tr}F^2}\equiv0$; and
+    more strongly, $m(L)=\sigma L\to\infty$ while $w_1=0$. A local operator is blind to the gap.
+  \item \textbf{M6} (oscillator $\otimes$ free module): $w_1=0.5$ while $m=0$.
+  \item \textbf{Free field:} $w_1=0$ while $m=0$.
+  \end{itemize}
+  So this measurement does \textbf{not} prove the mass gap, and the direction of the failure is not
+  the direction a reader might expect: the failure is not that the number is small or noisy, it is
+  that the number is orthogonal to the gap.
+\end{enumerate}
+\end{warnbox}
+
+One qualification about the fourth item, because it is easily confused with \S\ref{sec:m-opdep}, and
+the two must be kept apart rather than merged. \S\ref{sec:m-opdep} varies $O$ at \emph{fixed} $H$:
+one theory, two operators, a factor $20.2$. Item (iv) compares \emph{different} $H$: four models, in
+each of which $w_1$ and $m$ point in opposite directions. The first says the quantity is not a
+function of the theory alone; the second says that even after the operator is fixed, the quantity is
+not a function of the gap. Both are needed, and neither implies the other.
+
+\medskip
+\noindent\textbf{What the residual actually is.} Not statistics: \S\ref{sec:m-syst} item 1 says the
+statistics cost $136$ s and can be bought. Not the volume: item 3 says the volume contributes $0.07$
+against $0.29$ for the operator. What is missing is an operator basis that keeps a propagating
+correlation at these volumes (item 2), and --- above that --- an argument that connects the atom
+fraction to the mass at all, which item (iv) shows cannot be an implication in either direction. The
+measurement is honest, reproducible, and it does not move the verdict.
+\src{Item (iv) in full, including $m=3g^2/8>0$ with $\nu_{\frac14\operatorname{tr}F^2}\equiv0$, the
+stronger $m(L)=\sigma L\to\infty$ with $w_1=0$, M6 with $w_1=0.5$ and $m=0$, and the free field with
+$w_1=0$ and $m=0$: \code{docs/position-current.html:392}. The cost claim is
+Table~\ref{tab:m-cost} and the $136$ s arithmetic of \S\ref{sec:m-syst}; the $0.07$ versus $0.29$
+split is item 3 of \S\ref{sec:m-syst}. The grading \LE{} for the measurement and the refusal to call
+it a floor follow the provenance rule of the front matter.}

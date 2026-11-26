@@ -1,0 +1,70 @@
+==============================================================================
+V06 -- KP/polymer radius of 4D SU(N):  c, N-scaling, ceiling
+==============================================================================
+inputs: Delta=20, lam_a=e*Delta=54.3656, K<=591.1*e^beta*N, SZZ LSI=1/48=0.02083
+
+[1] KP radius beta_1(N) from u*K<1   (u = c_f/N, K = 591.1 e^beta N)
+    beta_1(N) = W(N/295.6)   [W = Lambert W, principal branch]
+         N         beta_1       beta_1/N    g2_1=2N/b u_max=1/(C_K N) 1/48 binds?
+         2   6.721434e-03   3.360717e-03     595.1111   8.4585e-04        yes
+         3   1.004866e-02   3.349554e-03     597.0944   5.6390e-04        yes
+         4   1.335400e-02   3.338501e-03     599.0713   4.2292e-04        yes
+         5   1.663778e-02   3.327556e-03     601.0418   3.3834e-04        yes
+         6   1.990030e-02   3.316717e-03     603.0059   2.8195e-04        yes
+         7   2.314188e-02   3.305983e-03     604.9637   2.4167e-04         no
+         8   2.636282e-02   3.295352e-03     606.9154   2.1146e-04         no
+        10   3.274391e-02   3.274391e-03     610.8006   1.6917e-04         no
+        20   6.350407e-02   3.175204e-03     629.8809   8.4585e-05         no
+        50   1.461647e-01   2.923294e-03     684.1597   3.3834e-05         no
+       100   2.606950e-01   2.606950e-03     767.1801   1.6917e-05         no
+       300   5.725530e-01   1.908510e-03    1047.9379   5.6390e-06         no
+       830   1.016339e+00   1.224505e-03    1633.3131   2.0382e-06         no
+      1000   1.112377e+00   1.112377e-03    1797.9519   1.6917e-06         no
+      5000   2.090778e+00   4.181555e-04    4782.9093   3.3834e-07         no
+    normalisation A (u = c_f, no per-link 1/N): beta_1 = 3.371993e-03  (N-independent) [= repo 1/298]
+    crossing beta_1 = 1/48 at N = 6.29 ;  beta_1 = 1 at N = 803.4 ;  beta_1 = 2.5 at N = 9002
+    A/B ratio = N/2  =>  adopting Z06 normalisation relaxes beta_1 by exactly N/2
+
+[2] colours needed for the physical targets (beta_1 >= beta_target), crude K
+    SU(2) beta=2.5     beta_target=2.50 -> N >= 9002
+    SU(3) beta=2.89    beta_target=2.89 -> N >= 15369
+    beta=1             beta_target=1.00 -> N >= 803
+    with K improved by factor F: N >= N_above / F
+      F=   6 : N >=     1500 (for beta=2.5)
+      F=  10 : N >=      900 (for beta=2.5)
+      F=  25 : N >=      360 (for beta=2.5)
+      F= 100 : N >=       90 (for beta=2.5)
+      F= 620 : N >=       15 (for beta=2.5)
+
+[3] structural ceiling from the tube family ALONE (no counting constant at all)
+    x* = sqrt(sqrt2-1) = 0.643594 ;  u* = x* exp(-x*^4/(1-x*^4)) = 0.523199
+    => any KP-type expansion with the true tube weights needs u <= 0.523199
+    => beta <= 2 N^2 u* = 1.0464 N^2 :  N=2 -> 4.186   N=3 -> 9.418   N=4 -> 16.742
+    SU(2), beta=2.5 exact: u_tile=I2/I1=0.507195 (=c_f/N), c_f=1.014390
+    u(2.5)/u* = 0.9694  -> INSIDE (not excluded)
+    budget check at u=u(2.5): a*=ln(x*/u)=0.238173, tube sum Psi(x*)=0.207107, slack=0.031066
+    (slack > 0 but the slack is consumed by the very next family: (u e^a)^2 = 0.4142)
+
+[4] constant headroom at the physical points (need K < 1/u, vs K <= 591.1 N)
+    SU(2) b=1.0  u_exact=I2/I1=0.2402  (leading beta/(2N^2)=0.1250, ratio 1.92)
+    SU(2) b=2.5  u_exact=I2/I1=0.5072  (leading beta/(2N^2)=0.3125, ratio 1.62)
+    SU(2) b=2.5    u=5.0720e-01  K_need<1.972  K_have<=1182.2  improvement x600  [u source: exact Bessel]
+    SU(2) b=1      u=2.4019e-01  K_need<4.163  K_have<=1182.2  improvement x284  [u source: exact Bessel]
+    SU(3) b=2.89   u=1.6056e-01  K_need<6.228  K_have<=1773.4  improvement x285  [u source: leading order]
+    available headroom: lam_a 54.37 -> true 4D animal constant ~9 (M) = x6.0 ;
+    C_g<=2Ne^beta -> sharper (=x2..4, M) ; total plausible 10-30x
+
+[5] candidate improvements, arithmetic verdict
+    (i)  normalisation u=c_f/N (Z06) : beta_1 multiplied by exactly N (A->B):
+         N=2 x2.0, N=3 x3.0, N=10 x10 -- the single largest available gain  [T]
+    (ii) joint bound over families: KP already sums ALL gamma contains x; splitting and
+         re-adding the bounds returns the same inequality => zero gain  [T]
+    (iii) multiscale first layer: cannot be priced here (v04 open)   [NG]
+    (iv) 1/N leading term: beta_1 ~ N/295.6 (linear), but g2_1 = 2N/beta_1 ~ 594 + O(ln N)
+         => in 't Hooft coupling the window is N-independent: no physical gain  [T]
+
+==============================================================================
+VERDICT  beta_1^KP(N) = W(N/295.6);  c = 1/295.6 = 3.383e-3 in beta_1 = c N;
+         tube ceiling u* = 0.5232 => beta < 1.046 N^2 (does not exclude beta=1);
+         crude K needs x619 improvement at SU(2),2.5 -> headroom 10-30x => (b).
+==============================================================================

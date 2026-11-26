@@ -1,0 +1,129 @@
+ac_acid_bd.py   start 2026-11-25 12:39:22
+numpy 2.4.6
+
+==============================================================================
+PART 1 -- beta = 0 : what the measure is, and whether it has a gap
+==============================================================================
+  S_W = beta * sum_p (1 - tr U_p /2)  =>  at beta = 0,  S_W == 0  IDENTICALLY
+  => mu = product over links of Haar(SU(2))  (iid), the infinite-coupling point.
+
+  [exact] one-link draw: mean Re tr U = +6.54e-05 +- 1.58e-03   (Haar: 0)
+          E|tr U|^2 = 1.000164 +- 1.58e-03   (Haar SU(2): 1)
+          unitarity max |U U^dag - 1| = 6.67e-16
+
+  p1 links [(0, (0, 0, 0, 0)), (1, (1, 0, 0, 0)), (0, (0, 1, 0, 0)), (1, (0, 0, 0, 0))]
+  p2 links [(0, (2, 2, 0, 0)), (1, (3, 2, 0, 0)), (0, (2, 3, 0, 0)), (1, (2, 2, 0, 0))]   intersection = []
+  p3 links [(0, (1, 0, 0, 0)), (1, (2, 0, 0, 0)), (0, (1, 1, 0, 0)), (1, (1, 0, 0, 0))]   intersection = [(1, (1, 0, 0, 0))]
+  <tr p1> = -0.00004 +- 0.00158
+  <tr p2> = -0.00085 +- 0.00158
+  <tr p3> = -0.00282 +- 0.00158
+
+  [M] connected correlator, link-DISJOINT (p1,p2): +8.99e-04 +- 1.58e-03   (0.57 sigma from 0)
+  [M] connected correlator, shares 1 link (p1,p3): +0.00150 +- 0.00158   (1.0 sigma from 0)
+  [T] why both are 0: E_Haar[U] = 0, so E[tr(U A)] = 0 for ANY fixed A, and every
+      single-trace plaquette correlator collapses => the 2-point function has NO
+      connected part at ANY separation, overlapping or not.  xi = 0 => m = inf.
+
+  [T] exact solvable corner (Z2 2+1D, beta_s = 0): T = prod_l (1 + t sigma_x),
+      t = exp(-2 beta)  =>  eigenvalues prod_l (1 +- t)  =>  lam2/lam1 = (1-t)/(1+t)
+      =>  m(beta) = -ln tanh(beta)      [closed form, L-independent]
+      beta      t=e^-2b     m=-ln tanh b   m (dense T, 4 links)     |diff|
+     0.010 9.801987e-01      4.605203519            4.605203519   4.44e-15
+     0.020 9.607894e-01      3.912156326            3.912156326   4.44e-16
+     0.050 9.048374e-01      2.996565121            2.996565121   1.33e-15
+     0.100 8.187308e-01      2.305910670            2.305910670   2.22e-15
+     0.250 6.065307e-01      1.406829114            1.406829114   0.00e+00
+     0.500 3.678794e-01      0.771936833            0.771936833   6.66e-16
+     0.750 2.231302e-01      0.453895737            0.453895737   5.55e-16
+     1.000 1.353353e-01      0.272341469            0.272341469   2.78e-16
+     1.500 4.978707e-02      0.099656533            0.099656533   1.11e-16
+     2.000 1.831564e-02      0.036635375            0.036635375   2.29e-16
+     4.000 3.354626e-04      0.000670925            0.000670925   5.55e-16
+  => beta -> 0 : m -> +inf  (rank-one T at beta = 0 exactly).  beta -> inf : m ~ 2 e^{-2 beta} -> 0.
+
+  [T] gamma_true(beta=0) = lambda_1(SU(2), unit metric) = l(l+2)|_(l=1) = 3 >= 0.75  => BD's bound is TRUE at beta = 0.
+   VERDICT PART 1: beta = 0 is NOT an acid point.  The criterion says 'gap', the
+   physics says 'gap = infinity'.  Nobody fails.
+
+==============================================================================
+PART 2 -- beta -> infinity / Gaussian action = the real acid point
+==============================================================================
+  Take S_W = (1/2) phi^T A phi with A = -Delta + m^2  (SPD), the free field of mass m.
+  B_t(x) = int K_t(z) e^{-S_W(x+z)} dz  with K_t(z) = (2 pi t)^{-n/2} e^{-|z|^2/2t}
+  =>  B_t prop exp(-(1/2) x^T (A - A M^{-1} A) x),  M = A + t^{-1} 1
+  =>  Hess V_t = A - A(A + t^{-1})^{-1}A = A^{1/2}[1 - (1 + A^{-1}/t)^{-1}]A^{1/2} >= 0
+      (spectrum: a - a^2/(a + 1/t) = a/(1+at) >= 0).  =>  q == 0  =>  Q(inf) = 0.
+  This holds for EVERY Gaussian S_W, hence in particular at beta = infinity.
+
+  witness lattice T^4_3 (n = 81), t-grid 33 log-spaced points in [0, 1e3]
+       m min_t lambda_min(Hess V_t)   q=max(0,-lam_min)   Q(inf)=int q
+    0.50         9.960159362550e-04           0.000e+00      0.000e+00
+         (spectrum is EXACT: eig(Hess V_t) = a/(1+at); matrix-vs-spectral max err 6.08e-15)
+         (COV-T sec 4's A(I+2tA)^-1 (same object, t -> 2t), one point: min eig 2.499e-01 >= 0)
+    1.00         9.990009990010e-04           0.000e+00      0.000e+00
+         (spectrum is EXACT: eig(Hess V_t) = a/(1+at); matrix-vs-spectral max err 8.44e-15)
+         (COV-T sec 4's A(I+2tA)^-1 (same object, t -> 2t), one point: min eig 9.990e-01 >= 0)
+
+  Now the free field's TRUE constant.  For the Gaussian measure N(0, C) with
+  C = A^{-1} and E(f,f) = int |grad f|^2 d mu :  gamma = 1/lambda_max(C) = lambda_min(A).
+  On a torus the k = 0 mode is present (periodic), so lambda_min(A) = m^2 exactly.
+
+     L   lambda_min(A) (k=0)          m^2     |diff| lambda_min (k!=0) = m^2+4sin^2(pi/L)
+     4        0.250000000000     0.250000   7.22e-16     2.250000000000 vs  2.250000000000
+     6        0.250000000000     0.250000   1.11e-15     1.250000000000 vs  1.250000000000
+     8        0.250000000000     0.250000   5.55e-16     0.835786437627 vs  0.835786437627
+    16        0.250000000000     0.250000   2.12e-14     0.402240934977 vs  0.402240934977
+
+  [T] gamma_free(m) = m^2 .   BD at the free point gives gamma >= 0.75 (or 0.375).
+  VIOLATION  <=>  m^2 < 0.75  <=>  m < 0.866025   (N/4 reading)
+             <=>  m^2 < 0.375  <=>  m < 0.612372   (N/8 reading)
+  At m = 0 (massless free field, a -> 0): gamma_free = 0 < 0.75 : the criterion's
+  conclusion is FALSE.  And it is false at every FINITE m below the crossing --
+  no limit is being taken.  That is the acid point, and the failure is pointwise.
+
+==============================================================================
+PART 3 -- is the free field on a FINITE lattice gapless?  No.  Does that save BD?  No.
+==============================================================================
+  [T] free field on T^3_L, k = 0 removed by the Gauss law (qg3_acid PART ACID 1):
+      lambda_1 = 4 sin^2(pi/L),   m_1 = 2 sin(pi/L)  > 0  for every finite L.
+  [T] bridge R1: gamma <= lambda_1(mu_vac) = 2 m_1  =>  BD gives  m_1 >= c / (2 or 1).
+
+     L   m_1 = 2sin(pi/L)    m_1/(c/2), c=0.75   m_1/(c/2), c=0.375
+     4        1.414213562               3.7712               7.5425
+     6        1.000000000               2.6667               5.3333
+     8        0.765366865               2.0410               4.0820
+    12        0.517638090               1.3804               2.7607
+    16        0.390180644               1.0405               2.0810
+    17        0.367499036               0.9800               1.9600
+    24        0.261052384               0.6961               1.3923
+    32        0.196034281               0.5228               1.0455
+    64        0.098135349               0.2617               0.5234
+   128        0.049082457               0.1309               0.2618
+
+  crossings (m_1 = c/2 and m_1 = c):  L* = pi / asin(c / (2 factor))
+     c=N/4, m_1>=c/2 :  L* =    8.173   => violated at integer L >= 9
+       c=N/4, m_1>=c :  L* =    3.704   => violated at integer L >= 4
+     c=N/8, m_1>=c/2 :  L* =   16.656   => violated at integer L >= 17
+       c=N/8, m_1>=c :  L* =    8.173   => violated at integer L >= 9
+
+  So: lambda_1(free, finite L) > 0  is TRUE (the premise of death-line (b)), but it
+  does NOT make the failure a limit-only statement: the quantitative bound is
+  already violated at FINITE L and at FINITE m.  Table of the four readings above:
+    L* = 3.704 / 8.173 / 8.173 / 16.656  ->  integer thresholds 4 / 9 / 9 / 17
+    (R1's own normalisation, gamma <= 2 m_1, with c = N/4 and c = N/8, gives
+     L* = 16.656 and 33.46 -> violated at L >= 17 and L >= 34).
+  What IS limit-only is the *sign* statement: on any finite lattice every beta has
+  a gap (finite volume, discrete spectrum), so no sign test can ever fail.
+  => the acid test can only be about UNIFORMITY / the continuum limit, but the
+     failure is already visible at finite parameters.  Both halves matter.
+
+==============================================================================
+PART 4 -- verdict table (this run)
+==============================================================================
+  beta = 0            : gap = infinity [T]; gamma_true = 3 >= 0.75 [T+M]  -> criterion CORRECT, not an acid point
+  beta -> infinity    : q == 0 [T], Q(inf) = 0 [T+M]; gamma_BD >= 0.75;
+                        gamma_free = m^2 [T] -> violated for all m < 0.8660 (or 0.6124)
+  finite L            : m_1 = 2 sin(pi/L) > 0 [T], but m_1 < c/2 for L >= 17 (c=N/4) / L >= 34 (c=N/8) [T]
+  => (a) holds: the acid test fails at the FREE point, and it fails pointwise in
+     (m, L).  (b): premise true, inference false.  (c): false -- R1's map is [T].
+total wall 5.4 s
