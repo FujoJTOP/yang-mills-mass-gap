@@ -1,0 +1,84 @@
+==============================================================================
+GO2-SOFTMODE verification  (pure stdlib, exact diagonal algebra, no MC)
+==============================================================================
+
+[1] Construction A: H = diag(0,1,2,...);  H_a = transplant e_N -> eps, tail shifted down
+    N_a = round(1/a), eps_a = a.   Delta_cont = 1.
+
+    a          N      eps        Delta_a    d_H(H_a,H)  d_H(naive)  ker_dim  max_mult
+    1.0e-01    10     1.0e-01    1.0e-01    1.0e-01     1.0e+00     1        1       
+    1.0e-02    100    1.0e-02    1.0e-02    1.0e-02     1.0e+00     1        1       
+    1.0e-03    1000   1.0e-03    1.0e-03    1.0e-03     1.0e+00     1        1       
+    1.0e-04    10000  1.0e-04    1.0e-04    1.0e-04     1.0e+00     1        1       
+
+    => Delta_a = eps_a -> 0  while Delta_cont = 1:  liminf Delta_a = 0 < 1 = Delta_cont.
+    => d_H = eps_a -> 0 for the shifted family (Hausdorff convergence HOLDS).
+    => the naive transplant has d_H = 1 (hole at N): the tail shift is what saves Hausdorff.
+    => every eigenvalue is simple (max_mult = 1) and ker H_a = R e_0 (ker_dim = 1).
+
+[2] Resolvent difference at z = -1:  D_a = (H_a+1)^{-1} - (H+1)^{-1}
+
+    a        N      ||D_a psi||: uniform     1/(n+1)      random     ||D_a||_op
+    1.0e-01  10     1.83e-01           5.80e-02     1.21e-03    0.818       
+    1.0e-02  100    0.00e+00           7.57e-03     2.42e-03    0.980       
+    1.0e-03  1000   0.00e+00           7.77e-04     4.42e-03    0.998       
+    1.0e-04  10000  0.00e+00           7.79e-05     1.34e-03    1.000       
+
+    => strong resolvent convergence holds (all test vectors -> 0),
+       but ||D_a||_op -> 1: convergence is strong, NOT in norm.
+
+[3] Relative bounds of A_a = H_a - H  (the sharp threshold is 1)
+
+    a        N      eps_form = sup|<A>|/||H^1/2||^2    ||A(H+1)^{-1}||    1-eps_form
+    1.0e-01  10     0.990000                       0.900000             1.00e-02  
+    1.0e-02  100    0.999900                       0.990000             1.00e-04  
+    1.0e-03  1000   0.999999                       0.999000             1.00e-06  
+    1.0e-04  10000  1.000000                       0.999900             1.00e-08  
+
+    => eps_form = 1 - eps/N = 1 - a^2 -> 1:  the counterexample SATURATES the threshold.
+
+[4] Cost inequality  (1-eps_a)<phi,H phi> <= E_a + b_a  on the soft eigenvector phi=e_N
+
+    a        <phi,Hphi>=N   (1-eps_form)*N   E_a=eps   allowed E*/(1-eps_form)
+    1.0e-01  10              1.000000e-01     1.0e-01    10.0        
+    1.0e-02  100             1.000000e-02     1.0e-02    100.0       
+    1.0e-03  1000            1.000000e-03     1.0e-03    1000.0      
+
+    => (1-eps_form)*N = eps exactly: the cost inequality is TIGHT.
+    => allowed energy grows like 1/(1-eps): escape needs (1-eps_a) -> 0, i.e. eps_a -> 1.
+
+[5] tr exp(-t H_a) is uniformly bounded while Delta_a -> 0  (mechanism 3 is blind)
+
+    t       tr exp(-tH)      tr exp(-tH_a)  (a=1e-3)   Delta_a
+    0.5     2.541494         3.540994             1.0e-03   
+    1.0     1.581977         2.580977             1.0e-03   
+    2.0     1.156518         2.154520             1.0e-03   
+
+    => tr exp(-tH_a) = 1/(1-e^{-t}) + e^{-eps} - e^{-N} -> 1/(1-e^{-t}) + 1  (bounded),
+       while Delta_a = eps_a -> 0.  A uniform trace bound does NOT force an edge atom.
+
+[6] Bounded-strength rank-one perturbation cannot reach below Delta_cont
+    H_a = H - c|e_N><e_N| with c = 1/2 FIXED, N -> infinity
+
+    N        spectrum gap check:  Delta_a       relative bound c/N
+    10       1.000000       5.000e-02     
+    100      1.000000       5.000e-03     
+    1000     1.000000       5.000e-04     
+
+    => Delta_a = 1 = Delta_cont for all N (the dip would need c >= Delta_cont = 1);
+       relative bound c/N -> 0.  This is Theorem COST on the safe side of the threshold.
+
+[7] GN1-A endpoint witness: limsup sigma(H_a) cap (0, Delta_cont) = empty but liminf Delta_a < Delta_cont
+    limsup is computed as  x in limsup  <=>  dist(x, sigma(H_a)) -> 0 as a -> 0
+    (one-off spectral points eps_a of a finite grid are excluded; a union over a grid is the WRONG object).
+    grid a in [0.1, 0.01, 0.001, 0.0001], N = 1/a
+    limsup sigma(H_a) on [0,2]  ~ [0.0, 1.0, 2.0]
+    limsup cap (0,1) = []   (empty)
+    (union-over-grid cap (0,1) = [0.0001, 0.001, 0.01, 0.1] -- the WRONG object, printed for contrast)
+    liminf Delta_a = 0 < 1 = Delta_cont
+    => GN1-A as stated ('(NEW) <=> limsup cap (0,Delta_cont) = empty') is FALSE at the 0-endpoint;
+       GN1-A' with [0,Delta_cont) and sigma cap (0,inf) is the correct form.
+
+==============================================================================
+ALL CHECKS DONE.  No MC.  exit 0.
+==============================================================================

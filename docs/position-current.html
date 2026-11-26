@@ -537,10 +537,32 @@
 
 
 <footer>
-  位置图 · 第 237 轮 · 生成于 <span class="mono">D:\Dev\math\docs\position-round10.html</span><br>
+  位置图 · 第 238 轮 · 生成于 <span class="mono">D:\Dev\math\docs\position-round10.html</span><br>
   依据：<span class="mono">research/v3/species/</span> 下的 <span class="mono">Z01 / Z05 / Z06–Z12 / Y01 / Y04–Y06 / W95A–W95E / V01–V06</span> · 详细台账见 <span class="mono">LOOP-RUNBOOK.md</span>（460+ KB）<br>
   标签：<span class="lv T">[T]</span> 真定理 · <span class="lv C">[C]</span> 条件/待重证 · <span class="lv E">[E]</span> 数值证据 · <span class="lv NG">[NG]</span> no-go · <span class="lv O">[O]</span> 未读原文
 </footer>
+<div class="card">
+  <h3>第 238 轮：<code>O1</code> 证成、<code>O3</code> 空洞 ⇒ <b>CPB 关闭升为条件式 <code>[T]</code></b>；软模缺口改名 <b><code>(RB)</code></b> <span class="lv T">[T]</span></h3>
+  <div class="note">
+    <b>① <code>O1</code>（<code>n≥7</code> 号定理）→ <code>[T]</code>，<u>对所有 <code>n</code></u>。</b>
+    <code>φ^U(Γ) = (−1)^{n−1}·N(G_Γ)</code>，<code>N(G_Γ) := #{生成树 T ⊆ G_Γ : T 不含任何破圈} ∈ ℤ_{≥1}</code>。证明 = <b>删-缩归纳</b>（<code>μ=μ(G−e)−μ(G/e)</code> 非桥 / <code>μ(G₁)μ(G₂)</code> 桥），<b>只消费「<code>G_Γ</code> 是有限连通图」</b>——与维度、<code>Δ=20</code>、plaquette 结构全无关。关键一步：<code>e</code> 必须取<b>最大边</b>（否则收缩改变 <code>min</code>，映射非双射）。本质 = Whitney 1932 破圈定理，DOI <code>10.1090/S0002-9904-1932-05460-X</code>（书目级核对）。<b>让渡</b>：只证号不证幅度 ⇒ <code>λ_Ur</code> 夹逼与 <code>κ_c(n)</code> 表<b>一个数字不变</b>。<b>收窄</b>：「两种活度约定都成立」是<b>窗口事实</b>——<code>f_e=u</code> 在 <code>u&gt;u_*</code> 必然翻号（<code>C₃: 3u²−u³</code>），实测 <code>u_* ≥ 2.596072</code>（<code>K₄</code>）⇒ <b>不能外推到 <code>n≥7</code></b>。
+  </div>
+  <div class="note">
+    <b>② <code>O3</code>（临界调谐）→ <code>[M]</code>，判<b>空洞</b>。</b>三读法全部失效：`ρ:=|S_n|/Z_n` 时 <code>κ_c^n≡ρ</code> 是定义 ⇒ <code>(1−ρ)κ_c^n=ρ(1−ρ)≤1/4</code>（AM-GM，实测上确界 <code>0.212008</code>，<b>随 <code>n</code> 单调降到 0.162284</b>）；`ρ_n:=m_n/m_{n−1}` 时 <code>1−ρ_B&lt;0</code>（零信息）；唯一有物理内容的读法 `ρ:=e^{γ_ent−c₀q}` <b>不是障碍而是「关闭」的另一种写法</b>：<code>ρ≤1/3 ⟺ c₀q≥γ_ent+ln3</code>，而 <code>CPB-S</code> 窗 <code>c₀≥2.5986</code> 自动满足 ⇒ 逼 <code>κ_c≥(2/3)^{1/n}=0.8165</code>(n=2) ⇒ <b>与 <code>κ_c≤0.80</code> 在 n=2 就冲突</b>（命题 <b>O3⟂CPB</b>）。⇒ <b>O3 既不可能是漏洞也不可能是证书。</b>
+  </div>
+  <div class="note">
+    <b>③ 于是 <code>CPB</code> 关闭 = 条件式 <code>[T]</code></b>（余 <code>H2</code> 双侧权标度 · <code>H3</code> 熵计数 · <code>H4</code> <code>c₀q≥γ_ent+ln3</code>，均结构性）。<b>「CPB 这台机器造不出来」从 <code>[NG]</code> 升为可写进论文的定理</b>，其承重腿就是 ① 那条刚证出的组合学定理。
+  </div>
+  <div class="note">
+    <b>④ 软模排除：在「紧预解类」里<b>既非真亦非假</b>——类在 <code>ε=1</code> 分裂。</b>显式反例族（<code>[T]</code>，全单重、<code>ker</code> 一维、强预解与 Hausdorff 全过）：<code>H=diag(0,1,2,…)</code>、<code>H_a=diag(0,1,…,N_a−1,ε_a,N_a,N_a+1,…)</code> ⇒ <code>Δ_a=ε_a→0&lt;1</code>。<b>但 <code>ε&lt;1</code> 子类里 <code>(NEW)</code> 成立</b>——<b>定理 COST</b>：<code>(1−ε_a)⟨φ_a,Hφ_a⟩≤E_a+b_a ⇒ N̂(φ_a)≤(E_*+b_a)/(c(1−ε_a)) ⇒ limsup ε_a≥1</code>（<b>常数 1 锐</b>）。<b>且它不用 H1 / 边原子 / PF 正性 / RP</b> ⇒ <b>今晚第一条完全绕开 H1 的正面结论</b>。缺口改名 <b><code>(RB)</code></b>：<code>limsup_a ε_a^{form}(H_a−H)&lt;1</code>，<b>与 H1 不可比</b>（非换名）。
+  </div>
+  <div class="note">
+    <b>⑤ 两处自纠。</b>(a) <code>GN1-A</code> 在 <code>0</code> 端点为<b>假</b>（两个见证）⇒ 修正为 <code>GN1-A′: (NEW) ⟺ limsup_a(σ(H_a)∩(0,∞)) ∩ [0,Δ_cont)=∅</code>。(b) 我给 <code>go2</code> 的机制不等式 <code>H_a ≥ c·(1/a)·N̂</code> <b>是假的</b>——AF 下谐波系数是 <code>g²(a)/2=O(1/log(1/a))→0</code>（方向还反了）；「代价 <code>~1/a</code>」的正确位置是<b>所需/可用相对强度之比</b>（短缺因子 <code>≳1/a</code>）。
+  </div>
+  <div class="note">
+    <b>⑥ 测量线（独立技术报告 <code>docs/PAPER-GEVP-VACUUM.pdf</code>）。</b>未减真空的 GEVP 被常数吃掉（<code>|Ō|=140.96/98.87/56.30</code> vs 信号 <code>≈2.9/4.2/4.5</code>）⇒ <code>λ_max→1</code>、<code>m_eff≡0</code>；<b>连通化后</b> <code>m_eff=1.546,1.177,0.880,1.091</code>（t=1..4）后进噪声，<code>S/N≥5</code> 只到 <b>t=3</b> ⇒ <b><code>L_t=20</code> 仍无平台</b>；死因是<b>统计量</b>（<code>t≥4</code> 时 S/N 2.0/&lt;1），<b>不是 <code>L_t</code></b>（<code>GH3</code> 的死刑条件未命中）。O(N) 预聚合把同一分析从 &gt;50 min 压到 <b>3.5 s</b>（≈860×）。<b>Clay = 0%。</b>
+  </div>
+</div>
 <div class="card">
   <h3>第 237 轮：两个"缺数"都算出来了，且<b>都在错侧</b> <span class="lv T">[T]</span></h3>
   <div class="note">

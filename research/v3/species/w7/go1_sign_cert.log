@@ -1,0 +1,63 @@
+=== C. 具名/随机图：mu vs NBC vs tau ===
+  K1: mu=       1 NBC=1 tau=      1 | mu/(n-1)! = 1/1
+  K2: mu=      -1 NBC=1 tau=      1 | mu/(n-1)! = 1/1
+  K3: mu=       2 NBC=2 tau=      3 | mu/(n-1)! = 2/2
+  K4: mu=      -6 NBC=6 tau=     16 | mu/(n-1)! = 6/6
+  K5: mu=      24 NBC=24 tau=    125 | mu/(n-1)! = 24/24
+  K6: mu=    -120 NBC=120 tau=   1296 | mu/(n-1)! = 120/120
+  K7: mu=     720 NBC=720 tau=  16807 | mu/(n-1)! = 720/720
+  C3: mu=2 NBC=2 (expect (-1)^(n-1)*(n-1)=2)
+  C4: mu=-3 NBC=3 (expect (-1)^(n-1)*(n-1)=-3)
+  C5: mu=4 NBC=4 (expect (-1)^(n-1)*(n-1)=4)
+  C6: mu=-5 NBC=5 (expect (-1)^(n-1)*(n-1)=-5)
+  C7: mu=6 NBC=6 (expect (-1)^(n-1)*(n-1)=6)
+  C8: mu=-7 NBC=None (expect (-1)^(n-1)*(n-1)=-7)
+  路径 P2..P8: mu = [-1, 1, -1, 1, -1, 1, -1] (expect (-1)^(n-1))
+  随机图 150 个：全部 sign_ok=True，NBC 对照 93 个，不一致 0
+
+=== E. 删-缩递归：mu(G)=mu(G-e)-mu(G/e)，N(G)=N(G-e)+N(G/e)（e=最大边）===
+  33 个 (图,最大非桥边) 实例：mu 递归全对 = True；N 递归（n<=7）= True
+
+=== A. 4D plaquette 图（Delta=20）===
+  level n=2: 20 animals
+  level n=3: 458 animals
+  level n=4: 11132 animals
+  n=1 全枚举 1 簇: sign-viol=0 |mu|!=NBC 0 max|mu|=1 [... 0.0s]
+  n=2 全枚举 20 簇: sign-viol=0 |mu|!=NBC 0 max|mu|=1 [... 0.0s]
+  n=3 全枚举 458 簇: sign-viol=0 |mu|!=NBC 0 max|mu|=2 [... 0.0s]
+  n=4 全枚举 11132 簇: sign-viol=0 |mu|!=NBC 0 max|mu|=6 [... 1.5s]
+  抽样（从根随机生长，去重）：
+  n= 5 抽样 120 簇: sign-viol=0 |mu| max=    24 |mu| 中位=   2 NBC对照=120 min root=2.596 [0.0s]
+  n= 6 抽样 120 簇: sign-viol=0 |mu| max=    16 |mu| 中位=   2 NBC对照=120 min root=2.596 [0.1s]
+  n= 7 抽样 120 簇: sign-viol=0 |mu| max=    84 |mu| 中位=   2 NBC对照=120 min root=2.596 [0.4s]
+  n= 8 抽样 120 簇: sign-viol=0 |mu| max=   192 |mu| 中位=   4 NBC对照=0 min root=2.596 [1.2s]
+  n= 9 抽样  60 簇: sign-viol=0 |mu| max=   152 |mu| 中位=   6 NBC对照=0 min root=nan [0.8s]
+  n=10 抽样  60 簇: sign-viol=0 |mu| max=   672 |mu| 中位=   7 NBC对照=0 min root=nan [7.5s]
+
+  具名簇复现：
+    K6（一 link 上 6 片）: |E|=15 mu=-120 NBC=120 tau=1296  [GV1:120, tau=1296]
+    3-cube 六面: |E|=12 mu=-64 NBC=64 tau=384  [C02:96: mu=-64, tau=384]
+
+=== B. 2D plaquette 图（4 邻居）— 酸测 ===
+  n=1 全枚举    1 个含原点多联骨牌（每个平移类出现 n 次）: sign-viol=0 |mu|!=NBC 0 |mu| 取值=[1]
+  n=2 全枚举    4 个含原点多联骨牌（每个平移类出现 n 次）: sign-viol=0 |mu|!=NBC 0 |mu| 取值=[1]
+  n=3 全枚举   18 个含原点多联骨牌（每个平移类出现 n 次）: sign-viol=0 |mu|!=NBC 0 |mu| 取值=[1]
+  n=4 全枚举   76 个含原点多联骨牌（每个平移类出现 n 次）: sign-viol=0 |mu|!=NBC 0 |mu| 取值=[1, 3]
+  n=5 全枚举  315 个含原点多联骨牌（每个平移类出现 n 次）: sign-viol=0 |mu|!=NBC 0 |mu| 取值=[1, 3]
+  n=6 全枚举 1296 个含原点多联骨牌（每个平移类出现 n 次）: sign-viol=0 |mu|!=NBC 0 |mu| 取值=[1, 3, 9]
+  ⇒ 2D 的号 = (-1)^(n-1)，与 4D 同；逐项全正在**特征标/曲面**表象，不在此表象。
+
+=== D. 约定 B：P(u)=sum_A(-1)^|A|u^|A| 的符号窗口 ===
+  4D n<=10 抽样+全枚举 2784 簇：min 首个正根 = 2.596072；P(0.625) 与 P(1) 符号全对 = True
+  2D 284 簇：min 首个正根 = 4.000000
+  理论对照：C3 在 u=3 翻号（P=3u^2-u^3）⇒ u-约定**不是**定理，只是窗口事实
+
+=== F. 路由 1（分拆格/多线性对数）：phi^U(Γ) = Σ_π (-1)^(|π|-1)(|π|-1)! [各块独立] ===
+  2D 3x3 torus: nv=9，2^9-1 个 Γ 的多线性系数逐个比对：不一致 0
+  4D 1^4 torus: nv=6，2^6-1 个 Γ 的多线性系数逐个比对：不一致 0
+  路由 1 恒等式在 11710 个簇（4D+2D，n<=4 全枚举）上逐簇相等 = True
+  注：log Z 的**单变量**系数不是簇和（差在重复聚合物项）——必须是**多线性**系数；这一条是本轮实测到的记账陷阱。
+
+=== 汇总 ===  用时 99.6s
+FAIL 计数 = 0
+json -> go1_sign_cert.json
