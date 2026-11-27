@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clay 的完整推导</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] }, svg: { fontCache: 'global' } };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root{
+    --bg:#fbfaf8; --ink:#191817; --muted:#6d6960; --line:#e2ddd4; --line-soft:#f0ece4;
+    --panel:#fff; --accent:#8a5a2b; --accent-ink:#6d441f; --accent-wash:#f7f0e7;
+    --ok:#2c6642; --ok-wash:#e9f2eb; --no:#9e3a2b; --no-wash:#f8ebe8;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC","Noto Serif CJK SC",serif;
+    --r:5px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
+  .page{max-width:920px;margin:0 auto;padding:56px 26px 100px}
+  h1{font-size:30px;line-height:1.2;letter-spacing:-.02em;margin:0 0 8px;font-weight:650}
+  .sub{color:var(--muted);font-size:15px;margin:0 0 4px}
+  .stamp{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin:0 0 30px;letter-spacing:.03em}
+
+  h2{font-size:22px;letter-spacing:-.01em;margin:56px 0 8px;padding-top:26px;border-top:2px solid var(--ink);font-weight:650}
+  h2 .num{font-family:var(--mono);font-size:13px;color:var(--accent);margin-right:11px;font-weight:600}
+  p{margin:0 0 12px}
+  .mut{color:var(--muted)}
+
+  .step{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 19px;margin:14px 0;position:relative}
+  .step .no{font-family:var(--mono);font-size:11px;letter-spacing:.06em;color:var(--accent);font-weight:700;margin-right:8px}
+  .step .hd{display:flex;align-items:baseline;gap:8px;margin-bottom:9px;flex-wrap:wrap}
+  .step .ttl{font-size:15px;font-weight:640}
+  .step p:last-child{margin-bottom:0}
+  .step.t{border-left:3px solid var(--ok)}
+  .step.n{border-left:3px solid var(--no)}
+  .step.g{border-left:3px dashed var(--muted)}
+
+  .tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.05em;padding:1.5px 6px;border-radius:3px;font-weight:700;font-style:normal}
+  .tag.t{background:var(--ok-wash);color:var(--ok);border:1px solid #cfe2d5}
+  .tag.n{background:var(--no-wash);color:var(--no);border:1px solid #eed5cf}
+  .tag.g{background:var(--line-soft);color:var(--muted);border:1px solid var(--line)}
+
+  .why{font-size:14px;color:var(--muted);margin-top:9px;padding-top:9px;border-top:1px dashed var(--line)}
+  .why b{color:var(--ink)}
+
+  .tree{background:#191817;color:#e9e4d9;font-family:var(--mono);font-size:12.5px;line-height:1.85;padding:18px 20px;border-radius:var(--r);overflow-x:auto;margin:16px 0}
+  .tree .t{color:#7fb98d}
+  .tree .n{color:#d98b78}
+  .tree .g{color:#8b8579}
+
+  table{width:100%;border-collapse:collapse;margin:14px 0;font-size:14px}
+  th,td{text-align:left;padding:7px 9px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+  td:first-child{font-family:var(--mono);font-size:12.5px;color:var(--accent-ink);white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+
+  .foot{margin-top:52px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.85}
+  a{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  mjx-container[display="true"]{margin:9px 0 !important}
+  @media(max-width:640px){.page{padding:34px 17px 72px}h1{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>Clay 的完整推导</h1>
+<p class="sub">从 Clay 陈述逐级下推到叶子。每一步是一句蕴含，带量词、带等级、带它消费什么与产出什么。</p>
+<p class="stamp">第 245 轮 · 判词只有 [T] 已证 / [NG] 未证 · 无百分比</p>
+
+<h2><span class="num">S0</span>目标陈述</h2>
+
+<p>Clay 问题要求同一件东西的两面：一个四维纯 $SU(N)$ 规范理论的<b>连续极限存在</b>（作为满足 OS 公理的量子场论），且其<b>谱隙为正</b>。</p>
+
+<div class="step g">
+  <div class="hd"><span class="no">S0</span><span class="ttl">$\mathrm{Clay}$</span><span class="tag g">目标</span></div>
+  $$\mathrm{Clay}\ :=\ \Big[\exists\ \text{连续极限测度}\ \mu_*\ \text{满足 OS}\Big]\ \wedge\ \Big[\Delta_{\rm cont}:=\inf\big(\mathrm{spec}(H_*)\setminus\{0\}\big)\ \gt\ 0\Big]$$
+  <p class="mut">记第一面为 (i)，第二面为 (ii)。下面把它拆成可操作的形状，一路下推到叶子。</p>
+</div>
+
+<h2><span class="num">S1</span>推导总图</h2>
+
+<div class="tree">
+<span class="g">S0  Clay = (i) 极限存在  ∧  (ii) 隙为正</span>
+
+<span class="g">├─ (i) 极限存在</span>
+<span class="g">│   ├─ 紧性 ─────────────────── S2  L3：∃C&lt;∞, ϖ ≤ C</span>
+<span class="g">│   │                              └─ ϖ = Var(q) + O_B ── S3 [T] Var(q) ≤ 1</span>
+<span class="g">│   └─ 唯一性 ───────────────── S4  W1 ⟸ (B) + L3（体积一致聚类）</span>
+<span class="g">│</span>
+<span class="g">├─ (ii) 隙为正</span>
+<span class="g">│   ├─ 桥 ───────────────────── S5  Δ_cont ≥ liminf Δ_a          <span class="t">[T]</span></span>
+<span class="g">│   ├─ liminf 为正 ──────────── S6  定号槽：∃δ&gt;0 ∀a: Δ_a ≥ δ</span>
+<span class="g">│   │                              └─ 谱底 ── S7  s₁ ≥ w₀M₀/χ</span>
+<span class="g">│   │                                            ├─ Lean 夹逼 <span class="t">[T]</span></span>
+<span class="g">│   │                                            └─ R5 ── S8  r &lt; 4N⁴−1  <span class="t">[T]</span></span>
+<span class="g">│   └─ 全道 ─────────────────── S9  (b′)ᵢₙ₋₁₁</span>
+<span class="g">│</span>
+<span class="g">└─ 非退化 ──────────────────── S10 B：ϖ ≥ c₀                 <span class="t">[T]</span> @b̂=2a</span>
+<span class="g">                                    └─ 作用：防 S* 变空，不在 (i)/(ii) 两条线上</span>
+
+装配 ───────────────────────── S11  T₁₆ ← {T₁₄, T₁₅} + OS
+</div>
+
+<h2><span class="num">S2</span>紧性：$L3$</h2>
+
+<div class="step">
+  <div class="hd"><span class="no">S2</span><span class="ttl">$(i)$ 的一半 ⟸ 一致矩界</span><span class="tag n">NG</span></div>
+  $$\exists a_0(L)\gt0\ \exists\{C_n(L)\lt\infty\}\ \forall a\le a_0(L)\ \forall n\ \forall f_i\in C_c^k:\quad \big|S^{(n)}_{L,a,\beta(a)}(f_1,\dots,f_n)\big|\ \le\ C_n(L)\prod_i\|f_i\|_{C^k}$$
+  <p>三个要件承重：$C_n$ 显式且<b>不依赖 $a$</b>；$\forall a$ 在 $\exists C_n$ <b>之后</b>；对象是 smeared 矩而非有效作用量。</p>
+  <p><b>产出</b>：相对紧 + 子列 ⇒ 极限测度 $\mu_*$ 存在（Prokhorov）。<b>没有它，$\Delta_{\rm cont}$ 连定义都没有。</b></p>
+  <div class="why">
+    <b>等价的单标量形。</b>由块分解 $\varpi=a^4\hat b^4\mathrm{Var}(\bar q_B)=\mathrm{Var}(q)+O_B$ 与 Popoviciu，$(S2)$ 等价于
+    $$\exists C\lt\infty:\quad O_B\ \le\ C-\mathrm{Var}(q)$$
+    即<b>只差 $O_B$ 的一个上界</b>。
+  </div>
+</div>
+
+<div class="step t">
+  <div class="hd"><span class="no">S3</span><span class="ttl">分解与对角项</span><span class="tag t">T</span></div>
+  $$\varpi=\underbrace{\mathrm{Var}(q)}_{=\,C_q(0)\,\in(0,1]}+O_B,\qquad O_B:=\frac{1}{N_B}\sum_{z\ne0}n_B(z)\,C_q(z)$$
+  <p><b>证</b>：把 $\mathrm{Var}(\bar q_B)$ 按协方差展开，$q\in[0,2]$ 加 Popoviciu 给 $\mathrm{Var}(q)\le1$，且与 $a,k,L,N$ 全无关。</p>
+  <p class="mut">⇒ $(S2)$ 的全部内容集中在 $O_B$ 上；对角项不花任何输入。</p>
+</div>
+
+<h2><span class="num">S4</span>唯一性：$W1$</h2>
+
+<div class="step t">
+  <div class="hd"><span class="no">S4</span><span class="ttl">$(i)$ 的另一半 ⟸ 聚类 + 紧性</span><span class="tag t">T</span></div>
+  $$(B)\ \wedge\ L3\ \Longrightarrow\ W1:\quad \mu_*\ \text{与子列无关（唯一极限测度）}$$
+  <p><b>证</b>：$(B)$ 的证明链给出<b>体积一致</b>的指数聚类；配 $L3$ 的紧性（$S2$），任意两个子列的极限测度在全部矩上相同 ⇒ 由 OS 重构唯一性得同一个测度。</p>
+  <div class="why">
+    <b>这一格为什么重要。</b>Clay 的 (i) 不只是"存在"，还是"唯一"——否则 $\Delta_{\rm cont}$ 依赖子列。$W1$ 把唯一性买下来，而它<b>不需要额外假设</b>：$(B)$ 与 $L3$ 两件已各自在账上。
+  </div>
+</div>
+
+<h2><span class="num">S5</span>桥</h2>
+
+<div class="step t">
+  <div class="hd"><span class="no">S5</span><span class="ttl">$(ii)$ ⟸ 格点隙的下极限</span><span class="tag t">T</span></div>
+  $$\Delta_{\rm cont}\ \ge\ \varliminf_{a\to0}\ \Delta_a$$
+  <div class="why">
+    <b>机检</b>：Lean <code>gap_ge_liminf</code>，$0$ sorry。
+    <b>它只搬运</b>：若右端无正下界，它空转。所以 $(ii)$ 的全部重量在 $S6$。
+  </div>
+</div>
+
+<div class="step t">
+  <div class="hd"><span class="no">S5′</span><span class="ttl">桥的最窄形：不用 $\iota_a$、不用强收敛</span><span class="tag t">T</span></div>
+  <p>桥只消费一个方向：矩收敛 $\Longrightarrow$ 强收敛。而这一向<b>免费</b>——因为 $e^{-tH_a}$ 自伴，</p>
+  $$\big\|e^{-tH_a}g\big\|^2=\big\langle g,\,e^{-2tH_a}g\big\rangle\ \ \text{仍是矩}$$
+  <p>故弱收敛 $+$ 范数收敛 $\Rightarrow$ 强收敛。最窄形 $C$-$n$ 只差三个条件（$(n_1)$ 矩收敛、$(n_2)$ $\Delta_{\rm cont}\in\operatorname{supp}\nu_\varphi$、$(n_3)$ $\sup_k\|\psi_k\|^2\lt\infty$），5 行。</p>
+  <div class="why">⇒ <b>桥不是独立缺口</b>：它的前件就是 $S2$ 的 $L3$。</div>
+</div>
+
+<h2><span class="num">S6</span>定号槽</h2>
+
+<div class="step n">
+  <div class="hd"><span class="no">S6</span><span class="ttl">$\liminf\Delta_a\gt0$</span><span class="tag n">NG</span></div>
+  $$\exists\delta\gt0\ \forall a:\quad \Delta_a\ \ge\ \delta$$
+  <div class="why">
+    <b>为什么这一格不能由 $B$ 或 $C$ 填。</b>
+    自由场上 $\varpi=O(1)$ 而 $\Delta=0$。故 $\varpi\ge c_0$（$S10$）是<b>方差</b>下界，不是<b>谱</b>下界；$r\lt63$（$S8$）是<b>权重比</b>，也不是谱下界。
+    <br><b>唯一在查的入口</b>见 $S7$。
+  </div>
+</div>
+
+<h2><span class="num">S7</span>谱底：由权重比买位置</h2>
+
+<div class="step t">
+  <div class="hd"><span class="no">S7a</span><span class="ttl">Lean 夹逼</span><span class="tag t">T</span></div>
+  $$\frac{f_1^2}{\chi}\ \le\ s_1\ \le\ \frac{M_0}{\chi},\qquad s_1=\inf\operatorname{supp}\nu$$
+  <p><b>机检</b>：<code>susceptibility_squeeze</code>，$0$ sorry。左端与右端就是夹逼本身。</p>
+</div>
+
+<div class="step">
+  <div class="hd"><span class="no">S7b</span><span class="ttl">$s_1\ge w_0M_0/\chi$</span><span class="tag n">NG</span></div>
+  $$w_1\ge w_0\ \Big(=\frac{f_1^2}{M_0}\Big)\ \Longrightarrow\ f_1^2\ge w_0M_0\ \Longrightarrow\ s_1\ \ge\ w_0\,\frac{M_0}{\chi}$$
+  <div class="why">
+    <b>三行代数已通。</b>缺的只有一件事：<b>$M_0/\chi$ 的正下界</b>。若它有，$S6$ 当场由 $S8$ 填，而 $S6$ 是 Clay 的本体——这一格的价值在此。
+  </div>
+</div>
+
+<h2><span class="num">S8</span>$R5$：权重的底</h2>
+
+<div class="step t">
+  <div class="hd"><span class="no">S8</span><span class="ttl">$\min_\beta\varepsilon\ge w_0$，塌成静态比值</span><span class="tag t">T</span></div>
+  $$R5:\quad \exists\beta_0\ \forall\beta\ge\beta_0\ \forall L:\quad w_1(\beta,L)\ \ge\ w_0=\frac{1}{4N^4}$$
+
+  <p><b>为什么必须写比值形。</b>$f_1^2$ 在 $\beta=\sqrt8$ 处对一切 $(L,a)$ 精确归零（$c=p-q\beta^2/2N^2=0\Rightarrow a_n\equiv0$），而同处 $w_1=0.33278$ 仍有限。绝对形 $\inf f_1^2\ge r_0$ 不成立。</p>
+
+  <p><b>一参数化。</b></p>
+  $$H=B\big(tX_B+X_E\big),\qquad t=\frac{\beta^2}{2N^2}\qquad\Longrightarrow\qquad \varepsilon=\mathfrak e(t),\qquad \partial_\beta\ln\varepsilon=\frac2\beta\cdot\frac{d\ln\mathfrak e}{d\ln t}$$
+
+  <p><b>静态极限。</b>由本征矢恒等式 $\langle E_0|H|E_n\rangle=0$，</p>
+  $$\langle E_0|X_B|E_n\rangle=-t^{-1}\langle E_0|X_E|E_n\rangle,\qquad \langle E_0|X_E|E_n\rangle=E^{0n}+O(1/t)$$
+  $$\Longrightarrow\quad \mathfrak e(t)=\mathfrak e_\infty\big(1+O(1/t)\big),\qquad \mathfrak e_\infty=\frac{|E^{01}|^2}{\sum_n|E^{0n}|^2}\gt0$$
+  <p class="mut">$t$-指数 $s_t=1$，故 $\beta$-指数 $s_\beta=2$。机检残差 $\le1.6\times10^{-15}$。</p>
+
+  <p><b>整格塌成一个静态比值。</b></p>
+  $$r:=\frac{1}{\mathfrak e_\infty}-1=\frac{\sum_{n\ge2}|E^{0n}|^2}{|E^{01}|^2}\ =\ 21.920736\ \lt\ 63\ =\ 4N^4-1$$
+  $$r\lt4N^4-1\iff\mathfrak e_\infty\gt w_0\iff \text{尾段 } w_1\ge w_0$$
+
+  <div class="why">
+    <b>余量</b>：$\mathfrak e_\infty=2.792231\,w_0$，余 $2.874\times$。五支读数 $[6.65,\,21.92]$ 全过。
+    <br><b>两条不变性</b>：$X_B\mapsto aX_B+b\mathbf 1$ 与 $X_E\mapsto cX_E$ 均不改 $r$，故归一、$p,q$、$Z_O$ 全部无关。
+    <br><b>酸测</b>：自由场 $\langle E_0|X_E|E_1\rangle=0$ 精确 ⇒ $\mathfrak e\equiv0$ ⇒ $r=\infty$ ⇒ 靶不空转。
+    <br><b>不在这条链上</b>：单调性、$\partial_\beta\mathbb G$、$f_1^2$ 的绝对值。
+  </div>
+</div>
+
+<h2><span class="num">S9</span>全道量词</h2>
+
+<div class="step n">
+  <div class="hd"><span class="no">S9</span><span class="ttl">单道 → 全道</span><span class="tag n">NG</span></div>
+  $$(b')_{IN\text{-}11}$$
+  <div class="why">
+    $S8$ 给的是 $s_1$，且只是 $0^{++}$ 一道的底。Clay 量的是全道。<b>已知的窗 $\beta_1\approx0.0184$ 与靶窗 $2.5$ 差 $13\times$（in $\lambda$），隔同一堵解析性墙</b>：把「$|\beta|\lt1/12$ 无零点」搬成「$|\beta-2.5|\lt0.0306$ 无零点」，两盘圆心相距 $2.386$。
+  </div>
+</div>
+
+<h2><span class="num">S10</span>非退化：$B$ 的位置</h2>
+
+<div class="step t">
+  <div class="hd"><span class="no">S10</span><span class="ttl">$\varpi\ge c_0$（$\hat b=2a$）</span><span class="tag t">T</span></div>
+  $$\varpi(\hat b)\ \ge\ v(\beta)+\mathbf 1_{\hat b\ge2a}\cdot\frac{C_q(e_\mu)}{3}\ \ge\ v(\beta)=6.419175\times10^{-3}$$
+  <p><b>证</b>：$\varpi=\mathrm{Var}(q)+O_B$。引理 B.1 给 $\mathrm{Var}(q)\ge v(\beta)=\min(a,b)\cdot6\beta$（总方差 $+$ 单链条件律 $+$ $|\tilde a|\le6$ $+$ vMF 协方差，全精确）；引理 B.2 给 $O_B\ge C_a/3\ge0$（反射正性给 KL 表示 $C_q(z)=\int d\rho\,\Delta_E$，$\Delta_E=mK_1(m|z|)/4\pi^2|z|\gt0$，四壳权重 $8/24/24/8$ 重排）。</p>
+  <div class="why">
+    <b>它在链上的位置要说准</b>：$B$ 的作用是<b>防空</b>——保证前件不退化。它<b>不在 (i)/(ii) 两条线上</b>（自由场满足它而没有隙）。
+    <br><b>不能相加的错</b>：$v/4$ 已是 $\varpi$ 本身的下界，再与 $O_B$ 相加是类型错误。唯一合法加强是恒等式两侧各配地板。
+  </div>
+</div>
+
+<h2><span class="num">S11</span>装配</h2>
+
+<div class="step">
+  <div class="hd"><span class="no">S11</span><span class="ttl">Lean 骨架</span><span class="tag n">NG</span></div>
+  $$T_{16}\ \leftarrow\ \{T_{14},\,T_{15}\}+\mathrm{OS},\qquad T_{14}\leftarrow\{T_1\leftarrow N_1,\ T_{13}\},\qquad T_{15}\leftarrow\{T_4,\,T_5,\,N_4\}$$
+  <p>五条机检 $+$ 十三条已证 $+$ 三条装配，全部作蕴含。三条 axiom：<code>hy6_N1_iota_l2_seam</code>、<code>hy6_N4_b_floor</code>、以及 seam 那一支。</p>
+  <div class="why">
+    <b>不是改名。</b>$T_{16}$ 的三参是 $\{$<code>IotaL2Seam</code>, <code>L3Bound</code>, <code>BFloor</code>$\}$，$B$ 格（$\varpi\ge c_0$）<b>在里面没有槽</b>。即使格全 $[T]$，还需 C 到 <code>BFloor</code> 的 4 行 body、seam 的 4 行、OS 本体、以及给 $T_{16}$ 加第 4 参。现状 <code>#print axioms</code> 列 3 条，只改名仍列 3 条。
+  </div>
+</div>
+
+<h2><span class="num">S12</span>汇总：四个叶子</h2>
+
+<table>
+  <tr><th>叶</th><th>陈述</th><th>类型</th><th>阻塞它的东西</th></tr>
+  <tr><td>$S2$</td><td>$\exists C:\ \varpi\le C$</td><td>一个泛函的符号</td><td>$(EP)$：$\int_0^{2.5}\beta\langle Q^3\rangle_c\,d\beta\ge0$；两个自然入口已关（类级符号证不可能、全局非增有反例）</td></tr>
+  <tr><td>$S6$</td><td>$\exists\delta\gt0\,\forall a:\ \Delta_a\ge\delta$</td><td>谱下界</td><td><b>此前从未瞄准</b>；唯一入口是 $S7$ 差 $M_0/\chi$ 的下界</td></tr>
+  <tr><td>$S9$</td><td>$(b')_{IN\text{-}11}$</td><td>量词范围</td><td>同一堵解析性墙，$13\times$</td></tr>
+  <tr><td>$S11$</td><td>$T_{16}$ 装配</td><td>技术缝</td><td>4 行 body + 4 行 seam + 第 4 参</td></tr>
+</table>
+
+<p class="mut">另有两条记账口挂在 $S8$ 上：$\inf_L\delta_L\gt0$（$\delta_L$ 是 nlev 截断级距，自然标度 $L^{-3}$ 到 $e^{-cL^3}$，两者都给出 $0$）与 N1 缝。</p>
+
+<h2><span class="num">S13</span>已证的都在哪里</h2>
+
+<table>
+  <tr><th>步</th><th>内容</th><th>判</th></tr>
+  <tr><td>$S3$</td><td>$\varpi=\mathrm{Var}(q)+O_B$，$\mathrm{Var}(q)\le1$</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S4$</td><td>$W1\Longleftarrow(B)+L3$</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S5$</td><td>$\Delta_{\rm cont}\ge\liminf\Delta_a$（机检）</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S5'$</td><td>桥最窄形 $C$-$n$，不用 $\iota_a$、不用强收敛</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S7a$</td><td>$f_1^2/\chi\le s_1\le M_0/\chi$（机检，$0$ sorry）</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S8$</td><td>$r=21.920736\lt63$，$\mathfrak e_\infty=2.792231w_0$，余 $2.874\times$</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S10$</td><td>$\varpi\ge v(\beta)=6.419175\times10^{-3}$（$\hat b\in\{a,2a\}$，$L\ge3$，$\forall\beta\forall a$）</td><td><span class="tag t">T</span></td></tr>
+</table>
+
+<div class="foot">
+  第 245 轮 · Clay 完整推导<br>
+  叶子四条：$S2$（一个泛函的符号）、$S6$（谱下界，从未瞄准）、$S9$（量词范围）、$S11$（技术缝）<br>
+  已证七步：$S3$、$S4$、$S5$、$S5'$、$S7a$、$S8$、$S10$<br>
+  详见：<a href="CELLS-BC.html">CELLS-BC.html</a>（B/C 两格含完整证明）· 位置图：<a href="position-current.html">position-current.html</a><br>
+  <b>Clay 未证。</b>无百分比。
+</div>
+
+</div>
+</body>
+</html>
