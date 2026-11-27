@@ -1,0 +1,40 @@
+D:\Dev\math\research\v3\species\rr2_monotone_check3.py:75: RuntimeWarning: divide by zero encountered in scalar divide
+  return float(np.sum(row[1:][~L1] ** 2) / num), float(num / den)
+=== [A] basis cross-check (N=8): electric vs X_B-diagonal ===
+  t= 0.50000  e_elec=0.963289451898  e_b=0.963289451898  diff=7.77e-16
+  t= 0.78125  e_elec=0.957693820059  e_b=0.957693820059  diff=7.77e-16
+  t= 1.00000  e_elec=0.962531393942  e_b=0.962531393942  diff=2.22e-16
+  t= 2.00000  e_elec=0.983380766780  e_b=0.983380766780  diff=5.55e-16
+  t= 3.00000  e_elec=0.990160004832  e_b=0.990160004832  diff=3.33e-16
+  t= 6.00000  e_elec=0.995579024706  e_b=0.995579024706  diff=1.11e-16
+  t=20.00000  e_elec=0.991844818541  e_b=0.991844818541  diff=3.33e-16
+
+=== [B] analytic dm_n/dt vs central finite difference (N=6, t=1.3) ===
+  max|analytic - FD| / max|FD| = 6.81e-01
+  bracket numerators 2E_k-E_0-E_n (k=1..): [-6.6977 -3.4886 -0.1445  4.2812 10.5363]
+
+=== [C] local extrema of e(t), N=8, window t in [0.2,30] ===
+  e(0.2)=0.989835  e(t_A)=0.957694  e(3)=0.990160  e(30)=0.985611  e_inf=0.950338
+    turning point near t=0.7179: e=0.95732779  (prev slope -1.06e-07)
+    turning point near t=9.0781: e=0.99649943  (prev slope +1.77e-08)
+  TV(ln e) over [0.2,30] = 0.08448
+
+=== [D] r_inf: single block vs M-block chain (additivity test) ===
+  M=1 N= 3 dim=    3: r_inf=    0.031250  e_inf=0.969697
+  M=1 N= 4 dim=    4: r_inf=    0.043483  e_inf=0.958329
+  M=1 N= 5 dim=    5: r_inf=    0.048366  e_inf=0.953866
+  M=1 N= 6 dim=    6: r_inf=    0.050565  e_inf=0.951869
+  M=1 N= 8 dim=    8: r_inf=    0.052257  e_inf=0.950338
+  M=2 N= 3 dim=    9: r_inf=         inf  e_inf=0.000000
+  M=2 N= 4 dim=   16: r_inf=         inf  e_inf=0.000000
+  M=2 N= 5 dim=   25: r_inf=         inf  e_inf=0.000000
+  M=2 N= 6 dim=   36: r_inf=         inf  e_inf=0.000000
+  M=2 N= 8 dim=   64: r_inf=         inf  e_inf=0.000000
+  M=3 N= 3 dim=   27: r_inf=         inf  e_inf=0.000000
+  M=3 N= 4 dim=   64: r_inf=         inf  e_inf=0.000000
+  M=3 N= 5 dim=  125: r_inf=         inf  e_inf=0.000000
+  M=3 N= 6 dim=  216: r_inf=         inf  e_inf=0.000000
+  M=3 N= 8 dim=  512: r_inf=         inf  e_inf=0.000000
+
+  single-block r_inf(N): [0.03125, 0.043483, 0.048366, 0.050565, 0.052257, 0.053032, 0.053187]
+  63/r_inf(120) = 1182.68 ; 21.920736/r_inf(120) = 411.51

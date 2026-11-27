@@ -1,0 +1,49 @@
+t_A=0.781250  w0=0.01562500
+
+=== [1] canonical ladder, lam=1: TV split on [t_A, inf) ===
+  N     e(t_A)      e_min    t_min      e_inf     r_inf     +var     -var  max dln+
+  3   0.954007   0.953058    0.945   0.969697   0.03125   0.0173   0.0114  2.93e-05
+  4   0.957352   0.957148     0.73   0.958329   0.04348   0.0173   0.0225  5.93e-05
+  5   0.957692   0.953866    1e+07   0.953866   0.04837   0.0286   0.0384  8.15e-05
+  6   0.957694   0.951869    1e+07   0.951869   0.05057   0.0348   0.0468  8.39e-05
+  8   0.957694   0.950338    1e+07   0.950338   0.05226   0.0401   0.0536  8.40e-05
+ 10   0.957694   0.949839    1e+07   0.949839   0.05281   0.0419   0.0560  8.40e-05
+ 12   0.957694   0.949639    1e+07   0.949638   0.05303   0.0427   0.0570  8.40e-05
+ 16   0.957694   0.949501    1e+07   0.949499   0.05319   0.0433   0.0577  8.40e-05
+
+=== [2] lam-sensitivity (N=8): normalization of X_E vs X_B ===
+  lam= 0.10: e(t_A)=0.994653 e_min=0.950338@1e+07 +var=0.0019 -var=0.0474 max dln+=1.90e-05  r_inf=0.05226
+  lam= 0.25: e(t_A)=0.983381 e_min=0.950338@1e+07 +var=0.0133 -var=0.0474 max dln+=7.14e-05  r_inf=0.05226
+  lam= 1.00: e(t_A)=0.963289 e_min=0.950338@1e+07 +var=0.0401 -var=0.0536 max dln+=1.12e-04  r_inf=0.05226
+  lam= 4.00: e(t_A)=0.995747 e_min=0.950339@1e+07 +var=0.0401 -var=0.0868 max dln+=1.12e-04  r_inf=0.05226
+  lam=10.00: e(t_A)=0.999294 e_min=0.950340@1e+07 +var=0.0401 -var=0.0903 max dln+=1.12e-04  r_inf=0.05226
+
+=== [3] r_inf vs N (static, exact; convergence) ===
+  N=   3: r_inf=0.031250   e_inf=0.969697
+  N=   4: r_inf=0.043483   e_inf=0.958329
+  N=   5: r_inf=0.048366   e_inf=0.953866
+  N=   6: r_inf=0.050565   e_inf=0.951869
+  N=   8: r_inf=0.052257   e_inf=0.950338
+  N=  10: r_inf=0.052811   e_inf=0.949839
+  N=  12: r_inf=0.053032   e_inf=0.949638
+  N=  16: r_inf=0.053187   e_inf=0.949499
+  N=  20: r_inf=0.053234   e_inf=0.949457
+  N=  30: r_inf=0.053261   e_inf=0.949432
+  N=  40: r_inf=0.053266   e_inf=0.949427
+  N=  60: r_inf=0.053268   e_inf=0.949426
+  N=  80: r_inf=0.053269   e_inf=0.949425
+  N= 120: r_inf=0.053269   e_inf=0.949425
+
+=== [4] N=3 shape of q(t)=u_2/u_1 (is e=1/(1+q^2) monotone?) ===
+  q: 2.656798e-02 -> 1.767806e-01;  #dq>0=963/3999; max dq=3.295e-04; min dq=-9.278e-05;  sign-flips=1
+
+=== [5] random Jacobi class: monotone? r_inf range ===
+  N=4: non-monotone 56/60; TV med 0.888 max 6.04; max step 1.19e-02; r_inf min 0.00249 med 0.325 max 7.66
+  N=5: non-monotone 59/60; TV med 1.432 max 8.10; max step 3.07e-02; r_inf min 0.0323 med 0.47 max 11.2
+  N=6: non-monotone 55/60; TV med 1.560 max 10.99; max step 6.46e-02; r_inf min 0.0141 med 0.459 max 27.9
+  N=8: non-monotone 60/60; TV med 3.005 max 20.43; max step 6.10e-01; r_inf min 0.00247 med 1.41 max 587
+
+=== [6] invariance: e is exactly invariant under D -> D + c*I (spectral shift) ===
+  c= 0.00: e(t_A)=0.957693820059  e(3.0)=0.990160004832
+  c= 0.70: e(t_A)=0.957693820059  e(3.0)=0.990160004832
+  c= 5.00: e(t_A)=0.957693820059  e(3.0)=0.990160004832
