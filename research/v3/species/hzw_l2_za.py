@@ -87,8 +87,7 @@ def _sample_w0(lam, rng):
 
 def heatbath_link(U, mu, idx, beta, rng):
     S = staple_mu(U, mu, idx)
-    A = U[mu][idx]
-    M = A @ S
+    M = S              # weight ∝ exp((beta/2) Re tr(U S)) -> parametrise S, not A@S
     m0 = 0.5 * (M[:, 0, 0] + M[:, 1, 1])
     m1 = 0.5 * (M[:, 0, 1] + M[:, 1, 0])
     m2 = 0.5j * (M[:, 0, 1] - M[:, 1, 0])
@@ -138,27 +137,30 @@ def q_planes(P):
 # ---------------------------------------------------------------- validation V4
 def check_staple2(L=2, seed=1):
     """brute force: sum over the 6 plaquettes containing the link, all with U_mu(x) first."""
+    def sh(x, mu, s):
+        y = list(x)
+        y[mu] = (y[mu] + s) % L
+        return tuple(y)
+
     rng = np.random.default_rng(seed)
     U = random_su2(rng, (4, L, L, L, L))
-    ps = parity_sets(L)
     err = 0.0
     for mu in range(4):
-        for c in (0, 1):
-            idx = ps[c]
-            S = staple_mu(U, mu, idx)
-            lhs = (U[mu][idx] @ S).real.trace(axis1=-2, axis2=-1)
-            rhs = np.zeros(len(idx[0]))
+        for x in np.ndindex((L,) * 4):
+            lhs = 0.0
+            rhs = 0.0
             for nu in range(4):
                 if nu == mu:
                     continue
-                # plaquette at x: U_mu(x), U_nu(x+mu), U_mu(x+nu)^dag, U_nu(x)^dag
-                P1 = U[mu] @ np.roll(U[nu], -1, axis=mu) @ dag(np.roll(U[mu], -1, axis=nu)) @ dag(U[nu])
-                rhs += P1[idx].real.trace(axis1=-2, axis2=-1)
-                # plaquette at x-nu: contains U_mu(x-nu) and U_mu(x)^dag -> use reality
-                xm = tuple(np.roll(idx[a], 1, axis=nu) for a in range(4))
-                P2 = U[mu] @ np.roll(U[nu], -1, axis=mu) @ dag(np.roll(U[mu], -1, axis=nu)) @ dag(U[nu])
-                rhs += P2[xm].real.trace(axis1=-2, axis2=-1)
-            err = max(err, np.abs(lhs - rhs).max())
+                xm = sh(x, nu, -1)
+                xmm = sh(sh(x, mu, +1), nu, -1)     # x - nu + mu
+                P1 = U[mu][x] @ U[nu][sh(x, mu, +1)] @ dag(U[mu][sh(x, nu, +1)]) @ dag(U[nu][x])
+                W1 = U[nu][sh(x, mu, +1)] @ dag(U[mu][sh(x, nu, +1)]) @ dag(U[nu][x])
+                P2 = U[mu][xm] @ U[nu][xmm] @ dag(U[mu][x]) @ dag(U[nu][xm])
+                W2 = dag(U[nu][xmm]) @ dag(U[mu][xm]) @ U[nu][xm]
+                lhs += (U[mu][x] @ (W1 + W2)).real.trace()
+                rhs += P1.real.trace() + P2.real.trace()
+            err = max(err, abs(lhs - rhs))
     return err
 
 
@@ -166,6 +168,7 @@ def check_staple2(L=2, seed=1):
 def metropolis(U, L, beta, rng, nsweep, eps=0.5):
     ps = parity_sets(L)
     trP = []
+    qbar = []
     for it in range(nsweep):
         for c in (0, 1):
             for mu in range(4):
@@ -182,11 +185,12 @@ def metropolis(U, L, beta, rng, nsweep, eps=0.5):
                 new = V @ old
                 dS = -0.5 * beta * ((new @ S).real.trace(axis1=-2, axis2=-1)
                                     - (old @ S).real.trace(axis1=-2, axis2=-1))
-                acc = rng.random(len(idx[0])) < np.exp(np.minimum(dS, 0.0))
+                acc = rng.random(len(idx[0])) < np.exp(np.minimum(-dS, 0.0))
                 U[mu][idx] = np.where(acc[:, None, None], new, old)
         P = plaquettes(U)
         trP.append(0.5 * P.real.trace(axis1=-2, axis2=-1).mean())
-    return np.array(trP)
+        qbar.append(q_planes(P)[0].mean())
+    return np.array(trP), np.array(qbar)
 
 
 # ---------------------------------------------------------------- measurement
@@ -278,10 +282,14 @@ def analyse(streams, L):
             r = float(np.linalg.norm(d))
             shells.setdefault(r, []).append(C[i, j])
     shell_out = {f"r={r}": (float(np.mean(v)), int(len(v))) for r, v in sorted(shells.items())}
+    shell_out["r=0"] = (float(np.mean(np.diag(C))), V)
     # cross-check C(x,y) translation invariance
     dev = 0.0
     for i in range(V):
         for j in range(V):
+            if i == j:
+                dev = max(dev, abs(C[i, i] - shell_out["r=0"][0]))
+                continue
             d = coords[i] - coords[j]
             d = (d % L)
             r = float(np.linalg.norm(np.where(d > L // 2, d - L, d)))
@@ -355,8 +363,16 @@ if __name__ == '__main__':
     P("[V3] L=2 beta=2.5 : heat bath vs Metropolis")
     rng = np.random.default_rng(21)
     U = random_su2(rng, (4, 2, 2, 2, 2))
-    m = metropolis(U, 2, 2.5, rng, 4000)
-    P("     Metropolis <P> = %.4f +- %.4f" % (m[500:].mean(), m[500:].std() / np.sqrt(len(m[500:]))))
+    mP, mq = metropolis(U, 2, 2.5, rng, 8000, eps=0.4)
+    mP, mq = mP[1000:], mq[1000:]
+
+    def binned(a, nb=20):
+        b = a[:len(a) // nb * nb].reshape(nb, -1).mean(1)
+        return b.mean(), b.std(ddof=1) / np.sqrt(nb)
+    P("     Metropolis <P>     = %.4f +- %.4f" % binned(mP))
+    vb = mq[:len(mq) // 20 * 20].reshape(20, -1).var(1, ddof=1)
+    P("     Metropolis Var(qbar)= %.5f +- %.5f  (single plane, block = L^4)"
+      % (mq.var(ddof=1), vb.std(ddof=1) / np.sqrt(20)))
 
     # production
     L = 2

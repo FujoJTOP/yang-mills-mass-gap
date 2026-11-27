@@ -1,0 +1,47 @@
+=== IM1 varpi production run (sweep: L=8 seed11, L=6 seed23, L=8 seed29) ; SU2 beta=2.5 ===
+-- L=8 N=4000 therm=500 gap=3 seed=11 bhats=1,2,4,8
+# L=8 beta=2.5 N=4000 gap=3 therm=500 seed=11 bhats=[1, 2, 4, 8]  fams=['p01', 'pall']  therm_wall=23.4s
+  500/4000  wall=73s  eta=508s  plaq_so_far=0.6524
+  1000/4000  wall=143s  eta=430s  plaq_so_far=0.6526
+  1500/4000  wall=212s  eta=354s  plaq_so_far=0.6524
+  2000/4000  wall=281s  eta=281s  plaq_so_far=0.6524
+  2500/4000  wall=349s  eta=209s  plaq_so_far=0.6524
+  3000/4000  wall=417s  eta=139s  plaq_so_far=0.6524
+  3500/4000  wall=486s  eta=69s  plaq_so_far=0.6524
+  4000/4000  wall=555s  eta=0s  plaq_so_far=0.6524
+# wall=554.7s (0.14s/cfg)  plaq=0.6524 +- 0.0000  (target 0.652)
+FAM p01 BHAT 1  blocks=4096  varpi=0.071943  err_jk=0.000039  err_bin=0.000054
+FAM p01 BHAT 2  blocks=256  varpi=0.078955  err_jk=0.000119  err_bin=0.000157
+FAM p01 BHAT 4  blocks=16  varpi=0.083848  err_jk=0.000473  err_bin=0.000513
+FAM p01 BHAT 8  blocks=1  varpi=0.091916  err_jk=0.002051  err_bin=0.001946
+FAM pall BHAT 1  blocks=4096  varpi=0.014230  err_jk=0.000006  err_bin=0.000010
+FAM pall BHAT 2  blocks=256  varpi=0.019366  err_jk=0.000028  err_bin=0.000027
+FAM pall BHAT 4  blocks=16  varpi=0.024190  err_jk=0.000135  err_bin=0.000133
+FAM pall BHAT 8  blocks=1  varpi=0.032946  err_jk=0.000742  err_bin=0.000742
+-- L=6 N=4000 therm=500 gap=3 seed=23 bhats=1,2,3,6
+# L=6 beta=2.5 N=4000 gap=3 therm=500 seed=23 bhats=[1, 2, 3, 6]  fams=['p01', 'pall']  therm_wall=6.7s
+  500/4000  wall=21s  eta=146s  plaq_so_far=0.6527
+  1000/4000  wall=42s  eta=125s  plaq_so_far=0.6532
+  1500/4000  wall=63s  eta=104s  plaq_so_far=0.6532
+  2000/4000  wall=83s  eta=83s  plaq_so_far=0.6532
+  2500/4000  wall=104s  eta=63s  plaq_so_far=0.6532
+  3000/4000  wall=125s  eta=42s  plaq_so_far=0.6531
+  3500/4000  wall=146s  eta=21s  plaq_so_far=0.6531
+  4000/4000  wall=168s  eta=0s  plaq_so_far=0.6531
+# wall=167.5s (0.04s/cfg)  plaq=0.6531 +- 0.0001  (target 0.652)
+FAM p01 BHAT 1  blocks=1296  varpi=0.071757  err_jk=0.000069  err_bin=0.000070
+FAM p01 BHAT 2  blocks=81  varpi=0.079116  err_jk=0.000207  err_bin=0.000158
+FAM p01 BHAT 3  blocks=16  varpi=0.082699  err_jk=0.000469  err_bin=0.000494
+FAM p01 BHAT 6  blocks=1  varpi=0.095965  err_jk=0.002162  err_bin=0.001662
+FAM pall BHAT 1  blocks=1296  varpi=0.014163  err_jk=0.000011  err_bin=0.000011
+FAM pall BHAT 2  blocks=81  varpi=0.019226  err_jk=0.000049  err_bin=0.000046
+FAM pall BHAT 3  blocks=16  varpi=0.022268  err_jk=0.000126  err_bin=0.000112
+FAM pall BHAT 6  blocks=1  varpi=0.033798  err_jk=0.000753  err_bin=0.000629
+-- L=8 N=4000 therm=500 gap=3 seed=29 bhats=1,2,4,8
+# L=8 beta=2.5 N=4000 gap=3 therm=500 seed=29 bhats=[1, 2, 4, 8]  fams=['p01', 'pall']  therm_wall=22.2s
+  500/4000  wall=74s  eta=515s  plaq_so_far=0.6526
+  1000/4000  wall=146s  eta=439s  plaq_so_far=0.6525
+  1500/4000  wall=219s  eta=365s  plaq_so_far=0.6526
+  2000/4000  wall=290s  eta=290s  plaq_so_far=0.6526
+  2500/4000  wall=357s  eta=214s  plaq_so_far=0.6526
+  3000/4000  wall=423s  eta=141s  plaq_so_far=0.6526

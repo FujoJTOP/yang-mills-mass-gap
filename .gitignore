@@ -54,3 +54,6 @@ docs/paper-final/*.log
 docs/paper-final/*.toc
 docs/paper-final/*.out
 docs/paper-final/out.txt
+
+# tool session state
+.mimosa/

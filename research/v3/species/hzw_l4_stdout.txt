@@ -1,0 +1,9 @@
+HZW L=4 beta=2.5 : n=16000 configs, streams=4 x 4000 sweeps, wall 89.0s
+<P>            = 0.65491 +- 0.00009      (repo single-config 0.6526)
+Var(q)  (b=1)  = 0.070657 +- 0.000076
+Var(q6) (b=1)  = 0.501089 +- 0.000442
+varpi(b=1)     = 0.070657          (N_B=1)
+varpi(b=2a)    = 0.078102 +- 0.000053  (N_B=16)  = 16*Var(qbar_16)
+varpi(b=4a)    = 0.091570 +- 0.000854  (N_B=256) = 256*Var(qbar_256)
+ratio varpi(4a)/varpi(2a) = 1.172   (N_B ratio = 16)
+six-plane: varpi(2a)=0.68723  varpi(4a)=1.11202

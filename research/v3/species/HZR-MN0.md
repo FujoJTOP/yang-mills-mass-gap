@@ -85,7 +85,7 @@
 | 2 | `grep` | **OK**（无 provider failure） | `HZC-SIGN\|m_\{?0n\}?\|m₀ₙ` @ `D:\Dev\math`；`m₀₁\|m_01\|m01` @ `research/v3`；`A=β/\|β/\(2Na\)\|c_B\|c_E` @ `species` | `13` / `18` / `34` |
 | 3 | `pwsh Select-String` | **OK** | `√8\|2\.82843\|零点\|m_0n` @ `species\HZ*.md` | `13` 行（承重 `HZC-SIGN:16,61,82,91`） |
 | 4 | `read` | **OK**（带行号） | `HZC-SIGN`(118)·`HZG-SIGN2`(99)·`HZE-ZUB`(87)·`HV6-ATOZERO`(99) | 4/4 |
-| 5 | `pwsh py -3.12 -I` | **OK**（五次 exit 0） | `$env:TEMP\hzr_mn0{,b,c,d,e}.py`：`eigh`+`expm`+二分；段 [M1]–[M7]（原 [A]–[G]，改名避与等级 [C] 混） | 见 §1.5、§2 |
+| 5 | `pwsh py -3.12 -I` | **OK**（五次 exit 0） | `$env:TEMP\hzr_mn0{,b,c,d,e}.py`：`eigh`+`expm`+二分；段 [M1]–[M7]（检查段名已避开等级标记） | 见 §1.5、§2 |
 | 6 | MC / Lean / `git commit` / `web_*` / `skill` | **0**（未调用） | — | — |
 
 **`TOOL-FAIL` 0；空响应 0；`ENOENT` 0。**
@@ -101,4 +101,4 @@
 **报 `lead`（`AGENTS §6` 的落盘项）**：① `HZC 0.5` 的「`w₁=0/0`」改记为「`c`-零、极限 `=m₀₁²/S`」；②「换号只来自 `m₀ₙ` 的零点」正确，但那些零点不在 `√8`、且是模型数据（判据 Z）；③ 安全判据从「距 `√8`」改为 `|c(β_W)|` +「窗内无零点」；④ 位置图本轮结论变化 = 0.1–0.6 六条（本文件未动 HTML）。
 
 *Status：`√8` 处 `m₀ₙ` 无零点（`S=Var_{ψ₀}(X_B)>0`；全部为零 ⟺ `ψ₀` 是 `X_B/X_E` 公共本征向量，需调参）；消失的是标量 `c(β)=p−qβ²/2N²`，故 `w₁` 的 `0/0` 可去、极限 `=m₀₁²/S`（玩具 median 0.33）；`m₀₁` 的真零点服从判据 Z，位置与 `√8` 无关；`0.168` 对 `m₀₁` 零信息、对 `a₁` 不安全（`|c|=7/32`、`2311/20000`）。**Clay 0 项；无 QED。***
-*本文件只写 `research/v3/species/HZR-MN0.md`；脚本在 `$env:TEMP`；既有文件一字未改（并行会话对 `HV1/HV2/HV5` 的改动不在本代理账内）；未 `git commit`；零 MC�
+*本文件只写 `research/v3/species/HZR-MN0.md`；脚本在 `$env:TEMP`；既有文件一字未改（并行会话对 `HV1/HV2/HV5` 的改动不在本代理账内）；未 `git commit`；零 MC；未编译 Lean；未动 `docs/position-current.html`。*
