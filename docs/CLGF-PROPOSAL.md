@@ -1255,6 +1255,8 @@ $$\boxed{\ \sum_{\gamma'\nsim\gamma}\|z_{\gamma'}\|_r\,e^{(a+\lambda)n_{\gamma'}
 
 ### 5⁗⁗.3 三条推论（`[T]`，我核过结构）
 
+**WARN: [errata 29, r264] the three corollaries below are CONDITIONAL on V (fiber level only). They do NOT compose into UFBP => CTB => uniqueness. See section 5-quad-quad-quad-quad.**
+
 **（一）连接桥：`N(Γ) ≥ (R−D_A−D_B)/c_*` ⇒ `Σ_{Γ:A↔B}|ω(Γ)| ≤ C_1K_AK_B|st|e^{−m_1R}`，`m_1=λ/c_*`。**
 **核心不是给活动加 `e^{−λdiam}`，而是**每个连通簇的总尺寸 ≥ 连接两块所需的距离**。**
 
@@ -1329,6 +1331,94 @@ $$\boxed{\ \text{landing 应为 }\beta'\approx0.02,\ b\approx2^4,\ \text{【四�
 $$\boxed{\ \text{条件细变量的谱/混合控制}\ \Longrightarrow\ \text{Fiber-KP}\ \Longrightarrow\ \text{三重闭合}\ }$$
 
 --- 
+## §5⁗⁗⁗ 【勘误 29】纤维收缩 ≠ 粗变量聚簇：五模块审计（第 264 轮）
+
+### 5⁗⁗⁗.1 关键恒等式（`[T]`）
+
+$$\mathrm{Cov}(F_A,F_B)=\underbrace{\mathbb E[\mathrm{Cov}(F_A,F_B\mid\mathcal V)]}_{\text{UFKP 控这一项}}+\underbrace{\mathrm{Cov}(\mathbb E[F_A\mid\mathcal V],\mathbb E[F_B\mid\mathcal V])}_{\text{粗变量自己的协方差}}$$
+
+**⇒ 全协方差律（恒等式）。UFBP 只控**第一项**。**
+
+$$\boxed{\ \text{细纤维解耦}\ \ne\ \text{粗变量解耦}\ }$$
+
+**⚠️ 我 §5⁗⁗.3 写「UFBP ⟹ CTB ⟹ 唯一」是**越权**：那里的 `I(s,t)` 是**条件在 `V` 上**的纤维双缺陷自由能，界对 `V` 一致；那只给第一项。**
+
+**反例形状（一般概率模型）：给定全局隐变量 `S` 后各局部纤维完全独立，但 `S` 有两个取值且同时控制两远隔区域的局部均值 ⇒ 无条件协方差仍是常数。**
+
+### 5⁗⁗⁗.2 修正后的逻辑
+
+$$\text{UFKP}\Longrightarrow\text{有效纤维积分解析且准局部}$$
+$$\text{BASE}:\quad \sup_X\sum_Yc^{\rm base}_{XY}e^{m\,d(X,Y)}\le q\lt1\ \Longrightarrow\ \text{粗变量聚簇 + 边界稳定}$$
+$$\boxed{\ \text{UFKP}+\text{BASE}\ \Longrightarrow\ \text{原模型双块聚簇}\ }$$
+
+### 5⁗⁗⁗.3 好场/坏场版 UFBP（结构 `[T]`）
+
+$$\text{(UFKP-G)}\quad \sup_{V\in\mathcal G_k}\sup_\gamma\frac1{|S(\gamma)|}\sum_{\gamma'\nsim\gamma}\|z_{\gamma'}(V)\|_r\,e^{(a+\lambda)|S(\gamma')|}\ \le\ a-\delta$$
+$$\text{(BAD)}\quad \mathbb P(\exists\ \text{坏场连通簇连接 }A,B)\ \le\ C e^{-m_{\rm bad}d(A,B)}$$
+
+$$\boxed{\ |\mathrm{Cov}(F_A,F_B)|\ \le\ C\big(e^{-m_{\rm good}R}+e^{-m_{\rm bad}R}\big)\ }$$
+
+**⚠️ `BAD` 仍需独立证明：单点坏场概率小**不足以**控制连接两区的坏场簇。**
+
+### 5⁗⁗⁗.4 【本轮定量阻塞】`β=2.5` 处没有小曲率好场
+
+**我从自己的 `L=6`、`β=2.5` 实测取数：**
+
+$$\langle q\rangle=0.34727537,\quad \mathrm{Var}(q)=1.4200\times10^{-2},\quad sd=0.1192,\quad \tfrac{sd}{\langle q\rangle}=0.343$$
+
+$$q\in[0,2]\ \Longrightarrow\ \text{典型曲率是最大值的 }17.4\%$$
+
+**若好场要求 `q_p<ε`（高斯近似，仅量级）：**
+
+| `ε` | `P(q<ε)` |
+|---|---|
+| `0.02` | `0.003` |
+| `0.05` | `0.006` |
+| `0.10` | `0.019` |
+| `0.20` | `0.108` |
+| **`0.35`** | **`0.509`** |
+| `0.70` | `0.999` |
+
+$$\boxed{\ \text{要有可观测度的好场须 }\varepsilon\gtrsim0.35\text{，而那时「小曲率」已不是小量}\ }$$
+
+**⇒ `BAD` 前因子极大 ⇒ 指数界被吃掉。**
+
+**⇒ 与今晚其他全部诊断同源：**
+
+| 量 | `β=2.5` 的值 | 判 |
+|---|---|---|
+| `u(2.5)=I₂/I₁` | `0.507195` | `u_P3=2u=1.014\gt1` |
+| `⟨q⟩` | `0.3473` | 曲率 `O(1)`，不小 |
+| `μθ`（`β'=0.40`） | `0.993` | `ν\lt0` |
+| `χ_q/Λ` | `0.011` | **这一项有余量** ✓ |
+
+$$\boxed{\ \beta=2.5\ \text{在四个入口上都没有小参数（只有 F2 例外）}\ }$$
+
+### 5⁗⁗⁗.5 五模块审计（正式记账）
+
+| 模块 | 内容 | 判 |
+|---|---|---|
+| **A** | 链变量有限体积生成泛函（中心对称 → 偶子图 → GF + RTC） | **`[T]`**（`β`-无关，**不给聚簇**） |
+| **B** | 精确块映射 `dν_b(V)∝Z_fib(V)dH_c(V)`；单粗链 non-nullness `e^{−30}` | **`[T]`** |
+| **C** | 条件纤维收缩 `UFKP-G + BAD` | **`[U]`**（`β=2.5` 无证书） |
+| **D** | 粗变量聚簇 + 唯一性 `BASE` | **`[U]`**（**不能从 C 推出**） |
+| **E** | 连续极限 | **`[U]`** |
+
+### 5⁗⁗⁗.6 文献窗口（我**未逐字核**，标 `[M]`）
+
+| 结果 | `β_W` 上限 | `2.5/上限` |
+|---|---|---|
+| 两级 Fiber–Base 唯一性 | `0.511` | `4.89×` |
+| 两级聚类/传递矩阵隙 | `0.51` | `4.90×` |
+| 两级复耦合簇 | `0.465` | `5.38×` |
+| strand 展开（2026-11-21 后续预印本） | `0.711` | `3.52×` |
+
+**⚠️ 教训：不能只增加聚合物项再期待 KP 自动成立，必须改变对活动的**组织与估计方式**。**
+
+**⚠️ 另：2026-10 的好场/坏场方案也未完成坏场在每一条件纤维上的统一控制、跨尺度组合与连续极限。**
+
+---
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
