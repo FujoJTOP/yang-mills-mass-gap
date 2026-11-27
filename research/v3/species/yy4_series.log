@@ -1,0 +1,56 @@
+== [1] exact coefficients a_k of plaq = sum a_k beta^(2k+1) (one-plaquette graph) ==
+  k=0  a_k = 1/4 = 2.500000000000e-01
+  k=1  a_k = -1/96 = -1.041666666667e-02
+  k=2  a_k = 1/1536 = 6.510416666667e-04
+  k=3  a_k = -1/23040 = -4.340277777778e-05
+  k=4  a_k = 13/4423680 = 2.938729745370e-06
+  k=5  a_k = -11/55050240 = -1.998174758185e-07
+  k=6  a_k = 647/47563407360 = 1.360289423975e-08
+  k=7  a_k = -1133/1223059046400 = -9.263657411594e-10
+  k=8  a_k = 43213/684913065984000 = 6.309267868604e-11
+  check a0=1/4 : True   a1=-1/96 : True
+  ratio |a_k/a_{k+1}| -> radius^2 ; z_pole = -j_{1,1}^2 = -5.783185963
+  k= 6  |a_k/a_{k+1}| = 14.684151
+  k= 8  |a_k/a_{k+1}| = 14.682164
+  k=10  |a_k/a_{k+1}| = 14.681988
+  k=12  |a_k/a_{k+1}| = 14.681972
+
+== [2] one-plaquette graph vs anchor at beta=2.5 ==
+  I2/I1            = 0.507195100
+  u_sp'(2.5) FD    = 0.134119011
+  u_sp'(2.5) exact = 0.134119010   (|FD-exact| = 7.68e-11)
+  (I2/I1)/beta     = 0.202878040   vs 1/4 = 0.250000000
+  anchor/beta      = 0.261056000   (rise above 1/4 = 4.4224%)
+  anchor           = 0.65264  -> gap delta = 0.145445  (rel 0.2868)
+  threshold plaq/beta = 0.261056 ; margin vs u_sp' = 1.946x
+
+== [3] diagonal Pade [m/m] in z=beta^2, evaluated at z=6.25 ==
+   m   Pade(6.25)      err vs I2/I1     u'(2.5)[Pade]
+   1   0.203183521   +3.055e-04    0.135852
+   2   0.202878535   +4.952e-07    0.134124
+   3   0.202878040   +2.714e-10    0.134119
+   4   0.202878040   +6.287e-14    0.134119
+   5   0.202878040   +1.110e-16    0.134119
+   6   0.202878040   +8.327e-17    0.134119
+   7   0.202878040   +5.551e-17    0.134119
+
+== [4] Borel-Pade (g(y)=sum a_k y^k/(2k+1)!, y=s^2) ==
+  [4/4]  beta*int = 0.507196728   (target 0.507195100, diff +1.63e-06)
+  [6/6]  beta*int = 0.507195106   (target 0.507195100, diff +5.57e-09)
+  [8/8]  beta*int = 0.507195100   (target 0.507195100, diff +1.86e-11)
+
+== [5] anchor-matched single-power corrections: what derivative do they force? ==
+  delta = +0.145445  (anchor - one-plaquette graph)
+  p= 5:  u' contribution +0.290890 -> u'(2.5) = +0.425009   ABOVE threshold 0.261056
+  p= 7:  u' contribution +0.407246 -> u'(2.5) = +0.541365   ABOVE threshold 0.261056
+  p= 9:  u' contribution +0.523602 -> u'(2.5) = +0.657721   ABOVE threshold 0.261056
+  p=13:  u' contribution +0.756313 -> u'(2.5) = +0.890432   ABOVE threshold 0.261056
+
+== [6] exact arithmetic: can plaq/beta be monotone on [0,2.5]? ==
+  plaq/beta at 0+ = 1/4 = 0.250000000
+  plaq/beta at 2.5     = 0.261056000  (ratio 1.044224)
+  one-plaquette u/beta: max 0.250000 at beta=0.000 ; value at 2.5 0.202878
+
+== [7] measured tangent/secant ratio (repo SS4-EP:43, rho(2.5)=0.7212) ==
+  u'(2.5)_meas = 0.188274 ; threshold 0.261056 ; slack 0.072782 ; margin 1.3866x
+  needed derivative accuracy to keep sign: 0.072782 (27.9% of threshold)
