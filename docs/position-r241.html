@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>位置图 · 第 241 轮 · 距离 Clay</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] }, svg: { fontCache: 'global' } };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root{
+    --bg:#faf9f7; --ink:#1b1a17; --muted:#6b675f; --line:#e0dcd4; --line-soft:#efebe3;
+    --panel:#fff; --accent:#8a5a2b; --accent-ink:#6d441f; --accent-wash:#f6efe6;
+    --ok:#2f6b46; --ok-wash:#eaf3ed; --no:#a03a2b; --no-wash:#f8ece9;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC","Noto Serif CJK SC",serif;
+    --r:6px;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .page{max-width:880px;margin:0 auto;padding:56px 26px 96px}
+  h1{font-size:31px;line-height:1.18;letter-spacing:-.02em;margin:0 0 8px;font-weight:650}
+  .sub{color:var(--muted);font-size:15px;margin:0 0 6px}
+  .stamp{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.03em;margin:0 0 34px}
+  h2{font-size:20px;letter-spacing:-.01em;margin:44px 0 14px;padding-top:20px;border-top:1px solid var(--line);font-weight:640}
+  h2:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 13px}
+  .mut{color:var(--muted)}
+  b,strong{font-weight:650}
+
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:18px 20px;margin:16px 0}
+  .box .hd{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+  .box p:last-child{margin-bottom:0}
+
+  .sstar{border-left:4px solid var(--accent);background:var(--accent-wash);border-radius:0 var(--r) var(--r) 0;padding:20px 22px;margin:20px 0}
+  .sstar .hd{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:10px}
+
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14.5px}
+  th,td{text-align:left;padding:9px 10px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+  td:first-child{font-family:var(--mono);font-size:13px;color:var(--accent-ink);white-space:nowrap}
+
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;letter-spacing:.05em;padding:1px 6px;border-radius:3px;vertical-align:1px;font-weight:600}
+  .tag.t{background:var(--ok-wash);color:var(--ok)}
+  .tag.n{background:var(--no-wash);color:var(--no)}
+  .tag.f{background:var(--line-soft);color:var(--muted)}
+
+  .five{counter-reset:s;list-style:none;padding:0;margin:16px 0}
+  .five li{counter-increment:s;position:relative;padding:13px 0 13px 44px;border-bottom:1px solid var(--line-soft)}
+  .five li:last-child{border-bottom:none}
+  .five li::before{content:"\2460";position:absolute;left:0;top:13px;font-family:var(--mono);font-size:15px;color:var(--accent);font-weight:700}
+  .five li:nth-child(2)::before{content:"\2461"}
+  .five li:nth-child(3)::before{content:"\2462"}
+  .five li:nth-child(4)::before{content:"\2463"}
+  .five li:nth-child(5)::before{content:"\2464"}
+  .five .ty{font-family:var(--mono);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);display:block;margin-top:3px}
+
+  .dead{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+  .dead span{font-family:var(--mono);font-size:11px;padding:3px 8px;border-radius:var(--r);background:var(--line-soft);color:var(--muted);text-decoration:line-through}
+  .dead span.live{text-decoration:none;background:var(--ok-wash);color:var(--ok)}
+
+  .fix{border-left:3px solid var(--accent);background:#fff;padding:14px 18px;margin:16px 0;font-size:14.5px;line-height:1.68}
+  .fix code{font-family:var(--mono);font-size:.9em;background:var(--line-soft);padding:1px 4px;border-radius:2px}
+  .fix p{margin:0 0 8px}
+  .fix p:last-child{margin-bottom:0}
+
+  .lean{font-family:var(--mono);font-size:12.5px;line-height:1.7;background:#1b1a17;color:#e8e3d8;padding:16px 18px;border-radius:var(--r);overflow-x:auto;margin:16px 0}
+  .lean .c{color:#8a8478}
+  .lean .k{color:#c9a227}
+
+  .foot{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-family:var(--mono);font-size:11.5px;color:var(--muted);line-height:1.8}
+  a{color:var(--accent-ink);text-decoration:none;border-bottom:1px solid var(--line)}
+  a:hover{border-bottom-color:var(--accent)}
+  @media(max-width:640px){.page{padding:34px 18px 72px}h1{font-size:25px}table{font-size:13.5px}}
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>位置图 · 第 241 轮</h1>
+<p class="sub">4D 纯 SU(N) Yang–Mills 质量间隙。两柱 23 格：17 已证，6 未证，承重 2 格。</p>
+<p class="stamp">CLAY 未证 · 无百分比 · 判词只有 [T] 已证 / [NG] 未证</p>
+
+<h2>一、最小残余</h2>
+
+<div class="sstar">
+  <div class="hd">Clay ⟸ S*（充分，非等价）</div>
+  $$
+  S^*:=\ \underbrace{(V)@\beta\approx2.5}_{\text{存在性}}\ \wedge\ \underbrace{\varpi\ge c_0}_{\text{值下界}}\ \wedge\ \underbrace{\exists\beta_0\,\forall\beta\ge\beta_0\,\forall L:\ \varepsilon\ \ge\ w_0}_{\text{模数}},\qquad w_0=\frac{1}{4N^4}
+  $$
+  <p style="margin:14px 0 0;font-size:14.5px">反向不立：$(V)$ 不是隙的推论（自由场上 $L3$ 真而 $\Delta=0$），且 $w_0$ 是特定选择（换载体真值会变）。所以只写 $\Longleftarrow$，不写 $\Longleftrightarrow$。</p>
+</div>
+
+<h2>二、剩余，精确到五句</h2>
+
+<ol class="five">
+  <li><b>$(V)$ 在 $\beta\approx2.5$ 处非空</b> —— 防空蕴含。Thm 7.4 只到 $\beta\lt\beta_0$，靶窗右端 $\beta_A=0.625$ 是空的。<span class="ty">存在性 · <span class="tag n">NG</span></span></li>
+  <li><b>塔底存在每步率 $m\ge m_0\gt0$</b>，故 $S(m)=\coth(m/2)^4=O(1)$ 而非 $\Theta(a^{-4})$。<span class="ty">率 · <span class="tag n">NG</span></span></li>
+  <li><b>$\varpi\ge c_0\gt0$</b> —— 不进 $L3$（上界即够），只进 $S^*$。对象已钉成 $c_\theta$，只差正性。<span class="ty">值下界 · <span class="tag n">NG</span></span></li>
+  <li><b>$\exists\beta_0\forall\beta\ge\beta_0\forall L:\ \varepsilon\ge w_0$</b> —— 不是新值（$w_1=0.3427\pm0.0119=21.9\,w_0$，$27.5\sigma$），也不是率。<span class="ty">模数 · <span class="tag n">NG</span></span></li>
+  <li><b>该模数不由柱 1 的率供给</b> —— $w_1$ 与 $m=0.017\,/\,1.707\,/\,170.7$ 全相容。<span class="ty">独立性 · <span class="tag f">注记</span></span></li>
+</ol>
+
+<p class="mut" style="font-size:14px">零新格点作业即可推进的是 ① 与 ③：① 只要 $L=2$、SU(2)、$\beta=2.5$ 的 $a^4Z_a$ 单点读数；③ 只要 $O_B\ge0$ 的普遍性（反射正性给符号，正是这条需要的方向）。</p>
+
+<h2>三、两柱的格账</h2>
+
+<table>
+  <tr><th>柱</th><th>格数</th><th>承重格</th><th>缺件类型</th></tr>
+  <tr><td>柱 1</td><td>12 = 9 <span class="tag t">T</span> + 3 <span class="tag n">NG</span></td><td>第 11 格（每步率）</td><td><b>率</b></td></tr>
+  <tr><td>柱 2</td><td>11 = 8 <span class="tag t">T</span> + 3 <span class="tag n">NG</span></td><td>$R5$</td><td><b>模数</b></td></tr>
+</table>
+
+<div class="box">
+  <div class="hd">柱 1 的核心闭式</div>
+  $$
+  \varpi\ \le\ 4\coth(m/2)^4
+  $$
+  <p class="mut" style="font-size:14px;margin:8px 0 0">$a$、$\hat b$、$L$、$N$ 全部约掉，内容只剩「$m$ 必须是每步率」。$m\to0$ 时 $\coth(m/2)^4\approx(2/m)^4\to\infty$；$\beta=2.5$ 侧唯一的硬数是反向见证：壳 $r=5..8$ 仍给 $+0.4302$，<b>同号未衰</b>（单组态 $L=8$）。</p>
+</div>
+
+<div class="box">
+  <div class="hd">柱 2 的核心分解</div>
+  $$
+  \varpi=\underbrace{\mathrm{Var}(q)}_{=\,C_q(0)\,\in(0,1]}+O_B,\qquad \text{靶}\iff O_B\le C-\mathrm{Var}(q)
+  $$
+  <p class="mut" style="font-size:14px;margin:8px 0 0">对角项不花任何输入（$q\in[0,2]$ + Popoviciu），且与 $a,k,L,N$ 无关。抽稀单调 $V(\hat b)$ 不增是真定理，但<b>只给幂 0</b>；靶要 $O(\hat b^{-4})$，缺口恰是一个 $N_B$。强形 $O_B\le0$ 是<b>假</b>的（自由场 Wick $C_q(z)=2|\langle AA\rangle|^2\ge0$）。</p>
+</div>
+
+<h2>四、本轮的封锁</h2>
+
+<p class="mut" style="font-size:14px">下列入口逐条判死，每条后面是判它的那一格；判死的理由是<b>输入 ≡ 靶</b>或<b>方向反</b>，不是"看起来不对"。</p>
+
+<div class="dead">
+  <span>$K$ 有界（保号减除）</span>
+  <span>$W$（$=$ 靶，两次独立）</span>
+  <span>$\sup\mathrm{Var}\lt\infty$</span>
+  <span>模面 / 条件方差</span>
+  <span>振幅地板 $\rho^{\rm ren}\ge c$</span>
+  <span>$B1^{\rm rate}_{a\text{-uni}}$</span>
+  <span>基偏置规则</span>
+  <span>$\chi_{\rm flat}$ 当 $\beta$-探针</span>
+  <span>$\tilde\chi$ 的均值</span>
+  <span>$④$ 的 $L$-序列</span>
+  <span>$Z_O(k)$ 的"值格"</span>
+  <span>$\partial_\beta w_1$ 的符号</span>
+  <span>一点 + 单调 = 整条射线</span>
+  <span>$\beta$-预算（预算为零）</span>
+  <span>Faizal–Shabir 当上游</span>
+  <span>正比较算子（第六种机制 $\equiv H1$）</span>
+</div>
+
+<div class="box">
+  <div class="hd">而活着的</div>
+  <div class="dead" style="margin:0">
+    <span class="live">$m$（每步率）</span>
+    <span class="live">$\varepsilon\ge w_0$（模数）</span>
+    <span class="live">$(V)$ 非空</span>
+    <span class="live">$O_B\ge0$（符号方向对）</span>
+  </div>
+  <p class="mut" style="font-size:14px;margin:10px 0 0">四条活的里，两条零作业可查（$(V)$ 非空、$O_B\ge0$），两条是主力缺件。</p>
+</div>
+
+<h2>五、自纠（留着，比结论有用）</h2>
+
+<div class="fix">
+  <p><code>$\partial_\beta\langle O\rangle$</code> 写过 <code>$+\mathrm{Var}(O)$</code>，正确是 <code>$-\mathrm{Var}(O)\le0$</code>（$M_0$ 是凝聚的负斜率）。</p>
+  <p>预算形写过 <code>$+\Delta/\varepsilon$</code>，正确是 <code>$+\Delta$</code>。</p>
+  <p><code>$\varepsilon=0.269$</code> 是<b>缺陷代理</b> <code>$|m_{\rm eff}(1)-m_{\rm eff}(2)|/m_{\rm eff}(2)$</code>，既不是 $w_1$ 也不是 $f_1^2/\mathrm{Var}(O)$，<b>方向亦反</b>。正确读数 <code>$w_1=0.3427\pm0.0119$</code>。</p>
+  <p><code>$s_1\ge4\,{\rm arccoth}^2\rho$</code> 方向反了——$\coth(\sqrt s/2)$ 单调减，正确是 <code>$\le$</code>，那是<b>天花板</b>不是地板。</p>
+  <p>「两圈 $a(\beta)$ 在 $\beta=2.5$ 差 $15\times$」是<b>群标签错配</b>：一个 SU(2) 的 $m\cdot a$ 配了 SU(3) 的 $a\Lambda$。真实偏差是 $1.67$–$2.05\times$。</p>
+  <p><code>$B1$</code> 的 4D 支撑面是 <code>[T]</code>（正文 Thm 4.1/4.5），断点在速率，而速率等价于 $\Delta_0\gt0$，就是靶。</p>
+  <p><code>$g_j^2=O(1)$</code> <b>不</b>证靶不真——固定分数与它相容。</p>
+  <p>「临界指数 $0$ ⇒ 常数」是 <b>non sequitur</b>：$Z_O$ 是三个同名量，靶是 $(R)^2$，幂指数 $0$ 但对数幂是 $2$。</p>
+  <p><code>$\xi/a\approx1$</code> 不是根因，它就是 $a\Delta_a=O(1)$ 的影子——当输入是循环。</p>
+</div>
+
+<h2>六、Lean 骨架</h2>
+
+<div class="lean">
+<span class="c">-- 5 条机检 + 13 条已证 + 3 条装配，全部蕴含</span>
+<span class="k">theorem</span> T16 : Clay := assemble T14 T15 OS
+<span class="c">-- T14 ← {T1 ← N1, T13}      T15 ← {T4, T5, N4}</span>
+
+<span class="k">axiom</span> hy6_N1_iota_l2_seam : IotaL2Seam μ ι Ha Hlim      <span class="c">-- 柱 1 出口</span>
+<span class="k">axiom</span> hy6_N4_b_floor      : ∃c&gt;0 ∀L≥2 ∀β≥βA, s1 ≥ c·(M0/chi)   <span class="c">-- 柱 2 出口</span>
+</div>
+
+<p class="mut" style="font-size:14px">Mathlib 侧的一个真障碍：有 <code>resolvent</code>（有界代元）、<code>MemLp</code>、<code>ProbabilityMeasure.tendsto_iff_forall_integral_tendsto</code>，<b>没有无界自伴预解</b>——桥那一步在 Lean 里做不了，不是因为数学没证，是因为缺工具。可改用 <code>HasGapAbove</code>。</p>
+
+<h2>七、下一手</h2>
+
+<table>
+  <tr><th>序</th><th>做什么</th><th>成本</th><th>闭哪一格</th></tr>
+  <tr><td>1</td><td>$L=2$、SU(2)、$\beta=2.5$ 的 $a^4Z_a$ 单点读数</td><td>极小格点</td><td>① $(V)$ 非空（防空蕴含）</td></tr>
+  <tr><td>2</td><td>判 $O_B\ge0$ 的普遍性（反射正性给符号，方向正好对）</td><td>零作业</td><td>③ $\varpi\ge c_0$</td></tr>
+  <tr><td>3</td><td>$\coth(m/2)^4$ 上 $m$ 的下界：BKAR 延到 $\beta=2.5$，或转移矩阵 $\lambda_2/\lambda_1$ 的上界</td><td>解析</td><td>② 每步率（柱 1 承重）</td></tr>
+  <tr><td>4</td><td>$\partial_\beta\varepsilon_*\ge0$（窗内地板与靶逐位同数，<b>余量为 1</b>）</td><td>解析</td><td>④ 模数（柱 2 承重）</td></tr>
+</table>
+
+<div class="foot">
+  第 241 轮 · 本轮新增判词 30 份（`research/v3/species/HZ*`、`IA*`）<br>
+  位置图快照：<code>position-r241.html</code> · 稳定入口：<code>position-current.html</code><br>
+  推导链：<a href="CLAY-PROOF-CHAIN.html">CLAY-PROOF-CHAIN.html</a> · 论文式推导：<a href="DERIVATION-TO-CLAY.html">DERIVATION-TO-CLAY.html</a> · 仪表盘：<a href="DISTANCE-TO-CLAY.html">DISTANCE-TO-CLAY.html</a><br>
+  <b>Clay 未证。</b>两柱 23 格中 17 格已证；承重 2 格未证，类型分别是「率」与「模数」。
+</div>
+
+</div>
+</body>
+</html>

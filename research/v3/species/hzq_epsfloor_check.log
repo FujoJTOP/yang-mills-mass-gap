@@ -1,0 +1,33 @@
+[1]
+  N=2: r0=1/64 W=N^2/4=1 w0=1/64=1/64 1/(4N^4)=1/64 eq=True
+  N=3: r0=1/144 W=N^2/4=9/4 w0=1/324=1/324 1/(4N^4)=1/324 eq=True
+  N=4: r0=1/256 W=N^2/4=4 w0=1/1024=1/1024 1/(4N^4)=1/1024 eq=True
+  N=5: r0=1/400 W=N^2/4=25/4 w0=1/2500=1/2500 1/(4N^4)=1/2500 eq=True
+  N=6: r0=1/576 W=N^2/4=9 w0=1/5184=1/5184 1/(4N^4)=1/5184 eq=True
+[2]
+  N=2: perL=1/32 /W -> 1/32 = 1/(2N^4)=1/32 ratio=2
+  N=3: perL=1/72 /W -> 1/162 = 1/(2N^4)=1/162 ratio=2
+[3]
+  eps*=0.269: margin vs 1/64 = 17.2160x
+  eps*=0.246: margin vs 1/64 = 15.7440x
+  eps*=0.3427: margin vs 1/64 = 21.9328x
+[4]
+  N=2: two-atom {0,N} equal -> Var=1 vs N^2/4=1 eq=True
+  N=3: two-atom {0,N} equal -> Var=9/4 vs N^2/4=9/4 eq=True
+  3-atom {0,1,2} equal -> Var=2/3 < 1 = W^2/4 (N=2) strict=True
+[5]
+  decreasing l1=1,l2=9/10: (l2-l1)/l2=-1/9 <=0 -> vacuous
+  increasing l1=0,l2=Delta: (l2-l1)/l2=1 -> 'eps>=1' false (measured 0.269)
+[6]
+  m=1/10 lam=1: w=s1/(2lam)=1/200 vs 1-e^-m > 19/200: violate=True
+  m=1/10 lam=2: w=s1/(2lam)=1/400 vs 1-e^-m > 19/200: violate=True
+  m=1/2 lam=1: w=s1/(2lam)=1/8 vs 1-e^-m > 3/8: violate=True
+  m=1/2 lam=2: w=s1/(2lam)=1/16 vs 1-e^-m > 3/8: violate=True
+  m=9/10 lam=1: w=s1/(2lam)=81/200 vs 1-e^-m > 99/200: violate=True
+  m=9/10 lam=2: w=s1/(2lam)=81/400 vs 1-e^-m > 99/200: violate=True
+[7]
+  dilution eps*=1/10: M1=119/20 (4M0-M1)/3=-13/20 negative=True ; f1^2/M0=1/10
+  eps-coordinate: (Lam-M1/M0)/(Lam-s1)=-13/20 same=True
+[8]
+  beta=0: T=|1><1| rank 1 => no excited state => f1^2=0 ; M0=Var(O)>0 => eps*=0 < eps0
+ALL CHECKS DONE

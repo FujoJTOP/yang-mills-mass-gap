@@ -43,7 +43,7 @@ axiom hy6_N1_iota_l2_seam : IotaL2Seam μ ι Ha Hlim
 - **名字**：`hy6_N1_iota_l2_seam`（即 HY6 §1 的 `N1`；结构名 `IotaL2Seam`）。
 - **假设**：`memLp`（C 的对象面，供 `T4` 的 OS 重构）；`strong`（C 的预解面，供 `T1` 的 `hres : StrongResolvent Ha H`）。
 - **结论**：`IotaL2Seam μ ι Ha Hlim` 成立 —— C 的两面同时成立。
-- **符号**：Mathlib `resolvent a z = (algebraMap z − a)⁻¹ʳ`（`Basic.lean:79`），故本式 = `−((Ha a − z•1)⁻¹)`；整体负号不改 `Tendsto`。
+- **符号**：Mathlib `resolvent a z = (algebraMap z − a)⁻¹ʳ`（`Basic.lean:79`），故本式 = `−((Ha a − z•1)⁻¹)`；整体负号不影响 `Tendsto`。
 
 **1.2 `N4` = `hy6_N4_b_floor`**
 
