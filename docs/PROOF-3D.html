@@ -27,16 +27,16 @@
   .k.tg{background:var(--tg);box-shadow:0 0 12px #f0b27aaa}
   .k.zero{background:var(--zero);box-shadow:0 0 6px #4a505866}
   .num{color:#b9b3a8}
-  .sep{height:1px;background:linear-gradient(90deg,#23262d,transparent);margin:12px 0 10px;width:168px}
+  .sep{height:1px;background:linear-gradient(90deg,#23262d,transparent);margin:12px 0 10px;width:182px}
   .tiny{font-size:10px;color:#4e4b46;line-height:1.7}
-  #tip{position:fixed;pointer-events:none;max-width:340px;padding:10px 13px;
+  #tip{position:fixed;pointer-events:none;max-width:352px;padding:10px 13px;
        background:#101218f2;border:1px solid #2a2e37;border-left-width:2px;border-radius:4px;
-       font-family:var(--mono);font-size:11px;line-height:1.65;color:#cdc8bf;
+       font-family:var(--mono);font-size:11px;line-height:1.62;color:#cdc8bf;
        opacity:0;transform:translateY(4px);transition:opacity .14s,transform .14s;z-index:9;backdrop-filter:blur(6px)}
   #tip.on{opacity:1;transform:translateY(0)}
   #tip .t{display:block;font-size:12px;font-weight:600;margin-bottom:4px}
   #tip .g{display:block;font-size:9.5px;color:#6b6760;margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase}
-  #fb{display:none;position:fixed;inset:0;padding:44px;overflow:auto;font-family:var(--mono);font-size:12.5px;line-height:1.9;color:#cdc8bf;background:var(--bg)}
+  #fb{display:none;position:fixed;inset:0;padding:44px;overflow:auto;font-family:var(--mono);font-size:12.3px;line-height:1.88;color:#cdc8bf;background:var(--bg)}
   #fb pre{white-space:pre-wrap}
 </style>
 </head>
@@ -44,13 +44,13 @@
 <canvas id="c"></canvas>
 <div class="panel" id="tl">
   <h1>Clay 证明结构</h1>
-  <p class="sub">4D 纯 SU(N) 质量间隙 · 第 247 轮</p>
+  <p class="sub">4D 纯 SU(N) 质量间隙 · 第 248 轮</p>
   <div id="stat"></div>
   <div class="sep"></div>
   <div class="row"><i class="k no"></i><span>全关</span></div>
-  <div class="row"><i class="k half"></i><span>半开（差一条不等式）</span></div>
-  <div class="row"><i class="k ok"></i><span>已证 [T]</span></div>
-  <div class="row"><i class="k ev"></i><span>仅读数 [E]</span></div>
+  <div class="row"><i class="k half"></i><span>半开</span></div>
+  <div class="row"><i class="k ok"></i><span>已证 [T] / 编译过</span></div>
+  <div class="row"><i class="k ev"></i><span>读数 / errata</span></div>
   <div class="row"><i class="k tg"></i><span>目标</span></div>
   <div class="row"><i class="k zero"></i><span>零代价（不计缺件）</span></div>
 </div>
@@ -70,73 +70,71 @@
 </script>
 
 <script type="module">
-/* ═══ 图 ═══ */
 const N = [
   { id:'clay', label:'Clay', s:'tgt', r:0, L:0, w:3.0,
-    note:'四个合取项：AX ∧ NT ∧ GAP ∧ [Wilson]。零代价四条（OS1 / OS2 / Δ_a>0 / 变分三件）已全部 [T]，不计缺件。' },
+    note:'四个合取项：AX ∧ NT ∧ GAP ∧ [Wilson]。零代价四条已全部 [T]（OS1 / OS2 / Δ_a>0 / 变分三件），不计缺件。' },
 
-  { id:'l3',  label:'L3   δ > 0', s:'no', r:5.2, L:1, w:2.0,
-    note:'数学缺件 ①。连续极限的紧性。它今晚收敛到五个同义名：Σ|C₂|<∞ / p>4 / δ>0 / k=3 / log-edge 界。而死结是量词序：树界给 ∀a∃A(a)，(U3) 要 ∃A∀a，差 (8/3)ln(b̂/a) 的对数；而 ln 在边上不在树上，Cayley 无 slack（(n^{n−2}/n!)^{1/n}→e 是真熵）。' },
-  { id:'gap', label:'GAP   ρ_P > 0', s:'no', r:5.2, L:1, w:2.0,
-    note:'数学缺件 ②。等价于 δ_{S_W}/(aΛ/β) ≥ c。三条归一已定：Δ_a 是质量单位（不是格距）、Δ(β)=β·δ_{S_W} 是恒等（β 轴内容=0）、矩的 sup_L ≠ 隙的 inf_L（L 轴是类型错）⇒ GAP 只剩 a 轴一根。' },
-  { id:'nt',  label:'NT  /  [Wilson]', s:'zero', r:5.2, L:1, w:1.5,
-    note:'NT（非 Gaussian）不独立：缺件只有 N2，而 N2 ∈ G2，成本全在既有台账内。[Wilson] 是第四合取项（作用量是具体的 Wilson 作用量）。两者都不单列。' },
+  { id:'l3',  label:'L3   Z_a ≤ C·a⁻⁴', s:'no', r:5.4, L:1, w:2.1,
+    note:'数学缺件 ①。八条路全关（见 L3 八路节点）。缺口不是幂，是【一根 log】：p=0 给 a⁻⁴、p=2 给 a⁻²、p=4 给 a⁻⁴·log、p=8 给 a⁰；靶在 p=4 处差一根 log，要 p>4 即 δ>0。' },
+  { id:'gap', label:'GAP   m/Λ ≥ δ', s:'no', r:5.4, L:1, w:2.1,
+    note:'数学缺件 ②。三条归一已定：Δ_a 是质量单位（不是格距）、Δ(β)=β·δ_{S_W} 是恒等（β 轴内容=0）、矩的 sup_L ≠ 隙的 inf_L（L 轴是类型错）⇒ 只剩 a 轴一根。而 Poincaré 那条半开路已证为循环（回 L3）。' },
+  { id:'nt',  label:'NT  /  [Wilson]', s:'zero', r:5.4, L:1, w:1.5,
+    note:'NT 不独立：缺件只有 N2，而 N2 ∈ G2。而 κ₃ 那条直路已被否——q = ¼trF² 是 Wick 平方，Gaussian 的 F 满足 ⟨:F²::F²::F²:⟩_c ≠ 0 ⇒ 自由场的 κ₃(q̄) 本就非零 ⇒ 空洞见证。[Wilson] 是第四合取项，不是义务。' },
 
-  { id:'names', label:'L3 的五个名', s:'no', r:10.8, L:2, w:1.0,
-    note:'Σ|C₂|<∞ ≡ p>4 ≡ δ>0 ≡ k=3 ≡ log-edge 界。五名一物。而 k=3 的供给仓内 0 条；d=4 是唯一压线维数（p_k−d = k(d−2)−d，k=2 给 d−4），压线 log 系数 8/3 = 2^d/(d−1)! 由数格点定。' },
-  { id:'poinc', label:'Poincaré：η < 1（实测 8.07）', s:'half', r:10.8, L:2, w:1.15,
-    note:'半开。单链路 [T]：条件律精确是 vMF（κ≤6β），Haar 比较给 ρ_v ≥ 2e^{−24β} > 0，对边界/L/a 一致。而全局提升要可和性 Σ_l E[Var_l] ≥ (1−η)Var，加权只压到 η̂ = 8.07 > 1 ⇒ 差 8.07×。而 α=180 只挡 transfer 不挡 object。' },
-  { id:'pos',  label:'位置+残数：f₁²≥r₀ ∧ s₁≥δ', s:'half', r:10.8, L:2, w:1.15,
-    note:'半开。这是 α-见证的排除入口（四条经典候选都不在类层排除它；字面排除只有原子性而它不承重）。而 β-预算只排除 α ≤ 22，α ≥ 23 仍在类内。残数半 = P3 强耦合搬到 2.5；位置半 = I2@2.5。' },
-  { id:'cut',  label:'D：cube 计数 96 → ≤21.61', s:'half', r:10.8, L:2, w:1.0,
-    note:'半开，且是最省的一格：纯整数账。768→96 已付过一次 8×，只差每锚点 ≤21.610（而 1/(e·u⁶)=21.610，u=0.5071951）。per-plaquette 4.442×、per-site 35.54×；两次 8×→12 ⇒ 余量 1.80×。零 MC、一轮可交、不碰其余三处。' },
-  { id:'dead', label:'十三条死路（4 类 6/2/2/2）', s:'no', r:10.8, L:2, w:0.95,
-    note:'零判别力 6 · 方向反 2 · 窗错位 2 · 恒等/重言 2。而两栏无交集：矩类 9 条无一死于重言，谱类 3 条无一死于零判别力。精确共性不是「全是矩」，而是【不排除软模】——两个见证 G_YM×U(1)（σ>0、RP、Δ=0）与 ν ∝ s^α ds（m=0、U₀→1）满足九条矩类的前件。' },
+  { id:'l3r8', label:'L3 八路：全关', s:'no', r:11.0, L:2, w:1.15,
+    note:'① 树界 ∀a∃A(a) ↛ ∃A∀a ② sup_a 𝒢^ren 是量纲账、能被规范平凡满足 ③ 非微扰 8/3 是壳密度 ④ 差分形 增量有界水平无界 ⑤ 提升形 核形是 [T] 但价是次边缘 ⑥ cube 分片 D 是重编号、地板 24 > 21.61 ⑦ p=4 压线差一根 log ⑧ 分级常数四路全 1.000×、地板 24eu⁶=1.1106>1。而 6e = min_a e^{6a}/a 的精确极值（不是 Cayley 熵）；16 = 4·4 是两个无关 4。' },
+  { id:'l3ref', label:'L3 换问法？', s:'half', r:11.0, L:2, w:1.15,
+    note:'四条新路在飞：① L3 究竟在买什么（SU(2) 紧 ⇒ 预紧性免费，那 L3 买的是不是「阶面」而非紧性面）② 五种等价陈述各定级 ③ ren 形（重整化后是否构造性一致）④ 无量纲逃逸形。而已判：恒等/紧性/阶三个前缀两两不同 ⇒ 不等价；L3 只是阶面的 n=2 切片；L3 ∧ ¬NT 非空（有质量 Gaussian）⇒ 不合并。' },
+  { id:'g13',  label:'GAP 十三条死路（4 类 6/2/2/2）', s:'no', r:11.0, L:2, w:1.1,
+    note:'零判别力 6 · 方向反 2 · 窗错位 2 · 恒等/重言 2；两栏无交集。精确共性 = 【不排除软模】：G_YM×U(1)（σ>0、RP、Δ=0）与 ν ∝ s^α ds（m=0、U₀→1）满足九条矩类的前件。⇒ 任何新工具先过筛子：能否排除这两个见证？另两条也关：η<1 无条件成立（恒等式 1−η = n(1−ρ̄)），真实缺口 nρ̄/(1−ρ̄) = 1025×（不是 8.07×）；α* = 22.3758 是读法依赖（≤: 22.38、≥: 8.735、每窗: 无解）。' },
+  { id:'gP',   label:'(P) f₁²≥r₀ ∧ s₁≥δ', s:'half', r:11.0, L:2, w:1.05,
+    note:'半开。α-见证的排除入口（四条经典候选都不在类层排除它）。而它的支撑极薄：α 那条已撤回（既不承重也不排他），残数半要 P3 从 1/48 搬到 2.5，位置半要 I2@2.5。' },
 
-  { id:'z1', label:'OS1  [T]', s:'zero', r:10.8, L:2, w:0.6,
-    note:'平移过弱极限。承重四件：密集 + 平移等距 + 紧上 Heine–Cantor + tight。原句缺 tight，不够。酸测失败（自由场同真）⇒ 零内容。Lean 侧 [NG]：缺 Polish⇒tight、联合连续、𝒮′ 实例。' },
-  { id:'z2', label:'OS2 = RP  [T]（C_b 层）', s:'zero', r:10.8, L:2, w:0.6,
-    note:'C_RP 弱闭凸锥，唯一结构输入是 θ 连续；「不需要 a-一致矩」。rp_transfer 真覆盖 C_b 层。而 L² 层是 [NG]：trunc 不连续、Ω 无拓扑、θ_*μ=μ 缺 0 条。修法：clip_n∘A + 加拓扑 + 补 θ_*μ=μ。' },
-  { id:'z3', label:'Δ_a > 0（固定 L,a）  [T]', s:'zero', r:10.8, L:2, w:0.6,
-    note:'无条件 [T]，三行：紧性 + K>0 处处 + T1=1 ⇒ 顶端单重 ⇒ λ₁<1。四输入不可去（5×5 见证：去任一条给 λ₁=1，去 0≤T 则 λ₁ 可负）。Lean 侧 [NG]：要新增 CompactTransfer 四字段，且必须避开 HS（Mathlib 无 HilbertSchmidt）走 IsCompactOperator。' },
-  { id:'z4', label:'变分三件  [T]', s:'zero', r:10.8, L:2, w:0.6,
-    note:'① inf σ(1−T_a)=inf_{f⊥Ω}⟨f,(1−T_a)f⟩ ② ⟨f,(1−T_a)f⟩=½∬(f−f′)²K_a 逐字是 Dirichlet 形 ③ Δ≥δ ⟺ g≥1−e^{−aδ}（不是 g≥aδ：反例 a=δ=1、λ₂=e^{−1} 给 g=0.63212 而 Δ=1）。三条无条件 [T]，但只改写不产下界——试态只给上界。' },
+  { id:'tower', label:'编译塔  [T]', s:'ok', r:11.0, L:2, w:1.0,
+    note:'lake build OS1Tight → exit 0，2604 jobs，.olean 46920 B。mathlib 走 junction 复用 vendor/OSforGFF（v4.33.0-rc1），cache get 后 .olean 8268 = 源码 8268。⇒ 今晚所有 Lean 活的前置已解决。' },
+  { id:'os1',  label:'OS1  三前提  [T]', s:'zero', r:11.0, L:2, w:0.7,
+    note:'承重件 4 → 3：hTight 已删（由六步组装供给）、平移等距已删（S3 只需紧集上一致连续，|h_a−t|≤2a 与度量无关）。hJoint 的 8 步 ε-分解已写完（yₙ→y₀ 全文只用一次），实 ≈110 行且缺的是记账不是数学。载体取 𝒮′ 强对偶（Fréchet–Montel）；且 E 上不需要任何度量 ⇒ 比「不需平移不变度量」更强。OS1Tight 已编译过、0 sorry。' },
+  { id:'os2',  label:'OS2 = RP  全层 [T]', s:'zero', r:11.0, L:2, w:0.7,
+    note:'L² 层闭合方式：θ_*μ=μ（三行免费）→ C_b∩Σ₊ 上用 rp_transfer → 该子类在 L²(Σ₊,μ) 稠密（Dynkin）→ Q_μ 的 L²-Lipschitz。不用 A∈L²(μ_a)、不用一致可积、不用截断 ⇒ clip_n 与 trunc 那一层【本来不需要】。而测试类必须带 Σ₊（字面「∀A∈L²(μ)」为假，见证 A=f−θf）。四文件已写，只差编译。' },
+  { id:'fixd', label:'Δ_a>0 固定 (L,a)  [T]', s:'zero', r:11.0, L:2, w:0.7,
+    note:'主定理骨架已写，八步全点名（spectralRadius_eq_nnnorm → exists_nnnorm_eq_spectralRadius → hasEigenvalue_iff_mem_spectrum → …）。避开 HilbertSchmidt（Mathlib 0 命中 / 8268 文件），走 IsCompactOperator。四字段 CompactTransfer 不可 minus。而修正：四字段只给每个 a 的 Δ_a，不给全体 t 的 SemigroupGap ⇒ 半群插值 + cutoff 一致 = 真靶。' },
+  { id:'vart', label:'变分三件  [T]', s:'zero', r:11.0, L:2, w:0.7,
+    note:'① inf σ(1−T_a)=inf_{f⊥Ω}⟨f,(1−T_a)f⟩ ② ⟨f,(1−T_a)f⟩=½∬(f−f′)²K_a 逐字是 Dirichlet 形 ③ Δ≥δ ⟺ g≥1−e^{−aδ}（不是 g≥aδ：反例 a=δ=1、λ₂=e⁻¹ 给 g=0.63212 而 Δ=1）。三条无条件 [T]，但只改写不产下界。' },
 
-  { id:'rep', label:'重构  [T]（未机器化）', s:'zero', r:15.6, L:3, w:0.7,
-    note:'拆成两条：OS0–OS3 ⇒ Wightman；+OS4 ⇒ ker H = ℂΩ。而 Δ>0 不在其中任何一条（无质量自由标量过 OS0–OS4 而 Δ=0）⇒ 禁止写成「…+Δ>0」。Mathlib 里 Wightman/Lorentz/谱测度/Laplace 全无 ⇒ 自建上千行。' },
-  { id:'bridge', label:'桥 Δ_cont ≥ β·liminf δ_{S_W}', s:'ok', r:15.6, L:3, w:0.8,
-    note:'Lean 机检 gap_ge_liminf。前件：VacOrth≠∅、Ω^⊥ 非负、‖H_k−H_lim‖→0、有界。不需要 HasGapAbove；StrongResolvent 只存在于纸面。而 Δ(β)=β·δ_{S_W} 是恒等 ⇒ 桥给出 Δ_cont ≥ β·liminf δ_{S_W}，于是 GAP 归到一个 β-无关算子的谱隙。' },
-  { id:'lin',  label:'Δ(β) = β·δ_{S_W}', s:'ok', r:15.6, L:3, w:0.8,
-    note:'恒等 [T]：H=βS_W 而 S_W 不含 β。⇒ β 轴内容 = 0，「把 β 从 1/48 搬到 2.5」这个问题不存在。而 Δ 随 β 递减：Δ(1/48)=15–21 vs Δ(2.5)=1.709，差 9–12× ⇒ 单调搬运方向反。' },
-  { id:'cellc', label:'r = 21.9207 < 63', s:'ok', r:15.6, L:3, w:0.8,
-    note:'一参数化 ε=𝔢(t)，t=β²/2N²；本征矢恒等式 ⟨E₀|H|E_n⟩=0 ⇒ 𝔢=𝔢∞(1+O(1/t))。余 2.874×。酸测：自由场 𝔢≡0 ⇒ r=∞。' },
-  { id:'cellb', label:'ϖ ≥ v(β) = 6.42e−3', s:'ok', r:15.6, L:3, w:0.8,
-    note:'防空守卫（b̂ ∈ {a,2a}，L≥3）。ϖ = Var(q) + O_B；Var(q) ≥ min(a,b)·6β；O_B ≥ C_a/3 ≥ 0（模反射正性，四壳权重 8/24/24/8 重排）。' },
+  { id:'bridge', label:'桥 Δ_cont ≥ β·liminf δ_{S_W}', s:'ok', r:15.8, L:3, w:0.85,
+    note:'Lean 机检。前件：VacOrth≠∅、Ω^⊥ 非负、‖H_k−H_lim‖→0、有界。不需要 HasGapAbove；StrongResolvent 只存在于纸面。' },
+  { id:'lin',  label:'Δ(β) = β·δ_{S_W}', s:'ok', r:15.8, L:3, w:0.85,
+    note:'恒等 [T]：H=βS_W 而 S_W 不含 β ⇒ β 轴内容 = 0。而 Δ 随 β 递减：Δ(1/48)=15–21 vs Δ(2.5)=1.709，差 9–12× ⇒ 单调搬运方向反。' },
+  { id:'cellc', label:'r = 21.9207 < 63', s:'ok', r:15.8, L:3, w:0.85,
+    note:'一参数化 ε=𝔢(t)，t=β²/2N²；本征矢恒等式 ⟨E₀|H|E_n⟩=0 ⇒ 𝔢=𝔢∞(1+O(1/t))。余 2.874×。酸测：自由场 𝔢≡0。' },
+  { id:'cellb', label:'ϖ ≥ v(β) = 6.42e−3', s:'ok', r:15.8, L:3, w:0.85,
+    note:'防空守卫（b̂ ∈ {a,2a}）。Var(q) ≥ 6.42e−3；O_B ≥ C_a/3 ≥ 0（模反射正性，四壳权重 8/24/24/8 重排）。' },
+  { id:'errata', label:'errata · 十处', s:'ev', r:15.8, L:3, w:0.9,
+    note:'① p01/pall ② u/q ③ ½trU vs 1−½trU ④ 格距 vs 质量单位 ⑤ U₀ 量纲 ⑥ a⁴/a⁺¹ ⑦ ≥aδ vs ≥1−e^{−aδ} ⑧ |z| 幂 + ln 幂（类型错）⑨ 6e 是极值不是 Cayley 熵 ⑩ α* 是读法依赖。另三条记账：hy6_clay_of_three 在 .lean 里 0 命中 ⇒「3 条 axiom」是记账不是 #print axioms 输出；Clay 是四件不是三件（+[Wilson]）；(EP) 三式 = 一式（15χ_q ≡ 2.5plaq′），零内容、已注销。' },
 
-  { id:'ep',  label:'(EP)  三式 = 一式', s:'ev', r:19.8, L:4, w:0.75,
-    note:'15χ_q ≡ 2.5plaq′ ⇒ 三式是同一个恒等式，零内容。读数 [T]：L=8 余 1.31×、L=10 余 1.25×（62σ）。服务不了任何东西：不是 NT 见证、不是 L3 必需件 ⇒ 已从 GAP/NT 两栏注销。而 ⨏p′=0.260961 > p′(0)=0.25 ⇒ plaq 在 [0,2.5] 上不凹。' },
-  { id:'plaq3', label:'plaq(2.5) = 0.65198', s:'ev', r:19.8, L:4, w:0.75,
-    note:'三体积单调递减：L=8 0.652402 / L=10 0.652099 / L=12 0.651984，漂 0.06%。而 β=2.5 在 Lt=18 是禁闭相：T/T_c = 0.42（β_c(16)=2.7395(100)，β_c 随 Lt 升）。三条异常都不需要温度：热贡献天花板 1.3e−6 vs 实测 2.2e−4（超 170×）。' },
-  { id:'u0',  label:'U₀ ∈ [0.75, 0.86]', s:'ev', r:19.8, L:4, w:0.75,
-    note:'L=12 的 Cfull 给 U₀ = C(0)/Σ_tC(t) = 0.7509–0.8553，τ_corr = 0.58–0.67 格距。量纲是质量，U₀^lat = U₀^phys/Λ_UV。给一个 [T] 的质量上界 m₁ ≤ −ln(1−U₀) ≤ 1.390（免拟合）。而 U₀ ≥ c 那条路已死：ν ∝ s^α ds 给 m=0 而 U₀→1。' },
-  { id:'m1',  label:'Δ_cont ≥ 1.709', s:'ev', r:19.8, L:4, w:0.7,
-    note:'m_eff(1) 读数：L=8 1.707；L=12 1.44–2.01（无平台）。而固定 (L,a) 的 Δ_a>0 免费且恒真，判别力 0。' },
+  { id:'plaq3', label:'plaq(2.5) = 0.65198', s:'ev', r:20.0, L:4, w:0.75,
+    note:'三体积单调递减：L=8 0.652402 / L=10 0.652099 / L=12 0.651984，漂 0.06%。而 β=2.5 在 Lt=18 是禁闭相：T/T_c = 0.42（β_c(16)=2.7395(100)，β_c 随 Lt 升）。三条异常都不需要温度（热贡献天花板 1.3e−6 vs 实测 2.2e−4，超 170×）。' },
+  { id:'u0',  label:'U₀ ∈ [0.75, 0.86]', s:'ev', r:20.0, L:4, w:0.75,
+    note:'L=12 的 Cfull 给 U₀ = C(0)/Σ_tC(t)，τ_corr = 0.58–0.67 格距。量纲是质量。给一个 [T] 的质量上界 m₁ ≤ −ln(1−U₀) ≤ 1.390（免拟合）。' },
+  { id:'jj1',  label:'J1 / (EP) 读数', s:'ev', r:20.0, L:4, w:0.7,
+    note:'J1：χ_q 在 [2.4,2.5] 非增（L=8 降 12.8σ；L=10 的 plaq″(2.45)=−0.448257）；β_peak = 2.40 在 L=8 与 L=10 同。而 (EP) 三式 = 一式，零内容，已注销。' },
 ];
 
 const E = [
   ['clay','l3'], ['clay','gap'], ['clay','nt'],
-  ['l3','names'], ['l3','cut'], ['l3','z1'], ['l3','z2'],
-  ['gap','poinc'], ['gap','pos'], ['gap','dead'], ['gap','z3'], ['gap','z4'],
-  ['l3','rep'],
+  ['l3','l3r8'], ['l3','l3ref'], ['l3','tower'],
+  ['gap','g13'], ['gap','gP'],
+  ['l3','os1'], ['l3','os2'], ['l3','fixd'], ['l3','vart'],
   ['gap','bridge'], ['bridge','lin'],
   ['cellc','clay'], ['cellb','clay'],
-  ['gap','plaq3'], ['gap','u0'], ['gap','m1'], ['nt','ep'],
+  ['gap','plaq3'], ['gap','u0'], ['gap','jj1'],
+  ['clay','errata'],
 ];
 
 const C = { ok:0x6fd39a, no:0xf0785f, half:0xe8c46a, ev:0xc9a35e, tgt:0xf0b27a, zero:0x4a5058 };
 const HEX = s => '#' + C[s].toString(16).padStart(6,'0');
-const TAG = { ok:'已证 [T]', no:'全关', half:'半开', ev:'仅读数 [E]', tgt:'目标', zero:'零代价 / 不单列' };
-const SIZE = { tgt:5.6, no:4.0, half:4.4, ok:3.6, ev:3.2, zero:2.0 };
+const TAG = { ok:'已证 [T] / 编译过', no:'全关', half:'半开', ev:'读数 / errata', tgt:'目标', zero:'零代价 / 不单列' };
+const SIZE = { tgt:5.6, no:4.0, half:4.4, ok:3.9, ev:3.2, zero:2.0 };
 
 const P = {}, byLayer = {};
 N.forEach(n => (byLayer[n.L] ||= []).push(n));
@@ -166,14 +164,13 @@ camera.position.copy(HOME.clone().multiplyScalar(2.6));
 const ctl = new OrbitControls(camera, canvas);
 ctl.enableDamping = true; ctl.dampingFactor = 0.055;
 ctl.autoRotate = true; ctl.autoRotateSpeed = 0.36;
-ctl.minDistance = 10; ctl.maxDistance = 110; ctl.enablePan = false;
+ctl.minDistance = 10; ctl.maxDistance = 115; ctl.enablePan = false;
 
 scene.add(new THREE.AmbientLight(0xffffff, 0.42));
 const key = new THREE.DirectionalLight(0xfff4e6, 1.25); key.position.set(24,38,26); scene.add(key);
 const rim = new THREE.DirectionalLight(0x6b8cff, 0.55); rim.position.set(-28,-16,-24); scene.add(rim);
 const fill = new THREE.PointLight(0x6fd39a, 0.35, 90); scene.add(fill);
 
-/* 星尘 */
 {
   const n=1800, pos=new Float32Array(n*3), col=new Float32Array(n*3);
   const tint=[new THREE.Color(0x2b3038),new THREE.Color(0x3a4048),new THREE.Color(0x232830)];
@@ -188,8 +185,7 @@ const fill = new THREE.PointLight(0x6fd39a, 0.35, 90); scene.add(fill);
   scene.add(new THREE.Points(g,new THREE.PointsMaterial({size:0.42,vertexColors:true,transparent:true,opacity:0.8,sizeAttenuation:true,depthWrite:false})));
 }
 
-/* 环 + 刻度 */
-[5.2,10.8,15.6,19.8].forEach(r => {
+[5.4,11.0,15.8,20.0].forEach(r => {
   const pts=[];
   for(let i=0;i<=220;i++){const a=i/220*Math.PI*2; pts.push(new THREE.Vector3(Math.cos(a)*r,0,Math.sin(a)*r));}
   scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
@@ -205,7 +201,7 @@ const fill = new THREE.PointLight(0x6fd39a, 0.35, 90); scene.add(fill);
 
 byLayer[1].forEach(n => {
   const a = Math.atan2(P[n.id][2], P[n.id][0]);
-  const pts=[new THREE.Vector3(0,0,0), new THREE.Vector3(Math.cos(a)*19.8,0,Math.sin(a)*19.8)];
+  const pts=[new THREE.Vector3(0,0,0), new THREE.Vector3(Math.cos(a)*20.0,0,Math.sin(a)*20.0)];
   scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
     new THREE.LineBasicMaterial({color:0x14171d,transparent:true,opacity:0.9})));
 });
@@ -248,7 +244,7 @@ N.forEach((n, idx) => {
   const mesh=new THREE.Mesh(new THREE.SphereGeometry(rad,32,24),
     new THREE.MeshStandardMaterial({ color:col, emissive:col,
       emissiveIntensity: isZ?0.22:(n.s==='no'?0.9:(n.s==='half'?0.85:0.55)),
-      roughness:0.28, metalness:0.1 }));
+      roughness:0.28, metalness:0.12 }));
   mesh.position.set(p[0],p[1],p[2]); scene.add(mesh);
 
   const halo=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTex(hex,isZ),transparent:true,depthWrite:false,blending:THREE.AdditiveBlending}));
@@ -266,7 +262,6 @@ N.forEach((n, idx) => {
   O[n.id]={mesh,halo,lab,ring,d:n,baseY:p[1],rad,idx};
 });
 
-/* 边 */
 const edges=[];
 E.forEach(([a,b]) => {
   const pa=new THREE.Vector3(...P[a]), pb=new THREE.Vector3(...P[b]);
@@ -285,7 +280,6 @@ E.forEach(([a,b]) => {
   edges.push({curve,sp,t:Math.random(),v:0.085+Math.random()*0.13});
 });
 
-/* 统计 */
 {
   const c={ok:0,no:0,half:0,ev:0,tgt:0,zero:0};
   N.forEach(n=>c[n.s]++);
@@ -294,19 +288,18 @@ E.forEach(([a,b]) => {
     `全关 <span class="num" style="color:#f0785f">${c.no}</span> · ` +
     `半开 <span class="num" style="color:#e8c46a">${c.half}</span> · ` +
     `已证 <span class="num" style="color:#6fd39a">${c.ok}</span><br>` +
-    `读数 <span class="num">${c.ev}</span> · ` +
+    `读数/errata <span class="num">${c.ev}</span> · ` +
     `零代价 <span class="num">${c.zero}</span> · ` +
     `目标 <span class="num">${c.tgt}</span>`;
 }
 
-/* 交互 */
 const ray=new THREE.Raycaster(), mo=new THREE.Vector2(-9,-9);
 const tip=document.getElementById('tip');
 let hov=null;
 addEventListener('pointermove', e => {
   mo.x=(e.clientX/innerWidth)*2-1; mo.y=-(e.clientY/innerHeight)*2+1;
-  tip.style.left=Math.min(e.clientX+18, innerWidth-358)+'px';
-  tip.style.top=Math.min(e.clientY+18, innerHeight-180)+'px';
+  tip.style.left=Math.min(e.clientX+18, innerWidth-370)+'px';
+  tip.style.top=Math.min(e.clientY+18, innerHeight-190)+'px';
 });
 function pick(){
   ray.setFromCamera(mo,camera);
@@ -324,7 +317,6 @@ function pick(){
   } else { tip.classList.remove('on'); document.body.style.cursor=''; }
 }
 
-/* 动画 */
 const clock=new THREE.Clock();
 let intro=0, acc=0, frames=0;
 const fpsEl=document.getElementById('fps'), tmpV=new THREE.Vector3();
@@ -379,43 +371,52 @@ setTimeout(() => {
   if(!gl){
     document.getElementById('fb').style.display='block';
     document.getElementById('fbt').textContent=[
-      'Clay ⟸ AX ∧ NT ∧ GAP ∧ [Wilson]',
+      'Clay ⟸ AX ∧ NT ∧ GAP ∧ [Wilson]        （四合取项）',
       '',
       '【数学缺件 · 两行】',
-      '  L3   δ > 0                                    [NG]',
-      '       ≡ Σ|C₂|<∞ ≡ p>4 ≡ k=3 ≡ log-edge           五名一物',
-      '       死结：树界给 ∀a∃A(a)，(U3) 要 ∃A∀a      差 (8/3)ln(b̂/a)',
-      '       ln 在边上不在树上；Cayley 无 slack       (n^{n−2}/n!)^{1/n} → e',
-      '  GAP  ρ_P > 0 ⟺ δ_{S_W}/(aΛ/β) ≥ c            [NG]',
-      '       三条归一：Δ_a 是质量单位 · Δ(β)=β·δ_{S_W} 是恒等 · 矩的 sup_L ≠ 隙的 inf_L',
-      '       ⇒ GAP 只剩 a 轴一根',
+      '  L3   Z_a ≤ C·a⁻⁴                              [NG]  八路全关',
+      '       缺口不是幂，是【一根 log】：',
+      '         p=0 → a⁻⁴ · p=2 → a⁻² · p=4 → a⁻⁴·log · p=8 → a⁰',
+      '       靶在 p=4 处差一根 log，要 p>4 即 δ>0',
+      '       换问法四条在飞（买什么 / 五陈述 / ren 形 / 逃逸形）',
+      '  GAP  m/Λ ≥ δ                                  [NG]  十三条死路',
+      '       三条归一：Δ_a 是质量单位 · Δ(β)=β·δ_{S_W} 恒等 · 矩的 sup_L ≠ 隙的 inf_L',
+      '       ⇒ 只剩 a 轴一根；Poincaré 那条已证循环（回 L3）',
       '',
-      '【半开 · 三条】',
-      '  Poincaré：单链路 [T] ρ_v ≥ 2e^{−24β}；全局要 Σ_l E[Var_l] ≥ (1−η)Var',
-      '              加权只压到 η̂ = 8.07 > 1        ⇒ 差 8.07×',
-      '  位置+残数：f₁² ≥ r₀ ∧ s₁ ≥ δ                 ⇒ 残数半 + 位置半',
-      '              β-预算只排除 α ≤ 22，α ≥ 23 仍在类内',
-      '  D：cube 计数 96 → ≤21.61（1/(e·u⁶)）          ⇒ 余 1.80×，零 MC',
+      '【半开 · 两条】',
+      '  L3 换问法 · (P) f₁²≥r₀ ∧ s₁≥δ（支撑极薄：α 那条已撤回）',
       '',
-      '【零代价 · 四条（已全部 [T]，零内容）】',
-      '  OS1 平移（需 tight）· OS2 = RP（C_b 层）',
-      '  Δ_a > 0 固定 (L,a)（四输入不可去）· 变分三件',
-      '  ⇒ 酸测全部失败（自由场同真）；Lean 侧全是接线活',
+      '【全关 · 三条】',
+      '  L3 八路：树界 / sup 𝒢^ren / 非微扰 / 差分 / 提升 / D 分片 / p=4 / 分级常数',
+      '  GAP 十三条（4 类 6/2/2/2），精确共性 = 不排除软模',
+      '       见证：G_YM×U(1)（σ>0、RP、Δ=0）· ν∝s^α ds（m=0、U₀→1）',
+      '       η<1 无条件（1−η = n(1−ρ̄)），真实缺口 nρ̄/(1−ρ̄) = 1025×',
+      '       α* = 22.3758 是读法依赖（≤: 22.38 / ≥: 8.735 / 每窗: 无解）',
       '',
-      '【十三条死路 · 4 类 6/2/2/2】',
-      '  零判别力 6 · 方向反 2 · 窗错位 2 · 恒等/重言 2',
-      '  精确共性：不排除软模',
-      '  见证：G_YM×U(1)（σ>0、RP、Δ=0）· ν ∝ s^α ds（m=0、U₀→1）',
+      '【零代价 · 四条（数学全 [T]，判别力零）】',
+      '  OS1  三前提（hTight 与平移等距都删了）；hJoint 8 步已写完，yₙ→y₀ 只用一次',
+      '       载体 𝒮′ 强对偶；且 E 上不需要任何度量',
+      '  OS2 = RP  全层（L² 闭合靠稠密 + Lipschitz，clip_n/trunc 那层本来不需要）',
+      '  Δ_a>0 固定 (L,a)  八步骨架已写；而半群插值 + cutoff 一致 = 真靶',
+      '  变分三件',
+      '',
+      '【编译塔 [T]】',
+      '  lake build OS1Tight → exit 0，2604 jobs，.olean 46920 B',
+      '  mathlib 走 junction 复用 vendor/OSforGFF（v4.33.0-rc1），olean 8268 = 源码 8268',
+      '',
+      '【errata · 十处】',
+      '  ① p01/pall ② u/q ③ ½trU vs 1−½trU ④ 格距 vs 质量单位 ⑤ U₀ 量纲',
+      '  ⑥ a⁴/a⁺¹ ⑦ ≥aδ vs ≥1−e^{−aδ} ⑧ |z| 幂 + ln 幂（类型错）',
+      '  ⑨ 6e 是 min_a e^{6a}/a 的极值，不是 Cayley 熵 ⑩ α* 是读法依赖',
+      '  另三条记账：hy6_clay_of_three 在 .lean 里 0 命中 ⇒「3 条 axiom」是记账',
+      '             Clay 是四件不是三件（+[Wilson]）',
+      '             (EP) 三式 = 一式（15χ_q ≡ 2.5plaq′），零内容、已注销',
       '',
       '【读数 [E]】',
       '  plaq(2.5) = 0.652402 / 0.652099 / 0.651984   单调递减，漂 0.06%',
       '  β=2.5 在 Lt=18 是禁闭相：T/T_c = 0.42',
       '  U₀ ∈ [0.75,0.86] ⇒ m₁ ≤ −ln(1−U₀) ≤ 1.390',
-      '  (EP) 三式 = 一式（15χ_q ≡ 2.5plaq′），零内容 ⇒ 已注销',
-      '',
-      '【errata 要记】',
-      '  hy6_clay_of_three 在仓内 .lean 里 0 命中 ⇒ 「3 条 axiom」是记账，',
-      '  不是 #print axioms 的输出。账本归零 ≠ Clay 归零。',
+      '  J1：χ_q 在 [2.4,2.5] 非增（L=8 12.8σ；L=10 凹 −0.448）；β_peak = 2.40',
       '',
       'Clay 未证。无百分比。',
     ].join('\n');
