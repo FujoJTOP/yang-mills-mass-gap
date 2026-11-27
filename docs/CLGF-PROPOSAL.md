@@ -1868,6 +1868,97 @@ $$\big|\mathrm{Cov}(F_A,F_B)\big|\ \le\ C\|F_A\|\|F_B\|\sum_{\gamma:A\leftrighta
 
 ---
 
+## §5⁗⁗⁗⁗′ 【勘误 31】`SLOW-H` 的 `[F]` 撤回 → `[U]`；`K` 矩阵估计 `[T]`（第 269 轮）
+
+### 5⁗⁗⁗⁗′.1 【勘误 31】我上一轮的 `[F]` 是**错的**
+
+**上一轮我写：`Fisher` 项 `O(β²ℓ³)`、`Hessian` 项 `O(β)` ⇒ `S_slow` 强凹 ⇒ `SLOW-H` 不可能 `[F]`。**
+
+**⚠️ 这条推理**不成立**：`O(β²ℓ³)` 是**协方差的上界量级**，不是**统一正下界**；而球面变量上两项可以**精确抵消**。**
+
+**你的精确反例（我数值核了）：**
+
+$$H(y,x)=\beta y^{\mathsf T}Rx,\qquad Z(y)=\int_{S^3}e^{\beta y^{\sf T}Rx}d\sigma(x)$$
+
+**`R∈O(4)` 保测度 ⇒ `Z(y)` 与 `y` 无关 ⇒ `D²(−log Z)=0`。**
+
+**数值：三组随机 `R`，每组 6 个随机 `y`、`4×10⁵` 个球面样本，`Z(y)/mean` 的相对散布 `2.3e−3 / 2.6e−3 / 1.2e−3` ⇒ **与 `y` 无关 CONFIRMED**。**
+
+$$\boxed{\ Z(y)\ \text{常数}\ \Longrightarrow\ D^2(-\log Z)=0\ \Longrightarrow\ \text{Fisher 项与球面 Hessian 项【精确抵消】}\ }$$
+
+**⇒ 所以 `SLOW-H` 回到 `[U]`，而我上一轮的 `[F]` **撤回**。**
+
+**⚠️ 保留为 `[F]` 的只是**那条推理**（量级比较 ⇒ 定符号），不是命题本身。**
+
+### 5⁗⁗⁗⁗′.2 `K` 矩阵估计（`[T]`，我逐行核过）
+
+**设定（球面协变 Hessian，非 `R⁴` 自由变量的普通 Hessian）：**
+
+$$H_C(x_C;y)=H_C^{(0)}(x_C;\zeta)+\beta\!\!\sum_{a\in\partial C}\sum_{\substack{e=(a,c)\\ c\in C}}\!\!y_a^{\mathsf T}R_ex_c,\qquad w_C(a)=\#\{e=(a,c)\}$$
+
+**逐块估计：**
+
+$$|D_aH_C[u_a]|\ \le\ \beta w_C(a)|u_a|\tag{1}$$
+$$a\ne b:\quad \mathrm{Hess}_{ab}V_C[u_a,u_b]=-\mathrm{Cov}_{\mu_C}(D_aH_C[u_a],D_bH_C[u_b])$$
+$$\boxed{\ \|\mathrm{Hess}_{ab}V_C\|_{\rm op}\ \le\ \beta^2w_C(a)w_C(b)\ }\tag{2}$$
+$$\boxed{\ \|\mathrm{Hess}_{aa}V_C\|_{\rm op}\ \le\ \beta w_C(a)+\beta^2w_C(a)^2\ }\tag{3}$$
+
+**（`a≠b` 时 `D²H_C` 的混合项为零——因 `H_C` 无慢—慢边；对角用 `y_a''=−|u_a|²y_a`。）**
+
+$$W_{ab}=\sum_Cw_C(a)w_C(b),\quad D_a=\sum_Cw_C(a),\quad m_{ab}=\text{慢—慢边重数}$$
+
+$$\boxed{\ K_{ab}=\begin{cases}\beta m_{ab}+\beta^2W_{ab},&a\ne b\\ \beta d_{SS}(a)+\beta D_a+\beta^2W_{aa},&a=b\end{cases}\ }\tag{4}$$
+$$\big|\mathrm{Hess}S_{\rm slow}(u,u)\big|\ \le\ \sum_{a,b}K_{ab}|u_a||u_b|\tag{5}$$
+$$\boxed{\ \|\mathrm{Hess}S_{\rm slow}\|_{\rm op}\ \le\ \|K\|_{2\to2}\ \le\ \sup_a\sum_bK_{ab}\ }$$
+
+### 5⁗⁗⁗⁗′.3 带空间权重的有限范围估计（`[T]`）
+
+$$\|K\|_{\alpha,\rm row}=\sup_a\sum_be^{\alpha d(a,b)}K_{ab}$$
+$$\mathrm{diam}(\partial C)\le R_\ell,\quad B_C\le c_0\Delta\ell^3,\quad D_a\le q\Delta$$
+
+$$\boxed{\ \|K\|_{\alpha,\rm row}\ \le\ 2\beta\Delta_{SS}+\beta q\Delta+c_0\beta^2q\Delta^2\ell^3e^{\alpha R_\ell}\ }\tag{7}$$
+$$\boxed{\ \alpha=0:\quad \|\mathrm{Hess}S_{\rm slow}\|_{\rm op}\ \le\ 2\beta\Delta_{SS}+\beta q\Delta+c_0\beta^2q\Delta^2\ell^3\ }\tag{8}$$
+
+**数值（`β=2.5`、`Δ_SS=Δ=8`、`q=4`、`c₀=1`）：**
+
+| `ℓ` | `2βΔ_SS` | `βqΔ` | `c₀β²qΔ²ℓ³` | `‖K‖_∞` |
+|---|---|---|---|---|
+`1` | `40` | `80` | **`1600`** | **`1720`** |
+`2` | `40` | `80` | `12800` | `12920` |
+`3` | `40` | `80` | `43200` | `43320` |
+`4` | `40` | `80` | `102400` | `102520` |
+
+**⇒ 有效作用量的非对角耦合只出现在**共享快分量边界**的慢变量之间 ⇒ 作用范围被块直径控制。**
+
+**⚠️ 但 `‖Hess S_slow‖ ≤ O(ℓ³)` 是**模长上界**，`ℓ=1` 时已 `~1.7×10³`。它**不含符号信息**，**不能**用来判凹/凸；也**不是下界**。**
+
+### 5⁗⁗⁗⁗′.4 而 `(7)` 与关联衰减之间的距离
+
+$$\text{(9)}\quad \big|\mathrm{Cov}_{\nu_{\rm slow}}(F_A,F_B)\big|\ \le\ C\|F_A\|_\infty\|F_B\|_\infty e^{-\alpha d(A,B)}$$
+
+**⚠️ `(7)` 只控有效作用量的**导数耦合**，**不自动推出** `(9)`。**
+
+**⚠️ 且 `(7)` 的粗上界随 `ℓ³` **增长**，**不能**作为对所有块尺度统一成立的小耦合条件。**
+
+$$\boxed{\ \text{本轮完成：精确 }S_{\rm slow}\ \to\ \text{显式带权 Hessian 矩阵 }K\ ;\qquad \text{未完成：}K\to(9)\ }$$
+
+### 5⁗⁗⁗⁗′.5 审计（本轮）
+
+| 项 | 判决 |
+|---|---|
+`EFDS` 快协方差恒为零 | **`[T]`** |
+精确慢作用量 | **`[T]`** |
+**`K` 逐块估计 `(2)–(3)`** | **`[T]`** |
+**带权块矩阵估计 `(5)–(8)`** | **`[T]`** |
+**`SLOW-H` 的 `[F]`** | **撤回 → `[U]`（勘误 31）** |
+由 `K` 推出 `(9)` / `SECC` | `[U]` |
+由 `K` 推出慢测度唯一性 | `[U]` |
+**`[F]`（仅那条推理：量级比较 ⇒ 定符号）** | `[F]` |
+
+**⚠️ 记账纪律：`[F]` 只能挂在**推理**上，不能挂在**命题**上——除非给出反例或矛盾。**
+
+--- 
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
