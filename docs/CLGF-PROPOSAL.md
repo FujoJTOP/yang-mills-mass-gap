@@ -1603,6 +1603,139 @@ $$\boxed{\ \text{完整的一步 = }(23)\ +\ \text{一个不随 }\ell\ \text{爆
 
 ---
 
+## §5⁗⁗⁗‴ 非线性好块 Hessian 升为 `[T]`；全基配置慢收缩降为 `[F]`（第 267 轮）
+
+### 5⁗⁗⁗‴.1 `ℓ^{10}` 的**准确措辞**（采纳你的修正）
+
+$$B(\ell)=2.5\,\ell^{10}e^{\ell/30}\ \Longrightarrow\ \frac{d}{d\ell}\log B=\frac{10}{\ell}+\frac1{30}\gt0\ \Longrightarrow\ B\ \text{递增}$$
+
+$$\inf_{\ell\ge1}B(\ell)=B(1)=2.584738\ \Longrightarrow\ \frac{B(1)}{6.33\times10^{-3}}=408.3$$
+
+$$\boxed{\ \text{正确表述：现有 }\ell^{10}\ \textbf{上界}\ \text{无法为任何块尺度提供 landing 证书}\ }$$
+
+**⚠️ 它**不能**证明真实的 `‖S_eff‖` 一定超阈——得到的是**上界**，不是**下界**。**
+
+### 5⁗⁗⁗‴.2 `|X|²` 不能删（`[T]`，理由核过）
+
+**P4 要控固定链路 `ℓ` 下、另两条不同链路的三阶混合差分。一个支撑 `X` 中有序链路对最多 `(|X|−1)(|X|−2) ≤ |X|²`；Cauchy 条带估计给 `ε₃(R_X;ℓ,ℓ',ℓ'') ≤ κ₃(r)H_X(r)`：**
+
+$$(|X|-1)(|X|-2)H_X(r)\ \le\ |X|^2H_X(r)$$
+
+**⇒ `|X|²` 是**从统一复解析振幅推 P4** 时用的计数上界，**不是**实际三阶差分必达的规模。**
+
+**⇒ 所以把 `|X|²` 换成 `|X|` 再引用原 landing 定理是**不合法的**。**
+
+### 5⁗⁗⁗‴.3 唯一合法的降权路线：直接估计 `P1–P4`
+
+$$\mathfrak P_4(R)=\sup_\ell\sum_{\ell'\ne\ell}\ \sum_{\substack{\ell''\ne\ell\\ \ell''\ne\ell'}}w_m(\ell,\ell',\ell'')\!\!\sum_{X\supset\{\ell,\ell',\ell''\}}\!\!\epsilon_3(R_X;\ell,\ell',\ell'')$$
+
+$$\boxed{\ \mathfrak P_4(R)\ \le\ \kappa_3(r)\|R\|_{r,m}\qquad\text{而反向不等式不成立}\ }$$
+
+**⇒ 可以尝试直接控 `𝔓₁,…,𝔓₄`；若满足底层 robust fibre–base 定理的四项阈值，就可走对应 landing 证明，而不必强求通用解析振幅范数低于同一门槛。**
+
+**⚠️ **必须重新核对底层定理的四项阈值——不能直接套用 `0.00633`。****
+
+### 5⁗⁗⁗‴.4 【升级为 `[T]`】非线性 `O(4)` 好块点态 Hessian
+
+**在 `ℳ=(S³)^{V(F)}` 上用乘积黎曼度量与 Bakry–Émery。`s_e=x_u^TR_ex_v`、`V=−βΣs_e`。**
+
+**好块条件取**协变自旋对齐**（不只是 base holonomy 小）：**
+
+$$\mathcal G_\epsilon=\{x:\ s_e\ge1-\epsilon,\ \forall e\in E(F_B)\}$$
+
+$$\boxed{\ \mathrm{Ric}+\mathrm{Hess}V\ \succeq\ \big(2-\beta\Delta\epsilon\big)I+\beta L_R,\qquad \Delta\le6\ }$$
+
+**其中 `L_R` 是协变图 Laplacian：`⟨ξ,L_Rξ⟩=Σ_{e=(u,v)}‖ξ_u−R_eξ_v‖²`。**
+
+**证明（我逐步核过）：**
+1. **`Ric_{S³}=(n−2)g=2I`（`n=4`）✓**
+2. **测地二阶变分：`Hess V(ξ,ξ)=βΣ_e[s_e(|ξ_u|²+|ξ_v|²)−2ξ_u^TR_eξ_v]` ✓**
+3. **恒等式 `s(|ξ_u|²+|ξ_v|²)−2ξ_u^TRξ_v = ‖ξ_u−Rξ_v‖²−(1−s)(|ξ_u|²+|ξ_v|²)`——**我数值抽检 2000 组，IDENTITY OK****
+4. **`0≤1−s_e≤ε`；`Σ_e(|ξ_u|²+|ξ_v|²) ≤ 6Σ_v|ξ_v|²`（每顶点至多 6 边）⇒ 结论。∎**
+
+**目标点：`β=2.5`、`Δ=6`、`ε=1/15` ⇒ `βΔε = 2.5·6/15 = 1`：**
+
+$$\boxed{\ \mathrm{Ric}+\mathrm{Hess}V\ \succeq\ I+\tfrac52 L_R\qquad\text{on }\mathcal G_{1/15}\ }$$
+
+**⚠️ 数学边界（不可省）：**
+- **这是 good set 内的**点态** Hessian 下界，不是球面乘积上的全局凸性；**
+- **要得条件 LSI 还须该区域的测地凸性或另行建立带边界的 Poincaré/LSI；**
+- **不能把上两式直接宣称为完整条件块 LSI；**
+- **只有 base holonomy 小、而纤维自旋任意时**不**成立：即便 `R_e=I`，一条边两端取反向对齐也可使该边 Hessian 贡献为负。**
+
+### 5⁗⁗⁗‴.5 【`[F]`】`H_C=−I` 强制坏边 ⇒ 全基配置慢收缩**不成立**
+
+$$\theta=\arccos(14/15)=0.367208,\qquad 4\theta=1.468832\lt\pi=3.141593$$
+
+**若四边全 good，沿回路传输给 `d(x,H_Cx)≤4θ`；而 `H_C=−I` 给 `d(x,−x)=π`：**
+
+$$\boxed{\ H_C=-I\ \Longrightarrow\ \text{至少一条边必定为 bad}\ }$$
+
+**⇒ 对 `H_C=−I` 的基配置，`Q_ζ(B bad)=1` ⇒ **任何 `sup_ζ Q_ζ(B bad) ≤ p\lt1` 的统一条件概率估计都不成立**。**
+
+$$\boxed{\ \text{Uniform-all-base slow Dobrushin}\ =\ [F]\ }$$
+
+**⚠️ `[F]` 的限定：它否定的是**会继承任意 pinning 并推出唯一性**的强版本，**不是**否定完整未固定 Wilson 测度下的唯一性。**
+
+### 5⁗⁗⁗‴.6 【我的定量补充】坏基配置在**联合测度**下有多稀有
+
+**`q=2 ⟺ ½Re tr U_□=−1 ⟺ U_□=−I`，正是 `H_C=−I` 那种。用我自己 `L=6`、`β=2.5` 的 MC：**
+
+$$\langle q\rangle=0.347275,\quad sd=0.119164,\quad \frac{2-\langle q\rangle}{sd}=13.87\sigma$$
+
+| 阈值 | `P(q>阈值)`（高斯外推） |
+|---|---|
+`1.933` | `e^{-88.5}=3.5\times10^{-39}` |
+`1.867` | `e^{-81.3}=4.8\times10^{-36}` |
+`1.500` | `e^{-46.8}=4.8\times10^{-21}` |
+
+**⇒ 坏 plaquette 密度 `~e^{-88}` 级 ⇒ `τ ≳ 88` 每块；而 4D 格点动物数 `μ_an~7` ⇒ `lnμ_an=1.95`：**
+
+$$\boxed{\ \frac{\tau}{\ln\mu_{\rm an}}\ \approx\ 49\ \gg\ 1\ \Longrightarrow\ \text{联合坏块簇尾求和余量极大}\ }$$
+
+**⚠️ 这是**高斯外推**（`e^{-88}` 远在采样范围外）⇒ 标 `[M]`，**不**标 `[T]`。**
+
+### 5⁗⁗⁗‴.7 改名为 **Annealed Good–Bad Block RG**
+
+$$\text{(A1)}\quad \mu_\beta(E^{\rm bad}_{A,B})\le C_1e^{-m_1R}$$
+$$\text{(A2)}\quad \big|\mathrm{Cov}(F_A,F_B\mid\text{good fast sector})\big|\le C_2e^{-m_2R}$$
+$$\text{(A3)}\quad \big|\mathrm{Cov}(\bar F_A,\bar F_B)\big|\le C_3e^{-m_3R},\qquad \bar F_A=\mathbb E[F_A\mid\mathcal S]$$
+
+$$\mathrm{Cov}(F_A,F_B)=\mathbb E[\mathrm{Cov}(F_A,F_B\mid\mathcal S)]+\mathrm{Cov}(\bar F_A,\bar F_B)$$
+$$\Longrightarrow\quad|\mathrm{Cov}(F_A,F_B)|\le(C_1'+C_2+C_3)e^{-mR},\qquad m=\min(m_1,m_2,m_3)$$
+
+**⚠️ `(A1)` 与 `(A3)` 是新的**依赖 Wilson 相互作用**的估计，仍未证明。**
+
+**⚠️ 关键结构：**慢变量保留为相互作用的场**，**不要求每一个固定基配置下都收缩**；改证**联合测度**下的慢变量聚簇。**
+
+### 5⁗⁗⁗‴.8 `ℓ^{10}` 在新策略里的位置：两条并行预算
+
+**① 快速变量条件响应：由 Hessian 得 `κ_fast = 2 − βΔε ≥ 1`（`ε=1/15`）。若另建 good 域几何凸性，可得条件 LSI/混合差分界。**
+
+**② 直接 landing tolerance：不用 `|X|²H_X` 粗替三阶差分，而从有效作用量导数直接算——**
+
+$$F_i=\mathbb E[S_i],\qquad F_{ij}=\mathbb E[S_{ij}]-\mathrm{Cov}(S_i,S_j)$$
+$$F_{ijk}=\mathbb E[S_{ijk}]-\mathrm{Cov}(S_{ij},S_k)-\mathrm{Cov}(S_{ik},S_j)-\mathrm{Cov}(S_{jk},S_i)+\kappa_3(S_i,S_j,S_k)$$
+
+**⇒ 远距离三阶混合项由局部插入之间的**连通关联**控制；支撑不重叠时某些接触项严格为零；若其余协方差与三点累积量有可求和衰减，`𝔓₄` 可能远小于 `|X|²H_X`。**
+
+$$\boxed{\ \text{这条路不改 landing 范数、不改 landing 定理，直接瞄准 }P1–P4\ }$$
+
+### 5⁗⁗⁗‴.9 审计（哪些真的 U→T）
+
+| 项 | 判决 | 说明 |
+|---|---|---|
+**非线性 `O(4)` 好块 Hessian** | **`[T]`** | `Ric+Hess V ⪰ I` 精确条件（我核过恒等式与常数） |
+good-domain 条件 LSI | `[U]` | 还需凸性 + 边界条件 |
+**联合测度坏块指数尾** | **`[M]`/`[U]`** | 高斯外推给 `τ/lnμ_an≈49`，但外推不可当证明 |
+**全基配置慢收缩** | **`[F]`** | 与 pinning 后 3D `O(4)` 长程有序冲突 |
+联合测度慢变量聚簇 `(A3)` | `[U]` | annealed 条件 |
+完整 Annealed Block-UFBP | `[U]` | 等 `A1–A3` |
+`ℓ^{10}` landing 证书 | **上界无法认证** | 所有 `ℓ≥1` 超门槛 `≥408×` |
+直接 `P1–P4` 容差路线 | **可行替代** | 不改 landing 定理；须重核四项阈值 |
+
+---
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
