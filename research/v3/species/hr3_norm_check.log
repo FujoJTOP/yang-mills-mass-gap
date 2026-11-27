@@ -1,0 +1,107 @@
+
+==============================================================================
+[1] FREE :phi^2: ON T^3_L (a=1, continuum dispersion, BZ cutoff |n|_inf <= L/2)
+==============================================================================
+ extensive (zero-momentum carrier):  f1^2 = 3/omega1^2 , omega1 = 2 pi / L
+ point     (coincident-point):       f1^2 = 18/(L^6 omega1^2)     [= 2 G(t)^2 leading atom]
+ ratio     point/extensive           = L^6/6  (exact)
+
+   L    f1^2_ext        f1^2_ext/L^2   f1^2_pt          f1^2_pt*L^4   6*f1_ext/(L^6*f1_pt)
+    4  1.215854e+00      0.075991     1.781036e-03      0.455945       1.000000
+    8  4.863417e+00      0.075991     1.113148e-04      0.455945       1.000000
+   16  1.945367e+01      0.075991     6.957174e-06      0.455945       1.000000
+   32  7.781467e+01      0.075991     4.348233e-07      0.455945       1.000000
+   64  3.112587e+02      0.075991     2.717646e-08      0.455945       1.000000
+ => constants: 3/(4 pi^2) = 0.075991 ; 4.5/pi^2 = 0.455945
+
+==============================================================================
+[2] M0 = nu([0,inf)) : THE L-EXPONENT IS CARRIER/REGULATOR DATA
+==============================================================================
+ (a) extensive, continuum dispersion, BZ cutoff ncut = L/2   -> M0 ~ L^3 ?
+ (b) extensive, SAME model but FIXED cutoff ncut = 4          -> M0 ~ L^2 ?
+ (c) point:  M0_pt = 2 G(0)^2 , G(0) = (1/L^3) sum 1/(2 omega) -> M0 ~ L^0 ?
+
+   L    M0_ext(a)     M0_ext(a)/L^3   M0_ext(b)     M0_ext(b)/L^2   M0_pt(c)
+    4  6.03874e+00       0.09436     1.22287e+01       0.76429        0.161796
+    8  4.89146e+01       0.09554     4.89146e+01       0.76429        0.112180
+   16  3.94419e+02       0.09629     1.95658e+02       0.76429        0.090820
+   32  3.16946e+03       0.09672     7.82634e+02       0.76429        0.080998
+   64  2.54159e+04       0.09695     3.13054e+03       0.76429        0.076300
+ => (a) L^3 (lattice a=1: BZ scales with L);  (b) L^2 (cutoff held fixed: NOT the lattice);
+    (c) L^0 (local composite variance: contact, cutoff-dependent constant, no L-growth).
+
+==============================================================================
+[3] w1 = f1^2/M0 ON THE FREE FIELD (exact formulas; constants are regulator-scheme data)
+==============================================================================
+   L    w1_ext = f1_ext/M0(a)   w1_ext*L      w1_pt = f1_pt/M0(c)   w1_pt*L^4     w1_ext/w1_pt
+    4   2.013423e-01        0.805369     1.100791e-02       2.818024         18.291
+    8   9.942664e-02        0.795413     9.922910e-04       4.064424        100.199
+   16   4.932233e-02        0.789157     7.660399e-05       5.020319        643.861
+   32   2.455140e-02        0.785645     5.368344e-06       5.629116       4573.367
+   64   1.224662e-02        0.783783     3.561778e-07       5.975671      34383.441
+ => w1_ext -> 0 like L^-1 ; w1_pt -> 0 like L^-4 ; w1_ext/w1_pt ~ L^3 :
+    THE TWO CARRIERS ARE NOT RELATED BY ANY MULTIPLICATIVE FACTOR (already at w1 level).
+
+==============================================================================
+[4] M0 = Var(O) = C(0) = nu([0,inf))  (identity, any centered O, positive KL measure)
+==============================================================================
+ C(0) = int e^{-sqrt(s)*0} dnu(s) = nu([0,inf)) = <O^2>_c = Var(O).   [exact]
+  nu = 1/2 d_1 + 1/2 d_4 : M0=1  Var=1  chi=5/8  w1=1/2
+  nu = 3/4 d_2 + 1/4 d_4 : M0=1  Var=1  chi=7/16  w1=3/4
+  nu = 1/5 d_9 + 4/5 d_4 : M0=1  Var=1  chi=2/9  w1=1/5
+ => 'divide by M0' and 'divide by Var(O)' are THE SAME functional (same carrier, same channel).
+
+==============================================================================
+[5] HN1 FAMILY AND THIN ATOM
+==============================================================================
+ HN1: nu_L = (1/2) delta_{1/L^2} + (1/2) delta_4  ->  M0 = 1, f1^2 = 1/2, w1 = 1/2 (all L)
+   L=  2  m1^2=1/4  f1^2=1/2  chi=17/8  squeeze slack m1^2*chi-f1^2=1/32
+   L=  4  m1^2=1/16  f1^2=1/2  chi=65/8  squeeze slack m1^2*chi-f1^2=1/128
+   L=  8  m1^2=1/64  f1^2=1/2  chi=257/8  squeeze slack m1^2*chi-f1^2=1/512
+   L= 16  m1^2=1/256  f1^2=1/2  chi=1025/8  squeeze slack m1^2*chi-f1^2=1/2048
+   L= 64  m1^2=1/4096  f1^2=1/2  chi=16385/8  squeeze slack m1^2*chi-f1^2=1/32768
+ thin atom: nu = (eps/2) delta_eps + (1-eps/2) delta_4  (M0 = 1, eps -> 0)
+   eps=1/2      f1^2=1/4       w1=1/4       chi=11/16     m1^2=eps  (light mode, bounded chi, w1->0)
+   eps=1/8      f1^2=1/16      w1=1/16      chi=47/64     m1^2=eps  (light mode, bounded chi, w1->0)
+   eps=1/1000   f1^2=1/2000    w1=1/2000    chi=5999/8000 m1^2=eps  (light mode, bounded chi, w1->0)
+
+==============================================================================
+[6] M6 = oscillator(w) (x) free ring: b-carrier, exact
+==============================================================================
+ nu = sum_{n != 0} (L^2/(4 pi^2 n^2)) delta_{E_n^2},  E_n = 2 pi^2 n^2 / L^2
+ f1^2 = L^2/(2 pi^2),  M0 = L^2/12 (= Var(b), Parseval)  =>  w1 = 6/pi^2 exactly
+ 6/pi^2 = 0.607927   and m1^2 = E_1^2 = 4 pi^4 / L^4  (<= c/L^2 for any c>0, L large)
+   L=  4  f1^2=8.105695e-01  Var(b)=1.333333e+00  w1=0.607927
+   L=  8  f1^2=3.242278e+00  Var(b)=5.333333e+00  w1=0.607927
+   L= 16  f1^2=1.296911e+01  Var(b)=2.133333e+01  w1=0.607927
+
+==============================================================================
+[7] THE FLIP: one physical model, two carriers, opposite truth value (r0=0.5, c=16 pi^2)
+==============================================================================
+ hypothesis:  m1^2(L) <= c/L^2  AND  f1^2(L) >= r0
+   L   m1^2=4 pi^2/L^2   <=c/L^2?   f1_pt           pt>=r0?   f1_ext        ext>=r0?
+    4   2.467401e+00     True      1.781036e-03  False   1.215854e+00  True  
+    8   6.168503e-01     True      1.113148e-04  False   4.863417e+00  True  
+   16   1.542126e-01     True      6.957174e-06  False   1.945367e+01  True  
+   32   3.855314e-02     True      4.348233e-07  False   7.781467e+01  True  
+   64   9.638286e-03     True      2.717646e-08  False   3.112587e+02  True  
+ => point carrier: hypothesis FALSE for all L>4  -> theorem SURVIVES
+ => extensive carrier: hypothesis TRUE for all L>=4 -> theorem VIOLATED by the free field
+
+==============================================================================
+[8] STRUCTURAL: no absolute threshold is carrier-invariant
+==============================================================================
+ given any family with f1^2(L) > 0, put s_L := sqrt(r0/(2 f1^2(L))); then (s_L^2 f1^2) = r0/2 < r0
+ and (2^0.5 s_L) gives 2 r0 > r0 : the predicate flips inside the admissible group {O -> s O, s>0}.
+   L=  8: s_L=2.267249e-01 -> s^2 f1^2=0.250000 (<r0) ; 1.41421*s_L -> 0.500000 (>r0)
+   L= 16: s_L=1.133625e-01 -> s^2 f1^2=0.250000 (<r0) ; 1.41421*s_L -> 0.500000 (>r0)
+ => ill-definedness is STRUCTURAL, not a property of the free-field family.
+
+==============================================================================
+[9] EXTERNAL CONSISTENCY: M0 = C(0) ~ L^3 on 4D SU(2) YM at beta=2.5 (GS1-SEAT2:0.15)
+==============================================================================
+ C(0)(L=6)=19.9108  C(0)(L=8)=8.3799  ratio=2.3760   vs (8/6)^3=2.3704   (deviation 0.0024 of the ratio)
+ => the extensive carrier's M0 grows like V on the target theory itself;
+    hence any floor on w1 = f1^2/M0 is <= C/L^3 and is violated by every bounded-f1^2 family.
+
+ALL CHECKS DONE (deterministic, no sampling).

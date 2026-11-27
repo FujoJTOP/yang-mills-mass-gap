@@ -1,0 +1,171 @@
+====================================================================================
+[1] archived gh2 ensembles: C(t)/C(0), Ebar floor, w1   (zero new MC)
+====================================================================================
+gh2_b2.5_Ls6_Lt12: Ls=6 Lt=12 N=24000 C(0)=8.3559
+    C(t)/C(0) t=1..6: 0.072615 0.013151 0.004834 0.000872 0.002575 0.001288
+    Ebar_lo = -ln(C1/C0) = 2.62259 +- 0.01872   (1-C1/C0 = 0.92738)
+    w1 (m=1.546) = 0.33885 +- 0.00722
+    Cauchy-Schwarz cap on the weight at s=inf: p_UV <= 1 - m1^2/m2 = 0.59903
+gh2_b2.5_Ls8_Lt12: Ls=8 Lt=12 N=24000 C(0)=19.8385
+    C(t)/C(0) t=1..6: 0.077368 0.010106 0.004701 0.004388 0.000873 0.001916
+    Ebar_lo = -ln(C1/C0) = 2.55920 +- 0.01882   (1-C1/C0 = 0.92263)
+    w1 (m=1.546) = 0.35721 +- 0.00673
+    Cauchy-Schwarz cap on the weight at s=inf: p_UV <= 1 - m1^2/m2 = 0.40768
+gh2_b2.5_Ls6_Lt20: Ls=6 Lt=20 N=24000 C(0)=8.3774
+    C(t)/C(0) t=1..6: 0.076576 0.011647 0.003823 0.001980 0.002320 0.002378
+    Ebar_lo = -ln(C1/C0) = 2.56948 +- 0.01285   (1-C1/C0 = 0.92342)
+    w1 (m=1.546) = 0.35495 +- 0.00453
+    Cauchy-Schwarz cap on the weight at s=inf: p_UV <= 1 - m1^2/m2 = 0.49653
+gh2_b2.5_Ls8_Lt20: Ls=8 Lt=20 N=24000 C(0)=19.9424
+    C(t)/C(0) t=1..6: 0.077402 0.012094 0.002795 0.002227 0.004126 0.003807
+    Ebar_lo = -ln(C1/C0) = 2.55875 +- 0.01686   (1-C1/C0 = 0.92260)
+    w1 (m=1.546) = 0.35887 +- 0.00625
+    Cauchy-Schwarz cap on the weight at s=inf: p_UV <= 1 - m1^2/m2 = 0.50463
+------------------------------------------------------------------------------------
+[2] replica check: npz == gh2_ltB.json bit-for-bit; gh2_ltA.json = 2nd replica
+------------------------------------------------------------------------------------
+  gh2_ltA.json Ls=6 Lt=12: r1=0.071538 r2=0.009141 Ebar_lo=2.63753  p_UV<=0.44016   npz r1=0.072615 independent replica
+  gh2_ltA.json Ls=8 Lt=12: r1=0.074862 r2=0.016825 Ebar_lo=2.59211  p_UV<=0.66691   npz r1=0.077367 independent replica
+  gh2_ltA.json Ls=6 Lt=20: r1=0.073239 r2=0.010621 Ebar_lo=2.61403  p_UV<=0.49498   npz r1=0.076575 independent replica
+  gh2_ltA.json Ls=8 Lt=20: r1=0.076697 r2=0.011149 Ebar_lo=2.56790  p_UV<=0.47238   npz r1=0.077402 independent replica
+  gh2_ltB.json Ls=6 Lt=12: r1=0.072615 r2=0.013151 Ebar_lo=2.62258  p_UV<=0.59903   npz r1=0.072615 IDENTICAL
+  gh2_ltB.json Ls=8 Lt=12: r1=0.077367 r2=0.010105 Ebar_lo=2.55919  p_UV<=0.40766   npz r1=0.077367 IDENTICAL
+  gh2_ltB.json Ls=6 Lt=20: r1=0.076575 r2=0.011647 Ebar_lo=2.56948  p_UV<=0.49653   npz r1=0.076575 IDENTICAL
+  gh2_ltB.json Ls=8 Lt=20: r1=0.077402 r2=0.012094 Ebar_lo=2.55875  p_UV<=0.50462   npz r1=0.077402 IDENTICAL
+------------------------------------------------------------------------------------
+[3] Jensen: Ebar = <s> = <-ln lam> >= -ln<lam> = -ln(C1/C0)   [exact; needs only nu>=0]
+    (lam_n = exp(-s_n) in (0,1]; -ln convex; nothing else used)
+------------------------------------------------------------------------------------
+  Ls=6 Lt=12: 1-C1/C0 = 0.92738  <=  Ebar_lo = 2.62259   (Jensen gain x2.83)
+  Ls=6 Lt=20: 1-C1/C0 = 0.92342  <=  Ebar_lo = 2.56948   (Jensen gain x2.78)
+  Ls=8 Lt=12: 1-C1/C0 = 0.92263  <=  Ebar_lo = 2.55920   (Jensen gain x2.77)
+  Ls=8 Lt=20: 1-C1/C0 = 0.92260  <=  Ebar_lo = 2.55875   (Jensen gain x2.77)
+------------------------------------------------------------------------------------
+[4] what the two archived moments pin: nu on lam in (0,1], m1=<lam>=C1/C0,
+    m2=<lam^2>=C2/C0.  Cap: any weight p below lam=d satisfies p <= 1-m1^2/m2
+    (Cauchy-Schwarz), attained at the exact 2-point solution (d=0).  Ebar is
+    bounded BELOW by the 2-point solution with the upper atom at lam=1, and is
+    UNBOUNDED ABOVE.  => delta1 = Ebar-s1 has a floor and no ceiling.
+------------------------------------------------------------------------------------
+  Ls=6 Lt=12: m1=0.072615 m2=0.013151
+    d=0 exact: p=0.5990 at s=inf, 1-p=0.4010 at s=1.7087  -> Ebar=inf
+    lam2=1.0: p=0.9909 lam1=0.0641 -> Ebar=2.72205  [m1 err +0.0e+00 ; m2 err +6.4e-17]
+    lam2=0.8: p=0.9853 lam1=0.0618 -> Ebar=2.74652  [m1 err +0.0e+00 ; m2 err +3.8e-17]
+    lam2=0.5: p=0.9587 lam1=0.0542 -> Ebar=2.82351  [m1 err +0.0e+00 ; m2 err -5.2e-18]
+    lam2=0.25: p=0.7998 lam1=0.0282 -> Ebar=3.13136  [m1 err +0.0e+00 ; m2 err -3.5e-18]
+    lam2=0.1: solution leaves (0,1]  skip
+  Ls=6 Lt=20: m1=0.076576 m2=0.011647
+    d=0 exact: p=0.4965 at s=inf, 1-p=0.5035 at s=1.8832  -> Ebar=inf
+    lam2=1.0: p=0.9933 lam1=0.0703 -> Ebar=2.63691  [m1 err +0.0e+00 ; m2 err -5.9e-17]
+    lam2=0.8: p=0.9891 lam1=0.0686 -> Ebar=2.65288  [m1 err +0.0e+00 ; m2 err -6.9e-17]
+    lam2=0.5: p=0.9688 lam1=0.0629 -> Ebar=2.70115  [m1 err +0.0e+00 ; m2 err +0.0e+00]
+    lam2=0.25: p=0.8387 lam1=0.0432 -> Ebar=2.85821  [m1 err +0.0e+00 ; m2 err +3.5e-18]
+    lam2=0.1: solution leaves (0,1]  skip
+  Ls=8 Lt=12: m1=0.077368 m2=0.010106
+    d=0 exact: p=0.4077 at s=inf, 1-p=0.5923 at s=2.0355  -> Ebar=inf
+    lam2=1.0: p=0.9952 lam1=0.0729 -> Ebar=2.60602  [m1 err +0.0e+00 ; m2 err +1.9e-17]
+    lam2=0.8: p=0.9922 lam1=0.0717 -> Ebar=2.61685  [m1 err +0.0e+00 ; m2 err +8.7e-18]
+    lam2=0.5: p=0.9775 lam1=0.0676 -> Ebar=2.64875  [m1 err +0.0e+00 ; m2 err +1.2e-17]
+    lam2=0.25: p=0.8785 lam1=0.0535 -> Ebar=2.74077  [m1 err +0.0e+00 ; m2 err -1.7e-18]
+    lam2=0.1: solution leaves (0,1]  skip
+  Ls=8 Lt=20: m1=0.077402 m2=0.012094
+    d=0 exact: p=0.5046 at s=inf, 1-p=0.4954 at s=1.8563  -> Ebar=inf
+    lam2=1.0: p=0.9929 lam1=0.0708 -> Ebar=2.62923  [m1 err +0.0e+00 ; m2 err +3.5e-18]
+    lam2=0.8: p=0.9884 lam1=0.0690 -> Ebar=2.64596  [m1 err +0.0e+00 ; m2 err +3.8e-17]
+    lam2=0.5: p=0.9670 lam1=0.0630 -> Ebar=2.69678  [m1 err +0.0e+00 ; m2 err +3.5e-18]
+    lam2=0.25: p=0.8300 lam1=0.0420 -> Ebar=2.86594  [m1 err +0.0e+00 ; m2 err +0.0e+00]
+    lam2=0.1: solution leaves (0,1]  skip
+------------------------------------------------------------------------------------
+[5] exact rational check: (G-4)_w0  <=>  Delta <= (w1-w0)eps  <=> Delta/eps <= w1-w0
+    Landmark 1: Delta/eps = w1-w0 exactly at eps = delta1/(1-w0)  (the G-4 edge)
+    Landmark 2: Delta/eps = 0       exactly at eps = delta1/(1-w1)  (eps_max)
+------------------------------------------------------------------------------------
+  A  0.6d1+0.4d10: w1=3/5 s1=1 s2=10 eps=9 Ebar=23/5 d1=18/5 Delta=0
+     w0=1/2: (G-4)=True  Delta/eps=0  w1-w0=1/10  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=1/64: (G-4)=True  Delta/eps=0  w1-w0=187/320  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=3/10: (G-4)=True  Delta/eps=0  w1-w0=3/10  [(G-4)<=>Delta/eps<=w1-w0 : True]
+  B  0.01d1+0.99d2: w1=1/100 s1=1 s2=2 eps=1 Ebar=199/100 d1=99/100 Delta=0
+     w0=1/2: (G-4)=False  Delta/eps=0  w1-w0=-49/100  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=1/64: (G-4)=False  Delta/eps=0  w1-w0=-9/1600  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=3/10: (G-4)=False  Delta/eps=0  w1-w0=-29/100  [(G-4)<=>Delta/eps<=w1-w0 : True]
+  D  0.9d1+0.1d2: w1=9/10 s1=1 s2=2 eps=1 Ebar=11/10 d1=1/10 Delta=0
+     w0=1/2: (G-4)=True  Delta/eps=0  w1-w0=2/5  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=1/64: (G-4)=True  Delta/eps=0  w1-w0=283/320  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=3/10: (G-4)=True  Delta/eps=0  w1-w0=3/5  [(G-4)<=>Delta/eps<=w1-w0 : True]
+  E  0.9d1+.05d2+.05d100: w1=9/10 s1=1 s2=2 eps=1 Ebar=6 d1=5 Delta=49/10
+     w0=1/2: (G-4)=False  Delta/eps=49/10  w1-w0=2/5  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=1/64: (G-4)=False  Delta/eps=49/10  w1-w0=283/320  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=3/10: (G-4)=False  Delta/eps=49/10  w1-w0=3/5  [(G-4)<=>Delta/eps<=w1-w0 : True]
+  two-point 0.6d1+0.4d4: w1=3/5 s1=1 s2=4 eps=3 Ebar=11/5 d1=6/5 Delta=0
+     w0=1/2: (G-4)=True  Delta/eps=0  w1-w0=1/10  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=1/64: (G-4)=True  Delta/eps=0  w1-w0=187/320  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=3/10: (G-4)=True  Delta/eps=0  w1-w0=3/10  [(G-4)<=>Delta/eps<=w1-w0 : True]
+  C  (3/5)d1+(2/5)Unif[4,9]: w1=3/5 s1=1 s2=4 eps=3 Ebar=16/5 d1=11/5 Delta=1
+     w0=1/2: (G-4)=False  Delta/eps=1/3  w1-w0=1/10  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=1/64: (G-4)=True  Delta/eps=1/3  w1-w0=187/320  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     w0=3/10: (G-4)=False  Delta/eps=1/3  w1-w0=3/10  [(G-4)<=>Delta/eps<=w1-w0 : True]
+     threshold: at w1=8/11, Delta/eps=5/22 and w1-1/2=5/22  -> equal: True
+------------------------------------------------------------------------------------
+[6] (G-4)_w0 <=> eps >= delta1/(1-w0) => s2 >= s1 + (Ebar-s1)/(1-w0)
+    necessary condition (uses only the rigorous floor Ebar >= Ebar_lo)
+------------------------------------------------------------------------------------
+  Ls=6 Lt=12 s1=1.546: Ebar_lo=2.6226 -> delta1_lo=1.0766  w1=0.3389
+      w0=0.0156 (1/64): needs s2 >= 2.6397  (= 1.707 s1)
+      w0=0.2000 (1/5): needs s2 >= 2.8917  (= 1.870 s1)
+      w0=0.3000 (3/10): needs s2 >= 3.0840  (= 1.995 s1)
+      most favourable eps=s1=1.546: Delta/eps >= 0.0352  => (G-4) at that eps needs w0 <= 0.3036
+  Ls=6 Lt=12 s1=1.71: Ebar_lo=2.6226 -> delta1_lo=0.9126  w1=0.3389
+      w0=0.0156 (1/64): needs s2 >= 2.6371  (= 1.542 s1)
+      w0=0.2000 (1/5): needs s2 >= 2.8507  (= 1.667 s1)
+      w0=0.3000 (3/10): needs s2 >= 3.0137  (= 1.762 s1)
+      most favourable eps=s1=1.710: Delta/eps >= -0.1275  => (G-4) at that eps needs w0 <= 0.4663
+  Ls=6 Lt=20 s1=1.546: Ebar_lo=2.5695 -> delta1_lo=1.0235  w1=0.3550
+      w0=0.0156 (1/64): needs s2 >= 2.5857  (= 1.673 s1)
+      w0=0.2000 (1/5): needs s2 >= 2.8254  (= 1.828 s1)
+      w0=0.3000 (3/10): needs s2 >= 3.0081  (= 1.946 s1)
+      most favourable eps=s1=1.546: Delta/eps >= 0.0170  => (G-4) at that eps needs w0 <= 0.3380
+  Ls=6 Lt=20 s1=1.71: Ebar_lo=2.5695 -> delta1_lo=0.8595  w1=0.3550
+      w0=0.0156 (1/64): needs s2 >= 2.5831  (= 1.511 s1)
+      w0=0.2000 (1/5): needs s2 >= 2.7844  (= 1.628 s1)
+      w0=0.3000 (3/10): needs s2 >= 2.9378  (= 1.718 s1)
+      most favourable eps=s1=1.710: Delta/eps >= -0.1424  => (G-4) at that eps needs w0 <= 0.4974
+  Ls=8 Lt=12 s1=1.546: Ebar_lo=2.5592 -> delta1_lo=1.0132  w1=0.3572
+      w0=0.0156 (1/64): needs s2 >= 2.5753  (= 1.666 s1)
+      w0=0.2000 (1/5): needs s2 >= 2.8125  (= 1.819 s1)
+      w0=0.3000 (3/10): needs s2 >= 2.9934  (= 1.936 s1)
+      most favourable eps=s1=1.546: Delta/eps >= 0.0126  => (G-4) at that eps needs w0 <= 0.3446
+  Ls=8 Lt=12 s1=1.71: Ebar_lo=2.5592 -> delta1_lo=0.8492  w1=0.3572
+      w0=0.0156 (1/64): needs s2 >= 2.5727  (= 1.504 s1)
+      w0=0.2000 (1/5): needs s2 >= 2.7715  (= 1.621 s1)
+      w0=0.3000 (3/10): needs s2 >= 2.9231  (= 1.709 s1)
+      most favourable eps=s1=1.710: Delta/eps >= -0.1462  => (G-4) at that eps needs w0 <= 0.5034
+  Ls=8 Lt=20 s1=1.546: Ebar_lo=2.5588 -> delta1_lo=1.0128  w1=0.3589
+      w0=0.0156 (1/64): needs s2 >= 2.5748  (= 1.665 s1)
+      w0=0.2000 (1/5): needs s2 >= 2.8119  (= 1.819 s1)
+      w0=0.3000 (3/10): needs s2 >= 2.9928  (= 1.936 s1)
+      most favourable eps=s1=1.546: Delta/eps >= 0.0140  => (G-4) at that eps needs w0 <= 0.3449
+  Ls=8 Lt=20 s1=1.71: Ebar_lo=2.5588 -> delta1_lo=0.8488  w1=0.3589
+      w0=0.0156 (1/64): needs s2 >= 2.5722  (= 1.504 s1)
+      w0=0.2000 (1/5): needs s2 >= 2.7709  (= 1.620 s1)
+      w0=0.3000 (3/10): needs s2 >= 2.9225  (= 1.709 s1)
+      most favourable eps=s1=1.710: Delta/eps >= -0.1448  => (G-4) at that eps needs w0 <= 0.5037
+------------------------------------------------------------------------------------
+[7] eps-window at fixed (w1,s1,Ebar): Delta/eps = delta1/eps-(1-w1) strictly
+    decreasing in eps; 0 at eps_max = delta1/(1-w1); = w1-w0 at the (G-4) edge.
+    family C (w1=3/5, delta1=11/5, eps_max=11/2):
+------------------------------------------------------------------------------------
+    eps=1 (eps/eps_max=0.182): Delta/eps=9/5  => (G-4)_w0 holds iff w0 <= -6/5
+    eps=3 (eps/eps_max=0.545): Delta/eps=1/3  => (G-4)_w0 holds iff w0 <= 4/15
+    eps=9/2 (eps/eps_max=0.818): Delta/eps=4/45  => (G-4)_w0 holds iff w0 <= 23/45
+    eps=11/2 (eps/eps_max=1.000): Delta/eps=0  => (G-4)_w0 holds iff w0 <= 3/5
+    eps=6 (eps/eps_max=1.091): Delta/eps=-1/30  => (G-4)_w0 holds iff w0 <= 19/30
+------------------------------------------------------------------------------------
+[8] scheme test: nu -> nu + sigma*delta_{s_UV}  (what contact subtraction / flow moves)
+    eps and s1 do not move; Delta/eps and w1 both move.  Exact rationals.
+------------------------------------------------------------------------------------
+    sigma=0: w1=3/5 (0.60000)  eps=3  Ebar=2.2000e+00  Delta=0.0000e+00  Delta/eps=0.0000e+00
+    sigma=1: w1=3/10 (0.30000)  eps=3  Ebar=5.0011e+03  Delta=4.9980e+03  Delta/eps=1.6660e+03
+    sigma=10000: w1=3/50005 (0.00006)  eps=3  Ebar=9.9990e+03  Delta=9.9950e+03  Delta/eps=3.3317e+03
+====================================================================================
+ALL SECTIONS DONE (deterministic; no sampling, no new MC)
+====================================================================================

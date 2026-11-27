@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>从格点到 Clay：一条证明路线的完整推导</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$']], displayMath: [['$$','$$'],['\\[','\\]']], tags: 'ams' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root{
+    --bg:#faf9f7; --ink:#1a1a18; --muted:#6a6862; --line:#dcd9d3; --line-soft:#eae7e1;
+    --proved:#1f6b45; --proved-bg:#e8f2eb;
+    --unproved:#a8261c; --unproved-bg:#fbeae8;
+    --accent:#2a3a6b;
+    --serif:Charter,"Bitstream Charter","Iowan Old Style",Georgia,"Songti SC","Source Han Serif SC",serif;
+    --mono:ui-monospace,"SF Mono",Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
+  body{font-family:var(--serif);font-size:17.5px;line-height:1.72;-webkit-font-smoothing:antialiased}
+  .page{max-width:760px;margin:0 auto;padding:76px 30px 120px}
+  @media(max-width:640px){.page{padding:44px 20px 80px}body{font-size:16.5px}}
+
+  header{border-bottom:1px solid var(--line);padding-bottom:26px;margin-bottom:40px}
+  h1{font-size:clamp(28px,4.4vw,40px);line-height:1.16;letter-spacing:-.015em;font-weight:600;margin:0 0 14px}
+  .standfirst{color:var(--muted);font-size:16px;margin:0;max-width:60ch}
+
+  h2{font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:600;color:var(--muted);
+     margin:52px 0 6px;padding-top:22px;border-top:1px solid var(--line-soft)}
+  h2 .num{color:var(--ink);margin-right:.7em}
+  h3{font-size:17.5px;font-weight:600;margin:30px 0 8px}
+  p{margin:0 0 16px}
+
+  .status{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+          padding:1.5px 6px;border-radius:2px;vertical-align:.15em;white-space:nowrap}
+  .status.ok{color:var(--proved);background:var(--proved-bg)}
+  .status.ng{color:var(--unproved);background:var(--unproved-bg)}
+
+  mjx-container[display="true"]{margin:22px 0 !important}
+
+  .key{border:1px solid var(--unproved);background:var(--unproved-bg);border-radius:2px;padding:20px 24px;margin:26px 0}
+  .key .label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+              color:var(--unproved);font-weight:700;display:block;margin-bottom:10px}
+  .proved-box{border:1px solid var(--proved);background:var(--proved-bg);border-radius:2px;padding:18px 22px;margin:22px 0}
+  .proved-box .label{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+                     color:var(--proved);font-weight:700;display:block;margin-bottom:8px}
+
+  table{width:100%;border-collapse:collapse;font-size:15.5px;margin:18px 0}
+  th{text-align:left;font-weight:600;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;
+     color:var(--muted);padding:0 12px 8px 0;border-bottom:1px solid var(--line)}
+  td{padding:10px 12px 10px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;line-height:1.55}
+  td:last-child,th:last-child{padding-right:0}
+
+  ol.chain{list-style:none;padding:0;margin:20px 0}
+  ol.chain li{display:grid;grid-template-columns:auto 1fr;gap:0 16px;padding:11px 0;border-bottom:1px solid var(--line-soft)}
+  ol.chain li:first-child{border-top:1px solid var(--line-soft)}
+  ol.chain .tag{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px;white-space:nowrap}
+
+  .note{font-size:14.5px;color:var(--muted);border-left:2px solid var(--line);padding-left:14px;margin:18px 0}
+  footer{margin-top:64px;padding-top:20px;border-top:1px solid var(--line);font-size:14px;color:var(--muted)}
+  code{font-family:var(--mono);font-size:.88em;background:var(--line-soft);padding:1px 4px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <h1>从格点到 Clay：一条证明路线的完整推导</h1>
+  <p class="standfirst">4D 纯 SU(N) Yang–Mills 质量间隙。下面把整条路线按论文格式写全，逐步标注已证与未证。全链只有一步没有证，其余各步都有出处。</p>
+</header>
+
+<!-- ================= 1 ================= -->
+<h2><span class="num">1</span>设定与记号</h2>
+
+<p>取四维超立方格 $\Lambda_a = a\mathbb{Z}^4$，边长为 $L a$，规范群 $G=SU(N)$，Wilson 作用量</p>
+
+$$
+S_W[U] \;=\; \beta \sum_{p} \Big( 1 - \tfrac{1}{N}\operatorname{Re}\operatorname{tr} U_p \Big),
+\qquad
+Z \;=\; \int \prod_{\ell} dU_\ell \; e^{-S_W[U]} .
+\tag{1}
+$$
+
+<p>沿时间方向构造转移矩阵 $T_a$，它是 $L^2(\mathcal{A})$ 上的正自伴紧算子：</p>
+
+$$
+T_a \;=\; e^{-a H_a}, \qquad H_a \ \ge\ 0, \qquad \lambda_1(T_a)=1 \ \text{单重}, \qquad T_a \Omega = \Omega ,
+\tag{2}
+$$
+
+<p>其中 $\Omega$ 是真空。谱底以上的第一个能级给出格点质量隙</p>
+
+$$
+\Delta_a \;:=\; \inf\{\, \lambda \in \sigma(H_a) : \lambda > 0 \,\}
+\;=\; -\frac{1}{a}\log \lambda_2(T_a)
+\;=\; -\frac{1}{a}\log \big\| T_a \big|_{\Omega^{\perp}} \big\| .
+\tag{3}
+$$
+
+<p class="note">这里用的是 $\sup\sigma(T_a|_{\Omega^\perp})$ 的<b>倒数</b>。写成 $\Delta_a=-\frac1a\log\sup\sigma(T_a)$ 是错的，因为 $\sup\sigma(T_a)=1$ 恒等。</p>
+
+<!-- ================= 2 ================= -->
+<h2><span class="num">2</span>连续极限与桥</h2>
+
+<p>沿重整化轨道 $\beta=\beta(a)$，固定物理标度 $a\Lambda$，令 $a\to 0$。转移矩阵的相应极限给出连续统哈密顿量 $H$：</p>
+
+$$
+H_a \;\longrightarrow\; H \quad (\text{强预解意义}), \qquad
+\Delta_{\mathrm{cont}} \;:=\; \inf\{\, \lambda \in \sigma(H) : \lambda > 0 \,\} .
+\tag{4}
+$$
+
+<div class="proved-box">
+  <span class="label">桥 &nbsp;<span class="status ok">已证</span></span>
+  <p style="margin:0">固定 $(L,\beta)$ 上对 $a$ 一致的格点地板，会原样传给连续极限：</p>
+  $$
+  \Delta_{\mathrm{cont}} \;\ge\; \liminf_{a\to 0}\ \Delta_a .
+  \tag{5}
+  $$
+  <p style="margin:0;font-size:14.5px;color:#3d5c4b">Lean 形式化 <code>gap_ge_liminf</code> 机器核过。这一步只搬运，不生产：右端若没有正地板，它什么也不给。</p>
+</div>
+
+<!-- ================= 3 ================= -->
+<h2><span class="num">3</span>缺的那一步</h2>
+
+<div class="key">
+  <span class="label">唯一未证的一步 &nbsp;<span class="status ng">未证</span></span>
+  <p style="margin:0 0 6px">需要一条 <b>与 $a$ 无关、与 $L$ 无关、在整个耦合窗内成立</b>的格点地板：</p>
+  $$
+  \exists\,\delta>0 \quad \forall L<\infty \quad \forall a>0 \quad \forall\beta\in[\beta_0,\beta_1]:
+  \qquad \Delta_a(L,\beta) \;\ge\; \delta .
+  \tag{6}
+  $$
+  <p style="margin:0;font-size:15px">量词顺序是全部内容：$\exists\delta$ 必须在 $\forall(L,a,\beta)$ <b>之外</b>。</p>
+</div>
+
+<p>把 (5) 与 (6) 接起来，路线闭合：</p>
+
+$$
+\underbrace{\Delta_{\mathrm{cont}} \ \ge\ \liminf_a \Delta_a}_{\text{(5)}\ \text{已证}}
+\ \ \wedge\ \
+\underbrace{\liminf_a \Delta_a \ \ge\ \delta}_{\text{(6)}\ \text{未证}}
+\qquad\Longrightarrow\qquad
+\Delta_{\mathrm{cont}} \ \ge\ \delta \ >\ 0 .
+\tag{7}
+$$
+
+<p>$\Delta_{\mathrm{cont}}>0$ 即质量间隙。所以整条路线的缺口恰好是 (6)，一格不多、一格不少。</p>
+
+<!-- ================= 4 ================= -->
+<h2><span class="num">4</span>为什么 (6) 不能换一件外衣</h2>
+
+<p>记 $R_t := e^{a\Delta_a}=1/\lambda_2(T_a)>1$。同一个对象有两种写法，而它们的量词顺序不同：</p>
+
+$$
+\underbrace{\forall (L,a,\beta>0):\quad R_t \ >\ 1}_{\text{开条件：严格不等式，无常数}}
+\qquad\text{对比}\qquad
+\underbrace{\exists\,\delta>0\ \ \forall (L,a):\quad \log R_t \ \ge\ a\,\delta}_{\text{闭条件：均匀模数，即 (6)}}
+\tag{8}
+$$
+
+<p>第一条是<b>结构性论证</b>能达到的全部。由紧性加 Perron–Frobenius，$\lambda_2(T_a)<1$ 严格成立，于是 $R_t>1$ 对每个 $(L,a)$ 成立，全程只出现严格不等号，一个数都不出现。但第一条推不出第二条，理由是有一个精确反例：</p>
+
+$$
+\text{4D 自由 }U(1):\qquad \Delta_{\mathrm{cont}} = 0, \qquad\text{而 } R_t > 1 \ \text{ 对每个 } L \text{ 成立}.
+\tag{9}
+$$
+
+<p>自由光子无质量，但紧配置空间使每个有限 $L$ 上的 $\Delta_a>0$。所以「$R_t>1$」在无隙模型上也为真，它不含隙信息。</p>
+
+<div class="key">
+  <span class="label">由 (9) 得到的 no-go</span>
+  <p style="margin:0">只消费「有限 $L$、紧群、紧配置空间、$0\le T_a\le 1$、$\lambda_1$ 单重、反射正性、离散谱」这些结构的论证，<b>推不出</b> (6)。因此 (6) 必须由一个新的、带模数的输入提供，不能由更精细的结构分析得到。</p>
+</div>
+
+<!-- ================= 5 ================= -->
+<h2><span class="num">5</span>三个候选模数，以及它们为何都不够</h2>
+
+<p>所谓模数，就是形如 $\exists c>0\ \forall$ 的量。清点下来只有三个候选，逐一判死。</p>
+
+<h3>5.1 &nbsp;${H1}$：负一阶矩的一致天花板</h3>
+
+$$
+H1:\qquad \exists\lambda>0\ \ \forall(L,a):\qquad
+\chi \;:=\; \int_0^\infty s^{-1}\,d\nu(s) \ \le\ \frac{1-c}{\lambda},
+\qquad \nu = \text{$\tfrac14\operatorname{tr}F^2$ 的连通 KL 测度}.
+\tag{10}
+$$
+
+<p>三条死因。其一，$(1-c)$ 不是削弱项而是加强项，$c$ 在存在读法下可被 $\lambda$ 吸收，因而是空槽。其二，裸形 $\chi\le 1/\lambda$ 在 $a$-一致读法下量纲错（裸 $\chi\sim a^{-4}$），必须写成比值形 $\chi/a^2\le 1/\lambda'$。其三，也是最要紧的：$H1$ 说的是 $\nu$ 在 $0$ 附近的<b>支撑</b>，而所有可用工具通过<b>积分</b>读 $\nu$，而积分看不见支撑底。偷渡点是这条恒等式</p>
+
+$$
+\chi \;=\; \frac{f_1^2}{m_1^2} \;+\; \int_{[\Lambda_\star,\infty)} s^{-1}\,d\nu
+\qquad\Longrightarrow\qquad
+\chi \ \ge\ \frac{f_1^2}{m_1^2}.
+\tag{11}
+$$
+
+<p>右边 $f_1^2$ 带<b>正号</b>：任何给 $f_1^2$ <b>下</b>界的机器，都把 $\chi$ 推<b>大</b>，即把 $H1$ 推远。所有 $f_1^2$ 的机器都坐在 $\chi$ 的错误一侧。</p>
+
+<h3>5.2 &nbsp;${I2}$：隔离</h3>
+
+$$
+I2:\qquad \Lambda_\star - m_1^2 \ \ge\ \delta_2>0,
+\qquad \Lambda_\star := \inf\operatorname{supp}\big(\nu - f_1^2\,\delta_{m_1^2}\big).
+\tag{12}
+$$
+
+<p>它与 Clay 不可比，两向都有精确反例：M6 上 $I2$ 平凡真（单原子，$\Lambda_\star=+\infty$）而 $m=0$；2D 上隙 $3g^2/8>0$ 而 $\nu\equiv 0$。它与 $H1$ 也不可比：$I2$ 平移不变而 $\chi$ 随平移发散，族 $\nu_t=\delta_t+\mathbf 1_{[t+\delta,t+\delta+1]}ds$ 给 $I2$ 余量恒为 $\delta$ 而 $\chi\ge 1/t\to\infty$。它唯一严格强于的对象是原子地板 $I1$。</p>
+
+<p>顺带一条有用的引理，它说明严格性要靠什么：</p>
+
+$$
+f_1^2 \ \ge\ \frac{\Lambda_\star M_0 - M_1}{\Lambda_\star - m_1^2},
+\qquad M_k := \int s^{k}\,d\nu ,
+\tag{13}
+$$
+
+<p>取正 $\iff \Lambda_\star > M_1/M_0$。这是单向的：引理正性 $\Longrightarrow$ 隔离，反向假。</p>
+
+<h3>5.3 &nbsp;${(CP)}$：单一禁闭相</h3>
+
+<p>逐字展开后是三段混写：$\Omega\ge c$ 那一段与靶逐字同一（换名）；$\Omega=1\iff (CP)$ 那一段<b>假</b>（X 模型与 2D 各给反例）；$I1\wedge I2$ 那一段在 $I1\iff I2$ 时塌成靶的 $\forall\beta$ 版，不塌时缺谱比上界 $IN$-$11$，连隙都不蕴含。</p>
+
+<h3>5.4 &nbsp;还有一个必须记住的事实</h3>
+
+<p>一个只给上界的机器永远碰不到地板。这一条可以写成一行：</p>
+
+$$
+G(t) = \int e^{-st}\,d\mu(s) \ \le\ C e^{-\lambda t}
+\qquad\Longrightarrow\qquad
+\operatorname{supp}\mu \ \subseteq\ [\lambda,\infty),
+\tag{14}
+$$
+
+<p>右端与<b>重量</b>无关：它只说谱在哪之上，不说底上有没有原子、原子有多重。见证是自由大质量标量取 $O={:}\varphi^2{:}$，此时谱衰减率 $2m$ 而 $f_1^2=0$。</p>
+
+<!-- ================= 6 ================= -->
+<h2><span class="num">6</span>一个证明必须提供什么</h2>
+
+<p>把上面的判决反过来读：(6) 的供给必须同时满足三条，缺一条就不是模数。</p>
+
+<ol class="chain">
+  <li><span class="tag">腿 1</span><span>在 4D 自由 $U(1)^4$ 上<b>失效</b>。否则它也是无隙模型的真命题，不含信息。</span></li>
+  <li><span class="tag">腿 2</span><span>形如 $\exists c>0\ \forall(L,a)$，且 $c>0$ 已经<b>证出来</b>。离散标签不算，未证正性不算。</span></li>
+  <li><span class="tag">腿 3</span><span>存在一条已证的蕴含，把这个量接到 $m$ 的<b>下</b>界上。只接上界的，一律退回。</span></li>
+</ol>
+
+<p>六路攻击各自留下了具名的输入槽，都不是更好的常数，而是新的对象：</p>
+
+<table>
+  <thead><tr><th style="width:34%">输入</th><th>内容</th><th style="width:16%">状态</th></tr></thead>
+  <tbody>
+    <tr><td><b>4D 纯 YM 无光模定理</b></td><td>不存在 $m_1^2(L)\lesssim L^{-2}$ 且 $f_1^2\ge r_0$ 的族。Elitzur 只给「无连续对称破缺」，不给「无 $1/L^2$ 模」。</td><td><span class="status ng">未证</span></td></tr>
+    <tr><td><b>$IN$-$11$</b></td><td>谱比上界 $\rho^2:=\Lambda_\star/m_1^2\le C^2$（$\Lambda_\star$ 是质量平方，故不能写成 $\Lambda_\star\lesssim 1.5\,m_1$）。$C=1.5$ 已死：在本项目自己的五个精确锚点上取 $8/3,8/3,3,4,4$，4D 自身给 $(2670/1710)^2=2.438$，全都越过 $2.25$。活值 $C=2$ 只是类常数。</td><td><span class="status ng">未证</span></td></tr>
+    <tr><td><b>$H1$ 的三条槽</b></td><td>$\operatorname{ess\,sup}\eta$ 的上界（入口 $2g^2/\lambda_4 \lt S_{\mathrm{bare}}$）· 纤维隙 $K\succeq\gamma I$ · 负一阶矩机。</td><td><span class="status ng">未证</span></td></tr>
+    <tr><td><b>塔不积累</b></td><td>用 $L=6,8,10,12$ 的 $m_2^2-m_0^2$ 序列判。现有数据判不出：$\beta=2.5$ 上多算符数据只有 $L=6,8$，$L=10/12$ 零读数；层距的 20 块 JK 误差是 $0.584$／$2.038$，而模板层距只有 $0.462$／$0.274$，误差大于模板本身。更关键的是<b>判据单侧</b>：报“积累”可否证 $I2$，报“不塌”不构成 $I2$ 的证据，因为 M6 上它同样报警而 $I2$ 平凡真。</td><td><span class="status ng">单侧</span></td></tr>
+  </tbody>
+</table>
+
+<!-- ================= 7 ================= -->
+<h2><span class="num">7</span>已证的部分，可被引用</h2>
+
+<table>
+  <thead><tr><th style="width:40%">命题</th><th>内容</th><th style="width:12%">状态</th></tr></thead>
+  <tbody>
+    <tr><td>桥</td><td>$\Delta_{\mathrm{cont}}\ge\liminf_a\Delta_a$，式 (5)</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>号定理</td><td>$\varphi^{U}(\Gamma)=(-1)^{n-1}N(G_\Gamma)$，$N$ 为不含破圈的生成树数，$\ge1$，对所有 $n$</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>时间钉扎</td><td>时间核反射正性 $\Rightarrow c_4<0\Rightarrow k_0^{\mathrm{shell}}\le 2$，任意形状、维数、紧群、局域性</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>RP 序列闭合</td><td>任何到连续极限的反射正性路线都强制 $k_0^{\mathrm{shell}}\le 2$</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>定理 SS</td><td>不存在泛函 $F$ 使 $F(\text{带电数据})\le m_n$</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>矩-隔离引理</td><td>式 (13)，单向</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>残数盲引理</td><td>式 (14)</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>解析性</td><td>$f_1^2(\beta)$ 在 $(0,\infty)$ 实解析，靶窗整体落在解析域内</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>绕过 $a\to0$ 的等式</td><td>$m=(1/a)\log R_t$，只需要固定 $L$ 的紧 $T_a$</td><td><span class="status ok">已证</span></td></tr>
+    <tr><td>形态定理</td><td>任一 $R\Rightarrow$ 靶的条件，或与靶等价、或严格更强，无第三格</td><td><span class="status ok">已证</span></td></tr>
+  </tbody>
+</table>
+
+<div class="key">
+  <span class="label">一句话</span>
+  <p style="margin:0">整条路线的形式是 $\big[\text{(6)}\big]\Rightarrow\big[\Delta_{\mathrm{cont}}\ge\delta>0\big]$，其中括号里那一步是<b>唯一</b>没证的，而它不是「某个估计再紧一点」，是一条带 $\exists\delta\forall$ 量词序的输入。证明 Clay 在这条路线上，等价于造出 (6)。</p>
+</div>
+
+<footer>
+  <p style="margin:0 0 6px">状态：未证。本页不给进度百分比，只报哪些命题已证、哪一步未证、那一步需要什么。</p>
+  <p style="margin:0">公式由 MathJax 渲染。更新方式：直接改本文件。</p>
+</footer>
+
+</div>
+</body>
+</html>

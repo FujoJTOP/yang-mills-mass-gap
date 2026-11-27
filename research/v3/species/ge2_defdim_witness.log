@@ -1,0 +1,89 @@
+==================================================================================
+PART 1 -- BL-3 slab: U_l = sigma0 on the 3 spatial dirs of the slice x3=0, on T^4_L
+==================================================================================
+
+ L=2 N=2  beta=2.5   S_W = 240.0000   W/beta = 96.0000   (rate 1-cos(2pi/N) = 2.0000)
+   |S|=24 (3L^3=24)   cost(S)/beta = 0.000000
+   closure:  S True | upper-layer False | lower-layer False | D=upp+low True  (D bad edges: 0)
+   |D| = 48 (6L^3 = 48) ; cost(D)/beta = 96.000000 ; per-plaquette = 2.000000   ; S_W/|S| = 4.000000
+
+ L=2 N=3  beta=2.5   S_W = 180.0000   W/beta = 72.0000   (rate 1-cos(2pi/N) = 1.5000)
+   |S|=24 (3L^3=24)   cost(S)/beta = 0.000000
+   closure:  S True | upper-layer False | lower-layer False | D=upp+low True  (D bad edges: 0)
+   |D| = 48 (6L^3 = 48) ; cost(D)/beta = 72.000000 ; per-plaquette = 1.500000   ; S_W/|S| = 3.000000
+   [uniform twist, L=2 N=3] |D| = 0  S_W/beta = 0.0  => uniform twist on spatial links is PURE GAUGE (all plaquettes trivial)
+
+ L=3 N=2  beta=2.5   S_W = 810.0000   W/beta = 324.0000   (rate 1-cos(2pi/N) = 2.0000)
+   |S|=81 (3L^3=81)   cost(S)/beta = 0.000000
+   closure:  S True | upper-layer False | lower-layer False | D=upp+low False  (D bad edges: 162)
+   |D| = 162 (6L^3 = 162) ; cost(D)/beta = 324.000000 ; per-plaquette = 2.000000   ; S_W/|S| = 4.000000
+
+ L=3 N=3  beta=2.5   S_W = 607.5000   W/beta = 243.0000   (rate 1-cos(2pi/N) = 1.5000)
+   |S|=81 (3L^3=81)   cost(S)/beta = 0.000000
+   closure:  S True | upper-layer False | lower-layer False | D=upp+low False  (D bad edges: 162)
+   |D| = 162 (6L^3 = 162) ; cost(D)/beta = 243.000000 ; per-plaquette = 1.500000   ; S_W/|S| = 3.000000
+   [uniform twist, L=3 N=3] |D| = 0  S_W/beta = 0.0  => uniform twist on spatial links is PURE GAUGE (all plaquettes trivial)
+
+ L=4 N=2  beta=2.5   S_W = 1920.0000   W/beta = 768.0000   (rate 1-cos(2pi/N) = 2.0000)
+   |S|=192 (3L^3=192)   cost(S)/beta = 0.000000
+   closure:  S True | upper-layer False | lower-layer False | D=upp+low False  (D bad edges: 384)
+   |D| = 384 (6L^3 = 384) ; cost(D)/beta = 768.000000 ; per-plaquette = 2.000000   ; S_W/|S| = 4.000000
+
+ L=4 N=3  beta=2.5   S_W = 1440.0000   W/beta = 576.0000   (rate 1-cos(2pi/N) = 1.5000)
+   |S|=192 (3L^3=192)   cost(S)/beta = 0.000000
+   closure:  S True | upper-layer False | lower-layer False | D=upp+low False  (D bad edges: 384)
+   |D| = 384 (6L^3 = 384) ; cost(D)/beta = 576.000000 ; per-plaquette = 1.500000   ; S_W/|S| = 3.000000
+   [uniform twist, L=4 N=3] |D| = 0  S_W/beta = 0.0  => uniform twist on spatial links is PURE GAUGE (all plaquettes trivial)
+
+==================================================================================
+PART 2 -- thin codim-2 centre vortex: U_3 = sigma0 on the links with x0=x1=0
+==================================================================================
+ L=2 N=2: |D| = 16 (4L^2 = 16)  per-plaquette = 2.000000  (=1-cos(2pi/N) 2.000000)  S_W = 80.000  closed True
+ L=2 N=3: |D| = 16 (4L^2 = 16)  per-plaquette = 1.500000  (=1-cos(2pi/N) 1.500000)  S_W = 60.000  closed True
+ L=3 N=2: |D| = 36 (4L^2 = 36)  per-plaquette = 2.000000  (=1-cos(2pi/N) 2.000000)  S_W = 180.000  closed False
+ L=3 N=3: |D| = 36 (4L^2 = 36)  per-plaquette = 1.500000  (=1-cos(2pi/N) 1.500000)  S_W = 135.000  closed False
+
+   comparison at beta=2.5, both rate = 1-cos(2pi/N):
+     N=2:  rate = 5.000000 per plaquette;  slab |C| = 6L^3, membrane |C| = 4L^2 -> cost ratio = (6L^3)/(4L^2) = 1.5L
+     N=3:  rate = 3.750000 per plaquette;  slab |C| = 6L^3, membrane |C| = 4L^2 -> cost ratio = (6L^3)/(4L^2) = 1.5L
+     N=4:  rate = 2.500000 per plaquette;  slab |C| = 6L^3, membrane |C| = 4L^2 -> cost ratio = (6L^3)/(4L^2) = 1.5L
+     N=5:  rate = 1.727458 per plaquette;  slab |C| = 6L^3, membrane |C| = 4L^2 -> cost ratio = (6L^3)/(4L^2) = 1.5L
+     N=6:  rate = 1.250000 per plaquette;  slab |C| = 6L^3, membrane |C| = 4L^2 -> cost ratio = (6L^3)/(4L^2) = 1.5L
+
+==================================================================================
+PART 3 -- fixed polyominoes (planar class)
+==================================================================================
+   n       :        1       2       3       4       5       6       7       8       9      10      11
+   A_n     :        1       2       6      19      63     216     760    2725    9910   36446  135268
+   lnA/n   :   0.0000  0.3466  0.5973  0.7361  0.8286  0.8959  0.9476  0.9888  1.0224  1.0504  1.0741
+   ratio   :   2.0000  3.0000  3.1667  3.3158  3.4286  3.5185  3.5855  3.6367  3.6777  3.7115
+   hard bound (Fekete, supermultiplicative): gamma_surf >= 1.074092 -> mu_surf >= 2.9273
+
+==================================================================================
+PART 4 -- bargraphs: height seq (h_1..h_k), h_i>=1, sum n  => 2^(n-1) shapes
+==================================================================================
+   n       :        1       2       3       4       5       6       7       8       9      10      11      12
+   B_n     :        1       2       4       8      16      32      64     128     256     512    1024    2048
+   lnB/n   :   0.0000  0.3466  0.4621  0.5199  0.5545  0.5776  0.5941  0.6065  0.6161  0.6238  0.6301  0.6354
+   limit: gamma = ln2 = 0.693147;  mu = 2 exactly
+
+==================================================================================
+PART 5 -- window 0.5+gamma+ln3 <= 2.598612 ?   and rate vs 3.73-3.84
+==================================================================================
+   target (gamma = 1) = 2.598612
+   animals a_n rate 2.632032          mu=  13.90199 gamma= 2.63203 window=4.230644  FAIL +1.6320 mu<=e? no x5.11
+   animals B_n rate 3.458607          mu=  31.77269 gamma= 3.45861 window=5.057219  FAIL +2.4586 mu<=e? no x11.69
+   planar polyominoes n<=11 (hard)    mu=   2.92733 gamma= 1.07409 window=2.672704  FAIL +0.0741 mu<=e? no x1.08
+   planar polyominoes lit. 4.0626 [M] mu=   4.06260 gamma= 1.40182 window=3.000435  FAIL +0.4018 mu<=e? no x1.49
+   row-convex (GF denom.) [M]         mu=   3.20557 gamma= 1.16489 window=2.763502  FAIL +0.1649 mu<=e? no x1.18
+   bargraphs (exact)                  mu=   2.00000 gamma= 0.69315 window=2.291759  PASS         mu<=e? yes
+   fixed shapes (translations)        mu=   1.00000 gamma= 0.00000 window=1.598612  PASS         mu<=e? yes
+
+   thinnest codim-2 centre vortex vs the required per-plaquette rate 3.73-3.84 (beta=2.5):
+     SU(2): 5.0000   passes
+     SU(3): 3.7500   MARGINAL
+     SU(4): 2.5000   fails
+     SU(5): 1.7275   fails
+     SU(6): 1.2500   fails
+
+done.

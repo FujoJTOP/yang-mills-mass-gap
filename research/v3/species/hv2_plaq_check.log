@@ -1,0 +1,52 @@
+[0] link-carrier anchor s^2=(4pi^2-6)/9 = 3.719824178
+
+[1] free massless SU(2), carrier Phi = 1-P (6 planes summed) = (2/N)(1/4 tr F^2) + O(F^4)
+     Gaussian sampling, one colour, x(N^2-1); ns = samples
+ L | ns   | C_P(0)  | chi_P(kmin) | chi_til | f2=chi_til*kh2 | link free row 1/kh2 | chi_til/L^2
+ 4 | 4000 | 0.14307 | 0.20948   | +0.06641 |   +0.13281   |    0.50000         | +0.00415
+ 6 | 4000 | 0.14070 | 0.22791   | +0.08720 |   +0.08720   |    1.00000         | +0.00242
+ 8 | 3000 | 0.13990 | 0.23796   | +0.09806 |   +0.05744   |    1.70711         | +0.00153
+10 | 1200 | 0.13958 | 0.22933   | +0.08975 |   +0.03428   |    2.61803         | +0.00090
+12 |  800 | 0.13961 | 0.24241   | +0.10279 |   +0.02754   |    3.73205         | +0.00071
+[1b] d ln chi_til/d ln L = +0.174 ;  d ln f2/d ln L = -1.725   (L=6..12)
+     reference link carrier (log U, A-linear): free chi = 1/khat^2 -> exponent +2 ; f2 -> exponent 0
+
+[2] beta=0 (exact Haar)
+ N=2: per-plane C(0)=1/N^2=0.250000 ; 6-plane anchor 6/N^2=1.500000 ; s^2/C0_plane=14.8793 ; s^2/C0_6plane=2.4799
+ N=3: per-plane C(0)=1/N^2=0.111111 ; 6-plane anchor 6/N^2=0.666667 ; s^2/C0_plane=33.4784 ; s^2/C0_6plane=5.5797
+ two distinct plaquettes share <=1 link => >=6 links appear once => Haar 1st moment 0
+ => C(x)=0 for every x!=0, every N => chi_til(kmin)|beta=0 = 0 exactly
+
+[3] existing beta=2.5 SU(2) fields, 1 config/volume (zero new MC)
+ L | <P>    | Var plane | Var 6pla | chi_P(kmin) orbit+spread | chi_til  | f2      | chi_til/L^2
+ 4 | 0.6636 | 0.0653    | 0.4126   | 0.9337 +- 0.2740        | +0.5211 | +1.0421 | +0.0326
+ 6 | 0.6451 | 0.0747    | 0.5344   | 0.9445 +- 0.2403        | +0.4101 | +0.4101 | +0.0114
+ 8 | 0.6517 | 0.0745    | 0.5203   | 1.5450 +- 0.5072        | +1.0247 | +0.6002 | +0.0160
+
+[4] orbit-averaged chi_til = sum_{x!=0} w(x) C(x),  w(x) = (1/4) sum_mu cos(2pi x_mu/L)
+ bin   | beta=2.5 L=8 (1 cfg) | free L=8
+ 0-0   | +0.00000              | +0.00000
+ 1-1   | +0.13794              | +0.03297
+ 2-2   | +0.03586              | +0.00179
+ 3-4   | -0.04332              | -0.00115
+ 5-8   | +0.43022              | +0.04670
+ 9-999 | +0.46398              | +0.01838
+ total | +1.02466              | +0.09869
+   C_1(plane (0, 1)) = +0.00133  (per-plane Var=0.07798)
+   C_1(plane (0, 2)) = +0.00151  (per-plane Var=0.07542)
+   C_1(plane (2, 3)) = +0.00108  (per-plane Var=0.07179)
+
+[5] cross-checks
+   identity (1/V) sum_k chi(k) = C(0): machine check on the L=8 field:
+      (1/V)sum_k |Otilde|^2/V = 0.5203384486   vs   Var(O) = 0.5203384486   diff=0.00e+00
+   free-row exponent vs the two branches of HR5B-CARRIER.md:11 (A: L^+4 or L^-2 ; B: L^+2)
+
+[6] sigma(f_P^2) = chi_P(kmin)*sqrt(2/N)/sqrt(8)*kh2  (measured beta=2.5 chi_P(kmin))
+   L=4 N=4000: sigma(f2)=0.0148   (HT4 link carrier: sigma(chi_til)=0.0144 -> 2sigma cap 0.055)
+   L=4 N=16000: sigma(f2)=0.0074   (HT4 link carrier: sigma(chi_til)=0.0144 -> 2sigma cap 0.055)
+   L=6 N=4000: sigma(f2)=0.0075   (HT4 link carrier: sigma(chi_til)=0.0144 -> 2sigma cap 0.055)
+   L=6 N=16000: sigma(f2)=0.0037   (HT4 link carrier: sigma(chi_til)=0.0144 -> 2sigma cap 0.055)
+   L=8 N=4000: sigma(f2)=0.0072   (HT4 link carrier: sigma(chi_til)=0.0144 -> 2sigma cap 0.055)
+   L=8 N=16000: sigma(f2)=0.0036   (HT4 link carrier: sigma(chi_til)=0.0144 -> 2sigma cap 0.055)
+
+done in 30.1s

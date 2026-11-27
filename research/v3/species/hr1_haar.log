@@ -1,0 +1,161 @@
+
+==============================================================================
+[A] exact Haar one-component variance of xi = log U   (U = exp(i xi.sigma/2))
+==============================================================================
+  <th^2>_Haar          = 2.789868133696453      closed form pi^2/3-1/2 = 2.789868133696453
+  s2 = (4/3)<th^2>    = 3.719824178261937
+  s2 = (4pi^2-6)/9    = 3.719824178261937
+  |closed - quadrature|= 4.441e-16
+  s2 = 3.719824178   1/s2 = 0.268829910
+  (wrong branch, xi = th n): (1/3)<th^2> = 0.929956  = s2/4
+  => the log-branch question is NOT a free knob: the Haar marginal already fixes the branch,
+     and the number 3.719824 is the one-component variance of the *Haar marginal itself*.
+  estimator convention (C.su2_log_x, deterministic Haar quadrature): (1/3)<|x|^2> = 3.71982, max|x| = 6.283 (= 2pi = 6.283)
+  => the code's xi is 2*theta*nhat with |xi| in [0,2pi): the branch used by M1/GY3 is the one
+     that carries s2 = 3.719824 (the |xi| in [0,pi) branch would carry s2/4).
+
+==============================================================================
+[B] theorem: the flat-chart single-link marginal is exactly Haar at every beta
+==============================================================================
+Claim [T].  dmu(U) = prod_l dU_l e^{-S(U)} / Z with S gauge invariant and dU_l the Haar measure.
+For any site x let G act as U_{x,mu} -> G U_{x,mu},  U_{x-mu,mu} -> U_{x-mu,mu} G^dag.
+That map is a bijection of the configuration space with unit Jacobian and leaves S invariant.
+Hence the marginal m(U_l) = int prod_{l'!=l} dU_{l'} e^{-S}/Z satisfies m(G U_l) = m(U_l)
+for every G in SU(2); a left-invariant probability density on a compact group is Haar.  [T]
+  hypotheses actually used: (i) gauge-invariant action, (ii) product Haar measure,
+  (iii) NO gauge-dependent conditioning (no gauge fixing, no center/Polyakov-sector split).
+
+Consequences:
+  (B1) (1/3) E|xi_l|^2 = s2 = 3.719824 EXACTLY, for every beta, every L, every dimension.
+  (B2) E[chi_flat] = (1/3N) sum_{l,l'} <xi_l.xi_l'> = s2 + Delta,
+        Delta = (1/3N) sum_{l != l'} <xi_l.xi_l'>   (the ONLY beta-dependent piece)
+  (B3) beta=0: links iid => Delta = 0 => chi_flat = 3.719824 exactly, all L (corpus D6/D1/P5).
+  (B4) the same identity holds for 2D, 3D, any N, any lattice geometry: chi_flat is dimension-free.
+  (B5) the plaquette is NOT constrained by (B1): it is a 4-link correlated object and can move
+       5.29x while the 1-link marginal is exactly constant.  => all beta-dependence lives in Delta.
+
+==============================================================================
+[C] the measured points against the exact constant 3.719824
+==============================================================================
+tag         beta   L     N    plaq  chi_flat      se  z vs s2  sd_meas  sd_pred
+b0.5_L4      0.5   4  1000  0.1234    3.7697  0.1167     0.43    3.030    3.037
+b0.5_L6      0.5   6   800  0.1237    3.6768  0.1194    -0.36    3.113    3.037
+b0.5_L8      0.5   8   500  0.1238    3.5261  0.1064    -1.82    2.875    3.037
+b1.5_L4      1.5   4  1000  0.3619    3.6358  0.1009    -0.83    2.953    3.037
+b1.5_L6      1.5   6   800  0.3625    3.6074  0.1091    -1.03    2.856    3.037
+b1.5_L8      1.5   8   500  0.3624    3.8632  0.1261     1.14    3.021    3.037
+b2.5_L4      2.5   4  2000  0.6547    3.7313  0.0670     0.17    3.059    3.037
+b2.5_L6      2.5   6  1000  0.6526    3.7530  0.1268     0.26    2.965    3.037
+b2.5_L8      2.5   8   600  0.6524    3.8164  0.1569     0.62    3.207    3.037
+b2.5_L12     2.5  12    60  0.6524    4.2282  0.7102     0.72    3.175    3.037
+  chi2 (vs exact constant, no free parameter) = 7.66 / dof 10  = 0.766   [p ~ 0.662]
+  weighted mean over the 10 GY3 points = 3.70045 +- 0.03526   (exact s2 = 3.71982; deviation -0.55 sigma)
+
+  per-beta weighted mean (L=4,6,8 + L=12 where present):
+    beta= 0.5: 3.6488 +- 0.0657   (-1.08 sigma vs s2)
+    beta= 1.5: 3.6844 +- 0.0639   (-0.55 sigma vs s2)
+    beta= 2.5: 3.7490 +- 0.0552   (+0.53 sigma vs s2)
+  linear fit chi = a + b(beta-1.5):  a = 3.6944 +- 0.0356,  b = +0.0509 +- 0.0427
+  => total beta-variation over [0.5,2.5]: 0.1017 +- 0.0854   (2.7% of s2)
+  => peak-to-peak of the three beta-means: 0.1002 = 2.7% of s2
+  => plaquette over the same window: 0.1234 -> 0.6547  (5.30x)
+     1-plaq: 0.8766 -> 0.3453  (2.54x)
+
+  Q-WAVE:30 pilot (Q5) points:
+    Q5 L4     beta=2.5 L=4: 4.1663 +- 0.1791  (+2.49 sigma)
+    Q5 L6     beta=2.5 L=6: 3.6132 +- 0.2390  (-0.45 sigma)
+    Q5 beta0  beta=0.0 L=4: 3.5204 +- 0.1587  (-1.26 sigma)
+  all 13 points vs the single constant: chi2 = 15.65 / 13 = 1.204
+
+  WG extension, beta=2.5, L up to 16 (wg_invariant_results.json / wg_large_results.json):
+    WG L4    L= 4: 3.6988 +- 0.1097  (-0.19 sigma)
+    WG L6    L= 6: 3.7566 +- 0.1597  (+0.23 sigma)
+    WG L8    L= 8: 3.6143 +- 0.2345  (-0.45 sigma)
+    WG L12   L=12: 3.5591 +- 0.1360  (-1.18 sigma)
+    WG L16   L=16: 3.7055 +- 0.1759  (-0.08 sigma)
+  ALL 18 points vs the single constant 3.7198: chi2 = 17.35 / 18 = 0.964   [p ~ 0.499]
+  L4->16 ratio (WG, beta=2.5) = 1.0018 +- 0.0561   (free-massless lattice: 13.14; continuum L^2: 16.0)
+
+==============================================================================
+[D] per-config line shape: chi_flat = (1/3)|A|^2 with A Gaussian => sd = sqrt(2/3)*s2
+==============================================================================
+  prediction (Haar, chi^2_3 with 3 dof): sd_pred = sqrt(2/3) * s2 = 3.0372
+    b0.5_L4    sd_meas =  3.030   ( -0.2%)
+    b0.5_L6    sd_meas =  3.113   ( +2.5%)
+    b0.5_L8    sd_meas =  2.875   ( -5.4%)
+    b1.5_L4    sd_meas =  2.953   ( -2.8%)
+    b1.5_L6    sd_meas =  2.856   ( -6.0%)
+    b1.5_L8    sd_meas =  3.021   ( -0.5%)
+    b2.5_L4    sd_meas =  3.059   ( +0.7%)
+    b2.5_L6    sd_meas =  2.965   ( -2.4%)
+    b2.5_L8    sd_meas =  3.207   ( +5.6%)
+    b2.5_L12   sd_meas =  3.175   ( +4.5%)
+  the whole per-config distribution, not just the mean, is the beta=0 one.
+
+==============================================================================
+[E] dilution: what the L-scan can still say about a box-gap family on THIS carrier
+==============================================================================
+The family of GY3 1.1 (single box-gap atom, residue f1^2) contributes X(L) = f1^2/(4 sin^2(pi/L)),
+i.e. chi_flat(L) = s2 + f1^2 * chi_box(L).  Subtraction of s2 is exact [T], so the honest test is
+absolute, not a ratio of totals.
+  L  chi_box  pred f=1     meas     se     dev  sigma f1^2 2sig ub
+  4   0.5000    4.2198   3.7654 0.0498  0.4544    9.1       0.2904
+  6   1.0000    4.7198   3.7581 0.0624  0.9617   15.4       0.1631
+  8   1.7071    5.4269   3.8218 0.0633  1.6051   25.4       0.1339
+ 12   3.7321    7.4519   3.6589 0.1903  3.7930   19.9       0.0857
+ 16   6.5685   10.2884   3.7055 0.1759  6.5829   37.4       0.0514
+  (the corpus GY3-NOGAP-NUM.md:131 quotes 111 sigma from 3.414 vs 1.015+-0.022: that compares
+   ratios of TOTALS, where the additive s2 dilutes the family ratio 3.414 -> 1.286.  The honest
+   absolute test is stronger and lands at 9-37 sigma, with the binding bound f1^2 <= 0.051 at L=16.)
+  GY3 merged beta=2.5: chi(4) = 3.7654+-0.0498, chi(8) = 3.8218+-0.0633, ratio = 1.0150+-0.0212
+  ratio test with the family f1^2=1: pred 5.4269/4.2198 = 1.2861 -> 12.8 sigma
+  => the L-scan survives as a carrier-specific bound: a box-gap atom on the flat-chart log field
+     with f1^2 >= 0.051 (2 sigma, L=16) is excluded; below that it is invisible.
+
+==============================================================================
+[F] acid tests
+==============================================================================
+  F1  beta=0 pure Haar: chi_flat = s2 exactly, every L.  corpus D6-DECISION:135 prints
+      Var(a) = 3.7198 for L=1..8 (L-independent) [T].  PASSES -- and this is the tell:
+      the same number is returned at beta=2.5, i.e. the estimator cannot tell beta=0 from beta=2.5.
+  F2  free massive scalar (m=1): Var(a) = 1/m^2 = 1.000, L-independent (D1 exact);
+      free massless scalar: Var = 1/(4 sin^2(pi/L)) = 0.500 / 1.707 / 3.732 / 6.569 (L=4/8/12/16)
+      -> grows like L^2/(4pi^2).  So the *scalar* estimator is fine; it is the GAUGE-ORBIT
+      marginal (B1) that the acid tests never exercised: D1/M1 acid tests use scalars, no gauge
+      symmetry, no Haar orbit => they cannot see the failure mode.
+  F3  2D YM: (B1)-(B4) are dimension-free, so chi_flat(2D) = 3.7198 + Delta_2D as well.
+      A channel that returns the same number for the solvable/gapped 2D theory and for 4D at
+      every beta cannot separate them.  Per CLAUDE.md 1.1 (a tool must fail on the acid case),
+      chi_flat is acid-vacuous *as a beta/L discriminator for gauge theories*.
+  F4  chart acid (already measured, M1-4D-RUN.md:38): the SAME beta=2.5 ensemble gives
+      chi_Landau = 36.98 / 58.61 / 115.30 (L=4/6/8) vs chi_flat 3.81/3.76/3.82.
+      Chart changes the number by 10-30x at FIXED beta; beta changes it by 3%.
+      => the leading term of the reading is the gauge orbit, by two orders of magnitude.
+
+==============================================================================
+[G] direct marginal check on stored (unfixed) SU(3) configurations
+==============================================================================
+Theorem (B1) is group-independent.  If the stored configs are unfixed, then for every link
+  <1/2 Re tr U_l> = 0  and  sd = 1/sqrt(8) = 0.3536  (Haar),  at EVERY beta, while the plaquette
+  (a 4-link joint object) moves freely.
+  exact SU(3) Haar (torus quadrature): <1/2 Re tr U> = -6.74e-18, sd = 0.3536, frac(|s|>0.9) = 0.014, min = -0.750
+  beta=2.2   links= 1024  <1/2 Re tr U> = -0.02005 +- 0.0110  sd = 0.3532  frac(|s|>0.9) = 0.017  min = -0.687  plaq = 0.8595
+  beta=3.0   links= 1024  <1/2 Re tr U> = -0.00794 +- 0.0106  sd = 0.3404  frac(|s|>0.9) = 0.008  min = -0.616  plaq = 0.7859
+  beta=6.0   links= 1024  <1/2 Re tr U> = +0.01486 +- 0.0115  sd = 0.3673  frac(|s|>0.9) = 0.023  min = -0.625  plaq = 0.4125
+  => the stored (unfixed) links are Haar-marginal to within the 1024-link sampling error,
+     at beta=6.0 included: the beta-dependence of the *joint* measure leaves no trace in the
+     one-link marginal.  This is (B1) measured, not assumed.
+
+  required variation of any beta-tracking reading vs the 2-sigma bound from the data:
+    (1-plaq): 0.8766 -> 0.3453 = 61% variation
+    data   : total beta-variation 0.1017 +- 0.0854 = 2.7% +- 2.3% of s2; 2-sigma upper 7.3%
+    ratio  : required/observed-upper = 8.3x
+
+==============================================================================
+[H] one-line ledger
+==============================================================================
+  s2_Haar = 3.719824
+  chi2(10 GY3 pts vs s2) = 7.66/10 = 0.77
+  chi2(18 pts: GY3+Q5+WG vs s2) = 17.35/18 = 0.964
+  beta-slope = +0.0509 +- 0.0427 (total variation over [0.5,2.5] 2.7%)
+  f1^2 bound (box-gap atom on this carrier, L=16, 2 sigma) = 0.0514

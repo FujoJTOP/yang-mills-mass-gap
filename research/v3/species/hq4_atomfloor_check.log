@@ -1,0 +1,43 @@
+[1] phi==1 collapse:  (M0 <= C*f1^2) <=> (w1 >= 1/C)
+    two-1-4      M0=1 f1=1/2 w1=1/2  (both directions agree)
+    three-1-2    M0=1 f1=1/100 w1=1/100  (both directions agree)
+    two-1-10     M0=1 f1=3/5 w1=3/5  (both directions agree)
+    thin-atom    M0=1 f1=1/2048 w1=1/2048  (both directions agree)
+    L4-light     M0=1 f1=9/10 w1=9/10  (both directions agree)
+    two-1-2      M0=1 f1=1/2 w1=1/2  (both directions agree)
+    mismatches = 0   -> PASS
+[2] phi NONdecreasing at s1 => coercivity(phi,C) implies w1>=1/C
+    coercivity instances fired = 47, floor violations = 0  -> PASS
+[2b] same with the CONVEX-but-DECREASING phi=1/s : implication FAILS (so convexity is not the operative hypothesis)
+    fired = 21, floor violations = 4  -> PASS  (expected: violations > 0)
+[3] bounded phi: w1>=1/C  =>  coercivity(phi, B*C/phi(s1)) with B=sup phi<inf
+    violations = 0  -> PASS
+[4] unbounded phi: floor does NOT give coercivity (tail witness)
+    two-1-10: w1=1/2 (floor for C=2 holds) ; phi=1/s coercivity at C=1: False ; phi=s: False
+    -> floor holds while both unbounded-phi coercivities fail  -> PASS
+[5] Markov-Krein sharpness: (t-Ebar)/(t-s1) <= mass([s1,t))/M0, equality iff two atoms at {s1,t}
+    violations = 0
+    two-1-3 at t=3 (upper atom excluded): bound == w1 == 1/2 exactly  -> PASS
+[6] one-step Markov window bound (d-d1)/(s1+d)  <=  (L2) = (d-d1)/d   [regime d>d1]
+    violations = 0 ; strict-domination = 14 ; both<=0 (empty) = 10  -> PASS
+[7] QI-1 identity  w1 = 1 - d1/eps + Dbar
+    two-1-4    w1=1/2  rhs=1/2  Dbar=0
+    two-1-10   w1=3/5  rhs=3/5  Dbar=0
+    tail-1-2-X w1=1/2  rhs=1/2  Dbar=49/2
+    three-1-2  w1=1/100  rhs=1/100  Dbar=99/40
+    mismatches = 0  -> PASS
+[8] (G-4) with a UV tail: target TRUE, (G-4) FALSE, repaired TRUE
+    w1=3/5 >= w0=1/2 : True
+    d1=2000 ; eps=1 ; (1-w0)*eps=1/2 ; Dbar=9998/5
+    (G-4) raw: False   repaired: True  -> PASS
+[9] (G-4)_{delta=eps} <=> Ebar <= s2 - w0*eps  =>  I2^W (Ebar < s2)
+    two-1-4    (G-4)=True (Ebar<=s2-w0eps)=True (I2^W)=True
+    two-1-10   (G-4)=True (Ebar<=s2-w0eps)=True (I2^W)=True
+    tail-1-2-X (G-4)=False (Ebar<=s2-w0eps)=False (I2^W)=False
+    three-1-2  (G-4)=False (Ebar<=s2-w0eps)=False (I2^W)=False
+    mismatches = 0  -> PASS
+[10] w0^{P3} = r0/M0max ,  r0 = 1/(4*(2N)^2) = 1/(16N^2)
+    N=2: r0=1/64  w0(repo M0<=2N^2)=1/512  w0(Popoviciu)=1/64
+    N=3: r0=1/144  w0(repo M0<=2N^2)=1/2592  w0(Popoviciu)=1/324
+
+ALL CHECKS PASS

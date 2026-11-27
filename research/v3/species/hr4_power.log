@@ -1,0 +1,148 @@
+HR4-POWER: discriminative power of  C(L) >= C(L/2)^2/C(0)   (zero MC, ~2 s)
+========================================================================================================
+[1] IDENTITY:  D := C(0)C(2t) - C(t)^2 = Var_nu(e^{-st}) >= 0   for every nu >= 0
+========================================================================================================
+  C(t) = int e^{-st} dnu(s)  =>  <e^{-st}>^2 <= <e^{-2st}>  (Cauchy-Schwarz in dnu)
+  Symmetrised, the slack is a VARIANCE, i.e. it vanishes iff nu is a single atom.
+  4000 random positive measures: D<0 in 0/4000 ;  max|D-Var|/C(0)^2 = 2.23e-16
+  => 'satisfied' carries ZERO bits about the mass gap; a measured D<0 is an
+     ESTIMATOR statement (bias or noise), never a statement about the model.  [T]
+
+[1b] the estimator actually run on the data is the PERIODIC-time (finite Lt) one:
+     C(t) = sum_n w_n [ e^{-m_n t} + e^{-m_n(Lt-t)} ].  Per mode, at argument 2t,
+     slack = w_n b (1-a^2)^2 with a = e^{-m_n t}, b = e^{-m_n(Lt-2t)} , and b > 0 for
+     every Lt  =>  D >= 0 for EVERY (Lt, L, nu).  Numeric check:
+  3000 random (nu, Lt, t): D<0 in 0/3000  (max |D|/C(0)^2 = 2.34e+36)
+  => on the actual Lt=12/16/20 data the SIGN of D is guaranteed by positivity;
+     the inequality cannot be falsified by any model in the class.  [T]
+
+========================================================================================================
+[2] FREE FIELD: the inequality is SATISFIED for every L (it is the P-TRUE cell)
+========================================================================================================
+  (a) box gap m1^2 = 4 sin^2(pi/L)  (one antiperiodic direction), carrier w = (2E)^{-4}
+     L         C(0)       C(L/2)         C(L)   C(L/2)^2/C(0)            D          K  verdict
+     4 2.669766e+03 1.293318e+02 7.458342e+00    6.265235e+00   3.1853e+03    0.19043     PASS
+     6 3.502833e+03 1.243214e+02 6.102950e+00    4.412377e+00   5.9218e+03    0.38314     PASS
+     8 4.744488e+03 1.553558e+02 7.220548e+00    5.087045e+00   1.0122e+04    0.41940     PASS
+    12 5.805080e+03 1.721562e+02 7.673606e+00    5.105485e+00   1.4908e+04    0.50301     PASS
+    16 9.774799e+03 3.032781e+02 1.332313e+01    9.409668e+00   3.8253e+04    0.41590     PASS
+    32 1.570010e+04 4.611736e+02 1.995963e+01    1.354648e+01   1.0069e+05    0.47342     PASS
+    64 5.286755e+04 1.579951e+03 6.813105e+01    4.721699e+01   1.1057e+06    0.44293     PASS
+  (b) periodic 2pi/L lowest mode, same carrier
+     6 1.351687e+03 4.820614e+00 2.532293e-02    1.719208e-02   1.0990e+01    0.47294     PASS
+     8 1.761927e+03 3.072882e+00 1.014841e-02    5.359249e-03   8.4382e+00    0.89363     PASS
+    16 3.408485e+03 3.009031e+00 6.371883e-03    2.656390e-03   1.2664e+01    1.39870     PASS
+  (c) carrier w = (2E)^{-1} (massless propagator): C(0) is UV-divergent (prop. to nmax^2)
+      -> the VALUE of K is carrier/UV-set, the SIGN never is:
+      nmax= 20  C(0)= 1.54489e+04  K=      4.2428  PASS
+      nmax= 40  C(0)= 1.21055e+05  K=      3.8504  PASS
+      nmax= 80  C(0)= 9.46712e+05  K=      3.9458  PASS
+  (d) two-shell truncation (cutoff-free): shell |n|=1 (3 modes, E1), |n|=sqrt2 (6 modes, sqrt2 E1)
+      slack = w1 w2 (e^{-E1 L/2} - e^{-sqrt2 E1 L/2})^2 > 0  -> PASS, margin O(w1 w2)
+  => free field: PASS with K in [0.0x, 1e3] depending on the carrier, and K is
+     L-INdependent for the continuum carrier (the free field is scale invariant).
+
+========================================================================================================
+[3] HN1 FALSIFIER FAMILY  nu_L = (1/2)delta_{1/L^2} + (1/2)delta_4     [P is FALSE]
+========================================================================================================
+  C(t) = (1/2)e^{-t/L^2} + (1/2)e^{-4t} ;  exact slack D = (1/4)(e^{-1/(2L)} - e^{-2L})^2
+        L   C(0)       C(L/2)         C(L)          rhs            D         K  verdict  G_c=e C(L)
+        2 1.0000 3.985582e-01 3.034331e-01 1.588486e-01 1.445844e-01   0.91020     PASS      0.8248
+        3 1.0000 4.244802e-01 3.582687e-01 1.801835e-01 1.780853e-01   0.98836     PASS      0.9739
+        4 1.0000 4.414162e-01 3.894004e-01 1.948482e-01 1.945522e-01   0.99848     PASS      1.0585
+        6 1.0000 4.600253e-01 4.232409e-01 2.116233e-01 2.116176e-01   0.99997     PASS      1.1505
+        8 1.0000 4.697066e-01 4.412485e-01 2.206243e-01 2.206242e-01   1.00000     PASS      1.1994
+       16 1.0000 4.846166e-01 4.697065e-01 2.348533e-01 2.348533e-01   1.00000     PASS      1.2768
+       64 1.0000 4.961090e-01 4.922482e-01 2.461241e-01 2.461241e-01   1.00000     PASS      1.3381
+     1024 1.0000 4.997559e-01 4.995120e-01 2.497560e-01 2.497560e-01   1.00000     PASS      1.3578
+  1000000 1.0000 4.999998e-01 4.999995e-01 2.499998e-01 2.499998e-01   1.00000     PASS      1.3591
+  => PASS for every L (K -> 1, margin -> 1/4).  P is FALSE on the same sequence:
+     G_c = e^{sqrt(c)}C_L(L) -> e * 1/2 = 1.359 (sqrt(c)=1).
+     [note] HZ1 sec.5.3 [4] prints 0.1839 = (1/2)e^{-1} for this row, i.e. the e^{-sqrt(c)}
+     convention, while HZ1 sec.1.2 (G) defines G_c = e^{+sqrt(c)}C_L.  Factor e^2 = 7.389.
+     Either way G_c does not tend to 0 -> P is FALSE -> the erratum changes no verdict.
+
+========================================================================================================
+[4] CLASS-4 SPREAD FAMILY  nu_L = sum_{j<=L^3}(1/L^3) delta_{(c/L^2)(1+j/L^3)}   [P FALSE]
+========================================================================================================
+     L   atoms       C(L/2)         C(L)          rhs           D           K  verdict
+     4      64 8.287591e-01 6.877355e-01 6.868416e-01   8.939e-04   1.301e-03     PASS
+     8     512 9.106030e-01 8.294677e-01 8.291978e-01   2.699e-04   3.255e-04     PASS
+    16    4096 9.542419e-01 9.106516e-01 9.105775e-01   7.410e-05   8.138e-05     PASS
+    32   32768 9.768447e-01 9.542450e-01 9.542256e-01   1.941e-05   2.034e-05     PASS
+  => PASS with K -> 0 (the tower sits in an exponent window of width c/(2L) -> 0).
+
+========================================================================================================
+[5] CLASS-3 DOUBLE WELL, on both sides of and at the P threshold  m1 = e^{-dS}
+========================================================================================================
+  HZ1 sec.5.3 [5]:  plateau (P FALSE)  <=>  dS >= log L  <=>  L m1 <= 1
+         case    L        m1     L*m1      C(L/2)        C(L)         rhs          D  verdict         P
+    dS=logL/2    6    0.4082    2.449 3.03268e-01 1.83940e-01 9.19717e-02  9.197e-02     PASS      TRUE
+    dS=logL/2    8    0.3536    2.828 3.03265e-01 1.83940e-01 9.19699e-02  9.197e-02     PASS      TRUE
+    dS=logL/2   16    0.2500    4.000 3.03265e-01 1.83940e-01 9.19699e-02  9.197e-02     PASS      TRUE
+      dS=logL    6    0.1667    1.000 4.60025e-01 4.23241e-01 2.11623e-01  2.116e-01     PASS     FALSE
+      dS=logL    8    0.1250    1.000 4.69707e-01 4.41248e-01 2.20624e-01  2.206e-01     PASS      TRUE
+      dS=logL   16    0.0625    1.000 4.84617e-01 4.69707e-01 2.34853e-01  2.349e-01     PASS     FALSE
+     dS=2logL    6    0.0278    0.167 4.98847e-01 4.97691e-01 2.48848e-01  2.488e-01     PASS     FALSE
+     dS=2logL    8    0.0156    0.125 4.99512e-01 4.99024e-01 2.49512e-01  2.495e-01     PASS     FALSE
+     dS=2logL   16    0.0039    0.063 4.99939e-01 4.99878e-01 2.49939e-01  2.499e-01     PASS     FALSE
+  => PASS at, below and above the threshold: the inequality is blind to dS.
+
+========================================================================================================
+[6] M6  (HN1:316-319): bottom residue -> 0, O(1) residue 1/(2omega) at s = omega
+========================================================================================================
+        eps    L       C(L/2)         C(L)          rhs           D          K  verdict
+      1e-01    8 4.271704e-01 2.141134e-01 1.824746e-01   3.164e-02   0.173387     PASS
+      1e-01   16 2.141134e-01 1.016985e-01 4.584454e-02   5.585e-02   1.218333     PASS
+      1e-03    8 3.685116e-01 1.361999e-01 1.358008e-01   3.992e-04   0.002939     PASS
+      1e-03   16 1.361999e-01 1.929731e-02 1.855042e-02   7.469e-04   0.040262     PASS
+      1e-06    8 3.678801e-01 1.353361e-01 1.353357e-01   3.996e-07   0.000003     PASS
+      1e-06   16 1.353361e-01 1.831662e-02 1.831587e-02   7.476e-07   0.000041     PASS
+      1e-09    8 3.678794e-01 1.353353e-01 1.353353e-01   3.996e-10   0.000000     PASS
+      1e-09   16 1.353353e-01 1.831564e-02 1.831564e-02   7.476e-10   0.000000     PASS
+  => M6: PASS, K -> 0.  M6 has P TRUE and the gap FALSE.
+
+========================================================================================================
+[7] 2D YM and single plaquette
+========================================================================================================
+  2D YM: O = (1/4)tr F^2 = H conserved (HN1:297) => nu == 0 => C == 0 identically;
+         the statistic is 0/0.  NO OBJECT -- neither PASS nor FAIL.
+  single plaquette: no transfer matrix (N02:78) => no C(t), no L family.  NO OBJECT.
+
+========================================================================================================
+[8] DIRECTION: the inequality is a LOWER bound; P needs an UPPER bound
+========================================================================================================
+  exact rewrite:   C(2t) = (1 + K(t)) C(t)^2 / C(0),   K(t) = Var_nu(e^{-st})/C(t)^2.
+  * the inequality is exactly K >= 0 -- it says a floor at t PROPAGATES to 2t, i.e.
+    it CERTIFIES a platform and can never exclude one.
+  * P wants C_L(L) <= r0 e^{-sqrt(c)}: an upper bound at the LONGEST time.
+  * the upper-bound half of Cauchy-Schwarz reads C(t) <= sqrt(C(0)C(2t)): small at 2t
+    implies small at t -- backwards.  To reach t = L from t < L one needs the reverse
+    inequality  C(2t) <= C(t)^2/C(0)  (log-concavity), which is FALSE in general.
+  * the only usable weakening is  K(t) <= K0  uniformly, giving
+        C(2t) <= (1+K0) C(t)^2/C(0).
+    HZ1 sec.2.2's propagation rho -> rho^2/M0 is exactly K0 = 0, which is assumed,
+    not proved (and is false for every model except a single atom).
+
+  HZ1 sec.5.3 [10] reproduced (rho0=0.18, M0=1):
+    0.18  ->  0.0324  ->  0.00105  ->  1.102e-06  ->  1.214e-12
+    = 0.18 / 3.24e-2 / 1.05e-3 / 1.10e-6 / 1.21e-12, matching HZ1 exactly  [T]
+    but every entry is a LOWER bound on C(2^k L): the chain is a platform certificate,
+    not a falsifier.  From a floor it produces weaker floors, never an upper bound.
+
+========================================================================================================
+[9] K on the battery (carrier: (2E)^{-4} for free field) -- does K separate P?
+========================================================================================================
+               model         L=6         L=8        L=16        L=64      P    gap
+          free field     0.38314     0.41940     0.41590     0.44293   TRUE  FALSE
+       HN1 falsifier     0.99997     1.00000     1.00000     1.00000  FALSE  FALSE
+      class-4 spread     0.00058     0.00033     0.00008     0.00001  FALSE  FALSE
+          dW dS=logL     0.99997     1.00000     1.00000     1.00000  FALSE  FALSE
+                  M6     0.00000     0.00000     0.00004     8.82745   TRUE  FALSE
+
+  K is bounded on the P-FALSE rows (0 .. 1) and on the P-TRUE free-field row, and it
+  GROWS on the P-TRUE M6 row at L >> log(1/w) (the thin atom's visibility horizon).
+  => K does not separate either.  It stays worth measuring only because K <= K0 is the
+     missing hypothesis that would make an upper bound propagate (see [8]).
+
+ALL ASSERTIONS PASS (D >= 0 in every cell of the battery; no assertion failed).

@@ -1,0 +1,17510 @@
+[
+ {
+  "file": "research\\lattice-cpb\\kappa_results_L4.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    [
+     16
+    ]
+   ],
+   "beta": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "snap": [
+    "int64",
+    [
+     16
+    ]
+   ],
+   "kappa": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "lanczos_res": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "cg_res": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "hl_min": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "hl_neg_frac": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "hl_mean": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "ritz": [
+    "float64",
+    [
+     16,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\kappa_results_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "beta": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "snap": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "kappa": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "lanczos_res": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "cg_res": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "hl_min": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "hl_neg_frac": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "hl_mean": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "ritz": [
+    "float64",
+    [
+     30,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\kappa_results_L6prim.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    [
+     24
+    ]
+   ],
+   "beta": [
+    "float64",
+    [
+     24
+    ]
+   ],
+   "snap": [
+    "int64",
+    [
+     24
+    ]
+   ],
+   "kappa": [
+    "float64",
+    [
+     24
+    ]
+   ],
+   "lanczos_res": [
+    "float64",
+    [
+     24
+    ]
+   ],
+   "cg_res": [
+    "float64",
+    [
+     24
+    ]
+   ],
+   "hl_min": [
+    "float64",
+    [
+     24
+    ]
+   ],
+   "hl_neg_frac": [
+    "float64",
+    [
+     24
+    ]
+   ],
+   "hl_mean": [
+    "float64",
+    [
+     24
+    ]
+   ],
+   "ritz": [
+    "float64",
+    [
+     24,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\kappa_results_control.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "beta": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "snap": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "kappa": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "lanczos_res": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "cg_res": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "hl_min": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "hl_neg_frac": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "hl_mean": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "ritz": [
+    "float64",
+    [
+     4,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\pilot_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "beta": [
+    "float64",
+    []
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "ncfg": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "W": [
+    "float64",
+    [
+     6,
+     6,
+     40
+    ]
+   ],
+   "smears": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "O_0": [
+    "float64",
+    [
+     40,
+     8
+    ]
+   ],
+   "O_8": [
+    "float64",
+    [
+     40,
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\sigma_L8_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "beta": [
+    "float64",
+    []
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "ncfg": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3
+    ]
+   ],
+   "W": [
+    "float64",
+    [
+     6,
+     6,
+     3
+    ]
+   ],
+   "smears": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "O_0": [
+    "float64",
+    [
+     3,
+     8
+    ]
+   ],
+   "O_4": [
+    "float64",
+    [
+     3,
+     8
+    ]
+   ],
+   "O_8": [
+    "float64",
+    [
+     3,
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L4_b1.700.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     4
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L4_b2.200.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     4
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L6_b1.700.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L6_b2.200.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L6_b2.600.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L6_b3.000.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L6_b3.300.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L6_b6.000.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\corr\\L8_b1.700.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     2000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     2000,
+     8
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     2000,
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L10_b6.000_s41.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     1000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     1000,
+     10
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     1000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     1000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     1000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     1000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     1000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     1000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     50
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     50,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     1000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     1000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     5,
+     4,
+     10,
+     10,
+     10,
+     10,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L4_b1.700_s11.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     10000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     10000,
+     4
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     10000,
+     3
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     10000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     10000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     10000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     10000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     10000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     1000
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     1000,
+     2,
+     2
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     10000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     10000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L4_b2.200_s21.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     10000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     10000,
+     4
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     10000,
+     3
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     10000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     10000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     10000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     10000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     10000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     1000
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     1000,
+     2,
+     2
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     10000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     10000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b1.700_s12.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     8000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     8000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     8000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     800
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     800,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b2.200_s22.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     8000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     8000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     8000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     800
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     800,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b2.200_s24.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     8000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     8000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     8000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     800
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     800,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b2.600_s51.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     8000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     8000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     8000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     800
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     800,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b2.800_s52.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     8000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     8000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     8000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     800
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     800,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b3.000_s53.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     8000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     8000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     8000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     800
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     800,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b3.300_s54.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     8000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     8000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     8000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     800
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     800,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     8000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b5.700_s31.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     6000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     6000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     6000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     6000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     600
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     600,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     6000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     6000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     6000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     30,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L6_b6.000_s32.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     6000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     6000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     6000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     6000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     600
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     600,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     6000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     6000,
+     7
+    ]
+   ],
+   "blk3": [
+    "float64",
+    [
+     6000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     30,
+     4,
+     6,
+     6,
+     6,
+     6,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L8_b1.700_s13.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     3000,
+     8
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     3000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     3000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     3000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     300
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     300,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     3000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     3000,
+     7
+    ]
+   ],
+   "blk4": [
+    "float64",
+    [
+     3000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     20,
+     4,
+     8,
+     8,
+     8,
+     8,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L8_b2.200_s23.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     3000,
+     8
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     3000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     3000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     3000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     300
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     300,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     3000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     3000,
+     7
+    ]
+   ],
+   "blk4": [
+    "float64",
+    [
+     3000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     20,
+     4,
+     8,
+     8,
+     8,
+     8,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\L8_b6.000_s33.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "loop_every": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "block_sizes": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "thr": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "mag_slice": [
+    "float64",
+    [
+     4000,
+     8
+    ]
+   ],
+   "poly_corr": [
+    "float64",
+    [
+     4000,
+     4
+    ]
+   ],
+   "poly_mean": [
+    "float64",
+    [
+     4000,
+     2
+    ]
+   ],
+   "defect": [
+    "float64",
+    [
+     4000,
+     4
+    ]
+   ],
+   "plaq_min": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "plaq_max": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "sweep": [
+    "int64",
+    [
+     4000
+    ]
+   ],
+   "loop_sweep": [
+    "int64",
+    [
+     400
+    ]
+   ],
+   "loops": [
+    "float64",
+    [
+     400,
+     3,
+     3
+    ]
+   ],
+   "therm_trace": [
+    "float64",
+    [
+     10,
+     2
+    ]
+   ],
+   "t_therm": [
+    "float64",
+    []
+   ],
+   "t_prod": [
+    "float64",
+    []
+   ],
+   "sampler_eff": [
+    "float64",
+    []
+   ],
+   "blk1": [
+    "float64",
+    [
+     4000,
+     7
+    ]
+   ],
+   "blk2": [
+    "float64",
+    [
+     4000,
+     7
+    ]
+   ],
+   "blk4": [
+    "float64",
+    [
+     4000,
+     7
+    ]
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     20,
+     4,
+     8,
+     8,
+     8,
+     8,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\b8_beta2.6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c3bar": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "mean_1": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "var_1": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "skew_1": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "hist_1_0": [
+    "int64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_1_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_1_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_1_0": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_1_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "hist_1_hh": [
+    "int64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_1_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_1_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_1_hh": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_1_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "hist_1_h75": [
+    "int64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_1_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_1_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_1_h75": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_1_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "mean_2": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "var_2": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "skew_2": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "hist_2_0": [
+    "float64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_2_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_2_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_2_0": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_2_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "hist_2_hh": [
+    "float64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_2_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_2_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_2_hh": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_2_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "hist_2_h75": [
+    "int64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_2_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_2_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_2_h75": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_2_h75": [
+    "int64",
+    [
+     500
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\b8_beta3.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c3bar": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "mean_1": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "var_1": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "skew_1": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "hist_1_0": [
+    "int64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_1_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_1_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_1_0": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_1_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "hist_1_hh": [
+    "int64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_1_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_1_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_1_hh": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_1_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "hist_1_h75": [
+    "int64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_1_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_1_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_1_h75": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_1_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "mean_2": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "var_2": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "skew_2": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "hist_2_0": [
+    "float64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_2_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_2_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_2_0": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_2_0": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "hist_2_hh": [
+    "float64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_2_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_2_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_2_hh": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_2_hh": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "hist_2_h75": [
+    "int64",
+    [
+     500,
+     101
+    ]
+   ],
+   "big_2_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "ncl_2_h75": [
+    "int64",
+    [
+     500
+    ]
+   ],
+   "frac_2_h75": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "k_2_h75": [
+    "int64",
+    [
+     500
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\block_L6_b2.2.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3bar": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "mean_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "var_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "skew_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_0": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_0": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_hh": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_hh": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_h75": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_h75": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "mean_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "var_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "skew_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_0": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_0": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_hh": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_hh": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_h75": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_h75": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\block_L6_b2.6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3bar": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "mean_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "var_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "skew_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_0": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_0": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_hh": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_hh": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_h75": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_h75": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "mean_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "var_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "skew_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_0": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_0": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_hh": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_hh": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_h75": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_h75": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\block_L6_b3.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3bar": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "mean_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "var_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "skew_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_0": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_0": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_hh": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_hh": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_h75": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_h75": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "mean_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "var_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "skew_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_0": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_0": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_hh": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_hh": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_h75": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_h75": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\block_L6_b3.3.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3bar": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "mean_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "var_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "skew_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_0": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_0": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_hh": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_hh": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_1_h75": [
+    "int64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_1_h75": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_1_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "mean_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "var_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "skew_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_0": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_0": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_0": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_hh": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_hh": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_hh": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "hist_2_h75": [
+    "float64",
+    [
+     3000,
+     101
+    ]
+   ],
+   "big_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "ncl_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ],
+   "frac_2_h75": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "k_2_h75": [
+    "int64",
+    [
+     3000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\eta_L4_b2.2.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "kappa": [
+    "float64",
+    []
+   ],
+   "eta_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "ub_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "lb_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "tv_pairs": [
+    "float64",
+    [
+     540,
+     2
+    ]
+   ],
+   "ncfg": [
+    "int64",
+    []
+   ],
+   "nlink": [
+    "int64",
+    []
+   ],
+   "nsamp": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\eta_L4_b3.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "kappa": [
+    "float64",
+    []
+   ],
+   "eta_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "ub_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "lb_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "tv_pairs": [
+    "float64",
+    [
+     540,
+     2
+    ]
+   ],
+   "ncfg": [
+    "int64",
+    []
+   ],
+   "nlink": [
+    "int64",
+    []
+   ],
+   "nsamp": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\eta_L4_b6.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "kappa": [
+    "float64",
+    []
+   ],
+   "eta_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "ub_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "lb_rows": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "tv_pairs": [
+    "float64",
+    [
+     540,
+     2
+    ]
+   ],
+   "ncfg": [
+    "int64",
+    []
+   ],
+   "nlink": [
+    "int64",
+    []
+   ],
+   "nsamp": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\pilot_L24_b6.30.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "nlev": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     300,
+     24
+    ]
+   ],
+   "Sn": [
+    "float64",
+    [
+     300,
+     24
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\tau_L24_b7.8.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "nlev": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     0
+    ]
+   ],
+   "Sn": [
+    "float64",
+    [
+     0
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\witness_L4_b2.2.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "row_lb": [
+    "float64",
+    []
+   ],
+   "x": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mu": [
+    "int64",
+    []
+   ],
+   "U": [
+    "complex128",
+    [
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3
+    ]
+   ],
+   "link_coords": [
+    "int64",
+    [
+     18,
+     5
+    ]
+   ],
+   "link_lb": [
+    "float64",
+    [
+     18,
+     3
+    ]
+   ],
+   "gs": [
+    "complex128",
+    [
+     18,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\witness_L4_b3.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "row_lb": [
+    "float64",
+    []
+   ],
+   "x": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mu": [
+    "int64",
+    []
+   ],
+   "U": [
+    "complex128",
+    [
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3
+    ]
+   ],
+   "link_coords": [
+    "int64",
+    [
+     18,
+     5
+    ]
+   ],
+   "link_lb": [
+    "float64",
+    [
+     18,
+     3
+    ]
+   ],
+   "gs": [
+    "complex128",
+    [
+     18,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\lattice-cpb\\runs\\witness_L4_b6.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "row_lb": [
+    "float64",
+    []
+   ],
+   "x": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mu": [
+    "int64",
+    []
+   ],
+   "U": [
+    "complex128",
+    [
+     4,
+     4,
+     4,
+     4,
+     4,
+     3,
+     3
+    ]
+   ],
+   "link_coords": [
+    "int64",
+    [
+     18,
+     5
+    ]
+   ],
+   "link_lb": [
+    "float64",
+    [
+     18,
+     3
+    ]
+   ],
+   "gs": [
+    "complex128",
+    [
+     18,
+     3,
+     3
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b1.7_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     40
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b1.7_L8.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     20,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     20,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     20,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     20,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     20,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     20,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     20,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     20,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     20
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b2.2_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     40
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b2.2_L8.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     20,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     20,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     20,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     20,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     20,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     20,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     20,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     20,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     20
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b2.6_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     40
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b2.6_L8.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     40,
+     5,
+     5
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     40,
+     5,
+     5
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     40,
+     5,
+     5
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     40,
+     5,
+     5
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     40,
+     5
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     40,
+     5
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     40,
+     5
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     40,
+     5
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     40
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b2.8_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     40
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b3.0_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     40
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b3.0_L8.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     40,
+     5,
+     5
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     40,
+     5,
+     5
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     40,
+     5,
+     5
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     40,
+     5,
+     5
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     40,
+     5
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     40,
+     5
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     40,
+     5
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     40,
+     5
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     40
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b3.3_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     40,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     40,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     40,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     40
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     40
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     40
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b5.7_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     30,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     30,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     30,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     30,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     30,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     30,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     30,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     30,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     33
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     33
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     33
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b6.0_L10.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     5
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     5
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     5
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     5
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     5
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     5
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     5
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     5,
+     5,
+     5
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     5,
+     5,
+     5
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     5,
+     5,
+     5
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     5,
+     5,
+     5
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     5,
+     5
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     5,
+     5
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     5,
+     5
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     5,
+     5
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     5
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     5
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     7
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     7
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     7
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b6.0_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     30,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     30,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     30,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     30,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     30,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     30,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     30,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     30,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     30
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     30
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     30
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_b6.0_L8.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     20
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     20,
+     5,
+     5
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     20,
+     5,
+     5
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     20,
+     5,
+     5
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     20,
+     5,
+     5
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     20,
+     5
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     20,
+     5
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     20,
+     5
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     20,
+     5
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     20
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     23
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     23
+    ]
+   ],
+   "cl_size": [
+    "int64",
+    [
+     23
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\probe_test_b2.6_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "nsnap": [
+    "int64",
+    []
+   ],
+   "rmax": [
+    "int64",
+    []
+   ],
+   "R": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "amb": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "nvortex": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "nclust": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "k1": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "k2": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "density": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "Tf": [
+    "complex128",
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "Tf2": [
+    "float64",
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "Tp": [
+    "complex128",
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "Tp2": [
+    "float64",
+    [
+     4,
+     4,
+     4
+    ]
+   ],
+   "Cf": [
+    "complex128",
+    [
+     4,
+     4
+    ]
+   ],
+   "CA": [
+    "float64",
+    [
+     4,
+     4
+    ]
+   ],
+   "Cfp": [
+    "complex128",
+    [
+     4,
+     4
+    ]
+   ],
+   "CAp": [
+    "float64",
+    [
+     4,
+     4
+    ]
+   ],
+   "poly_mean_full": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "poly_mean_proj": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "allsizes": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "cq_all": [
+    "int64",
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\runs_L8_b2.600.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     8,
+     8,
+     8,
+     8,
+     3,
+     3
+    ]
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "sep": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-center\\runs_L8_b3.000.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "snapshots": [
+    "complex128",
+    [
+     40,
+     4,
+     8,
+     8,
+     8,
+     8,
+     3,
+     3
+    ]
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "sep": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b2.200_s401.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     1500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b2.600_s402.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     1500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b3.000_s404.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     1500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b3.300_s405.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     1500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b3.600_s421.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b4.000_s422.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b4.400_s423.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b4.700_s425.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b5.000_s424.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b5.300_s426.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b5.600_s427.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L6_b6.000_s406.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     1500,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     1500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\L8_b3.000_s412.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     1500,
+     8,
+     8,
+     8,
+     8
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     1500,
+     8,
+     8,
+     8,
+     8
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "pmom": [
+    "float64",
+    [
+     1500,
+     8,
+     4
+    ]
+   ],
+   "pmax": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "f3p": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "fmom": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "alphas": [
+    "float64",
+    [
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-cumulant\\runs\\test_L6_b3.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "Sx": [
+    "float32",
+    [
+     100,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "Qx": [
+    "float32",
+    [
+     100,
+     6,
+     6,
+     6,
+     6
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\_smoke.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     2,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\true_L6_b2.6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     2,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     4000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\true_L6_b2.6_w05.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "wstaple": [
+    "float64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     2,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     3000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\true_L6_b3.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     2,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     4000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\true_L8_b2.6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     5,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_2000": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_1110": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_2100": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     3000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\true_L8_b2.6_tail.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "wstaple": [
+    "float64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     5,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "hist": [
+    "float64",
+    [
+     1200,
+     80
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "P3": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_0": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_01": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_02": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_03": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_05": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_hh": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_h75": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_2000": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_1110": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_2100": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     1200
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\true_L8_b3.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     5,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_2000": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_1110": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CP_2100": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     3000
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     3000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\true_L8_b3.0_tail.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "wstaple": [
+    "float64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     5,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "hist": [
+    "float64",
+    [
+     1200,
+     80
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "P3": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_0": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_01": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_02": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_03": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_05": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_hh": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "n_h75": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_2000": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_1110": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CP_2100": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     1200
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-imc\\data\\true_L8_b6.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "nmeas": [
+    "int64",
+    []
+   ],
+   "sweeps": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "meas": [
+    "int64",
+    []
+   ],
+   "wstaple": [
+    "float64",
+    []
+   ],
+   "orbits": [
+    "int64",
+    [
+     5,
+     4
+    ]
+   ],
+   "op_P": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "op_R": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "op_S": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "op_R3": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "c3": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "c6": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "c8": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "c10": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "R4": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "CP_1000": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "CP_2000": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "CP_1100": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "CP_1110": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "CP_2100": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "CL_1": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "CL_2": [
+    "float64",
+    [
+     2500
+    ]
+   ],
+   "micro_P": [
+    "float64",
+    [
+     2500
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-m\\pilot\\L10_b6.2.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "nsmear": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     20000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     20000,
+     10
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     20000,
+     10
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-m\\pilot\\L10_b6.2_ladder.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     450
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     450,
+     10
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     450,
+     10
+    ]
+   ],
+   "S16": [
+    "float64",
+    [
+     450,
+     10
+    ]
+   ],
+   "S32": [
+    "float64",
+    [
+     450,
+     10
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-m\\pilot\\L10_b6.4.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "nsmear": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     20000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     20000,
+     10
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     20000,
+     10
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\probe-m\\pilot\\L8_b6.4.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "nsmear": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     5000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     5000,
+     8
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     5000,
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\f1sq_b1.0_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S2": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S4": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\f1sq_b2.2_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "S0": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S2": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S4": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     4000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L4_b2.2.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     20000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ],
+   "O4": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L4_b2.2_hi.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "O16": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L4_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     20000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ],
+   "O4": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L4_b2.5_hi.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "O16": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L4_b2.8.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     20000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ],
+   "O4": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     20000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L4_b2.8_hi.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     8000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ],
+   "O16": [
+    "float64",
+    [
+     8000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L6_b2.2.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "O4": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L6_b2.2_hi.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3500
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ],
+   "O16": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L6_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "O4": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L6_b2.5_hi.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3500
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ],
+   "O16": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L6_b2.8.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "O4": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\L6_b2.8_hi.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     3500
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ],
+   "O16": [
+    "float64",
+    [
+     3500,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\_smoke_L4_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     400
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     400,
+     4
+    ]
+   ],
+   "O4": [
+    "float64",
+    [
+     400,
+     4
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     400,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\tm_gap_data\\_smoke_L6.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "gapevery": [
+    "int64",
+    []
+   ],
+   "nconf": [
+    "int64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     60
+    ]
+   ],
+   "O0": [
+    "float64",
+    [
+     60,
+     6
+    ]
+   ],
+   "O4": [
+    "float64",
+    [
+     60,
+     6
+    ]
+   ],
+   "O8": [
+    "float64",
+    [
+     60,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\trial_runs\\L6_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     5
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "S2": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "S4": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ],
+   "S12": [
+    "float64",
+    [
+     6000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\trial_runs\\L6_b6.0.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     5
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     5000
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     5000,
+     6
+    ]
+   ],
+   "S2": [
+    "float64",
+    [
+     5000,
+     6
+    ]
+   ],
+   "S4": [
+    "float64",
+    [
+     5000,
+     6
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     5000,
+     6
+    ]
+   ],
+   "S12": [
+    "float64",
+    [
+     5000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\trial_runs\\L8_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     5
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     3500
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     3500,
+     8
+    ]
+   ],
+   "S2": [
+    "float64",
+    [
+     3500,
+     8
+    ]
+   ],
+   "S4": [
+    "float64",
+    [
+     3500,
+     8
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     3500,
+     8
+    ]
+   ],
+   "S12": [
+    "float64",
+    [
+     3500,
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\_pool_su3_L4.npz",
+  "tseq": null,
+  "keys": {
+   "a": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "H": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "G": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "P1": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "kphys": [
+    "float64",
+    []
+   ],
+   "names": [
+    "<U9",
+    [
+     6
+    ]
+   ],
+   "files": [
+    "<U16",
+    [
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\_pool_su3_L6.npz",
+  "tseq": null,
+  "keys": {
+   "a": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "H": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "G": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "P1": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "kphys": [
+    "float64",
+    []
+   ],
+   "names": [
+    "<U9",
+    [
+     6
+    ]
+   ],
+   "files": [
+    "<U16",
+    [
+     1
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\corr_su2_L8_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "plaq": [
+    "float64",
+    [
+     600
+    ]
+   ],
+   "C0": [
+    "float64",
+    [
+     8
+    ]
+   ],
+   "C8": [
+    "float64",
+    [
+     8
+    ]
+   ],
+   "m0": [
+    "float64",
+    []
+   ],
+   "m8": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\k0_su2_b2.4_L8_n2.npz",
+  "tseq": null,
+  "keys": {
+   "a": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "H": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "G": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "P1": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "names": [
+    "<U12",
+    [
+     12
+    ]
+   ],
+   "kvals": [
+    "float64",
+    [
+     12
+    ]
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "group": [
+    "<U3",
+    []
+   ],
+   "N_done": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\k0_su3_b5.7_L8_n2.npz",
+  "tseq": null,
+  "keys": {
+   "a": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "H": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "G": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "P1": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     400,
+     12
+    ]
+   ],
+   "names": [
+    "<U12",
+    [
+     12
+    ]
+   ],
+   "kvals": [
+    "float64",
+    [
+     12
+    ]
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "group": [
+    "<U3",
+    []
+   ],
+   "N_done": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\o24_L2A.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     15000,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     15000,
+     4
+    ]
+   ],
+   "seeds": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mode": [
+    "<U1",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "domrej": [
+    "float64",
+    []
+   ],
+   "el": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\o24_q1.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "seeds": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mode": [
+    "<U1",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "epsg": [
+    "float64",
+    []
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "gacc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "el": [
+    "float64",
+    []
+   ],
+   "domrej": [
+    "float64",
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\o24_q2.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "seeds": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mode": [
+    "<U1",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "domrej": [
+    "float64",
+    []
+   ],
+   "el": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\o24_run.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     1,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     1,
+     4
+    ]
+   ],
+   "seeds": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mode": [
+    "<U1",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "epsg": [
+    "float64",
+    []
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "gacc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "el": [
+    "float64",
+    []
+   ],
+   "domrej": [
+    "float64",
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\o24_t2.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     600,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     600,
+     4
+    ]
+   ],
+   "seeds": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mode": [
+    "<U1",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "epsg": [
+    "float64",
+    []
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "gacc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "el": [
+    "float64",
+    []
+   ],
+   "domrej": [
+    "float64",
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\o24_test.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     400,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     400,
+     4
+    ]
+   ],
+   "seeds": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "mode": [
+    "<U1",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "epsg": [
+    "float64",
+    []
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "gacc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "el": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\p01_A.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     3500,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     3500,
+     4
+    ]
+   ],
+   "KA": [
+    "float64",
+    [
+     3500,
+     4
+    ]
+   ],
+   "KB": [
+    "float64",
+    [
+     3500,
+     4
+    ]
+   ],
+   "FA": [
+    "float64",
+    [
+     3500,
+     4
+    ]
+   ],
+   "FB": [
+    "float64",
+    [
+     3500,
+     4
+    ]
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "domrej": [
+    "float64",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "burn": [
+    "int64",
+    []
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "seeds": [
+    "int64",
+    [
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\partA_su2_N4000.npz",
+  "tseq": null,
+  "keys": {
+   "ax0_p1_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p1_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p2_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax0_p3_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p0_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p2_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax1_p3_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p0_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p1_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax2_p3_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p0_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p1_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_cos_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_cos_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_cos_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_sin_c2_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_sin_c2_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_sin_c2_G": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_sin_c0_a": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_sin_c0_H": [
+    "float64",
+    [
+     4000
+    ]
+   ],
+   "ax3_p2_n1_sin_c0_G": [
+    "float64",
+    [
+     4000
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\partA_su2_N800.npz",
+  "tseq": null,
+  "keys": {
+   "ax0_p1_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p1_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p2_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax0_p3_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p0_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p2_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax1_p3_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p0_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p1_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax2_p3_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p0_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p1_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_cos_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_cos_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_cos_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_sin_c2_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_sin_c2_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_sin_c2_G": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_sin_c0_a": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_sin_c0_H": [
+    "float64",
+    [
+     800
+    ]
+   ],
+   "ax3_p2_n1_sin_c0_G": [
+    "float64",
+    [
+     800
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\partA_su3_N1500.npz",
+  "tseq": null,
+  "keys": {
+   "ax0_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p1_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p1_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p1_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p1_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p1_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p1_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p2_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax0_p3_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p0_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p2_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax1_p3_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p0_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p1_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax2_p3_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p0_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p1_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c0_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c3_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c3_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c3_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c7_a": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c7_H": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ax3_p2_n1_cos_c7_G": [
+    "float64",
+    [
+     1500
+    ]
+   ],
+   "ang": [
+    "float64",
+    [
+     1500
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\rerun_su2_L4.npz",
+  "tseq": null,
+  "keys": {
+   "a": [
+    "float64",
+    [
+     3000,
+     6
+    ]
+   ],
+   "H": [
+    "float64",
+    [
+     3000,
+     6
+    ]
+   ],
+   "G": [
+    "float64",
+    [
+     3000,
+     6
+    ]
+   ],
+   "P1": [
+    "float64",
+    [
+     3000,
+     6
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     3000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\rerun_su2_L6.npz",
+  "tseq": null,
+  "keys": {
+   "a": [
+    "float64",
+    [
+     1200,
+     6
+    ]
+   ],
+   "H": [
+    "float64",
+    [
+     1200,
+     6
+    ]
+   ],
+   "G": [
+    "float64",
+    [
+     1200,
+     6
+    ]
+   ],
+   "P1": [
+    "float64",
+    [
+     1200,
+     6
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     1200,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\rerun_su3_L4.npz",
+  "tseq": null,
+  "keys": {
+   "a": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "H": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "G": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "P1": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     2000,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\rerun_su3_L6.npz",
+  "tseq": null,
+  "keys": {
+   "a": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "H": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "G": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "P1": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ],
+   "P2": [
+    "float64",
+    [
+     500,
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\u14_b2.2_L4_b2.2.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     4
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     2000,
+     4
+    ]
+   ],
+   "S2": [
+    "float64",
+    [
+     2000,
+     4
+    ]
+   ],
+   "S4": [
+    "float64",
+    [
+     2000,
+     4
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     2000,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\u14_b2.2_L8_b2.2.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     250,
+     8
+    ]
+   ],
+   "S2": [
+    "float64",
+    [
+     250,
+     8
+    ]
+   ],
+   "S8": [
+    "float64",
+    [
+     250,
+     8
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\unconditional\\w7\\u14_b2.5_L4_b2.5.npz",
+  "tseq": null,
+  "keys": {
+   "L": [
+    "int64",
+    []
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "levels": [
+    "int64",
+    [
+     2
+    ]
+   ],
+   "S0": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ],
+   "S2": [
+    "float64",
+    [
+     1500,
+     4
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\b01_b10.npz",
+  "tseq": "S",
+  "Ls": null,
+  "Lt": 12,
+  "N": 12000,
+  "seed": 20271125,
+  "beta": 10.0,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     1,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "w1": [
+    "float64",
+    []
+   ],
+   "w1_err": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\b01_b2.2.npz",
+  "tseq": "S",
+  "Ls": null,
+  "Lt": 12,
+  "N": 12000,
+  "seed": 20263325,
+  "beta": 2.2,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     1,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "w1": [
+    "float64",
+    []
+   ],
+   "w1_err": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\b01_b2.75.npz",
+  "tseq": "S",
+  "Ls": null,
+  "Lt": 12,
+  "N": 12000,
+  "seed": 20263875,
+  "beta": 2.75,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     1,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "w1": [
+    "float64",
+    []
+   ],
+   "w1_err": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\b01_b3.npz",
+  "tseq": "S",
+  "Ls": null,
+  "Lt": 12,
+  "N": 12000,
+  "seed": 20264125,
+  "beta": 3.0,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     1,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "w1": [
+    "float64",
+    []
+   ],
+   "w1_err": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\b01_b4.npz",
+  "tseq": "S",
+  "Ls": null,
+  "Lt": 12,
+  "N": 12000,
+  "seed": 20265125,
+  "beta": 4.0,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     1,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "w1": [
+    "float64",
+    []
+   ],
+   "w1_err": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\b01_b6.npz",
+  "tseq": "S",
+  "Ls": null,
+  "Lt": 12,
+  "N": 12000,
+  "seed": 20267125,
+  "beta": 6.0,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     1,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "w1": [
+    "float64",
+    []
+   ],
+   "w1_err": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh2_b2.5_Ls6_Lt12.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 12,
+  "N": 24000,
+  "seed": 20276839,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     24000,
+     1,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     24000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh2_b2.5_Ls6_Lt20.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 24000,
+  "seed": 20284911,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     24000,
+     1,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     24000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh2_b2.5_Ls8_Lt12.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 12,
+  "N": 24000,
+  "seed": 20277041,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     24000,
+     1,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     24000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh2_b2.5_Ls8_Lt20.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 20,
+  "N": 24000,
+  "seed": 20285113,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     24000,
+     1,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     24000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_L6.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 12,
+  "N": 24000,
+  "seed": 20261126,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     24000,
+     6,
+     5,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     24000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_L8.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 12,
+  "N": 12000,
+  "seed": 20261126,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     6,
+     5,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_probe.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 160000,
+  "seed": 20261128,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     160000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     160000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_x2_1.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 100000,
+  "seed": 20261327,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_x2_2.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 100000,
+  "seed": 20261328,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_x2_3.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 100000,
+  "seed": 20261329,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_x2_4.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 100000,
+  "seed": 20261330,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_x2_5.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 100000,
+  "seed": 20261331,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_x2_6.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 100000,
+  "seed": 20261332,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_x2_7.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 100000,
+  "seed": 20261333,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gh3_x2_8.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 20,
+  "N": 100000,
+  "seed": 20261334,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     6,
+     5,
+     20
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "lev_alpha": [
+    "float64",
+    [
+     6
+    ]
+   ],
+   "lev_n": [
+    "int64",
+    [
+     6
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gp3_b25_Ls8_Lt16_N24k.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 16,
+  "N": 24000,
+  "seed": 20261151,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     24000,
+     16
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     24000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "wall": [
+    "float64",
+    []
+   ],
+   "C": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "sigC": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "meff": [
+    "float64",
+    [
+     15
+    ]
+   ],
+   "meff_e": [
+    "float64",
+    [
+     15
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gp3_b3_Ls8_Lt16.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 16,
+  "N": 24000,
+  "seed": 20261126,
+  "beta": 3.0,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     24000,
+     16
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     24000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "wall": [
+    "float64",
+    []
+   ],
+   "C": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "sigC": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "meff": [
+    "float64",
+    [
+     15
+    ]
+   ],
+   "meff_e": [
+    "float64",
+    [
+     15
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gp3_b3_Ls8_Lt16_N100k.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 16,
+  "N": 100000,
+  "seed": null,
+  "beta": 3.0,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     100000,
+     16
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     100000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "wall": [
+    "float64",
+    []
+   ],
+   "C": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "sigC": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "meff": [
+    "float64",
+    [
+     15
+    ]
+   ],
+   "meff_e": [
+    "float64",
+    [
+     15
+    ]
+   ],
+   "tau_plaq": [
+    "float64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gp3_b3_Ls8_Lt16_N40k.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 16,
+  "N": 40000,
+  "seed": 20261141,
+  "beta": 3.0,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     40000,
+     16
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     40000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "wall": [
+    "float64",
+    []
+   ],
+   "C": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "sigC": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "meff": [
+    "float64",
+    [
+     15
+    ]
+   ],
+   "meff_e": [
+    "float64",
+    [
+     15
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gp3_b3_Ls8_Lt16_N60k.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 16,
+  "N": 60000,
+  "seed": 20261131,
+  "beta": 3.0,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     60000,
+     16
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     60000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ],
+   "wall": [
+    "float64",
+    []
+   ],
+   "C": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "sigC": [
+    "float64",
+    [
+     16
+    ]
+   ],
+   "meff": [
+    "float64",
+    [
+     15
+    ]
+   ],
+   "meff_e": [
+    "float64",
+    [
+     15
+    ]
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gw7_b2.59_Ls10.npz",
+  "tseq": "S",
+  "Ls": 10,
+  "Lt": 15,
+  "N": 12000,
+  "seed": null,
+  "beta": 2.59,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     1,
+     15
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\gw7_b2.66_Ls12.npz",
+  "tseq": "S",
+  "Ls": 12,
+  "Lt": 18,
+  "N": 12000,
+  "seed": null,
+  "beta": 2.66,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     1,
+     18
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "N": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\run1_b2.5_Ls8Lt12.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 12,
+  "N": 4152,
+  "seed": 20261125,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     4152,
+     3,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     4152
+    ]
+   ],
+   "levels": [
+    "int64",
+    [
+     3
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\run1_b25_l6.npz",
+  "tseq": "S",
+  "Ls": 6,
+  "Lt": 12,
+  "N": 6000,
+  "seed": 20261125,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     6000,
+     5,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     6000
+    ]
+   ],
+   "levels": [
+    "int64",
+    [
+     5
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\run3_L8_b2.5_N12k.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 12,
+  "N": 12000,
+  "seed": 20261125,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     12000,
+     3,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     12000
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\species\\w7\\run3_bench.npz",
+  "tseq": "S",
+  "Ls": 8,
+  "Lt": 12,
+  "N": 1200,
+  "seed": 20261125,
+  "beta": 2.5,
+  "keys": {
+   "S": [
+    "float64",
+    [
+     1200,
+     3,
+     12
+    ]
+   ],
+   "plaq": [
+    "float64",
+    [
+     1200
+    ]
+   ],
+   "beta": [
+    "float64",
+    []
+   ],
+   "Ls": [
+    "int64",
+    []
+   ],
+   "Lt": [
+    "int64",
+    []
+   ],
+   "n": [
+    "int64",
+    []
+   ],
+   "gap": [
+    "int64",
+    []
+   ],
+   "therm": [
+    "int64",
+    []
+   ],
+   "alpha": [
+    "float64",
+    []
+   ],
+   "chains": [
+    "int64",
+    []
+   ],
+   "seed": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\w7\\p11_L2_L2.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     1200,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     1200,
+     4
+    ]
+   ],
+   "KA": [
+    "float64",
+    [
+     1200,
+     4
+    ]
+   ],
+   "KB": [
+    "float64",
+    [
+     1200,
+     4
+    ]
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "domrej": [
+    "float64",
+    []
+   ],
+   "el": [
+    "float64",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "seed0": [
+    "int64",
+    []
+   ],
+   "burn": [
+    "int64",
+    []
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "G": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\w7\\p11_L3_L3.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     800,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     800,
+     4
+    ]
+   ],
+   "KA": [
+    "float64",
+    [
+     800,
+     4
+    ]
+   ],
+   "KB": [
+    "float64",
+    [
+     800,
+     4
+    ]
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "domrej": [
+    "float64",
+    []
+   ],
+   "el": [
+    "float64",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "seed0": [
+    "int64",
+    []
+   ],
+   "burn": [
+    "int64",
+    []
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "G": [
+    "int64",
+    []
+   ]
+  }
+ },
+ {
+  "file": "research\\v3\\w7\\p11_L3_smoke.npz",
+  "tseq": null,
+  "keys": {
+   "K": [
+    "float64",
+    [
+     20,
+     4
+    ]
+   ],
+   "F": [
+    "float64",
+    [
+     20,
+     4
+    ]
+   ],
+   "KA": [
+    "float64",
+    [
+     20,
+     4
+    ]
+   ],
+   "KB": [
+    "float64",
+    [
+     20,
+     4
+    ]
+   ],
+   "acc": [
+    "float64",
+    [
+     4
+    ]
+   ],
+   "domrej": [
+    "float64",
+    []
+   ],
+   "el": [
+    "float64",
+    []
+   ],
+   "ns": [
+    "int64",
+    []
+   ],
+   "eps": [
+    "float64",
+    []
+   ],
+   "seed0": [
+    "int64",
+    []
+   ],
+   "burn": [
+    "int64",
+    []
+   ],
+   "L": [
+    "int64",
+    []
+   ],
+   "G": [
+    "int64",
+    []
+   ]
+  }
+ }
+]

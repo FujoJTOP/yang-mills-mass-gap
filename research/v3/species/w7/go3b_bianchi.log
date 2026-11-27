@@ -1,0 +1,134 @@
+================================================================================
+PART A  free field: what p^4 content does Bianchi have?
+================================================================================
+A1  max |k_[lam F_{mu nu]}| over 4000 random (k, A_T):  4.885e-15
+A2  sum_lam |k_lam F_{mu nu}|^2 / |k.F|^2 :  2.000000000000 .. 2.000000000000  (spread 4.4e-15)
+    Weitzenboeck with Bianchi:  |grad F|^2 = |dF|^2 + |d*F|^2 = |D.F|^2
+    and |D.F|^2 = (k^2)^2 |A_T|^2 : ONE invariant, direction-free, ZERO on the
+    free EOM  k.F = 0.  So Bianchi's positive p^4 = the EOM square, nothing else.
+A3  'Bianchi square' operator  sum |k_[lam F_{mu nu]}|^2 == 0 : p^4 coefficient
+    is EXACTLY ZERO (not 'positive').  Same on the lattice: prod_{p in dc} U_p = 1.
+
+================================================================================
+PART B  lattice loop symbols
+================================================================================
+B0a max |w.n|/|w| over all shapes x 40 momenta : 2.75e-16
+B0b |sum_{6 planes} h_plaq - 3 phat^2| / (3 phat^2) max : 4.81e-16
+    => h_L = |w_L|^2 is the exact (gauge-invariant) symbol; pure plaquette = 3 phat^2.
+
+B1  per shape: h = A t^2 + B t^4 + ... ; kappa = -B/A
+    shape        direction             A            B          kappa
+    plaq       axis(1,0,0,0)          1.000000    -0.083333    0.083333
+    plaq       plane2(1,1,0,0)        1.000000    -0.041667    0.041667
+    plaq       plane3(1,1,1,0)        0.666667    -0.018519    0.027778
+    plaq       diag4(1,1,1,1)         0.500000    -0.010417    0.020833
+    plaq       odd(1,2,3,0)           0.357143    -0.007228    0.020238
+    rect_1x2   axis(1,0,0,0)          4.000000    -0.333333    0.083333
+    rect_1x2   plane2(1,1,0,0)        4.000000    -0.666667    0.166667
+    rect_1x2   plane3(1,1,1,0)        2.666667    -0.296296    0.111111
+    rect_1x2   diag4(1,1,1,1)         2.000000    -0.166667    0.083333
+    rect_1x2   odd(1,2,3,0)           1.428571    -0.130952    0.091667
+    rect_2x2   axis(1,0,0,0)         16.000000    -5.333333    0.333333
+    rect_2x2   plane2(1,1,0,0)       16.000000    -4.666667    0.291667
+    rect_2x2   plane3(1,1,1,0)       10.666667    -2.074074    0.194444
+    rect_2x2   diag4(1,1,1,1)         8.000000    -1.166667    0.145833
+    rect_2x2   odd(1,2,3,0)           5.714286    -0.625850    0.109524
+    rect_1x3   axis(1,0,0,0)          9.000000    -0.750000    0.083333
+    rect_1x3   plane2(1,1,0,0)        9.000000    -3.375000    0.375000
+    rect_1x3   plane3(1,1,1,0)        6.000000    -1.500000    0.250000
+    rect_1x3   diag4(1,1,1,1)         4.500000    -0.843750    0.187500
+    rect_1x3   odd(1,2,3,0)           3.214286    -0.677296    0.210714
+    rect_2x3   axis(1,0,0,0)         36.000000   -12.000000    0.333333
+    rect_2x3   plane2(1,1,0,0)       36.000000   -18.000000    0.500000
+    rect_2x3   plane3(1,1,1,0)       24.000000    -8.000000    0.333333
+    rect_2x3   diag4(1,1,1,1)        18.000000    -4.500000    0.250000
+    rect_2x3   odd(1,2,3,0)          12.857143    -2.938776    0.228571
+    rect_3x3   axis(1,0,0,0)         81.000000   -60.750000    0.750000
+    rect_3x3   plane2(1,1,0,0)       81.000000   -57.375000    0.708333
+    rect_3x3   plane3(1,1,1,0)       54.000000   -25.500000    0.472222
+    rect_3x3   diag4(1,1,1,1)        40.500000   -14.343750    0.354167
+    rect_3x3   odd(1,2,3,0)          28.928571    -7.473214    0.258333
+    chair3d    axis(1,0,0,0)          2.000000    -0.166667    0.083333
+    chair3d    plane2(1,1,0,0)        3.000000    -0.375000    0.125000
+    chair3d    plane3(1,1,1,0)        2.666667    -0.296296    0.111111
+    chair3d    diag4(1,1,1,1)         2.000000    -0.166667    0.083333
+    chair3d    odd(1,2,3,0)           2.714286    -0.306973    0.113095
+    hex3d      axis(1,0,0,0)          2.000000    -0.166667    0.083333
+    hex3d      plane2(1,1,0,0)        1.500000    -0.062500    0.041667
+    hex3d      plane3(1,1,1,0)        2.000000    -0.166667    0.083333
+    hex3d      diag4(1,1,1,1)         1.500000    -0.093750    0.062500
+    hex3d      odd(1,2,3,0)           1.928571    -0.266582    0.138228
+    stair4d    axis(1,0,0,0)          3.000000    -0.250000    0.083333
+    stair4d    plane2(1,1,0,0)        5.000000    -0.708333    0.141667
+    stair4d    plane3(1,1,1,0)        5.666667    -1.046296    0.184641
+    stair4d    diag4(1,1,1,1)         5.000000    -0.854167    0.170833
+    stair4d    odd(1,2,3,0)           5.285714    -0.857993    0.162323
+
+B2  hypercubic orbit sums: fit B(u) = b1 + b2 sum u^4  (per unit A)
+    shape          A          A-spread     b1/A       b2/A      resid
+    plaq           0.500000  6.1e-16    0.000000  -0.083333  1.0e-12
+    rect_1x2       2.000000  2.2e-15   -0.041667  -0.166667  3.4e-12
+    rect_2x2       8.000000  9.8e-15   -0.083333  -0.250000  1.2e-11
+    rect_1x3       4.500000  5.3e-15   -0.111111  -0.305556  1.1e-11
+    rect_2x3      18.000000  2.1e-14   -0.152778  -0.388889  3.1e-11
+    rect_3x3      40.500000  7.8e-14   -0.222222  -0.527778  9.5e-11
+    chair3d        1.500000  1.6e-15   -0.083333  -0.000000  1.8e-12
+    hex3d          1.000000  8.9e-16   -0.041667  -0.041667  1.5e-12
+    stair4d        3.000000  3.6e-15   -0.166667   0.083333  4.1e-12
+    sign(b2/A): plaq:-0.08333, rect_1x2:-0.16667, rect_2x2:-0.25000, rect_1x3:-0.30556, rect_2x3:-0.38889, rect_3x3:-0.52778, chair3d:-0.00000, hex3d:-0.04167, stair4d:+0.08333
+
+B3  (plaq, 1x2 rect) family, c_M + 8 c1 = 1 (both rect orientations per plane),
+    A = 3 by construction.  GL2-N2 target: B/A = -(1/12 + c1) on the axis.
+    direction             B/A at c1=0     dB/A/dc1     B/A at c1=-1/12
+    axis(1,0,0,0)            -0.083333    -1.000000      +0.000000
+    plane2(1,1,0,0)          -0.041667    -0.666667      +0.013889
+    plane3(1,1,1,0)          -0.027778    -0.555556      +0.018519
+    diag4(1,1,1,1)           -0.020833    -0.500000      +0.020833
+    odd(1,2,3,0)             -0.041667    -0.666667      +0.013889
+
+B4  pure plaquette action: b1/A = 0, b2/A = -1/12 => kappa(u) = sum u^4 / 12
+    exact range on the 4D unit sphere: sum u^4 in [1/4, 1] => kappa in [1/48, 1/12]
+    sampled over 160 random directions: [0.022257, 0.080124]
+    best isotropic-square residual (exact) = (1/12 - 1/48)/2 = 1/32 = 0.031250
+
+B5  LP over orbits:  c_i >= 0 ,  sum c_i = 1 ,  sum c_i (b2/A)_i = 0 ?
+    linprog status 0 (Optimization terminated successfully. (HiGHS Status 7: Optimal)) ; feasible = True
+    solution c = chair3d:1.00000
+    (b1/A)_comb = -0.083333  =>  lambda = +0.083333  (needs > 0)
+    direct verification of  h = sum c_i h_i/A_i + lambda (p.p)^2 :
+      direction            h/t^2 (t=0.01)     (h-t^2)/t^4
+      axis(1,0,0,0)           1.000000000       2.778e-07
+      plane2(1,1,0,0)         1.000000000       4.167e-07
+      plane3(1,1,1,0)         1.000000000       3.395e-07
+      diag4(1,1,1,1)          1.000000000       2.778e-07
+      odd(1,2,3,0)            1.000000000       3.729e-07
+      max |(h - t^2)/t^4| over 60 random directions : 4.116e-07
+    => k0_shell = 4 on this class (symbol level), with lambda = 0.083333
+
+================================================================================
+PART C  acid tests
+================================================================================
+C1  2D control: nearest-neighbour (d phi)^2 symbol has the SAME sin^2 signature
+    theta=0.000  sum u^4=1.000000  kappa=sum u^4/12=0.083333
+    theta=0.393  sum u^4=0.750000  kappa=sum u^4/12=0.062500
+    theta=0.785  sum u^4=0.500000  kappa=sum u^4/12=0.041667
+    theta=1.178  sum u^4=0.750000  kappa=sum u^4/12=0.062500
+    theta=1.571  sum u^4=1.000000  kappa=sum u^4/12=0.083333
+    => 2D deficit is anisotropic too (1/24..1/12): the sigma mechanism is NOT a
+       direction-uniform mechanism in 2D either -- it is ON-SHELL (CP 1997 abstract:
+       'O(a^2) on-shell improved action ... satisfying reflection positivity').
+
+C2  4D EOM square |D.F|^2 : direction independence of its symbol
+    |k.F|^2 / (k^4 |A_T|^2) : 1.000000000000 .. 1.000000000000  (exactly 1)
+
+C3  single plaquette: h = phat_1^2 + phat_2^2 defined; no transfer direction
+    => k0 undefined (N/A).  Its own anisotropy kappa = (u1^4+u2^4)/(12(u1^2+u2^2)):
+    u=[1. 0. 0. 0.]            kappa = 0.083333
+    u=[0.7071 0.7071 0.     0.    ] kappa = 0.041667
+    u=[0.4472 0.8944 0.     0.    ] kappa = 0.056667
+
+================================================================================
+SUMMARY
+  A1 max |Bianchi violation| = 4.9e-15   (an identity, not a constraint)
+  A2 |dF|^2/|d.F|^2 = 2.000000000000 .. 2.000000000000  (isotropic: ONE invariant (p^2)^2)
+================================================================================

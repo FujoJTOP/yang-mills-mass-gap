@@ -1,0 +1,135 @@
+== S1: gate (H4) vs window (CPB-S) thresholds ==
+gate   : c0*q >= g + ln(1+2PR)      ; window : q*(c0-kappa) >= g + ln(1+2PR)
+source                        gamma    gate(c0q)   window(c0) q_gate@2.5986 q_win@2.5986
+GV2 gamma=1                1.000000     2.098612     2.598612     0.807590     1.000000
+a_n/site lower (GC2)       2.333406     3.432018     3.932018     1.320712     1.635375
+a_n/plaq lower (GC2)       2.632032     3.730644     4.230644     1.435630     1.777672
+B_n lower (GC2)            2.746029     3.844641     4.344641     1.479498     1.831992
+median a (M8)              3.249025     4.347637     4.847637     1.673061     2.071673
+median B (M8)              3.458607     4.557219     5.057219     1.753713     2.171540
+upper a (M9)               3.375412     4.474024     4.974024     1.721698     2.131897
+upper B (M9)               3.697294     4.795906     5.295906     1.845565     2.285275
+
+== S1b: mu = exp(gamma) (animal growth constant) ==
+GV2 gamma=1              gamma=1.000000  mu=e^gamma=    2.7183
+a_n/site lower (GC2)     gamma=2.333406  mu=e^gamma=   10.3130
+a_n/plaq lower (GC2)     gamma=2.632032  mu=e^gamma=   13.9020
+B_n lower (GC2)          gamma=2.746029  mu=e^gamma=   15.5806
+median a (M8)            gamma=3.249025  mu=e^gamma=   25.7652
+median B (M8)            gamma=3.458607  mu=e^gamma=   31.7727
+upper a (M9)             gamma=3.375412  mu=e^gamma=   29.2363
+upper B (M9)             gamma=3.697294  mu=e^gamma=   40.3380
+measured ratios a: a6/a5=25.7652  B: B6/B5=31.7727 (GC2-H23 1.2)
+
+== S2: physical anchor c0 = T2/m^2 = 1/(m/sqrt(sigma))^2 ==
+m/sqrt(sigma)=3.405 -> c0=0.086251
+m/sqrt(sigma)=3.384 -> c0=0.087325
+m/sqrt(sigma)=3.426 -> c0=0.085197
+m/sqrt(sigma)=3.900 -> c0=0.065746
+m/sqrt(sigma)=3.300 -> c0=0.091827
+c0_phys = 0.086251 ; ratio to corpus working value 1 : 11.59x smaller
+c0_phys vs window 4.230644 : short by 49.05x
+c0_phys vs window 4.344642 : short by 50.37x
+
+== S3: window in the scale-free form  c0*q^2 - kappa*q >= A = gamma+ln(1+2PR) ==
+   (c0 = T2/m^2 scale-free, q = trial mass * block scale; q=1 is a SLICE)
+  gamma=1.000000  A= 2.098612
+      c0= 0.086251 : need q >=   8.6198 (worst q=2.899, lhs_min= -0.7246) ; c0_min over q = 0.089345
+      c0= 1.000000 : need q >=   1.7201 (worst q=0.250, lhs_min= -0.0625) ; c0_min over q = 0.089345
+      c0= 2.598612 : need q >=   1.0000 (worst q=0.096, lhs_min= -0.0241) ; c0_min over q = 0.089345
+      c0= 4.230644 : need q >=   0.7659 (worst q=0.059, lhs_min= -0.0148) ; c0_min over q = 0.089345
+  gamma=2.333406  A= 3.432018
+      c0= 0.086251 : need q >=   9.8406 (worst q=2.899, lhs_min= -0.7246) ; c0_min over q = 0.054633
+      c0= 1.000000 : need q >=   2.1194 (worst q=0.250, lhs_min= -0.0625) ; c0_min over q = 0.054633
+      c0= 2.598612 : need q >=   1.2494 (worst q=0.096, lhs_min= -0.0241) ; c0_min over q = 0.054633
+      c0= 4.230644 : need q >=   0.9617 (worst q=0.059, lhs_min= -0.0148) ; c0_min over q = 0.054633
+  gamma=2.632032  A= 3.730644
+      c0= 0.086251 : need q >=  10.0856 (worst q=2.899, lhs_min= -0.7246) ; c0_min over q = 0.050259
+      c0= 1.000000 : need q >=   2.1976 (worst q=0.250, lhs_min= -0.0625) ; c0_min over q = 0.050259
+      c0= 2.598612 : need q >=   1.2982 (worst q=0.096, lhs_min= -0.0241) ; c0_min over q = 0.050259
+      c0= 4.230644 : need q >=   1.0000 (worst q=0.059, lhs_min= -0.0148) ; c0_min over q = 0.050259
+  gamma=2.746029  A= 3.844641
+      c0= 0.086251 : need q >=  10.1770 (worst q=2.899, lhs_min= -0.7246) ; c0_min over q = 0.048769
+      c0= 1.000000 : need q >=   2.2266 (worst q=0.250, lhs_min= -0.0625) ; c0_min over q = 0.048769
+      c0= 2.598612 : need q >=   1.3164 (worst q=0.096, lhs_min= -0.0241) ; c0_min over q = 0.048769
+      c0= 4.230644 : need q >=   1.0142 (worst q=0.059, lhs_min= -0.0148) ; c0_min over q = 0.048769
+  gamma=3.249025  A= 4.347637
+      c0= 0.086251 : need q >=  10.5671 (worst q=2.899, lhs_min= -0.7246) ; c0_min over q = 0.043127
+      c0= 1.000000 : need q >=   2.3500 (worst q=0.250, lhs_min= -0.0625) ; c0_min over q = 0.043127
+      c0= 2.598612 : need q >=   1.3932 (worst q=0.096, lhs_min= -0.0241) ; c0_min over q = 0.043127
+      c0= 4.230644 : need q >=   1.0745 (worst q=0.059, lhs_min= -0.0148) ; c0_min over q = 0.043127
+  gamma=3.458607  A= 4.557219
+      c0= 0.086251 : need q >=  10.7240 (worst q=2.899, lhs_min= -0.7246) ; c0_min over q = 0.041144
+      c0= 1.000000 : need q >=   2.3994 (worst q=0.250, lhs_min= -0.0625) ; c0_min over q = 0.041144
+      c0= 2.598612 : need q >=   1.4240 (worst q=0.096, lhs_min= -0.0241) ; c0_min over q = 0.041144
+      c0= 4.230644 : need q >=   1.0987 (worst q=0.059, lhs_min= -0.0148) ; c0_min over q = 0.041144
+  gamma=3.375412  A= 4.474024
+      c0= 0.086251 : need q >=  10.6621 (worst q=2.899, lhs_min= -0.7246) ; c0_min over q = 0.041909
+      c0= 1.000000 : need q >=   2.3799 (worst q=0.250, lhs_min= -0.0625) ; c0_min over q = 0.041909
+      c0= 2.598612 : need q >=   1.4119 (worst q=0.096, lhs_min= -0.0241) ; c0_min over q = 0.041909
+      c0= 4.230644 : need q >=   1.0892 (worst q=0.059, lhs_min= -0.0148) ; c0_min over q = 0.041909
+  gamma=3.697294  A= 4.795906
+      c0= 0.086251 : need q >=  10.8988 (worst q=2.899, lhs_min= -0.7246) ; c0_min over q = 0.039096
+      c0= 1.000000 : need q >=   2.4542 (worst q=0.250, lhs_min= -0.0625) ; c0_min over q = 0.039096
+      c0= 2.598612 : need q >=   1.4581 (worst q=0.096, lhs_min= -0.0241) ; c0_min over q = 0.039096
+      c0= 4.230644 : need q >=   1.1254 (worst q=0.059, lhs_min= -0.0148) ; c0_min over q = 0.039096
+
+== S4: BL-3 slab cost per plaquette (q-independent) vs window ==
+BL-3: U_l = sigma0 on in-slice space links, cost/plaq = beta(1-Re sigma0); reproduced numbers:
+  SU(2), sigma0=-1: Re tr/2 = -1 -> S_p = beta*(1-(-1)) = 5.0000
+  SU(3), sigma0=e^{2pi i/3}: Re tr/3 = -0.5 -> S_p = beta*(1+0.5) = 3.7500
+  (1/g^2 = 0.625 at beta=2.5 in the convention beta=2/g^2 -> 2*0.625=1.25)
+window needs c0*q - kappa*q >= A ; with a q-INDEPENDENT per-plaquette cost C:
+  C=1.25 gamma= 2.6320 A=3.7306 : need C - 0.5q >= A -> q <= -4.961  (nonempty only if C>A=3.7306)
+  C=1.25 gamma= 3.4586 A=4.5572 : need C - 0.5q >= A -> q <= -6.614  (nonempty only if C>A=4.5572)
+  C=2.50 gamma= 2.6320 A=3.7306 : need C - 0.5q >= A -> q <= -2.461  (nonempty only if C>A=3.7306)
+  C=2.50 gamma= 3.4586 A=4.5572 : need C - 0.5q >= A -> q <= -4.114  (nonempty only if C>A=4.5572)
+  C=3.75 gamma= 2.6320 A=3.7306 : need C - 0.5q >= A -> q <= 0.039  (nonempty only if C>A=3.7306)
+  C=3.75 gamma= 3.4586 A=4.5572 : need C - 0.5q >= A -> q <= -1.614  (nonempty only if C>A=4.5572)
+
+== S5: regrouping identity (geometric, block factor b) ==
+  b=1 : fine plaquettes per block = 6*b^4 =     6 ; ln(6)=   1.792 ; b^2=1
+  b=2 : fine plaquettes per block = 6*b^4 =    96 ; ln(96)=   4.564 ; b^2=4
+  b=3 : fine plaquettes per block = 6*b^4 =   486 ; ln(486)=   6.186 ; b^2=9
+  b=4 : fine plaquettes per block = 6*b^4 =  1536 ; ln(1536)=   7.337 ; b^2=16
+  min fine plaquettes per touched block = 1 (a connected 'snake' through M blocks has |C|=M)
+  => uniform per-block cost bound cannot exceed c0*q*1 ; block-graph entropy rate = gamma (isomorphic graph)
+  => criterion invariant : gain exactly 0
+  internal-config entropy ceiling per block: 96*ln2 = 66.5421 (b=2) ; ln C(96,48) = 64.0316
+
+== S6: planar-membrane entropy proxy = fixed polyominoes (exact integer enumeration) ==
+  n= 2 : A_n=         2   (1/n)ln A_n = 0.346574   ratio A_n/A_{n-1} = 2.00000
+  n= 3 : A_n=         6   (1/n)ln A_n = 0.597253   ratio A_n/A_{n-1} = 3.00000
+  n= 4 : A_n=        19   (1/n)ln A_n = 0.736110   ratio A_n/A_{n-1} = 3.16667
+  n= 5 : A_n=        63   (1/n)ln A_n = 0.828627   ratio A_n/A_{n-1} = 3.31579
+  n= 6 : A_n=       216   (1/n)ln A_n = 0.895880   ratio A_n/A_{n-1} = 3.42857
+  n= 7 : A_n=       760   (1/n)ln A_n = 0.947617   ratio A_n/A_{n-1} = 3.51852
+  n= 8 : A_n=      2725   (1/n)ln A_n = 0.988778   ratio A_n/A_{n-1} = 3.58553
+  n= 9 : A_n=      9910   (1/n)ln A_n = 1.022367   ratio A_n/A_{n-1} = 3.63670
+  n=10 : A_n=     36446   (1/n)ln A_n = 1.050359   ratio A_n/A_{n-1} = 3.67770
+  n=11 : A_n=    135268   (1/n)ln A_n = 1.074092   ratio A_n/A_{n-1} = 3.71146
+  n=12 : A_n=    505861   (1/n)ln A_n = 1.094501   ratio A_n/A_{n-1} = 3.73969
+  n=13 : A_n=   1903890   (1/n)ln A_n = 1.112262   ratio A_n/A_{n-1} = 3.76366
+  known/expected fixed polyominoes 1,2,6,19,63,216,760,2725,9910,36446,135268,505861,1903890
+
+  growth constant mu = lim A_n/A_{n-1} ; endpoint ratios and 1/n fits:
+    n= 6 ratio=3.428571  A_n^(1/n)=2.449490
+    n= 7 ratio=3.518519  A_n^(1/n)=2.579555
+    n= 8 ratio=3.585526  A_n^(1/n)=2.687948
+    n= 9 ratio=3.636697  A_n^(1/n)=2.779766
+    n=10 ratio=3.677699  A_n^(1/n)=2.858676
+    n=11 ratio=3.711464  A_n^(1/n)=2.927334
+    n=12 ratio=3.739695  A_n^(1/n)=2.987693
+    n=13 ratio=3.763662  A_n^(1/n)=3.041231
+    two-point 1/n ratio extrapolation at n=12 : mu ~ 3.739695
+    two-point 1/n ratio extrapolation at n=13 : mu ~ 3.763662
+  reference (literature, fixed polyominoes): mu = 4.0626...   [cite as external, not re-derived here]
+  gamma_surf = ln(4.0626) = 1.401823
+  window(gamma_surf) = kappa + gamma_surf + ln3 = 3.000435  (vs A=3.730644)
+  window(gamma_surf) = kappa + gamma_surf + ln3 = 3.000435  (vs A=4.557219)
+  window(gamma_surf) - 2.598612 = 0.401823
+  criterion to rescue 2.5986 : gamma_eff <= 2.598612 - 0.5 - ln3 = 1.000000  <=> mu_eff <= e = 2.718282
+  mu(animal, a_n)=13.9020 ; mu(animal, B_n)=15.5806 ; mu(planar polyomino)=4.0626 ; e=2.7183
+  factor by which mu must drop : animal 9.5x / planar 1.49x
+
+elapsed = 157.21 s

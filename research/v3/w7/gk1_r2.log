@@ -1,0 +1,89 @@
+== A local structure ==
+A1 #plaquettes             = 124416
+A2 #links                  = 82944
+A3 plaquettes-per-link set = [6]
+A4 plaquette-degree set    = [20]
+A5 link-groups of p0 sizes = [5, 5, 5, 5]
+A6 groups partition N(p0)  = True
+A7 #shared links p0-neigh  = [1]
+A8 group members pairwise adj (K5, +p0 = K6) = True
+A9 3 plaquettes on one link form K3 = True
+
+== B full enumeration n<=5 ==
+B1 |layer n=2|             = 20   (5.3 s)
+B1 |layer n=3|             = 458   (5.3 s)
+B1 |layer n=4|             = 11132   (5.3 s)
+B1 |layer n=5|             = 280175   (6.3 s)
+
+B2 k-layer (k=|E|-n+1) and link multiplicity m
+  n=1 a_n=1
+      k dist : {0: 1}
+      m dist : {1: 1}
+      (k==0,m<=2): {(True, True): 1}
+  n=2 a_n=20
+      k dist : {0: 20}
+      m dist : {2: 20}
+      (k==0,m<=2): {(True, True): 20}
+  n=3 a_n=458
+      k dist : {0: 402, 1: 56}
+      m dist : {2: 418, 3: 40}
+      (k==0,m<=2): {(True, True): 402, (False, False): 40, (False, True): 16}
+  n=4 a_n=11132
+      k dist : {0: 8328, 1: 2476, 2: 288, 3: 40}
+      m dist : {2: 8948, 3: 2144, 4: 40}
+      (k==0,m<=2): {(True, True): 8328, (False, False): 2184, (False, True): 620}
+  n=5 a_n=280175
+      k dist : {0: 177295, 1: 81680, 2: 16440, 3: 4120, 4: 620, 6: 20}
+      m dist : {2: 196195, 3: 81440, 4: 2520, 5: 20}
+      (k==0,m<=2): {(False, False): 83980, (True, True): 177295, (False, True): 18900}
+
+B3a trees n<=5 = 186046 ; with m>2 (violations of link<=2) = 0
+B3b m<=2 animals n<=5 = 205582 ; of them k>=1 = 19536
+
+B4 per-layer: k=0 count vs m<=2 count
+  n=1  k=0:       1  m<=2:       1 (100.000%)  m>=3:       0
+  n=2  k=0:      20  m<=2:      20 (100.000%)  m>=3:       0
+  n=3  k=0:     402  m<=2:     418 (91.266%)  m>=3:      40
+  n=4  k=0:    8328  m<=2:    8948 (80.381%)  m>=3:    2184
+  n=5  k=0:  177295  m<=2:  196195 (70.026%)  m>=3:   83980
+
+B5 local ratios
+  n=1->2  total ratio  20.0000   a_n^(1/n)   4.4721
+  n=2->3  total ratio  22.9000   a_n^(1/n)   7.7082
+  n=3->4  total ratio  24.3057   a_n^(1/n)  10.2717
+  n=4->5  total ratio  25.1684   a_n^(1/n)  12.2881
+
+== C R2 constant family: two-type Lagrange ==
+C1 [x^n]G = [1, 15, 300, 6875, 170625, 4462500]
+C2 [x^n]F = [1, 20, 450, 11000, 284375, 7650000]
+C3 closed form == G+5G^2 : True
+C4 a_{n,0} vs F_n :
+     n=1  a0=      1  F_n=      1  ratio=1.0000
+     n=2  a0=     20  F_n=     20  ratio=1.0000
+     n=3  a0=    402  F_n=    450  ratio=0.8933
+     n=4  a0=   8328  F_n=  11000  ratio=0.7571
+     n=5  a0= 177295  F_n= 284375  ratio=0.6235
+C5 P(u)-uP'(u)=0 at u*=1/10 : True
+C6 x* = u*/(1+5u*)^3 = 4/135  => constant 135/4 = 135/4 = 33.75
+C7 47.6270568122 / 33.75 = 1.4111720536935037
+
+== D three readings of the same constraint ==
+D1 group 3 links x 5 slots : u*=0.1  const=33.75
+D2 group 4 links (no parent slot removed): u*=0.0666666666667  const=47.4074074074
+D3 19 independent slots, out-degree<=3   : u*=0.0591660290729  const=49.411081365
+D4 L_t(19)=19^19/18^18 = 50.28209060085602388
+D5 L_t(20)=20^20/19^19 = 53.000686532808898145
+D6 threshold 47.627056812155747 (GJ1-UC4:203)
+   D1 vs 47.627 : PASS (margin 1.4111721 x)
+   D2 vs 47.627 : PASS (margin 1.0046332 x)
+   D3 vs 47.627 : FAIL (margin 0.96389424 x)
+   L_t(19)/47.627 = 1.0557463 ; L_t(19)/48 = 1.0475436
+
+== E dimension family kappa(d) = 6.75*(2d-3) ==
+  d=2  c=2(d-1)-1=1  u*=1/2  kappa=27/4 = 6.7500
+  d=3  c=2(d-1)-1=3  u*=1/6  kappa=81/4 = 20.2500
+  d=4  c=2(d-1)-1=5  u*=1/10  kappa=135/4 = 33.7500
+  d=5  c=2(d-1)-1=7  u*=1/14  kappa=189/4 = 47.2500
+  d=2 truth 4.0626 -> slack 1.6615 x
+
+total 27.3 s

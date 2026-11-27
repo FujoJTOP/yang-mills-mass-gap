@@ -1,0 +1,42 @@
+[1] two-level: H(t) = [[D,0],[0,D2]] + t*[[kappa,beta],[beta,kappa2]]
+    t          (E(t)-D)/t              kappa - t*beta^2/D         err
+    0.01       -0.410968579749916995    -0.410977857142857143    9.277e-6
+    0.001      -0.410097692202075323    -0.410097785714285714    9.351e-8
+    0.0001     -0.410009777635562339    -0.410009778571428571    9.359e-10
+    1.0e-6     -0.410000097785620691    -0.410000097785714286    9.359e-14
+    => c1 = kappa/D = -0.241176470588235294   (kappa = -0.41)
+    => delta1 = c1*D + D^3/24 = -0.205291666666666667 ; (SM-2) iff delta1 = 0 iff kappa = -D^3/24 = -0.204708333333333333
+    a^4 coefficient: (E(t)-D-t*kappa)/t^2 at t=1e-6 :
+      numeric -0.0977856206908990801   vs  -beta^2/(D2-D) = -0.0977857142857142857   (c2 = that /D = -0.0575210084033613445)
+    gap-ratio scan (kappa fixed): D2, c1, c2
+      D2=1.9   c1=-0.410000006845  c2=-0.684041668686
+      D2=2.5   c1=-0.410000001711  c2=-0.171096340997
+      D2=5.0   c1=-0.410000000415  c2=-0.0414831640118
+
+[2] degenerate edge (Delta1 = Delta2 = 1.0): first order = lambda_min(P1 K2 P1)
+    lambda_min(P1 K2 P1) = -0.907106781186547524 ; lambda_max = 0.507106781186547524 ; <e1|K2|e1> = 0.3
+      t=1.0e-6   (Emin(t)-1)/t = -0.90710678136602074   err vs lambda_min = -1.795e-10
+      t=1.0e-9   (Emin(t)-1)/t = -0.907106781186726998   err vs lambda_min = -1.795e-13
+    => <psi1|K2|psi1> = +0.3 would give c1 = +0.3/1 (wrong sign side);
+       the correct edge-only object is the MIN over the edge eigenspace.
+
+[3] free field: Delta_a from cosh(a*D)=1+a^2 m^2/2 ; omega_a=(2/a)sinh(aD/2)
+    m=1.0  a=0.1     omega_a - m = 3.673e-40
+    m=1.0  a=0.01    omega_a - m = -7.311e-38
+    m=1.0  a=0.001   omega_a - m = 1.072e-35
+    m=0.5  a=0.1     omega_a - m = 1.837e-40
+    m=0.5  a=0.01    omega_a - m = -1.513e-37
+    m=0.5  a=0.001   omega_a - m = -1.76e-35
+    m=3.0  a=0.1     omega_a - m = 3.673e-40
+    m=3.0  a=0.01    omega_a - m = 1.029e-38
+    m=3.0  a=0.001   omega_a - m = 1.541e-36
+    => omega_a == m identically (delta1 = 0 by operator identity K2 = -H^3/24).
+
+[4] off-diagonal independence of the a^2 coefficient (4x4, simple edge)
+    no off-diag    c1 = 0.1 (K[0,0]=0.1)   c2 = -1.52373691765e-32
+    with off-diag  c1 = 0.099999973 (K[0,0]=0.1)   c2 = -2.69999099792
+    => same c1, different c2: c1 sees only P1 K2 P1.
+
+[5] concavity in t=a^2 of the exact edge eigenvalue (2-level, beta>0)
+    second difference (t2 midpoint) = -1.84742e-5  (<=0 expected)
+    => c2 <= 0 at eigenvalue level; c1 unconstrained (sign of kappa free).

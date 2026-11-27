@@ -1,0 +1,76 @@
+==============================================================================
+PART 1  exact integer counts (n = 1..16)
+==============================================================================
+  n :       1       2       3       4       5       6       7       8       9      10      11      12      13      14      15      16
+D      (mono):       1       2       5      13      34      89     233     610    1597    4181   10946   28657   75025  196418  514229 1346269
+D^rev  (mono):       1       2       5      13      34      89     233     610    1597    4181   10946   28657   75025  196418  514229 1346269
+bargraph     :       1       2       4       8      16      32      64     128     256     512    1024    2048    4096    8192   16384   32768
+S1 (|d|<=1)  :       1       2       6      17      48     136     385    1090    3086    8737   24736   70032  198273  561346 1589270 4499505
+D u D^rev    :       1       2       6      18      52     146     402    1092    2938    7850   20868   55266  145954  384644 1012074 2659770
+
+identity checks (integer equality, no float):
+  a_n(D) == F_{2n-1}                      : PASS
+  a_n(D u D^rev) == 2F_{2n-1} - 2^{n-1}   : PASS
+  (inclusion-exclusion: D cap D^rev = bargraphs, a_n = 2^{n-1})
+  a_n(S1) head == 1,2,6,17,48,136,385,1090: PASS  (GF3-ENTROPY.md:166)
+
+directed truncations D_s (0 >= delta >= -s), closed form check
+  P_s = (1-x)^s (1 - 2x - x^2 - ... - x^{s+1});  x_s = the unique root of sum_{k=1..s+1} x^k = 1-x
+  s=0 : a_1..a_6 = [1, 2, 4, 8, 16, 32]
+  s=1 : a_1..a_6 = [1, 2, 6, 17, 48, 136]
+  s=2 : a_1..a_6 = [1, 2, 6, 19, 59, 181]
+  s=3 : a_1..a_6 = [1, 2, 6, 19, 61, 194]
+  s=4 : a_1..a_6 = [1, 2, 6, 19, 61, 196]
+  s=5 : a_1..a_6 = [1, 2, 6, 19, 61, 196]
+  s=6 : a_1..a_6 = [1, 2, 6, 19, 61, 196]
+
+GF2's bounded-suspension ladder, independently recounted (state = (bottom b, height h)):
+  K=0 : a_40 = 549755813888  ratio(60/59) = 2.000000  root n=60 = 1.977028
+  K=1 : a_40 = 4551172764642829  ratio(60/59) = 2.490216  root n=60 = 2.471996
+  K=2 : a_40 = 269297420869012977  ratio(60/59) = 2.745688  root n=60 = 2.733512
+  (the K-DP keeps b in [0,K] without mod-translation, so a_1(K=1)=2: the RATE is unaffected)
+  D_1 (delta in {0,-1}, drift unbounded) : a_1..a_6 = [1, 2, 6, 17, 48, 136]
+
+==============================================================================
+PART 2  exact rational brackets (all arithmetic in Fraction; no float enters a verdict)
+==============================================================================
+e in (2.71828182845904509080, 2.71828182845904509080)   width 3.064e-50
+
+(i) class D : G(x) = x(1-x)/(1-3x+x^2), x_c = smallest positive root of x^2-3x+1
+    x_c in (0.381966011250, 0.381966011250)  (width 8.27e-27)
+    mu = 1/x_c in (2.618033988750, 2.618033988750)
+    phi^2 = (3+sqrt5)/2 < 2.61805 : True   (needs 5 < 5.00014321)
+    phi^2 < e : True   [2.61805 <= elo = 2.718282]
+
+(ii) class S1 : P(x) = 1-4x+3x^2+x^3-x^5 = (1-x)(x^4+x^3-3x+1)
+    x_c in (0.35320996419932, 0.35320996419932)  (width 7.89e-33)
+    mu = 1/x_c in (2.831177207208, 2.831177207208)
+    mu > e : True   [1/bS = 2.831177207  vs  elo = 2.718281828]
+    margin (mu-e)/e = +4.1532%
+
+(iii) the disjunctive class D u D^rev : G = 2G_D - G_bargraph = 2x(1-x)/(1-3x+x^2) - x/(1-2x)
+      poles: x = (3-sqrt5)/2 = 0.381966011  and  x = 1/2 ; dominant pole unchanged
+      => mu(D u D^rev) = mu(D) = phi^2  (max of two equal rates) [T]
+      a_n identity verified for n<=16 above (2F_{2n-1} - 2^{n-1})
+
+==============================================================================
+PART 3  brute force over ALL column-convex shapes (n <= 12) : predicate census
+==============================================================================
+  n        :         1         2         3         4         5         6         7         8         9        10        11        12
+  colconv  :         1         2         6        19        61       196       629      2017      6466     20727     66441    212980
+  mono-x   :         1         2         6        18        52       146       402      1092      2938      7850     20868     55266
+  mono-y*  :         1         2         6        18        51       137       353       883      2158      5189     12328     29038   (* only when the shape is also column-convex in y)
+  either   :         1         2         6        19        57       166       465      1274      3425      9097     23959     62764
+  not-mono-x:         0         0         0         1         9        50       227       925      3528     12877     45573    157714
+
+  check: colconv head vs GF2-STIFFNESS.md:176 (1,2,6,19,61,196,629,2017,6466,20727,66441,212980): PASS
+  check: mono-x == a_n(D u D^rev) : PASS
+
+  growth-rate ratios a_n / a_{n-1} (NOT a proof of the limit; [E] trend only):
+    mono-x (= D u D^rev)   n=8..12 : 2.7164 2.6905 2.6719 2.6583 2.6484
+    either-slicing         n=8..12 : 2.7398 2.6884 2.6561 2.6337 2.6196
+    colconv (all)          n=8..12 : 3.2067 3.2058 3.2055 3.2055 3.2056
+  e = 2.718282 ;  phi^2 = 2.618034
+
+==============================================================================
+done in 3.0 s   single job, no MC, no randomness

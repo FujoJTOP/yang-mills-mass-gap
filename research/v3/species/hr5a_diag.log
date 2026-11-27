@@ -1,0 +1,49 @@
+== [A] Haar exact ==
+  <a0>=-8.91e-18  <phi^2>=11.159472535   closed 4pi^2/3-2=11.159472535
+  Var(xi_3)=3.719824178   (4pi^2-6)/9=3.719824178   1/Var=0.268830
+  Var(a) per comp (iid) = Var(xi_3) = 3.719824178  (same number)
+  quadrature err = 4.44e-16
+
+== [B] one-link plaquette g(beta)=I2/I1 vs given plaq ==
+  beta=0.5: g(beta)=0.123718  given=0.1234  diff=+3.18e-04  rel=+2.58e-03
+  beta=1.5: g(beta)=0.344144  given=0.3619  diff=-1.78e-02  rel=-4.91e-02
+  beta=2.5: g(beta)=0.507195  given=0.6526  diff=-1.45e-01  rel=-2.23e-01
+
+== [C] 1D marginal: Var(xi_3), symmetrized version ==
+    kappa     g(k)       Var   Var_sym    <phi2>
+     0.00  -0.0000    3.7198    3.7198   11.1595
+     0.50   0.1237    3.1482    3.7352    9.4447
+     1.00   0.2402    2.6365    3.7789    7.9095
+     1.50   0.3441    2.2013    3.8443    6.6039
+     2.50   0.5072    1.5618    4.0087    4.6854
+     3.00   0.5679    1.3383    4.0949    4.0149
+     4.00   0.6580    1.0228    4.2577    3.0685
+     6.00   0.7627    0.6822    4.5222    2.0465
+    10.00   0.8542    0.4062    4.8652    1.2187
+
+== [D] beta -> kappa (plaq-matched) and predicted Var(a) ==
+   beta      k*   g(k*)   Var(k*) Varsym(k*)    kMFT   VarMFT
+   0.50  0.4987  0.1234    3.1497     3.7351   0.625   3.0142
+   1.50  1.5932  0.3619    2.1290     3.8582   4.199   0.9753
+   2.50  3.9269  0.6526    1.0413     4.2464  10.891   0.3726
+
+== [E] beta=kappa (literal one-link Wilson marginal) ==
+  beta=0.5: Var=3.1482  Var_sym=3.7352  g(beta)=0.1237
+  beta=1.5: Var=2.2013  Var_sym=3.8443  g(beta)=0.3441
+  beta=2.5: Var=1.5618  Var_sym=4.0087  g(beta)=0.5072
+
+== [F] measured chi_flat (GY3) vs Haar floor ==
+  beta=0.5: wmean=3.6484+-0.0656  spread=0.244 dev/Haar=-0.0192
+  beta=1.5: wmean=3.6844+-0.0639  spread=0.256 dev/Haar=-0.0095
+  beta=2.5: wmean=3.7458+-0.0554  spread=0.085 dev/Haar=+0.0070
+
+== [G] predicted ratio Var(2.5)/Var(0.5) vs measured ==
+  measured: 3.6484 -> 3.7458  ratio=1.0267  rel=+0.0267  se(ratio)~0.0239
+  A  k=beta       : 3.1482 -> 1.5618  ratio=0.4961  rel=-0.5039
+  A' k=plaq       : 3.1497 -> 1.0413  ratio=0.3306  rel=-0.6694
+  B  sym k=beta   : 3.7352 -> 4.0087  ratio=1.0732  rel=+0.0732
+  B' sym k=plaq   : 3.7351 -> 4.2464  ratio=1.1369  rel=+0.1369
+  C  one-plaquette: 3.7198 -> 3.7198  ratio=1.0000  rel=+0.0000
+  D  MFT k=6b u^3 : 3.0142 -> 0.3726  ratio=0.1236  rel=-0.8764
+
+  ranges at beta=2.5: A..B -> 1.562 .. 4.009  (sym big-k limit 2*pi^2/3 = 6.5797)

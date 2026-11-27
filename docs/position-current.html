@@ -537,12 +537,125 @@
 
 
 <footer>
-  位置图 · 第 238 轮 · 生成于 <span class="mono">D:\Dev\math\docs\position-round10.html</span><br>
+  位置图 · 第 239 轮 · 生成于 <span class="mono">D:\Dev\math\docs\position-round10.html</span><br>
   依据：<span class="mono">research/v3/species/</span> 下的 <span class="mono">Z01 / Z05 / Z06–Z12 / Y01 / Y04–Y06 / W95A–W95E / V01–V06</span> · 详细台账见 <span class="mono">LOOP-RUNBOOK.md</span>（460+ KB）<br>
   标签：<span class="lv T">[T]</span> 真定理 · <span class="lv C">[C]</span> 条件/待重证 · <span class="lv E">[E]</span> 数值证据 · <span class="lv NG">[NG]</span> no-go · <span class="lv O">[O]</span> 未读原文
+<!-- ============ 第 239 轮：形态定理 + 模数清点（地图） ============ -->
+<section id="r239">
+<h2><span class="n">239</span> 第 239 轮 · 形态定理与模数清点</h2>
+
+<p class="lead">本轮不产生新地板。它产生三件东西：<b>一条形态定理</b>（残余结构里没有“靶以下”的格子）、<b>一条模数定理</b>（分界在量词序，不在工具）、以及<b>一份四类模数的完整清点</b>。三者合起来，把“还差什么”从一句感觉变成一张可查的表。</p>
+
+<h3>239.1 目标链：每一节断在哪（带数）</h3>
+<table>
+<tr><th>节</th><th>状态</th><th>断在哪</th><th>数</th></tr>
+<tr><td>桥 <code>Δ_cont ≥ liminf Δ_a</code></td><td><code>[T]</code></td><td>不产生地板，只搬运；β-长度 0</td><td>COV = 0</td></tr>
+<tr><td><code>I1</code>（窗内 <code>f₁² ≥ r₀</code>）</td><td><code>[T]</code> <b>mod (R1)/(C̄)</b></td><td>窗与靶的 β 域交为空（差 5.516×）；<b>且 <code>C̄=1</code> 从未被证明</b>——<code>A01-CBAR</code> 只把 <code>C̄</code> 夹到 <code>[1,20]</code>，取上界则 <code>ĈC̄=80&gt;7.0633</code> ⇒ <code>1/48</code> 保不住、窗缩 11.3×；<code>GU1-I1T:290</code> 自陈"本轮未重推 (R1) 的 §2–4"</td><td>差 <b>5.516×</b>（内层再乘 C̄ 不定）</td></tr>
+<tr><td><code>(NEW)</code></td><td><code>[NG]</code></td><td>残余 = 靶本身（见 239.2）</td><td>—</td></tr>
+<tr><td><code>(RB)</code></td><td><b>假</b></td><td>T4 尖常数 = 1；<code>∃ι_a</code> 被 Gribov 封死；量的是图表的 Gribov 歧义，不是谱</td><td><code>|aA| ≈ 1.26</code> 即吃光余量</td></tr>
+<tr><td><code>(EDGE-ATOM)</code></td><td><code>[NG]</code></td><td>死在量词层（固定 β vs <code>a→0</code>）</td><td>—</td></tr>
+<tr><td><code>(RG-MONO)</code></td><td><code>[NG]</code></td><td>方向朝外（粗 ≥ 细）</td><td>自由场硬杀：<code>a²m³/24</code></td></tr>
+<tr><td>CPB 关闭</td><td><code>[J]</code></td><td><code>γ_ent ≥ 2.632</code>（不是 1）；<code>c₀ = 1</code> 与仓内 <code>m/√σ = 3.405(21)</code> 不相容</td><td>差 <b>11.6×</b></td></tr>
+<tr><td><b>合计覆盖率</b></td><td>—</td><td>—</td><td><b>0 / 0.604167 = 0%</b></td></tr>
+</table>
+
+<h3>239.2 ★ 形态定理（本轮最重要的产出）</h3>
+<pre>
+任一 R（R ⟹ (NEW)）：
+    R ⟺ (NEW)        → 换名，零内容
+    R ⟹ (NEW) 严格    → 比靶更难
+【无第三格】                      （ge3，两行，[T]）
+
+推论 1：残余结构里【没有“靶以下”的格子】。
+推论 2：“严格弱于靶的充分条件”＝空集：
+        若 W 弱于 T（T⟹W 且 W⇏T）且 W 又充分（W⟹T）⇒ W⟺T ⇒ 不弱。
+</pre>
+<p><b>后果（必须写在最显眼处）：</b>“找一个严格弱于靶的充分条件”是一个<b>逻辑上不存在</b>的目标。该问的是<b>靶的一个可证的等价形式</b>，不是“更弱的形式”。本项目有一半派工在此空集上。</p>
+
+<h3>239.3 ★ 模数定理（<code>gh1</code>）：分界在量词序，不在工具</h3>
+<pre>
+(S) ∀(L,a,β&gt;0):   R_t &gt; 1                    ← 严格不等式，无常数（开条件）
+(E) ∃Δ₀&gt;0 ∀(L,a):  log R_t ≥ (aΛ)Δ₀          ← 均匀模数（闭条件）
+
+一行判据：  ∀ 在严格不等式外面 = 【结构】
+           ∃常数 ∀           = 【估计】
+
+结构性论证（PF / 变分 / 正性 / 凸性 / KL）只能产开条件
+⇒ 它们全说“谁严格大于谁”，没有一处能说出“距离”
+
+no-go 反例：4D 自由 U(1) 满足全部结构前提（紧群/紧配置空间/0≤T≤1/λ₁=1 单重/RP/离散谱），
+           而 m = 0  ⇒  只消费这些前提的论证【推不出】(E)
+</pre>
+<p><b>⇒ 今晚 30 次失败是同一个失败被重述 30 遍：造开条件的机器，去攻一个需要闭条件的目标。</b></p>
+
+<h3>239.4 带模数的输入：只有四类，没有第五类</h3>
+<table>
+<tr><th>#</th><th>形态</th><th>状态</th></tr>
+<tr><td>①</td><td><code>Λ &gt; 0</code></td><td><code>[C]</code>，只给标度</td></tr>
+<tr><td>②</td><td>一致 Poincaré / LSI</td><td><b>墙</b>：Savvidy <code>λ_min = −g|B| &lt; 0</code> ⇒ 前件假</td></tr>
+<tr><td>③</td><td>振幅地板 <code>f₁² ≥ r₀</code></td><td>窗内 <code>[T]</code> / 窗外 <code>[O]</code></td></tr>
+<tr><td>④</td><td><code>Δ</code> 的界（Birkhoff–Hopf）</td><td>预期 vacuous</td></tr>
+</table>
+<p>正在攻的<b>第五类</b>候选：反常量（<code>gx1</code>）· 输运-熵 <code>T₂</code> / 局部化，只要求边际凸（<code>gx2</code>）· 求和规则把 <code>r₀</code> 定成数（<code>gx3</code>）。</p>
+
+<h3>239.5 死路台账（每条一个数）</h3>
+<table>
+<tr><th>死路</th><th>死因</th></tr>
+<tr><td><code>(F)</code> / Grönwall 机器</td><td>假定 ⟺ 结论（<code>∃C: |F′|≤C|F| ⟺ F&gt;0</code>）</td></tr>
+<tr><td>RP 作为项目债务</td><td>定理 B 齐次性 + OS'78 ⇒ 是 Wilson 测度的直接性质</td></tr>
+<tr><td>6 物种 + 13 张牌 + 14 形态</td><td>全 <code>[NG]</code>；过四模型者必是 <code>m</code> 的重标（四模型 = 2 bit）</td></tr>
+<tr><td><code>(SM-2)</code></td><td>转录错：<code>gk2</code> 要“有界”，被写成“消失”；<code>k=2 ⇏ δ₁=0</code>（2D：<code>δ₁=Δ³/24</code>）</td></tr>
+<tr><td><code>(RB)</code></td><td>T4 尖常数 <b>1</b>（不是 0.9573）；Gribov 封死；量错对象</td></tr>
+<tr><td><code>k = M</code></td><td>RP 下封在 <b>2</b>（<code>C_M = ∞</code> for <code>M≥2</code>）</td></tr>
+<tr><td>表面刚度 <code>cost ≥ σ|C|+κ·curv</code></td><td>Wilson 逐片可加 ⇒ 形状盲；L-tromino 一票否决（<code>κ=0</code>）</td></tr>
+<tr><td>“计数 → m”（Cauchy–Hadamard）</td><td>计数半径 ∞ vs 解析半径 1/2（两片相邻 plaquette）</td></tr>
+<tr><td><code>m ≥ c√σ</code></td><td>换名 + 空洞；定理 SS：无泛函 <code>F(带电) ≤ m_n</code></td></tr>
+<tr><td>CPB 的 <code>μ_eff ≤ e</code></td><td>类是 4D 动物（<code>Δ=20</code>），<code>μ ≥ 13.90 &gt; e</code>（<b>5.1×</b>）</td></tr>
+<tr><td>“一个 bit”</td><td>镜像对称 <code>R: y↦−y</code> ⇒ 字面形式假；且存在两条互不包含的过线方式（<code>φ²</code> 与 <code>K≤1</code>）</td></tr>
+<tr><td><code>m/Λ</code> 单调性</td><td><code>L</code> 侧方向反（给上界）；<b>M6 假阳性</b>（锚 <code>L=2</code> 给 1.000 而 <code>m(∞)=0</code>）</td></tr>
+<tr><td><code>R_t = sup σ(T_L)</code></td><td>字面假（恒等于 1）；正确对象是 <code>1/λ₂</code></td></tr>
+</table>
+
+<h3>239.6 四模型试金石（本轮新工具逐个过）</h3>
+<table>
+<tr><th>工具</th><th>自由场</th><th>2D</th><th>M6</th><th>单片</th><th>判</th></tr>
+<tr><td>T1（时间钉扎）：RP ⇒ <code>k₀^{shell} ≤ 2</code></td><td>✓（真空态）</td><td>✗ 正确失败</td><td>N/A</td><td>N/A</td><td><b>过</b></td></tr>
+<tr><td><code>R_t &gt; 1</code>（PF，零估计）</td><td><b>假阳</b></td><td>真</td><td><b>假阳</b></td><td>静默</td><td><b>不过</b></td></tr>
+<tr><td><code>μ(𝒟) = φ²</code>（Sturm 精确）</td><td>全盲</td><td>零信息</td><td>无定义</td><td>退化</td><td>不过（常数机）</td></tr>
+<tr><td><code>C4′</code>：<code>k_T2 = min(2M,p)</code></td><td>✓ 2,4,6,8,10</td><td>✓</td><td>—</td><td>—</td><td><b>过</b></td></tr>
+<tr><td>T4（紧致性扇区）</td><td>缺紧链接</td><td>缺 <code>Φ≠0</code></td><td>缺全部</td><td>缺 transfer</td><td><b>需第五酸测</b>（cut-locus）</td></tr>
+</table>
+
+<h3>239.7 限定（缺一不可）</h3>
+<p>β：已证窗 <code>β_A &lt; 3.777e−3</code>（与靶域 <code>1/48</code> 差 <b>5.516×</b>）· 唯一隙测点 <code>β = 2.5</code>，而 <code>ξ/a = 0.586 &lt; 1</code> ⇒ 无平台 · <code>β ≥ 6</code> 时 <code>S/N(2) &lt; 1</code> · <code>L ≤ 12</code> · <b>全部为固定 L 的结论，未取连续极限</b> · <code>λ_Ur·u ≥ 1.6103</code> 对判据 <code>1.6</code>，余量仅 <b>0.64%</b>（脆）。</p>
+
+<h3>239.8 本轮勘误（30 条中最贵的 8 条）</h3>
+<table>
+<tr><th>#</th><th>勘误</th><th>数</th></tr>
+<tr><td>E1</td><td><code>γ_ent = 1</code> → <code>≥ 2.632</code>（<code>GV2</code> 错 2.6–3.5 倍）</td><td>窗 2.5986 被吃穿 1.33–1.75；且 <code>ρ &gt; 1</code>，级数发散</td></tr>
+<tr><td>E2</td><td><code>2p/(p+2)</code> 低报一个整数 → <code>k_T2 = min(2M, p)</code></td><td><code>p=2</code> 处 <b>2 vs 1</b></td></tr>
+<tr><td>E3</td><td><code>ε_a^{form}</code> 是 S2 的 <b>0.7657</b>，不是 S1 的 0.5947</td><td>余量 0.2343 不是 0.4053</td></tr>
+<tr><td>E4</td><td><code>R_t = sup σ(T_L)</code> 字面假（=1）；正确是 <code>1/λ₂</code></td><td>口径级，决定一切</td></tr>
+<tr><td>E5</td><td><code>(SM-2)</code> 是转录错（“消失”应为“有界”）</td><td>2D 给 <code>δ₁ = Δ³/24 ≠ 0</code></td></tr>
+<tr><td>E6</td><td><code>c₀ = 1</code> 与仓内 <code>m/√σ = 3.405(21)</code> 不相容</td><td>差 <b>11.6×</b></td></tr>
+<tr><td>E7</td><td><code>B04:98</code> 的 <code>×289</code> 混 SU(2) 实测与 SU(3) 两圈投影</td><td>不可引用</td></tr>
+<tr><td>E8</td><td><code>λ_Ur ≥ 2.5766</code>（四壁管族闭式）</td><td>对判据 1.6 余量仅 0.64%</td></tr>
+</table>
+
+<h3>239.9 Clay</h3>
+<p><b><code>Clay = 0%</code></b>（60+ 轮不变）。本轮变的不是百分比，是“0%”的含金量：</p>
+<pre>
+之前：不知道差什么
+现在：知道差的不是“证明”，是【模数】；
+      而模数的形态只清点到四类，第五类在攻；
+      且知道“严格弱于靶的充分条件”是空集 —— 那一半派工从一开始就无效。
+</pre>
+<p><b>下一个靶（唯一）：</b>第五类带模数的输入。三条在攻——反常量 / 局部化（只要求边际凸，可能绕开 Savvidy）/ 求和规则定 <code>r₀</code>。</p>
+</section>
+
 </footer>
 <div class="card">
-  <h3>第 238 轮：<code>O1</code> 证成、<code>O3</code> 空洞 ⇒ <b>CPB 关闭升为条件式 <code>[T]</code></b>；软模缺口改名 <b><code>(RB)</code></b> <span class="lv T">[T]</span></h3>
+  <h3>第 239 轮：<code>O1</code> 证成、<code>O3</code> 空洞 ⇒ <b>CPB 关闭升为条件式 <code>[T]</code></b>；软模缺口改名 <b><code>(RB)</code></b> <span class="lv T">[T]</span></h3>
   <div class="note">
     <b>① <code>O1</code>（<code>n≥7</code> 号定理）→ <code>[T]</code>，<u>对所有 <code>n</code></u>。</b>
     <code>φ^U(Γ) = (−1)^{n−1}·N(G_Γ)</code>，<code>N(G_Γ) := #{生成树 T ⊆ G_Γ : T 不含任何破圈} ∈ ℤ_{≥1}</code>。证明 = <b>删-缩归纳</b>（<code>μ=μ(G−e)−μ(G/e)</code> 非桥 / <code>μ(G₁)μ(G₂)</code> 桥），<b>只消费「<code>G_Γ</code> 是有限连通图」</b>——与维度、<code>Δ=20</code>、plaquette 结构全无关。关键一步：<code>e</code> 必须取<b>最大边</b>（否则收缩改变 <code>min</code>，映射非双射）。本质 = Whitney 1932 破圈定理，DOI <code>10.1090/S0002-9904-1932-05460-X</code>（书目级核对）。<b>让渡</b>：只证号不证幅度 ⇒ <code>λ_Ur</code> 夹逼与 <code>κ_c(n)</code> 表<b>一个数字不变</b>。<b>收窄</b>：「两种活度约定都成立」是<b>窗口事实</b>——<code>f_e=u</code> 在 <code>u&gt;u_*</code> 必然翻号（<code>C₃: 3u²−u³</code>），实测 <code>u_* ≥ 2.596072</code>（<code>K₄</code>）⇒ <b>不能外推到 <code>n≥7</code></b>。

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>距离 Clay</title>
+<style>
+  :root{
+    --bg:#f2f3f5; --panel:#ffffff; --ink:#12141a; --muted:#5b6068;
+    --line:#d9dce1; --line-soft:#e7e9ec;
+    --accent:#0b5fd0; --accent-ink:#0a4ea8; --accent-wash:#e8f0fc;
+    --r:2px;
+    --mono:ui-monospace,"SF Mono","Cascadia Code",Consolas,"Liberation Mono",monospace;
+    --sans:ui-sans-serif,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:var(--sans)}
+  body{-webkit-font-smoothing:antialiased;line-height:1.6}
+  .wrap{max-width:920px;margin:0 auto;padding:72px 28px 96px}
+  @media(max-width:640px){.wrap{padding:44px 18px 72px}}
+
+  header{border-bottom:1px solid var(--line);padding-bottom:28px;margin-bottom:8px}
+  h1{font-size:clamp(34px,6vw,58px);line-height:1.02;letter-spacing:-.035em;font-weight:650;margin:0 0 14px}
+  .sub{color:var(--muted);font-size:15px;max-width:64ch;margin:0}
+  .sub code{font-family:var(--mono);font-size:.92em;color:var(--ink);background:var(--line-soft);padding:1px 5px;border-radius:var(--r)}
+
+  section{padding-top:56px}
+  .blk + .blk{border-top:1px solid var(--line);margin-top:56px;padding-top:56px}
+  h2{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin:0 0 8px}
+  .lede{font-size:19px;line-height:1.5;letter-spacing:-.011em;margin:0 0 28px;max-width:62ch}
+  .lede b{font-weight:650}
+
+  .rows{margin:0;padding:0;list-style:none}
+  .rows li{display:grid;grid-template-columns:1fr auto;gap:6px 18px;padding:13px 0;border-bottom:1px solid var(--line-soft);align-items:baseline}
+  .rows li:first-child{border-top:1px solid var(--line-soft)}
+  .rows .t{font-size:15.5px;line-height:1.45}
+  .rows .t code,.m code{font-family:var(--mono);font-size:.9em;background:var(--line-soft);padding:1px 5px;border-radius:var(--r)}
+  .rows .t em{font-style:italic;color:var(--muted)}
+
+  .chip{font-family:var(--mono);font-size:11px;letter-spacing:.02em;padding:2px 7px;border-radius:var(--r);white-space:nowrap;line-height:1.5}
+  .chip.t{background:var(--accent);color:#fff}
+  .chip.c{background:var(--accent-wash);color:var(--accent-ink)}
+  .chip.o{color:var(--accent-ink);box-shadow:inset 0 0 0 1px var(--accent);background:transparent}
+  .chip.n{background:var(--line-soft);color:var(--muted)}
+
+  .mods{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+  .mods li{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;display:grid;grid-template-columns:auto 1fr auto;gap:4px 14px;align-items:start}
+  .mods .num{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px}
+  .mods .body{font-size:15.5px;line-height:1.45}
+  .mods .body small{display:block;color:var(--muted);font-size:13.5px;margin-top:5px}
+  .mods .body code{font-family:var(--mono);font-size:.9em}
+  .mods li.live{border-color:var(--accent)}
+  @media(max-width:640px){.mods li{grid-template-columns:auto 1fr}.mods .chip{grid-column:2}}
+
+  table{width:100%;border-collapse:collapse;font-size:14.5px;margin-top:4px}
+  th{text-align:left;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);padding:0 12px 10px 0;border-bottom:1px solid var(--line)}
+  td{padding:11px 12px 11px 0;border-bottom:1px solid var(--line-soft);vertical-align:top;line-height:1.45}
+  td:last-child,th:last-child{padding-right:0}
+  td code{font-family:var(--mono);font-size:.88em;background:var(--line-soft);padding:1px 4px;border-radius:var(--r)}
+  .next-hand{color:var(--muted)}
+  @media(max-width:640px){table{font-size:13.5px}}
+
+  .grid6{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0;padding:0;list-style:none}
+  @media(max-width:720px){.grid6{grid-template-columns:1fr}}
+  .grid6 li{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+  .grid6 .k{font-family:var(--mono);font-size:12.5px;color:var(--accent-ink);display:block;margin-bottom:5px}
+  .grid6 .d{font-size:14.5px;line-height:1.45;color:var(--ink)}
+  .grid6 .w{font-size:13px;color:var(--muted);margin-top:6px;display:block}
+
+  .eng{list-style:none;padding:0;margin:22px 0 0}
+  .eng li{padding:12px 0;border-bottom:1px solid var(--line-soft);font-size:15px;display:grid;grid-template-columns:auto 1fr;gap:14px}
+  .eng li:first-child{border-top:1px solid var(--line-soft)}
+  .eng .tag{font-family:var(--mono);font-size:12px;color:var(--muted);padding-top:3px}
+
+  .rule{background:var(--panel);border:1px solid var(--accent);border-radius:var(--r);padding:14px 18px;margin-top:26px;font-size:14.5px;line-height:1.55}
+  .rule b{font-weight:650}
+  .rule code{font-family:var(--mono);font-size:.9em}
+
+  footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:10px 26px;align-items:baseline;font-size:13.5px;color:var(--muted)}
+  footer .clay{font-family:var(--mono);font-size:13px;background:var(--accent-wash);color:var(--accent-ink);padding:3px 9px;border-radius:var(--r)}
+  footer code{font-family:var(--mono);font-size:12.5px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>距离 Clay</h1>
+  <p class="sub">4D 纯 SU(N) Yang–Mills 质量间隙 · 单一真源文件 · 每次有结论变化直接改本页，不另存快照。<br>定理只有两种状态：<strong>已证 / 未证</strong>。本页不给进度百分比，只报哪些命题已证、缺哪一步、那一步差什么。</p>
+</header>
+
+<section>
+
+<!-- ============ 1 完成了什么 ============ -->
+<div class="blk">
+  <h2>完成了什么</h2>
+  <p class="lede">靶被拆成三步，其中<strong>两步已证</strong>；另外十九项结构性结果成立，它们把搜索空间一路压窄。</p>
+
+  <ol class="rows">
+    <li><span class="t"><b>桥</b>：<code>Δ_cont ≥ liminf_a Δ_a</code>，Lean 机器核过 <code>gap_ge_liminf</code></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>号定理</b>：<code>φ^U(Γ) = (−1)^{n−1} N(G_Γ)</code>，<code>N</code> 为不含破圈的生成树数，<code>≥1</code>，<em>对所有 n</em></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>时间钉扎 T1</b>：时间核 RP <code>⇒ c₄&lt;0 ⇒ k₀^{shell} ≤ 2</code>，任意形状 / 维数 / 紧群 / 局域性</span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>RP 序列闭合</b>：任何到连续极限的 RP 路线都强制 <code>k₀^{shell} ≤ 2</code></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>推前类</b>：<code>k₀^{shell} = 2</code> 精确，尖常数 <code>1/32</code></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b><code>C4′</code></b>：<code>k_T2 = min(2M, p)</code>，复现精确塔 <code>2, 4, 6, 8, 10</code></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>定理 SS</b>：不存在泛函 <code>F</code> 使 <code>F(带电数据) ≤ m_n</code></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b><code>I1</code></b>：窗内 <code>f₁² ≥ r₀</code>，窗 <code>β_A &lt; 3.777e−3</code>，<em>条件于 (R1)/(C̄)</em></span><span class="chip c">[T] mod C̄</span></li>
+    <li><span class="t"><b>定理 COST</b>：<code>ε&lt;1</code> 子类上 <code>(NEW)</code> 成立，<b>不用 H1</b></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>RP 是 Wilson 的直接性质</b>：齐次性定理 + OS'78，不再是项目债务</span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>常数钉死</b>：<code>γ_ent ≥ 2.632</code>、<code>μ_CPB ≥ 13.90</code>、<code>μ(𝒟) = φ²</code>、T4 尖常数 <code>1</code></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b><code>k ≡ j</code></b>：<code>k₀ = j(2+m_KL)</code>，分子与分母不独立</span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>绕过 <code>a→0</code> 的等式</b>：<code>m = (1/a) · log R_t</code>，只需固定 L 的紧 <code>T_L</code></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>形态定理</b>：任一 <code>R ⟹ (NEW)</code> 或与靶等价、或严格更强，无第三格</span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>模数定理</b>：结构性论证只产开条件；反例为 4D 自由 U(1)</span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>矩-隔离引理</b>：<code>f₁² ≥ (Λ★M₀ − M₁)/(Λ★ − m₁²)</code>，取正 <code>⟺ Λ★ &gt; M₁/M₀</code>。<em>只单向：引理正性 <code>⟹</code> 隔离，反向假</em>。反例 <code>ν = δ₀ + δ₁ + (1/100)δ₁₀₀₀</code>：<code>Λ★=1</code>、<code>m₁²=0</code>、隔离余量 <code>1&gt;0</code>、<code>f₁²=1</code>，而引理下界 <code>−8.99</code></span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>残数盲引理</b>：<code>G(t) ≤ Ce^{−λt}</code> 只给 <code>supp μ ⊂ [λ,∞)</code>，与重量无关。凡只给上界的机器，都跨不到地板</span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b>唯一结构不等式</b>：协方差 + Cauchy–Schwarz 给 <code>0 ≤ f₁² ≤ Var(O)</code>，方向恒为上界</span><span class="chip t">[T]</span></li>
+    <li><span class="t"><b><code>f₁²(β)</code> 实解析</b>：PF + Kato，靶窗整个落在解析域内；而最大模型估计对任何解析函数恒假</span><span class="chip t">[T]</span></li>
+  </ol>
+</div>
+
+<!-- ============ 2 还差什么 ============ -->
+<div class="blk">
+  <h2>还差什么</h2>
+  <p class="lede">缺的是一条 <strong><code>(L,a)</code>-一致的下界</strong>。六路独立收敛之后，它有<strong>三个同强的名字</strong>，而第一个至今没有一路真正攻过。</p>
+
+  <ul class="mods">
+    <li class="live">
+      <span class="num">H1</span>
+      <span class="body"><code>χ</code> 在 <code>(L,a)</code> 上一致有界<small>已判 <code>[NG]</code>，附六个具名证书。<b>三处必须记的更正</b>：其一，<code>χ ≤ (1−c)/λ</code> 不是 <code>H1</code> 的等价改写，而是 <code>H1</code> 加两个合取项（高斯识别 <code>S=1/Var(a)</code> 与缺陷引理 <code>η≤c</code>），所以它<b>强于</b> <code>H1</code>；<code>c</code> 在存在读法下可被 <code>λ</code> 吸收，零内容。其二，裸形 <code>χ ≤ 1/λ</code> 在 <code>a</code>-一致读法下<b>量纲错</b>（裸 <code>χ ~ a⁻⁴</code>），必须用比值形 <code>G″_a/a² ≥ Δ₀²</code>。其三，<b>六路收敛在名字上，不在内容上</b>：一条相等、两条严格更强、三条不触及。<br><br><b>统一死因</b>：<code>H1</code> 说的是 <code>ν</code> 在 0 附近的<b>支撑</b>，而仓内全部工具通过<b>积分</b>读 <code>ν</code>（矩按 Schur-凹看不见支撑底、正性只压非对角、逐点曲率点值不等于 <code>ess inf</code>）。偷渡点正是 <code>1/χ = 调和平均</code> 这条恒等式。</small></span>
+      <span class="chip n">[NG]</span>
+    </li>
+    <li>
+      <span class="num">I2</span>
+      <span class="body">隔离 <code>Λ★ &gt; m₁²</code><small>对象是 <code>¼trF²</code> 的连通 KL 测度，<b>不是 <code>H</code> 的谱</b>。<b>三处强度必须记准</b>：其一，它相对原子地板 <code>I1</code> 严格强（<code>I2⇒I1</code> 而 <code>I1⇏I2</code>），这是它唯一严格强于的对象。其二，它相对 <b>Clay</b> 是<b>不可比</b>（正交轴）：M6 上 <code>I2</code> 真而 <code>m=0</code>，2D 上隙正而 <code>ν≡0</code>；此前记成"Clay 上一级"是误标。其三，地板要的是加强版 <code>I2^W: Λ★ &gt; R̄ := M₁/M₀</code>，<code>I2</code> 只给 <code>f₁²&gt;0</code>。<br><br><b>数据侧已关闭</b>：有限矩 / 正性 / Hankel / Stieltjes 数据都不能下界 <code>Λ★−m₁²</code>，这是具名 no-go；有限 <code>t</code> 的关联函数正属此类。另有一处对象错位：<code>s₂</code> 是<b>源</b>的第二支撑点，恒有 <code>s₂ ≥ λ₂</code>，而变分第二本征值与它无定向。</small></span>
+      <span class="chip o">在攻</span>
+    </li>
+    <li>
+      <span class="num">CP</span>
+      <span class="body"><code>(CP)</code> 单一禁闭相<small>已判：它有三种命题混写。<b>换名段</b> <code>Ω ≥ c</code> 与靶逐字同一；<b>假等价段</b> <code>Ω=1 ⇔ (CP)</code> 方向反了，X 模型与 2D YM 各给一个反例；<b>加码段</b> <code>I1∧I2</code> 在 <code>I1⟺I2</code> 时塌成靶的 <code>∀β</code> 版，不塌时缺 <code>IN-11</code> 连隙都不蕴含。唯一非靶的 <code>[CP-a]</code> 被蕴含且酸测空，贡献恒为零。</small></span>
+      <span class="chip n">[NG] 作路线</span>
+    </li>
+  </ul>
+
+  <div class="rule"><b>“只有三类模数”这句话不是 <code>[T]</code>，是候选池。</b>已查明两点。其一，表内四个成员里“独立且充分”的有 <b>0 个</b>：① 只给标度，② 逐字是靶的另一坐标（<code>m = −log λ₂ = inf supp ν</code>），③ 不充分，④ 是输出不是输入。其二，<b>至少两个仓内已判死的形态不在表内</b>：拓扑-整数类、谱盲热力学类。它们都已关闭，但也都没被表内任何一个覆盖。所以漏的是<b>表</b>，不是路：下一步应当按资格三腿重新枚举，而不是在旧表里挑。</div>
+
+  <p class="lede" style="margin-top:34px;font-size:17px;color:var(--muted)">已关闭的路，每条留一个下一手，没有一格是空的。</p>
+
+  <table>
+    <thead><tr><th style="width:27%">路</th><th style="width:33%">出口</th><th>下一手</th></tr></thead>
+    <tbody>
+      <tr><td>Grönwall 型递推</td><td>假定与结论等价</td><td class="next-hand">换成带模数的输入</td></tr>
+      <tr><td><code>(RB)</code> 型相对界</td><td>假：T4 尖常数 <code>1</code>，<code>|aA|≈1.26</code> 即吃光余量；且量的是图表歧义</td><td class="next-hand">换成规范不变的比较量</td></tr>
+      <tr><td><code>(EDGE-ATOM)</code> 座 2</td><td>卡在量词层：可证范围只在固定 <code>β</code></td><td class="next-hand">钉死口径 <code>t₀</code></td></tr>
+      <tr><td><code>(RG-MONO)</code></td><td>方向朝外，粗 ≥ 细</td><td class="next-hand">改细 → 粗的搬运</td></tr>
+      <tr><td><code>k = M</code></td><td>RP 下封在 <code>2</code></td><td class="next-hand"><code>k&gt;1</code> 需离开正锥，有先例的只有 on-shell</td></tr>
+      <tr><td>CPB 的 <code>μ_eff ≤ e</code></td><td>类是 4D 动物，<code>μ ≥ 13.90</code>，超 <code>5.11×</code></td><td class="next-hand">唯一可动的是权重槽 <code>c₀</code></td></tr>
+      <tr><td><code>(UC-4)</code> 的窗</td><td>两端关闭；有界窗覆盖不了射线</td><td class="next-hand">弱耦合端找独立关系</td></tr>
+      <tr><td><code>O-chan</code></td><td>独立第三条件，载体侧与理论侧类型错位</td><td class="next-hand">载体侧单独的公理</td></tr>
+      <tr><td>反常量作模数</td><td>输出类型里没有数</td><td class="next-hand">换模数来源</td></tr>
+      <tr><td>跨扇区求和规则</td><td>只跑中性谱，带电权恒为零</td><td class="next-hand">带电完备性</td></tr>
+      <tr><td><b>③ <code>f₁² ≥ r₀</code> 作路线</b></td><td><b>不必要且不充分</b>：2D 有隙而 <code>f₁²≡0</code>，M6 的 <code>f₁²&gt;0</code> 而 <code>m=0</code>。它的真身份是 <code>0^{++}</code> 道束缚单粒子的诊断量</td><td class="next-hand">收敛到上面三个名字</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- ============ 3 接下来一步 ============ -->
+<div class="blk">
+  <h2>接下来一步</h2>
+  <p class="lede">六路已派出，对准上面三个名字，外加一路查清点本身。每一路只许交 <code>[T]</code> 或 <code>[NG]</code>。</p>
+
+  <ul class="grid6">
+    <li><span class="k">h1 本体 <span class="chip n">[NG]</span></span><span class="d">三攻法分别死在：变分方向对而阶数错（min-max 在阶 2，<code>D</code> 是阶 1 导数的二阶矩）、正性符号反（FKG/Ginibre 产 <code>Cov≥0</code> 把 <code>G″</code> 往下压 = anti-gap）、反例即靶反面（<code>¬H1 ⟹ ¬</code>一致隙）。</span><span class="w">下一手三条并行：① <b>4D 纯 YM 无光模定理</b>（不存在 <code>m₁²(L) ≲ L⁻²</code> 且 <code>f₁²</code> 有正下界的族），这是六路全没用过的输入槽；② <code>ess sup η</code> 的可证上界，入口 <code>2g²/λ₄ &lt; S_bare</code>；③ 纤维隙 <code>K ⪰ γI</code>。</span></li>
+    <li><span class="k">H1 是否由 I2 给出 <span class="chip n">[NG]</span></span><span class="d">两向皆假，所以两者<b>不可比</b>。三条死因：<b>符号反</b>（<code>χ = f₁²/m₁² + ∫_{[Λ★,∞)}s⁻¹dν</code>，<code>f₁²</code> 带正号，引理把 <code>H1</code> 推远）；<b>阈值错位</b>（引理正性要 <code>Λ★ &gt; M₁/M₀</code>，严格强于 <code>Λ★ &gt; m₁²</code>）；<b>平移轨道</b>（<code>I2</code> 平移不变而 <code>χ</code> 随之发散的族存在：<code>I2</code> 余量恒为 <code>δ</code>，<code>χ ≥ 1/t → ∞</code>）。</span><span class="w">下一手：<b>换坐标</b>。<code>H1</code> 要的是 <code>M₋₁ = ∫s⁻¹dν</code> 的<b>天花板</b>，而 <code>I2</code> 与矩阶梯 <code>{M_k}_{k≥0}</code> 对它结构上无接口。另需封住 <code>λ</code> 的读法，否则 Savvidy 上 <code>χ·λ₁ = 0.946</code> 与 <code>χ = 207</code> 并存。</span></li>
+    <li><span class="k">i2 本体 <span class="chip n">[NG]</span></span><span class="d">三攻法各具名死法：谱方法卡在 BH 界的是底隙而 <code>I2</code> 要第二隙，且二阶锥嵌套在正锥里（自由场每层都在内部）；变分只给 <code>E₂</code> 的上界，四个下界出口全堵；薄原子族<b>不反</b> <code>I2</code>（<code>Λ★=4&gt;m₁²=1</code>，余量恰 <code>3</code>），它反的是"<code>I2</code> 给地板"。</span><span class="w">下一手改写为两问：<b>Q1</b> 道序 <code>m₁ &lt; 2m_g</code>，用 Ritz 上界对两倍隙下界，变分可达，能杀掉两个残余模型；<b>Q2</b> 塔不积累，这是唯一真正难的一件，用 <code>L=6,8,10,12</code> 的 <code>m₂²−m₀²</code> 序列一票否决式判定。</span></li>
+    <li><span class="k">第二能级数据 <span class="chip n">[NG]</span></span><span class="d">六种读法都碰不到 <code>s₂</code>：五条测的是 <code>m₁</code> 或其混合、权重、比值，第六条测变分纯度。唯一名义上的第二能级量 <code>λ₂/λ₁</code> 在 5 组读数、3 套数据上全非单调，最好数据里只有 1 个区间显著（<code>0.823±0.236</code>），下一区间即 <code>−0.61±0.63</code>；<code>t=4</code> 的 20 块 JK 里有 5 块 <code>λ₂&lt;0</code>，它不是正定谱量。两个独立 <code>1.6×10⁵</code> 样本的谷一个在 <code>t=3</code>（0.880）、一个在 <code>t=4</code>（0.607），连 <code>m₁</code> 的序列形状都不可复现。</span><span class="w">下一手：E1（<code>6³×24</code>、<code>N=6×10⁵</code>、约 45 min）把可用 <code>t</code> 从 1 提到 4 至 5，用来<b>判定</b>这条读法；要拿到 <code>[T]</code> 必须另造窗口排除定理，不在数据侧。</span></li>
+    <li><span class="k">(CP) 单一相 <span class="chip n">[NG]</span></span><span class="d">三段混写：<code>Ω≥c</code> 是靶、<code>Ω=1⇔CP</code> 是假、<code>I1∧I2</code> 要么塌成靶要么缺 <code>IN-11</code>。没有第四段。</span><span class="w">下一手：<b><code>ρ² := Λ★/m₁² ≤ C²</code></b>（<code>Λ★</code> 是质量平方，不能写成 <code>Λ★ ≲ 1.5 m₁</code>）。<code>C=1.5</code> 已死：本项目自己的五个精确锚点给 <code>8/3, 8/3, 3, 4, 4</code>，4D 自身给 <code>2.438</code>，全越 <code>2.25</code>；活值 <code>C=2</code> 只是类常数。而它与矩-隔离引理合成<b>不给地板</b>——饱和两原子族对该式取等而 <code>f₁² = ε → 0</code>。</span></li>
+    <li><span class="k">清点完整性 <span class="chip n">[NG]</span></span><span class="d">“只有三类模数”成不了 <code>[T]</code>：量化对象是“所有可能的输入”，而成员资格不统一（①③ 不足、② 是靶、④ 非输入），它实际是候选池不是划分；且已确认漏两行（拓扑-整数类、谱盲热力学类）。</span><span class="w">下一手：按<b>资格三腿</b>重新枚举。<b>腿 1</b> 自由 <code>U(1)⁴</code> 必须失效；<b>腿 2</b> 形如 <code>∃c&gt;0 ∀(L,a)</code> 且 <code>c&gt;0</code> 已证，不是离散标签也不是未证正性；<b>腿 3</b> 存在已证蕴含给出 <code>m</code> 的<b>下</b>界。</span></li>
+  </ul>
+
+  <div class="rule"><b>规矩：</b>只收 <code>[T]</code> 与 <code>[NG]</code>。<code>[C]</code> 一律退回重写。每条结论必须同时给出「下一手」，因为关闭一条路只是搜索空间缩小一格，不是结论消失。</div>
+
+  <p class="lede" style="margin-top:36px;font-size:17px">另有两件工程动作，不依赖任何定理，做完就把两个争议数变成读数。</p>
+
+  <ul class="eng">
+    <li><span class="tag">A</span><span>定 <code>C̄</code>：<code>A01</code> 只把它夹到 <code>[1, 20]</code>，取上界则 <code>ĈC̄ = 80 &gt; 7.0633</code>，<code>1/48</code> 保不住。这是 <code>I1</code> 从条件 <code>[T]</code> 升到无条件的唯一路。</span></li>
+    <li><span class="tag">B</span><span>降 <code>ε</code>：变分态纯度 <code>0.269</code> 打到 <code>&lt;0.02</code>，用 HYP 涂抹加分级 blocked 算符并扩大 GEVP 基。降下来，<code>δ₁</code> 与第二能级才可测。</span></li>
+  </ul>
+</div>
+
+</section>
+
+<footer>
+  <span class="clay">状态：未证</span>
+  <span>已证 19 条列于第一段，缺的一步列于第二段，攻法列于第三段。</span>
+  <span>更新方式：直接改本文件</span>
+  <span>约束：每格都标注它依赖什么</span>
+</footer>
+
+</div>
+</body>
+</html>

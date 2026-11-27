@@ -1,0 +1,7 @@
+wave 1 : launched 8 procs  10:16:34
+wave 1 : all done in 26515s
+Traceback (most recent call last):
+  File "D:\Dev\math\research\v3\species\w7\gp9_acc_par.py", line 14, in <module>
+    tot[b,t]+=np.einsum('nct,ndt->ncd',Xb,np.roll(Xb,-t,axis=2),optimize=True)/Lt
+ValueError: non-broadcastable output operand with shape (3,3) doesn't match the broadcast shape (5000,3,3)
+wave 2 : launched 8 procs  17:38:30

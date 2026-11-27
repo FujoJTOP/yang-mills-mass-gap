@@ -1,0 +1,71 @@
+==============================================================================
+GG3-CLASS witness  |  is the CPB defect class a polyomino class?
+==============================================================================
+
+[S0] 4D plaquette graph: vertices = plaquettes, edges = shared link
+  degree of root plaquette          : 20
+  same-label (in-plane) neighbours  : 4   [((-1, 0, 0, 0), 0, 1), ((0, -1, 0, 0), 0, 1), ((0, 1, 0, 0), 0, 1), ((1, 0, 0, 0), 0, 1)]
+  other-label neighbours            : 16
+  label histogram of the 16 oblique : {(0, 2): 4, (0, 3): 4, (1, 2): 4, (1, 3): 4}
+  => Delta = 4*(2d-3) = 20  (d=4)   [matches P3B.md:26]
+
+[S1] full CPB class  a_n  (rooted connected plaquette clusters)
+  n        :        1        2        3        4        5
+  a_n      :        1       20      458    11132   280175
+  ref(GC2-H23:54 / GV2:118 / P3B:42): {1: 1, 2: 20, 3: 458, 4: 11132, 5: 280175}  => MATCH
+  ratios   :    20.0000    22.9000    24.3057    25.1684
+  (1/n)lna : 0.000000 1.497866 2.042290 2.329395 2.508634
+
+[S2] polyomino sub-class  m_n  = clusters with ONE plaquette label
+  n        :        1        2        3        4        5
+  m_n      :        1        4       18       76      315
+  A_n      :        1        2        6       19       63
+  n*A_n    :        1        4       18       76      315
+  m_n == n*A_n ?  YES  => d=2 face graph IS Z^2, sub-class IS polyominoes
+
+[S3] a_n / m_n   (how much bigger the CPB class is than the polyomino sub-class)
+  n        :            1            2            3            4            5
+  a_n/m_n  :       1.0000       5.0000      25.4444     146.4737     889.4444
+  fraction :    100.0000%     20.0000%      3.9301%      0.6827%      0.1124%
+  n=2 witness of non-planarity: 16 of 20 two-clusters are NOT in one plane
+  explicit: {(12)@0, (13)@0} shares the 1-link at 0 but spans e1,e2 and e1,e3
+            => connected in the CPB class, lying in NO single 2-plane.
+  => CPB class  STRICTLY CONTAINS the polyomino class (not equal, not disjoint).
+
+[S4] monotone chain  (all numbers are LOWER bounds for mu_CPB)
+  phi^2 = mu(D)      (directed col-convex)  GF3:24         2.618034   below e
+  1+sqrt2 = mu(D_1)  (directed col-convex)  GF3:135        2.414214   below e
+  mu(S_1)=2.831177   (two-sided |d|<=1)     GF3:140        2.831177   ABOVE e
+  mu(S_4)>=3.190001  (two-sided |d|<=4)     GF3:143        3.190001   ABOVE e
+  mu(row-convex)     [M]                    GE2:250        3.205600   ABOVE e
+  mu(planar)=4.0626  fixed polyominoes      [M]            4.062570   ABOVE e
+  a_6^(1/6)=13.9020  CPB class, hard        P3B:83        13.902000   ABOVE e
+  e^(3.458607)=31.77 CPB shell-mass median  GD2:259       31.772686   ABOVE e
+  e = 2.718282  sits BETWEEN mu(D)=phi^2 (below) and every super-class (above).
+  => the "mu <= e" PASS holds ONLY on the SMALLEST class in the chain.
+  => flipping the single "directed" bit moves mu by 0.2131 (8.14%), vs margin 0.1002 (3.83%)
+
+[S5] the criterion  mu <= e  evaluated on each class
+  class                                      mu       mu/e   verdict
+  (a) bargraph        D_0                2.0000     0.7358       YES
+  (c) D  directed col-convex             2.6180     0.9631       YES
+  (c') S_1 two-sided |d|<=1              2.8312     1.0415        NO
+  (b) S_4 two-sided |d|<=4               3.1900     1.1735        NO
+  (b) planar polyomino (hard)            2.9273     1.0769        NO
+  (b) planar polyomino (lit.)            4.0626     1.4945        NO
+  (d) CPB class a_6 hard                13.9020     5.1143        NO
+  (d) CPB class extrap median           25.7652     9.4785        NO
+  => the passing rows are exactly the classes STRICTLY CONTAINED in the CPB class.
+
+[S6] CPB-S window with the TRUE class entropy   (BianchiLemma:109-111)
+  window:  c0 >= 0.5 + gamma_ent + ln3
+  gamma = phi^2-class   ln2.618=0.962424         c0 >= 2.561036   (vs 2.598612: -0.037576)
+  gamma = planar hard   ln2.927=1.074092         c0 >= 2.672704   (vs 2.598612: +0.074092)
+  gamma = planar lit.   ln4.0626=1.401823        c0 >= 3.000435   (vs 2.598612: +0.401823)
+  gamma = CPB hard      (1/6)ln a_6 = 2.632032   c0 >= 4.230644   (vs 2.598612: +1.632032)
+  gamma = CPB shell     (1/6)ln B_6 = 2.746029   c0 >= 4.344641   (vs 2.598612: +1.746029)
+  gamma = CPB median    (M3-M8)  = 3.249025      c0 >= 4.847637   (vs 2.598612: +2.249025)
+  => phi^2 would report c0 >= 2.561036 <= 2.598612  "PASS" (margin 1.45%)
+     the CPB class needs   c0 >= 4.230644          -> understate by 1.669608
+
+exit 0

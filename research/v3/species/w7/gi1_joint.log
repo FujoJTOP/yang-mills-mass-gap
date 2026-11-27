@@ -1,0 +1,40 @@
+== S1  sector purity / no cross terms ==============================
+  nu_O0 support (s=m^2, weight): [(2.8899999999999997, 1.0), (5.289999999999999, 0.0), (5.289999999999999, 0.0)]
+  nu_Oq support (s=m^2, weight): [(2.8899999999999997, 0.0), (5.289999999999999, 0.25), (5.289999999999999, 0.0)]
+  nu_(O0+Oq)                   : [(2.8899999999999997, 1.0), (5.289999999999999, 0.25), (5.289999999999999, 0.0)]
+  additivity  max|w_tot - (w0+wq)| = 0.000e+00   [exact 0]
+  max_n |<n|O0|0>*<n|Oq|0>| = 0.000e+00   (charged states get weight 0 from O0)
+  <0|O0|2> = 0.0 , <0|Oq|1> = 0.0   (grading: mixed matrix elements = 0)
+  full-H spectrum = [1.7 2.3 2.3]  includes the charged 2.3; nu_O0 sees only 2.89
+
+== S2  total - charged fixes WEIGHT, not EDGE =====================
+  m_n=1.00: total weight=1.25  charged=0.25  neutral=1.00  inf supp nu_0=1.00
+  m_n=0.30: total weight=1.25  charged=0.25  neutral=1.00  inf supp nu_0=0.30
+  -> identical (total, charged, neutral) budget; different neutral edge.
+
+== S3  joint variance is exactly additive (Cov = 0) ===============
+  Cov(xi0,xiq) = 0.000e+00   [exact 0: disjoint supports]
+  Var(xi0)=0.160000  Var(xiq)=0.400000  Var(xi0+xiq)=0.560000  diff=0.000e+00
+  joint upper bound V on Var(xi0+xiq) alone gives Var(xi0) <= V (the marginal bound, no gain).
+  if Var(xiq) >= 0.0:  Var(xi0) <= V - Var(xiq) <= 1.0   (needs Var(xiq)=0: no info)
+  if Var(xiq) >= 0.4:  Var(xi0) <= V - Var(xiq) <= 0.6   (needs a CHARGED lower bound)
+
+== S4  one linear datum cannot pin the edge =======================
+  nu_A = delta(s=1): M_-2 = 1.0, edge (in s) = 1.0, mass edge = 1.0
+  nu_B = 0.001 delta(s=0.01) + 0.9990 delta(s=1.110000): M_-2 = 1.000000000000, edge (in s) = 0.01, mass edge = 0.10
+  difference in M_-2 = 2.220e-16   -> same sum-rule datum, different edge
+  gapless witness dnu = s^2 exp(-s/Lam) ds:  M_-2 = int_0^inf exp(-s/Lam) ds = 1.0
+    truncated integral (S=200Lam) = 1.0000000833   (converges to Lam),  inf supp = 0, atom = 0
+  -> a POSITIVE total budget coexists with gap = 0.
+
+== S5  2D: nu_{trF2} empty, neutral gap exact and positive =======
+  eigenvalues of trF^2 on characters R=0,1/2,1: [0.0, 0.75, 2.0]
+  <0|trF^2|R> = C2(R) delta_{0R}  ->  nu weights [0.0, 0.0, 0.0]  (empty measure)
+  int rho w = 0 for every w;  neutral gap = (2N^2/(N^2-1)) * m_ch = 2.6667 m_ch > 0 (exact)
+
+== S6  additive budget cannot see a min over sectors ==============
+  family A: sector-0 edge=1.0, sector-1 edge=0.5; total weight=2.0, charged weight=1.0, neutral weight=1.0; neutral edge=1.0, full gap=0.5
+  family B: sector-0 edge=0.4, sector-1 edge=1.7; total weight=2.0, charged weight=1.0, neutral weight=1.0; neutral edge=0.4, full gap=0.4
+  -> same additive data (total 2, charged 1), different neutral edge; the target is a MIN.
+
+ALL CHECKS DONE

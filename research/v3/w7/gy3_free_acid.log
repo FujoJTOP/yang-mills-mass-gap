@@ -1,0 +1,104 @@
+========================================================================
+[1] box-gap acid family (single-particle channel, a=1 lattice)
+    m1^2 = lambda_min = 4 sin^2(pi/L);  nu_L = 1 * delta_{m1^2};  chi_L = 1/m1^2
+========================================================================
+   L |  m1^2=4sin^2(pi/L) | m1^2*L^2/(4pi^2) | chi_L=1/m1^2 |  chi_L/L^2
+   4 |       2.0000000000 |     0.8105694691 |     0.500000 |  0.0312500
+   6 |       1.0000000000 |     0.9118906528 |     1.000000 |  0.0277778
+   8 |       0.5857864376 |     0.9496412036 |     1.707107 |  0.0266735
+  12 |       0.2679491924 |     0.9773614560 |     3.732051 |  0.0259170
+  16 |       0.1522409350 |     0.9872148308 |     6.568536 |  0.0256583
+  32 |       0.0384294392 |     0.9967913640 |    26.021717 |  0.0254118
+  64 |       0.0096305467 |     0.9991970675 |   103.836266 |  0.0253507
+
+chi_L ratios vs the free L^2 law and vs the continuum limit (b/a)^2:
+  L=4->6: chi ratio = 2.000000   continuum L^2 ratio = 2.250000   lattice/cont = 0.888889
+  L=4->8: chi ratio = 3.414214   continuum L^2 ratio = 4.000000   lattice/cont = 0.853553
+  L=6->8: chi ratio = 1.707107   continuum L^2 ratio = 1.777778   lattice/cont = 0.960248
+  L=8->12: chi ratio = 2.186185   continuum L^2 ratio = 2.250000   lattice/cont = 0.971638
+  L=8->16: chi ratio = 3.847759   continuum L^2 ratio = 4.000000   lattice/cont = 0.961940
+  L=16->32: chi ratio = 3.961571   continuum L^2 ratio = 4.000000   lattice/cont = 0.990393
+
+M1-4D-RUN.md:89 free table check (massless Var at L=4/8/16 = chi_L):
+  L=4: chi_L = 0.500000  vs M1 table 0.5  diff = -1.11e-16
+  L=8: chi_L = 1.707107  vs M1 table 1.707  diff = 1.07e-04
+  L=16: chi_L = 6.568536  vs M1 table 6.569  diff = -4.64e-04
+
+Continuum box gap: m1^2 = (2 pi/L)^2; lattice/continuum = (L sin(pi/L)/pi)^2 -> 1 - pi^2/(3L^2):
+  L=4: (L sin(pi/L)/pi)^2 = 0.8105694691   1 - pi^2/(3L^2) = 0.7943832416
+  L=8: (L sin(pi/L)/pi)^2 = 0.9496412036   1 - pi^2/(3L^2) = 0.9485958104
+  L=16: (L sin(pi/L)/pi)^2 = 0.9872148308   1 - pi^2/(3L^2) = 0.9871489526
+  L=64: (L sin(pi/L)/pi)^2 = 0.9991970675   1 - pi^2/(3L^2) = 0.9991968095
+
+Transfer-matrix energy version (A1-FREE-TORUS.md:29, exact discrete time):
+  m1 = (2/a) arcsinh(sin(pi/L)) at a=1  =>  m1^2 = 4 arcsinh^2(sin(pi/L)):
+  L=4: 4 arcsinh^2(sin(pi/L)) = 1.7343781023   (Euclidean lambda_min = 2.0000000000, ratio 0.867189 -> 1)
+  L=8: 4 arcsinh^2(sin(pi/L)) = 0.5592338574   (Euclidean lambda_min = 0.5857864376, ratio 0.954672 -> 1)
+  L=16: 4 arcsinh^2(sin(pi/L)) = 0.1503477650   (Euclidean lambda_min = 0.1522409350, ratio 0.987565 -> 1)
+
+========================================================================
+[2] exact 4D lattice Gaussian checks (deterministic linear algebra)
+========================================================================
+  L=4: spec(A) min nonzero = 2.000000000000   closed form 4 sin^2(pi/L) = 2.000000000000   diff = 3.11e-15
+  L=4: Var(phi~_kmin) exact = 0.500000000000   1/lambda_min = 0.500000000000   diff = 3.33e-16
+  L=4, m=0.3: Var(a) = 11.111111111111   1/m^2 = 11.111111111111   diff = 3.55e-15
+  L=4, m=0.5: Var(a) = 4.000000000000   1/m^2 = 4.000000000000   diff = 1.69e-14
+  L=6: spec(A) min nonzero = 1.000000000000   closed form 4 sin^2(pi/L) = 1.000000000000   diff = 7.33e-15
+  L=6: Var(phi~_kmin) exact = 1.000000000000   1/lambda_min = 1.000000000000   diff = 2.00e-15
+  L=6, m=0.3: Var(a) = 11.111111111111   1/m^2 = 11.111111111111   diff = 1.42e-14
+  L=6, m=0.5: Var(a) = 4.000000000000   1/m^2 = 4.000000000000   diff = 0.00e+00
+
+========================================================================
+[3] HN1-H1.md (c-1) family: nu_L = (1/2) delta_{1/L^2} + (1/2) delta_4
+    chi_L = int s^-1 dnu = L^2/2 + 1/8   (hn1h1_check.log [4])
+========================================================================
+  L=  2: chi_L = L^2/2+1/8 = 2.125000   log ref = 2.125000   match = True
+  L=  4: chi_L = L^2/2+1/8 = 8.125000   log ref = 8.125000   match = True
+  L=  8: chi_L = L^2/2+1/8 = 32.125000   log ref = 32.125000   match = True
+  L= 16: chi_L = L^2/2+1/8 = 128.125000   log ref = 128.125000   match = True
+  L= 64: chi_L = L^2/2+1/8 = 2048.125000   log ref = 2048.125000   match = True
+  all match: True
+  m1^2 = 1/L^2 (inf supp), f1^2 = 1/2 >= r0, chi_L ~ L^2/2 unbounded
+  squeeze: f1^2/chi = (1/2)/(L^2/2+1/8) < 1/L^2 = m1^2  (strict, equality-free)  [E]
+
+========================================================================
+[4] free-scalar 0++ composite channel :phi^2: (F^2 analog), cylinder T^3_L x R
+    omega_n = sqrt((2 pi |n|/L)^2 + m^2), n in Z^3
+    space-summed carrier: C(t) = (1/2) sum_{k!=0} e^{-2 omega_k t} / omega_k^2
+        atoms at s_k = (2 omega_k)^2, weight w_k = 1/(2 omega_k^2) (per k in the sum)
+    point carrier: C(t) = (1/(2L^6)) sum_{k,k'} e^{-(omega_k+omega_k')t}/(omega_k omega_k')
+========================================================================
+  |n|^2 shell multiplicities in Z^3 (r2<=8): |n|^2=1:6, |n|^2=2:12, |n|^2=3:8, |n|^2=4:6, |n|^2=5:24, |n|^2=6:24, |n|^2=8:12
+  --- regulator m = 0.0 ---
+     L |    omega_1 |  m1^2=(2w1)^2 |  m1^2*L^2/(16pi^2) |  f1^2 (space-summed) |  f1^2 (point)
+     4 |   1.570796 |      9.869604 |         1.00000000 |         1.215854e+00 |  1.781036e-03
+     6 |   1.047198 |      4.386491 |         1.00000000 |         2.735672e+00 |  3.518097e-04
+     8 |   0.785398 |      2.467401 |         1.00000000 |         4.863417e+00 |  1.113148e-04
+    16 |   0.392699 |      0.616850 |         1.00000000 |         1.945367e+01 |  6.957174e-06
+    32 |   0.196350 |      0.154213 |         1.00000000 |         7.781467e+01 |  4.348233e-07
+  --- regulator m = 0.1 ---
+     L |    omega_1 |  m1^2=(2w1)^2 |  m1^2*L^2/(16pi^2) |  f1^2 (space-summed) |  f1^2 (point)
+     4 |   1.573976 |      9.909604 |         1.00405285 |         1.210946e+00 |  1.773847e-03
+     6 |   1.051961 |      4.426491 |         1.00911891 |         2.710951e+00 |  3.486305e-04
+     8 |   0.791739 |      2.507401 |         1.01621139 |         4.785832e+00 |  1.095390e-04
+    16 |   0.405232 |      0.656850 |         1.06484556 |         1.826900e+01 |  6.533505e-06
+    32 |   0.220348 |      0.194213 |         1.25938223 |         6.178797e+01 |  3.452672e-07
+
+  space-summed: f1^2 = 3/omega_1^2 ~ 3 L^2/(4 pi^2) -> inf  (ATOM, growing)
+  point:        f1^2 ~ 4.5/(pi^2 L^4) -> 0                (atom vanishes)
+  chi (space-summed) = (1/8) sum_{k!=0} 1/omega_k^4:  m=0 exact closed form:
+    sum_(n!=0) 1/|n|^4  (cutoff 120, tail-corrected) ~ 16.550356   (Epstein Z_3(2) reference 16.53231596, diff 0.0180)
+    L=4: chi = (1/8) L^4/(16 pi^4) * S4 = 0.3398   (chi/L^4 = 1.327388e-03)
+    L=8: chi = (1/8) L^4/(16 pi^4) * S4 = 5.4370   (chi/L^4 = 1.327388e-03)
+    L=16: chi = (1/8) L^4/(16 pi^4) * S4 = 86.9917   (chi/L^4 = 1.327388e-03)
+    with m>0 regulator, numeric sum (k-grid n in Z^3, |n|<=90):
+    m=0.05, L=4: chi = 0.336722
+    m=0.05, L=8: chi = 5.370879
+    m=0.1, L=4: chi = 0.335680
+    m=0.1, L=8: chi = 5.305413
+
+VERDICT (a): the theorem-form must exclude (i) the single-particle box-mode carrier
+  [m1^2 = 4 sin^2(pi/L), f1^2 = 1, chi ~ L^2/4pi^2] and (ii) the HN1 two-atom family;
+  the free F^2-analog composite evades the theorem in the density normalization
+  (f1^2 -> 0) but violates it in the extensive (space-summed) normalization
+  (f1^2 ~ 3L^2/4pi^2 -> inf, chi ~ L^4).  Carrier normalization is load-bearing.

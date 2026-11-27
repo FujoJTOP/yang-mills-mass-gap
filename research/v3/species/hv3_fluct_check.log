@@ -1,0 +1,66 @@
+==============================================================================
+[1] exact DFT identity: mean_k chi(k) = C(0)  and  (1/Nk) sum_k |chi~|^2 = sum_{x!=0}|C(x)|^2
+    (L=4, exact Gaussian-integer arithmetic in Z[i]; C = arbitrary rational correlator)
+    C=(3,1/2,-1/3,5/7)   mean_k chi = 3 + 0i   (C(0)=3)   q2=1537/1764  sum_off C^2=1537/1764  OK
+    C=(1,0,0,0)          mean_k chi = 1 + 0i   (C(0)=1)   q2=0  sum_off C^2=0  OK
+    C=(2,3,5,7)          mean_k chi = 2 + 0i   (C(0)=2)   q2=83  sum_off C^2=83  OK
+    L=2 C=(5/3,-2/9): mean_k chi = 5/3  q2 = 4/81  off = 4/81
+
+[2] third BZ moment = convolution sum over x1+x2+x3=0 (mod L), all xi != 0
+    <chi~^3>_BZ (exact, L=4, C above) = -149/196 + 0 i
+    sum_{x1+x2+x3=0,xi!=0} C1C2C3            = -149/196
+    ==> OK  (imag part 0)
+
+[3] product measure C(x)=C0 delta_{x0}: q2 == 0 exactly, any C0, any L
+    L=2: chi(k)=['7/3', '7/3']  q2=0
+    L=4: chi(k)=['7/3', '7/3', '7/3', '7/3']  q2=0
+
+[4] q2 <= (sum_{x!=0}C)^2 for C>=0 (Cauchy-Schwarz, exact), and the ratio q2/eps^2
+    one shell a=0.09         sum=0.0900 q2=0.00810 sum^2=0.00810 q2<=sum^2:True  q2/sum^2=1.0000
+    spread 6 sites a=0.015   sum=0.0900 q2=0.00135 sum^2=0.00810 q2<=sum^2:True  q2/sum^2=0.1667
+    light-mode plateau c/V   sum=0.0886 q2=0.00012 sum^2=0.00785 q2<=sum^2:True  q2/sum^2=0.0159
+
+[5] beta-sign counterexample: 3-state model, energies (0,E,E), O=(0,+1,-1)
+    u=e^-bE=1/2: Var(O)=1/2=0.5000  d<bO>/db=+0.2500  d<bO^2>/db=-0.2500   sign(O^2) negative: True
+    u=e^-bE=1/4: Var(O)=1/3=0.3333  d<bO>/db=+0.2222  d<bO^2>/db=-0.2222   sign(O^2) negative: True
+    u=e^-bE=1/8: Var(O)=1/5=0.2000  d<bO>/db=+0.1600  d<bO^2>/db=-0.1600   sign(O^2) negative: True
+    ==> the fluctuation does NOT inherit d<bO>/db = Var(O) >= 0; it can decrease in beta.
+
+[6] stored 48-mode multiplet at fixed |k|=2pi/L: per-channel Var(a), spread, kurtosis
+    L=4 b=2.5: N=4000 M=48  <Var>=3.7275  spread=0.1143+-0.0145  (spread/<Var>=0.0307)  kurtosis=2.984+-0.010
+        skewness=-0.0092   N_eff=2(<Var>/SE)^2=2434 of N=4000  (tau_eff=1.64)
+        noise-only spread = 0.1081 (from per-channel jackknife SE)  spread/noise = 1.057   chi2/dof(scatter vs errors)=1.18/47
+        per-axis means: ax0=3.7272  ax1=3.7136  ax2=3.7467  ax3=3.7227   axis range=0.0331
+    L=6 b=2.5: N=800 M=48  <Var>=3.6969  spread=0.2514+-0.0345  (spread/<Var>=0.0680)  kurtosis=3.003+-0.022
+        skewness=+0.0215   N_eff=2(<Var>/SE)^2=466 of N=800  (tau_eff=1.72)
+        noise-only spread = 0.2462 (from per-channel jackknife SE)  spread/noise = 1.021   chi2/dof(scatter vs errors)=1.33/47
+        per-axis means: ax0=3.6666  ax1=3.6904  ax2=3.7282  ax3=3.7023   axis range=0.0616
+    L-scaling of the channel spread: 0.1143 (L=4) -> 0.2514 (L=6);  ratio=2.199
+    C(0)=(4pi^2-6)/9=3.719824;  spread/C(0) = 0.0307, 0.0676
+
+[7] beta=0 (Haar product measure) reference for this carrier: C(x)=0 for x!=0 exactly
+    => q2(beta=0) = 0 identically (all L, all N); q2>0 measures inter-link correlation only.
+    NOTE: the 48 stored modes are a fixed-|k| multiplet (n1 only, 4 axes x 3 pol x cos/sin x c0/c2),
+          NOT a BZ sample => the BZ variance q2 is NOT formable from the archive.
+
+[9] exact acid test on the free massless point-split :phi^2: (equal-time, 3D torus)
+    G(x)=(1/L^3)sum_{p!=0}e^{ipx}/(2w_p), w_p^2=4sum_mu sin^2(p_mu/2)(+m^2); C(x)=2G(x)^2
+      L    C(0)^free    q2_free     q2_free/C(0)^2   chi~(k_min)^free = L^2/(4pi^2)-C(0)
+      8     0.10050     0.00001     9.8848e-04          1.6066
+     12     0.10225     0.00001     1.3046e-03          3.6298
+     16     0.10287     0.00002     1.4367e-03          6.4657
+     24     0.10331     0.00002     1.5394e-03         14.5706
+     32     0.10347     0.00002     1.5772e-03         25.9182
+     48     0.10358     0.00002     1.6048e-03         58.3408
+    same with a mass m=0.5 (a genuinely gapped model):
+      8     0.09393     0.00001     6.7393e-04
+     16     0.09527     0.00001     8.6772e-04
+     32     0.09546     0.00001     8.9800e-04
+    ==> q2 saturates in BOTH; chi~(k_min) diverges (L^2/4pi^2) in the massless one.
+    measured bound (L=4): q2/C(0)^2 <= 5.56e-04
+
+[8] exact numbers carried into the .md
+    C(0) = 3.719824178
+    measured chi~ = +0.0077+-0.0157 (L=4), -0.0230+-0.0390 (L=6)   [HT4]
+    q2 bound (C>=0): q2 <= chi~(0)^2 = (0.0877)^2 = 0.00769 (L=4), (0.0400)^2 = 0.00160 (L=6)  [HT4 1.3]
+    q2/C(0)^2 <= 5.56e-04 (L=4)  => fluctuation is O(eps^2), eps=chi~/C(0)

@@ -1,0 +1,86 @@
+== S0  arithmetic of the criterion ==
+  0.5 + g_eff + ln3 <= 2.598612  <=>  g_eff <= 0.999999711  <=>  mu_eff <= e = 2.718281
+  window(gamma) = 0.5 + gamma + ln3,   gamma = ln(mu)
+  class                        mu          gamma       window    window-2.5986   mu/e
+  target  mu = e                2.718282   1.000000   2.598612     +0.000000  1.0000
+  d=4 animals  exp(2.632032)   13.901990   2.632032   4.230644     +1.632032  5.1143
+  d=4 animals  exp(3.249025)   25.765207   3.249025   4.847637     +2.249025  9.4785
+  planar membrane (lit 4.0626)   4.062600   1.401823   3.000435     +0.401823  1.4945
+  planar membrane (n=13 lb)     3.041231   1.112262   2.710875     +0.112263  1.1188
+  planar membrane (n=14 lb)     3.089089   1.127876   2.726489     +0.127877  1.1364
+  thick tube  m=4  (rigid ub)   1.681793   0.519860   2.118473     -0.480139  0.6187
+
+  extra per-block suppression needed to reach e, per class:
+    membrane lit       Delta >= ln(mu/e) = 0.401823  <=>  c0 >= 0.5+ln(mu)+ln3 = 3.000435
+    membrane n=13 lb   Delta >= ln(mu/e) = 0.112262  <=>  c0 >= 0.5+ln(mu)+ln3 = 2.710875
+    membrane n=14 lb   Delta >= ln(mu/e) = 0.127876  <=>  c0 >= 0.5+ln(mu)+ln3 = 2.726489
+
+== S1  planar membranes = fixed polyominoes (exact, bitboard BFS) ==
+  n= 2  A_n=         2  (1/n)ln=0.346574  ratio= 2.00000     0.0s  OK(A001168)
+  n= 3  A_n=         6  (1/n)ln=0.597253  ratio= 3.00000     0.0s  OK(A001168)
+  n= 4  A_n=        19  (1/n)ln=0.736110  ratio= 3.16667     0.0s  OK(A001168)
+  n= 5  A_n=        63  (1/n)ln=0.828627  ratio= 3.31579     0.0s  OK(A001168)
+  n= 6  A_n=       216  (1/n)ln=0.895880  ratio= 3.42857     0.0s  OK(A001168)
+  n= 7  A_n=       760  (1/n)ln=0.947617  ratio= 3.51852     0.0s  OK(A001168)
+  n= 8  A_n=      2725  (1/n)ln=0.988778  ratio= 3.58553     0.0s  OK(A001168)
+  n= 9  A_n=      9910  (1/n)ln=1.022367  ratio= 3.63670     0.0s  OK(A001168)
+  n=10  A_n=     36446  (1/n)ln=1.050359  ratio= 3.67770     0.2s  OK(A001168)
+  n=11  A_n=    135268  (1/n)ln=1.074092  ratio= 3.71146     1.0s  OK(A001168)
+  n=12  A_n=    505861  (1/n)ln=1.094501  ratio= 3.73969     5.0s  OK(A001168)
+  n=13  A_n=   1903890  (1/n)ln=1.112262  ratio= 3.76366    27.1s  OK(A001168)
+  n=14  A_n=   7204874  (1/n)ln=1.127876  ratio= 3.78429   105.6s  OK(A001168)
+  membrane rigorous lb          3.089089   1.127876   2.726489     +0.127877  1.1364
+  rigorous: gamma_membrane >= (1/14)ln A_14 = 1.127876  (mu >= 3.089089)
+  => gamma_membrane > 1 with margin 12.79% at n=14 [T]
+  literature growth constant 4.0626 => gamma = 1.401823 [M, not re-derived]
+
+== S2  plaquette animals, adjacency = share a link (d=4: Delta=20) ==
+  degree of the link-adjacency graph (plaquette at the origin):
+    d=2 : |link-neighbours| =  4  (4*2*(d-1)-4 =  4) ; |vertex-sharing| =  8
+    d=3 : |link-neighbours| = 12  (4*2*(d-1)-4 = 12) ; |vertex-sharing| = 32
+    d=4 : |link-neighbours| = 20  (4*2*(d-1)-4 = 20) ; |vertex-sharing| = 72
+    d=4 n= 2 : a_n=       18  (1/n)ln=1.445186  ratio= 18.000    0.0s  expect 20 MISMATCH
+    d=4 n= 3 : a_n=      374  (1/n)ln=1.974752  ratio= 20.778    0.0s  expect 458 MISMATCH
+    d=4 n= 4 : a_n=     8363  (1/n)ln=2.257893  ratio= 22.361    3.3s  expect 11132 MISMATCH
+  corpus a_n (GV2:121-123) = 1, 20, 458, 11132, 280175, 7218768 ; reproduced to n=4
+  => d=4 class: gamma*(n<=4) >= 2.257893 ; corpus gamma*(n=6) = 2.632032 [T] (GV2:16)
+
+  d=3 slab class (BL-3 plate: clusters inside one 3-plane):
+    d=3 n= 2 : a_n=       10  (1/n)ln=1.151293  ratio= 10.000    0.0s
+    d=3 n= 3 : a_n=      110  (1/n)ln=1.566827  ratio= 11.000    0.0s
+    d=3 n= 4 : a_n=     1275  (1/n)ln=1.787675  ratio= 11.591    0.0s
+    d=3 n= 5 : a_n=    15263  (1/n)ln=1.926637  ratio= 11.971    3.9s
+    d=3 n= 6 : a_n=   187041  (1/n)ln=2.023181  ratio= 12.255   51.6s
+    [stop: budget]
+  => d=3 class: gamma*(n<=6) >= 2.023181 (mu >= 7.5623)
+
+== S3  open width-1 ribbons: NOT enumerated (over budget) ==
+  The ribbon class contains every planar membrane patch, so mu_ribbon >= mu_membrane >= 3.0891
+  [T] by inclusion; whether BENDING raises mu above 4.06 is left as [O] (enumeration > 300 s).
+
+== S4  product tubes: closed cross-section x self-avoiding axis ==
+  axis SAW counts c_L (L=0..7) = [1, 8, 56, 392, 2696, 18584, 127160, 871256]  [0.3s]
+    L= 6 c_L=   127160  c_L^(1/L)=7.0913  -> mu_tube(m=4)=lam^(1/4)=1.6319   (rigorous ub 8^(1/4)=1.6818)
+    L= 7 c_L=   871256  c_L^(1/L)=7.0565  -> mu_tube(m=4)=lam^(1/4)=1.6299   (rigorous ub 8^(1/4)=1.6818)
+  minimal closed cross-section in the transverse Z^3: m=4 (unit square) => n = m*L plaquettes
+  rigorous upper bound for the whole product-tube family: mu <= 8^(1/m) <= 8^(1/4) = 1.681793 < e
+
+== S5  closed 2-chains ((H1)-refined class): slab doubling ==
+  polyomino P of area n  ->  closed surface d(P x [0,1]) of area 2n + perim(P) <= 4n + 2
+  distinct P give distinct surfaces => N_cyc(<= 4n+2) >= A_n
+  => mu_cyc >= lim A_n^(1/(4n+2)) = mu_poly^(1/4)
+    mu_poly=3.04123 (n=13 lb)  =>  mu_cyc >= 1.32057  (gamma_cyc >= 0.27807)  < e
+    mu_poly=3.08909 (n=14 lb)  =>  mu_cyc >= 1.32574  (gamma_cyc >= 0.28197)  < e
+    mu_poly=4.06260 (lit)  =>  mu_cyc >= 1.41971  (gamma_cyc >= 0.35046)  < e
+  tube family gives mu_cyc <= 1.6818 too => the closed class is NOT excluded by these bounds
+
+== S6  acid test ==
+  model             defect-class content                mu_eff of the class        m
+  free field        no defects (F=0, w=0)               same lattice class 4.06    0
+  2D YM             plaquettes of Z^2 = polyominoes     4.0626 (exact)             3g^2/8 > 0
+  M6 (HO (x) free)  0+1 model, no plaquettes            undefined                  0
+  single plaquette  one cluster, n=1                    mu = 1 (trivial)           undef
+  single-plaquette test: z(1)=exp(-(c0-0.5)) <= 1/2 <=> c0 >= 0.5+ln2 = 1.193147
+    at c0=2.598612: z(1)=0.122627 (pass) ; at membrane window c0=3.000435: z(1)=0.082049 (pass)
+
+== total elapsed 200.9 s ==

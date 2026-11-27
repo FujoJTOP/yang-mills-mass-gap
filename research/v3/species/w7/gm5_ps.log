@@ -1,0 +1,73 @@
+== [0] normalisation check: sum_n (n+1) c_n = e^beta (SU(2)) ==
+  beta=0.020833333  sum=1.0210518621  e^b=1.0210518621  relerr=4.35e-16
+  beta=0.025000000  sum=1.0253151205  e^b=1.0253151205  relerr=4.33e-16
+  beta=0.625000000  sum=1.8682459574  e^b=1.8682459574  relerr=2.38e-16
+  beta=2.500000000  sum=12.1824939607  e^b=12.1824939607  relerr=1.02e-15
+
+== [1] exact activity / diluteness / Ursell ratio at the four points ==
+   beta_A        u=c1/c0     f0=c0/e^b     Phi(a=1)     rho_Ur(d=4)   u*LAM
+  0.003777034  0.001889   0.996232    1.0307e-02   5.603279e-01  0.1027
+  0.020833333  0.010416   0.979435    5.7848e-02   3.144929e+00  0.5663
+  0.025000000  0.012500   0.975386    6.9713e-02   3.790016e+00  0.6796
+  0.037000000  0.018499   0.963841    1.0445e-01   5.678482e+00  1.0057
+  0.100000000  0.049979   0.905969    3.0115e-01   1.637235e+01  2.7171
+  0.625000000  0.307535   0.561826    3.2560e+00   1.770160e+02  16.7193
+  2.500000000  1.014390   0.165268    8.5182e+01   4.630982e+03  55.1480
+
+== [2] window W(beta) from the envelope criterion  e*Delta*Phi(a,beta) <= a/(1+a) ==
+   scan a in (0,3], solve for beta by bisection on  G(beta;a)=LAM*Phi(a,beta)-a/(1+a) ==
+   a=0.02   W=3.534766e-04
+   a=0.12   W=1.746637e-03
+   a=0.22   W=2.658607e-03
+   a=0.32   W=3.232603e-03
+   a=0.42   W=3.567374e-03
+   a=0.52   W=3.732328e-03
+   a=0.62   W=3.776993e-03
+   a=0.72   W=3.737120e-03
+   a=0.82   W=3.638739e-03
+   a=0.92   W=3.500905e-03
+   a=1.02   W=3.337615e-03
+   a=1.12   W=3.159153e-03
+   a=1.22   W=2.973053e-03
+   a=1.32   W=2.784803e-03
+   a=1.42   W=2.598359e-03
+   a=1.52   W=2.416523e-03
+   a=1.62   W=2.241234e-03
+   a=1.72   W=2.073776e-03
+   a=1.82   W=1.914945e-03
+   a=1.92   W=1.765171e-03
+   a=2.02   W=1.624612e-03
+   a=2.12   W=1.493226e-03
+   a=2.22   W=1.370826e-03
+   a=2.32   W=1.257124e-03
+   a=2.42   W=1.151759e-03
+   a=2.52   W=1.054329e-03
+   a=2.62   W=9.644026e-04
+   a=2.72   W=8.815361e-04
+   a=2.82   W=8.052849e-04
+   a=2.92   W=7.352098e-04
+  MAX over a: W*=3.776993e-03 at a*=0.620   (repo: 3.777034e-3 at a*=0.6169)
+
+== [3] Adhikari-Cao weak-coupling PS threshold beta >= (114 + 4 ln|G|)/Delta_G ==
+   (arXiv:2202.10375v3, Thm 1.1, read verbatim from the HTML body: 114, not 11/4)
+  |G|=2: numerator = 116.7726
+     needed Delta_G at beta_A=1/48 = 5605.08 ; at beta_A=0.625 = 186.84
+  |G|=6 (S3): numerator = 121.1670
+     needed Delta_G at beta_A=1/48 = 5816.02 ; at beta_A=0.625 = 193.87
+  |G|=24: numerator = 126.7122
+     needed Delta_G at beta_A=1/48 = 6082.19 ; at beta_A=0.625 = 202.74
+  SU(N): Delta_G = min_{g!=1} Re[chi(1)-chi(g)] = 0  =>  threshold = +infinity, rate (beta/2)*Delta_G = 0
+
+== [4] large-beta PS: correlation length xi = 2/(beta*Delta_G) (frozen phase) ==
+  beta_A=0.020833: xi*Delta_G = 96.0000  -> xi -> 0 as beta -> inf (opposite of AF: m_lat ~ Lambda*e^(-c beta))
+  beta_A=0.625000: xi*Delta_G = 3.2000  -> xi -> 0 as beta -> inf (opposite of AF: m_lat ~ Lambda*e^(-c beta))
+  beta_A=2.500000: xi*Delta_G = 0.8000  -> xi -> 0 as beta -> inf (opposite of AF: m_lat ~ Lambda*e^(-c beta))
+  beta_A=6.000000: xi*Delta_G = 0.3333  -> xi -> 0 as beta -> inf (opposite of AF: m_lat ~ Lambda*e^(-c beta))
+
+== [5] crossover-window Peierls numbers (repo, beta_W convention) ==
+  sigma(2.5)=0.5701 ; 0-form threshold c0 in [log3,log7] = [1.0986,1.9459] ; 1-form log5=1.6094
+  sigma-c0 : -0.5285 (best 0-form) ; -1.3758 (worst 0-form) ; -1.0393 (1-form)
+  W(window)/0.625 = 6.0433e-03 ; (1/48)/3.777034e-3 = 5.5158
+  u(0.625)=u(beta_W=2.5) = 1.014390 ; LAM*u = 55.1480
+  u(0.025)*LAM = 0.6796  (needs <1)
+  u(0.037)*LAM = 1.0057  (needs <1)

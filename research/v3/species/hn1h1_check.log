@@ -1,0 +1,72 @@
+================================================================
+[1] carrier bridge::  chi_KL = chi_curv / (1-eta)   [exact algebra]
+================================================================
+  4/4 identities hold (incl. eta<0 branch).  OK
+
+================================================================
+[2] the (1-c) slot:  chi_curv <= (1-c)/lam  <=>  chi_KL <= (1-c)/(lam(1-eta))
+================================================================
+  c=1/10  eta=0    chi_KL=9/20      eta<=c? True  chi_KL<=1/lam? True
+  c=1/10  eta=1/4  chi_KL=3/5       eta<=c? False chi_KL<=1/lam? False
+  c=1/10  eta=1/2  chi_KL=9/10      eta<=c? False chi_KL<=1/lam? False
+  c=1/10  eta=2/3  chi_KL=27/20     eta<=c? False chi_KL<=1/lam? False
+  c=1/10  eta=3/2  chi_KL=-9/10     eta<=c? False chi_KL<=1/lam? True
+  c=1/2   eta=0    chi_KL=1/4       eta<=c? True  chi_KL<=1/lam? True
+  c=1/2   eta=1/4  chi_KL=1/3       eta<=c? True  chi_KL<=1/lam? True
+  c=1/2   eta=1/2  chi_KL=1/2       eta<=c? True  chi_KL<=1/lam? True
+  c=1/2   eta=2/3  chi_KL=3/4       eta<=c? False chi_KL<=1/lam? False
+  c=1/2   eta=3/2  chi_KL=-1/2      eta<=c? False chi_KL<=1/lam? True
+  c=9/10  eta=0    chi_KL=1/20      eta<=c? True  chi_KL<=1/lam? True
+  c=9/10  eta=1/4  chi_KL=1/15      eta<=c? True  chi_KL<=1/lam? True
+  c=9/10  eta=1/2  chi_KL=1/10      eta<=c? True  chi_KL<=1/lam? True
+  c=9/10  eta=2/3  chi_KL=3/20      eta<=c? True  chi_KL<=1/lam? True
+  c=9/10  eta=3/2  chi_KL=-1/10     eta<=c? False chi_KL<=1/lam? True
+  => on the sub-domain {eta<=c} the (1-c) form is STRONGER than H1(lam).  OK
+
+================================================================
+[3] defect lemma  eta<=c<1  is FALSE pointwise (corpus 5/12 modes, L=8, beta=2.4)
+================================================================
+  modes D<S: 7/12 ; D>S: 5/12 ; fraction of modes with eta>1 = 5/12
+  G''<0 on 5/12 of sampled modes  =>  ess inf G'' < 0 in that window
+  => the (1-c) form cannot carry c<1 as a uniform-in-(L,a) statement.
+
+================================================================
+[4] counterexample family nu_L: light mode at c/L^2 with O(1) residue
+================================================================
+   L | m1^2=c/L^2 | f1^2 | M0 |   chi=sum s^-1 dnu | gap?
+   2 | 1/4       | 1/2  | 1  | 17/8         | no uniform gap
+   4 | 1/16      | 1/2  | 1  | 65/8         | no uniform gap
+   8 | 1/64      | 1/2  | 1  | 257/8        | no uniform gap
+  16 | 1/256     | 1/2  | 1  | 1025/8       | no uniform gap
+  64 | 1/4096    | 1/2  | 1  | 16385/8      | no uniform gap
+  chi_L = r0*L^2/c0 + (1-r0)/Lam^2  -> grows like L^2 (unbounded)  =>  H1 FAILS
+  constraints satisfied: nu>=0, M0=1 finite, atoms positive, KL support in [0,inf),
+  squeeze f1^2/chi <= m1^2 holds (equality-free), finite-L chi<inf (trivial half).
+  NOT Yang-Mills: no 4D proof forbids a 1/L^2 light mode.
+
+================================================================
+[5] what a UNIFORM gap would buy (the only proven direction)
+================================================================
+  m1^2 >= lam=1/2   =>  chi <= M0/lam = 2     (finite)   [gap => H1, one way only]
+  m1^2 >= lam=1     =>  chi <= M0/lam = 1     (finite)   [gap => H1, one way only]
+  m1^2 >= lam=2     =>  chi <= M0/lam = 1/2   (finite)   [gap => H1, one way only]
+
+================================================================
+[6] thin atom: w=eps/(2lam) gives chi=1/lam for EVERY eps (H1 blind to the edge)
+================================================================
+  eps=1e-1: s2=1.900000000  chi=1.000000000000  m1^2=eps=1.0e-01 -> inf supp -> 0
+  eps=1e-2: s2=1.990000000  chi=1.000000000000  m1^2=eps=1.0e-02 -> inf supp -> 0
+  eps=1e-4: s2=1.999900000  chi=1.000000000000  m1^2=eps=1.0e-04 -> inf supp -> 0
+  eps=1e-6: s2=1.999999000  chi=1.000000000000  m1^2=eps=1.0e-06 -> inf supp -> 0
+  eps=1e-9: s2=1.999999999  chi=1.000000000000  m1^2=eps=1.0e-09 -> inf supp -> 0
+  => chi<=1/lam holds uniformly along this family while m1->0: H1 has no edge content.
+
+================================================================
+[7] six-route NAME convergence is a rename cascade: 5 names, 1 identity class
+================================================================
+  chi_KL(k=0) = 1/G''  [identity] ; S=1/Var(a) [Gaussian only] ;
+  Var(a)=1/lam_1 only if phi=a is the Poincare minimiser (Gaussian only).
+  exact: eta=0 <=> Gaussian <=> {H1 <=> G''>=lam <=> lam_1>=lam <=> clustering}.
+  for eta!=0 only the implications INTO H1 survive.
+
+ALL CHECKS PASS (no assertion failed).

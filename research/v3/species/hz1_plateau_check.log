@@ -1,0 +1,143 @@
+
+==============================================================================
+[1] FREE MASSLESS 4D FIELD (corpus acid carrier C(x)=1/(4 pi^2 x^2), cylinder)
+==============================================================================
+spectral form on T^3_L x R:  C_L(tau) = (1/L^3) sum_{k != 0} e^{-|k| tau}/(2|k|),  |k|=2 pi |n|/L
+lowest atoms: 6 modes |k|=2 pi/L  =>  f1^2(L) = 6 * (1/L^3) * 1/(2*2pi/L)
+           f1^2(L) = 3/(2 pi) L^{-2} = 0.477465 * L^{-2}   -> 0
+=> free field is CLASS 1 (critical / no O(1) atom), NOT class 3.
+
+ L     m1^2 L^2 (=4 pi^2)   f1^2*L^2      G_c(L)=e^{sqrt c}C_L(L), sqrt c=2pi
+    4       39.4784         0.477465      3.325534e-02
+    8       39.4784         0.477465      8.313834e-03
+   16       39.4784         0.477465      2.078459e-03
+   32       39.4784         0.477465      5.196147e-04
+   64       39.4784         0.477465      1.299037e-04
+=> G_c(L) -> 0 : free field has NO plateau.  P (no-plateau) is TRUE on the free field.
+   (corpus line GY2:11 / GY2:167 asserts 'atom O(1)' and 'free field in class 3' -> erratum.)
+
+==============================================================================
+[2] FREE FIELD chi_L  (shell counting, max-norm, must saturate ~ C L^2)
+==============================================================================
+chi_L = sum_{x in T^4_L, x != 0} 1/(4 pi^2 |x|^2), |x| = max-norm on Z^4
+  L=  8  chi_L=     17.0557   chi_L/L^2=  0.2665
+  L= 16  chi_L=     59.4625   chi_L/L^2=  0.2323
+  L= 32  chi_L=    221.8451   chi_L/L^2=  0.2166
+  L= 64  chi_L=    857.6062   chi_L/L^2=  0.2094
+  L=128  chi_L=   3373.8916   chi_L/L^2=  0.2059
+=> chi_L/L^2 decays only logarithmically (0.267 -> 0.206, drifts like 1/log L)
+   => chi_L = Theta(L^2) (bounded away from 0 and from infinity when divided by L^2)
+   so H1 FAILS on the free field (Q6:183), while P HOLDS. => H1 is strictly stronger than P.
+   Check: H1 => P is exact: plateau mass r0 at m<=sqrt(c)/L gives chi >= r0 L^2/c -> infinity.
+
+==============================================================================
+[3] SPREAD FAMILY: plateau at level ~e^{-sqrt c} while f1^2 = 1/L^3 -> 0
+==============================================================================
+nu_L = sum_{j=1}^{N} (1/N) delta_{s_j},  N=L^3,  s_j = (c/L^2)(1+j/N),  c=1
+ L     N=L^3     f1^2 = 1/N      C_L(L)         G_c(L) with sqrt c = 1
+    4       64      0.015625       0.296674       0.806442
+    8      512      0.001953       0.297525       0.808756
+   16     4096      0.000244       0.297631       0.809045
+   32    32768      0.000031       0.297644       0.809081
+=> plateau level stays O(1) (>= e^{-1}) while the BOTTOM atom weight -> 0.
+   Hence  plateau =/=> (light atom with O(1) residue): the (<=) half of GY2-NARROW is FALSE.
+   Correct object = cumulative light mass  M_c(L) = nu_L({m <= sqrt(c)/L});
+   here M_c(L) = 1 (O(1)) -> the cumulative form sees the plateau, the atom form does not.
+
+==============================================================================
+[4] HN1 WITNESS FAMILY  nu_L = 1/2 delta_{1/L^2} + 1/2 delta_4  (HN1-H1.md:228-232)
+==============================================================================
+ L     chi_L = L^2/2+1/8     f1^2    m1^2      C_L(L)             G_c (sqrt c=1)
+    2       2.1250         0.5     0.25000   1.930975e-01   5.248935e-01
+    4       8.1250         0.5     0.06250   1.841075e-01   5.004559e-01
+    8      32.1250         0.5     0.01562   1.839398e-01   5.000002e-01
+   16     128.1250         0.5     0.00391   1.839397e-01   5.000000e-01
+   64    2048.1250         0.5     0.00024   1.839397e-01   5.000000e-01
+=> plateau level -> 1/2 e^{-1} = 0.183940 > 0, f1^2 = 1/2 (O(1) atom), chi_L -> infinity.
+   => NO-PLATEAU IS FALSE on this family => P is not a tautology (non-vacuous).
+   This family also has NO gap (m1^2 = 1/L^2) => P is a genuine discriminator here.
+
+==============================================================================
+[5] KRAMERS DOUBLE WELL:  plateau  <=>  DeltaS >= log L   (exact)
+==============================================================================
+m1 = e^{-DeltaS};  C_L(tau) >= w1 e^{-m1 tau};  at tau=L need  L e^{-DeltaS} <= 1
+ L     DeltaS=0.5 log L : L m1      DeltaS=log L : L m1    DeltaS=2 log L : L m1
+      8        2.828427              1.000000                 1.250000e-01
+     64        8.000000              1.000000                 1.562500e-02
+    512       22.627417              1.000000                 1.953125e-03
+   4096       64.000000              1.000000                 2.441406e-04
+=> plateau at horizon L  <=>  DeltaS >= log L  (L m1 <= 1).  Barrier class = the corpus wall
+   (E-I2)/(E-CV) (GY2:204).  Exact, no approximation.
+
+==============================================================================
+[6] M6 (N02:69-74; HN1:306-321 channel trap): oscillator atom O(1) at s=omega, bottom = free ring
+==============================================================================
+m_L = min(omega, (2pi/L)^2/2) -> 0 ;  bottom residue w_L -> 0 (HN1:316-319),
+top residue 1/(2 omega) = 0.5 sits at s = omega = 1 (NOT at inf supp).
+ L     m_L^2        w_L (bottom)   C_L(L) = (1/2)e^{-1*L} + w_L e^{-m_L L}
+      8    3.084e-01     1.953e-03      1.907039e-04
+     64    4.819e-03     3.815e-06      4.486839e-08
+    512    7.530e-05     7.451e-09      8.763358e-11
+   4096    1.177e-06     1.455e-11      1.711593e-13
+=> C_L(L) -> 0 : M6 has NO plateau although m = 0.  => P is BLIND on M6
+   (exact solvable witness that P is strictly weaker than the gap).
+
+==============================================================================
+[7] L-MONOTONICITY OF G_c: refuted by an admissible two-atom family with L-dependent placement
+==============================================================================
+nu_L = 1/2 delta_4 + 1/2 delta_{4/L^2} for even L,  1/2 delta_4 + 1/2 delta_{1/L^2} for odd L
+ L     G_c(L), sqrt c = 2 (level e^{-2} ~ 0.1353)
+    2    0.567668
+    3    1.368299
+    4    0.501239
+    5    1.359309
+    6    0.500023
+    7    1.359144
+    8    0.500000
+    9    1.359141
+   10    0.500000
+   11    1.359141
+   12    0.500000
+non-increasing steps violated: 5  => G_c(L) is NOT monotone in L.
+=> route (a) 'monotone + bounded => [T]' is unavailable.
+
+==============================================================================
+[8] H1 => P (exact algebra) and (P + atom) => no light mode
+==============================================================================
+plateau with mass r0 in {m <= sqrt(c)/L}:  chi = int s^{-1} dnu >= r0 / (c/L^2) = r0 L^2 / c
+   r0=0.50 c=1.0 L=   8 :  r0 L^2/c =    32.0000   (grows like L^2)
+   r0=0.50 c=1.0 L=  64 :  r0 L^2/c =  2048.0000   (grows like L^2)
+   r0=0.50 c=1.0 L=1024 :  r0 L^2/c = 524288.0000   (grows like L^2)
+   r0=0.10 c=4.0 L= 256 :  r0 L^2/c =  1638.4000   (grows like L^2)
+=> any plateau forces chi_L >= r0 L^2/c -> infinity, i.e. contradicts H1 (chi <= 1/lambda).
+   Hence  H1 => P  [T],  and P does NOT imply H1 (free field: P true, H1 false).
+   (P + f1^2 >= r0) => no light mode: a light atom of weight >= r0 IS cumulative mass >= r0
+   inside {m <= sqrt(c)/L} for every fixed c -> plateau -> violates P.  [T]
+
+==============================================================================
+[9] FREE FIELD cumulative light mass M_c(L) = nu_L({m <= sqrt(c)/L})  (sqrt c = 2pi)
+==============================================================================
+only 6 modes sit at |k| = 2 pi/L, each of weight (1/L^3)/(2*2pi/L):
+  L=  4   M_c(L) = 3/(2 pi) L^{-2} = 2.984155e-02   -> 0
+  L=  8   M_c(L) = 3/(2 pi) L^{-2} = 7.460388e-03   -> 0
+  L= 16   M_c(L) = 3/(2 pi) L^{-2} = 1.865097e-03   -> 0
+  L= 64   M_c(L) = 3/(2 pi) L^{-2} = 1.165686e-04   -> 0
+=> free field: no cumulative light mass either => no plateau (class 1).  Atom form and
+   cumulative form AGREE on the free field; they differ only on the spread family (section [3]).
+
+==============================================================================
+[10] LOG-CONVEXITY (complete monotonicity): C(2t) >= C(t)^2/C(0)  and dyadic plateau propagation
+==============================================================================
+  L=  8  C(2t)=4.985806e-04   C(t)^2/C(0)=2.231377e-05   log-convex ok: True
+  L= 16  C(2t)=1.090296e-03   C(t)^2/C(0)=1.496265e-04   log-convex ok: True
+  L= 32  C(2t)=1.411667e-03   C(t)^2/C(0)=5.799012e-04   log-convex ok: True
+plateau at level rho on [0,L] => C(L/2)>=rho => C(L) >= rho^2/M0  => plateau at [0,L] level rho^2/M0;
+dyadic propagation rho_{k+1} = rho_k^2/M0 with M0=1, rho_0=0.18:
+   k=1  rho_k = 3.240e-02
+   k=2  rho_k = 1.050e-03
+   k=3  rho_k = 1.102e-06
+   k=4  rho_k = 1.214e-12
+=> levels stay strictly positive at every finite dyadic step => a plateau propagates to all
+   dyadic horizons with explicit constants. Cheapest data test: C_L(L) >= C_L(L/2)^2/C_L(0).
+
+ALL CHECKS DONE (deterministic, no MC).

@@ -1,0 +1,113 @@
+=== [0] (SI-1) identity omega<->Delta is a bijection ===
+    a=0.3    omega=0.5   roundtrip_err=+0.000e+00
+    a=0.3    omega=1.0   roundtrip_err=+2.220e-16
+    a=0.03   omega=0.5   roundtrip_err=+0.000e+00
+    a=0.03   omega=1.0   roundtrip_err=+0.000e+00
+    => reparametrisation adds no information ([T]); section 2.
+    R2 == R2_closed check:
+      0.55,0.16,0.2900: +0.00e+00
+      1.9,0.55,0.2895: -2.22e-16
+      1.2,1.5,1.2500: +0.00e+00
+
+=== [1] ACID A: free field (delta_1=0) -> R must be 0 ===
+    m1=0.55  lam=0.2899   m2=0.161262  R=-0.000e+00  delta1=-0.000e+00  D=0.556958551643
+    m1=1.0   lam=0.5000   m2=0.515373  R=-6.277e-15  delta1=-2.961e-16  D=1.042190610987
+    m1=1.9   lam=0.6667   m2=1.359026  R=-0.000e+00  delta1=-0.000e+00  D=2.198968635861
+    m1=0.05  lam=0.2500   m2=0.012501  R=-0.000e+00  delta1=-0.000e+00  D=0.050005208496
+    m1=3.0   lam=0.3000   m2=1.203592  R=+3.033e-16  delta1=+9.760e-16  D=4.258558910190
+
+=== [2] ACID B: 2D (Delta_a == D const) -> R must be 1 ===
+    m1=0.1   lam=0.6667  R=1.000180642800  1+(m1^2+m2^2)/80=1.000180561111  resid=+8.17e-08
+    m1=0.3   lam=0.6667  R=1.001631679054  1+(m1^2+m2^2)/80=1.001625050001  resid=+6.63e-06
+    m1=0.55  lam=0.6667  R=1.005537235272  1+(m1^2+m2^2)/80=1.005461973615  resid=+7.53e-05
+    m1=0.55  lam=0.2900  R=1.004118787753  1+(m1^2+m2^2)/80=1.004099253125  resid=+1.95e-05
+    m1=1.0   lam=0.6667  R=1.018892312746  1+(m1^2+m2^2)/80=1.018056111125  resid=+8.36e-04
+    m1=2.0   lam=0.5000  R=1.070965551102  1+(m1^2+m2^2)/80=1.062500000000  resid=+8.47e-03
+    3-point (Richardson) on 2D and on free field, same window:
+      lam=0.6667: 2D R3=0.999995000035 (exact 1) | free R3=-0.000e+00
+      lam=0.5: 2D R3=0.999997758962 (exact 1) | free R3=+6.854e-15
+
+=== [3] ROUND TRIP: 2-pt bias is EXACTLY dR = 24*d1/D^3 + 24*kappa*(m1^2+m2^2) ===
+    m1=1.9   lam=0.29   d1=0.0  kappa=0.0    R=-0.000000000 pred=+0.000000000 resid=-0.0e+00 LO=24k(m1^2+m2^2)=+0.000000
+    m1=1.9   lam=0.29   d1=1.0  kappa=0.0    R=+24.000000000 pred=+24.000000000 resid=-7.1e-15 LO=24k(m1^2+m2^2)=+0.000000
+    m1=1.9   lam=0.29   d1=0.0  kappa=0.01   R=+1.335346028 pred=+1.335346028 resid=+6.7e-16 LO=24k(m1^2+m2^2)=+1.282854
+    m1=1.9   lam=0.29   d1=1.0  kappa=0.01   R=+26.808716075 pred=+26.808716075 resid=-3.6e-15 LO=24k(m1^2+m2^2)=+6.655418
+    m1=1.0   lam=0.5    d1=0.0  kappa=0.0    R=-0.000000000 pred=+0.000000000 resid=-6.3e-15 LO=24k(m1^2+m2^2)=+0.000000
+    m1=1.0   lam=0.5    d1=1.0  kappa=0.0    R=+24.000000000 pred=+24.000000000 resid=-3.6e-15 LO=24k(m1^2+m2^2)=+0.000000
+    m1=1.0   lam=0.5    d1=0.0  kappa=0.01   R=+0.328748610 pred=+0.328748610 resid=+4.7e-15 LO=24k(m1^2+m2^2)=+0.309094
+    m1=1.0   lam=0.5    d1=1.0  kappa=0.01   R=+24.542361751 pred=+24.542361751 resid=+5.7e-14 LO=24k(m1^2+m2^2)=+0.960574
+    m1=0.55  lam=0.29   d1=0.0  kappa=0.0    R=-0.000000000 pred=+0.000000000 resid=-0.0e+00 LO=24k(m1^2+m2^2)=+0.000000
+    m1=0.55  lam=0.29   d1=1.0  kappa=0.0    R=+24.000000000 pred=+24.000000000 resid=-3.6e-15 LO=24k(m1^2+m2^2)=+0.000000
+    m1=0.55  lam=0.29   d1=0.0  kappa=0.01   R=+0.080729410 pred=+0.080729410 resid=-2.0e-14 LO=24k(m1^2+m2^2)=+0.078984
+    m1=0.55  lam=0.29   d1=1.0  kappa=0.01   R=+24.086557018 pred=+24.086557018 resid=-2.5e-14 LO=24k(m1^2+m2^2)=+0.129251
+
+=== [4] SYSTEMATIC COMMON MODES: E0 (anchored 1-pt) vs E1 (2-pt) ===
+    m1=0.5  eps=1%: R(0)=+1.000000000 dR_E1=-0.019704 (pred -2eps*R=-0.020000) ; dR_E0=24eps/m1^2=+0.960000 gain=48.7x
+    m1=1.9  eps=1%: R(0)=+1.000000000 dR_E1=-0.019704 (pred -2eps*R=-0.020000) ; dR_E0=24eps/m1^2=+0.066482 gain=3.4x
+
+=== [5] SENSITIVITY: rho_req for 4 sigma on the 0-vs-1 discrimination ===
+    m1     m2     lam      E1 rho_req   E0 rho_req   rho-gain  N-gain
+    1.9    1.3    0.6842   7.714e-03    1.760e-02    0.44      0.2    
+    1.9    1.0    0.5263   1.141e-02    1.042e-02    1.10      1.2    
+    1.9    0.7    0.3684   1.456e-02    5.104e-03    2.85      8.1    
+    1.9    0.55   0.2895   1.582e-02    3.151e-03    5.02      25.2   
+    1.0    0.55   0.5500   4.387e-03    3.151e-03    1.39      1.9    
+    0.55   0.29   0.5273   1.534e-03    8.760e-04    1.75      3.1    
+    0.55   0.18   0.3273   1.909e-03    3.375e-04    5.66      32.0   
+    0.3    0.1    0.3333   5.820e-04    1.042e-04    5.59      31.2   
+
+=== [6] TWO-POINT LEGITIMACY: need |kappa| <= 1/(192(m1^2+m2^2)) ===
+    kappa = delta2/D^5 (dimensionless); power counting kappa ~ mhat^-5
+    m1=1.9   m2=1.3   bound=9.827e-04  pc~2.693e-01  OVER by    274.1x
+    m1=1.9   m2=1.0   bound=1.130e-03  pc~1.000e+00  OVER by    885.1x
+    m1=1.9   m2=0.55  bound=1.331e-03  pc~1.987e+01  OVER by  14926.0x
+    m1=1.0   m2=0.55  bound=3.999e-03  pc~1.987e+01  OVER by   4969.0x
+    m1=0.55  m2=0.18  bound=1.555e-02  pc~5.292e+03  OVER by 340293.7x
+    2D exception kappa=1/1920: needs m1^2+m2^2 <= 10
+      m1=1.9   m2=0.55  2D |kappa|(m1^2+m2^2)=0.0020 <= 1/192=0.0052? PASS
+      m1=1.0   m2=0.55  2D |kappa|(m1^2+m2^2)=0.0007 <= 1/192=0.0052? PASS
+      m1=2.5   m2=1.5   2D |kappa|(m1^2+m2^2)=0.0044 <= 1/192=0.0052? PASS
+      m1=3.0   m2=2.0   2D |kappa|(m1^2+m2^2)=0.0068 <= 1/192=0.0052? FAIL
+
+=== [7] PADE [2/2] in t: Taylor coefficient is exact by construction ===
+    model omega = D + a1 t + c t^2/(1+t/tc)  (cutoff pole at tc)
+    tc/tmax=100.0  a1=0.100000000 (true 0.1) pole|t|= 100.000 cond=2.75e+03 noise-amp=7.66e+00 in-window=no
+    tc/tmax=10.0   a1=0.100000000 (true 0.1) pole|t|=     inf cond=2.98e+03 noise-amp=7.72e+00 in-window=no
+    tc/tmax=3.0    a1=0.100000000 (true 0.1) pole|t|=   3.000 cond=3.69e+03 noise-amp=8.05e+00 in-window=no
+    tc/tmax=1.0    a1=0.100000000 (true 0.1) pole|t|=   1.000 cond=6.53e+03 noise-amp=1.00e+01 in-window=YES
+    => a1 is exact at every tc (0 dof). The pole is an OUTPUT, not a
+       control. Noise amplification ~1e2 is the whole cost.
+
+=== [8] ARCHIVED GW7 TRIPLE (GM4-NUMERIC.md:185-188) ===
+    pair lam_vol R          sigma_R   sigma from 0   sigma from 1
+    1-2 0.80000 -0.458112  0.264854     1.73    5.51
+    1-3 0.66667 -0.381187  0.163208     2.34    8.46
+    2-3 0.83333 -0.385397  0.194381     1.98    7.13
+    cutoff null R_null(m0) at lam=8/12:
+      m0=1.6    R_null=-0.998167
+      m0=1.9    R_null=-0.651261
+      m0=2.195  R_null=-0.444082
+      m0=2.4    R_null=-0.345533
+      m0=2.6    R_null=-0.272937
+    gate 1 (ratio): m2/m1 must equal lam on a constant-physics line
+      1-2: m2/m1=1.170936 lam=0.800000 ratio=1.4637
+      1-3: m2/m1=1.251000 lam=0.666667 ratio=1.8765
+      2-3: m2/m1=1.068376 lam=0.833333 ratio=1.2821
+    gate 2 (log slope): p = d ln mhat/d ln a, a=1/L
+      1-2: p=-0.7072 +- 0.8875  (0.80s from 0, 1.92s from 1)
+      1-3: p=-0.5523 +- 0.4369  (1.26s from 0, 3.55s from 1)
+      2-3: p=-0.3628 +- 1.3220  (0.27s from 0, 1.03s from 1)
+    what 1800 s on the L_s=12 point buys (N=65000, rho 18%->7.7%):
+      sigma3/m3=0.1800: p=-0.5523 +- 0.2684  (5.78s from 1=mass)
+      sigma3/m3=0.0773: p=-0.5523 +- 0.2105  (7.37s from 1=mass)
+
+=== [9] COST MODEL (throughput anchored L_s=8 <-> mhat=1.9) ===
+    m1     m2     lam     rho_req    expensive point             TOTAL
+    1.9    1.3    0.6842  7.71e-03   m=1.90: N=1.26e+06 4.80e-03s/cfg 6.0e+03s | m=1.30: N=1.26e+06 2.19e-02s/cfg 2.8e+04s  TOT=3.4e+04s=9.3h
+    1.9    1.0    0.5263  1.14e-02   m=1.90: N=5.75e+05 4.80e-03s/cfg 2.8e+03s | m=1.00: N=5.75e+05 6.26e-02s/cfg 3.6e+04s  TOT=3.9e+04s=10.8h
+    1.9    0.7    0.3684  1.46e-02   m=1.90: N=3.53e+05 4.80e-03s/cfg 1.7e+03s | m=0.70: N=3.53e+05 2.61e-01s/cfg 9.2e+04s  TOT=9.4e+04s=26.1h
+    1.9    0.55   0.2895  1.58e-02   m=1.90: N=2.99e+05 4.80e-03s/cfg 1.4e+03s | m=0.55: N=2.99e+05 6.84e-01s/cfg 2.0e+05s  TOT=2.1e+05s=57.3h
+    1.9    0.4    0.2105  1.68e-02   m=1.90: N=2.65e+05 4.80e-03s/cfg 1.3e+03s | m=0.40: N=2.65e+05 2.44e+00s/cfg 6.5e+05s  TOT=6.5e+05s=180.2h
+    30 min = 1800 s. At L_s=8 that is 3.75e5 cfg -> rho=1.41% (one point).
+
+=== WALL CLOCK: 0.18 s ===

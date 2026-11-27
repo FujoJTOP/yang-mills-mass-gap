@@ -1,0 +1,148 @@
+== [1] target  M_{-1} <= C   vs   H1: chi <= 1/lambda  (C = 1/lambda) ==
+PASS 1:1/2
+PASS 1:1/2
+PASS 1:1/2
+PASS 1:1
+PASS 1:1
+PASS 1:1
+PASS 1:2
+PASS 1:2
+PASS 1:2
+PASS 1:5/2
+PASS 1:5/2
+PASS 1:5/2
+== [2] layer cake / dyadic two-sided:  (1/2)Sum <= M_{-1} <= Sum + M0 ==
+PASS 2:two atoms 1/2@1/4 + 1/2@4  Sum=3.000000 Mm1=2.125000
+PASS 2:thin atom lam=1 eps=1/64  Sum=0.984375 Mm1=1.000000
+PASS 2:single atom @1  Sum=0.000000 Mm1=1.000000
+PASS 2:single atom @1/1024  Sum=2046.000000 Mm1=1024.000000
+== [3] thin atom: M_{-1} = 1/lambda EXACTLY, bottom = eps -> 0 ==
+PASS 3:lam=1 eps=2^-1  Mm1=1
+PASS 3:lam=1 eps=2^-2  Mm1=1
+PASS 3:lam=1 eps=2^-4  Mm1=1
+PASS 3:lam=1 eps=2^-8  Mm1=1
+PASS 3:lam=1 eps=2^-10  Mm1=1
+PASS 3:lam=1 eps=2^-20  Mm1=1
+PASS 3:lam=2 eps=2^-1  Mm1=1/2
+PASS 3:lam=2 eps=2^-2  Mm1=1/2
+PASS 3:lam=2 eps=2^-4  Mm1=1/2
+PASS 3:lam=2 eps=2^-8  Mm1=1/2
+PASS 3:lam=2 eps=2^-10  Mm1=1/2
+PASS 3:lam=2 eps=2^-20  Mm1=1/2
+== [4] coercivity cap:  RD_c at K=1/s  =>  c <= inf supp nu ==
+PASS 4:m=1/4 f=1/10 M=10  c_max=0.204082  m=0.250000
+PASS 4:m=1/4 f=1/10 M=100  c_max=0.244499  m=0.250000
+PASS 4:m=1/4 f=1/2 M=10  c_max=0.243902  m=0.250000
+PASS 4:m=1/4 f=1/2 M=100  c_max=0.249377  m=0.250000
+PASS 4:m=1/4 f=9/10 M=10  c_max=0.249307  m=0.250000
+PASS 4:m=1/4 f=9/10 M=100  c_max=0.249931  m=0.250000
+PASS 4:m=1 f=1/10 M=10  c_max=0.526316  m=1.000000
+PASS 4:m=1 f=1/10 M=100  c_max=0.917431  m=1.000000
+PASS 4:m=1 f=1/2 M=10  c_max=0.909091  m=1.000000
+PASS 4:m=1 f=1/2 M=100  c_max=0.990099  m=1.000000
+PASS 4:m=1 f=9/10 M=10  c_max=0.989011  m=1.000000
+PASS 4:m=1 f=9/10 M=100  c_max=0.998890  m=1.000000
+PASS 4:m=4 f=1/10 M=10  c_max=0.869565  m=4.000000
+PASS 4:m=4 f=1/10 M=100  c_max=2.941176  m=4.000000
+PASS 4:m=4 f=1/2 M=10  c_max=2.857143  m=4.000000
+PASS 4:m=4 f=1/2 M=100  c_max=3.846154  m=4.000000
+PASS 4:m=4 f=9/10 M=10  c_max=3.829787  m=4.000000
+PASS 4:m=4 f=9/10 M=100  c_max=3.982301  m=4.000000
+PASS 4:m=9 f=1/10 M=10  c_max=0.989011  m=9.000000
+PASS 4:m=9 f=1/10 M=100  c_max=4.972376  m=9.000000
+PASS 4:m=9 f=1/2 M=10  c_max=4.736842  m=9.000000
+PASS 4:m=9 f=1/2 M=100  c_max=8.256881  m=9.000000
+PASS 4:m=9 f=9/10 M=10  c_max=8.181818  m=9.000000
+PASS 4:m=9 f=9/10 M=100  c_max=8.910891  m=9.000000
+== [5] Young/Holder + Jensen:  M_{-p} >= M_{-1}^p M0^{1-p}  (p>1) ==
+PASS 5:two atoms 1/2@1/4 + 1/2@4 p=1.5  M-p=4.0625  lower=3.09769
+PASS 5:two atoms 1/2@1/4 + 1/2@4 p=2.0  M-p=8.03125  lower=4.51562
+PASS 5:two atoms 1/2@1/4 + 1/2@4 p=3.0  M-p=32.0078  lower=9.5957
+PASS 5:thin atom lam=1 eps=1/64 p=1.5  M-p=4.35494  lower=1
+PASS 5:thin atom lam=1 eps=1/64 p=2.0  M-p=32.252  lower=1
+PASS 5:thin atom lam=1 eps=1/64 p=3.0  M-p=2048.13  lower=1
+PASS 5:single atom @1 p=1.5  M-p=1  lower=1
+PASS 5:single atom @1 p=2.0  M-p=1  lower=1
+PASS 5:single atom @1 p=3.0  M-p=1  lower=1
+PASS 5:single atom @1/1024 p=1.5  M-p=32768  lower=32768
+PASS 5:single atom @1/1024 p=2.0  M-p=1.04858e+06  lower=1.04858e+06
+PASS 5:single atom @1/1024 p=3.0  M-p=1.07374e+09  lower=1.07374e+09
+== [6] Legendre:  max_g (2g - s g^2) = 1/s  (grid check) ==
+PASS 6:s=0.01  max=100.00000000 1/s=100.00000000
+PASS 6b:s=0.01
+PASS 6:s=0.10  max=10.00000000 1/s=10.00000000
+PASS 6b:s=0.10
+PASS 6:s=1.00  max=1.00000000 1/s=1.00000000
+PASS 6b:s=1.00
+PASS 6:s=3.70  max=0.27027027 1/s=0.27027027
+PASS 6b:s=3.70
+PASS 6:s=25.00  max=0.04000000 1/s=0.04000000
+PASS 6b:s=25.00
+== [7] no affine majorant of 1/s:  a+bs >= 1/s on (0,oo) is impossible ==
+PASS 7:a=-5.0 b=-5.0  as+bs^2=-5e-06
+PASS 7:a=-5.0 b=0.0  as+bs^2=-5e-06
+PASS 7:a=-5.0 b=1.0  as+bs^2=-5e-06
+PASS 7:a=-5.0 b=5.0  as+bs^2=-5e-06
+PASS 7:a=0.0 b=-5.0  as+bs^2=-5e-12
+PASS 7:a=0.0 b=0.0  as+bs^2=0
+PASS 7:a=0.0 b=1.0  as+bs^2=1e-12
+PASS 7:a=0.0 b=5.0  as+bs^2=5e-12
+PASS 7:a=1.0 b=-5.0  as+bs^2=1e-06
+PASS 7:a=1.0 b=0.0  as+bs^2=1e-06
+PASS 7:a=1.0 b=1.0  as+bs^2=1e-06
+PASS 7:a=1.0 b=5.0  as+bs^2=1e-06
+PASS 7:a=5.0 b=-5.0  as+bs^2=5e-06
+PASS 7:a=5.0 b=0.0  as+bs^2=5e-06
+PASS 7:a=5.0 b=1.0  as+bs^2=5e-06
+PASS 7:a=5.0 b=5.0  as+bs^2=5e-06
+== [8] moment ladder is BLIND: all M_k (k>=0) bounded, M_{-1} -> infinity ==
+PASS 8a:k=0  max=2.0000 (=M_k(1))
+PASS 8a:k=1  max=3.0000 (=M_k(1))
+PASS 8a:k=2  max=5.0833 (=M_k(1))
+PASS 8a:k=3  max=9.5000 (=M_k(1))
+PASS 8a:k=4  max=19.0125 (=M_k(1))
+PASS 8a:k=5  max=39.7917 (=M_k(1))
+PASS 8a:k=6  max=85.7522 (=M_k(1))
+PASS 8a:k=7  max=188.5312 (=M_k(1))
+PASS 8a:k=8  max=420.5838 (=M_k(1))
+PASS 8b:M-1 grows  M-1(t=1e-8)=1.000e+08
+   M0,M1,M2 at t=1e-6: ['2.000000', '1.000002', '1.083335']
+== [9] converse: M0,M-1 bounded while M1 -> infinity ==
+PASS 9:S=1e+02  M1=1.000e+02  M-1=2.000e-02  (2/S=2.000e-02)
+PASS 9:S=1e+04  M1=1.000e+04  M-1=2.000e-04  (2/S=2.000e-04)
+PASS 9:S=1e+06  M1=1.000e+06  M-1=2.000e-06  (2/S=2.000e-06)
+== [10] fiber (M0,M-1)=(1,1) contains every bottom eps in (0,2) ==
+PASS 10:eps=2^-1  bottom=1/2
+PASS 10:eps=2^-2  bottom=1/4
+PASS 10:eps=2^-3  bottom=1/8
+PASS 10:eps=2^-6  bottom=1/64
+PASS 10:eps=2^-12  bottom=1/4096
+PASS 10:eps=2^-30  bottom=1/1073741824
+PASS 10:eps=2^-100  bottom=1/1267650600228229401496703205376
+== [11] free-field box scaling: two-level with s1 = 4 pi^2 / L^2, f=1/2 ==
+   L= 2  s1=9.869604  M-1=0.175661
+   L= 4  s1=2.467401  M-1=0.327642
+   L= 8  s1=0.616850  M-1=0.935569
+   L=16  s1=0.154213  M-1=3.367278
+   L=64  s1=0.009638  M-1=52.001446
+PASS 11:grows like L^2 (ratio L=64/L=8 > 50)
+== [12] fifth cell (uniformity control): nu_L = w_L delta_1 + (1-w_L) delta_4, w_L=1/2+1/(4+L) ==
+   L= 2  f1^2=w=2/3  M-1=3/4=0.750000  m1^2=1  Lambda*=4
+   L= 4  f1^2=w=5/8  M-1=23/32=0.718750  m1^2=1  Lambda*=4
+   L= 8  f1^2=w=7/12  M-1=11/16=0.687500  m1^2=1  Lambda*=4
+   L=16  f1^2=w=11/20  M-1=53/80=0.662500  m1^2=1  Lambda*=4
+   L=64  f1^2=w=35/68  M-1=173/272=0.636029  m1^2=1  Lambda*=4
+PASS 12:bounded, decreasing
+== [13] s^a continuum: M0,M1 bounded, M-1 -> infinity, bottom = 0, no atoms ==
+PASS 13:a=2.00  M1=0.7500 M-1=1.500
+PASS 13:a=1.00  M1=0.6667 M-1=2.000
+PASS 13:a=0.50  M1=0.6000 M-1=3.000
+PASS 13:a=0.25  M1=0.5556 M-1=5.000
+PASS 13:a=0.05  M1=0.5122 M-1=21.000
+== [14] Jensen direction: M_{-1} >= M0^2/M1  (lower bound, wrong way for H1) ==
+PASS 14:two atoms 1/2@1/4 + 1/2@4  M-1=2.125000 M0^2/M1=0.470588
+PASS 14:thin atom lam=1 eps=1/64  M-1=1.000000 M0^2/M1=0.507874
+PASS 14:single atom @1  M-1=1.000000 M0^2/M1=1.000000
+PASS 14:single atom @1/1024  M-1=1024.000000 M0^2/M1=1024.000000
+
+ALL CHECKS PASS

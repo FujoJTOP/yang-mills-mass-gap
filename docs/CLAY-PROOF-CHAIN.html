@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clay 推导链（完整 · 修订）</title>
+<script>
+window.MathJax = {
+  tex: { inlineMath: [['$','$']], displayMath: [['$$','$$'],['\\[','\\]']], tags: 'ams' },
+  options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] }
+};
+</script>
+<script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<style>
+  :root{
+    --bg:#fbfbfa; --ink:#16181a; --muted:#77746e; --line:#dcdad5; --line-soft:#ecebe7;
+    --ok:#1d6b46; --ok-bg:#e7f1ea; --bad:#a32217; --bad-bg:#faeae7; --loop:#8a6a12; --loop-bg:#f7f0dc;
+    --serif:Charter,"Bitstream Charter","Iowan Old Style",Georgia,"Songti SC",serif;
+    --mono:ui-monospace,"SF Mono",Consolas,monospace;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink)}
+  body{font-family:var(--serif);font-size:16.5px;line-height:1.66;-webkit-font-smoothing:antialiased}
+  .page{max-width:880px;margin:0 auto;padding:58px 28px 110px}
+  @media(max-width:640px){.page{padding:34px 16px 80px}body{font-size:15.5px}}
+
+  h1{font-size:24px;font-weight:600;margin:0 0 4px;letter-spacing:-.01em}
+  .sub{color:var(--muted);font-size:14px;margin:0 0 22px}
+
+  .legend{display:grid;grid-template-columns:auto 1fr;gap:4px 16px;font-size:13.5px;
+          border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;margin:0 0 4px}
+  .legend .k{font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+
+  h2{font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);font-weight:600;
+     margin:34px 0 2px;padding-top:14px;border-top:1px solid var(--line-soft)}
+  h2 .n{color:var(--ink);margin-right:.6em;font-family:var(--mono)}
+
+  mjx-container[display="true"]{margin:14px 0 !important}
+  .tight mjx-container[display="true"]{margin:9px 0 !important}
+
+  .tag{font-family:var(--mono);font-size:10px;padding:1px 5px;border-radius:2px;white-space:nowrap}
+  .tag.ok{color:var(--ok);background:var(--ok-bg)}
+  .tag.bad{color:var(--bad);background:var(--bad-bg)}
+  .tag.loop{color:var(--loop);background:var(--loop-bg)}
+
+  .band{border-left:3px solid var(--bad);padding:2px 0 2px 16px;margin:20px 0}
+  .band.ok{border-left-color:var(--ok)}
+  .band.loop{border-left-color:var(--loop)}
+
+  .conv{border:1px solid var(--line);background:#fff;border-radius:2px;padding:12px 16px;margin:18px 0}
+  .conv .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:4px}
+  .note{font-size:13.5px;color:var(--muted);margin:-4px 0 10px}
+
+  .hero{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:28px 0 6px}
+  @media(max-width:700px){.hero{grid-template-columns:1fr}}
+  .hero .col{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px}
+  .hero .hd{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .hero .big{font-size:19px;font-weight:650;letter-spacing:-.01em;margin-bottom:2px}
+  .hero .big em{font-style:normal;color:var(--accent-ink)}
+  .hero p{margin:0 0 4px;font-size:14px;line-height:1.5}
+  .hero .mut{color:var(--muted);font-size:13px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 4px}
+  .chips span{font-family:var(--mono);font-size:11px;padding:2px 7px;border-radius:var(--r);background:var(--line-soft);color:var(--muted)}
+  .self{border-left:3px solid var(--accent);background:var(--accent-wash);padding:12px 16px;margin:18px 0;font-size:14px;line-height:1.6}
+  .self b{font-weight:650}
+  .self code{font-family:var(--mono);font-size:.9em;background:#fff;padding:1px 4px;border-radius:2px}
+</style>
+</head>
+<body>
+<div class="page">
+
+<h1>Clay 推导链</h1>
+<p class="sub">4D 纯 SU(N) Yang–Mills 质量间隙。逐步写全，箭头指向充分条件。全线共两个终止符，均为未证。</p>
+
+
+<div class="hero">
+  <div class="col">
+    <div class="hd">柱 1 · 存在性</div>
+    <div class="big"><em>两个标量 sup</em></div>
+    $$
+    \sup_a[\rho^{\mathrm{ren}}\mathcal G^{\mathrm{ren}}]\lt\infty
+    \ \wedge\
+    \sup_a Z^{-1}\|H_a\|_D\lt\infty
+    $$
+    <p class="mut">无 $(\star)$ 腿。两条独立路线收敛到同一形。$(U2)$ 的措辞已补（三子句）。$A6$ 活，但只是归约。</p>
+  </div>
+  <div class="col">
+    <div class="hd">柱 2 · 定号</div>
+    <div class="big"><em>一句不等式</em></div>
+    $$
+    s_1\ \ge\ c\,M_0/\chi
+    \qquad(\forall L,\ \beta\ge\beta_A)
+    $$
+    <p class="mut">类层无地板（已证）。$\chi$ 型量四次出局。$④$ 三条独立路关。$q=+0.150\pm0.041$ ⇒ 原子地板非空转。</p>
+  </div>
+</div>
+
+
+<div class="band ok">
+<span class="label">三格 $\to$ 两格 &nbsp;<span class="tag ok">T</span></span>
+<p style="margin:0 0 6px;font-size:14px">$C$ 格（$\iota_a/L^2$ 缝）<b>已溶解</b>：$(A\text{-abs})$ 只消费一个方向 $\mathfrak M\Longrightarrow\mathfrak S$（矩收敛 $\Rightarrow$ 强收敛），而这一向<b>免费</b>——$e^{-tH_a}$ 自伴，故 $\|e^{-tH_a}g\|^2=\langle g,e^{-2tH_a}g\rangle$ <b>仍是矩</b>。最窄形 $C$-$n$ 只差三个条件，不用 $\iota_a$、不用强收敛、不用 $(NEW)$。</p>
+$$
+\text{Clay}\ \Longleftarrow\ \underbrace{A}_{L3\ \text{的 4D 面}}\ \wedge\ \underbrace{B}_{s_1}
+$$
+</div>
+
+<div class="band">
+<span class="label">Lean 骨架 &nbsp;<span class="tag ok">T</span></span>
+<p style="margin:0 0 6px;font-size:14px">5 条机检 + 13 条已证 + 6 条具名缺件 + 3 条装配：</p>
+$$
+T_{16}\ \leftarrow\ \{T_{14},\,T_{15}\}+\text{OS},\qquad
+T_{14}\ \leftarrow\ \{T_1\leftarrow N_1,\ T_{13}\},\qquad
+T_{15}\ \leftarrow\ \{T_4,\,T_5,\,N_4\}
+$$
+<p style="margin:6px 0 0;font-size:14px">即柱 1（$N_2/N_3$）$\to T_4\to\mu\to N_1\to T_1\to T_{14}$；柱 2（$N_4$）$\to T_{15}$。两柱在 $T_{16}$ 汇合。而 <b>$N_1=C$ 可归约到 $L3$</b>，所以具名缺件从 7 条降到 6 条。</p>
+<p style="margin:6px 0 0;font-size:14px"><b>两个顺序不同向</b>：逻辑序 $A\to\mu\to C\to$ 桥；成本序 $C\to A\to B$。先前把它们混成一条是错的。</p>
+</div>
+
+<p class="mut" style="font-family:var(--mono);font-size:11.5px;margin:14px 0 4px;letter-spacing:.04em">本轮已关掉的替代路：</p>
+<div class="chips">
+  <span>χ_flat 当 β-探针</span><span>χ̃ 的均值</span><span>④ 的 L-序列</span>
+  <span>双井类</span><span>IN-11 ∧ 矩</span><span>四入口合成</span><span>塔由逐壳求和</span>
+  <span>塔单点化</span><span>AFS 字面形</span><span>(G-4) 裸形</span><span>K6 当供应商</span>
+  <span>∂_β 的符号</span><span>Faizal–Shabir 当上游</span>
+</div>
+
+<div class="self">
+<b>本页自纠（留着，比结论有用）：</b>
+<code>∂_β⟨O⟩</code> 我一直写 <code>+Var(O)</code>，正确是 <code>−Var(O) ≤ 0</code>（<code>M₀</code> 是凝聚的负斜率）。
+预算形我一直写 <code>+Δ/ε</code>，正确是 <code>+Δ</code>。
+另有两处：把 <code>χ/(a²Z_O²)</code> 当成正确搬运形（应为 <code>a²χ ≤ 1/Δ₀²</code>）；把 <code>χ/a² ~ a⁻²</code> 算错（应为 <code>a⁻⁶</code>）。
+<br><br><b>本批又三处，都是把某条读重了：</b>
+<code>s₁ ≥ 4·arccoth²ρ</code> 方向反了——<code>coth(√s/2)</code> 单调减，正确是 <code>≤</code>（天花板，不是地板）。
+<code>B1</code> 的"4D 支撑面"是 <code>[T]</code>（正文 Thm 4.1/4.5），断点在速率，而速率等价于 <code>Δ₀&gt;0</code> = 靶。
+<code>g_j²=O(1)</code> <b>不</b>证靶不真（固定分数与它相容）。
+
+</div>
+
+<div class="legend">
+  <span class="k">$\Longleftarrow$ / $\Longleftrightarrow$</span><span>充分条件 / 等价</span>
+  <span class="k"><span class="tag ok">T</span></span><span>已证</span>
+  <span class="k"><span class="tag bad">✗</span></span><span>未证</span>
+  <span class="k"><span class="tag loop">↺</span></span><span>在给定前件下与目标同义</span>
+</div>
+
+<!-- =========================================== -->
+<h2><span class="n">0</span>约定</h2>
+
+$$
+G=SU(N),\qquad \Lambda_a=a\mathbb{Z}^4,\qquad
+S_W[U]=\beta\sum_p\Big(1-\tfrac1N\operatorname{Re}\operatorname{tr}U_p\Big),\qquad
+Z=\int\prod_\ell dU_\ell\,e^{-S_W[U]}
+\tag{0.1}
+$$
+
+<div class="conv">
+<span class="lbl">耦合与渐近自由</span>
+$$
+\beta\ =\ \frac{2N}{g^2},\qquad
+g\to0\ \Longleftrightarrow\ \beta\to\infty,\qquad
+\beta_W = N^2\beta_A
+\tag{0.2}
+$$
+<p class="note" style="margin:0">连续极限沿 $\beta\to\infty$ 取。因此下文的所有窗一律写成 <b>射线</b> $\beta\ge\beta_0$，不写有限区间。</p>
+</div>
+
+<div class="conv">
+<span class="lbl">单位约定（必须先钉死）</span>
+$$
+a\ \text{保持显式}:\qquad
+\Delta_a\ \text{为物理质量},\qquad [\Delta_a]=\text{mass}
+\tag{0.3}
+$$
+$$
+\text{若令 } a=1:\qquad \Delta^{\mathrm{lat}}_a:=a\,\Delta_a=m\,a\ \text{无量纲}
+\quad\Longrightarrow\quad
+\Delta^{\mathrm{lat}}_a\ge\delta\ \text{是反靶（AF 给 } m\,a\to0\text{）}
+\tag{0.4}
+$$
+<p class="note" style="margin:0">所以凡写地板，一律写无量纲比值 $\Delta_a/\Lambda$；裸写 $\Delta^{\mathrm{lat}}_a\ge\delta$ 的陈述一律不采用。</p>
+</div>
+
+$$
+\Lambda:=\Lambda_{\mathrm{QCD}}\ \text{固定物理标度},\qquad
+a(\beta)\Lambda\ \text{由跑动耦合给出},\qquad
+a(\beta)\Lambda\ \searrow\ 0\ \ (\beta\to\infty)
+\tag{0.5}
+$$
+
+$$
+O=\tfrac14\operatorname{tr}F^2,\qquad
+\langle A\rangle_\Omega:=\langle\Omega|A|\Omega\rangle,\qquad
+\|\Omega\|=1
+\tag{0.6}
+$$
+
+<!-- =========================================== -->
+<h2><span class="n">1</span>转移矩阵</h2>
+
+$$
+T_a=e^{-aH_a}=\int_{[0,1]}\lambda\,dP_a(\lambda),\qquad
+H_a=\int_{[0,\infty)}s\,dQ_a(s),\qquad
+Q_a(B)=P_a\big(e^{-aB}\big)
+\tag{1.1}
+$$
+
+$$
+0\ \le\ T_a\ \le\ \mathbf{1},\qquad
+T_a\ \text{自伴紧},\qquad
+\lambda_1(T_a)=1\ \text{单重},\qquad
+T_a\Omega=\Omega
+\tag{1.2}
+$$
+
+$$
+\sigma(H_a)\setminus\{0\}=\{E_{n,a}\}_{n\ge1},\qquad
+0\ \lt\ E_{1,a}\le E_{2,a}\le\cdots,\qquad
+E_{n,a}\to\infty
+\tag{1.3}
+$$
+
+$$
+T_a^{t/a}\ \text{为时间平移 }t\text{ 的转移算子}\qquad(t=ja)
+\tag{1.4}
+$$
+
+<!-- =========================================== -->
+<h2><span class="n">2</span>$\Delta_a$ 的三等价形</h2>
+
+$$
+\Delta_a:=\inf\big(\sigma(H_a)\cap(0,\infty)\big)=E_{1,a}
+\tag{2.1}
+$$
+
+$$
+\sigma(H_a)\cap(0,\infty)=\Big\{-\tfrac1a\log\lambda\ :\ \lambda\in\sigma(T_a),\ \lambda\lt 1\Big\}
+\tag{2.2}
+$$
+
+$$
+\Delta_a
+\overset{(2.1)}{=}\ -\frac1a\log\lambda_2(T_a)
+\overset{(1.2)}{=}\ -\frac1a\log\big\|T_a\big|_{\Omega^\perp}\big\|
+\tag{2.3}
+$$
+
+$$
+\Delta^{\mathrm{lat}}_a:=a\,\Delta_a=-\log\big\|T_a\big|_{\Omega^\perp}\big\|\ \ \text{（无量纲）},
+\qquad
+\frac{\Delta_a}{\Lambda}=\frac{\Delta^{\mathrm{lat}}_a}{a(\beta)\Lambda}
+\tag{2.4}
+$$
+
+<!-- =========================================== -->
+<h2><span class="n">3</span>KL 测度与可见性</h2>
+
+$$
+C_O(t):=\big\langle\Omega\big|\,O\,T_a^{\,t/a}\,O\,\big|\Omega\big\rangle
+-\big|\langle\Omega|O|\Omega\rangle\big|^2
+\tag{3.1}
+$$
+
+<p class="note">时间演化取转移算子 $T_a^{t/a}$，不取 Heisenberg 演化 $e^{tH_a}Oe^{-tH_a}$；后者给的是另一条关联函数，与 (3.2) 的谱表示不符。</p>
+
+<div class="tight">
+$$
+C_O(t)=\big\langle O\,T_a^{t/a}\,O\big\rangle_\Omega-\big|\langle O\rangle_\Omega\big|^2
+=\int_0^\infty e^{-st}\,d\nu_a(s)
+\tag{3.2}
+$$
+</div>
+
+$$
+d\nu_a=\sum_{n\ge1}f_{n,a}^2\,\delta_{E_{n,a}},\qquad
+f_{n,a}^2:=\big|\langle\Omega|\,\big(O-\langle O\rangle_\Omega\big)\,|n,a\rangle\big|^2
+\tag{3.3}
+$$
+
+$$
+\nu_a\ge0,\qquad
+\nu_a(\{0\})=0,\qquad
+\operatorname{supp}\nu_a=\overline{\big\{E_{n,a}:f_{n,a}^2\gt0\big\}}
+\tag{3.4}
+$$
+
+<div class="band ok">
+$$
+\boxed{\ f_{1,a}^2\gt0\ \Longrightarrow\ \inf\operatorname{supp}\nu_a=E_{1,a}=\Delta_a\ }
+\qquad\qquad\text{T}
+\tag{3.5}
+$$
+</div>
+
+$$
+f_{1,a}^2\gt0\ \wedge\ \operatorname{supp}\nu_a\cap(0,\delta)=\varnothing
+\qquad\Longrightarrow\qquad
+\Delta_a\ \ge\ \delta
+\tag{3.6}
+$$
+
+$$
+w_1:=\frac{f_1^2}{M_0},\qquad M_0:=C_O(0)=\nu_a([0,\infty)),\qquad
+w_1(\mu)=w_1(\mu_0)\ \ \text{（乘性重标下不变）}
+\tag{3.7}
+$$
+
+<!-- =========================================== -->
+<h2><span class="n">4</span>连续极限：拆成两层</h2>
+
+<div class="band">
+$$
+\mathrm{(A\text{-}phys)}:\qquad
+H_a\ \longrightarrow\ H\quad(\text{强预解}),\quad a=a(\beta)\to0
+\qquad\qquad\text{✗}
+\tag{4.1}
+$$
+</div>
+
+<div class="band ok">
+$$
+\mathrm{(A\text{-}abs)}:\qquad
+\big[H_a\to H\ \text{强预解}\big]\ \Longrightarrow\ \Big[\Delta_{\mathrm{cont}}\ \ge\ \liminf_{a\to0}\Delta_a\Big]
+\qquad\qquad\text{T}
+\tag{4.2}
+$$
+</div>
+
+$$
+\Delta_{\mathrm{cont}}:=\inf\big(\sigma(H)\cap(0,\infty)\big)
+\qquad\text{（定义于 (4.1) 成立时）}
+\tag{4.3}
+$$
+
+<!-- =========================================== -->
+<h2><span class="n">5</span>展开 (A-abs)</h2>
+
+$$
+\Delta_a\ge\delta\ \ \forall a\lt a_0
+\qquad\overset{(4.1)}{\Longrightarrow}\qquad
+(0,\delta)\subseteq\mathbb{R}\setminus\sigma(H)
+\qquad\Longrightarrow\qquad
+\Delta_{\mathrm{cont}}\ge\delta
+\tag{5.1}
+$$
+
+$$
+H_a\to H\ \text{强预解},\quad \lambda\notin\sigma(H)
+\qquad\Longrightarrow\qquad
+\exists a_0\ \forall a\lt a_0:\ \lambda\notin\sigma(H_a)
+\tag{5.2}
+$$
+
+$$
+\liminf_{a}\Delta_a\ge\delta
+\ \Longleftrightarrow\
+\exists a_0\ \forall a\lt a_0:\ \Delta_a\ge\delta
+\tag{5.3}
+$$
+
+$$
+\Delta_a=\Delta_a(L),\qquad
+(\mathrm{B})\ \text{中 }\delta\ \text{对 }L\ \text{一致}
+\ \Longrightarrow\
+L\to\infty\ \text{不损失下界}
+\tag{5.4}
+$$
+
+<!-- =========================================== -->
+<h2><span class="n">6</span>(B)：无量纲射线上的一致地板</h2>
+
+<div class="band">
+$$
+\mathrm{(B)}:\qquad
+\exists\,\delta\gt0\quad \forall L\lt\infty\quad \forall\beta\ge\beta_0:\qquad
+\frac{\Delta_a(L,\beta)}{\Lambda}\ \ge\ \delta,
+\qquad a=a(\beta)
+\qquad\qquad\text{✗}
+\tag{6.1}
+$$
+</div>
+
+<div class="band ok">
+<span class="label">柱 1 的分解 &nbsp;<span class="tag ok">T</span></span>
+$$
+(\mathrm{A\text{-}phys})\ \Longleftarrow\ [L3]\ \wedge\ [W1]
+\tag{4.4}
+$$
+<p style="margin:0 0 4px;font-size:14px"><b>$L3$ = $a$-一致矩界（finiteness），不是正性不等式。</b>$G''_j\ge\delta_W$ 型逐壳正性只是它的<b>充分条件</b>，两条独立理由：$(i)$ 自由场上该正性精确为假而 $L3$ 必须成立；$(ii)$ 实测头 $G''(0)\approx-0.165\lt0$ 仍要求 $L3$ 成立。而它的全边界一致版（$\forall U'$）是<b>假命题</b>：$SU(2)$ 单片给 $G''=A-B\beta^2$，$\beta_*=4.30661$ 穿零。</p>
+<p style="margin:0 0 4px;font-size:14px"><b>$\iota_a$ 的四分之三是免费的。</b>粗化映射 $\Pi_a$（Wilson 线）与嵌入 $E_a^*$（等距）都典范；路径集被反射正性的半空间分离定理级钉住。剩下四分之一是"格点 → 连续统"，而它的典范性<b>逐字等于连续极限存在且唯一</b>，即 $[L3]\wedge[W1]$。所以 $\iota_a$ 不是独立的墙。</p>
+<p style="margin:0;font-size:14px">$[W1]$ = 极限的唯一性。合起来：柱 1 的真实格数是 $L3+W1$ 两格，不是三格。</p>
+</div>
+<div class="band ok">
+<span class="label">降为两格 &nbsp;<span class="tag ok">T</span></span>
+<p style="margin:0 0 4px;font-size:14px">$[W1]$ 由第二柱买下：$(B)$ + 结构 $\Rightarrow$ 体积一致指数聚类，再加 $[L3]$ 紧性 $\Rightarrow$ 唯一测度极限 $\Rightarrow$ OS 重构。所以</p>
+$$
+\mathrm{Clay}\ \Longleftarrow\ [L3]\ \wedge\ (B)\ \wedge\ (A\text{-abs}),\qquad (A\text{-abs})\ \text{已证}
+\tag{4.5}
+$$
+<p style="margin:0 0 4px;font-size:14px">$L3$ 的类型必须写对：它是<b>矩的 $a$-一致有界性（finiteness）</b>，不是 Prokhorov 紧性，也不是正性不等式。逐壳正性 $G''_j\ge\delta_W$ 只是它的<b>充分条件</b>：$(i)$ 自由场上该正性精确为假（$G''=0$）而 $L3$ 必须成立；$(ii)$ 实测头 $G''(0)\approx-0.165\lt0$ 仍要求 $L3$ 成立。</p>
+<p style="margin:0;font-size:14px">而该正性的全边界一致版是<b>假命题</b>：$SU(2)$ 单片给 $G''=A-B\beta^2$，$\beta_*=4.30661$ 穿零，三法互核到 $10^{-6}$。所以任何引用"逐壳正性"的地方都要加上小场集的限制。</p>
+</div>
+
+<div class="tight">
+$$
+\mathrm{(B)}\ \Longleftrightarrow\
+\exists\,\delta\gt0\ \forall L\ \forall\beta\ge\beta_0:\quad
+\frac{\Delta^{\mathrm{lat}}_a(L,\beta)}{a(\beta)\,\Lambda}\ \ge\ \delta
+\tag{6.2}
+$$
+</div>
+
+<div class="tight">
+$$
+\mathrm{(B)}\ \Longleftrightarrow\
+\exists\,\delta\gt0\ \forall L\ \forall\beta\ge\beta_0:\quad
+\big\|T_a\big|_{\Omega^\perp}\big\|\ \le\ \exp\Big(-\delta\,a(\beta)\Lambda\Big)
+\tag{6.3}
+$$
+</div>
+
+<div class="tight">
+$$
+\mathrm{(B)}\ \Longleftrightarrow\
+\exists\,\delta\gt0\ \forall L\ \forall\beta\ge\beta_0:\quad
+\operatorname{supp}\nu_a\cap\big(0,\delta\Lambda\big)=\varnothing
+\ \wedge\ f_{1,a}^2\gt0
+\tag{6.4}
+$$
+</div>
+
+<!-- =========================================== -->
+<h2><span class="n">7</span>展开 (B)：大括号</h2>
+
+$$
+\mathrm{(B)}
+\ \Longleftarrow\
+\left\{
+\begin{array}{ll}
+\mathrm{(B)}_1: & \forall(L,\beta\ge\beta_0):\ w_1=\dfrac{f_1^2}{M_0}\ \ge\ w_0\gt0 \\[10pt]
+\mathrm{(B)}_2: & \forall(L,\beta\ge\beta_0):\ \operatorname{supp}\nu_a\cap\big(0,\delta\Lambda\big)=\varnothing
+\end{array}
+\right.
+\tag{7.1}
+$$
+
+$$
+\mathrm{(B)}_1\wedge\mathrm{(B)}_2
+\ \overset{(3.5)}{\Longrightarrow}\
+f_1^2\gt0\ \wedge\ \operatorname{supp}\nu_a\cap(0,\delta\Lambda)=\varnothing
+\ \Longrightarrow\
+\Delta_a\ \ge\ \delta\Lambda
+\ \Longrightarrow\ \mathrm{(B)}
+\tag{7.2}
+$$
+
+<!-- =========================================== -->
+<h2><span class="n">8</span>展开 (B)₁</h2>
+
+<div class="band ok">
+$$
+\mathrm{(B)}_1:\quad \forall(L,\beta\ge\beta_0):\ w_1(L,\beta)\ \ge\ w_0\gt0
+\qquad
+\beta\lt\beta_A:\ \text{T}\qquad
+\beta\ge\beta_A:\ \text{✗}
+\tag{8.1}
+$$
+</div>
+
+<p class="note">$\beta_A$：强耦合已知窗的上界。$\beta\ge\beta_A$ 一直延伸到 $\beta\to\infty$，正是 (B) 的实质内容。</p>
+
+$$
+\mathrm{(B)}_1\Big|_{\ \beta\ \ge\ \beta_A}
+\ \Longleftarrow\
+\left\{
+\begin{array}{ll}
+H1: & \exists\lambda\gt0\ \forall(L,\beta):\ \displaystyle\int_0^\infty s^{-1}\,d\nu_a(s)\ \le\ \frac{1-c}{\lambda} \quad\text{✗}\\[10pt]
+I2: & \exists\delta_2\gt0\ \forall(L,\beta):\ \Lambda_\star-m_1^2\ \ge\ \delta_2 \quad\text{✗}\\[4pt]
+(CP): & \text{T=0 单一相}\quad\text{✗}\\[4pt]
+\text{无光模}: & \nexists\,\{\beta_j,L_j\}:\ \frac{m_1^2(L_j)}{\Lambda^2}\lesssim\frac{1}{(L_j\Lambda)^2}\ \wedge\ w_1\ge w_0\quad\text{✗}
+\end{array}
+\right.
+\tag{8.2}
+$$
+<div class="band ok">
+<span class="label">支配关系 &nbsp;<span class="tag ok">T</span></span>
+$$
+H1\ \wedge\ \Big(m_1^2\le\frac{c}{L^2}\ \wedge\ f_1^2\ge r_0\Big)
+\ \Longrightarrow\
+\chi\ \ge\ \frac{f_1^2}{m_1^2}\ \ge\ \frac{r_0}{c}\,L^2\ \to\ \infty
+\ \Longrightarrow\ \bot
+\tag{8.3}
+$$
+<p style="margin:0;font-size:14px;color:#3d5c4b">H1 单独吃掉"无光模"那一行。反向不成立：$\neg$(光模类)$\nRightarrow H1$，见证 $\nu\propto s^{-1/2}ds$（$f_1^2=0$，$\chi=\infty$）。</p>
+</div>
+
+<div class="band">
+<span class="label">四入口合成不充分 &nbsp;<span class="tag ok">T</span></span>
+$$
+\forall\,\varnothing\ne S\subseteq\{①②③④\}:\qquad \bigwedge_{i\in S}\text{入口}_i\ \not\Longrightarrow\ (\mathrm{B})_1
+\tag{8.4}
+$$
+<p style="margin:0;font-size:14px">单一见证族 $\nu=0.01\,\delta_1+0.99\,\delta_2$ 使 ①②③④ 全真而 $w_1=0.01\lt 1/2$，于是 $2^4-1=15$ 个非空合取全被同一族否掉。度量层结论；4D $SU(N)$ 族上同一句未证。</p>
+<p style="margin:6px 0 0;font-size:14px">扩集上的最小充分合取是 $\{④,(G\text{-}4)\}$，两项，<b>严格强于靶</b>；把 $(G\text{-}4)$ 换成恒等式 $w_1=(s_2-\bar E)/(s_2-s_1)$ 就退化为靶本身。</p>
+</div>
+
+<div class="band ok">
+<span class="label">天花板可削弱 &nbsp;<span class="tag ok">T</span></span>
+$$
+\text{靶}\ \Longrightarrow\ H1\ \Longrightarrow\ P,
+\qquad
+P\ \wedge\ \big(f_1^2\ge r_0\big)\ \Longrightarrow\ \text{靶}
+\tag{8.5}
+$$
+$$
+P:\quad \forall c\gt0\ \forall r_0\gt0\ \exists L_0\ \forall L\ge L_0:\quad e^{\sqrt c}\,C_L(L)\ \le\ r_0
+\qquad\Longleftrightarrow\qquad
+\nu_L\big(\{m\le \sqrt c/L\}\big)\ \le\ r_0
+\tag{8.6}
+$$
+<p style="margin:0;font-size:14px">$H1=\int s^{-1}d\nu$ 是 $\nu$ 的<b>矩</b>；$P$ 是匹配时刻 $\tau=L$ 的<b>单点关联子</b>。所以 $P$ 是本项目第一个非矩型天花板：它的输入语义是关联子形状（有限尺度标定 / 块平均 / 两点式），不是谱代数。$P$ 严格弱于靶，也严格弱于 $H1$；但 $\beta=2.5$ 上两者都还开着。</p>
+</div>
+<div class="band ok">
+<span class="label">靶的一阶矩预算形 &nbsp;<span class="tag ok">T</span></span>
+$$
+w_1\ =\ 1-\frac{\delta_1}{\varepsilon}+\frac{\Delta}{\varepsilon},
+\qquad
+\text{靶}\ \Longleftrightarrow\ \delta_1\ \le\ (1-w_0)\,\varepsilon+\Delta
+\tag{8.7}
+$$
+<p style="margin:0 0 4px;font-size:14px">其中 $\delta_1:=\bar E-s_1$、$\varepsilon:=s_2-s_1$、$\Delta$ 是 $[s_2,\infty)$ 上的超额一阶矩。两条独立路径得到同一式。裸形 $(\mathrm{G}\text{-}4)$ 是<b>假</b>不是未证：$\nu=0.6\delta_1+0.2\delta_2+0.2\delta_{10^4}$ 给 $w_1=3/5$ 真而 $\delta_1=2000\gg(1-w_0)\varepsilon=1/2$。</p>
+<p style="margin:0;font-size:14px">窗内的常数是已知的：$w_0=r_0/M_0^{\max}=1/(32N^4)$；用 Popoviciu 收紧到 $M_0\le N^2/4$ 则 $w_0=1/(4N^4)$，$N=2$ 时 $1/64$。所以窗外那一格不是"找未知常数"，是"复现同一个数、去掉窗口"。而 $w_1$ 满足 $\gamma_{w_1}=0$，<b>不需要任何 $a$-搬运</b>。</p>
+</div>
+<div class="band">
+<span class="label">三类工具，三种独立死法 &nbsp;<span class="tag bad">✗</span></span>
+<table style="margin:6px 0;font-size:14px">
+<thead><tr><th>类</th><th>内容</th><th>输出</th><th>死因</th></tr></thead>
+<tbody>
+<tr><td>I</td><td>凸侧 / 测度积分（$\chi$、$M_k$、$M_{-1}$、$\mathbb E[H]$）</td><td>天花板</td><td>与原子分居 Schur 序两侧</td></tr>
+<tr><td>II</td><td>序 / 形 / 点值（Doob、Harnack、TP$_2$、lsc）</td><td>本征函数下界</td><td>对齐自由，且 $e^{cV}$ 使底退化</td></tr>
+<tr><td>III</td><td>关联子形状 / 累计（$P$、①、④）</td><td>权重分布</td><td>"带 $\to$ 原子"是假</td></tr>
+</tbody>
+</table>
+<p style="margin:6px 0 0;font-size:14px">三张证书彼此独立（Schur 侧、对齐自由、两轻层互不蕴含），三类交集为空。所以"更好不等式 / 更细谱估计 / 更长关联子"都不在通往第二柱的路上。唯一没被三类碰到的，是 $O$ 自己是谁，即源的身份。</p>
+<p style="margin:6px 0 0;font-size:14px">下一手（唯一活口）：把对齐写成 $\beta$-导数。$\partial_\beta\langle O\rangle=-\mathrm{Var}(O)\le0$ 已证；一阶微扰给 $\partial_\beta|\psi_1\rangle=\sum_{n\ne1}|\psi_n\rangle\langle\psi_n|O|\psi_1\rangle/(E_1-E_n)$。所以对齐是 $\partial_\beta$ 的一阶项，缺的是<b>符号</b>，不是量级。</p>
+</div>
+<div class="band">
+<span class="label">战线收缩：十二行 $\to$ 六格 $\to$ 两个物种 &nbsp;<span class="tag bad">✗ 无入口</span></span>
+<p style="margin:0 0 4px;font-size:14px">两柱的<b>命题</b>独立（$(A\text{-phys})\not\Rightarrow(B)$、$(B)\not\Rightarrow(A\text{-phys})$），但<b>战线</b>不是八格：$\iota_a$ 与 $L3$ 同址、簇分解两向已判、欧氏协变只活在下游、$(B)$ 是靶换名、$(\mathrm{G}\text{-}4)$ 非新格、AF 斜率界严格强于靶。</p>
+<table style="margin:6px 0;font-size:14px">
+<thead><tr><th>柱</th><th>格</th><th>内容</th><th>判</th></tr></thead>
+<tbody>
+<tr><td rowspan="3">1</td><td>C1-A</td><td>$L3^{UV}$（含 $(\star)$ 面）</td><td>✗ 要新数学</td></tr>
+<tr><td><b>C1-B</b></td><td><b>$(\star_{\mathrm{sf}})$，限小场集 $\mathcal S_t$</b></td><td>✗ 闭它销三格</td></tr>
+<tr><td>C1-D</td><td>欧氏协变</td><td>✗ 只记账，不解锁</td></tr>
+<tr><td rowspan="3">2</td><td>C2-A</td><td>$P$ 本体</td><td>✗ 缺跨 $L$ 输入</td></tr>
+<tr><td><b>C2-C</b></td><td>$P$ 匹配时刻读数</td><td>✗ 已判零分辨率</td></tr>
+<tr><td><b>C2-D</b></td><td>原子地板</td><td>✗ 数据证人目前坏</td></tr>
+</tbody>
+</table>
+<p style="margin:6px 0 4px;font-size:14px">未闭内容收敛到<b>两个物种</b>（同一性是猜测，不是定理）：</p>
+$$
+\mathbf{S1}:\ \text{一条 } a\text{-一致矩/方差上界（UV）}
+\qquad
+\mathbf{S2}:\ \text{一条【跨 } L \text{】的已证输入（IR，} P \text{ 与原子地板共用）}
+\tag{8.8}
+$$
+<p style="margin:6px 0 0;font-size:14px">在零新 MC、零新 Lean、零新文献的约束下，<b>能出真值的格是零</b>；唯一曾是数据侧可执行的一格（$P$ 的两点式）已执行并判出<b>判别力为零</b>，故关闭。所以这一步的产出是<b>战线收缩</b>，不是任何一格的推进。</p>
+<p style="margin:6px 0 0;font-size:14px">若只允许做一件事：<b>C1-B 的 $(\star_{\mathrm{sf}})$（限 $\mathcal S_t$）</b>。三条可核理由：销得最多（闭它清掉 C1-A 尾段、C1-B 本体、同址替身）；唯一有"闭了它 $G1$-fix 变无条件"的逐字承诺；形状已钉到可攻（不是无限制 $(\star)$，其 $\forall U'$ 版已被否证），且 $\delta$ 必须带 $c_L=4\pi^2/L^2$。</p>
+</div>
+<div class="band ok">
+<span class="label">靶必须重写成命题，否则不良定义 &nbsp;<span class="tag ok">T</span></span>
+<p style="margin:0 0 4px;font-size:14px">凡是含<b>绝对阈值</b>的陈述都会失效：同一个物理模型，点载体下定理存活、广延载体下定理被违反（自由场两档残数比精确为 $L^6/6$）。更强的是结构性的——在 $O\mapsto s_L O$ 下取 $s_L=\sqrt{r_0/2f_1^2(L)}$，任何 $f_1^2\ge r_0$ 的真值都可被翻转。所以不良定义与模型、与载体都无关。</p>
+$$
+\text{承重的不是"比值 vs 绝对"，而是 } M_0 \text{ 的 } L\text{-幂（= 载体档）}
+\tag{8.9}
+$$
+<p style="margin:6px 0 4px;font-size:14px">良定义的形要把四样钉死：<b>载体</b>（$O=\tfrac14\mathrm{tr}F^2$ 的重合点定域算子，非空间求和，接触减除在固定流时 $t_0$）· <b>道</b>（$0^{++}$ 且 $k=0$）· <b>单位</b>（$f_1^2$ 与 $r_0$ 同一套）· <b>scheme</b>（$Z_O$ 由迹反常钉到 $\mu_0$）。四钉之后命题是</p>
+$$
+\mathfrak T(t_0):\quad
+\exists c\lt\infty\ \exists r_0\gt0\ \forall\beta\in[1/48,2.5]\ \forall L\ge L_0:\quad
+\neg\Big(\,m_1^2(L,\beta)\le c/L^2\ \wedge\ f_1^2(L,\beta)\ge r_0\,\Big)
+\tag{8.10}
+$$
+<p style="margin:6px 0 0;font-size:14px">$\mathfrak T(t_0)$ 的真值在残余群 $\{s_L,\,Z_O,\,c\cdot\mathbf 1\}$ 下精确不变，且 $M_0$ 不进陈述，所以躲开接触项。⇒ <b>它是命题，不是公式</b>；真假仍未知。</p>
+<p style="margin:6px 0 0;font-size:14px"><b>三条具名障碍</b>：接触/空转二难（分母带接触时 $w_1^{\mathrm{bare}}\to0$，任何以 $w_1\ge w_0$ 为假设的定理自动为真）；无唯一 counterterm（$t_0$ 是有限重整化，$w_0=w_0(t_0)$ 不是数）；<b>载体未声明</b>——靶与见证族都没写载体档，既往酸测是在未声明载体下跑的。</p>
+<p style="margin:6px 0 0;font-size:14px"><b>唯一立即可执行的数值判据</b>：用已存的 $0^{++}$ 的 $C(0)/C(t)$ 量 $w_1^{\mathrm{YM}}$ 的 $L$-幂，判它与 $L^{-3}$（空转）还是 $L^{0}$（有内容）相容。</p>
+</div>
+
+
+<!-- =========================================== -->
+<h2><span class="n">9</span>展开 (B)₂：在 (B)₁ 之下的循环</h2>
+
+<div class="band loop">
+$$
+\mathrm{(B)}_1\ \wedge\ \mathrm{(B)}_2
+\ \overset{(3.5)}{\Longleftrightarrow}\
+\forall(L,\beta\ge\beta_0):\ E_{1,a}\ \ge\ \delta\Lambda
+\ \Longleftrightarrow\
+\Delta_a\ \ge\ \delta\Lambda
+\ \Longleftrightarrow\ \mathrm{(B)}
+\qquad\qquad\text{↺}
+\tag{9.1}
+$$
+</div>
+
+<p class="note">(9.1) 的等价<b>以 (B)₁ 为前提</b>。单独 (B)₂ 不等价于 (B)：若 $f_{1,a}^2=0$，则 $\operatorname{supp}\nu_a$ 可能不含 $E_{1,a}$，此时“(B)₂ 真而 (B) 假”成立。</p>
+
+<!-- =========================================== -->
+<h2><span class="n">10</span>合并</h2>
+
+$$
+\underbrace{
+\underbrace{\big[\mathrm{(A\text{-}phys)}\big]}_{\text{✗}}
+\wedge
+\underbrace{\big[\mathrm{(A\text{-}abs)}\big]}_{\text{T}}
+\wedge
+\underbrace{\big[\mathrm{(B)}\big]}_{\text{✗}}
+}_{\text{缺两行}}
+\ \Longrightarrow\
+\exists\,\delta\gt0:\ \Delta_{\mathrm{cont}}\ \ge\ \delta
+\ \Longrightarrow\
+\Delta_{\mathrm{cont}}\ \gt\ 0
+\tag{10.1}
+$$
+
+<div class="band">
+$$
+\mathrm{(A\text{-}phys)}:\quad
+H_a\ \longrightarrow\ H\ \ (\text{强预解}),\quad a\to0
+\qquad\text{✗}
+\tag{10.2}
+$$
+</div>
+
+<div class="band">
+$$
+\boxed{\
+\mathrm{(B)}:\quad
+\exists\,\delta\gt0\ \ \forall L\lt\infty\ \ \forall\beta\ge\beta_0:\ \
+\frac{-\log\big\|T_a\big|_{\Omega^\perp}\big\|}{a(\beta)\,\Lambda}\ \ge\ \delta\
+}
+\qquad\text{✗}
+\tag{10.3}
+$$
+<div class="band loop">
+$$
+\mathrm{(B)}\ \Longleftrightarrow\ (iii)'\ :\quad \exists\Delta_0\gt0\ \forall\beta\ge\beta_0:\ \frac{m}{\Lambda}\ge\Delta_0
+\qquad\text{↺}
+\tag{10.4}
+$$
+<p style="margin:0;font-size:14px">逐格等价，只差 $\delta\leftrightarrow\Delta_0$ 与一个 $\forall L$。所以 $(\mathrm{B})$ 是靶的比值写法，不是可攻入口。</p>
+</div>
+
+<div class="band ok">
+<span class="label">斜率形：字面形是被 (B) 推出的，两侧形才是加强 &nbsp;<span class="tag bad">✗</span></span>
+$$
+\exists\,c\gt0\ \ \exists\beta_0\ \ \forall L\lt\infty\ \ \forall\beta\ge\beta_0:\qquad
+a\,\Delta_a(L,\beta)\ \ge\ c\,a(\beta)\Lambda\ -\ O\big((a\Lambda)^2\big)
+\tag{10.5}
+$$
+<p style="margin:0 0 6px;font-size:14px">取 $c=\delta$、$C=0$ 即得 $(\mathrm{B})\Rightarrow$ 这个字面形（三行、零近似）⇒ <b>字面形是弱化，不是加强</b>。真加强是两侧形 $|a\Delta_a-c\,a\Lambda|\le C(a\Lambda)^2$，等价于 $R=\Delta^{\mathrm{lat}}/(a\Lambda)=c+O(a\Lambda)$：$(\mathrm{B})$ 钉零阶，两侧形钉一阶。</p><p style="margin:0;font-size:14px">而两侧形 $=$ <b>已证的上界半边</b>（阻塞轨道 min–max 给 $R(2a)\ge R(a)$）$\wedge$ <b>下界半边 $=$ 靶</b>。数值上它当前不可检验：两点解给 $(c,C)=(247.183,\,2165.0)$、残差为零、$Cx/c|_{\beta_0}=0.935$；加第三点后只剩退化侧。</p>
+</div>
+
+<div class="band ok">
+<span class="label">两柱独立 &nbsp;<span class="tag ok">T</span></span>
+$$
+(\mathrm{A\text{-}phys})\ \not\Longrightarrow\ (\mathrm{B}),
+\qquad
+(\mathrm{B})\ \not\Longrightarrow\ (\mathrm{A\text{-}phys})
+\tag{10.6}
+$$
+<p style="margin:0 0 6px;font-size:14px">向下：$H_a=\mathrm{diag}(0,1,\dots,N_a-1,\varepsilon_a,N_a,\dots)$ 强预解收敛而 $\Delta_a=\varepsilon_a\to0$，取 $\varepsilon_a=a^2$ 即 $(\mathrm{B})$ 假而 $(\mathrm{A\text{-}phys})$ 真。</p>
+<p style="margin:0 0 6px;font-size:14px">向上：两者坐在同一个 $O(a)$ 系数 $\mathcal A_a$ 上，但 $(\mathrm{B})$ 读 $\inf\sigma(\mathcal A_a)\ge\delta\Lambda$，$(\mathrm{A\text{-}phys})$ 读 $\sup_a Z_a^{-1}\|\mathcal A_a|_D\|\le C$。$\inf$-界与 $\sup$-界互不支配。</p>
+<p style="margin:0;font-size:14px">所以两条线并行：<b>只证 $(\mathrm{B})$ 不够</b>（$\Delta_{\mathrm{cont}}$ 可能没有定义），<b>只证 $(\mathrm{A\text{-}phys})$ 也不够</b>（与 $\liminf\Delta_a=0$ 相容）。</p>
+</div>
+
+</div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,22 @@
+N=2 r0=1/64 perL=1/32 perL/r0=2
+N=2 w0_Pop(r0)=1/64 w0_Pop(perL)=1/32 w0_crude(r0)=1/512
+N=2 target=1/64 F_need(Mp)=1/64 F_need(Mc)=1/8 F_need(Mp)/r0=1 F_need(Mp)/perL=1/2
+N=2 target==r0 ? True target/r0=1
+N=3 r0=1/144 perL=1/72 perL/r0=2
+N=3 w0_Pop(r0)=1/324 w0_Pop(perL)=1/162 w0_crude(r0)=1/2592
+N=3 target=1/324 F_need(Mp)=1/144 F_need(Mc)=1/18 F_need(Mp)/r0=1 F_need(Mp)/perL=1/2
+N=3 target==r0 ? False target/r0=4/9
+N=2 m=1/5 BD=9/25 Pop=1 N^2/4-(m-N/2)^2=9/25 gain=25/9
+N=2 m=1/2 BD=3/4 Pop=1 N^2/4-(m-N/2)^2=3/4 gain=4/3
+N=2 m=1 BD=1 Pop=1 N^2/4-(m-N/2)^2=1 gain=1
+N=2 m=8/5 BD=16/25 Pop=1 N^2/4-(m-N/2)^2=16/25 gain=25/16
+N=3 m=3/10 BD=81/100 Pop=9/4 N^2/4-(m-N/2)^2=81/100 gain=25/9
+N=3 m=3/4 BD=27/16 Pop=9/4 N^2/4-(m-N/2)^2=27/16 gain=4/3
+N=3 m=3/2 BD=9/4 Pop=9/4 N^2/4-(m-N/2)^2=9/4 gain=1
+N=3 m=12/5 BD=36/25 Pop=9/4 N^2/4-(m-N/2)^2=36/25 gain=25/16
+gain=3/2 need|2m/N-1|>=0.577350 need m/N<=0.211325
+gain=2 need|2m/N-1|>=0.707107 need m/N<=0.146447
+gain=5/2 need|2m/N-1|>=0.774597 need m/N<=0.112702
+gain=4 need|2m/N-1|>=0.866025 need m/N<=0.066987
+dist 2.5/(4*3.777028e-3)=165.474018
+neg r0=1/2*a0*(1-ubar) at a0=1/16: 0 >0 requires ubar<1

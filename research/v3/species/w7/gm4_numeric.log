@@ -1,0 +1,255 @@
+GM4-NUMERIC  |  sinh-mass delta_1: can (SM-2) be decided numerically from the corpus data?
+numpy 2.4.6  |  no new MC in this script
+
+====================================================================================================
+[1] FREE FIELD: Delta_a = (2/a) asinh(a m / 2)  =>  omega_a = (2/a) sinh(a Delta_a/2) = m  exactly
+====================================================================================================
+   m        a                Delta_a    omega_a - m          rel    1-Delta/m  /(a^2 m^2/24)
+ 0.5    1e-01    0.49994793130965692      0.000e+00    0.000e+00   1.0414e-04    0.999718855
+ 0.5    1e-02    0.49999947916813148      0.000e+00    0.000e+00   1.0417e-06    0.999997188
+ 0.5    1e-03    0.49999999479166679      0.000e+00    0.000e+00   1.0417e-08    0.999999976
+ 0.5    1e-04    0.49999999994791672      0.000e+00    0.000e+00   1.0417e-10    0.999999017
+ 1.0    1e-01    0.99958380138697345      2.220e-16    2.220e-16   4.1620e-04    0.998876671
+ 1.0    1e-02    0.99999583338020781      2.220e-16    2.220e-16   4.1666e-06    0.999988750
+ 1.0    1e-03     0.9999999583333381      0.000e+00    0.000e+00   4.1667e-08    0.999999886
+ 1.0    1e-04    0.99999999958333341      0.000e+00    0.000e+00   4.1667e-10    0.999999816
+ 2.0    1e-01     1.9966815779841516      8.882e-16    4.441e-16   1.6592e-03    0.995526605
+ 2.0    1e-02     1.9999666681665771     -2.220e-16    1.110e-16   1.6666e-05    0.999955003
+ 2.0    1e-03     1.9999996666668165      0.000e+00    0.000e+00   1.6667e-07    0.999999550
+ 2.0    1e-04     1.9999999966666668      0.000e+00    0.000e+00   1.6667e-09    0.999999950
+  => max |omega_a - m|/m = 4.441e-16   (machine precision: 2.22e-16)
+  [T] omega_a == m identically (sinh o asinh = id); [E] the round-off above.
+
+[1b] the free-field a^2 coefficient seen from Delta_a's side: Delta_a = m - a^2 m^3/24 + ...
+     a=0.1     a^2 m^3/24 (m=1) = 4.1667e-04   relative = 4.1667e-04
+     a=0.05    a^2 m^3/24 (m=1) = 1.0417e-04   relative = 1.0417e-04
+     a=0.02    a^2 m^3/24 (m=1) = 1.6667e-05   relative = 1.6667e-05
+     => the (SM-2) coefficient c1 = d1/D - D^2/24 (GK2-SYMBOL.md:83 (1.2a));
+        free field has d1 = 0  =>  c1 = -m^2/24, i.e. the WHOLE a^2 artifact is the asinh kernel.
+
+[1c] round trip: inject omega_a = D + d1 a^2 + d2 a^4, rebuild Delta_a, refit d1.
+     d1_in    d2_in  pts           d1_out     abs err    rel err
+   0.0e+00      0.0    3 -1.7913620492e-14    1.79e-14        nan   rms=1.81e-16
+   0.0e+00      0.0    4 2.2061248317e-14    2.21e-14        nan   rms=3.38e-16
+   0.0e+00      0.0    6 -6.6939574930e-14    6.69e-14        nan   rms=4.71e-16
+   0.0e+00      0.5    3 1.9099305471e-14    1.91e-14        nan   rms=4.25e-16
+   0.0e+00      0.5    4 5.4442561570e-14    5.44e-14        nan   rms=2.22e-16
+   0.0e+00      0.5    6 -3.2775865355e-14    3.28e-14        nan   rms=4.80e-16
+   1.0e-03      0.0    3 1.0000000000e-03    2.27e-14   2.27e-11   rms=0.00e+00
+   1.0e-03      0.0    4 1.0000000000e-03    3.30e-14   3.30e-11   rms=1.11e-16
+   1.0e-03      0.0    6 9.9999999997e-04    2.88e-14   2.88e-11   rms=5.80e-16
+   1.0e-03      0.5    3 9.9999999998e-04    2.14e-14   2.14e-11   rms=2.22e-16
+   1.0e-03      0.5    4 1.0000000000e-03    4.58e-14   4.58e-11   rms=2.94e-16
+   1.0e-03      0.5    6 9.9999999992e-04    8.06e-14   8.06e-11   rms=5.51e-16
+   1.0e-02      0.0    3 1.0000000000e-02    2.82e-14   2.82e-12   rms=1.28e-16
+   1.0e-02      0.0    4 1.0000000000e-02    3.18e-14   3.18e-12   rms=1.57e-16
+   1.0e-02      0.0    6 1.0000000000e-02    2.86e-14   2.86e-12   rms=7.48e-16
+   1.0e-02      0.5    3 1.0000000000e-02    1.37e-14   1.37e-12   rms=2.22e-16
+   1.0e-02      0.5    4 1.0000000000e-02    1.61e-15   1.61e-13   rms=3.33e-16
+   1.0e-02      0.5    6 1.0000000000e-02    2.35e-14   2.35e-12   rms=6.90e-16
+   1.0e-01      0.0    3 1.0000000000e-01    2.46e-14   2.46e-13   rms=2.22e-16
+   1.0e-01      0.0    4 1.0000000000e-01    5.41e-16   5.41e-15   rms=2.22e-16
+   1.0e-01      0.0    6 1.0000000000e-01    7.02e-14   7.02e-13   rms=3.74e-16
+   1.0e-01      0.5    3 1.0000000000e-01    8.05e-14   8.05e-13   rms=1.28e-16
+   1.0e-01      0.5    4 1.0000000000e-01    1.49e-14   1.49e-13   rms=1.92e-16
+   1.0e-01      0.5    6 1.0000000000e-01    7.01e-14   7.01e-13   rms=6.90e-16
+   1.0e+00      0.0    3 1.0000000000e+00    9.44e-14   9.44e-14   rms=1.28e-16
+   1.0e+00      0.0    4 1.0000000000e+00    1.08e-14   1.08e-14   rms=2.22e-16
+   1.0e+00      0.0    6 1.0000000000e+00    3.39e-14   3.39e-14   rms=8.31e-16
+   1.0e+00      0.5    3 1.0000000000e+00    5.77e-15   5.77e-15   rms=1.28e-16
+   1.0e+00      0.5    4 1.0000000000e+00    2.89e-14   2.89e-14   rms=3.68e-16
+   1.0e+00      0.5    6 1.0000000000e+00    4.09e-14   4.09e-14   rms=5.73e-16
+  => the sinh transform + refit recovers an injected d1 to round-off: the METHOD is exact;
+     what fails on real data is not the algebra but (a) the a-calibration and (b) the noise.
+
+[1d] noise / power: how precisely must Delta_a be known to see the a^2 term?
+     signal-to-noise of the a^2 term ~ (D * mhat^2/24) where mhat := a*D is the LATTICE mass;
+     requirement at 4 sigma:  sigma(Delta_a)/Delta_a <= mhat^2/96.
+  mhat=a*D    a^2 D^3/24       rel  sig_rel(4sig)
+      0.05             -  1.04e-04       2.60e-05
+      0.10             -  4.17e-04       1.04e-04
+      0.20             -  1.67e-03       4.17e-04
+      0.50             -  1.04e-02       2.60e-03
+      1.00             -  4.17e-02       1.04e-02
+      1.70             -  1.20e-01       3.01e-02
+      3.00             -  3.75e-01       9.38e-02
+     (a=1 convention: a^2 D^3/24 = D*mhat^2/24 with mhat=a*D; the relative size is mhat^2/24.)
+     e.g. a=0.1, D=1 (mhat=0.1): rel = 4.167e-4  => need 1.0e-4 relative  [matches the task sheet]
+
+[1e] power of a 3-point determination at fixed a-window (noise-limited):
+     sigma(d1) = sigma_w / sqrt( sum (a_i^2 - <a^2>)^2 ) ; compare with the natural size D^3/24.
+  sig_rel           a in    sigma(d1)    D^3/24    ratio  n_sigma
+    1e-02   0.05-0.20       3.72e-01    0.0417     8.92      0.1
+    1e-02   0.10-0.20       4.69e-01    0.0417    11.26      0.1
+    1e-02   0.02-0.10       1.45e+00    0.0417    34.72      0.0
+    1e-03   0.05-0.20       3.72e-02    0.0417     0.89      1.1
+    1e-03   0.10-0.20       4.69e-02    0.0417     1.13      0.9
+    1e-03   0.02-0.10       1.45e-01    0.0417     3.47      0.3
+    1e-04   0.05-0.20       3.72e-03    0.0417     0.09     11.2
+    1e-04   0.10-0.20       4.69e-03    0.0417     0.11      8.9
+    1e-04   0.02-0.10       1.45e-02    0.0417     0.35      2.9
+  => with 1% data over a in [0.1,0.2] the slope error is ~4x the natural size: 3-4 sigma only
+     for a delta_1 as large as the free-field artifact itself.  At 1e-4 it is clean.
+
+====================================================================================================
+[2] 2D CONTROL: Delta_a == Delta_cont for all a  (GK2-SYMBOL.md:278, H_a = (g^2/2) sum C2, no a)
+====================================================================================================
+Algebra: Delta_a = D const  =>  omega_a = (2/a) sinh(aD/2) = D + a^2 D^3/24 + a^4 D^5/1920 + ...
+         => d1 = D^3/24  (!= 0),  and (1.2a) c1 = 0  <=>  d1 = D^3/24  (consistent).
+   D        a            omega_a  (2/a)sinh(aD/2)-D   a^2D^3/24
+ 1.0    1e-02      1.00000416667       4.166672e-06  4.1667e-06
+ 1.0    1e-01      1.00041671875       4.167188e-04  4.1667e-04
+ 1.0    3e-01      1.00375422101       3.754221e-03  3.7500e-03
+ 2.0    1e-02       2.0000333335       3.333350e-05  3.3333e-05
+ 2.0    1e-01       2.0033350004       3.335000e-03  3.3333e-03
+ 2.0    3e-01      2.03013528965       3.013529e-02  3.0000e-02
+  fit over a in [0.02,0.1] (4 pts): D=1.0000000000  d1=4.1666666491e-02  D^3/24=4.1666666667e-02  ratio=0.999999996  rms=5.3e-14
+  fit over a in [0.05,0.2] (4 pts): D=1.0000000000  d1=4.1666663608e-02  D^3/24=4.1666666667e-02  ratio=0.999999927  rms=3.4e-12
+  fit over a in [0.1,0.3] (4 pts): D=1.0000000002  d1=4.1666648523e-02  D^3/24=4.1666666667e-02  ratio=0.999999565  rms=3.5e-11
+  => 2D gives d1 = D^3/24 exactly (not 0).  The corpus's '2D: delta_1 = 0, trivial pass'
+     (GK2-SYMBOL.md:30 row 0.12, :278 sec 4.2) is arithmetically incompatible with its own
+     (1.2a) c1 = d1/D - D^2/24: c1 = 0 (2D has no lattice artifact) forces d1 = D^3/24.
+     Consequence for C = D^2/24 + |d1|/D (GK2:194): 2D gives C = D^2/12, not 0.
+     VERDICT: 2D is a NEGATIVE control with an exactly known value, not a zero test.
+
+====================================================================================================
+[3] ARCHIVED b01 BETA-SCAN (Ls=8, Lt=12, N=12000, one operator) -- re-analysis, ZERO new MC
+====================================================================================================
+   b01_scan.py:73 hard-codes Ls,Lt = 8,12 ; :104 m_fit = fit_A(C,Lt,ts=1..6) in LATTICE units ;
+   :180 writes only S,plaq,w1 to the npz (m_fit lives in the .json files).
+
+ beta      N    sec     plaq     C1/C0      C2/C0   snr2   m_fit  edge
+ 2.20  12000     58  0.56927   0.12654   0.024062   8.87   1.690 False
+ 2.75  12000     63  0.69277   0.05515   0.003419   1.25   2.706 False
+ 3.00  12000     60  0.72322   0.04749   0.000901   2.58   3.940 False
+ 4.00  12000    120  0.79968   0.03790   0.006041   2.41   2.116 False
+ 6.00  12000    215  0.86996   0.02901   0.000862   0.27   3.475 False
+10.00  12000    188  0.92333   0.02513  -0.000440  -0.15   4.000  True
+
+  m_fit is NOT monotone in beta: 1.690, 2.706, 3.940, 2.116, 3.475, 4.000
+  beta=10.0: m_fit = 4.000 with m_edge=True == the fitter's scan ceiling (run3_apebase.py:336
+             ms = linspace(0.05,4.0,4000)) => that 'mass' is a boundary hit, not a measurement.
+  snr2 = C(2)/sigma_JK(C(2)): 8.87, 1.25, 2.58, 2.41, 0.27, -0.15  => no t=2 signal at beta>=6.
+
+[3a] re-derived from the stored npz correlators (same estimators, jackknife 20 blocks):
+ beta     C1/C0      C2/C0    m_fit      +/-       rel       w1    w1_err
+ 2.20   0.12654   0.024062   1.6897   0.1194  7.06e-02   0.5904    0.0138
+ 2.75   0.05515   0.003419   2.7061   0.8161  3.02e-01   0.2507    0.0123
+ 3.00   0.04749   0.000901   3.9397   1.4025  3.56e-01   0.2137    0.0117
+ 4.00   0.03790   0.006041   2.1164   0.3527  1.67e-01   0.1747    0.0141
+ 6.00   0.02901   0.000862   3.4745   2.2111  6.36e-01   0.1309    0.0139
+10.00   0.02513  -0.000440   4.0000   1.0866  2.72e-01   0.1129    0.0119
+  (beta=3: the archived w1 = 5.638 +- 4e-15 is the KNOWN correlators() axis bug, already
+   registered in B01.md:96-97 and GP3-PLATEAU.md:154 -- S fed as (N,1,Lt) to the jackknife
+   makes C(t) a constant vector, so w1 = sum(g)/sum(g^2) = 5.6387.  With the lev axis
+   collapsed (this table) it is 0.2137 +- 0.0117.  No new finding; the m_fit of that file
+   IS reproducible (3.9397), so only the jackknife column is affected.)
+
+[3b] forced omega_a 'sequence': a(beta) from the two-loop form (GW7:71), anchored at
+     a*Lambda_L(2.5) = 3.5758e-3 (B04.md:58).  Delta_a = m_fit/a (lattice mass / a).
+ beta         aL       1/aL    mhat  Delta_a=mhat/aL        omega_a        a^2  mhat^2/24
+ 2.20  7.598e-03  1.316e+02  1.6897       2.2240e+02     2.4981e+02  5.772e-05     0.1190
+ 2.75  1.899e-03  5.265e+02  2.7061       1.4248e+03     1.9011e+03  3.607e-06     0.3051
+ 3.00  1.005e-03  9.948e+02  3.9397       3.9194e+03     6.9940e+03  1.010e-06     0.6467
+ 4.00  7.690e-05  1.300e+04  2.1164       2.7522e+04     3.2953e+04  5.913e-09     0.1866
+ 6.00  4.189e-07  2.387e+06  3.4745       8.2937e+06     1.3142e+07  1.755e-13     0.5030
+10.00  1.096e-11  9.127e+10  4.0000       3.6508e+11     6.6205e+11  1.200e-22     0.6667
+
+  omega_a spans 2.50e+02 .. 6.62e+11  (5 decades) -- before any a^2 analysis the ZEROTH-order
+  requirement (a common Delta_cont) already fails: the physical point is not held fixed.
+  Pairwise (beta=2.2, beta=2.6-ish) and least-squares fits, for the record:
+    beta=[2.2, 2.75]  D=  2.0112e+03  d1=  -3.0515e+07  d2=        nan  rms= 6.629e-13
+    beta=[2.2, 3.0]  D=  7.1141e+03  d1=  -1.1892e+08  d2=        nan  rms= 2.369e-12
+    beta=[2.2, 4.0]  D=  3.2957e+04  d1=  -5.6662e+08  d2=        nan  rms= 1.809e-12
+    beta=[2.75, 3.0]  D=  8.9758e+03  d1=  -1.9614e+09  d2=        nan  rms= 5.185e-12
+    beta=[2.2, 2.75, 3.0]  D=  9.0999e+03  d1=  -2.1186e+09  d2=  3.405e+13  rms= 2.794e-08
+    beta=[2.2, 2.75, 3.0, 4.0]  D=  2.5453e+04  d1=  -7.8565e+09  d2=  1.285e+14  rms= 6.710e+03
+    beta=[2.2, 2.75, 3.0, 4.0, 6.0]  D=  5.3653e+06  d1=  -1.8852e+12  d2=  3.105e+16  rms= 4.517e+06
+  => d1 changes by ~15 orders and flips sign between subsets; the residuals are of the same
+     size as the data.  No point estimate, no interval.  (Not a statistical problem.)
+
+[3c] why: three independent obstructions, each fatal on its own
+   (i)  L=8 fixed => physical volume V = (8 aL)^4 shrinks with a:
+        beta 2.2 -> 2.75:  aL ratio = 4.000e+00,  V ratio = 2.561e+02
+        beta 2.5 -> 4.0:  aL ratio = 4.650e+01,  V ratio = 4.676e+06
+        beta 2.5 -> 6.0:  aL ratio = 8.535e+03,  V ratio = 5.308e+15
+   (ii) a(beta) has no absolute value in-window: two-loop at beta=2.5 gives m*a = 0.023 vs the
+        measured 1.707 (B04.md:64, factor 74), and a(2.5)/a(6) = 8535 (GW7-FIXEDA-SCAN.md:92).
+        Without a(beta) there is no a^2 axis -- only a beta axis.
+   (iii) m_fit is a UV reading, not a physical mass: mhat = 1.69..4.00 at every beta
+        (xi/a = 1/1.707 = 0.586 at beta=2.5, B04.md:98) => Delta_a = mhat/aL ~ 1/aL grows
+        by 4 decades as beta grows: that IS the 'no continuum limit' statement, not a mass.
+
+====================================================================================================
+[3d] THE ONLY FIXED-PHYSICAL-VOLUME a-SEQUENCE IN THE REPO: the GW7 line (beta=2.5,2.59,2.66)
+     Ls = 8,10,12 ; Lt = 12,15,18 ; N = 24000 (2.5) / 12000 (2.59, 2.66) ; operator and kernel
+     identical to b01 (gw7_fixeda.log:2-3).  m_fit re-derived here from the stored configs.
+====================================================================================================
+ beta  Ls  Lt         aL        a^2     mhat     +/-      rel  Delta=mhat/aL       omega_a
+ 2.50   8  12  3.576e-03  1.279e-05   1.9247  0.1522 7.91e-02     5.3827e+02    6.2529e+02
+ 2.50   8  20  3.576e-03  1.279e-05   1.8171  0.1126 6.20e-02     5.0816e+02    5.8101e+02
+ 2.59  10  15  2.849e-03  8.115e-06   2.2537  0.4092 1.82e-01     7.9114e+02    9.6952e+02
+ 2.66  12  18  2.386e-03  5.693e-06   2.4078  0.3817 1.59e-01     1.0091e+03    1.2711e+03
+  (fit window ts = 1..min(6,Lt/2-1) for each Lt; a(beta) = two-loop, GW7:71 anchor)
+
+  ZEROTH-ORDER TEST (does the physical point stay fixed?): hold V*a^4 fixed by construction,
+  then a continuum mass must satisfy mhat = a*Delta_cont, i.e. mhat must FALL like a.
+ beta  mhat meas  mhat if fixed physics   ratio  Delta_a growth
+ 2.50     1.9247                 1.9247   1.000           1.000
+ 2.50     1.8171                 1.9247   0.944           0.944
+ 2.59     2.2537                 1.5333   1.470           1.470
+ 2.66     2.4078                 1.2844   1.875           1.875
+  => mhat RISES (1.92 -> 2.25 -> 2.41) where a fixed physical mass demands it FALLS
+     (1.92 -> 1.53 -> 1.28).  Delta_a = mhat/aL therefore grows like a^-1.6 (log-log slope
+     1.55), i.e. what is measured is the cutoff, not a continuum mass.
+
+  FORCED POINT ESTIMATE (3 points, fixed volume, a^2 ratio 2.2): propagate the jackknife
+  errors through omega = (2/a) sinh(mhat/2), sigma_omega = cosh(mhat/2) * sigma_mhat:
+ beta          a         omega  sigma_omega      rel
+ 2.50  3.576e-03    6.2529e+02    6.385e+01 1.02e-01
+ 2.59  2.849e-03    9.6952e+02    2.449e+02 2.53e-01
+ 2.66  2.386e-03    1.2711e+03    2.906e+02 2.29e-01
+  fit:  Delta_cont = 1.7067e+03 +- 4.19e+02   delta_1 = -8.4664e+07 +- 3.40e+07   chi2 = 0.07/1
+  natural size for comparison: 1/24 = 4.1667e-02 ;  delta_1/|Delta_cont^3/24| = 4.088e-01
+  => the interval is comparable to or wider than the value, the reduced chi^2 is ~0 (3 points,
+     2 parameters, and the three omega's are ordered by mhat, not by a^2) -- it is a
+     two-parameter fit to a curve that is not the model.  NO INTERVAL worth quoting.
+     Even the sign is fixed by the cutoff drift, not by delta_1.
+
+  NULL MODEL (decisive): replace the three mhat by a constant (no continuum mass at all,
+  pure 1/a cutoff) and run the SAME fit.  If the estimator cannot tell the two apart, then
+  the 'delta_1' above is a cutoff meter, not a measurement.
+    null (mhat = 2.1954 const): Delta_cont = 1.3588e+03 +- 4.19e+02   delta_1 = -4.8074e+07 +- 3.40e+07   chi2 = 0.03/1
+    data                          : delta_1 = -8.4664e+07 +- 3.40e+07
+    difference / sigma = 0.76 sigma  => the estimator DOES NOT separate the data from the pure-cutoff null.
+    And note the null's delta_1 is also ~6 sigma from 0: so a 'delta_1 != 0 at 6 sigma'
+    claim is exactly what a theory with NO continuum mass produces here.  (SM-2) cannot be
+    tested this way: the a^2 lever arm is being fit to the 1/a cutoff drift.
+
+====================================================================================================
+[4] COST of the experiment that WOULD measure delta_1
+====================================================================================================
+  measured throughput (b01 logs, Ls=8^3 x Lt=12):
+    12000 cfg in 57.5 s (beta=2.2) .. 215 s (beta=6)  => 4.8 .. 18 ms/cfg
+  GW7 table (fixed physical volume, Ls ~ 1/aL), measured: Ls=10,Lt=15 -> 147.7 s ;
+    Ls=12,Lt=18 -> 331.7 s ; model (Ls/8)^4*62 s -> Ls=15: 766 s ; Ls=28: 9304 s.
+
+  required sigma(Delta)/Delta for a 4-sigma test: mhat^2/96.  current sigma(m_fit)/m_fit:
+    beta=2.2: see [3a] table.  Scale N as (sigma_now/sigma_target)^2:
+    mhat=0.5: sigma_target=2.60e-03 -> N multiplier = 1.33e+02 x 12000 = 1.6e+06 cfg
+    mhat=1.0: sigma_target=1.04e-02 -> N multiplier = 8.29e+00 x 12000 = 1.0e+05 cfg
+    mhat=1.7: sigma_target=3.01e-02 -> N multiplier = 9.93e-01 x 12000 = 1.2e+04 cfg
+
+  => cheapest honest design (4 beta points on a fixed-physics line, a-ratio ~1.9,
+     Ls = 8,10,12 and a 4th at Ls>=15), N chosen for the target sigma:
+  beta         aL  Ls  Lt   t(12000)  N for 1e-3    t(1e-3)  N for 1e-4      t(1e-4)
+ 2.500  3.576e-03   8  12       57.5    1.08e+07    51750.0    1.08e+09    5175000.0
+ 2.590  2.849e-03  10  15      147.7    1.08e+07   132930.0    1.08e+09   13293000.0
+ 2.660  2.386e-03  12  18      331.7    1.08e+07   298530.0    1.08e+09   29853000.0
+ 2.748  1.907e-03  15  22      766.0    1.08e+07   689400.0    1.08e+09   68940000.0
+  TOTAL for 1e-3 precision: 1172610 s = 325.7 h
+  TOTAL for 1e-4 precision: 117261000 s = 32572 h = 1357.2 d
+  => NOT <= 1 hour by 2-3 orders of magnitude.  And note the design already assumes the
+     two-loop a(beta) is right for the BOX MATCHING (it is not: 74x at 2.5), so even the
+     'fixed physical point' would first need an independent scale setting (~one more scan).
+
