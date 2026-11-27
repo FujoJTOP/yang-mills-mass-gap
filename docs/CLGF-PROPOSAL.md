@@ -1041,6 +1041,118 @@ $$\text{固定 }\beta=2.5\text{ 的无限体积极限}\ \ne\ \text{四维连续�
 **⇒ 所以 `β=2.5` 的结论**不能直接接到连续极限之后**，必须沿 AF 轨迹重做物理尺度估计。**
 
 --- 
+## §5⁗″ 有效活动收缩：尺度 8 块积分 + 三层预算（第 261 轮）
+
+### 5⁗″.1 【勘误 28】上一轮那 `2.68` 步是错的
+
+**上一轮我用 1-loop `β_eff(x)=(11/(6π²))ln(1/(xΛ))` 换算距离并算出 `2.68` 步。核对 `a(2.5)`：**
+
+| 位置 | 1-loop 给 `β_eff` | 真实 `β` |
+|---|---|---|
+`x=a(2.5)=0.1881\,Λ^{−1}` | **`0.3104`** | **`2.5`** |
+
+$$\frac{2.5}{0.3104}=8.06\times\qquad\Longrightarrow\qquad \text{1-loop 在 }\beta=2.5\text{ 处不可用于换算格距}$$
+
+**⇒ 我上一轮 §5⁗′.5 那条“收缩区就是 IR”的**方向结论仍对**（blocking 降 `β_eff`），但**步数是错的**。**
+
+**⇒ 正确的校准是**弦张力两端匹配**（下面 §5⁗″.2）。**
+
+### 5⁗″.2 可信的 landing 尺度：`b=8.08 ≈ 2³`
+
+$$\beta_W=\frac4{g^2}\ \Longrightarrow\ g^2(2.5)=1.6;\qquad a\sqrt\sigma\,(2.5)=0.1881(28)\ \text{（格点数据）}$$
+
+$$\beta'=0.40:\quad u(\beta')=\frac{I_2}{I_1}=0.099339929651,\qquad a'\sqrt\sigma\simeq\sqrt{-\ln u}=1.519607738$$
+
+$$b=\frac{1.519607738}{0.1881}=8.0787226902\approx2^3\ \checkmark\qquad(8\times0.1881=1.5048)$$
+
+$$\boxed{\ \beta=2.5\ \xrightarrow{Q_2}\ \beta_1\ \xrightarrow{Q_2}\ \beta_2\ \xrightarrow{Q_2}\ \beta_3\simeq0.40\ }$$
+
+**⚠️ 弦张力匹配只给**粗粒化尺度的候选值**，**不证明**粗化后作用量真有 `β'=0.40`，更不证明其余活动小。它是**校准工具，不是 landing 定理**。**
+
+### 5⁗″.3 walk-gas 阈值：`β < 2/3`（`[T]`，我核过）
+
+$$c=\frac\beta4,\qquad 6c\lt1\iff\beta\lt\frac23=0.666667$$
+
+| `β` | `c` | `6c` | 判 |
+|---|---|---|---|
+`0.40` | `0.100` | `0.600` | OK |
+`0.419` | `0.105` | `0.629` | OK |
+`0.511` | `0.128` | `0.767` | OK |
+**`0.711`** | `0.178` | **`1.067`** | **FAIL** |
+`2.5` | `0.625` | `3.750` | FAIL |
+
+**⚠️ `β=0.711` 已过不了朴素的 `6c<1` ⇒ 那个结果用的是**精细化的界**，不是此判据。记账须分清。**
+
+$$\boxed{\ \text{原来的高温游走级数【不能】承担 }\beta=2.5\text{ 的收缩证明}\ }$$
+
+**⚠️ 这**不**说精确积分不存在，也**不**说真实有效活动必发散——只说这一种展开的绝对收敛证明不行。**
+
+### 5⁗″.4 各方法的上限（到目标的倍数）
+
+| 方法 | 上限 | `2.5/上限` |
+|---|---|---|
+基础强耦合 Dobrushin | `0.345` | `7.25×` |
+单层 decimation | `0.419` | `5.97×` |
+fiber–base 精确展开 | `0.511` | `4.89×` |
+strand fiber–base（后续预印本，未独立审查） | `0.711` | `3.52×` |
+**pinning obstruction（类硬顶）** | **`1.01092`** | **`2.47×`** |
+
+$$\boxed{\ \text{pinning 顶 }1.01092\ \text{封的是【一整类】pinning-inherited 判据，而靶 }2.5\ \text{在其外 }2.47\times\ }$$
+
+**⚠️ 它**不**排除真正不同的粗粒化规格 ⇒ 必须换受控对象。**
+
+### 5⁗″.5 精确 RG 的入口与求导恒等式（`[T]`）
+
+$$S_{\rm eff}(V)=S_{\rm coarse}(V)-\log\int e^{-S_{\rm fine}(V,\xi)}d\xi\tag{18}$$
+
+$$F(V):=-\log\int e^{-S_{\rm fine}}d\xi\quad\Longrightarrow\quad \partial_iF=\mathbb E_V[\partial_iS_{\rm fine}]$$
+$$\boxed{\ \partial_i\partial_jF=\mathbb E_V[\partial_i\partial_jS_{\rm fine}]-\mathrm{Cov}_V\big(\partial_iS_{\rm fine},\partial_jS_{\rm fine}\big)\ }\tag{19}$$
+
+**⇒ 若两粗链变量不在同一细 plaquette 项中直接耦合，`∂i∂jS_fine=0`：**
+
+$$\boxed{\ \partial_i\partial_jF=-\mathrm{Cov}_V\big(\partial_iS_{\rm fine},\partial_jS_{\rm fine}\big)\ }\tag{20}$$
+
+$$F_{ijk}=\mathbb E[S_{ijk}]-\mathrm{Cov}(S_{ij},S_k)-\mathrm{Cov}(S_{ik},S_j)-\mathrm{Cov}(S_{jk},S_i)+\kappa_3(S_i,S_j,S_k)\tag{21}$$
+
+$$\boxed{\ \text{远距离有效相互作用}=\text{细变量条件测度下两局部作用量插入的【连通关联】}\ }$$
+
+**⚠️ **循环性**（你已指出）：若直接假设 `(23)` 的指数衰减，就已经用了细尺度的聚簇性。**
+**⇒ 但这是**两尺度论证**，不是循环：**
+
+$$\underbrace{\beta=2.5\ \text{细}}_{\text{弱耦合}\Rightarrow\text{聚簇较易}}\xrightarrow{3\ \text{步 }Q_8}\underbrace{\beta'\approx0.40\ \text{粗}}_{\text{强耦合}\Rightarrow\text{收缩较易}}$$
+
+**⇒ 两半各在**自己擅长的耦合端**；难的是**搬运**，而搬运方向 `2.5→0.40` **向下**，是 RG 的自然流向。**
+
+### 5⁗″.6 三层预算与 landing 目标（`[U]`）
+
+$$S_{\rm eff}^{(8)}=S_W(0.40;V)+R^{(8)},\qquad R^{(8)}=R_{\rm local}+R_{\rm bridge}+R_{\rm tail}$$
+
+$$\|R\|_{r,m}=\sup_\ell\sum_{X\ni\ell}|X|^2e^{m\,\mathrm{diam}X}H_X(r),\qquad H_X(r)=\sup_{U\in T_r^X}|R_X(U)|$$
+
+$$\boxed{\ \|R^{(8)}\|_{r,1/30}\ \le\ 6.33\times10^{-3}\qquad(r\ge1,\ m=1/30)\ }\tag{26}$$
+
+**三项各自的预算：**
+
+| 项 | 内容 | 需要的界 |
+|---|---|---|
+`R_local` | `Σ_{|C|≤6}r_C ReTr V(C)` | 局部重正化，吸收主量级 |
+| `R_bridge` | `Σ_{diam≥2}R_X` | `Σ_{X∋e}|X|^2e^{m\,diam}\|R_X\|_{T_1}\le\eta_{\rm bridge}` |
+| `R_tail` | `Σ_{diam≥N}R_X` | `\|R_{\rm tail}\|_{1,1/30}\le Ce^{−\mu N}` |
+
+**⚠️ `(26)` 的三个上界**必须从 `(19)–(22)` 的条件累积量推出，**不能从 plaquette 平均值推出来**；也**不能**由弦张力匹配或 MC 余量代替。**
+
+**⚠️ 无限范围修正：真正的块积分生成无限范围 `R`，须用**准局部**版本（`β'≤0.405` 下加权混合差分容差 ≤ `0.01`）。不能把有限范围范数证书不加说明地用于无限范围作用量。**
+
+**⚠️ **Gibbs 性**：块映射的推前测度**一般不自动**是 Gibbs 的（条件分布可能对远处粗变量不连续依赖）⇒ 须独立证明，否则 `S_eff` 根本不存在。**
+
+### 5⁗″.7 数值该测什么（并说明它不能替代什么）
+
+$$D(R)=\sup_{A,B:\,d(A,B)\ge R}\big|\Delta_A\Delta_B S_{\rm eff}^{(8)}\big|,\qquad \text{对照 }D(R)\le Ce^{-mR}$$
+
+**⚠️ 有限样本的实轴估计**不能**证明 `sup_{V∈T_1^X}|R_X(V)|` 这类**复解析**范数。**
+**⇒ MC 只用于**筛选候选 RG 映射与定位支撑范围**；最终证书须用区间算术或严格解析估计。**
+
+--- 
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
