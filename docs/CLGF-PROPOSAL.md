@@ -316,6 +316,126 @@ $$\big\|D_J\mathcal H_L(J)[h]\big\|\ \le\ C_1\Lambda_L^{(c)}\frac{\|h\|_2}{1-A_1
 
 ---
 
+## §5′ 三个命题的真逻辑关系与 RTC 闭合引理
+
+### 5′.1 三个命题
+
+$$\begin{aligned}
+\text{F2}:&\quad \|H_L(0)\|_{2\to2}\le C_0\Lambda_L^{(c)}\\
+\text{TF2}:&\quad \sup_{h\in\mathbb R^{N_B},\ \|h\|_2\lt r_0}\|H_L(h)\|_{2\to2}\le C_1\Lambda_L^{(c)}\\
+\text{TS}:&\quad M_L(J)\ne0\ \text{且}\ \sup_{\|J\|_2\lt r_0}\|H_L(J)\|_{2\to2}\le C_2\Lambda_L^{(c)},\quad J\in\mathbb C^{N_B}
+\end{aligned}$$
+
+**其中 `H_L(J) := D²W_L(J)`。显然 `TS ⟹ TF2 ⟹ F2`。反向皆有**严格反例**。**
+
+### 5′.2 反例 A：`F2 ⇏ TF2` `[T]`
+
+**取 `N=N_B`、`Λ=1+\ln L`、`p_N=Λ/N`，令 `q_1=…=q_N=X`，`P(X=1)=p_N`。**
+
+$$\Gamma_L=p_N(1-p_N)\mathbf 1\mathbf 1^{\mathsf T},\qquad \|\Gamma_L\|=Np_N(1-p_N)\le\Lambda$$
+
+**⇒ F2 成立。而取 `h_N=t_Ne`、`t_N=N^{-1/2}\ln\frac{1-p_N}{p_N}`：**
+
+$$t_N\to0\ (\text{故}\ \|h_N\|\to0),\qquad P_{\mu_{L,h_N}}(X=1)=\tfrac12\ \Longrightarrow\ \|H_L(h_N)\|=\frac N4$$
+
+**数值核（我算）：**
+
+| `N` | `Λ` | `‖H(0)‖` | `‖H(h)‖` | 比 | `t_N` |
+|---|---|---|---|---|---|
+`100` | `5` | `4.75` | `25` | `5.0` | `0.294` |
+`1000` | `8` | `7.94` | `250` | `31.2` | `0.152` |
+`10^4` | `10` | `9.99` | `2500` | `250` | `0.069` |
+
+$$\boxed{\ \text{F2}\not\Longrightarrow\text{TF2}\ }$$
+
+**机制：极少数宏观配置（概率 `Λ/N`）可被**极小的实源**提升为 `50–50` 混合。**
+
+### 5′.3 反例 B：`TF2 ⇏ TS` `[T]`
+
+**取 `S=±1` 各 `1/2`，`Q_L=\sqrt\Lambda\,S\,e`（故 `q_x=\sqrt{\Lambda/N}S` 一致有界）。**
+
+$$M_L(J)=\cosh\big(\sqrt\Lambda\langle J,e\rangle\big),\qquad H_L(h)=\Lambda\,\mathrm{sech}^2\big(\sqrt\Lambda\langle h,e\rangle\big)\,e\otimes e$$
+
+$$\sup_{h\in\mathbb R^N}\|H_L(h)\|=\Lambda\qquad\Longrightarrow\qquad\text{TF2 对【一切】实源成立}$$
+
+**但零点满足 `\sqrt\Lambda\langle J,e\rangle=i\pi(k+\tfrac12)` ⇒ 最近零点距**
+
+$$r_L=\frac{\pi}{2\sqrt{\Lambda_L}}\ \longrightarrow\ 0$$
+
+$$\boxed{\ \text{TF2}\not\Longrightarrow\text{TS}\ }$$
+
+**⚠️ 两例都是**抽象有界随机变量模型**，不是 SU(2) YM 的反例。它们只严格证明：不能仅由 F2、TF2 或有界性推出 TS。**
+
+### 5′.4 [G-RTC] 相对三阶响应闭合引理（`RTC ⟹ TS` 为 `[T]`）
+
+**在含原点的零点自由连通区域 `Ω_L` 上，假设**
+
+$$\text{(R1)}\quad \|H_L(0)\|_{2\to2}\le C_0\Lambda_L^{(c)}$$
+
+$$\boxed{\ \text{(R2)}\quad \big\|DH_L(J)[u]\big\|_{2\to2}\ \le\ \|u\|_2\big(a\|H_L(J)\|_{2\to2}+b\Lambda_L^{(c)}\big)\ }\tag{R2}$$
+
+**`J` 为复源，`u` 任意复方向，估计须在首个零点出现之前成立。则存在与 `L` 无关的 `r_0,C_2>0` 使 TS 成立。**
+
+**证明**（我逐行核过）：
+
+1. `f(t):=\|H_L(tJ)\|`，链式法则 + (R2)：`f'(t) ≤ ‖J‖(af(t)+bΛ)`。
+2. Grönwall：`f(1) ≤ Λ[C_0e^{a‖J‖}+\frac ba(e^{a‖J‖}−1)]`（`a=0` 取极限）。取 `C_2=C_0e^{ar_0}+\frac ba(e^{ar_0}−1)`。
+3. **零点自由**：设首个零点 `J_*=t_*J`、`‖J‖<r_0`。对 `t<t_*`，
+$$W_L(tJ)=\int_0^t(t-s)H_L(sJ)[J,J]\,ds\ \Longrightarrow\ |W_L(tJ)|\le\tfrac12C_2\Lambda t^2\|J\|^2$$
+4. `t↑t_*` 时右端有界 ⇒ `W_L(tJ)` 有有限极限；`M_L` **整** ⇒ `M_L(J_*)=\lim e^{W_L(tJ)}\ne0`，与 `M_L(J_*)=0` 矛盾。∎
+
+**数值核（我算，`C_2=C_0e^{ar_0}+\frac ba(e^{ar_0}−1)`）：**
+
+| `a` | `b` | `C_0` | `r_0` | `C_2` |
+|---|---|---|---|---|
+`1` | `1` | `1` | `0.5` | `2.2974` |
+`1` | `1` | `1` | `1.0` | `4.4366` |
+`0.5` | `0.2` | `1` | `1.0` | `1.9082` |
+`0` | `1` | `1` | `1.0` | `2.0000` |
+
+**⇒ `r_0` 与 `a` 可权衡；机器只需**某个** `r_0>0`。**
+
+### 5′.5 RTC 的内容，以及它比反例 A 强在哪
+
+**RTC 恰是宣称：反例 A 的机制在目标模型中**不发生**。**
+
+$$\text{反例 A 的机制}=\text{概率}\ \Lambda/N\ \text{的罕见宏观配置被极小源激活}$$
+
+**⇒ 所以 RTC 是关于**测度尾部**的陈述：**没有罕见宏观配置被小源放大**。**
+
+**⇒ 这比 F2 强得多，也比 TF2 强（反例 B 显示 TF2 可对一切实源成立而零点半径仍趋零）。**
+
+**⚠️ RTC 本身尚未在 `β=2.5` 的 SU(2) 中证明；也**尚无证据**。**
+
+### 5′.6 RTC 让 Ward / SD 有了精确任务
+
+**从 Haar 分部积分 `E[D_ℓF]=E[F\,D_ℓS_W]`，选带外部源的插入，试图得到**
+
+$$D^3W_L(J)=\mathcal A_L(J)\,D^2W_L(J)+\mathcal R_L(J)$$
+
+**需证：**
+
+$$\boxed{\ \|\mathcal A_L(J)[u]\|\le a\|u\|_2,\qquad \|\mathcal R_L(J)[u]\|\le b\Lambda_L^{(c)}\|u\|_2\ }$$
+
+**三个必须处理的实事：**
+1. **接触项**：不同局部插入可共享链路/plaquette，不能按独立插入计；
+2. **规范约束**：源插入与群方向导数须保持规范不变，不能用普通欧氏坐标的独立变量假设；
+3. **复源**：估计须在复源区域成立，不能只证真实概率测度下的 Ward 恒等式。
+
+**⇒ 这三处是目前**真正没有闭合**的地方。**
+
+### 5′.7 与 Dobrushin–Shlosman 完全解析性理论的关系
+
+**该理论把「复扰动下无零点」「高阶截断关联的统一控制」「带空间衰减的树图估计」联系起来，与本机器的目标高度相关。**
+
+**⚠️ 但不能直接套用：其典型树图条件要求衰减函数**可和**，而四维 `g_c(z)\sim|z|^{-4}` 恰在**对数发散的边际点**。**
+
+**⇒ 需要的是**临界完全解析性**：允许每个连通关联簇支付**一次** `Λ_L^{(c)}`，而不是要求全部传播核绝对可和。**
+
+$$\boxed{\ \text{RTC 的价值正在于此：它允许二阶响应保留临界对数，而不要求消灭这根 log。}\ }$$
+
+---
+
 ## §6 最终构造（`[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
@@ -341,33 +461,26 @@ $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\
 
 ---
 
-## §8 三个关口（不再更多）
+## §8 整台机器：两个输入 + 五个模块
 
-### 关口 1 · 原始测度二阶稳定性
+$$\boxed{\ \textbf{F2}+\textbf{RTC}\ \Longrightarrow\ \text{TS}\ \Longrightarrow\ \text{GF}\ \Longrightarrow\ \text{全阶}\ \Longrightarrow\ (L3)\ }\qquad(\text{再加独立的}\ \Delta\text{-M 才进入极限测度})$$
 
-$$\text{先完成}\quad\sup_{L,j}S_j(L)\lt\infty\qquad\text{或直接证}\quad\sup_L\frac{\|\Gamma_L\|_{2\to2}}{\Lambda_L^{(c)}}\lt\infty$$
+| 模块 | 内容 | 判 |
+|---|---|---|
+**一 · 二阶输入** | **F2**：`\|H_L(0)\|\le C_0\Lambda_L^{(c)}` | `[Δ]` 待证；自由场 `p=8` 时 `[T]`；`(SB)` 或 `(SPEC)` 是充分路 |
+**二 · 闭合机制** | **[G-RTC]**：`\|DH_L(J)[u]\|\le\|u\|(a\|H_L(J)\|+b\Lambda_L^{(c)})` | **`[Δ]`，全机最核心的新输入；无证据** |
+**三** | **TS** | **`[T]`**（由一+二，§5′.4 Grönwall + 零点延拓） |
+**四** | **GF**：`\|W_L(J)\|\le\frac{C_2}2\Lambda_L^{(c)}\|J\|_2^2` | **`[T]`**（§4.3） |
+**五** | **全阶**：`\|\kappa_n\|\le n!A^n\Lambda_L^{(c)}\|h\|^n` | **`[T]`**（Cauchy） |
+**六 · 测度构造** | **`[Δ-M]`** | 独立任务 |
 
-**⭐ 这一关**不要求 `p\gt4`**。**
+**⚠️ 三个必须记住的反向非蕴含：**
 
-### 关口 2 · 源倾斜稳定性（真正的难题）
+$$\text{F2}\not\Longrightarrow\text{TF2}\quad(\text{反例 A})\qquad \text{TF2}\not\Longrightarrow\text{TS}\quad(\text{反例 B})$$
 
-$$\boxed{\ \sup_{L,\ \|J\|_2\lt r_0}\frac{\big\|D^2W_L(J)\big\|_{2\to2}}{\Lambda_L^{(c)}}\lt\infty\ }\tag{TS}$$
+**⇒ 所以不能只凭 F2、TF2 或 `q_x` 有界性推出 TS。**
 
-**对实源 `h`，令 `dμ_{L,h}=\frac{e^{⟨h,Q_L⟩}}{M_L(h)}dμ_{2.5,L}`，则**
-
-$$D^2W_L(h)[u,v]=\mathrm{Cov}_{\mu_{L,h}}\big(\langle u,Q_L\rangle,\langle v,Q_L\rangle\big)$$
-
-**⇒ TS 的实源部分是：**
-
-$$\boxed{\ \sup_{\|h\|_2\lt r_0}\big\|\Gamma_{L,h}\big\|_{2\to2}\ \le\ C\Lambda_L^{(c)}\ }\tag{TF2}$$
-
-**复源还须一致零点自由性 + 复 Hessian 的统一控制。**
-
-**⚠️ F2 是 `‖D²W_L(0)‖`；TF2 是 `sup_h‖D²W_L(h)‖`。前者控原测度协方差，后者控**所有小源倾斜后**的二阶响应。前者不蕴含后者。**
-
-### 关口 3 · 共同测试空间上的测度构造
-
-**`[Δ-M]`（§6）：极限特征泛函的正定性、连续性与相容性。**
+**⚠️ 诚实：模块一、二**均未在 `β=2.5` 的 SU(2) 中证明**；模块二**尚无证据**；模块六是后续独立任务。**
 
 ---
 
