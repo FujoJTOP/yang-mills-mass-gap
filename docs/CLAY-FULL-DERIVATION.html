@@ -87,7 +87,12 @@
 
 <span class="g">├─ (i) 极限存在</span>
 <span class="g">│   ├─ 紧性 ─────────────────── S2  L3：∃C&lt;∞, ϖ ≤ C</span>
-<span class="g">│   │                              └─ ϖ = Var(q) + O_B ── S3 [T] Var(q) ≤ 1</span>
+<span class="g">│   │   │                          └─ ϖ = Var(q) + O_B ── S3 [T] Var(q) ≤ 1</span>
+<span class="g">│   │   └─ 具体 [T] 形态 ──── S3′ L3 ⟸ |C_q(z)| ≤ A|z|⁻⁴(ln|z|)⁻¹⁻ᵟ  <span class="t">[T]</span></span>
+<span class="g">│   │                              ├─ S3′a  d=4 是唯一压线维数（p_k−d = k(d−2)−d）</span>
+<span class="g">│   │                              ├─ S3′b  比 p&gt;4 更弱，尾价 0.24×  @R=2</span>
+<span class="g">│   │                              └─ S3′c  C_tgt = 4 撑得起（70.8×），C_win 撑不起</span>
+<span class="g">│   │        A 格真实需求 ──── S3″ sup_L ρ ≤ 91.9，ρ = 0.7212（余 127×）   <span class="t">[T]</span></span>
 <span class="g">│   └─ 唯一性 ───────────────── S4  W1 ⟸ (B) + L3（体积一致聚类）</span>
 <span class="g">│</span>
 <span class="g">├─ (ii) 隙为正</span>
@@ -123,6 +128,58 @@
   $$\varpi=\underbrace{\mathrm{Var}(q)}_{=\,C_q(0)\,\in(0,1]}+O_B,\qquad O_B:=\frac{1}{N_B}\sum_{z\ne0}n_B(z)\,C_q(z)$$
   <p><b>证</b>：把 $\mathrm{Var}(\bar q_B)$ 按协方差展开，$q\in[0,2]$ 加 Popoviciu 给 $\mathrm{Var}(q)\le1$，且与 $a,k,L,N$ 全无关。</p>
   <p class="mut">⇒ $(S2)$ 的全部内容集中在 $O_B$ 上；对角项不花任何输入。</p>
+</div>
+
+<h2><span class="num">S3′</span>$L3$ 的具体 $[T]$ 形态</h2>
+
+<div class="step t">
+  <div class="hd"><span class="no">S3′a</span><span class="ttl">$d=4$ 的临界性</span><span class="tag t">T</span></div>
+  <p>尾部可和的临界配对指数满足</p>
+  $$p_k-d=k(d-2)-d,\qquad k=2\ \Longrightarrow\ p_2-d=d-4$$
+  <div class="why">
+    <b>⇒ $d=4$ 是唯一使「最省非平凡配对」恰好压线的维数。</b>
+    $d=3$ 需 $k=4$；$d=5$ 时 $k=2$ 余量 $1$。<b>压线处拿不到 $\varepsilon$，只付一根 $\log$。</b>
+    <br>机检：$S_4$ 逐段 $+6.046/+6.129/+6.139=(8/3)\ln10$，系数 $8/3$ 精确，与 $c_n\sim\frac{2^d}{(d-1)!}n^{d-1}$ 一致。
+    <br><b>这条等号不能当输入</b>：见证 $\delta_0$（$C_q\equiv\mathrm{Var}\cdot\delta$）满足 C–S / PSD / 反射正性 / 求和规则与 $|q|\le2$，却给 $\mathrm{Tail}_p=\infty$（对每个 $p,R$）——紧致性只关内箱，<b>公理在 $p=d$ 处零信息</b>。
+  </div>
+</div>
+
+<div class="step t">
+  <div class="hd"><span class="no">S3′b</span><span class="ttl">4 维专属的尾部界</span><span class="tag t">T</span></div>
+  $$\big|C_q(z)\big|\ \le\ A\,|z|^{-4}\big(\ln|z|\big)^{-1-\delta}\qquad(|z|\gt R,\ \delta\gt0)$$
+  $$\Longrightarrow\quad \varpi\ \le\ (2R+1)^4+A\cdot S^{\log}_{4,\delta}(R)\ \lt\ \infty$$
+  <p><b>于是</b></p>
+  $$\boxed{\ L3\ \Longleftarrow\ \Big[\,\big|C_q(z)\big|\le A|z|^{-4}(\ln|z|)^{-1-\delta}\ \text{于}\ |z|\gt R\,\Big]\ }\tag{S3′}$$
+  <div class="why">
+    <b>比 $p\gt4$ 更弱。</b>自算 $S^{\log}_{4,1}(1/2/3)=7.050\,/\,2.888\,/\,1.987$，全低于 $S_5=10.159$ 与 $S_{4.626}=11.848$ ⇒ 假设更弱、尾价更便宜（$R=2$ 时 $0.24\times$）。
+    <br><b>$\delta\downarrow0$ 的极限</b>：$\to(8/3)\big/\big(\delta(\ln R)^\delta\big)$；$\delta=0$ 精确退回 $\log$ 发散。
+    <br><b>酸测</b>：自由场合格；$\delta_0$ 不合格；2D YM 判别力 $0$。
+    <br><b>要找的东西因此很具体</b>：一条「$|z|^{-4}$ 边缘 $+$ 对数增益」的现成定理。<b>增益不多不少是一根 $\log$</b>——多一个不够（$p\gt4$ 太强），少一个就散（$\delta=0$ 精确发散）。
+  </div>
+</div>
+
+<div class="step t">
+  <div class="hd"><span class="no">S3′c</span><span class="ttl">两个 $C$ 要分名</span><span class="tag t">T</span></div>
+  $$C_{\rm win}:=\textstyle⨏_{[0,2.5]}\mathcal S_q=\mathrm{plaq}/15=0.043529\ \ [E]$$
+  $$C_{\rm tgt}:=\text{靶所需常数}=4\quad(\text{由 } \coth(m/2)^4\le C/4 \text{ 的反解，} C\gt4 \text{ 即够})$$
+  <p><b>两者不同轴</b>：$S_{4.626}$ 是 $z$-壳纯组合和（$\beta,a,L$-free），$C_{\rm win}$ 是 $\beta$-窗均。<b>唯一交点是预算式 $A\cdot S_p\le C$。</b></p>
+  $$\frac{4}{S_{4.626}}=\frac{4}{11.848}=0.3376\quad\Rightarrow\quad 70.8\times\text{ 余量}\qquad\text{而}\qquad \frac{C_{\rm win}}{S_{4.626}}=3.674\times10^{-3}\quad(\text{超 }1.30\times)$$
+  <div class="why">⇒ <b>$p_{\rm eff}$ 撑得起 $C_{\rm tgt}=4$，撑不起 $C_{\rm win}$。</b>而 $(S2)$ 只需要 $C\gt4$，故撑得起所需的那个。</div>
+</div>
+
+<div class="step t">
+  <div class="hd"><span class="no">S3″</span><span class="ttl">$(\mathrm{EP})$ 可以删掉：A 格只需 $\rho\le91.9$</span><span class="tag t">T</span></div>
+  <p>分部恒等（$\beta=2.5$）把那个"泛函"塌成一个代数式：</p>
+  $$\int_0^{2.5}\beta\,\langle Q^3\rangle_c\ =\ \mathrm{plaq}-15\,\mathcal S_q\ =\ 0.182007$$
+  $$\Longrightarrow\quad \rho:=\frac{2.5\,\mathrm{plaq}'}{\mathrm{plaq}}=0.7212$$
+  <p><b>而 $A$ 格的真实需求是</b></p>
+  $$\sup_L\ \rho\ \le\ 91.9\qquad\Big(C=\mathrm{plaq}'/6,\ \text{实测 }0.188368;\ \text{任何 }B\lt24\ \text{都够}\Big)$$
+  <div class="why">
+    ⇒ 原先写的 $(\mathrm{EP})$ 要求 $\rho\le1$，<b>比真实需求严格 $91.9\times$，可以删掉</b>。
+    <br><b>而 $\rho=0.7212$ 对门槛 $91.9$ 有 $127\times$ 余量。</b>
+    <br><b>子区间可替代整段</b>：$\mathrm{plaq}$ 在 $[2.5-\delta,2.5]$ 上凹即给界 $\mathrm{chord}(\delta)/6$，阈 $\delta^*=0.215$（$\delta=0.3$ 超阈 $1.067\times$，仅 $1.8\sigma$ ⇒ $\delta^*\in(0.2,0.3)$）。$[2.2,2.8]$ 凹（$10.9\sigma$）只到 $0.046437$——<b>够 A 格、不够 $(\mathrm{EP})$</b>。
+    <br><b>残余</b>：$\mathrm{plaq}$ 在 $[2.5-0.2,2.5]$ 上凹且对 $\forall L$ 成立；$\delta^*$ 待 $\beta=2.4$ 一点。
+  </div>
 </div>
 
 <h2><span class="num">S4</span>唯一性：$W1$</h2>
@@ -244,30 +301,44 @@
   </div>
 </div>
 
-<h2><span class="num">S12</span>汇总：四个叶子</h2>
+<h2><span class="num">S12</span>汇总：现在只剩两件</h2>
+
+<div class="step n">
+  <div class="hd"><span class="no">净欠账</span><span class="ttl">三种链形下缺件数都是 2</span><span class="tag n">NG</span></div>
+  <p>不论 $S6$ 的循环状态如何（A 型 / B 型 / C 型），Clay 的缺件数<b>恒为 2</b>：</p>
+  $$\boxed{\ \text{缺件}\ =\ \big[(b')_{IN\text{-}11}@2.5\big]\ \wedge\ \big[\,R5\ \text{的}\ ③\ (L\text{-一致性})\,\big]\ }$$
+  <p class="mut">$S6$ 的状态只改变链长与循环件的标记，不改变缺件数。</p>
+</div>
 
 <table>
-  <tr><th>叶</th><th>陈述</th><th>类型</th><th>阻塞它的东西</th></tr>
-  <tr><td>$S2$</td><td>$\exists C:\ \varpi\le C$</td><td>一个泛函的符号</td><td>$(EP)$：$\int_0^{2.5}\beta\langle Q^3\rangle_c\,d\beta\ge0$；两个自然入口已关（类级符号证不可能、全局非增有反例）</td></tr>
-  <tr><td>$S6$</td><td>$\exists\delta\gt0\,\forall a:\ \Delta_a\ge\delta$</td><td>谱下界</td><td><b>此前从未瞄准</b>；唯一入口是 $S7$ 差 $M_0/\chi$ 的下界</td></tr>
-  <tr><td>$S9$</td><td>$(b')_{IN\text{-}11}$</td><td>量词范围</td><td>同一堵解析性墙，$13\times$</td></tr>
-  <tr><td>$S11$</td><td>$T_{16}$ 装配</td><td>技术缝</td><td>4 行 body + 4 行 seam + 第 4 参</td></tr>
+  <tr><th>件</th><th>陈述</th><th>类型</th><th>阻塞它的东西</th></tr>
+  <tr><td>(b′)</td><td>$\forall c\notin\{0^{++},2^{++}\}:\ \Delta_c\ge\delta$（补集上的全道地板）</td><td>量词 / 载体</td><td><b>$[T]$ no-go</b>：$X_B\in A1^{++}$ ⇒ 载体对其余九道<b>盲</b>；唯一逐道无关的仪器（Bushell/KR）率 $=G''=H1$</td></tr>
+  <tr><td>③</td><td>$\inf_L\delta_L\gt0$</td><td>$L$-一致性</td><td>$\delta_L$ 是 nlev 截断级距，自然标度 $L^{-3}$ 到 $e^{-cL^3}$，两者都给 $0$</td></tr>
 </table>
-
-<p class="mut">另有两条记账口挂在 $S8$ 上：$\inf_L\delta_L\gt0$（$\delta_L$ 是 nlev 截断级距，自然标度 $L^{-3}$ 到 $e^{-cL^3}$，两者都给出 $0$）与 N1 缝。</p>
 
 <h2><span class="num">S13</span>已证的都在哪里</h2>
 
 <table>
   <tr><th>步</th><th>内容</th><th>判</th></tr>
-  <tr><td>$S3$</td><td>$\varpi=\mathrm{Var}(q)+O_B$，$\mathrm{Var}(q)\le1$</td><td><span class="tag t">T</span></td></tr>
-  <tr><td>$S4$</td><td>$W1\Longleftarrow(B)+L3$</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S3$</td><td>$\varpi=\mathrm{Var}(q)+O_B$，$\mathrm{Var}(q)\le1$（零输入）</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S3′a$</td><td>$p_k-d=k(d-2)-d$；$d=4$ 唯一压线；$8/3$ 精确</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S3′b$</td><td>$L3\Longleftarrow|C_q(z)|\le A|z|^{-4}(\ln|z|)^{-1-\delta}$；$S^{\log}_{4,1}=7.050/2.888/1.987\lt S_5$</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S3′c$</td><td>$C_{\rm tgt}=4$ 撑得起（$70.8\times$）；$C_{\rm win}$ 撑不起（超 $1.30\times$）</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S3″$</td><td>$\int_0^{2.5}\beta\langle Q^3\rangle_c=\mathrm{plaq}-15\mathcal S_q=0.182007$；$\rho=0.7212\le91.9$（余 $127\times$）</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S4$</td><td>$W1\Longleftarrow(B)+L3$（体积一致聚类 ⇒ 唯一极限）</td><td><span class="tag t">T</span></td></tr>
   <tr><td>$S5$</td><td>$\Delta_{\rm cont}\ge\liminf\Delta_a$（机检）</td><td><span class="tag t">T</span></td></tr>
   <tr><td>$S5'$</td><td>桥最窄形 $C$-$n$，不用 $\iota_a$、不用强收敛</td><td><span class="tag t">T</span></td></tr>
   <tr><td>$S7a$</td><td>$f_1^2/\chi\le s_1\le M_0/\chi$（机检，$0$ sorry）</td><td><span class="tag t">T</span></td></tr>
   <tr><td>$S8$</td><td>$r=21.920736\lt63$，$\mathfrak e_\infty=2.792231w_0$，余 $2.874\times$</td><td><span class="tag t">T</span></td></tr>
-  <tr><td>$S10$</td><td>$\varpi\ge v(\beta)=6.419175\times10^{-3}$（$\hat b\in\{a,2a\}$，$L\ge3$，$\forall\beta\forall a$）</td><td><span class="tag t">T</span></td></tr>
+  <tr><td>$S10$</td><td>$\varpi\ge v(\beta)=6.419175\times10^{-3}$（$\hat b\in\{a,2a\}$，$L\ge3$）</td><td><span class="tag t">T</span></td></tr>
 </table>
+
+<div class="step n">
+  <div class="hd"><span class="no">一条</span><span class="ttl">类级 no-go：只用测度公理的论证必败</span><span class="tag n">NG</span></div>
+  <p>容许类对重标 $s\mapsto ts$ 封闭（$M_0$ 不动、$\chi\mapsto\chi/t$ ⇒ $U_0\mapsto tU_0$），故 $\inf_{\rm class}U_0=0$。</p>
+  <p><b>见证</b>：$\mathrm{Unif}[\varepsilon,\varepsilon+W]$ 给 $\chi\lt\infty$、无原子、$U_0\to0$。</p>
+  <div class="why">⇒ <b>只用「测度公理 $+$ 夹逼」的论证必失败</b>——这不是"还没找到"，是这一整类不可能成功。要新入口，必须用一个<b>不是测度公理</b>的输入（具体 Wilson 作用量 / $d=4$ / 紧致性 / transfer 谱）。</div>
+</div>
 
 <div class="foot">
   第 245 轮 · Clay 完整推导<br>

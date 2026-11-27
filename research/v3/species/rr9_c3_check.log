@@ -1,0 +1,58 @@
+== [1] spectral range of truncated magnetic term, one time slice ==
+L=4: Np=6L^3=384, R_L=2*Np=768, ln R_L=6.643790, log10 R_L=2.885361
+L=6: Np=6L^3=1296, R_L=2*Np=2592, ln R_L=7.860185, log10 R_L=3.413635
+L=8: Np=6L^3=3072, R_L=2*Np=6144, ln R_L=8.723231, log10 R_L=3.788451
+L=12: Np=6L^3=10368, R_L=2*Np=20736, ln R_L=9.939627, log10 R_L=4.316725
+
+== [2] delta_L <= R_L/D_phys ; D_phys >= 2^c(L), c(L)=E-V+1 ==
+L=4: R_L=768
+   E=3L^3: c=129, log10(delta_L) <= -35.9475, ln(delta_L) <= -82.7722
+   E=4L^3: c=193, log10(delta_L) <= -55.2134, ln(delta_L) <= -127.1336
+L=6: R_L=2592
+   E=3L^3: c=433, log10(delta_L) <= -126.9324, ln(delta_L) <= -292.2725
+   E=4L^3: c=649, log10(delta_L) <= -191.9548, ln(delta_L) <= -441.9923
+L=8: R_L=6144
+   E=3L^3: c=1025, log10(delta_L) <= -304.7673, ln(delta_L) <= -701.7526
+   E=4L^3: c=1537, log10(delta_L) <= -458.8947, ln(delta_L) <= -1056.6440
+L=12: R_L=20736
+   E=3L^3: c=3457, log10(delta_L) <= -1036.3440, ln(delta_L) <= -2386.2702
+   E=4L^3: c=5185, log10(delta_L) <= -1556.5238, ln(delta_L) <= -3584.0285
+
+== [3] sigma(nlev) per L^3: c(L)= (E-V) log nlev ==
+nlev=2: sigma_spatial=2*ln(nlev)=1.386294, sigma_full=3*ln(nlev)=2.079442
+nlev=3: sigma_spatial=2*ln(nlev)=2.197225, sigma_full=3*ln(nlev)=3.295837
+nlev=4: sigma_spatial=2*ln(nlev)=2.772589, sigma_full=3*ln(nlev)=4.158883
+
+== [4] what a floor costs: K_L >= R_L/delta0 ==
+L=4: delta0=1 -> K_L >= 768
+L=4: delta0=0.015625 -> K_L >= 49152
+L=8: delta0=1 -> K_L >= 6144
+L=8: delta0=0.015625 -> K_L >= 393216
+L=12: delta0=1 -> K_L >= 20736
+L=12: delta0=0.015625 -> K_L >= 1.3271e+06
+
+== [5] (U3) threshold: beta_c <= 4*sqrt(3R sqrt(k)/tau), R=L^6/(delta |E01|) ==
+L=4 sigma=ln2: ln R <= 52.6792, ln beta_c <= 28.8245, beta_c <= 3.2985e+12
+L=4 sigma=3ln2: ln R <= 141.4020, ln beta_c <= 73.1859, beta_c <= 6.0847e+31
+L=6 sigma=ln2: ln R <= 160.4703, ln beta_c <= 82.7201, beta_c <= 8.4115e+35
+L=6 sigma=3ln2: ln R <= 459.9099, ln beta_c <= 232.4399, beta_c <= 8.8584e+100
+L=8 sigma=ln2: ln R <= 367.3680, ln beta_c <= 186.1689, beta_c <= 7.1143e+80
+L=8 sigma=3ln2: ln R <= 1077.1507, ln beta_c <= 541.0603, beta_c <= 9.5387e+234
+
+== [6] commuting (factorized) endpoint: sumset of {0,2} over 6L^3 terms ==
+L=4: spectrum = {0,2,...,768} -> min spacing = 2 (L-independent)
+L=8: spectrum = {0,2,...,6144} -> min spacing = 2 (L-independent)
+L=12: spectrum = {0,2,...,20736} -> min spacing = 2 (L-independent)
+
+== [7] budget branch numbers (restated, from RR2/QQ9) ==
+Jacobi pair: TV(ln e)=0.13561 vs B_pair=ln(0.95769382/w0)=4.115656 -> margin 30.3492
+KS 6-level:  TV=43.529345 vs B=ln(21.46752)=3.066541 -> violation 14.1949
+counter-term mass per slice: pairs=10*Np=60L^3
+   L=4: 60L^3 = 3840
+   L=8: 60L^3 = 30720
+   L=12: 60L^3 = 103680
+
+== [8] exact table for the file ==
+L=4: R_L/R_1=64; -log10 delta (c=2L^3) = 35.65; (c=3L^3) = 54.91
+L=8: R_L/R_1=512; -log10 delta (c=2L^3) = 304.47; (c=3L^3) = 458.59
+L=12: R_L/R_1=1728; -log10 delta (c=2L^3) = 1036.04; (c=3L^3) = 1556.22

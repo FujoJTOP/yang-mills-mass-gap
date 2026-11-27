@@ -1,49 +1,64 @@
-t_A=0.781250  w0=0.01562500
+t_A=0.781250  w0=0.01562500  B=3.066541
 
-=== [1] canonical ladder, lam=1: TV split on [t_A, inf) ===
-  N     e(t_A)      e_min    t_min      e_inf     r_inf     +var     -var  max dln+
-  3   0.954007   0.953058    0.945   0.969697   0.03125   0.0173   0.0114  2.93e-05
-  4   0.957352   0.957148     0.73   0.958329   0.04348   0.0173   0.0225  5.93e-05
-  5   0.957692   0.953866    1e+07   0.953866   0.04837   0.0286   0.0384  8.15e-05
-  6   0.957694   0.951869    1e+07   0.951869   0.05057   0.0348   0.0468  8.39e-05
-  8   0.957694   0.950338    1e+07   0.950338   0.05226   0.0401   0.0536  8.40e-05
- 10   0.957694   0.949839    1e+07   0.949839   0.05281   0.0419   0.0560  8.40e-05
- 12   0.957694   0.949639    1e+07   0.949638   0.05303   0.0427   0.0570  8.40e-05
- 16   0.957694   0.949501    1e+07   0.949499   0.05319   0.0433   0.0577  8.40e-05
+[S1] exact identity |t*m_n + e_0n| (N=6)
+   t=  0.50000  max|t*m+e| = 1.11e-16
+   t=  0.78125  max|t*m+e| = 1.25e-16
+   t=  3.00000  max|t*m+e| = 5.83e-16
+   t= 50.00000  max|t*m+e| = 1.27e-14
+   t=1000.00000  max|t*m+e| = 8.39e-13
 
-=== [2] lam-sensitivity (N=8): normalization of X_E vs X_B ===
-  lam= 0.10: e(t_A)=0.994653 e_min=0.950338@1e+07 +var=0.0019 -var=0.0474 max dln+=1.90e-05  r_inf=0.05226
-  lam= 0.25: e(t_A)=0.983381 e_min=0.950338@1e+07 +var=0.0133 -var=0.0474 max dln+=7.14e-05  r_inf=0.05226
-  lam= 1.00: e(t_A)=0.963289 e_min=0.950338@1e+07 +var=0.0401 -var=0.0536 max dln+=1.12e-04  r_inf=0.05226
-  lam= 4.00: e(t_A)=0.995747 e_min=0.950339@1e+07 +var=0.0401 -var=0.0868 max dln+=1.12e-04  r_inf=0.05226
-  lam=10.00: e(t_A)=0.999294 e_min=0.950340@1e+07 +var=0.0401 -var=0.0903 max dln+=1.12e-04  r_inf=0.05226
+[S2] derivative formula  dm_n/dt  vs sign-aligned central FD (N=6, t=1.3)
+   rel.err = 5.05e-11
+   brackets 1/(E_n-E_k)-1/(E_k-E_0), k=2..: [-0.907  -0.4977 -0.3171 -0.211 ]
 
-=== [3] r_inf vs N (static, exact; convergence) ===
-  N=   3: r_inf=0.031250   e_inf=0.969697
-  N=   4: r_inf=0.043483   e_inf=0.958329
-  N=   5: r_inf=0.048366   e_inf=0.953866
-  N=   6: r_inf=0.050565   e_inf=0.951869
-  N=   8: r_inf=0.052257   e_inf=0.950338
-  N=  10: r_inf=0.052811   e_inf=0.949839
-  N=  12: r_inf=0.053032   e_inf=0.949638
-  N=  16: r_inf=0.053187   e_inf=0.949499
-  N=  20: r_inf=0.053234   e_inf=0.949457
-  N=  30: r_inf=0.053261   e_inf=0.949432
-  N=  40: r_inf=0.053266   e_inf=0.949427
-  N=  60: r_inf=0.053268   e_inf=0.949426
-  N=  80: r_inf=0.053269   e_inf=0.949425
-  N= 120: r_inf=0.053269   e_inf=0.949425
+[S3] basis cross-check (N=8): electric vs X_B-diagonal
+   t= 0.78125: elec=0.957693820059  b=0.957693820059  diff=7.8e-16
+   t= 1.00000: elec=0.962531393942  b=0.962531393942  diff=2.2e-16
+   t= 3.00000: elec=0.990160004832  b=0.990160004832  diff=3.3e-16
+   t=20.00000: elec=0.991844818541  b=0.991844818541  diff=3.3e-16
 
-=== [4] N=3 shape of q(t)=u_2/u_1 (is e=1/(1+q^2) monotone?) ===
-  q: 2.656798e-02 -> 1.767806e-01;  #dq>0=963/3999; max dq=3.295e-04; min dq=-9.278e-05;  sign-flips=1
+[S4] canonical ladder: shape on [0.2,30] (turning points) and e_inf
+   N= 4: e(0.2)=0.9898360 e(t_A)=0.9573518 e(30)=0.9608774 e_inf=0.9583290 #turn=2 [t=0.7313/e=0.95714836, t=2.4352/e=0.97381213] TV=0.06421
+   N= 6: e(0.2)=0.9898350 e(t_A)=0.9576939 e(30)=0.9677635 e_inf=0.9518687 #turn=2 [t=0.7180/e=0.95732784, t=4.4364/e=0.99127187] TV=0.09224
+   N= 8: e(0.2)=0.9898350 e(t_A)=0.9576938 e(30)=0.9856114 e_inf=0.9503380 #turn=2 [t=0.7180/e=0.95732779, t=9.0848/e=0.99649943] TV=0.08448
+   N=16: e(0.2)=0.9898350 e(t_A)=0.9576938 e(30)=0.9992703 e_inf=0.9494986 #turn=1 [t=0.7180/e=0.95732779] TV=0.07627
 
-=== [5] random Jacobi class: monotone? r_inf range ===
-  N=4: non-monotone 56/60; TV med 0.888 max 6.04; max step 1.19e-02; r_inf min 0.00249 med 0.325 max 7.66
-  N=5: non-monotone 59/60; TV med 1.432 max 8.10; max step 3.07e-02; r_inf min 0.0323 med 0.47 max 11.2
-  N=6: non-monotone 55/60; TV med 1.560 max 10.99; max step 6.46e-02; r_inf min 0.0141 med 0.459 max 27.9
-  N=8: non-monotone 60/60; TV med 3.005 max 20.43; max step 6.10e-01; r_inf min 0.00247 med 1.41 max 587
+[S5] budget on [t_A,1e7]
+   N= 4: +var=0.01726 -var=0.05706 TV=0.07432 B/TV=41.26 e_min=0.95714835@t=0.73 e_inf=0.95832898
+   N= 8: +var=0.04010 -var=0.08827 TV=0.12837 B/TV=23.89 e_min=0.95033820@t=1e+07 e_inf=0.95033802
+   N=16: +var=0.04328 -var=0.09233 TV=0.13561 B/TV=22.61 e_min=0.94950094@t=1e+07 e_inf=0.94949856
 
-=== [6] invariance: e is exactly invariant under D -> D + c*I (spectral shift) ===
-  c= 0.00: e(t_A)=0.957693820059  e(3.0)=0.990160004832
-  c= 0.70: e(t_A)=0.957693820059  e(3.0)=0.990160004832
-  c= 5.00: e(t_A)=0.957693820059  e(3.0)=0.990160004832
+[S6] value layer (static): r_inf vs N  -- independent repro of QQ3 0.3
+   N=   3: r_inf=0.031250000  e_inf=0.969696970
+   N=   4: r_inf=0.043483006  e_inf=0.958328976
+   N=   8: r_inf=0.052257169  e_inf=0.950338025
+   N=  16: r_inf=0.053187488  e_inf=0.949498557
+   N=  64: r_inf=0.053268436  e_inf=0.949425584
+   N= 128: r_inf=0.053268795  e_inf=0.949425261
+   N= 256: r_inf=0.053268818  e_inf=0.949425240
+   r_inf(256)=0.053268818 = 1182.68x inside 63 ; 21.920736/r = 411.51 ; e_inf = 60.76322 w0
+   r(2.5) in the pair = 0.044175 ; 63/that = 1426.1
+
+[S7] invariance 1: X_E -> X_E + c*I   (atoms move, e must not)
+   c= 0.0: e(t_A)=0.957693820059  e(3.0)=0.990160004832
+   c= 0.7: e(t_A)=0.957693820059  e(3.0)=0.990160004832
+   c= 5.0: e(t_A)=0.957693820059  e(3.0)=0.990160004832
+   shift= 0.00: r_inf(16)=0.053187488
+   shift= 0.25: r_inf(16)=0.053187488
+   shift= 3.00: r_inf(16)=0.053187488
+
+[S8] invariance 2: independent-block tensor extension (QQ3 (T2), layer form)
+   M=1: dim=   4 |L1|=1 e_inf=0.958328976 r_inf=0.043483006
+   M=2: dim=  16 |L1|=2 e_inf=0.958328976 r_inf=0.043483006
+   M=3: dim=  64 |L1|=3 e_inf=0.958328976 r_inf=0.043483006
+   M=4: dim= 256 |L1|=4 e_inf=0.958328976 r_inf=0.043483006
+
+[S9] generic Jacobi class: monotone? (60 draws, seed 20261127)
+   N=4: non-monotone 56/60 ; max dln e = 3.24e-02 ; TV med 0.920 max 6.10 ; r_inf in [0.00249,7.66] med 0.325
+   N=6: non-monotone 58/60 ; max dln e = 1.96e-01 ; TV med 1.472 max 13.53 ; r_inf in [0.0483,111] med 0.553
+   N=8: non-monotone 60/60 ; max dln e = 1.01e+00 ; TV med 3.418 max 20.46 ; r_inf in [0.0256,706] med 0.88
+
+[S10] QQ8 0.10 vs QQ3 0.3 : end convention excluded?  (diagonal element must be dropped)
+   N=  8: r(b_0=lowest)=1.052257169 r(b_0=highest)=1.052257169 ratio=1.000000
+   N= 64: r(b_0=lowest)=1.053268436 r(b_0=highest)=1.053268436 ratio=1.000000
+   N=256: r(b_0=lowest)=1.053268818 r(b_0=highest)=1.053268818 ratio=1.000000
