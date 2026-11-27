@@ -743,6 +743,130 @@ $$\boxed{\ \sup_{\eta,\eta'}\big|\mu_{\Lambda,\eta}(F_A)-\mu_{\Lambda,\eta'}(F_A
 **⇒ 真正有信息量的只有：`max_k Ĉ = Ĉ(0)`（有限体积观测），以及 `χ_q` 的 `L`-依赖。**
 
 --- 
+## §5⁗ 双块聚簇机器的三路方案（第 258 轮）
+
+> **核验纪律：本节每个数字我都独立算过；算不出的标 `[Δ]`，不写成 `[T]`。**
+
+### 5⁗.1 精确起点：双块自由能差
+
+$$Z_\Lambda(s,t)=\int e^{-S_W}e^{sF_A+tF_B}dU,\qquad \mathcal I_\Lambda(s,t)=\log\frac{Z_\Lambda(s,t)Z_\Lambda(0,0)}{Z_\Lambda(s,0)Z_\Lambda(0,t)}$$
+
+$$\boxed{\ \partial_s\partial_t\mathcal I_\Lambda(0,0)=\mathrm{Cov}_{\mu_{\beta,\Lambda}}(F_A,F_B)\ }\tag{1}$$
+
+$$\partial_s^p\partial_t^q\mathcal I_\Lambda(0,0)=\kappa\big(\underbrace{F_A\cdots F_A}_p,\underbrace{F_B\cdots F_B}_q\big)\qquad(p,q\ge1)$$
+
+**⇒ 不必控制所有局部量的所有矩；只控制**这一个双块自由能差**。**`[T]`
+
+### 5⁗.2 SU(2) 自旋泡沫聚合物表示（`[T]`）
+
+$$e^{\frac\beta2\mathrm{Tr}U_p}=F_0(\beta)\Big[1+\sum_{j>0}d_jc_j(\beta)\chi_j(U_p)\Big],\qquad d_j=2j+1,\ c_j=\frac{I_{2j+1}(\beta)}{I_1(\beta)}$$
+
+$$Z_\Lambda=F_0(\beta)^{|P_\Lambda|}\sum_{\{j_p\}}\Big(\prod_{p:j_p>0}d_{j_p}c_{j_p}\Big)\mathcal A_\Lambda(\{j_p\})\tag{2}$$
+
+**链路 Haar 积分 = 投影到该链路所载表示的**不变量子空间** `P_inv` ⇒ 非 singlet 的标号自动消失。**
+
+$$\boxed{\ Z_\Lambda/Z_{\rm triv}=\Xi_\Lambda=\sum_{\Gamma\ \rm compatible}\prod_{\gamma\in\Gamma}z_\beta(\gamma)\ }\tag{3}$$
+
+**⚠️ 这一步**完全精确，不是强耦合近似**；而 `z_β(γ)` **必须保留 Haar 投影与 intertwiner 收缩**，不是 `∏_p d_jc_j`。**
+
+### 5⁗.3 加权 KP 条件（`[T]` 结构）
+
+$$\boxed{\ \sup_\gamma\frac1{|\gamma|}\sum_{\gamma'\not\sim\gamma}|z_\beta(\gamma')|e^{a|\gamma'|+\kappa\,\mathrm{diam}(\gamma')}\le a_0,\qquad a\gt a_0\gt0\ }\tag{KP-B}$$
+
+**⇒ 标准 KP 保证 `log Ξ` 有绝对收敛的连通簇级数；**连接 `A,B` 的簇必跨过 `R` ⇒ 支付指数权重 ⇒**
+
+$$|\mathcal I_\Lambda(s,t)|\le C_{\rm CTB}|st|\|F_A\|\|F_B\|e^{-mR}\tag{CTB}\ \Longrightarrow\ \text{CL}$$
+
+### 5⁗.4 【本轮硬结果】裸 spin-foam KP 在 `β=2.5` **失败**（`[T]`，我逐位核过）
+
+**最小非零聚合物 = 三维单位立方体的边界（6 面，全 `j=½`）。**
+
+$$u(\beta)=2\frac{I_2(\beta)}{I_1(\beta)},\qquad u(2.5)=1.01439020009404187$$
+
+**12 条边各用 `∫U_{ab}\overline{U_{cd}}\,dU=\tfrac12\delta_{ac}\delta_{bd}` ⇒ `2^{−12}`；8 个顶点指标收缩 ⇒ `2^8`：**
+
+$$\boxed{\ z_\square=\frac{u(2.5)^6}{16}=0.068094225825737\ }\tag{11}$$
+
+*（我算：`u^6=1.089507613211789`，`/16 = 0.068094225825737` — 与你的 `0.06809422583` 逐位相符。）*
+
+**冲突数 `N_inc(C)`：**
+
+| 量 | 值 | 判 |
+|---|---|---|
+你的值 | `48` | **`[Δ]`** |
+**我的直接枚举（`L=4,5`，含/不含环绕）** | **`24`（去重）/ `51`（按共享边计重数）** | **`[T]`（枚举）** |
+**⇒ 差一个因子 `2`，需一个定义核对** | — | **`[Δ]`** |
+
+**⇒ 但两个读数都给出同一结论：**
+
+$$24z_\square=1.6342614198\gt\tfrac1e=0.3678794412\ (\text{大 }4.44\times)$$
+$$48z_\square=3.2685228396\gt\tfrac1e\ (\text{大 }8.88\times)$$
+
+**而 KP 要求 `N z_\square e^{a}\le a`，即 `a e^{−a}\ge Nz_\square`，而 `max_{a\gt0}a e^{−a}=1/e`：**
+
+$$\boxed{\ \text{裸立方体聚合物族【不可能】满足标准均匀 KP}\ }\tag{13}$$
+
+### 5⁗.5 而这条硬结果与今晚的 `1/48 → 2.5` 墙是**同一堵墙**
+
+$$u(2.5)=1.014390200094=\boxed{u_{P3}}\quad\text{（今晚 `mmmm1`/`GGG` 那条 `u\lt1/\lambda_a` 门里的同一个数）}$$
+
+**⇒ 这里它已在 `1` 之上，而 KO 需要它小** ⇒ 所以单 plaquette 系数本身就不小。**
+
+$$\boxed{\ \text{裸展开失败的根因}=\text{那个 `u_{P3}\gt1`}\ }$$
+
+**⇒ 这与 §1 的 `p` 问题是**两个不同的入口**，指向同一件事：`β=2.5` 处没有一个小参数。**
+
+### 5⁗.6 三路方案
+
+| 路线 | 优点 | 最大障碍 |
+|---|---|---|
+**spin-foam KP** | 完全保留表示结构；直接给复解析性 | **裸聚合物已判失败（§5⁗.4）** |
+**块 Dobrushin** | **直接给 CTB + 边界稳定性 + 唯一性** | 需**规范轨道块**条件核的统一收缩 |
+**缺陷敏感 RG** | 有机会把目标点带到有效活动小的尺度 | 必须**同步控制两个缺陷**，不能只控 `Z` |
+
+**⇒ 建议采用：主路线 = 缺陷敏感 RG → 粗尺度 spin-foam KP；并行验证 = 规范轨道块 Dobrushin。**
+
+### 5⁗.7 块 Dobrushin 的精确条件（`[T]` 结构，我核过判别式）
+
+**块变量取**规范轨道**（不是裸链变量）。`c_{XY}=\sup_{\eta,\eta'}\|\gamma_X(\cdot|\eta)-\gamma_X(\cdot|\eta')\|_{\rm TV}`，`η,η'` 只在块 `Y` 上不同；`c_{XY}=0` 当 `d(X,Y)\gt r_b`。**
+
+$$\boxed{\ \sup_X\sum_Yc_{XY}\le q\lt1\ }\tag{BD}$$
+
+**Dobrushin 比较不等式：**
+
+$$|\mathrm{Cov}(F_A,F_B)|\le\tfrac14\sum_{X,Y}\delta_XF_A\,[(I-C)^{-1}]_{XY}\,\delta_YF_B$$
+
+**⇒ 因 `[(I−C)^{-1}]=Σ_nC^n`，且连接相距 `R` 需 `n≥⌈R/r_b⌉`：**
+
+$$\sum_{Y}[(I-C)^{-1}]_{XY}\le\frac{q^{\lceil R/r_b\rceil}}{1-q}$$
+
+$$\boxed{\ |\mathrm{Cov}(F_A,F_B)|\le\frac{\|\delta F_A\|_1\|\delta F_B\|_1}{4(1-q)}\,q^{\lceil R/r_b\rceil}\ }\tag{BD-CL}$$
+
+**⇒ 边界稳定性同一条件：**
+
+$$\big|\mu_\Lambda^\eta(F_A)-\mu_\Lambda^{\eta'}(F_A)\big|\le C\|\delta F_A\|_1\,q^{\,d(A,\partial\Lambda)/r_b}$$
+
+**⭐⭐ 这条路线的**关键优势**：`q<1` 直接给**唯一无限体积 Gibbs 态**（不只是聚簇），不需要 `BI` 作为额外假设。**
+
+**⚠️ 但 `q<1` 对 `β=2.5` 是**新非微扰输入**，未证。**
+
+### 5⁗.8 三个工作包（正式验收）
+
+| 包 | 必须交付 | 状态 |
+|---|---|---|
+**WP1 自旋泡沫** | 完整 SU(2) 活动 + 精确 Haar 投影系数 | 表示基础 `[T]`；**裸 KP 已判失败** `[T]` |
+**WP2 缺陷响应** | 两缺陷的统一连通活动界（**须保留距离**） | **`[U]`** |
+**WP3 边界唯一性** | `RG-KP` 或 `BD-T` 的体积一致严格证书 | **`[U]`** |
+
+### 5⁗.9 数值任务随之改变
+
+**不再只测 `Cov(q_0,q_z)`，而测两个固定形状、逐渐拉开的 Wilson 环：**
+
+$$\big\{R,\ C_{AB}(R;L),\ C_{AB}(R;L)/C_{AB}(R_0;L)\big\}\qquad(W_{1\times1},W_{1\times2},W_{2\times2})$$
+
+**⚠️ 数值只能筛选假设，不能代替全边界条件、全体积的统一证明。**
+
+---
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
