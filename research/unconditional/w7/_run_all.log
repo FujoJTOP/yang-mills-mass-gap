@@ -19,3 +19,23 @@ DONE L=8 M=7000 cfgs  q_fields=(0, 8, 8, 8, 8)
   check: sum_z Cz / Ck[0] = 1.000000000
   time = 352.1s -> bmc_L8_b2.500.npz
 === L=10 生产跑 ===
+[17:44:53] sw=12825/13500 plaq=0.351457 acc=0.582 581.3s
+DONE L=10 M=5500 cfgs  q_fields=(0, 10, 10, 10, 10)
+  plaq mean   = 0.34782760
+  Var(q)      = 1.42543738e-02
+  Var(q_bar)  = 3.42880338e-06
+  chi_q = N*Var(q_bar) = 3.42880338e-02   (should equal Ck[0])
+  Ck[0,0,0,0] = 3.42880338e-02   max_k Ck = 3.42880338e-02   Cz(0) = 1.42543738e-02
+  check: sum_z Cz / Ck[0] = 1.000000000
+  time = 612.2s -> bmc_L10_b2.500.npz
+=== L=6  RTC 跑（存 q 场）===
+[17:47:46] sw=18050/19000 plaq=0.340861 acc=0.582 142.5s
+DONE L=6 M=4000 cfgs  q_fields=(4000, 6, 6, 6, 6)
+  plaq mean   = 0.34687331
+  Var(q)      = 1.41469287e-02
+  Var(q_bar)  = 2.36068454e-05
+  chi_q = N*Var(q_bar) = 3.05944717e-02   (should equal Ck[0])
+  Ck[0,0,0,0] = 3.05944717e-02   max_k Ck = 3.05944717e-02   Cz(0) = 1.41469287e-02
+  check: sum_z Cz / Ck[0] = 1.000000000
+  time = 151.7s -> bmc_L6_b2.500_fields.npz
+ALL DONE

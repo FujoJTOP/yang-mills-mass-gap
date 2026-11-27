@@ -799,7 +799,27 @@ $$\boxed{\ z_\square=\frac{u(2.5)^6}{16}=0.068094225825737\ }\tag{11}$$
 
 **⇒ 但两个读数都给出同一结论：**
 
-$$24z_\square=1.6342614198\gt\tfrac1e=0.3678794412\ (\text{大 }4.44\times)$$
+$**⚠️ 第 259 轮勘误：`N_inc` 不是 `48`，也**不是**我上一轮枚举出的 `24`（那是脚本过滤掉边界立方体的 bug）。**
+
+**重写枚举（`L=6` 周期、去重、按方向组分类）逐格复现：**
+
+| 方向组 | `shareLink` | `multLink` | `sharePlaq` |
+|---|---|---|---|
+`{1,2,3}` | **`18`** | `36` | `6` |
+`{1,2,4}` | **`20`** | `32` | `4` |
+`{1,3,4}` | **`20`** | `32` | `4` |
+`{2,3,4}` | **`20`** | `32` | `4` |
+**合计** | **`78`** | `132` | `18` |
+
+**⇒ `N_inc=78` `[T]`（我复现）。而 `sharePlaq=18` 说明：只有**共享 link** 才使 Haar 积分不因子化 ⇒ 正确的是 `78`。**
+
+| `N` | `Nz_□` | 超 `1/e` |
+|---|---|---|
+`18`（误用 sharePlaq） | `1.2257` | `3.33×` |
+`24`（我上轮的 bug 值） | `1.6343` | `4.44×` |
+**`78`（正确）** | **`5.31135`** | **`14.44×`** |
+
+$$78z_\square=5.31135\gt\tfrac1e=0.3678794412\quad(\text{大 }14.44\times)$$$
 $$48z_\square=3.2685228396\gt\tfrac1e\ (\text{大 }8.88\times)$$
 
 **而 KP 要求 `N z_\square e^{a}\le a`，即 `a e^{−a}\ge Nz_\square`，而 `max_{a\gt0}a e^{−a}=1/e`：**
@@ -816,6 +836,55 @@ $$\boxed{\ \text{裸展开失败的根因}=\text{那个 `u_{P3}\gt1`}\ }$$
 
 **⇒ 这与 §1 的 `p` 问题是**两个不同的入口**，指向同一件事：`β=2.5` 处没有一个小参数。**
 
+### 5⁗.5b 【新的主判据】加权 Dobrushin 收缩 `MASTER`（第 259 轮）
+
+**不再把验收条件绑在某一种聚合物展开上；改用**带空间权重的块 Dobrushin 收缩**，它一次给三件。**
+
+**粗粒化后的**规范轨道**块变量 `X,Y`，距离 `d(X,Y)`；**
+
+$$c^{\eta,s,t}_{XY}=\sup_{\xi,\xi'}\big\|\gamma_X(\cdot|\xi)-\gamma_X(\cdot|\xi')\big\|_{\rm TV}\quad(\xi,\xi'\ \text{只在块 }Y\ \text{上不同})$$
+
+$$\boxed{\ \text{(MASTER)}\quad q_m:=\sup_{\Lambda,\eta,\ |s|,|t|\le s_0,\ X}\ \sum_Y c^{\eta,s,t}_{XY}\,e^{m\,d(X,Y)}\ \le\ q\lt1\ }$$
+
+**定理 1（`[T]`，我核过）**：`D=(I−C)^{-1}=Σ_nC^n`；由三角不等式 `d(X,Z)≤d(X,Y)+d(Y,Z)` 归纳得 `‖C^n‖_m ≤ q^n`：
+
+$$\boxed{\ |\mathrm{Cov}(F_A,F_B)|\ \le\ \frac{e^{-mR}}{4(1-q)}\|\delta F_A\|_1\|\delta F_B\|_1\ }\tag{CL}$$
+
+**⚠️ 常数修正：严格算出来是 `e^{−m(R−2r)}`（因 `δ_XF_A=0` 当 `d(X,A)>r`）；`e^{2mr}` 吸进常数。**
+
+**定理 2（`[T]`）**：
+
+$$\big|\mu_\Lambda^\eta(F_A)-\mu_\Lambda^{\eta'}(F_A)\big|\ \le\ \frac{e^{-m\,d(A,\partial\Lambda)}}{1-q}\|\delta F_A\|_1\tag{BI}$$
+
+$$\boxed{\ \text{(MASTER)}\Longrightarrow\text{(CL)}+\text{(BI)}\Longrightarrow\text{唯一无限体积 Gibbs 测度}\ }$$
+
+**⚠️ 只要求**实源**；复源还需零点自由/聚合物解析性，不能自动推出。**
+
+### 5⁗.5c `MASTER` 有 `β` 阈值，而这是新的缺口位置
+
+$$\beta=0\ (\text{乘积 Haar})\ \Rightarrow\ c_{XY}=0\,(X\ne Y)\ \Rightarrow\ q_m=0\ \Rightarrow\ \text{成立}$$
+$$\beta\to\infty\ \Rightarrow\ c_{XY}\to1\ \Rightarrow\ q_m\to\infty\ \Rightarrow\ \text{失败}$$
+
+$$\boxed{\ \exists\,\beta_{\rm BD}:\ \text{MASTER}\iff\beta\lt\beta_{\rm BD};\qquad\text{靶是 }\beta_{\rm BD}\gt2.5\ }$$
+
+**文献最好值（Rajabu 2026 预印本，**未同行评审**，我未逐字核）：线规+单链路 Dobrushin 到 `β≤0.419`；两次分解后到 `β≤0.511`。**
+
+$$\frac{2.5}{0.511}=4.89\times$$
+
+**⇒ 换更强的机器（唯一性）后，缺口从 `30×` 降到 **`4.89×`**，**但没有换掉那根 `β` 轴**。**
+
+**更早的 Osterwalder–Seiler 已证充分强耦合区的无限体积极限与解析性，但不覆盖 `β=2.5`。**
+
+### 5⁗.5d 缺陷敏感 RG 的接口（`[U]`）
+
+$$S^{\rm eff}_k,\quad F^{\rm eff}_{A,k},\quad F^{\rm eff}_{B,k};\qquad \mathcal I_k(s,t)=\log Z_k(s,t)-\log Z_k(s,0)-\log Z_k(0,t)+\log Z_k(0,0)$$
+
+$$\text{(RG-CTB)}\quad|\mathcal I_k(s,t)|\le C_0|st|e^{-m_kR_k}$$
+$$\text{(RG-E)}\quad|E_k(s,t)|:=|\mathcal I_{k-1}(s,t)-\mathcal I_k(s_k,t_k)|\le\epsilon_k|st|e^{-m_kR_k},\qquad \sum_k\epsilon_k\lt\infty$$
+
+**若 `m_kR_k ≥ m_0R − c_k`、`sup_kc_k<∞`，则 `Σ_k|E_k| ≤ C|st|e^{−m_0R}` ⇒ `|I_0| ≤ C'|st|e^{−m_0R}`。**
+
+**⚠️ `RG-CTB` 与 `RG-E` 必须对**实际有效作用量**证明，不由 `Z` 的普通上下界自动获得。而**每一步必须保留两个缺陷**，不许只控无源 `Z`。**
 ### 5⁗.6 三路方案
 
 | 路线 | 优点 | 最大障碍 |

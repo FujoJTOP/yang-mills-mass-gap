@@ -58,21 +58,31 @@ def propo(eps, rng, shape):
     return (c + 1j*s*n[...,0], s*(n[...,1] + 1j*n[...,2]))
 
 def sweep(U, beta, L, eps, rng, masks):
+    """一次 sweep。优化依据：宇称棋盘 pass 只改 U_mu(x) (x 在 mask 上)，
+       而 staple(x,mu) 只依赖 U_mu(x±nu) 与 U_nu(·)——x±nu 宇称相反、U_nu 不同方向
+       => 本 pass 内 staple 前后【完全相同】。故只算一次。"""
     at = ac = 0
+    hb = beta/2.0
     for mu in range(4):
+        A = U[mu][0]; B = U[mu][1]
         for par in (0,1):
             mask = masks[par]
-            Um = U[mu]
+            S = staple(U, mu)                      # 前后相同，只算一次
+            sa, sb = S
             dU = propo(eps, rng, (L,L,L,L))
-            Un = qmul(dU, Um)
-            Sold = sum6(U, mu)
-            U2 = list(U); U2[mu] = (np.where(mask, Un[0], Um[0]), np.where(mask, Un[1], Um[1])); U2 = tuple(U2)
-            Snew = sum6(U2, mu)
-            dS = -(beta/2.0)*(Snew - Sold)
+            # Un = dU * U
+            a0, b0 = A, B
+            ua = dU[0]*a0 - dU[1]*np.conj(b0)
+            ub = dU[0]*b0 + dU[1]*np.conj(a0)
+            # Re tr(U S) = 2 Re(a*s - b*conj(sb))，逐点
+            def f2(a,b):
+                return 2.0*np.real(a*sa - b*np.conj(sb))
+            dS = -hb*(f2(ua,ub) - f2(a0,b0))
             acc = (np.log(rng.random(size=(L,L,L,L))) < -dS) & mask
-            U2 = list(U2); U2[mu] = (np.where(acc, Un[0], Um[0]), np.where(acc, Un[1], Um[1]))
-            U = tuple(U2)
-            at += int(acc.sum()); ac += int(mask.sum())
+            na = int(acc.sum())
+            if na:
+                A[acc] = ua[acc]; B[acc] = ub[acc]   # 原地写，不做整块 where
+            at += na; ac += int(mask.sum())
     return U, at, ac
 
 def qfield(U):
