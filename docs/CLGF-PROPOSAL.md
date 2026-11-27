@@ -1233,6 +1233,102 @@ $$\underbrace{m=\tfrac1{30}}_{\text{允许极慢衰减}\Rightarrow\text{尾要 }
 **⇒ ① 值得先查：landing 范数的 `m=1/30` 是否可换；② 明确不够；③ 与"必须换对象"的结论一致。**
 
 --- 
+## §5⁗⁗ Uniform Fiber-KP：三条定理闭合 + landing 点必须更深（第 263 轮）
+
+### 5⁗⁗.1 精确块映射与 Haar 分解（`[T]`）
+
+$$V_E=U_{\ell_1}\cdots U_{\ell_b}\qquad(\text{各粗路径的细链路互不重叠，四维立方块直线边可实现})$$
+
+**取路径末端为 pivot：`U_{\ell_b}=(U_{\ell_1}\cdots U_{\ell_{b-1}})^{−1}V_E`。由 Haar 左右不变性：**
+
+$$\boxed{\ \prod_{\ell\in E_f}dH(U_\ell)=\prod_{E\in E_c}dH(V_E)\,dH_{\rm fib}(\xi)\ }\tag{2}$$
+
+$$\frac{d\nu^{(b)}_\Lambda}{dH_c}(V)=\frac1{Z_\Lambda}\int e^{-S_W(U(V,\xi))}dH_{\rm fib}(\xi)\tag{3}$$
+
+**⇒ 无近似、无截断、不丢任何细自由度。**
+
+### 5⁗⁗.2 共同前提 UFBP
+
+$$\boxed{\ \sum_{\gamma'\nsim\gamma}\|z_{\gamma'}\|_r\,e^{(a+\lambda)n_{\gamma'}}\ \le\ (a-\delta)n_\gamma\ }\qquad a,\lambda,\delta\gt0,\ \|z_\gamma\|_r:=\sup_{V\in T_r}|z_\gamma(V)|$$
+
+**⚠️ 必须对**所有**粗边界配置一致成立（不只对典型配置）——否则坏配置可使被约束的细系统隐藏相共存，导致推前测度不连续。**
+
+### 5⁗⁗.3 三条推论（`[T]`，我核过结构）
+
+**（一）连接桥：`N(Γ) ≥ (R−D_A−D_B)/c_*` ⇒ `Σ_{Γ:A↔B}|ω(Γ)| ≤ C_1K_AK_B|st|e^{−m_1R}`，`m_1=λ/c_*`。**
+**核心不是给活动加 `e^{−λdiam}`，而是**每个连通簇的总尺寸 ≥ 连接两块所需的距离**。**
+
+**（二）解析尾：`|X|≤N`、`diam(X)≤c_*N`（`c_*=1+r_inc`）；`δ:=λ−mc_*>0`；**
+
+$$\sup_e\sum_{\substack{X\ni e\\ \mathrm{diam}X\gt R}}|X|^2e^{m\,\mathrm{diam}X}\|\Phi_X\|_r\ \le\ C_\delta C_{\rm root}\,e^{-\delta R/(2c_*)}\tag{TAIL}$$
+
+$$\nu=\frac{\lambda-mc_*}{2c_*}\qquad C_{\rm tail}=C_\delta C_{\rm root}$$
+
+**（三）Gibbs 性：三步——精确 Haar 分解给条件核 `(9)`；UFBP 给一致 quasilocality `(10)`；有界能量给 non-nullness `(11)`。**
+
+$$\boxed{\ e^{-12\beta}\ \le\ \frac{d\gamma^b_E}{dH}\ \le\ e^{12\beta}\qquad(\beta=2.5:\ e^{-30}\le\cdot\le e^{30})\ }\tag{12}$$
+
+**推导（我核）：改一个粗链 = 改一条细链；该细链在 `2(d−1)=6` 个 plaquette 中；每项 `(β/2)Re tr`，`|Re tr|≤2` ⇒ 每项范围 `2β` ⇒ 总变化 `≤12β` ✓**
+
+**⇒ 三者统一来自同一个条件细变量的复解析加权聚合物展开。**
+
+### 5⁗⁗.4 【阻塞三】`ν>0` 与小参数之间的闭式张力
+
+**KP 要求 `Σ‖z‖e^{(a+λ)n} ≤ (a−δ)n`。以 `‖z_γ‖~θ^n`、含给定聚合物的形状数 `~μ^n`：**
+
+$$\mu\theta e^{\lambda}\lt1\ \Longrightarrow\ \lambda\le\ln\frac1{\mu\theta}$$
+
+$$\boxed{\ \nu\ \le\ \frac{|\ln(\mu\theta)|}{2c_*}\ \Longrightarrow\ R_1\ \gtrsim\ \frac{2c_*\,\ln(C_{\rm tail}/\delta_{\rm tail})}{|\ln(\mu\theta)|}\ }$$
+
+**取 `c_*=2`、`ln(1/2.11e−3)=6.16`：**
+
+| `μθ` | `R₁` 下界 |
+|---|---|
+`0.9` | **`278`** |
+`0.5` | **`36.4`** |
+`0.1` | **`10.8`** |
+`0.01` | **`5.4`** |
+`0.001` | `3.6` |
+
+### 5⁗⁗.5 【关键】`β'=0.40` 处空间权重**不存在**
+
+**以 `μθ = 10u`、`u=I₂/I₁`：**
+
+| `β'` | `u` | `μθ` | 判 |
+|---|---|---|---|
+`0.05` | `0.012499` | `0.125` | `R₁=11.9` |
+`0.1` | `0.024990` | `0.250` | `R₁=18.0` |
+`0.2` | `0.049917` | `0.499` | `R₁=36.3` |
+`0.3` | `0.074720` | `0.747` | `R₁=89.7` |
+**`0.40`** | `0.099340` | **`0.993`** | **`ν<0` ⇒ 不可能** |
+
+$$\boxed{\ \text{在 } \beta'=0.40\ \text{处 } \nu\lt0\text{——正是那里 KP 才勉强成立（}\mu\theta\approx0.99\text{）}\ }$$
+
+### 5⁗⁗.6 因此 landing 点必须**更深**
+
+$$R_1\le5\ \Longleftarrow\ |\ln(\mu\theta)|\ge4.92\ \Longleftarrow\ \mu\theta\le7.3\times10^{-3}\ \Longleftarrow\ u\le7.0\times10^{-4}$$
+
+$$b=\frac{\sqrt{-\ln u}}{0.1881}\ \Big|_{u=7\times10^{-4}}=\frac{2.69}{0.1881}=14.3\approx2^{3.84}$$
+
+$$\boxed{\ \text{landing 应为 }\beta'\approx0.02,\ b\approx2^4,\ \text{【四步】而非三步；}R_1\approx5\ \text{粗}={\sim}80\ \text{细}\ }$$
+
+**⚠️ 而 `m` 的杠杆很小：我算了 `m: 1/30 → 1/100` 只把 `R₁` 从 `36` 降到 `35`。真正的杠杆是 `μθ`（有效活动本身）。**
+
+**⇒ 所以"`β'` 更深"不是选择，是**必然**。**
+
+### 5⁗⁗.7 不能把什么当成证明
+
+**⚠️ 以下**都不能**替代 MASTER-UFBP：**
+
+- **`L=6` 的 plaquette 数据、`χ_q/Λ=0.0114`；**
+- **链变量的中心对称性结果（§5″）；**
+- **弦张力匹配得到的 `b≈8`（现在应为 `b≈2⁴`）。**
+
+**⇒ MASTER-UFBP 必须来自**固定任意粗链变量后的细变量条件测度**，且上确界必须遍历**所有**粗配置（只算典型配置会漏掉 Gibbs 性最关键的 bad configurations）。**
+
+$$\boxed{\ \text{条件细变量的谱/混合控制}\ \Longrightarrow\ \text{Fiber-KP}\ \Longrightarrow\ \text{三重闭合}\ }$$
+
+--- 
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
