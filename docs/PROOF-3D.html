@@ -3,68 +3,81 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clay 证明过程 · 3D 动态图</title>
+<title>Clay 证明结构 · 3D</title>
 <style>
   :root{
-    --bg:#0e0d0c; --ink:#e9e4d9; --muted:#8b8579;
-    --ok:#5fbf85; --no:#e0705a; --ev:#d9a94a; --tgt:#d9a06a;
-    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --bg:#08090c;
+    --ink:#e8e4dc; --dim:#7d7870; --line:#23262d;
+    --ok:#6fd39a; --no:#f0785f; --ev:#e6b95c; --tg:#f0b27a;
+    --mono:ui-monospace,"SF Mono",JetBrains Mono,Menlo,Consolas,monospace;
     --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC","Noto Serif CJK SC",serif;
   }
   *{box-sizing:border-box}
-  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--serif);overflow:hidden}
-  #c{display:block;width:100vw;height:100vh}
-  .hud{position:fixed;pointer-events:none;font-family:var(--mono);font-size:12px;line-height:1.7}
-  .hud.tl{top:18px;left:20px}
-  .hud.bl{bottom:18px;left:20px}
-  .hud br{line-height:1.7}
-  h1{font-family:var(--serif);font-size:17px;font-weight:600;margin:0 0 4px;letter-spacing:.01em;color:#f2eee4}
-  .sub{color:var(--muted);font-size:11px;margin:0 0 14px}
-  .key{display:flex;flex-direction:column;gap:3px;margin-top:10px}
-  .key span{color:var(--muted)}
-  .dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:7px;vertical-align:1px}
-  .d-ok{background:var(--ok);box-shadow:0 0 8px var(--ok)}
-  .d-no{background:var(--no);box-shadow:0 0 8px var(--no)}
-  .d-ev{background:var(--ev);box-shadow:0 0 8px var(--ev)}
-  .d-tg{background:var(--tgt);box-shadow:0 0 10px var(--tgt)}
-  .stat{color:var(--muted);font-size:11px}
-  .stat b{color:var(--ink);font-weight:600}
-  #tip{position:fixed;pointer-events:none;padding:7px 11px;background:#1b1917ee;border:1px solid #35302a;
-       border-radius:5px;font-family:var(--mono);font-size:11.5px;line-height:1.6;color:#e9e4d9;
-       opacity:0;transition:opacity .12s;max-width:340px;z-index:9}
-  #tip .t{color:#f2eee4;font-weight:600;display:block;margin-bottom:3px}
-  #tip.on{opacity:1}
-  #fallback{display:none;position:fixed;inset:0;padding:40px;overflow:auto;font-family:var(--mono);font-size:13px;line-height:1.9}
-  #fallback h2{font-family:var(--serif)}
+  html,body{margin:0;height:100%;overflow:hidden;background:var(--bg);color:var(--ink);font-family:var(--serif)}
+  #c{display:block;width:100vw;height:100vh;outline:none}
+
+  .panel{position:fixed;pointer-events:none;font-family:var(--mono);font-size:11.5px;line-height:1.75;
+         letter-spacing:.01em;color:var(--dim)}
+  #tl{top:26px;left:30px}
+  #bl{bottom:22px;left:30px}
+  #br{bottom:22px;right:30px;text-align:right}
+
+  h1{font-family:var(--serif);font-size:19px;font-weight:600;letter-spacing:.01em;
+     margin:0 0 3px;color:#f4f0e8}
+  .sub{font-size:10.5px;color:#5d5a54;margin:0 0 16px;letter-spacing:.04em}
+  .row{display:flex;align-items:center;gap:8px;margin-bottom:2px}
+  .k{width:7px;height:7px;border-radius:50%;flex:0 0 auto}
+  .k.ok{background:var(--ok);box-shadow:0 0 10px #6fd39a88}
+  .k.no{background:var(--no);box-shadow:0 0 10px #f0785f99}
+  .k.ev{background:var(--ev);box-shadow:0 0 10px #e6b95c88}
+  .k.tg{background:var(--tg);box-shadow:0 0 12px #f0b27aaa}
+  .k.zero{background:#3a3f47;box-shadow:0 0 6px #3a3f4766}
+  .num{color:#b9b3a8}
+
+  .sep{height:1px;background:linear-gradient(90deg,#23262d,transparent);margin:12px 0 10px;width:150px}
+  .tiny{font-size:10px;color:#4e4b46;line-height:1.7}
+
+  #tip{position:fixed;pointer-events:none;max-width:330px;padding:10px 13px;
+       background:#101218f2;border:1px solid #2a2e37;border-left-width:2px;border-radius:4px;
+       font-family:var(--mono);font-size:11px;line-height:1.65;color:#cdc8bf;
+       opacity:0;transform:translateY(4px);transition:opacity .14s,transform .14s;z-index:9;
+       backdrop-filter:blur(6px)}
+  #tip.on{opacity:1;transform:translateY(0)}
+  #tip .t{display:block;font-size:12px;font-weight:600;margin-bottom:4px;letter-spacing:.01em}
+  #tip .g{display:block;font-size:9.5px;color:#6b6760;margin-bottom:6px;letter-spacing:.06em;text-transform:uppercase}
+
+  #fb{display:none;position:fixed;inset:0;padding:44px;overflow:auto;
+      font-family:var(--mono);font-size:12.5px;line-height:1.9;color:#cdc8bf;background:var(--bg)}
+  #fb pre{white-space:pre-wrap}
 </style>
 </head>
 <body>
 <canvas id="c"></canvas>
 
-<div class="hud tl">
-  <h1>Clay 证明过程</h1>
-  <p class="sub">4D 纯 SU(N) 质量间隙 · 第 245 轮</p>
-  <div class="stat" id="stat"></div>
-  <div class="key">
-    <span><i class="dot d-ok"></i>已证 [T]</span>
-    <span><i class="dot d-no"></i>未证 [NG]</span>
-    <span><i class="dot d-ev"></i>仅数值 [E]</span>
-    <span><i class="dot d-tg"></i>目标</span>
-  </div>
+<div class="panel" id="tl">
+  <h1>Clay 证明结构</h1>
+  <p class="sub">4D 纯 SU(N) 质量间隙 · 第 246 轮</p>
+  <div id="stat"></div>
+  <div class="sep"></div>
+  <div class="row"><i class="k no"></i><span>缺件 [NG]</span></div>
+  <div class="row"><i class="k ok"></i><span>已证 [T]</span></div>
+  <div class="row"><i class="k ev"></i><span>仅读数 [E]</span></div>
+  <div class="row"><i class="k tg"></i><span>目标</span></div>
+  <div class="row"><i class="k zero"></i><span>零代价（不计缺件）</span></div>
 </div>
 
-<div class="hud bl">
+<div class="panel" id="bl">
   拖动旋转 · 滚轮缩放 · 悬停看细节<br>
-  Clay 未证。无百分比。
+  <span class="tiny">Clay 未证。无百分比。</span>
+</div>
+
+<div class="panel" id="br">
+  <span class="tiny" id="fps"></span>
 </div>
 
 <div id="tip"></div>
 
-<div id="fallback">
-  <h2>Three.js 未能加载</h2>
-  <p>下面是同一张图的文字版：</p>
-  <pre id="fbtext"></pre>
-</div>
+<div id="fb"><pre id="fbt"></pre></div>
 
 <script type="importmap">
 {
@@ -76,315 +89,371 @@
 </script>
 
 <script type="module">
-/* ---------- 图的数据 ---------- */
-const NODES = [
-  { id:'clay',  label:'Clay',                     s:'tgt', r:0,   layer:0, w:2.6, note:'存在连续极限 ∧ 谱隙为正' },
+/* ═══════════════ 图 ═══════════════ */
+/* s: tgt 目标 / no 缺件 / ok 已证 / ev 读数 / zero 零代价 */
+const N = [
+  { id:'clay', label:'Clay', s:'tgt', r:0, L:0, w:3.0,
+    note:'要三件：存在连续极限 ∧ 非平凡 ∧ 谱隙为正。零代价三条（OS1 / 反射正性 / 重构）已在账上。' },
 
-  { id:'i',     label:'(i) 极限存在',              s:'tgt', r:4.2, layer:1, w:1.5, note:'紧性 + 唯一性 + 桥' },
-  { id:'ii',    label:'(ii) 隙为正',               s:'tgt', r:4.2, layer:1, w:1.5, note:'桥 + 谱底 > 0' },
+  { id:'gap',  label:'GAP   m/Λ ≥ δ', s:'no', r:5.0, L:1, w:1.9,
+    note:'本体。精确形：真空扇区（中性、局域）最轻态质量 ≥ δ，于 (L,a) 一致。等价于 m/Λ ≥ δ，而它是 β-无关的纯数。所有弱化尝试都带见证被否：χ_q≤C（自由场也为真）、RP、面积律（G×U(1) 见证）、正下界观测量、谱条件、σ、Δ 单调搬运（方向反 9–12×）。' },
+  { id:'l3',   label:'L3   (U1)(U2)(U3)', s:'no', r:5.0, L:1, w:1.9,
+    note:'连续极限的紧性。三子句里 (U3) 最强且是唯一零供给格。一个标量永远不够（Lemma B：k ≥ ℵ₀），压到 1 的唯一方式是换对象为生成函数。' },
+  { id:'nt',   label:'NT   g_ren ≠ 0', s:'no', r:5.0, L:1, w:1.7,
+    note:'非平凡性。合格见证是 g_ren ≠ 0；Λ>0 只是它的维数透射形，不是第二见证。BZ 见证：NT ∧ Λ>0 而 Δ=0 ⇒ NT ⇏ GAP。缺 N2。' },
 
-  { id:'L3v',   label:'L3 = (V)',                 s:'no',  r:8.4, layer:2, w:1.25, note:'(V)：矩的 a-一致界。S3′b 的 d=4 压线形态判据是 [T]，但供给关闭（免费弱界只到 |z|⁻²，靶要 |z|⁻⁴ log）⇒ 退回 (V)' },
-  { id:'W1',    label:'W1 ⟸ (B) + L3',            s:'ok',  r:8.4, layer:2, w:1.1,  note:'体积一致聚类 ⇒ 唯一极限测度' },
-  { id:'bridge',label:'桥 (A-abs)',               s:'ok',  r:8.4, layer:2, w:1.1,  note:'Δ_cont ≥ liminf Δ_a，Lean 机检 gap_ge_liminf' },
-  { id:'spec',  label:'inf spec > 0 (≤20 扇区)',  s:'no',  r:8.4, layer:2, w:1.25, note:'全谱隙本身。域 = 10 表示 × C=±（N-ality 0、k=0）。[T] 只到 ⨅_c Δ_c 与 PF 逐点 m_c>0；一致段 [NG]：T = P₀₊₊ + Σλ_c P_c 可实现任意 (λ_c) ⇒ 「只需证某一道」为假。载体 ¼trF² 只落 A1g，其余 19 扇区无仪器' },
+  { id:'u3',   label:'(U3)  ⟸ 树界', s:'no', r:10.6, L:2, w:1.05,
+    note:'(U3) 的唯一非-mgf 来源是树：|𝒯_n| = n^{n−2} ≤ n!·e^n，Bell(n)/n! 递减 ⇒ n! 由树出。而 (U3) ⇒ (U1) 是仓内唯一 [T] 生成器。冲突：树界要 Σ|C_2|<∞，而 |z|^{-4} 给 (8/3)ln(b̂/a) 发散。' },
+  { id:'gdq',  label:'(GD-q)  ⟸ (CO)', s:'no', r:10.6, L:2, w:1.05,
+    note:'亚高斯 mgf 界 ⟨e^{t⨏q}⟩ ≤ e^{t²σ²/2}。条件版 [T]：成立则所有阶有界，L3 只需一个标量。四条候选（Brascamp–Lieb / 热核 / vMF / 聚合物）在窗外全出局。新中间条件 (CO) 只涉单观测量、单链路钉扎。' },
+  { id:'utile',label:'u_tile ≤ u_*', s:'no', r:10.6, L:2, w:1.0,
+    note:'聚合物坍缩的实轴出口。差 1.282×（与已知 site/tile grading 差 1.414× 同量级）。口径：u = β/2N² 是领先阶，在 2.5 处比精确 I₂/I₁ 小 1.623× ⇒ 判决要用精确值。' },
+  { id:'n2',   label:'N2  极限不塌缩', s:'no', r:10.6, L:2, w:1.0,
+    note:'NT 的唯一缺口。AF 同时被自由轨迹 g₀≡0 与相互作用轨迹满足，DT 是等价不是生成器 ⇒ 缺的正是「极限不塌缩到自由轨迹」。疑与 GAP 同原子。' },
 
-  { id:'nu',    label:'ν([0,s]) = o(s)',          s:'no',  r:12.6, layer:3, w:1.05, note:'(a,L)-一致。p>4 的消失阶 ⇒ χ_q < ∞ ⇒ 也就是 H1' },
-  { id:'varq',  label:'ϖ = Var(q) + O_B',         s:'ok',  r:12.6, layer:3, w:0.9,  note:'分解式；Var(q) ≤ 1 零输入（Popoviciu）' },
-  { id:'sq',    label:'ϖ ≤ 𝒮_q',                  s:'ok',  r:12.6, layer:3, w:0.9,  note:'n_B、N_B、b̂ 全部消失' },
-  { id:'eps',   label:'ε = 𝔢(t),  r = 21.92 < 63', s:'ok', r:12.6, layer:3, w:0.9,  note:'一参数化；r 的余量 2.874×。酸测：自由场 r = ∞' },
-  { id:'kstar', label:'K* ≥ 1',                   s:'ok',  r:12.6, layer:3, w:0.85, note:'定义级，零分析输入' },
-  { id:'plaq',  label:'plaq − 2.5plaq′ > 0',      s:'ok',  r:12.6, layer:3, w:0.85, note:'(EP) 的单点形，读数余 1.31×' },
-  { id:'seam',  label:'N1 缝（条件式）',           s:'ok',  r:12.6, layer:3, w:0.85, note:'修形后 4 行条件式 [T]；一条 axiom 退场；不在关键路径' },
+  { id:'zero1',label:'OS1 平移', s:'zero', r:10.6, L:2, w:0.7,
+    note:'群像 aℤ⁴ 随 a→0 在 ℝ⁴ 中稠密 ⇒ 过弱极限自动保持。' },
+  { id:'zero2',label:'OS2 = 反射正性', s:'zero', r:10.6, L:2, w:0.7,
+    note:'C_RP 是弱闭凸锥，θA·A ∈ C_b 逐项非负取极限仍非负。而且不需要一致矩界（比原先记的更强），已 Lean 化。' },
+  { id:'zero3',label:'OS 重构', s:'zero', r:10.6, L:2, w:0.7,
+    note:'OS0–OS3 + 给定 UVS 的 OS0 ⇒ Wightman：ℋ_phys、自伴 H ≥ 0、HΩ=0、Poincaré 表示 + 谱条件。但 Δ>0 不是重构推论（无质量自由标量也过 OS0–4）。' },
 
-  { id:'chi',   label:'χ_q ≤ 0.0435  (= G′(2.5) ≤ 0)', s:'no', r:16.8, layer:4, w:1.0, note:'−1 阶谱矩的上界，就是 H1 的弱形。最好界 0.046276 = 2q₀/(6β₀)（整族下确界）；族达标 ⟺ q₀ ≤ 1/3 ⟺ plaq ≥ 2/3，实测 0.652932 欠 1.021×' },
-  { id:'utile', label:'u_tile = 0.5072',          s:'ok',  r:16.8, layer:4, w:0.8,  note:'Perron 比，∀β，比 1 低 1.97×。𝒮_q(0) = 1/24 精确（κ=6）；1/4 是单面 κ=1 的 Var(P)，差的那个 6 就是 κ' },
-  { id:'ksup',  label:'sup K* < ∞',               s:'no',  r:16.8, layer:4, w:0.9,  note:'固定体积上零内容（两侧免费）；一致版是两条腿之一 [inf s₁ ≥ δ] ∧ [sup K* ≤ K]，另一条未攻。s₁→0 ⇒ Δ_a→0 而 sup K* 仍有限 ⇒ 不蕴涵隙' },
-  { id:'gate',  label:'门 u_tile ≤ 0.2797',        s:'no',  r:16.8, layer:4, w:0.8,  note:'最小闭聚合物 |X|=6 给的门；差 1.81×' },
-  { id:'m0',    label:'m₀⁺⁺ ≈ 1.7（数值）',        s:'ev',  r:16.8, layer:4, w:0.8,  note:'L=8 与 L=12 一致（plaq 也一致：0.6526 / 0.651984）。但 L=12 无平台、2⁺⁺ 无读数 ⇒ K* 只在 5 通道内为 1' },
+  { id:'fixed',label:'固定 (L,a): Δ_a > 0', s:'ok', r:16.4, L:3, w:1.0,
+    note:'三行：K 有界 + 空间紧 ⇒ T 紧；K>0 处处 + T1=1 ⇒ 顶端单重（极大点论证）；1 孤立 ⇒ λ₁<1。零估计，而它恒真 ⇒ 判别力 0。' },
+  { id:'var',  label:'g = 1−λ₂ = inf⟨f,(1−T)f⟩', s:'ok', r:16.4, L:3, w:1.0,
+    note:'只用自伴性。不紧时取 sup σ，恒等式照旧。而 ⟨f,(1−T)f⟩ = ½∬(f−f′)²K 逐字是 Dirichlet 形。任一试态只给上界 ⇒ 变分形只能作否证器。' },
+  { id:'thr',  label:'Δ_a ≥ δ ⟺ g ≥ 1−e^{−aδ}', s:'ok', r:16.4, L:3, w:1.0,
+    note:'修正：不是 g ≥ aδ（反向假，反例 g = 0.6321205588 而 aδ = 1；因为 1−e^{−x} = x − x²/2 + … 恒 < x）。小 a 的正确形是 g ≥ aδ(1 − aδ/2)。' },
+  { id:'lin',  label:'Δ(β) = β·δ_{S_W}', s:'ok', r:16.4, L:3, w:0.95,
+    note:'H = βS_W 而 S_W 不含 β ⇒ Δ 对 β 精确线性。所以「把 β 从 1/48 搬到 2.5」是乘一个因子，不是延拓问题。而 Δ 随 β 递减：Δ(1/48)=15–21 vs Δ(2.5)=1.709，差 9–12× ⇒ 单调搬运方向反。' },
+  { id:'bridge',label:'桥 Δ_cont ≥ liminf Δ_a', s:'ok', r:16.4, L:3, w:0.95,
+    note:'Lean 机检 gap_ge_liminf。只搬运不生产：右端无正下界时它空转。最窄形不用 ι_a、不用强收敛（自伴 ⇒ ‖e^{−tH}g‖² 仍是矩）。' },
+  { id:'cellc',label:'r = 21.9207 < 63', s:'ok', r:16.4, L:3, w:0.95,
+    note:'一参数化 ε = 𝔢(t)，t = β²/2N²；本征矢恒等式 ⟨E₀|H|E_n⟩=0 ⇒ 𝔢 = 𝔢∞(1+O(1/t))。余 2.874×。酸测：自由场 𝔢 ≡ 0 ⇒ r = ∞ ⇒ 靶不空转。' },
+  { id:'cellb',label:'ϖ ≥ v(β) = 6.42e−3', s:'ok', r:16.4, L:3, w:0.95,
+    note:'B 格防空守卫（b̂ ∈ {a,2a}，L≥3）。ϖ = Var(q) + O_B；引理 B.1 给 Var(q) ≥ min(a,b)·6β；引理 B.2 给 O_B ≥ C_a/3 ≥ 0（模反射正性，四壳权重 8/24/24/8 重排）。' },
+
+  { id:'ep',   label:'(EP) 于 L=8/10/12 成立', s:'ev', r:20.2, L:4, w:0.9,
+    note:'读数：plaq′(2.5) 对门槛 plaq(2.5)/2.5。L=8：0.198972 vs 0.25（L=10：0.209169 vs 0.260840，余 62σ）。而 plaq(2.5) 三体积单调递减 0.652402 / 0.652099 / 0.651984，漂 0.06%。' },
+  { id:'j1',   label:'J1  于 L=8/10 成立', s:'ev', r:20.2, L:4, w:0.9,
+    note:'χ_q 在 [2.4,2.5] 非增：L=8 降 12.8σ；L=10 的 plaq″(2.45) = −0.448257（凹）。β_peak = 2.40 在 L=8 与 L=10 同。而 J1 ⟹ (EP)，故 J1 是更强的那件。' },
+  { id:'u0',   label:'U₀ ∈ [0.75, 0.86]', s:'ev', r:20.2, L:4, w:0.85,
+    note:'L=12 的 Cfull 给出 U₀ = C(0)/Σ_t C(t) = 0.7509–0.8553，τ_corr = 0.58–0.67 格距。量纲是质量，U₀^lat = U₀^phys/Λ_UV。它给一个 [T] 的质量上界 m₁ ≤ −ln(1−U₀) ≤ 1.390（免拟合）。' },
+  { id:'plaq3',label:'plaq(2.5) = 0.65198', s:'ev', r:20.2, L:4, w:0.85,
+    note:'L=12，Ls=12/Lt=18，n=150000。三体积 0.652402 / 0.652099 / 0.651984 单调递减。而 β=2.5 在 Lt=18 是禁闭相：T/T_c = 0.42（β_c(16) = 2.7395(100)）。' },
 ];
 
-const EDGES = [
-  ['clay','i'], ['clay','ii'],
-  ['i','L3v'], ['i','W1'], ['i','bridge'],
-  ['ii','bridge'], ['ii','spec'],
-  ['L3v','nu'], ['L3v','varq'], ['varq','sq'],
-  ['spec','chi'], ['spec','ksup'],
-  ['W1','eps'], ['seam','bridge'],
-  ['chi','plaq'], ['ksup','kstar'],
-  ['nu','utile'], ['utile','gate'],
-  ['spec','m0'],
+const E = [
+  ['clay','gap'], ['clay','l3'], ['clay','nt'],
+  ['l3','u3'], ['l3','gdq'], ['l3','utile'], ['nt','n2'],
+  ['l3','zero1'], ['l3','zero2'], ['l3','zero3'],
+  ['gap','fixed'], ['gap','var'], ['gap','thr'], ['gap','lin'],
+  ['l3','bridge'],
+  ['cellc','clay'], ['cellb','clay'],
+  ['gap','ep'], ['gap','j1'], ['nt','u0'], ['gap','plaq3'],
 ];
 
-/* ---------- 颜色 ---------- */
-const COL = {
-  ok : 0x5fbf85,
-  no : 0xe0705a,
-  ev : 0xd9a94a,
-  tgt: 0xd9a06a,
-};
+const C = { ok:0x6fd39a, no:0xf0785f, ev:0xe6b95c, tgt:0xf0b27a, zero:0x3a3f47 };
+const HEX = s => '#' + C[s].toString(16).padStart(6,'0');
+const TAG = { ok:'已证 [T]', no:'缺件 [NG]', ev:'仅读数 [E]', tgt:'目标', zero:'零代价（不计缺件）' };
 
-/* ---------- 布局：极坐标，层 → 半径 ---------- */
-const pos = {};
-NODES.forEach((n, k) => {
-  const sameLayer = NODES.filter(m => m.layer === n.layer);
-  const idx = sameLayer.findIndex(m => m.id === n.id);
-  const cnt = sameLayer.length;
-  const a = (idx / cnt) * Math.PI * 2 + n.layer * 0.55;
-  const yWave = n.layer === 0 ? 0 : Math.sin(a * 2.0 + n.layer) * (1.6 + n.layer * 0.55);
-  pos[n.id] = [Math.cos(a) * n.r, yWave, Math.sin(a) * n.r];
+/* ═══════════════ 布局 ═══════════════ */
+const P = {};
+const byLayer = {};
+N.forEach(n => (byLayer[n.L] ||= []).push(n));
+N.forEach(n => {
+  const arr = byLayer[n.L], i = arr.indexOf(n), k = arr.length;
+  const a = (i / Math.max(k,1)) * Math.PI * 2 + n.L * 0.62;
+  const wob = n.L === 0 ? 0 : Math.sin(a * 2.3 + n.L * 1.7) * (0.9 + n.L * 0.5);
+  P[n.id] = [Math.cos(a) * n.r, wob, Math.sin(a) * n.r];
 });
 
-/* ---------- 启动 ---------- */
+/* ═══════════════ 引擎 ═══════════════ */
 import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 
 const canvas = document.getElementById('c');
-const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false });
+const renderer = new THREE.WebGLRenderer({ canvas, antialias:true, alpha:false, powerPreference:'high-performance' });
 renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
 renderer.setSize(innerWidth, innerHeight);
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.15;
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x0e0d0c, 0.012);
+scene.fog = new THREE.FogExp2(0x08090c, 0.0135);
 
-const camera = new THREE.PerspectiveCamera(48, innerWidth/innerHeight, 0.1, 500);
-camera.position.set(20, 16, 26);
+const camera = new THREE.PerspectiveCamera(46, innerWidth/innerHeight, 0.1, 600);
+const HOME = new THREE.Vector3(23, 15, 29);
+camera.position.copy(HOME.clone().multiplyScalar(2.6));
 
-const controls = new OrbitControls(camera, canvas);
-controls.enableDamping = true;
-controls.dampingFactor = 0.06;
-controls.autoRotate = true;
-controls.autoRotateSpeed = 0.42;
-controls.minDistance = 8;
-controls.maxDistance = 90;
+const ctl = new OrbitControls(camera, canvas);
+ctl.enableDamping = true; ctl.dampingFactor = 0.055;
+ctl.autoRotate = true; ctl.autoRotateSpeed = 0.36;
+ctl.minDistance = 10; ctl.maxDistance = 110;
+ctl.enablePan = false;
 
-scene.add(new THREE.AmbientLight(0xffffff, 0.55));
-const l1 = new THREE.DirectionalLight(0xfff0e0, 1.1); l1.position.set(18, 30, 22); scene.add(l1);
-const l2 = new THREE.DirectionalLight(0x88aaff, 0.5); l2.position.set(-22, -14, -18); scene.add(l2);
+scene.add(new THREE.AmbientLight(0xffffff, 0.42));
+const key = new THREE.DirectionalLight(0xfff4e6, 1.25); key.position.set(24, 38, 26); scene.add(key);
+const rim = new THREE.DirectionalLight(0x6b8cff, 0.55); rim.position.set(-28, -16, -24); scene.add(rim);
+const fill = new THREE.PointLight(0x6fd39a, 0.35, 90); fill.position.set(0, -10, 0); scene.add(fill);
 
-/* 星尘背景 */
+/* 星尘 */
 {
-  const g = new THREE.BufferGeometry();
-  const N = 1400, p = new Float32Array(N*3);
-  for (let i=0;i<N;i++){
-    const r = 60 + Math.random()*110;
-    const t = Math.random()*Math.PI*2, ph = Math.acos(2*Math.random()-1);
-    p[i*3]   = r*Math.sin(ph)*Math.cos(t);
-    p[i*3+1] = r*Math.cos(ph)*0.7;
-    p[i*3+2] = r*Math.sin(ph)*Math.sin(t);
+  const n = 1800, pos = new Float32Array(n*3), col = new Float32Array(n*3);
+  const tint = [new THREE.Color(0x2b3038), new THREE.Color(0x3a4048), new THREE.Color(0x232830)];
+  for (let i=0;i<n;i++){
+    const r = 55 + Math.random()*140, t = Math.random()*Math.PI*2, p = Math.acos(2*Math.random()-1);
+    pos[i*3]   = r*Math.sin(p)*Math.cos(t);
+    pos[i*3+1] = r*Math.cos(p)*0.62;
+    pos[i*3+2] = r*Math.sin(p)*Math.sin(t);
+    const c = tint[(Math.random()*3)|0];
+    col[i*3]=c.r; col[i*3+1]=c.g; col[i*3+2]=c.b;
   }
-  g.setAttribute('position', new THREE.BufferAttribute(p,3));
+  const g = new THREE.BufferGeometry();
+  g.setAttribute('position', new THREE.BufferAttribute(pos,3));
+  g.setAttribute('color', new THREE.BufferAttribute(col,3));
   scene.add(new THREE.Points(g, new THREE.PointsMaterial({
-    color:0x3a3630, size:0.5, transparent:true, opacity:0.75, sizeAttenuation:true })));
+    size:0.42, vertexColors:true, transparent:true, opacity:0.8, sizeAttenuation:true, depthWrite:false })));
 }
 
-/* 环 */
-[4.2, 8.4, 12.6, 16.8].forEach((r, k) => {
-  const pts=[]; const SEG=160;
-  for(let i=0;i<=SEG;i++){
-    const a=i/SEG*Math.PI*2;
-    pts.push(new THREE.Vector3(Math.cos(a)*r, 0, Math.sin(a)*r));
+/* 层环 + 刻度 */
+const RINGS = [5.0, 10.6, 16.4, 20.2];
+RINGS.forEach((r, li) => {
+  const pts = [];
+  for (let i=0;i<=220;i++){ const a=i/220*Math.PI*2; pts.push(new THREE.Vector3(Math.cos(a)*r, 0, Math.sin(a)*r)); }
+  scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+    new THREE.LineBasicMaterial({ color:0x1c2028, transparent:true, opacity:0.85 })));
+  // 刻度
+  const tp = [];
+  for (let i=0;i<72;i++){
+    const a = i/72*Math.PI*2, big = i%6===0;
+    const r0 = r, r1 = r + (big?0.34:0.14);
+    tp.push(new THREE.Vector3(Math.cos(a)*r0,0,Math.sin(a)*r0), new THREE.Vector3(Math.cos(a)*r1,0,Math.sin(a)*r1));
   }
-  const g=new THREE.BufferGeometry().setFromPoints(pts);
-  scene.add(new THREE.Line(g, new THREE.LineBasicMaterial({
-    color:0x2a2724, transparent:true, opacity:0.55 })));
+  const tg = new THREE.BufferGeometry().setFromPoints(tp);
+  scene.add(new THREE.LineSegments(tg, new THREE.LineBasicMaterial({ color:0x20242c, transparent:true, opacity:0.7 })));
 });
 
-/* 标签精灵 */
-function makeLabel(text, color, scale=1){
-  const pad = 14, fs = 44, fsSub = 0;
+/* 径向蛛网（从 Clay 到各层） */
+byLayer[1].forEach(n => {
+  const a = Math.atan2(P[n.id][2], P[n.id][0]);
+  const pts = [new THREE.Vector3(0,0,0), new THREE.Vector3(Math.cos(a)*20.2, 0, Math.sin(a)*20.2)];
+  scene.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),
+    new THREE.LineBasicMaterial({ color:0x14171d, transparent:true, opacity:0.9 })));
+});
+
+/* 光环贴图 */
+function glowTex(hex, soft){
+  const cv = document.createElement('canvas'); cv.width = cv.height = 128;
+  const g = cv.getContext('2d');
+  const gr = g.createRadialGradient(64,64,0,64,64,64);
+  gr.addColorStop(0, hex + (soft? '99':'dd'));
+  gr.addColorStop(0.28, hex + (soft? '33':'55'));
+  gr.addColorStop(1, hex + '00');
+  g.fillStyle = gr; g.fillRect(0,0,128,128);
+  return new THREE.CanvasTexture(cv);
+}
+
+/* 标签 */
+function label(text, hex, scale){
+  const fs = 46, pad = 22;
+  const m = document.createElement('canvas').getContext('2d');
+  m.font = `600 ${fs}px "SF Mono", Menlo, Consolas, monospace`;
+  const w = Math.ceil(m.measureText(text).width);
   const cv = document.createElement('canvas');
-  const ctx = cv.getContext('2d');
-  ctx.font = `600 ${fs}px "SF Mono", Menlo, Consolas, monospace`;
-  const w = Math.ceil(ctx.measureText(text).width);
-  cv.width  = w + pad*2;
-  cv.height = fs + pad*2;
-  const c2 = cv.getContext('2d');
-  c2.font = `600 ${fs}px "SF Mono", Menlo, Consolas, monospace`;
-  c2.textBaseline = 'middle';
-  c2.textAlign = 'center';
-  c2.shadowColor = 'rgba(0,0,0,0.95)';
-  c2.shadowBlur = 12;
-  c2.fillStyle = color;
-  c2.fillText(text, cv.width/2, cv.height/2);
-  const tex = new THREE.CanvasTexture(cv);
-  tex.anisotropy = 4;
-  const mat = new THREE.SpriteMaterial({ map: tex, transparent: true, depthWrite: false });
-  const sp = new THREE.Sprite(mat);
-  const k = 0.0125 * scale;
+  cv.width = w + pad*2; cv.height = fs + pad*2;
+  const g = cv.getContext('2d');
+  g.font = `600 ${fs}px "SF Mono", Menlo, Consolas, monospace`;
+  g.textAlign = 'center'; g.textBaseline = 'middle';
+  g.shadowColor = 'rgba(0,0,0,0.98)'; g.shadowBlur = 16;
+  g.fillStyle = hex; g.fillText(text, cv.width/2, cv.height/2);
+  const tex = new THREE.CanvasTexture(cv); tex.anisotropy = 8;
+  const sp = new THREE.Sprite(new THREE.SpriteMaterial({ map:tex, transparent:true, depthWrite:false, depthTest:false }));
+  const k = 0.0106 * (scale||1);
   sp.scale.set(cv.width*k, cv.height*k, 1);
+  sp.renderOrder = 10;
   return sp;
 }
 
 /* 节点 */
-const nodeObjs = {};
-NODES.forEach(n => {
-  const p = pos[n.id];
-  const col = COL[n.s];
-  const isT = n.s === 'tgt';
-  const geo = new THREE.SphereGeometry(n.w * (isT ? 0.5 : 0.34), 26, 20);
-  const mat = new THREE.MeshStandardMaterial({
-    color: col,
-    emissive: col,
-    emissiveIntensity: n.s === 'no' ? 0.85 : (n.s === 'ok' ? 0.5 : 0.6),
-    roughness: 0.35,
-    metalness: 0.15,
-  });
-  const m = new THREE.Mesh(geo, mat);
-  m.position.set(p[0], p[1], p[2]);
-  scene.add(m);
+const O = {};
+N.forEach((n, idx) => {
+  const p = P[n.id], col = C[n.s], hex = HEX(n.s);
+  const isT = n.s === 'tgt', isZ = n.s === 'zero';
+  const rad = n.w * (isT ? 0.46 : (isZ ? 0.24 : 0.30));
 
-  // 光晕
+  const mesh = new THREE.Mesh(
+    new THREE.SphereGeometry(rad, 32, 24),
+    new THREE.MeshStandardMaterial({
+      color: col, emissive: col,
+      emissiveIntensity: isZ ? 0.25 : (n.s === 'no' ? 0.9 : 0.55),
+      roughness: 0.28, metalness: 0.1,
+    })
+  );
+  mesh.position.set(p[0], p[1], p[2]);
+  scene.add(mesh);
+
   const halo = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: (() => {
-      const cv = document.createElement('canvas'); cv.width = cv.height = 128;
-      const g = cv.getContext('2d');
-      const gr = g.createRadialGradient(64,64,0, 64,64,64);
-      const hex = '#' + col.toString(16).padStart(6,'0');
-      gr.addColorStop(0, hex + 'cc');
-      gr.addColorStop(0.35, hex + '44');
-      gr.addColorStop(1, hex + '00');
-      g.fillStyle = gr; g.fillRect(0,0,128,128);
-      return new THREE.CanvasTexture(cv);
-    })(),
-    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
-  }));
-  halo.scale.setScalar(n.w * (isT ? 4.2 : 2.9));
-  halo.position.copy(m.position);
+    map: glowTex(hex, isZ), transparent:true, depthWrite:false, blending:THREE.AdditiveBlending }));
+  halo.scale.setScalar(n.w * (isT ? 5.4 : (isZ ? 2.2 : 3.8)));
+  halo.position.copy(mesh.position);
   scene.add(halo);
 
-  // 标签
-  const hex = '#' + col.toString(16).padStart(6,'0');
-  const lab = makeLabel(n.label, hex, n.s === 'tgt' ? 1.15 : 1.0);
-  lab.position.set(p[0], p[1] + (isT ? 2.0 : 1.35), p[2]);
+  const lab = label(n.label, hex, isT ? 1.2 : (isZ ? 0.9 : 1.0));
+  lab.position.set(p[0], p[1] + (isT ? 2.4 : (isZ ? 1.05 : 1.5)), p[2]);
   scene.add(lab);
 
-  nodeObjs[n.id] = { mesh: m, halo, lab, data: n, baseY: p[1] };
+  // 未证节点：外环脉冲
+  let ring = null;
+  if (n.s === 'no' || n.s === 'tgt'){
+    ring = new THREE.Mesh(
+      new THREE.RingGeometry(rad*1.55, rad*1.72, 64),
+      new THREE.MeshBasicMaterial({ color: col, transparent:true, opacity:0.3, side:THREE.DoubleSide, depthWrite:false })
+    );
+    ring.position.copy(mesh.position);
+    ring.lookAt(camera.position);
+    scene.add(ring);
+  }
+
+  O[n.id] = { mesh, halo, lab, ring, d:n, baseY:p[1], rad, idx };
 });
 
-/* 边 */
-const edgeObjs = [];
-EDGES.forEach(([a,b]) => {
-  const pa = new THREE.Vector3(...pos[a]);
-  const pb = new THREE.Vector3(...pos[b]);
+/* 边（顶点渐变） */
+const nodesOf = id => O[id].d;
+const edges = [];
+E.forEach(([a,b]) => {
+  const pa = new THREE.Vector3(...P[a]), pb = new THREE.Vector3(...P[b]);
   const mid = pa.clone().add(pb).multiplyScalar(0.5);
-  const lift = 1.6 + pa.distanceTo(pb)*0.09;
-  mid.y += lift;
+  mid.y += 1.4 + pa.distanceTo(pb) * 0.11;
   const curve = new THREE.QuadraticBezierCurve3(pa, mid, pb);
-  const pts = curve.getPoints(40);
-  const geo = new THREE.BufferGeometry().setFromPoints(pts);
-  const col = nodeObjs[b].data.s === 'no' ? 0x6b4a3a : 0x3a4a3f;
-  const line = new THREE.Line(geo, new THREE.LineBasicMaterial({
-    color: col, transparent: true, opacity: 0.72 }));
+  const pts = curve.getPoints(48);
+
+  const ca = new THREE.Color(C[nodesOf(a).s]), cb = new THREE.Color(C[nodesOf(b).s]);
+  const cols = [];
+  pts.forEach((_, i) => { const t = i/(pts.length-1); const c = ca.clone().lerp(cb, t); cols.push(c.r,c.g,c.b); });
+
+  const g = new THREE.BufferGeometry().setFromPoints(pts);
+  g.setAttribute('color', new THREE.Float32BufferAttribute(cols, 3));
+  const line = new THREE.Line(g, new THREE.LineBasicMaterial({
+    vertexColors:true, transparent:true, opacity:0.6, depthWrite:false }));
   scene.add(line);
-  edgeObjs.push({ line, curve, a, b });
-});
 
-/* 沿边流动的光点（表示"正在被推"） */
-const flows = [];
-EDGES.forEach(([a,b], k) => {
-  const dst = nodeObjs[b].data;
-  const col = dst.s === 'no' ? 0xe0705a : (dst.s === 'ev' ? 0xd9a94a : 0x5fbf85);
+  const dst = nodesOf(b);
+  const fcol = HEX(dst.s);
   const sp = new THREE.Sprite(new THREE.SpriteMaterial({
-    map: (() => {
-      const cv = document.createElement('canvas'); cv.width = cv.height = 64;
-      const g = cv.getContext('2d');
-      const gr = g.createRadialGradient(32,32,0, 32,32,32);
-      const hex = '#' + col.toString(16).padStart(6,'0');
-      gr.addColorStop(0, hex); gr.addColorStop(1, hex+'00');
-      g.fillStyle = gr; g.fillRect(0,0,64,64);
-      return new THREE.CanvasTexture(cv);
-    })(),
-    transparent:true, depthWrite:false, blending: THREE.AdditiveBlending,
-  }));
-  sp.scale.setScalar(0.75);
+    map: glowTex(fcol, true), transparent:true, depthWrite:false, blending:THREE.AdditiveBlending }));
+  sp.scale.setScalar(0.7);
   scene.add(sp);
-  flows.push({ sp, curve: edgeObjs[k].curve, t: Math.random(), speed: 0.11 + Math.random()*0.16 });
+
+  edges.push({ line, curve, sp, t: Math.random(), v: 0.085 + Math.random()*0.13, a, b });
 });
 
-/* HUD 统计 */
+/* 统计 */
 {
-  const cnt = { ok:0, no:0, ev:0, tgt:0 };
-  NODES.forEach(n => cnt[n.s]++);
+  const c = { ok:0, no:0, ev:0, tgt:0, zero:0 };
+  N.forEach(n => c[n.s]++);
   document.getElementById('stat').innerHTML =
-    `节点 <b>${NODES.length}</b> · 边 <b>${EDGES.length}</b><br>` +
-    `已证 <b>${cnt.ok}</b> · 未证 <b>${cnt.no}</b> · 数值 <b>${cnt.ev}</b>`;
+    `<span class="num">${N.length}</span> 节点 · <span class="num">${E.length}</span> 边<br>` +
+    `缺件 <span class="num" style="color:#f0785f">${c.no}</span> · ` +
+    `已证 <span class="num" style="color:#6fd39a">${c.ok}</span> · ` +
+    `读数 <span class="num" style="color:#e6b95c">${c.ev}</span> · ` +
+    `零代价 <span class="num">${c.zero}</span>`;
 }
 
-/* 悬停 */
+/* 交互 */
 const ray = new THREE.Raycaster();
-const mouse = new THREE.Vector2(-9,-9);
+const mo = new THREE.Vector2(-9,-9);
 const tip = document.getElementById('tip');
-let hovered = null;
-const okHex = '#5fbf85', noHex = '#e0705a', evHex = '#d9a94a', tgtHex = '#d9a06a';
-const hexOf = s => s==='ok'?okHex : s==='no'?noHex : s==='ev'?evHex : tgtHex;
+let hov = null;
 
 addEventListener('pointermove', e => {
-  mouse.x = (e.clientX / innerWidth) * 2 - 1;
-  mouse.y = -(e.clientY / innerHeight) * 2 + 1;
-  tip.style.left = Math.min(e.clientX + 16, innerWidth - 350) + 'px';
-  tip.style.top  = Math.min(e.clientY + 16, innerHeight - 140) + 'px';
+  mo.x = (e.clientX/innerWidth)*2 - 1;
+  mo.y = -(e.clientY/innerHeight)*2 + 1;
+  const w = 348;
+  tip.style.left = Math.min(e.clientX + 18, innerWidth - w) + 'px';
+  tip.style.top  = Math.min(e.clientY + 18, innerHeight - 170) + 'px';
 });
 
 function pick(){
-  ray.setFromCamera(mouse, camera);
-  const list = NODES.map(n => nodeObjs[n.id].mesh);
+  ray.setFromCamera(mo, camera);
+  const list = N.map(n => O[n.id].mesh);
   const hit = ray.intersectObjects(list, false)[0];
-  const id = hit ? NODES[list.indexOf(hit.object)].id : null;
-  if (id !== hovered){
-    hovered = id;
-    if (id){
-      const n = nodeObjs[id].data;
-      const tag = n.s==='ok' ? '已证 [T]' : n.s==='no' ? '未证 [NG]' : n.s==='ev' ? '仅数值 [E]' : '目标';
-      tip.innerHTML = `<span class="t" style="color:${hexOf(n.s)}">${n.label}</span>` +
-                      `<span style="color:#8b8579">${tag}</span><br>${n.note}`;
-      tip.classList.add('on');
-      document.body.style.cursor = 'pointer';
-    } else {
-      tip.classList.remove('on');
-      document.body.style.cursor = '';
-    }
+  const id = hit ? N[list.indexOf(hit.object)].id : null;
+  if (id === hov) return;
+  hov = id;
+  if (id){
+    const d = O[id].d;
+    tip.innerHTML = `<span class="t" style="color:${HEX(d.s)}">${d.label}</span>` +
+                    `<span class="g">${TAG[d.s]}</span>${d.note}`;
+    tip.style.borderLeftColor = HEX(d.s);
+    tip.classList.add('on');
+    document.body.style.cursor = 'pointer';
+  } else {
+    tip.classList.remove('on');
+    document.body.style.cursor = '';
   }
 }
 
 /* 动画 */
 const clock = new THREE.Clock();
+let intro = 0;
+let acc = 0, frames = 0;
+const fpsEl = document.getElementById('fps');
+const tmpV = new THREE.Vector3();
+
 function loop(){
   const t = clock.getElapsedTime();
+  const dt = Math.min(clock.getDelta ? 0.05 : 0.016, 0.05);
 
-  NODES.forEach((n, k) => {
-    const o = nodeObjs[n.id];
-    // 呼吸
-    const ph = t * (n.s === 'no' ? 1.9 : 1.1) + k * 0.8;
-    const amp = n.s === 'no' ? 0.14 : 0.06;
-    o.halo.scale.setScalar(n.w * (n.s === 'tgt' ? 4.2 : 2.9) * (1 + amp*Math.sin(ph)));
-    if (n.s === 'no'){
-      o.mesh.material.emissiveIntensity = 0.7 + 0.5*Math.sin(ph);
-    }
-    // 轻微上下浮动
-    o.mesh.position.y = o.baseY + Math.sin(t*0.7 + k*0.9) * 0.22;
-    o.lab.position.y = o.mesh.position.y + (n.s === 'tgt' ? 2.0 : 1.35);
+  // 入场推进
+  if (intro < 1){
+    intro = Math.min(1, intro + dt * 0.7);
+    const e = 1 - Math.pow(1 - intro, 3);
+    camera.position.lerpVectors(HOME.clone().multiplyScalar(2.6), HOME, e);
+  }
+
+  N.forEach((n, i) => {
+    const o = O[n.id];
+    const ph = t * (n.s === 'no' ? 1.7 : 1.0) + i * 0.83;
+    const amp = n.s === 'no' ? 0.15 : (n.s === 'tgt' ? 0.08 : 0.05);
+    o.halo.scale.setScalar(n.w * (n.s==='tgt'?5.4:(n.s==='zero'?2.2:3.8)) * (1 + amp*Math.sin(ph)));
+    if (n.s === 'no') o.mesh.material.emissiveIntensity = 0.68 + 0.42*Math.sin(ph);
+
+    o.mesh.position.y = o.baseY + Math.sin(t*0.62 + i*0.9) * 0.20;
     o.halo.position.y = o.mesh.position.y;
-    // 悬停放大
-    const sc = (hovered === n.id) ? 1.35 : 1.0;
-    o.mesh.scale.lerp(new THREE.Vector3(sc,sc,sc), 0.15);
+    o.lab.position.y = o.mesh.position.y + (n.s==='tgt'?2.4:(n.s==='zero'?1.05:1.5));
+
+    if (o.ring){
+      o.ring.position.y = o.mesh.position.y;
+      o.ring.lookAt(camera.position);
+      const s = 1 + 0.22*Math.sin(ph*1.15);
+      o.ring.scale.setScalar(s);
+      o.ring.material.opacity = 0.12 + 0.20*(0.5 + 0.5*Math.sin(ph*1.15));
+    }
+
+    const target = (hov === n.id) ? 1.42 : 1.0;
+    const cur = o.mesh.scale.x;
+    o.mesh.scale.setScalar(cur + (target - cur) * 0.16);
   });
 
-  flows.forEach(f => {
-    f.t += f.speed * 0.016;
-    if (f.t > 1) f.t -= 1;
-    const p = f.curve.getPoint(f.t);
-    f.sp.position.copy(p);
-    const s = 0.55 + 0.35*Math.sin(t*4 + f.t*9);
-    f.sp.scale.setScalar(s);
+  edges.forEach(e => {
+    e.t += e.v * dt * 1.6;
+    if (e.t > 1) e.t -= 1;
+    e.curve.getPoint(e.t, tmpV);
+    e.sp.position.copy(tmpV);
+    e.sp.scale.setScalar(0.48 + 0.34*Math.sin(t*3.6 + e.t*8));
+    e.line.material.opacity = 0.44 + 0.20*Math.sin(t*1.35 + e.t*4);
   });
 
-  edgeObjs.forEach((e, k) => {
-    e.line.material.opacity = 0.55 + 0.22*Math.sin(t*1.5 + k*0.5);
-  });
+  // 环绕光点
+  fill.position.set(Math.cos(t*0.33)*18, -8 + Math.sin(t*0.21)*6, Math.sin(t*0.33)*18);
 
   pick();
-  controls.update();
+  ctl.update();
   renderer.render(scene, camera);
+
+  frames++; acc += dt;
+  if (acc > 0.6){ fpsEl.textContent = `${Math.round(frames/acc)} fps`; frames = 0; acc = 0; }
   requestAnimationFrame(loop);
 }
 loop();
@@ -397,30 +466,42 @@ addEventListener('resize', () => {
 </script>
 
 <script>
-/* 兜底：若 module 未执行（CDN 挂了），3 秒后显示文字版 */
 setTimeout(() => {
   const c = document.getElementById('c');
   const gl = c.getContext && (c.getContext('webgl2') || c.getContext('webgl'));
-  if (!gl) {
-    document.getElementById('fallback').style.display = 'block';
-    document.getElementById('fbtext').textContent = [
-      'Clay',
-      '├─ (i) 极限存在',
-      '│   ├─ L3 = (V)                    [NG]',
-      '│   │   ├─ ν([0,s]) = o(s)         [NG]',
-      '│   │   ├─ ϖ = Var(q) + O_B        [T]',
-      '│   │   └─ ϖ ≤ 𝒮_q                 [T]',
-      '│   ├─ W1 ⟸ (B) + L3               [T]',
-      '│   └─ 桥 (A-abs)                  [T]',
-      '└─ (ii) 隙为正',
-      '    ├─ 桥 (A-abs)                  [T]',
-      '    └─ inf spec > 0 (20 扇区)      [NG]',
-      '        ├─ χ_q ≤ 0.043529           [NG]  (= H1 的弱形)',
-      '        ├─ sup K* < ∞                [NG]',
-      '        └─ m₀⁺⁺ ≈ 1.7                [E]',
+  if (!gl){
+    document.getElementById('fb').style.display = 'block';
+    document.getElementById('fbt').textContent = [
+      'Clay  ⟸  L3  ∧  GAP  ∧  NT          （+ 零代价：OS1 / OS2=RP / OS 重构）',
+      '',
+      'GAP   m/Λ ≥ δ                           [NG]  ← 本体',
+      'L3    (U1)(U2)(U3)                      [NG]',
+      '  ├─ (U3) ⟸ 树界                       [NG]',
+      '  ├─ (GD-q) ⟸ (CO)                     [NG]',
+      '  ├─ u_tile ≤ u_*（差 1.282×）           [NG]',
+      '  └─ 零代价：OS1 / OS2=RP / 重构          [T]',
+      'NT    g_ren ≠ 0                         [NG]',
+      '  └─ N2 极限不塌缩                       [NG]',
+      '',
+      '已证 [T]',
+      '  固定 (L,a)：Δ_a > 0                   （三行，免费的）',
+      '  g = 1−λ₂ = inf⟨f,(1−T)f⟩               （只用自伴）',
+      '  Δ_a ≥ δ ⟺ g ≥ 1−e^{−aδ}                （不是 aδ）',
+      '  Δ(β) = β·δ_{S_W}                       （对 β 精确线性）',
+      '  桥 Δ_cont ≥ liminf Δ_a                 （Lean 机检）',
+      '  r = 21.9207 < 63                        （余 2.874×）',
+      '  ϖ ≥ v(β) = 6.42e−3                     （b̂ ∈ {a,2a}）',
+      '',
+      '读数 [E]',
+      '  (EP)  L=8 / L=10 / L=12 均成立，余 62σ',
+      '  J1    χ_q 在 [2.4,2.5] 非增（L=8 12.8σ；L=10 凹 −0.448）',
+      '  plaq(2.5) = 0.652402 / 0.652099 / 0.651984（单调递减）',
+      '  U₀ ∈ [0.75,0.86]，m₁ ≤ −ln(1−U₀) ≤ 1.390',
+      '',
+      'Clay 未证。无百分比。',
     ].join('\n');
   }
-}, 3000);
+}, 3200);
 </script>
 </body>
 </html>

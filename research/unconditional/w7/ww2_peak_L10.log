@@ -1,0 +1,20 @@
+################################################################
+# WW2 three-point scan   L=10  N=4000  therm=300  gap=2
+################################################################
+L10 BETA 2.400  plaq=0.630061 +- 0.000032  wall=945s  total=980s
+L10 BETA 2.450  plaq=0.641640 +- 0.000030  wall=891s  total=922s
+L10 BETA 2.500  plaq=0.652099 +- 0.000029  wall=880s  total=911s
+
+# ---- summary L=10 ----
+SUM BETA 2.400  plaq=0.630061 +- 0.000032  plaq/beta=0.262526  qbar=0.369939
+SUM BETA 2.450  plaq=0.641640 +- 0.000030  plaq/beta=0.261894  qbar=0.358360
+SUM BETA 2.500  plaq=0.652099 +- 0.000029  plaq/beta=0.260840  qbar=0.347901
+CHI_Q chi_q(2.45, central) = 0.036729 +- 0.000072
+DERIV plaq'(2.5) = 0.209169 +- 0.000835
+CHI_Q chi_q(2.5) = 0.034862 +- 0.000139
+THRESH plaq(2.5)/2.5 = 0.260840
+EP_TEST thr - plaq'(2.5) = 0.051670 +- 0.000835   (PASS)
+CONCAV plaq''(2.45) = -0.448257   (CONCAVE)
+MONO chi_q midpoints: 0.038597 -> 0.034862  diff=+0.003735   (NONINC)
+PEAK beta_peak grid argmax(plaq/beta) = 2.40  (L=10)
+# written ww2_peak_L10.json
