@@ -45,3 +45,15 @@ FAM pall BHAT 6  blocks=1  varpi=0.033798  err_jk=0.000753  err_bin=0.000629
   2000/4000  wall=290s  eta=290s  plaq_so_far=0.6526
   2500/4000  wall=357s  eta=214s  plaq_so_far=0.6526
   3000/4000  wall=423s  eta=141s  plaq_so_far=0.6526
+  3500/4000  wall=490s  eta=70s  plaq_so_far=0.6525
+  4000/4000  wall=558s  eta=0s  plaq_so_far=0.6525
+# wall=557.6s (0.14s/cfg)  plaq=0.6525 +- 0.0000  (target 0.652)
+FAM p01 BHAT 1  blocks=4096  varpi=0.072029  err_jk=0.000039  err_bin=0.000037
+FAM p01 BHAT 2  blocks=256  varpi=0.079168  err_jk=0.000116  err_bin=0.000125
+FAM p01 BHAT 4  blocks=16  varpi=0.084497  err_jk=0.000473  err_bin=0.000435
+FAM p01 BHAT 8  blocks=1  varpi=0.089191  err_jk=0.001911  err_bin=0.002440
+FAM pall BHAT 1  blocks=4096  varpi=0.014222  err_jk=0.000006  err_bin=0.000007
+FAM pall BHAT 2  blocks=256  varpi=0.019351  err_jk=0.000028  err_bin=0.000032
+FAM pall BHAT 4  blocks=16  varpi=0.024199  err_jk=0.000137  err_bin=0.000105
+FAM pall BHAT 8  blocks=1  varpi=0.030883  err_jk=0.000689  err_bin=0.000539
+=== done ===
