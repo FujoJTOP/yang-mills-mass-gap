@@ -1,0 +1,21 @@
+=== L=6  生产跑（只存相关函数）===
+[17:29:08] sw=21850/23000 plaq=0.358631 acc=0.582 197.1s
+DONE L=6 M=20000 cfgs  q_fields=(0, 6, 6, 6, 6)
+  plaq mean   = 0.34727537
+  Var(q)      = 1.42001639e-02
+  Var(q_bar)  = 2.46338954e-05
+  chi_q = N*Var(q_bar) = 3.19255284e-02   (should equal Ck[0])
+  Ck[0,0,0,0] = 3.19255284e-02   max_k Ck = 3.19255284e-02   Cz(0) = 1.42001639e-02
+  check: sum_z Cz / Ck[0] = 1.000000000
+  time = 207.7s -> bmc_L6_b2.500.npz
+=== L=8  生产跑 ===
+[17:34:54] sw=16150/17000 plaq=0.343001 acc=0.582 335.1s
+DONE L=8 M=7000 cfgs  q_fields=(0, 8, 8, 8, 8)
+  plaq mean   = 0.34754508
+  Var(q)      = 1.42200511e-02
+  Var(q_bar)  = 8.04516159e-06
+  chi_q = N*Var(q_bar) = 3.29529819e-02   (should equal Ck[0])
+  Ck[0,0,0,0] = 3.29529819e-02   max_k Ck = 3.29529819e-02   Cz(0) = 1.42200511e-02
+  check: sum_z Cz / Ck[0] = 1.000000000
+  time = 352.1s -> bmc_L8_b2.500.npz
+=== L=10 生产跑 ===
