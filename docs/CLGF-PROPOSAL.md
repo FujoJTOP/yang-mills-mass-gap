@@ -1419,6 +1419,87 @@ $$\boxed{\ \beta=2.5\ \text{在四个入口上都没有小参数（只有 F2 例
 
 ---
 
+## §5⁗⁗⁗′ 原 UFBP 两条收缩路线的严格排除 + Block-UFBP 的新障碍（第 265 轮）
+
+### 5⁗⁗⁗′.1 两条障碍是**同一个数**（`[T]`，我核过）
+
+$$\text{walk-gas: }6c=6\cdot\frac{\beta_W}{4}=\frac{3\beta_W}{2}\qquad\text{Dobrushin: }\sum_{w}C_{vw}\ \ge\ 6\cdot\frac{\beta_W}{4}=\frac{3\beta_W}{2}$$
+
+$$\boxed{\ \text{两路是同一表达式 }\frac{3\beta_W}{2}\text{；}\beta_W=2.5\ \text{时}=3.75\gt1\ }$$
+
+**⇒ 不是两个独立障碍，是一个障碍的两个面。**
+
+### 5⁗⁗⁗′.2 线性响应下界（`[T]`）
+
+**`ν_h(x)∝e^{h·x}dσ` on `S³`；`Cov_σ(x)=\frac14 I_4`（因 `Σx_a²=1` 且对称）。改一个邻居 `x_w→x_w'`：**
+
+$$h\to h+\beta_W R_{vw}(x_w'-x_w)\ \Longrightarrow\ \big|\delta\mathbb E[x]\big|=\frac{\beta_W}{4}\delta$$
+
+$$W_1^{\rm ch}\ \ge\ \big|u\cdot(\mathbb E_\nu x-\mathbb E_{\nu'}x)\big|=\frac{\beta_W}{4}\delta\ \Longrightarrow\ C_{vw}\ \ge\ \frac{\beta_W}{4}$$
+
+**⇒ `Σ_{w}C_{vw} ≥ 6β_W/4 = 3.75` at `β_W=2.5`。而这是**下界** ⇒ 真实行和更大 ⇒ 障碍比陈述的更强。**
+
+**⚠️ 且障碍在 `h=0` 的**线性响应**处，**不依赖**数值或 von Mises–Fisher 积分精度 ⇒ 提高精度无用。**
+
+**⚠️ 且 `Σ_wC_{vw}` 的值域是 `[3β_W/2,\ 6]`（小 `β` 到铁磁有序）⇒ 单点 Dobrushin 永不收缩除非 `β_W\lt2/3`。**
+
+### 5⁗⁗⁗′.3 pinning 障碍（`[T]`）
+
+$$G_3(0)=\int_{[-\pi,\pi]^3}\frac{d^3p}{(2\pi)^3}\frac{1}{2\sum_i(1-\cos p_i)}=0.2527310098589096\ (\text{Watson})$$
+
+$$\boxed{\ \beta_{\rm pin}=4G_3(0)=1.0109240394\ }$$
+
+**⇒ `2.5/1.01092 = 2.473×` ⇒ 任何**既推唯一性、又继承任意链路固定**的原始 Wilson 收缩条件都不可能覆盖 `2.5`。**
+
+**⚠️ 该障碍**不**直接适用于线规与特定 decimation 之后的条件规格。**
+
+### 5⁗⁗⁗′.4 平坦扇区与 Poincaré（`[T]` 恒等式）
+
+**沿生成树递推 `O_u^{T}R_{uv}O_v=I`，令 `y_v=O_v^{T}x_v` ⇒ 树边 `R̃=I`，非树边保留全部 holonomy。**
+
+$$\beta\sum_{\langle u,v\rangle}(1-y_u\cdot y_v)=\frac\beta2\sum_{\langle u,v\rangle}|y_u-y_v|^2\qquad(\text{因 }|y|=1)$$
+
+$$\sum_{v\in B}|y_v-\bar y_B|^2\ \le\ \frac1{\lambda_1(B)}\sum_{\langle u,v\rangle\subset B}|y_u-y_v|^2,\qquad \lambda_1(B)\asymp\ell^{-2}$$
+
+### 5⁗⁗⁗′.5 【新障碍，我算的】Block-UFBP 的 Poincaré 控制在 `β=2.5` 是**空**的
+
+**记 `q := ⟨1−y_u·y_v⟩`。块 `ℓ^4` 位点、`~2ℓ^4` 条边：**
+
+$$\langle E\rangle\sim\beta\cdot2\ell^4 q\ \Longrightarrow\ \Big\langle\sum|\nabla y|^2\Big\rangle\sim\frac2\beta\langle E\rangle=4q\ell^4$$
+
+$$\text{平凡界：}v\le4\ell^4\qquad\text{Poincaré 界：}v\le\ell^2\cdot4q\ell^4=4q\ell^6$$
+
+$$\boxed{\ \text{Poincaré 有用}\iff 4q\ell^6\lt4\ell^4\iff q\,\ell^2\lt1\ }$$
+
+| `q` | `ℓ=2` | `ℓ=3` | `ℓ=4` | `ℓ=6` |
+|---|---|---|---|---|
+| `0.05` | OK | OK | OK | **空** |
+| `0.10` | OK | OK | **空** | **空** |
+| `0.20` | OK | **空** | **空** | **空** |
+| **`0.347`** | **空** | **空** | **空** | **空** |
+
+**而 `β=2.5` 实测 `⟨q⟩=0.3473` ⇒ `qℓ²=1.39` at `ℓ=2`、`3.13` at `ℓ=3`：**
+
+$$\boxed{\ \ell\ge2\ \text{即已空}（除非 }q\text{ 很小）\ \Longrightarrow\ \text{块化无法改善快速模控制}\ }$$
+
+**⇒ 根因：`λ_1(B)≍ℓ^{-2}` 使 `1/λ_1` 随块**变大**，而能量只按 `ℓ^4` 涨 ⇒ 净损失 `ℓ^2`。**
+
+$$\boxed{\ \text{要有用须 }\beta_W\gg q\ell^2\text{——即弱耦合；而 }2.5\ \text{不是}\ }$$
+
+### 5⁗⁗⁗′.6 判词
+
+| 路线 | 判 | 原因 |
+|---|---|---|
+原彩色闭合游走 UFBP | **排除** | `6c=3.75\gt1` |
+单点 Dobrushin UFBP | **排除** | `Σ_wC_{vw}\ge3.75\gt1`（与上同一表达式） |
+任意 pinning 继承型 | **排除** | `β_{\rm pin}=1.01092` |
+**Block-UFBP** | **新障碍** | **`qℓ^2\gt1` ⇒ 快速模 Poincaré 界空** |
+多尺度递推 `RG-2` | 无递推常数 | 未从 Wilson 作用量导出 |
+
+**⇒ 真正值得保留的方向**：慢模式（`M_B`)必须留在下一层，但**快速模的控制不能靠 Poincaré**——须用块内的**能量-熵**或**平均场型**估计。**
+
+---
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
