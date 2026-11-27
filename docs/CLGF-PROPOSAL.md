@@ -1736,6 +1736,138 @@ good-domain 条件 LSI | `[U]` | 还需凸性 + 边界条件 |
 
 ---
 
+## §5⁗⁗⁗⁗ EFDS：快变量协方差**精确归零** + `SLOW-H` **不可能**（第 268 轮）
+
+### 5⁗⁗⁗⁗.1 【升级】EFDS：快变量双块协方差恒为零（`[T]`）
+
+**给定 `(x_S,ζ)`，快变量按分量 `C_i` 张量分解。`F_A` 只依赖 `𝒞(A)`、`F_B` 只依赖 `𝒞(B)`。若**
+
+$$\mathcal C(A)\cap\mathcal C(B)=\varnothing\qquad(\text{两区相距 }R\gg\ell\ \text{时成立})$$
+
+**⇒ 条件独立 ⇒ `Cov(F_A,F_B\mid x_S,ζ)=0`。全协方差公式第一项**恒为零**：**
+
+$$\boxed{\ \mathrm{Cov}_\mu(F_A,F_B)=\mathrm{Cov}_{\nu_{\rm slow}}(\bar F_A,\bar F_B)\ }\tag{EFDS}$$
+
+**⇒ 这比上一轮的 `(A2)`（good fast sector 协方差**小**）强：现在是**精确零**。**
+
+**⇒ 快变量之间的传播尾**不需要估计**，也不需要对它们做近似独立假设。**
+
+$$\boxed{\ \text{(SLOW-CL)}\Longrightarrow\text{(FULL-CL)}\qquad(\text{因 }\|\bar F_A\|_\infty\le\|F_A\|_\infty\text{，条件期望是 }L^\infty\text{ 收缩})\ }$$
+
+### 5⁗⁗⁗⁗.2 精确慢作用量（`[T]`）
+
+$$d\nu_{\rm slow}(x_S,\zeta)=\frac1Z e^{H_{SS}(x_S,\zeta)}\prod_iZ_i(x_{\partial C_i},\zeta)\,d\sigma(x_S)d\zeta$$
+$$S_{\rm slow}=-H_{SS}-\sum_i\log Z_i,\qquad \mathrm{diam}(\partial C_i)\le c\ell$$
+
+**⇒ 有限体积中的**精确边缘测度**，不是近似 RG 作用量；固定 `ℓ` 下有限范围、不依赖 `L`。但**耦合强度未必小**。**
+
+### 5⁗⁗⁗⁗.3 【本轮决定性】`SLOW-H` 不可能：协方差项符号相反且量级压倒
+
+$$\partial_a\partial_b(-\log Z_i)=-\underbrace{\mathbb E[\partial_{ab}H_i]}_{O(\beta)}-\underbrace{\mathrm{Cov}(\partial_aH_i,\partial_bH_i)}_{\succeq0\ \text{带负号}}$$
+
+**⇒ 协方差项**半负定** ⇒ 破坏凸性。**
+
+**量级（`β=2.5`，边界链 `M_∂=O(ℓ^3)`）：**
+
+| `ℓ` | `O(β²ℓ^3)`（Fisher 项） | `O(β)`（Hessian 项） | 判 |
+|---|---|---|---|
+`1` | `6.25` | `2.50` | **凹** |
+`2` | `50.00` | `2.50` | **凹** |
+`3` | `168.75` | `2.50` | **凹** |
+`4` | `400.00` | `2.50` | **凹** |
+
+$$\boxed{\ \mathcal S_{\rm slow}\ \text{在慢变量上【强凹】}\ \Longrightarrow\ \text{(SLOW-H)}\ \lambda_{\min}(\mathcal H_{\rm slow})\ge\kappa_s\gt0\ \text{不可能成立}\ }$$
+
+**⇒ 物理上一致：`−log Z` 是自由能，Legendre 结构下对耦合本就**凹**。**
+
+**⇒ **所以曲率/LSI 路线到 `SECC` 是关闭的**——不是“未证”，是“不可能”。**
+
+**⇒ 好块 Hessian 的正曲率（§5⁗⁗⁗‴.4 的 `Ric+Hess V ⪰ I`）**不能**传递到慢变量有效作用量。**
+
+### 5⁗⁗⁗⁗.4 坏块动物计数与指数尾（`[T]` 条件定理）
+
+$$N_n\le\Delta_s^{2(n-1)};\qquad \mu_{\rm slow}(K\subset\mathcal B)\le C_0e^{-\tau|K|}\ \text{(BAD-AN)}$$
+
+$$\tau\gt2\ln\Delta_s\ \Longrightarrow\ P(\text{坏簇大小}\ge n)\le C_1e^{-(\tau-2\ln\Delta_s)n}$$
+$$\Longrightarrow\quad P(\exists\ \text{坏簇连接 }A,B)\le C_1e^{-m_bR},\qquad m_b=\frac{\tau-2\ln\Delta_s}{c_s}$$
+
+**⚠️ **`[T]` 只是 `BAD-AN ⇒ BAD-TAIL` 这一步**；`BAD-AN` 本身在 `β=2.5` 的慢变量测度下仍未证。**
+
+### 5⁗⁗⁗⁗.5 【勘误 30】我上一轮那个 `e^{−88}` 高估了——Cantelli 直接给弱得多的界
+
+**只用均值与方差（不假设高斯），Cantelli：**
+
+$$P(q-\mathbb E q\ge t)\le\frac{\mathrm{Var}(q)}{\mathrm{Var}(q)+t^2}$$
+
+| 阈值 | Cantelli 界（plug-in） | 我上轮的高斯数 |
+|---|---|---|
+`q>1.500` | **`0.010574`** | `4.8\times10^{-21}` |
+`q>1.933` | **`0.005616`** | `3.5\times10^{-39}` |
+
+$$\boxed{\ \text{高斯外推比 Cantelli 严格界弱了 }10^{17}\text{–}10^{34}\ \text{倍}\ }$$
+
+**⇒ 所以上一轮那个 `τ/lnμ_an ≈ 49` 的“余量极大”**不成立**——Cantelli 只给 `P ≈ 10^{-2}`，即 `τ ≲ 4.6`。而 `2lnΔ_s = 2ln8 = 4.16`：**
+
+$$\frac{\tau}{2\ln\Delta_s}\ \lesssim\ \frac{4.6}{4.16}\ =\ 1.11$$
+
+**⇒ 只余 `1.11×`——**几乎没有余量**。**
+
+**⚠️ 而且三重缺口仍在（你已指出）：**
+1. **输入是 MC 估计，无自相关与置信区间；**
+2. **`P(q_P>·)` 是**单点**尾概率，而 `BAD-AN` 要的是**整块集合**的联合概率；**
+3. **`q_P` 是 plaquette holonomy 的函数，而 `s_e≥14/15` 是**条件纤维图上相邻自旋对齐**——须通过具体纤维映射证明联系，不能视为同一随机变量。**
+
+**⇒ 所以 `e^{−88}` 那一行**撤回**，改标 `[M]` 且注明是**弱于 Cantelli 的外推**。**
+
+### 5⁗⁗⁗⁗.6 `‖Γ‖<∞` 不蕴含聚簇（`[T]` 反例）
+
+$$C_L(x,y)=L^{-4}\ \Longrightarrow\ \sum_yC_L(x,y)=1,\ \ \chi_q=1,\ \ \|\Gamma\|=1$$
+
+**⇒ 二阶量全部 `O(1)`，而 `d(x,y)≍L` 时 `C_L` **不衰减**。**
+
+$$\boxed{\ \text{F2 是必要的二阶诊断，【不是】完整聚簇的替代}\ }$$
+
+### 5⁗⁗⁗⁗.7 SECC：唯一的目标命题
+
+$$\boxed{\ \text{(SECC)}\quad \big|\mathrm{Cov}_{\nu_{\rm slow}}(\bar F_A,\bar F_B)\big|\le C_s\|\bar F_A\|_\infty\|\bar F_B\|_\infty e^{-m_sR}\ }$$
+
+**⇒ 加上统一边界影响估计 `|ν_slow^η(\bar F_A)−ν_slow^{η'}(\bar F_A)| ≤ Ce^{−m d(A,∂Λ)}`，即可由紧群紧性得唯一无限体积极限。**
+
+**⚠️ `[M]` 文献：4D `SU(2)` 强耦合公开结果仍在 `β_W≤0.711`（2026-11-21 预印本，未独立审查），中间 crossover 明确列为未解决。**
+
+### 5⁗⁗⁗⁗.8 下一步该攻哪里（我加上本轮的符号障碍）
+
+**你想攻 `D²S_slow`。我把本轮的结论写清：**
+
+$$D^2(-\log Z_C)=-\mathbb E[D^2H_C]-\mathrm{Cov}(DH_C,DH_C)$$
+
+$$\boxed{\ \text{协方差项带负号且为 }O(\beta^2\ell^3)\ \Longrightarrow\ \text{不能用曲率/LSI 得 SECC}\ }$$
+
+**⇒ 所以 `SECC` 必须走**关联衰减**路线（`Cov(DH_C, DH_C)` 本身的距离衰减），**不是**曲率路线。**
+
+**⇒ 而这正好回到 §1 的 `p` 与 §5⁗ 的 `BR`/`BR-E`：**
+
+$$\big|\mathrm{Cov}(F_A,F_B)\big|\ \le\ C\|F_A\|\|F_B\|\sum_{\gamma:A\leftrightarrow B}\mathfrak w_{2.5}(\gamma)$$
+
+**⇒ 慢变量的桥权重。这就是 `SECC` 的真内容。**
+
+### 5⁗⁗⁗⁗.9 审计（本轮）
+
+| 项 | 判决 |
+|---|---|
+精确快变量因子化 / **双块快协方差恒为零（EFDS）** | **`[T]`** |
+精确慢变量有效 Gibbs 作用量 | **`[T]`** |
+固定快块条件 Poincaré `3e^{−30n_C}` | **`[T]`** |
+`SLOW-CL ⟹ FULL-CL` | **`[T]`** |
+坏块动物计数 ⇒ 指数尾（条件定理） | **`[T]`** |
+**`SLOW-H` 曲率路线** | **`[F]`（本轮：符号相反且量级压倒）** |
+`β=2.5` 的 `BAD-AN` 联合概率 | `[U]`（Cantelli 只给 `P≈10^{−2}`，余量 `1.11×`） |
+**`SECC`（慢变量指数聚簇）** | **`[U]` 唯一目标** |
+慢变量边界稳定性 | `[U]` |
+完整 Wilson 双块聚簇 | `[U]` |
+
+---
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
