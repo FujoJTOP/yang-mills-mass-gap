@@ -3,7 +3,7 @@ OS2Topology.lean — ② 给 `Ω` 加拓扑（`GL4L2.lean:25` 的 `variable` 段
 
 结论（三层）
 ------------
-(L0) **抽象层**：`Ω` 带 `[TopologicalSpace] [PseudoMetrizableSpace] [MeasurableSpace] [BorelSpace]`
+(L0) **抽象层**：`Ω` 带 `[TopologicalSpace] [TopologicalSpace.PseudoMetrizableSpace] [MeasurableSpace] [BorelSpace]`
      即足以让 GL4 全套需要的实例自动出现（下面用 `example … := inferInstance` 逐个钉死）：
        `OpensMeasurableSpace Ω`              ← `BorelSpace.opensMeasurable`
        `HasOuterApproxClosed Ω`              ← `PseudoMetrizableSpace` 的全局实例
@@ -34,11 +34,14 @@ OS2Topology.lean — ② 给 `Ω` 加拓扑（`GL4L2.lean:25` 的 `variable` 段
 -/
 import Mathlib.Topology.Order.Compact
 import Mathlib.Topology.Metrizable.Basic
+import Mathlib.Topology.Metrizable.Real
 import Mathlib.MeasureTheory.Constructions.BorelSpace.Basic
 import Mathlib.MeasureTheory.Measure.HasOuterApproxClosed
 import Mathlib.MeasureTheory.Measure.Prokhorov
 
 open MeasureTheory Topology
+
+universe u
 
 namespace GlueA.OS2
 
@@ -49,11 +52,11 @@ example {Ω : Type*} [TopologicalSpace Ω] [MeasurableSpace Ω] [BorelSpace Ω] 
     OpensMeasurableSpace Ω := inferInstance
 
 /-- 拟可度量化 ⇒ 闭集示性函数可由有界连续函数外逼近（`OS2Theta` 的 T2 用它）。 -/
-example {Ω : Type*} [TopologicalSpace Ω] [PseudoMetrizableSpace Ω] :
+example {Ω : Type*} [TopologicalSpace Ω] [TopologicalSpace.PseudoMetrizableSpace Ω] :
     HasOuterApproxClosed Ω := inferInstance
 
 /-- 弱拓扑在 `ProbabilityMeasure Ω` 上是 Hausdorff ⇒ **极限唯一**（`θ_*μ = μ` 的唯一性步）。 -/
-example {Ω : Type*} [TopologicalSpace Ω] [PseudoMetrizableSpace Ω] [MeasurableSpace Ω]
+example {Ω : Type*} [TopologicalSpace Ω] [TopologicalSpace.PseudoMetrizableSpace Ω] [MeasurableSpace Ω]
     [BorelSpace Ω] : T2Space (ProbabilityMeasure Ω) := inferInstance
 
 /-- 紧空间上的概率测度空间紧（Prokhorov）⇒ 弱极限**存在**（OS0/tightness 那一侧）。 -/
@@ -66,11 +69,13 @@ example {Ω : Type*} [TopologicalSpace Ω] [T2Space Ω] [MeasurableSpace Ω] [Bo
 abbrev LoopCoord : Type := Set.Icc (-1 : ℝ) 1
 
 /-- 公共紧空间：坐标族的积。 -/
-abbrev LoopSpace (κ : Type*) : Type := κ → LoopCoord
+abbrev LoopSpace (κ : Type u) : Type u := κ → LoopCoord
 
 example (κ : Type*) : TopologicalSpace (LoopSpace κ) := inferInstance
 example (κ : Type*) : CompactSpace (LoopSpace κ) := inferInstance            -- Tychonoff
-example (κ : Type*) : PseudoMetrizableSpace (LoopSpace κ) := inferInstance
+-- 拟可度量化需要可数坐标族（不可数积非度量化，故此处加 `[Countable κ]`）
+example (κ : Type*) [Countable κ] : TopologicalSpace.PseudoMetrizableSpace (LoopSpace κ) :=
+  inferInstance
 example (κ : Type*) : T2Space (LoopSpace κ) := inferInstance
 example (κ : Type*) [Countable κ] : SecondCountableTopology (LoopSpace κ) := inferInstance
 example (κ : Type*) [Countable κ] : BorelSpace (LoopSpace κ) := inferInstance
@@ -108,7 +113,7 @@ end GlueA.OS2
 (L2) 对 `GL4L2.lean:25` 的补丁（**不改既有文件**，只把该行应当长成的样子记在此处）：
 
   -- 原文: variable {Ω : Type*} [MeasurableSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
-  variable {Ω : Type*} [TopologicalSpace Ω] [PseudoMetrizableSpace Ω]
+  variable {Ω : Type*} [TopologicalSpace Ω] [TopologicalSpace.PseudoMetrizableSpace Ω]
     [MeasurableSpace Ω] [BorelSpace Ω] {μ : Measure Ω} [IsProbabilityMeasure μ]
 
 效果：`OpensMeasurableSpace Ω`（`BorelSpace` 给）、`HasOuterApproxClosed Ω`（`PseudoMetrizableSpace` 给）、

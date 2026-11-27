@@ -86,7 +86,7 @@
 <div class="page">
 
 <h1>Clay 证明结构</h1>
-<p class="sub">4D 纯 SU(N) 质量间隙 · 第 248 轮</p>
+<p class="sub">4D 纯 SU(N) 质量间隙 · 第 249 轮</p>
 
 <div class="axiom">
   <span class="tag">目标链 · 四件合取</span>
@@ -104,13 +104,15 @@ Clay ⟸ AX ∧ NT ∧ GAP ∧ [Wilson]
     <span class="note">八路全关</span>
   </div>
   <div class="body">
-    <p>缺口不是幂，是<b>一根 log</b>：</p>
-<pre class="drop">p=0  →  a⁻⁴
-p=2  →  a⁻²
-p=4  →  a⁻⁴·log      ← 靶在这里
-p=8  →  a⁰</pre>
-    <p>靶在 <code>p=4</code> 处差一根 log，要 <code>p&gt;4</code> 即 <code>δ&gt;0</code>。</p>
-    <p class="note">最具体的等价形：<code>𝒮_q ≤ C</code>（因 <code>C_q(z)&gt;0</code>，<code>Σ|C_q| = ΣC_q</code>）——即 <code>H1</code>。五种换问法里三种真等价、两种只是影子，而无一逃出 <code>H1</code>。</p>
+    <p>本轮缩到<b>两个 <code>O(1)</code> 常数的不等式</b>，并已<b>冻结约定</b>（<a href="CONVENTIONS.md">约定冻结表</a>）。</p>
+<pre class="drop">(U2) ⇒ (V) 三前件
+  Σδ_k &lt; ∞        [T]   δ_k = e^{−c₄λ_k}+b^{−γk} ≤ Cθ^k，θ&lt;1
+  ‖Φ_k‖_α ≤ ε     [T]   0.985610 &lt; 1（论文自己的 δ_p 归一，余 1.44%）
+  C₁ ≤ A·S₄(α)    [T]   冻结后 0.076744 ≤ 0.507300151（余 6.61×）</pre>
+    <p>冻结值：<code>L=2, c=1, C=4 ⇒ B=4</code>；<code>b=2</code>；<code>c*=1/16</code>；<code>σ</code> 固定。<br>
+    门 <code>Bc* = 0.25 ≤ 0.429560</code>（余 <code>1.7182×</code>），<code>α = 4 ≥ 2.328</code>，<code>ε ∈ [0.985610, 1]</code> 非空。</p>
+    <p class="note"><b>唯一未闭</b>：<code>a_kσ ≥ 8 ∀k</code>。而 <code>σ</code> 固定（逐字「fixed once and for all」）、<code>a_k = b^k a → 0</code> ⇒ 只对 <code>k ≤ k_max</code> 成立。<b>⇒ 构造给的是有限 <code>k</code> 的 UVS；<code>k → ∞</code> 需要 <code>σ = σ(k)</code>，而论文里 <code>σ</code> 固定。</b>这不是估计问题，是构造与目标不匹配。</p>
+    <p class="note">已删的空壳三条：<code>∃Z_O</code>（恒可满足）、<code>S8</code> 两标度比（是恒等式）、<code>Bc* ≤ 0.43</code> 冻结前（<code>C</code>、<code>c*</code> 都自由 ⇒ 恒空）。</p>
   </div>
 </div>
 
@@ -305,11 +307,11 @@ Clay 是四件不是三件（+[Wilson]）
 
 <div class="verdict">
   <p class="big">Clay 未证。</p>
-  <p class="sm">两个数学缺件，各自差一条不等式：<code>L3</code> 差一根 log（<code>p&gt;4</code> / <code>δ&gt;0</code>），<code>GAP</code> 无候选（十三条死路 + 一条循环）。零代价四条数学全 <code>[T]</code>、判别力零；编译塔已立。</p>
+  <p class="sm"><code>L3</code>：<code>(U2)</code> 三前件在<b>有限 <code>k</code></b> 上全成立（冻结约定之下，余 <code>6.61×</code>）；<b><code>k → ∞</code> 卡在 <code>σ</code> 的标度</b>——构造的 UV cutoff 固定，而连续极限要它随格距发散。<code>GAP</code>：无候选（十三条死路 + 一条循环）。零代价四条数学全 <code>[T]</code>、判别力零；编译塔已立（2604 jobs）。</p>
 </div>
 
 <div class="foot">
-  第 248 轮 · 文字版（3D 页已废弃）<br>
+  第 249 轮 · 文字版（3D 页已废弃）· 约定已冻结：<a href="CONVENTIONS.md">约定冻结表</a><br>
   无百分比。禁用措辞：无。<br>
   相关页：<a href="CLAY-FULL-DERIVATION.html">完整推导</a> · <a href="CELLS-BC.html">B/C 两格</a> · <a href="position-current.html">位置图</a>
 </div>

@@ -22,7 +22,7 @@ OS2Theta.lean — ③ `θ_* μ = μ`：声明 + 它到底需要什么
           `ProbabilityMeasure.tendsto_map_of_tendsto_of_continuous`）；
       (ii) `Tendsto μs F (𝓝 μ)`（弱收敛，**不是**抽象的 `hconv`）；
       (iii) 逐 a 的 `θ_*μ_a = μ_a`（物理输入；F4-4 是它的失效口：反射面/分块不对齐）；
-      (iv) `ProbabilityMeasure Ω` 的 Hausdorff 性（极限唯一）← `[PseudoMetrizableSpace Ω] [BorelSpace Ω]`。
+      (iv) `ProbabilityMeasure Ω` 的 Hausdorff 性（极限唯一）← `[TopologicalSpace.PseudoMetrizableSpace Ω] [BorelSpace Ω]`。
 不需要：`Ω` 紧、tightness、Prokhorov、任何 `a`-一致矩界、`A` 的 `L²` 界。
          也不要求 `θ` 是**对合**或双射——`measure.map θ μ = μ` 本身不需要可逆性；
          但 `rp_l2_closure` 的 `Ω ≃ᵐ Ω` 槽位要，那由 `OS2Topology.coordSwapMeasEquiv` 供给。
@@ -43,6 +43,7 @@ import Mathlib.MeasureTheory.Measure.ProbabilityMeasure
 import Mathlib.MeasureTheory.Measure.HasOuterApproxClosed
 import Mathlib.MeasureTheory.Constructions.BorelSpace.Basic
 import Mathlib.Topology.Separation.Hausdorff
+import Mathlib.Topology.Metrizable.Basic
 
 open MeasureTheory Filter Topology
 open scoped ENNReal
@@ -50,7 +51,7 @@ open scoped ENNReal
 namespace GlueA.OS2
 
 variable {Ω : Type*} [TopologicalSpace Ω] [MeasurableSpace Ω] [BorelSpace Ω]
-  [PseudoMetrizableSpace Ω]
+  [TopologicalSpace.PseudoMetrizableSpace Ω]
 
 /-! ## 1. 平凡版：`MeasurePreserving` 的定义就是 `map = μ` -/
 

@@ -35,6 +35,7 @@ import Mathlib.Topology.Order.OrderClosed
 import Mathlib.Topology.ContinuousMap.Bounded.Normed
 import Mathlib.MeasureTheory.Function.L2Space
 import Mathlib.MeasureTheory.Measure.Portmanteau
+import Mathlib.Algebra.Order.Ring.Abs
 
 open MeasureTheory Filter Topology
 open scoped BoundedContinuousFunction Topology
@@ -58,7 +59,7 @@ lemma continuous_clip (n : ℕ) : Continuous (clip n) :=
 lemma clip_abs_le (n : ℕ) (x : ℝ) : |clip n x| ≤ |x| := by
   rw [clip, abs_le]                                  -- 目标拆成 `-|x| ≤ …` 与 `… ≤ |x|`
   refine ⟨?_, ?_⟩
-  · rcases le_or_lt (n : ℝ) |x| with h | h
+  · rcases le_or_gt (n : ℝ) |x| with h | h
     · exact le_trans (neg_le_neg h) (le_max_left _ _)          -- `-|x| ≤ -n ≤ max`
     · have hx : -(|x|) ≤ x := (abs_le.mp le_rfl).1             -- `|x| ≤ |x|` 取下界
       have hxn : x ≤ (n : ℝ) :=
@@ -67,7 +68,7 @@ lemma clip_abs_le (n : ℕ) (x : ℝ) : |clip n x| ≤ |x| := by
       exact le_trans hx (le_max_right _ _)
   · apply max_le
     · exact le_trans (neg_nonpos.mpr (Nat.cast_nonneg n)) (abs_nonneg x)
-    · rcases le_or_lt (n : ℝ) x with h | h
+    · rcases le_or_gt (n : ℝ) x with h | h
       · rw [min_eq_left h]                                     -- `min n x = n`
         exact le_trans h (abs_le.mp le_rfl).2
       · rw [min_eq_right (le_of_lt h)]                         -- `min n x = x`
@@ -76,6 +77,10 @@ lemma clip_abs_le (n : ℕ) (x : ℝ) : |clip n x| ≤ |x| := by
 /-- `‖clipₙ x‖ ≤ ‖x‖`：`ℝ` 上的范数即绝对值，供 `hbound` 直接使用。 -/
 lemma clip_norm_le (n : ℕ) (x : ℝ) : ‖clip n x‖ ≤ ‖x‖ := by
   simpa [Real.norm_eq_abs] using clip_abs_le n x
+
+/-- 截断区外 `clipₙ` 就是 `x`：`trunc` 的语义（原值/夹值）被保留。 -/
+lemma clip_eq_self {n : ℕ} {x : ℝ} (h : |x| ≤ (n : ℝ)) : clip n x = x := by
+  rw [clip, min_eq_right (abs_le.mp h).2, max_eq_right (abs_le.mp h).1]
 
 /-- `clipₙ` 逐点收敛到 `x`（⇒ `rp_l2_closure` 的 `hpt`）。 -/
 lemma clip_tendsto (x : ℝ) : Tendsto (fun n : ℕ => clip n x) atTop (𝓝 x) := by
@@ -92,10 +97,6 @@ lemma clip_abs_le_n (n : ℕ) (x : ℝ) : |clip n x| ≤ (n : ℝ) := by
   apply max_le
   · exact le_trans (neg_nonpos.mpr (Nat.cast_nonneg n)) (Nat.cast_nonneg n)
   · exact min_le_left _ _
-
-/-- 截断区外 `clipₙ` 就是 `x`：`trunc` 的语义（原值/夹值）被保留。 -/
-lemma clip_eq_self {n : ℕ} {x : ℝ} (h : |x| ≤ (n : ℝ)) : clip n x = x := by
-  rw [clip, min_eq_right (abs_le.mp h).2, max_eq_right (abs_le.mp h).1]
 
 /-! ## 3. `clipₙ ∘ A` 作为有界连续函数（`rp_transfer` 的槽位） -/
 
