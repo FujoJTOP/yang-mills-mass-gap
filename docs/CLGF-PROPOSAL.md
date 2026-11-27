@@ -936,6 +936,111 @@ $$\big\{R,\ C_{AB}(R;L),\ C_{AB}(R;L)/C_{AB}(R_0;L)\big\}\qquad(W_{1\times1},W_{
 **⚠️ 数值只能筛选假设，不能代替全边界条件、全体积的统一证明。**
 
 ---
+## §5⁗′ 双缺陷 RG：定理层闭合 + 三阶段分界（第 260 轮）
+
+### 5⁗′.1 定理 A（`[T]`）：空间加权双缺陷收缩
+
+**每层 `k` 的精确有效作用量 `S_k`；四个配分函数 `Z_k(s,t)`、`Z_k(s,0)`、`Z_k(0,t)`、`Z_k(0,0)`：**
+
+$$\mathcal I_k(s,t)=\log\frac{Z_k(s,t)Z_k(0,0)}{Z_k(s,0)Z_k(0,t)}$$
+
+**⚠️ 必须追踪**四个**配分函数。只控 `|Z_k(0,0)|≤C` 不给任何两区间的解耦信息。**
+
+$$\text{(K)}\quad \sup_\gamma\frac1{|\gamma|}\sum_{\gamma'\nsim\gamma}|z_k(\gamma';s,t)|\,e^{a|\gamma'|+\mu\,d_k(\gamma,\gamma')}\ \le\ a-\delta,\qquad 0\lt\delta\lt a$$
+$$\text{(D)}\quad \mathcal D_{A,k}(s)\le K_A|s|,\qquad \mathcal D_{B,k}(t)\le K_B|t|$$
+
+**证明骨架**：四个对数之比把**所有不同时接触 `A,B` 的连通簇全部抵消**：
+
+$$\mathcal I_k(s,t)=\sum_{\substack{\mathcal C\ \text{connected}\\ \mathcal C\cap A\ne\varnothing,\ \mathcal C\cap B\ne\varnothing}}w_k(\mathcal C;s,t)$$
+
+**⇒ 每个这样的簇必跨 `A,B`。用树图界 + `e^{μR} ≤ Π_{树边}e^{μd_k}·e^{μC_{\rm geom}Σ|\gamma|}`，沿标记间的树路径反复用 `(K)`，两标记首次插入用 `(D)`：**
+
+$$\boxed{\ |\mathcal I_k(s,t)|\ \le\ C_{\rm KP}K_AK_B|st|\,e^{-\mu R}\ }\tag{A}$$
+
+**⚠️ `m` 必须是**物理单位**的衰减率，不是未换算的格点单位。**
+
+### 5⁗′.2 定理 B（`[T]`）：RG 组合
+
+$$\text{(RG)}\quad \mathcal I_0(s,t)=\mathcal I_K(s_K,t_K)+\sum_{k=0}^{K-1}E_k(s,t)\quad(\text{exact RG；局部归一在双缺陷比值中抵消})$$
+$$\text{(E)}\quad|E_k(s,t)|\le C\varepsilon_k|st|e^{-mR}\qquad\text{(S)}\quad\sum_k\varepsilon_k\le E_*\lt\infty\qquad\text{(T)}\quad|\mathcal I_K|\le C_*|st|e^{-mR}$$
+
+$$\boxed{\ |\mathcal I_0(s,t)|\ \le\ (C_*+CE_*)|st|e^{-mR}\ }\tag{RG-CTB}$$
+
+**⇒ `K→∞` 时误差**不累积成无穷大**——这正是 RG 能否闭合的数学条件。若 `E_k=O(1)`，迭代毫无意义。**
+
+### 5⁗′.3 四个待证量（`[U]`）
+
+$$\mathfrak K_k(a)=\sup_\gamma\tfrac1{|\gamma|}\sum_{\gamma'\nsim\gamma}|\zeta_{k,\beta}(\gamma')|e^{a|\gamma'|}$$
+$$\mathfrak D_{A,k}=\tfrac1{|s|}\sum_{\gamma\cap A\ne\varnothing}|\partial_s\zeta_{k,\beta}(\gamma;s,0)|e^{a|\gamma|}\qquad(B\ \text{同})$$
+$$\mathfrak E_k=\sup_{s,t}|E_k(s,t)|/\big(|st|e^{-mR}\big)$$
+
+$$\boxed{\ \text{(W)}\quad\sup_k\mathfrak K_k\le a-\delta,\quad \sup_k\mathfrak D_{A,k}\le K_A,\quad \sup_k\mathfrak D_{B,k}\le K_B,\quad \sum_k\mathfrak E_k\lt\infty\ }$$
+
+**⚠️ 四项不是四个独立猜想，是**一套证明的四个检查项**：第一项控无源有效作用量；二三控缺陷在 RG 中传播；四控粗粒化的额外连接。**缺二三，即使无源 `RG` 收敛也推不出双块衰减。**
+
+### 5⁗′.4 【勘误】渐近自由系数：`11/(6π²)`，不是 `11/(3π²)`（`[T]`，我两条路核过）
+
+$$\text{1-loop: }g_0^{-2}=\frac{b_0}{16\pi^2}\ln\frac1{a\Lambda},\ \ b_0=\frac{11N}{3}=\frac{22}{3}\ \Longrightarrow\ \beta_W=\frac{4}{g_0^2}=\frac{11}{6\pi^2}\ln\frac1{a\Lambda}$$
+
+$$\frac{11}{6\pi^2}=0.1857555033\qquad\frac{11}{3\pi^2}=0.3715110067\ (\text{原写法，}2\times)$$
+
+**独立复核：`aΛ=exp(−1/(2b_0g²))`、`b_0=11/(48π²)` ⇒ `ln(1/(aΛ))=6π²β/11` ⇒ 同式。✓**
+
+### 5⁗′.5 **而修正后出现结构性好消息：收缩区正是 IR**
+
+$$\beta_{\rm eff}(x)=\frac{11}{6\pi^2}\ln\frac1{x\Lambda}\qquad(\text{随 }x\ \text{下降})$$
+
+| `x` [`Λ^{-1}`] | `β_eff` |
+|---|---|
+`0.01` | `0.855` |
+`0.03` | `0.651` |
+**`0.064`** | **`0.511`**（临界） |
+`0.1` | `0.428` |
+`0.3` | `0.224` |
+`1.0` | `0` |
+
+$$\boxed{\ \beta_{\rm eff}\lt\beta_{\rm BD}\iff x\gt0.0639\,\Lambda^{-1}\ }$$
+
+**⇒ 收缩**在长距离成立、在短距离失效**；而长距离正是要聚簇的地方，短距离本来弱耦合、不需要收缩。**
+
+$$\boxed{\ \text{⇒ RG 方向是对的：blocking 把 }\beta_{\rm eff}\text{ 往下推，推进收缩区}\ }$$
+
+**而步数很少（`b=2`）：**
+
+| `a_0` | 到 `x_crit` 的步数 |
+|---|---|
+`0.01 fm` | **`2.68`** |
+`0.02 fm` | **`1.68`** |
+`0.05 fm` | **`0.35`** |
+
+$$\boxed{\ \text{(S) 条件的 }\sum_k\varepsilon_k\ \text{只有三个词——不是无穷多尺度}\ }$$
+
+### 5⁗′.6 三阶段分界（不得混称）
+
+| 阶段 | 内容 | 判 |
+|---|---|---|
+**一 · 数学定理层** | 定理 A（KP ⟹ 双块）+ 定理 B（RG 组合）+ `BD ⟹ CL+BI ⟹ 唯一` | **`[T]`** |
+**二 · 目标模型** | `(W)` 的四项在 `β=2.5`（或沿 RG 后的有效 `β`） | **`[U]`** |
+**三 · 连续极限** | `β_W(a)→∞` 上物理尺度一致的 `C-CTB`；`S^{\rm ren}_{n,a}→S_n`；OS 条件与非平凡性 | **`[U]`** |
+
+**⚠️ 文献（我**未逐字核**，标 `[M]`）：**
+- **Rajabu 2026 预印本（未同行评审）：SU(2) 两次分解后 `β≤0.511`；**
+- **另有 2026-10 预印本报 plaquette-block Dobrushin 覆盖 `β_W≤0.345`；**
+- **Osterwalder–Seiler 已证充分强耦合区的无限体积极限与解析性，不覆盖 `β=2.5`。**
+
+$$\frac{2.5}{0.511}=4.89\times\qquad\frac{2.5}{0.345}=7.25\times$$
+
+**⇒ 固定 `β=2.5` 的收缩**未被认证**，但**这不等于"在目标点不可能成立"**——它只是说现有 plaquette-block 常数不能直接用。**
+
+### 5⁗′.7 三阶段之间的一道硬边界
+
+$$\text{固定 }\beta=2.5\text{ 的无限体积极限}\ \ne\ \text{四维连续极限}$$
+
+**因为连续极限沿 `β_W(a)→∞` 的轨迹，而 `β=2.5` 是一个**固定的格距点**（而且它靠近 `β_c≈2.7`，属**交叉区**，1-loop 公式在那里定量不可靠）。**
+
+**⇒ 所以 `β=2.5` 的结论**不能直接接到连续极限之后**，必须沿 AF 轨迹重做物理尺度估计。**
+
+--- 
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
