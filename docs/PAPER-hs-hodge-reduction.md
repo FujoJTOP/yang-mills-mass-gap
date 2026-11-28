@@ -267,6 +267,160 @@ diverges as $L\to\infty$, Problem 9.1 fails. Whether that also forces (T) to fai
 4. **Not claimed:** that the numerics at $L\le12$ extrapolate. The $\ln L$ growth of $\chi$ is not resolvable against the $4.26\%$ seed spread, and $L=12$ lies below $L=10$.
 5. **Not claimed:** that $\lambda_\perp=2.6975$ is harmless in every scheme. It is harmless **for the quantity (T)**; it correctly rules out absolute-value path-breeding schemes.
 6. **Not claimed:** that the local model of §7 is a subsystem of the $d=4$ theory in a sense that transfers estimates. It is used only to exhibit the mechanism of (7.2).
+7. **Not claimed:** that $\chi_L=O(1)$ implies $\|\Gamma_L\|_{2\to2}=O(1)$. See §11.1 — it does not.
+8. **Not claimed:** that the effective spectral scale of §8.2 is a lower bound on the low-lying spectrum. See §11.2 — it is an upper bound on a harmonic mean.
+
+---
+
+## 11. Three logical gaps closed
+
+### 11.1 Zero-momentum data does not bound the operator norm
+
+Recall $\|\Gamma_L\|_{2\to2}=\max_k\widehat C_L(k)$, whereas §8 reports only $\chi_L=\widehat C_L(0)$.
+
+**Counterexample (within the range $q_x\in[-1,1]$).** Let $\xi$ and $\{\eta_x\}$ be mutually independent Rademacher variables and set
+$$q_x=a\,\xi(-1)^{x_1}+b\,\eta_x,\qquad a+b\le1 .$$
+Then $q_x\in[-1,1]$ and
+$$\Gamma(x,y)=a^2(-1)^{x_1+y_1}+b^2\mathbf 1_{\{x=y\}} .$$
+For $L$ even, $\widehat C_L(0)=b^2$ is independent of $L$, while at $k_*=(\pi,0,0,0)$
+$$\widehat C_L(k_*)=a^2L^4+b^2 .$$
+So $\chi_L$ may be held constant while $\|\Gamma_L\|$ grows like $L^4$.
+
+**Consequence.** The numerics of §8 support $\chi_L=O(1)$ and nothing more. The operator-norm statement requires either the full Fourier data (Problem 11.4) or the pointwise decay of Problem 11.5.
+
+### 11.2 The effective spectral scale is a harmonic mean
+
+Let $M_0:=\nu_0((0,\infty))=\|D_0\|^2\le24$ and $\lambda_{\rm harm}:=M_0/\chi_L$. From (5.2), $\lambda_{\rm harm}$ is the $\nu_0$-mean of $\lambda^{-1}$, inverted; with only $M_0\le24$ one gets the **upper** bound
+$$\lambda_{\rm harm}=\frac{M_0}{\chi_L}\le\frac{24}{0.032}=750 .$$
+That is not the location of the low spectrum. Indeed, for any $\varepsilon>0$ put
+$$\nu_\varepsilon=\frac{\chi\varepsilon}{2}\,\delta_\varepsilon+\Big(24-\frac{\chi\varepsilon}{2}\Big)\delta_{\lambda_h},\qquad \lambda_h=\frac{2}{\chi}\Big(24-\frac{\chi\varepsilon}{2}\Big).$$
+Then $\nu_\varepsilon((0,\infty))=24$ and $\int\lambda^{-1}d\nu_\varepsilon=\chi$ for every $\varepsilon$, so $\lambda_{\rm harm}=750$ throughout, yet
+$$\nu_\varepsilon([0,\varepsilon])=\frac{\chi}{2}\,\varepsilon ,$$
+which is $O(\varepsilon)$, not $O(\varepsilon^{1+\delta})$. Hence a large $\lambda_{\rm harm}$ is compatible with violation of (9.1).
+
+### 11.3 The zero- versus small-positive-spectrum distinction
+
+Since $\mathscr H\ge0$ (from $\langle\omega,\mathscr H\omega\rangle=\|d_\mu^*\omega\|^2+\|d\omega\|^2$) and $H^1(\mathrm{SU}(2)^{|E_L|})=0$ in finite volume, $\mathscr H$ has **no zero modes**. So the difference between (T) and (M) is not about atoms at $0$; it is:
+
+> (T) permits mass $O(\varepsilon\log L)$ at a small positive $\varepsilon$; (M) requires mass $O(\varepsilon^{1+\delta}\omega_L^{-\delta})$, which is strictly smaller.
+
+Proposition 6.1 stands with this correction.
+
+### 11.4 Problem (Fourier data)
+
+**Problem A.** For $L=6,8,10,12$ and $\beta=2.5$, compute **all** $\widehat C_L(k)$ and report $\arg\max_k\widehat C_L(k)$ and $\max_k\widehat C_L(k)/\widehat C_L(0)$.
+
+If the correlator array $\Gamma_L(0,\cdot)$ is available, $\widehat C_L=\mathrm{FFT}_4(\Gamma_L(0,\cdot))$. From Monte Carlo configurations $q^{(n)}$,
+$$\widehat C_L(k)=\frac{1}{L^4}\mathbb E\big|Q_n(k)-\mathbb E Q_n(k)\big|^2,\qquad Q_n(k)=\sum_xq^{(n)}_xe^{ik\cdot x},$$
+estimated in practice by $\frac{1}{L^4(N-1)}\sum_n|Q_n(k)-\overline Q(k)|^2$. **The zero mode must be centred across configurations, not within each configuration**, otherwise the genuine zero-momentum fluctuation is removed.
+
+### 11.5 Problem (pointwise decay; the exponent $4$ is insufficient)
+
+$$\|\Gamma_L\|_{2\to2}\le\|\Gamma_L\|_{1\to1}=\sum_{z\in\Lambda_L}|\Gamma_L(0,z)| .$$
+
+**But $|\Gamma_L(0,z)|\le C(1+\|z\|_2)^{-4}$ gives only $O(\log L)$.** One needs
+$$\boxed{\ \textbf{(C2)}\qquad |\Gamma_L(0,z)|\le C\,(1+\|z\|_2)^{-4-\varepsilon},\quad\varepsilon>0\ }\tag{C2}$$
+which does give absolute summability.
+
+**Why the shell data of §8 does not suffice.** $S_j\le M$ implies only $\sum_{\|z\|=j}|\Gamma_L(0,z)|\le M(1+j)^4$, hence $\sum_z|\Gamma_L(0,z)|\le M\sum_{j\le O(L)}(1+j)^4=O(L^5)$. Moreover, with the counterexample of §11.1, $\Gamma_L(0,z)=a^2(-1)^{z_1}+b^2\mathbf 1_{\{z=0\}}$ gives $\chi_L=b^2$ constant, $S_j\asymp a^2/j$ bounded, and yet $\sum_z|\Gamma_L(0,z)|\asymp a^2L^4$. So (SB) boundedness carries no implication of absolute summability.
+
+**The fitted $p_{\rm eff}=4.5$–$5.1$ does support (C2)** (with $\varepsilon\approx0.5$–$1.1$), but it comes from fitting $\Gamma_L(0,z)$ against $\|z\|$, not from $S_j$-boundedness.
+
+---
+
+## 12. Negative part of $\operatorname{Hess}S$: exact local computation
+
+This section records what can be proved unconditionally about the negative part, and identifies precisely why it does not close Problem 9.1.
+
+### 12.1 Exact single-plaquette Hessian
+
+Use the bi-invariant metric $\langle X,Y\rangle=-\tfrac12\operatorname{tr}(XY)$ on $\mathfrak{su}(2)$, so that $X(x)=ix\cdot\sigma$ has $|X(x)|=|x|$, and $\operatorname{Ric}=2I$.
+
+For a plaquette $U_P=qI+ia\cdot\sigma$ with $q^2+|a|^2=1$, parallel-transport the edge tangents to a common base point, obtaining $y_1,\dots,y_4\in\mathbb R^3$ (reversed edges carry a sign and an adjoint). Then $U_P(t)=e^{tY_1}\cdots e^{tY_4}U_P$ with $Y_i=iy_i\cdot\sigma$, and using $(ix\cdot\sigma)(iy\cdot\sigma)=-(x\cdot y)I-i(x\times y)\cdot\sigma$,
+
+$$\frac{d^2}{dt^2}\Big|_{t=0}\tfrac12\operatorname{tr}U_P(t)=-q\Big|\sum_{i=1}^4y_i\Big|^2+2\sum_{i<j}(y_i\times y_j)\cdot a .$$
+
+Since $S_{\beta,L}=\beta\sum_P(1-q_P)$,
+
+$$\boxed{\ Q_P(Y)=\beta q\Big|\sum_{i=1}^4y_i\Big|^2-2\beta\sum_{i<j}(y_i\times y_j)\cdot a\ }\tag{12.1}$$
+
+an identity, not an estimate. It exhibits the indefiniteness directly.
+
+### 12.2 An explicit configuration with $V_-\ne0$
+
+**Proposition 12.1.** Take the configuration with $U_e=I$ for all $e$ except a single edge $e_0$ with $U_{e_0}=-I$. Let $X$ be a unit tangent vector at $e_0$ and $0$ elsewhere. Then
+$$\langle X,\operatorname{Hess}S\,X\rangle=-6\beta|X|^2 .\tag{12.2}$$
+Hence $\|V_-\|\ge6\beta$, and $\|V_-\|\ge15$ at $\beta=2.5$.
+
+*Proof.* The six plaquettes containing $e_0$ have holonomy $-I$, so $q=-1$, $a=0$; the other plaquettes do not move. Since $\operatorname{Ad}(-I)=I$, all six contribute with the same sign. By (12.1), each gives $Q_P=-\beta|X|^2$. $\square$
+
+**Local criterion.** If a plaquette has $q_P<0$ and one takes $y_1=y_2=y_3=y_4=v$ (all cross products vanish), then $Q_P=16\beta q_P|v|^2<0$. So negative curvature occurs away from the $-I$ configuration as well.
+
+### 12.3 Uniform bounds
+
+From $|\sum y_i|^2\le4\sum|y_i|^2$ and $\sum_{i<j}|y_i||y_j|\le\tfrac32\sum|y_i|^2$,
+$$|Q_P(Y)|\le\beta\big(4|q|+3|a|\big)\sum_i|y_i|^2\le5\beta\sum_i|y_i|^2 ,$$
+using $4|q|+3|a|\le\sqrt{16+9}=5$ on $q^2+|a|^2=1$. Summing over the six plaquettes per edge,
+
+$$\boxed{\ \|V\|\le30\beta,\qquad\|V_-\|\le30\beta\ }\tag{12.3}$$
+
+and, with $\dim T_U\mathcal M_L=3\cdot4L^4=12L^4$,
+
+$$\boxed{\ \operatorname{tr}_{\rm fiber}V_-\ \le\ 30\beta\cdot12L^4\ =\ 360\beta L^4\ }\tag{12.4}$$
+
+At $\beta=2.5$: $\|V_-\|\le75$ and $\operatorname{tr}_{\rm fiber}V_-\le900L^4$. Combining (12.2) and (12.3):
+$$6\beta\ \le\ \|V_-\|\ \le\ 30\beta .$$
+
+**Warning.** $\operatorname{tr}_{\rm fiber}$ is the trace on the finite-dimensional tangent space at a single configuration; it is **not** the trace of the multiplication operator on $L^2$.
+
+### 12.4 Source-weighted Birman–Schwinger form
+
+Write $W:=V_-$, $V=V_+-W$, and $A_+:=\nabla_\mu^*\nabla+\operatorname{Ric}+V_+\ge2I$, so that
+
+$$\mathscr H=A_+-W,\qquad A_+\ge2I .\tag{12.5}$$
+
+For a normalized eigenvector $\psi_j$ with $0\le\lambda_j<2$, put $\phi_j:=W^{1/2}\psi_j$. Then $(A_+-\lambda_j)\psi_j=W\psi_j$, hence
+
+$$\boxed{\ W^{1/2}(A_+-\lambda_j)^{-1}W^{1/2}\phi_j=\phi_j\ }\tag{12.6}$$
+
+and for the zero-momentum source
+
+$$\boxed{\ \nu_0([0,s])=\sum_{\lambda_j\le s}\Big|\big\langle W^{1/2}(A_+-\lambda_j)^{-1}D_0,\ \phi_j\big\rangle\Big|^2\ }\tag{12.7}$$
+
+Since $A_+-\lambda_j\ge(2-s)I$ for $\lambda_j\le s$, one obtains the bound
+
+$$\boxed{\ \nu_0([0,s])\ \le\ \frac{\|W\|\,\|D_0\|^2}{(2-s)^2}\sum_{\lambda_j\le s}\|\phi_j\|^2\ \le\ \frac{720\beta}{(2-s)^2}\sum_{\lambda_j\le s}\langle\psi_j,W\psi_j\rangle\ }\tag{12.8}$$
+
+and at $\beta=2.5$, $s\le1$:
+$$\nu_0([0,s])\ \le\ 1800\sum_{\lambda_j\le s}\langle\psi_j,W\psi_j\rangle .\tag{12.9}$$
+
+**This converts the low-spectral mass exactly into the negative-Hessian overlap of the low eigenfunctions.** It does **not** close the problem, for two independent reasons.
+
+### 12.5 Why the Birman–Schwinger / CLR route is closed
+
+**(a) Fiber trace does not control the global trace.** The right side of (12.9) is $\operatorname{Tr}_{L^2}(P_sW)$ with $P_s$ the low spectral projector, a quantity depending on how eigenfunctions are distributed over the whole configuration manifold. The bound $\operatorname{tr}_{\rm fiber}W(U)=O(L^4)$ is a statement about a finite-dimensional matrix at each $U$. There is no inequality
+$$\operatorname{Tr}_{L^2}(P_sW)\ \le\ C\,\operatorname{tr}_{\rm fiber}W ,$$
+and none can hold: a single highly concentrated eigenfunction contributes $O(1)$ to the left side while the right side is averaged over configurations.
+
+**(b) The spectral-count bounds diverge.** Cwikel–Lieb–Rozenblum / Lieb–Thirring on $\mathcal M_L$ would give $\#\{\lambda_j<2\}\le C\int\operatorname{tr}(V_-^{d/2})$ with $d=\dim\mathcal M_L=12L^4\to\infty$; and the Birman–Schwinger trace $\operatorname{Tr}_{L^2}\big(W^{1/2}(A_+-s)^{-1}W^{1/2}\big)$ is bounded only by $\|W\|(2-s)^{-1}\operatorname{Tr}_{L^2}(\mathbf 1)=\infty$. Both are vacuous.
+
+**(c) The compensation requested in §9 cannot be obtained.** What would suffice is $\sum_{\lambda_j\le s}\langle\psi_j,W\psi_j\rangle=O(s^{1+\delta})$ uniformly, equivalently a vanishing multiplicity of the low $\mathscr H$-spectrum. Even assuming delocalization of low eigenfunctions gives only $O(1)$ per $j$ and hence $O(\#\{\lambda_j\le s\})$ in total, so one needs $\#\{\lambda_j\le s\}=O(s^{1+\delta})$ — a **gap statement on the full $1$-form space**, which is stronger than (T).
+
+> **Conclusion of §12.** The local geometry of the negative part of $\operatorname{Hess}S$ is now closed: (12.1)–(12.4) are exact, and they show that the negative part is a first-order effect ($\|V_-\|\ge6\beta$, i.e. $\ge15$ at $\beta=2.5$), not a small perturbation. But pushing this route to its end requires control of the low-$\mathscr H$ eigenvalue **multiplicity**, which is strictly stronger than the plaquette-scalar target. **The negative-Hessian route is therefore a detour, not an approach.**
+
+---
+
+## 13. Revised problem list
+
+| label | problem | relation to (T) |
+|---|---|---|
+**A** | compute all $\widehat C_L(k)$, decide $\arg\max_k$ | **decisive** test; needs raw data |
+**B** | $\nu_0([0,s])\le As^{1+\delta}$ | implies $\chi_L=O(1)$ only |
+**C** | $|\Gamma_L(0,z)|\le C(1+\|z\|)^{-4-\varepsilon}$ | **implies (T) with $O(1)$**, stronger than needed |
+**D** | low-$\mathscr H$ multiplicity | **stronger than (T)**; route closed in §12.5 |
+**E** | $\sup_{L,\beta,k}\int_0^1\nu_{k}([0,s])s^{-2}ds<\infty$ | **equivalent** to $\|\Gamma\|=O(1)$ |
+
+**Recommended order.** A (cheapest, decisive) → C (direct route to $O(1)$, skips all spectral machinery) → B (weakest layer) → E (the exact spectral form) → D (closed).
 
 ---
 
