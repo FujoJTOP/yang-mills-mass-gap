@@ -25,6 +25,7 @@ OS2Wiring.lean — ①②③ 并成一条：`rp_full_cone`
 -/
 import Mathlib.Topology.Order.OrderClosed
 import Mathlib.MeasureTheory.Measure.Portmanteau
+import Mathlib.Topology.Metrizable.Basic
 import GL4Transfer
 import GL4L2
 import OS2Clip
@@ -36,7 +37,7 @@ open scoped BoundedContinuousFunction Topology
 namespace GlueA.OS2
 
 variable {Ω : Type*} [TopologicalSpace Ω] [MeasurableSpace Ω] [BorelSpace Ω]
-  [PseudoMetrizableSpace Ω]
+  [TopologicalSpace.PseudoMetrizableSpace Ω]
 
 /-- **GL4-RP 全锥，单条机检目标。**
 `A` 只假设连续（不必有界）+ `L²(μ)`；测度保持**不再假设**，由 ③ 从 `μ_a` 侧推上来。 -/

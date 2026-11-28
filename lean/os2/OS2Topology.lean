@@ -73,7 +73,9 @@ abbrev LoopSpace (κ : Type u) : Type u := κ → LoopCoord
 
 example (κ : Type*) : TopologicalSpace (LoopSpace κ) := inferInstance
 example (κ : Type*) : CompactSpace (LoopSpace κ) := inferInstance            -- Tychonoff
-example (κ : Type*) : TopologicalSpace.PseudoMetrizableSpace (LoopSpace κ) := inferInstance
+-- 拟可度量化需要可数坐标族（不可数积非度量化，故此处加 `[Countable κ]`）
+example (κ : Type*) [Countable κ] : TopologicalSpace.PseudoMetrizableSpace (LoopSpace κ) :=
+  inferInstance
 example (κ : Type*) : T2Space (LoopSpace κ) := inferInstance
 example (κ : Type*) [Countable κ] : SecondCountableTopology (LoopSpace κ) := inferInstance
 example (κ : Type*) [Countable κ] : BorelSpace (LoopSpace κ) := inferInstance

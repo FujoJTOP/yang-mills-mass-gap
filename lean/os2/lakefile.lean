@@ -13,3 +13,7 @@ require mathlib from git
 @[default_target]
 lean_lib «OS2» where
   roots := #[`OS2Clip, `OS2Topology, `OS2Theta, `OS2Wiring]
+
+/-- GL4 依赖文件（OS2Wiring 的 `rp_transfer` / `rp_l2_closure` 出处），随包一起编译。 -/
+lean_lib «GL4» where
+  roots := #[`GL4Transfer, `GL4L2]
