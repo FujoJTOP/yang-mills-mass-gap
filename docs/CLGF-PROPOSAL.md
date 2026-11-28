@@ -3640,6 +3640,110 @@ $$\boxed{\ \text{最坏情形块收缩：放弃}\ \succ\ \text{局部块响应�
 
 --- 
 
+## §5⁗⁗⁗⁗⁗⁗⁗⁗‴ 复制 Gibbs 系统：两个 `[U]` 合并为一个对象（第 287 轮）
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗‴.1 【`[T]`】复制恒等式
+
+$$\boxed{\ \mathrm{Cov}_\mu(A,B)=\tfrac12\mathbb E_{\mu\otimes\mu}\big[(A(X)-A(X'))(B(X)-B(X'))\big]\ }\tag{5}$$
+
+**（展开：`½(2E[AB]−2E[A]E[B])` ✓）**
+
+$$\mathcal J_{C,ij}(y)\ \le\ \tfrac12\mathbb E_{\mu_{C,y}^{\otimes2}}\big[D_{C,i}(X,X')D_{C,j}(X,X')\big]\tag{6}\qquad |\mathcal J_{C,ij}|\le W_{C,i}W_{C,j}\tag{8}$$
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗‴.2 【`[T]`】多块联合响应的复制表示
+
+$$\widehat\nu_{\boldsymbol C}(dY,dX)=\nu_{\rm slow}(dY)\prod_{k=1}^n\mu_{C_k,Y}(dX_k^+)\mu_{C_k,Y}(dX_k^-)\tag{9}$$
+
+$$\boxed{\ \mathbb E_{\nu_{\rm slow}}\prod_{k=1}^n\big|\mathrm{Cov}_{\mu_{C_k,Y}}(A_{i_{k-1}},A_{i_k})\big|\ \le\ \frac1{2^n}\mathbb E_{\widehat\nu_{\boldsymbol C}}\prod_{k=1}^n\big[D_{C_k,i_{k-1}}D_{C_k,i_k}\big]\ }\tag{10}$$
+
+**⭐⭐ 联合概率空间的**结构**是本轮要点：所有路径边**共享同一个 `Y`**；每条边有自己的复制对；给定 `Y` 后复制对**独立**；它们**通过共同的 `Y` 产生相关性**。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗‴.3 【`[T]`】复制测度的精确结构与**一个可读的等价描述**
+
+$$d\widehat\nu_{\boldsymbol C}\propto e^{-S_{\rm slow}(Y)}\prod_{k=1}^n\frac{e^{H_{C_k}(X_k^+;Y)}e^{H_{C_k}(X_k^-;Y)}}{Z_{C_k}(Y)^2}d\sigma(Y)\prod_kdX_k^+dX_k^-\tag{12}$$
+
+$$\boxed{\ \widehat\nu_{\boldsymbol C}(dY)=\nu_{\rm slow}(dY)\ }\tag{13}$$
+
+**每个复制对与慢变量的耦合为（我核过这个形式）：**
+
+$$\beta_W\!\!\sum_{a\in\partial C}\!\!Y_a^{\sf T}\big[J_{C,a}(X^+)+J_{C,a}(X^-)\big]\ -\ 2\log Z_C(Y)\tag{14}$$
+
+$$\boxed{\ \text{复制系统}\ =\ \text{原 Wilson 模型，但每个快分量的贡献【加倍】}\ }$$
+
+**⇒ 所以 `ρ_ann<1` 问的是：**在这个「加倍模型」里，沿路径的响应是否衰减**。而 `(13)` 说 `Y` 的边缘不变——但**联合**测度是另一个模型。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗‴.4 【`[T]`】`ρ_ann<1` 推出路径衰减（与最坏情形无关）
+
+$$\Xi_n=\sup_i\mathbb E_{\nu_{\rm slow}}\Big[\sum_j(\mathsf R(Y)^n)_{ij}\Big]\overset{(20)}{=}\sup_i\!\!\sum_{i_1\cdots i_n}\!\!\mathbb E_{\nu_{\rm slow}}\Big[\prod_{k=1}^nR_{i_{k-1}i_k}(Y)\Big]$$
+$$\rho_{\rm ann}=\limsup_{n\to\infty}\Xi_n^{1/n}\tag{21}$$
+
+$$\boxed{\ \rho_{\rm ann}\lt1\ \Longrightarrow\ \Xi_n\le C\theta^n\ \Longrightarrow\ \text{块响应路径和指数衰减}\ }\tag{24}$$
+
+**⇒ **完全不需要**最坏情形 Dobrushin 行和 `<1`。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗‴.5 【我的核对】`(11)` 的 `Σ_{C_1⋯C_n}` **受共同接触约束**，但 `ρ_ann` 粗界仍 `≫1`
+
+**⚠️ **必须**注意：`Σ_{C_k}` 只跑**同时接触 `i_{k-1}` 与 `i_k`** 的快分量 ⇒ 个数 `O(1)`（有限范围），**不是** `N_C∼L^4`。否则 `(27)` 平凡不成立。**
+
+**⇒ 于是 `(27)` LHS `\le (2\beta_W^2W^2N_{\rm touch})^n$：**
+
+| `N_touch` | `2β²W²N` |
+|---|---|
+`1` | **`12.50`** |
+`2` | `25.00` |
+
+**⇒ 每边增长因子 `≥12.50` ⇒ `ρ_ann` **不可能** `<1`。**
+
+**而粗界直接给（`W=1`、一个共享 `C`）：**
+
+$$R^{\rm fast}_{ij}\ \le\ \beta_W^2\cdot1=6.25\ \Longrightarrow\ \text{行和}\approx6.25\Delta_B$$
+
+| `Δ_B` | 行和 |
+|---|---|
+`4` | `25.0` |
+`8` | `50.0` |
+
+$$\boxed{\ \rho_{\rm ann}\ \gtrsim\ \beta_W^2\Delta_B=50\ \gg\ 1\ }$$
+
+**⇒ 要 `ρ_ann<1` 需 `β²W²<1/Δ_B` ⇒ `W\lt0.141`，而 `W_{C,i}≥1` 只要 `B_i∩∂C≠∅` ⇒ **不可能**。**
+
+**⚠️ 但这是**粗界**。复制公式 `(26)` 的价值正在于它**允许** `E_{\hatν}[∏DD]` 远小于 `(2W)^{2n}`——即允许两个复制副本**趋于一致** ⇒ `D_k→0`。**
+
+$$\boxed{\ \text{真正需要的是：复制的两个快变量副本在共同慢背景下【趋于一致】，使 }D_k\ \text{沿路径衰减}\ }$$
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗‴.6 剩余的唯一目标 `(27)`
+
+$$\sup_{i_0}\!\!\sum_{\substack{i_1\cdots i_n\\ C_1\cdots C_n}}\!\!\frac{\beta_W^{2n}}{2^n}\mathbb E_{\widehat\nu_{\boldsymbol C}}\prod_{k=1}^nD_{C_k,i_{k-1}}D_{C_k,i_k}\ \le\ C_0\theta^n\tag{27}$$
+
+**⚠️ 现有 Poincaré、Hessian、边界力上界**都不足以**推出它。**
+
+**⚠️ `(17)` 的粗界 `∏[2.5N+6.25ΣWW]` **无任何衰减**——它完全没用到 `(12)` 的共同慢背景结构。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗‴.7 审计（本轮）
+
+| 命题 | 判 |
+|---|---|
+Wilson 二块响应复制恒等式 `(5)–(6)` | **`[T]`** |
+多块路径联合响应复制表示 `(9)–(11)` | **`[T]`** |
+复制测度精确 Gibbs 表达 `(12)–(14)` | **`[T]`** |
+退火响应矩阵有限范围 `(18)` | **`[T]`** |
+`ρ_ann<1` ⇒ 联合路径衰减 `(21)–(24)` | **`[T]`** |
+**`Σ_{C_k}` 受共同接触约束（`O(1)` 项）** | **`[T]`（我核）** |
+**粗界给 `ρ_ann ≳ β²Δ_B = 50 ≫ 1`** | **`[T]`（我算）** |
+所有边界下最坏情形块收缩 | **`[F]`（pinning，前提性）** |
+`β=2.5` 下复制响应路径满足 `(27)` | **`[U]`** |
+`β=2.5` 下 `ρ_ann<1` | **`[U]`** |
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗‴.8 主线（正式固定）
+
+$$\boxed{\ \text{精确快慢消元}\succ\text{边界力协方差}\succ\text{多块联合响应复制恒等式}\succ\text{复制 Gibbs 的路径响应尾}\succ\rho_{\rm ann}\lt1\succ\text{有效慢块联合衰减}\ }$$
+
+**⇒ 本轮完成了从「Wilson 有效慢块联合响应」到「复制 Gibbs 系统」的**严格转换**，并证明了 `ρ_ann` 控制联合路径衰减。**
+
+**⇒ 而 `(27)` 在 `β=2.5` 下**不**标 `[T]`：需要的是一条**真正的联合响应估计**（两个复制副本趋于一致），而不是把单块均值相乘。**
+
+--- 
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
