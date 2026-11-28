@@ -3065,6 +3065,97 @@ $$\text{Wilson }S_{\rm slow}\to\text{局部条件核}\to\text{相关边标记}\t
 
 --- 
 
+## §5⁗⁗⁗⁗⁗⁗⁗′ 反向祖先路径 `[T]` + `θ_r<1` 等价于 `β<0.126`（第 281 轮）
+
+### 5⁗⁗⁗⁗⁗⁗⁗′.1 【`[T]`】反向祖先路径：**有限体积确定性因果**，不需任何混合假设
+
+$$D_t(a)=1\ \Longrightarrow\ \sum_{b\in N(a)}M_{b\to a,t}\ge1\tag{1}\qquad M_{b\to a,t}=1\ \Longrightarrow\ D_{t^-}(b)=1\tag{2}$$
+
+**从 `a_0∈A` 向过去追踪，`T>s_0>s_1>⋯≥0`：**
+
+$$\boxed{\ D_T(a)=1\ \Longrightarrow\ \exists\ \text{从 }B\text{ 到 }a\text{ 的反向祖先路径}\ }\tag{4}$$
+
+**⚠️ 这一步处理了「固定边界在整个演化期间**持续**存在」这个易被忽略的问题——边界不是「初始时刻一次性的不一致粒子」，而是**永久的祖先源**。**
+
+$$\mathbb P_T^{\rm ann}(X_T|_A\ne X'_T|_A)\ \le\ \sum_{a_0\in A}\sum_{n\ge N}\sum_{\gamma:|\gamma|=n\atop \gamma_0=a_0}W_T(\gamma),\quad N=\Big\lceil\frac{d(A,B)}{R_0}\Big\rceil\tag{7}$$
+
+### 5⁗⁗⁗⁗⁗⁗⁗′.2 【`[T]`】有限步反向繁殖系数推出 DAPT
+
+$$\Theta_r(T,\pi)=\!\!\sum_{\gamma\in\mathcal W_r(a_k)}\!\!\mathbb P_T^{\rm ann}(E_T(\pi\gamma)\mid E_T(\pi)),\qquad \theta_r=\sup_{T,\Lambda,\pi}\Theta_r(T,\pi)\tag{9),(10)}$$
+
+$$S_{n+r}(T)\le\theta_rS_n(T),\qquad S_{n+s}(T)\le\Delta^sS_n(T)\tag{15),(16)}$$
+
+$$\boxed{\ S_{qr+s}\le|A|\Delta^s\theta_r^q\ \Longrightarrow\ m=\frac{-\log\theta_r}{rR_0},\quad C=\frac{|A|}{1-\theta_r}\Big(\sum_{s=0}^{r-1}\Delta^s\Big)\theta_r^{-1}\ }\tag{19}$$
+
+$$\boxed{\ |\mathrm{Cov}_\nu(F_A,G_B)|\ \le\ \frac{2|A|A_r}{1-\theta_r}\theta_r^{-1}\|F_A\|_\infty\|G_B\|_\infty e^{-md(A,B)}\ }\tag{20}$$
+
+**⭐ 条件只有 `θ_r<1`：**它允许单步影响 `>1/Δ`，也允许不同传播边高度相关。只要若干步后平均祖先延伸数降到 1 以下。****
+
+### 5⁗⁗⁗⁗⁗⁗⁗′.3 【`[T]`】一个必须说准的细节：`(23)` 是**后验**条件
+
+$$\sup_{\Lambda,T,\pi}\sum_{\gamma\in\mathcal W_r(\pi_n)}\frac{\mathbb E[\mathbf1_{E_T(\pi\gamma)}]}{\mathbb E[\mathbf1_{E_T(\pi)}]}\lt1\tag{23}$$
+
+**⚠️ 这是**后验**条件影响——**不能**用正向条件核的 `(22)` 直接代。条件事件本身对过去配置产生**选择偏差**（用户已指出）。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗′.4 【我的定量判决】`θ_r<1` 等价于 `β ≲ 0.126`，且偏差方向**不利**
+
+**① 单条慢—慢 Wilson 因子：`Φ_ab=−βy_a^TRy_b` ⇒ `Δ=4β` ⇒ `Q=tanh(β)`：**
+
+$$\beta=2.5:\qquad Q=\tanh(2.5)=0.986614298$$
+
+**② `θ_1 ≤ Σ_{b∈N(a)}E[Q\mid\text{历史}] = Δ\,q_{\rm eff}$，而 `Δ=8`：**
+
+$$\Delta\tanh(\beta)\Big|_{\beta=2.5}=8\times0.986614=7.8929\ \gg\ 1$$
+
+**③ **偏差方向不利**：条件 `E_T(π)` 说「差异沿 `π` 传过来了」⇒ 祖先**更可能**不同 ⇒ `q_eff ≥ q`：**
+
+$$\theta_r\ \sim\ (\Delta q_{\rm eff})^r,\qquad \Delta q_{\rm eff}\ \ge\ 7.8929$$
+
+| `r` | `(Δq)^r` 下界 |
+|---|---|
+`1` | `7.9` |
+`2` | `62.3` |
+`4` | `3881` |
+`8` | `1.5\times10^7` |
+
+$$\boxed{\ \theta_r\ \text{随 }r\ \textbf{爆炸}，不是衰减\ \Longrightarrow\ (24)\ \text{对任何 }r\ \text{都失败}\ }$$
+
+**④ 要 `θ_1<1`：**
+
+$$\Delta\tanh(\beta)\lt1\iff\tanh(\beta)\lt\tfrac18\iff\beta\lt\operatorname{artanh}(0.125)=0.12566$$
+
+$$\frac{2.5}{0.12566}=19.9\times$$
+
+### 5⁗⁗⁗⁗⁗⁗⁗′.5 【本轮最重要的横向对照】四条独立路线、四个 `β` 阈值
+
+| 路线 | `β` 阈值 | `2.5/阈值` |
+|---|---|---|
+`tanh(π²K/4)` 粗界（第 270 轮） | `0.0500` | **`50×`** |
+**反向祖先 `Δtanh(β)<1`（本轮）** | **`0.1257`** | **`19.9×`** |
+`L` 项（第 279 轮） | `0.4737` | `5.3×` |
+`β_pin`（pinning 障碍） | `1.01092` | `2.5×` |
+
+$$\boxed{\ \text{四条独立路线、四个阈值，跨度从 }0.05\text{ 到 }1.01\ \text{——全部}\lt2.5\ }$$
+
+**⭐ 这四条路径**互不相同**（Worst-case `tanh`、倒数二阶导、反向祖先繁殖、pinning 子模型），却都给出 `β` 阈值 `≤1.01`。⇒ **这不是某个常数不够细，而是四条独立机制都指向同一结论。****
+
+### 5⁗⁗⁗⁗⁗⁗⁗′.6 审计（本轮）
+
+| 命题 | 判 |
+|---|---|
+不一致必有反向祖先路径 `(1)–(7)` | **`[T]`** |
+有限步祖先繁殖系数定义 `(9)–(10)` | **`[T]`** |
+`θ_r<1` 推出 DAPT `(15)–(19)` | **`[T]`** |
+DAPT 推出指数协方差衰减 `(20)` | **`[T]`** |
+**`(23)` 是后验条件（不能用正向核代）** | **`[T]`（记账）** |
+**`θ_r<1` 等价于 `Δtanh(β)<1` ⇒ `β<0.126`** | **`[T]`（我算；且偏差方向不利）** |
+**Wilson 后验祖先估计 `(23)` 在 `β=2.5`** | **`[F]`（`θ_r` 随 `r` 爆炸）** |
+`β=2.5` 下存在 `r,θ_r<1` | **`[F]`** |
+
+**⇒ 所以本轮虽然把 DAPT 归结为一个**漂亮的有限步条件**（比单步 Dobrushin 弱、不比它强），但这个条件在 `β=2.5` 处**定量上不成立**——而原因是 `Δ\tanh(β) = 7.89`，与前面几轮同源。**
+
+--- 
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
