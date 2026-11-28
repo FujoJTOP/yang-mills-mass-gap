@@ -2163,6 +2163,112 @@ $$\prod_{e\in\Gamma}\sup_yQ_e(y)\quad\longrightarrow\quad\mathbb E_{\nu_{\rm slo
 
 --- 
 
+## §5⁗⁗⁗⁗⁗ ADP：退火路径权重的严格版本 + `(18)` 的定量衰减率（第 272 轮）
+
+### 5⁗⁗⁗⁗⁗.1 三个环节的判决（`[T]`/`[T]`/`[U]`/`[T]`）
+
+**⚠️ 先记一条纪律：**式 `(6)` 不能仅靠把确定性 `c_ab` 换成随机 `Q_{ab}(y)` 得到**——路径乘积必须对应**真实的条件影响传播过程**；否则把不同更新步骤的随机影响写成同一个构型 `y` 上的乘积，是未经证明的替换。**
+
+**① 局部影响权重（`[T]`）：**
+
+$$\Delta_{a\leftarrow b}(z)=\sup_{\substack{u,v\in S^3\\ s,s'\in S^3}}\big|S(u,s,z)-S(u,s',z)-S(v,s,z)+S(v,s',z)\big|$$
+
+$$\boxed{\ Q_{b\to a}(y)=\tanh\Big(\frac{\Delta_{a\leftarrow b}(y_{\widehat{a,b}})}4\Big)\ }\tag{4}$$
+
+$$\Big\|\gamma_a(\cdot\mid y_b{=}s,z)-\gamma_a(\cdot\mid y_b{=}s',z)\Big\|_{\rm TV}\ \le\ Q_{b\to a}(y)\tag{5}$$
+
+**（对数比振幅 `≤Δ`，再用 `‖p−q‖_TV ≤ tanh(osc log(p/q)/4)`。）**
+
+**与 `K` 的关系：沿两条最短测地线积分 ⇒ `Δ ≤ π²K_ab` ⇒ `Q ≤ tanh(π²K_ab/4)` `(6)`。**
+
+**⭐ `Q` 保留了 Hessian 的**局部环境**信息；原来的 `K` 只保留**全局最坏情形**上界。**
+
+**② 退火影响图（`[T]`）：`P(ω_{b→a}=1|Y)=Q_{b→a}(Y)`，条件独立；**
+
+$$\boxed{\ \mathbb P_{\rm ann}(\gamma\ \text{全开})=\mathbb E_{\nu_{\rm slow}}\Big[\prod_{e\in\gamma}Q_e(Y)\Big]\ }\tag{9}$$
+$$\mathbb P_{\rm ann}(A\leftrightarrow B)\ \le\ \sum_{\gamma:A\leftrightarrow B\ \rm simple}\mathbb E_{\nu_{\rm slow}}\Big[\prod_{e\in\gamma}Q_e(Y)\Big]\tag{10}$$
+
+**③ ADP（`[U]`，真正的缺口）：**存在条件耦合 `Π_{b,b'}`（边缘为 `ν_slow(·|Y_B=b)`、`ν_slow(·|Y_B=b')`），使 `X_A≠X'_A ⇒ A↔B`，且**
+
+$$\int\nu_B(db)\nu_B(db')\Pi_{b,b'}(A\leftrightarrow B)\ \le\ \mathbb P_{\rm ann}(A\leftrightarrow B)\tag{ADP}$$
+
+**④ ADP ⟹ 协方差（`[T]`，我核过）：**
+
+$$|\mathrm{Cov}(F_A,G_B)|\ \le\ \|G_B\|_\infty\mathbb E|m(Y_B)-\mathbb E m|\ \le\ \|G_B\|_\infty\mathbb E|m(Y_B)-m(Y'_B)|$$
+$$\le\ 2\|F_A\|_\infty\|G_B\|_\infty\,\mathbb P_{\rm ann}(A\leftrightarrow B)$$
+
+$$\boxed{\ |\mathrm{Cov}_{\nu_{\rm slow}}(F_A,F_B)|\ \le\ 2\|F_A\|_\infty\|F_B\|_\infty\!\!\sum_{\gamma:A\leftrightarrow B\ \rm simple}\!\!\mathbb E_{\nu_{\rm slow}}\Big[\prod_{e\in\gamma}Q_e(Y)\Big]\ }\tag{15}$$
+
+**⇒ `C=2`。**
+
+### 5⁗⁗⁗⁗⁗.2 为何不能直接用单点热浴最大耦合冒充 ADP（`[T]` 记账）
+
+**逐坐标望远镜展开只给**
+
+$$\Big\|\gamma_a(\cdot\mid x_{-a})-\gamma_a(\cdot\mid x'_{-a})\Big\|_{\rm TV}\ \le\ \sum_{b:x_b\ne x'_b}Q_{b\to a}(z^{(b)})\tag{16}$$
+
+**⚠️ 而 `z^{(b)}` 是**依赖望远镜展开次序的混合环境**，**不一定服从 `ν_slow`**。**
+
+$$\boxed{\ \text{不能把 (16) 各步的 }Q\text{ 直接替换成同一个 }Y\sim\nu_{\rm slow}\text{ 上的 }Q_e(Y)\text{ 再取期望}\ }$$
+
+**⇒ 这是此前推导不能跳过的一步。单靠 Hessian 上界、`E[Q_e]` 单点平均、甚至单点 TV 估计，**都不足以**保证它。**
+
+### 5⁗⁗⁗⁗⁗.3 【我的定量补充】`(18)` 在 `β=2.5` 的衰减率
+
+**先算 `H_SS` 那一项：`S(u,s)−S(u,s')=−βu^TR(s−s')`，对 `u∈S³` 的振荡 `=2β|s−s'|` ⇒ `Δ/4=β|s−s'|/2`。**
+
+**两个独立 `S³` 样本的弦距（`2×10⁶` 样本）：`mean = 1.3584`、`median = 1.4143`。**
+
+$$Q_e=\tanh(\beta|s-s'|/2)\Big|_{\beta=2.5}:\quad \mathbb E[Q_e]=0.8991,\quad |\ln\mathbb E Q_e|=0.1064\ \text{每边}$$
+
+**路径乘积（模拟，长度 `2/4/8`）：**
+
+| 路径长 | `E[Π Q_e]` | `(E[Q])^n` | 比 |
+|---|---|---|---|
+`2` | `8.080e−1` | `8.083e−1` | **`1.00`** |
+`4` | `6.532e−1` | `6.533e−1` | **`1.00`** |
+`8` | `4.266e−1` | `4.269e−1` | **`1.00`** |
+
+$$\Longrightarrow\quad k:=-\frac{\ln\mathbb E[\prod Q_e]}{n}=0.1064\ \text{每边}\quad(\text{关联长度}\approx9.4\ \text{块})$$
+
+**⭐⭐ 反直觉的一点：在**乘积（均匀独立顶点）**测度下，路径上相邻边权**恰好独立**——因给定共享顶点 `v_{i+1}` 后 `v_i` 与 `v_{i+2}` 独立，而 `|v_i−v_{i+1}|` 的边缘与 `v_{i+1}` 无关。所以 `E[ΠQ]=(EQ)^n` **精确成立**。**
+
+**⚠️ 而 `ν_slow` **不是**乘积测度（`H_SS` 使相邻顶点铁磁关联）⇒ 边权**有**相关。但相关方向是**铁磁**：相邻顶点更对齐 ⇒ `|s−s'|` 更小 ⇒ `Q` 更小 ⇒ **对我们更有利**。**
+
+$$\boxed{\ \text{所以 }k\ \text{的真值}\ \ge\ 0.106\text{（本估计是保守的）}\ }$$
+
+**⚠️ 但本估计**只用 `H_SS`**；`−Σlog Z_C` 也贡献 `Δ`，而它只会**增大** `Q`、**减小** `k`。**
+
+$$\boxed{\ \text{故 }k\ \le\ 0.106\quad(\text{关联长度}\ \gtrsim\ 9.4\ \text{块，可能更大})\ }$$
+
+**⇒ `(18)` 可满足 `α < k`，取 `α ≈ 0.07` ⇒ 关联长度 `≈14` 块 `≈14ℓ` 格距。**
+
+**⇒ 有限关联长度**存在**，但是**弱指数**——与「`β=2.5` 无小参数」的诊断一致。**
+
+### 5⁗⁗⁗⁗⁗.4 下一步的唯一目标
+
+$$\boxed{\ \text{(17)}\quad \text{相邻慢变量的热浴更新，其不一致传播由 }Q_{b\to a}(Y)\text{ 控制，且沿传播链的联合权重由 }\nu_{\rm slow}\text{ 下的【同构型乘积期望】控制}\ }$$
+
+**⚠️ 必须控**联合乘积** `E[Q_{e_1}⋯Q_{e_n}]`，不能只证 `E Q_e ≪ 1`——相邻边权可能相关，单点平均小不意味着路径乘积按长度指数衰减。**
+
+**⇒ 本轮我核到：在本模型里相关方向是**铁磁（有利）**，而最大风险来自 `log Z_C` 的贡献，它可能把 `k` 压小。**
+
+### 5⁗⁗⁗⁗⁗.5 审计
+
+| 项 | 判 |
+|---|---|
+从 `S_slow` 定义 `Q_e(y)`，式 `(3)–(5)` | **`[T]`** |
+`Q ≤ tanh(π²K/4)` | **`[T]`** |
+路径权重 = 退火图开路径概率，`(8)–(10)` | **`[T]`** |
+**ADP：构造与退火图匹配的条件 Gibbs 耦合** | **`[U]`（唯一的实质缺口）** |
+ADP ⟹ 协方差路径界，`(11)–(15)`，`C=2` | **`[T]`** |
+**(16) 的混合环境不受 `ν_slow` 支配** | **`[T]`（记账）** |
+`H_SS` 项给的 `k ≈ 0.106`（关联长度 `≈9.4` 块） | **`[M]`（模拟）** |
+含 `log Z_C` 后 `k ≤ 0.106` | **`[T]`（上界推理）** |
+**`β=2.5` 下 ADP** | **`[U]`** |
+
+---
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
