@@ -198,7 +198,18 @@ and **not** $\text{bound the worst local eigenvalue}\longrightarrow\text{then su
 
 ## 8. Numerical evidence
 
-Monte Carlo at $\beta=2.5$, $\mathrm{SU}(2)$ Wilson action, $L=6,8,10,12$. Here $\chi:=\widehat C_L(0)=L^{-4}\sum_{x,y}\Gamma_L(x,y)$.
+Monte Carlo at $\beta=2.5$, $\mathrm{SU}(2)$ Wilson action, $L=6,8,10,12$. Data files `research/unconditional/w7/bmc_L{6,8,10,12}_b2.500.npz` contain the **full** arrays `Ck`$=\widehat C_L(\cdot)$ and `Cz`$=\Gamma_L(0,\cdot)$, so all Fourier modes — not just the zero mode — are available.
+
+### 8.1 The maximum of $\widehat C_L(k)$ is at $k=0$
+
+| $L$ | $\max_k\widehat C_L(k)$ | $\arg\max_k$ | $\max/\widehat C_L(0)$ |
+|---|---|---|---|
+| 6 | 0.03192553 | $(0,0,0,0)$ | **1.000000** |
+| 8 | 0.03295298 | $(0,0,0,0)$ | **1.000000** |
+| 10 | 0.03428803 | $(0,0,0,0)$ | **1.000000** |
+| 12 | 0.03269092 | $(0,0,0,0)$ | **1.000000** |
+
+So $\|\Gamma_L\|_{2\to2}=\widehat C_L(0)=\chi_L$ **is measured, not deduced from $\chi_L$ alone**. The shell profile is monotone in $\lambda(k)=4\sum_\mu\sin^2(k_\mu/2)$; at $L=6$ the values are $0.03193\ (\lambda{=}0)$, $0.02649\ (\lambda{=}1)$, $0.02320\ (\lambda{=}2)$, $0.02058\ (\lambda{=}3)$, $\dots$, $0.01350\ (\lambda{=}8)$.
 
 | $L$ | $\chi$ | $\Lambda_L$ | $\chi/\Lambda_L$ | $1/(\chi/\Lambda_L)$ |
 |---|---|---|---|---|
@@ -207,23 +218,38 @@ Monte Carlo at $\beta=2.5$, $\mathrm{SU}(2)$ Wilson action, $L=6,8,10,12$. Here 
 | 10 | 0.03428803 | 12.6480 | 0.002711 | $369\times$ |
 | 12 | 0.03269092 | 14.7840 | 0.002211 | $452\times$ |
 
-A second independent run at $L=6$ (different seed, shorter) gives $\chi=0.03059447$.
+**The margin grows with $L$:** $\chi$ is $L$-independent while $\Lambda_L\sim\ln L$.
 
-Shell sums $S_j:=\sum_{\|z\|=j}|\Gamma_L(0,z)|\,g_c(z)$ satisfy
-$$\sup_{L,j}S_j\approx7.43\times10^{-3},\qquad \text{ratios for }L=6,8,10,12:\ 1.006,\ 1.010,\ 0.982,\ 0.925,$$
-i.e. $S_j$ is $L$-independent. Shells with $j>L/2$ are contaminated by the minimum-image convention and must be excluded from fits; on clean shells $j\le L/2$ the fitted effective power is $p_{\rm eff}=4.5\text{–}5.1$.
+### 8.2 $\widehat C_L(k)$ is a Lorentzian in $\lambda(k)$
 
-**Two quantitative readings.**
+Fitting $\widehat C_L(k)=A/(m^2+\lambda(k))$ over all modes with $\lambda\le8$:
 
-1. **$\chi$ is $L$-independent while $\Lambda_L\sim\ln L$**, so $\chi/\Lambda_L\searrow0$. The margin **grows** with $L$. The target (T) is therefore satisfied with a wide and increasing margin.
+| $L$ | $A$ | $m^2$ | $m$ | residual RMS (relative) |
+|---|---|---|---|---|
+| 6 | 0.18961 | 6.2241 | **2.4948** | 3.89 % |
+| 8 | 0.18996 | 6.2480 | **2.4996** | 3.89 % |
+| 10 | 0.18912 | 6.1716 | **2.4843** | 4.08 % |
+| 12 | 0.18888 | 6.1367 | **2.4772** | 4.21 % |
 
-2. **Effective spectral scale.** By (4.1), $\nu_0$ has total mass $\le24$; by (5.2), $\chi=\int\lambda^{-1}d\nu_0$. Hence the $\nu_0$-average of $\lambda^{-1}$ is
-$$\frac{\chi}{\|D_0\|^2}=\frac{0.032}{24}=1.33\times10^{-3}\quad\Longrightarrow\quad \lambda_{\rm eff}\approx 750\gg1 .$$
-$$\boxed{\ \text{The }\mathscr H\text{-spectrum against the scalar source lies far outside the infrared; effective scale}\ \sim750\ }$$
+$$\boxed{\ m=2.477\text{–}2.500\ \text{independent of }L\text{ to three digits}\ \Longrightarrow\ \text{an }O(1)\text{ scalar-channel scale}\ }$$
 
-**Consequence for (M).** Since $\chi$ is *constant* rather than $\asymp(1/\delta)\log L$, the true spectral leakage is far faster than (M) permits: the data is consistent with an $O(1)$ spectral gap in the scalar channel, i.e. with
-$$\nu_0([0,s])\le A s^{1+\delta}\qquad\text{with }\delta\text{ effectively large},$$
-and **without** the volume-dependent factor $\omega_L(0)^{-\delta}=L^{2\delta}$.
+In real space this corresponds to exponential decay with inverse correlation length $m\approx2.48$, i.e. $\xi=1/m\approx0.40$ lattice spacings — far stronger than the $|z|^{-4-\varepsilon}$ required by (C2).
+
+**Caveat.** The $4\%$ residual may indicate a correction exponent, i.e. $\widehat C_L(k)=A/(m^2+\lambda(k))^{1+\eta}$ with $\eta\ne0$. This has not been fitted. Also $A\approx0.189$ is $L$-independent while $m$ drifts by $0.7\%$; neither drift has an error bar because the raw configurations were not saved (`q_fields` has shape $(0,L,L,L,L)$ in all four files).
+
+### 8.3 A quantity that must **not** be used
+
+$\sum_zCz(z)=\chi_L=0.032$ is $L$-independent, but $\sum_z|Cz(z)|=0.0359,\,0.0430,\,0.0546,\,0.0691$ **grows with $L$**. The excess comes from the $\sim L^4$ distant points where $|Cz|\sim10^{-6}$ is noise. Hence $\sum_z|Cz|$ is **not** a test of (C2); the correct test is the momentum-space fit of §8.2.
+
+### 8.4 The effective spectral scale of §8.2 versus the harmonic mean
+
+Earlier one might read off "effective scale $\sim750$" from $M_0/\chi$ with $M_0\le24$ (as in §11.2). The Lorentzian fit shows the actual scale is $m^2\approx6.2$. These are consistent: $\int\lambda^{-1}d\nu_0$ is a **harmonic** mean and can be far larger than the bulk location of the spectrum when the spectrum has weight at large $\lambda$. The number $750$ must not be quoted as a spectral location.
+
+### 8.5 Shell sums
+
+$S_j=\sum_{\|z\|=j}|\Gamma_L(0,z)|g_c(z)$ satisfies $\sup_{L,j}S_j\approx7.43\times10^{-3}$ with ratios $1.006,1.010,0.982,0.925$ for $L=6,8,10,12$. Shells with $j>L/2$ are contaminated by the minimum-image convention; on clean shells $j\le L/2$ the fitted effective power is $p_{\rm eff}=4.5$–$5.1$.
+
+**But §8.3 applies**: $S_j$-boundedness does not imply absolute summability. The evidence for exponential decay is §8.2, not $S_j$.
 
 ---
 
