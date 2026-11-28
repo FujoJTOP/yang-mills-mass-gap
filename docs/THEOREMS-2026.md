@@ -135,3 +135,85 @@ $$\Phi_K(\beta):=f(\beta)-\sum_{k=1}^K\frac{c_k}{\beta^k}\qquad\Longrightarrow\q
 `\_ck3.py$` | 精确系数到 `k=23$` | `20$` s |
 `\_phi.py$` | 余项判据 | `5$` s |
 `\_phicont.py$` | `j_{\max}$` 扫描 | `529$` s |
+
+---
+
+## I. 第 183–193 轮新增的 `[T]$`
+
+### I.1 Riccati 形式与第二证明
+
+$$r:=\frac{I_1}{I_2}\quad\Longrightarrow\quad r'=1-r^2+\frac{3r}{z}$$
+
+**（用 `I_\nu'=\frac{I_{\nu-1}+I_{\nu+1}}{2}$、`I_{\nu-1}-I_{\nu+1}=\frac{2\nu}{z}I_\nu$；7 点核到 10–12 位。）**
+
+**障碍函数 `\rho=\frac2z+\sqrt{1+\frac4{z^2}}$ 满足**
+
+$$\rho'-F(\rho)=\frac{1}{z\sqrt{1+4/z^2}}\gt0\qquad\textbf{精确}$$
+
+**而 `F$` 在 `\rho$` 处严格递减、小 `z$` 时 `r\approx\frac4z+\frac z6\lt\rho\approx\frac4z+\frac z4$。**
+
+**⇒ 比较定理 ⇒ `r\lt\rho\ \forall z\gt0$` ⇒ `I_1I_3\lt I_2^2$` —— **第二独立证明（不用级数）。**
+
+### I.2 `A$` 的化简与等价单比形式
+
+$$I_3=I_1-\frac4zI_2\qquad A=I_1I_3-I_2^2=I_1^2-I_2^2-\frac{4I_1I_2}{z}$$
+
+$$\frac{I_1}{I_2}\lt\frac{2+\sqrt{z^2+4}}{z}$$
+
+### I.3 `L=1$` 的 `V$` 结构
+
+| 事实 | 内容 |
+|---|---|
+**`V\equiv1$**` | `r=I_2/I_1$` 对**任意** `L_s$`（`T=K_1^{\otimes n}$`） |
+**`u$**` | `=I_2/I_1=t_{1/2}/t_0$`（精确） |
+**单链 `q$` 的块** | 只连 `j=0\leftrightarrow j=\frac12$`，`\|b\|=1$`，无对角 |
+**`\sigma(B)$**` | `=0.5$`（`\langle Q_P\rangle_{\max}$` 在 `t_2$` 的简并子空间） |
+**简化子空间** | `t_2$` 是 8 重；`T_1$` 在其上给 `\pm1.028$` ⇒ `\frac{d\ln t_2}{d\beta_s}=0.5$ |
+**`t_j/t_1$**` | `=(I_2/I_1)^2$`（`j=\frac12$` 层） |
+
+### I.4 定理 (V-一阶)
+
+$$\boxed{\ \frac{dr}{d\beta_s}\Big|_{0}=u\cdot\frac{\lambda_{\max}(G_U)}{2}\ }$$
+
+**`G_U$` = 耦合图（顶点 = 与 `U$` 同在一个 plaquette 里的其他链；边 = 两顶点同在一个 plaquette 里）。**
+
+| 模型 | `G_U$` | `\lambda_{\max}$` | 斜率 |
+|---|---|---|---|
+`L_s=1$` | `K_2$` | `1$` | `0.5u$`（实测✓） |
+`L_s=3$` 三角 | `K_3$` | `2$` | `u$` |
+**4 维格点** | **`6\times K_3$**` | **`2$**` | **`u$`** |
+
+**关键：`\lambda_{\max}$` **不随不连通分量叠加** ⇒ 格点的 6 个 plaquette 不放大效应。**
+
+**⇒ 格点上 `\frac{dr}{d\beta_s}|_0=u\approx1-\frac{3}{2\beta}$` ⇒ 一阶效应是**幂次**，不是指数。**
+
+### I.5 Weyl 在格点上
+
+$$T=MKM,\quad \|M\|\le1\quad\Longrightarrow\quad\|E\|\le\|K_{\rm tail}\|$$
+
+**（单链 `\|M\|=e^\lambda\gt1$`，格点 `\le1$` ⇒ 格点的 Weyl 误差**更小**。）**
+
+**⚠️ 但闭合需要「块内隙 `\gt2\|K_{\rm tail}\|$`」，而块内隙恰恰是要求的东西 ⇒ **不能自举**。**
+
+### I.6 已穷尽的路
+
+| 路 | 判 | 依据 |
+|---|---|---|
+`V\le1$` 延拓 | **`[F]$`** | 乘积无增益、非乘积更差（`0.692\gt0.507$`） |
+`V$` 的秩截断 | **`[F]$`** | `V$` 是乘法算子（谱填满区间），非紧 |
+`L=1$` 的 `\Phi$` | **`[T]$**（`\equiv0$`/`\to0$`） | 余项判据 + 本质谱 |
+`L=1$` 的 RG | **`[F]$`** | 朴素 `\mathrm{Tr}_2$` 与五种加权全部残差 `\ge0.89$` |
+`L=1$` 的相图/对角线 | **`[M]$`** | `1-r\propto\beta^{-0.92}$`，无 scaling window |
+Weyl 在格点上 | **`[F]$`**（自举） | 循环 |
+
+### I.7 复现（新增）
+
+| 脚本 | 作用 | 耗时 |
+|---|---|---|
+`\_ataylor.py$` | `A$` 的 Taylor 系数 | `5$` s |
+`\_riccati.py$` | Riccati + 障碍比较 | `2$` s |
+`\_Dhp.py$` | `D$` 的 60 位核验 | `3$` s |
+`\_plaqgraph.py$` | 4 维 plaquette 邻接图 | `1$` s |
+`\_qexp.py$` | 单链 `q$` 的块 | `1$` s |
+`\_M1diag.py$` | `T_1$` 在简并子空间 | `3$` s |
+`\_recons.py$` 等 | `L=1$` 的相图 | `<10$` s 每个 |
