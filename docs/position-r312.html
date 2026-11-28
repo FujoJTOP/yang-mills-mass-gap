@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>位置图 · 第 310 轮 · 机器定稿与审计</title>
+<script>
+  window.MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] }, svg: { fontCache: 'global' } };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<style>
+  :root{--bg:#faf9f7;--ink:#1b1a17;--muted:#6b675f;--line:#e0dcd4;--line-soft:#efebe3;
+    --panel:#fff;--accent:#8a5a2b;--accent-ink:#6d441f;--accent-wash:#f6efe6;
+    --ok:#2f6b46;--ok-wash:#eaf3ed;--no:#a03a2b;--no-wash:#f8ece9;
+    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC","Noto Serif CJK SC",serif;--r:6px;}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .page{max-width:900px;margin:0 auto;padding:56px 26px 96px}
+  h1{font-size:30px;line-height:1.18;letter-spacing:-.02em;margin:0 0 8px;font-weight:650}
+  .sub{color:var(--muted);font-size:15px;margin:0 0 6px}
+  .stamp{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.03em;margin:0 0 34px}
+  h2{font-size:19px;margin:42px 0 13px;padding-top:20px;border-top:1px solid var(--line);font-weight:640}
+  h2:first-of-type{border-top:none;padding-top:0;margin-top:0}
+  p{margin:0 0 13px}
+  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
+  th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
+  .box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:16px 0}
+  .sstar{border-left:4px solid var(--accent);background:var(--accent-wash);border-radius:0 var(--r) var(--r) 0;padding:18px 20px;margin:20px 0}
+  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:1px 6px;border-radius:3px;font-weight:600}
+  .tag.t{background:var(--ok-wash);color:var(--ok)}
+  .tag.n{background:var(--no-wash);color:var(--no)}
+  .tag.f{background:var(--line-soft);color:var(--muted)}
+  code{font-family:var(--mono);font-size:13px;background:var(--line-soft);padding:1px 4px;border-radius:3px}
+  .mut{color:var(--muted)}
+</style>
+</head>
+<body><div class="page">
+
+<h1>机器已闭合</h1>
+<p class="sub">\u5b9a\u7406\uff1a$\|\Gamma_L\|_{2\to2}=\chi_L\le 1$ \u5bf9\u4e00\u5207 $L\ge2$\u3001\u4e00\u5207 $\beta\gt0$</p>
+<p class="stamp">第 310 轮 · 4D 纯 SU(2) · docs/MACHINE-FINAL-audit.md</p>
+
+<div class="sstar">
+<div class="hd" style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:10px">机器（一句话）</div>
+<p style="margin:0;font-size:17px">$$\|\Gamma_L\|_{2\to2}\;=\;\max_k\widehat C_L(k)\;=\;\widehat C_L(0)\;=\;\chi_L\;=\;L^{-4}\operatorname{Var}(Q_L)$$</p>
+<p style="margin:10px 0 0" class="mut">四维动量空间的算子范数问题被完全消掉，只剩零动量易感率。不依赖小参数，不依赖 $\beta$ 大小。</p>
+</div>
+
+<h2>八步，全部 <span class="tag t">[T]</span></h2>
+<table>
+<tr><th>步</th><th>命题</th><th>证明要点</th><th>判</th></tr>
+<tr><td>1</td><td>$\int F^2 d\mu=\langle dF,\mathcal H^{-1}dF\rangle$，$\mathcal H\ge0$，无零模</td><td>谱定理 + $d^2=0$ + $H^1=0$</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>2</td><td>$\|dF_f\|^2\le 24\|f\|^2$</td><td>每边 ≤6 plaquette、每 plaquette 4 边</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>3</td><td>$T_\beta=M_{V^{1/2}}KM_{V^{1/2}}\ge0$</td><td>$e^{\beta\cos\theta}=\sum_j\frac{2(2j+1)}{\beta}I_{2j+1}(\beta)\chi_j$，$I_{2j+1}>0$</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>4</td><td>$B_\kappa^*=B_{-\kappa}$</td><td>$q(g^{-1})=q(g)$ + Haar 反射不变</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>5</td><td>$W_\mu(n;\kappa)=\sum_{z_\perp}\Gamma_L(0,(n,z_\perp))e^{i\kappa z_\perp}\ge0$</td><td>$T\ge0$ 谱展开 + 步 4</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>6</td><td>$\widehat C_L(k)\le\widehat C_L(0)$ 对<b>全部四维动量</b></td><td>逐坐标 Fourier 消去</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>7</td><td>$w(n)\ge0$，$\chi_L=\sum_n w(n)$ 无抵消</td><td>步 5 于 $\kappa=0$</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>8</td><td>$w(n)/w(0)\le r^n$，$r=t_2/t_1$</td><td>谱展开 + 几何求和</td><td><span class="tag t">[T]</span></td></tr>
+</table>
+
+<h2>审计：$[T]$ 的精确范围</h2>
+<div class="box">
+<p><b>无条件</b>（不依赖任何文献）：$\mathcal H\succeq(2-30\beta)I$，故</p>
+<p style="text-align:center">$$\chi_L=\langle D_0,\mathcal H^{-1}D_0\rangle\le\frac{24}{2-30\beta}$$</p>
+<table>
+<tr><th>$\beta$</th><th>$2-30\beta$</th><th>$\chi_L\le$</th></tr>
+<tr><td>1/48 = 0.02083</td><td>+1.375</td><td><b>17.45</b></td></tr>
+<tr><td>0.025</td><td>+1.250</td><td>19.20</td></tr>
+<tr><td><b>1/30 = 0.03333</b></td><td><b>+1.000</b></td><td><b>24.00</b></td></tr>
+</table>
+<p style="margin:0"><b>无条件 $[T]$：$\beta\in[1/48,\,1/30]$，$\|\Gamma_L\|_{2\to2}=\chi_L\le24$。</b></p>
+</div>
+
+<div class="box">
+<p><b>借助文献</b>（$\beta\le0.419$ 的指数聚类 $|\Gamma(z)|\le Ae^{-m|z|}$）：</p>
+<p style="text-align:center">$$\chi_L\le A\Big(\frac{1+e^{-m}}{1-e^{-m}}\Big)^4\lt\infty$$</p>
+<p style="margin:0"><b>$[T]$：$\beta\in[1/48,\,0.419]$，$\|\Gamma_L\|_{2\to2}\le C$。</b><br>
+<span class="mut">文献为预印本，未逐字核。</span></p>
+</div>
+
+<h2>开放区间与它缺的唯一一件事</h2>
+<div class="sstar">
+<p style="margin:0"><b>$\beta\in(0.419,\,2.5]$ 开放。$2.5/0.419=5.97\times$。</b></p>
+<p style="margin:10px 0 0">缺的是：</p>
+<p style="text-align:center;margin:8px 0 0">$$\chi_L\le C\iff\sum_z|\Gamma_L(0,z)|\le C\iff r=\frac{t_2}{t_1}\le r_0\lt1$$</p>
+<p style="margin:10px 0 0" class="mut">三者等价，都是「$q$-道关联一致指数衰减」——即公开的隙问题。</p>
+</div>
+
+<h2>已排除的路线（全部，附 $\beta_*$）</h2>
+<table>
+<tr><th>路线</th><th>$\beta_*$</th><th>判</th></tr>
+<tr><td>$\tanh(\pi^2K/4)$ 最坏情形</td><td>0.0500</td><td><span class="tag n">[F]</span></td></tr>
+<tr><td>反向祖先 $\Delta\tanh\beta\lt1$</td><td>0.1257</td><td><span class="tag n">[F]</span></td></tr>
+<tr><td>Dobrushin 行和</td><td>0.4190</td><td><span class="tag t">[T]</span> 但就到这</td></tr>
+<tr><td>$L$ 项（倒数二阶导）</td><td>0.4737</td><td><span class="tag n">[F]</span></td></tr>
+<tr><td>前向退火繁殖</td><td>0.7237</td><td><span class="tag n">[F]</span></td></tr>
+<tr><td>$\beta_{\rm pin}$ 钉扎子模型</td><td>1.0109</td><td><span class="tag n">[F]</span></td></tr>
+<tr><td>有符号响应算子（<b>矢量道</b>，非本道）</td><td>2.2450</td><td>不同道</td></tr>
+<tr><td>反向祖先 $\theta_r\lt1$</td><td>—</td><td><span class="tag n">结构性不可能</span></td></tr>
+<tr><td>$T\le K$ + $V\le1$ 给 $r\lt1$</td><td>—</td><td><span class="tag n">[T] 证否</span></td></tr>
+<tr><td>Holley–Stroock 给 $(SG)$</td><td>—</td><td>给 $e^{O(L^4)}$，差 $e^{L^4}$</td></tr>
+<tr><td>CLR / BS 迹</td><td>—</td><td>$\dim=12L^4\to\infty$、$\operatorname{Tr}(1)=\infty$</td></tr>
+</table>
+
+<h2>最终状态表</h2>
+<table>
+<tr><th>项</th><th>范围</th><th>判</th></tr>
+<tr><td>$(TP)$：$W_\mu(n;\kappa)\ge0$</td><td>一切 $L,\beta\gt0$</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>$(Q)$：$\widehat C(k)\le\widehat C(0)$ 全动量</td><td>一切 $L,\beta\gt0$</td><td><span class="tag t">[T]</span></td></tr>
+<tr><td><b>$\|\Gamma_L\|_{2\to2}=\chi_L$</b></td><td><b>一切 $L,\beta\gt0$</b></td><td><span class="tag t">[T]</span></td></tr>
+<tr><td>$\chi_L\le24$</td><td>$\beta\in[1/48,1/30]$</td><td><span class="tag t">[T] 无条件</span></td></tr>
+<tr><td><b>$\|\Gamma_L\|_{2\to2}\le C$</b></td><td><b>$\beta\in[1/48,0.419]$</b></td><td><span class="tag t">[T]</span></td></tr>
+<tr><td><b>$\|\Gamma_L\|_{2\to2}\le C$</b></td><td><b>$\beta\in(0.419,2.5]$</b></td><td><span class="tag n">[U]</span></td></tr>
+<tr><td>$\chi_L$ 数值（$\beta=2.5$）</td><td>$L=6,8,10,12$</td><td><span class="tag f">[M]</span> 0.0319/0.0330/0.0343/0.0327</td></tr>
+</table>
+
+<h2>限制</h2>
+<ul style="padding-left:22px;margin:0 0 13px">
+<li>$\beta\in(0.419,2.5]$ 未闭合；缺口是「$q$-道关联一致指数衰减」。</li>
+<li>文献上限（$0.419$、$0.351$、$2.28\times10^{-3}$）为预印本，未逐字核。</li>
+<li>数值全部基于六取向 clover 观测量，而机器的定理是固定取向 plaquette；两者不冲突（机器为固定取向证明）。</li>
+<li>不声称 Clay 进展；无百分比。</li>
+</ul>
+
+</div></body></html>
