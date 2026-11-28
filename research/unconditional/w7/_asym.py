@@ -1,19 +1,40 @@
 import numpy as np
-from scipy.special import iv
-# asymptotic expansion of  -ln(I2/I1)  in powers of 1/beta
-def f(b): return -np.log(iv(2,b)/iv(1,b))
-bs=np.array([40.0,60.0,80.0,120.0,160.0,240.0,320.0])
-vals=np.array([f(b) for b in bs])
-# fit  f = c1/b + c2/b^2 + c3/b^3 + c4/b^4 + c5/b^5
-A=np.vstack([1.0/bs**k for k in range(1,6)]).T
-coef,res,rank,sv=np.linalg.lstsq(A,vals,rcond=None)
-print("asymptotic expansion of  -ln(I2/I1)  in 1/beta:")
-for k,c in enumerate(coef,1):
-    print("   c_%d = %+.10e"%(k,c))
+from scipy.special import ive
+from scipy.linalg import expm
+bt=2.5
+print("=== asymptotic analysis of m a(beta_s) with jm=8*beta_s ===")
 print()
-print("check: f(beta) vs the 5-term fit")
-for b in (40.0,80.0,160.0,320.0,640.0,1280.0):
-    fit=sum(coef[k-1]/b**k for k in range(1,6))
-    print("   beta=%7.1f : f=%.10e   fit=%.10e   rel.diff=%.2e"%(b,f(b),fit,abs(f(b)-fit)/f(b)))
+rows=[]
+for bs in (4,8,16,32,64,128,256):
+    jm=int(8*bs)
+    nJ=jm+1
+    Ap=np.zeros((nJ,nJ))
+    idx=np.arange(nJ-1)
+    Ap[idx,idx+1]=0.5; Ap[idx+1,idx]=0.5
+    td=np.array([ive(j+1,bt)/ive(1,bt) for j in range(jm+1)])
+    Mf=expm(bs*Ap/2)
+    w0=Mf[:,0]
+    sc=float(w0 @ (td*w0))
+    T=(Mf @ np.diag(td) @ Mf)/sc
+    ev=np.linalg.eigvalsh(0.5*(T+T.T))[::-1]
+    r=ev[1]/ev[0]
+    ma=-np.log(r)
+    rows.append((bs,ev[0],ev[1],r,ma))
+    print("beta_s=%7.1f jm=%5d : t1=%.10f t2=%.10f m a=%.10f"%(bs,jm,ev[0],ev[1],ma), flush=True)
+b=np.array([x[0] for x in rows],dtype=float)
+ma=np.array([x[4] for x in rows])
 print()
-print("=> c_1 = 3/2 ?   c_2 = 15/8 ?  (the free-field-like coefficient)")
+# fits
+for lo,hi in [(0,len(b)),(2,len(b)),(3,len(b))]:
+    sl=slice(lo,hi)
+    p,c=np.polyfit(np.log(b[sl]),np.log(ma[sl]),1)
+    print("fit over beta_s in [%g,%g] : m a ~ beta_s^%.5f  (C=%.5f)"%(b[lo],b[-1],p,np.exp(c)), flush=True)
+print()
+# log fit: m a = A ln(beta_s) + B
+A,B=np.polyfit(np.log(b),ma,1)
+print("log fit : m a = %.6f ln(beta_s) + %.6f"%(A,B), flush=True)
+print("residuals of log fit:", np.round(ma-(A*np.log(b)+B),6), flush=True)
+# sqrt fit: m a = A sqrt(beta_s) + B
+A2,B2=np.polyfit(np.sqrt(b),ma,1)
+print("sqrt fit: m a = %.6f sqrt(beta_s) + %.6f"%(A2,B2), flush=True)
+print("residuals of sqrt fit:", np.round(ma-(A2*np.sqrt(b)+B2),6), flush=True)
