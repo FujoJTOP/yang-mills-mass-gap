@@ -1,0 +1,51 @@
+import numpy as np, functools, time
+from scipy.special import iv
+from sympy.physics.wigner import wigner_3j
+from sympy import Rational, N as sN
+@functools.lru_cache(maxsize=None)
+def d3(j1,m1,j2,m2,j3,m3):
+    return float(sN(wigner_3j(Rational(j1,2),Rational(j2,2),Rational(j3,2),
+                             Rational(m1,2),Rational(m2,2),Rational(m3,2)),20))
+def make_basis(jm):
+    return [(j,m,n) for j in range(0,jm+1) for m in range(-j,j+1,2) for n in range(-j,j+1,2)]
+def mult_op(B,index,J2,M2,N2,conj=False):
+    d=len(B); A=np.zeros((d,d))
+    mm,nn=(-M2,-N2) if conj else (M2,N2)
+    ph=((-1.0)**((M2-N2)//2)) if conj else 1.0
+    for i2,(j2,m2,n2) in enumerate(B):
+        m3,n3=m2-mm,n2-nn
+        for j3 in range(abs(J2-j2),J2+j2+1,2):
+            key=(j3,m3,n3)
+            if key not in index: continue
+            v=((-1.0)**((m2-n2)//2))*d3(j3,m3,J2,mm,j2,-m2)*d3(j3,n3,J2,nn,j2,-n2)
+            if v!=0.0: A[index[key],i2]=np.sqrt((j3+1.0)*(j2+1.0))*v
+    return ph*A
+jm=3
+B=make_basis(jm); index={b:i for i,b in enumerate(B)}; d=len(B); D=d*d
+ops={}
+for J2 in range(0,jm+1):
+    ops[J2]=[np.kron(mult_op(B,index,J2,M2,N2,False),mult_op(B,index,J2,M2,N2,True))
+             for M2 in range(-J2,J2+1,2) for N2 in range(-J2,J2+1,2)]
+beta_t=2.5
+t1d=2*iv(np.arange(0,jm+1)+1,beta_t)/beta_t
+Kd=np.array([t1d[b1[0]]*t1d[b2[0]] for b1 in B for b2 in B])
+Kdiag=np.diag(Kd)
+def t_of(bs):
+    Mf=np.zeros((D,D))
+    for J2 in range(0,jm+1):
+        cJ=(1.0 if J2==0 else 2*(J2+1)*iv(J2+1,bs)/bs)
+        for op in ops[J2]: Mf+=cJ*op
+    Mf*=np.exp(-bs)
+    T=Mf@Kdiag@Mf; T=(T+T.T)/2
+    return np.sort(np.linalg.eigvalsh(T))[::-1]
+t0=time.time()
+print("%8s %16s %16s %16s %16s"%("beta_s","r","r'(FD)","E2-E1","-2r(E2-E1)"))
+h=5e-3
+for bs in np.arange(1.6,2.61,0.1):
+    tp=t_of(bs+h); tm=t_of(bs-h); t0v=t_of(bs)
+    r=t0v[1]/t0v[0]
+    rp=((tp[1]/tp[0])-(tm[1]/tm[0]))/(2*h)
+    E1=-(np.log(tp[0])-np.log(tm[0]))/(2*h)/2
+    E2=-(np.log(tp[1])-np.log(tm[1]))/(2*h)/2
+    print("%8.2f %16.10f %16.8f %16.8f %16.8f"%(bs,r,rp,E2-E1,-2*r*(E2-E1)), flush=True)
+print("total %.1fs"%(time.time()-t0))
