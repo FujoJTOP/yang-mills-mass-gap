@@ -59,14 +59,14 @@
 <tr class="U"><td>D2</td><td><code>∃c₂∀β≥β₀∀L: m_lat/a ≤ c₂</code></td><td>无可用的相关长度上界</td></tr>
 <tr class="U"><td>D3</td><td>AF 轨迹上的紧性/收敛</td><td>Balaban 部分；完整未构造</td></tr>
 <tr class="U"><td>D4</td><td>全道（不止 <code>0^{++}</code>）</td><td><code>0^{++}</code> 最低 ⇒ 其隙是上界</td></tr>
-<tr class="F"><td>D5</td><td>模型 → 格点的桥</td><td><b>已否证</b>：<code>r = 0.692 &gt; 0.507</code></td></tr>
+<tr class="U"><td>D5</td><td>模型 → 格点的桥</td><td><b>等级冲突 [U]</b>：<code>r = 0.692</code>（ROUND59，<code>J_out</code> 收敛）vs 两链截断不收敛（第 365 轮）</td></tr>
 </table>
 
 <h2>3. 断点（带数与量词）</h2>
 <table>
 <tr><th>断点</th><th>类型</th><th>数 / 理由</th></tr>
 <tr><td>χ-类 ⇒ 质量隙</td><td><b>方向</b>（[T]）</td><td><code>λ_min ≤ ‖ν‖/Ĉ</code>；且 <code>∫χ = 1/6 ⇒ χ → 0</code> 于大 β。锐性：<code>ν = λ1_{(0,1]}dλ</code> 给 <code>Ĉ = 1, λ_min = 0</code></td></tr>
-<tr><td>单链 ⇒ 格点</td><td><b>真值</b>（[F]）</td><td><code>r = 0.692 &gt; 0.507 = I₂/I₁</code>（差 0.185，方向相反）</td></tr>
+<tr><td>单链 ⇒ 格点</td><td><b>等级冲突</b>（[U]）</td><td><code>r = 0.692 &gt; 0.507 = I₂/I₁</code>（ROUND59）与第 365 轮「截断不收敛」矛盾；两个窗口未对齐</td></tr>
 <tr><td>可解扇区的标度</td><td><b>读数</b>（[M]）</td><td><code>m·a = 0.633, 0.618, 0.648, 0.793, 1.131</code>（<code>β_s = 0.25…4</code>）⇒ 不趋于 0 ⇒ <code>m_lat/a → ∞</code> ⇒ 平凡极限</td></tr>
 </table>
 
@@ -83,7 +83,7 @@
 <table>
 <tr><th>路</th><th>判</th><th>数</th></tr>
 <tr class="T"><td>HS / 谱 / 求和规则（χ-类）</td><td>[T]</td><td>只能上界；<code>χ → 0</code>（大 β）</td></tr>
-<tr class="F"><td>单链延拓多链 <code>V ≤ 1</code></td><td>[F]</td><td><code>r = 0.692 &gt; 0.507</code></td></tr>
+<tr class="U"><td>单链延拓多链 <code>V ≤ 1</code></td><td>[U]</td><td><code>r = 0.692 &gt; 0.507</code>（ROUND59）vs 截断不收敛（365 轮）⇒ 等级冲突</td></tr>
 <tr class="F"><td><code>V</code> 的秩截断</td><td>[F]</td><td>谱填满 <code>[0.81, 1.50]</code></td></tr>
 <tr class="F"><td>特征标低阶</td><td>[F]</td><td><code>c_J ~ β^{−3/2}</code></td></tr>
 <tr class="F"><td><code>V</code> 的微扰（物理区）</td><td>[F]</td><td>半径 <code>≈2.5 &lt; β_s=β</code></td></tr>

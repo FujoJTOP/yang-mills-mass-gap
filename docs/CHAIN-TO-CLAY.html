@@ -91,7 +91,7 @@
 <div class="abstract">
   <p><span class="lbl">摘要。</span>本文把本项目中全部已证结论按“因为 — 那么 — 所以 — 得到 — 设”接成一条公式链，终点是 Clay 命题的等价两环形式
   \[ \mathrm{Clay}\iff(\mathrm{A3})\wedge(\mathrm{SCALE}), \]
-  其中 $(\mathrm{A1})$ 是质量比 $m_{\mathrm{lat}}/a(\beta)$ 的一致下界，$(\mathrm{A2})$ 是其一致上界，$(\mathrm{A3})$ 是沿渐近自由轨迹的 Osterwalder–Schrader 收敛性。链上除这三条外每一环均为已证。文中另给出两段已证的反证：$\chi$ 类界只能给出质量的上界（方向定理），以及单链结果到格点的桥为假。</p>
+  其中 $(\mathrm{A1})$ 是质量比 $m_{\mathrm{lat}}/a(\beta)$ 的一致下界，$(\mathrm{A2})$ 是其一致上界，$(\mathrm{A3})$ 是沿渐近自由轨迹的 Osterwalder–Schrader 收敛性。链上除这三条外每一环均为已证。文中另给出两段反证：$\chi$ 类界只能给出质量的上界（方向定理，<b>[T]</b>），以及单链结果到格点的桥（<b>等级冲突</b>：旧读数 $r=0.692$ 与第 365 轮的两链截断不收敛互相矛盾，现按 [U] 记，见 <code>docs/CHAIN-INVENTORY.md</code> §6-1）。</p>
 </div>
 
 <p class="grades">
@@ -250,10 +250,10 @@
 <div class="step"><span class="conn">设</span></div>
 <div class="eqwrap">\[ \text{桥}:\qquad V\le1\qquad(\text{单链结果延拓到多链}) \]<span class="no">(46)</span></div>
 
-<div class="step"><span class="conn">那么</span><span class="tag">差 0.185 · <span class="chip gF">[F]</span></span></div>
-<div class="eqwrap">\[ r_{\mathrm{nonproduct}}=0.692>0.507=I_2/I_1\qquad\Longrightarrow\qquad\text{桥为假} \]<span class="no">(47)</span></div>
+<div class="step"><span class="conn">那么</span><span class="tag">差 0.185 · <span class="chip gU">[U]</span> 等级冲突</span></div>
+<div class="eqwrap">\[ r_{\mathrm{nonproduct}}=0.692>0.507=I_2/I_1\qquad\Longrightarrow\qquad\text{桥未立（非“已假”）} \]<span class="no">(47)</span></div>
 
-<div class="step"><span class="conn">所以</span><span class="tag"><span class="chip gF">[F]</span> + <span class="chip gT">[T]</span></span></div>
+<div class="step"><span class="conn">所以</span><span class="tag"><span class="chip gU">[U]</span> + <span class="chip gT">[T]</span></span></div>
 <div class="eqwrap">\[ \text{转移矩阵线}:\quad\text{只到}\ L_s=1\qquad\Longrightarrow\qquad\text{不进 }(\mathrm{A1}),\ \text{不进 }(\mathrm{A2}) \]<span class="no">(48)</span></div>
 
 <h2>6　Clay 的等价形式</h2>
@@ -280,7 +280,7 @@
     <tr><td>R4</td><td>$\exists c_2\,\forall\beta\,\forall L:\ m_{\mathrm{lat}}/a\le c_2$</td><td class="gU">[U]</td><td>D2：相关长度上界</td></tr>
     <tr><td>R5</td><td>$S_n\to S_\infty$ 且满足 OS</td><td class="gU">[U]</td><td>D3：Balaban 部分</td></tr>
   </tbody>
-  <caption>表 1　五环。$0^{++}$ 是最低道，故其隙只是上界（[T]）；D5（模型 $\to$ 格点的桥）已 [F]。</caption>
+  <caption>表 1　五环。$0^{++}$ 是最低道，故其隙只是上界（[T]）；D5（模型 $\to$ 格点的桥）等级冲突，记 [U]。</caption>
 </table>
 
 <h2>8　死路台账</h2>
@@ -289,7 +289,7 @@
   <thead><tr><th>路</th><th style="width:3rem">判</th><th>数</th></tr></thead>
   <tbody>
     <tr><td>HS / 谱 / 求和规则（$\chi$ 类）</td><td class="gT">[T]</td><td>$\lambda_{\min}\le\|\nu\|/\hat C$；$\int\chi=1/6\Rightarrow\chi\to0$</td></tr>
-    <tr><td>单链延拓多链 $V\le1$</td><td class="gF">[F]</td><td>$r=0.692>0.507$</td></tr>
+    <tr><td>单链延拓多链 $V\le1$</td><td class="gU">[U]</td><td>$r=0.692>0.507$（ROUND59）vs 截断不收敛（第 365 轮）⇒ 等级冲突</td></tr>
     <tr><td>$V$ 的秩截断</td><td class="gF">[F]</td><td>谱填满 $[0.81,1.50]$</td></tr>
     <tr><td>特征标低阶</td><td class="gF">[F]</td><td>$c_J\sim\beta^{-3/2}$</td></tr>
     <tr><td>$V$ 的微扰（物理区）</td><td class="gF">[F]</td><td>半径 $\approx2.5<\beta_s$</td></tr>
