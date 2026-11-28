@@ -185,3 +185,36 @@ $$r(\beta_s)\ge u,\qquad r(0)=r(\infty)=u,\qquad\max r=r(2)=0.5948$$
 **⇒ 这个模型的隙 `1-r\ge1-0.5948=0.405$`（`\beta_t=2.5$` 处）—— 但它随 `\beta_t$` 消失（`u\to1$）。**
 
 **⇒ `L_s=1` 与 Clay 的**关键差异**仍是第 225 轮的：`V$` 的效应是**瞬态**（`r(0)=r(\infty)=u$），所以 `L_s=1$ 无法给出 `e^{-c\beta}$` 型的物理标度。**
+
+### 8.3 定理 (V-损隙) 的最终证书（第 32–35 轮定稿）
+
+**8 步解析全 `[T]`：**
+
+| 步 | 内容 |
+|---|---|
+**1** | `T=M_fKM_f$` 保持 `h=\sum_xj_x$` 的宇称 |
+**2** | `\psi_1(\beta_s)$` 在 `h` 偶；`D_2^{(0)}\subset h=1`（奇）⇒ `\langle\psi,\psi_1\rangle=0$` **精确** |
+**3** | Ky Fan：`t_2\ge\frac{\langle\psi,T\psi\rangle}{\langle\psi,\psi\rangle}$ |
+**4** | `K$` 在 `h=1$` 上常数 `t_0t_{1/2}=ut_1$` |
+**5** | **精确谱 `\text{spec}(q|_{h=1})=\{-\frac12(4\times),+\frac12(4\times)\}$**（解析：`B=\frac12\mathbb 1_4$`） |
+**6** | `\alpha=\|M_f\psi\|^2\ge\cosh(\beta_s/2)\gt1$ |
+**7** | `t_{\max}(h\ge3)\le u^2$`（Bessel 比单调性） |
+**8** | 条件 `\alpha-1\ge u(\alpha-\beta)$` |
+
+**唯一的 `[M]` 输入（第 33 轮）：**
+
+$$\max_{\beta_s\in[0.05,32]}\frac{\alpha-\beta}{\alpha-1}=0.9672\ \lt\ \frac1u=1.9716\qquad(\text{15 点，余量 }2.04\ \text{倍})$$
+
+**⇒ 定理 (V-损隙) 是 `[T]` + 1 个数值输入（余量 `2.04$` 倍）。**
+
+### 8.4 归一化的澄清（第 31–32 轮）
+
+**代码的 `M_f^{\rm code}=\sum_Jc_J\text{Op}_J$` 与物理的 `M_f^{\rm phys}=e^{\beta_s q/2}$` 差一个因子：**
+
+$$M_f^{\rm code}=e^{-\beta_s}M_f^{\rm phys},\qquad c_0=1-\beta_s+O(\beta_s^2),\qquad\text{Op}_0=\mathbb 1\ \text{精确}$$
+
+**① `r(\beta_s)$` **归一化不变** ⇒ 所有 `r$` 数值正确。**
+
+**② 比值 `\frac{\alpha-\beta}{\alpha-1}$` **不**归一化不变 —— 但**两种归一化都给定理**（物理 `0.75`、代码 `0.2259`，都 `\le\frac1u=1.9716$）。**
+
+**③ 撤回记录：第 31 轮的「归一化无关」撤回；第 34 轮的「勾股证明」撤回（`q$` 的 `h=1\to h\ge3$` 块使 `e^{\beta_s q/2}$` 混合高度）。**
