@@ -450,9 +450,27 @@ and none can hold: a single highly concentrated eigenfunction contributes $O(1)$
 
 ---
 
-## 14. Positive transfer matrix: (Q) holds for all momenta
+## 14. Positive transfer matrix: (Q) for all momenta — **status: proof has no internal gap, but contradicts the data**
 
-This section proves (Q) unconditionally, using only the positivity of the Wilson transfer matrix. **It supersedes §5's hypothesis (M) and §9's Problem 9.1 as the route to (T): after Theorem 14.4 the target reduces to the zero-momentum susceptibility alone.**
+> ## ⚠️ WARNING — read before using this section
+>
+> **The proof in §14.1–§14.4 has no gap that I have been able to find, but its Corollary 14.7 is contradicted by the available Monte Carlo data at $10^2$–$10^3$ times the noise floor.**
+>
+> | $L$ | $\min_{\mu,n}W_\mu(n;0)$ | location |
+> |---|---|---|
+> | 6 | $-1.471\times10^{-4}$ | $(\mu{=}1,n{=}3)$ |
+> | 8 | $-1.114\times10^{-4}$ | $(\mu{=}3,n{=}3)$ |
+> | 10 | $-1.257\times10^{-4}$ | $(\mu{=}3,n{=}5)$ |
+>
+> against $W_\mu(0;0)\approx0.0235$. Over all $(\mu,n,\kappa)$ the fraction of negative entries grows with $L$: $17\%,\ 26\%,\ 30\%,\ 34\%$ for $L=6,8,10,12$.
+>
+> **Consequently (TP), and with it Theorem 14.6 and (14.8), are marked `[?]` (unresolved contradiction), not `[T]`.** The only part that survives the data is (Q) restricted to the axis $\mu=0$ with $\kappa=0$, which needs only $w(n)\ge0$ and is satisfied ($\min 6.4\times10^{-5}$).
+>
+> The caveat that must be attached to all of the above: `q_fields` is empty in all four data files, so **there are no error bars**. The "noise floor" $\sim10^{-6}$ used above is read off $|C_z|$ at $r\gtrsim4$, not measured. See `docs/AUDIT-301-tp-contradiction.md` for the three candidate resolutions.
+>
+> **Do not cite §14 as a theorem until this is resolved.**
+
+This section presents a proof, communicated to me, that (Q) holds unconditionally via the positivity of the Wilson transfer matrix. **It is retained because the argument is structurally important and its resolution will determine the shape of the machine; it is not asserted as true.**
 
 ### 14.1 The transfer matrix is a non-negative operator
 
@@ -494,9 +512,7 @@ Fix $\mu$ and let $\kappa\in\frac{2\pi}{L}\mathbb Z_L^3$ be the momentum in the 
 
 $$\boxed{\ W_\mu(n;\kappa):=\sum_{z_\perp}\Gamma_L\big(0,(n,z_\perp)\big)\,e^{i\kappa\cdot z_\perp}\ }\tag{14.4}$$
 
-**Theorem 14.4 (transverse Fourier positivity, (TP)).** For all $n,\kappa,\mu,L$ and all $\beta>0$,
-
-$$\boxed{\ W_\mu(n;\kappa)\ \ge\ 0\ }\tag{14.5}$$
+**Theorem 14.4 (transverse Fourier positivity, (TP)).** For all $n,\kappa,\mu,L$ and all $\beta>0$, $W_\mu(n;\kappa)\ge0$. **Status `[?]`: see the warning at the head of §14.**
 
 *Proof.* Put $A_\kappa(t)=\sum_{x_\perp}e^{i\kappa\cdot x_\perp}q_{(t,x_\perp)}$, so $A_\kappa^*=A_{-\kappa}$. For $\kappa\ne0$, translation invariance gives $\langle A_\kappa\rangle=0$, and the spectral expansion of §14.2 yields directly
 
