@@ -1,0 +1,7 @@
+z=2.0  log10(tail/main)=-45.870002  tail/main=1.348956e-46
+z=5.0  log10(tail/main)=-24.371423  tail/main=4.251840e-25
+z=10.0  log10(tail/main)=-8.079079  tail/main=8.335290e-09
+z=15.0  log10(tail/main)=1.497578  tail/main=3.144688e+01
+z=20.0  log10(tail/main)=8.356153  tail/main=2.270663e+08
+z=25.0  log10(tail/main)=13.773259  tail/main=5.932789e+13
+z=29.0  log10(tail/main)=17.491135  tail/main=3.098385e+17
