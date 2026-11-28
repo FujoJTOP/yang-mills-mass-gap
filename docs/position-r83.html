@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>位置图 · 第 51 轮</title>
+<style>
+ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;max-width:1000px;margin:2rem auto;padding:0 1rem;line-height:1.6;color:#1a1a1a;background:#fafafa}
+ h1{font-size:1.5rem;border-bottom:2px solid #333;padding-bottom:.4rem}
+ h2{font-size:1.15rem;margin-top:2rem;border-left:4px solid #4a7;padding-left:.6rem}
+ table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+ th,td{border:1px solid #ccc;padding:.35rem .55rem;text-align:left;vertical-align:top}
+ th{background:#eee}
+ .T{background:#d8f0d8;font-weight:600}
+ .M{background:#fdf3d0}
+ .F{background:#f8d8d8}
+ .U{background:#e4e4e4}
+ code{background:#eee;padding:.05rem .25rem;border-radius:3px;font-size:.9em}
+ .note{background:#fff8e0;border-left:4px solid #d4a017;padding:.6rem .8rem;margin:1rem 0}
+</style>
+</head>
+<body>
+
+<h1>位置图 · 第 51 轮</h1>
+<p>项目：4 维纯 SU(2) Yang-Mills 质量隙（Clay）。进展单位是「轮」。</p>
+
+<h2>1. 目标链</h2>
+<p>Clay ⟸ 格点上 <code>t2/t1 &lt; 1</code>（质量隙）⟸ 需要格点自己的谱估计。当前唯一活着的具体链是<strong>单链 (R)</strong>：</p>
+<pre>r(λ) := t2(λ)/t1(λ) ≤ I2(β)/I1(β) = r(0)
+
+  逐环：
+    ① t0''(0) &gt; 0                       [T]
+    ② t1''(0) &lt; 0  ⟺  I1 I3 &lt; I2^2       [T]
+    ③ r'(0) &lt; 0                          [T]（由 ①②）
+    ④ r'(λ) &lt; 0 全程                      [U]  ← 唯一缺口</pre>
+
+<h2>2. 已证的核心定理</h2>
+<table>
+<tr><th>件</th><th>内容</th><th>等级</th></tr>
+<tr class="T"><td>两种表示一致</td><td><code>(M_f)_{ab} = (2/π)∫e^{λcosθ}sin((a+1)θ)sin((b+1)θ) = I_{|a-b|}(λ) − I_{a+b+2}(λ)</code>（逐元核到 4.4e−16）</td><td>[T]</td></tr>
+<tr class="T"><td>M_c</td><td><code>M_c = ½ S₁</code>（严格三对角）</td><td>[T]</td></tr>
+<tr class="T"><td>Bessel 不等式</td><td><code>I₁(z)I₃(z) &lt; I₂(z)²</code> 对一切 z &gt; 0</td><td>[T]</td></tr>
+<tr class="T"><td>它的证明</td><td><code>A=I₁I₃−I₂²</code> 满足 <code>z³A''' + 5z²A'' − (4z³+13z)A' − (4z²+32)A = 0</code>（sympy 精确化简为 0）；配 <code>D_N = −2(2N+3)!/(N!(N+1)!(N+3)!(N+4)!) &lt; 0</code>，级数每项为负</td><td>[T]</td></tr>
+<tr class="T"><td>D_N 的递推</td><td><code>D_{N+1}/D_N = 2(2N+5)/((N+1)(N+4)(N+5))</code>（N=0..29 精确）</td><td>[T]</td></tr>
+<tr class="T"><td>t_i''(0) 闭式</td><td><code>t_i'' = t_i + ½(t_{i-1}+t_{i+1}) + (t_i+t_{i+1})²/(2(t_i−t_{i+1})) − (t_{i-1}+t_i)²/(2(t_{i-1}−t_i))</code></td><td>[T]</td></tr>
+<tr class="T"><td>核的展开</td><td><code>K(θ,φ) = e^β θφ[1 − (β/2)(θ²+φ²) + O(4)]</code></td><td>[T]</td></tr>
+<tr class="M"><td>r 的数值</td><td><code>r(λ) &lt; I₂/I₁</code> 在 λ ∈ [0.05, 30]（22 点），从 0.5047 降到 0.00226</td><td>[M]</td></tr>
+<tr class="M"><td>大 λ 渐近</td><td><code>r ~ C/λ²</code>（幂指数 −1.46 → −1.93）</td><td>[M]</td></tr>
+<tr class="M"><td>N_c 序</td><td><code>N_c(y₂) ≤ N_c(y₁)</code>（9 点，λ ∈ [0.05,5]）</td><td>[M]</td></tr>
+</table>
+
+<h2>3. 三条结构障碍</h2>
+<table>
+<tr><th>障碍</th><th>内容</th><th>等级 / 依据</th></tr>
+<tr class="F"><td>O1</td><td>靠 <code>V ≤ 1</code> 把单链 (R) 延拓到格点</td><td><strong>[F]</strong><br>乘积 <code>V=f(u₁)f(u₂)</code> ⇒ <code>T=A⊗A</code> ⇒ <code>r=λ₂/λ₁</code> 与单链<strong>逐位相同</strong>（无增益）；<br>非乘积 <code>V=f(u₁u₂⁻¹)</code> ⇒ <code>r=0.589/0.674 &gt; 0.507</code>（更差）</td></tr>
+<tr class="U"><td>O2</td><td>两链截断不收敛</td><td><strong>[U]</strong><br><code>r(J_out=2)=0.5891</code>、<code>r(3)=0.6743</code>（上升）；<br>两条捷径都 [F]：<code>(m,n)</code> 块对角（只有 31% 在块内）、<code>(v,w)</code> 解耦（<code>K₁(w,w')</code> 不是 δ）</td></tr>
+<tr class="U"><td>O3</td><td><code>K ~ β</code> 在连续极限无界</td><td>[U]</td></tr>
+</table>
+
+<h2>4. 死路台账</h2>
+<table>
+<tr><th>路</th><th>为什么死</th></tr>
+<tr class="F"><td>N_c 的 Abel 分项</td><td>恒等式：<code>(W₊+W₋)/D − (E₊+E₋)/D ≡ 4N_c</code>，两项不能独立估计</td></tr>
+<tr class="F"><td>「f ≤ 1 帮忙」当独立证据</td><td>恒等 <code>M_f(μ)=e^{−μ}M̃(μ)</code> ⇒ <code>r_f(μ)=r(μ)</code>，与 (R) 同一命题（循环）</td></tr>
+<tr class="F"><td>(m,n) 块对角</td><td>M_f 用两侧 Peter–Weyl 展开，<code>M[D^J_MN]</code> 把 (m,n) 搬到 (m+M,n+N)</td></tr>
+<tr class="F"><td>(v,w) 解耦</td><td><code>K₁(w,w') = Σ_j t_j(2j+1)χ_j(ww'⁻¹)</code> 是类函数核，不是 δ</td></tr>
+<tr class="F"><td>Peierls（面模型）</td><td>SU(2) 的 6j 有 49.00% 取负 ⇒ 面权重不定</td></tr>
+<tr class="F"><td>RP 给弦张力下界</td><td>RP 只给正性与 ≤1；面积律 ⟺ 弦能量线性增长 ⟺ 谱隙本身（折叠回 (C)）</td></tr>
+<tr class="F"><td>χ 单调 ⇒ χ ≤ 1/(6β)</td><td>实测 χ 非单调（L=4 六点：4.16→4.13→<strong>5.02</strong>→3.17→1.77→0.92，×10⁻²）</td></tr>
+</table>
+
+<h2>5. 限定</h2>
+<ul>
+<li>数值主参照点 <code>β = 2.5</code>；关键量在 <code>β ∈ {1, 2.5, 4, 10}</code> 上抽查一致。</li>
+<li>两链计算上限 <code>J_out ≤ 2</code>（3025 维）；<code>J_out = 3</code> 需 3.1 GB / 19600 维。</li>
+<li>单链结果<strong>不</strong>覆盖格点：<code>V</code> 非逐链乘积（O1 已判 [F]）、两链截断不收敛（O2）、<code>K ~ β</code> 无界（O3）。</li>
+</ul>
+
+<div class="note">
+<strong>对 Clay 的诚实陈述：</strong>单链 (R) 即使证完，也<strong>不改变</strong> Clay 的可达性——它落在 <code>L_s = 2</code>，而格点需要格点自己的谱估计（Balaban 型 RG 或面模型），那条路当前三条障碍都没过。
+</div>
+
+<h2>6. 下一个靶</h2>
+<p><code>r(λ)</code> 的全程单调。下一手：把 <code>T(λ) = e^{λM_c} K e^{λM_c}</code> 看成正算子的指数倾斜（<code>T(λ) ~ e^{2λM_c}K</code> 相似），去核文献里「Perron 根对倾斜参数的单调性」能否直接套。</p>
+
+</body>
+</html>
