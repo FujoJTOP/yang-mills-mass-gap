@@ -1,24 +1,33 @@
-import numpy as np, time
-from scipy.special import iv
-from scipy.linalg import eigh
-beta=2.5
-def q2(lam,J=400):
-    a=np.arange(J+1); t=2*iv(a+1,beta)/beta
-    M=iv(np.abs(a[:,None]-a[None,:]),lam)-iv(a[:,None]+a[None,:]+2,lam)
-    T=M@np.diag(t)@M; T=(T+T.T)/2
-    ev,V=eigh(T,subset_by_index=[J-1,J])
-    n=4000
-    th=(np.arange(n)+0.5)*np.pi/n
-    S=np.sin(np.outer(th,np.arange(1,J+2)))
-    out=[]
-    for k in (0,1):
-        p=S@V[:,k]
-        out.append(np.sum(th**2*p**2)/np.sum(p**2))
-    return out
-print("scaling of <theta^2>_i in lam   (does it decay like 1/lam or slower?)")
-print("%8s %14s %14s %14s %14s"%("lam","<th2>_1","lam*<th2>_1","<th2>_2","ratio"))
-t0=time.time()
-for lam in (8.0,16.0,32.0,64.0,128.0):
-    q1,q2v=q2(lam)
-    print("%8.1f %14.8e %14.8f %14.8e %14.6f"%(lam,q1,lam*q1,q2v,q2v/q1), flush=True)
-print("total %.1fs"%(time.time()-t0))
+import numpy as np, functools
+from scipy.special import ive
+from scipy.linalg import expm
+bt=2.5
+print("=== 1-link model: scaling of m a with beta_s ===")
+print()
+for jm in (20,):
+    nJ=jm+1
+    Ap=np.zeros((nJ,nJ))
+    for k in range(nJ-1):
+        Ap[k,k+1]=0.5; Ap[k+1,k]=0.5
+    td=np.array([ive(j+1,bt)/ive(1,bt) for j in range(jm+1)])
+    Kd=np.diag(td)
+    rows=[]
+    for bs in (0.25,0.5,1,2,4,8,16,32,64,128):
+        Mf=expm(bs*Ap/2)
+        w0=Mf[:,0]
+        sc=float(w0 @ (td*w0))
+        T=(Mf @ Kd @ Mf)/sc
+        ev=np.linalg.eigvalsh(0.5*(T+T.T))[::-1]
+        r=ev[1]/ev[0]
+        rows.append((bs,ev[0],ev[1],r,-np.log(r)))
+        print("beta_s=%7.2f : t1=%.8f t2=%.8f r=%.10f m a=%.8f"%(bs,ev[0],ev[1],r,-np.log(r)), flush=True)
+    print()
+    bss=np.array([x[0] for x in rows]); mas=np.array([x[4] for x in rows])
+    # fit m a = C * beta_s^p on the large-beta range
+    mask=bss>=2
+    p,C=np.polyfit(np.log(bss[mask]),np.log(mas[mask]),1)
+    print("fit m a = C * beta_s^p for beta_s>=2 :")
+    print("   p = %.6f   C = %.6f"%(p,np.exp(C)), flush=True)
+    # also check m a / beta_s^(1/2)
+    print("   m a / sqrt(beta_s):", np.round(mas[mask]/np.sqrt(bss[mask]),6), flush=True)
+    print("   m a / beta_s:      ", np.round(mas[mask]/bss[mask],6), flush=True)
