@@ -2,127 +2,85 @@
 <html lang="zh-CN">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>位置图 · 第 310 轮 · 机器定稿与审计</title>
-<script>
-  window.MathJax = { tex: { inlineMath: [['$','$']], displayMath: [['$$','$$']] }, svg: { fontCache: 'global' } };
-</script>
-<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+<title>位置图 · 第 51 轮</title>
 <style>
-  :root{--bg:#faf9f7;--ink:#1b1a17;--muted:#6b675f;--line:#e0dcd4;--line-soft:#efebe3;
-    --panel:#fff;--accent:#8a5a2b;--accent-ink:#6d441f;--accent-wash:#f6efe6;
-    --ok:#2f6b46;--ok-wash:#eaf3ed;--no:#a03a2b;--no-wash:#f8ece9;
-    --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
-    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Songti SC","Noto Serif CJK SC",serif;--r:6px;}
-  *{box-sizing:border-box}
-  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--serif);font-size:16px;line-height:1.62;-webkit-font-smoothing:antialiased}
-  .page{max-width:900px;margin:0 auto;padding:56px 26px 96px}
-  h1{font-size:30px;line-height:1.18;letter-spacing:-.02em;margin:0 0 8px;font-weight:650}
-  .sub{color:var(--muted);font-size:15px;margin:0 0 6px}
-  .stamp{font-family:var(--mono);font-size:11.5px;color:var(--muted);letter-spacing:.03em;margin:0 0 34px}
-  h2{font-size:19px;margin:42px 0 13px;padding-top:20px;border-top:1px solid var(--line);font-weight:640}
-  h2:first-of-type{border-top:none;padding-top:0;margin-top:0}
-  p{margin:0 0 13px}
-  table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}
-  th,td{text-align:left;padding:8px 9px;border-bottom:1px solid var(--line-soft);vertical-align:top}
-  th{font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);border-bottom:1px solid var(--line)}
-  .box{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin:16px 0}
-  .sstar{border-left:4px solid var(--accent);background:var(--accent-wash);border-radius:0 var(--r) var(--r) 0;padding:18px 20px;margin:20px 0}
-  .tag{display:inline-block;font-family:var(--mono);font-size:10.5px;padding:1px 6px;border-radius:3px;font-weight:600}
-  .tag.t{background:var(--ok-wash);color:var(--ok)}
-  .tag.n{background:var(--no-wash);color:var(--no)}
-  .tag.f{background:var(--line-soft);color:var(--muted)}
-  code{font-family:var(--mono);font-size:13px;background:var(--line-soft);padding:1px 4px;border-radius:3px}
-  .mut{color:var(--muted)}
+ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;max-width:1000px;margin:2rem auto;padding:0 1rem;line-height:1.6;color:#1a1a1a;background:#fafafa}
+ h1{font-size:1.5rem;border-bottom:2px solid #333;padding-bottom:.4rem}
+ h2{font-size:1.15rem;margin-top:2rem;border-left:4px solid #4a7;padding-left:.6rem}
+ table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+ th,td{border:1px solid #ccc;padding:.35rem .55rem;text-align:left;vertical-align:top}
+ th{background:#eee}
+ .T{background:#d8f0d8;font-weight:600}
+ .M{background:#fdf3d0}
+ .F{background:#f8d8d8}
+ .U{background:#e4e4e4}
+ code{background:#eee;padding:.05rem .25rem;border-radius:3px;font-size:.9em}
+ .note{background:#fff8e0;border-left:4px solid #d4a017;padding:.6rem .8rem;margin:1rem 0}
 </style>
 </head>
-<body><div class="page">
+<body>
 
-<h1>机器定稿与审计</h1>
-<p class="sub">$\|\Gamma_L\|_{2\to2}=\chi_L$ 对一切 $L,\beta\gt0$ 成立；据此闭合 $\beta\in[1/48,0.419]$</p>
-<p class="stamp">第 329 轮 · 4D 纯 SU(2) · 汇报门槛见 CLAUDE.md §1.07</p>
+<h1>位置图 · 第 51 轮</h1>
+<p>项目：4 维纯 SU(2) Yang-Mills 质量隙（Clay）。进展单位是「轮」。</p>
 
-<div class="sstar">
-<div class="hd" style="font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--accent-ink);margin-bottom:10px">机器（一句话）</div>
-<p style="margin:0;font-size:17px">$$\|\Gamma_L\|_{2\to2}\;=\;\max_k\widehat C_L(k)\;=\;\widehat C_L(0)\;=\;\chi_L\;=\;L^{-4}\operatorname{Var}(Q_L)$$</p>
-<p style="margin:10px 0 0" class="mut">四维动量空间的算子范数问题被完全消掉，只剩零动量易感率。不依赖小参数，不依赖 $\beta$ 大小。</p>
-</div>
+<h2>1. 目标链</h2>
+<p>Clay ⟸ 格点上 <code>t2/t1 &lt; 1</code>（质量隙）⟸ 需要格点自己的谱估计。当前唯一活着的具体链是<strong>单链 (R)</strong>：</p>
+<pre>r(λ) := t2(λ)/t1(λ) ≤ I2(β)/I1(β) = r(0)
 
-<h2>八步，全部 <span class="tag t">[T]</span></h2>
+  逐环：
+    ① t0''(0) &gt; 0                       [T]
+    ② t1''(0) &lt; 0  ⟺  I1 I3 &lt; I2^2       [T]
+    ③ r'(0) &lt; 0                          [T]（由 ①②）
+    ④ r'(λ) &lt; 0 全程                      [U]  ← 唯一缺口</pre>
+
+<h2>2. 已证的核心定理</h2>
 <table>
-<tr><th>步</th><th>命题</th><th>证明要点</th><th>判</th></tr>
-<tr><td>1</td><td>$\int F^2 d\mu=\langle dF,\mathcal H^{-1}dF\rangle$，$\mathcal H\ge0$，无零模</td><td>谱定理 + $d^2=0$ + $H^1=0$</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>2</td><td>$\|dF_f\|^2\le 24\|f\|^2$</td><td>每边 ≤6 plaquette、每 plaquette 4 边</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>3</td><td>$T_\beta=M_{V^{1/2}}KM_{V^{1/2}}\ge0$</td><td>$e^{\beta\cos\theta}=\sum_j\frac{2(2j+1)}{\beta}I_{2j+1}(\beta)\chi_j$，$I_{2j+1}>0$</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>4</td><td>$B_\kappa^*=B_{-\kappa}$</td><td>$q(g^{-1})=q(g)$ + Haar 反射不变</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>5</td><td>$W_\mu(n;\kappa)=\sum_{z_\perp}\Gamma_L(0,(n,z_\perp))e^{i\kappa z_\perp}\ge0$</td><td>$T\ge0$ 谱展开 + 步 4</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>6</td><td>$\widehat C_L(k)\le\widehat C_L(0)$ 对<b>全部四维动量</b></td><td>逐坐标 Fourier 消去</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>7</td><td>$w(n)\ge0$，$\chi_L=\sum_n w(n)$ 无抵消</td><td>步 5 于 $\kappa=0$</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>8</td><td>$w(n)/w(0)\le r^n$，$r=t_2/t_1$</td><td>谱展开 + 几何求和</td><td><span class="tag t">[T]</span></td></tr>
+<tr><th>件</th><th>内容</th><th>等级</th></tr>
+<tr class="T"><td>两种表示一致</td><td><code>(M_f)_{ab} = (2/π)∫e^{λcosθ}sin((a+1)θ)sin((b+1)θ) = I_{|a-b|}(λ) − I_{a+b+2}(λ)</code>（逐元核到 4.4e−16）</td><td>[T]</td></tr>
+<tr class="T"><td>M_c</td><td><code>M_c = ½ S₁</code>（严格三对角）</td><td>[T]</td></tr>
+<tr class="T"><td>Bessel 不等式</td><td><code>I₁(z)I₃(z) &lt; I₂(z)²</code> 对一切 z &gt; 0</td><td>[T]</td></tr>
+<tr class="T"><td>它的证明</td><td><code>A=I₁I₃−I₂²</code> 满足 <code>z³A''' + 5z²A'' − (4z³+13z)A' − (4z²+32)A = 0</code>（sympy 精确化简为 0）；配 <code>D_N = −2(2N+3)!/(N!(N+1)!(N+3)!(N+4)!) &lt; 0</code>，级数每项为负</td><td>[T]</td></tr>
+<tr class="T"><td>D_N 的递推</td><td><code>D_{N+1}/D_N = 2(2N+5)/((N+1)(N+4)(N+5))</code>（N=0..29 精确）</td><td>[T]</td></tr>
+<tr class="T"><td>t_i''(0) 闭式</td><td><code>t_i'' = t_i + ½(t_{i-1}+t_{i+1}) + (t_i+t_{i+1})²/(2(t_i−t_{i+1})) − (t_{i-1}+t_i)²/(2(t_{i-1}−t_i))</code></td><td>[T]</td></tr>
+<tr class="T"><td>核的展开</td><td><code>K(θ,φ) = e^β θφ[1 − (β/2)(θ²+φ²) + O(4)]</code></td><td>[T]</td></tr>
+<tr class="M"><td>r 的数值</td><td><code>r(λ) &lt; I₂/I₁</code> 在 λ ∈ [0.05, 30]（22 点），从 0.5047 降到 0.00226</td><td>[M]</td></tr>
+<tr class="M"><td>大 λ 渐近</td><td><code>r ~ C/λ²</code>（幂指数 −1.46 → −1.93）</td><td>[M]</td></tr>
+<tr class="M"><td>N_c 序</td><td><code>N_c(y₂) ≤ N_c(y₁)</code>（9 点，λ ∈ [0.05,5]）</td><td>[M]</td></tr>
 </table>
 
-<h2>审计：$[T]$ 的精确范围</h2>
-<div class="box">
-<p><b>无条件</b>（不依赖任何文献）：$\mathcal H\succeq(2-30\beta)I$，故</p>
-<p style="text-align:center">$$\chi_L=\langle D_0,\mathcal H^{-1}D_0\rangle\le\frac{24}{2-30\beta}$$</p>
+<h2>3. 三条结构障碍</h2>
 <table>
-<tr><th>$\beta$</th><th>$2-30\beta$</th><th>$\chi_L\le$</th></tr>
-<tr><td>1/48 = 0.02083</td><td>+1.375</td><td><b>17.45</b></td></tr>
-<tr><td>0.025</td><td>+1.250</td><td>19.20</td></tr>
-<tr><td><b>1/30 = 0.03333</b></td><td><b>+1.000</b></td><td><b>24.00</b></td></tr>
-</table>
-<p style="margin:0"><b>无条件 $[T]$：$\beta\in[1/48,\,1/30]$，$\|\Gamma_L\|_{2\to2}=\chi_L\le24$。</b></p>
-</div>
-
-<div class="box">
-<p><b>借助文献</b>（$\beta\le0.419$ 的指数聚类 $|\Gamma(z)|\le Ae^{-m|z|}$）：</p>
-<p style="text-align:center">$$\chi_L\le A\Big(\frac{1+e^{-m}}{1-e^{-m}}\Big)^4\lt\infty$$</p>
-<p style="margin:0"><b>$[T]$：$\beta\in[1/48,\,0.419]$，$\|\Gamma_L\|_{2\to2}\le C$。</b><br>
-<span class="mut">文献为预印本，未逐字核。</span></p>
-</div>
-
-<h2>开放区间与它缺的唯一一件事</h2>
-<div class="sstar">
-<p style="margin:0"><b>$\beta\in(0.419,\,2.5]$ 开放。$2.5/0.419=5.97\times$。</b></p>
-<p style="margin:10px 0 0">缺的是：</p>
-<p style="text-align:center;margin:8px 0 0">$$\chi_L\le C\iff\sum_z|\Gamma_L(0,z)|\le C\iff r=\frac{t_2}{t_1}\le r_0\lt1$$</p>
-<p style="margin:10px 0 0" class="mut">三者等价，都是「$q$-道关联一致指数衰减」——即公开的隙问题。</p>
-</div>
-
-<h2>已排除的路线（全部，附 $\beta_*$）</h2>
-<table>
-<tr><th>路线</th><th>$\beta_*$</th><th>判</th></tr>
-<tr><td>$\tanh(\pi^2K/4)$ 最坏情形</td><td>0.0500</td><td><span class="tag n">[F]</span></td></tr>
-<tr><td>反向祖先 $\Delta\tanh\beta\lt1$</td><td>0.1257</td><td><span class="tag n">[F]</span></td></tr>
-<tr><td>Dobrushin 行和</td><td>0.4190</td><td><span class="tag t">[T]</span> 但就到这</td></tr>
-<tr><td>$L$ 项（倒数二阶导）</td><td>0.4737</td><td><span class="tag n">[F]</span></td></tr>
-<tr><td>前向退火繁殖</td><td>0.7237</td><td><span class="tag n">[F]</span></td></tr>
-<tr><td>$\beta_{\rm pin}$ 钉扎子模型</td><td>1.0109</td><td><span class="tag n">[F]</span></td></tr>
-<tr><td>有符号响应算子（<b>矢量道</b>，非本道）</td><td>2.2450</td><td>不同道</td></tr>
-<tr><td>反向祖先 $\theta_r\lt1$</td><td>—</td><td><span class="tag n">结构性不可能</span></td></tr>
-<tr><td>$T\le K$ + $V\le1$ 给 $r\lt1$</td><td>—</td><td><span class="tag n">[T] 证否</span></td></tr>
-<tr><td>Holley–Stroock 给 $(SG)$</td><td>—</td><td>给 $e^{O(L^4)}$，差 $e^{L^4}$</td></tr>
-<tr><td>CLR / BS 迹</td><td>—</td><td>$\dim=12L^4\to\infty$、$\operatorname{Tr}(1)=\infty$</td></tr>
+<tr><th>障碍</th><th>内容</th><th>等级 / 依据</th></tr>
+<tr class="F"><td>O1</td><td>靠 <code>V ≤ 1</code> 把单链 (R) 延拓到格点</td><td><strong>[F]</strong><br>乘积 <code>V=f(u₁)f(u₂)</code> ⇒ <code>T=A⊗A</code> ⇒ <code>r=λ₂/λ₁</code> 与单链<strong>逐位相同</strong>（无增益）；<br>非乘积 <code>V=f(u₁u₂⁻¹)</code> ⇒ <code>r=0.589/0.674 &gt; 0.507</code>（更差）</td></tr>
+<tr class="U"><td>O2</td><td>两链截断不收敛</td><td><strong>[U]</strong><br><code>r(J_out=2)=0.5891</code>、<code>r(3)=0.6743</code>（上升）；<br>两条捷径都 [F]：<code>(m,n)</code> 块对角（只有 31% 在块内）、<code>(v,w)</code> 解耦（<code>K₁(w,w')</code> 不是 δ）</td></tr>
+<tr class="U"><td>O3</td><td><code>K ~ β</code> 在连续极限无界</td><td>[U]</td></tr>
 </table>
 
-<h2>最终状态表</h2>
+<h2>4. 死路台账</h2>
 <table>
-<tr><th>项</th><th>范围</th><th>判</th></tr>
-<tr><td>$(TP)$：$W_\mu(n;\kappa)\ge0$</td><td>一切 $L,\beta\gt0$</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>$(Q)$：$\widehat C(k)\le\widehat C(0)$ 全动量</td><td>一切 $L,\beta\gt0$</td><td><span class="tag t">[T]</span></td></tr>
-<tr><td><b>$\|\Gamma_L\|_{2\to2}=\chi_L$</b></td><td><b>一切 $L,\beta\gt0$</b></td><td><span class="tag t">[T]</span></td></tr>
-<tr><td>$\chi_L\le24$</td><td>$\beta\in[1/48,1/30]$</td><td><span class="tag t">[T] 无条件</span></td></tr>
-<tr><td><b>$\|\Gamma_L\|_{2\to2}\le C$</b></td><td><b>$\beta\in[1/48,0.419]$</b></td><td><span class="tag t">[T]</span></td></tr>
-<tr><td><b>$\|\Gamma_L\|_{2\to2}\le C$</b></td><td><b>$\beta\in(0.419,2.5]$</b></td><td><span class="tag n">[U]</span></td></tr>
-<tr><td>$\chi_L$ 数值（$\beta=2.5$）</td><td>$L=6,8,10,12$</td><td><span class="tag f">[M]</span> 0.0319/0.0330/0.0343/0.0327</td></tr>
+<tr><th>路</th><th>为什么死</th></tr>
+<tr class="F"><td>N_c 的 Abel 分项</td><td>恒等式：<code>(W₊+W₋)/D − (E₊+E₋)/D ≡ 4N_c</code>，两项不能独立估计</td></tr>
+<tr class="F"><td>「f ≤ 1 帮忙」当独立证据</td><td>恒等 <code>M_f(μ)=e^{−μ}M̃(μ)</code> ⇒ <code>r_f(μ)=r(μ)</code>，与 (R) 同一命题（循环）</td></tr>
+<tr class="F"><td>(m,n) 块对角</td><td>M_f 用两侧 Peter–Weyl 展开，<code>M[D^J_MN]</code> 把 (m,n) 搬到 (m+M,n+N)</td></tr>
+<tr class="F"><td>(v,w) 解耦</td><td><code>K₁(w,w') = Σ_j t_j(2j+1)χ_j(ww'⁻¹)</code> 是类函数核，不是 δ</td></tr>
+<tr class="F"><td>Peierls（面模型）</td><td>SU(2) 的 6j 有 49.00% 取负 ⇒ 面权重不定</td></tr>
+<tr class="F"><td>RP 给弦张力下界</td><td>RP 只给正性与 ≤1；面积律 ⟺ 弦能量线性增长 ⟺ 谱隙本身（折叠回 (C)）</td></tr>
+<tr class="F"><td>χ 单调 ⇒ χ ≤ 1/(6β)</td><td>实测 χ 非单调（L=4 六点：4.16→4.13→<strong>5.02</strong>→3.17→1.77→0.92，×10⁻²）</td></tr>
 </table>
 
-<h2>限制</h2>
-<ul style="padding-left:22px;margin:0 0 13px">
-<li>$\beta\in(0.419,2.5]$ 未闭合；缺口是「$q$-道关联一致指数衰减」。</li>
-<li>文献上限（$0.419$、$0.351$、$2.28\times10^{-3}$）为预印本，未逐字核。</li>
-<li>数值全部基于六取向 clover 观测量，而机器的定理是固定取向 plaquette；两者不冲突（机器为固定取向证明）。</li>
-<li>不声称 Clay 进展；无百分比。</li>
+<h2>5. 限定</h2>
+<ul>
+<li>数值主参照点 <code>β = 2.5</code>；关键量在 <code>β ∈ {1, 2.5, 4, 10}</code> 上抽查一致。</li>
+<li>两链计算上限 <code>J_out ≤ 2</code>（3025 维）；<code>J_out = 3</code> 需 3.1 GB / 19600 维。</li>
+<li>单链结果<strong>不</strong>覆盖格点：<code>V</code> 非逐链乘积（O1 已判 [F]）、两链截断不收敛（O2）、<code>K ~ β</code> 无界（O3）。</li>
 </ul>
 
-</div></body></html>
+<div class="note">
+<strong>对 Clay 的诚实陈述：</strong>单链 (R) 即使证完，也<strong>不改变</strong> Clay 的可达性——它落在 <code>L_s = 2</code>，而格点需要格点自己的谱估计（Balaban 型 RG 或面模型），那条路当前三条障碍都没过。
+</div>
+
+<h2>6. 下一个靶</h2>
+<p><code>r(λ)</code> 的全程单调。下一手：把 <code>T(λ) = e^{λM_c} K e^{λM_c}</code> 看成正算子的指数倾斜（<code>T(λ) ~ e^{2λM_c}K</code> 相似），去核文献里「Perron 根对倾斜参数的单调性」能否直接套。</p>
+
+</body>
+</html>
