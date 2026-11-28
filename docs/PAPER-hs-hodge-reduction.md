@@ -468,7 +468,8 @@ and none can hold: a single highly concentrated eigenfunction contributes $O(1)$
 >
 > The caveat that must be attached to all of the above: `q_fields` is empty in all four data files, so **there are no error bars**. The "noise floor" $\sim10^{-6}$ used above is read off $|C_z|$ at $r\gtrsim4$, not measured. See `docs/AUDIT-301-tp-contradiction.md` for the three candidate resolutions.
 >
-> **Do not cite §14 as a theorem until this is resolved.**
+> **RESOLVED — see `docs/ERRATA-35-observable-mismatch.md`.** The Monte Carlo field is
+> $q_x^{\rm data}=1-\tfrac16\sum_{\mu<\nu}\tfrac12\operatorname{tr}U_{P_{\mu\nu}(x)}$, the **six-orientation clover average**, whereas §14 is proved for a **single fixed orientation**. For the clover, $A_\kappa=A^s_\kappa+B_\kappa$ is a *sum* of a multiplication operator and an insertion, and the cross terms $\langle A^s_{-\kappa}B_\kappa\rangle+\langle B_{-\kappa}A^s_\kappa\rangle$ have **no sign control**. **Hence the data neither supports nor refutes §14: the discrepancy is an observable mismatch, not an error in §14.** For fixed-orientation plaquettes, (TP) and (Q) stand as proved.
 
 This section presents a proof, communicated to me, that (Q) holds unconditionally via the positivity of the Wilson transfer matrix. **It is retained because the argument is structurally important and its resolution will determine the shape of the machine; it is not asserted as true.**
 
