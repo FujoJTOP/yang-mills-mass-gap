@@ -3245,6 +3245,111 @@ $$\frac{2.5}{0.723654}=3.455\times$$
 
 --- 
 
+## §5⁗⁗⁗⁗⁗⁗⁗‴ 回到主线：好快块条件控制（第一阶段）（第 283 轮）
+
+> **⚠️ 记账：此前多轮（§5⁗–§5⁗⁗⁗⁗⁗⁗⁗″）全在**慢变量聚簇**一侧，与本模块（**快变量条件 Poincaré**）是两台不同的机器。本节把主线拉回。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗‴.1 【`[T]`】任意边界下的有限块 Poincaré
+
+$$H_C(x;\eta,\zeta)=\beta_W\!\!\sum_{e\in E_C^\star}\!\!s_e(x,\eta)+H_C^{(0)}(\zeta),\qquad |E_C^\star|\le\Delta n_C$$
+
+$$\boxed{\ \mathrm{osc}\,H_C\ \le\ 2\beta_W\Delta n_C\ }$$
+
+**`σ_C = ⊗dσ(x_v)` 的谱隙 `= 3`（单 `S³` 首个非零 `−Δ` 本征值 `=3`；乘积取最小）。Holley–Stroock：`C_P(μ) ≤ e^{osc H}C_P(σ)`，`C_P(σ_C)=1/3`：**
+
+$$\boxed{\ \mathrm{Var}_{\mu_C^{\eta,\zeta}}(f)\ \le\ \frac{e^{2\beta_W\Delta n_C}}3\!\int\!\sum_{v\in C}|\nabla_vf|^2d\mu\ }\tag{5}$$
+$$\boxed{\ \lambda_C(\eta,\zeta)\ \ge\ 3e^{-2\beta_W\Delta n_C}\ \overset{\beta=2.5,\Delta=6}{=}\ 3e^{-30n_C}\ }\tag{7}$$
+
+**我核：`n_C=1` ⇒ `3e^{−30}=2.81e−13`；`n_C=4` ⇒ `3e^{−120}=2.30e−52`。**
+
+**⇒ 对一切 `η`、一切 `ζ` 一致，且不依赖整系统体积 `L`。**
+
+$$\boxed{\ |\mathrm{Cov}_{\mu_C}(f,g)|\ \le\ \frac{e^{30n_C}}3\Big(\!\int|\nabla f|^2\Big)^{1/2}\Big(\!\int|\nabla g|^2\Big)^{1/2}\ }\tag{8}$$
+
+**⚠️ 不足：常数随块体积**指数恶化**——真下界，但不足以用于大块尺度。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗‴.2 【`[T]`】good 区域的点态曲率（`κ_good = 1`）
+
+$$\mathcal G_C(\eta)=\Big\{x\in(S^3)^C:\ s_e(x,\eta)\ge\tfrac{14}{15}\ \forall e\in E_C^\star\Big\}\tag{9}$$
+
+$$\mathrm{Hess}V_e(\xi,\xi)=\beta_W|\xi_u-R_e\xi_v|^2-\beta_W(1-s_e)(|\xi_u|^2+|\xi_v|^2)\tag{10}$$
+$$\boxed{\ \mathrm{Ric}+\mathrm{Hess}V_C\ \succeq\ \Big(2-\frac{\beta_W\Delta}{15}\Big)I+\beta_WL_R^C\ }\tag{13}$$
+
+$$\beta_W\Delta/15=2.5\cdot6/15=1\ \Longrightarrow\ \boxed{\ \mathrm{Ric}+\mathrm{Hess}V_C\ \succeq\ I+2.5L_R^C\ \succeq\ I\ }\tag{14}$$
+
+**⇒ 一般式 `κ_good = 2 − β_WΔε`；只要 `ε < 2/(β_WΔ)` 就有严格正曲率。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗‴.3 【`[T]`】单顶点快块的 good 条件 Poincaré
+
+**`C={v}` 时，其余全是固定边界，`r_e=R_eη_{w(e)}`：**
+
+$$\mathcal G_{\{v\}}(\eta)=\bigcap_{e\ni v}\Big\{x_v\in S^3:\ x_v^{\sf T}r_e\ge\tfrac{14}{15}\Big\}\tag{19}$$
+
+**每项是半径 `θ_★=arccos(14/15)<π/2` 的**球面测地球** ⇒ 测地凸；有限交仍凸：**
+
+$$\boxed{\ \mathrm{gap}\big(\mu^{\eta,\zeta,G}_{\{v\}}\big)\ \ge\ 1\ }\tag{20}$$
+
+**⇒ 真正强、且对边界方向统一。⚠️ 交集为空时该配置归入坏块分析。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗‴.4 【`[U]`】多顶点 good 区域**不**自动测地凸（用户反例，我核了）
+
+$$p=(e_1,e_1),\ q=(-e_1,-e_1)\in\mathcal G;\qquad x_1(t)=\cos(\pi t)e_1+\sin(\pi t)e_2,\ x_2(t)=\cos(\pi t)e_1+\sin(\pi t)e_3$$
+$$t=\tfrac12:\quad x_1\cdot x_2=e_2\cdot e_3=0\ \lt\ \tfrac{14}{15}\ \Longrightarrow\ \text{中间点不在 }\mathcal G$$
+
+$$\boxed{\ \mathcal G_C(\eta)\ \text{一般不具有自动的测地凸性}\ }\tag{18}$$
+
+### 5⁗⁗⁗⁗⁗⁗⁗‴.5 【我的结构定位】`(18)` 的非凸性**只来自 base**，而 `n_C=2` 的 `(23)` 有具体路线
+
+$$\mathcal G=\{(x,y):\ \angle(x,y)\le\theta_\star\},\qquad\theta_\star=\arccos(14/15)=0.367208$$
+
+**坐标 `(u,\varphi,w)`：`u` = 测地中点（base `S³`），`φ∈[0,θ_★]`，`w∈S²`（方向）：**
+
+$$\boxed{\ \mathcal G\ \text{是 }S^3\text{ 上的【凸纤维丛】：纤维 }\{φ\leθ_\star\}\text{ 是 }R^3\text{ 中的球 ⇒ 凸}\ }$$
+
+**⭐ 而 `(18)` 的反例中：`p` 的 `u=e₁`、`q` 的 `u=−e₁` 是**对径点** ⇒ 只有 base 出问题，纤维没问题。**
+
+**⇒ 纤维谱隙 `~π²/θ_★² = 73.2`；base 谱隙 `= 3`；warp 是 `cosφ`，而**
+
+$$(\log\cos)''=-\sec^2\lt0\ \Longrightarrow\ \text{log 凹}\ \Longrightarrow\ \text{warped product 的 BE 曲率}\ \ge\ \min(\text{base},\text{fiber})$$
+
+$$\boxed{\ \mathrm{gap}(\mathcal G)\ \gtrsim\ \min(3,\,73.2)/O(1)\ =\ O(1)\ \Longrightarrow\ c_G(2)\ \text{是 }O(1)\text{，\textbf{不}指数小}\ }$$
+
+**⇒ 而 base `S³` 的非凸只需 `O(1)` 块覆盖：**
+
+| 覆盖 | 重叠 |
+|---|---|
+**2 个半球** | **赤道带，`O(1)`** |
+
+**⇒ 这与用户指出的第二条路线一致（划分为有限个局部凸区 + 受控重叠 + 拼接 Poincaré，并注意不同分支间的零能量跳跃模式）。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗‴.6 两层结果对照
+
+| 条件 | 谱隙下界 | 适用 |
+|---|---|---|
+任意构型、任意边界 | `3e^{−30n_C}` | 任意有限快分量 |
+所有边 good 的点态曲率 | `κ=1` | `𝒢_C` 上 |
+good 区域测地凸时的条件谱隙 | `1` | 测地凸 good 区域 |
+**单顶点快块的 good 条件谱隙** | **`1`** | 任意非空单顶点 good 集合 |
+**`n_C=2` 的 `c_G`（我的路线）** | **`O(1)`** | 尚待写成定理 `[U]` |
+
+### 5⁗⁗⁗⁗⁗⁗⁗‴.7 审计（本轮）
+
+| 命题 | 判 |
+|---|---|
+任意边界的有限块 Poincaré `(5)–(7)` | **`[T]`** |
+协方差推论 `(8)` | **`[T]`** |
+good 区域点态曲率 `(13)–(14)`（`κ_good=1`） | **`[T]`** |
+**单顶点 good 快块条件 Poincaré `(20)–(21)`** | **`[T]`** |
+**多顶点 good 区域不自动测地凸 `(18)`** | **`[T]`（反例）** |
+**`n_C=2` 的 `c_G` 为 `O(1)`（凸纤维丛 + 半球覆盖）** | **`[U]`（有具体路线）** |
+一般多顶点 good 条件 Poincaré `(23)` | **`[U]`** |
+
+**⇒ 下一步按用户建议：从**两个快顶点 + 一条内部连接边 + 至少一个固定边界锚点**的块开始。**
+
+**⇒ 而 §5⁗⁗⁗⁗⁗⁗⁗‴.5 给出的路线是：`𝒢` = 凸纤维丛 → 纤维凸、base 需 `O(1)` 块 → 拼接。**
+
+--- 
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
