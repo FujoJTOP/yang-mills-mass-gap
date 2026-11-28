@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>位置图 · 第 366 轮（链的总装：Clay ⟺ (UV) ∧ (SCALE)）</title>
+<title>位置图 · 第 366 轮（链的总装：Clay ⟺ (A3) ∧ (SCALE)）</title>
 <style>
  body{font-family:system-ui,-apple-system,"Segoe UI","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
       max-width:1080px;margin:2rem auto;padding:0 1.2rem 3rem;line-height:1.66;color:#1a1a1a;background:#fafafa}
@@ -30,12 +30,12 @@
 
 <h2>1. 目标链：只剩两环</h2>
 <div class="big">
-<pre>Clay  ⟺  (UV) ∧ (SCALE)
+<pre>Clay  ⟺  (A3) ∧ (SCALE)
 
-(SCALE)  ∃ c₂ &gt; c₁ &gt; 0, β₀, L₀ :  ∀β ≥ β₀, ∀L ≥ L₀
-         c₁ ≤ m_lat(β,L)/a(β) ≤ c₂              ← 两头夹，[U]
-
-(UV)     沿 AF 轨迹的 OS 紧性 + Schwinger 函数收敛   ← [U]
+(A1)     ∃c₁&gt;0 ∀β≥β₀∀L:  m_lat/a ≥ c₁            ← 下界，[U]
+(A2)     ∃c₂&lt;∞ ∀β≥β₀∀L:  m_lat/a ≤ c₂            ← 上界，[U]
+(SCALE)  (A1) ∧ (A2) :   c₁ ≤ m_lat(β,L)/a(β) ≤ c₂
+(A3)     沿 AF 轨迹的 OS 紧性 + Schwinger 函数收敛   ← [U]（Balaban 部分）
 
 其余每一环 [T]：
   格点测度存在 → OS 重构 (H, T, H ≥ 0) → 隙 = 谱定理 = 指数衰减率 → m_phys = m_lat/a
@@ -51,7 +51,7 @@
 <tr class="T"><td>R2</td><td>隙 = 谱隙 = 指数衰减率；<code>m_phys = m_lat/a</code></td><td>[T]</td></tr>
 <tr class="U"><td>R3</td><td><b>下界</b> <code>m_lat/a ≥ c₁</code></td><td>[U]</td></tr>
 <tr class="U"><td>R4</td><td><b>上界</b> <code>m_lat/a ≤ c₂</code>（非平凡性）</td><td>[U]</td></tr>
-<tr class="U"><td>R5</td><td>(UV) 紧性 / 收敛</td><td>[U]</td></tr>
+<tr class="U"><td>R5</td><td>(A3) 紧性 / 收敛</td><td>[U]</td></tr>
 </table>
 <table>
 <tr><th>洞</th><th>精确内容</th><th>已有信息</th></tr>

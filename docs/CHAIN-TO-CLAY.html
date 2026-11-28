@@ -3,380 +3,332 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>从已证结论到 Clay：一条严格链 · 第 366 轮</title>
+<title>从已证结论到 Clay：一条公式链（第 366 轮）</title>
+
+<script>
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$','$'],['\\(','\\)']],
+      displayMath: [['\\[','\\]'],['$$','$$']],
+      processEscapes: true
+    },
+    options: { skipHtmlTags: ['script','noscript','style','textarea','pre','code'] },
+    chtml: { scale: 1.0, minScale: 0.7 }
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
 <style>
- :root{--ink:#15181d;--mut:#5b6470;--line:#d8dde4;--bg:#fbfbfa;
-       --T:#1a7f37;--Tbg:#e6f4ea;--C:#8a6100;--Cbg:#fdf6e3;
-       --U:#5b6470;--Ubg:#eceef1;--F:#a4101c;--Fbg:#fbe9ea;
-       --M:#16558f;--Mbg:#e8f0f8;--acc:#2b5f9e;}
- body{font-family:system-ui,-apple-system,"Segoe UI","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
-      max-width:1120px;margin:0 auto;padding:2.2rem 1.4rem 4rem;line-height:1.68;color:var(--ink);background:var(--bg)}
- header{border-bottom:3px solid var(--ink);padding-bottom:.8rem;margin-bottom:1.6rem}
- h1{font-size:1.62rem;line-height:1.32;margin:0 0 .35rem}
- .sub{color:var(--mut);margin:.1rem 0}
- .meta{font-size:.82rem;color:var(--mut);margin:.5rem 0 0}
- h2{font-size:1.16rem;margin:2.4rem 0 .7rem;padding:.28rem 0 .28rem .6rem;border-left:4px solid var(--acc)}
- h3{font-size:1rem;margin:1.5rem 0 .5rem;color:#22262d}
- p{margin:.55rem 0}
- code{background:#eef0f3;padding:.06rem .28rem;border-radius:3px;font-size:.9em;
-      font-family:ui-monospace,"Cascadia Mono",Consolas,monospace}
- pre{background:#f2f4f7;border:1px solid var(--line);border-left:4px solid var(--acc);
-     padding:.7rem .9rem;overflow-x:auto;font-size:.86rem;line-height:1.55;
-     font-family:ui-monospace,"Cascadia Mono",Consolas,monospace}
- table{border-collapse:collapse;width:100%;margin:.8rem 0 1rem;font-size:.89rem}
- th,td{border:1px solid var(--line);padding:.4rem .55rem;vertical-align:top;text-align:left}
- th{background:#eceff3;font-weight:600}
- tbody tr:nth-child(even){background:#f7f8fa}
- .g{display:inline-block;font-size:.74rem;font-weight:700;padding:.04rem .38rem;border-radius:3px;
-    margin-left:.35rem;vertical-align:.1em;letter-spacing:.02em}
- .T{background:var(--Tbg);color:var(--T)} .C{background:var(--Cbg);color:var(--C)}
- .U{background:var(--Ubg);color:var(--U)} .F{background:var(--Fbg);color:var(--F)}
- .M{background:var(--Mbg);color:var(--M)} .E{background:#efe9f8;color:#5b3a99}
- .link{border:1px solid var(--line);border-left:4px solid #9aa4b2;border-radius:5px;
-       padding:.55rem .85rem;margin:.7rem 0;background:#fff}
- .link.t{border-left-color:var(--T)} .link.u{border-left-color:var(--U)}
- .link.f{border-left-color:var(--F)} .link.c{border-left-color:#c79a2e}
- .lh{font-weight:700;font-size:.95rem;margin-bottom:.3rem}
- .n{display:inline-block;min-width:2.5rem;color:var(--mut);font-family:ui-monospace,Consolas,monospace}
- .verdict{background:#eef5fd;border:1px solid #b9d2ec;border-left:5px solid var(--acc);
-          border-radius:6px;padding:.7rem 1rem;margin:1.4rem 0}
- .verdict h2{margin-top:.1rem;border:0;padding-left:0;font-size:1.08rem}
- .warn{background:#fdf6e3;border:1px solid #e6d08a;border-left:5px solid #c79a2e;
-       border-radius:6px;padding:.6rem .9rem;margin:1rem 0;font-size:.93rem}
- .src{color:var(--mut);font-size:.8rem;font-family:ui-monospace,Consolas,monospace}
- .q{color:var(--mut)}
- .tiny{font-size:.83rem;color:var(--mut)}
- hr{border:0;border-top:1px solid var(--line);margin:2rem 0}
- .chain{white-space:pre;font-size:.84rem;line-height:1.5}
- ul,ol{margin:.5rem 0 .5rem 1.3rem;padding:0}
- li{margin:.25rem 0}
+  :root{
+    --ink:#141414; --mut:#5d6570; --rule:#cfd6dd; --acc:#2b5f9e;
+    --T:#1a7f37; --C:#8a6100; --U:#5b6470; --F:#a4101c; --M:#16558f;
+  }
+  html{ -webkit-text-size-adjust:100%; }
+  body{
+    font-family:"Latin Modern Roman","STIX Two Text","Times New Roman","Songti SC","Noto Serif SC","SimSun",serif;
+    max-width: 780px; margin:0 auto; padding:3.2rem 1.7rem 5rem;
+    font-size:16.5px; line-height:1.86; color:var(--ink); background:#fff;
+    text-align:justify; text-justify:inter-ideograph;
+  }
+  h1{ font-size:1.52rem; font-weight:700; text-align:center; margin:0 0 .45rem; line-height:1.4; letter-spacing:.01em; }
+  .subtitle{ text-align:center; color:var(--mut); font-size:.93rem; margin:0 0 .2rem; }
+  .dateline{ text-align:center; color:#8a929c; font-size:.82rem; margin:.9rem 0 0; letter-spacing:.04em; }
+  .rule{ border:0; border-top:1px solid var(--rule); margin:1.5rem 0 2rem; }
+
+  .abstract{
+    border-left:3px solid var(--acc); background:#f7f9fc;
+    padding:.95rem 1.15rem; margin:1.7rem 0 1.4rem; font-size:.94rem; line-height:1.8;
+  }
+  .abstract .lbl{ font-weight:700; }
+
+  .grades{ font-size:.83rem; color:var(--mut); margin:.2rem 0 0; }
+  .chip{ font-weight:700; font-size:.78rem; }
+  .gT{color:var(--T)} .gC{color:var(--C)} .gU{color:var(--U)} .gF{color:var(--F)} .gM{color:var(--M)}
+
+  h2{ font-size:1.12rem; font-weight:700; margin:2.6rem 0 .9rem; }
+  h3{ font-size:1rem; font-weight:700; margin:1.6rem 0 .5rem; }
+  p{ margin:.55rem 0; }
+  .thm{
+    border-left:2.5px solid var(--acc); background:#f4f7fb;
+    padding:.85rem 1.05rem; margin:1.2rem 0 1.3rem; font-size:.97rem;
+  }
+  .thm .k{ font-weight:700; }
+  .note{ font-size:.79rem; color:var(--mut); }
+
+  /* —— 连接词行 —— */
+  .step{ display:flex; justify-content:flex-start; align-items:baseline; gap:.8rem;
+         margin:1.15rem 0 -.35rem; }
+  .conn{ font-style:italic; font-weight:700; color:var(--acc); font-size:.9rem; letter-spacing:.14em; }
+  .step .tag{ font-size:.78rem; color:var(--mut); }
+
+  /* —— 公式行 —— */
+  .eqwrap{ position:relative; margin:.35rem 0 1.05rem; padding:0 2.5rem; text-align:center; }
+  .eqwrap .no{ position:absolute; right:0; top:50%; transform:translateY(-50%);
+               font-size:.82rem; color:#7b848f; font-family:"Latin Modern Roman",serif; }
+  .eqwrap mjx-container[display="true"]{ margin:0 !important; font-size:97%; }
+
+  /* —— 表 —— */
+  table{ border-collapse:collapse; width:100%; margin:.9rem 0 1.1rem; font-size:.88rem; line-height:1.6; }
+  th,td{ border-top:.5px solid var(--rule); border-bottom:.5px solid var(--rule);
+         padding:.42rem .5rem; vertical-align:top; text-align:left; }
+  th{ border-top:1.2px solid #8d97a2; border-bottom:1.2px solid #8d97a2; font-weight:700; background:#fafbfc; }
+  caption{ caption-side:bottom; font-size:.83rem; color:var(--mut); padding-top:.45rem; text-align:left; }
+
+  ul,ol{ margin:.5rem 0 .6rem 1.4rem; padding:0; }
+  li{ margin:.22rem 0; }
+  .src{ font-size:.8rem; color:var(--mut); }
+  hr.end{ border:0; border-top:1px solid var(--rule); margin:2.6rem 0 1rem; }
+  .fallback{ font-size:.85rem; color:#a4101c; }
 </style>
 </head>
 <body>
 
-<header>
-<h1>从已证结论到 Clay：一条严格链，与链上仅有的两个断点</h1>
-<p class="sub">4 维纯 SU(2) Yang–Mills 质量隙（Clay）· 第 366 轮 · 总装件</p>
-<p class="meta">判级：[T] 已证 · [C] 条件定理（条件逐条写明）· [U] 未证 · [F] 已证否 · [M] 数值证据 · [E] 外部文献。
-每条箭头只有两种：<b>⇒</b>（已证蕴含）与 <b>⇏</b>（已证不蕴含）。没有第三种。</p>
-</header>
+<h1>从已证结论到 Clay：一条公式链</h1>
+<p class="subtitle">4 维纯 SU(2) Yang–Mills 质量隙（Clay）</p>
+<p class="dateline">第 366 轮 · 总装件</p>
+<hr class="rule">
 
-<div class="verdict">
-<h2>§0 链的终点：一屏读完</h2>
-<pre class="chain">因为  ∫₀^∞ χ^clover dβ = 1/6  且  χ^clover ≤ 1/6                        [T]
-因为  Ĉ = ∫ dν(λ)/λ   ⟹   λ_min ≤ ‖ν‖ / Ĉ                             [T]
-所以  χ-类的一切上界，只能给质量的上界；给不出质量隙
-
-因为  单链 (R)、V-结构、瞬态性 ⟺ L_s = 1                               [T]
-因为  L_s = 1 的隙 = 1 − u ≈ 3/(2β)（幂次，V-无关）                     [T]
-所以  可解扇区给出 m_lat = O(1)，即 m_lat / a → ∞
-因为  m_lat / a → ∞  ⟹  每个固定物理距离的关联 → 0（超局部）           [T]
-所以  该扇区的出口是「平凡极限」，不是「有隙极限」
-
-那么  Clay  ⟺  (UV) ∧ (SCALE)
-
-      (SCALE)  ∃ c₂ &gt; c₁ &gt; 0, β₀, L₀ :  ∀β ≥ β₀, ∀L ≥ L₀
-               c₁  ≤  m_lat(β,L) / a(β)  ≤  c₂
-      (UV)     沿渐近自由轨迹的 OS 紧性 + Schwinger 函数收敛
-
-      (UV)、(SCALE) 均 [U]。已证的一切都落在这两环之外。</pre>
-<p class="tiny">本链给到 <b>Clay 的等价两环形式</b>为止。Clay 本身未证；未证的恰好是 (UV) 与 (SCALE) 两个环，其余每一环都是 <b>[T]</b>。</p>
+<div class="abstract">
+  <p><span class="lbl">摘要。</span>本文把本项目中全部已证结论按“因为 — 那么 — 所以 — 得到 — 设”接成一条公式链，终点是 Clay 命题的等价两环形式
+  \[ \mathrm{Clay}\iff(\mathrm{A3})\wedge(\mathrm{SCALE}), \]
+  其中 $(\mathrm{A1})$ 是质量比 $m_{\mathrm{lat}}/a(\beta)$ 的一致下界，$(\mathrm{A2})$ 是其一致上界，$(\mathrm{A3})$ 是沿渐近自由轨迹的 Osterwalder–Schrader 收敛性。链上除这三条外每一环均为已证。文中另给出两段已证的反证：$\chi$ 类界只能给出质量的上界（方向定理），以及单链结果到格点的桥为假。</p>
 </div>
 
-<h2>§1 目标、判级、记号</h2>
+<p class="grades">
+  判级：<span class="chip gT">[T]</span> 已证 ·
+  <span class="chip gC">[C]</span> 条件定理（条件逐条写明） ·
+  <span class="chip gU">[U]</span> 未证 ·
+  <span class="chip gF">[F]</span> 已证否 ·
+  <span class="chip gM">[M]</span> 数值证据 ·
+  <span class="chip gU">[E]</span> 外部文献。
+  每条箭头只有两种：$\Rightarrow$（已证蕴含）与 $\nRightarrow$（已证不蕴含），无第三种。
+</p>
 
-<p><b>目标（Clay，本项目的精确形式）。</b>对 <code>G = SU(2)</code>、<code>d = 4</code>：</p>
-<pre>(C1)  存在非平凡的 Osterwalder–Schrader 理论 μ 于 R⁴（bona fide QFT）
-(C2)  ∃ Δ &gt; 0 :  spec H ⊂ {0} ∪ [Δ, ∞)
-Clay := (C1) ∧ (C2)</pre>
+<h2>1　目标与记号</h2>
 
-<p><b>记号。</b>环面 <code>Λ_L = {0,…,L−1}⁴</code>；边变量 <code>U_e ∈ SU(2)</code>；<code>q_P = ½ tr U_P</code>；
-作用量 <code>S_β = β·𝒮</code>，<code>𝒮 = Σ_P (1 − q_P) ≥ 0</code>；<code>β = 4/g²</code>；
-<code>a(β)</code> 为格点间距（渐近自由标度）；转移矩阵 <code>T_{β,L}</code>，<code>H = −ln T</code>；
-格点质量 <code>m_lat := −ln λ₁(T)</code>；物理质量 <code>m_phys := m_lat / a</code>。</p>
-
-<p><b>谱表示（全链用到的唯一表示）。</b>对任一源 <code>D_k</code>（动量 <code>k</code> 道），Helffer–Sjöstrand 恒等式给</p>
-<pre>Ĉ_L(k) = ⟨D_k, ℋ⁻¹ D_k⟩ = ∫_{(0,∞)} dν_k(λ) / λ ,     ν_k ≥ 0</pre>
-<p>其中 <code>ν_k</code> 是 <code>ℋ</code> 对 <code>D_k</code> 的谱测度，<code>λ_min(k) := min supp ν_k</code> 就是该道的质量。</p>
-
-<h2>§2 主链：L0 – L14</h2>
-
-<div class="link t">
-<div class="lh"><span class="n">L0</span>目标 <span class="g T">[定义]</span></div>
-<p><b>因为</b> Clay 的陈述是「存在 + 隙」两件事，<b>所以</b> 它必须同时满足 (C1) 与 (C2)；任何只证其中一件的论证都不够。</p>
+<div class="thm">
+  <p><span class="k">定义 1（Clay）.</span> 对 $G=\mathrm{SU}(2)$、$d=4$：</p>
+  <div class="eqwrap">\[ \mathrm{Clay}:=(\mathrm{C1})\wedge(\mathrm{C2}), \]<span class="no">(1)</span></div>
+  <p>其中</p>
+  <div class="eqwrap">\[ (\mathrm{C1})\quad \exists\ \text{非平凡 Osterwalder–Schrader 理论}\ \mu\ \text{于}\ \mathbb{R}^4, \]<span class="no">(2)</span></div>
+  <div class="eqwrap">\[ (\mathrm{C2})\quad \exists\,\Delta>0:\quad \operatorname{spec}H\subset\{0\}\cup[\Delta,\infty). \]<span class="no">(3)</span></div>
 </div>
 
-<div class="link t">
-<div class="lh"><span class="n">L1</span>格点测度存在 <span class="g T">[T]</span></div>
-<p><b>因为</b> <code>Λ_L</code> 有限、<code>SU(2)</code> 紧、<code>S_β</code> 连续下有界，<b>所以</b>
-<code>μ_{β,L} = Z^{-1} e^{−β𝒮} ∏ dU_e</code> 对一切 <code>β &gt; 0</code>、<code>L ≥ 2</code> 存在且唯一。无条件，无外部输入。</p>
+<div class="step"><span class="conn">记</span></div>
+<div class="eqwrap">\[ \Lambda_L=\{0,\dots,L-1\}^4,\quad U_e\in \mathrm{SU}(2),\quad q_P=\tfrac12\operatorname{tr}U_P,\quad \beta=4/g^2 \]<span class="no">(4)</span></div>
+
+<div class="eqwrap">\[ \mathcal{S}=\sum_P(1-q_P)\ge0,\quad S_\beta=\beta\mathcal{S},\quad T_{\beta,L}=e^{-H_{\beta,L}},\quad m_{\mathrm{lat}}:=-\ln\lambda_1(T) \]<span class="no">(5)</span></div>
+
+<div class="step"><span class="conn">记</span><span class="tag">谱表示 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \hat C_L(k)=\langle D_k,\mathcal{H}^{-1}D_k\rangle=\int_{(0,\infty)}\frac{d\nu_k(\lambda)}{\lambda},\quad \nu_k\ge0,\quad \lambda_{\min}(k):=\min\operatorname{supp}\nu_k \]<span class="no">(6)</span></div>
+
+<div class="step"><span class="conn">设</span><span class="tag">无条件 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \mu_{\beta,L}:=Z_{\beta,L}^{-1}e^{-\beta\mathcal{S}}\prod_e dU_e,\quad Z_{\beta,L}\in(0,\infty). \]<span class="no">(7)</span></div>
+
+<h2>2　主链：从 Clay 的定义到等价形式</h2>
+
+<div class="step"><span class="conn">因为</span></div>
+<div class="eqwrap">\[ \mathrm{Clay}:=(\mathrm{C1})\wedge(\mathrm{C2}) \]<span class="no">(8)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag">OS 重构 · <span class="chip gU">[E]</span></span></div>
+<div class="eqwrap">\[ \mu_{\beta,L}\ \text{反射正}\qquad(\text{Wilson 作用量}+\text{Haar 测度}) \]<span class="no">(9)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \Longrightarrow\quad \exists\,(\mathcal{H}_{\beta,L},\,T_{\beta,L}=e^{-H_{\beta,L}}):\quad 0\le T\le 1,\quad H\ge0,\quad \Omega\ \text{唯一} \]<span class="no">(10)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag">谱定理 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ m_{\mathrm{lat}}(\beta,L):=-\ln\lambda_1(T_{\beta,L})=\inf\bigl(\operatorname{spec}H_{\beta,L}\setminus\{0\}\bigr) \]<span class="no">(11)</span></div>
+
+<div class="step"><span class="conn">得到</span><span class="tag">渐近自由 · <span class="chip gT">[T]</span> + <span class="chip gU">[E]</span></span></div>
+<div class="eqwrap">\[ m_{\mathrm{phys}}(\beta,L)=\frac{m_{\mathrm{lat}}(\beta,L)}{a(\beta)},\qquad a(\beta)=\Lambda^{-1}e^{-\beta/(2b_0)}\bigl(1+o(1)\bigr)\to 0 \]<span class="no">(12)</span></div>
+
+<div class="step"><span class="conn">设</span><span class="tag">下界 · <span class="chip gU">[U]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{A1})\quad \exists\,c_1>0,\ \beta_0:\quad \forall\beta\ge\beta_0,\ \forall L\ge L_0:\quad \frac{m_{\mathrm{lat}}}{a(\beta)}\ge c_1 \]<span class="no">(13)</span></div>
+
+<div class="step"><span class="conn">设</span><span class="tag">上界 · <span class="chip gU">[U]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{A2})\quad \exists\,c_2<\infty,\ \beta_0:\quad \forall\beta\ge\beta_0,\ \forall L\ge L_0:\quad \frac{m_{\mathrm{lat}}}{a(\beta)}\le c_2 \]<span class="no">(14)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag">同一比值的两头夹 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{SCALE}):=(\mathrm{A1})\wedge(\mathrm{A2}):\qquad c_1\le\frac{m_{\mathrm{lat}}(\beta,L)}{a(\beta)}\le c_2 \]<span class="no">(15)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{A1})\wedge(\mathrm{A3})\ \Longrightarrow\ (\mathrm{C2}):\quad \text{取}\ \Delta:=c_1,\quad \operatorname{spec}H\subset\{0\}\cup[c_1,\infty) \]<span class="no">(16)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag">非平凡 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{A2})\wedge(\mathrm{A3})\ \Longrightarrow\ \exists\,O,\ R_0:\quad \lim_{R\to\infty}\bigl\langle O(0)O(R)\bigr\rangle_c\neq0 \]<span class="no">(17)</span></div>
+
+<div class="step"><span class="conn">设</span><span class="tag">Balaban 部分 · <span class="chip gU">[U]</span> + <span class="chip gU">[E]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{A3})\quad \text{沿}\ \beta_n\to\infty,\ a_n\to0,\ L_n\to\infty:\quad S_n\to S_\infty,\quad S_\infty\ \text{满足 OS} \]<span class="no">(18)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{A1})\wedge(\mathrm{A2})\wedge(\mathrm{A3})\ \Longrightarrow\ (\mathrm{C1})\wedge(\mathrm{C2})=\mathrm{Clay} \]<span class="no">(19)</span></div>
+
+<div class="step"><span class="conn">得到</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \mathrm{Clay}\ \Longleftarrow\ (\mathrm{A3})\wedge(\mathrm{SCALE}) \]<span class="no">(20)</span></div>
+
+<div class="step"><span class="conn">因为</span><span class="tag">谱的收敛 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \mathrm{Clay}\ \Longrightarrow\ \text{沿子列}\ \ \frac{m_{\mathrm{lat}}}{a}\to m_{\mathrm{phys}}\in(0,\infty) \]<span class="no">(21)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag">等价两环形式 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \mathrm{Clay}\ \Longleftrightarrow\ (\mathrm{A3})\wedge(\mathrm{SCALE}) \]<span class="no">(22)</span></div>
+
+<h2>3　输入引理：已证的那一半</h2>
+
+<div class="step"><span class="conn">因为</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ T_\beta=M_{V^{1/2}}KM_{V^{1/2}}\ge0\quad\bigl(I_{2j+1}(\beta)>0\bigr),\qquad B_\kappa^{*}=B_{-\kappa} \]<span class="no">(23)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ W_\mu(n;\kappa)=\sum_{z_\perp}\Gamma_L(0,(n,z_\perp))\,e^{i\kappa z_\perp}\ge0,\qquad w(n):=W_\mu(n;0)\ge0 \]<span class="no">(24)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag">全四维动量 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{Q}):\quad \hat C_L(k)\le\hat C_L(0)\qquad\forall k\in(2\pi/L)\mathbb{Z}_L^4 \]<span class="no">(25)</span></div>
+
+<div class="step"><span class="conn">得到</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \|\Gamma_L\|_{2\to2}=\max_k\hat C_L(k)=\hat C_L(0)=\chi_L^{\mathrm{fixed}} \]<span class="no">(26)</span></div>
+
+<div class="step"><span class="conn">因为</span><span class="tag">恒等式 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \frac{d}{d\beta}\langle\mathcal{S}\rangle=\operatorname{Var}(\mathcal{S})\ge0,\qquad \langle\mathcal{S}\rangle_{\beta=0}=6L^4,\qquad \langle\mathcal{S}\rangle_{\beta=\infty}=0,\qquad Q^{\mathrm{clover}}=\mathcal{S}/6 \]<span class="no">(27)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag">无条件 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \int_0^\infty \chi_L^{\mathrm{clover}}(\beta)\,d\beta=\frac16\qquad(\text{一切 }L\ge2) \]<span class="no">(28)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \chi_L^{\mathrm{clover}}(\beta)\le\frac16\qquad\forall L\ge2,\ \forall\beta>0 \]<span class="no">(29)</span></div>
+
+<div class="step"><span class="conn">得到</span><span class="tag">非 Abel GKS 未证 · <span class="chip gC">[C]</span></span></div>
+<div class="eqwrap">\[ \chi_L^{\mathrm{fixed}}\le1,\qquad \|\Gamma_L\|_{2\to2}\le1\qquad\Longleftarrow\qquad v_2\ge0 \]<span class="no">(30)</span></div>
+
+<h2>4　为什么 $\chi$ 类进不了主链</h2>
+
+<div class="step"><span class="conn">设</span></div>
+<div class="eqwrap">\[ \chi\ \text{类候选}:\qquad \hat C_L(k)\le C\qquad(C\ \text{与}\ L,\beta\ \text{无关}) \]<span class="no">(31)</span></div>
+
+<div class="step"><span class="conn">因为</span><span class="tag">无假设 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \hat C_L(k)=\int\frac{d\nu_k(\lambda)}{\lambda},\qquad \lambda^{-1}\le\frac{1}{\lambda_{\min}(k)}\quad\text{on}\ \operatorname{supp}\nu_k \]<span class="no">(32)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \hat C_L(k)\ge\frac{\|\nu_k\|}{\lambda_{\min}(k)}\qquad\Longrightarrow\qquad \lambda_{\min}(k)\le\frac{\|\nu_k\|}{\hat C_L(k)} \]<span class="no">(33)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag">而 $(\mathrm{A1})$ 要下界 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \lambda_{\min}(k)\le\frac{\|\nu_k\|}{C}\le\frac{\|D_k\|^2}{C}\le\frac{4}{C}\qquad\Longrightarrow\qquad\text{上界} \]<span class="no">(34)</span></div>
+
+<div class="step"><span class="conn">得到</span><span class="tag">方向相反 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \chi\ \text{类}\quad\nRightarrow\quad(\mathrm{A1}) \]<span class="no">(35)</span></div>
+
+<div class="step"><span class="conn">设</span><span class="tag">可容许谱测度 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ d\nu(\lambda)=\lambda\cdot\mathbf{1}_{(0,1]}(\lambda)\,d\lambda \]<span class="no">(36)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag">锐性 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \hat C=\int_0^1\lambda^{-1}\cdot\lambda\,d\lambda=1,\qquad \|\nu\|=\int_0^1\lambda\,d\lambda=\frac12,\qquad \lambda_{\min}=0 \]<span class="no">(37)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \chi(\beta)\to0\quad\bigl(\beta\to\infty\bigr)\qquad\Longrightarrow\qquad \chi\ge\frac{\|\nu\|}{m_0}\ \text{型下界必失败} \]<span class="no">(38)</span></div>
+
+<h2>5　为什么转移矩阵线进不了主链</h2>
+
+<div class="step"><span class="conn">因为</span><span class="tag">两条独立 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ I_1(z)I_3(z)<I_2(z)^2\qquad\forall z>0\qquad(\text{级数 + Gosper 证书 }/\ \text{Riccati}) \]<span class="no">(39)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ (\mathrm{R}):\qquad \frac{t_2(\lambda)}{t_1(\lambda)}\le\frac{I_2(\beta)}{I_1(\beta)}\qquad\forall\lambda\ge0,\ \beta\ \text{固定} \]<span class="no">(40)</span></div>
+
+<div class="step"><span class="conn">因为</span><span class="tag">$V$ 的结构 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \text{宇称超选},\qquad B=\tfrac12\mathbb{1}_4,\qquad \text{高度阶梯约化},\qquad c_1=\lambda_{\max}\bigl(A(G)\bigr)/2 \]<span class="no">(41)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ V\ \text{的效应瞬态}\quad\Longleftrightarrow\quad L_s=1,\qquad r(0)=r(\infty)=u:=I_2/I_1 \]<span class="no">(42)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag">全程幂次 · <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ L_s=1:\qquad \text{隙}=1-r(\beta_s)\ge 1-u\approx\frac{3}{2\beta} \]<span class="no">(43)</span></div>
+
+<div class="step"><span class="conn">得到</span><span class="tag">4D 环面读数 · <span class="chip gM">[M]</span></span></div>
+<div class="eqwrap">\[ m_{\mathrm{lat}}=O(1)\quad(\beta_s\to\infty)\qquad\Longrightarrow\qquad \frac{m_{\mathrm{lat}}}{a(\beta)}\to\infty \]<span class="no">(44)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag"><span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \text{违 }(\mathrm{A2})\qquad\Longrightarrow\qquad \text{该扇区的连续极限超局部}\quad\bigl(\mathrm{C1}\ \text{平凡}\bigr) \]<span class="no">(45)</span></div>
+
+<div class="step"><span class="conn">设</span></div>
+<div class="eqwrap">\[ \text{桥}:\qquad V\le1\qquad(\text{单链结果延拓到多链}) \]<span class="no">(46)</span></div>
+
+<div class="step"><span class="conn">那么</span><span class="tag">差 0.185 · <span class="chip gF">[F]</span></span></div>
+<div class="eqwrap">\[ r_{\mathrm{nonproduct}}=0.692>0.507=I_2/I_1\qquad\Longrightarrow\qquad\text{桥为假} \]<span class="no">(47)</span></div>
+
+<div class="step"><span class="conn">所以</span><span class="tag"><span class="chip gF">[F]</span> + <span class="chip gT">[T]</span></span></div>
+<div class="eqwrap">\[ \text{转移矩阵线}:\quad\text{只到}\ L_s=1\qquad\Longrightarrow\qquad\text{不进 }(\mathrm{A1}),\ \text{不进 }(\mathrm{A2}) \]<span class="no">(48)</span></div>
+
+<h2>6　Clay 的等价形式</h2>
+
+<div class="thm">
+  <p><span class="k">定理 1.</span> $\mathrm{Clay}\iff(\mathrm{A3})\wedge(\mathrm{SCALE})$，其中 $(\mathrm{A3})$ 与 $(\mathrm{SCALE})$ 如上。</p>
+  <div class="eqwrap">\[ \mathrm{Clay}\qquad\Longleftrightarrow\qquad(\mathrm{A3})\wedge(\mathrm{SCALE}) \]<span class="no">(49)</span></div>
+  <p>“$\Longleftarrow$”由 $(\mathrm{A1})\wedge(\mathrm{A2})\wedge(\mathrm{A3})\Rightarrow\mathrm{Clay}$ 给出；“$\Longrightarrow$”由 $\mathrm{Clay}\Rightarrow$ 沿子列 $m_{\mathrm{lat}}/a\to m_{\mathrm{phys}}\in(0,\infty)$ 给出。</p>
 </div>
 
-<div class="link t">
-<div class="lh"><span class="n">L2</span>OS 重构 ⇒ 转移矩阵 <span class="g T">[T]</span><span class="g E">[E]</span></div>
-<p><b>因为</b> Wilson 作用量 + Haar 测度反射正（Osterwalder–Seiler 1978），<b>所以</b> 存在 Hilbert 空间
-<code>ℋ_{β,L}</code>、自伴转移矩阵 <code>T_{β,L} = e^{−H}</code>、<code>0 ≤ T ≤ 1</code>、<code>H ≥ 0</code>、唯一真空 <code>Ω</code>。</p>
-<p class="src">外部输入 E1：OS 重构定理（标准，1978）。</p>
-</div>
+<p><b>已证。</b>测度与 OS 重构、隙 $=$ 谱隙、四条蕴含 $(\mathrm{A1})\wedge(\mathrm{A3})\Rightarrow(\mathrm{C2})$、$(\mathrm{A2})\wedge(\mathrm{A3})\Rightarrow$ 非平凡、以及等价性；另有两段反证（方向定理与锐性例；桥的反例）。</p>
+<p><b>未证。</b>$(\mathrm{A1})$、$(\mathrm{A2})$、$(\mathrm{A3})$ 三条。<b>Clay 未证。</b></p>
 
-<div class="link t">
-<div class="lh"><span class="n">L3</span>隙 = 谱隙 = 指数衰减率 <span class="g T">[T]</span></div>
-<p><b>因为</b> <code>T</code> 自伴且 <code>0 ≤ T ≤ 1</code>，<b>所以</b> 谱定理给
-<code>m_lat = −ln λ₁(T) = inf(spec H ∖ {0})</code>，且它与「所有局域关联以率 <code>m_lat</code> 指数衰减」等价（同一扇区内）。</p>
-<p><b>所以</b> (C2) 是格点上一条关于 <b>数</b> <code>m_lat</code> 的陈述，而不是关于估计技巧的陈述。</p>
-</div>
-
-<div class="link t">
-<div class="lh"><span class="n">L4</span>单位换算 <span class="g T">[T]</span><span class="g E">[E]</span></div>
-<p><b>因为</b> 连续极限是 <code>a → 0</code>，<b>所以</b> 物理质量 <code>m_phys = m_lat / a(β)</code>。
-<b>因为</b> 渐近自由，<code>a(β) → 0</code>（<code>β → ∞</code>）。</p>
-<p class="src">外部输入 E2：渐近自由标度（Gross–Wilczek / Politzer 1973；格点形式 Balaban）。本项目采用的判据为 <code>m·a ~ e^{−(3π²/11)β}</code>，指数 <code>2.6917</code> <span class="g C">[C]</span>（判据，非定理）。</p>
-</div>
-
-<div class="link t">
-<div class="lh"><span class="n">L5</span>(C2) 的充分条件 = 下界 <span class="g T">[T]</span></div>
-<p><b>因为</b> (C2) 要求极限谱从 <code>Δ</code> 起，<b>所以</b> 只需</p>
-<pre>∃ c₁ &gt; 0, β₀ :  ∀β ≥ β₀, ∀L :  m_lat(β,L) / a(β)  ≥  c₁</pre>
-<p><b>所以</b> 这是链上第一个真正需要的<b>下界</b>。</p>
-</div>
-
-<div class="link t">
-<div class="lh"><span class="n">L6</span>(C1) 的充分条件 = 上界 <span class="g T">[T]</span></div>
-<p><b>因为</b> 若 <code>m_lat/a → ∞</code>，则对每个固定物理距离 <code>R</code>：
-<code>e^{−m_lat·R/a} = e^{−(m_lat/a)R} → 0</code>，<b>所以</b> 极限测度变成超局部（所有 <code>x ≠ y</code> 的连通关联为 0），(C1) 失败。</p>
-<p><b>所以</b> 非平凡性要求</p>
-<pre>∃ c₂ &lt; ∞, β₀ :  ∀β ≥ β₀, ∀L :  m_lat(β,L) / a(β)  ≤  c₂</pre>
-<p class="tiny">这一条是本次总装新增的：此前的靶只写了下界，因此把「平凡极限」误当成「有隙极限」也照样算过关。</p>
-</div>
-
-<div class="link t">
-<div class="lh"><span class="n">L7</span>合并 <span class="g T">[T]</span></div>
-<p><b>因为</b> L5 与 L6 是同一比值 <code>m_lat/a</code> 的两侧，<b>所以</b> 它们合成一条<b>两头夹</b>：</p>
-<pre>(SCALE)  ∃ c₂ &gt; c₁ &gt; 0, β₀, L₀ :  ∀β ≥ β₀, ∀L ≥ L₀
-         c₁ ≤ m_lat(β,L)/a(β) ≤ c₂</pre>
-<p><b>所以</b> <code>Clay ⟸ (UV) ∧ (SCALE)</code>，其中 <code>(UV)</code> 是沿轨迹的 OS 紧性与 Schwinger 函数收敛（把格点族变成一个极限测度）。</p>
-</div>
-
-<div class="link t">
-<div class="lh"><span class="n">L8</span>反向：必要性 <span class="g T">[T]</span></div>
-<p><b>因为</b> 若 Clay 成立，则极限谱在 <code>[Δ,∞)</code> 且有非零关联，<b>所以</b> 沿某子列
-<code>m_lat/a → m_phys ∈ (0,∞)</code>，即 (SCALE) 成立。<b>所以</b></p>
-<pre>Clay  ⟺  (UV) ∧ (SCALE)</pre>
-<p><b>所以</b> (SCALE) 不是「一个可能的路线」，它是 Clay 的<b>等价形式</b>——链的正确终点就是这两环。</p>
-</div>
-
-<div class="link c">
-<div class="lh"><span class="n">L9</span>已证线 A（机器线）的 [T] 群 <span class="g T">[T]</span></div>
-<p><b>因为</b> <code>d⟨𝒮⟩/dβ = Var(𝒮) ≥ 0</code>，端值 <code>⟨𝒮⟩₀ = 6L⁴</code>、<code>⟨𝒮⟩_∞ = 0</code>，且 <code>Q^clover = 𝒮/6</code>，<b>所以</b></p>
-<pre>∫₀^∞ χ^clover_L(β) dβ = 1/6        精确，一切 L          [T] 无条件
-χ^clover_L(β) ≤ 1/6                ∀L ≥ 2, ∀β &gt; 0        [T] 无条件</pre>
-<p><b>因为</b> <code>T_β = M_{V^{1/2}} K M_{V^{1/2}} ≥ 0</code> 与插入自伴性 <code>B_κ* = B_{−κ}</code>，<b>所以</b> 固定取向的
-<code>(Q)</code> 成立，<code>‖Γ_L‖_{2→2} = Ĉ_L(0) = χ_L^{fixed}</code> <span class="g T">[T]</span>。</p>
-<p><b>而</b> <code>χ^{fixed} ≤ 1</code> 与 <code>‖Γ_L‖ ≤ 1</code> 需要 <code>v₂ ≥ 0</code>（不同取向的正关联）：Ginibre 对非 Abel 情形文献未建立，故这两条是 <span class="g C">[C]</span>，不是 <span class="g T">[T]</span>。</p>
-<p class="src">docs/CORRECTION-ginibre-not-available.md（第 315 轮撤回 312/314 的 [T] 标记）· docs/FINAL-GAP-adjudication.md · docs/THEOREM-machine-closed.md</p>
-</div>
-
-<div class="link f">
-<div class="lh"><span class="n">L10</span>方向定理：χ-类只能给质量上界 <span class="g T">[T]</span></div>
-<p><b>因为</b> <code>ν_k</code> 支撑在 <code>[λ_min, ∞)</code> 上，<b>所以</b> <code>λ⁻¹ ≤ 1/λ_min</code> 在支撑上成立，于是</p>
-<pre>Ĉ_L(k) = ∫ dν_k/λ  ≥  (1/λ_min)∫ dν_k = ‖ν_k‖/λ_min
-⟹   λ_min(k)  ≤  ‖ν_k‖ / Ĉ_L(k)</pre>
-<p><b>所以</b> 任何形如 <code>Ĉ_L(k) ≤ C</code> 的界只给</p>
-<pre>λ_min(k) ≤ ‖ν_k‖/C ≤ ‖D_k‖²/C ≤ 4/C        （上界，不是下界）</pre>
-<p><b>⇒</b> 机器线（L9 全部内容：HS、求和规则、<code>(Q)</code>、<code>(TP)</code>、<code>‖D₀‖² ≤ 4</code>）<b>在方向上</b>不可能供出 L5 所需的下界。</p>
-<p class="src">docs/NOGO-spectral-route-cannot-give-gap.md（第 324 轮）· docs/DOES-v2-affect-clay.md</p>
-</div>
-
-<div class="link f">
-<div class="lh"><span class="n">L11</span>锐性：上界可取到，隙可为 0 <span class="g T">[T]</span></div>
-<p><b>因为</b> 取 <code>dν(λ) = λ·1_{(0,1]}(λ) dλ</code>，<b>则</b></p>
-<pre>Ĉ = ∫₀¹ λ⁻¹·λ dλ = 1 ,   ‖ν‖ = ∫₀¹ λ dλ = 1/2 ,   λ_min = 0</pre>
-<p><b>所以</b> <code>Ĉ ≡ 1</code> 与「<code>λ_min = 0</code>」完全相容。<b>所以</b> L10 不是形式上的刻画：χ-类界的<b>最大值</b>恰好对应无隙。</p>
-</div>
-
-<div class="link c">
-<div class="lh"><span class="n">L12</span>已证线 B（转移矩阵线）的 [T] 群 <span class="g T">[T]</span></div>
-<p><b>因为</b> <code>I₁I₃ &lt; I₂²</code>（级数 + Gosper 证书，两条独立路线）与 Weyl 秩截断，<b>所以</b> 单链定理</p>
-<pre>(R)   t₂(λ)/t₁(λ) ≤ I₂(β)/I₁(β)      ∀λ ≥ 0, β 固定                    [T]</pre>
-<p><b>因为</b> <code>V</code> 的 16 条结构（宇称超选、带状、<code>B = ½𝟙₄</code>、<code>c₁ = λ_max(A(G))/2</code>、高度阶梯约化），<b>所以</b></p>
-<pre>V 的效应是瞬态的  ⟺  L_s = 1 ;   r(0) = r(∞) = u ;   隙 = 1 − u ≈ 3/(2β)   [T]</pre>
-<p><b>所以</b> 可解扇区的质量是 <b>幂次</b>（<code>1/β</code>），<code>V</code>-无关；它不按 <code>a(β)</code> 标度。</p>
-<p class="src">docs/position-current.html §1–§2（51 条）· docs/FINAL-STATE.md（55 条口径）· docs/THEOREM-t1-growth-complete.md</p>
-</div>
-
-<div class="link f">
-<div class="lh"><span class="n">L13</span>桥：模型 → 格点，已被反例否证 <span class="g F">[F]</span></div>
-<p><b>因为</b> 单链结果要搬到格点，必须能延拓到 <code>V ≤ 1</code>（多链），<b>而</b> 实际非乘积情形的谱比</p>
-<pre>r = 0.692  &gt;  0.507 = I₂/I₁            （反例，精确记账）</pre>
-<p><b>所以</b> 「<code>V ≤ 1</code> 延拓单链结果」<b>为假</b>，不是未证。<b>所以</b> L12 的 <code>[T]</code> 全部只对单链/可解扇区成立，不能进入 L5–L7。</p>
-</div>
-
-<div class="link f">
-<div class="lh"><span class="n">L14</span>数值读数：可解扇区给的是平凡极限 <span class="g M">[M]</span></div>
-<p><b>因为</b> 首个真实 4D 环面 <code>L = (2,1,1,1)</code>（8 链、12 plaquette）上</p>
-<pre>W_max(V) = 2.3464623951            （重叠修正 −60.9%）                    [T]
-m·a(β_s = 0.25) = 0.63313 ,  m·a(0.50) = 0.61795（最小）,  m·a(4) = 1.13142</pre>
-<p><b>所以</b> <code>m·a</code> 不趋于 0，而是停在 <code>0.6</code> 附近（可靠窗 <code>β_s ≤ 0.5</code>）。<b>所以</b>
-<code>m_lat/a → ∞</code>：该模型的连续极限是<b>超局部</b>的。</p>
-<p><b>所以</b> 它的出口是「(C1) 平凡」，而不是「(C2) 有隙」。这与 L6 的判据完全一致。</p>
-<p class="src">docs/ROUND259-4d-first.md（第 259 轮）· 大 β_s 列 <span class="g M">[M]</span>，小 β_s 列 <span class="g T">[T]</span></p>
-</div>
-
-<div class="link">
-<div class="lh"><span class="n">L15</span>总装 <span class="g T">[T]</span>（蕴含部分）+ <span class="g U">[U]</span>（两环）</div>
-<p><b>因为</b> 线 A 的出口是 L10（只能上界），线 B 的出口是 L13（桥为假）与 L14（平凡极限），<b>所以</b> 两条已证线都不在
-<code>(UV) ∧ (SCALE)</code> 的证明路径上。</p>
-<p><b>所以</b> 链在 L5（下界）与 L6（上界）两处断，其余各环 <span class="g T">[T]</span>。断点<b>不是</b>「差一个常数」：一个是方向（符号），一个是真值（反例）。</p>
-</div>
-
-<h2>§3 五环 / 五洞</h2>
+<h2>7　五环与五洞</h2>
 
 <table>
-<thead><tr><th style="width:5rem">环</th><th>内容</th><th style="width:5rem">判</th><th>若缺，缺什么</th></tr></thead>
-<tbody>
-<tr><td>R1</td><td>格点测度存在 + OS 重构 ⇒ <code>(ℋ, T, H ≥ 0)</code></td><td><span class="g T">[T]</span></td><td>—</td></tr>
-<tr><td>R2</td><td>隙 = 谱隙 = 指数衰减率；<code>m_phys = m_lat/a</code></td><td><span class="g T">[T]</span></td><td>—</td></tr>
-<tr><td>R3</td><td><b>下界</b>：<code>m_lat/a ≥ c₁</code></td><td><span class="g U">[U]</span></td><td>洞 D1：方向定理封死 χ-类；需 x-空间衰减率类工具</td></tr>
-<tr><td>R4</td><td><b>上界</b>：<code>m_lat/a ≤ c₂</code>（非平凡性）</td><td><span class="g U">[U]</span></td><td>洞 D2：无可用的相关长度上界</td></tr>
-<tr><td>R5</td><td>(UV)：AF 轨迹上 OS 紧性 + 收敛</td><td><span class="g U">[U]</span></td><td>洞 D3：Balaban RG 只到部分；连续极限未构造</td></tr>
-</tbody>
+  <thead>
+    <tr><th style="width:3.2rem">环</th><th>公式</th><th style="width:3.2rem">判</th><th style="width:9.5rem">洞</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>R1</td><td>$\mu_{\beta,L}\to(\mathcal{H},T=e^{-H}),\ H\ge0$</td><td class="gT">[T]</td><td>—</td></tr>
+    <tr><td>R2</td><td>$m_{\mathrm{lat}}=-\ln\lambda_1(T)=\inf\operatorname{spec}H\setminus\{0\}$</td><td class="gT">[T]</td><td>—</td></tr>
+    <tr><td>R3</td><td>$\exists c_1\,\forall\beta\,\forall L:\ m_{\mathrm{lat}}/a\ge c_1$</td><td class="gU">[U]</td><td>D1：方向定理封 $\chi$ 类</td></tr>
+    <tr><td>R4</td><td>$\exists c_2\,\forall\beta\,\forall L:\ m_{\mathrm{lat}}/a\le c_2$</td><td class="gU">[U]</td><td>D2：相关长度上界</td></tr>
+    <tr><td>R5</td><td>$S_n\to S_\infty$ 且满足 OS</td><td class="gU">[U]</td><td>D3：Balaban 部分</td></tr>
+  </tbody>
+  <caption>表 1　五环。$0^{++}$ 是最低道，故其隙只是上界（[T]）；D5（模型 $\to$ 格点的桥）已 [F]。</caption>
 </table>
+
+<h2>8　死路台账</h2>
 
 <table>
-<thead><tr><th style="width:5rem">洞</th><th>精确内容</th><th style="width:9rem">已有信息</th></tr></thead>
-<tbody>
-<tr><td>D1</td><td><code>∃ c₁ &gt; 0 ∀β ≥ β₀ ∀L: m_lat/a ≥ c₁</code></td><td>L10 排空 χ-类；<span class="g U">[U]</span></td></tr>
-<tr><td>D2</td><td><code>∃ c₂ &lt; ∞ ∀β ≥ β₀ ∀L: m_lat/a ≤ c₂</code></td><td>L14 的模型读数说明它必须被单独证明</td></tr>
-<tr><td>D3</td><td>AF 轨迹上的紧性/收敛</td><td><span class="g E">[E]</span> 部分（Balaban 1980s）；完整 <span class="g U">[U]</span></td></tr>
-<tr><td>D4</td><td>全道（不止 <code>0^{++}</code> plaquette 标量道）</td><td><code>0^{++}</code> 是最低道 ⇒ 它的隙是上界，不是全道下界 <span class="g T">[T]</span></td></tr>
-<tr><td>D5</td><td>模型 → 格点的桥</td><td>已被 <code>r = 0.692 &gt; 0.507</code> 否证 <span class="g F">[F]</span></td></tr>
-</tbody>
+  <thead><tr><th>路</th><th style="width:3rem">判</th><th>数</th></tr></thead>
+  <tbody>
+    <tr><td>HS / 谱 / 求和规则（$\chi$ 类）</td><td class="gT">[T]</td><td>$\lambda_{\min}\le\|\nu\|/\hat C$；$\int\chi=1/6\Rightarrow\chi\to0$</td></tr>
+    <tr><td>单链延拓多链 $V\le1$</td><td class="gF">[F]</td><td>$r=0.692>0.507$</td></tr>
+    <tr><td>$V$ 的秩截断</td><td class="gF">[F]</td><td>谱填满 $[0.81,1.50]$</td></tr>
+    <tr><td>特征标低阶</td><td class="gF">[F]</td><td>$c_J\sim\beta^{-3/2}$</td></tr>
+    <tr><td>$V$ 的微扰（物理区）</td><td class="gF">[F]</td><td>半径 $\approx2.5<\beta_s$</td></tr>
+    <tr><td>朴素 $\mathrm{Tr}_2$ / 加权 block-spin</td><td class="gF">[F]</td><td>残差 $\ge0.89$</td></tr>
+    <tr><td>$L\ge2$ 精确对角化</td><td class="gF">[F]</td><td>$2.8\times10^{11}$ 维</td></tr>
+    <tr><td>两链截断 Peter–Weyl</td><td class="gF">[F]</td><td>$0.5692\to0.8802\to0.6179$</td></tr>
+    <tr><td>非 Abel GKS $v_2\ge0$</td><td class="gU">[U]</td><td>文献只到 Abel / Villain；数值 $+6.24\times10^{-3}$</td></tr>
+  </tbody>
 </table>
 
-<h2>§4 两个断点的证明（为什么它们不是「再努力一点」）</h2>
-
-<h3>4.1 断点一：χ-类界的方向（符号问题，不可修补）</h3>
-<p>设 <code>ν</code> 是任一非负测度，<code>λ_min = min supp ν</code>，<code>Ĉ = ∫λ⁻¹dν</code>。则</p>
-<pre>λ_min ≤ ‖ν‖/Ĉ                    （初等不等式，无假设）</pre>
-<p>要得到隙，需要的是 <code>λ_min ≥ m₀</code>，即需要 <code>Ĉ ≥ ‖ν‖/m₀</code> —— 一个<b>下界</b>。
-而本项目全部 <span class="g T">[T]</span> 的 χ-型结果都是<b>上界</b>，且（由 <code>∫χ dβ = 1/6</code>）
-<code>χ(β) → 0</code> 于大 <code>β</code>（测度意义下），所以任何 <code>χ ≥ ‖ν‖/m₀</code> 型的下界在大 <code>β</code> 必失败。</p>
-<pre>χ → 0（β → ∞）  ⟹  χ-类下界在连续极限那一端结构上失效        [T]</pre>
-<p><b>结论（这条路的出口）：</b>χ-类路线的出口是「只能给质量上界 <span class="g T">[T]</span>」；
-<b>下一手</b>是换到 §3-R3 的 x-空间衰减率类，或反射正性 + 红外界。</p>
-
-<h3>4.2 断点二：模型 → 格点的桥（真值问题，已被反例封死）</h3>
-<p>单链结果延拓到多链需要 <code>V ≤ 1</code>。<b>实测非乘积情形：</b></p>
-<pre>r_nonproduct = 0.692   vs   I₂/I₁ = 0.507        ⟹   V ≤ 1 为假   [F]</pre>
-<p>这不是精度问题：<code>0.692 − 0.507 = 0.185</code>，方向也相反（重叠使谱比<b>升高</b>）。
-<b>结论（这条路的出口）：</b>单链 <span class="g T">[T]</span> 的出口是「只对单链成立 <span class="g F">[F]</span>」；
-<b>下一手</b>是找一个<b>不同的</b>比较对象（不是 <code>V ≤ 1</code>），或在 <code>L_s = 2</code> 上直接做。</p>
-
-<h2>§5 已证结论入库表（链上的位置）</h2>
-
-<table>
-<thead><tr><th>#</th><th>命题</th><th style="width:4rem">判</th><th style="width:5rem">链上位置</th><th>出处</th></tr></thead>
-<tbody>
-<tr><td>1</td><td><code>I₁(z)I₃(z) &lt; I₂(z)²  ∀z &gt; 0</code>（级数 + Riccati，两条独立；Gosper 证书显式）</td><td><span class="g T">[T]</span></td><td>L12 的底</td><td>RESULT-…、position §2.1</td></tr>
-<tr><td>2</td><td>单链 <code>(R)</code>：<code>t₂/t₁ ≤ I₂/I₁</code>（固定 <code>β</code>）</td><td><span class="g T">[T]</span>+3<span class="g M">[M]</span></td><td>L12</td><td>position §1</td></tr>
-<tr><td>3</td><td><code>(I₂/I₁)″ &lt; 0</code>；<code>D/I₂²</code> 精确闭式（60 位核验）</td><td><span class="g T">[T]</span></td><td>L12</td><td>position §2.1</td></tr>
-<tr><td>4</td><td><code>V</code> 的 16 条结构：宇称超选、带状、<code>B = ½𝟙₄</code>、<code>c₁ = λ_max(A(G))/2</code>、高度阶梯、<code>r(0) = r(∞) = u</code></td><td><span class="g T">[T]</span></td><td>L12</td><td>FINAL-STATE §1.2</td></tr>
-<tr><td>5</td><td><code>V</code> 的瞬态性 <code>⟺ L_s = 1</code></td><td><span class="g T">[T]</span></td><td>L12→L14</td><td>FINAL-STATE V16</td></tr>
-<tr><td>6</td><td><code>L_s = 1</code> 的隙 <code>= 1 − u ≈ 3/(2β)</code>，幂次、<code>V</code>-无关</td><td><span class="g T">[T]</span></td><td>L12</td><td>position §4</td></tr>
-<tr><td>7</td><td><code>∫₀^∞ χ^clover dβ = 1/6</code>；<code>χ^clover ≤ 1/6</code></td><td><span class="g T">[T]</span></td><td>L9</td><td>CORRECTION-ginibre §2</td></tr>
-<tr><td>8</td><td>固定取向 <code>(Q)</code>；<code>‖Γ‖_{2→2} = χ^{fixed}</code></td><td><span class="g T">[T]</span></td><td>L9</td><td>THEOREM-machine-closed</td></tr>
-<tr><td>9</td><td><code>χ^{fixed} ≤ 1</code>、<code>‖Γ‖ ≤ 1</code>（条件 <code>v₂ ≥ 0</code>）</td><td><span class="g C">[C]</span></td><td>L9（到不了 L5）</td><td>同上</td></tr>
-<tr><td>10</td><td>方向定理 <code>λ_min ≤ ‖ν‖/Ĉ</code>，及锐性例 <code>ν = λ1_{(0,1]}dλ</code></td><td><span class="g T">[T]</span></td><td>L10–L11</td><td>NOGO-spectral-route</td></tr>
-<tr><td>11</td><td>真实 4D 环面：<code>W_max = 2.3464623951</code>；<code>m·a = 0.633, 0.618, …, 1.131</code></td><td><span class="g T">[T]</span>/<span class="g M">[M]</span></td><td>L14</td><td>ROUND259</td></tr>
-<tr><td>12</td><td><code>V ≤ 1</code> 延拓为假：<code>r = 0.692 &gt; 0.507</code></td><td><span class="g F">[F]</span></td><td>L13</td><td>FINAL-STATE §2</td></tr>
-<tr><td>13</td><td>两链截断不收敛：<code>0.5692 → 0.8802 → 0.6179</code></td><td><span class="g F">[F]</span></td><td>D5</td><td>VERDICT-C-undecidable</td></tr>
-</tbody>
-</table>
-
-<h2>§6 四模型试金石</h2>
-
-<p>任何新判据必须过这四个模型：不许在自由场上还「成功」（真空性），不许在 <code>M6</code> 上假阳性，不许在 2D YM / 单 plaquette 上假阴性。</p>
-
-<table>
-<thead><tr><th style="width:8.5rem">模型</th><th>精确事实</th><th>它杀死什么</th><th>本链判据的表现</th></tr></thead>
-<tbody>
-<tr><td>自由场（4D，无质量）</td><td><code>f₁² = 0, G″ = 0, m = 0</code></td><td>任何在自由场上不退化的工具（真空性检验）</td><td>(SCALE) 下界失败 ⇒ 判「无隙」 ✓</td></tr>
-<tr><td>2D YM</td><td>精确可解，面积律全 <code>β</code>，<code>m &gt; 0</code>，<code>Δ_dyn = −W_full &lt; 0</code></td><td>「曲率/ <code>Δ₀ &gt; 0</code> ⇒ 隙」型判据</td><td>不涉 4D AF，(SCALE) n/a；方向定理恒真</td></tr>
-<tr><td>M6（谐振子 ⊗ 自由模）</td><td><code>G″ = 2ω &gt; 0</code> 而 <code>m = 0</code></td><td>「正曲率 ⇒ 隙」型判据</td><td>(SCALE) 下界失败 ⇒ 判「无隙」 ✓</td></tr>
-<tr><td>单 plaquette</td><td>0 维精确，<code>Δ = −0.0691</code></td><td>符号型证书</td><td>无转移矩阵，(SCALE) n/a</td></tr>
-</tbody>
-</table>
-
-<p class="tiny">本链唯一的新判据是 (SCALE)。它在两个有定义的模型（自由场、M6）上都不产生假阳性；在两个不适用模型上明确标 n/a，而不是硬套。</p>
-
-<h2>§7 死路台账（每条一个数）</h2>
-
-<table>
-<thead><tr><th>路</th><th style="width:4rem">判</th><th>数 / 理由</th></tr></thead>
-<tbody>
-<tr><td>HS / 谱 / 求和规则（χ-类）</td><td><span class="g T">[T]</span></td><td>方向反了：<code>λ_min ≤ ‖ν‖/Ĉ</code> ⇒ 只能上界；且 <code>∫χ = 1/6 ⇒ χ → 0</code></td></tr>
-<tr><td>单链延拓到多链（<code>V ≤ 1</code>）</td><td><span class="g F">[F]</span></td><td><code>r = 0.692 &gt; 0.507</code></td></tr>
-<tr><td><code>V</code> 的秩截断</td><td><span class="g F">[F]</span></td><td>谱填满 <code>[0.81, 1.50]</code></td></tr>
-<tr><td>特征标展开低阶</td><td><span class="g F">[F]</span></td><td><code>c_J ~ β^{−3/2}</code>，无指数</td></tr>
-<tr><td><code>V</code> 的微扰展开（物理区）</td><td><span class="g F">[F]</span></td><td>半径 <code>≈ 2.5 &lt; β_s = β</code></td></tr>
-<tr><td>朴素 <code>Tr₂</code> / 五种加权 block-spin</td><td><span class="g F">[F]</span></td><td>残差 <code>≥ 0.89</code>（0.88–0.96）</td></tr>
-<tr><td><code>L ≥ 2</code> 精确对角化</td><td><span class="g F">[F]</span></td><td><code>2.8×10¹¹</code> 维</td></tr>
-<tr><td>两链截断 Peter–Weyl</td><td><span class="g F">[F]</span></td><td><code>0.5692 → 0.8802 → 0.6179</code>，不收敛</td></tr>
-<tr><td>Abel / Lieb / 显式 <code>g</code> / Chebyshev 全序</td><td><span class="g F">[F]</span></td><td>见 FINAL-STATE §2</td></tr>
-<tr><td>非 Abel GKS <code>v₂ ≥ 0</code></td><td><span class="g U">[U]</span></td><td>文献只对 Abel / Villain 建立；数值 <code>min M_AB = +6.24×10⁻³</code></td></tr>
-</tbody>
-</table>
-
-<h2>§8 限定（缺一不可）</h2>
+<h2>9　限定</h2>
 <ul>
-<li><b>群 / 维数：</b><code>G = SU(2)</code>，<code>d = 4</code>。一般单李群未逐条重跑。</li>
-<li><b><code>β</code> 范围：</b>求和规则与 <code>χ^clover ≤ 1/6</code>：一切 <code>β &gt; 0</code>。<code>(R)</code> 的数值核验：<code>β ∈ [0.2, 400]</code>（11 个值）。</li>
-<li><b><code>L</code> 范围：</b><code>L ≥ 2</code>（求和规则）；模型计算在 <code>L_s = 1, 3</code> 与 <code>L = (2,1,1,1)</code>。</li>
-<li><b>观测量：</b>固定取向 plaquette 标量道（<code>0^{++}</code>）；clover 平均的 <code>(Q)</code> 未证 <span class="g U">[U]</span>。</li>
-<li><b>极限次序：</b>先 <code>L → ∞</code> 再 <code>a → 0</code>（标准）；两个极限不可交换 <span class="g T">[T]</span>。</li>
-<li><b>外部输入：</b>E1 = OS 重构（标准，1978）；E2 = 渐近自由（标准）；E3 = Balaban RG（部分，不足以给 (UV)）；Ginibre 对非 Abel <b>不可用</b>（已核文献，见 CORRECTION-ginibre）。</li>
-<li><b>数值归一化：</b>一切大 <code>β_s</code> 数值必须用 <code>ive</code> 归一化（第 223 轮更正）。</li>
+  <li>$G=\mathrm{SU}(2)$、$d=4$；一般单李群未逐条重跑。</li>
+  <li>求和规则与 $\chi^{\mathrm{clover}}\le1/6$：一切 $\beta>0$、$L\ge2$；$(\mathrm{R})$ 的数值核验 $\beta\in[0.2,400]$（11 个值）。</li>
+  <li>$(\mathrm{Q})$ 与 $\|\Gamma\|=\chi$：固定取向 plaquette；clover 版 $(\mathrm{Q})$ 未证 [U]。</li>
+  <li>极限次序：先 $L\to\infty$ 再 $a\to0$；两个极限不可交换 [T]。</li>
+  <li>外部输入：OS 重构（标准）；渐近自由（标准）；Balaban RG（部分）；Ginibre 对非 Abel <i>不可用</i>（已核文献）。</li>
+  <li>大 $\beta_s$ 数值必须用 <code>ive</code> 归一化（第 223 轮更正）。</li>
 </ul>
 
-<h2>§9 下一手（三条，可执行）</h2>
+<h2>10　下一手</h2>
 
-<ol>
-<li><b>P1（攻 D1，下界）：</b>在 <code>L_s = 2</code>（首个非瞬态情形）上证明
-<pre>gap(β_s)  ≥  c · e^{−(3π²/11)β_s}</pre>
-或等价地 <code>m_lat/a ≥ c</code>。这是链上唯一缺的<b>量</b>，且 <code>L_s = 2</code> 是 <code>e^{−cβ}</code> 能出现的<b>最小</b>模型
-（<code>L_s = 1</code> 已被证明是纯瞬态：<code>r(0) = r(∞) = u</code>）。</li>
+<div class="step"><span class="conn">设</span><span class="tag">攻 D1</span></div>
+<div class="eqwrap">\[ (\mathrm{P1})\quad L_s=2:\qquad \mathrm{gap}(\beta_s)\ge c\,e^{-(3\pi^2/11)\beta_s}\qquad\Longleftrightarrow\qquad \frac{m_{\mathrm{lat}}}{a}\ge c \]<span class="no">(50)</span></div>
 
-<li><b>P2（攻 D2，上界）：</b>证明 <code>λ₁(T_{β,L}) ≥ e^{−c₂a(β)}</code>，即相关长度 <code>≥ 1/c₂</code>。
-它等价于「极限不超局部」。<b>注意：</b>这一条此前从未被列入靶，而 L6 说明没有它就会把平凡极限误判成「有隙」。</li>
+<div class="step"><span class="conn">设</span><span class="tag">攻 D2；$\xi$ 为物理相关长度</span></div>
+<div class="eqwrap">\[ (\mathrm{P2})\quad \lambda_1(T_{\beta,L})\ge e^{-c_2a(\beta)}\qquad\Longleftrightarrow\qquad \xi\ge1/c_2 \]<span class="no">(51)</span></div>
 
-<li><b>P3（攻 D5，换桥）：</b><code>V ≤ 1</code> 已 <span class="g F">[F]</span>，不要修它；改找<b>另一个</b>比较对象
-（例如按 <code>h = Σ j_x</code> 分层后的块内比较，或把 <code>L_s = 2</code> 直接接到格点 plaquette 的键）。</li>
-</ol>
+<div class="step"><span class="conn">设</span><span class="tag">攻 D5</span></div>
+<div class="eqwrap">\[ (\mathrm{P3})\quad V\le1\ \text{不修；改找比较对象：}\ h=\sum_x j_x\ \text{分层，或}\ L_s=2\ \text{接格点键} \]<span class="no">(52)</span></div>
 
-<div class="warn">
-<b>报告纪律（本项目宪章）：</b>不以百分比度量 Clay 的进度（<code>CLAUDE.md §2</code>）。
-可报告的只有三件事：<b>哪些环 <span class="g T">[T]</span>、缺哪一环、缺的那一环差什么（带量词与数）</b>。
-本轮这三件事分别是：R1–R2 已 <span class="g T">[T]</span>；R3–R5 <span class="g U">[U]</span>；
-R3 差 <code>∃c₁∀β∀L</code> 的下界，R4 差 <code>∃c₂∀β∀L</code> 的上界，R5 差紧性。
+<div class="thm" style="border-left-color:#c79a2e;background:#fffaf0;">
+  <p><span class="k">报告纪律。</span>不以百分比度量 Clay（项目宪章 §2）。可报告的三件事：① R1–R2、四条蕴含与等价性已 [T]；② 缺 R3、R4、R5；③ 缺的东西带量词：$\exists c_1\forall\beta\ge\beta_0\forall L$ 的下界、$\exists c_2\forall\beta\ge\beta_0\forall L$ 的上界、紧性。</p>
 </div>
 
-<h2>§10 出处索引</h2>
-<table>
-<thead><tr><th style="width:16rem">文件</th><th>内容</th></tr></thead>
-<tbody>
-<tr><td class="src">docs/THEOREM-machine-closed.md</td><td>机器定理与求和规则的原始陈述（含 312 轮的口径）</td></tr>
-<tr><td class="src">docs/CORRECTION-ginibre-not-available.md</td><td>第 315 轮撤回：Ginibre 对非 Abel 不可用；<code>χ^clover ≤ 1/6</code> 无条件</td></tr>
-<tr><td class="src">docs/NOGO-spectral-route-cannot-give-gap.md</td><td>方向定理 <code>λ_min ≤ ‖ν‖/Ĉ</code>（第 324 轮）</td></tr>
-<tr><td class="src">docs/CLAY-CHAIN-MAP.md</td><td>环 1–13 的地图；环 9 与 Clay 正交</td></tr>
-<tr><td class="src">docs/FINAL-STATE.md</td><td>转移矩阵线的 55 条台账与三条结构障碍</td></tr>
-<tr><td class="src">docs/ROUND259-4d-first.md</td><td>首个真实 4D 环面计算：<code>W_max</code> 与 <code>m·a</code></td></tr>
-<tr><td class="src">docs/VERDICT-C-undecidable.md</td><td>两链截断不收敛（<code>0.5692 → 0.8802 → 0.6179</code>）</td></tr>
-<tr><td class="src">docs/position-current.html</td><td>转移矩阵线的位置图（51 条，第 63 轮口径）</td></tr>
-</tbody>
-</table>
-
-<hr>
-<p class="tiny">第 366 轮 · 总装件。本轮不引入新估计；只做三件事：把已证结论按「因为 / 所以」接成一条链、把链上仅有的两个断点定位到具体的数与量词、把 Clay 写成等价的两环形式。<b>Clay 未证</b>；<b>未证的恰好是 (UV) 与 (SCALE) 两环</b>。</p>
+<hr class="end">
+<p class="src">出处：<code>docs/THEOREM-machine-closed.md</code>、<code>docs/CORRECTION-ginibre-not-available.md</code>、<code>docs/NOGO-spectral-route-cannot-give-gap.md</code>、<code>docs/CLAY-CHAIN-MAP.md</code>、<code>docs/FINAL-STATE.md</code>、<code>docs/ROUND259-4d-first.md</code>、<code>docs/VERDICT-C-undecidable.md</code>、<code>docs/position-current.html</code>。</p>
+<p class="src">第 366 轮 · 公式链（HTML 版）。同内容的排版件：<code>docs/CHAIN-TO-CLAY.pdf</code>（Typst 源 <code>docs/chain-to-clay.typ</code>）。<b>Clay 未证。</b></p>
 
 </body>
 </html>
+
