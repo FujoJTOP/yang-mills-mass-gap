@@ -1,0 +1,48 @@
+  WW1 beta=2.40   4000/24000    39.1s  qbar=0.36969
+  WW1 beta=2.40   8000/24000    69.8s  qbar=0.36956
+  WW1 beta=2.40  12000/24000   100.4s  qbar=0.36958
+  WW1 beta=2.40  16000/24000   131.2s  qbar=0.36960
+  WW1 beta=2.40  20000/24000   161.5s  qbar=0.36963
+  WW1 beta=2.40  24000/24000   192.1s  qbar=0.36967
+POINT beta=2.40  N=24000  therm=600  seed=7001  wall=192.1s
+  plaq   = 0.630330 +- 0.000084   (qbar mean 0.369670 +- 0.000084)
+  chi_var= L^4 Var(qbar) = 0.042430 +- 0.000510
+  Neff   = 1462.1   tau_int = 8.21 sweeps
+  WW1 beta=2.45   4000/24000    33.9s  qbar=0.35809
+  WW1 beta=2.45   8000/24000    63.7s  qbar=0.35791
+  WW1 beta=2.45  12000/24000    93.6s  qbar=0.35788
+  WW1 beta=2.45  16000/24000   123.3s  qbar=0.35788
+  WW1 beta=2.45  20000/24000   153.7s  qbar=0.35790
+  WW1 beta=2.45  24000/24000   184.2s  qbar=0.35788
+POINT beta=2.45  N=24000  therm=600  seed=7002  wall=184.2s
+  plaq   = 0.642121 +- 0.000051   (qbar mean 0.357879 +- 0.000051)
+  chi_var= L^4 Var(qbar) = 0.035470 +- 0.000468
+  Neff   = 3340.1   tau_int = 3.59 sweeps
+  WW1 beta=2.50   4000/24000    37.0s  qbar=0.34759
+  WW1 beta=2.50   8000/24000    67.6s  qbar=0.34756
+  WW1 beta=2.50  12000/24000    98.0s  qbar=0.34753
+  WW1 beta=2.50  16000/24000   128.4s  qbar=0.34756
+  WW1 beta=2.50  20000/24000   158.4s  qbar=0.34759
+  WW1 beta=2.50  24000/24000  10385.7s  qbar=0.34760
+POINT beta=2.50  N=24000  therm=600  seed=7003  wall=10385.7s
+  plaq   = 0.652402 +- 0.000040   (qbar mean 0.347598 +- 0.000040)
+  chi_var= L^4 Var(qbar) = 0.033162 +- 0.000391
+  Neff   = 5105.3   tau_int = 2.35 sweeps
+beta=2.40  <qbar>=0.3696698 +- 0.0000842  plaq=0.630330  chi_var=0.042430 +- 0.000510 Neff=1462 tau=8.2
+beta=2.45  <qbar>=0.3578791 +- 0.0000509  plaq=0.642121  chi_var=0.035470 +- 0.000468 Neff=3340 tau=3.6
+beta=2.50  <qbar>=0.3475975 +- 0.0000398  plaq=0.652402  chi_var=0.033162 +- 0.000391 Neff=5105 tau=2.4
+
+finite differences (-(1/6) d<qbar>/dbeta, h=0.05):
+  beta=2.40  chi_fd=0.039302 +- 0.000328   (chi_var=0.042430 +- 0.000510)
+  beta=2.45  chi_fd=0.036787 +- 0.000155   (chi_var=0.035470 +- 0.000468)
+  beta=2.50  chi_fd=0.034272 +- 0.000215   (chi_var=0.033162 +- 0.000391)
+  midpoint 2.425: 0.039302 +- 0.000328
+  midpoint 2.475: 0.034272 +- 0.000215
+  drop 2.425 -> 2.475: +0.005030 +- 0.000392  = +12.82 sigma
+convexity D2 = <qbar>(2.40) - 2<qbar>(2.45) + <qbar>(2.50) = +1.509e-03 +- 1.380e-04 (+10.94 sigma; D2>0 <=> chi_q down)
+quadratic vertex of chi_var(beta): 2.4998  (2a=+1.8614e+00; >0 => minimum)
+
+chi_q(2.40)=0.042430  chi_q(2.45)=0.035470  chi_q(2.50)=0.033162   (variance estimator)
+grid argmax of chi_q at beta=2.40 ; TT4 bound chi_q(2.50) <= 4.0000 (delta=1/24)
+chi_q(2.50)/C = 0.008291
+wrote ww1_peak.json
