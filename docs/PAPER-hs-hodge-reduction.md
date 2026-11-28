@@ -556,7 +556,7 @@ $$\boxed{\ \textbf{Problem 14.8.}\quad \sup_{L,\ \beta\in[1/48,2.5]}\chi_L\lt\in
 
 - **§5's hypothesis (M) is superseded**: (Q) is now a theorem, so the momentum comparison no longer needs (M).
 - **§9's Problem 9.1 is not needed for (T)**: only for the *exponential* clustering form (MP), which (14.8) does not give. Positivity of $T$ gives non-negative spectral weights but **no uniform transfer-matrix spectral gap**, so (MP) stays open.
-- **Problem 14.8 is a statement about the $0^{++}$ (plaquette-scalar) channel only.** It is not the vector-channel mass gap; the two channels are distinct objects.
+- **Problem 14.8 is a statement about the plaquette-scalar channel only.** It is not the vector-channel statement analysed in Appendix A; the two channels are distinct objects and the obstruction in one does not transfer to the other.
 
 ---
 
