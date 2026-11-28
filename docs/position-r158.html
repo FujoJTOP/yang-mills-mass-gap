@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>位置图 · 第 158 轮</title>
+<style>
+ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;max-width:1040px;margin:2rem auto;padding:0 1rem;line-height:1.6;color:#1a1a1a;background:#fafafa}
+ h1{font-size:1.5rem;border-bottom:2px solid #333;padding-bottom:.4rem}
+ h2{font-size:1.15rem;margin-top:2rem;border-left:4px solid #4a7;padding-left:.6rem}
+ table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+ th,td{border:1px solid #ccc;padding:.35rem .55rem;text-align:left;vertical-align:top}
+ th{background:#eee}
+ .T{background:#d8f0d8;font-weight:600}
+ .M{background:#fdf3d0}
+ .F{background:#f8d8d8}
+ .U{background:#e4e4e4}
+ code{background:#eee;padding:.05rem .25rem;border-radius:3px;font-size:.9em}
+ .big{background:#e8f4ff;border-left:4px solid #2c7;padding:.6rem .8rem;margin:1rem 0}
+ .note{background:#fff8e0;border-left:4px solid #d4a017;padding:.6rem .8rem;margin:1rem 0}
+</style>
+</head>
+<body>
+
+<h1>位置图 · 第 158 轮</h1>
+<p>项目：4 维纯 SU(2) Yang-Mills 质量隙（Clay）。进展单位是「轮」。</p>
+
+<h2>1. 本轮最重要的事实：单链定理 (R) 的证明链已封卷</h2>
+
+<div class="big">
+<pre>定理 (R):
+    t2(λ)/t1(λ) ≤ I2(β)/I1(β)     ∀λ ≥ 0     (β 固定)
+
+链:  (R)  ←  t1'' < 0  ←  I1 I3 < I2²
+
+三段全部 [T]:
+
+  (一) I1 I3 < I2²  ∀z>0   —— 两条独立证明
+       A. 级数:  A = I1I3−I2² 满足 z³A'''+5z²A''−(4z³+13z)A'−(4z²+32)A = 0
+                 a_n/a_{n−1} = (2n−1)/(2(n+1)(n−2)(n+2))   (n≥3, sympy 核到 n=12)
+                 a₀=a₁=0, a₂=−1/192 < 0  ⇒  a_n<0 ∀n≥2
+                 |a_n/a_{n−1}| ~ 1/n² → 0  ⇒  收敛半径 ∞  ⇒  A<0 ∀z>0
+       B. Riccati: r := I1/I2 满足 r' = 1−r²+3r/z
+                  I3 = I1 − (4/z)I2  ⇒  A<0 ⟺ r < ρ := 2/z+√(1+4/z²)
+                  ρ'−F(ρ) = 1/(z√(1+4/z²)) > 0  (精确)
+                  F 在 ρ 处严格递减;  小 z: r≈4/z+z/6 < ρ≈4/z+z/4
+                  ⇒ 比较定理 ⇒ r<ρ ∀z>0
+
+  (二) t₁'' < 0,  t₁(z) := I2(z)/I1(z)
+       (ln)''+(ln)'² = 3/z² − (W/P)(1/z+2I₁'/I₁),  W = (3/z)∫₀^z P/t dt
+       上式<0  ⟺  ∫₀^z P/t dt > P/(1+a),   a = 2zI₁'/I₁
+       ⟺  D > 0,  D := P/z − d/dz[P/(1+a)]
+       D/I2² = −r²(3r²z−12r−7z) / (z(3r+2z)²)        ← mpmath 60 位, 7 点比值 1.000000000000
+       D>0 ⟺ r < 2/z+√(4/z²+7/3),  而 (一)B 的 ρ 更小  ⇒  D>0
+
+  (三) (R)  —— Weyl 秩截断
+       R1-R6, R9, R11 为 [T];  R7, R8, R10 为 [M]
+       两段 [0,1e−4] 与 [1e−4,∞) 在 λ=1e−4 处恰好接上
+</pre>
+</div>
+
+<h2>2. 无条件 [T] 清单</h2>
+<table>
+<tr><th>定理</th><th>证明路线</th><th>判</th></tr>
+<tr class="T"><td><code>I₁I₃ &lt; I₂²  ∀z&gt;0</code></td><td><b>级数 + 归纳</b>（A 的 ODE → a_n 递推 → a₂&lt;0 → 全负 → 收敛半径 ∞）</td><td>[T]</td></tr>
+<tr class="T"><td>同上</td><td><b>Riccati 比较</b>（r'=1−r²+3r/z；障碍 ρ；ρ'−F(ρ)=1/(z√(1+4/z²))）</td><td>[T]</td></tr>
+<tr class="T"><td><code>r' = 1−r²+3r/z</code></td><td>Bessel 递推 + 求导</td><td>[T]</td></tr>
+<tr class="T"><td><code>I₃ = I₁−(4/z)I₂</code>、<code>A = I₁²−I₂²−4I₁I₂/z</code></td><td>Bessel 递推 ν=2</td><td>[T]</td></tr>
+<tr class="T"><td><code>D/I₂² = −r²(3r²z−12r−7z)/(z(3r+2z)²)</code></td><td>sympy 化简 + mpmath 60 位核验</td><td>[T]</td></tr>
+<tr class="T"><td><code>(I₂/I₁)'' &lt; 0  ∀z&gt;0</code></td><td>D&gt;0 + 代数</td><td>[T]</td></tr>
+<tr class="T"><td><code>D_N = −2(2N+3)!/[N!(N+1)!(N+3)!(N+4)!]</code> 全 N</td><td>递推恒等 + 归纳</td><td>[T]</td></tr>
+<tr class="T"><td><code>−ln(I₂/I₁) = Σ c_k/β^k</code>（c₁..c₁₀ 全有理）</td><td>sympy 精确 + 数值 10⁻¹¹</td><td>[T]</td></tr>
+<tr class="T"><td>Borel 半径 <code>≈2.0</code>，奇点不在 <code>11/(2π²)=0.557</code></td><td>系数阶乘增长 |c_k|~k!A^k</td><td>[T]</td></tr>
+<tr class="T"><td>余项判据 <code>Φ_Kβ^{K+1}→c_{K+1} ⟺ Φ≡0</code></td><td>定义</td><td>[T]</td></tr>
+<tr class="T"><td><code>Φ(β_s) = −2ln(μ₂(M_f)/μ₁(M_f))</code></td><td>K₁→t₀𝟙 ⇒ T→t₀²M_f²</td><td>[T]</td></tr>
+<tr class="T"><td><code>Φ&gt;0 ∀β_s&gt;0</code>（截断内）</td><td>Perron–Frobenius</td><td>[T]</td></tr>
+<tr class="T"><td><code>M_f</code> 的谱是本质谱 ⇒ <code>Φ→0</code>（连续极限）</td><td>乘法算子</td><td>[T]</td></tr>
+</table>
+
+<h2>3. 三条结构障碍</h2>
+<table>
+<tr><th>障碍</th><th>状态</th><th>依据</th></tr>
+<tr class="F"><td>O1：靠 <code>V ≤ 1</code> 延拓单链结果到格点</td><td><strong>[F]</strong></td><td>乘积 V 无增益（r 与单链逐位相同）、非乘积 V 更差（0.692 &gt; 0.507）</td></tr>
+<tr class="T"><td>O2：两链截断</td><td><strong>[T] 解决</strong></td><td>matrix-free Lanczos 收敛到 <code>r∞ = 0.6920112</code></td></tr>
+<tr class="U"><td>O3：<code>K ~ β</code> 无界</td><td><strong>[U]，= 单调性</strong></td><td><code>N_req ≈ 7.8√β</code></td></tr>
+</table>
+
+<h2>4. 连续极限的通道（本轮确定的判据）</h2>
+<table>
+<tr><th>事实</th><th>判</th></tr>
+<tr class="T"><td>物理质量隙要求 <code>m·a ~ e^{−cβ}</code>（指数小）</td><td>[T]</td></tr>
+<tr class="T"><td><code>1−I₂/I₁ ~ 3/(2β)</code>（幂次）⇒ 单链给不出</td><td>[T]</td></tr>
+<tr class="T"><td><code>−ln(I₂/I₁)</code> 的 Borel 半径 <code>≈2</code> ≫ <code>11/(2π²)</code> ⇒ 物理指数不在级数里</td><td>[T]</td></tr>
+<tr class="T"><td><code>L=1</code> 的 <code>Φ≡0</code>（余项判据）+ 本质谱 ⇒ <code>L=1</code> 无非微扰项</td><td>[T]</td></tr>
+<tr class="F"><td><code>L=1</code> 的连续极限通道</td><td>[F]</td></tr>
+<tr class="F"><td><code>L≥2</code> 的精确对角化（<code>L=2</code> 要 <code>2.8×10¹¹</code> 维）</td><td>[F]</td></tr>
+<tr class="U"><td>解析 RG（Balaban 型 + 弱耦合拼接）</td><td>[U]</td></tr>
+</table>
+
+<h2>5. 死路台账（每条一个数）</h2>
+<table>
+<tr><th>路线</th><th>判</th><th>关键数</th></tr>
+<tr class="F"><td>Abel 分解</td><td>[F]</td><td>恒等式 (W₊+W₋)/D−(E₊+E₋)/D ≡ 4N_c</td></tr>
+<tr class="F"><td>Lieb 对数凸</td><td>[F]</td><td>t₂ 不凸（4/120 反例）</td></tr>
+<tr class="F"><td>显式 g 变分</td><td>[F]</td><td>固定 g 同时对付 λ=0 与大 λ 不可能</td></tr>
+<tr class="F"><td>Weyl 搬到 r'</td><td>[F]</td><td>范数界给正上界</td></tr>
+<tr class="F"><td>显式投影 e₀/e₁</td><td>[F]</td><td>全错号</td></tr>
+<tr class="F"><td>「T' 近标量」</td><td>[F]</td><td>差 91–110%</td></tr>
+<tr class="F"><td>秩块直接算 s_i</td><td>[F]</td><td>非正交相似，值偏低 0.06–0.34</td></tr>
+<tr class="F"><td>秩块重建 x_i</td><td>[F]</td><td>K^{−1/2} 放大被压制分量，nan</td></tr>
+<tr class="F"><td>∫θψ₂=0</td><td>[F]</td><td>K 在 ψ₁ 支撑上不是 e^βθφ</td></tr>
+<tr class="F"><td>Sturm+Chebyshev 全序</td><td>[F]</td><td>λ≤2 的 k≥3 处不单调</td></tr>
+<tr class="F"><td>「负质量必在小 θ」</td><td>[F]</td><td>Kψ₁ 宽 0.84 不集中</td></tr>
+<tr class="F"><td>(I₂/I₁)'' 与 I₁I₃−I₂² 的点态恒等</td><td>[F]</td><td>三种归一化都非恒定</td></tr>
+<tr class="F"><td>D 与 A 的逐项比例</td><td>[F]</td><td>D/A 在 z⁴ 是 −5/3、z⁶ 是 +7/3</td></tr>
+</table>
+
+<h2>6. 限定</h2>
+<ul>
+<li>(R) 的 <code>[T]</code> 是<strong>固定 β</strong>（主参照 β=2.5）；β-一致版本只到 <code>[M]</code>。</li>
+<li>(R) 的 Weyl 路线含 3 项 <code>[M]</code>（R7 的 16×16 本征值、R8 的 57 点 sup、R10 的 c₂）。</li>
+<li>λ 范围：[0,∞) 全程。</li>
+<li>Bessel 不等式的两条路线都只用教科书级输入（Bessel 递推与方程、Weyl 不等式、小 z 渐近）。</li>
+</ul>
+
+<h2>7. 与 Clay 的距离</h2>
+<div class="note">
+<p><strong>已证（[T]）：</strong></p>
+<ul>
+<li><code>I₁I₃ &lt; I₂² ∀z&gt;0</code>（两条独立）</li>
+<li><code>(I₂/I₁)'' &lt; 0 ∀z&gt;0</code></li>
+<li>单链定理 <code>(R)</code>（固定 β；8 项 [T] + 3 项 [M]）</li>
+<li><code>D_N</code> 闭式、<code>−ln(I₂/I₁)</code> 的精确渐近级数与 Borel 结构、余项判据、<code>Φ</code> 的闭式与本质谱</li>
+</ul>
+<p><strong>缺口：</strong></p>
+<ul>
+<li><strong>单链单调性中间段</strong>（<code>[M]</code>，只影响 <code>L_s=2</code> 模型）</li>
+<li><strong><code>V ≤ 1</code> 的延拓</strong>（<code>[F]</code>）</li>
+<li><strong>从有限模型到 4 维格点连续极限的通道</strong>：<code>L=1</code> 无 <code>Φ</code>（<code>[F]</code>）、<code>L≥2</code> 算不动（<code>[F]</code>）、剩解析 RG（<code>[U]</code>）</li>
+</ul>
+<p>物理质量隙要求 <code>m·a ~ e^{−cβ}</code>；这个标度只能来自维度透变/RG 不动点，不能来自任何有限体积的谱比。</p>
+</div>
+
+</body>
+</html>
