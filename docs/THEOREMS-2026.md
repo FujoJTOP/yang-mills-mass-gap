@@ -341,3 +341,51 @@ $$\boxed{\ L_s=1\ \text{上}\ e^{-c\beta}\ \textbf{不存在}（四次尝试：�
 `\_htrunc3.py$` | `h$`-截断（三角） | `120$` s |
 `\_trianglejm.py$` | 三角的 `jm$`-扫描 | `300$`–`900$` s |
 `\_mexp3.py$` | `M_f$` 的矩阵元 | `20$` s |
+
+---
+
+## L. 定理 (V-损隙)（第 13–24 轮）
+
+### L.1 定理陈述
+
+$$\boxed{\ \frac{t_2(\beta_s)}{t_1(\beta_s)}\ \ge\ \frac{t_2(0)}{t_1(0)}=u\qquad\forall\beta_s\gt0\ }$$
+
+**等价：`V$`（`\beta_s\gt0$`）**总是**抬高 `r$`（压缩隙）。**
+
+### L.2 证明链（8 步）
+
+| 步 | 内容 | 判 |
+|---|---|---|
+**1** | `T=M_fKM_f$` 保持 `h=\sum_xj_x$` 的宇称 | `[T]` |
+**2** | `\psi_1(\beta_s)$` 在 `h$` 偶；`D_2^{(0)}\subset h=1$`（奇）⇒ `\langle\psi,\psi_1\rangle=0$` **精确** | `[T]` |
+**3** | Ky Fan：`t_2\ge\frac{\langle\psi,M_fKM_f\psi\rangle}{\langle\psi,\psi\rangle}$** | `[T]` |
+**4** | `K$` 在 `h=1$` 上是常数 `t_0t_{1/2}=ut_1$` | `[T]` |
+**5** | **精确谱** `\text{spec}(q\|_{h=1})=\{-\frac12(4\times),+\frac12(4\times)\}$ | **`[T]`**（`B=\frac12\mathbb 1_4$` 解析，第 22 轮） |
+**6** | `\alpha:=\|M_f\psi\|^2=\cosh\frac{\beta_s}{2}\ge1$** | **`[T]`** |
+**7** | `\sum_{h\ge3}t\|\cdot\|^2\le t_{\max}(h\ge3)(\alpha-\beta)\le u^2(\alpha-\beta)$ | **`[T]`**（Bessel 比单调性，第 23 轮） |
+**8** | 若 `\alpha\ge\frac{1}{1-u(1-\beta/\alpha)}$` 则结论成立 | **`[T]`** |
+
+### L.3 唯一的数值输入
+
+| 量 | 10 点范围 | 判 |
+|---|---|---|
+**`\beta/\alpha$`** | `0.9581$`–`0.9971$` | **`[M]`** |
+**条件余量** | `11$`–`27$` 倍 | **`[M]`** |
+
+### L.4 完整图像
+
+**结合 `r(0)=r(\infty)=u$`（第 223/225 轮）：**
+
+$$r(\beta_s)\ \ge\ u,\qquad r(0)=r(\infty)=u,\qquad r\ \text{在}\ \beta_s\approx2\ \text{达峰}\ 0.5948$$
+
+**⇒ 隙 `1-r$` 两端 `1-u=0.4928$`、中间低（`0.405$`）。**
+
+### L.5 复现
+
+| 脚本 | 作用 | 耗时 |
+|---|---|---|
+`\_trialbound.py$` | 试验界（`D_2^{(0)}$` 上的 Ky Fan 值） | `20$` s |
+`\_trialbound2.py$` | 正交化试验界 | `20$` s |
+`\_trialbound3.py$` | 大 `\beta_s$` 的余量 | `10$` s |
+`\_trialbound_jm4.py$` | `jm=4$` 的收敛核验 | `120$` s |
+`\_decomp.py$` | `\alpha,\beta$` 的分层分解 | `30$` s |
