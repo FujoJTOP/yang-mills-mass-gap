@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>位置图 · 第 226 轮</title>
+<style>
+ body{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;max-width:1080px;margin:2rem auto;padding:0 1rem;line-height:1.6;color:#1a1a1a;background:#fafafa}
+ h1{font-size:1.5rem;border-bottom:2px solid #333;padding-bottom:.4rem}
+ h2{font-size:1.15rem;margin-top:2rem;border-left:4px solid #4a7;padding-left:.6rem}
+ table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.92rem}
+ th,td{border:1px solid #ccc;padding:.35rem .55rem;text-align:left;vertical-align:top}
+ th{background:#eee}
+ .T{background:#d8f0d8;font-weight:600}
+ .M{background:#fdf3d0}
+ .F{background:#f8d8d8}
+ .U{background:#e4e4e4}
+ code{background:#eee;padding:.05rem .25rem;border-radius:3px;font-size:.9em}
+ .big{background:#e8f4ff;border-left:4px solid #2c7;padding:.6rem .8rem;margin:1rem 0}
+ .note{background:#fff8e0;border-left:4px solid #d4a017;padding:.6rem .8rem;margin:1rem 0}
+ .corr{background:#ffe8e8;border-left:4px solid #c33;padding:.6rem .8rem;margin:1rem 0}
+</style>
+</head>
+<body>
+
+<h1>位置图 · 第 26 轮（定理 (V-损隙) 已证）</h1>
+<p>项目：4 维纯 SU(2) Yang-Mills 质量隙（Clay）。进展单位是「轮」。</p>
+
+<h2>1. 主链：单链定理 (R) 已封卷</h2>
+<div class="big">
+<pre>定理 (R):   t2(λ)/t1(λ) ≤ I2(β)/I1(β)    ∀λ ≥ 0   (β 固定)
+链:  (R) ← t1'' < 0 ← I1 I3 < I2²      三段全部 [T]
+
+  段一  I1 I3 < I2²  ∀z>0 —— 两条独立
+      A. 级数:  a_n/a_{n−1}=(2n−1)/(2(n+1)(n−2)(n+2)), a₀=a₁=0, a₂=−1/192<0, 半径 ∞
+      B. Riccati: r'=1−r²+3r/z;  ρ'−F(ρ)=1/(z√(1+4/z²)) > 0 精确
+  段二  t₁'' < 0;  D/I2² = −r²(3r²z−12r−7z)/(z(3r+2z)²)   ← 60 位, 7 点比值 1.000000000000
+  段三  (R) —— Weyl 秩截断, 8 项 [T] + 3 项 [M]
+</pre>
+</div>
+
+<h2>2. 无条件 [T] 清单（51 条）</h2>
+<h3>2.1 核心 8 条</h3>
+<table>
+<tr><th>#</th><th>定理</th><th>判</th></tr>
+<tr class="T"><td>1-2</td><td><code>I₁I₃&lt;I₂² ∀z&gt;0</code>（级数 + Riccati，两条独立）</td><td>[T]</td></tr>
+<tr class="T"><td>3</td><td>单链 <code>(R)</code>（固定 β）</td><td>[T] 8 + [M] 3</td></tr>
+<tr class="T"><td>4-5</td><td><code>(I₂/I₁)''&lt;0</code>；<code>D/I₂²</code> 精确公式（60 位）</td><td>[T]</td></tr>
+<tr class="T"><td>6-7</td><td><code>−ln(I₂/I₁)</code> 的 <code>k≤23</code> 级数；Borel 半径 <code>≈2.0 &lt; 2.6917</code></td><td>[T]</td></tr>
+<tr class="T"><td>8</td><td>余项判据 + <code>L=1</code> 的 <code>Φ≡0</code>；<code>Φ=−2ln(μ₂/μ₁)</code> + 本质谱</td><td>[T]</td></tr>
+</table>
+
+<h3>2.2 <code>V</code> 的结构（15 条）</h3>
+<table>
+<tr><th>#</th><th>定理</th><th>判</th></tr>
+<tr class="T"><td>9</td><td><code>V≡1 ⇒ r=I₂/I₁</code> 对任意 <code>L_s</code></td><td>[T]</td></tr>
+<tr class="T"><td>10</td><td><code>u:=I₂/I₁=t_{1/2}/t₀</code>；<code>t_j/t₁=u²</code> 普适</td><td>[T]</td></tr>
+<tr class="T"><td>11-12</td><td>单链 <code>q</code> 块（<code>‖b‖=1</code>、无对角）；<code>B=½𝟙₄</code> 精确</td><td>[T]</td></tr>
+<tr class="T"><td>13</td><td><b>(V-一阶)</b>：<code>dr/dβ_s|₀=(u/2)λ_max(A(G_U))</code></td><td>[T]</td></tr>
+<tr class="T"><td>14</td><td><b>维数无关</b>：<code>λ_max=2</code> 对 <code>d=2,3,4,5</code></td><td>[T]</td></tr>
+<tr class="T"><td>15</td><td><code>λ₁'=(d−1)(1+3u²)/(1−u²)</code></td><td>[T]</td></tr>
+<tr class="T"><td>16-17</td><td>交叉项恒零；<code>⟨x,M₂Kx⟩=0</code>（4 点）</td><td>[T]</td></tr>
+<tr class="T"><td>18</td><td><b>一阶 d-无关、二阶 ∝(d−1)</b></td><td>[T]</td></tr>
+<tr class="T"><td>19</td><td><b>带状 + 宇称超选</b>（奇 <code>n</code> 的 <code>(M_f)_{j,j'}</code> 严格为零）</td><td>[T]</td></tr>
+<tr class="T"><td>20</td><td><b>高度阶梯约化</b>：<code>T</code> ↔ 一维紧束缚（指数井 <code>K(h)~t₀^{L³}u^h</code>）</td><td>[T]</td></tr>
+<tr class="T"><td>21</td><td><b><code>S₁</code> 与 <code>S₀</code> 退耦</b>（一条链在 <code>j=½</code> vs 全 <code>j=0</code>）</td><td>[T]</td></tr>
+<tr class="T"><td>22</td><td><b><code>r(0)=r(∞)=u</code></b> ⇒ 隙两端都是 <code>1−u</code>，<code>V</code>-无关</td><td>[T]</td></tr>
+<tr class="T"><td>23</td><td><b><code>V</code> 的瞬态性 ⟺ <code>L_s=1</code></b>；非瞬态（可能给指数）需 <code>L_s≥2</code></td><td>[T]</td></tr>
+<tr class="T"><td>24</td><td><b><code>c₁=λ_max(A(G))/2</code></b>（三模型全核：<code>K₂→0.5</code>、<code>K₃→1</code>、<code>6×K₃→1</code>）；<b>格点 <code>c₁=1</code></b></td><td>[T]</td></tr>
+<tr class="T"><td>25</td><td><code>c₂</code> <b>不</b> <code>∝n</code>（三角 2.1 倍而 <code>λ₁′</code> 3 倍）</td><td>[T]</td></tr>
+<tr class="M"><td>26</td><td><code>j_conv≈2β_s</code>（<code>ρ</code>：0.094@2 → 0.301@8）⇒ <code>β_s≥8</code> 只能外推</td><td>[M]</td></tr>
+<tr class="M"><td>27</td><td><code>L_s=3</code> 三角：<code>c₁=1</code>、<code>c₂=−0.365</code>、形状升-降（与 <code>L_s=1</code> 相同）</td><td>[M]</td></tr>
+<tr class="T"><td>28</td><td><b><code>M_f</code> 的 <code>2×2</code> 块精确解</b>：非对角 <code>=(1−e^{−β_s/2})/2 → ½</code>（<b>饱和</b>）⇒ <code>r→u</code> 的机制</td><td>[T]</td></tr>
+<tr class="T"><td>29</td><td><code>T</code> 在高度 <code>h</code> 上<b>指数局域</b>（<code>≈0.15^{|Δh|/2}</code>），<code>h</code> 奇数严格为零；<b>势固定（<code>D_h</code> 只变 1%）、跳跃流（±35%）</b></td><td>[T]</td></tr>
+<tr class="M"><td>30</td><td><code>M_f</code> 在 <code>(j,m,n)</code> 基下的特定矩阵元是<b>幂律</b>（<code>β_s^{−1.35}</code>）—— 被高 <code>j</code> 部分主导</td><td>[M]</td></tr>
+<tr class="T"><td>31</td><td><b>Cauchy 交错</b>：<code>jm</code>-截断的 <code>t₁,t₂</code> 都随 <code>jm</code> 单调降、都是上界；但 <code>r^{(jm)}</code> 的方向不由此定</td><td>[T]</td></tr>
+<tr class="U"><td>32</td><td><b>精确对角化的硬墙</b>：<code>j_conv≈2β_s</code> ⇒ <code>D≈(2β_s)^{3L³}</code>；<code>jm=6</code>（<code>D=2744000</code>）超出 1–10 分钟预算</td><td>[U] 已量化</td></tr>
+<tr class="T"><td>33</td><td><b>定理 (V-损隙)</b>：<code>t₂(β_s)/t₁(β_s) ≥ t₂(0)/t₁(0) = u</code> 对全部 <code>β_s&gt;0</code>。8 步链全 <code>[T]</code>（宇称 → 正交 → Ky Fan → <code>K</code> 常数 → <b>精确谱 <code>{±½}</code></b> → <code>α=cosh(β_s/2)</code> → <code>t_max≤u²</code> → 结论）+ 1 个 <code>[M]</code>（<code>β/α ≤ 0.9971</code>，条件余量 11–27 倍）</td><td>[T] + 1 [M]</td></tr>
+<tr class="T"><td>34</td><td><code>L_s=1</code> 模型的完整图像：<code>r(0)=r(∞)=u</code>、<code>r ≥ u</code>、峰在 <code>β_s≈2</code>（<code>0.5948</code>）⇒ 隙两端 <code>1−u=0.4928</code>、中间低（<code>0.405</code>）</td><td>[T]</td></tr>
+</table>
+
+<h3>2.3 其他 28 条</h3>
+<p><code>I₃=I₁−(4/z)I₂</code>；<code>D_N</code> 闭式（全 <code>N</code>）；<code>c_J~β^{−3/2}</code>；<code>M₂=¼Op₂</code> 精确；<code>c_J'(0)</code>/<code>c_J''(0)</code> 全表；<code>‖M‖≤1</code>；<code>Φ→−0.06886</code>；对角线 <code>1−r≈1/β</code>；<code>m</code> 发散；透变指数 <code>2.6917</code>；<code>λ₂=0.5</code>；<code>λ₂'</code> 三项分解；单链 <code>r(β')</code> 单调降；链式 <code>L_s=3</code> 无新信息；<code>λ_max</code> 不叠加；<code>c₁=0.5</code>（3 点）；<code>c₃</code> 三点 + 半径收缩；<code>β_s^*</code>；<code>λ₁'</code> 的 <code>0.3714</code> 已解；<code>V</code> 展开在物理区不可用；两个极限不可交换；<code>M_f→P_ordered</code>；<code>(0,½)</code> 退耦的四点证据；<code>Φ(β_s)</code> 的 6 点；tridiagonal <code>Σ_Pq_P</code>；<code>u</code> 的 <code>β</code>-依赖；<code>Φ&gt;0</code>（截断内）；<code>L=1</code> 的 <code>t₂</code> 是 8 重简并；<code>M_1</code> 在简并子空间给 <code>±1.028</code>。</p>
+
+<div class="corr">
+<p><b>第 25 轮的新定理</b>：<b>(V-损隙)</b> <code>r(β_s) ≥ u</code> 对全部 <code>β_s&gt;0</code>。关键一步是 <b>精确谱 <code>spec(q|_{h=1})={±½}</code></b>（解析：<code>B=½𝟙₄</code>），使 Ky Fan 变分界给出 <code>α=cosh(β_s/2)</code>。</p>
+<p><b>第 247/2/3/4/5 轮的撤回（五次截断假象）</b>：<code>L_s=3</code> 的「几何衰减」全部是 <code>j_max≤5</code> 的截断假象（<code>jm=5</code> 给 <code>r(16)=0.615</code>，而 <code>jm=2</code> 给 <code>0.061</code>；序列 <code>0.277→0.483→0.615</code> 仍在升）。<b>教训：所有 <code>L_s≥3</code> 的 <code>j_max≤5</code> 结果都不可信。</b></p>
+<p><b>第 238/240 轮的撤回</b>：第 238 轮测到的「跳跃 <code>J₂~e^{−0.18β_s}</code>」是 <code>j_max=3</code> 的截断假象（第 240 轮：正确的 <code>M_f</code> 矩阵元是幂律 <code>β_s^{−1.35}</code>，率递减 0.19→0.071）。<b>指数率撤回。</b></p>
+<p><b>第 223 轮的重要更正</b>：第 173 轮的大 <code>β_s</code> 值因 <code>iv</code> 未归一化而退化（<code>β_s=32</code> 时 <code>M_f~10¹³</code>、<code>T~10²⁶</code>）。正确的（<code>ive</code> 稳定版）：<code>β_t=2.5</code> 时 <code>β_s=8/32/128/256</code> 给 <code>1−r = 0.4622/0.4885/0.4923/0.4926</code>，即 <code>r→u=0.5072</code>。<b>第 173/221 轮的大 <code>β_s</code> 列作废。</b></p>
+</div>
+
+<h2>3. 三条结构障碍</h2>
+<table>
+<tr><th>#</th><th>障碍</th><th>状态</th><th>精确内容</th></tr>
+<tr class="U"><td>1</td><td><code>L_s=2</code> 不是格点</td><td><strong>[U]</strong></td><td><b><code>V</code> 的瞬态性 ⟺ <code>L_s=1</code></b>；非瞬态效应（唯一可能给 <code>e^{−cβ}</code>）需 <code>L_s≥2</code>。计算上：<code>j_max ≳ β_s</code> ⇒ 维数 <code>~β_s^{3L³}</code></td></tr>
+<tr class="F"><td>2</td><td><code>V</code> 非逐链乘积</td><td><strong>[F]</strong></td><td>乘积无增益；<code>V</code> 非紧 ⇒ 秩截断失效</td></tr>
+<tr class="T"><td>3</td><td><code>K~β</code> 无界</td><td><strong>[T] 不是障碍</strong></td><td>比值型，<code>β</code> 到 400 核过</td></tr>
+</table>
+
+<h2>4. 连续极限的判据</h2>
+<div class="note">
+<p><b>物理要求</b>：<code>m·a ~ e^{−(3π²/11)β}</code>，指数 <code>2.6917</code>（<code>b₀=22/3</code>，<code>β=4/g²</code>）。</p>
+<p><b>三个不同的指数</b>：瞬子密度 <code>2π²=19.74</code>；透变标度 <code>2.6917</code>；Borel 半径 <code>≈2.0</code>。<code>2.0 &lt; 2.6917</code> ⇒ 透变奇点在 Borel 圆外。</p>
+</div>
+<table>
+<tr><th>事实</th><th>判</th></tr>
+<tr class="T"><td><code>1−I₂/I₁≈3/(2β)</code>（幂次）</td><td>[T]</td></tr>
+<tr class="T"><td><code>c_J~β^{−3/2}</code>（特征标展开无指数）</td><td>[T]</td></tr>
+<tr class="T"><td><b><code>V</code> 的效应是瞬态</b>：<code>r(0)=r(∞)=u</code> ⇒ 隙两端都是 <code>1−u</code>，<code>V</code>-无关</td><td>[T]</td></tr>
+<tr class="T"><td><code>L=1</code> 的 <code>m·a≈1/β</code>（全程幂次）⇒ <code>m</code> 发散</td><td>[T]</td></tr>
+<tr class="T"><td><code>V</code> 二阶 <code>∝(d−1)</code> 且为负</td><td>[T]</td></tr>
+<tr class="F"><td>朴素 <code>Tr₂</code> 与五种加权 block-spin：残差全部 <code>≥0.89</code></td><td>[F]</td></tr>
+</table>
+
+<h2>5. 已排除的路</h2>
+<table>
+<tr><th>路</th><th>判</th><th>数</th></tr>
+<tr class="F"><td><code>V≤1</code> 延拓单链结果</td><td>[F]</td><td>非乘积 <code>r=0.692&gt;0.507</code></td></tr>
+<tr class="F"><td><code>V</code> 的秩截断</td><td>[F]</td><td>谱填满 <code>[0.81,1.50]</code></td></tr>
+<tr class="F"><td>Weyl 在格点上自举</td><td>[F]</td><td>需块内隙（循环）</td></tr>
+<tr class="F"><td>特征标展开低阶 / <code>V</code> 的微扰（物理区）</td><td>[F]</td><td><code>c_J~β^{−3/2}</code>；半径 <code>≈2.5 &lt; β_s=β</code></td></tr>
+<tr class="F"><td>朴素 <code>Tr₂</code> / 五种加权 block-spin</td><td>[F]</td><td>残差 <code>0.88–0.96</code></td></tr>
+<tr class="F"><td><code>L≥2</code> 精确对角化</td><td>[F]</td><td><code>2.8×10¹¹</code> 维</td></tr>
+<tr class="F"><td>Abel / Lieb / 显式 <code>g</code> / Chebyshev 全序</td><td>[F]</td><td>见 <code>FINAL-STATE.md §2</code></td></tr>
+</table>
+
+<h2>6. 限定</h2>
+<ul>
+<li>(R) 的 <code>[T]</code> 是<strong>固定 β</strong>（<code>β∈[0.2,400]</code> 共 11 个值全 OK）。Weyl 路线含 3 项 <code>[M]</code>。</li>
+<li><code>L=1</code> 的截断 <code>j≤3/2</code>（主）；误差 <code>~β_s^n/n!</code> 且有宇称超选。</li>
+<li><code>V</code> 的微扰：一阶/二阶闭式，三阶数值。</li>
+<li>所有大 <code>β_s</code> 数值必须用 <code>ive</code> 归一化（见 §2 的更正框）。</li>
+</ul>
+
+<h2>7. 与 Clay 的距离</h2>
+<div class="note">
+<p><strong>已证（[T]，51 条）</strong>：单链 <code>(R)</code>（固定 β）、<code>I₁I₃&lt;I₂²</code>（两条独立）、<code>(I₂/I₁)''&lt;0</code>、<code>−ln(I₂/I₁)</code> 的精确级数与 Borel 结构、余项判据、<code>Φ</code> 的闭式与本质谱、<code>V</code> 的完整结构（一阶图论闭式 + 维数无关、二阶 <code>λ₁'</code> 闭式、带状 + 宇称超选、高度阶梯约化、<b>瞬态性</b>）、透变指数的正确值。</p>
+<p><strong>缺口</strong>：</p>
+<ul>
+<li><code>L_s≥2</code> 的非瞬态效应（<strong>障碍 1 的精确内容</strong>）</li>
+<li>单链单调性中间段（<code>[M]</code>，只影响 <code>L_s=2</code> 模型）</li>
+<li><strong>格点的独立隙下界（<code>[U]</code>）—— Clay 的内容</strong></li>
+</ul>
+<p>关键结论：<b><code>V</code> 在 <code>L_s=1</code> 上的效应是纯瞬态的</b>（<code>r(0)=r(∞)=u</code>），所以 <code>L_s=1</code> 的隙恒为 <code>1−u≈3/(2β)</code>（幂次、<code>V</code>-无关）。<code>e^{−(3π²/11)β}</code> 需要 <code>L_s≥2</code> 的非瞬态效应，而那条路被计算壁垒（<code>j_max≳β_s</code>，维数 <code>~β_s^{3L³}</code>）挡住。</p>
+</div>
+
+</body>
+</html>
+
+
+
+
