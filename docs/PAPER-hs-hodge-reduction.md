@@ -450,6 +450,116 @@ and none can hold: a single highly concentrated eigenfunction contributes $O(1)$
 
 ---
 
+## 14. Positive transfer matrix: (Q) holds for all momenta
+
+This section proves (Q) unconditionally, using only the positivity of the Wilson transfer matrix. **It supersedes §5's hypothesis (M) and §9's Problem 9.1 as the route to (T): after Theorem 14.4 the target reduces to the zero-momentum susceptibility alone.**
+
+### 14.1 The transfer matrix is a non-negative operator
+
+Take any coordinate direction as transfer direction. With $q(g)=\tfrac12\operatorname{tr}g=\cos\theta$ on $\mathrm{SU}(2)$ and $K_\beta(g)=e^{\beta q(g)}$, the character expansion is
+
+$$e^{\beta\cos\theta}=\sum_{j=0,1/2,1,\dots}\frac{2(2j+1)}{\beta}I_{2j+1}(\beta)\,\chi_j(g).\tag{14.1}$$
+
+**Verification.** As $\beta\to0$: coefficient of $\chi_0$ is $2I_1(\beta)/\beta\to1$ and of $\chi_{1/2}$ is $4I_2(\beta)/\beta\to\beta/2$, matching $e^{\beta\cos\theta}\approx1+\beta\cos\theta=1+\tfrac{\beta}{2}\chi_{1/2}$ (since $\chi_{1/2}=2\cos\theta$). Numerically at $\beta=0.01$: $2I_1/\beta=1.000013$, $4I_2/\beta=0.005000$ against $\beta/2=0.005$. $\square$
+
+Since $I_{2j+1}(\beta)>0$ for $\beta>0$, every coefficient is positive, so $K_\beta$ is a positive convolution operator, and with the spatial plaquette weight $V_\beta$ inserted on both sides,
+
+$$T_\beta=M_{V_\beta^{1/2}}K_\beta M_{V_\beta^{1/2}}=(M_{V_\beta^{1/2}}K_\beta^{1/2})(M_{V_\beta^{1/2}}K_\beta^{1/2})^*\ \ge 0.\tag{14.2}$$
+
+Restriction to the gauge-invariant subspace preserves positivity. This holds for all finite $L$ and **all** $\beta>0$, hence on the whole target range $\beta\in[1/48,2.5]$. $\square$
+
+### 14.2 Two-point functions of a non-negative transfer matrix are non-negative
+
+**Lemma 14.1 (single-slice observable).** Let $T=\sum_a t_a|\psi_a\rangle\langle\psi_a|$ with $t_a\ge0$, $Z=\operatorname{Tr}T^L$, and let $A=A^*$ act on one time slice. Put $p_a=t_a^L/Z$. Then
+
+$$G(n):=\frac{\operatorname{Tr}(T^{L-n}AT^nA)}{Z}-\Big(\frac{\operatorname{Tr}(T^LA)}{Z}\Big)^2=\underbrace{\operatorname{Var}_p(A_{aa})}_{\ge0}+\underbrace{\frac1Z\sum_{a\ne b}t_a^{L-n}t_b^n|A_{ab}|^2}_{\ge0}\ \ge0.\tag{14.3}$$
+
+*Proof.* Spectral expansion gives $\operatorname{Tr}(T^{L-n}AT^nA)=\sum_{a,b}t_a^{L-n}t_b^n|A_{ab}|^2$. Separating $a=b$ leaves $\sum_ap_aA_{aa}^2-(\sum_ap_aA_{aa})^2=\operatorname{Var}_p(A_{aa})$. **Non-negativity of $t_a$ is what makes the off-diagonal block non-negative.** $\square$
+
+**Lemma 14.2 (temporal plaquette).** If the plaquette straddles two time slices, $q_P$ is a transfer *insertion* $B$ whose kernel is $q(g)e^{\beta q(g)}$; since $q(g^{-1})=q(g)$ it is self-adjoint. For $1\le n\le L-1$,
+
+$$G_B(n)=\frac{\operatorname{Tr}(T^{L-n-1}BT^{n-1}B)}{Z}-\Big(\frac{\operatorname{Tr}(T^{L-1}B)}{Z}\Big)^2 .$$
+
+The off-diagonal block is $\ge0$ as before; the diagonal block is $\ge0$ because
+
+$$\Big(\sum_a t_a^{L-1}B_{aa}\Big)^2\le\Big(\sum_a t_a^{L}\Big)\Big(\sum_a t_a^{L-2}B_{aa}^2\Big)$$
+
+by Cauchy–Schwarz with $u_a=t_a^{L/2}$, $v_a=t_a^{L/2-1}B_{aa}$. Hence $G_B(n)\ge0$. $\square$
+
+**Corollary 14.3.** Whether $P(x)$ is a spatial plaquette (single slice, Lemma 14.1) or a temporal one (insertion, Lemma 14.2), its time-ordered two-point function is non-negative. **There is no gap in the argument from observables that straddle time slices.**
+
+### 14.3 Transverse Fourier positivity
+
+Fix $\mu$ and let $\kappa\in\frac{2\pi}{L}\mathbb Z_L^3$ be the momentum in the three transverse directions. Define
+
+$$\boxed{\ W_\mu(n;\kappa):=\sum_{z_\perp}\Gamma_L\big(0,(n,z_\perp)\big)\,e^{i\kappa\cdot z_\perp}\ }\tag{14.4}$$
+
+**Theorem 14.4 (transverse Fourier positivity, (TP)).** For all $n,\kappa,\mu,L$ and all $\beta>0$,
+
+$$\boxed{\ W_\mu(n;\kappa)\ \ge\ 0\ }\tag{14.5}$$
+
+*Proof.* Put $A_\kappa(t)=\sum_{x_\perp}e^{i\kappa\cdot x_\perp}q_{(t,x_\perp)}$, so $A_\kappa^*=A_{-\kappa}$. For $\kappa\ne0$, translation invariance gives $\langle A_\kappa\rangle=0$, and the spectral expansion of §14.2 yields directly
+
+$$G_\kappa(n)=\big\langle A_{-\kappa}(0)A_\kappa(n)\big\rangle=\frac1Z\sum_{a,b}t_a^{L-n}t_b^n\big|\langle\psi_b,A_\kappa\psi_a\rangle\big|^2\ \ge0 .$$
+
+For $\kappa=0$ use the connected functions of Lemmas 14.1–14.2. On the other hand, by translation invariance,
+
+$$G_\kappa(n)=\sum_{x_\perp,y_\perp}e^{i\kappa\cdot(y_\perp-x_\perp)}\Gamma_L\big((0,x_\perp),(n,y_\perp)\big)=L^3\,W_\mu(n;\kappa).$$
+
+Hence $W_\mu(n;\kappa)=G_\kappa(n)/L^3\ge0$. $\square$
+
+**Remark 14.5 (normalisation).** With $Q_n:=\sum_{x_\perp}q_{(n,x_\perp)}$ one has $w(n):=W_\mu(n;0)=L^{-3}\operatorname{Cov}(Q_0,Q_n)$, not $\operatorname{Cov}(Q_0,Q_n)$; the factor $L^3$ counts the transverse origins. Also $w(0)=\Gamma(0,0)+\sum_{z_\perp\ne0}\Gamma(0,(0,z_\perp))$, which is **not** $\operatorname{Var}(q)$. Numerically $w(0)=0.0235$ while $\operatorname{Var}(q)=0.0142$; the difference $0.0093$ is the transverse sum. $\square$
+
+### 14.4 (Q) for the full momentum space
+
+Since $\Gamma_L$ is a real symmetric translation-invariant covariance, $W_\mu(-n;\kappa)=\overline{W_\mu(n;\kappa)}$, and by (14.5) this is real and non-negative, so $W_\mu(-n;\kappa)=W_\mu(n;\kappa)$. Hence
+
+$$\widehat C_L(k_\mu,\kappa)=\sum_ne^{ik_\mu n}W_\mu(n;\kappa)=\sum_nW_\mu(n;\kappa)\cos(k_\mu n)\ \le\ \sum_nW_\mu(n;\kappa)=\widehat C_L(0,\kappa).\tag{14.6}$$
+
+Iterating over the four directions,
+
+$$\widehat C_L(k_1,k_2,k_3,k_4)\le\widehat C_L(0,k_2,k_3,k_4)\le\widehat C_L(0,0,k_3,k_4)\le\widehat C_L(0,0,0,k_4)\le\widehat C_L(0).$$
+
+$$\boxed{\ \textbf{Theorem 14.6 ((Q) for all }k\textbf{).}\qquad \widehat C_L(k)\ \le\ \widehat C_L(0)\qquad\forall k\in\tfrac{2\pi}{L}\mathbb Z_L^4,\ \forall L,\ \beta>0.\ }\tag{14.7}$$
+
+**This uses none of:** pointwise (POS), monotonicity or convexity of $w$, an exact Lorentzian, a Stieltjes representation, subcriticality of a local Hessian, or any fitted mass.
+
+### 14.5 Consequence: the operator norm is exactly the zero-momentum value
+
+$\Gamma_L$ is positive semidefinite, so $\widehat C_L(k)\ge0$; combined with (14.7),
+
+$$\boxed{\ \|\Gamma_L\|_{2\to2}\ =\ \max_k\widehat C_L(k)\ =\ \widehat C_L(0)\ =\ \chi_L\qquad\forall L,\ \beta\gt0.\ }\tag{14.8}$$
+
+$$\boxed{\ \text{The four-dimensional operator-norm problem reduces to the zero-momentum susceptibility alone.}\ }$$
+
+**Corollary 14.7.** Summing (14.5) over $\kappa$ gives $\sum_\kappa W_\mu(n;\kappa)=L^3\,\Gamma_L(0,(n,0,0,0))$, hence
+
+$$\Gamma_L(0,\,n e_\mu)\ \ge\ 0\qquad\forall n,\ \mu .\tag{14.9}$$
+
+**Numerical check.** Along the coordinate axes, `Cz` at $L=6,8,12$ is non-negative for all $n$; at $L=10$ one entry is $-4.70\times10^{-7}$, which is $3.3\times10^{-5}$ relative to $\Gamma(0,0)$ and lies at the Monte Carlo noise floor. This is not a refutation of (14.9), but it fixes the noise floor of the available data at about $5\times10^{-7}$ in absolute value.
+
+### 14.6 What remains
+
+$$\boxed{\ \text{(T) with constant }C\ \iff\ \sup_L\chi_L\lt\infty\ }\tag{14.10}$$
+
+**Numerics:** $\chi_L=0.03192553,\ 0.03295298,\ 0.03428803,\ 0.03269092$ for $L=6,8,10,12$ — flat.
+
+**A useful reformulation using (14.5).** Since $w\ge0$, no cancellation occurs in the sum:
+
+$$\chi_L=\sum_nw(n),\qquad w\ge0,\qquad \frac{\chi_L}{w(0)}=1.3587,\ 1.3962,\ 1.4347,\ 1.3794,\qquad \frac{w(1)}{w(0)}=0.1547,\ 0.1526,\ 0.1460,\ 0.1395 .$$
+
+So $\chi_L\le C$ is $\ell^1$-boundedness of a **non-negative** sequence. A geometric bound $w(n)\le w(0)e^{-m|n|}$ gives $\chi\le w(0)\big(1+2e^{-m}/(1-e^{-m})\big)$; at the observed $e^{-m}\approx0.15$ this is $1.37\,w(0)$, matching the data, and it stays below $2w(0)$ with a margin of $2.7\times$.
+
+$$\boxed{\ \textbf{Problem 14.8.}\quad \sup_{L,\ \beta\in[1/48,2.5]}\chi_L\lt\infty\qquad\Big(\iff \text{a uniform lower bound on }\mathscr H\text{'s spectrum against }D_0\Big)\ }\tag{14.11}$$
+
+**Downstream: what this does and does not replace.**
+
+- **§5's hypothesis (M) is superseded**: (Q) is now a theorem, so the momentum comparison no longer needs (M).
+- **§9's Problem 9.1 is not needed for (T)**: only for the *exponential* clustering form (MP), which (14.8) does not give. Positivity of $T$ gives non-negative spectral weights but **no uniform transfer-matrix spectral gap**, so (MP) stays open.
+- **Problem 14.8 is a statement about the $0^{++}$ (plaquette-scalar) channel only.** It is not the vector-channel mass gap; the two channels are distinct objects.
+
+---
+
 ## Appendix A. Why the four earlier approaches fail (with numbers)
 
 Four schemes were tested against (T) and are excluded. None of them is a counterexample to (T).
