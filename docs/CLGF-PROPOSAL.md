@@ -3540,6 +3540,106 @@ $$\mathcal J_{ij}=\sum_C\mathrm{Cov}_{\mu_{C,y}}\big(J_{C,B_i},J_{C,B_j}\big)\ta
 
 --- 
 
+## §5⁗⁗⁗⁗⁗⁗⁗⁗″ 两项审计：块收缩 `[F]`（pinning）+ 联合退火 `[U]`；`(17)` 的 Wilson 对应物（第 286 轮）
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗″.1 【`[F]`】均匀块 Dobrushin 收缩受 pinning 障碍
+
+$$\sup_i\sum_{j\ne i}e^{\alpha d(B_i,B_j)}c_{ij}\le q\lt1\tag{2}\ \Longrightarrow\ |\nu^\eta_\Lambda(F_A)-\nu^{\eta'}_\Lambda(F_A)|\le\frac{2|A|\|F_A\|_\infty}{1-q}e^{-\alpha d(A,\partial\Lambda)}\tag{3}$$
+
+**而 pinning 嵌入给（在它成立的前提下）**
+
+$$\exists F_A:\quad\limsup_{R\to\infty}|\nu_R^\eta(F_A)-\nu_R^{\eta'}(F_A)|\gt0\tag{4}$$
+
+$$\boxed{\ \text{均匀块 Dobrushin 收缩不成立}\ }\tag{5}$$
+
+**⚠️ 这是**条件性 no-go**：正式写入 `[F]` 还须把 pinning 子系统的精确嵌入与耦合常数归一化一并固定。它**不**否定真实退火 Wilson 测度的指数聚簇。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗″.2 【`[T]`】Wilson 联合响应的精确恒等式与有限范围
+
+$$\boxed{\ D_iD_j(-\log Z_C)[h_i,h_j]=-\beta_W^2\mathrm{Cov}_{\mu_{C,y}}\big(A_{C,i}(h_i),A_{C,j}(h_j)\big)\ }\tag{8}$$
+$$\boxed{\ \|D_iD_jS_{\rm slow}(y)\|\ \le\ \beta_WN^{SS}_{ij}+\beta_W^2\!\!\sum_C\!\!W_{C,i}W_{C,j}\ }\tag{10}$$
+
+$$\beta=2.5:\quad \|D_iD_jS_{\rm slow}\|\ \le\ 2.5N^{SS}_{ij}+6.25\!\!\sum_C\!\!W_{C,i}W_{C,j}\tag{11}$$
+
+$$\boxed{\ D_iD_jS_{\rm slow}\equiv0\quad\text{若 }d(B_i,B_j)\gt R_*\ }\tag{13}$$
+
+**⚠️ 有限范围是**相互作用支撑**性质，不是 Gibbs 测度的聚簇性质——有限范围作用量仍可有长程关联。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗″.3 【我的核对】`(11)` 比上一轮紧 `4×` 与 `π²×`，但收缩上**无净收益**
+
+| 形式 | 常数 |
+|---|---|
+四点振幅（第 285 轮 `(21)`） | `4β_WN + π²β²ΣWW = 10.0N + 61.685ΣWW` |
+**混合 Hessian（本轮 `(11)`）** | **`β_WN + β²ΣWW = 2.5N + 6.25ΣWW`** |
+
+$$\text{比值：}N\text{ 项 }4\times;\quad ΣWW\text{ 项 }\pi^2=9.87\times$$
+
+**⚠️ 但收缩判据用的是**交叉振幅**：**
+
+$$\Delta\approx\pi^2\|D^2\|\ \Longrightarrow\ \pi^2(2.5N+6.25ΣWW)=24.7N+61.69ΣWW$$
+
+$$\boxed{\ \text{与上一轮【完全相同】}\ \Longrightarrow\ \text{收缩问题上无净收益}\ }$$
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗″.4 【`[T]`】`(17)` 反例：单边平均小 `\not\Longrightarrow` 路径联合衰减
+
+$$R_1=\cdots=R_n=Z,\quad \mathbb P(Z=1)=p\quad\Longrightarrow\quad \mathbb E R_k=p\lt1\ \text{但}\ \mathbb E\prod_kR_k=p\ \text{与 }n\text{ 无关}$$
+
+$$\boxed{\ \mathbb E R_k\lt1\ \forall k\ \not\Longrightarrow\ \mathbb E\prod_kR_k\le Ce^{-mn}\ }\tag{17}$$
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗″.5 【我的结构定位】`(17)` 在 Wilson 里的对应物就是 **base 场 `ζ`**
+
+**`ζ` 活在 `Λ_3 ⊂ E_f` 上，维度 `O(L^4)`；**每个**快分量 `C` 的 `μ_{C,y}` 都依赖**同一个** `ζ`。**
+
+$$\boxed{\ ζ\ \text{是【全局公共环境】}\ \Longrightarrow\ (17)\ \text{的机制在 Wilson 中是\textbf{活的}}\ }$$
+
+$$\mathbb E\Big[\prod_k\mathcal R_{i_ki_{k+1}}(Y)\Big]=\mathbb E_\zeta\Big[\mathbb E\big[\textstyle\prod_k\mathcal R\mid\zeta\big]\Big]$$
+
+**⇒ 内层对路径是**可乘**的；外层对 `ζ` 平均**可以把 `n`-衰减抵消掉**。这正是 `(17)`。**
+
+**⭐⭐ 而这解释了一个贯穿本次会话的现象：**
+
+| 路线 | condition 在什么上 | 那个东西就是公共环境 |
+|---|---|---|
+静态退火 | 同一个 `Y∼ν_slow` | `Y` |
+动态退火 | 耦合过程 | **`ζ` 仍是** |
+路径消元 | `ν^P` | `ζ` 仍是 |
+
+$$\boxed{\ \text{每一条退火路线都 condition 在某个东西上，而那个东西就是公共环境}\ }$$
+
+**⇒ 要真正摆脱，**必须**：证明 `ζ` 的相关性足够弱，**或**把 `ζ` 的响应也纳入路径权重（即 `ζ` 必须被积分进慢变量图——这与第 275 轮 §5⁗⁗⁗⁗⁗‴.5 的记账是同一条）。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗″.6 【`[U]`】退火多块联合路径估计
+
+$$\mathfrak P_n(i_0,i_n)=\!\!\sum_{i_1\cdots i_{n-1}}\!\!\mathbb E_{\nu_{\rm slow}}\Big[\prod_{k=0}^{n-1}Q_{i_ki_{k+1}}(Y)\Big]\tag{18}$$
+$$\mathbb E_{\nu_{\rm slow}}\Big[\prod_{k=0}^{n-1}Q_{i_ki_{k+1}}(Y)\Big]\le C_0\vartheta^n,\quad \vartheta\lt1\tag{20}$$
+
+**⚠️ `(8)–(15)` **不**给出 `(20)`。它需要进一步的 Gibbs 联合概率、反向 Poincaré 或**多尺度好坏块**输入。**
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗″.7 审计（本轮）
+
+| 命题 | 判 |
+|---|---|
+所有边界条件下块 Dobrushin 收缩 | **`[F]`（条件性：pinning 有序子系统）** |
+Wilson 有效块混合 Hessian 恒等式 `(8)` | **`[T]`** |
+显式上界 `(10)–(11)` | **`[T]`** |
+响应矩阵有限范围 `(12)–(13)` | **`[T]`** |
+单块退火一阶矩 `(15)` | **`[T]`** |
+**单块平均小 `\not\Longrightarrow` 路径联合衰减 `(17)`** | **`[T]`（反例）** |
+**`(17)` 的 Wilson 对应物 = `ζ`（全局公共环境）** | **`[T]`（我补的结构定位）** |
+`(11)` 更紧但收缩上无净收益 | **`[T]`（我算）** |
+当前 Wilson 多块退火联合衰减 `(20)` | **`[U]`** |
+`β=2.5` 下退火块响应路径收敛 | **`[U]`** |
+
+### 5⁗⁗⁗⁗⁗⁗⁗⁗″.8 架构调整（正式记账）
+
+$$\boxed{\ \text{最坏情形块收缩：放弃}\ \succ\ \text{局部块响应精确公式：完成}\ \succ\ \text{有限范围：完成}\ \succ\ \text{退火多块联合路径：未完成}\ \succ\ \text{全局双块聚簇：未完成}\ }$$
+
+**⇒ 结论：Wilson 有效慢块响应的**精确有限范围**与**单块退火控制**已证；但它们在真实 Gibbs 测度下的**多块联合衰减未证**。**
+
+**⇒ 下一手不是重新估计块矩阵的最大行和，而是直接分析 `(20)` 的联合乘积，利用 `ζ` 的协方差结构排除「公共坏环境」造成的长期相关。**
+
+--- 
+
 ## §6 最终构造（`[Δ-C]` / `[Δ-M]`，独立）
 
 $$\boxed{\ \lim_{\delta\downarrow0}\sup_L\sup_{p_s(f)\le\delta}\big|\chi_L(f)-1\big|=0\ }\tag{M}$$
