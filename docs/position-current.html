@@ -22,7 +22,7 @@
 </head>
 <body>
 
-<h1>位置图 · 第 50 轮（T1 完整严格证明：单一闭式覆盖全部 z&gt;0）</h1>
+<h1>位置图 · 第 63 轮（T1 完整证明；高度阶梯方向三条路关闭）</h1>
 <p>项目：4 维纯 SU(2) Yang-Mills 质量隙（Clay）。进展单位是「轮」。</p>
 
 <h2>1. 主链：单链定理 (R) 已封卷</h2>
@@ -83,6 +83,7 @@
 <p><code>I₃=I₁−(4/z)I₂</code>；<code>D_N</code> 闭式（全 <code>N</code>）；<code>c_J~β^{−3/2}</code>；<code>M₂=¼Op₂</code> 精确；<code>c_J'(0)</code>/<code>c_J''(0)</code> 全表；<code>‖M‖≤1</code>；<code>Φ→−0.06886</code>；对角线 <code>1−r≈1/β</code>；<code>m</code> 发散；透变指数 <code>2.6917</code>；<code>λ₂=0.5</code>；<code>λ₂'</code> 三项分解；单链 <code>r(β')</code> 单调降；链式 <code>L_s=3</code> 无新信息；<code>λ_max</code> 不叠加；<code>c₁=0.5</code>（3 点）；<code>c₃</code> 三点 + 半径收缩；<code>β_s^*</code>；<code>λ₁'</code> 的 <code>0.3714</code> 已解；<code>V</code> 展开在物理区不可用；两个极限不可交换；<code>M_f→P_ordered</code>；<code>(0,½)</code> 退耦的四点证据；<code>Φ(β_s)</code> 的 6 点；tridiagonal <code>Σ_Pq_P</code>；<code>u</code> 的 <code>β</code>-依赖；<code>Φ&gt;0</code>（截断内）；<code>L=1</code> 的 <code>t₂</code> 是 8 重简并；<code>M_1</code> 在简并子空间给 <code>±1.028</code>。</p>
 
 <div class="corr">
+<p><b>第 55–62 轮：高度阶梯方向的关闭</b>。<code>Sq</code> 的块三对角是真的，但 <code>T=M_fKM_f</code> 因 <code>M_f</code> 的指数而**不**块三对角。三条压缩路全部关闭：块内低能截断（块内 <code>K</code>-权重全部可比，max/min ≤ 899）、块间精确低秩（<code>rank(T_h)=Θ(d²)</code>，<code>rank/d²≈0.09</code> 三 <code>jm</code> 全同）、块间有效低秩（奇异值不衰减，<code>k=1000</code> 处仍 0.42–0.69）。</p>
 <p><b>第 47–49 轮：T1 的完整严格证明</b>。<code>I₁I₃−I₂² = Σ_n 2^{−(4+2n)}D_n z^{4+2n}</code>（<code>n=0..9</code> 精确匹配），<code>S_n=D_n</code>（<code>n=0..40</code> 有理数精确、0 失配），<code>S_{n+1}−R(n)S_n=0</code>（<code>n=0..34</code>、0 失配），Gosper 证书显式。<b>原三段分析（<code>0&lt;z≤2</code> / <code>2&lt;z≤29</code> / <code>z≥29</code>）不再需要。</b></p>
 <p><b>第 32/33 轮：归一化问题已解决</b>。代码的 <code>M_f^code = e^{−β_s}M_f^phys</code>（<code>c₀=1−β_s+O(β_s²)</code>，<code>Op₀=𝟙</code> 精确）。<code>r</code> 归一化不变；比值<b>不</b>归一化不变，但<b>两种归一化都给定理</b>（物理 <code>0.75</code>、代码 <code>0.2259</code>，都 <code>≤1/u=1.9716</code>）。第 31 轮的「归一化无关」撤回；第 28 轮的 <code>0.75</code> 恢复；第 34 轮的「勾股证明」撤回（<code>q</code> 的 <code>h=1→h≥3</code> 块使 <code>e^{β_s q/2}</code> 混合高度）。</p>
 <p><b>第 25 轮的新定理</b>：<b>(V-损隙)</b> <code>r(β_s) ≥ u</code> 对全部 <code>β_s&gt;0</code>。关键一步是 <b>精确谱 <code>spec(q|_{h=1})={±½}</code></b>（解析：<code>B=½𝟙₄</code>），使 Ky Fan 变分界给出 <code>α=cosh(β_s/2)</code>。</p>
@@ -148,6 +149,7 @@
 
 </body>
 </html>
+
 
 
 
