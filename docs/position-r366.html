@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>位置图 · 第 366 轮（链的总装：Clay ⟺ (UV) ∧ (SCALE)）</title>
+<style>
+ body{font-family:system-ui,-apple-system,"Segoe UI","Noto Sans CJK SC","Microsoft YaHei",sans-serif;
+      max-width:1080px;margin:2rem auto;padding:0 1.2rem 3rem;line-height:1.66;color:#1a1a1a;background:#fafafa}
+ h1{font-size:1.45rem;border-bottom:2px solid #333;padding-bottom:.4rem}
+ h2{font-size:1.1rem;margin-top:2rem;border-left:4px solid #4a7;padding-left:.6rem}
+ table{border-collapse:collapse;width:100%;margin:.8rem 0;font-size:.9rem}
+ th,td{border:1px solid #ccc;padding:.35rem .55rem;text-align:left;vertical-align:top}
+ th{background:#eee}
+ code{background:#eee;padding:.05rem .25rem;border-radius:3px;font-size:.9em}
+ pre{background:#f2f4f7;border:1px solid #d8dde4;border-left:4px solid #2b5f9e;padding:.7rem .9rem;overflow-x:auto;font-size:.85rem}
+ .T{background:#d8f0d8;font-weight:600}.M{background:#fdf3d0}.F{background:#f8d8d8}.U{background:#e4e4e4}.C{background:#fdf6e3}
+ .big{background:#e8f4ff;border-left:4px solid #2c7;padding:.6rem .8rem;margin:1rem 0}
+ .warn{background:#fff8e0;border-left:4px solid #d4a017;padding:.6rem .8rem;margin:1rem 0}
+ .corr{background:#ffe8e8;border-left:4px solid #c33;padding:.6rem .8rem;margin:1rem 0}
+ a{color:#2b5f9e}
+</style>
+</head>
+<body>
+
+<h1>位置图 · 第 366 轮（链的总装）</h1>
+<p>项目：4 维纯 SU(2) Yang–Mills 质量隙（Clay）。进展单位是「轮」。
+本轮唯一交付：把全部已证结论按「因为 / 所以」接成一条链，并把 Clay 写成<b>等价的两环形式</b>。</p>
+<p>详细链：<a href="CHAIN-TO-CLAY.html">CHAIN-TO-CLAY.html</a>（本轮的完整件）。</p>
+
+<h2>1. 目标链：只剩两环</h2>
+<div class="big">
+<pre>Clay  ⟺  (UV) ∧ (SCALE)
+
+(SCALE)  ∃ c₂ &gt; c₁ &gt; 0, β₀, L₀ :  ∀β ≥ β₀, ∀L ≥ L₀
+         c₁ ≤ m_lat(β,L)/a(β) ≤ c₂              ← 两头夹，[U]
+
+(UV)     沿 AF 轨迹的 OS 紧性 + Schwinger 函数收敛   ← [U]
+
+其余每一环 [T]：
+  格点测度存在 → OS 重构 (H, T, H ≥ 0) → 隙 = 谱定理 = 指数衰减率 → m_phys = m_lat/a
+  (C2) ⟸ 下界 c₁ ； (C1) ⟸ 上界 c₂（若 m_lat/a → ∞，极限超局部 ⇒ 平凡）</pre>
+</div>
+<p><b>本轮新增的那一条</b>：上界 <code>c₂</code>。此前靶只写下界，因此「平凡极限」也会被算过关——这正是 <code>ROUND259</code> 的
+<code>m·a ≈ 0.618</code>（不趋于 0）应当读成 (C1) 失败、而不是 (C2) 成功的理由。</p>
+
+<h2>2. 五环 / 五洞</h2>
+<table>
+<tr><th>环</th><th>内容</th><th>判</th></tr>
+<tr class="T"><td>R1</td><td>格点测度 + OS 重构 ⇒ <code>(ℋ, T, H ≥ 0)</code></td><td>[T]</td></tr>
+<tr class="T"><td>R2</td><td>隙 = 谱隙 = 指数衰减率；<code>m_phys = m_lat/a</code></td><td>[T]</td></tr>
+<tr class="U"><td>R3</td><td><b>下界</b> <code>m_lat/a ≥ c₁</code></td><td>[U]</td></tr>
+<tr class="U"><td>R4</td><td><b>上界</b> <code>m_lat/a ≤ c₂</code>（非平凡性）</td><td>[U]</td></tr>
+<tr class="U"><td>R5</td><td>(UV) 紧性 / 收敛</td><td>[U]</td></tr>
+</table>
+<table>
+<tr><th>洞</th><th>精确内容</th><th>已有信息</th></tr>
+<tr class="U"><td>D1</td><td><code>∃c₁∀β≥β₀∀L: m_lat/a ≥ c₁</code></td><td>方向定理封死 χ-类（<code>λ_min ≤ ‖ν‖/Ĉ</code>）</td></tr>
+<tr class="U"><td>D2</td><td><code>∃c₂∀β≥β₀∀L: m_lat/a ≤ c₂</code></td><td>无可用的相关长度上界</td></tr>
+<tr class="U"><td>D3</td><td>AF 轨迹上的紧性/收敛</td><td>Balaban 部分；完整未构造</td></tr>
+<tr class="U"><td>D4</td><td>全道（不止 <code>0^{++}</code>）</td><td><code>0^{++}</code> 最低 ⇒ 其隙是上界</td></tr>
+<tr class="F"><td>D5</td><td>模型 → 格点的桥</td><td><b>已否证</b>：<code>r = 0.692 &gt; 0.507</code></td></tr>
+</table>
+
+<h2>3. 断点（带数与量词）</h2>
+<table>
+<tr><th>断点</th><th>类型</th><th>数 / 理由</th></tr>
+<tr><td>χ-类 ⇒ 质量隙</td><td><b>方向</b>（[T]）</td><td><code>λ_min ≤ ‖ν‖/Ĉ</code>；且 <code>∫χ = 1/6 ⇒ χ → 0</code> 于大 β。锐性：<code>ν = λ1_{(0,1]}dλ</code> 给 <code>Ĉ = 1, λ_min = 0</code></td></tr>
+<tr><td>单链 ⇒ 格点</td><td><b>真值</b>（[F]）</td><td><code>r = 0.692 &gt; 0.507 = I₂/I₁</code>（差 0.185，方向相反）</td></tr>
+<tr><td>可解扇区的标度</td><td><b>读数</b>（[M]）</td><td><code>m·a = 0.633, 0.618, 0.648, 0.793, 1.131</code>（<code>β_s = 0.25…4</code>）⇒ 不趋于 0 ⇒ <code>m_lat/a → ∞</code> ⇒ 平凡极限</td></tr>
+</table>
+
+<h2>4. 四模型试金石</h2>
+<table>
+<tr><th>模型</th><th>精确事实</th><th>杀死什么</th><th>(SCALE) 表现</th></tr>
+<tr><td>自由场 (4D)</td><td><code>f₁²=0, G″=0, m=0</code></td><td>在自由场上不退化的工具（真空）</td><td>下界失败 ⇒ 判无隙 ✓</td></tr>
+<tr><td>2D YM</td><td>面积律全 β，<code>m&gt;0</code>，<code>Δ_dyn&lt;0</code></td><td>「Δ₀&gt;0 ⇒ 隙」型判据</td><td>n/a（无 4D AF）</td></tr>
+<tr><td>M6</td><td><code>G″=2ω&gt;0</code> 而 <code>m=0</code></td><td>「正曲率 ⇒ 隙」型判据</td><td>下界失败 ⇒ 判无隙 ✓</td></tr>
+<tr><td>单 plaquette</td><td>0 维，<code>Δ = −0.0691</code></td><td>符号型证书</td><td>n/a（无转移矩阵）</td></tr>
+</table>
+
+<h2>5. 死路台账（每条一个数）</h2>
+<table>
+<tr><th>路</th><th>判</th><th>数</th></tr>
+<tr class="T"><td>HS / 谱 / 求和规则（χ-类）</td><td>[T]</td><td>只能上界；<code>χ → 0</code>（大 β）</td></tr>
+<tr class="F"><td>单链延拓多链 <code>V ≤ 1</code></td><td>[F]</td><td><code>r = 0.692 &gt; 0.507</code></td></tr>
+<tr class="F"><td><code>V</code> 的秩截断</td><td>[F]</td><td>谱填满 <code>[0.81, 1.50]</code></td></tr>
+<tr class="F"><td>特征标低阶</td><td>[F]</td><td><code>c_J ~ β^{−3/2}</code></td></tr>
+<tr class="F"><td><code>V</code> 的微扰（物理区）</td><td>[F]</td><td>半径 <code>≈2.5 &lt; β_s=β</code></td></tr>
+<tr class="F"><td>朴素 <code>Tr₂</code> / 加权 block-spin</td><td>[F]</td><td>残差 <code>≥0.89</code></td></tr>
+<tr class="F"><td><code>L ≥ 2</code> 精确对角化</td><td>[F]</td><td><code>2.8×10¹¹</code> 维</td></tr>
+<tr class="F"><td>两链截断 Peter–Weyl</td><td>[F]</td><td><code>0.5692 → 0.8802 → 0.6179</code>，不收敛</td></tr>
+<tr class="U"><td>非 Abel GKS <code>v₂ ≥ 0</code></td><td>[U]</td><td>文献只到 Abel/Villain；数值 <code>+6.24×10⁻³</code></td></tr>
+</table>
+
+<h2>6. 限定</h2>
+<ul>
+<li><code>SU(2)</code>、<code>d=4</code>；一般单李群未逐条重跑。</li>
+<li>求和规则 / <code>χ^clover ≤ 1/6</code>：一切 <code>β&gt;0</code>，<code>L≥2</code>。<code>(R)</code> 数值核验：<code>β∈[0.2,400]</code>（11 值）。</li>
+<li>观测量：固定取向 plaquette 标量道；clover 平均的 <code>(Q)</code> 仍 <span class="U">[U]</span>。</li>
+<li>极限次序：先 <code>L→∞</code> 再 <code>a→0</code>；两个极限不可交换 <span class="T">[T]</span>。</li>
+<li>大 <code>β_s</code> 数值必须用 <code>ive</code> 归一化（第 223 轮更正）。</li>
+<li>外部输入：OS 重构（1978，标准）；渐近自由（标准）；Balaban RG（部分）；Ginibre 对非 Abel <b>不可用</b>。</li>
+</ul>
+
+<h2>7. 与 Clay 的关系（诚实值）</h2>
+<div class="warn">
+<p><b>不以百分比计</b>（<code>CLAUDE.md §2</code>：定理只有「已证 / 未证」，中间没有百分比）。</p>
+<p><b>可报告的三件事：</b>① R1–R2 已 [T]；② 缺 R3、R4、R5；
+③ 缺的东西带量词：R3 = <code>∃c₁∀β∀L</code> 的下界，R4 = <code>∃c₂∀β∀L</code> 的上界，R5 = 紧性。
+<b>Clay 未证。</b></p>
+</div>
+
+<h2>8. 下一手</h2>
+<ol>
+<li><b>P1（D1）：</b>在 <code>L_s = 2</code>（首个非瞬态）上证 <code>gap ≥ c·e^{−(3π²/11)β_s}</code>，即 <code>m_lat/a ≥ c</code>。</li>
+<li><b>P2（D2）：</b>证 <code>λ₁(T) ≥ e^{−c₂a(β)}</code>（相关长度有上界 ⇒ 极限非超局部）。</li>
+<li><b>P3（D5）：</b><code>V ≤ 1</code> 不修；另找比较对象（<code>h = Σ j_x</code> 分层块内比较，或 <code>L_s=2</code> 直接接格点 plaquette 键）。</li>
+</ol>
+
+<hr>
+<p style="font-size:.83rem;color:#666">第 366 轮 · 快照 <code>position-r366.html</code>。上一份：<code>position-r63.html</code>（转移矩阵线，51 条）。</p>
+
+</body>
+</html>
